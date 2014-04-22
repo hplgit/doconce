@@ -90,11 +90,12 @@ def pandoc_code(filestr, code_blocks, code_block_types,
                     cpppro='Cpp', fpro='Fortran', cpro='C',
                     rbcod='Ruby', rbpro='Ruby',
                     plcod='Perl', plpro='Perl',
+                    htmlcod='HTML', htmlpro='HTML',
                     # sys, dat, csv, txt: no support for pure text,
                     # just use a plain text block
                     #sys='Bash',
                     pyoptpro='Python', pyscpro='Python',
-                    ipy='Python', pyshell='python')
+                    ipy='Python', pyshell='Python')
             # (the "Python" typesetting is neutral if the text
             # does not parse as python)
 

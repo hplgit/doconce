@@ -1,0 +1,135 @@
+TITLE: Demonstration of features in Doconce
+AUTHOR: Hans Petter Langtangen at Simula & University of Oslo
+DATE: today
+
+__Summary.__ This document demonstrates the various features that
+are present in the Doconce markup language. The abstract starts
+with `__Abstract.__` or `__Summary.__` in the first column and
+lasts up to the table of contents or the first heading.
+
+
+#Table of contents
+TOC: on
+
+======= Section heading =======
+
+The section heading is recognized by 7 `=` characters before and after
+the title, starting in the first column. There is also a chapter
+heading with 9 `=`, aimed at books (LaTeX output will be the `book`
+format if any chapter is present, otherwise `article`.
+
+===== Subsection heading =====
+label{subsec1}
+
+The subsection heading has 5 `=` characters before and after the title.
+A label can appear right after the heading, as in `label{mysec}`,
+and we can use the label to refer to Section ref{subsec1} with
+a local name.
+
+=== Subsubsection heading ===
+
+The subsubsection heading features 3 `=` characters and is typeset as
+a separate, small heading in all formats, except LaTeX, where
+a `paragraph` command is used for subsubsections.
+
+===== Inline tagging =====
+
+Doconce features _boldface words_, *emphasized words*, `inline verbatim
+computer code` (in monospace font), [hpl: Inline comments, e.g.,
+for other authors. These comments stand out and can easily be
+ignore at compile time.]
+
+!bnotice Non-breaking space character
+This paragraph aims to test "non-breaking space character":
+"http://en.wikipedia.org/wiki/Non-breaking_space", which is a tilde in
+Doconce. A typical example where this is needed is in physical units:
+7.4~km is traveled in~$7.4/5.5\approx 1.345$~s.  Also check that
+a~"link": "http://google.com"~is not broken across lines (drag the
+browser window to test this).  (On the other hand, the tilde is used
+in computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and
+should of course remain a tilde in those contexts.)
+!enotice
+
+===== LaTeX mathematics =====
+
+There is good support of LaTeX mathematics:
+
+ * inline formulas
+ * single equation without number in `equation*` or `\[ ... \]` environments
+ * multiple, aligned equations using the `align` or `align*` environments
+
+!bt
+\[ -\nabla^2 u = f,\]
+!et
+
+or with automatic number:
+
+!bt
+\begin{equation} -\nabla^2 u = f\thinspace .\end{equation}
+!et
+
+Numbered equations (ref{eq1})-(ref{eq2}), with labels:
+
+!bt
+\begin{align}
+F_1 &= \frac{du}{dx},
+label{eq1}\\
+F_2 &= \frac{dv}{dx}\thinspace .
+label{eq2}
+\end{align}
+!et
+
+
+
+## Markdown sections
+
+Doconce allows simple (extended) Mardown input, such as **boldface** notation,
+`inline verbatim code` in monospace font, *emphasized words*,
+footnotes [^footnote], special link syntax: [link to google][1],
+and code blocks,
+
+```Python
+from numpy import sin
+
+def f(x, y):
+    return sin(x + y)
+
+print f(2, 4)
+```
+
+> Markdown also features quoted
+paragraphs that start with a greater
+than sign, either just in the beginning
+or at every line.
+
+
+# Comment lines start with # in the first column. Normally,
+# a blank is inserted after the # character, but if Markdown
+# is allowed as input syntax (--markdown flag), "comment lines"
+# of the form "# Heading" implies a heading, not a comment.
+# The remedy for confusion is to write plain comments without a
+# blank after #, or rely on the fact that Markdown headings
+# must have a blank line before and after, so multi-line
+# comments like this work are never confused with Markdown
+# headings.
+
+## A double # implies a comment that is not copied as comment
+## to the output file. Again, watch out for confusion with
+## Markdown subsections. Multiple comments lines work well,
+## and for single lines, drop the first blank after # or ##.
+
+# #ifdef COMMENT
+Comments can also be freely inserted inside preprocess directives
+like this.
+# #endif
+
+ [^footnote]: The footnote syntax is similar to Extended Markdown
+ and various email variants for simulating footnotes.
+
+ [1]: http://google.com
+
+
+===== Preprocessors =====
+
+===== Admonitions =====
+

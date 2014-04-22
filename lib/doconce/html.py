@@ -694,6 +694,9 @@ MathJax.Hub.Config({
   <h1>\g<1></h1>
 </div>
 """, filestr)
+    else:
+        filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
+    if html_style.startswith('boots'):
         # Fix tables
         filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
         # Insert toc
@@ -1428,9 +1431,9 @@ def define(FILENAME_EXTENSION,
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
         'inlinecomment': r'\n<!-- begin inline comment -->\n<font color="red">[<b>\g<name></b>: <em>\g<comment></em>]</font>\n<!-- end inline comment -->\n',
         'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
-        'section':       r'\n<h2>\g<subst></h2>',
-        'subsection':    r'\n<h3>\g<subst></h3>',
-        'subsubsection': r'\n<h4>\g<subst></h4>\n',
+        'section':       r'\n<h1>\g<subst></h1>',
+        'subsection':    r'\n<h2>\g<subst></h2>',
+        'subsubsection': r'\n<h3>\g<subst></h3>\n',
         'paragraph':     r'<b>\g<subst></b>\n',
         'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
         'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
@@ -1442,6 +1445,7 @@ def define(FILENAME_EXTENSION,
         'linebreak':     r'\g<text><br />',
         'footnote':      html_footnotes,
         'non-breaking-space': '&nbsp;',
+        'horizontal-rule': '<hr>',
         }
 
     if option('wordpress'):

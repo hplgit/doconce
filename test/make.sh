@@ -310,11 +310,14 @@ if [ -d latex_figs ]; then
 fi
 
 # Test Bootstrap HTML styles
-system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 doconce split_html test_boots.html
 
 # Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
+
+# Test Markdown input
+doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
 
 # Test movie handling
 name=movies

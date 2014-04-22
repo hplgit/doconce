@@ -72,9 +72,13 @@ def markdown2doconce(filestr, format):
     quote_envir = 'quote'
     quote_envir = 'block'
     from common import inline_tag_begin, inline_tag_end
+    extended_markdown_language2dolang = dict(
+        Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
+        Perl='pl', Bash='sh', HTML='html')
+
     regex = [
         # Computer code with language specification
-        (r"\n+```([a-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
+        (r"\n+```([A-Za-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
         # Computer code without (or the same) language specification
         (r"\n+```\n(.+?)\n```\n", "\n\n!bc\n\g<1>\n!ec\n", re.DOTALL),
         # Paragraph heading written in boldface
@@ -84,23 +88,18 @@ def markdown2doconce(filestr, format):
          r"\g<begin>_\g<subst>_\g<end>"),
         # Link with link text
         (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
-        # H1
-        (r'^ *# +([^#]+?)$', r"======= \g<1> =======", re.MULTILINE),
-        # H2
-        (r'^ *## +([^#]+?)$', r"===== \g<1> =====", re.MULTILINE),
-        # H3
-        (r'^ *### +([^#]+?)$', r"=== \g<1> ===", re.MULTILINE),
         # Equation
         (r"\n\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
         # TOC
         (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
         # Smart StackEdit comments (must appear before normal comments)
         # First treat Doconce-inspired syntax with [name: comment]
-        (r"<!--- ([A-Za-z]+?): (.+)-->", r'[\g<1>: \g<2>]', re.DOTALL),
+        (r"<!--- ([A-Za-z]+?): (.+?)-->", r'[\g<1>: \g<2>]', re.DOTALL),
         # Second treat any such comment as inline Doconce comment
-        (r"<!---(.+)-->", r'[comment: \g<1>]', re.DOTALL),
-        # Plain comments starting on the beginning of a line
-        (r"^<!--(.+)-->", lambda m: '# ' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
+        (r"<!---(.+?)-->", r'[comment: \g<1>]', re.DOTALL),
+        # Plain comments starting on the beginning of a line, avoid blank
+        # to not confuse with headings
+        (r"^<!--(.+?)-->", lambda m: '#' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
         # Plain comments inside the text must be inline comments in Doconce
         # or dropped...
         (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
@@ -113,8 +112,6 @@ def markdown2doconce(filestr, format):
         # enumerated lists should be o
         (r"^( +)\d+\.( +)", r"\g<1>o\g<2>", re.MULTILINE),
         (r"<br>", r" <linebreak>"), # before next line which inserts <br>
-        # horizontal rules go to comment
-        (r"^--+\n", r"# HORIZONTAL RULE <br>\n", re.MULTILINE),
     ]
     for r in regex:
         if len(r) == 2:
@@ -131,9 +128,41 @@ def markdown2doconce(filestr, format):
     * Headlines with underline instead of #
     * labels (?) a la {#label}
     """
+    lines = filestr.splitlines()
+    # Headings: must have # at the beginning of the line and blank before
+    # and after
+    inside_code = False
+    for i in range(len(lines)):
+        if lines[i].startswith('```') and inside_code:
+            inside_code = False
+            continue
+        if lines[i].startswith('```') and not inside_code:
+            inside_code = True
+            continue
+        if not inside_code:
+            if re.search(r'^#{1,3} ', lines[i]):
+                # Potential heading
+                heading = False
+                if i > 0 and lines[i-1].strip() == '' and \
+                   i < len(lines)-1  and lines[i+1].strip() == '':
+                    # Blank line before and after
+                    heading = True
+                elif i == 0 and i < len(lines)-1  and lines[i+1].strip() == '':
+                    heading = True
+                if heading:
+                    # H1: can be confused with comments,
+                    # write comments as #Comment without initial blank after #
+                    lines[i] = re.sub(
+                        r'^# +([^#]+?)$', r"======= \g<1> =======", lines[i])
+                    # H2
+                    lines[i] = re.sub(
+                        r'^## +([^#]+?)$', r"===== \g<1> =====", lines[i])
+                    # H3
+                    lines[i] = re.sub(
+                        r'^### +([^#]+?)$', r"=== \g<1> ===", lines[i])
+
     # tables:
     inside_table = False
-    lines = filestr.splitlines()
     # line starting and ending with pipe symbol is the start of a table
     pattern = r'^ *\| .+ \| *$'
     for i in range(len(lines)):
@@ -165,7 +194,7 @@ def markdown2doconce(filestr, format):
     lines = filestr.splitlines()
     newlines = []
     for line in lines:
-        pattern = r'^ *\[([^\^]+)\]:(.+)$'
+        pattern = r'^ *\[([^\^]+?)\]:(.+)$'
         m = re.search(pattern, line, flags=re.MULTILINE)
         if m:
             links[m.group(1).strip()] = m.group(2).strip()
@@ -174,7 +203,7 @@ def markdown2doconce(filestr, format):
             newlines.append(line)
     filestr = '\n'.join(newlines)
     for link in links:
-        filestr = re.sub(r'\[(.+?)\][%s]' % link, '"\g<1>": "%s"' % links[link], filestr)
+        filestr = re.sub(r'\[(.+?)\]\[%s\]' % link, '"\g<1>": "%s"' % links[link], filestr)
     # Fix quote blocks with opening > in lines
     pattern = '^!b%(quote_envir)s%(quote_title)s\n(.+?)^!e%(quote_envir)s' % vars()
     quotes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
@@ -2419,6 +2448,7 @@ def inline_tag_subst(filestr, format):
     # Treat tags that have format-dependent typesetting
 
     ordered_tags = (
+        'horizontal-rule',
         'title',
         'date',
         'movie',

@@ -268,16 +268,15 @@ syntax, just displayed properly in HTML.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-
 !bnotice Non-breaking space character
 This paragraph aims to test "non-breaking space character":
 "http://en.wikipedia.org/wiki/Non-breaking_space", and a typical
-example where this is needed is int units: 7.4~km is traveled
+example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~"link": "http://google.com"~is
 not broken across lines (drag the browser window to test this).
-On the other hand, the tilde is used in
+(On the other hand, the tilde is used in
 computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should
-of course remain a tilde.
+of course remain a tilde in those contexts.)
 !enotice
 
 ===== Subsection 2: Testing figures =====
