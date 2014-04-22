@@ -891,7 +891,7 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
@@ -907,7 +907,7 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
@@ -927,7 +927,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
@@ -1130,62 +1130,6 @@ $$
 We can refer to \eqref{eq1}-\eqref{eq2}. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
 Also test \( a_{i-j} \) as well as \( kx-wt \).
-
-<p>
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-$$
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\label{multiline:eq1}
-\end{multline}
-$$
-
-Testing split:
-$$
-\begin{equation}
-\label{split:envir:eq}
-\begin{split}
-a = b = q &+ \\ 
-  & f + \nabla\cdot\nabla u
-\end{split}
-\end{equation}
-$$
-
-We can refer to the last equation by \eqref{split:envir:eq}.
-
-<p>
-Testing gather:
-$$
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-$$
-
-
-<p>
-Testing alignat:
-$$
-\begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
-b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
-\end{alignat}
-$$
-
-Let us refer to \eqref{eq1}-\eqref{eq2} again, and to the
-alignat variant \eqref{eq1a}-\eqref{eq2a}, and to \eqref{my:eq1}.
-
-<p>
-Testing eqnarray:
-$$
-\begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
-{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
-\end{eqnarray}
-$$
-
 
 <p>
 More mathematical typesetting is demonstrated in the coming exercises.

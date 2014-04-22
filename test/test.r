@@ -716,6 +716,7 @@ We can refer to (ref{eq1})-(ref{eq2}). They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
+% if FORMAT in ("latex", "pdflatex"):
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 !bt
@@ -762,6 +763,7 @@ Testing eqnarray:
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g label{myeq2}
 \end{eqnarray}
 !et
+% endif
 % endif
 
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -2376,7 +2378,7 @@ one table:
 \begin{quote}
 \begin{tabular}{lll}
 \hline
-\multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
+\multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
 0.0          & 1.4186       & -5.01        \\
 1.0          & 1.376512     & 11.919       \\
@@ -4196,7 +4198,7 @@ one table:
 \begin{quote}
 \begin{tabular}{lll}
 \hline
-\multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
+\multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
 0.0          & 1.4186       & -5.01        \\
 1.0          & 1.376512     & 11.919       \\
@@ -6004,7 +6006,7 @@ one table:
 \begin{quote}
 \begin{tabular}{lll}
 \hline
-\multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
+\multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
 0.0          & 1.4186       & -5.01        \\
 1.0          & 1.376512     & 11.919       \\
@@ -7441,7 +7443,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 ============  ============  ============  
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ============  ============  ============  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -9007,7 +9009,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 ============  ============  ============  
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ============  ============  ============  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -9059,7 +9061,7 @@ and URLs.
 =========================================================  =========================================================  =========================================================  
                   :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
                        :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
-          :math:`\nabla\cdot\boldsymbol{u} =0 `            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+           :math:`\nabla\cdot\boldsymbol{u} =0`            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
 =========================================================  =========================================================  =========================================================  
 
 
@@ -9249,59 +9251,6 @@ And here is a system of equations with labels in an align environment:
 We can refer to :eq:`eq1`-:eq:`eq2`. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in ``CG-2``.
 Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
-
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-
-.. math::
-   :label: multiline:eq1
-        
-        a = b = q + \\ 
-          f + \nabla\cdot\nabla u
-        
-        
-
-Testing split:
-
-.. math::
-   :label: split:envir:eq
-        
-        
-        
-        a = b = q &+ \\ 
-          & f + \nabla\cdot\nabla u
-        
-        
-
-We can refer to the last equation by :eq:`split:envir:eq`.
-
-Testing gather:
-
-.. math::
-        
-        a = b \\ 
-        c = d + 7 + 9
-        
-
-
-Testing alignat:
-
-.. math::
-        \begin{alignat}{2}
-        a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0  \\ 
-        b &= \nabla^2 u + \nabla^4 x & x\in\Omega 
-        \end{alignat}
-
-Let us refer to :eq:`eq1`-:eq:`eq2` again, and to the
-alignat variant :eq:`eq1a`-:eq:`eq2a`, and to :eq:`my:eq1`.
-
-Testing eqnarray:
-
-.. math::
-        
-        {\partial u\over\partial t}  &=  \nabla^2 u + f, \\ 
-        {\partial v\over\partial t}  &=  \nabla\cdot(q(u)\nabla v) + g 
-        
 
 
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -11803,7 +11752,7 @@ one table:
 
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
@@ -11817,7 +11766,7 @@ symbol:
 
 <table border="1">
 <thead>
-<tr><th align="center">    <math>i</math>   </th> <th align="center">   <math>h_i</math>  </th> <th align="center"><math>\bar T_i</math></th> <th align="center">   <code>L_i</code>  </th> </tr>
+<tr><th align="center">    <math>i</math>   </th> <th align="center">   <math>h_i</math>  </th> <th align="center"><math>\bar T_i</math></th> <td align="center">   <code>L_i</code>  </td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                        </td> <td align="right">   0                        </td> <td align="right">   288                      </td> <td align="right">   -0.0065                  </td> </tr>
@@ -11835,7 +11784,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 
 <table border="1">
 <thead>
-<tr><th align="center">               exact               </th> <th align="center">          <code>v_1</code>         </th> <th align="center"><math>a_i</math> + <code>v_2</code></th> <th align="center">        <code>verb_3_</code>       </th> </tr>
+<tr><th align="center">               exact               </th> <td align="center">          <code>v_1</code>         </td> <td align="center"><math>a_i</math> + <code>v_2</code></td> <td align="center">        <code>verb_3_</code>       </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                                      </td> <td align="right">   9.62                                   </td> <td align="right">   5.57                                   </td> <td align="right">   8.98                                   </td> </tr>
@@ -14307,7 +14256,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 ============  ============  ============  
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ============  ============  ============  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -15537,7 +15486,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 ============  ============  ============  
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ============  ============  ============  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -16870,7 +16819,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 ============  ============  ============  
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ============  ============  ============  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -18215,7 +18164,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ------------  ------------  ------------  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -18431,52 +18380,6 @@ We can refer to \eqref{eq1}-\eqref{eq2}. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-$$
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\label{multiline:eq1}
-\end{multline}
-$$
-Testing split:
-$$
-\begin{equation}
-\label{split:envir:eq}
-\begin{split}
-a = b = q &+ \\ 
-  & f + \nabla\cdot\nabla u
-\end{split}
-\end{equation}
-$$
-We can refer to the last equation by \eqref{split:envir:eq}.
-
-Testing gather:
-$$
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-$$
-
-Testing alignat:
-$$
-\begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
-b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
-\end{alignat}
-$$
-Let us refer to \eqref{eq1}-\eqref{eq2} again, and to the
-alignat variant \eqref{eq1a}-\eqref{eq2a}, and to \eqref{my:eq1}.
-
-Testing eqnarray:
-$$
-\begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
-{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
-\end{eqnarray}
-$$
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
@@ -19875,7 +19778,7 @@ is at the end with only one newline.
       "one table:\n",
       "\n",
       "\n",
-      "    time        velocity    acceleration  \n",
+      "time          velocity      acceleration  \n",
       "------------  ------------  ------------  \n",
       "0.0           1.4186        -5.01         \n",
       "1.0           1.376512      11.919        \n",
@@ -21034,7 +20937,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution_file': None,
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
              'file': ['subexer_a.pdf'],
-             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n19 <<<!!MATH_BLOCK\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n20 <<<!!CODE_BLOCK',
+             'hints': ['First hint to subexercise a).\nWith math $a=b$ in hint:\n\n!bt\n\\[ a=b. \\]\n\n!et\nAnd with code (in plain verbatim) returning $x+1$ in hint:\n\n!bc\ndef func(x):\n    return x + 1  # with code in hint\n\n!ec',
                        'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
@@ -22083,25 +21986,25 @@ Python.</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="center">time</th>
-<th align="center">velocity</th>
+<th align="left">time</th>
+<th align="left">velocity</th>
 <th align="left">acceleration</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">0.0</td>
-<td align="center">1.4186</td>
+<td align="left">0.0</td>
+<td align="left">1.4186</td>
 <td align="left">-5.01</td>
 </tr>
 <tr class="even">
-<td align="center">1.0</td>
-<td align="center">1.376512</td>
+<td align="left">1.0</td>
+<td align="left">1.376512</td>
 <td align="left">11.919</td>
 </tr>
 <tr class="odd">
-<td align="center">3.0</td>
-<td align="center">1.1E+1</td>
+<td align="left">3.0</td>
+<td align="left">1.1E+1</td>
 <td align="left">14.717624</td>
 </tr>
 </tbody>
@@ -22282,39 +22185,6 @@ a = q + 4 + 5+ 6 \label{eq1}
 b = \nabla^2 u + \nabla^4 x \label{eq2}
 \end{equation}
 \]</span> We can refer to -. They are a bit simpler than the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>. Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</p>
-<p>Many of the next environments will fail in non-latex formats. Testing multiline: <span class="math">\[
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\label{multiline:eq1}
-\end{multline}
-\]</span> Testing split: <span class="math">\[
-\begin{equation}
-\label{split:envir:eq}
-\begin{split}
-a = b = q &amp;+ \\ 
-  &amp; f + \nabla\cdot\nabla u
-\end{split}
-\end{equation}
-\]</span> We can refer to the last equation by .</p>
-<p>Testing gather: <span class="math">\[
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-\]</span></p>
-<p>Testing alignat: <span class="math">\[
-\begin{alignat}{2}
-a &amp;= q + 4 + 5+ 6\qquad &amp; \mbox{for } q\geq 0 \label{eq1a} \\ 
-b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}
-\end{alignat}
-\]</span> Let us refer to - again, and to the alignat variant -, and to .</p>
-<p>Testing eqnarray: <span class="math">\[
-\begin{eqnarray}
-{\partial u\over\partial t} &amp;=&amp; \nabla^2 u + f, \label{myeq1}\\ 
-{\partial v\over\partial t} &amp;=&amp; \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
-\end{eqnarray}
-\]</span></p>
 <p>More mathematical typesetting is demonstrated in the coming exercises.</p>
 <p>Below, we have <a href="#n">Problem 2: Flip a Coin</a> and <a href="#y">Project 3: Compute a Probability</a>, as well as <a href="#s">Project 4: Explore Distributions of Random Circles</a> and <a href="#c">Project 9: References to Project ref{demo:ex:2} in a heading works for pandoc</a>, and in between there we have <a href="#s">Exercise 8: Make references to projects and problems</a>.</p>
 <h2 id="exercises">Exercises</h2>
@@ -25686,7 +25556,7 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
@@ -25702,7 +25572,7 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
@@ -25722,7 +25592,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
@@ -26153,62 +26023,6 @@ $$
 We can refer to <a href="#mjx-eqn-4">(4)</a>-<a href="#mjx-eqn-5">(5)</a>. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
 Also test \( a_{i-j} \) as well as \( kx-wt \).
-
-<p>
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-$$
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\tag{6}
-\end{multline}
-$$
-
-Testing split:
-$$
-\begin{equation}
-\tag{7}
-\begin{split}
-a = b = q &+ \\ 
-  & f + \nabla\cdot\nabla u
-\end{split}
-\end{equation}
-$$
-
-We can refer to the last equation by <a href="#mjx-eqn-7">(7)</a>.
-
-<p>
-Testing gather:
-$$
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-$$
-
-
-<p>
-Testing alignat:
-$$
-\begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \tag{8} \\ 
-b &= \nabla^2 u + \nabla^4 x & x\in\Omega \tag{9}
-\end{alignat}
-$$
-
-Let us refer to <a href="#mjx-eqn-4">(4)</a>-<a href="#mjx-eqn-5">(5)</a> again, and to the
-alignat variant <a href="#mjx-eqn-8">(8)</a>-<a href="#mjx-eqn-9">(9)</a>, and to <a href="#mjx-eqn-3">(3)</a>.
-
-<p>
-Testing eqnarray:
-$$
-\begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \tag{10}\\ 
-{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \tag{11}
-\end{eqnarray}
-$$
-
 
 <p>
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -27580,7 +27394,7 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
@@ -27596,7 +27410,7 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">   $latex i$    </th> <th align="center">  $latex h_i$   </th> <th align="center">$latex \bar T_i$</th> <th align="center"><code>L_i</code></th> </tr>
+<tr><th align="center">   $latex i$    </th> <th align="center">  $latex h_i$   </th> <th align="center">$latex \bar T_i$</th> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
@@ -27616,7 +27430,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">            exact             </th> <th align="center">       <code>v_1</code>       </th> <th align="center">$latex a_i$ + <code>v_2</code></th> <th align="center">     <code>verb_3_</code>     </th> </tr>
+<tr><th align="center">            exact             </th> <td align="center">       <code>v_1</code>       </td> <td align="center">$latex a_i$ + <code>v_2</code></td> <td align="center">     <code>verb_3_</code>     </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                                 </td> <td align="right">   9.62                              </td> <td align="right">   5.57                              </td> <td align="right">   8.98                              </td> </tr>
@@ -27803,60 +27617,6 @@ b = \nabla^2 u + \nabla^4 x
 We can refer to <b>(REF to equation eq1 not supported)</b>-<b>(REF to equation eq2 not supported)</b>. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
 Also test $latex a_{i-j}$ as well as $latex kx-wt$.
-
-<p>
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-
-\end{multline}
-
-Testing split:
-
-$latex 
-
-\begin{split}
-a = b = q &+ \\ 
-  & f + \nabla\cdot\nabla u
-\end{split}
- $
-
-
-We can refer to the last equation by <b>(REF to equation split:envir:eq not supported)</b>.
-
-<p>
-Testing gather:
-
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-
-
-<p>
-Testing alignat:
-
-\begin{alignat}{2}
-a = q + 4 + 5+ 6\qquad  \mbox{for } q\geq 0   $
-
-$latex  
-b = \nabla^2 u + \nabla^4 x  x\in\Omega 
-\end{alignat}
-
-Let us refer to <b>(REF to equation eq1 not supported)</b>-<b>(REF to equation eq2 not supported)</b> again, and to the
-alignat variant <b>(REF to equation eq1a not supported)</b>-<b>(REF to equation eq2a not supported)</b>, and to <b>(REF to equation my:eq1 not supported)</b>.
-
-<p>
-Testing eqnarray:
-
-\begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \\ 
-{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g 
-\end{eqnarray}
-
 
 <p>
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -29291,7 +29051,7 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
@@ -29307,7 +29067,7 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
@@ -29327,7 +29087,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
@@ -29530,62 +29290,6 @@ $$
 We can refer to \eqref{eq1}-\eqref{eq2}. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
 Also test \( a_{i-j} \) as well as \( kx-wt \).
-
-<p>
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-$$
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\label{multiline:eq1}
-\end{multline}
-$$
-
-Testing split:
-$$
-\begin{equation}
-\label{split:envir:eq}
-\begin{split}
-a = b = q &+ \\ 
-  & f + \nabla\cdot\nabla u
-\end{split}
-\end{equation}
-$$
-
-We can refer to the last equation by \eqref{split:envir:eq}.
-
-<p>
-Testing gather:
-$$
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-$$
-
-
-<p>
-Testing alignat:
-$$
-\begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
-b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
-\end{alignat}
-$$
-
-Let us refer to \eqref{eq1}-\eqref{eq2} again, and to the
-alignat variant \eqref{eq1a}-\eqref{eq2a}, and to \eqref{my:eq1}.
-
-<p>
-Testing eqnarray:
-$$
-\begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
-{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
-\end{eqnarray}
-$$
-
 
 <p>
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -31167,7 +30871,7 @@ one table:
 \begin{quote}
 \begin{tabular}{lll}
 \hline
-\multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
+\multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
 0.0          & 1.4186       & -5.01        \\
 1.0          & 1.376512     & 11.919       \\
@@ -35800,7 +35504,7 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
@@ -35816,7 +35520,7 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
@@ -35836,7 +35540,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <th align="center">      <code>v_1</code>      </th> <th align="center">\( a_i \) + <code>v_2</code></th> <th align="center">    <code>verb_3_</code>    </th> </tr>
+<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
@@ -36337,62 +36041,6 @@ $$
 We can refer to <a href="#mjx-eqn-4">(4)</a>-<a href="#mjx-eqn-5">(5)</a>. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
 Also test \( a_{i-j} \) as well as \( kx-wt \).
-
-<p>
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-$$
-\begin{multline}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\tag{6}
-\end{multline}
-$$
-
-Testing split:
-$$
-\begin{equation}
-\tag{7}
-\begin{split}
-a = b = q &+ \\ 
-  & f + \nabla\cdot\nabla u
-\end{split}
-\end{equation}
-$$
-
-We can refer to the last equation by <a href="#mjx-eqn-7">(7)</a>.
-
-<p>
-Testing gather:
-$$
-\begin{gather}
-a = b \\ 
-c = d + 7 + 9
-\end{gather}
-$$
-
-
-<p>
-Testing alignat:
-$$
-\begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \tag{8} \\ 
-b &= \nabla^2 u + \nabla^4 x & x\in\Omega \tag{9}
-\end{alignat}
-$$
-
-Let us refer to <a href="#mjx-eqn-4">(4)</a>-<a href="#mjx-eqn-5">(5)</a> again, and to the
-alignat variant <a href="#mjx-eqn-8">(8)</a>-<a href="#mjx-eqn-9">(9)</a>, and to <a href="#mjx-eqn-3">(3)</a>.
-
-<p>
-Testing eqnarray:
-$$
-\begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \tag{10}\\ 
-{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \tag{11}
-\end{eqnarray}
-$$
-
 
 <p>
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -37188,6 +36836,11 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 ************** File: ._testdoc000.rst *****************
+
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)
 
@@ -37203,6 +36856,11 @@ A Document for Testing Doconce
 
 
 ************** File: ._testdoc001.rst *****************
+
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 .. !split
 
 
@@ -37781,7 +37439,7 @@ Here is yet another table to test that we can handle more than
 one table:
 
 ============  ============  ============  
-    time        velocity    acceleration  
+time          velocity      acceleration  
 ============  ============  ============  
 0.0           1.4186        -5.01         
 1.0           1.376512      11.919        
@@ -37833,7 +37491,7 @@ and URLs.
 =========================================================  =========================================================  =========================================================  
                   :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
                        :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
-          :math:`\nabla\cdot\boldsymbol{u} =0 `            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
+           :math:`\nabla\cdot\boldsymbol{u} =0`            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
 =========================================================  =========================================================  =========================================================  
 
 
@@ -37975,6 +37633,11 @@ footnotes.
 
 
 ************** File: ._testdoc002.rst *****************
+
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 .. !split and check if these extra words are included properly in the comment
 
 
@@ -38031,63 +37694,6 @@ And here is a system of equations with labels in an align environment:
 We can refer to :eq:`eq1`-:eq:`eq2`. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in ``CG-2``.
 Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
-
-Many of the next environments will fail in non-latex formats.
-Testing multiline:
-
-.. _Eq:multiline:eq1:
-
-.. math::
-   :label: multiline:eq1
-        
-        a = b = q + \\ 
-          f + \nabla\cdot\nabla u
-        
-        
-
-Testing split:
-
-.. _Eq:split:envir:eq:
-
-.. math::
-   :label: split:envir:eq
-        
-        
-        
-        a = b = q &+ \\ 
-          & f + \nabla\cdot\nabla u
-        
-        
-
-We can refer to the last equation by :eq:`split:envir:eq`.
-
-Testing gather:
-
-.. math::
-        
-        a = b \\ 
-        c = d + 7 + 9
-        
-
-
-Testing alignat:
-
-.. math::
-        \begin{alignat}{2}
-        a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0  \\ 
-        b &= \nabla^2 u + \nabla^4 x & x\in\Omega 
-        \end{alignat}
-
-Let us refer to :eq:`eq1`-:eq:`eq2` again, and to the
-alignat variant :ref:`(label:removed) <Eq:eq1a>`-:ref:`(label:removed) <Eq:eq2a>`, and to :eq:`my:eq1`.
-
-Testing eqnarray:
-
-.. math::
-        
-        {\partial u\over\partial t}  &=  \nabla^2 u + f, \\ 
-        {\partial v\over\partial t}  &=  \nabla\cdot(q(u)\nabla v) + g 
-        
 
 
 More mathematical typesetting is demonstrated in the coming exercises.
@@ -45953,8 +45559,427 @@ exercises (and problems and projects too).
     
 
 
-************** File: admon_sphinx.html *****************
-NOT FOUND!
+************** File: admon_sphinx/admon.html *****************
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Testing admons</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Testing admons" href="index.html" />
+    <link rel="prev" title="Testing admons" href="index.html" />
+ 
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Testing admons"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Testing admons</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="testing-admons">
+<h1>Testing admons<a class="headerlink" href="#testing-admons" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">hpl</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 32, 2100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>First some ordinary text to compare font sizes in admonitions
+and the surrounding text.</p>
+<p>Note that <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> fixes the HTML file generated by Sphinx
+so that all styles for admonitions have a colored background.</p>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>Need some code outside admons for color and font comparisons:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And some plain text verbatim:</p>
+<div class="highlight-text"><div class="highlight"><pre>x=1.0 y=0.9 z=0.4
+x=1.1 y=0.3 z=0.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="quotes-and-boxes">
+<h2>Quotes and boxes<a class="headerlink" href="#quotes-and-boxes" title="Permalink to this headline">¶</a></h2>
+<p>Here is a plain quote environment.</p>
+<blockquote>
+<div><p>Sayre&#8217;s law states that
+&#8220;in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.&#8221;</p>
+<div class="line-block">
+<div class="line">By way of corollary, it adds:</div>
+<div class="line">&#8220;That is why academic politics are so bitter.&#8221;</div>
+<div class="line"><em>Source</em>: <a class="reference external" href="http://en.wikipedia.org/wiki/Sayre's_law">wikipedia</a></div>
+</div>
+</div></blockquote>
+<p>Does quotes with title also work? No...cannot work in LaTeX and HTML
+and then it does not make sense to support it.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The boxes below are shown without any extra formatting in reST
+and Sphinx. We could use an admonition environment, but requires
+a title.</p>
+</div>
+<p>A plain <em>box</em> is sometimes useful. Let&#8217;s show it here for comparison
+with admons (especially the block admon has much in common with a box).
+The box is more aimed at framing a law or an equation.</p>
+<p>First a simple block with text, an equation, and a list:</p>
+<p>A generic equation</p>
+<div class="math">
+\[f(x) = 0\]</div>
+<p>must be solved by a numerical method, such as</p>
+<blockquote>
+<div><ul class="simple">
+<li>Newton&#8217;s method</li>
+<li>The Bisection method</li>
+<li>Fixed-point (Picard) iteration by rewriting <span class="math">\(f(x)=x - g(x)\)</span></li>
+<li>The Secant method</li>
+</ul>
+</div></blockquote>
+<p>Now test a box with equation only (note that this line continues the
+box, it is not a new paragraph):</p>
+<div class="math">
+\[f(x) = \sin(x)e^{1-x}\]</div>
+<p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="admonitions">
+<h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
+<p>Let us start with a plain warning environment.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>And here is a warning about something to pay attention to. We
+test how the heading behave and add quite some extra texts
+in comparison with the other admons.</p>
+<blockquote>
+<div><ul class="simple">
+<li>and a list</li>
+<li>with items</li>
+</ul>
+</div></blockquote>
+<p class="last">We continue with more text to see how that affects the layout.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.
+And more and more text.</p>
+</div>
+<p>Test warning with title:</p>
+<div class="admonition-title-ending-with-math-math-sqrt-2-approx-1-4 admonition">
+<p class="first admonition-title">Title ending with math <span class="math">\(\sqrt{2}\approx 1.4\)</span></p>
+<p>And here comes some text with bad news in larger font.</p>
+<p>Also some code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>And a complete program</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Test warning with large title with math:
+(we have no impact on the font size in the title in Sphinx)</p>
+<div class="admonition-watch-out-for-math-nabla-cdot-boldsymbol-u-0-equations admonition">
+<p class="first admonition-title">Watch out for <span class="math">\(\nabla\cdot\boldsymbol{u}=0\)</span> equations</p>
+<p class="last">Divergence freedom is often problematic from a numerical point
+of view.</p>
+</div>
+<p>Then we test a block, which is guaranteed to never have any admon icon.</p>
+<div class="admonition-block-with-title admonition">
+<p class="first admonition-title">Block with title</p>
+<p class="last">Here is a block of text with title. It is typeset
+<em>without any icon</em> and is useful when you want some admons with icon
+and some without. With the small font size, as used here, one can have
+more comment-style text or text that really goes deeper or talks
+about fun facts that are not strictly necessary for the main flow
+of understanding.</p>
+</div>
+<p>Admonitions must have a title in Sphinx, otherwise they are not
+shown. Here, for the following <em>block admon</em> (<tt class="docutils literal"><span class="pre">!bblock</span></tt>)
+we have not specified any title, and Doconce then
+applies the generic title &#8220;Notice:&#8221; for the Sphinx format:</p>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p class="last">Here is a block of text with no title. As above, it is typeset without any icon
+and is useful when you want some admons with icon and some without.</p>
+</div>
+<p>The next admonition features a title &#8220;Note, eventually!&#8221; (the comma
+must be removed in the <tt class="docutils literal"><span class="pre">mdfbox</span></tt> admon also in <tt class="docutils literal"><span class="pre">graybox2</span></tt> if
+code is present).</p>
+<div class="admonition-note-eventually admonition">
+<p class="first admonition-title">Note, eventually</p>
+<p>Ah, we are soon close to the end (with illegal font size specification!).
+But first a bit of math where we define <span class="math">\(\theta\)</span> and <span class="math">\(\boldsymbol{r}\)</span>:</p>
+<div class="last math">
+\[\begin{split}\theta &amp;= q^2,\\
+\boldsymbol{r} &amp;= \varrho\boldsymbol{i}\end{split}\]</div>
+</div>
+<div class="admonition-point1 admonition">
+<p class="first admonition-title">Point1</p>
+<p class="last">Ah, we are soon close to the end.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title">Question</p>
+<p class="last">So, how many admonition environments does Doconce support?</p>
+</div>
+<div class="admonition-question admonition">
+<p class="first admonition-title">Question</p>
+<ol class="last arabic simple">
+<li>Once more, how many admonition environments does Doconce support?</li>
+</ol>
+</div>
+<div class="admonition-tip admonition">
+<p class="first admonition-title">Tip</p>
+<p>It is of outmost important to</p>
+<ol class="arabic simple">
+<li>stay cool</li>
+<li>read hints and tips carefully</li>
+</ol>
+<p>Because here the thing is to do</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="k">def</span> <span class="nf">grab</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Next is a warning without a title (&#8220;none&#8221; implies no title).
+Admonitions must have a title in Sphinx, otherwise they are not
+shown. Here, we have not specified any title, and Doconce then
+applies the generic title &#8220;Notice:&#8221;</p>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p class="last">And here comes some text with bad news.</p>
+</div>
+</div>
+<div class="section" id="going-deeper-environments">
+<h2>Going deeper environments<a class="headerlink" href="#going-deeper-environments" title="Permalink to this headline">¶</a></h2>
+<p>Here is a long notice environment with a custom title and much
+text, math and code.</p>
+<div class="admonition-going-deeper admonition">
+<p class="first admonition-title">Going deeper</p>
+<p>We have some equations that should be preceded by much text, so the
+task is to write and write. The number of words, and not the
+meaning, is what counts here. We need desperately to fill up the
+page in the hope that some admonitions will experience a page break,
+which the LaTeX environment should handle with ease.</p>
+<p>Let us start with some equations:</p>
+<div class="math">
+\[\begin{split}\frac{Du}{dt} &amp;= 0
+\\
+\frac{1}{2} &amp;= {1/2}\\
+\frac{1}{2}\pmb{x} &amp;= \pmb{n}\end{split}\]</div>
+<p>The implementation of such complicated equations in computer
+code is task that this &#8220;Going deeper&#8221; environment targets.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Dudt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="n">half</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span>
+</pre></div>
+</div>
+<p>And some more text that can help going into the next page.
+Longer computer code requires vertical space:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Diff</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Forward1</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="k">class</span> <span class="nc">Backward1</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="k">class</span> <span class="nc">Central2</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Central4</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">4.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>   <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span>  <span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> \
+               <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Central6</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span>   <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span>  <span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> \
+               <span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> \
+               <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Forward3</span><span class="p">(</span><span class="n">Diff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> \
+                <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>And then we add a figure too.</p>
+<div class="last figure">
+<a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="the-end">
+<h2>The end<a class="headerlink" href="#the-end" title="Permalink to this headline">¶</a></h2>
+<p>A bit of text before the summary, which we now call &#8220;Concluding remarks,
+for the novice&#8221;,
+just because we can.</p>
+<div class="admonition-concluding-remarks-for-the-novice admonition">
+<p class="first admonition-title">Concluding remarks, for the novice</p>
+<p class="last">We can summarize the most important things with admons: they have
+a different typesetting, and they may have a symbol.
+Titles should be optional.</p>
+</div>
+<p><strong>Remark.</strong>
+The <tt class="docutils literal"><span class="pre">remarks</span></tt> and <tt class="docutils literal"><span class="pre">hint</span></tt> environments are not allowed outside
+exercises (and problems and projects too).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Testing admons</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#code">Code</a></li>
+<li><a class="reference internal" href="#quotes-and-boxes">Quotes and boxes</a></li>
+<li><a class="reference internal" href="#admonitions">Admonitions</a></li>
+<li><a class="reference internal" href="#going-deeper-environments">Going deeper environments</a></li>
+<li><a class="reference internal" href="#the-end">The end</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Testing admons</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/admon.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Testing admons"
+             >previous</a> |</li>
+        <li><a href="index.html">Testing admons</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, hpl.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
 ************** File: admon_lyx.html *****************
 <!--
 Automatically generated HTML file from Doconce source
@@ -72066,6 +72091,36 @@ Doconce supports the following elements of Bootstrap elements:
  * Tooltips via footnotes
 !esummary
 
+Tables, first with math headings:
+
+|-l----r-------r--------r--|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
+
+And then with plain words:
+
+|-l----r-------r--------r--|
+|i|height|Temperature | L  |
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
+
+
+
 !split
 ======= Horizontal alignment of document elements =======
 label{sec:examples}
@@ -72603,6 +72658,52 @@ Doconce supports the following elements of Bootstrap elements:
 
 
 <p>
+Tables, first with math headings:
+
+<p>
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="left">    \( i \)     </td> <td align="right">   \( h_i \)    </td> <td align="right"> \( \bar T_i \) </td> <td align="right"><code>L_i</code></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
+<p>
+And then with plain words:
+
+<p>
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="left"><b>       i        </b></td> <td align="right"><b>     height     </b></td> <td align="right"><b>  Temperature   </b></td> <td align="right"><b>       L        </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
+<p>
 <p>
 <ul class="pager">
   <li class="previous">
@@ -72953,7 +73054,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Apr 22 08:51:39 2014.
+# sphinx-quickstart on Tue Apr 22 11:48:37 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -72994,18 +73095,6 @@ extensions = [
           'sphinx.ext.inheritance_diagram']
 
 #pngmath_dvipng_args = ['-D 200', '-bg Transparent', '-gamma 1.5']  # large math fonts (200)
-
-#intersphinx_mapping = {}
-# Example configuration for intersphinx for references to the
-# Python standard library.
-# (Domos in http://scipy-lectures.github.com, typically :mod:`scipy.io`
-# or :class:`numpy.ndarray` or :func:`math.asin`)
-intersphinx_mapping = {
-    'python': ('http://docs.python.org/2.7', None),
-    'numpy': ('http://docs.scipy.org/doc/numpy', None),
-    'scipy': ('http://docs.scipy.org/doc/scipy/reference', None),
-    'mpl': ('http://matplotlib.org/', None),
-}
 
 # Check which additional themes that are installed
 additional_themes_installed = []
@@ -76056,7 +76145,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title=&quot;Short title&quot; version=0.1 \
+    short_title=&quot;Short title&quot; version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version &gt;= 1.1)
@@ -77529,7 +77618,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
@@ -78662,7 +78751,7 @@ list of capabilities::
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
-            short_title="Short title" version=0.1 \
+            short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
@@ -79842,7 +79931,7 @@ list of capabilities:
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
-            short_title="Short title" version=0.1 \
+            short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
@@ -80871,7 +80960,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
@@ -81917,7 +82006,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
@@ -82925,7 +83014,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
@@ -83941,7 +84030,7 @@ list of capabilities::
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
-            short_title="Short title" version=0.1 \
+            short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
@@ -84979,7 +85068,7 @@ list of capabilities::
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
-            short_title="Short title" version=0.1 \
+            short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
@@ -86062,7 +86151,7 @@ list of capabilities::
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
-            short_title="Short title" version=0.1 \
+            short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
@@ -87176,7 +87265,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
@@ -91081,12 +91170,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-
-*** warning:
-Not recommended for sphinx output: math environment {eqnarray}
-(use equation, equation*, \[ \], or align/align*)
-Not recommended for sphinx output: math environment {multline}
-Not recommended for sphinx output: math environment {gather}
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
@@ -91128,21 +91211,6 @@ found info about 9 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
-*** warning: the "alignat" environment will give errors in Sphinx:
-
-        \begin{alignat}{2}
-        a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0  \\ 
-        b &= \nabla^2 u + \nabla^4 x & x\in\Omega 
-        \end{alignat}
-
-
-
-*** warning: detected non-align math environment with multiple labels
-    (Sphinx cannot handle this equation system - labels will be removed
-    and references to them will be empty):
-    label{eq1a}
-    label{eq2a}
-
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + mv -f testdoc.rst testdoc.sphinx.rst
@@ -91163,12 +91231,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-
-*** warning:
-Not recommended for sphinx output: math environment {eqnarray}
-(use equation, equation*, \[ \], or align/align*)
-Not recommended for sphinx output: math environment {multline}
-Not recommended for sphinx output: math environment {gather}
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
@@ -91210,21 +91272,6 @@ found info about 9 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
-*** warning: the "alignat" environment will give errors in Sphinx:
-
-        \begin{alignat}{2}
-        a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0  \\ 
-        b &= \nabla^2 u + \nabla^4 x & x\in\Omega 
-        \end{alignat}
-
-
-
-*** warning: detected non-align math environment with multiple labels
-    (Sphinx cannot handle this equation system - labels will be removed
-    and references to them will be empty):
-    label{eq1a}
-    label{eq2a}
-
 output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
@@ -91304,10 +91351,6 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
-loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
-loading intersphinx inventory from http://matplotlib.org/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 4 source files that are out of date
 updating environment: 4 added, 0 changed, 0 removed
 reading sources... [ 25%] ._testdoc000
@@ -91315,14 +91358,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:632: WARNING: Inline interpreted text or phrase reference start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:349: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:349: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:349: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:349: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:349: ERROR: Undefined substitution referenced: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:329: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:329: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc000.rst:10: ERROR: Duplicate substitution definition name: "nbsp".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -91333,15 +91371,13 @@ writing output... [ 50%] ._testdoc001
 writing output... [ 75%] ._testdoc002
 writing output... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:104: WARNING: undefined label: eq:eq1a (if the link has no caption the label must precede a section header)
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc002.rst:104: WARNING: undefined label: eq:eq2a (if the link has no caption the label must precede a section header)
 writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 11 warnings.
+build succeeded, 4 warnings.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -91536,14 +91572,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
-*** warning: latex envir \begin{multline} does not work well.
-
-*** warning: latex envir \begin{gather} does not work well.
-
-*** warning: latex envir \begin{alignat} does not work well.
-
-*** warning: latex envir \begin{eqnarray} does not work well.
-
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system doconce format mwiki testdoc.do.txt --examples_as_exercises
@@ -91905,14 +91933,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
-*** warning: latex envir \begin{multline} does not work well.
-
-*** warning: latex envir \begin{gather} does not work well.
-
-*** warning: latex envir \begin{alignat} does not work well.
-
-*** warning: latex envir \begin{eqnarray} does not work well.
-
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
@@ -92519,10 +92539,6 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
-loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
-loading intersphinx inventory from http://matplotlib.org/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
@@ -95467,10 +95483,6 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
-loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
-loading intersphinx inventory from http://matplotlib.org/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] admon
@@ -100670,10 +100682,6 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2
 loading pickled environment... not yet created
-loading intersphinx inventory from http://docs.python.org/2.7/objects.inv...
-loading intersphinx inventory from http://matplotlib.org/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/scipy/reference/objects.inv...
-loading intersphinx inventory from http://docs.scipy.org/doc/numpy/objects.inv...
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
@@ -101075,6 +101083,9 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
+
+Overfull \hbox (35.00006pt too wide) 
+[]    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
@@ -101568,6 +101579,9 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
+
+Overfull \hbox (35.00006pt too wide) 
+[]    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  

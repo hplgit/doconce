@@ -697,8 +697,6 @@ MathJax.Hub.Config({
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
-        # Fix tables
-        filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
         # Insert toc
         if '***TABLE_OF_CONTENTS***' in filestr:
             filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
@@ -860,8 +858,17 @@ def html_table(table):
     column_spec = table.get('columns_align', 'c'*ncolumns).replace('|', '')
     heading_spec = table.get('headings_align', 'c'*ncolumns).replace('|', '')
     a2html = {'r': 'right', 'l': 'left', 'c': 'center'}
+    bootstrap = option('html_style=', '').startswith('boots')
 
-    s = '<table border="1">\n'
+    if bootstrap:
+        span = ncolumns+1
+        s = """
+<div class="row">
+  <div class="col-xs-%d">
+    <table class="table table-striped table-hover table-condensed">
+""" % span
+    else:
+        s = '<table border="1">\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
             continue
@@ -882,8 +889,21 @@ def html_table(table):
                 zip(row, column_width, heading_spec, column_spec):
             if headline:
                 if not skip_headline:
-                    s += '<th align="%s">%s</th> ' % \
-                         (a2html[ha], column.center(w))
+                    # Use td tag if math or code or bootstrap
+                    if r'\(' in column or '<code>' in column or bootstrap:
+                        tag = 'td'
+                        if bootstrap:
+                            if r'\(' in column or '<code>' in column:
+                                bold = '', ''
+                            else:
+                                bold = '<b>', '</b>'
+                        else:
+                            bold = '', ''
+                    else:
+                        tag = 'th'
+                        bold = '', ''
+                    s += '<%s align="%s">%s%s%s</%s> ' % \
+                    (tag, a2html[ha], bold[0], column.center(w), bold[1], tag)
             else:
                 s += '<td align="%s">   %s    </td> ' % \
                      (a2html[ca], column.ljust(w))
@@ -892,7 +912,11 @@ def html_table(table):
             if not skip_headline:
                 s += '</thead>\n'
             s += '<tbody>\n'
-    s += '</tbody>\n</table>\n'
+    s += '</tbody>\n'
+    if bootstrap:
+        s += '    </table>\n  </div>\n</div> <!-- col-xs-%d -->\n' % span
+    else:
+        s += '</table>\n'
     return s
 
 def html_movie(m):
@@ -1664,12 +1688,6 @@ def define(FILENAME_EXTENSION,
 -->
 """% (html_style, '\n'.join(['<link href="%s" rel="stylesheet">' % url
                    for url in urls]))
-        if option('bootstrap_FlatUI'):
-            # Add the Flat UI style
-            style += """
-<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/flat-ui.css" rel="stylesheet">
-"""
-        bootstrap_title_bar = ''
 
     style_changes = ''
     if option('html_code_style=', 'on') in ('off', 'transparent', 'inherit'):
@@ -1708,7 +1726,7 @@ pre { color: inherit; background-color: transparent; }
                 if not outfilename.endswith('html'):
                     outfilename += '.html'
 
-            bootstrap_title_bar += """
+            bootstrap_title_bar = """
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">

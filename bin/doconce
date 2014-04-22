@@ -93,7 +93,7 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print 'Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir  doconcefile'
+    print 'Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile'
     print """
 
 The steps for copying files to sphinx-rootdir and compiling the document
@@ -126,6 +126,7 @@ def sphinx_dir():
     conf_py = None
     theme_dir = None
     logo = None
+    intersphinx = False
     for arg in sys.argv[1:]:
         if arg.startswith('title='):
             title = arg.split('=')[1]
@@ -145,6 +146,8 @@ def sphinx_dir():
             theme_dir = arg.split('=')[1]
         elif arg.startswith('logo='):
             logo = arg.split('=')[1]
+        elif arg.startswith('intersphinx'):
+            intersphinx = True
         else:
             doconce_files.append(arg)
 
@@ -276,7 +279,8 @@ EOF
         print 'These Sphinx themes were found:', ', '.join(themes)
 
         if conf_py is None:
-            make_conf_py(themes, theme, title, short_title, author, logo)
+            make_conf_py(themes, theme, title, short_title,
+                         author, logo, intersphinx)
     else:
         # Copy theme_dir
         os.mkdir('_themes')
@@ -491,7 +495,8 @@ or just run it by
   python automake_sphinx.py
 """
 
-def make_conf_py(themes, theme, title, short_title, author, logo):
+def make_conf_py(themes, theme, title, short_title,
+                 author, logo, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in themes]
@@ -537,18 +542,6 @@ extensions = [
           'sphinx.ext.inheritance_diagram']
 
 #pngmath_dvipng_args = ['-D 200', '-bg Transparent', '-gamma 1.5']  # large math fonts (200)
-
-#intersphinx_mapping = {}
-# Example configuration for intersphinx for references to the
-# Python standard library.
-# (Domos in http://scipy-lectures.github.com, typically :mod:`scipy.io`
-# or :class:`numpy.ndarray` or :func:`math.asin`)
-intersphinx_mapping = {
-    'python': ('http://docs.python.org/2.7', None),
-    'numpy': ('http://docs.scipy.org/doc/numpy', None),
-    'scipy': ('http://docs.scipy.org/doc/scipy/reference', None),
-    'mpl': ('http://matplotlib.org/', None),
-}
 
 # Check which additional themes that are installed
 additional_themes_installed = []
@@ -603,6 +596,23 @@ try:
 except ImportError:
     pass
 
+"""
+    # Intersphinx mapping: the look up of URLs can take quite
+    # some time, so this is not enabled by default
+    if intersphinx:
+        extensions +="""
+
+#intersphinx_mapping = {}
+# Example configuration for intersphinx for references to the
+# the Sphinx documents for Python, NumPy, SciPy, Matplotlib.
+# (Domos in http://scipy-lectures.github.com, typically :mod:`scipy.io`
+# or :class:`numpy.ndarray` or :func:`math.asin`)
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/2.7', None),
+    'numpy': ('http://docs.scipy.org/doc/numpy', None),
+    'scipy': ('http://docs.scipy.org/doc/scipy/reference', None),
+    'mpl': ('http://matplotlib.org/', None),
+}
 """
 
     #'matplotlib.sphinxext.ipython_directive',
@@ -865,7 +875,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)

@@ -75,6 +75,36 @@ Doconce supports the following elements of Bootstrap elements:
  * Tooltips via footnotes
 !esummary
 
+Tables, first with math headings:
+
+|-l----r-------r--------r--|
+|$i$|$h_i$|$\bar T_i$|`L_i`|
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
+
+And then with plain words:
+
+|-l----r-------r--------r--|
+|i|height|Temperature | L  |
+|-l-----r-------r----r-----|
+|0   |0     |288   |-0.0065|
+|1   |11,000|216   |0.0	   |
+|2   |20,000|216   |0.001  |
+|3   |32,000|228   |0.0028 |
+|4   |47,000|270   |0.0	   |
+|5   |51,000|270   |-0.0028|
+|6   |71,000|214   |`NaN`  |
+|--------------------------|
+
+
+
 !split
 ======= Horizontal alignment of document elements =======
 label{sec:examples}

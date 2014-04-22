@@ -148,7 +148,7 @@ Doconce supports the following elements of Bootstrap elements:
 
 Tables often get a fancy typesetting:
 
-|--------------------------|
+|-l----r-------r--------r--|
 |$i$|$h_i$|$\bar T_i$|`L_i`|
 |-l-----r-------r----r-----|
 |0   |0     |288   |-0.0065|

@@ -453,8 +453,11 @@ def define(FILENAME_EXTENSION,
         INLINE_TAGS_SUBST['sphinx'][tag] = INLINE_TAGS_SUBST['rst'][tag]
 
     # modify some tags:
-    INLINE_TAGS_SUBST['sphinx']['math'] = r'\g<begin>:math:`\g<subst>`\g<end>'
-    INLINE_TAGS_SUBST['sphinx']['math2'] = r'\g<begin>:math:`\g<latexmath>`\g<end>'
+    #INLINE_TAGS_SUBST['sphinx']['math'] = r'\g<begin>:math:`\g<subst>`\g<end>'
+    # Important to strip the math expression
+    INLINE_TAGS_SUBST['sphinx']['math'] = lambda m: r'%s:math:`%s`%s' % (m.group('begin'), m.group('subst').strip(), m.group('end'))
+    #INLINE_TAGS_SUBST['sphinx']['math2'] = r'\g<begin>:math:`\g<latexmath>`\g<end>'
+    INLINE_TAGS_SUBST['sphinx']['math2'] = lambda m: r'%s:math:`%s`%s' % (m.group('begin'), m.group('latexmath').strip(), m.group('end'))
     INLINE_TAGS_SUBST['sphinx']['figure'] = sphinx_figure
     CODE['sphinx'] = sphinx_code  # function for typesetting code
 

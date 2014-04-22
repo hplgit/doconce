@@ -25,7 +25,6 @@ keep_pygments_html_bg = False
 pygments_html_linenos = False
 #html_output = 
 #html_style = 
-bootstrap_FlatUI = False
 #html_code_style = 
 #html_pre_style = 
 #html_template = 

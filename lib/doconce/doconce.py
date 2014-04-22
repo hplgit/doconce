@@ -1392,7 +1392,12 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                 if key == 'subex':
                     for es in range(len(all_exer[e][key])):
                        for keys in all_exer[e][key][es]:
-                           all_exer[e][key][es][keys] = \
+                           if isinstance(all_exer[e][key][es][keys], (list,tuple)):
+                               for i in range(len(all_exer[e][key][es][keys])):
+                                   all_exer[e][key][es][keys][i] = \
+                               replace_code_math(all_exer[e][key][es][keys][i])
+                           else: # str
+                               all_exer[e][key][es][keys] = \
                                replace_code_math(all_exer[e][key][es][keys])
                 else:
                      all_exer[e][key] = \
@@ -1576,7 +1581,7 @@ def typeset_tables(filestr, format):
                     if char not in ('|', 'r', 'l', 'c'):
                         print 'illegal alignment character in table:', char
                         _abort()
-                if len(table['rows']) == 0:
+                if len(table['rows']) <= 1:
                     # first horizontal rule, align spec concern headings
                     table['headings_align'] = align
                 else:

@@ -700,6 +700,7 @@ We can refer to (ref{eq1})-(ref{eq2}). They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
+% if FORMAT in ("latex", "pdflatex"):
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 !bt
@@ -746,6 +747,7 @@ Testing eqnarray:
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g label{myeq2}
 \end{eqnarray}
 !et
+% endif
 % endif
 
 More mathematical typesetting is demonstrated in the coming exercises.

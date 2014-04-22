@@ -299,9 +299,12 @@ Doconce supports the following elements of Bootstrap elements:
 Tables often get a fancy typesetting:
 
 <p>
-<table class="table table-striped table-hover ">
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">    \( i \)     </th> <th align="center">   \( h_i \)    </th> <th align="center"> \( \bar T_i \) </th> <th align="center"><code>L_i</code></th> </tr>
+<tr><td align="left">    \( i \)     </td> <td align="right">   \( h_i \)    </td> <td align="right"> \( \bar T_i \) </td> <td align="right"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
@@ -312,7 +315,9 @@ Tables often get a fancy typesetting:
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
 <p>
 <p>
 <ul class="pager">

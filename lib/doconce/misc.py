@@ -43,8 +43,6 @@ such that the verbatim environments become like
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=',
      'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
-    ('--bootstrap_FlatUI',
-     'Add the Flat UI modification of standard Bootstrap layout themes.'),
     ('--html_code_style=',
      'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). Default: on.'),
     ('--html_pre_style=',
@@ -4453,10 +4451,15 @@ def doconce_rst_split(parts, basename, filename):
             label2tag[label] = '%d.%d' % (pn+1, local_eq_no)
             local_eq_no += 1
 
+    # The definition of |nbsp| must be repeated in each part.
+    # The definition is inserted in the beginning of the document, i.e.,
+    # in parts[0].
+    nbsp = '.. |nbsp| unicode:: 0xA0' in ''.join(parts[0])
 
     generated_files = []
     for pn, part in enumerate(parts):
         text = ''.join(part)
+
         # Check if headings are consistent: the first heading must be
         # the highest one
         m = re.search(r'^(%%+|==+|--+|~~+)$', text, flags=re.MULTILINE)
@@ -4486,6 +4489,14 @@ def doconce_rst_split(parts, basename, filename):
 
         part_filename = _part_filename % (basename, pn) + '.rst'
         generated_files.append(part_filename)
+
+        if nbsp:
+            text = """
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
+""" + text
 
         for label in parts_label[pn]:
             # All math labels get an anchor above for equation refs

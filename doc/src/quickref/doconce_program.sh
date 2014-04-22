@@ -26,7 +26,7 @@ doconce remove_inline_comments dofile
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
