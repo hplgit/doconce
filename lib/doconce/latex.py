@@ -1470,6 +1470,11 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         text = r'''
 %%(envir_graybox2)s
 ''' %% vars()
+    else:
+        print '*** error: illegal --latex_admon=%%s' %% latex_admon
+        print '    valid styles are colors1, colors2, mdfbox, graybox2,'
+        print '    grayicon, yellowicon, and paragraph.'
+        _abort()
 
     return text
     """ % vars()

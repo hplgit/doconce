@@ -1403,7 +1403,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (title, block)
         return lyx
 
-    else:
+    elif html_admon_style == 'paragraph':
         # Plain paragraph
         paragraph = """
 
@@ -1413,6 +1413,12 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 </div>
 """ %% (text_size, title, block)
         return paragraph
+    else:
+        print '*** error: illegal --html_admon=%%s' %% html_admon_style
+        print '    legal values are colors, gray, yellow, apricot, lyx,'
+        print '    paragraph; and bootstrap_alert or bootstrap_panel for'
+        print '    --html_style=vagrant,bootstrap*,or bootswatch*'
+        _abort()
 ''' % vars()
     exec(_text)
 

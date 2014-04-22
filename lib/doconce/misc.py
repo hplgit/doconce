@@ -58,9 +58,9 @@ document is embedded."""),
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
     ('--html_admon=',
      """\
-Type of admonition and color: white, colors, gray, yellow.
-For html_style=vagrant,bootstrap,bootswatch,bootswatch_*:
-boostrap_panel, bootstrap_alert."""),
+Type of admonition and color: colors, gray, yellow, apricot, lyx, paragraph.
+For html_style=vagrant,bootstrap,bootswatch,bootswatch_*, the two legal
+values are boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--html_admon_bg_color=',
@@ -1283,7 +1283,7 @@ def ptex2tex():
                         get_lexer_by_name('ipython')
                     except:
                         # need sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
-                        types2languages['ipy'] = 'python'
+                        languages['ipy'] = 'python'
 
                     if envir == 'envir':
                         for lang in languages:
