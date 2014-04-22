@@ -9,7 +9,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Apr 17, 2014
+:Date: Apr 22, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -342,7 +342,7 @@ make it very easy to spot the comments.
 
 Running
 
-.. code-block:: console
+.. code-block:: text
 
         doconce format html mydoc.do.txt --skip_inline_comments
 
@@ -352,7 +352,7 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by
 
-.. code-block:: console
+.. code-block:: text
 
         doconce remove_inline_comments mydoc.do.txt
 
@@ -621,7 +621,7 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the
 
-.. code-block:: console
+.. code-block:: text
 
         doconce combine_images image1 image2 ... output_image
 

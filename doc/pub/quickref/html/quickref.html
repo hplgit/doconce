@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 17, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 22, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -426,14 +426,14 @@ output and the <tt class="docutils literal"><span class="pre">-DTOTONOTES</span>
 colorful margin or inline boxes (using the <tt class="docutils literal"><span class="pre">todonotes</span></tt> package)
 make it very easy to spot the comments.</p>
 <p>Running</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce format html mydoc.do.txt --skip_inline_comments</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce format html mydoc.do.txt --skip_inline_comments
 </pre></div>
 </div>
 <p>removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.</p>
 <p>All inline comments to readers can also be physically
 removed from the Doconce source by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce remove_inline_comments mydoc.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce remove_inline_comments mydoc.do.txt
 </pre></div>
 </div>
 </div>
@@ -637,7 +637,7 @@ width in the <tt class="docutils literal"><span class="pre">latex</span></tt> an
 series of frames. In the latter case, a simple device in an HTML page
 will display the individual frame files as a movie.</p>
 <p>Combining several image files into one can be done by the</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce combine_images image1 image2 ... output_image</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce combine_images image1 image2 ... output_image
 </pre></div>
 </div>
 <p>This command applies <tt class="docutils literal"><span class="pre">montage</span></tt> or PDF-based tools to combine the images

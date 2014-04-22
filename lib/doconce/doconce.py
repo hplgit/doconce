@@ -66,6 +66,9 @@ def markdown2doconce(filestr, format):
     """
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
+
+    # Still missing: figures and videos
+
     quote_envir = 'notice'
     quote_title = ' None'
     quote_title = ''
