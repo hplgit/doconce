@@ -178,6 +178,7 @@ input[type="color"],
   padding: 8px 35px 8px 14px;
   background-color: #8a0808;
   border: 3px solid #720808;
+  color: #ffffff;
 }
 
 .alert-success {

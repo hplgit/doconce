@@ -42,7 +42,7 @@ such that the verbatim environments become like
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=',
-     'Name of theme for HTML style (solarized, vagrant, bloodish, bootstrap, bootswatch, bootswatch_*, ...).'),
+     'Name of theme for HTML style: plain, blueish, blueish2, bloodish, solarized, vagrant, bootstrap, bootswatch, bootstrap_*, bootswatch_*, ...).'),
     ('--html_code_style=',
      'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). Default: on.'),
     ('--html_pre_style=',
