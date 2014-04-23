@@ -2456,7 +2456,7 @@ def inline_tag_subst(filestr, format):
     # Treat tags that have format-dependent typesetting
 
     ordered_tags = (
-        'horizontal-rule',
+        'horizontal-rule',  # must be done before sections (they can give ---)
         'title',
         'date',
         'movie',

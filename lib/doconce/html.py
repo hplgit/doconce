@@ -748,6 +748,11 @@ MathJax.Hub.Config({
     # Extra blank before section heading
     pattern = r'\s+(?=^<[hH]\d>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
+    # Elimate <p> before equations $$ and before lists
+    filestr = re.sub(r'<p>\s+(\$\$|<ul>|<ol>)', r'\g<1>', filestr)
+    filestr = re.sub(r'<p>\s+<title>', '<title>', filestr)
+    # Eliminate <p> after </h1>, </h2>, etc.
+    filestr = re.sub(r'(</h\d>)\s+<p>', '\g<1>\n', filestr)
 
     return filestr
 
