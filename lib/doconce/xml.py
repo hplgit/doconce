@@ -20,6 +20,9 @@ when encountering a new heading.
 With a doconce to XML translator it is possible to use XML
 tools to translate to any desired output since all constructs
 are wrapped in tags.
+
+Drop begin-end of paragraphs, just mark newlines (<newline/>) and
+let paragraphs be running text inside the parent element.
 """
 
 import re, os, glob, sys, glob
@@ -89,11 +92,16 @@ def html_code(filestr, code_blocks, code_block_types,
     # Reduce redunant newlines and <p> (easy with lookahead pattern)
     # Eliminate any <p> that goes with blanks up to <p> or a section
     # heading
-    pattern = r'<p>\s+(?=<p>|<[hH]\d>)'
+    pattern = r'<newline/>\s+(?=<newline/>|<[hH]\d>)'
     filestr = re.sub(pattern, '', filestr)
     # Extra blank before section heading
     pattern = r'\s+(?=^<[hH]\d>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
+    # Elimate <newline/> before equations and before lists
+    filestr = re.sub(r'<newline/>\s+(<math|<ul>|<ol>)', r'\g<1>', filestr)
+    filestr = re.sub(r'<newline/>\s+<title>', '<title>', filestr)
+    # Eliminate <newline/> after </h1>, </h2>, etc.
+    filestr = re.sub(r'(</h\d>)\s+<newline/>', '\g<1>\n', filestr)
 
     return filestr
 
@@ -116,6 +124,7 @@ def html_figure(m):
     return text
 
 def html_table(table):
+    # COPY NEW from html.py
     column_width = table_analysis(table['rows'])
     ncolumns = len(column_width)
     column_spec = table.get('columns_align', 'c'*ncolumns).replace('|', '')
@@ -601,7 +610,7 @@ def define(FILENAME_EXTENSION,
         'description':
         {'begin': '\n<dl>\n', 'item': '<dt>%s<dd>', 'end': '</dl>\n\n'},
 
-        'separator': '',  # no need for blank lines between items and before/after
+        'separator': '<newline/>',
         }
 
     # how to typeset description lists for function arguments, return

@@ -81,7 +81,7 @@ particularly important material. Doconce supports different types
 of admonitions: notice, question, summary, and warning. These
 can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
-without a title and icon.
+without any icon, but with an optional title.
 
 
 ======= Demonstrations of admons =======
