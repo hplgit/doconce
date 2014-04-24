@@ -1497,7 +1497,6 @@ $$
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
@@ -1537,7 +1536,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 <p>
 <!-- begin bottom navigation -->
@@ -22623,13 +22622,11 @@ end of tocinfo -->
 
 <h2>This is a test of HTML templates  <a name="___sec0"></a></h2>
 
-<p>
 Note: When using HTML templates, the Doconce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 <h1>This is a 7 heading  <a name="___sec1"></a></h1>
 
-<p>
 Here is some code:
 <!-- begin verbatim block  pycod-->
 <pre><code>class Diff:
@@ -22646,7 +22643,6 @@ class Forward1(Diff):
 
 <h2>This is a 5 heading  <a name="___sec2"></a></h2>
 
-<p>
 The template can be any HTML file with header and footer and
 three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
 where <em>main</em> will become the Doconce file (the main body of text),
@@ -22868,13 +22864,11 @@ end of tocinfo -->
 
 <h2>This is a test of HTML templates  <a name="___sec0"></a></h2>
 
-<p>
 Note: When using HTML templates, the Doconce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 <h1>This is a 7 heading  <a name="___sec1"></a></h1>
 
-<p>
 Here is some code:
 <p>
 
@@ -22892,7 +22886,6 @@ Here is some code:
 
 <h2>This is a 5 heading  <a name="___sec2"></a></h2>
 
-<p>
 The template can be any HTML file with header and footer and
 three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
 where <em>main</em> will become the Doconce file (the main body of text),
@@ -24685,7 +24678,6 @@ $$
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
@@ -24725,7 +24717,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 <p>
 <!-- begin bottom navigation -->
@@ -24976,12 +24968,9 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
-<p>
 Here is a nested list:
 
-<p>
-
-<table border="0">
+<p><table border="0">
 
   </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
   </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
@@ -24989,7 +24978,7 @@ Here is a nested list:
     on the next line to test that feature</li>
   </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and a sublist</li>
 
-<table border="0">
+<p><table border="0">
 
     </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_green2.png"></td><td> with indented subitem1</li>
     </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_green2.png"></td><td> and a subitem2</li>
@@ -25019,7 +25008,6 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
-<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -25034,7 +25022,6 @@ The appendices <a href="._testdoc002.html#app1">Appendix: Just for testing; part
 
 <h3>Computer code  <a name="___sec2"></a></h3>
 
-<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -25339,7 +25326,6 @@ the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec3"></a></h3>
 
-<p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
@@ -25354,7 +25340,6 @@ Python.
 </pre></div>
 </td></tr></table><h3>Footnotes  <a name="___sec4"></a></h3>
 
-<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
 in writing. This is the third [<a name="link_footnote_3"><a><a href="._testdoc002.html#def_footnote_3">3</a>] example.
@@ -25386,7 +25371,6 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
-<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -25438,7 +25422,6 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
 
-<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -25457,7 +25440,6 @@ Newcommands must also be tested in this test report:
 \( \frac{1}{2} \), \( {1/2} \), \( \pmb{x} \), \( \frac{Du}{dt} \),
 both inline and in block:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -25471,7 +25453,6 @@ $$
 <p>
 Or with align with label and numbers:
 
-<p>
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
@@ -25484,7 +25465,6 @@ $$
 
 <h2>Custom Environments  <a name="___sec7"></a></h2>
 
-<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -25512,7 +25492,6 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
-<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -25623,7 +25602,6 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
 
-<p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
@@ -25640,7 +25618,6 @@ a verbatim word starting with period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec10"></a></h2>
 
-<p>
 Here is an example: <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -25672,7 +25649,6 @@ the old ME-IN323 book <a href="._testdoc002.html#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
-<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -25708,7 +25684,6 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
-<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -25988,7 +25963,6 @@ $$
 
 <h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
 
-<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -26034,7 +26008,6 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
@@ -26050,11 +26023,8 @@ let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec16"></a></h3>
 
-<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
-
-<p>
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 1.</li>
@@ -26099,7 +26069,6 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2>Not an exercise  <a name="___sec17"></a></h2>
 
-<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -26108,7 +26077,6 @@ exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
-<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -26118,8 +26086,6 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 <p>
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
-
-<p>
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
@@ -26146,10 +26112,8 @@ compute the probability as \( M/N \).
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
-<p>
 The formula for a circle is given by
 
-<p>
 $$
 \begin{align}
 x &= x_0 + R\cos 2\pi t,\\ 
@@ -26234,7 +26198,6 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec20"></a></h3>
 
-<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -26246,7 +26209,6 @@ and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
-<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -26256,8 +26218,6 @@ closing remarks to have text after subexercises.
 
 <p>
 Test list in exercise:
-
-<p>
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
@@ -26277,7 +26237,6 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math \( a=b \) in hint:
 
-<p>
 $$ a=b. $$
 
 And with code (in plain verbatim) returning \( x+1 \) in hint:
@@ -26301,8 +26260,6 @@ Second hint to subexercise a).
 
 <p>
 Test list in hint:
-
-<p>
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
@@ -26328,7 +26285,6 @@ Here goes the text for subexercise b).
 <p>
 Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
-<p>
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
 
@@ -26350,7 +26306,6 @@ Filename: <code>subexer_b.pdf</code>.
 
 <h3>Remarks  <a name="___sec22"></a></h3>
 
-<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -26363,14 +26318,12 @@ remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
 
-<p>
 <!-- Another minimalistic exercise -->
 
 <p>
 Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
-<p>
 $$ \exp{(0)} = 1 $$
 
 
@@ -26394,7 +26347,6 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Example 7: Just an example  <a name="___sec24"></a></h2>
 
-<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -26411,17 +26363,14 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec25"></a></h1>
 
-<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec26"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
-<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -26429,8 +26378,6 @@ and verify it.
 <p>
 Test list at the end of an exercise without other elements (like subexercise,
 hint, etc.):
-
-<p>
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
@@ -26447,7 +26394,6 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
@@ -26458,7 +26404,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec29"></a></h1>
 
-<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -26572,37 +26517,30 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
-<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec31"></a></h2>
 
-<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
-<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
 
-<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
-<p>
 Without label.
 
 <p>
@@ -26692,7 +26630,6 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
 
-<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
@@ -26729,7 +26666,6 @@ and in-depth explanations of the concepts and tools.</em>]</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
 
-<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -26870,7 +26806,6 @@ Automatically generated HTML file from Doconce source
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
@@ -26910,7 +26845,7 @@ Automatically generated HTML file from Doconce source
 &nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 The format of this document is
 plain, homemade HTML (from Doconce).
@@ -26926,10 +26861,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
-<p>
 Here is a nested list:
-
-<p>
 
 <ul>
   <li> item1</li>
@@ -26965,7 +26897,6 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
-<p>
 More text, with a reference back to
 The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
@@ -26973,7 +26904,6 @@ The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a hre
 
 <h3>Computer code  <a name="___sec2"></a></h3>
 
-<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -27195,7 +27125,6 @@ the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec3"></a></h3>
 
-<p>
 
 
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -27207,7 +27136,6 @@ Python.
 
 <h3>Footnotes  <a name="___sec4"></a></h3>
 
-<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
 in writing. This is the third [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>] example.
@@ -27239,7 +27167,6 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
-<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -27279,7 +27206,6 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The $latex \theta$ parameter (not $latex \nabla$?) <a name="decay:sec:theta"></a></h2>
 
-<p>
 Functions do not always need to be advanced, here is one
 involving $latex \theta$:
 <p>
@@ -27331,7 +27257,6 @@ $latex
 
 <h2>Custom Environments  <a name="___sec7"></a></h2>
 
-<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -27359,7 +27284,6 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
-<p>
 Let us take this table from the manual:
 
 <p>
@@ -27457,7 +27381,6 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
 
-<p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is
 some text.
@@ -27474,7 +27397,6 @@ a verbatim word starting with period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec10"></a></h2>
 
-<p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -27503,7 +27425,6 @@ the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
-<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -27536,7 +27457,6 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
-<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or
@@ -27576,7 +27496,6 @@ footnotes.
 
 <h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
 
-<p>
 Here is an equation without label using backslash-bracket environment:
 
 $latex  a = b + c  $
@@ -27630,19 +27549,14 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
 
-
-<p>
 Make a program that simulates flipping a coin $latex N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec16"></a></h3>
 
-<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
-
-<p>
 
 <ol>
 <li> Mark 1.</li>
@@ -27688,21 +27602,17 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2>Not an exercise  <a name="___sec17"></a></h2>
 
-<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
-<p>
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $latex [0,1)$?
 
 <p>
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -27720,7 +27630,6 @@ compute the probability as $latex M/N$.
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
-<p>
 The formula for a circle is given by
 
 <p>
@@ -27789,13 +27698,11 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec20"></a></h3>
 
-<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
-<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -27805,8 +27712,6 @@ closing remarks to have text after subexercises.
 
 <p>
 Test list in exercise:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -27859,8 +27764,6 @@ Second hint to subexercise a).
 <p>
 Test list in hint:
 
-<p>
-
 <ol>
 <li> item1</li>
 <li> item2</li>
@@ -27903,14 +27806,12 @@ Here goes the solution of this subexercise.
 
 <h3>Remarks  <a name="___sec22"></a></h3>
 
-<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
 
-<p>
 Just some text. And some math saying that $latex e^0=1$ on a single line,
 to test that math block insertion is correct:
 
@@ -27931,7 +27832,6 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Example 7: Just an example  <a name="___sec24"></a></h2>
 
-<p>
 <b>a)</b>
 What is the capital of Norway?
 
@@ -27941,14 +27841,12 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec25"></a></h1>
 
-<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec26"></a></h1>
 
 <h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
-<p>
 
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -27956,8 +27854,6 @@ and verify it.
 <p>
 Test list at the end of an exercise without other elements (like subexercise,
 hint, etc.):
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -27968,16 +27864,12 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec29"></a></h1>
-
-<p>
-
 
 <ol>
  <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -28088,37 +27980,30 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
-<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec31"></a></h2>
 
-<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
-<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
 
-<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
-<p>
 Without label.
 
 <p>
@@ -28208,7 +28093,6 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
 
-<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
@@ -28244,7 +28128,6 @@ and in-depth explanations of the concepts and tools.</em>]</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
 
-<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -28502,7 +28385,6 @@ $$
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
@@ -28542,7 +28424,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 <!-- !split -->
 
@@ -28568,10 +28450,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
-<p>
 Here is a nested list:
-
-<p>
 
 <ul>
   <li> item1</li>
@@ -28607,7 +28486,6 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
-<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -28622,7 +28500,6 @@ The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a hre
 
 <h3>Computer code  <a name="___sec2"></a></h3>
 
-<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -28844,7 +28721,6 @@ the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec3"></a></h3>
 
-<p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -28856,7 +28732,6 @@ Python.
 
 <h3>Footnotes  <a name="___sec4"></a></h3>
 
-<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
 in writing. This is the third [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>] example.
@@ -28888,7 +28763,6 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
-<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -28940,7 +28814,6 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
 
-<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -28958,7 +28831,6 @@ Newcommands must also be tested in this test report:
 \( \frac{1}{2} \), \( {1/2} \), \( \pmb{x} \), \( \frac{Du}{dt} \),
 both inline and in block:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -28972,7 +28844,6 @@ $$
 <p>
 Or with align with label and numbers:
 
-<p>
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
@@ -28985,7 +28856,6 @@ $$
 
 <h2>Custom Environments  <a name="___sec7"></a></h2>
 
-<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -29013,7 +28883,6 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
-<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -29118,7 +28987,6 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
 
-<p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
@@ -29135,7 +29003,6 @@ a verbatim word starting with period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec10"></a></h2>
 
-<p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -29167,7 +29034,6 @@ the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
-<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -29203,7 +29069,6 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
-<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -29255,7 +29120,6 @@ footnotes.
 
 <h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
 
-<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -29301,7 +29165,6 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
@@ -29317,11 +29180,8 @@ let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec16"></a></h3>
 
-<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
-
-<p>
 
 <ol>
 <li> Mark 1.</li>
@@ -29363,7 +29223,6 @@ Draw an integer among \( \{1,2\} \) with
 
 <h2>Not an exercise  <a name="___sec17"></a></h2>
 
-<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -29372,7 +29231,6 @@ exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
-<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -29382,8 +29240,6 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 <p>
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -29410,10 +29266,8 @@ compute the probability as \( M/N \).
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
-<p>
 The formula for a circle is given by
 
-<p>
 $$
 \begin{align}
 x &= x_0 + R\cos 2\pi t,\\ 
@@ -29488,7 +29342,6 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec20"></a></h3>
 
-<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -29500,7 +29353,6 @@ and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
-<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -29510,8 +29362,6 @@ closing remarks to have text after subexercises.
 
 <p>
 Test list in exercise:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -29533,7 +29383,6 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math \( a=b \) in hint:
 
-<p>
 $$ a=b. $$
 
 And with code (in plain verbatim) returning \( x+1 \) in hint:
@@ -29557,8 +29406,6 @@ Second hint to subexercise a).
 <p>
 Test list in hint:
 
-<p>
-
 <ol>
 <li> item1</li>
 <li> item2</li>
@@ -29578,7 +29425,6 @@ Here goes the text for subexercise b).
 <p>
 Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
-<p>
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
 
@@ -29602,7 +29448,6 @@ Filename: <code>subexer_b.pdf</code>.
 
 <h3>Remarks  <a name="___sec22"></a></h3>
 
-<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -29615,14 +29460,12 @@ remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
 
-<p>
 <!-- Another minimalistic exercise -->
 
 <p>
 Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
-<p>
 $$ \exp{(0)} = 1 $$
 
 
@@ -29646,7 +29489,6 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Example 7: Just an example  <a name="___sec24"></a></h2>
 
-<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -29663,17 +29505,14 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec25"></a></h1>
 
-<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec26"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
-<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -29681,8 +29520,6 @@ and verify it.
 <p>
 Test list at the end of an exercise without other elements (like subexercise,
 hint, etc.):
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -29699,7 +29536,6 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
@@ -29710,7 +29546,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec29"></a></h1>
 
-<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -29824,37 +29659,30 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
-<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec31"></a></h2>
 
-<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
-<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
 
-<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
-<p>
 Without label.
 
 <p>
@@ -29944,7 +29772,6 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
 
-<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
@@ -29981,7 +29808,6 @@ and in-depth explanations of the concepts and tools.</em>]</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
 
-<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -33113,7 +32939,6 @@ Here is a sentence contains the equation \( u(t)=e^{-at} \).
 <b>Test 2: A single equation without label.</b>
 Here it is
 
-<p>
 $$ u(t)=e^{-at} $$
 
 
@@ -33132,7 +32957,6 @@ latex code,
 <p>
 looking like
 
-<p>
 $$
 \begin{equation} u(t)=e^{-at} \label{eq1}\end{equation}
 $$
@@ -33151,7 +32975,6 @@ u(t)=e^{-at} label{eq1b}
 <p>
 looking like
 
-<p>
 $$
 \begin{equation}
 u(t)=e^{-at} \label{eq1b}
@@ -33179,7 +33002,6 @@ v(t) - 1 &amp;= \frac{du}{dt}
 <p>
 and results in
 
-<p>
 $$
 \begin{align*}
 u(t)&=e^{-at}\\ 
@@ -33208,7 +33030,6 @@ label{eq3b}
 <p>
 and results in
 
-<p>
 $$
 \begin{align}
 u(t)&=e^{-at} \label{eq2b}\\ 
@@ -33236,7 +33057,6 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt}
 <p>
 and results in
 
-<p>
 $$
 \begin{eqnarray*}
 u(t)&=& e^{-at}\\ 
@@ -33265,7 +33085,6 @@ label{eq3c}
 <p>
 and results in
 
-<p>
 $$
 \begin{eqnarray}
 u(t)&=& e^{-at} \label{eq2c}\\ 
@@ -33279,7 +33098,6 @@ Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}?
 <b>Test 8: newcommands and boldface bm vs pmb.</b>
 We have
 
-<p>
 $$ \color{blue}{\frac{\partial\u}{\partial t}} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,$$
@@ -33287,7 +33105,6 @@ $$ \color{blue}{\frac{\partial\u}{\partial t}} +
 and \( \nabla\u (\pmb{x})\cdot\pmb{n} \)
 with plain old pmb. Here are the same formulas using <code>\bm</code>:
 
-<p>
 $$ \color{blue}{\frac{\partial\ubm}{\partial t}} +
 \nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
 \frac{1}{\varrho}\nabla p,$$
@@ -34282,7 +34099,6 @@ $$
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
@@ -34322,7 +34138,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 <p>
 <!-- ------------------- end of main content --------------- -->
@@ -34333,7 +34149,7 @@ Preliminary examples/discussion on vagrant style syntax
 
 <div class='alert alert-block alert-notice'>
   <h3>What about PHP? Python? Java?</h3>
-<p>
+
 bla-bla.
 </div>
 
@@ -34663,7 +34479,6 @@ $$
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
@@ -34703,7 +34518,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 <p>
 <!-- ------------------- end of main content --------------- -->
@@ -34714,7 +34529,7 @@ Preliminary examples/discussion on vagrant style syntax
 
 <div class='alert alert-block alert-notice'>
   <h3>What about PHP? Python? Java?</h3>
-<p>
+
 bla-bla.
 </div>
 
@@ -35021,10 +34836,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
-<p>
 Here is a nested list:
-
-<p>
 
 <ul>
   <li> item1</li>
@@ -35060,7 +34872,6 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
-<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -35075,7 +34886,6 @@ The appendices <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testi
 
 <h3>Computer code  <a name="___sec2"></a></h3>
 
-<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -35297,7 +35107,6 @@ the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec3"></a></h3>
 
-<p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -35309,7 +35118,6 @@ Python.
 
 <h3>Footnotes  <a name="___sec4"></a></h3>
 
-<p>
 Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Could say contexts too..."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, which gives flexibility
 in writing. This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button> example.
@@ -35341,7 +35149,6 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
-<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -35393,7 +35200,6 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
 
-<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -35411,7 +35217,6 @@ Newcommands must also be tested in this test report:
 \( \frac{1}{2} \), \( {1/2} \), \( \pmb{x} \), \( \frac{Du}{dt} \),
 both inline and in block:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -35425,7 +35230,6 @@ $$
 <p>
 Or with align with label and numbers:
 
-<p>
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
@@ -35438,7 +35242,6 @@ $$
 
 <h2>Custom Environments  <a name="___sec7"></a></h2>
 
-<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -35466,7 +35269,6 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
-<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -35571,7 +35373,6 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
 
-<p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
@@ -35588,7 +35389,6 @@ a verbatim word starting with period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec10"></a></h2>
 
-<p>
 Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -35620,7 +35420,6 @@ the old ME-IN323 book <a href="._testdoc_vagrant002.html#Langtangen:91">[19]</a>
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
-<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -35656,7 +35455,6 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
-<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -35713,7 +35511,7 @@ Preliminary examples/discussion on vagrant style syntax
 
 <div class='alert alert-block alert-notice'>
   <h3>What about PHP? Python? Java?</h3>
-<p>
+
 bla-bla.
 </div>
 
@@ -36006,7 +35804,6 @@ $$
 
 <h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
 
-<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -36052,7 +35849,6 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
@@ -36068,11 +35864,8 @@ let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec16"></a></h3>
 
-<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
-
-<p>
 
 <ol>
 <li> Mark 1.</li>
@@ -36134,7 +35927,6 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2>Not an exercise  <a name="___sec17"></a></h2>
 
-<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -36143,7 +35935,6 @@ exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
-<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -36153,8 +35944,6 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 <p>
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -36181,10 +35970,8 @@ compute the probability as \( M/N \).
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
-<p>
 The formula for a circle is given by
 
-<p>
 $$
 \begin{align}
 x &= x_0 + R\cos 2\pi t,\\ 
@@ -36267,7 +36054,6 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec20"></a></h3>
 
-<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -36279,7 +36065,6 @@ and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
-<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -36289,8 +36074,6 @@ closing remarks to have text after subexercises.
 
 <p>
 Test list in exercise:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -36327,7 +36110,6 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math \( a=b \) in hint:
 
-<p>
 $$ a=b. $$
 
 And with code (in plain verbatim) returning \( x+1 \) in hint:
@@ -36350,8 +36132,6 @@ Second hint to subexercise a).
 
 <p>
 Test list in hint:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -36377,7 +36157,6 @@ Here goes the text for subexercise b).
 <p>
 Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
-<p>
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
 
@@ -36405,7 +36184,6 @@ Here goes the solution of this subexercise.
 
 <h3>Remarks  <a name="___sec22"></a></h3>
 
-<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -36418,14 +36196,12 @@ remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
 
-<p>
 <!-- Another minimalistic exercise -->
 
 <p>
 Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
-<p>
 $$ \exp{(0)} = 1 $$
 
 
@@ -36449,7 +36225,6 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Example 7: Just an example  <a name="___sec24"></a></h2>
 
-<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -36466,17 +36241,14 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec25"></a></h1>
 
-<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec26"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
-<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -36484,8 +36256,6 @@ and verify it.
 <p>
 Test list at the end of an exercise without other elements (like subexercise,
 hint, etc.):
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -36502,7 +36272,6 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
@@ -36513,7 +36282,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec29"></a></h1>
 
-<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -36627,37 +36395,30 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
-<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec31"></a></h2>
 
-<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
-<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
 
-<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
-<p>
 Without label.
 
 <p>
@@ -36747,7 +36508,6 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
 
-<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
@@ -36784,7 +36544,6 @@ and in-depth explanations of the concepts and tools.</em>]</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
 
-<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -36805,7 +36564,7 @@ Preliminary examples/discussion on vagrant style syntax
 
 <div class='alert alert-block alert-notice'>
   <h3>What about PHP? Python? Java?</h3>
-<p>
+
 bla-bla.
 </div>
 
@@ -44081,7 +43840,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -44102,7 +43860,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -44134,12 +43891,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -44184,7 +43938,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -44192,8 +43945,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -44283,7 +44034,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -44321,8 +44071,6 @@ So, how many admonition environments does Doconce support?
 <div class="warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -44353,7 +44101,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -44368,7 +44115,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -44449,7 +44195,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -44624,7 +44369,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -44645,7 +44389,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -44677,12 +44420,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -44727,7 +44467,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -44735,8 +44474,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -44826,7 +44563,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -44864,8 +44600,6 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -44896,7 +44630,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -44911,7 +44644,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -44992,7 +44724,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -45165,7 +44896,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -45186,7 +44916,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -45218,12 +44947,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -45268,7 +44994,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -45276,8 +45001,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -45367,7 +45090,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -45405,8 +45127,6 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -45437,7 +45157,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -45452,7 +45171,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -45533,7 +45251,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -46106,7 +45823,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -46127,7 +45843,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -46159,12 +45874,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -46209,7 +45921,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -46224,8 +45935,6 @@ Let us start with a plain warning environment.
 <div class="alert-text-normal">And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -46349,7 +46058,6 @@ code is present).
 <div class="alert-text-illegal-size">Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -46419,8 +46127,6 @@ $$</div>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
 <div class="alert-text-normal">It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -46460,7 +46166,6 @@ Next is a warning without a title ("none" implies no title).
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -46482,7 +46187,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -46564,7 +46268,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -46724,7 +46427,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -46745,7 +46447,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -46777,12 +46478,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -46827,7 +46525,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -46838,8 +46535,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -46944,7 +46639,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -46994,8 +46688,6 @@ So, how many admonition environments does Doconce support?
 <div class="alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -47029,7 +46721,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -47047,7 +46738,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -47128,7 +46818,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -47321,7 +47010,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -47342,7 +47030,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -47374,12 +47061,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -47424,7 +47108,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -47432,8 +47115,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -47523,7 +47204,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -47561,8 +47241,6 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -47593,7 +47271,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -47608,7 +47285,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -47689,7 +47365,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -47891,7 +47566,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -47912,7 +47586,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -47944,12 +47617,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -47994,7 +47664,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -48002,8 +47671,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -48093,7 +47760,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -48131,8 +47797,6 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -48163,7 +47827,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -48178,7 +47841,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -48259,7 +47921,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -48285,7 +47946,7 @@ Preliminary examples/discussion on vagrant style syntax
 
 <div class='alert alert-block alert-notice'>
   <h3>What about PHP? Python? Java?</h3>
-<p>
+
 bla-bla.
 </div>
 
@@ -48622,7 +48283,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -48643,7 +48303,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -48675,12 +48334,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -48725,7 +48381,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -48737,8 +48392,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -48847,7 +48500,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -48905,8 +48557,6 @@ So, how many admonition environments does Doconce support?
 <div class="panel-body">
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -48943,7 +48593,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -48962,7 +48611,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -49044,7 +48692,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -49202,7 +48849,6 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -49223,7 +48869,6 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -49255,12 +48900,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -49305,7 +48947,6 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -49313,8 +48954,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -49404,7 +49043,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -49442,8 +49080,6 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
 It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -49474,7 +49110,6 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -49489,7 +49124,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -49570,7 +49204,6 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -51062,14 +50695,11 @@ $$
 
 <h2>Figure and bullet list  <a name="___sec0"></a></h2>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
 
-
-<p>
 
 <ul>
   <p><li class="fragment"> Here is a <em>wave packet</em></li>
@@ -51134,10 +50764,7 @@ Over multiple lines.
 
 <h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
 
-<p>
 
-
-<p>
 
 <ul>
  <p><li class="fragment"> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
@@ -51167,7 +50794,6 @@ Over multiple lines.
 
 <h2>Some math and computer code  <a name="___sec2"></a></h2>
 
-<p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 <p>&nbsp;<br>
@@ -51200,7 +50826,6 @@ f2 <span style="color: #666666">=</span> Fancy()
 
 <h2>Admon blocks  <a name="___sec3"></a></h2>
 
-<p>
 Can use admons to simulate blocks:
 
 <p>
@@ -56539,11 +56164,8 @@ $$
 
 <h2>Figure and bullet list  <a name="___sec0"></a></h2>
 
-<p>
 <!-- !bslidecell 00  0.35 -->
 <!-- !bpop -->
-
-<p>
 
 <ul>
   <li> Here is a <em>wave packet</em></li>
@@ -56587,10 +56209,7 @@ Over multiple lines.
 
 <h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
 
-<p>
 <!-- !bpop -->
-
-<p>
 
 <ul>
  <li> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
@@ -56614,7 +56233,6 @@ Over multiple lines.
 
 <h2>Some math and computer code  <a name="___sec2"></a></h2>
 
-<p>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 
 Python implementation:
@@ -56641,7 +56259,6 @@ f2 <span style="color: #666666">=</span> Fancy()
 
 <h2>Admon blocks  <a name="___sec3"></a></h2>
 
-<p>
 Can use admons to simulate blocks:
 
 <p>
@@ -56903,14 +56520,11 @@ $$
 
 <h2>Figure and bullet list  <a name="___sec0"></a></h2>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
 
-
-<p>
 
 <ul>
   <p><li class="slide"> Here is a <em>wave packet</em></li>
@@ -56971,10 +56585,7 @@ Over multiple lines.
 
 <h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
 
-<p>
 
-
-<p>
 
 <ul>
  <p><li class="slide"> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
@@ -57004,7 +56615,6 @@ Over multiple lines.
 
 <h2>Some math and computer code  <a name="___sec2"></a></h2>
 
-<p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 <p>&nbsp;<br>
@@ -57037,7 +56647,6 @@ f2 <span style="color: #666666">=</span> Fancy()
 
 <h2>Admon blocks  <a name="___sec3"></a></h2>
 
-<p>
 Can use admons to simulate blocks:
 
 <p>
@@ -58958,7 +58567,6 @@ $$
 
 <h2>Table of contents</h2>
 
-<p>
 &nbsp; &nbsp; &nbsp; <a href="#___sec0"> Scientific writing for the future needs to address many new media </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> The book will probably survive </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> The classical report will survive </a><br>
@@ -58991,7 +58599,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#___sec29"> Doconce: example on slide code with cells </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Doconce: example on slide code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Headline </a><br>
-
+</p>
 <p>
 
 </section>
@@ -59001,7 +58609,6 @@ $$
 
 <h1>Scientific writing for the future needs to address many new media  <a name="___sec0"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
@@ -59035,7 +58642,6 @@ $$
 
 <h1>The book will probably survive  <a name="___sec1"></a></h1>
 
-<p>
 <center><p><img src="../doc/src/slides/fig/oldbooks.jpg" align="bottom" width=800></p></center>
 
 <p>
@@ -59047,7 +58653,6 @@ $$
 
 <h1>The classical report will survive  <a name="___sec2"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
@@ -59073,7 +58678,6 @@ $$
 
 <h1>Scope  <a name="___sec3"></a></h1>
 
-<p>
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
 
@@ -59144,7 +58748,6 @@ $$
 
 <h1>Scientific writing for the future needs to address many new media  <a name="___sec4"></a></h1>
 
-<p>
 <!-- Insert links here to reports -->
 
 <p>
@@ -59153,8 +58756,6 @@ $$
 <tr>
 <td class="padding">
 Old days (1985-2005): LaTeX for BW paper output, but now
-
-<p>
 
 <ol>
   <p><li> BW books</li>
@@ -59186,10 +58787,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
 
 <h1>Fundamental question  <a name="___sec5"></a></h1>
 
-<p>
 When I write some scientific material,
-
-<p>
 
 <ul>
  <p><li> a LaTeX document,</li>
@@ -59225,8 +58823,6 @@ Probably not, but I have a solution :-)
 
 <h1>LaTeX is very rich; other tools support only some elements  <a name="___sec6"></a></h1>
 
-<p>
-
 <ul>
  <p><li> LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)</li>
  <p><li> LaTeX equation math:</li>
@@ -59252,7 +58848,6 @@ Probably not, but I have a solution :-)
 
 <h1>LaTeX is very rich; other tools support only some elements  <a name="___sec7"></a></h1>
 
-<p>
 
 
 <ul>
@@ -59292,10 +58887,7 @@ based on HTML and vice versa.
 
 <h1>Doconce demo  <a name="___sec8"></a></h1>
 
-<p>
 <a href="http://hplgit.github.com/teamods/writing_reports/" target="_self"><tt>http://hplgit.github.com/teamods/writing_reports/</tt></a>
-
-<p>
 
 <ul>
  <p><li> LaTeX-based PDF <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf" target="_self">for screen</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf" target="_self">for printing</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf" target="_self">for phone</a></li>
@@ -59324,7 +58916,6 @@ based on HTML and vice versa.
 
 <h1>Doconce: title, authors, date, toc  <a name="___sec10"></a></h1>
 
-<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">TITLE: Some Title
@@ -59350,7 +58941,6 @@ Title and authors must have all information <em>on a single line</em>!
 
 <h1>Doconce: abstract  <a name="___sec11"></a></h1>
 
-<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">__Abstract.__
@@ -59373,7 +58963,6 @@ Here goes the summary...
 
 <h1>Doconce: section headings  <a name="___sec12"></a></h1>
 
-<p>
 Headings are surrounded by <code>=</code> signs:
 <p>
 
@@ -59399,7 +58988,6 @@ Result:
 
 <h3>This is an H4/paragraph heading  <a name="___sec16"></a></h3>
 
-<p>
 <b>This is a paragraph heading.</b>
 <p>
 
@@ -59410,7 +58998,6 @@ Result:
 
 <h1>Doconce: markup and lists  <a name="___sec17"></a></h1>
 
-<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> * Bullet list items start with `*`
@@ -59424,8 +59011,6 @@ Result:
 </pre></div>
 <p>
 This gets rendered as
-
-<p>
 
 <ul>
  <p><li> Bullet lists start with <code>*</code>
@@ -59452,7 +59037,6 @@ This gets rendered as
 
 <h1>Doconce: labels, references, index items  <a name="___sec18"></a></h1>
 
-<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Insert index items in the source
@@ -59485,7 +59069,6 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 
 <h1>Doconce: figures and movies  <a name="___sec19"></a></h1>
 
-<p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:
 </div>
@@ -59524,7 +59107,6 @@ and rendered as
 
 <h1>Doconce: math  <a name="___sec20"></a></h1>
 
-<p>
 Inline math as in LaTeX:
 
 <p>
@@ -59554,7 +59136,6 @@ label{b:eq}
 <p>
 which is rendered as
 
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align}
@@ -59576,7 +59157,6 @@ $$
 
 <h1>Doconce: displaying code  <a name="___sec21"></a></h1>
 
-<p>
 Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
 
 <p>
@@ -59634,7 +59214,6 @@ forth (<code>c</code> for C, <code>cpp</code> for C++, <code>sh</code> for Unix 
 
 <h1>Doconce: displaying interactive demo code <a name="slide:pot"></a></h1>
 
-<p>
 With <code>!bc pyoptpro</code> or a file <code>*.pyopt</code>, the code applies the
 <a href="http://pythontutor.com" target="_self">Online Python Tutor</a> for displaying
 program flow and state of variables:
@@ -59653,7 +59232,6 @@ program flow and state of variables:
 
 <h1>Doconce: exercises  <a name="___sec23"></a></h1>
 
-<p>
 Doconce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
 and <em>examples</em>:
 
@@ -59704,7 +59282,6 @@ Solutions/answers can easily be left out of the document.
 
 <h1>Doconce: exercises  <a name="___sec24"></a></h1>
 
-<p>
 Last page gets rendered as follows:
 
 <p>
@@ -59768,7 +59345,6 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h1>Doconce: example on slide code  <a name="___sec26"></a></h1>
 
-<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!split
@@ -59803,12 +59379,9 @@ And maybe a final comment?
 
 <h1>Doconce: example on slide code  <a name="___sec27"></a></h1>
 
-<p>
 Last page gets rendered to
 
 <h1>Headline  <a name="___sec28"></a></h1>
-
-<p>
 
 <ul>
  <p><li> Key point 1</li>
@@ -59821,7 +59394,6 @@ Last page gets rendered to
 <p>
 Key equation:
 
-<p>
 <p>&nbsp;<br>
 $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 <p>&nbsp;<br>
@@ -59839,7 +59411,6 @@ And maybe a final comment?
 
 <h1>Doconce: example on slide code with cells  <a name="___sec29"></a></h1>
 
-<p>
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
 MN is surrounded by <code>!bslidecell MN</code> and <code>!eslidecell</code>
@@ -59886,12 +59457,10 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 
 <h1>Doconce: example on slide code  <a name="___sec30"></a></h1>
 
-<p>
 Last page gets rendered to
 
 <h1>Headline  <a name="___sec31"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
@@ -62520,7 +62089,6 @@ $$
 
 <h1>Goal  <a name="___sec0"></a></h1>
 
-<p>
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
 and get them rendered in numerous HTML formats.
@@ -62558,12 +62126,10 @@ demonstrated.
 
 <h1>Mathematical problem  <a name="___sec1"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align}
@@ -62575,8 +62141,6 @@ u(0)  &= I,
 $$
 <p>&nbsp;<br>
 
-
-<p>
 
 <ul>
  <p><li> \( t\in (0,T] \)</li>
@@ -62605,7 +62169,6 @@ $$
 
 <h1>Numerical solution method  <a name="___sec2"></a></h1>
 
-<p>
 
 
 <ul>
@@ -62642,7 +62205,6 @@ $$
 
 <h2>Forward Euler explained  <a name="___sec3"></a></h2>
 
-<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -62656,7 +62218,6 @@ $$
 
 <h1>Implementation  <a name="___sec4"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function:
 
 <p>
@@ -62684,7 +62245,6 @@ The numerical method is implemented in a Python function:
 
 <h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="../doc/src/slides/fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -62696,12 +62256,10 @@ The numerical method is implemented in a Python function:
 
 <h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
 
-<p>
 
 <p class="fragment">
 
 Exact solution of the scheme:
-
 
 &nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
@@ -72564,10 +72122,7 @@ $$
 
 <h1>Demonstrations of admons  <a name="___sec1"></a></h1>
 
-<p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
-
-<p>
 
 <ul>
  <li> alert admons (<code>bootstrap_alert</code>) with colored background (default)</li>
@@ -72643,8 +72198,6 @@ styles?
   </div>
 <div class="panel-body">
 Doconce supports the following elements of Bootstrap elements:
-
-<p>
 
 <ul>
  <li> Admons</li>
@@ -72862,7 +72415,6 @@ $$
 
 <h2>Principles of grid structures  <a name="___sec3"></a></h2>
 
-<p>
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
 
@@ -72888,13 +72440,11 @@ the following syntax in case of a 1x3 grid:
 
 <h2>Example on a 1x3 grid structure  <a name="___sec4"></a></h2>
 
-<p>
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
 <b>Mathematics.</b>
 Given a function
 
-<p>
 $$ f(x) = e^{-ax}\sin wx\thinspace .$$
 
 Write a program for evaluating \( f(x) \), and test the program
@@ -72945,7 +72495,6 @@ we can run the program:
 
 <h2>Variation of the previous grid structure using panels  <a name="___sec5"></a></h2>
 
-<p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
 <p>
@@ -72958,7 +72507,6 @@ we can run the program:
 <div class="panel-body">
 Given a function
 
-<p>
 $$ f(x) = e^{-ax}\sin wx\thinspace .$$
 
 Write a program for evaluating \( f(x) \), and test the program
@@ -73054,7 +72602,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Apr 22 11:48:37 2014.
+# sphinx-quickstart on Thu Apr 24 14:16:41 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75284,7 +74832,6 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="#___sec0"> Supported Formats </a><br>
 <a href="#___sec1"> Emacs syntax support </a><br>
 <a href="#___sec2"> Title, Authors, and Date </a><br>
@@ -75307,7 +74854,7 @@ MathJax.Hub.Config({
 <a href="#___sec19"> Environments </a><br>
 <a href="#___sec20"> Preprocessing </a><br>
 <a href="#___sec21"> Resources </a><br>
-
+</p>
 <p>
 <b>WARNING: This quick reference is very incomplete!</b>
 
@@ -75323,10 +74870,7 @@ mathematics and code.
 
 <h2>Supported Formats  <a name="___sec0"></a></h2>
 
-<p>
 Doconce currently translates files to the following formats:
-
-<p>
 
 <ul>
  <li> LaTeX (format <code>latex</code> and <code>pdflatex</code>)</li>
@@ -75350,7 +74894,6 @@ Google and Wordpress.
 
 <h2>Emacs syntax support  <a name="___sec1"></a></h2>
 
-<p>
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the Doconce source distribution gives a "Doconce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
@@ -75387,7 +74930,6 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <h2>Title, Authors, and Date  <a name="___sec2"></a></h2>
 
-<p>
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
@@ -75424,7 +74966,6 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <h2>Section Types <a name="quick:sections"></a></h2>
 
-<p>
 <table border="1">
 <thead>
 <tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
@@ -75455,7 +74996,6 @@ problem.
 
 <h2>Inline Formatting  <a name="___sec4"></a></h2>
 
-<p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <code>_boldface_</code> becomes <b>boldface</b>. Colored words
@@ -75506,7 +75046,6 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 
 <h2>Lists  <a name="___sec5"></a></h2>
 
-<p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
 with <code>*</code>, <em>enumeration lists</em>, where each item starts with <code>o</code> and gets
 consqutive numbers,
@@ -75548,8 +75087,6 @@ The code above follows.
 <p>
 Here is a bullet list:
 
-<p>
-
 <ul>
  <li> item1</li>
  <li> item2</li>
@@ -75564,8 +75101,6 @@ Here is a bullet list:
 
 Note that sublists are indented.
 Here is an enumeration list:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -75599,7 +75134,6 @@ And finally a description list:
 
 <h2>Comment lines  <a name="___sec6"></a></h2>
 
-<p>
 Lines starting with <code>#</code> are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before LaTeX math
@@ -75623,7 +75157,6 @@ Doconce starts processing the file.
 
 <h2>Inline comments  <a name="___sec7"></a></h2>
 
-<p>
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax
@@ -75664,7 +75197,6 @@ removed from the Doconce source by
 
 <h2>Verbatim/Computer Code  <a name="___sec8"></a></h2>
 
-<p>
 Inline verbatim code is typeset within back-ticks, as in
 <!-- begin verbatim block -->
 <pre><code>Some sentence with `words in verbatim style`.
@@ -75747,8 +75279,6 @@ of the file (here from <code>name=</code> until the end of the file).
 <p>
 Important warnings:
 
-<p>
-
 <ul>
  <li> A code block must come after some plain sentence (at least for successful
    output in reStructredText), not directly after a section/paragraph heading,
@@ -75760,7 +75290,6 @@ Important warnings:
 
 <h2>LaTeX Mathematics  <a name="___sec9"></a></h2>
 
-<p>
 Doconce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
 pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
@@ -75800,7 +75329,6 @@ and
 <p>
 This LaTeX code gets rendered as
 
-<p>
 $$
 \begin{align*}
 \nabla\cdot \pmb{u} &= 0,\\ 
@@ -75819,7 +75347,6 @@ Here is a single equation:
 <!-- end verbatim block -->
 which results in
 
-<p>
 $$ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.$$
 
 
@@ -75827,8 +75354,6 @@ $$ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.$$
 Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pandoc</code>,
 <code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats
 is also important, one should follow these rules:
-
-<p>
 
 <ul>
   <li> Use only the equation environments <code>\[</code>, <code>\]</code>,
@@ -75869,7 +75394,6 @@ rendered nicely anyway.
 
 <h2>Hyperlinks  <a name="___sec10"></a></h2>
 
-<p>
 Links use either a link text or the raw URL:
 
 <p>
@@ -75889,7 +75413,6 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 
 <h2>Figures and Movies  <a name="___sec11"></a></h2>
 
-<p>
 Figures and movies have almost equal syntax:
 <!-- begin verbatim block -->
 <pre><code>FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
@@ -75899,8 +75422,6 @@ MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must 
 </code></pre>
 <!-- end verbatim block -->
 Note three important syntax details:
-
-<p>
 
 <ol>
  <li> A mandatory comma after the figure/movie filename,</li>
@@ -75958,7 +75479,6 @@ The latter results in
 
 <h2>Tables  <a name="___sec12"></a></h2>
 
-<p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
 syntax:
 <!-- begin verbatim block -->
@@ -75976,8 +75496,6 @@ syntax:
 
 <p>
 Note that
-
-<p>
 
 <ul>
  <li> Each line begins and ends with a vertical bar (pipe symbol).</li>
@@ -76003,7 +75521,6 @@ load tables into spreadsheet programs for further analysis.
 
 <h2>Labels and References  <a name="___sec13"></a></h2>
 
-<p>
 The notion of labels and references (as well as bibliography and index)
 is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
@@ -76033,7 +75550,6 @@ reference by parenthesis.
 
 <h2>Citations and Bibliography  <a name="___sec14"></a></h2>
 
-<p>
 Single citations are written as
 <!-- begin verbatim block -->
 <pre><code>cite{name}
@@ -76061,7 +75577,6 @@ than LaTeX).
 
 <h2>Generalized Citations  <a name="___sec15"></a></h2>
 
-<p>
 There is a <em>generalized referencing</em> feature in Doconce that allows
 a reference with <code>ref</code> to have one formulation if the label is
 in the same document and another formulation if the reference is
@@ -76093,7 +75608,6 @@ documents.  If none of the two situations above applies, the
 
 <h2>Index of Keywords  <a name="___sec16"></a></h2>
 
-<p>
 Doconce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
@@ -76110,7 +75624,6 @@ forthcoming text. The index is only produced for the <code>latex</code>,
 
 <h2>Capabilities of The Program <code>doconce</code>  <a name="___sec17"></a></h2>
 
-<p>
 The <code>doconce</code> program can be used for a number of purposes besides
 transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
@@ -76272,13 +75785,10 @@ doconce latex_exercise_toc myfile
 
 <h2>Exercises  <a name="___sec18"></a></h2>
 
-<p>
 Doconce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain <em>elements</em>:
-
-<p>
 
 <ul>
   <li> a headline at the level of a subsection
@@ -76390,12 +75900,9 @@ examples.
 
 <h2>Environments  <a name="___sec19"></a></h2>
 
-<p>
 Doconce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
 where <code>envirname</code> is the name of the environment. Here is a listing of
 the environments:
-
-<p>
 
 <ul>
  <li> <code>c</code>: computer code (or verbatim text)</li>
@@ -76413,7 +75920,6 @@ the environments:
 
 <h2>Preprocessing  <a name="___sec20"></a></h2>
 
-<p>
 Doconce documents may utilize a preprocessor, either <code>preprocess</code> and/or
 <code>mako</code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
@@ -76466,8 +75972,6 @@ some illustrations on how to utilize <code>mako</code> (clone the GitHub project
 examine the Doconce source and the <code>doc/src/make.sh</code> script).
 
 <h2>Resources  <a name="___sec21"></a></h2>
-
-<p>
 
 <ul>
  <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"</li>

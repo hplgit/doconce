@@ -135,11 +135,10 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 22, 2014</h4></center> <!-- date -->
+<center><h4>Apr 24, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="#___sec0"> Supported Formats </a><br>
 <a href="#___sec1"> Emacs syntax support </a><br>
 <a href="#___sec2"> Title, Authors, and Date </a><br>
@@ -162,7 +161,7 @@ MathJax.Hub.Config({
 <a href="#___sec19"> Environments </a><br>
 <a href="#___sec20"> Preprocessing </a><br>
 <a href="#___sec21"> Resources </a><br>
-
+</p>
 <p>
 <b>WARNING: This quick reference is very incomplete!</b>
 
@@ -178,10 +177,7 @@ mathematics and code.
 
 <h2>Supported Formats  <a name="___sec0"></a></h2>
 
-<p>
 Doconce currently translates files to the following formats:
-
-<p>
 
 <ul>
  <li> LaTeX (format <code>latex</code> and <code>pdflatex</code>)</li>
@@ -205,7 +201,6 @@ Google and Wordpress.
 
 <h2>Emacs syntax support  <a name="___sec1"></a></h2>
 
-<p>
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the Doconce source distribution gives a "Doconce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
@@ -242,7 +237,6 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <h2>Title, Authors, and Date  <a name="___sec2"></a></h2>
 
-<p>
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
@@ -279,7 +273,6 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <h2>Section Types <a name="quick:sections"></a></h2>
 
-<p>
 <table border="1">
 <thead>
 <tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
@@ -310,7 +303,6 @@ problem.
 
 <h2>Inline Formatting  <a name="___sec4"></a></h2>
 
-<p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <code>_boldface_</code> becomes <b>boldface</b>. Colored words
@@ -361,7 +353,6 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 
 <h2>Lists  <a name="___sec5"></a></h2>
 
-<p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
 with <code>*</code>, <em>enumeration lists</em>, where each item starts with <code>o</code> and gets
 consqutive numbers,
@@ -403,8 +394,6 @@ The code above follows.
 <p>
 Here is a bullet list:
 
-<p>
-
 <ul>
  <li> item1</li>
  <li> item2</li>
@@ -419,8 +408,6 @@ Here is a bullet list:
 
 Note that sublists are indented.
 Here is an enumeration list:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -454,7 +441,6 @@ And finally a description list:
 
 <h2>Comment lines  <a name="___sec6"></a></h2>
 
-<p>
 Lines starting with <code>#</code> are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before LaTeX math
@@ -478,7 +464,6 @@ Doconce starts processing the file.
 
 <h2>Inline comments  <a name="___sec7"></a></h2>
 
-<p>
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax
@@ -519,7 +504,6 @@ removed from the Doconce source by
 
 <h2>Verbatim/Computer Code  <a name="___sec8"></a></h2>
 
-<p>
 Inline verbatim code is typeset within back-ticks, as in
 <!-- begin verbatim block -->
 <pre><code>Some sentence with `words in verbatim style`.
@@ -602,8 +586,6 @@ of the file (here from <code>name=</code> until the end of the file).
 <p>
 Important warnings:
 
-<p>
-
 <ul>
  <li> A code block must come after some plain sentence (at least for successful
    output in reStructredText), not directly after a section/paragraph heading,
@@ -615,7 +597,6 @@ Important warnings:
 
 <h2>LaTeX Mathematics  <a name="___sec9"></a></h2>
 
-<p>
 Doconce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
 pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
@@ -655,7 +636,6 @@ and
 <p>
 This LaTeX code gets rendered as
 
-<p>
 $$
 \begin{align*}
 \nabla\cdot \pmb{u} &= 0,\\ 
@@ -674,7 +654,6 @@ Here is a single equation:
 <!-- end verbatim block -->
 which results in
 
-<p>
 $$ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.$$
 
 
@@ -682,8 +661,6 @@ $$ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.$$
 Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pandoc</code>,
 <code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats
 is also important, one should follow these rules:
-
-<p>
 
 <ul>
   <li> Use only the equation environments <code>\[</code>, <code>\]</code>,
@@ -724,7 +701,6 @@ rendered nicely anyway.
 
 <h2>Hyperlinks  <a name="___sec10"></a></h2>
 
-<p>
 Links use either a link text or the raw URL:
 
 <p>
@@ -744,7 +720,6 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 
 <h2>Figures and Movies  <a name="___sec11"></a></h2>
 
-<p>
 Figures and movies have almost equal syntax:
 <!-- begin verbatim block -->
 <pre><code>FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
@@ -754,8 +729,6 @@ MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must 
 </code></pre>
 <!-- end verbatim block -->
 Note three important syntax details:
-
-<p>
 
 <ol>
  <li> A mandatory comma after the figure/movie filename,</li>
@@ -813,7 +786,6 @@ The latter results in
 
 <h2>Tables  <a name="___sec12"></a></h2>
 
-<p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
 syntax:
 <!-- begin verbatim block -->
@@ -831,8 +803,6 @@ syntax:
 
 <p>
 Note that
-
-<p>
 
 <ul>
  <li> Each line begins and ends with a vertical bar (pipe symbol).</li>
@@ -858,7 +828,6 @@ load tables into spreadsheet programs for further analysis.
 
 <h2>Labels and References  <a name="___sec13"></a></h2>
 
-<p>
 The notion of labels and references (as well as bibliography and index)
 is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
@@ -888,7 +857,6 @@ reference by parenthesis.
 
 <h2>Citations and Bibliography  <a name="___sec14"></a></h2>
 
-<p>
 Single citations are written as
 <!-- begin verbatim block -->
 <pre><code>cite{name}
@@ -916,7 +884,6 @@ than LaTeX).
 
 <h2>Generalized Citations  <a name="___sec15"></a></h2>
 
-<p>
 There is a <em>generalized referencing</em> feature in Doconce that allows
 a reference with <code>ref</code> to have one formulation if the label is
 in the same document and another formulation if the reference is
@@ -948,7 +915,6 @@ documents.  If none of the two situations above applies, the
 
 <h2>Index of Keywords  <a name="___sec16"></a></h2>
 
-<p>
 Doconce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
@@ -965,7 +931,6 @@ forthcoming text. The index is only produced for the <code>latex</code>,
 
 <h2>Capabilities of The Program <code>doconce</code>  <a name="___sec17"></a></h2>
 
-<p>
 The <code>doconce</code> program can be used for a number of purposes besides
 transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
@@ -1127,13 +1092,10 @@ doconce latex_exercise_toc myfile
 
 <h2>Exercises  <a name="___sec18"></a></h2>
 
-<p>
 Doconce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain <em>elements</em>:
-
-<p>
 
 <ul>
   <li> a headline at the level of a subsection
@@ -1245,12 +1207,9 @@ examples.
 
 <h2>Environments  <a name="___sec19"></a></h2>
 
-<p>
 Doconce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
 where <code>envirname</code> is the name of the environment. Here is a listing of
 the environments:
-
-<p>
 
 <ul>
  <li> <code>c</code>: computer code (or verbatim text)</li>
@@ -1268,7 +1227,6 @@ the environments:
 
 <h2>Preprocessing  <a name="___sec20"></a></h2>
 
-<p>
 Doconce documents may utilize a preprocessor, either <code>preprocess</code> and/or
 <code>mako</code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
@@ -1321,8 +1279,6 @@ some illustrations on how to utilize <code>mako</code> (clone the GitHub project
 examine the Doconce source and the <code>doc/src/make.sh</code> script).
 
 <h2>Resources  <a name="___sec21"></a></h2>
-
-<p>
 
 <ul>
  <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"</li>
