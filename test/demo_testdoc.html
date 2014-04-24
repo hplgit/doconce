@@ -248,11 +248,10 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Apr 22, 2014</h4></center> <!-- date -->
+<center><h4>Apr 24, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
-<p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
@@ -292,7 +291,7 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing inline comments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
-
+</p>
 <p>
 <!-- !split -->
 
@@ -315,10 +314,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
-<p>
 Here is a nested list:
-
-<p>
 
 <ul>
   <li> item1</li>
@@ -354,7 +350,6 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
-<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -369,7 +364,6 @@ The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a hre
 
 <h3>Computer code  <a name="___sec2"></a></h3>
 
-<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -674,7 +668,6 @@ the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec3"></a></h3>
 
-<p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
@@ -689,7 +682,6 @@ Python.
 </pre></div>
 </td></tr></table><h3>Footnotes  <a name="___sec4"></a></h3>
 
-<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
 in writing. This is the third [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>] example.
@@ -721,7 +713,6 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
-<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -773,7 +764,6 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
 
-<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -792,7 +782,6 @@ Newcommands must also be tested in this test report:
 \( \frac{1}{2} \), \( {1/2} \), \( \pmb{x} \), \( \frac{Du}{dt} \),
 both inline and in block:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -806,7 +795,6 @@ $$
 <p>
 Or with align with label and numbers:
 
-<p>
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
@@ -819,7 +807,6 @@ $$
 
 <h2>Custom Environments  <a name="___sec7"></a></h2>
 
-<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -847,7 +834,6 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
-<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -958,7 +944,6 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
 
-<p>
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
 some text.
@@ -975,7 +960,6 @@ a verbatim word starting with period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec10"></a></h2>
 
-<p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -1007,7 +991,6 @@ the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
-<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -1043,7 +1026,6 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
-<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -1095,7 +1077,6 @@ footnotes.
 
 <h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
 
-<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -1141,7 +1122,6 @@ between there we have <a href="#exer:some:formula">Exercise 8: Make references t
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
@@ -1157,11 +1137,8 @@ let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec16"></a></h3>
 
-<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
-
-<p>
 
 <ol>
 <li> Mark 1.</li>
@@ -1230,7 +1207,6 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2>Not an exercise  <a name="___sec17"></a></h2>
 
-<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -1239,7 +1215,6 @@ exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
-<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -1249,8 +1224,6 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 <p>
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -1277,10 +1250,8 @@ compute the probability as \( M/N \).
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
-<p>
 The formula for a circle is given by
 
-<p>
 $$
 \begin{align}
 x &= x_0 + R\cos 2\pi t,\\ 
@@ -1371,7 +1342,6 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec20"></a></h3>
 
-<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -1383,7 +1353,6 @@ and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
-<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -1393,8 +1362,6 @@ closing remarks to have text after subexercises.
 
 <p>
 Test list in exercise:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -1431,7 +1398,6 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math \( a=b \) in hint:
 
-<p>
 $$ a=b. $$
 
 And with code (in plain verbatim) returning \( x+1 \) in hint:
@@ -1455,8 +1421,6 @@ Second hint to subexercise a).
 
 <p>
 Test list in hint:
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -1482,7 +1446,6 @@ Here goes the text for subexercise b).
 <p>
 Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
-<p>
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
 
@@ -1510,7 +1473,6 @@ Here goes the solution of this subexercise.
 
 <h3>Remarks  <a name="___sec22"></a></h3>
 
-<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -1523,14 +1485,12 @@ remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
 
-<p>
 <!-- Another minimalistic exercise -->
 
 <p>
 Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
-<p>
 $$ \exp{(0)} = 1 $$
 
 
@@ -1554,7 +1514,6 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Example 7: Just an example  <a name="___sec24"></a></h2>
 
-<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -1571,17 +1530,14 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec25"></a></h1>
 
-<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec26"></a></h1>
 
-<p>
 <!-- --- begin exercise --- -->
 
 <h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
-<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -1589,8 +1545,6 @@ and verify it.
 <p>
 Test list at the end of an exercise without other elements (like subexercise,
 hint, etc.):
-
-<p>
 
 <ol>
 <li> item1</li>
@@ -1607,7 +1561,6 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
@@ -1618,7 +1571,6 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec29"></a></h1>
 
-<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -1732,37 +1684,30 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
-<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec31"></a></h2>
 
-<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
-<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
 
-<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-<p>
 With label.
 
 <h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
-<p>
 Without label.
 
 <p>
@@ -1852,7 +1797,6 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
 
-<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
@@ -1889,7 +1833,6 @@ and in-depth explanations of the concepts and tools.</em>]</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
 
-<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.

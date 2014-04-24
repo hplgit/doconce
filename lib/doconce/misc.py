@@ -1972,7 +1972,7 @@ def html_colorbullets():
             linel = line.lower()
             if '<ul>' in linel:
                 level += 1
-                line = '<table border="0">\n'
+                line = '<p><table border="0">\n'
             if '</ul>' in linel:
                 line = '</td></tr></table>\n'
                 level -= 1

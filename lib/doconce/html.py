@@ -1257,14 +1257,14 @@ def html_toc(sections):
     extended_sections = []  # extended list for toc in HTML file
     #hr = '<hr>'
     hr = ''
-    s = '<h2>Table of contents</h2>\n\n%s\n' % hr
+    s = '<h2>Table of contents</h2>\n\n%s\n<p>\n' % hr
     for i in range(len(sections)):
         title, level, label = sections[i]
         href = label if label is not None else '___sec%d' % i
         indent = '&nbsp; '*(3*(level - level_min))
         s += indent + '<a href="#%s">%s</a>' % (href, title ) + '<br>\n'
         extended_sections.append((title, level, label, href))
-    s += '%s\n<p>\n' % hr
+    s += '</p>%s\n<p>\n' % hr
 
     # Store for later use in navgation panels etc.
     global tocinfo
