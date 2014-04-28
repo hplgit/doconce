@@ -565,8 +565,9 @@ def doconce_exercise_output(exer,
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
         s += solution_header + '\n'
-        # Make sure we have a sentence after the heading
-        if re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
+        # Make sure we have a sentence after the heading if real heading
+        if solution_header.endswith('===') and \
+           re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
             print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
             s += 'Code:\n'
         s += exer['solution'] + '\n'
@@ -616,7 +617,8 @@ def doconce_exercise_output(exer,
                         s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
                     s += solution_header + '\n'
                     # Make sure we have a sentence after the heading
-                    if re.search(r'^\d+ %s' % _CODE_BLOCK,
+                    if solution_header.endswith('===') and \
+                       re.search(r'^\d+ %s' % _CODE_BLOCK,
                                  subex['solution'].lstrip()):
                         print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
                         s += 'Code:\n'

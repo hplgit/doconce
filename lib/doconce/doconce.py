@@ -2999,7 +2999,7 @@ def doconce2format(filestr, format):
             filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
 
 
-    debugpr('The file after removal of solutions, answers, notes, hints, etc.:', filestr)
+    debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
 
     # Check if we have wrong-spelled environments
     if not option('examples_as_exercises'):
@@ -3008,13 +3008,20 @@ def doconce2format(filestr, format):
         if m:
             # Found, but can be inside code block (should have |[be].+ then)
             # and hence not necessarily an error
-            print '*** error: could not translate environment: %s' % m.group(1)
+            envir = m.group(1)
+            print '*** error: could not translate environment: %s' % envir
+            if m.group(1)[2:] in ('sol', 'ans', 'hint', 'subex'):
+                print '    This is an environment in an exercise. Check if the'
+                print '    heading is correct so the subsection was recognized'
+                print '    as Exercise, Problem, or Project (Exercise: title).'
+            else:
+                print '    possible reasons:'
+                print '     * syntax error in environment name'
+                print '     * environment inside code: use | instead of !'
+                print '     * or bug in doconce'
+
             print '    context:\n'
             print filestr[m.start()-50:m.end()+50]
-            print '    possible reasons:'
-            print '     * syntax error in environment name'
-            print '     * environment inside code: use | instead of !'
-            print '     * or bug in doconce'
             _abort()
 
 
