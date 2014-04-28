@@ -1265,6 +1265,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # T: title (or give it as part of header !bmchoice title)
             # Q: can be multiline whatever (up to C(f|r):)
             # A: answer-type: default (none) means choices; text, radio, check
+            # Don't need this since multiple Cr means check
             # Cr: right choice
             # C: just a choice (for survey), check or radio according to A:
             # E: corresponding explanation to last C/Cr/Cw
@@ -2425,6 +2426,140 @@ def typeset_authors(filestr, format):
     return filestr
 
 
+def typeset_quizzes1(filestr):
+    """
+    Find all multiple choice questions in the string (file) filestr.
+    Return filestr with comment indications for various parts of
+    the quizzes.
+    """
+    pattern = '^!bquiz.+?^!equiz'
+    quiztexts = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    # Find the heading before each quiz
+    pieces = filestr.split('!bquiz')
+    headings = ['']*(len(quiztexts))
+    if len(pieces) == len(quiztexts) + 1:  # not any !bquiz inside text
+        for i, piece in enumerate(pieces):
+            for line in reversed(piece.splitlines()):
+                if line.startswith('====='):
+                    headings[i] = line
+                    break
+
+    quizzes = []
+    for text, heading in zip(quiztexts, headings):
+        new_text = interpret_quiz_text(text, heading)
+        quizzes.append(new_text)
+        filestr = filestr.replace(text, new_text)
+    return len(quiztexts), filestr
+
+def interpret_quiz_text(text, heading):
+    """
+    Replace quiz (in string text) with begin-end groups typeset as
+    comments. The optional new page and heading lines are replaced
+    by one-line comments.
+    The function extract_quizzes can recognize the output of the
+    present function, and create data structure with the quiz
+    content (after full rendering of the text).
+    """
+    data = {}
+    # New page? NP
+    pattern = r'^NP:(.+)'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        header = m.group(1).strip()
+        text = re.sub(pattern, '# --- new quiz page: ' + header, text,
+                      flags=re.MULTILNE)
+    # Heading?
+    pattern = r'^H:(.+)'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        heading = m.group(1).strip()
+        text = re.sub(pattern, '# --- quiz heading: ' + header, text,
+                      flags=re.MULTILNE)
+    pattern = r'(^Q:(.+?))(?=^C[rw]:)'
+    m = re.search(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    if m:
+        question = m.group(2).strip()
+        text = text.replace(m.group(1), """\
+# --- begin quiz question ---
+%s
+# --- end quiz question ---
+""" % question)
+    # Choices with/without explanations
+    pattern = r'^(C[rw]:(.+?))((^E:)?(.*))(?=(^C[rw]:|$)'
+    choices = re.findall(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    counter = 1
+    if choices:
+        for choice_text, choice, explanation_text, dummy, explanation \
+                in choices:
+            right = choice_text.startswith('Cr')  # right or wrong choice?
+            text = text.replace(choice_text, """\
+# --- begin quiz choice %d (%s) ---
+%s
+# --- end quiz choice ---
+""" % (counter, 'right' if right else 'wrong', choice))
+            if explanation:
+                # Choice has explanation
+                text = text.replace(explanation_text, """\
+# --- begin explanation of choice %d ---
+%s
+# --- end explanation of choice ---
+""" % (counter, 'right' if right else 'wrong', explanation))
+            counter += 1
+        text = re.sub('^!bquiz', '# --- begin quiz ---', text,
+                      flags=re.MULTILINE)
+        text = re.sub('^!equiz', '# --- end quiz ---', text,
+                      flags=re.MULTILINE)
+        return text
+
+_QUIZ_BLOCK = '<<<!!QUIZ_BLOCK'
+
+def extract_quizzes(filestr, format):
+    """
+    Replace quizzes, formatted as output from function interpret_quiz_text,
+    by a Python data structure and a special instruction where formatting
+    of this data structure is to be inserted.
+    """
+    from collections import OrderedDict
+    comment_pattern = INLINE_TAGS_SUBST[format].get('comment', '# %s')
+    pattern = '^' + comment_pattern % ' --- begin quiz ---' + '.+?' + \
+              comment_pattern % ' --- end quiz ---'
+    quizzes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    data = []
+    for i, quiz in enumerate(quizzes):
+        data.append(OrderedDict())
+        filestr = filestr.replace(quiz, '%d %s' % (i, _QUIZ_BLOCK))
+        # Extract data in quiz
+        pattern = '^' + comment_pattern % ' --- new quiz page: (.+)'
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['new page'] = m.group(1).strip()
+        pattern = '^' + comment_pattern % ' --- quiz heading: (.+)'
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['heading'] = m.group(1).strip()
+        pattern = '^' + comment_pattern % ' --- begin quiz choice (\d+) \((right|wrong)\) ---' + '(.+?)' + comment_pattern % ' --- end quiz question ---'
+        choices = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        data[-1]['choices'] = []
+        for i, right, choice in choices:
+            data[-1]['choices'].append((right, choice))
+        pattern = '^' + comment_pattern % ' --- begin explanation of choice (\d+) ---' + '(.+?)' + comment_pattern % ' --- end explanation of choice ---'
+        explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        for i_str, choice in explanations:
+            i = int(i_str)
+            data[-1]['choices'][i-1].append(explanations)
+        return data, filestr
+
+def typeset_quizzes2(filestr, format):
+    quizzes, filestr = extract_quizzes(filestr, format)
+    for i, quiz in enumerate(quizzes):
+        text = QUIZ[format](quiz)
+        filestr = filestr.replace('%d ' % i + _QUIZ_BLOCK, text)
+    import pprint
+    f = open('.%s.quiz' % dofile_basename, 'w')
+    f.write(pprint.pformat(quizzes))
+    f.close()
+    return filestr
+
 def inline_tag_subst(filestr, format):
     """Deal with all inline tags by substitution."""
     # Note that all tags are *substituted* so that the sequence of
@@ -2737,6 +2872,7 @@ def doconce2format(filestr, format):
             INDEX_BIB,
             TOC,
             ENVIRS,
+            QUIZ,[[[
             INTRO,
             OUTRO,
             filestr)
@@ -2757,6 +2893,12 @@ def doconce2format(filestr, format):
         if fname is not None:
             f = open(fname, 'w')
             f.write(filestr)
+
+    # Next step: first reformatting of quizzes
+    filestr, num_quizzes = typeset_quizzes1(filestr)
+    debugpr('The file after first reformatting of quizzes:', filestr)
+    if num_quizzes:
+        report_progress('handled first reformatting of quizzes')
 
     # Next step: run operating system commands and insert output
     filestr, num_commands = insert_os_commands(filestr, format)
@@ -3039,6 +3181,12 @@ def doconce2format(filestr, format):
         filestr = filestr.replace('|e' + envir, '!e' + envir)
 
     debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
+
+    # Second reformatting of quizzes
+    if num_quizzes:
+        filestr = typeset_quizzes2(filestr, format)
+        debugpr('The file after second reformatting of quizzes:', filestr)
+        report_progress('handled second reformatting of quizzes')
 
     cpu = time.time() - t0
     if cpu > 15:

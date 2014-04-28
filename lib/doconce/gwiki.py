@@ -178,6 +178,9 @@ def wiki_ref_and_label_common(section_label2title, format, filestr):
 def gwiki_ref_and_label(section_label2title, format, filestr):
     return wiki_ref_and_label_common(section_label2title, format, filestr)
 
+def gwiki_quiz(quiz):
+    return ''
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -191,6 +194,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -268,7 +272,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['gwiki'] = plain_exercise
     INDEX_BIB['gwiki'] = plain_index_bib
     TOC['gwiki'] = lambda s: '<wiki: toc max_depth="2" />'
-
+    QUIZ['gwiki'] = gwiki_quiz
     # document start:
     INTRO['gwiki'] = ''
     #INTRO['gwiki'] = '#summary YourOneLineSummary\n<wiki:toc max_depth="1" />\n'

@@ -437,6 +437,8 @@ def rst_notice(block, format, title='Notice', text_size='normal'):
     else:
         return rst_admon(block, format, title, text_size)
 
+def rst_quiz(quiz):
+    return ''
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -451,6 +453,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -538,6 +541,7 @@ def define(FILENAME_EXTENSION,
     TABLE['rst'] = rst_table
     EXERCISE['rst'] = plain_exercise
     TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
+    QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)

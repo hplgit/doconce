@@ -15,6 +15,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -73,4 +74,4 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['st'] = plain_index_bib
     EXERCISE['st'] = plain_exercise
     TOC['st'] = lambda s: ''  # drop
-
+    QUIZ['st'] = lambda dummy: ''

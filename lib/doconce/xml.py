@@ -528,6 +528,9 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 ''' % vars()
     exec(_text)
 
+def html_quiz(quiz):
+    return ''
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -541,6 +544,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -630,6 +634,7 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['html'] = html_index_bib
     EXERCISE['html'] = plain_exercise
     TOC['html'] = html_toc
+    QUIZ['html'] = html_quiz
 
     # Embedded style sheets
     style = option('html_style=')

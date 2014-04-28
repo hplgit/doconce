@@ -1272,6 +1272,9 @@ def html_toc(sections):
 
     return s
 
+def html_quiz(quiz):
+    return ''
+
 def html_box(block, format, text_size='normal'):
     """Add a HTML box with text, code, equations inside. Can have shadow."""
     # box_shadow is a global variable set in the top of the file
@@ -1440,6 +1443,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -1532,6 +1536,7 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['html'] = html_index_bib
     EXERCISE['html'] = plain_exercise
     TOC['html'] = html_toc
+    QUIZ['html'] = html_quiz
 
     # Embedded style sheets
     html_style = option('html_style=', '')

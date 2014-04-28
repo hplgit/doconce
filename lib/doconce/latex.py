@@ -1549,6 +1549,8 @@ def latex_inline_comment(m):
         return r'\longinlinecomment{%s}{ %s }{ %s }' % \
                (name, comment, caption_comment)
 
+def latex_quiz(quiz):
+    return ''
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -1563,6 +1565,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -1705,6 +1708,7 @@ def define(FILENAME_EXTENSION,
 \mainmatter
 """
     TOC['latex'] = lambda s: toc_part
+    QUIZ['latex'] = latex_quiz
 
     preamble = ''
     preamble_complete = False
