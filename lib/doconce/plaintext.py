@@ -130,6 +130,10 @@ def plain_box(text, title=''):
 
     return '\n' + '\n'.join(newlines) + '\n'
 
+def plain_quiz(quiz):
+    # Simple typesetting of a quiz
+    s = ''
+    return s
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -144,6 +148,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -224,4 +229,5 @@ def define(FILENAME_EXTENSION,
         'quote':     lambda block, format, title='none', text_size='normal':
            indent_lines(block, 'plain'),
         }
+    QUIZ['plain'] = plain_quiz
 

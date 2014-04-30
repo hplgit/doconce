@@ -35,7 +35,7 @@ def define(FILENAME_EXTENSION,
                      INDEX_BIB,
                      TOC,
                      ENVIRS,
-                     QUIZ
+                     QUIZ,
                      INTRO,
                      OUTRO,
                      filestr)

@@ -53,7 +53,6 @@
 {% endif %}
 {% endblock %}
 
-{# override upper relbar to show our navigation menu #}
 {% block relbar1 %}
 <div class="wrapper">
   <a href="http://fenicsproject.org/"><img src="{{ pathto('_static/%s.%s' % ('fenics_banner', 'png'), 1) }}" width="900px" alt="FEniCS Project Banner" /></a>
@@ -64,23 +63,7 @@
 </div><!-- #wrapper -->
 {% endblock %}
 
-{% block footer %}
-<div class="wrapper">
-  <div class="footer">
-    <div class="footer-nav">
-      <div class="span-6">
-      </div>
-      <div class="span-6">
-      </div>
-      <div class="span-6 last">
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock %}
 
-{# do not display lower relbar #}
-{% block relbar2 %}{% endblock %}
 
 {# do not display sidebars #}
 {% block sidebar1 %}{% endblock %}

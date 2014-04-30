@@ -146,6 +146,7 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     chapters = True if re.search(r'\\chapter\{', filestr) is not None else False
 
+    # Remove "Appendix: " from headings in appendices
     appendix_pattern = r'\\(chapter|section\*?)\{Appendix:\s+'
     filestr = re.sub(appendix_pattern,
                      '\n\n\\\\appendix\n\n' + r'\\\g<1>{', filestr,  # the first
@@ -281,8 +282,9 @@ def latex_code(filestr, code_blocks, code_block_types,
                         target, target + insert_listofexercises)
 
 
-    # Subexercise headings should utilize \subex{} and not \paragraph{}
+    # Subexercise headings should utilize \subex{} and not plain \paragraph{}
     subex_header_postfix = option('latex_subex_header_postfix=', ')')
+    # Default is a), b), but could be a:, b:, or a. b.
     filestr = re.sub(r'\\paragraph\{([a-z])\)\}',
                      r'\subex{\g<1>%s}' % subex_header_postfix,
                      filestr)
@@ -368,6 +370,9 @@ def latex_code(filestr, code_blocks, code_block_types,
         if '\\code{' in line:
             new_line = line.replace(r'\code{', r'\protect\code{')
             filestr = filestr.replace(line, new_line)
+
+    if option('latex_no_section_numbering'):
+        filestr = filestr.replace('section{', 'section*{')
 
     return filestr
 

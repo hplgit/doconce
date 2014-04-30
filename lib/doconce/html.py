@@ -270,7 +270,7 @@ def html_code(filestr, code_blocks, code_block_types,
                            m='matlab', pl='perl', rb='ruby',
                            swig='c++', latex='latex', tex='latex',
                            html='html', xml='xml',
-                           js='js',
+                           js='js', java='java',
                            #sys='console',
                            sys='text',
                            #sys='bash'
@@ -1273,7 +1273,40 @@ def html_toc(sections):
     return s
 
 def html_quiz(quiz):
-    return ''
+    html_style = option('html_style=', '')
+    text = ''
+    if 'new page' in quiz:
+        text += '<!-- !split -->\n'
+    text += '<p>\n<b>Question:</b> ' + quiz['question'] + '</p>\n'
+    # Better to use a table than a list, since code after <li> did not
+    # turn out well with bootstrap e.g.
+    for i, choice in enumerate(quiz['choices']):
+        choice_no = i+1
+        id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
+        if len(choice) == 2:
+            # No explanation
+            text += '\n<p><b>Choice %d:</b>\n%s\n</p>\n' % (choice_no, choice[1])
+        elif len(choice) == 3:
+            if not html_style[:5] in ('boots', 'vagra'):
+                text += '\n<p><b>Choice %d:</b>\n%s\n</p>\n' % (choice_no, choice[1])
+            else:
+                # Use a tooltip construction to lanuch the explanation
+                # Will only work if without code and math...
+                # No: use collapse functionality, see here: http://jsfiddle.net/8cYFj/
+                text += """
+<p><b>Choice %d:</b>
+%s
+<div class="collapse-group">
+<p class="collapse" id="%s">
+%s!<br>
+%s
+</p>
+<a class="btn showdetails" data-toggle="collapse" data-target="#%s" style="font-size: 80%%;">Info...</a>
+</div>
+</p>
+""" % (choice_no, choice[1], id, choice[0], choice[2], id)
+    text += '\n</table>\n\n'
+    return text
 
 def html_box(block, format, text_size='normal'):
     """Add a HTML box with text, code, equations inside. Can have shadow."""

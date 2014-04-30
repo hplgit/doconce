@@ -10,22 +10,33 @@ import re, sys, urllib, os
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
 _MATH_BLOCK = '<<<!!MATH_BLOCK'
 
+# Functions for creating and reading comment tags
+def begin_end_comment_tags(tag):
+    return '--- begin ' + tag + ' ---', '--- end ' + tag + ' ---'
+
+def comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % tag
+
+def begin_comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % (begin_end_comment_tags(tag)[0])
+
+def end_comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % (begin_end_comment_tags(tag)[1])
+
 # Comment lines used to identify parts that can later be removed.
 # The lines below are wrapped as comments.
 # Defined here once so different modules can utilize the same syntax.
 envir_delimiter_lines = {
     'sol':
-    ('--- begin solution of exercise ---',
-     '--- end solution of exercise ---'),
+    begin_end_comment_tags('solution of exercise'),
     'ans':
-    ('--- begin answer of exercise ---',
-     '--- end answer of exercise ---'),
+    begin_end_comment_tags('answer of exercise'),
     'hint':
-    ('--- begin hint in exercise ---',
-     '--- end hint in exercise ---'),
+    begin_end_comment_tags('hint in exercise'),
     'exercise':
-    ('--- begin exercise ---',
-     '--- end exercise ---'),
+    begin_end_comment_tags('exercise'),
+    'subex':
+    begin_end_comment_tags('subexercise'),
 }
 
 _counter_for_html_movie_player = 0
@@ -711,6 +722,7 @@ OUTRO = {}
 EXERCISE = {}
 TOC = {}
 ENVIRS = {}
+QUIZ = {}
 
 
 # regular expressions for inline tags:

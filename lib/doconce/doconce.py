@@ -42,6 +42,7 @@ def doconce_envirs():                     # begin-end environments
             'hint', 'remarks',            # exercises
             'quote', 'box',
             'notice', 'summary', 'warning', 'question', 'block', # admon
+            'quiz', # must be last
             ]
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
@@ -310,7 +311,7 @@ def syntax_check(filestr, format):
         _abort()
 
     for envir in doconce_envirs():
-        # Check that are environments !bc, !ec, !bans, !eans, etc.
+        # Check that environments !bc, !ec, !bans, !eans, etc.
         # appear at the very beginning of the line
         # (allow e.g. `!benvir argument` and comment lines)
         pattern = re.compile(r'^([^#\n].+?[^`\n]| +)(![eb]%s)' % envir, re.MULTILINE)
@@ -1661,8 +1662,9 @@ def typeset_tables(filestr, format):
 
 def typeset_envirs(filestr, format):
     # Note: exercises are done (and translated to doconce syntax)
-    # before this function is called
-    envirs = doconce_envirs()[8:]
+    # before this function is called. bt/bc are taken elsewhere.
+    # quiz is taken later
+    envirs = doconce_envirs()[8:-1]
 
     for envir in envirs:
         if not '!b' + envir in filestr:
@@ -2426,7 +2428,7 @@ def typeset_authors(filestr, format):
     return filestr
 
 
-def typeset_quizzes1(filestr):
+def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
     """
     Find all multiple choice questions in the string (file) filestr.
     Return filestr with comment indications for various parts of
@@ -2434,24 +2436,25 @@ def typeset_quizzes1(filestr):
     """
     pattern = '^!bquiz.+?^!equiz'
     quiztexts = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
-    # Find the heading before each quiz
-    pieces = filestr.split('!bquiz')
     headings = ['']*(len(quiztexts))
-    if len(pieces) == len(quiztexts) + 1:  # not any !bquiz inside text
-        for i, piece in enumerate(pieces):
-            for line in reversed(piece.splitlines()):
-                if line.startswith('====='):
-                    headings[i] = line
-                    break
-
+    if insert_missing_quiz_header:
+        # Find the heading before each quiz
+        pieces = filestr.split('!bquiz')
+        if len(pieces) == len(quiztexts) + 1:  # not any extra inline !bquiz word inside text, just !bquiz in quiz envirs
+            for i, piece in enumerate(pieces):
+                for line in reversed(piece.splitlines()):
+                    if line.startswith('====='):
+                        headings[i] = line
+                        break
     quizzes = []
     for text, heading in zip(quiztexts, headings):
-        new_text = interpret_quiz_text(text, heading)
+        new_text = interpret_quiz_text(
+            text, heading if insert_missing_quiz_header else None)
         quizzes.append(new_text)
         filestr = filestr.replace(text, new_text)
-    return len(quiztexts), filestr
+    return filestr, len(quiztexts)
 
-def interpret_quiz_text(text, heading):
+def interpret_quiz_text(text, previous_heading=None):
     """
     Replace quiz (in string text) with begin-end groups typeset as
     comments. The optional new page and heading lines are replaced
@@ -2460,56 +2463,77 @@ def interpret_quiz_text(text, heading):
     present function, and create data structure with the quiz
     content (after full rendering of the text).
     """
+    ct = comment_tag
+    bct = begin_comment_tag
+    ect = end_comment_tag
+
     data = {}
     # New page? NP
     pattern = r'^NP:(.+)'
     m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
         header = m.group(1).strip()
-        text = re.sub(pattern, '# --- new quiz page: ' + header, text,
-                      flags=re.MULTILNE)
+        text = re.sub(pattern, ct('--- new quiz page: ' + header), text,
+                      flags=re.MULTILINE)
     # Heading?
     pattern = r'^H:(.+)'
     m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
         heading = m.group(1).strip()
-        text = re.sub(pattern, '# --- quiz heading: ' + header, text,
-                      flags=re.MULTILNE)
+        text = re.sub(pattern, ct('--- quiz heading: ' + heading), text,
+                      flags=re.MULTILINE)
+        if isinstance(previous_heading, str) and not \
+               heading.lower() in previous_heading.lower():
+            # Quiz heading is missing and wanted
+            text = '===== Exercise: %s =====\n\n' % heading + text
+            # no label, file=, solution= are needed for quizes
+
+    def begin_end_tags(tag, content):
+        return """
+%s
+%s
+%s
+""" % (bct(tag), content, ect(tag))
+
+    # Question
     pattern = r'(^Q:(.+?))(?=^C[rw]:)'
     m = re.search(pattern, text, flags=re.MULTILINE|re.DOTALL)
     if m:
         question = m.group(2).strip()
-        text = text.replace(m.group(1), """\
-# --- begin quiz question ---
-%s
-# --- end quiz question ---
-""" % question)
-    # Choices with/without explanations
-    pattern = r'^(C[rw]:(.+?))((^E:)?(.*))(?=(^C[rw]:|$)'
+        text = text.replace(m.group(1), begin_end_tags('quiz question', question))
+    else:
+        print '*** error: found quiz without question!'
+        print text
+        _abort()
+
+    # Choices: grab choices + optional explanations first,
+    # then extract explanations.
+    # Need end-of-string marker, cannot use $ since we want ^ and
+    # re.MULTILINE ($ is then end of line)
+    text += '_EOS_'
+    pattern = r'^(C[rw]:(.+?))(?=(^C[rw]:|_EOS_|^!equiz))'
     choices = re.findall(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    text = text[:-5]  # remove _EOS_ marker
     counter = 1
     if choices:
-        for choice_text, choice, explanation_text, dummy, explanation \
-                in choices:
+        for choice_text, choice, _lookahead in choices:
             right = choice_text.startswith('Cr')  # right or wrong choice?
-            text = text.replace(choice_text, """\
-# --- begin quiz choice %d (%s) ---
-%s
-# --- end quiz choice ---
-""" % (counter, 'right' if right else 'wrong', choice))
-            if explanation:
-                # Choice has explanation
-                text = text.replace(explanation_text, """\
-# --- begin explanation of choice %d ---
-%s
-# --- end explanation of choice ---
-""" % (counter, 'right' if right else 'wrong', explanation))
+            explanation = ''
+            if re.search(r'^E:', choice, flags=re.MULTILINE):
+                choice, explanation = choice.split('E:')
+                text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()) + begin_end_tags('explanation of choice %d' % counter, explanation.strip()))
+            else:
+                text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()))
             counter += 1
-        text = re.sub('^!bquiz', '# --- begin quiz ---', text,
-                      flags=re.MULTILINE)
-        text = re.sub('^!equiz', '# --- end quiz ---', text,
-                      flags=re.MULTILINE)
-        return text
+    else:
+        print '*** error: found quiz without choices!'
+        print text
+        _abort()
+    text = re.sub('^!bquiz', bct('quiz'), text,
+                  flags=re.MULTILINE)
+    text = re.sub('^!equiz', ect('quiz'), text,
+                  flags=re.MULTILINE)
+    return text
 
 _QUIZ_BLOCK = '<<<!!QUIZ_BLOCK'
 
@@ -2520,43 +2544,54 @@ def extract_quizzes(filestr, format):
     of this data structure is to be inserted.
     """
     from collections import OrderedDict
-    comment_pattern = INLINE_TAGS_SUBST[format].get('comment', '# %s')
-    pattern = '^' + comment_pattern % ' --- begin quiz ---' + '.+?' + \
-              comment_pattern % ' --- end quiz ---'
+    ct = comment_tag
+    bct = begin_comment_tag
+    ect = end_comment_tag
+    cp = INLINE_TAGS_SUBST[format].get('comment', '# %s') # comment pattern
+    pattern = '^' + bct('quiz', cp) + '.+?' + ect('quiz', cp)
     quizzes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
     data = []
     for i, quiz in enumerate(quizzes):
         data.append(OrderedDict())
+        data[-1]['no'] = i+1
         filestr = filestr.replace(quiz, '%d %s' % (i, _QUIZ_BLOCK))
         # Extract data in quiz
-        pattern = '^' + comment_pattern % ' --- new quiz page: (.+)'
+        pattern = '^' + ct('--- new quiz page: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['new page'] = m.group(1).strip()
-        pattern = '^' + comment_pattern % ' --- quiz heading: (.+)'
+        pattern = '^' + ct('--- quiz heading: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['heading'] = m.group(1).strip()
-        pattern = '^' + comment_pattern % ' --- begin quiz choice (\d+) \((right|wrong)\) ---' + '(.+?)' + comment_pattern % ' --- end quiz question ---'
+        pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        if m:
+            data[-1]['question'] = m.group(1).strip()
+        pattern = '^' + bct('quiz choice (\d+) \((right|wrong)\)', cp) + '(.+?)' + ect('quiz choice .+?', cp)
         choices = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         data[-1]['choices'] = []
         for i, right, choice in choices:
-            data[-1]['choices'].append((right, choice))
-        pattern = '^' + comment_pattern % ' --- begin explanation of choice (\d+) ---' + '(.+?)' + comment_pattern % ' --- end explanation of choice ---'
+            data[-1]['choices'].append([right, choice.strip()])
+        pattern = '^' + bct('explanation of choice (\d+)', cp) + '(.+?)' + ect('explanation of choice \d+', cp)
         explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
-        for i_str, choice in explanations:
+        for i_str, explanation in explanations:
             i = int(i_str)
-            data[-1]['choices'][i-1].append(explanations)
-        return data, filestr
+            data[-1]['choices'][i-1].append(explanation.strip())
+    return data, quizzes, filestr
 
 def typeset_quizzes2(filestr, format):
-    quizzes, filestr = extract_quizzes(filestr, format)
+    quizzes, html_quizzes, filestr = extract_quizzes(filestr, format)
     for i, quiz in enumerate(quizzes):
         text = QUIZ[format](quiz)
         filestr = filestr.replace('%d ' % i + _QUIZ_BLOCK, text)
     import pprint
     f = open('.%s.quiz' % dofile_basename, 'w')
-    f.write(pprint.pformat(quizzes))
+    f.write(pprint.pformat([dict(quiz) for quiz in quizzes]))
+    f.close()
+    f = open('.%s.quiz.html' % dofile_basename, 'w')
+    for quiz in html_quizzes:
+        f.write(quiz + '\n\n')
     f.close()
     return filestr
 
@@ -2872,7 +2907,7 @@ def doconce2format(filestr, format):
             INDEX_BIB,
             TOC,
             ENVIRS,
-            QUIZ,[[[
+            QUIZ,
             INTRO,
             OUTRO,
             filestr)
@@ -2895,7 +2930,8 @@ def doconce2format(filestr, format):
             f.write(filestr)
 
     # Next step: first reformatting of quizzes
-    filestr, num_quizzes = typeset_quizzes1(filestr)
+    filestr, num_quizzes = typeset_quizzes1(
+        filestr, insert_missing_quiz_header=False)
     debugpr('The file after first reformatting of quizzes:', filestr)
     if num_quizzes:
         report_progress('handled first reformatting of quizzes')

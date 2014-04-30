@@ -76,37 +76,27 @@ div.body {
 }
 
 div.footer {
-    color: #aaa;
+    color: {{ theme_footertextcolor }};
+    background-color: {{ theme_footerbgcolor }};
     width: 100%;
-    padding: 13px 0;
+    padding: 9px 0 9px 0;
     text-align: center;
-    font-size: 13px;
-    background: #000;
-    clear:both;
+    font-size: 75%;
 }
 
 div.footer a {
-    color: #aaa;
-    text-decoration: none;
-}
-
-div.footer a:hover {
-    color: #fff;
+    color: {{ theme_footertextcolor }};
+    text-decoration: underline;
 }
 
 div.related {
+    background-color: {{ theme_relbarbgcolor }};
     line-height: 30px;
-    color: #373839;
-    font-size: 12px;
-    background-color: #eee;
+    color: {{ theme_relbartextcolor }};
 }
 
 div.related a {
-    color: #1b61d6;
-}
-
-div.related ul {
-	padding-left: 240px;
+    color: {{ theme_relbarlinkcolor }};
 }
 
 /* -- sidebars -------------------------------------------------------------- */

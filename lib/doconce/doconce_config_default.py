@@ -47,6 +47,7 @@ html_links_in_new_window = False
 #latex_style = 
 #latex_font = 
 #latex_bibstyle = 
+latex_no_section_numbering = False
 #latex_table_align = 
 #latex_title_layout = 
 #latex_papersize = 
