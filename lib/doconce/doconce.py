@@ -2942,8 +2942,8 @@ def doconce2format(filestr, format):
     # Next step: first reformatting of quizzes
     filestr, num_quizzes = typeset_quizzes1(
         filestr, insert_missing_quiz_header=False)
-    debugpr('The file after first reformatting of quizzes:', filestr)
     if num_quizzes:
+        debugpr('The file after first reformatting of quizzes:', filestr)
         report_progress('handled first reformatting of quizzes')
 
     # Next step: run operating system commands and insert output
@@ -3222,11 +3222,12 @@ def doconce2format(filestr, format):
     # by ! (for illustration of doconce syntax inside !bc/!ec directives).
     # Enough to consider |bc, |ec, |bt, and |et since all other environments
     # are processed when code and tex blocks are removed from the document.
-    for envir in doconce_envirs():
-        filestr = filestr.replace('|b' + envir, '!b' + envir)
-        filestr = filestr.replace('|e' + envir, '!e' + envir)
+    if '|b' in filestr or '|e' in filestr:
+        for envir in doconce_envirs():
+            filestr = filestr.replace('|b' + envir, '!b' + envir)
+            filestr = filestr.replace('|e' + envir, '!e' + envir)
 
-    debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
+        debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
 
     # Second reformatting of quizzes
     if num_quizzes:

@@ -1031,6 +1031,55 @@ lambda x: x+2
 # Have some comments at the end of the exercise to see that
 # the Filename: ... is written correctly.
 
+
+===== Exercise: Solution of differential equation =====
+label{sec:this:exer:de}
+
+
+!bquiz
+H: SOlution of differential equation
+
+Q: Given
+
+!bt
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+!et
+What is the solution of this equation?
+
+Cr: $y=e^{-y}$
+
+Cw: $y=e^{y}$
+E: Almost, but the sign is wrong (note the minus!).
+
+Cw:
+!bc pycod
+from math import exp
+def f(x):
+    return exp(x)
+!ec
+
+E: Ooops, forgot a minus: `exp(-x)`, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+!bt
+\[ y(x) = e^{-y}.\]
+!et
+
+Cw: The solution cannot be found because there is a derivative in the equation.
+E: Equations with derivatives can be solved;
+they are termed *differential
+equations*.
+
+Cw: The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+E: Equations where the unknown is a function, as $y(x)$
+here, are called *differential equations*, and are solved by
+special techniques.
+!equiz
+
+
 ===== Example: Just an example =====
 
 # This example needs the --examples_as_exercises option, otherwise
@@ -1110,7 +1159,21 @@ With label.
 ===== Appendix: Testing identical titles =====
 label{test:title:id2}
 
-With label.
+What about inserting a quiz?
+
+!bquiz
+NP: Test of quizzes
+H: Capital of Norway
+
+Q: What is the capital of Norway?
+Cw: Stockholm
+E: Stockholm is the capital of Sweden.
+Cw: London
+Cr: Oslo
+Cw: Bergen
+E: Those from Bergen would claim so, but nobody else.
+!equiz
+
 
 ===== Appendix: Testing identical titles =====
 
@@ -1370,22 +1433,26 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -1394,12 +1461,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -1521,21 +1588,22 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec24"> Example 7: Just an example </a><br>
-<a href="._testdoc002.html#___sec25"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec26"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec29"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec25"> Example 8: Just an example </a><br>
+<a href="._testdoc002.html#___sec26"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
+<a href="._testdoc002.html#___sec30"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec37"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec38"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -2724,7 +2792,6 @@ head, otherwise tail. Repeat this $N$ number of times.
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-Code:
 \bpycod
 import sys, random
 N = int(sys.argv[1])
@@ -3031,6 +3098,22 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
+\subsection*{Exercise \thedoconceexercisecounter: Solution of differential equation}
+
+\label{sec:this:exer:de}
+
+
+% --- end explanation of choice 5 ---
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
 \subsection*{Example \thedoconceexercisecounter: Just an example}
 
 
@@ -3141,7 +3224,10 @@ With label.
 \subsection{Appendix: Testing identical titles}
 \label{test:title:id2}
 
-With label.
+What about inserting a quiz?
+
+
+
 
 \subsection{Appendix: Testing identical titles}
 
@@ -4546,7 +4632,6 @@ head, otherwise tail. Repeat this $N$ number of times.
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-Code:
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import sys, random
 N = int(sys.argv[1])
@@ -4866,6 +4951,23 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
+\subsection*{Exercise \thedoconceexercisecounter: Solution of differential equation}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Solution of differential equation}
+
+\label{sec:this:exer:de}
+
+
+% --- end explanation of choice 5 ---
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
 \subsection*{Example \thedoconceexercisecounter: Just an example}
 \addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Just an example}
 
@@ -4979,7 +5081,10 @@ With label.
 \subsection{Appendix: Testing identical titles}
 \label{test:title:id2}
 
-With label.
+What about inserting a quiz?
+
+
+
 
 \subsection{Appendix: Testing identical titles}
 
@@ -5113,12 +5218,12 @@ in a separate document: \texttt{admon.do.txt}.
 ************** File: testdoc.tex_doconce_ptex2tex *****************
 \bsys (!bc sys) -> begin{quote}begin{Verbatim}
 \bpypro (!bc pypro) -> \begin{python:nt}
-\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
 \bcycod (!bc cycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
 \bfcod (!bc fcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
 \bfpro (!bc fpro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
 \bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 \bhtmlcod (!bc htmlcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
 \bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -6354,7 +6459,6 @@ head, otherwise tail. Repeat this $N$ number of times.
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-Code:
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import sys, random
 N = int(sys.argv[1])
@@ -6666,6 +6770,23 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
+\subsection*{Exercise \thedoconceexercisecounter: Solution of differential equation}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Solution of differential equation}
+
+\label{sec:this:exer:de}
+
+
+% --- end explanation of choice 5 ---
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
 \subsection*{Example \thedoconceexercisecounter: Just an example}
 \addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Just an example}
 
@@ -6779,7 +6900,10 @@ With label.
 \subsection{Appendix: Testing identical titles}
 \label{test:title:id2}
 
-With label.
+What about inserting a quiz?
+
+
+
 
 \subsection{Appendix: Testing identical titles}
 
@@ -7007,7 +7131,7 @@ Subsection 1
 More text, with a reference back to
 the section `Section 1`_ and `Subsection 1`_, and further to the
 the sections `Subsection 1`_ and `URLs`_, which
-encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 8: Make references to projects and problems`_.
+encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 9: Make references to projects and problems`_.
 Appendices     `Appendix: Just for testing; part I`_ and `Appendix: Just for testing; part II`_ are also nice elements.
 
 
@@ -7665,8 +7789,8 @@ Here is a system without equation numbers, using the align-astrisk environment::
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have `Problem 2: Flip a Coin`_ and `Project 3: Compute a Probability`_,
-as well as `Project 4: Explore Distributions of Random Circles`_ and `Project 9: References in a headings do not work well in rst`_, and in
-between there we have `Exercise 8: Make references to projects and problems`_.
+as well as `Project 4: Explore Distributions of Random Circles`_ and `Project 10: References in a headings do not work well in rst`_, and in
+between there we have `Exercise 9: Make references to projects and problems`_.
 
 
 Exercises
@@ -7731,8 +7855,7 @@ head, otherwise tail. Repeat this N number of times.
 
 .. --- begin solution of exercise ---
 
-**Solution.**
-Code::
+**Solution.**::
 
 
         import sys, random
@@ -8052,7 +8175,22 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
 
 .. --- begin exercise ---
 
-Example 7: Just an example
+.. _sec:this:exer:de:
+
+Exercise 7: Solution of differential equation
+---------------------------------------------
+
+
+.. --- end explanation of choice 5 ---
+
+.. --- end exercise ---
+
+
+
+
+.. --- begin exercise ---
+
+Example 8: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -8084,7 +8222,7 @@ More Exercises
 
 .. _exer:some:formula:
 
-Exercise 8: Make references to projects and problems
+Exercise 9: Make references to projects and problems
 ----------------------------------------------------
 
 .. Test comments not at the end only
@@ -8110,12 +8248,12 @@ Filename: ``verify_formula.py``.
 
 .. _exer:you:
 
-Project 9: References in a headings do not work well in rst
------------------------------------------------------------
+Project 10: References in a headings do not work well in rst
+------------------------------------------------------------
 
-Refer to the previous exercise as `Exercise 8: Make references to projects and problems`_,
+Refer to the previous exercise as `Exercise 9: Make references to projects and problems`_,
 the two before that as `Project 3: Compute a Probability`_ and `Project 4: Explore Distributions of Random Circles`_,
-and this one as `Project 9: References in a headings do not work well in rst`_.
+and this one as `Project 10: References in a headings do not work well in rst`_.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
@@ -8290,7 +8428,10 @@ With label.
 Appendix: Testing identical titles  (3)
 ---------------------------------------
 
-With label.
+What about inserting a quiz?
+
+
+
 
 Appendix: Testing identical titles  (4)
 ---------------------------------------
@@ -9322,7 +9463,6 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 .. --- begin solution of exercise ---
 
 **Solution.**
-Code:
 
 .. code-block:: python
 
@@ -9668,7 +9808,22 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 .. --- begin exercise ---
 
-Example 7: Just an example
+.. _sec:this:exer:de:
+
+Exercise 7: Solution of differential equation
+---------------------------------------------
+
+
+.. --- end explanation of choice 5 ---
+
+.. --- end exercise ---
+
+
+
+
+.. --- begin exercise ---
+
+Example 8: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -9700,7 +9855,7 @@ More Exercises
 
 .. _exer:some:formula:
 
-Exercise 8: Make references to projects and problems
+Exercise 9: Make references to projects and problems
 ----------------------------------------------------
 
 .. Test comments not at the end only
@@ -9726,8 +9881,8 @@ Filename: ``verify_formula.py``.
 
 .. _exer:you:
 
-Project 9: References in a headings do not work well in sphinx
---------------------------------------------------------------
+Project 10: References in a headings do not work well in sphinx
+---------------------------------------------------------------
 
 Refer to the previous exercise as :ref:`exer:some:formula`,
 the two before that as :ref:`demo:ex:2` and :ref:`proj:circle1`,
@@ -9906,7 +10061,10 @@ With label.
 Appendix: Testing identical titles  (3)
 ---------------------------------------
 
-With label.
+What about inserting a quiz?
+
+
+
 
 Appendix: Testing identical titles  (4)
 ---------------------------------------
@@ -10102,7 +10260,7 @@ Here is a reference to Equation (my:eq1).
 More text, with a reference back to
 the section [#Section_1] and [#Subsection_1], and further to the
 the sections [#Subsection_1] and [#URLs], which
-encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_8:_Make_references_to_projects_and_problems].
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
 
@@ -10338,7 +10496,7 @@ syntax, just displayed properly in HTML.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-*Non-breaking space character.* 
+*Non-breaking space character.*\g<space>
 This paragraph aims to test [http://en.wikipedia.org/wiki/Non-breaking_space non-breaking space character], and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in `7.4/5.5\approx 1.345` s.  Also check that a~[http://google.com link]~is
@@ -10434,7 +10592,8 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 
-*Remark.* Movies are tested in separate file `movies.do.txt`.
+*Remark.*
+Movies are tested in separate file `movies.do.txt`.
 
 
 <wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
@@ -10489,11 +10648,13 @@ Should look nice in most formats!
 
 
 
-*Theorem 5.* Let `a=1` and `b=2`. Then `c=3`.
+*Theorem 5.*
+Let `a=1` and `b=2`. Then `c=3`.
 <wiki:comment> end theorem </wiki:comment>
 
 <wiki:comment> begin proof </wiki:comment>
-*Proof.* Since `c=a+b`, the result follows from straightforward addition.
+*Proof.*
+Since `c=a+b`, the result follows from straightforward addition.
 `END`
 <wiki:comment> end proof </wiki:comment>
 
@@ -10633,17 +10794,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+*a)*
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+*Solution.*
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+*b)*
+State some other problem.
 
-*Hint 1.* A hint can be given.
+*Hint 1.*
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+*Hint 2.*
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+*Solution.*
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -10723,8 +10890,8 @@ b &= \nabla^2 u + \nabla^4 v
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
-as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki], and in
-between there we have [#Exercise_8:_Make_references_to_projects_and_problems].
+as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki], and in
+between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
 
 
 == Exercises ==
@@ -10758,27 +10925,30 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.
+*Hint 1.*
+Use `r = random.random()` and define head as `r <= 0.5`.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint 2.* Draw an integer among `\{1,2\}` with
+*Hint 2.*
+Draw an integer among `\{1,2\}` with
 `r = random.randint(1,2)` and define head when `r` is 1.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-*Answer.* If the `random.random()` function returns a number `<1/2`, let it be
+*Answer.*
+If the `random.random()` function returns a number `<1/2`, let it be
 head, otherwise tail. Repeat this `N` number of times.
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-*Solution.* Code:
+*Solution.*
 {{{
 import sys, random
 N = int(sys.argv[1])
@@ -10824,7 +10994,8 @@ in previous Doconce versions:
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint.* To answer this question empirically, let a program
+*Hint.*
+To answer this question empirically, let a program
 draw `N` such random numbers using Python's standard `random` module,
 count how many of them, `M`, that fall in the interval `(0.5,0.6)`, and
 compute the probability as `M/N`.
@@ -10873,31 +11044,37 @@ center and radius. Plot each circle using the `circle` function
 above.
 
 
-*a)* Let `R` be normally distributed and `(x_0,y_0)` uniformly distributed.
+*a)*
+Let `R` be normally distributed and `(x_0,y_0)` uniformly distributed.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint.* Use the `numpy.random` module to draw the
+*Hint.*
+Use the `numpy.random` module to draw the
 `x_0`, `y_0`, and `R` quantities.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-*Answer.* Here goes the short answer to part a).
+*Answer.*
+Here goes the short answer to part a).
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-*Solution.* Here goes a full solution to part a).
+*Solution.*
+Here goes a full solution to part a).
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
-*b)* Let `R` be uniformly distributed and `(x_0,y_0)` normally distributed.
+*b)*
+Let `R` be uniformly distributed and `(x_0,y_0)` normally distributed.
 Filename: `norm.py`.
 
-*c)* Let `R` and `(x_0,y_0)` be normally distributed.
+*c)*
+Let `R` and `(x_0,y_0)` be normally distributed.
 
 Filename: `circles.pdf`.
 
@@ -10935,7 +11112,8 @@ Test list in exercise:
 # item2
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-*Solution.* Here goes a full solution of the whole exercise.
+*Solution.*
+Here goes a full solution of the whole exercise.
 With some math `a=b` in this solution:
 {{{
 \[ \hbox{math in solution: } a = b \]
@@ -10949,11 +11127,13 @@ End of solution is here.
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 
-*a)* Subexercises are numbered a), b), etc.
+*a)*
+Subexercises are numbered a), b), etc.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint 1.* First hint to subexercise a).
+*Hint 1.*
+First hint to subexercise a).
 With math `a=b` in hint:
 
 {{{
@@ -10970,7 +11150,8 @@ def func(x):
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint 2.* Second hint to subexercise a).
+*Hint 2.*
+Second hint to subexercise a).
 
 Test list in hint:
 
@@ -10983,12 +11164,14 @@ Filename: `subexer_a.pdf`.
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-*Answer.* Short answer to subexercise a).
+*Answer.*
+Short answer to subexercise a).
 With math in answer: `a=b`.
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
-*b)* Here goes the text for subexercise b).
+*b)*
+Here goes the text for subexercise b).
 
 
 Some math `\cos^2 x + \sin^2 x = 1` written one a single line:
@@ -10999,14 +11182,16 @@ Some math `\cos^2 x + \sin^2 x = 1` written one a single line:
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint.* A hint for this subexercise.
+*Hint.*
+A hint for this subexercise.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: `subexer_b.pdf`.
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-*Solution.* Here goes the solution of this subexercise.
+*Solution.*
+Here goes the solution of this subexercise.
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
@@ -11053,15 +11238,28 @@ lambda x: x+2
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Example 7: Just an example ====
+==== Exercise 7: Solution of differential equation ====
+
+
+<wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
+<wiki:comment> --- end exercise --- </wiki:comment>
+
+
+
+
+<wiki:comment> --- begin exercise --- </wiki:comment>
+
+==== Example 8: Just an example ====
 
 <wiki:comment> This example needs the --examples_as_exercises option, otherwise </wiki:comment>
 <wiki:comment> it is just typeset as it is written. </wiki:comment>
 
 
-*a)* What is the capital of Norway?
+*a)*
+What is the capital of Norway?
 
-*Answer.* Oslo.
+*Answer.*
+Oslo.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -11076,7 +11274,7 @@ With some text, before we continue with exercises.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Exercise 8: Make references to projects and problems ====
+==== Exercise 9: Make references to projects and problems ====
 
 <wiki:comment> Test comments not at the end only </wiki:comment>
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
@@ -11098,11 +11296,11 @@ Filename: `verify_formula.py`.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Project 9: References to [#Project_3:_Compute_a_Probability] in a heading works for gwiki ====
+==== Project 10: References to [#Project_3:_Compute_a_Probability] in a heading works for gwiki ====
 
-Refer to the previous exercise as [#Exercise_8:_Make_references_to_projects_and_problems],
+Refer to the previous exercise as [#Exercise_9:_Make_references_to_projects_and_problems],
 the two before that as [#Project_3:_Compute_a_Probability] and [#Project_4:_Explore_Distributions_of_Random_Circles],
-and this one as [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki].
+and this one as [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki].
 Filename: `selc_composed.pdf`.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -11157,13 +11355,16 @@ With label.
 
 ==== Appendix: Testing identical titles ====
 
-With label.
+What about inserting a quiz?
+
+
+
 
 ==== Appendix: Testing identical titles ====
 
 Without label.
 
-*Tip.* 
+*Tip.*\g<space>
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -11182,7 +11383,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/ Script for Introduction to Version Control] provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.* 
+*Summary.*\g<space>
 *Bold remark:* Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -11353,7 +11554,7 @@ Here is a reference to Equation (my:eq1).
 More text, with a reference back to
 the section [#Section_1] and [#Subsection_1], and further to the
 the sections [#Subsection_1] and [#URLs], which
-encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_8:_Make_references_to_projects_and_problems].
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
 
@@ -11957,8 +12158,8 @@ b &= \nabla^2 u + \nabla^4 v
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
-as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki], and in
-between there we have [#Exercise_8:_Make_references_to_projects_and_problems].
+as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki], and in
+between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
 
 
 == Exercises ==
@@ -12018,7 +12219,6 @@ head, otherwise tail. Repeat this <math>N</math> number of times.
 
 <!-- --- begin solution of exercise --- -->
 ''Solution.''
-Code:
 <syntaxhighlight lang="python">
 import sys, random
 N = int(sys.argv[1])
@@ -12314,7 +12514,18 @@ lambda x: x+2
 
 <!-- --- begin exercise --- -->
 
-==== Example 7: Just an example ====
+==== Exercise 7: Solution of differential equation ====
+
+Cannot typeset quiz SOlution of differential equation
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+==== Example 8: Just an example ====
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -12339,7 +12550,7 @@ With some text, before we continue with exercises.
 
 <!-- --- begin exercise --- -->
 
-==== Exercise 8: Make references to projects and problems ====
+==== Exercise 9: Make references to projects and problems ====
 
 <!-- Test comments not at the end only -->
 Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
@@ -12363,11 +12574,11 @@ Filename: <code>verify_formula.py</code>.
 
 <!-- --- begin exercise --- -->
 
-==== Project 9: References to [#Project_3:_Compute_a_Probability] in a heading works for mwiki ====
+==== Project 10: References to [#Project_3:_Compute_a_Probability] in a heading works for mwiki ====
 
-Refer to the previous exercise as [#Exercise_8:_Make_references_to_projects_and_problems],
+Refer to the previous exercise as [#Exercise_9:_Make_references_to_projects_and_problems],
 the two before that as [#Project_3:_Compute_a_Probability] and [#Project_4:_Explore_Distributions_of_Random_Circles],
-and this one as [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki].
+and this one as [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki].
 Filename: <code>selc_composed.pdf</code>.
 
 <!-- --- end exercise --- -->
@@ -12508,7 +12719,10 @@ With label.
 
 ==== Appendix: Testing identical titles ====
 
-With label.
+What about inserting a quiz?
+
+Cannot typeset quiz Capital of Norway
+
 
 ==== Appendix: Testing identical titles ====
 
@@ -12706,7 +12920,7 @@ Here is a reference to Equation (my:eq1).
 More text, with a reference back to
 the section [#Section_1] and [#Subsection_1], and further to the
 the sections [#Subsection_1] and [#URLs], which
-encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_8:_Make_references_to_projects_and_problems].
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
 
@@ -12939,7 +13153,7 @@ syntax, just displayed properly in HTML.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-//Non-breaking space character.// 
+//Non-breaking space character.//\g<space>
 This paragraph aims to test [[http://en.wikipedia.org/wiki/Non-breaking_space|non-breaking space character]], and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in {{{7.4/5.5\approx 1.345}}} s.  Also check that a~[[http://google.com|link]]~is
@@ -12980,7 +13194,8 @@ Test URL as figure name:
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 
-//Remark.// Movies are tested in separate file {{{movies.do.txt}}}.
+//Remark.//
+Movies are tested in separate file {{{movies.do.txt}}}.
 
 
 <wiki:comment> Somewhat challenging heading with latex math, \t, \n, ? and parenthesis </wiki:comment>
@@ -13036,11 +13251,13 @@ Should look nice in most formats!
 
 
 
-//Theorem 5.// Let {{{a=1}}} and {{{b=2}}}. Then {{{c=3}}}.
+//Theorem 5.//
+Let {{{a=1}}} and {{{b=2}}}. Then {{{c=3}}}.
 <wiki:comment> end theorem </wiki:comment>
 
 <wiki:comment> begin proof </wiki:comment>
-//Proof.// Since {{{c=a+b}}}, the result follows from straightforward addition.
+//Proof.//
+Since {{{c=a+b}}}, the result follows from straightforward addition.
 END
 <wiki:comment> end proof </wiki:comment>
 
@@ -13184,17 +13401,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-//a)// State some problem.
+//a)//
+State some problem.
 
-//Solution.// The answer to this subproblem can be written here.
+//Solution.//
+The answer to this subproblem can be written here.
 
-//b)// State some other problem.
+//b)//
+State some other problem.
 
-//Hint 1.// A hint can be given.
+//Hint 1.//
+A hint can be given.
 
-//Hint 2.// Maybe even another hint?
+//Hint 2.//
+Maybe even another hint?
 
-//Solution.// The answer to this other subproblem goes here,
+//Solution.//
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -13275,8 +13498,8 @@ b &= \nabla^2 u + \nabla^4 v
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
-as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki], and in
-between there we have [#Exercise_8:_Make_references_to_projects_and_problems].
+as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki], and in
+between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
 
 
 = Exercises =
@@ -13310,27 +13533,30 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint 1.// Use {{{r = random.random()}}} and define head as {{{r <= 0.5}}}.
+//Hint 1.//
+Use {{{r = random.random()}}} and define head as {{{r <= 0.5}}}.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint 2.// Draw an integer among {{{\{1,2\}}}} with
+//Hint 2.//
+Draw an integer among {{{\{1,2\}}}} with
 {{{r = random.randint(1,2)}}} and define head when {{{r}}} is 1.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-//Answer.// If the {{{random.random()}}} function returns a number {{{<1/2}}}, let it be
+//Answer.//
+If the {{{random.random()}}} function returns a number {{{<1/2}}}, let it be
 head, otherwise tail. Repeat this {{{N}}} number of times.
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-//Solution.// Code:
+//Solution.//
 {{{
 import sys, random
 N = int(sys.argv[1])
@@ -13377,7 +13603,8 @@ in previous Doconce versions:
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint.// To answer this question empirically, let a program
+//Hint.//
+To answer this question empirically, let a program
 draw {{{N}}} such random numbers using Python's standard {{{random}}} module,
 count how many of them, {{{M}}}, that fall in the interval {{{(0.5,0.6)}}}, and
 compute the probability as {{{M/N}}}.
@@ -13427,31 +13654,37 @@ center and radius. Plot each circle using the {{{circle}}} function
 above.
 
 
-//a)// Let {{{R}}} be normally distributed and {{{(x_0,y_0)}}} uniformly distributed.
+//a)//
+Let {{{R}}} be normally distributed and {{{(x_0,y_0)}}} uniformly distributed.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint.// Use the {{{numpy.random}}} module to draw the
+//Hint.//
+Use the {{{numpy.random}}} module to draw the
 {{{x_0}}}, {{{y_0}}}, and {{{R}}} quantities.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-//Answer.// Here goes the short answer to part a).
+//Answer.//
+Here goes the short answer to part a).
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-//Solution.// Here goes a full solution to part a).
+//Solution.//
+Here goes a full solution to part a).
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
-//b)// Let {{{R}}} be uniformly distributed and {{{(x_0,y_0)}}} normally distributed.
+//b)//
+Let {{{R}}} be uniformly distributed and {{{(x_0,y_0)}}} normally distributed.
 Filename: {{{norm.py}}}.
 
-//c)// Let {{{R}}} and {{{(x_0,y_0)}}} be normally distributed.
+//c)//
+Let {{{R}}} and {{{(x_0,y_0)}}} be normally distributed.
 
 Filename: {{{circles.pdf}}}.
 
@@ -13490,7 +13723,8 @@ Test list in exercise:
 # item2
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-//Solution.// Here goes a full solution of the whole exercise.
+//Solution.//
+Here goes a full solution of the whole exercise.
 With some math {{{a=b}}} in this solution:
 {{{
 \[ \hbox{math in solution: } a = b \]
@@ -13504,11 +13738,13 @@ End of solution is here.
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 
-//a)// Subexercises are numbered a), b), etc.
+//a)//
+Subexercises are numbered a), b), etc.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint 1.// First hint to subexercise a).
+//Hint 1.//
+First hint to subexercise a).
 With math {{{a=b}}} in hint:
 
 {{{
@@ -13525,7 +13761,8 @@ def func(x):
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint 2.// Second hint to subexercise a).
+//Hint 2.//
+Second hint to subexercise a).
 
 Test list in hint:
 
@@ -13538,12 +13775,14 @@ Filename: {{{subexer_a.pdf}}}.
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-//Answer.// Short answer to subexercise a).
+//Answer.//
+Short answer to subexercise a).
 With math in answer: {{{a=b}}}.
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
-//b)// Here goes the text for subexercise b).
+//b)//
+Here goes the text for subexercise b).
 
 
 Some math {{{\cos^2 x + \sin^2 x = 1}}} written one a single line:
@@ -13554,14 +13793,16 @@ Some math {{{\cos^2 x + \sin^2 x = 1}}} written one a single line:
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-//Hint.// A hint for this subexercise.
+//Hint.//
+A hint for this subexercise.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 Filename: {{{subexer_b.pdf}}}.
 
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
-//Solution.// Here goes the solution of this subexercise.
+//Solution.//
+Here goes the solution of this subexercise.
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
@@ -13608,15 +13849,29 @@ lambda x: x+2
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Example 7: Just an example ==
+== Exercise 7: Solution of differential equation ==
+
+
+**Cannot typeset quiz SOlution of differential equation**
+<wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
+<wiki:comment> --- end exercise --- </wiki:comment>
+
+
+
+
+<wiki:comment> --- begin exercise --- </wiki:comment>
+
+== Example 8: Just an example ==
 
 <wiki:comment> This example needs the --examples_as_exercises option, otherwise </wiki:comment>
 <wiki:comment> it is just typeset as it is written. </wiki:comment>
 
 
-//a)// What is the capital of Norway?
+//a)//
+What is the capital of Norway?
 
-//Answer.// Oslo.
+//Answer.//
+Oslo.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -13631,7 +13886,7 @@ With some text, before we continue with exercises.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Exercise 8: Make references to projects and problems ==
+== Exercise 9: Make references to projects and problems ==
 
 
 <wiki:comment> Test comments not at the end only </wiki:comment>
@@ -13654,12 +13909,12 @@ Filename: {{{verify_formula.py}}}.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Project 9: References to [#Project_3:_Compute_a_Probability] in a heading works for cwiki ==
+== Project 10: References to [#Project_3:_Compute_a_Probability] in a heading works for cwiki ==
 
 
-Refer to the previous exercise as [#Exercise_8:_Make_references_to_projects_and_problems],
+Refer to the previous exercise as [#Exercise_9:_Make_references_to_projects_and_problems],
 the two before that as [#Project_3:_Compute_a_Probability] and [#Project_4:_Explore_Distributions_of_Random_Circles],
-and this one as [#Project_9:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki].
+and this one as [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki].
 Filename: {{{selc_composed.pdf}}}.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -13716,13 +13971,16 @@ With label.
 == Appendix: Testing identical titles ==
 
 
-With label.
+What about inserting a quiz?
+
+**Cannot typeset quiz Capital of Norway**
+
 
 == Appendix: Testing identical titles ==
 
 Without label.
 
-//Tip.// 
+//Tip.//\g<space>
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -13741,7 +13999,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [[http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/|Script for Introduction to Version Control]] provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-//Summary.// 
+//Summary.//\g<space>
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -13890,7 +14148,7 @@ Subsection 1
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
-encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 8: Make references to projects and problems".
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
 
@@ -14126,7 +14384,7 @@ syntax, just displayed properly in HTML.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-*Non-breaking space character.* 
+*Non-breaking space character.*\g<space>
 This paragraph aims to test "http://en.wikipedia.org/wiki/Non-breaking_space":non-breaking space character, and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in 7.4/5.5\approx 1.345 s.  Also check that a~"http://google.com":link is
@@ -14164,7 +14422,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 
-*Remark.* Movies are tested in separate file 'movies.do.txt'.
+*Remark.*
+Movies are tested in separate file 'movies.do.txt'.
 
 
 
@@ -14214,9 +14473,11 @@ Should look nice in most formats!
 
 
 
-*Theorem 5.* Let a=1 and b=2. Then c=3.
+*Theorem 5.*
+Let a=1 and b=2. Then c=3.
 
-*Proof.* Since c=a+b, the result follows from straightforward addition.
+*Proof.*
+Since c=a+b, the result follows from straightforward addition.
 END
 
 As we see, the proof of Theorem 5 is a modest
@@ -14360,17 +14621,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+*a)*
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+*Solution.*
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+*b)*
+State some other problem.
 
-*Hint 1.* A hint can be given.
+*Hint 1.*
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+*Hint 2.*
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+*Solution.*
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 # --- end exercise ---
@@ -14445,8 +14712,8 @@ Here is a system without equation numbers, using the align-astrisk environment::
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
-as well as  "Project 4: Explore Distributions of Random Circles" and "Project 9: References to Project ref{demo:ex:2} in a heading works for st", and in
-between there we have  "Exercise 8: Make references to projects and problems".
+as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for st", and in
+between there we have  "Exercise 9: Make references to projects and problems".
 
 
 Exercises
@@ -14477,27 +14744,30 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 # --- begin hint in exercise ---
 
-*Hint 1.* Use 'r = random.random()' and define head as 'r <= 0.5'.
+*Hint 1.*
+Use 'r = random.random()' and define head as 'r <= 0.5'.
 
 # --- end hint in exercise ---
 
 # --- begin hint in exercise ---
 
-*Hint 2.* Draw an integer among \{1,2\} with
+*Hint 2.*
+Draw an integer among \{1,2\} with
 'r = random.randint(1,2)' and define head when 'r' is 1.
 
 # --- end hint in exercise ---
 
 
 # --- begin answer of exercise ---
-*Answer.* If the 'random.random()' function returns a number <1/2, let it be
+*Answer.*
+If the 'random.random()' function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
 
 # --- end answer of exercise ---
 
 
 # --- begin solution of exercise ---
-*Solution.* Code::
+*Solution.*::
 
 
         import sys, random
@@ -14541,7 +14811,8 @@ in previous Doconce versions:
 
 # --- begin hint in exercise ---
 
-*Hint.* To answer this question empirically, let a program
+*Hint.*
+To answer this question empirically, let a program
 draw N such random numbers using Python's standard 'random' module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
@@ -14587,31 +14858,37 @@ center and radius. Plot each circle using the 'circle' function
 above.
 
 
-*a)* Let R be normally distributed and (x_0,y_0) uniformly distributed.
+*a)*
+Let R be normally distributed and (x_0,y_0) uniformly distributed.
 
 # --- begin hint in exercise ---
 
-*Hint.* Use the 'numpy.random' module to draw the
+*Hint.*
+Use the 'numpy.random' module to draw the
 x_0, y_0, and R quantities.
 
 # --- end hint in exercise ---
 
 
 # --- begin answer of exercise ---
-*Answer.* Here goes the short answer to part a).
+*Answer.*
+Here goes the short answer to part a).
 
 # --- end answer of exercise ---
 
 
 # --- begin solution of exercise ---
-*Solution.* Here goes a full solution to part a).
+*Solution.*
+Here goes a full solution to part a).
 
 # --- end solution of exercise ---
 
-*b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
+*b)*
+Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: 'norm.py'.
 
-*c)* Let R and (x_0,y_0) be normally distributed.
+*c)*
+Let R and (x_0,y_0) be normally distributed.
 
 Filename: 'circles.pdf'.
 
@@ -14646,7 +14923,8 @@ Test list in exercise:
 2. item2
 
 # --- begin solution of exercise ---
-*Solution.* Here goes a full solution of the whole exercise.
+*Solution.*
+Here goes a full solution of the whole exercise.
 With some math a=b in this solution::
 
         \[ \hbox{math in solution: } a = b \]
@@ -14661,11 +14939,13 @@ End of solution is here.
 # --- end solution of exercise ---
 
 
-*a)* Subexercises are numbered a), b), etc.
+*a)*
+Subexercises are numbered a), b), etc.
 
 # --- begin hint in exercise ---
 
-*Hint 1.* First hint to subexercise a).
+*Hint 1.*
+First hint to subexercise a).
 With math a=b in hint::
 
         \[ a=b. \]
@@ -14681,7 +14961,8 @@ And with code (in plain verbatim) returning x+1 in hint::
 
 # --- begin hint in exercise ---
 
-*Hint 2.* Second hint to subexercise a).
+*Hint 2.*
+Second hint to subexercise a).
 
 Test list in hint:
 
@@ -14693,12 +14974,14 @@ Filename: 'subexer_a.pdf'.
 
 
 # --- begin answer of exercise ---
-*Answer.* Short answer to subexercise a).
+*Answer.*
+Short answer to subexercise a).
 With math in answer: a=b.
 
 # --- end answer of exercise ---
 
-*b)* Here goes the text for subexercise b).
+*b)*
+Here goes the text for subexercise b).
 
 
 Some math \cos^2 x + \sin^2 x = 1 written one a single line::
@@ -14708,14 +14991,16 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
 # --- begin hint in exercise ---
 
-*Hint.* A hint for this subexercise.
+*Hint.*
+A hint for this subexercise.
 
 # --- end hint in exercise ---
 Filename: 'subexer_b.pdf'.
 
 
 # --- begin solution of exercise ---
-*Solution.* Here goes the solution of this subexercise.
+*Solution.*
+Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
 
@@ -14757,13 +15042,65 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
 
 # --- begin exercise ---
 
-Example 7: Just an example
+Exercise 7: Solution of differential equation
 
 
 
-*a)* What is the capital of Norway?
+Given::
 
-*Answer.* Oslo.
+        \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+
+What is the solution of this equation?
+
+y=e^{-y}
+
+y=e^{y}
+
+Almost, but the sign is wrong (note the minus!)::
+
+
+        from math import exp
+        def f(x):
+            return exp(x)
+
+
+Ooops, forgot a minus: 'exp(-x)', otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation::
+
+        \[ y(x) = e^{-y}.\]
+
+
+The solution cannot be found because there is a derivative in the equation.
+
+Equations with derivatives can be solved;
+they are termed *differential
+equations*.
+
+The equation is meaningless: an equation must be an equation
+for x or y, not a function y(x).
+
+Equations where the unknown is a function, as y(x)
+here, are called *differential equations*, and are solved by
+special techniques.
+
+# --- end exercise ---
+
+
+
+
+# --- begin exercise ---
+
+Example 8: Just an example
+
+
+
+*a)*
+What is the capital of Norway?
+
+*Answer.*
+Oslo.
 
 # --- end exercise ---
 
@@ -14778,7 +15115,7 @@ More Exercises
 
 # --- begin exercise ---
 
-Exercise 8: Make references to projects and problems
+Exercise 9: Make references to projects and problems
 
 Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
@@ -14798,11 +15135,11 @@ Filename: 'verify_formula.py'.
 
 # --- begin exercise ---
 
-Project 9: References to  "Project 3: Compute a Probability" in a heading works for st
+Project 10: References to  "Project 3: Compute a Probability" in a heading works for st
 
-Refer to the previous exercise as  "Exercise 8: Make references to projects and problems",
+Refer to the previous exercise as  "Exercise 9: Make references to projects and problems",
 the two before that as  "Project 3: Compute a Probability" and "Project 4: Explore Distributions of Random Circles",
-and this one as  "Project 9: References to Project ref{demo:ex:2} in a heading works for st".
+and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading works for st".
 Filename: 'selc_composed.pdf'.
 
 # --- end exercise ---
@@ -14938,13 +15275,30 @@ With label.
 
 Appendix: Testing identical titles
 
-With label.
+What about inserting a quiz?
+
+
+
+What is the capital of Norway?
+
+Stockholm
+
+Stockholm is the capital of Sweden.
+
+London
+
+Oslo
+
+Bergen
+
+Those from Bergen would claim so, but nobody else.
+
 
 Appendix: Testing identical titles
 
 Without label.
 
-*Tip.* 
+*Tip.*\g<space>
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -14963,7 +15317,7 @@ have the latest updates of the files.
 Greg Wilson' excellent "http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/":Script for Introduction to Version Control provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.* 
+*Summary.*\g<space>
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -15114,7 +15468,7 @@ Subsection 1
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
-encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 8: Make references to projects and problems".
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
 
@@ -15352,7 +15706,7 @@ syntax, just displayed properly in HTML.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-I{Non-breaking space character.} 
+I{Non-breaking space character.}\g<space>
 This paragraph aims to test U{non-breaking space character<http://en.wikipedia.org/wiki/Non-breaking_space>}, and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in M{7.4/5.5\approx 1.345} s.  Also check that a U{link<http://google.com>} is
@@ -15391,7 +15745,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 
-I{Remark.} Movies are tested in separate file C{movies.do.txt}.
+I{Remark.}
+Movies are tested in separate file C{movies.do.txt}.
 
 
 
@@ -15443,9 +15798,11 @@ Should look nice in most formats!
 
 
 
-I{Theorem 5.} Let M{a=1} and M{b=2}. Then M{c=3}.
+I{Theorem 5.}
+Let M{a=1} and M{b=2}. Then M{c=3}.
 
-I{Proof.} Since M{c=a+b}, the result follows from straightforward addition.
+I{Proof.}
+Since M{c=a+b}, the result follows from straightforward addition.
 M{END}
 
 As we see, the proof of Theorem 5 is a modest
@@ -15593,17 +15950,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-I{a)} State some problem.
+I{a)}
+State some problem.
 
-I{Solution.} The answer to this subproblem can be written here.
+I{Solution.}
+The answer to this subproblem can be written here.
 
-I{b)} State some other problem.
+I{b)}
+State some other problem.
 
-I{Hint 1.} A hint can be given.
+I{Hint 1.}
+A hint can be given.
 
-I{Hint 2.} Maybe even another hint?
+I{Hint 2.}
+Maybe even another hint?
 
-I{Solution.} The answer to this other subproblem goes here,
+I{Solution.}
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 # --- end exercise ---
@@ -15681,8 +16044,8 @@ Here is a system without equation numbers, using the align-astrisk environment::
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
-as well as  "Project 4: Explore Distributions of Random Circles" and "Project 9: References to Project ref{demo:ex:2} in a heading works for epytext", and in
-between there we have  "Exercise 8: Make references to projects and problems".
+as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for epytext", and in
+between there we have  "Exercise 9: Make references to projects and problems".
 
 
 Exercises
@@ -15716,27 +16079,30 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 # --- begin hint in exercise ---
 
-I{Hint 1.} Use C{r = random.random()} and define head as C{r <= 0.5}.
+I{Hint 1.}
+Use C{r = random.random()} and define head as C{r <= 0.5}.
 
 # --- end hint in exercise ---
 
 # --- begin hint in exercise ---
 
-I{Hint 2.} Draw an integer among M{\{1,2\}} with
+I{Hint 2.}
+Draw an integer among M{\{1,2\}} with
 C{r = random.randint(1,2)} and define head when C{r} is 1.
 
 # --- end hint in exercise ---
 
 
 # --- begin answer of exercise ---
-I{Answer.} If the C{random.random()} function returns a number M{<1/2}, let it be
+I{Answer.}
+If the C{random.random()} function returns a number M{<1/2}, let it be
 head, otherwise tail. Repeat this M{N} number of times.
 
 # --- end answer of exercise ---
 
 
 # --- begin solution of exercise ---
-I{Solution.} Code::
+I{Solution.}::
 
 
         import sys, random
@@ -15782,7 +16148,8 @@ in previous Doconce versions:
 
 # --- begin hint in exercise ---
 
-I{Hint.} To answer this question empirically, let a program
+I{Hint.}
+To answer this question empirically, let a program
 draw M{N} such random numbers using Python's standard C{random} module,
 count how many of them, M{M}, that fall in the interval M{(0.5,0.6)}, and
 compute the probability as M{M/N}.
@@ -15829,31 +16196,37 @@ center and radius. Plot each circle using the C{circle} function
 above.
 
 
-I{a)} Let M{R} be normally distributed and M{(x_0,y_0)} uniformly distributed.
+I{a)}
+Let M{R} be normally distributed and M{(x_0,y_0)} uniformly distributed.
 
 # --- begin hint in exercise ---
 
-I{Hint.} Use the C{numpy.random} module to draw the
+I{Hint.}
+Use the C{numpy.random} module to draw the
 M{x_0}, M{y_0}, and M{R} quantities.
 
 # --- end hint in exercise ---
 
 
 # --- begin answer of exercise ---
-I{Answer.} Here goes the short answer to part a).
+I{Answer.}
+Here goes the short answer to part a).
 
 # --- end answer of exercise ---
 
 
 # --- begin solution of exercise ---
-I{Solution.} Here goes a full solution to part a).
+I{Solution.}
+Here goes a full solution to part a).
 
 # --- end solution of exercise ---
 
-I{b)} Let M{R} be uniformly distributed and M{(x_0,y_0)} normally distributed.
+I{b)}
+Let M{R} be uniformly distributed and M{(x_0,y_0)} normally distributed.
 Filename: C{norm.py}.
 
-I{c)} Let M{R} and M{(x_0,y_0)} be normally distributed.
+I{c)}
+Let M{R} and M{(x_0,y_0)} be normally distributed.
 
 Filename: C{circles.pdf}.
 
@@ -15890,7 +16263,8 @@ Test list in exercise:
 2. item2
 
 # --- begin solution of exercise ---
-I{Solution.} Here goes a full solution of the whole exercise.
+I{Solution.}
+Here goes a full solution of the whole exercise.
 With some math M{a=b} in this solution::
 
         \[ \hbox{math in solution: } a = b \]
@@ -15905,11 +16279,13 @@ End of solution is here.
 # --- end solution of exercise ---
 
 
-I{a)} Subexercises are numbered a), b), etc.
+I{a)}
+Subexercises are numbered a), b), etc.
 
 # --- begin hint in exercise ---
 
-I{Hint 1.} First hint to subexercise a).
+I{Hint 1.}
+First hint to subexercise a).
 With math M{a=b} in hint::
 
         \[ a=b. \]
@@ -15925,7 +16301,8 @@ And with code (in plain verbatim) returning M{x+1} in hint::
 
 # --- begin hint in exercise ---
 
-I{Hint 2.} Second hint to subexercise a).
+I{Hint 2.}
+Second hint to subexercise a).
 
 Test list in hint:
 
@@ -15937,12 +16314,14 @@ Filename: C{subexer_a.pdf}.
 
 
 # --- begin answer of exercise ---
-I{Answer.} Short answer to subexercise a).
+I{Answer.}
+Short answer to subexercise a).
 With math in answer: M{a=b}.
 
 # --- end answer of exercise ---
 
-I{b)} Here goes the text for subexercise b).
+I{b)}
+Here goes the text for subexercise b).
 
 
 Some math M{\cos^2 x + \sin^2 x = 1} written one a single line::
@@ -15952,14 +16331,16 @@ Some math M{\cos^2 x + \sin^2 x = 1} written one a single line::
 
 # --- begin hint in exercise ---
 
-I{Hint.} A hint for this subexercise.
+I{Hint.}
+A hint for this subexercise.
 
 # --- end hint in exercise ---
 Filename: C{subexer_b.pdf}.
 
 
 # --- begin solution of exercise ---
-I{Solution.} Here goes the solution of this subexercise.
+I{Solution.}
+Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
 
@@ -16003,14 +16384,67 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
 
 # --- begin exercise ---
 
-Example 7: Just an example
+Exercise 7: Solution of differential equation
+---------------------------------------------
+
+
+
+Given::
+
+        \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+
+What is the solution of this equation?
+
+M{y=e^{-y}}
+
+M{y=e^{y}}
+
+Almost, but the sign is wrong (note the minus!)::
+
+
+        from math import exp
+        def f(x):
+            return exp(x)
+
+
+Ooops, forgot a minus: C{exp(-x)}, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation::
+
+        \[ y(x) = e^{-y}.\]
+
+
+The solution cannot be found because there is a derivative in the equation.
+
+Equations with derivatives can be solved;
+they are termed I{differential
+equations}.
+
+The equation is meaningless: an equation must be an equation
+for M{x} or M{y}, not a function M{y(x)}.
+
+Equations where the unknown is a function, as M{y(x)}
+here, are called I{differential equations}, and are solved by
+special techniques.
+
+# --- end exercise ---
+
+
+
+
+# --- begin exercise ---
+
+Example 8: Just an example
 --------------------------
 
 
 
-I{a)} What is the capital of Norway?
+I{a)}
+What is the capital of Norway?
 
-I{Answer.} Oslo.
+I{Answer.}
+Oslo.
 
 # --- end exercise ---
 
@@ -16027,7 +16461,7 @@ More Exercises
 
 # --- begin exercise ---
 
-Exercise 8: Make references to projects and problems
+Exercise 9: Make references to projects and problems
 ----------------------------------------------------
 
 Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
@@ -16048,12 +16482,12 @@ Filename: C{verify_formula.py}.
 
 # --- begin exercise ---
 
-Project 9: References to  "Project 3: Compute a Probability" in a heading works for epytext
--------------------------------------------------------------------------------------------
+Project 10: References to  "Project 3: Compute a Probability" in a heading works for epytext
+--------------------------------------------------------------------------------------------
 
-Refer to the previous exercise as  "Exercise 8: Make references to projects and problems",
+Refer to the previous exercise as  "Exercise 9: Make references to projects and problems",
 the two before that as  "Project 3: Compute a Probability" and "Project 4: Explore Distributions of Random Circles",
-and this one as  "Project 9: References to Project ref{demo:ex:2} in a heading works for epytext".
+and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading works for epytext".
 Filename: C{selc_composed.pdf}.
 
 # --- end exercise ---
@@ -16196,14 +16630,31 @@ With label.
 Appendix: Testing identical titles
 ----------------------------------
 
-With label.
+What about inserting a quiz?
+
+
+
+What is the capital of Norway?
+
+Stockholm
+
+Stockholm is the capital of Sweden.
+
+London
+
+Oslo
+
+Bergen
+
+Those from Bergen would claim so, but nobody else.
+
 
 Appendix: Testing identical titles
 ----------------------------------
 
 Without label.
 
-I{Tip.} 
+I{Tip.}\g<space>
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -16222,7 +16673,7 @@ have the latest updates of the files.
 Greg Wilson' excellent U{Script for Introduction to Version Control<http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>} provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-I{Summary.} 
+I{Summary.}\g<space>
 B{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -16366,11 +16817,12 @@ Table of contents:
    Exercise 5: Determine some Distance 
      Remarks 
    Some exercise without the "Exercise:" prefix 
-   Example 7: Just an example 
+   Exercise 7: Solution of differential equation 
+   Example 8: Just an example 
  Here goes another section 
  More Exercises 
-   Exercise 8: Make references to projects and problems 
-   Project 9: References to  "Project 3: Compute a Probability" in a heading works for plain 
+   Exercise 9: Make references to projects and problems 
+   Project 10: References to  "Project 3: Compute a Probability" in a heading works for plain 
  References 
  Appendix: Just for testing; part I 
    A subsection within an appendix 
@@ -16444,7 +16896,7 @@ Subsection 1
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
-encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 8: Make references to projects and problems".
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
 
@@ -16724,7 +17176,8 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 
-*Remark.* Movies are tested in separate file movies.do.txt.
+*Remark.*
+Movies are tested in separate file movies.do.txt.
 
 
 
@@ -16776,9 +17229,11 @@ Should look nice in most formats!
 
 
 
-*Theorem 5.* Let a=1 and b=2. Then c=3.
+*Theorem 5.*
+Let a=1 and b=2. Then c=3.
 
-*Proof.* Since c=a+b, the result follows from straightforward addition.
+*Proof.*
+Since c=a+b, the result follows from straightforward addition.
 END
 
 As we see, the proof of Theorem 5 is a modest
@@ -16926,17 +17381,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+*a)*
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+*Solution.*
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+*b)*
+State some other problem.
 
-*Hint 1.* A hint can be given.
+*Hint 1.*
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+*Hint 2.*
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+*Solution.*
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 # --- end exercise ---
@@ -17013,8 +17474,8 @@ Here is a system without equation numbers, using the align-astrisk environment::
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
-as well as  "Project 4: Explore Distributions of Random Circles" and "Project 9: References to Project ref{demo:ex:2} in a heading works for plain", and in
-between there we have  "Exercise 8: Make references to projects and problems".
+as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for plain", and in
+between there we have  "Exercise 9: Make references to projects and problems".
 
 
 Exercises
@@ -17049,27 +17510,30 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 # --- begin hint in exercise ---
 
-*Hint 1.* Use r = random.random() and define head as r <= 0.5.
+*Hint 1.*
+Use r = random.random() and define head as r <= 0.5.
 
 # --- end hint in exercise ---
 
 # --- begin hint in exercise ---
 
-*Hint 2.* Draw an integer among \{1,2\} with
+*Hint 2.*
+Draw an integer among \{1,2\} with
 r = random.randint(1,2) and define head when r is 1.
 
 # --- end hint in exercise ---
 
 
 # --- begin answer of exercise ---
-*Answer.* If the random.random() function returns a number <1/2, let it be
+*Answer.*
+If the random.random() function returns a number <1/2, let it be
 head, otherwise tail. Repeat this N number of times.
 
 # --- end answer of exercise ---
 
 
 # --- begin solution of exercise ---
-*Solution.* Code::
+*Solution.*::
 
 
         import sys, random
@@ -17116,7 +17580,8 @@ in previous Doconce versions:
 
 # --- begin hint in exercise ---
 
-*Hint.* To answer this question empirically, let a program
+*Hint.*
+To answer this question empirically, let a program
 draw N such random numbers using Python's standard random module,
 count how many of them, M, that fall in the interval (0.5,0.6), and
 compute the probability as M/N.
@@ -17163,31 +17628,37 @@ center and radius. Plot each circle using the circle function
 above.
 
 
-*a)* Let R be normally distributed and (x_0,y_0) uniformly distributed.
+*a)*
+Let R be normally distributed and (x_0,y_0) uniformly distributed.
 
 # --- begin hint in exercise ---
 
-*Hint.* Use the numpy.random module to draw the
+*Hint.*
+Use the numpy.random module to draw the
 x_0, y_0, and R quantities.
 
 # --- end hint in exercise ---
 
 
 # --- begin answer of exercise ---
-*Answer.* Here goes the short answer to part a).
+*Answer.*
+Here goes the short answer to part a).
 
 # --- end answer of exercise ---
 
 
 # --- begin solution of exercise ---
-*Solution.* Here goes a full solution to part a).
+*Solution.*
+Here goes a full solution to part a).
 
 # --- end solution of exercise ---
 
-*b)* Let R be uniformly distributed and (x_0,y_0) normally distributed.
+*b)*
+Let R be uniformly distributed and (x_0,y_0) normally distributed.
 Filename: norm.py.
 
-*c)* Let R and (x_0,y_0) be normally distributed.
+*c)*
+Let R and (x_0,y_0) be normally distributed.
 
 Filename: circles.pdf.
 
@@ -17225,7 +17696,8 @@ Test list in exercise:
 2. item2
 
 # --- begin solution of exercise ---
-*Solution.* Here goes a full solution of the whole exercise.
+*Solution.*
+Here goes a full solution of the whole exercise.
 With some math a=b in this solution::
 
         \[ \hbox{math in solution: } a = b \]
@@ -17240,11 +17712,13 @@ End of solution is here.
 # --- end solution of exercise ---
 
 
-*a)* Subexercises are numbered a), b), etc.
+*a)*
+Subexercises are numbered a), b), etc.
 
 # --- begin hint in exercise ---
 
-*Hint 1.* First hint to subexercise a).
+*Hint 1.*
+First hint to subexercise a).
 With math a=b in hint::
 
         \[ a=b. \]
@@ -17260,7 +17734,8 @@ And with code (in plain verbatim) returning x+1 in hint::
 
 # --- begin hint in exercise ---
 
-*Hint 2.* Second hint to subexercise a).
+*Hint 2.*
+Second hint to subexercise a).
 
 Test list in hint:
 
@@ -17273,12 +17748,14 @@ Filename: subexer_a.pdf.
 
 
 # --- begin answer of exercise ---
-*Answer.* Short answer to subexercise a).
+*Answer.*
+Short answer to subexercise a).
 With math in answer: a=b.
 
 # --- end answer of exercise ---
 
-*b)* Here goes the text for subexercise b).
+*b)*
+Here goes the text for subexercise b).
 
 
 Some math \cos^2 x + \sin^2 x = 1 written one a single line::
@@ -17288,14 +17765,16 @@ Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
 # --- begin hint in exercise ---
 
-*Hint.* A hint for this subexercise.
+*Hint.*
+A hint for this subexercise.
 
 # --- end hint in exercise ---
 Filename: subexer_b.pdf.
 
 
 # --- begin solution of exercise ---
-*Solution.* Here goes the solution of this subexercise.
+*Solution.*
+Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
 
@@ -17339,14 +17818,67 @@ And a test that the code lambda x: x+2 is correctly placed here::
 
 # --- begin exercise ---
 
-Example 7: Just an example
+Exercise 7: Solution of differential equation
+---------------------------------------------
+
+
+
+Given::
+
+        \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+
+What is the solution of this equation?
+
+y=e^{-y}
+
+y=e^{y}
+
+Almost, but the sign is wrong (note the minus!)::
+
+
+        from math import exp
+        def f(x):
+            return exp(x)
+
+
+Ooops, forgot a minus: exp(-x), otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation::
+
+        \[ y(x) = e^{-y}.\]
+
+
+The solution cannot be found because there is a derivative in the equation.
+
+Equations with derivatives can be solved;
+they are termed *differential
+equations*.
+
+The equation is meaningless: an equation must be an equation
+for x or y, not a function y(x).
+
+Equations where the unknown is a function, as y(x)
+here, are called *differential equations*, and are solved by
+special techniques.
+
+# --- end exercise ---
+
+
+
+
+# --- begin exercise ---
+
+Example 8: Just an example
 --------------------------
 
 
 
-*a)* What is the capital of Norway?
+*a)*
+What is the capital of Norway?
 
-*Answer.* Oslo.
+*Answer.*
+Oslo.
 
 # --- end exercise ---
 
@@ -17363,7 +17895,7 @@ More Exercises
 
 # --- begin exercise ---
 
-Exercise 8: Make references to projects and problems
+Exercise 9: Make references to projects and problems
 ----------------------------------------------------
 
 Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
@@ -17385,12 +17917,12 @@ Filename: verify_formula.py.
 
 # --- begin exercise ---
 
-Project 9: References to  "Project 3: Compute a Probability" in a heading works for plain
------------------------------------------------------------------------------------------
+Project 10: References to  "Project 3: Compute a Probability" in a heading works for plain
+------------------------------------------------------------------------------------------
 
-Refer to the previous exercise as  "Exercise 8: Make references to projects and problems",
+Refer to the previous exercise as  "Exercise 9: Make references to projects and problems",
 the two before that as  "Project 3: Compute a Probability" and "Project 4: Explore Distributions of Random Circles",
-and this one as  "Project 9: References to Project ref{demo:ex:2} in a heading works for plain".
+and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading works for plain".
 Filename: selc_composed.pdf.
 
 # --- end exercise ---
@@ -17552,7 +18084,24 @@ With label.
 Appendix: Testing identical titles
 ----------------------------------
 
-With label.
+What about inserting a quiz?
+
+
+
+What is the capital of Norway?
+
+Stockholm
+
+Stockholm is the capital of Sweden.
+
+London
+
+Oslo
+
+Bergen
+
+Those from Bergen would claim so, but nobody else.
+
 
 Appendix: Testing identical titles
 ----------------------------------
@@ -17752,7 +18301,7 @@ Here is a reference to Equation \eqref{my:eq1}.
 More text, with a reference back to
 the section [Section 1](#n-1) and [Subsection 1](#n-1), and further to the
 the sections [Subsection 1](#n-1) and [URLs](#s), which
-encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 8: Make references to projects and problems](#s).
+encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 9: Make references to projects and problems](#s).
 Appendices     [Appendix: Just for testing; part I](#i) and [Appendix: Just for testing; part II](#i) are also nice elements.
 
 
@@ -18003,7 +18552,7 @@ syntax, just displayed properly in HTML.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-*Non-breaking space character.* 
+*Non-breaking space character.*\g<space>
 This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical
 example where this is needed is in physical units: 7.4\ km is traveled
 in\ $7.4/5.5\approx 1.345$\ s.  Also check that a~[link](http://google.com)\ is
@@ -18044,7 +18593,8 @@ Test URL as figure name:
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 
-*Remark.* Movies are tested in separate file `movies.do.txt`.
+*Remark.*
+Movies are tested in separate file `movies.do.txt`.
 
 
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
@@ -18118,11 +18668,13 @@ Should look nice in most formats!
 
 <!-- begin theorem -->
 
-*Theorem 5.* Let $a=1$ and $b=2$. Then $c=3$.
+*Theorem 5.*
+Let $a=1$ and $b=2$. Then $c=3$.
 <!-- end theorem -->
 
 <!-- begin proof -->
-*Proof.* Since $c=a+b$, the result follows from straightforward addition.
+*Proof.*
+Since $c=a+b$, the result follows from straightforward addition.
 $\Diamond$
 <!-- end proof -->
 
@@ -18272,17 +18824,23 @@ typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
 
-*a)* State some problem.
+*a)*
+State some problem.
 
-*Solution.* The answer to this subproblem can be written here.
+*Solution.*
+The answer to this subproblem can be written here.
 
-*b)* State some other problem.
+*b)*
+State some other problem.
 
-*Hint 1.* A hint can be given.
+*Hint 1.*
+A hint can be given.
 
-*Hint 2.* Maybe even another hint?
+*Hint 2.*
+Maybe even another hint?
 
-*Solution.* The answer to this other subproblem goes here,
+*Solution.*
+The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 <!-- --- end exercise --- -->
@@ -18383,8 +18941,8 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have  [Problem 2: Flip a Coin](#n) and  [Project 3: Compute a Probability](#y),
-as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 9: References to Project ref{demo:ex:2} in a heading works for pandoc](#c), and in
-between there we have  [Exercise 8: Make references to projects and problems](#s).
+as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#c), and in
+between there we have  [Exercise 9: Make references to projects and problems](#s).
 
 
 ## Exercises
@@ -18418,27 +18976,30 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.
+*Hint 1.*
+Use `r = random.random()` and define head as `r <= 0.5`.
 
 <!-- --- end hint in exercise --- -->
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint 2.* Draw an integer among $\{1,2\}$ with
+*Hint 2.*
+Draw an integer among $\{1,2\}$ with
 `r = random.randint(1,2)` and define head when `r` is 1.
 
 <!-- --- end hint in exercise --- -->
 
 
 <!-- --- begin answer of exercise --- -->
-*Answer.* If the `random.random()` function returns a number $<1/2$, let it be
+*Answer.*
+If the `random.random()` function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 <!-- --- end answer of exercise --- -->
 
 
 <!-- --- begin solution of exercise --- -->
-*Solution.* Code:
+*Solution.*
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
 import sys, random
@@ -18485,7 +19046,8 @@ in previous Doconce versions:
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint.* To answer this question empirically, let a program
+*Hint.*
+To answer this question empirically, let a program
 draw $N$ such random numbers using Python's standard `random` module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
@@ -18540,31 +19102,37 @@ center and radius. Plot each circle using the `circle` function
 above.
 
 
-*a)* Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
+*a)*
+Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint.* Use the `numpy.random` module to draw the
+*Hint.*
+Use the `numpy.random` module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 <!-- --- end hint in exercise --- -->
 
 
 <!-- --- begin answer of exercise --- -->
-*Answer.* Here goes the short answer to part a).
+*Answer.*
+Here goes the short answer to part a).
 
 <!-- --- end answer of exercise --- -->
 
 
 <!-- --- begin solution of exercise --- -->
-*Solution.* Here goes a full solution to part a).
+*Solution.*
+Here goes a full solution to part a).
 
 <!-- --- end solution of exercise --- -->
 
-*b)* Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
+*b)*
+Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 Filename: `norm.py`.
 
-*c)* Let $R$ and $(x_0,y_0)$ be normally distributed.
+*c)*
+Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 Filename: `circles.pdf`.
 
@@ -18602,7 +19170,8 @@ Test list in exercise:
 2. item2
 
 <!-- --- begin solution of exercise --- -->
-*Solution.* Here goes a full solution of the whole exercise.
+*Solution.*
+Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 $$
  \hbox{math in solution: } a = b 
@@ -18618,11 +19187,13 @@ End of solution is here.
 <!-- --- end solution of exercise --- -->
 
 
-*a)* Subexercises are numbered a), b), etc.
+*a)*
+Subexercises are numbered a), b), etc.
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint 1.* First hint to subexercise a).
+*Hint 1.*
+First hint to subexercise a).
 With math $a=b$ in hint:
 
 $$
@@ -18640,7 +19211,8 @@ def func(x):
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint 2.* Second hint to subexercise a).
+*Hint 2.*
+Second hint to subexercise a).
 
 Test list in hint:
 
@@ -18653,12 +19225,14 @@ Filename: `subexer_a.pdf`.
 
 
 <!-- --- begin answer of exercise --- -->
-*Answer.* Short answer to subexercise a).
+*Answer.*
+Short answer to subexercise a).
 With math in answer: $a=b$.
 
 <!-- --- end answer of exercise --- -->
 
-*b)* Here goes the text for subexercise b).
+*b)*
+Here goes the text for subexercise b).
 
 
 Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
@@ -18669,14 +19243,16 @@ $$
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint.* A hint for this subexercise.
+*Hint.*
+A hint for this subexercise.
 
 <!-- --- end hint in exercise --- -->
 Filename: `subexer_b.pdf`.
 
 
 <!-- --- begin solution of exercise --- -->
-*Solution.* Here goes the solution of this subexercise.
+*Solution.*
+Here goes the solution of this subexercise.
 
 <!-- --- end solution of exercise --- -->
 
@@ -18724,15 +19300,28 @@ lambda x: x+2
 
 <!-- --- begin exercise --- -->
 
-### Example 7: Just an example
+### Exercise 7: Solution of differential equation
+
+
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Example 8: Just an example
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
 
-*a)* What is the capital of Norway?
+*a)*
+What is the capital of Norway?
 
-*Answer.* Oslo.
+*Answer.*
+Oslo.
 
 <!-- --- end exercise --- -->
 
@@ -18747,7 +19336,7 @@ With some text, before we continue with exercises.
 
 <!-- --- begin exercise --- -->
 
-### Exercise 8: Make references to projects and problems
+### Exercise 9: Make references to projects and problems
 
 <!-- Test comments not at the end only -->
 Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)
@@ -18769,11 +19358,11 @@ Filename: `verify_formula.py`.
 
 <!-- --- begin exercise --- -->
 
-### Project 9: References to  [Project 3: Compute a Probability](#y) in a heading works for pandoc
+### Project 10: References to  [Project 3: Compute a Probability](#y) in a heading works for pandoc
 
-Refer to the previous exercise as  [Exercise 8: Make references to projects and problems](#s),
+Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#s),
 the two before that as  [Project 3: Compute a Probability](#y) and [Project 4: Explore Distributions of Random Circles](#s),
-and this one as  [Project 9: References to Project ref{demo:ex:2} in a heading works for pandoc](#c).
+and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#c).
 Filename: `selc_composed.pdf`.
 
 <!-- --- end exercise --- -->
@@ -18928,13 +19517,16 @@ With label.
 
 ### Appendix: Testing identical titles
 
-With label.
+What about inserting a quiz?
+
+
+
 
 ### Appendix: Testing identical titles
 
 Without label.
 
-*Tip.* 
+*Tip.*\g<space>
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -18953,7 +19545,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.* 
+*Summary.*\g<space>
 _Bold remark:_ Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -19128,7 +19720,7 @@ is at the end with only one newline.
       "More text, with a reference back to\n",
       "the section [Section 1](#n-1) and [Subsection 1](#n-1), and further to the\n",
       "the sections [Subsection 1](#n-1) and [URLs](#s), which\n",
-      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 8: Make references to projects and problems](#s).\n",
+      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 9: Make references to projects and problems](#s).\n",
       "Appendices     [Appendix: Just for testing; part I](#i) and [Appendix: Just for testing; part II](#i) are also nice elements.\n",
       "\n",
       "\n",
@@ -19602,7 +20194,8 @@ is at the end with only one newline.
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
       "\n",
-      "*Remark.* Movies are tested in separate file `movies.do.txt`.\n",
+      "*Remark.*\n",
+      "Movies are tested in separate file `movies.do.txt`.\n",
       "\n",
       "\n",
       "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
@@ -19720,11 +20313,13 @@ is at the end with only one newline.
       "\n",
       "<!-- begin theorem -->\n",
       "\n",
-      "*Theorem 5.* Let $a=1$ and $b=2$. Then $c=3$.\n",
+      "*Theorem 5.*\n",
+      "Let $a=1$ and $b=2$. Then $c=3$.\n",
       "<!-- end theorem -->\n",
       "\n",
       "<!-- begin proof -->\n",
-      "*Proof.* Since $c=a+b$, the result follows from straightforward addition.\n",
+      "*Proof.*\n",
+      "Since $c=a+b$, the result follows from straightforward addition.\n",
       "$\\Diamond$\n",
       "<!-- end proof -->\n",
       "\n",
@@ -19884,17 +20479,23 @@ is at the end with only one newline.
       "environments as part of the example.\n",
       "\n",
       "\n",
-      "*a)* State some problem.\n",
+      "*a)*\n",
+      "State some problem.\n",
       "\n",
-      "*Solution.* The answer to this subproblem can be written here.\n",
+      "*Solution.*\n",
+      "The answer to this subproblem can be written here.\n",
       "\n",
-      "*b)* State some other problem.\n",
+      "*b)*\n",
+      "State some other problem.\n",
       "\n",
-      "*Hint 1.* A hint can be given.\n",
+      "*Hint 1.*\n",
+      "A hint can be given.\n",
       "\n",
-      "*Hint 2.* Maybe even another hint?\n",
+      "*Hint 2.*\n",
+      "Maybe even another hint?\n",
       "\n",
-      "*Solution.* The answer to this other subproblem goes here,\n",
+      "*Solution.*\n",
+      "The answer to this other subproblem goes here,\n",
       "maybe over multiple doconce input lines.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -20013,8 +20614,8 @@ is at the end with only one newline.
       "More mathematical typesetting is demonstrated in the coming exercises.\n",
       "\n",
       "Below, we have  [Problem 2: Flip a Coin](#n) and  [Project 3: Compute a Probability](#y),\n",
-      "as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 9: References to Project ref{demo:ex:2} in a heading works for ipynb](#b), and in\n",
-      "between there we have  [Exercise 8: Make references to projects and problems](#s).\n",
+      "as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#b), and in\n",
+      "between there we have  [Exercise 9: Make references to projects and problems](#s).\n",
       "\n",
       "\n",
       "## Exercises\n",
@@ -20048,27 +20649,30 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 1.* Use `r = random.random()` and define head as `r <= 0.5`.\n",
+      "*Hint 1.*\n",
+      "Use `r = random.random()` and define head as `r <= 0.5`.\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 2.* Draw an integer among $\\{1,2\\}$ with\n",
+      "*Hint 2.*\n",
+      "Draw an integer among $\\{1,2\\}$ with\n",
       "`r = random.randint(1,2)` and define head when `r` is 1.\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
-      "*Answer.* If the `random.random()` function returns a number $<1/2$, let it be\n",
+      "*Answer.*\n",
+      "If the `random.random()` function returns a number $<1/2$, let it be\n",
       "head, otherwise tail. Repeat this $N$ number of times.\n",
       "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.* Code:"
+      "*Solution.*"
      ]
     },
     {
@@ -20127,7 +20731,8 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint.* To answer this question empirically, let a program\n",
+      "*Hint.*\n",
+      "To answer this question empirically, let a program\n",
       "draw $N$ such random numbers using Python's standard `random` module,\n",
       "count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and\n",
       "compute the probability as $M/N$.\n",
@@ -20209,31 +20814,37 @@ is at the end with only one newline.
       "above.\n",
       "\n",
       "\n",
-      "*a)* Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.\n",
+      "*a)*\n",
+      "Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint.* Use the `numpy.random` module to draw the\n",
+      "*Hint.*\n",
+      "Use the `numpy.random` module to draw the\n",
       "$x_0$, $y_0$, and $R$ quantities.\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
-      "*Answer.* Here goes the short answer to part a).\n",
+      "*Answer.*\n",
+      "Here goes the short answer to part a).\n",
       "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.* Here goes a full solution to part a).\n",
+      "*Solution.*\n",
+      "Here goes a full solution to part a).\n",
       "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
-      "*b)* Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
+      "*b)*\n",
+      "Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
       "Filename: `norm.py`.\n",
       "\n",
-      "*c)* Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
+      "*c)*\n",
+      "Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
       "\n",
       "Filename: `circles.pdf`.\n",
       "\n",
@@ -20271,7 +20882,8 @@ is at the end with only one newline.
       "2. item2\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.* Here goes a full solution of the whole exercise.\n",
+      "*Solution.*\n",
+      "Here goes a full solution of the whole exercise.\n",
       "With some math $a=b$ in this solution:"
      ]
     },
@@ -20311,11 +20923,13 @@ is at the end with only one newline.
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
       "\n",
-      "*a)* Subexercises are numbered a), b), etc.\n",
+      "*a)*\n",
+      "Subexercises are numbered a), b), etc.\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 1.* First hint to subexercise a).\n",
+      "*Hint 1.*\n",
+      "First hint to subexercise a).\n",
       "With math $a=b$ in hint:"
      ]
     },
@@ -20355,7 +20969,8 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 2.* Second hint to subexercise a).\n",
+      "*Hint 2.*\n",
+      "Second hint to subexercise a).\n",
       "\n",
       "Test list in hint:\n",
       "\n",
@@ -20368,12 +20983,14 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
-      "*Answer.* Short answer to subexercise a).\n",
+      "*Answer.*\n",
+      "Short answer to subexercise a).\n",
       "With math in answer: $a=b$.\n",
       "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
-      "*b)* Here goes the text for subexercise b).\n",
+      "*b)*\n",
+      "Here goes the text for subexercise b).\n",
       "\n",
       "\n",
       "Some math $\\cos^2 x + \\sin^2 x = 1$ written one a single line:"
@@ -20394,14 +21011,16 @@ is at the end with only one newline.
      "source": [
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint.* A hint for this subexercise.\n",
+      "*Hint.*\n",
+      "A hint for this subexercise.\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "Filename: `subexer_b.pdf`.\n",
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.* Here goes the solution of this subexercise.\n",
+      "*Solution.*\n",
+      "Here goes the solution of this subexercise.\n",
       "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
@@ -20470,15 +21089,128 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Example 7: Just an example\n",
+      "### Exercise 7: Solution of differential equation\n",
+      "\n",
+      "<!-- --- begin quiz --- -->\n",
+      "<!-- --- quiz heading: SOlution of differential equation (hidden) -->\n",
+      "\n",
+      "\n",
+      "<!-- --- begin quiz question --- -->\n",
+      "Given"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "$$\n",
+      "\\frac{dy}{dx} = -y(x),\\quad y(0)=1\n",
+      "$$"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "What is the solution of this equation?\n",
+      "<!-- --- end quiz question --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 1 (right) --- -->\n",
+      "$y=e^{-y}$\n",
+      "<!-- --- end quiz choice 1 (right) --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 2 (wrong) --- -->\n",
+      "$y=e^{y}$\n",
+      "<!-- --- end quiz choice 2 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin explanation of choice 2 --- -->\n",
+      "Almost, but the sign is wrong (note the minus!).\n",
+      "<!-- --- end explanation of choice 2 --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 3 (wrong) --- -->"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "from math import exp\n",
+      "def f(x):\n",
+      "    return exp(x)\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "<!-- --- end quiz choice 3 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin explanation of choice 3 --- -->\n",
+      "Ooops, forgot a minus: `exp(-x)`, otherwise this Python code\n",
+      "must be considered as a good answer. It is more natural,\n",
+      "though, to write the solution to the problem\n",
+      "in mathematical notation:"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "$$\n",
+      "y(x) = e^{-y}.\n",
+      "$$"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "<!-- --- end explanation of choice 3 --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 4 (wrong) --- -->\n",
+      "The solution cannot be found because there is a derivative in the equation.\n",
+      "<!-- --- end quiz choice 4 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin explanation of choice 4 --- -->\n",
+      "Equations with derivatives can be solved;\n",
+      "they are termed *differential\n",
+      "equations*.\n",
+      "<!-- --- end explanation of choice 4 --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 5 (wrong) --- -->\n",
+      "The equation is meaningless: an equation must be an equation\n",
+      "for $x$ or $y$, not a function $y(x)$.\n",
+      "<!-- --- end quiz choice 5 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin explanation of choice 5 --- -->\n",
+      "Equations where the unknown is a function, as $y(x)$\n",
+      "here, are called *differential equations*, and are solved by\n",
+      "special techniques.\n",
+      "\n",
+      "<!-- --- end quiz --- -->\n",
+      "<!-- --- end explanation of choice 5 --- -->\n",
+      "<!-- --- end exercise --- -->\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
+      "<!-- --- begin exercise --- -->\n",
+      "\n",
+      "### Example 8: Just an example\n",
       "\n",
       "<!-- This example needs the --examples_as_exercises option, otherwise -->\n",
       "<!-- it is just typeset as it is written. -->\n",
       "\n",
       "\n",
-      "*a)* What is the capital of Norway?\n",
+      "*a)*\n",
+      "What is the capital of Norway?\n",
       "\n",
-      "*Answer.* Oslo.\n",
+      "*Answer.*\n",
+      "Oslo.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
       "\n",
@@ -20493,7 +21225,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Exercise 8: Make references to projects and problems\n",
+      "### Exercise 9: Make references to projects and problems\n",
       "\n",
       "<!-- Test comments not at the end only -->\n",
       "Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)\n",
@@ -20515,11 +21247,11 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Project 9: References to  [Project 3: Compute a Probability](#y) in a heading works for ipynb\n",
+      "### Project 10: References to  [Project 3: Compute a Probability](#y) in a heading works for ipynb\n",
       "\n",
-      "Refer to the previous exercise as  [Exercise 8: Make references to projects and problems](#s),\n",
+      "Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#s),\n",
       "the two before that as  [Project 3: Compute a Probability](#y) and [Project 4: Explore Distributions of Random Circles](#s),\n",
-      "and this one as  [Project 9: References to Project ref{demo:ex:2} in a heading works for ipynb](#b).\n",
+      "and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#b).\n",
       "Filename: `selc_composed.pdf`.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -20674,7 +21406,42 @@ is at the end with only one newline.
       "\n",
       "### Appendix: Testing identical titles\n",
       "\n",
-      "With label.\n",
+      "What about inserting a quiz?\n",
+      "\n",
+      "<!-- --- begin quiz --- -->\n",
+      "<!-- --- new quiz page: Test of quizzes -->\n",
+      "<!-- --- quiz heading: Capital of Norway (hidden) -->\n",
+      "\n",
+      "\n",
+      "<!-- --- begin quiz question --- -->\n",
+      "What is the capital of Norway?\n",
+      "<!-- --- end quiz question --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 1 (wrong) --- -->\n",
+      "Stockholm\n",
+      "<!-- --- end quiz choice 1 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin explanation of choice 1 --- -->\n",
+      "Stockholm is the capital of Sweden.\n",
+      "<!-- --- end explanation of choice 1 --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 2 (wrong) --- -->\n",
+      "London\n",
+      "<!-- --- end quiz choice 2 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 3 (right) --- -->\n",
+      "Oslo\n",
+      "<!-- --- end quiz choice 3 (right) --- -->\n",
+      "\n",
+      "<!-- --- begin quiz choice 4 (wrong) --- -->\n",
+      "Bergen\n",
+      "<!-- --- end quiz choice 4 (wrong) --- -->\n",
+      "\n",
+      "<!-- --- begin explanation of choice 4 --- -->\n",
+      "Those from Bergen would claim so, but nobody else.\n",
+      "<!-- --- end explanation of choice 4 --- -->\n",
+      "<!-- --- end quiz --- -->\n",
+      "\n",
       "\n",
       "### Appendix: Testing identical titles\n",
       "\n",
@@ -20970,8 +21737,23 @@ Could not find match for from regex "\*\s+\$.+normally"
   'heading': '=====',
   'hints': [],
   'keywords': None,
-  'label': None,
+  'label': 'sec:this:exer:de',
   'no': 7,
+  'solution': '',
+  'solution_file': None,
+  'subex': [],
+  'text': '# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation (hidden)\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.',
+  'title': 'Solution of differential equation',
+  'type': 'Exercise',
+  'type_visible': True},
+ {'answer': '',
+  'closing_remarks': '',
+  'file': None,
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': None,
+  'no': 8,
   'solution': '',
   'solution_file': None,
   'subex': [{'answer': 'Oslo.',
@@ -20990,7 +21772,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'exer:some:formula',
-  'no': 8,
+  'no': 9,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -21005,7 +21787,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'exer:you',
-  'no': 9,
+  'no': 10,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -21032,11 +21814,10 @@ iso-8859-1
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<p>The format of this document is plain, homemade LaTeX (from Doconce).</p>
+<p>The format of this document is plain, homemade <span>LaTeX</span> (from Doconce).</p>
 <p>This is a document with many test constructions for doconce syntax. It was used heavily for the development and kept for testing numerous constructions, also special and less common cases.</p>
 <p>And exactly for test purposes we have an extra line here, which is part of the abstract.</p>
-<h1 id="section-1">Section 1</h1>
-<p>[sec1]</p>
+<h1 id="sec1">Section 1</h1>
 <p>Here is a nested list:</p>
 <ul>
 <li><p>item1</p></li>
@@ -21057,8 +21838,7 @@ iso-8859-1
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
 <p>Here is a reference to Equation ([my:eq1]).</p>
-<h2 id="subsection-1">Subsection 1</h2>
-<p>[subsec1]</p>
+<h2 id="subsec1">Subsection 1</h2>
 <p>More text, with a reference back to Section [sec1] and [subsec1], and further to the sections [subsec1] and [subsubsec:ex], which encourages you to do the tasks in the Exercises [demo:ex:1] and [exer:some:formula]. Appendices [app1] and [app2] are also nice elements.</p>
 <h4 id="computer-code.">Computer code.</h4>
 <p>Let’s do some copying from files too. First from subroutine up to the very end,</p>
@@ -21185,7 +21965,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in  a != b , and a Doconce directive a la  !bc .</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in  a != b , and a Doconce directive a la  !bc .</p>
 <p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -21194,13 +21974,11 @@ output
 from
 Python.</code></pre>
 <h4 id="footnotes.">Footnotes.</h4>
-<p>Here is a test of footnotes<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>, which are handy in text. They are used in different flavors<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, which gives flexibility in writing. This is the third<sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup> example.</p>
+<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, which gives flexibility in writing. This is the third<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
 <p>[Non-breaking space character.] This paragraph aims to test <a href="{http://en.wikipedia.org/wiki/Non-breaking_space}">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a <a href="{http://google.com}">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
-<h2 id="subsection-2-testing-figures">Subsection 2: Testing figures</h2>
-<p>[subsec:ex]</p>
+<h2 id="subsec:ex">Subsection 2: Testing figures</h2>
 <p>Test of figures. In particular we refer to Figure [fig:impact] in which there is a flow.</p>
-<p>[ht]</p>
 <div class="figure">
 <embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
 </div>
@@ -21209,7 +21987,6 @@ Python.</code></pre>
 <embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
 </div>
 <p>Here is figure [myfig] with a long multi-line caption and an extra space before the FIGURE keyword.</p>
-<p>[ht]</p>
 <div class="figure">
 <embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
 </div>
@@ -21219,8 +21996,7 @@ Python.</code></pre>
 </div>
 <h4 id="remark.">Remark.</h4>
 <p>Movies are tested in separate file <code>movies.do.txt</code>.</p>
-<h2 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h2>
-<p>[decay:sec:theta]</p>
+<h2 id="decay:sec:theta">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h2>
 <p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
 <pre><code>def f(theta):
     return theta**2</code></pre>
@@ -21239,33 +22015,32 @@ Python.</code></pre>
 \frac{1}{2}&amp;= 1/2\\ 
 \frac{1}{2}\pmb{x}&amp;= \pmb{n}\label{aligneq2}\end{aligned}\]</span></p>
 <h2 id="custom-environments">Custom Environments</h2>
-<p>Here is an attempt to create a theorem environment via Mako (for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end LaTeX environments for theorems. Should look nice in most formats!</p>
+<p>Here is an attempt to create a theorem environment via Mako (for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end <span>LaTeX</span> environments for theorems. Should look nice in most formats!</p>
 <p>[theorem:fundamental1]</p>
 <h4 id="theorem-5.">Theorem 5.</h4>
 <p>Let <span class="math">\(a=1\)</span> and <span class="math">\(b=2\)</span>. Then <span class="math">\(c=3\)</span>.</p>
 <h4 id="proof.">Proof.</h4>
 <p>Since <span class="math">\(c=a+b\)</span>, the result follows from straightforward addition. <span class="math">\(\Diamond\)</span></p>
 <p>As we see, the proof of Theorem 5 is a modest achievement.</p>
-<h2 id="tables">Tables</h2>
-<p>[subsec:table]</p>
+<h2 id="subsec:table">Tables</h2>
 <p>Let us take this table from the manual:</p>
 <blockquote>
 <table>
 <tbody>
 <tr class="odd">
 <td align="left">0.0</td>
-<td align="left">1.4186</td>
-<td align="left">-5.01</td>
+<td align="right">1.4186</td>
+<td align="right">-5.01</td>
 </tr>
 <tr class="even">
 <td align="left">2.0</td>
-<td align="left">1.376512</td>
-<td align="left">11.919</td>
+<td align="right">1.376512</td>
+<td align="right">11.919</td>
 </tr>
 <tr class="odd">
 <td align="left">4.0</td>
-<td align="left">1.1E+1</td>
-<td align="left">14.717624</td>
+<td align="right">1.1E+1</td>
+<td align="right">14.717624</td>
 </tr>
 </tbody>
 </table>
@@ -21306,45 +22081,45 @@ Python.</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0</td>
-<td align="left">288</td>
-<td align="left">-0.0065</td>
+<td align="right">0</td>
+<td align="right">288</td>
+<td align="right">-0.0065</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">11,000</td>
-<td align="left">216</td>
-<td align="left">0.0</td>
+<td align="right">11,000</td>
+<td align="right">216</td>
+<td align="right">0.0</td>
 </tr>
 <tr class="odd">
 <td align="left">2</td>
-<td align="left">20,000</td>
-<td align="left">216</td>
-<td align="left">0.001</td>
+<td align="right">20,000</td>
+<td align="right">216</td>
+<td align="right">0.001</td>
 </tr>
 <tr class="even">
 <td align="left">3</td>
-<td align="left">32,000</td>
-<td align="left">228</td>
-<td align="left">0.0028</td>
+<td align="right">32,000</td>
+<td align="right">228</td>
+<td align="right">0.0028</td>
 </tr>
 <tr class="odd">
 <td align="left">4</td>
-<td align="left">47,000</td>
-<td align="left">270</td>
-<td align="left">0.0</td>
+<td align="right">47,000</td>
+<td align="right">270</td>
+<td align="right">0.0</td>
 </tr>
 <tr class="even">
 <td align="left">5</td>
-<td align="left">51,000</td>
-<td align="left">270</td>
-<td align="left">-0.0028</td>
+<td align="right">51,000</td>
+<td align="right">270</td>
+<td align="right">-0.0028</td>
 </tr>
 <tr class="odd">
 <td align="left">6</td>
-<td align="left">71,000</td>
-<td align="left">214</td>
-<td align="left"><code>NaN</code></td>
+<td align="right">71,000</td>
+<td align="right">214</td>
+<td align="right"><code>NaN</code></td>
 </tr>
 </tbody>
 </table>
@@ -21354,66 +22129,64 @@ Python.</code></pre>
 <table>
 <tbody>
 <tr class="odd">
-<td align="left">9</td>
-<td align="left">9.62</td>
-<td align="left">5.57</td>
-<td align="left">8.98</td>
+<td align="right">9</td>
+<td align="right">9.62</td>
+<td align="right">5.57</td>
+<td align="right">8.98</td>
 </tr>
 <tr class="even">
-<td align="left">-20</td>
-<td align="left">-23.39</td>
-<td align="left">-7.65</td>
-<td align="left">-19.93</td>
+<td align="right">-20</td>
+<td align="right">-23.39</td>
+<td align="right">-7.65</td>
+<td align="right">-19.93</td>
 </tr>
 <tr class="odd">
-<td align="left">10</td>
-<td align="left">17.74</td>
-<td align="left">-4.50</td>
-<td align="left">9.96</td>
+<td align="right">10</td>
+<td align="right">17.74</td>
+<td align="right">-4.50</td>
+<td align="right">9.96</td>
 </tr>
 <tr class="even">
-<td align="left">0</td>
-<td align="left">-9.19</td>
-<td align="left">4.13</td>
-<td align="left">-0.26</td>
+<td align="right">0</td>
+<td align="right">-9.19</td>
+<td align="right">4.13</td>
+<td align="right">-0.26</td>
 </tr>
 </tbody>
 </table>
 <p>Finally, a table with math and URLs.</p>
 </blockquote>
 <blockquote>
-ccc<br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0085.png" alt="image" /><br /><span class="math">\(a=b\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0090.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0095.png" alt="image" /><br /><span class="math">\(\nabla\cdot\bm{u} =0 \)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0100.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0105.png" alt="image" /><br />
+<span>ccc</span><br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0085.png" alt="image" /><br /><span class="math">\(a=b\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0090.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0095.png" alt="image" /><br /><span class="math">\(\nabla\cdot\bm{u} =0 \)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0100.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0105.png" alt="image" /><br />
 </blockquote>
 <h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
 <h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
 <p>Here is some text.</p>
-<p>Let us also add a test of quotes such as “double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)”; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats. Here is another sentence that “caused” a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
+<p>Let us also add a test of quotes such as “double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)”; written in the standard <span>LaTeX</span>-style that gives correct <span>LaTeX</span> formatting and ordinary double quotes for all non-<span>LaTeX</span> formats. Here is another sentence that “caused” a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
 <h2 id="bibliography-test">Bibliography test</h2>
-<p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002 [@Mardal_et_al_2003a].</p>
-<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002] and @Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95] and all the work of @Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004] as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85 [@Langtangen_1989e]. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI ’94 paper.</p>
-<h2 id="example-examples-can-be-typeset-as-exercises" class="unnumbered">Example : Examples can be typeset as exercises</h2>
-<p>[Example]</p>
+<p>Here is an example: <span class="citation">@Langtangen_Pedersen_2002</span> discussed propagation of large destructive water waves, <span class="citation">@Langtangen_et_al_2002</span> gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in <span class="citation">@Langtangen_1994a</span>. The book chapter <span class="citation">@Mardal_et_al_2003a</span> contains information on C++ software tools for programming multigrid methods. A real retro reference is <span class="citation">@Langtangen_1988d</span> about a big FORTRAN package. Multiple references are also possible, e.g., see <span class="citation">@Langtangen_Pedersen_2002 [@Mardal_et_al_2003a]</span>.</p>
+<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: <span class="citation">@Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002]</span> and <span class="citation">@Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95]</span> and all the work of <span class="citation">@Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004]</span> as well as old work <span class="citation">@Langtangen_1988d</span> and <span class="citation">@Langtangen_1989e</span>, and the talk <span class="citation">@Langtangen_talk_2007a</span>. Langtangen also had two thesis <span class="citation">@Langtangen:85 [@Langtangen_1989e]</span>. More retro citations are the old ME-IN323 book <span class="citation">@Langtangen:91</span> and the <span class="citation">@Langtangen:94b</span> OONSKI ’94 paper.</p>
+<h2 id="Example" class="unnumbered">Example : Examples can be typeset as exercises</h2>
 <p>Examples can start with a subsection heading starting with <code>Example:</code> and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) State some problem.</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> State some problem.</p>
 <h4 id="solution.">Solution.</h4>
 <p>The answer to this subproblem can be written here.</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****b) State some other problem.</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>b)</span> State some other problem.</p>
 <h4 id="hint-1.">Hint 1.</h4>
 <p>A hint can be given.</p>
 <h4 id="hint-2.">Hint 2.</h4>
 <p>Maybe even another hint?</p>
 <h4 id="solution.-1">Solution.</h4>
 <p>The answer to this other subproblem goes here, maybe over multiple doconce input lines.</p>
-<h2 id="urls">URLs</h2>
-<p>[subsubsec:ex]</p>
-<p>Testing of URLs: hpl’s home page <a href="{http://folk.uio.no/hpl}">hpl</a>, or the entire URL if desired, <a href="{http://folk.uio.no/hpl}"></a>. Here is a plain file link <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}">a link with newline</a>. Can test spaces with the link with word too: <a href="{http://folk.uio.no/hpl}">hpl</a> or <a href="{http://folk.uio.no/hpl}">hpl</a>. Also <code>file:///</code> works: <a href="{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}">link to a file</a> is fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just the plain URL as in <a href="{http://folk.uio.no/hpl}"></a>, if followed by space, comma, colon, semi-colon, question mark, exclamation mark, but not a period (which gets confused with the periods inside the URL).</p>
+<h2 id="subsubsec:ex">URLs</h2>
+<p>Testing of URLs: hpl’s home page <a href="{http://folk.uio.no/hpl}">hpl</a>, or the entire URL if desired, <a href="{http://folk.uio.no/hpl}"></a>. Here is a plain file link <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}">a link with newline</a>. Can test spaces with the link with word too: <a href="{http://folk.uio.no/hpl}">hpl</a> or <a href="{http://folk.uio.no/hpl}">hpl</a>. Also <code>file:///</code> works: <a href="{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}">link to a file</a> is fine to have. Moreover, “loose” URLs work, i.e., no quotes, just the plain URL as in <a href="{http://folk.uio.no/hpl}"></a>, if followed by space, comma, colon, semi-colon, question mark, exclamation mark, but not a period (which gets confused with the periods inside the URL).</p>
 <p>Mail addresses can also be used: <a href="{mailto:hpl@simula.no}"></a>, or just a <a href="{mailto:hpl@simula.no}">mail link</a>, or a raw <a href="{mailto:hpl@simula.no}"></a>.</p>
 <p>Here are some tough tests of URLs, especially for the <code>latex</code> format: <a href="{http://en.wikipedia.org/wiki/NewtonCotes_formulas}">Newton-Cotes</a> formulas and a <a href="{http://www.springer.com/mathematics/computational+scienceengineering/book/978-3-642-23098-1}">good book</a>. Need to test Newton-Cotes with percentage in URL too: <a href="{http://en.wikipedia.org/wiki/NewtonCotes_formulas}"></a> and <a href="{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}"></a> which has a shebang.</p>
 <p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>, <a href="{http://tinyurl.com/pwyasaa/formulas.ball1.py}"></a>, and <a href="{http://tinyurl.com/pwyasaa/formulas.ball2.py}"></a>.</p>
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
-<h2 id="test-of-some-latex-fixes">Test of Some LaTeX Fixes</h2>
-<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of Doconce features. A sentence containing &quot;refines lines&quot; could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
-<h1 id="latex-mathematics">LaTeX Mathematics</h1>
+<h2 id="test-of-some-latex-fixes">Test of Some <span>LaTeX</span> Fixes</h2>
+<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of Doconce features. A sentence containing “refines lines” could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
+<h1 id="latex-mathematics"><span>LaTeX</span> Mathematics</h1>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
 <p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
 <p>We can refer to this equation by ([my:eq1]).</p>
@@ -21425,7 +22198,7 @@ b &amp;= \nabla^2 u + \nabla^4 v\end{aligned}\]</span></p>
 <p><span class="math">\[\begin{aligned}
 a &amp;= q + 4 + 5+ 6 \label{eq1} \\ 
 b &amp;= \nabla^2 u + \nabla^4 x \label{eq2}\end{aligned}\]</span></p>
-<p>We can refer to ([eq1])-([eq2]). They are a bit simpler than the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>. Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</p>
+<p>We can refer to ([eq1])-([eq2]). They are a bit simpler than the Navier-Stokes equations. And test <span>LaTeX</span> hyphen in <code>CG-2</code>. Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</p>
 <p>Many of the next environments will fail in non-latex formats. Testing multiline:</p>
 <p><span class="math">\[\begin{gathered}
 a = b = q + \\ 
@@ -21455,9 +22228,8 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}\end{aligned}\]</s
 <p>More mathematical typesetting is demonstrated in the coming exercises.</p>
 <p>Below, we have Problem [demo:ex:1] and Project [demo:ex:2], as well as Projects [proj:circle1] and [exer:you], and in between there we have Exercise [exer:some:formula].</p>
 <h1 id="exercises">Exercises</h1>
-<h2 id="problem-flip-a-coin" class="unnumbered">Problem : Flip a Coin</h2>
-<p>[demo:ex:1]</p>
-<p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</p>
+<h2 id="demo:ex:1" class="unnumbered">Problem : Flip a Coin</h2>
+<p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out “tail” or “head” for each flip and let the program count the number of heads.</p>
 <h4 id="remarks.">Remarks.</h4>
 <p>Remarks with such a subsubsection heading would previously mark the beginning of a new exercise and cause trouble. Maybe a list</p>
 <ol style="list-style-type: decimal">
@@ -21471,7 +22243,6 @@ b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}\end{aligned}\]</s
 <h4 id="answer.">Answer.</h4>
 <p>If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, let it be head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</p>
 <h4 id="solution.-2">Solution.</h4>
-<p>Code:</p>
 <pre><code>import sys, random
 N = int(sys.argv[1])
 heads = 0
@@ -21483,18 +22254,16 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 <p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.</p>
 <h2 id="not-an-exercise">Not an exercise</h2>
 <p>Should be possible to stick a normal section in the middle of many exercises.</p>
-<h2 id="project-compute-a-probability" class="unnumbered">Project : Compute a Probability</h2>
-<p>[demo:ex:2]</p>
+<h2 id="demo:ex:2" class="unnumbered">Project : Compute a Probability</h2>
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
-<p>At the end we have a list because that caused problems in LaTeX in previous Doconce versions:</p>
+<p>At the end we have a list because that caused problems in <span>LaTeX</span> in previous Doconce versions:</p>
 <ol style="list-style-type: decimal">
 <li><p>item1</p></li>
 <li><p>item2</p></li>
 </ol>
 <h4 id="hint.">Hint.</h4>
 <p>To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python’s standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
-<h2 id="project-explore-distributions-of-random-circles" class="unnumbered">Project : Explore Distributions of Random Circles</h2>
-<p>[proj:circle1]</p>
+<h2 id="proj:circle1" class="unnumbered">Project : Explore Distributions of Random Circles</h2>
 <p>The formula for a circle is given by</p>
 <p><span class="math">\[\begin{aligned}
 x &amp;= x_0 + R\cos 2\pi t,\\ 
@@ -21510,20 +22279,19 @@ def circle(R, x0, y0, n=501):
 
 x, y = circle(2.0, 0, 0)</code></pre>
 <p>The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> function above.</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
 <h4 id="hint.-1">Hint.</h4>
 <p>Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</p>
 <h4 id="answer.-1">Answer.</h4>
 <p>Here goes the short answer to part a).</p>
 <h4 id="solution.-3">Solution.</h4>
 <p>Here goes a full solution to part a).</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****b) Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****c) Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>b)</span> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>c)</span> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
 <p>Filename: <code>circles.pdf</code>.</p>
 <h4 id="remarks.-1">Remarks.</h4>
 <p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
-<h2 id="exercise-determine-some-distance" class="unnumbered">Exercise : Determine some Distance</h2>
-<p>[exer:dist]</p>
+<h2 id="exer:dist" class="unnumbered">Exercise : Determine some Distance</h2>
 <p>Intro to this exercise. Questions are in subexercises below.</p>
 <p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
 <p>Test list in exercise:</p>
@@ -21535,7 +22303,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[\hbox{math in solution: } a = b\]</span> And code <code>a=b</code> in this solution:</p>
 <pre><code>a = b  # code in solution</code></pre>
 <p>End of solution is here.</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) Subexercises are numbered a), b), etc.</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> Subexercises are numbered a), b), etc.</p>
 <h4 id="hint-1.-2">Hint 1.</h4>
 <p>First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</p>
 <p><span class="math">\[a=b.\]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</p>
@@ -21551,7 +22319,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Filename: <code>subexer_a.pdf</code>.</p>
 <h4 id="answer.-2">Answer.</h4>
 <p>Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****b) Here goes the text for subexercise b).</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>b)</span> Here goes the text for subexercise b).</p>
 <p>Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single line:</p>
 <p><span class="math">\[\cos^2 x + \sin^2 x = 1 \thinspace .\]</span></p>
 <h4 id="hint.-2">Hint.</h4>
@@ -21561,20 +22329,20 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>Here goes the solution of this subexercise.</p>
 <h4 id="remarks.-2">Remarks.</h4>
 <p>Some final closing remarks, e.g., summarizing the main findings and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.</p>
-<h2 id="some-exercise-without-the-exercise-prefix">Some exercise without the &quot;Exercise:&quot; prefix</h2>
+<h2 id="some-exercise-without-the-exercise-prefix">Some exercise without the “Exercise:” prefix</h2>
 <p>Just some text. And some math saying that <span class="math">\(e^0=1\)</span> on a single line, to test that math block insertion is correct:</p>
 <p><span class="math">\[\exp{(0)} = 1\]</span></p>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
+<h2 id="sec:this:exer:de" class="unnumbered">Exercise : Solution of differential equation</h2>
 <h2 id="example-just-an-example" class="unnumbered">Example : Just an example</h2>
-<p>startsectionparagraph4@ 1.5explus1ex minus.2ex -0.5em ****a) What is the capital of Norway?</p>
+<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> What is the capital of Norway?</p>
 <h4 id="answer.-3">Answer.</h4>
 <p>Oslo.</p>
 <h1 id="here-goes-another-section">Here goes another section</h1>
 <p>With some text, before we continue with exercises.</p>
 <h1 id="more-exercises">More Exercises</h1>
-<h2 id="exercise-make-references-to-projects-and-problems" class="unnumbered">Exercise : Make references to projects and problems</h2>
-<p>[exer:some:formula]</p>
+<h2 id="exer:some:formula" class="unnumbered">Exercise : Make references to projects and problems</h2>
 <p>Pick a statement from Project [proj:circle1] or Problem [demo:ex:1] and verify it.</p>
 <p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
 <ol style="list-style-type: decimal">
@@ -21582,65 +22350,61 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <li><p>item2</p></li>
 </ol>
 <p>Filename: <code>verify_formula.py</code>.</p>
-<h2 id="project-references-to-projectdemoex2-in-a-heading-works-for-latex" class="unnumbered">Project : References to Project [demo:ex:2] in a heading works for latex</h2>
-<p>[exer:you]</p>
+<h2 id="exer:you" class="unnumbered">Project : References to Project [demo:ex:2] in a heading works for latex</h2>
 <p>Refer to the previous exercise as Exercise [exer:some:formula], the two before that as Projects [demo:ex:2] and [proj:circle1], and this one as Project [exer:you]. Filename: <code>selc_composed.pdf</code>.</p>
-<h1 id="just-for-testing-part-i">Just for testing; part I</h1>
-<p>[app1]</p>
+<h1 id="app1">Just for testing; part I</h1>
 <p>This is the first appendix.</p>
 <h2 id="a-subsection-within-an-appendix">A subsection within an appendix</h2>
 <p>Some text.</p>
-<h1 id="just-for-testing-part-ii">Just for testing; part II</h1>
-<p>[app2]</p>
+<h1 id="app2">Just for testing; part II</h1>
 <p>This is more stuff for an appendix.</p>
 <h2 id="appendix-testing-identical-titles">Appendix: Testing identical titles</h2>
 <p>Without label.</p>
+<h2 id="test:title:id1">Appendix: Testing identical titles</h2>
+<p>With label.</p>
+<h2 id="test:title:id2">Appendix: Testing identical titles</h2>
+<p>What about inserting a quiz?</p>
 <h2 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h2>
-<p>[test:title:id1]</p>
-<p>With label.</p>
-<h2 id="appendix-testing-identical-titles-2">Appendix: Testing identical titles</h2>
-<p>[test:title:id2]</p>
-<p>With label.</p>
-<h2 id="appendix-testing-identical-titles-3">Appendix: Testing identical titles</h2>
 <p>Without label.</p>
 <p>[Tip.] Here is a tip or hint box, typeset as a notice box.</p>
 <p>Need a lot of text to surround the summary box. Version control systems allow you to record the history of files and share files among several computers and collaborators in a professional way. File changes on one computer are updated or merged with changes on another computer. Especially when working with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the project have the latest updates of the files. Greg Wilson’ excellent <a href="{http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/}">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly from using version control systems.</p>
 <p>[Summary.] <strong>Bold remark:</strong> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</p>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
+<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
 <p>The simplest services for hosting project files are <a href="{http://dropbox.com}">Dropbox</a> and <a href="{http://drive.google.com}">Google Drive</a>. It is very easy to get started with these systems, and they allow you to share files among laptops and mobile units with as many users as you want. The systems offer a kind of version control in that the files are stored frequently (several times per minute), and you can go back to previous versions for the last 30 days. However, it is challenging to find the right version from the past when there are so many of them.</p>
 <p>More seriously, when several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox or Google Drive: project hosting services with true version control systems. The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.</p>
-<p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the &quot;master version&quot; at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
+<p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the “master version” at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
 <p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
 <h2 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h2>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. <strong>hpl 1</strong>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. <strong>mp 2</strong>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among laptops and mobile units.</p>
-<p>When several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox: project hosting services with true version control systems. <strong>hpl 3</strong>: * The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools. *</p>
+<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span><strong>hpl 1</strong></span>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
+<p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among laptops and mobile units.</p>
+<p>When several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox: project hosting services with true version control systems. <span><strong>hpl 3</strong></span>: * The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools. *</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
-<p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
+<p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, <span>LaTeX</span> removes the definition and inserts the footnote as part of the <span>LaTeX</span> text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>Could say contexts too...<a href="#fnref2">↩</a></p></li>
 <li id="fn3"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref3">↩</a></p></li>
 </ol>
 </div>
 </body>
 </html>
-pandoc 1.11.1
-Compiled with citeproc-hs 0.3.8, texmath 0.6.1.3, highlighting-kate 0.5.3.8.
+pandoc 1.12.2.1
+Compiled with texmath 0.6.5.2, highlighting-kate 0.5.5.1.
 Syntax highlighting is supported for the following languages:
     actionscript, ada, apache, asn1, asp, awk, bash, bibtex, boo, c, changelog,
     clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css, curry, d,
     diff, djangotemplate, doxygen, doxygenlua, dtd, eiffel, email, erlang,
     fortran, fsharp, gnuassembler, go, haskell, haxe, html, ini, java, javadoc,
     javascript, json, jsp, julia, latex, lex, literatecurry, literatehaskell,
-    lua, makefile, mandoc, matlab, maxima, metafont, mips, modula2, modula3,
-    monobasic, nasm, noweb, objectivec, objectivecpp, ocaml, octave, pascal,
-    perl, php, pike, postscript, prolog, python, r, relaxngcompact, rhtml, ruby,
-    rust, scala, scheme, sci, sed, sgml, sql, sqlmysql, sqlpostgresql, tcl,
-    texinfo, verilog, vhdl, xml, xorg, xslt, xul, yacc, yaml
+    lua, makefile, mandoc, markdown, matlab, maxima, metafont, mips, modelines,
+    modula2, modula3, monobasic, nasm, noweb, objectivec, objectivecpp, ocaml,
+    octave, pascal, perl, php, pike, postscript, prolog, python, r,
+    relaxngcompact, rhtml, roff, ruby, rust, scala, scheme, sci, sed, sgml, sql,
+    sqlmysql, sqlpostgresql, tcl, texinfo, verilog, vhdl, xml, xorg, xslt, xul,
+    yacc, yaml
 Default user data directory: /home/hpl/.pandoc
 Copyright (C) 2006-2013 John MacFarlane
 Web:  http://johnmacfarlane.net/pandoc
@@ -21734,7 +22498,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
-<p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and <a href="#n-1">Subsection 1</a>, and further to the the sections <a href="#n-1">Subsection 1</a> and <a href="#s">URLs</a>, which encourages you to do the tasks in <a href="#n">Problem 2: Flip a Coin</a> and <a href="#s">Exercise 8: Make references to projects and problems</a>. Appendices <a href="#i">Appendix: Just for testing; part I</a> and <a href="#i">Appendix: Just for testing; part II</a> are also nice elements.</p>
+<p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and <a href="#n-1">Subsection 1</a>, and further to the the sections <a href="#n-1">Subsection 1</a> and <a href="#s">URLs</a>, which encourages you to do the tasks in <a href="#n">Problem 2: Flip a Coin</a> and <a href="#s">Exercise 9: Make references to projects and problems</a>. Appendices <a href="#i">Appendix: Just for testing; part I</a> and <a href="#i">Appendix: Just for testing; part II</a> are also nice elements.</p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 <h4 id="computer-code">Computer code</h4>
@@ -21796,11 +22560,11 @@ def f(x):
 
 line = Line(<span class="dv">2</span>, <span class="dv">1</span>)
 y = line(x=<span class="dv">3</span>)
-<span class="kw">print</span> y</code></pre>
+<span class="dt">print</span> y</code></pre>
 <p>Some more Python code (actually specified as a sage cell, but such cells are not supported by this format).</p>
 <pre class="sourceCode Python"><code class="sourceCode python">a = <span class="dv">2</span>
 b = <span class="dv">3</span>
-<span class="kw">print</span> <span class="st">&#39;a+b:&#39;</span>, a + b
+<span class="dt">print</span> <span class="st">&#39;a+b:&#39;</span>, a + b
 
 <span class="co"># In a sage cell we can also plot</span>
 <span class="ch">from</span> matplotlib.pyplot <span class="ch">import</span> *
@@ -21816,14 +22580,14 @@ show()</code></pre>
 <p>Standard Python shell sessions:</p>
 <pre class="sourceCode Python"><code class="sourceCode python">&gt;&gt;&gt; <span class="ch">from</span> numpy <span class="ch">import</span> sin
 &gt;&gt;&gt; <span class="co"># Some comment</span>
-&gt;&gt;&gt; x = sin(<span class="fl">1.2</span>); <span class="kw">print</span> <span class="st">&#39;Value:&#39;</span>, x
+&gt;&gt;&gt; x = sin(<span class="fl">1.2</span>); <span class="dt">print</span> <span class="st">&#39;Value:&#39;</span>, x
 Value: <span class="fl">0.932039085967</span></code></pre>
 <p>IPython sessions:</p>
 <pre class="sourceCode Python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="ch">from</span> numpy <span class="ch">import</span> sin
 
 In [<span class="dv">2</span>]: <span class="co"># Some comment</span>
 
-In [<span class="dv">3</span>]: x = sin(<span class="fl">1.2</span>); <span class="kw">print</span> <span class="st">&#39;Value:&#39;</span>, x
+In [<span class="dv">3</span>]: x = sin(<span class="fl">1.2</span>); <span class="dt">print</span> <span class="st">&#39;Value:&#39;</span>, x
 Value: <span class="fl">0.932039085967</span></code></pre>
 <!-- This one tests a + sign before a code environment -->
 <p>C++:</p>
@@ -21872,9 +22636,9 @@ output
 from
 Python.</code></pre>
 <h4 id="footnotes">Footnotes</h4>
-<p>Here is a test of footnotes<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>, which are handy in text. They are used in different flavors <sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, which gives flexibility in writing. This is the third<sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup> example.</p>
+<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, which gives flexibility in writing. This is the third<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
-<p><em>Non-breaking space character.</em> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
+<p><em>Non-breaking space character.</em><space> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
 <p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
 <div class="figure">
@@ -22115,8 +22879,8 @@ Python.</code></pre>
 <p><em>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</em> Here is some text.</p>
 <p>Let us also add a test of quotes such as &quot;double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats. Here is another sentence that &quot;caused&quot; a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
 <h3 id="bibliography-test">Bibliography test</h3>
-<p>Here is an example: @Langtangen_Pedersen_2002 discussed propagation of large destructive water waves, @Langtangen_et_al_2002 gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in @Langtangen_1994a. The book chapter @Mardal_et_al_2003a contains information on C++ software tools for programming multigrid methods. A real retro reference is @Langtangen_1988d about a big FORTRAN package. Multiple references are also possible, e.g., see @Langtangen_Pedersen_2002;@Mardal_et_al_2003a.</p>
-<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: @Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002 and @Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95 and all the work of @Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004 as well as old work @Langtangen_1988d and @Langtangen_1989e, and the talk @Langtangen_talk_2007a. Langtangen also had two thesis @Langtangen:85;@Langtangen_1989e. More retro citations are the old ME-IN323 book @Langtangen:91 and the @Langtangen:94b OONSKI '94 paper.</p>
+<p>Here is an example: <span class="citation">@Langtangen_Pedersen_2002</span> discussed propagation of large destructive water waves, <span class="citation">@Langtangen_et_al_2002</span> gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in <span class="citation">@Langtangen_1994a</span>. The book chapter <span class="citation">@Mardal_et_al_2003a</span> contains information on C++ software tools for programming multigrid methods. A real retro reference is <span class="citation">@Langtangen_1988d</span> about a big FORTRAN package. Multiple references are also possible, e.g., see <span class="citation">@Langtangen_Pedersen_2002</span>;<span class="citation">@Mardal_et_al_2003a</span>.</p>
+<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: <span class="citation">@Langtangen_1992c</span>;<span class="citation">@Langtangen_1994a</span>;<span class="citation">@Mortensen_et_al_2011</span>;<span class="citation">@Langtangen_Pedersen_2002</span> and <span class="citation">@Langtangen_et_al_2002</span>;<span class="citation">@Glimsdal_et_al_20006</span>;<span class="citation">@Rahman_et_al_2006b</span>;<span class="citation">@Haga_et_al_2011a</span>;<span class="citation">@Langtangen_2003a</span>;<span class="citation">@Langtangen_2008a</span>;<span class="citation">@Langtangen:95</span> and all the work of <span class="citation">@Langtangen_2012</span>;<span class="citation">@Mardal_et_al_2003a</span>;<span class="citation">@Jeberg_et_al_2004</span> as well as old work <span class="citation">@Langtangen_1988d</span> and <span class="citation">@Langtangen_1989e</span>, and the talk <span class="citation">@Langtangen_talk_2007a</span>. Langtangen also had two thesis <span class="citation">@Langtangen:85</span>;<span class="citation">@Langtangen_1989e</span>. More retro citations are the old ME-IN323 book <span class="citation">@Langtangen:91</span> and the <span class="citation">@Langtangen:94b</span> OONSKI '94 paper.</p>
 <!-- --- begin exercise --- -->
 
 <h3 id="example-1-examples-can-be-typeset-as-exercises">Example 1: Examples can be typeset as exercises</h3>
@@ -22185,7 +22949,7 @@ b = \nabla^2 u + \nabla^4 x \label{eq2}
 \end{equation}
 \]</span> We can refer to -. They are a bit simpler than the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>. Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</p>
 <p>More mathematical typesetting is demonstrated in the coming exercises.</p>
-<p>Below, we have <a href="#n">Problem 2: Flip a Coin</a> and <a href="#y">Project 3: Compute a Probability</a>, as well as <a href="#s">Project 4: Explore Distributions of Random Circles</a> and <a href="#c">Project 9: References to Project ref{demo:ex:2} in a heading works for pandoc</a>, and in between there we have <a href="#s">Exercise 8: Make references to projects and problems</a>.</p>
+<p>Below, we have <a href="#n">Problem 2: Flip a Coin</a> and <a href="#y">Project 3: Compute a Probability</a>, as well as <a href="#s">Project 4: Explore Distributions of Random Circles</a> and <a href="#c">Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc</a>, and in between there we have <a href="#s">Exercise 9: Make references to projects and problems</a>.</p>
 <h2 id="exercises">Exercises</h2>
 <!-- --- begin exercise --- -->
 
@@ -22218,7 +22982,7 @@ b = \nabla^2 u + \nabla^4 x \label{eq2}
 
 
 <!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em> Code:</p>
+<p><em>Solution.</em></p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="ch">import</span> sys, random
 N = <span class="dt">int</span>(sys.argv[<span class="dv">1</span>])
 heads = <span class="dv">0</span>
@@ -22226,7 +22990,7 @@ heads = <span class="dv">0</span>
     r = random.random()
     <span class="kw">if</span> r &lt;= <span class="fl">0.5</span>:
         heads += <span class="dv">1</span>
-<span class="kw">print</span> <span class="st">&#39;Flipping a coin </span><span class="ot">%d</span><span class="st"> times gave </span><span class="ot">%d</span><span class="st"> heads&#39;</span> % (N, heads)</code></pre>
+<span class="dt">print</span> <span class="st">&#39;Flipping a coin </span><span class="ot">%d</span><span class="st"> times gave </span><span class="ot">%d</span><span class="st"> heads&#39;</span> % (N, heads)</code></pre>
 <!-- --- end solution of exercise --- -->
 <p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>. <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file --></p>
 <!-- --- end exercise --- -->
@@ -22400,7 +23164,16 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 
 <!-- --- begin exercise --- -->
 
-<h3 id="example-7-just-an-example">Example 7: Just an example</h3>
+<h3 id="exercise-7-solution-of-differential-equation">Exercise 7: Solution of differential equation</h3>
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+<h3 id="example-8-just-an-example">Example 8: Just an example</h3>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -22415,7 +23188,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <h2 id="more-exercises">More Exercises</h2>
 <!-- --- begin exercise --- -->
 
-<h3 id="exercise-8-make-references-to-projects-and-problems">Exercise 8: Make references to projects and problems</h3>
+<h3 id="exercise-9-make-references-to-projects-and-problems">Exercise 9: Make references to projects and problems</h3>
 <!-- Test comments not at the end only -->
 <p>Pick a statement from <a href="#s">Project 4: Explore Distributions of Random Circles</a> or <a href="#n">Problem 2: Flip a Coin</a> and verify it.</p>
 <p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
@@ -22431,8 +23204,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 
 <!-- --- begin exercise --- -->
 
-<h3 id="project-9-references-to-project-3-compute-a-probability-in-a-heading-works-for-pandoc">Project 9: References to <a href="#y">Project 3: Compute a Probability</a> in a heading works for pandoc</h3>
-<p>Refer to the previous exercise as <a href="#s">Exercise 8: Make references to projects and problems</a>, the two before that as <a href="#y">Project 3: Compute a Probability</a> and <a href="#s">Project 4: Explore Distributions of Random Circles</a>, and this one as <a href="#c">Project 9: References to Project ref{demo:ex:2} in a heading works for pandoc</a>. Filename: <code>selc_composed.pdf</code>.</p>
+<h3 id="project-10-references-to-project-3-compute-a-probability-in-a-heading-works-for-pandoc">Project 10: References to <a href="#y">Project 3: Compute a Probability</a> in a heading works for pandoc</h3>
+<p>Refer to the previous exercise as <a href="#s">Exercise 9: Make references to projects and problems</a>, the two before that as <a href="#y">Project 3: Compute a Probability</a> and <a href="#s">Project 4: Explore Distributions of Random Circles</a>, and this one as <a href="#c">Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc</a>. Filename: <code>selc_composed.pdf</code>.</p>
 <!-- --- end exercise --- -->
 
 
@@ -22470,12 +23243,12 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <h3 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h3>
 <p>With label.</p>
 <h3 id="appendix-testing-identical-titles-2">Appendix: Testing identical titles</h3>
-<p>With label.</p>
+<p>What about inserting a quiz?</p>
 <h3 id="appendix-testing-identical-titles-3">Appendix: Testing identical titles</h3>
 <p>Without label.</p>
-<p><em>Tip.</em> Here is a tip or hint box, typeset as a notice box.</p>
+<p><em>Tip.</em><space> Here is a tip or hint box, typeset as a notice box.</p>
 <p>Need a lot of text to surround the summary box. Version control systems allow you to record the history of files and share files among several computers and collaborators in a professional way. File changes on one computer are updated or merged with changes on another computer. Especially when working with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the project have the latest updates of the files. Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly from using version control systems.</p>
-<p><em>Summary.</em> <em>Bold remark:</em> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</p>
+<p><em>Summary.</em><space> <em>Bold remark:</em> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</p>
 <p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
 <p>The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>. It is very easy to get started with these systems, and they allow you to share files among laptops and mobile units with as many users as you want. The systems offer a kind of version control in that the files are stored frequently (several times per minute), and you can go back to previous versions for the last 30 days. However, it is challenging to find the right version from the past when there are so many of them.</p>
 <p>More seriously, when several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox or Google Drive: project hosting services with true version control systems. The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.</p>
@@ -22498,19 +23271,20 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 </div>
 </body>
 </html>
-pandoc 1.11.1
-Compiled with citeproc-hs 0.3.8, texmath 0.6.1.3, highlighting-kate 0.5.3.8.
+pandoc 1.12.2.1
+Compiled with texmath 0.6.5.2, highlighting-kate 0.5.5.1.
 Syntax highlighting is supported for the following languages:
     actionscript, ada, apache, asn1, asp, awk, bash, bibtex, boo, c, changelog,
     clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css, curry, d,
     diff, djangotemplate, doxygen, doxygenlua, dtd, eiffel, email, erlang,
     fortran, fsharp, gnuassembler, go, haskell, haxe, html, ini, java, javadoc,
     javascript, json, jsp, julia, latex, lex, literatecurry, literatehaskell,
-    lua, makefile, mandoc, matlab, maxima, metafont, mips, modula2, modula3,
-    monobasic, nasm, noweb, objectivec, objectivecpp, ocaml, octave, pascal,
-    perl, php, pike, postscript, prolog, python, r, relaxngcompact, rhtml, ruby,
-    rust, scala, scheme, sci, sed, sgml, sql, sqlmysql, sqlpostgresql, tcl,
-    texinfo, verilog, vhdl, xml, xorg, xslt, xul, yacc, yaml
+    lua, makefile, mandoc, markdown, matlab, maxima, metafont, mips, modelines,
+    modula2, modula3, monobasic, nasm, noweb, objectivec, objectivecpp, ocaml,
+    octave, pascal, perl, php, pike, postscript, prolog, python, r,
+    relaxngcompact, rhtml, roff, ruby, rust, scala, scheme, sci, sed, sgml, sql,
+    sqlmysql, sqlpostgresql, tcl, texinfo, verilog, vhdl, xml, xorg, xslt, xul,
+    yacc, yaml
 Default user data directory: /home/hpl/.pandoc
 Copyright (C) 2006-2013 John MacFarlane
 Web:  http://johnmacfarlane.net/pandoc
@@ -24551,22 +25325,26 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -24575,12 +25353,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -24702,21 +25480,22 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec24"> Example 7: Just an example </a><br>
-<a href="._testdoc002.html#___sec25"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec26"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec29"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec25"> Example 8: Just an example </a><br>
+<a href="._testdoc002.html#___sec26"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
+<a href="._testdoc002.html#___sec30"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec37"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec38"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -24864,22 +25643,26 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -24888,12 +25671,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -25014,7 +25797,7 @@ This equation appears in another part if this document is split.
 <p>
 More text, with a reference back to
 The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 The appendices <a href="._testdoc002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <p>
@@ -25342,7 +26125,7 @@ Python.
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
-in writing. This is the third [<a name="link_footnote_3"><a><a href="._testdoc002.html#def_footnote_3">3</a>] example.
+in writing. This is the third [<a name="link_footnote_3"><a><a href="._testdoc003.html#def_footnote_3">3</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -25878,22 +26661,26 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -25902,12 +26689,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -25956,6 +26743,8 @@ $$
 <a name="part0002"></a>
 <!-- begin top navigation -->
 <a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end top navigation -->
 
 <p>
@@ -26003,8 +26792,8 @@ More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
 Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
@@ -26345,7 +27134,55 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 7: Just an example  <a name="___sec24"></a></h2>
+<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+
+<p>
+<b>Question:</b> Given
+
+$$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
+
+What is the solution of this equation?</p>
+
+<p><b>Choice 1:</b>
+\( y=e^{-y} \)
+</p>
+
+<p><b>Choice 2:</b>
+\( y=e^{y} \)
+</p>
+
+<p><b>Choice 3:</b>
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #AA22FF; font-weight: bold">import</span> exp
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
+    <span style="color: #AA22FF; font-weight: bold">return</span> exp(x)
+</pre></div>
+</td></tr></table><p>
+</p>
+
+<p><b>Choice 4:</b>
+The solution cannot be found because there is a derivative in the equation.
+</p>
+
+<p><b>Choice 5:</b>
+The equation is meaningless: an equation must be an equation
+for \( x \) or \( y \), not a function \( y(x) \).
+</p>
+
+</table>
+
+
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -26361,15 +27198,15 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec25"></a></h1>
+<h1>Here goes another section  <a name="___sec26"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec26"></a></h1>
+<h1>More Exercises  <a name="___sec27"></a></h1>
 
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
@@ -26392,17 +27229,17 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
+and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec29"></a></h1>
+<h1>References  <a name="___sec30"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -26519,7 +27356,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec31"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
 
 Some text.
 
@@ -26527,7 +27364,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
 
 Without label.
 
@@ -26537,149 +27374,14 @@ With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-With label.
-
-<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
-
-Without label.
+What about inserting a quiz?
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
-Here is a tip or hint box, typeset as a notice box.
-</div>
-
-
-<p>
-Need a lot of text to surround the summary box.
-Version control systems allow you to record the history of files
-and share files among several computers and collaborators in a
-professional way. File changes on one computer are updated or
-merged with changes on another computer. Especially when working
-with programs or technical reports it is essential
-to have changes documented and to
-ensure that every computer and person involved in the project
-have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
-from using version control systems.
-
-<p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
-<b>Bold remark:</b> Make some text with this summary.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-</div>
-
-
-<p>
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
-
-<p>
-The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
-It is very easy to get started with these systems, and they allow you
-to share files among laptops and mobile units with as many users as
-you want. The systems offer a kind of version control in that the
-files are stored frequently (several times per minute), and you can go
-back to previous versions for the last 30 days. However, it is
-challenging  to find the right version from the past when there are
-so many of them.
-
-<p>
-More seriously, when several people may edit files simultaneously, it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools than Dropbox or
-Google Drive: project hosting services with true version control
-systems.  The following text aims at providing you with the minimum
-information to started with such systems. Numerous other tutorials
-contain more comprehensive material and in-depth explanations of the
-concepts and tools.
-
-<p>
-The idea with project hosting services is that you have the files
-associated with a project in the cloud. Many people may share these
-files.  Every time you want to work on the project you explicitly
-update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to a
-version of the files at some particular point in the past,
-this is an easy operation. You can also use tools to see
-what various people have done with the files in the various versions.
-
-<p>
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three. All the project hosting services have
-excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know steps.
-The Git tutorials we refer to later in this document contain more
-detailed information and constitute of course very valuable readings
-when you use version control systems every day. The point now is
-to get started.
-
-<h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
-
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. 
-<!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
-<!-- end inline comment -->
- I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
-
-<p>
-The simplest services for hosting project files is Dropbox. 
-<!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
-how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
-<!-- end inline comment -->
- It
-is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
-
-<p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  
-<!-- begin inline comment -->
-<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</em>]</font>
-<!-- end inline comment -->
-
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
-
-The point here is to test 1) <code>verbatim</code> code in headings, and 2)
-ending a heading with verbatim code as this triggers a special
-case in LaTeX.
-
-<p>
-And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: <code>admon.do.txt</code>.
-
-<p><a name="def_footnote_3"></a><a href="._testdoc001.html#link_footnote_3"><b>3:</b></a> Not much to add here, but the footnote
-is at the end with only one newline.
-
 <p>
 <!-- begin bottom navigation -->
 <a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+
+<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -26830,21 +27532,22 @@ Automatically generated HTML file from Doconce source
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec22"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Example 7: Just an example </a><br>
-<a href="#___sec25"> Here goes another section </a><br>
-<a href="#___sec26"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="#___sec29"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Example 8: Just an example </a><br>
+<a href="#___sec26"> Here goes another section </a><br>
+<a href="#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
+<a href="#___sec30"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 The format of this document is
@@ -26899,7 +27602,7 @@ This equation appears in another part if this document is split.
 
 More text, with a reference back to
 The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3>Computer code  <a name="___sec2"></a></h3>
@@ -27542,8 +28245,8 @@ More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
 Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
@@ -27583,7 +28286,6 @@ head, otherwise tail. Repeat this $latex N$ number of times.
 <p>
 
 <b>Solution.</b>
-Code:
 <p>
 
 
@@ -27830,7 +28532,80 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 
-<h2>Example 7: Just an example  <a name="___sec24"></a></h2>
+<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+
+
+Given
+
+<p>
+
+$latex  \frac{dy}{dx} = -y(x),\quad y(0)=1  $
+
+
+What is the solution of this equation?
+
+
+<p>
+
+$latex y=e^{-y}$
+
+
+<p>
+
+$latex y=e^{y}$
+
+
+<p>
+
+Almost, but the sign is wrong (note the minus!).
+
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(x)
+</pre></div>
+<p>
+
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+<p>
+
+$latex  y(x) = e^{-y}. $
+
+
+
+
+<p>
+
+The solution cannot be found because there is a derivative in the equation.
+
+
+<p>
+
+Equations with derivatives can be solved;
+they are termed <em>differential
+equations</em>.
+
+
+<p>
+
+The equation is meaningless: an equation must be an equation
+for $latex x$ or $latex y$, not a function $latex y(x)$.
+
+
+<p>
+
+Equations where the unknown is a function, as $latex y(x)$
+here, are called <em>differential equations</em>, and are solved by
+special techniques.
+
+<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
 
 <b>a)</b>
 What is the capital of Norway?
@@ -27839,13 +28614,13 @@ What is the capital of Norway?
 <b>Answer.</b>
 Oslo.
 
-<h1>Here goes another section  <a name="___sec25"></a></h1>
+<h1>Here goes another section  <a name="___sec26"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec26"></a></h1>
+<h1>More Exercises  <a name="___sec27"></a></h1>
 
-<h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
@@ -27862,14 +28637,14 @@ hint, etc.):
 
 Filename: <code>verify_formula.py</code>.
 
-<h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
+and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
-<h1>References  <a name="___sec29"></a></h1>
+<h1>References  <a name="___sec30"></a></h1>
 
 <ol>
  <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -27982,7 +28757,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec31"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
 
 Some text.
 
@@ -27990,7 +28765,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
 
 Without label.
 
@@ -28000,9 +28775,43 @@ With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-With label.
+What about inserting a quiz?
 
-<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
+<p>
+
+What is the capital of Norway?
+
+
+<p>
+
+Stockholm
+
+
+<p>
+
+Stockholm is the capital of Sweden.
+
+
+<p>
+
+London
+
+
+<p>
+
+Oslo
+
+
+<p>
+
+Bergen
+
+
+<p>
+
+Those from Bergen would claim so, but nobody else.
+
+<h2>Appendix: Testing identical titles  <a name="___sec37"></a></h2>
 
 Without label.
 
@@ -28091,7 +28900,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec38"></a></h2>
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -28126,7 +28935,7 @@ you with the minimum information to started with such
 systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec39"></a></h2>
 
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -28264,22 +29073,26 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -28288,12 +29101,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -28409,21 +29222,22 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec22"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Example 7: Just an example </a><br>
-<a href="#___sec25"> Here goes another section </a><br>
-<a href="#___sec26"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="#___sec29"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Example 8: Just an example </a><br>
+<a href="#___sec26"> Here goes another section </a><br>
+<a href="#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
+<a href="#___sec30"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -28492,7 +29306,7 @@ This equation appears in another part if this document is split.
 <p>
 More text, with a reference back to
 The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <p>
@@ -29160,8 +29974,8 @@ More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
 Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
@@ -29487,7 +30301,53 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 7: Just an example  <a name="___sec24"></a></h2>
+<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+
+<p>
+<b>Question:</b> Given
+
+$$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
+
+What is the solution of this equation?</p>
+
+<p><b>Choice 1:</b>
+\( y=e^{-y} \)
+</p>
+
+<p><b>Choice 2:</b>
+\( y=e^{y} \)
+</p>
+
+<p><b>Choice 3:</b>
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(x)
+</pre></div>
+<p>
+</p>
+
+<p><b>Choice 4:</b>
+The solution cannot be found because there is a derivative in the equation.
+</p>
+
+<p><b>Choice 5:</b>
+The equation is meaningless: an equation must be an equation
+for \( x \) or \( y \), not a function \( y(x) \).
+</p>
+
+</table>
+
+
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -29503,15 +30363,15 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec25"></a></h1>
+<h1>Here goes another section  <a name="___sec26"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec26"></a></h1>
+<h1>More Exercises  <a name="___sec27"></a></h1>
 
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
@@ -29534,17 +30394,17 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
+and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec29"></a></h1>
+<h1>References  <a name="___sec30"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -29661,7 +30521,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec31"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
 
 Some text.
 
@@ -29669,7 +30529,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
 
 Without label.
 
@@ -29679,9 +30539,34 @@ With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-With label.
+What about inserting a quiz?
 
-<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
+<p>
+<!-- !split -->
+<p>
+<b>Question:</b> What is the capital of Norway?</p>
+
+<p><b>Choice 1:</b>
+Stockholm
+</p>
+
+<p><b>Choice 2:</b>
+London
+</p>
+
+<p><b>Choice 3:</b>
+Oslo
+</p>
+
+<p><b>Choice 4:</b>
+Bergen
+</p>
+
+</table>
+
+
+
+<h2>Appendix: Testing identical titles  <a name="___sec37"></a></h2>
 
 Without label.
 
@@ -29770,7 +30655,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec38"></a></h2>
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -29806,7 +30691,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec39"></a></h2>
 
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -31303,6 +32188,22 @@ lambda x: x+2
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
+\subsection*{Exercise \thedoconceexercisecounter: Solution of differential equation}
+
+\label{sec:this:exer:de}
+
+
+% --- end explanation of choice 5 ---
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
 \subsection*{Example \thedoconceexercisecounter: Just an example}
 
 
@@ -31407,7 +32308,10 @@ With label.
 \paragraph{Appendix: Testing identical titles.}
 \label{test:title:id2}
 
-With label.
+What about inserting a quiz?
+
+
+
 
 \paragraph{Appendix: Testing identical titles.}
 Without label.
@@ -31957,6 +32861,7 @@ testdoc.do.txt
 ._testdoc000.html
 ._testdoc001.html
 ._testdoc002.html
+._testdoc003.html
 
 ************** File: make.sh *****************
 #!/bin/bash -x
@@ -32799,7 +33704,8 @@ v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
 $$
 Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}?
 
-*Test 8: newcommands and boldface bm vs pmb.* We have
+*Test 8: newcommands and boldface bm vs pmb.*
+We have
 
 $$
  \color{blue}{\frac{\partial\u}{\partial t}} +
@@ -33907,21 +34813,22 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
      <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -33980,22 +34887,26 @@ h1, h2, h3, h4, h5, h6 {
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -34004,12 +34915,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 
@@ -34123,21 +35034,22 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec29"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
+<a href="._testdoc_vagrant002.html#___sec30"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -34287,21 +35199,22 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
      <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34360,22 +35273,26 @@ h1, h2, h3, h4, h5, h6 {
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -34384,12 +35301,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 
@@ -34503,21 +35420,22 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec29"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
+<a href="._testdoc_vagrant002.html#___sec30"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -34667,21 +35585,22 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
      <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -34740,22 +35659,26 @@ h1, h2, h3, h4, h5, h6 {
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -34764,12 +35687,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 
@@ -34878,7 +35801,7 @@ This equation appears in another part if this document is split.
 <p>
 More text, with a reference back to
 The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 The appendices <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc_vagrant002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <p>
@@ -35652,21 +36575,22 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
      <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Example 7: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Example 7: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec25"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 8: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 8: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 9: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 9: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> References </a></li>
+     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
+     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec31"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec33"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec37"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec38"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -35725,22 +36649,26 @@ h1, h2, h3, h4, h5, h6 {
                2,
                None,
                '___sec23'),
-              (' Example 7: Just an example ', 2, None, '___sec24'),
-              (' Here goes another section ', 1, None, '___sec25'),
-              (' More Exercises ', 1, None, '___sec26'),
-              (' Exercise 8: Make references to projects and problems ',
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 9: References in a headings do not work well in html ',
+              (' Project 10: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec29'),
+              (' References ', 1, None, '___sec30'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec31'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec33'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -35749,12 +36677,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec37'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec38')]}
+               '___sec39')]}
 end of tocinfo -->
 
 
@@ -35844,8 +36772,8 @@ More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
 Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 9: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>.
+as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec14"></a></h1>
 
@@ -35904,7 +36832,6 @@ head, otherwise tail. Repeat this \( N \) number of times.
 <p>
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
-Code:
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
@@ -36223,7 +37150,81 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 7: Just an example  <a name="___sec24"></a></h2>
+<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+
+<p>
+<b>Question:</b> Given
+
+$$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
+
+What is the solution of this equation?</p>
+
+<p><b>Choice 1:</b>
+\( y=e^{-y} \)
+</p>
+
+<p><b>Choice 2:</b>
+\( y=e^{y} \)
+<div class="collapse-group">
+<p class="collapse" id="quiz_id_1_2">
+wrong!<br>
+Almost, but the sign is wrong (note the minus!).
+</p>
+<a class="btn showdetails" data-toggle="collapse" data-target="#quiz_id_1_2" style="font-size: 80%;">Info...</a>
+</div>
+</p>
+
+<p><b>Choice 3:</b>
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(x)
+</pre></div>
+<p>
+<div class="collapse-group">
+<p class="collapse" id="quiz_id_1_3">
+wrong!<br>
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+$$ y(x) = e^{-y}.$$
+</p>
+<a class="btn showdetails" data-toggle="collapse" data-target="#quiz_id_1_3" style="font-size: 80%;">Info...</a>
+</div>
+</p>
+
+<p><b>Choice 4:</b>
+The solution cannot be found because there is a derivative in the equation.
+<div class="collapse-group">
+<p class="collapse" id="quiz_id_1_4">
+wrong!<br>
+Equations with derivatives can be solved;
+they are termed <em>differential
+equations</em>.
+</p>
+<a class="btn showdetails" data-toggle="collapse" data-target="#quiz_id_1_4" style="font-size: 80%;">Info...</a>
+</div>
+</p>
+
+<p><b>Choice 5:</b>
+The equation is meaningless: an equation must be an equation
+for \( x \) or \( y \), not a function \( y(x) \).
+</p>
+
+</table>
+
+
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -36239,15 +37240,15 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec25"></a></h1>
+<h1>Here goes another section  <a name="___sec26"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec26"></a></h1>
+<h1>More Exercises  <a name="___sec27"></a></h1>
 
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 8: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
@@ -36270,17 +37271,17 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 9: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 8: Make references to projects and problems</a>,
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 9: References in a headings do not work well in html</a>.
+and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec29"></a></h1>
+<h1>References  <a name="___sec30"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -36397,7 +37398,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec31"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
 
 Some text.
 
@@ -36405,7 +37406,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec33"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
 
 Without label.
 
@@ -36415,146 +37416,9 @@ With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
-With label.
-
-<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
-
-Without label.
+What about inserting a quiz?
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Tip.</b>
-Here is a tip or hint box, typeset as a notice box.
-</div>
-
-
-<p>
-Need a lot of text to surround the summary box.
-Version control systems allow you to record the history of files
-and share files among several computers and collaborators in a
-professional way. File changes on one computer are updated or
-merged with changes on another computer. Especially when working
-with programs or technical reports it is essential
-to have changes documented and to
-ensure that every computer and person involved in the project
-have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
-from using version control systems.
-
-<p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
-<b>Bold remark:</b> Make some text with this summary.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-</div>
-
-
-<p>
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
-
-<p>
-The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
-It is very easy to get started with these systems, and they allow you
-to share files among laptops and mobile units with as many users as
-you want. The systems offer a kind of version control in that the
-files are stored frequently (several times per minute), and you can go
-back to previous versions for the last 30 days. However, it is
-challenging  to find the right version from the past when there are
-so many of them.
-
-<p>
-More seriously, when several people may edit files simultaneously, it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools than Dropbox or
-Google Drive: project hosting services with true version control
-systems.  The following text aims at providing you with the minimum
-information to started with such systems. Numerous other tutorials
-contain more comprehensive material and in-depth explanations of the
-concepts and tools.
-
-<p>
-The idea with project hosting services is that you have the files
-associated with a project in the cloud. Many people may share these
-files.  Every time you want to work on the project you explicitly
-update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to a
-version of the files at some particular point in the past,
-this is an easy operation. You can also use tools to see
-what various people have done with the files in the various versions.
-
-<p>
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three. All the project hosting services have
-excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know steps.
-The Git tutorials we refer to later in this document contain more
-detailed information and constitute of course very valuable readings
-when you use version control systems every day. The point now is
-to get started.
-
-<h2>Appendix: Testing inline comments  <a name="___sec37"></a></h2>
-
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. 
-<!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
-<!-- end inline comment -->
- I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
-
-<p>
-The simplest services for hosting project files is Dropbox. 
-<!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
-how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
-<!-- end inline comment -->
- It
-is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
-
-<p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  
-<!-- begin inline comment -->
-<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</em>]</font>
-<!-- end inline comment -->
-
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec38"></a></h2>
-
-The point here is to test 1) <code>verbatim</code> code in headings, and 2)
-ending a heading with verbatim code as this triggers a special
-case in LaTeX.
-
-<p>
-And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: <code>admon.do.txt</code>.
-
-<p><a name="def_footnote_3"></a><a href="._testdoc_vagrant001.html#link_footnote_3"><b>3:</b></a> Not much to add here, but the footnote
-is at the end with only one newline.
-
 <p>
 <!-- ------------------- end of main content --------------- -->
 
@@ -36577,6 +37441,9 @@ While the <div class="deep-blue">rest of the</div> getting started
     <a href="._testdoc_vagrant001.html">&larr; Prev</a>
   </li>
 
+  <li class="next">
+    <a href="._testdoc_vagrant003.html">Next &rarr;</a>
+  </li>
 
 </ul>
 
@@ -37525,7 +38392,6 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 .. --- begin solution of exercise ---
 
 **Solution.**
-Code:
 
 .. code-block:: python
 
@@ -37871,7 +38737,22 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 .. --- begin exercise ---
 
-Example 7: Just an example
+.. _sec:this:exer:de:
+
+Exercise 7: Solution of differential equation
+---------------------------------------------
+
+
+.. --- end explanation of choice 5 ---
+
+.. --- end exercise ---
+
+
+
+
+.. --- begin exercise ---
+
+Example 8: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -37903,7 +38784,7 @@ More Exercises
 
 .. _exer:some:formula:
 
-Exercise 8: Make references to projects and problems
+Exercise 9: Make references to projects and problems
 ----------------------------------------------------
 
 .. Test comments not at the end only
@@ -37929,8 +38810,8 @@ Filename: ``verify_formula.py``.
 
 .. _exer:you:
 
-Project 9: References in a headings do not work well in sphinx
---------------------------------------------------------------
+Project 10: References in a headings do not work well in sphinx
+---------------------------------------------------------------
 
 Refer to the previous exercise as :ref:`exer:some:formula`,
 the two before that as :ref:`demo:ex:2` and :ref:`proj:circle1`,
@@ -38109,7 +38990,10 @@ With label.
 Appendix: Testing identical titles  (3)
 ---------------------------------------
 
-With label.
+What about inserting a quiz?
+
+
+
 
 Appendix: Testing identical titles  (4)
 ---------------------------------------
@@ -50410,7 +51294,8 @@ Concluding remarks, for the novice ---------------------------------|
 |-------------------------------------------------------------------|
 
 
-*Remark.* The remarks and hint environments are not allowed outside
+*Remark.*
+The remarks and hint environments are not allowed outside
 exercises (and problems and projects too).
 
 ************** File: slides1.do.txt *****************
@@ -58989,6 +59874,7 @@ Result:
 <h3>This is an H4/paragraph heading  <a name="___sec16"></a></h3>
 
 <b>This is a paragraph heading.</b>
+
 <p>
 
 </section>
@@ -60334,6 +61220,8 @@ Result:
 
 \paragraph{This is an H4/paragraph heading.}
 \paragraph{This is a paragraph heading.}
+
+
 % !split
 \section{Doconce: markup and lists}
 
@@ -67035,6 +67923,15 @@ Text with a name like Åsmund Ødegård works in general.
 
 
 ************************************************************
+str>>> The file after first reformatting of quizzes:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
 str>>> The file after running @@@OSCMD (from file):
 
 ## Test of handling non-ASCII characters in Doconce
@@ -67331,7 +68228,7 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 ************************************************************
-unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
 
 
 <!-- tocinfo
@@ -67427,6 +68324,21 @@ Found use of 2 preprocess directives # #if|define|include in file encoding3.do.t
 
 ************************************************************
 unicode>>> The file after running preprocess and/or mako:
+
+## Test of handling non-ASCII characters in Doconce
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+!bc
+a = 1  # Value suggested by Åsmund Ødegård.
+!ec
+
+
+
+
+************************************************************
+unicode>>> The file after first reformatting of quizzes:
 
 ## Test of handling non-ASCII characters in Doconce
 Text with a name like Åsmund Ødegård works in general.
@@ -67873,7 +68785,7 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 ************************************************************
-unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
 
 
 <!-- tocinfo
@@ -68035,6 +68947,22 @@ Keyword arguments to be sent to mako: {'DEVICE': 'screen', 'FORMAT': 'html', 'MA
 
 ************************************************************
 unicode>>> The file after running preprocess and/or mako:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after first reformatting of quizzes:
 
 Text with a name like Åsmund Ødegård works in general.
 
@@ -68738,7 +69666,7 @@ through the various stages of the text transformation process.
 
 
 ************************************************************
-unicode>>> The file after removal of solutions, answers, notes, hints, etc.:
+unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
 
 
 <!-- tocinfo
@@ -72602,7 +73530,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Apr 24 14:16:41 2014.
+# sphinx-quickstart on Wed Apr 30 19:08:35 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -72773,6 +73701,7 @@ html_theme = 'agni'
 #html_theme = 'agogo'
 #html_theme = 'basic'
 #html_theme = 'basicstrap'
+#html_theme = 'bloodish'
 #html_theme = 'bootstrap'
 #html_theme = 'cbc'
 #html_theme = 'classy'
@@ -72780,7 +73709,8 @@ html_theme = 'agni'
 #html_theme = 'default'
 #html_theme = 'epub'
 #html_theme = 'fenics'
-#html_theme = 'fenics_minimal'
+#html_theme = 'fenics_minimal1'
+#html_theme = 'fenics_minimal2'
 #html_theme = 'flask'
 #html_theme = 'haiku'
 #html_theme = 'impressjs'
@@ -72795,6 +73725,7 @@ html_theme = 'agni'
 #html_theme = 'solarized'
 #html_theme = 'sphinxdoc'
 #html_theme = 'traditional'
+#html_theme = 'uio'
 #html_theme = 'vlinux-theme'
 #html_theme = 'default'
 
@@ -72930,7 +73861,9 @@ elif html_theme == 'scipy_lectures':
 
 elif html_theme == 'cbc':
     pygments_style = "friendly"
-    html_logo = "cbc_logo.png"
+elif html_theme == 'uio':
+    pygments_style = "tango"
+
 
 
 
@@ -80208,7 +81141,7 @@ is also important, one should follow these rules:
 (Doconce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
-*Notice.* 
+*Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as `sphinx`, makes it necessary
@@ -80222,7 +81155,8 @@ PDF document.
 
 
 
-*LaTeX Newcommands.* The author can define `newcommand` statements in files with names
+*LaTeX Newcommands.*
+The author can define `newcommand` statements in files with names
 `newcommands*.tex`. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that `newcommands_keep.tex`
@@ -82262,7 +83196,7 @@ is also important, one should follow these rules:
 (Doconce performs extensions to {{{sphinx}}} and other formats such that
 labels in {{{align}}} environments work well.)
 
-//Notice.// 
+//Notice.//\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as {{{sphinx}}}, makes it necessary
@@ -82276,7 +83210,8 @@ PDF document.
 
 
 
-//LaTeX Newcommands.// The author can define {{{newcommand}}} statements in files with names
+//LaTeX Newcommands.//
+The author can define {{{newcommand}}} statements in files with names
 {{{newcommands*.tex}}}. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that {{{newcommands_keep.tex}}}
@@ -83261,7 +84196,7 @@ is also important, one should follow these rules:
 (Doconce performs extensions to 'sphinx' and other formats such that
 labels in 'align' environments work well.)
 
-*Notice.* 
+*Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as 'sphinx', makes it necessary
@@ -83275,7 +84210,8 @@ PDF document.
 
 
 
-*LaTeX Newcommands.* The author can define 'newcommand' statements in files with names
+*LaTeX Newcommands.*
+The author can define 'newcommand' statements in files with names
 'newcommands*.tex'. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that 'newcommands_keep.tex'
@@ -84291,7 +85227,7 @@ is also important, one should follow these rules:
 (Doconce performs extensions to C{sphinx} and other formats such that
 labels in C{align} environments work well.)
 
-I{Notice.} 
+I{Notice.}\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as C{sphinx}, makes it necessary
@@ -84305,7 +85241,8 @@ PDF document.
 
 
 
-I{LaTeX Newcommands.} The author can define C{newcommand} statements in files with names
+I{LaTeX Newcommands.}
+The author can define C{newcommand} statements in files with names
 C{newcommands*.tex}. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that C{newcommands_keep.tex}
@@ -85381,7 +86318,8 @@ Notice -----------------------------------------------------------------|
 |-----------------------------------------------------------------------|
 
 
-*LaTeX Newcommands.* The author can define newcommand statements in files with names
+*LaTeX Newcommands.*
+The author can define newcommand statements in files with names
 newcommands*.tex. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that newcommands_keep.tex
@@ -86473,7 +87411,7 @@ is also important, one should follow these rules:
 (Doconce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
-*Notice.* 
+*Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure, footnotes, margin notes, etc.
 Allowing other output formats, such as `sphinx`, makes it necessary
@@ -86487,7 +87425,8 @@ PDF document.
 
 
 
-*LaTeX Newcommands.* The author can define `newcommand` statements in files with names
+*LaTeX Newcommands.*
+The author can define `newcommand` statements in files with names
 `newcommands*.tex`. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
 The convention is that `newcommands_keep.tex`
@@ -87416,11 +88355,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
     found!
 figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D:
@@ -87464,11 +88399,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87533,11 +88464,7 @@ copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 transforming sections: subsection to subsubsection...
 transforming sections: section to subsection...
 transforming sections: chapter to section...
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87582,11 +88509,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87602,7 +88525,7 @@ output in testdoc.html
 + cp testdoc.html testdoc_vagrant.html
 + doconce split_html testdoc_vagrant.html
 testdoc_vagrant.html now links to the generated files
-._testdoc_vagrant000.html, ._testdoc_vagrant001.html, ._testdoc_vagrant002.html
+._testdoc_vagrant000.html, ._testdoc_vagrant001.html, ._testdoc_vagrant002.html, ._testdoc_vagrant003.html
 + system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
 + doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -87634,11 +88557,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87656,7 +88575,7 @@ no answers/solutions to exercises found in testdoc.html
 + system doconce split_html testdoc.html
 + doconce split_html testdoc.html
 testdoc.html now links to the generated files
-._testdoc000.html, ._testdoc001.html, ._testdoc002.html
+._testdoc000.html, ._testdoc001.html, ._testdoc002.html, ._testdoc003.html
 + '[' 0 -ne 0 ']'
 + system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc
 + doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc
@@ -87689,11 +88608,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87754,11 +88669,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87821,11 +88732,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -87866,7 +88773,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -88019,7 +88926,7 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
-Package: `showlabels' v1.6.5 <2009/05/29>
+Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
 ) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
@@ -88477,9 +89384,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -88522,7 +89429,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -88548,34 +89455,34 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-showlabels.sty    2009/05/29 v1.6.5
+showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -88675,7 +89582,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -88828,7 +89735,7 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
-Package: `showlabels' v1.6.5 <2009/05/29>
+Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
 ) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
@@ -88894,14 +89801,14 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
 [5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
 (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
 
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=273, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=275, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -88941,17 +89848,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=301, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=302, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=305, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=304, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=306, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89146,9 +90053,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -89191,7 +90098,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -89217,34 +90124,34 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-showlabels.sty    2009/05/29 v1.6.5
+showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -89359,7 +90266,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -89512,7 +90419,7 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
-Package: `showlabels' v1.6.5 <2009/05/29>
+Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
 ) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
@@ -89578,14 +90485,14 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
 [5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
 (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
 
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=273, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=275, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89625,17 +90532,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=301, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=302, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=305, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=304, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=306, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89831,9 +90738,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -89876,7 +90783,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -89902,34 +90809,34 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-showlabels.sty    2009/05/29 v1.6.5
+showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -90028,7 +90935,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -90181,7 +91088,7 @@ gs.code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
-Package: `showlabels' v1.6.5 <2009/05/29>
+Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
 ) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
@@ -90247,14 +91154,14 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
 [5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
 (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=245, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
 
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=271, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=273, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=273, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=275, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90294,17 +91201,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=299, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=301, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=301, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=302, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=304, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=305, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=304, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=306, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90388,9 +91295,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -90433,7 +91340,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -90459,34 +91366,34 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
     tikz.code.tex
 todonotes.sty    2012/07/25
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-showlabels.sty    2009/05/29 v1.6.5
+showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -90610,11 +91517,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -90647,11 +91550,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 *** warning: footnotes are not supported for format st
     footnotes will be left in the doconce syntax
 output in testdoc.st
@@ -90706,11 +91605,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90767,11 +91662,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90838,7 +91729,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 title: Just a test
 author: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -90984,11 +91875,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91025,11 +91912,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 *** warning: footnotes are not supported for format epytext
     footnotes will be left in the doconce syntax
 output in testdoc.epytext
@@ -91065,11 +91948,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91108,11 +91987,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91170,11 +92045,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91217,11 +92088,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91261,11 +92128,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91294,8 +92157,24 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
+
+...doconce translation: handled figures 19.6 s
 *** warning: footnotes are not supported for format gwiki
     footnotes will be left in the doconce syntax
+
+...doconce translation: handled handled lists 19.7 s
+
+...doconce translation: handled inline substitutions 19.7 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 19.7 s
+
+...doconce translation: handled !benvir/!eenvir constructions 19.7 s
+
+...doconce translation: handled handled second reformatting of quizzes 19.7 s
+
+
+...doconce format used 19.7 s to translate the document (1281 lines)
+
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std
@@ -91350,11 +92229,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91426,11 +92301,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-warning: open the solution in exercise "Flip a Coin" with a line of
-text before the code! (Now "Code:" is inserted)
-
-found info about 9 exercises, written to .testdoc.exerinfo
+found info about 10 exercises, written to .testdoc.exerinfo
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -91726,7 +92597,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./math_test.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -91892,7 +92763,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -92028,7 +92899,7 @@ Using author(s) "HPL" from math_test
 title: How various formats can deal with LaTeX math
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -92163,7 +93034,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_colors1.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -92387,7 +93258,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -92498,7 +93369,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_mdfbox.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -92832,36 +93703,36 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -92982,7 +93853,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_paragraph.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -93252,36 +94123,36 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -93391,7 +94262,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_graybox2.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -93727,37 +94598,37 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -93874,7 +94745,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_yellowicon.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -94071,7 +94942,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -94180,7 +95051,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_grayicon.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -94376,7 +95247,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -94485,7 +95356,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./admon_colors2.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -94678,7 +95549,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
@@ -94963,7 +95834,7 @@ Using author(s) "hpl" from admon
 title: Testing admons
 author: hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -95144,6 +96015,16 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 15.5 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 15.5 s
+
+...doconce translation: handled !benvir/!eenvir constructions 15.5 s
+
+
+...doconce format used 15.5 s to translate the document (739 lines)
+
 output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
@@ -95169,7 +96050,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./movies.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -95241,11 +96122,70 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 )) 
 
 
-(/home/hpl/texmf/tex/latex/misc/movie15.sty
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -95291,156 +96231,177 @@ ABD: EveryShipout initializing macros
 
 
 
-<<VPlayer.swf>><<../doc/src/manual/mov
-/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
+
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 162 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 188 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=76, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=90, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=97, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=104, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
 mov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=111, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
 mov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
 mov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
 mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=336, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=343, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=350, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=357, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=364, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=371, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=378, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=392, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -95497,47 +96458,65 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+ l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
 l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
 l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+   l3str.sty    2013/07/24 v4576 L3 Experimental strings
   l3flag.sty    2011/12/08 v3039 L3 Experimental flags
 l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
- animate.sty    2013/07/19 PDF animations from files and inline graphics
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
@@ -95553,7 +96532,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
@@ -95575,7 +96553,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -95676,7 +96654,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./movies.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -95748,11 +96726,70 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 )) 
 
 
-(/home/hpl/texmf/tex/latex/misc/movie15.sty
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -95797,156 +96834,177 @@ ABD: EveryShipout initializing macros
 
 
 
-<<VPlayer.swf>><<../doc/src/manual/mov
-/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
+
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 162 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 188 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=76, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=90, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=97, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=104, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
 mov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=111, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
 mov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
 mov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
 mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=336, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=343, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=350, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=357, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=364, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=371, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=378, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=392, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -95995,47 +97053,65 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+ l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
 l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
 l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+   l3str.sty    2013/07/24 v4576 L3 Experimental strings
   l3flag.sty    2011/12/08 v3039 L3 Experimental flags
 l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
- animate.sty    2013/07/19 PDF animations from files and inline graphics
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
@@ -96051,7 +97127,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
@@ -96073,7 +97148,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -96181,7 +97256,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./movies.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -96253,11 +97328,70 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 )) 
 
 
-(/home/hpl/texmf/tex/latex/misc/movie15.sty
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -96302,156 +97436,177 @@ ABD: EveryShipout initializing macros
 
 
 
-<<VPlayer.swf>><<../doc/src/manual/mov
-/wave.mp4>><<../doc/src/manual/mov/wave.flv>>
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=47, 586.8324pt x 442.2924
+
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 162 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 188 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=76, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=90, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=97, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=104, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
 mov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=111, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
 mov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
 mov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
 mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=336, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=343, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=350, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=357, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=364, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=371, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=378, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=392, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -96495,47 +97650,65 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  media9.sty    2013/07/19 v0.29 acrobat-9/X compatible media
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/04/24 v4482 L3 Experimental regular expressions
+ l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
 l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
 l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/04/24 v4482 L3 Experimental strings
+   l3str.sty    2013/07/24 v4576 L3 Experimental strings
   l3flag.sty    2011/12/08 v3039 L3 Experimental flags
 l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2013/07/12 v4544 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
+l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
-everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
- animate.sty    2013/07/19 PDF animations from files and inline graphics
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
@@ -96551,7 +97724,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
@@ -96573,7 +97745,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -96682,7 +97854,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./movies.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -96721,6 +97893,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+
 
 
 
@@ -96769,154 +97942,154 @@ No file movies.aux.
 
 
 
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=27, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=19, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=35, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=27, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=42, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=34, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=49, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=41, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=56, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=48, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=63, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=55, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=70, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=62, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=77, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=69, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=84, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=76, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
 ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=91, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=83, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
 ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=98, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=90, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
 ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=105, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
-mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=112, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=97, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
+ov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=104, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=119, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=111, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=126, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=118, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=133, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=125, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=140, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=132, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=147, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=154, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=146, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=161, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=153, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=168, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=160, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=175, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=167, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=182, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=174, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=189, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=196, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=188, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=203, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=195, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=210, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=202, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=217, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=209, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=224, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=216, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=231, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=238, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=230, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=245, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=237, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=252, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=244, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=259, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=251, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=266, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=258, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=265, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=280, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=272, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=287, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=279, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=294, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=286, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=301, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=293, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=300, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=315, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=307, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=314, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=329, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=336, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=328, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=343, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=335, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=350, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=342, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=357, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=349, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=365, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=356, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=372, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=363, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -96962,9 +98135,10 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
- animate.sty    2013/07/19 PDF animations from files and inline graphics
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
@@ -96981,7 +98155,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
@@ -97004,7 +98177,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -97139,6 +98312,16 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
 *** made link to new HTML file movie_player11.html
     with code to display the movie 
     http://vimeo.com/55562330
+
+...doconce translation: handled inline substitutions 23.2 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 23.2 s
+
+...doconce translation: handled !benvir/!eenvir constructions 23.2 s
+
+
+...doconce format used 23.2 s to translate the document (62 lines)
+
 output in movies.txt
 + '[' 0 -ne 0 ']'
 + cd Springer_T2
@@ -97193,7 +98376,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -97594,9 +98777,9 @@ moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
@@ -97628,35 +98811,35 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -97764,7 +98947,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -98155,9 +99338,9 @@ moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
@@ -98189,35 +99372,35 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -98313,7 +99496,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -98683,9 +99866,9 @@ moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/07/10 1.5 (Carsten Heinz)
- lstmisc.sty    2013/07/10 1.5 (Carsten Heinz)
-listings.cfg    2013/06/27 1.5pre1 listings configuration
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
@@ -98717,35 +99900,35 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -99157,6 +100340,9 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
 *** error: could not translate environment: !bsol
+    This is an environment in an exercise. Check if the
+    heading is correct so the subsection was recognized
+    as Exercise, Problem, or Project (Exercise: title).
     context:
 
 Normal text.
@@ -99169,10 +100355,6 @@ Here is a solution.
 Normal text.
 
 <h2>Links
-    possible reasons:
-     * syntax error in environment name
-     * environment inside code: use | instead of !
-     * or bug in doconce
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace 99x9.ogg .ogg tmp2.do.txt
 replacing 99x9.ogg by .ogg in tmp2.do.txt
@@ -99192,6 +100374,9 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
 *** error: could not translate environment: !bsol
+    This is an environment in an exercise. Check if the
+    heading is correct so the subsection was recognized
+    as Exercise, Problem, or Project (Exercise: title).
     context:
 
 Normal text.
@@ -99204,10 +100389,6 @@ Here is a solution.
 Normal text.
 
 <h2>Links
-    possible reasons:
-     * syntax error in environment name
-     * environment inside code: use | instead of !
-     * or bug in doconce
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce subst -s -m '^!bsol.+?!esol' '' tmp2.do.txt
 ^!bsol.+?!esol replaced by  in tmp2.do.txt
@@ -99333,7 +100514,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./quickref.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -99645,37 +100826,37 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
   hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
  pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -99738,7 +100919,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./quickref.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -100018,37 +101199,37 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
-     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
   hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
  pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/07/12 v4544 L3 Experimental document command parser
-   expl3.sty    2013/07/12 v4544 L3 Experimental code bundle wrapper
- l3names.sty    2012/12/07 v4346 L3 Namespace for primitives
-l3bootstrap.sty    2013/01/08 v4420 L3 Experimental bootstrap code
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2013/07/09 v4521 L3 Basic definitions
- l3expan.sty    2013/07/09 v4521 L3 Argument expansion
-    l3tl.sty    2013/04/24 v4482 L3 Token lists
-   l3seq.sty    2013/05/26 v4500 L3 Sequences and stacks
-   l3int.sty    2013/04/24 v4482 L3 Integers
- l3quark.sty    2013/07/09 v4521 L3 Quarks
-   l3prg.sty    2013/04/24 v4482 L3 Control structures
- l3clist.sty    2013/05/26 v4500 L3 Comma separated lists
- l3token.sty    2013/04/24 v4482 L3 Experimental token manipulation
-  l3prop.sty    2013/01/09 v4423 L3 Property lists
-   l3msg.sty    2013/01/08 v4412 L3 Messages
-  l3file.sty    2013/05/01 v4483 L3 File and I/O operations
-  l3skip.sty    2013/01/13 v4444 L3 Dimensions and skips
-  l3keys.sty    2013/07/12 v4544 L3 Experimental key-value interfaces
-    l3fp.sty    2013/07/09 v4521 L3 Floating points
-   l3box.sty    2013/04/24 v4482 L3 Experimental boxes
-l3coffins.sty    2012/09/09 v4212 L3 Coffin code layer
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
  l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2012/08/03 v4049 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2013/07/09 v4521 L3 Experimental additions to l3kernel
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -100168,7 +101349,7 @@ Using title "On an Ultimate Markup Language" from quickref
 title: On an Ultimate Markup Language
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -100272,7 +101453,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -100778,7 +101959,7 @@ This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2011/06/27>
-Babel <3.9f> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 

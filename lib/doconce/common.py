@@ -833,7 +833,7 @@ INLINE_TAGS = {
 
     # __Two underscores for Inline Paragraph Title.__
     'paragraph':
-    r'(?P<begin>^)__(?P<subst>.+?)__(?P<space>\n| )',
+    r'(?P<begin>^)__(?P<subst>.+?)__(?P<space>(\n| +))',
     #r'(?P<begin>^)[_=]{2}\s*(?P<subst>[^ =-].+?)[_=]{2}\s+',
 
     # TITLE: My Document Title
