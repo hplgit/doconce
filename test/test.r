@@ -27390,6 +27390,398 @@ What about inserting a quiz?
 </body>
 </html>
 
+************** File: ._testdoc003.html *****************
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Document for Testing Doconce">
+<meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
+
+
+
+<style type="text/css">
+    /* solarized style */
+    body {
+      margin:5;
+      padding:0;
+      border:0;	/* Remove the border around the viewport in old versions of IE */
+      width:100%;
+      background: #fdf6e3;
+      min-width:600px;	/* Minimum width of layout - remove if not required */
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.3em;
+      color: #657b83;
+    }
+    a { color: #657b83; text-decoration:none; }
+    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+    h2 { font-variant: small-caps; }
+    pre {
+      background: #fdf6e3;
+      -webkit-box-shadow: inset 0 0 2px #000000;
+      -moz-box-shadow: inset 0 0 2px #000000;
+      box-shadow: inset 0 0 2px #000000;
+      color: #586e75;
+      margin-left: 0px;
+      font-family: 'Droid Sans Mono', monospace;
+      padding: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    tt, code { font-family: "Courier New", Courier; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p { text-indent: 0px; }
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #FFBF00;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #fbeed5;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
+              (' Computer code ', 3, None, '___sec2'),
+              (' Running OS commands ', 3, None, '___sec3'),
+              (' Footnotes ', 3, None, '___sec4'),
+              (' Subsection 2: Testing figures ',
+               2,
+               'subsec:ex',
+               'subsec:ex'),
+              (' The $\\theta$ parameter (not $\\nabla$?) ',
+               2,
+               'decay:sec:theta',
+               'decay:sec:theta'),
+              (' Custom Environments ', 2, None, '___sec7'),
+              (' Tables ', 2, 'subsec:table', 'subsec:table'),
+              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+               2,
+               None,
+               '___sec9'),
+              (' Bibliography test ', 2, None, '___sec10'),
+              (' Example 1: Examples can be typeset as exercises ',
+               2,
+               'Example',
+               'Example'),
+              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              (' LaTeX Mathematics ', 1, None, '___sec13'),
+              (' Exercises ', 1, None, '___sec14'),
+              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
+              (' Remarks ', 3, None, '___sec16'),
+              (' Not an exercise ', 2, None, '___sec17'),
+              (' Project 3: Compute a Probability ',
+               2,
+               'demo:ex:2',
+               'demo:ex:2'),
+              (' Project 4: Explore Distributions of Random Circles ',
+               2,
+               'proj:circle1',
+               'proj:circle1'),
+              (' Remarks ', 3, None, '___sec20'),
+              (' Exercise 5: Determine some Distance ',
+               2,
+               'exer:dist',
+               'exer:dist'),
+              (' Remarks ', 3, None, '___sec22'),
+              (' Some exercise without the "Exercise:" prefix ',
+               2,
+               None,
+               '___sec23'),
+              (' Exercise 7: Solution of differential equation ',
+               2,
+               'sec:this:exer:de',
+               'sec:this:exer:de'),
+              (' Example 8: Just an example ', 2, None, '___sec25'),
+              (' Here goes another section ', 1, None, '___sec26'),
+              (' More Exercises ', 1, None, '___sec27'),
+              (' Exercise 9: Make references to projects and problems ',
+               2,
+               'exer:some:formula',
+               'exer:some:formula'),
+              (' Project 10: References in a headings do not work well in html ',
+               2,
+               'exer:you',
+               'exer:you'),
+              (' References ', 1, None, '___sec30'),
+              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
+              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id1',
+               'test:title:id1'),
+              (' Appendix: Testing identical titles ',
+               2,
+               'test:title:id2',
+               'test:title:id2'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing headings ending with `verbatim inline` ',
+               2,
+               None,
+               '___sec39')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
+
+
+
+    
+<a name="part0003"></a>
+<!-- begin top navigation -->
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end top navigation -->
+
+<p>
+<!-- !split -->
+<p>
+<b>Question:</b> What is the capital of Norway?</p>
+
+<p><b>Choice 1:</b>
+Stockholm
+</p>
+
+<p><b>Choice 2:</b>
+London
+</p>
+
+<p><b>Choice 3:</b>
+Oslo
+</p>
+
+<p><b>Choice 4:</b>
+Bergen
+</p>
+
+</table>
+
+
+
+<h2>Appendix: Testing identical titles  <a name="___sec37"></a></h2>
+
+Without label.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+Here is a tip or hint box, typeset as a notice box.
+</div>
+
+
+<p>
+Need a lot of text to surround the summary box.
+Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. File changes on one computer are updated or
+merged with changes on another computer. Especially when working
+with programs or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+from using version control systems.
+
+<p>
+<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<b>Bold remark:</b> Make some text with this summary.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+</div>
+
+
+<p>
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work - and all other important files.
+
+<p>
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.
+
+<p>
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
+
+<p>
+The idea with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" at the site where the
+project is hosted.  If you at some point need to go back to a
+version of the files at some particular point in the past,
+this is an easy operation. You can also use tools to see
+what various people have done with the files in the various versions.
+
+<p>
+All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three. All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.
+The Git tutorials we refer to later in this document contain more
+detailed information and constitute of course very valuable readings
+when you use version control systems every day. The point now is
+to get started.
+
+<h2>Appendix: Testing inline comments  <a name="___sec38"></a></h2>
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. 
+<!-- begin inline comment -->
+<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
+<!-- end inline comment -->
+ I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work - and all other important files.
+
+<p>
+The simplest services for hosting project files is Dropbox. 
+<!-- begin inline comment -->
+<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+how files, like <code>myfile.py</code>, perhaps containing much math, like
+\( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
+<!-- end inline comment -->
+ It
+is very easy to get started with Dropbox, and it allows you to share
+files among laptops and mobile units.
+
+<p>
+When several people may edit files simultaneously, it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools than Dropbox: project hosting services with
+true version control systems.  
+<!-- begin inline comment -->
+<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
+you with the minimum information to started with such
+systems. Numerous other tutorials contain more comprehensive material
+and in-depth explanations of the concepts and tools.</em>]</font>
+<!-- end inline comment -->
+
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec39"></a></h2>
+
+The point here is to test 1) <code>verbatim</code> code in headings, and 2)
+ending a heading with verbatim code as this triggers a special
+case in LaTeX.
+
+<p>
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: <code>admon.do.txt</code>.
+
+<p><a name="def_footnote_3"></a><a href="._testdoc001.html#link_footnote_3"><b>3:</b></a> Not much to add here, but the footnote
+is at the end with only one newline.
+
+<p>
+<!-- begin bottom navigation -->
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<!-- end bottom navigation -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+
 ************** File: testdoc_wordpress.html *****************
 <!--
 Automatically generated HTML file from Doconce source
@@ -67923,15 +68315,6 @@ Text with a name like Åsmund Ødegård works in general.
 
 
 ************************************************************
-str>>> The file after first reformatting of quizzes:
-
-## Test of handling non-ASCII characters in Doconce
-Text with a name like Åsmund Ødegård works in general.
-
-
-
-
-************************************************************
 str>>> The file after running @@@OSCMD (from file):
 
 ## Test of handling non-ASCII characters in Doconce
@@ -68324,21 +68707,6 @@ Found use of 2 preprocess directives # #if|define|include in file encoding3.do.t
 
 ************************************************************
 unicode>>> The file after running preprocess and/or mako:
-
-## Test of handling non-ASCII characters in Doconce
-Text with a name like Åsmund Ødegård works in general.
-Verbatim blocks with non-ASCII text does not work for HTML, but it works
-for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
-
-!bc
-a = 1  # Value suggested by Åsmund Ødegård.
-!ec
-
-
-
-
-************************************************************
-unicode>>> The file after first reformatting of quizzes:
 
 ## Test of handling non-ASCII characters in Doconce
 Text with a name like Åsmund Ødegård works in general.
@@ -68947,22 +69315,6 @@ Keyword arguments to be sent to mako: {'DEVICE': 'screen', 'FORMAT': 'html', 'MA
 
 ************************************************************
 unicode>>> The file after running preprocess and/or mako:
-
-Text with a name like Åsmund Ødegård works in general.
-
-This block (in format html)
-triggers use of `mako`. For all formats, `mako` has
-problem with non-ASCII characters anywhere in the text. The remedy
-for all formats is to read the file with UTF-8 encoding. With --debug
-one can see the internal str/unicode representation of the text
-through the various stages of the text transformation process.
-
-$b = 1$ is a value suggested by Åsmund Ødegård.
-
-
-
-************************************************************
-unicode>>> The file after first reformatting of quizzes:
 
 Text with a name like Åsmund Ødegård works in general.
 
@@ -73530,7 +73882,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Apr 30 19:08:35 2014.
+# sphinx-quickstart on Wed Apr 30 19:35:03 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -91667,6 +92019,22 @@ found info about 10 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+
+...doconce translation: handled figures 23.2 s
+
+...doconce translation: handled handled lists 23.3 s
+
+...doconce translation: handled inline substitutions 23.3 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 23.4 s
+
+...doconce translation: handled !benvir/!eenvir constructions 23.4 s
+
+...doconce translation: handled handled second reformatting of quizzes 23.4 s
+
+
+...doconce format used 23.4 s to translate the document (1631 lines)
+
 output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
@@ -91880,6 +92248,22 @@ found info about 10 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format rst
+
+...doconce translation: handled figures 30.7 s
+
+...doconce translation: handled handled lists 30.8 s
+
+...doconce translation: handled inline substitutions 30.9 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 30.9 s
+
+...doconce translation: handled !benvir/!eenvir constructions 30.9 s
+
+...doconce translation: handled handled second reformatting of quizzes 30.9 s
+
+
+...doconce format used 30.9 s to translate the document (1524 lines)
+
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + system doconce format epytext testdoc.do.txt --examples_as_exercises
@@ -91953,8 +92337,24 @@ found info about 10 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
+
+...doconce translation: handled figures 29.7 s
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
+
+...doconce translation: handled handled lists 29.8 s
+
+...doconce translation: handled inline substitutions 29.8 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 29.8 s
+
+...doconce translation: handled !benvir/!eenvir constructions 29.8 s
+
+...doconce translation: handled handled second reformatting of quizzes 29.8 s
+
+
+...doconce format used 29.8 s to translate the document (1411 lines)
+
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system doconce format mwiki testdoc.do.txt --examples_as_exercises
@@ -92157,24 +92557,8 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
 
-
-...doconce translation: handled figures 19.6 s
 *** warning: footnotes are not supported for format gwiki
     footnotes will be left in the doconce syntax
-
-...doconce translation: handled handled lists 19.7 s
-
-...doconce translation: handled inline substitutions 19.7 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 19.7 s
-
-...doconce translation: handled !benvir/!eenvir constructions 19.7 s
-
-...doconce translation: handled handled second reformatting of quizzes 19.7 s
-
-
-...doconce format used 19.7 s to translate the document (1281 lines)
-
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std
@@ -96015,16 +96399,6 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 15.5 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 15.5 s
-
-...doconce translation: handled !benvir/!eenvir constructions 15.5 s
-
-
-...doconce format used 15.5 s to translate the document (739 lines)
-
 output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
@@ -98312,16 +98686,6 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
 *** made link to new HTML file movie_player11.html
     with code to display the movie 
     http://vimeo.com/55562330
-
-...doconce translation: handled inline substitutions 23.2 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 23.2 s
-
-...doconce translation: handled !benvir/!eenvir constructions 23.2 s
-
-
-...doconce format used 23.2 s to translate the document (62 lines)
-
 output in movies.txt
 + '[' 0 -ne 0 ']'
 + cd Springer_T2
