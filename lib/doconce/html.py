@@ -1277,7 +1277,11 @@ def html_quiz(quiz):
     text = ''
     if 'new page' in quiz:
         text += '<!-- !split -->\n'
-    text += '<p>\n<b>Question:</b> ' + quiz['question'] + '</p>\n'
+    if 'heading' in quiz and quiz['explicit exercise heading']:
+        pass
+    else:
+        text += '<p>\n<b>Question:</b> '
+    text += quiz['question'] + '</p>\n'
     # Better to use a table than a list, since code after <li> did not
     # turn out well with bootstrap e.g.
     for i, choice in enumerate(quiz['choices']):

@@ -2480,13 +2480,15 @@ def interpret_quiz_text(text, previous_heading=None):
     m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
         heading = m.group(1).strip()
-        text = re.sub(pattern, ct('--- quiz heading: ' + heading), text,
-                      flags=re.MULTILINE)
+        displayed = ' (hidden)'
         if isinstance(previous_heading, str) and not \
                heading.lower() in previous_heading.lower():
             # Quiz heading is missing and wanted
             text = '===== Exercise: %s =====\n\n' % heading + text
             # no label, file=, solution= are needed for quizes
+            displayed = ' (displayed)'
+        text = re.sub(pattern, ct('--- quiz heading: ' + heading + displayed),
+                      text, flags=re.MULTILINE)
 
     def begin_end_tags(tag, content):
         return """
@@ -2563,7 +2565,10 @@ def extract_quizzes(filestr, format):
         pattern = '^' + ct('--- quiz heading: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
-            data[-1]['heading'] = m.group(1).strip()
+            words = m.group(1).strip().split()
+            heading = ' '.join(words[:-1])
+            data[-1]['heading'] = heading
+            data[-1]['explicit exercise heading'] = words[-1] == '(displayed)'
         pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:
