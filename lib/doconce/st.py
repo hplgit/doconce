@@ -42,7 +42,7 @@ def define(FILENAME_EXTENSION,
         'section':       r'\g<subst>',
         'subsection':    r'\g<subst>',
         'subsubsection': r'\g<subst>\n',
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'*\g<subst>*\g<space>',  # extra blank
         'abstract':      r'*\g<type>.* \g<text>\n\g<rest>',
         'title':         r'TITLE: \g<subst>',
         'date':          r'DATE: \g<subst>',

@@ -3,7 +3,7 @@ Testing admons
 
 hpl
 
-Date: Apr 24, 2014
+Date: Apr 30, 2014
 
 # !split
 Introduction
@@ -337,5 +337,6 @@ Concluding remarks, for the novice ---------------------------------|
 |-------------------------------------------------------------------|
 
 
-*Remark.* The remarks and hint environments are not allowed outside
+*Remark.*
+The remarks and hint environments are not allowed outside
 exercises (and problems and projects too).

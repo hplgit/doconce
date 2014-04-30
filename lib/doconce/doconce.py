@@ -2550,6 +2550,11 @@ def extract_quizzes(filestr, format):
     bct = begin_comment_tag
     ect = end_comment_tag
     cp = INLINE_TAGS_SUBST[format].get('comment', '# %s') # comment pattern
+    if format in ("rst", "sphinx"):
+        # cp is function, replace by standard pattern
+        cp = '.. %s\n'
+    if not isinstance(cp, str):
+        raise TypeError
     pattern = '^' + bct('quiz', cp) + '.+?' + ect('quiz', cp)
     quizzes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
     data = []

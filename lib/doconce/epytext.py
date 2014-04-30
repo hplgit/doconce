@@ -82,7 +82,7 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst'))),
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst'))),
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst'))),
-        'paragraph':     r'I{\g<subst>} ',
+        'paragraph':     r'I{\g<subst>}\g<space>',
         'abstract':      r'\nI{\g<type>.} \g<text>\n\g<rest>',
         'title':         r'TITLE: \g<subst>',
         'date':          r'DATE: \g<subst>',
@@ -126,4 +126,3 @@ def define(FILENAME_EXTENSION,
     #FORTSETT: insert QUIZ in various .py files, plaintext can do something simple, problem: cannot insert headline and exercise because then the exercise is not interpreted! problem2: quiz will just be a part of an exercises, unrendered
     #solution problem1: typeset_quizzes1 inserts the headline if the first headline prior to the quiz is not Exercise: heading, if heading is missing see if it can be obtained from the last Exercise|Project|Problem heading (if last heading is of this type)
     #solution problem2: the exercise data struct is not written to file before a similar interpretation as in extract_quizzes, then we can drop substituting in the data structure too!
-

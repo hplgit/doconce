@@ -489,8 +489,8 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
 
 def doconce_exercise_output(exer,
                             solution_header = '__Solution.__',
-                            answer_header = '__Answer.__ ',
-                            hint_header = '__Hint.__ ',
+                            answer_header = '__Answer.__',
+                            hint_header = '__Hint.__',
                             include_numbering=True,
                             include_type=True):
     """
@@ -554,7 +554,7 @@ def doconce_exercise_output(exer,
                 hint_header_ = hint_header.replace('Hint.', 'Hint %d.' % (i+1))
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
-            s += '\n' + hint_header_ + hint + '\n'
+            s += '\n' + hint_header_ + '\n' + hint + '\n'
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
@@ -590,10 +590,10 @@ def doconce_exercise_output(exer,
         import string
         for i, subex in enumerate(exer['subex']):
             letter = string.ascii_lowercase[i]
-            s += '\n__%s)__ ' % letter
+            s += '\n__%s)__\n' % letter
 
             if subex['text']:
-                s += '\n' + subex['text'] + '\n'
+                s += subex['text'] + '\n'
 
                 for i, hint in enumerate(subex['hints']):
                     if len(subex['hints']) == 1 and i == 0:
@@ -603,7 +603,7 @@ def doconce_exercise_output(exer,
                             'Hint.', 'Hint %d.' % (i+1))
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
-                    s += '\n' + hint_header_ + hint + '\n'
+                    s += '\n' + hint_header_ + '\n' + hint + '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
@@ -833,7 +833,7 @@ INLINE_TAGS = {
 
     # __Two underscores for Inline Paragraph Title.__
     'paragraph':
-    r'(?P<begin>^)__(?P<subst>.+?)__\s+',
+    r'(?P<begin>^)__(?P<subst>.+?)__(?P<space>\n| )',
     #r'(?P<begin>^)[_=]{2}\s*(?P<subst>[^ =-].+?)[_=]{2}\s+',
 
     # TITLE: My Document Title

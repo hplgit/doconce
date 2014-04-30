@@ -1019,11 +1019,7 @@ lambda x: x+2
 ===== Exercise: Solution of differential equation =====
 label{sec:this:exer:de}
 
-!bsubex
-Have you heard about the term *differential equation*?
-!esubex
 
-!bsubex
 !bquiz
 H: SOlution of differential equation
 
@@ -1066,7 +1062,7 @@ E: Equations where the unknown is a function, as $y(x)$
 here, are called *differential equations*, and are solved by
 special techniques.
 !equiz
-!bsubex
+
 
 ===== Example: Just an example =====
 
