@@ -2,20 +2,23 @@ TITLE: Ideas for automatically generating surveys and quizzes
 AUTHOR: Hans Petter Langtangen
 DATE: today
 
-!bquestion Problem background
-We want to create online surveys and quizzes, primarily for use
-in regular university teaching and professional short courses.
-Our topic is the blend of physics, mathematics, and programming so
+__Summary.__
+We want to create (large amounts of)
+online surveys and quizzes, primarily for use
+in regular university teaching and various tutorials and short courses.
+Our scientific topic is the blend of physics, mathematics, and programming so
 most questions will involve
-
-  * mathematics that must be typeset with LaTeX,
-  * computer code that must be shown in monospace font with
-    all spaces preserved, but preferably prettified with colored
-    syntax highlighting (via pygments, for instance).
+*mathematics that must be typeset with LaTeX*, and
+*computer code that must be shown in monospace font with
+all spaces preserved, but preferably prettified with colored
+syntax highlighting*.
 
 In addition, we will frequently need images, videos, and some control
-of basic HTML formatting (emphasize, tables, etc.).
+of basic HTML formatting (emphasize, tables, etc.). How can we
+do this effectively and without being tied forever to a particular
+web service?
 
+!bquestion Idea
 There are numerous web services with support for surveys and quizzes.
 Most of these demand the questions to be typed in interactively.
 We foresee to build a database of a huge number of questions that can
@@ -26,9 +29,11 @@ Only web services that has an API or file format for creating questions are of
 interest.
 !equestion
 
-!bquestion Specific problem to be solved
-Given data for surveys and quizzes are available in some format,
-typically as text in files (which can be loaded a Python data structure),
+!split
+===== More specific problem statement =====
+
+Given data for surveys and quizzes, available in some format,
+typically as text in files (which can be loaded into a Python data structure),
 how can we turn that information into live surveys and quizzes in
 online forms at Google, SurveyGizmo, ClassMarker, Kahoot, JotForm, etc.?
 Specifically, our text has
@@ -45,10 +50,10 @@ Specifically, our text has
  * tables
 
 HTML and MathJax are sufficient technologies for doing everything we want.
-If MathJax cannot be supported by a services, the next best solution is to
+If MathJax cannot be supported by a service, the next best solution is to
 automatically generate LaTeX mathematics through a service like
-URL: "'http://latex.codecogs.com/png.latex?".
-!equestion
+URL: "http://latex.codecogs.com/png.latex?". Though possible, this
+is something we want to avoid.
 
 
 ===== Project status =====
@@ -64,14 +69,15 @@ Only two seems to be of relevance for math and code:
  o JotForm
  o Kahoot
 
-We also have a home-made JavaScript solution that easily can
-do what we want, but at present without recording the students' scores.
+We also have a home-made pure HTML solution that easily can
+do what we want, but at with any feedback to a database
+and hence recording of the students' scores.
 
 These sites are fine for pure text questions:
 
  o ClassMarker
  o SurveyGizmo
- o Google
+ o Google forms
 
 
 ===== Google forms =====
