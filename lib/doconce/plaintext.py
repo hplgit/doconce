@@ -130,6 +130,10 @@ def plain_box(text, title=''):
 
     return '\n' + '\n'.join(newlines) + '\n'
 
+def plain_quiz(quiz):
+    # Simple typesetting of a quiz
+    s = ''
+    return s
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -144,6 +148,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -174,7 +179,7 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst').decode('latin-1'))),
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst').decode('latin-1'))),
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'*\g<subst>*\g<space>',  # extra blank
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text>',
         'footnote':      None,
@@ -224,4 +229,4 @@ def define(FILENAME_EXTENSION,
         'quote':     lambda block, format, title='none', text_size='normal':
            indent_lines(block, 'plain'),
         }
-
+    QUIZ['plain'] = plain_quiz

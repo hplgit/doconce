@@ -10,22 +10,33 @@ import re, sys, urllib, os
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
 _MATH_BLOCK = '<<<!!MATH_BLOCK'
 
+# Functions for creating and reading comment tags
+def begin_end_comment_tags(tag):
+    return '--- begin ' + tag + ' ---', '--- end ' + tag + ' ---'
+
+def comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % tag
+
+def begin_comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % (begin_end_comment_tags(tag)[0])
+
+def end_comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % (begin_end_comment_tags(tag)[1])
+
 # Comment lines used to identify parts that can later be removed.
 # The lines below are wrapped as comments.
 # Defined here once so different modules can utilize the same syntax.
 envir_delimiter_lines = {
     'sol':
-    ('--- begin solution of exercise ---',
-     '--- end solution of exercise ---'),
+    begin_end_comment_tags('solution of exercise'),
     'ans':
-    ('--- begin answer of exercise ---',
-     '--- end answer of exercise ---'),
+    begin_end_comment_tags('answer of exercise'),
     'hint':
-    ('--- begin hint in exercise ---',
-     '--- end hint in exercise ---'),
+    begin_end_comment_tags('hint in exercise'),
     'exercise':
-    ('--- begin exercise ---',
-     '--- end exercise ---'),
+    begin_end_comment_tags('exercise'),
+    'subex':
+    begin_end_comment_tags('subexercise'),
 }
 
 _counter_for_html_movie_player = 0
@@ -478,8 +489,8 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
 
 def doconce_exercise_output(exer,
                             solution_header = '__Solution.__',
-                            answer_header = '__Answer.__ ',
-                            hint_header = '__Hint.__ ',
+                            answer_header = '__Answer.__',
+                            hint_header = '__Hint.__',
                             include_numbering=True,
                             include_type=True):
     """
@@ -543,7 +554,7 @@ def doconce_exercise_output(exer,
                 hint_header_ = hint_header.replace('Hint.', 'Hint %d.' % (i+1))
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
-            s += '\n' + hint_header_ + hint + '\n'
+            s += '\n' + hint_header_ + '\n' + hint + '\n'
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
@@ -565,8 +576,9 @@ def doconce_exercise_output(exer,
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
         s += solution_header + '\n'
-        # Make sure we have a sentence after the heading
-        if re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
+        # Make sure we have a sentence after the heading if real heading
+        if solution_header.endswith('===') and \
+           re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
             print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
             s += 'Code:\n'
         s += exer['solution'] + '\n'
@@ -578,10 +590,10 @@ def doconce_exercise_output(exer,
         import string
         for i, subex in enumerate(exer['subex']):
             letter = string.ascii_lowercase[i]
-            s += '\n__%s)__ ' % letter
+            s += '\n__%s)__\n' % letter
 
             if subex['text']:
-                s += '\n' + subex['text'] + '\n'
+                s += subex['text'] + '\n'
 
                 for i, hint in enumerate(subex['hints']):
                     if len(subex['hints']) == 1 and i == 0:
@@ -591,7 +603,7 @@ def doconce_exercise_output(exer,
                             'Hint.', 'Hint %d.' % (i+1))
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
-                    s += '\n' + hint_header_ + hint + '\n'
+                    s += '\n' + hint_header_ + '\n' + hint + '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
@@ -616,7 +628,8 @@ def doconce_exercise_output(exer,
                         s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
                     s += solution_header + '\n'
                     # Make sure we have a sentence after the heading
-                    if re.search(r'^\d+ %s' % _CODE_BLOCK,
+                    if solution_header.endswith('===') and \
+                       re.search(r'^\d+ %s' % _CODE_BLOCK,
                                  subex['solution'].lstrip()):
                         print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
                         s += 'Code:\n'
@@ -709,6 +722,7 @@ OUTRO = {}
 EXERCISE = {}
 TOC = {}
 ENVIRS = {}
+QUIZ = {}
 
 
 # regular expressions for inline tags:
@@ -819,7 +833,7 @@ INLINE_TAGS = {
 
     # __Two underscores for Inline Paragraph Title.__
     'paragraph':
-    r'(?P<begin>^)__(?P<subst>.+?)__\s+',
+    r'(?P<begin>^)__(?P<subst>.+?)__(?P<space>(\n| +))',
     #r'(?P<begin>^)[_=]{2}\s*(?P<subst>[^ =-].+?)[_=]{2}\s+',
 
     # TITLE: My Document Title

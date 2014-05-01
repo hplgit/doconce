@@ -417,6 +417,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -471,6 +472,7 @@ def define(FILENAME_EXTENSION,
         }
 
     TOC['sphinx'] = lambda s: ''  # Sphinx automatically generates a toc
+    QUIZ['sphinx'] = QUIZ['rst']
 
 
 

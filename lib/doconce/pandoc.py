@@ -290,6 +290,9 @@ def pandoc_quote(block, format, text_size='normal'):
         lines.append('> ' + line)
     return '\n'.join(lines) + '\n\n'
 
+def pandoc_quiz(quiz):
+    return ''
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -303,6 +306,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -335,7 +339,7 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),
         'subsubsection': lambda m: '#### ' + m.group('subst') + '\n',
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'*\g<subst>*\g<space>',
         'abstract':      r'*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>\\n',
@@ -367,6 +371,7 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['pandoc'] = pandoc_index_bib
     EXERCISE['pandoc'] = plain_exercise
     TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
+    QUIZ['pandoc'] = pandoc_quiz
     FIGURE_EXT['pandoc'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
 
     # Wrap markdown output in strapdown HTML code for quick auto rendering
@@ -394,4 +399,3 @@ def define(FILENAME_EXTENSION,
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
 """
-

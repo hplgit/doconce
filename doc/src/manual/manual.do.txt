@@ -1497,13 +1497,13 @@ Running `doconce csv2table tmp.csv` creates the table
 Doconce has special support for four types of "exercises", named
 *exercise*, *problem*, *project*, or *example*.
 These are all typeset as special kind of
-sections. Such sections start with a subsection
-headline, 5 `=` characters, and last up to the
+subsections. Such subsections start with a subsection
+headline surrounded 5 `=` characters, and last up to the
 next headline or the end of the file. The headline itself must
 consists of the word "Exercise", "Problem", "Project", or "Example", followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
-name of result file (if the answer to the exercise is to be handed
+name of the result file (if the answer to the exercise is to be handed
 in) and a solution file. The Doconce code looks like this:
 
 !bc
@@ -1516,8 +1516,9 @@ Here goes the running text of the project....
 
 !ec
 Doconce will recognize the exercise, problem, project, or example *title*,
-the *label*, the *result file*, the *solution* (if any of
-these three entities is present), and the *running text*. In addition,
+the optional *label*, the optional *name of the answer file* (`file=`), the
+optional name of the *solution* file (`solution=`),
+and the *running text*. In addition,
 one can add subexercise environments, starting with `!bsubex` and ending
 with `!esubex`, on the beginning of separate lines.
 Within the main exercise or
@@ -1527,13 +1528,14 @@ directives `!bans`, `!eans`, `!bsol`, `!esol`, `!bhint`, `!ehint`, which
 all must appear on the beginning of a separate line (just as
 `!bc` and `!ec`).
 
-The solution environment allows inline
-solution as an alternative to the `solution=...` directive mentioned above,
-which requires that the solution is in a separate file. Comment lines
-are inserted so that the beginning and end of answers and solutions can
-be identified and removed if desired.
+The solution environment with `!bsol` and `!esol` allows inline
+solution as an alternative to the `solution=...` directive mentioned
+above, which requires that the solution is in a separate file. Comment
+lines are inserted so that the beginning and end of answers and
+solutions can be identified and removed if desired.
 
 A full exercise set-up can be sketched as follows:
+
 !bc
 ===== Exercise: Determine the Distance to the Moon =====
 label{exer:moondist}
@@ -1650,14 +1652,20 @@ typesetting of the example looks like an exercise equipped with a solution.
 
 Doconce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
-By default, no such listing is enabled. When running `doconce ptex2tex` or
-`ptex2tex`, there is a preprocessor variable `LIST_OF_EXERCISES`
+By default, no such listing is enabled. When running
+`doconce format pdflatex` (or `latex`)
+there is a command-line option `--list_of_exercises`
 that can be set to
 
  * `toc`: include exercises, problems, and projects as part of
    the table of contents
  * `loe`: make a separate list of exercises, problems, and projects,
    which appears after the table of contents
+
+There is a special LaTeX environment for the exercises that one can
+use to further tailor the appearance of exercises (given that one
+edits the `.tex` file, preferably by a script after each `doconce format`
+command).
 
 ===== Blocks of Verbatim Computer Code =====
 label{sec:verbatim:blocks}

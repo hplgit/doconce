@@ -120,6 +120,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -150,7 +151,7 @@ def define(FILENAME_EXTENSION,
 #        'section':       r'++++ \g<subst> ++++',
 #        'subsection':    r'++++++ \g<subst> ++++++',
 #        'subsubsection': r'++++++++ \g<subst> ++++++++',
-        'paragraph':     r'//\g<subst>// ',
+        'paragraph':     r'//\g<subst>//\g<space>',
         'title':         r'#summary \g<subst>\n<wiki:toc max_depth="2" />',
         'date':          r'=== \g<subst> ===',
         'author':        cwiki_author, #r'===== \g<name>, \g<institution> =====',
@@ -196,7 +197,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['cwiki'] = plain_exercise
     INDEX_BIB['cwiki'] = plain_index_bib
     TOC['cwiki'] = lambda s: '<<TableOfContents>>'
-
+    QUIZ['cwiki'] = lambda quiz: '**Cannot typeset quiz %s**' % quiz.get('heading', '')
     # document start:
     INTRO['cwiki'] = ''
     #INTRO['cwiki'] = '#summary YourOneLineSummary\n<wiki:toc max_depth="1" />\n'

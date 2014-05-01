@@ -734,7 +734,9 @@ elif html_theme == 'scipy_lectures':
 
 elif html_theme == 'cbc':
     pygments_style = "friendly"
-    html_logo = "cbc_logo.png"
+elif html_theme == 'uio':
+    pygments_style = "tango"
+
 
 
 

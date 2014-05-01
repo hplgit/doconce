@@ -1015,6 +1015,55 @@ lambda x: x+2
 # Have some comments at the end of the exercise to see that
 # the Filename: ... is written correctly.
 
+
+===== Exercise: Solution of differential equation =====
+label{sec:this:exer:de}
+
+
+!bquiz
+H: SOlution of differential equation
+
+Q: Given
+
+!bt
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+!et
+What is the solution of this equation?
+
+Cr: $y=e^{-y}$
+
+Cw: $y=e^{y}$
+E: Almost, but the sign is wrong (note the minus!).
+
+Cw:
+!bc pycod
+from math import exp
+def f(x):
+    return exp(x)
+!ec
+
+E: Ooops, forgot a minus: `exp(-x)`, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+!bt
+\[ y(x) = e^{-y}.\]
+!et
+
+Cw: The solution cannot be found because there is a derivative in the equation.
+E: Equations with derivatives can be solved;
+they are termed *differential
+equations*.
+
+Cw: The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+E: Equations where the unknown is a function, as $y(x)$
+here, are called *differential equations*, and are solved by
+special techniques.
+!equiz
+
+
 ===== Example: Just an example =====
 
 # This example needs the --examples_as_exercises option, otherwise
@@ -1094,7 +1143,21 @@ With label.
 ===== Appendix: Testing identical titles =====
 label{test:title:id2}
 
-With label.
+What about inserting a quiz?
+
+!bquiz
+NP: Test of quizzes
+H: Capital of Norway
+
+Q: What is the capital of Norway?
+Cw: Stockholm
+E: Stockholm is the capital of Sweden.
+Cw: London
+Cr: Oslo
+Cw: Bergen
+E: Those from Bergen would claim so, but nobody else.
+!equiz
+
 
 ===== Appendix: Testing identical titles =====
 
