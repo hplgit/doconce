@@ -2,7 +2,7 @@ import re, os, sys
 from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites, _abort
-from html import html_movie
+from html import html_movie, html_quiz
 from doconce import _abort
 
 # replacement patterns for substitutions of inline tags
@@ -438,7 +438,9 @@ def rst_notice(block, format, title='Notice', text_size='normal'):
         return rst_admon(block, format, title, text_size)
 
 def rst_quiz(quiz):
-    return ''
+    text = html_quiz(quiz)
+    text = '.. raw:: html\n' + indent_lines(text, format, ' '*4) + '\n'
+    return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

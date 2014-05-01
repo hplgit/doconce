@@ -1273,43 +1273,64 @@ def html_toc(sections):
     return s
 
 def html_quiz(quiz):
-    html_style = option('html_style=', '')
     text = ''
     if 'new page' in quiz:
         text += '<!-- !split -->\n'
-    if 'heading' in quiz and quiz['explicit exercise heading']:
+
+    text += '<!-- begin quiz -->\n'
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
         pass
     else:
-        text += '<p>\n<b>Question:</b> '
+        text += '<hr>\n<p>\n<b>Question:</b> '
+
     text += quiz['question'] + '</p>\n'
-    # Better to use a table than a list, since code after <li> did not
-    # turn out well with bootstrap e.g.
+
+    # List choices as paragraphs
+    bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
-        id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
-        if len(choice) == 2:
-            # No explanation
-            text += '\n<p><b>Choice %d:</b>\n%s\n</p>\n' % (choice_no, choice[1])
-        elif len(choice) == 3:
-            if not html_style[:5] in ('boots', 'vagra'):
-                text += '\n<p><b>Choice %d:</b>\n%s\n</p>\n' % (choice_no, choice[1])
+        answer = choice[0].capitalize() + '!'
+        if not bootstrap:  # plain html: show tooltip when hovering over choices
+            tooltip = answer
+            if len(choice) == 3:
+                expl = choice[2]
+                formatted_code = False
+                for c in '\\$<>{}':
+                    if c in expl:
+                        # formatted code in explanation, don't show
+                        expl = ''
             else:
-                # Use a tooltip construction to lanuch the explanation
-                # Will only work if without code and math...
-                # No: use collapse functionality, see here: http://jsfiddle.net/8cYFj/
-                text += """
+                expl = ''
+            if expl:
+                tooltip += ' ' + ' '.join(expl.splitlines())
+            tooltip = ' title="%s"' % tooltip
+            text += '\n<p><div%s><b>Choice %d:</b>\n%s\n</div></p>\n' % (tooltip, choice_no, choice[1])
+        else:
+            id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
+            if len(choice) == 3:
+                expl = choice[2]
+            else:
+                if choice[0] == 'right':
+                    expl = 'Correct!'
+                else:
+                    expl = 'Wrong!'
+            # Use collapse functionality, see http://jsfiddle.net/8cYFj/
+            text += """
 <p><b>Choice %d:</b>
 %s
 <div class="collapse-group">
-<p class="collapse" id="%s">
-%s!<br>
+<p>
+<div class="collapse" id="%s">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
 %s
-</p>
-<a class="btn showdetails" data-toggle="collapse" data-target="#%s" style="font-size: 80%%;">Info...</a>
 </div>
 </p>
-""" % (choice_no, choice[1], id, choice[0], choice[2], id)
-    text += '\n</table>\n\n'
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#%s" style="font-size: 80%%;">Info</a>
+</div>
+</p>
+""" % (choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id)
+    text += '<!-- end quiz -->\n'
     return text
 
 def html_box(block, format, text_size='normal'):
@@ -1752,6 +1773,14 @@ code { color: inherit; background-color: transparent; }
         style_changes += """\
 /* Let pre tags for code blocks have the same color as the surroundings */
 pre { color: inherit; background-color: transparent; }
+"""
+    if html_style.startswith('boots') and '!bquiz' in filestr:
+        # Style for buttons for collapsing paragraphs
+        style_changes += """
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
 """
     if style_changes:
         style += """

@@ -50,6 +50,16 @@ Here is a nested list:
     o second item,
       continuing on a new line
 
+__Here is a list with paragraph heading.__
+
+  * item1
+  * item2
+
+=== Here is a list with subsubsection heading ===
+
+  * item1
+  * item2
+
 !bquote
 Here are two lines that make up
 a block quote.
@@ -90,6 +100,7 @@ and finally the complete file:
 @@@CODE ../doc/src/manual/__testcode.f
 
 Testing other code environments. First Python:
+
 !bc
 |bc pycod
 def f(x):
@@ -102,6 +113,24 @@ which gets rendered as
 def f(x):
     return x+1
 !ec
+
+# #if FORMAT not in ("rst", "plain", "epytext", "st")
+Test paragraph and subsubsection headings before code.
+
+__Paragraph heading before code.__
+
+!bc pycod
+def g(y):
+    return y+1
+!ec
+
+=== Subsubsection heading before code ===
+
+!bc pycod
+def h(z):
+    return z+1
+!ec
+# #endif
 
 # #if FORMAT in ("sphinx", "html", "latex", "pdflatex")
 Now a complete program to be shown via Python Online Tutorial:

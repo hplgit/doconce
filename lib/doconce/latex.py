@@ -1555,7 +1555,20 @@ def latex_inline_comment(m):
                (name, comment, caption_comment)
 
 def latex_quiz(quiz):
-    return ''
+    text = '\n\n% begin quiz\n\\noindent\n'
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
+        pass
+    else:
+        text += r'paragraph{Question:}'
+    text += '\n' + quiz['question'] + '\n'
+    text += r'\begin{description}' + '\n'
+    for i, choice in enumerate(quiz['choices']):
+        choice_no = i+1
+        text += r'\item[Choice %d:] %s' % (choice_no, choice[1]) + '\n'
+    text += r'\end{description}' + '\n'
+    text += '% end quiz\n\n'
+    return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

@@ -291,7 +291,7 @@ def pandoc_quote(block, format, text_size='normal'):
     return '\n'.join(lines) + '\n\n'
 
 def pandoc_quiz(quiz):
-    return ''
+    return 'Cannot typeset a quiz'
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
