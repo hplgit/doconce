@@ -378,8 +378,9 @@ def syntax_check(filestr, format):
                              re.MULTILINE)
         m = pattern.search(filestr2)
         if m and format in ('rst', 'plain', 'epytext', 'st'):
-            print '\n*** error: must have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:'
+            print '\n*** error: must in format "%s" have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:\n\n---------------------------------' % format
             print filestr2[m.start()-40:m.start()+80]
+            print '---------------------------------'
             _abort()
 
     # Syntax error `try`-`except`, should be `try-except`,
@@ -2436,25 +2437,39 @@ def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
     """
     pattern = '^!bquiz.+?^!equiz'
     quiztexts = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
-    headings = ['']*(len(quiztexts))
-    if insert_missing_quiz_header:
-        # Find the heading before each quiz
-        pieces = filestr.split('!bquiz')
-        if len(pieces) == len(quiztexts) + 1:  # not any extra inline !bquiz word inside text, just !bquiz in quiz envirs
-            for i, piece in enumerate(pieces):
-                for line in reversed(piece.splitlines()):
-                    if line.startswith('====='):
-                        headings[i] = line
+    headings = [('', None)]*(len(quiztexts))
+    # Find the heading before each quiz (can be compared with H: ...)
+    pieces = filestr.split('!bquiz')
+    if len(pieces) == len(quiztexts) + 1:  # not any extra inline !bquiz word inside text, just !bquiz in quiz envirs
+        for i, piece in enumerate(pieces):
+            for line in reversed(piece.splitlines()):
+                if line.startswith('===== '):
+                    if re.search(r'=====\s+\{?(Exercise|Project|Problem|Example)', line):
+                        headings[i] = line, 'exercise'
+                    else:
+                        headings[i] = line, 'subsection'
+                    break
+                elif line.startswith('======='):
+                    headings[i] = line, 'section'
+                    break
+                """
+                elif line.startswith('!bquestion') or line.startswith('!bnotice') or line.startswith('!bsummary'):
+                    # Can have quiz in admons too
+                    words = line.split()
+                    if len(words) > 1:
+                        headings[i] = (' '.join(words[1:]), words[2:] + '-admon')
                         break
+                """
     quizzes = []
     for text, heading in zip(quiztexts, headings):
-        new_text = interpret_quiz_text(
-            text, heading if insert_missing_quiz_header else None)
+        new_text = interpret_quiz_text(text, insert_missing_quiz_header,
+                                       heading[0], heading[1])
         quizzes.append(new_text)
         filestr = filestr.replace(text, new_text)
     return filestr, len(quiztexts)
 
-def interpret_quiz_text(text, previous_heading=None):
+def interpret_quiz_text(text, insert_missing_heading= False,
+                        previous_heading=None, previous_heading_tp=None):
     """
     Replace quiz (in string text) with begin-end groups typeset as
     comments. The optional new page and heading lines are replaced
@@ -2480,15 +2495,14 @@ def interpret_quiz_text(text, previous_heading=None):
     m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
         heading = m.group(1).strip()
-        displayed = ' (hidden)'
-        if isinstance(previous_heading, str) and not \
-               heading.lower() in previous_heading.lower():
-            # Quiz heading is missing and wanted
-            text = '===== Exercise: %s =====\n\n' % heading + text
-            # no label, file=, solution= are needed for quizes
-            displayed = ' (displayed)'
-        text = re.sub(pattern, ct('--- quiz heading: ' + heading + displayed),
-                      text, flags=re.MULTILINE)
+        if insert_missing_heading and isinstance(previous_heading, str):
+            if heading.lower() not in previous_heading.lower():
+                # Quiz heading is missing and wanted
+                text = '===== Exercise: %s =====\n\n' % heading + text
+                # no label, file=, solution= are needed for quizes
+                previous_heading_tp = 'exercise'
+        heading_comment = ct('--- quiz heading: ' + heading) + '\n' + ct('--- previous quiz heading type: ' + str(previous_heading_tp))
+        text = re.sub(pattern, heading_comment, text, flags=re.MULTILINE)
 
     def begin_end_tags(tag, content):
         return """
@@ -2573,7 +2587,10 @@ def extract_quizzes(filestr, format):
             words = m.group(1).strip().split()
             heading = ' '.join(words[:-1])
             data[-1]['heading'] = heading
-            data[-1]['explicit exercise heading'] = words[-1] == '(displayed)'
+        pattern = '^' + ct('--- previous quiz heading type: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['embedding'] = m.group(1).strip()
         pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:
