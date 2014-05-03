@@ -66,6 +66,16 @@ Here is a nested list:
     o second item,
       continuing on a new line
 
+__Here is a list with paragraph heading.__
+
+  * item1
+  * item2
+
+=== Here is a list with subsubsection heading ===
+
+  * item1
+  * item2
+
 !bquote
 Here are two lines that make up
 a block quote.
@@ -106,6 +116,7 @@ and finally the complete file:
 @@@CODE ../doc/src/manual/__testcode.f
 
 Testing other code environments. First Python:
+
 !bc
 |bc pycod
 def f(x):
@@ -118,6 +129,24 @@ which gets rendered as
 def f(x):
     return x+1
 !ec
+
+# #if FORMAT not in ("rst", "plain", "epytext", "st")
+Test paragraph and subsubsection headings before code.
+
+__Paragraph heading before code.__
+
+!bc pycod
+def g(y):
+    return y+1
+!ec
+
+=== Subsubsection heading before code ===
+
+!bc pycod
+def h(z):
+    return z+1
+!ec
+# #endif
 
 # #if FORMAT in ("sphinx", "html", "latex", "pdflatex")
 Now a complete program to be shown via Python Online Tutorial:
@@ -1386,10 +1415,15 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -1398,23 +1432,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -1423,23 +1457,23 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -1448,11 +1482,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -1461,12 +1495,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -1565,45 +1599,47 @@ $$
 <h2>Table of contents</h2>
 
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec7"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec10"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec12"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc002.html#___sec13"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec14"> Exercises </a><br>
+<a href="._testdoc002.html#___sec15"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec16"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec16"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec17"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec19"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec24"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec25"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec25"> Example 8: Just an example </a><br>
-<a href="._testdoc002.html#___sec26"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec27"> Example 8: Just an example </a><br>
+<a href="._testdoc002.html#___sec28"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec29"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec30"> References </a><br>
+<a href="._testdoc002.html#___sec32"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec37"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec38"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec39"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec40"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -2001,6 +2037,23 @@ Here is a nested list:
 \end{itemize}
 
 \noindent
+\paragraph{Here is a list with paragraph heading.}
+
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
+\paragraph{Here is a list with subsubsection heading.}
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
 
 \begin{quote}
 Here are two lines that make up
@@ -2079,6 +2132,7 @@ C     END1
 \efpro
 
 Testing other code environments. First Python:
+
 \bccq
 !bc pycod
 def f(x):
@@ -2090,6 +2144,21 @@ which gets rendered as
 \bpycod
 def f(x):
     return x+1
+\epycod
+
+Test paragraph and subsubsection headings before code.
+
+\paragraph{Paragraph heading before code.}
+
+\bpycod
+def g(y):
+    return y+1
+\epycod
+
+\paragraph{Subsubsection heading before code.}
+\bpycod
+def h(z):
+    return z+1
 \epycod
 
 Now a complete program to be shown via Python Online Tutorial:
@@ -3103,6 +3172,34 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
+
+% begin quiz
+\noindent
+
+Given
+
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+What is the solution of this equation?
+\begin{description}
+\item[Choice 1:]
+$y=e^{-y}$
+\item[Choice 2:]
+$y=e^{y}$
+\item[Choice 3:]
+\bpycod
+from math import exp
+def f(x):
+    return exp(x)
+\epycod
+\item[Choice 4:]
+The solution cannot be found because there is a derivative in the equation.
+\item[Choice 5:]
+The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+\end{description}
+% end quiz
+
+
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
 % --- end exercise ---
@@ -3225,6 +3322,24 @@ With label.
 \label{test:title:id2}
 
 What about inserting a quiz?
+
+
+
+% begin quiz
+\noindent
+paragraph{Question:}
+What is the capital of Norway?
+\begin{description}
+\item[Choice 1:]
+Stockholm
+\item[Choice 2:]
+London
+\item[Choice 3:]
+Oslo
+\item[Choice 4:]
+Bergen
+\end{description}
+% end quiz
 
 
 
@@ -3803,6 +3918,23 @@ Here is a nested list:
 \end{itemize}
 
 \noindent
+\paragraph{Here is a list with paragraph heading.}
+
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
+\paragraph{Here is a list with subsubsection heading.}
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
 
 \begin{quote}
 Here are two lines that make up
@@ -3884,6 +4016,7 @@ C     END1
 \noindent
 
 Testing other code environments. First Python:
+
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 !bc pycod
@@ -3897,6 +4030,23 @@ which gets rendered as
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def f(x):
     return x+1
+\end{minted}
+\noindent
+
+Test paragraph and subsubsection headings before code.
+
+\paragraph{Paragraph heading before code.}
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def g(y):
+    return y+1
+\end{minted}
+\noindent
+
+\paragraph{Subsubsection heading before code.}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def h(z):
+    return z+1
 \end{minted}
 \noindent
 
@@ -4957,6 +5107,35 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
+
+% begin quiz
+\noindent
+
+Given
+
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+What is the solution of this equation?
+\begin{description}
+\item[Choice 1:]
+$y=e^{-y}$
+\item[Choice 2:]
+$y=e^{y}$
+\item[Choice 3:]
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+from math import exp
+def f(x):
+    return exp(x)
+\end{minted}
+\noindent
+\item[Choice 4:]
+The solution cannot be found because there is a derivative in the equation.
+\item[Choice 5:]
+The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+\end{description}
+% end quiz
+
+
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
 % --- end exercise ---
@@ -5082,6 +5261,24 @@ With label.
 \label{test:title:id2}
 
 What about inserting a quiz?
+
+
+
+% begin quiz
+\noindent
+paragraph{Question:}
+What is the capital of Norway?
+\begin{description}
+\item[Choice 1:]
+Stockholm
+\item[Choice 2:]
+London
+\item[Choice 3:]
+Oslo
+\item[Choice 4:]
+Bergen
+\end{description}
+% end quiz
 
 
 
@@ -5670,6 +5867,23 @@ Here is a nested list:
 \end{itemize}
 
 \noindent
+\paragraph{Here is a list with paragraph heading.}
+
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
+\paragraph{Here is a list with subsubsection heading.}
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
 
 \begin{quote}
 Here are two lines that make up
@@ -5748,6 +5962,7 @@ C     END1
 \end{minted}
 
 Testing other code environments. First Python:
+
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !bc pycod
 def f(x):
@@ -5759,6 +5974,21 @@ which gets rendered as
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def f(x):
     return x+1
+\end{minted}
+
+Test paragraph and subsubsection headings before code.
+
+\paragraph{Paragraph heading before code.}
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def g(y):
+    return y+1
+\end{minted}
+
+\paragraph{Subsubsection heading before code.}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+def h(z):
+    return z+1
 \end{minted}
 
 Now a complete program to be shown via Python Online Tutorial:
@@ -6776,6 +7006,34 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
+
+% begin quiz
+\noindent
+
+Given
+
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+What is the solution of this equation?
+\begin{description}
+\item[Choice 1:]
+$y=e^{-y}$
+\item[Choice 2:]
+$y=e^{y}$
+\item[Choice 3:]
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+from math import exp
+def f(x):
+    return exp(x)
+\end{minted}
+\item[Choice 4:]
+The solution cannot be found because there is a derivative in the equation.
+\item[Choice 5:]
+The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+\end{description}
+% end quiz
+
+
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
 % --- end exercise ---
@@ -6901,6 +7159,24 @@ With label.
 \label{test:title:id2}
 
 What about inserting a quiz?
+
+
+
+% begin quiz
+\noindent
+paragraph{Question:}
+What is the capital of Norway?
+\begin{description}
+\item[Choice 1:]
+Stockholm
+\item[Choice 2:]
+London
+\item[Choice 3:]
+Oslo
+\item[Choice 4:]
+Bergen
+\end{description}
+% end quiz
 
 
 
@@ -7106,6 +7382,19 @@ Here is a nested list:
       continuing on a new line
 
 
+**Here is a list with paragraph heading.**
+
+  * item1
+
+  * item2
+
+Here is a list with subsubsection heading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * item1
+
+  * item2
+
 
 ..
 
@@ -7204,6 +7493,7 @@ which gets rendered as::
 
         def f(x):
             return x+1
+
 
 
 Here is a program that is supposed to be interactive via
@@ -8180,6 +8470,39 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
+.. raw:: html
+    <!-- begin quiz -->
+    Given::
+    
+            \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+    
+    What is the solution of this equation?</p>
+    
+    <p><div title="Right!"><b>Choice 1:</b>
+    y=e^{-y}
+    </div></p>
+    
+    <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
+    y=e^{y}
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 3:</b>
+    !bc pycod
+            from math import exp
+            def f(x):
+                return exp(x)
+    </div></p>
+    
+    <p><div title="Wrong! Equations with derivatives can be solved; they are termed *differential equations*."><b>Choice 4:</b>
+    The solution cannot be found because there is a derivative in the equation.
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 5:</b>
+    The equation is meaningless: an equation must be an equation
+    for x or y, not a function y(x).
+    </div></p>
+    <!-- end quiz -->
+
 
 .. --- end explanation of choice 5 ---
 
@@ -8430,6 +8753,30 @@ Appendix: Testing identical titles  (3)
 
 What about inserting a quiz?
 
+.. raw:: html
+    <!-- !split -->
+    <!-- begin quiz -->
+    <hr>
+    <p>
+    <b>Question:</b> What is the capital of Norway?</p>
+    
+    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+    Stockholm
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 2:</b>
+    London
+    </div></p>
+    
+    <p><div title="Right!"><b>Choice 3:</b>
+    Oslo
+    </div></p>
+    
+    <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
+    Bergen
+    </div></p>
+    <!-- end quiz -->
+
 
 
 
@@ -8626,6 +8973,19 @@ Here is a nested list:
       continuing on a new line
 
 
+**Here is a list with paragraph heading.**
+
+  * item1
+
+  * item2
+
+Here is a list with subsubsection heading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * item1
+
+  * item2
+
 
 ..
 
@@ -8720,6 +9080,7 @@ and finally the complete file:
 
 Testing other code environments. First Python:
 
+
 .. code-block:: text
 
 
@@ -8735,6 +9096,27 @@ which gets rendered as
 
         def f(x):
             return x+1
+
+
+Test paragraph and subsubsection headings before code.
+
+**Paragraph heading before code.**
+
+
+.. code-block:: python
+
+        def g(y):
+            return y+1
+
+
+Subsubsection heading before code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: python
+
+        def h(z):
+            return z+1
 
 
 Now a complete program to be shown via Python Online Tutorial:
@@ -9813,6 +10195,42 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
+.. raw:: html
+    <!-- begin quiz -->
+    Given
+    
+    
+    .. math::
+             \frac{dy}{dx} = -y(x),\quad y(0)=1 
+    
+    What is the solution of this equation?</p>
+    
+    <p><div title="Right!"><b>Choice 1:</b>
+    :math:`y=e^{-y}`
+    </div></p>
+    
+    <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
+    :math:`y=e^{y}`
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 3:</b>
+    .. code-block:: python
+    
+            from math import exp
+            def f(x):
+                return exp(x)
+    </div></p>
+    
+    <p><div title="Wrong! Equations with derivatives can be solved; they are termed *differential equations*."><b>Choice 4:</b>
+    The solution cannot be found because there is a derivative in the equation.
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 5:</b>
+    The equation is meaningless: an equation must be an equation
+    for :math:`x` or :math:`y`, not a function :math:`y(x)`.
+    </div></p>
+    <!-- end quiz -->
+
 
 .. --- end explanation of choice 5 ---
 
@@ -10063,6 +10481,30 @@ Appendix: Testing identical titles  (3)
 
 What about inserting a quiz?
 
+.. raw:: html
+    <!-- !split -->
+    <!-- begin quiz -->
+    <hr>
+    <p>
+    <b>Question:</b> What is the capital of Norway?</p>
+    
+    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+    Stockholm
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 2:</b>
+    London
+    </div></p>
+    
+    <p><div title="Right!"><b>Choice 3:</b>
+    Oslo
+    </div></p>
+    
+    <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
+    Bergen
+    </div></p>
+    <!-- end quiz -->
+
 
 
 
@@ -10245,6 +10687,17 @@ Here is a nested list:
 
 
 
+*Here is a list with paragraph heading.*
+
+
+  * item1
+  * item2
+
+==== Here is a list with subsubsection heading ====
+
+  * item1
+  * item2
+
 
 
 
@@ -10317,6 +10770,7 @@ C     END1
 }}}
 
 Testing other code environments. First Python:
+
 {{{
 !bc pycod
 def f(x):
@@ -10328,6 +10782,22 @@ which gets rendered as
 {{{
 def f(x):
     return x+1
+}}}
+
+Test paragraph and subsubsection headings before code.
+
+*Paragraph heading before code.*
+
+{{{
+def g(y):
+    return y+1
+}}}
+
+==== Subsubsection heading before code ====
+
+{{{
+def h(z):
+    return z+1
 }}}
 
 Here is a program that is supposed to be interactive via
@@ -11240,7 +11710,7 @@ lambda x: x+2
 
 ==== Exercise 7: Solution of differential equation ====
 
-
+Cannot typeset a quiz
 <wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -11357,7 +11827,7 @@ With label.
 
 What about inserting a quiz?
 
-
+Cannot typeset a quiz
 
 
 ==== Appendix: Testing identical titles ====
@@ -11534,6 +12004,21 @@ Here is a nested list:
 
 </ul>
 
+''Here is a list with paragraph heading.''
+
+
+<ul>
+  <li> item1
+  <li> item2
+</ul>
+
+==== Here is a list with subsubsection heading ====
+
+<ul>
+  <li> item1
+  <li> item2
+</ul>
+
 
 {{quote box
 | quote = Here are two lines that make up
@@ -11610,6 +12095,7 @@ C     END1
 </syntaxhighlight>
 
 Testing other code environments. First Python:
+
 <syntaxhighlight lang="text">
 !bc pycod
 def f(x):
@@ -11621,6 +12107,22 @@ which gets rendered as
 <syntaxhighlight lang="python">
 def f(x):
     return x+1
+</syntaxhighlight>
+
+Test paragraph and subsubsection headings before code.
+
+''Paragraph heading before code.''
+
+<syntaxhighlight lang="python">
+def g(y):
+    return y+1
+</syntaxhighlight>
+
+==== Subsubsection heading before code ====
+
+<syntaxhighlight lang="python">
+def h(z):
+    return z+1
 </syntaxhighlight>
 
 Here is a program that is supposed to be interactive via
@@ -12516,7 +13018,7 @@ lambda x: x+2
 
 ==== Exercise 7: Solution of differential equation ====
 
-Cannot typeset quiz SOlution of differential equation
+Cannot typeset quiz SOlution of differential
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
 
@@ -12721,7 +13223,7 @@ With label.
 
 What about inserting a quiz?
 
-Cannot typeset quiz Capital of Norway
+Cannot typeset quiz Capital of
 
 
 ==== Appendix: Testing identical titles ====
@@ -12903,6 +13405,17 @@ Here is a nested list:
 
 
 
+//Here is a list with paragraph heading.//
+
+
+  * item1
+  * item2
+
+=== Here is a list with subsubsection heading ===
+
+  * item1
+  * item2
+
 
 
 
@@ -12977,6 +13490,7 @@ C     END1
 }}}
 
 Testing other code environments. First Python:
+
 {{{
 !bc pycod
 def f(x):
@@ -12988,6 +13502,22 @@ which gets rendered as
 {{{
 def f(x):
     return x+1
+}}}
+
+Test paragraph and subsubsection headings before code.
+
+//Paragraph heading before code.//
+
+{{{
+def g(y):
+    return y+1
+}}}
+
+=== Subsubsection heading before code ===
+
+{{{
+def h(z):
+    return z+1
 }}}
 
 Here is a program that is supposed to be interactive via
@@ -13852,7 +14382,7 @@ lambda x: x+2
 == Exercise 7: Solution of differential equation ==
 
 
-**Cannot typeset quiz SOlution of differential equation**
+**Cannot typeset quiz SOlution of differential**
 <wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -13973,7 +14503,7 @@ With label.
 
 What about inserting a quiz?
 
-**Cannot typeset quiz Capital of Norway**
+**Cannot typeset quiz Capital of**
 
 
 == Appendix: Testing identical titles ==
@@ -14134,6 +14664,16 @@ Here is a nested list:
       continuing on a new line
 
 
+*Here is a list with paragraph heading.*
+
+  - item1
+  - item2
+
+Here is a list with subsubsection heading
+
+  - item1
+  - item2
+
 
 
 
@@ -14218,6 +14758,7 @@ which gets rendered as::
 
         def f(x):
             return x+1
+
 
 
 Here is a program that is supposed to be interactive via
@@ -15453,6 +15994,17 @@ Here is a nested list:
       continuing on a new line
 
 
+I{Here is a list with paragraph heading.}
+
+  - item1
+  - item2
+
+Here is a list with subsubsection heading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - item1
+  - item2
+
 
 
 
@@ -15539,6 +16091,7 @@ which gets rendered as::
 
         def f(x):
             return x+1
+
 
 
 Here is a program that is supposed to be interactive via
@@ -16794,6 +17347,7 @@ Date: Jan 32, 2100
 Table of contents:
 
  Section 1 
+     Here is a list with subsubsection heading 
    Subsection 1 
      Computer code 
      Running OS commands 
@@ -16881,6 +17435,19 @@ Here is a nested list:
       continuing on a new line
 
 
+*Here is a list with paragraph heading.*
+
+  * item1
+
+  * item2
+
+Here is a list with subsubsection heading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * item1
+
+  * item2
+
         Here are two lines that make up
         a block quote.
 
@@ -16967,6 +17534,7 @@ which gets rendered as::
 
         def f(x):
             return x+1
+
 
 
 Here is a program that is supposed to be interactive via
@@ -18284,6 +18852,18 @@ Here is a nested list:
       continuing on a new line
 
 
+*Here is a list with paragraph heading.*
+
+  * item1
+
+  * item2
+
+#### Here is a list with subsubsection heading
+
+  * item1
+
+  * item2
+
 > Here are two lines that make up
 > a block quote.
 
@@ -18363,6 +18943,7 @@ C     END1
 
 Testing other code environments. First Python:
 
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !bc pycod
 def f(x):
@@ -18376,6 +18957,24 @@ which gets rendered as
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
 def f(x):
     return x+1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Test paragraph and subsubsection headings before code.
+
+*Paragraph heading before code.*
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+def g(y):
+    return y+1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#### Subsubsection heading before code
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+def h(z):
+    return z+1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is a program that is supposed to be interactive via
@@ -19302,7 +19901,7 @@ lambda x: x+2
 
 ### Exercise 7: Solution of differential equation
 
-
+Cannot typeset a quiz
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
 
@@ -19519,7 +20118,7 @@ With label.
 
 What about inserting a quiz?
 
-
+Cannot typeset a quiz
 
 
 ### Appendix: Testing identical titles
@@ -19703,6 +20302,18 @@ is at the end with only one newline.
       "      continuing on a new line\n",
       "\n",
       "\n",
+      "*Here is a list with paragraph heading.*\n",
+      "\n",
+      "  * item1\n",
+      "\n",
+      "  * item2\n",
+      "\n",
+      "#### Here is a list with subsubsection heading\n",
+      "\n",
+      "  * item1\n",
+      "\n",
+      "  * item2\n",
+      "\n",
       "!bquote\n",
       "Here are two lines that make up\n",
       "a block quote.\n",
@@ -19846,6 +20457,46 @@ is at the end with only one newline.
      "input": [
       "def f(x):\n",
       "    return x+1\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Test paragraph and subsubsection headings before code.\n",
+      "\n",
+      "*Paragraph heading before code.*"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "def g(y):\n",
+      "    return y+1\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "#### Subsubsection heading before code"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "def h(z):\n",
+      "    return z+1\n"
      ],
      "language": "python",
      "metadata": {},
@@ -21092,7 +21743,8 @@ is at the end with only one newline.
       "### Exercise 7: Solution of differential equation\n",
       "\n",
       "<!-- --- begin quiz --- -->\n",
-      "<!-- --- quiz heading: SOlution of differential equation (hidden) -->\n",
+      "<!-- --- quiz heading: SOlution of differential equation -->\n",
+      "<!-- --- previous quiz heading type: exercise -->\n",
       "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
@@ -21410,7 +22062,8 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin quiz --- -->\n",
       "<!-- --- new quiz page: Test of quizzes -->\n",
-      "<!-- --- quiz heading: Capital of Norway (hidden) -->\n",
+      "<!-- --- quiz heading: Capital of Norway -->\n",
+      "<!-- --- previous quiz heading type: subsection -->\n",
       "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
@@ -21742,7 +22395,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation (hidden)\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.',
+  'text': '# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous quiz heading type: exercise\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.',
   'title': 'Solution of differential equation',
   'type': 'Exercise',
   'type_visible': True},
@@ -21834,6 +22487,16 @@ iso-8859-1
 <li><p>second item, continuing on a new line</p></li>
 </ol></li>
 </ul>
+<h4 id="here-is-a-list-with-paragraph-heading.">Here is a list with paragraph heading.</h4>
+<ul>
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ul>
+<h4 id="here-is-a-list-with-subsubsection-heading.">Here is a list with subsubsection heading.</h4>
+<ul>
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ul>
 <blockquote>
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
@@ -21888,6 +22551,13 @@ def f(x):
 <p>which gets rendered as</p>
 <pre><code>def f(x):
     return x+1</code></pre>
+<p>Test paragraph and subsubsection headings before code.</p>
+<h4 id="paragraph-heading-before-code.">Paragraph heading before code.</h4>
+<pre><code>def g(y):
+    return y+1</code></pre>
+<h4 id="subsubsection-heading-before-code.">Subsubsection heading before code.</h4>
+<pre><code>def h(z):
+    return z+1</code></pre>
 <p>Now a complete program to be shown via Python Online Tutorial:</p>
 <pre><code>class Line:
     def __init__(self, a, b):
@@ -22335,6 +23005,25 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
 <h2 id="sec:this:exer:de" class="unnumbered">Exercise : Solution of differential equation</h2>
+<p>Given</p>
+<p><span class="math">\[\frac{dy}{dx} = -y(x),\quad y(0)=1\]</span> What is the solution of this equation?</p>
+<dl>
+<dt>Choice 1:</dt>
+<dd><p><span class="math">\(y=e^{-y}\)</span></p>
+</dd>
+<dt>Choice 2:</dt>
+<dd><p><span class="math">\(y=e^{y}\)</span></p>
+</dd>
+<dt>Choice 3:</dt>
+<dd><p>from math import exp def f(x): return exp(x)</p>
+</dd>
+<dt>Choice 4:</dt>
+<dd><p>The solution cannot be found because there is a derivative in the equation.</p>
+</dd>
+<dt>Choice 5:</dt>
+<dd><p>The equation is meaningless: an equation must be an equation for <span class="math">\(x\)</span> or <span class="math">\(y\)</span>, not a function <span class="math">\(y(x)\)</span>.</p>
+</dd>
+</dl>
 <h2 id="example-just-an-example" class="unnumbered">Example : Just an example</h2>
 <p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> What is the capital of Norway?</p>
 <h4 id="answer.-3">Answer.</h4>
@@ -22364,6 +23053,21 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>With label.</p>
 <h2 id="test:title:id2">Appendix: Testing identical titles</h2>
 <p>What about inserting a quiz?</p>
+<p>paragraph<span>Question:</span> What is the capital of Norway?</p>
+<dl>
+<dt>Choice 1:</dt>
+<dd><p>Stockholm</p>
+</dd>
+<dt>Choice 2:</dt>
+<dd><p>London</p>
+</dd>
+<dt>Choice 3:</dt>
+<dd><p>Oslo</p>
+</dd>
+<dt>Choice 4:</dt>
+<dd><p>Bergen</p>
+</dd>
+</dl>
 <h2 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h2>
 <p>Without label.</p>
 <p>[Tip.] Here is a tip or hint box, typeset as a notice box.</p>
@@ -22490,6 +23194,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><p>first item</p></li>
 <li><p>second item, continuing on a new line</p></li>
 </ol>
+<p><em>Here is a list with paragraph heading.</em></p>
+<ul>
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ul>
+<h4 id="here-is-a-list-with-subsubsection-heading">Here is a list with subsubsection heading</h4>
+<ul>
+<li><p>item1</p></li>
+<li><p>item2</p></li>
+</ul>
 <blockquote>
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
@@ -22549,6 +23263,13 @@ def f(x):
 <p>which gets rendered as</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> f(x):
     <span class="kw">return</span> x<span class="dv">+1</span></code></pre>
+<p>Test paragraph and subsubsection headings before code.</p>
+<p><em>Paragraph heading before code.</em></p>
+<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> g(y):
+    <span class="kw">return</span> y<span class="dv">+1</span></code></pre>
+<h4 id="subsubsection-heading-before-code">Subsubsection heading before code</h4>
+<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> h(z):
+    <span class="kw">return</span> z<span class="dv">+1</span></code></pre>
 <p>Here is a program that is supposed to be interactive via Python Online Tutorial, but that service is not accessible for the present format.</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">class</span> Line:
     <span class="kw">def</span> <span class="ot">__init__</span>(<span class="ot">self</span>, a, b):
@@ -23165,12 +23886,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <!-- --- begin exercise --- -->
 
 <h3 id="exercise-7-solution-of-differential-equation">Exercise 7: Solution of differential equation</h3>
-<!-- --- end explanation of choice 5 --- -->
-<!-- --- end exercise --- -->
-
-
-
-
+<p>Cannot typeset a quiz <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></p>
 <!-- --- begin exercise --- -->
 
 <h3 id="example-8-just-an-example">Example 8: Just an example</h3>
@@ -23244,6 +23960,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>With label.</p>
 <h3 id="appendix-testing-identical-titles-2">Appendix: Testing identical titles</h3>
 <p>What about inserting a quiz?</p>
+<p>Cannot typeset a quiz</p>
 <h3 id="appendix-testing-identical-titles-3">Appendix: Testing identical titles</h3>
 <p>Without label.</p>
 <p><em>Tip.</em><space> Here is a tip or hint box, typeset as a notice box.</p>
@@ -25278,10 +25995,15 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -25290,23 +26012,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -25315,23 +26037,23 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -25340,11 +26062,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -25353,12 +26075,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -25457,45 +26179,47 @@ $$
 <h2>Table of contents</h2>
 
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec7"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec10"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec12"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc002.html#___sec13"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec14"> Exercises </a><br>
+<a href="._testdoc002.html#___sec15"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec16"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec16"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec17"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec19"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec22"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec24"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec25"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec25"> Example 8: Just an example </a><br>
-<a href="._testdoc002.html#___sec26"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec27"> Example 8: Just an example </a><br>
+<a href="._testdoc002.html#___sec28"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec29"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec30"> References </a><br>
+<a href="._testdoc002.html#___sec32"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec37"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec38"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec39"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec40"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -25596,10 +26320,15 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -25608,23 +26337,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -25633,23 +26362,23 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -25658,11 +26387,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -25671,12 +26400,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -25779,6 +26508,24 @@ Here is a nested list:
 </td></tr></table>
 
 
+<b>Here is a list with paragraph heading.</b>
+
+<p><table border="0">
+
+  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
+</td></tr></table>
+
+
+<h3>Here is a list with subsubsection heading  <a name="___sec1"></a></h3>
+
+<p><table border="0">
+
+  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
+</td></tr></table>
+
+
 <blockquote>
     Here are two lines that make up
     a block quote.
@@ -25803,7 +26550,7 @@ The appendices <a href="._testdoc002.html#app1">Appendix: Just for testing; part
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec2"></a></h3>
+<h3>Computer code  <a name="___sec3"></a></h3>
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -25894,6 +26641,7 @@ and finally the complete file:
 </pre></div>
 </td></tr></table><p>
 Testing other code environments. First Python:
+
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -25914,6 +26662,27 @@ which gets rendered as
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
     <span style="color: #AA22FF; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
+</pre></div>
+</td></tr></table><p>
+Test paragraph and subsubsection headings before code.
+
+<p>
+<b>Paragraph heading before code.</b>
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">g</span>(y):
+    <span style="color: #AA22FF; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+</pre></div>
+</td></tr></table><h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+
+
+<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">h</span>(z):
+    <span style="color: #AA22FF; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
 </pre></div>
 </td></tr></table><p>
 Now a complete program to be shown via Python Online Tutorial:
@@ -26107,7 +26876,7 @@ this correctly when HTML is the output format. <br />
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec3"></a></h3>
+<h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
 <!-- code=text (from !bc sys) typeset with pygments style "emacs" -->
@@ -26121,7 +26890,7 @@ output
 from
 Python.
 </pre></div>
-</td></tr></table><h3>Footnotes  <a name="___sec4"></a></h3>
+</td></tr></table><h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
@@ -26246,7 +27015,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec7"></a></h2>
+<h2>Custom Environments  <a name="___sec9"></a></h2>
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
@@ -26383,7 +27152,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
+<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
@@ -26399,7 +27168,7 @@ Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec10"></a></h2>
+<h2>Bibliography test  <a name="___sec12"></a></h2>
 
 Here is an example: <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> gave
@@ -26614,10 +27383,15 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -26626,23 +27400,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -26651,23 +27425,23 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -26676,11 +27450,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -26689,12 +27463,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -26750,7 +27524,7 @@ $$
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec15"></a></h1>
 
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
@@ -26795,7 +27569,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec14"></a></h1>
+<h1>Exercises  <a name="___sec16"></a></h1>
 
 <!-- --- begin exercise --- -->
 
@@ -26810,7 +27584,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec16"></a></h3>
+<h3>Remarks  <a name="___sec18"></a></h3>
 
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
@@ -26856,7 +27630,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec17"></a></h2>
+<h2>Not an exercise  <a name="___sec19"></a></h2>
 
 Should be possible to stick a normal section in the middle of many
 exercises.
@@ -26985,7 +27759,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec20"></a></h3>
+<h3>Remarks  <a name="___sec22"></a></h3>
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
@@ -27093,7 +27867,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3>Remarks  <a name="___sec22"></a></h3>
+<h3>Remarks  <a name="___sec24"></a></h3>
 
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -27105,7 +27879,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec25"></a></h2>
 
 <!-- Another minimalistic exercise -->
 
@@ -27136,22 +27910,22 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
-<p>
-<b>Question:</b> Given
+<!-- begin quiz -->
+Given
 
 $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><b>Choice 1:</b>
+<p><div title="Right!"><b>Choice 1:</b>
 \( y=e^{-y} \)
-</p>
+</div></p>
 
-<p><b>Choice 2:</b>
+<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
 \( y=e^{y} \)
-</p>
+</div></p>
 
-<p><b>Choice 3:</b>
+<p><div title="Wrong!"><b>Choice 3:</b>
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
@@ -27162,19 +27936,17 @@ What is the solution of this equation?</p>
     <span style="color: #AA22FF; font-weight: bold">return</span> exp(x)
 </pre></div>
 </td></tr></table><p>
-</p>
+</div></p>
 
-<p><b>Choice 4:</b>
+<p><div title="Wrong!"><b>Choice 4:</b>
 The solution cannot be found because there is a derivative in the equation.
-</p>
+</div></p>
 
-<p><b>Choice 5:</b>
+<p><div title="Wrong!"><b>Choice 5:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
-</p>
-
-</table>
-
+</div></p>
+<!-- end quiz -->
 
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
@@ -27182,7 +27954,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec27"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -27198,11 +27970,11 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec26"></a></h1>
+<h1>Here goes another section  <a name="___sec28"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec27"></a></h1>
+<h1>More Exercises  <a name="___sec29"></a></h1>
 
 <!-- --- begin exercise --- -->
 
@@ -27239,7 +28011,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec30"></a></h1>
+<h1>References  <a name="___sec32"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -27356,7 +28128,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec34"></a></h2>
 
 Some text.
 
@@ -27364,7 +28136,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
 Without label.
 
@@ -27477,10 +28249,15 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -27489,23 +28266,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -27514,23 +28291,23 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -27539,11 +28316,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -27552,12 +28329,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -27610,30 +28387,30 @@ $$
 
 <p>
 <!-- !split -->
+<!-- begin quiz -->
+<hr>
 <p>
 <b>Question:</b> What is the capital of Norway?</p>
 
-<p><b>Choice 1:</b>
+<p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
 Stockholm
-</p>
+</div></p>
 
-<p><b>Choice 2:</b>
+<p><div title="Wrong!"><b>Choice 2:</b>
 London
-</p>
+</div></p>
 
-<p><b>Choice 3:</b>
+<p><div title="Right!"><b>Choice 3:</b>
 Oslo
-</p>
+</div></p>
 
-<p><b>Choice 4:</b>
+<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
 Bergen
-</p>
-
-</table>
-
+</div></p>
+<!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec37"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec39"></a></h2>
 
 Without label.
 
@@ -27722,7 +28499,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec38"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec40"></a></h2>
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -27758,7 +28535,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec39"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -27901,45 +28678,47 @@ Automatically generated HTML file from Doconce source
 <h2>Table of contents</h2>
 
 <a href="#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The $latex \theta$ parameter (not $latex \nabla$?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-<a href="#___sec13"> LaTeX Mathematics </a><br>
-<a href="#___sec14"> Exercises </a><br>
+<a href="#___sec15"> LaTeX Mathematics </a><br>
+<a href="#___sec16"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec22"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec24"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Example 8: Just an example </a><br>
-<a href="#___sec26"> Here goes another section </a><br>
-<a href="#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Example 8: Just an example </a><br>
+<a href="#___sec28"> Here goes another section </a><br>
+<a href="#___sec29"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="#___sec30"> References </a><br>
+<a href="#___sec32"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 The format of this document is
@@ -27980,6 +28759,20 @@ Here is a nested list:
 
 </ul>
 
+<b>Here is a list with paragraph heading.</b>
+
+<ul>
+  <li> item1</li>
+  <li> item2</li>
+</ul>
+
+<h3>Here is a list with subsubsection heading  <a name="___sec1"></a></h3>
+
+<ul>
+  <li> item1</li>
+  <li> item2</li>
+</ul>
+
 <blockquote>
     Here are two lines that make up
     a block quote.
@@ -27997,7 +28790,7 @@ The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
-<h3>Computer code  <a name="___sec2"></a></h3>
+<h3>Computer code  <a name="___sec3"></a></h3>
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -28055,6 +28848,7 @@ and finally the complete file:
 </pre></div>
 <p>
 Testing other code environments. First Python:
+
 <p>
 
 
@@ -28071,6 +28865,26 @@ which gets rendered as
 
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
+</pre></div>
+<p>
+Test paragraph and subsubsection headings before code.
+
+<p>
+<b>Paragraph heading before code.</b>
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
+    <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+</pre></div>
+
+<h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
+    <span style="color: #008000; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
 </pre></div>
 <p>
 Now a complete program to be shown via Python Online Tutorial:
@@ -28218,7 +29032,7 @@ this correctly when HTML is the output format. <br />
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec3"></a></h3>
+<h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
 
@@ -28229,7 +29043,7 @@ from
 Python.
 </pre></div>
 
-<h3>Footnotes  <a name="___sec4"></a></h3>
+<h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
@@ -28350,7 +29164,7 @@ $latex
 
  $
 
-<h2>Custom Environments  <a name="___sec7"></a></h2>
+<h2>Custom Environments  <a name="___sec9"></a></h2>
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
@@ -28474,7 +29288,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
+<h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is
@@ -28490,7 +29304,7 @@ Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec10"></a></h2>
+<h2>Bibliography test  <a name="___sec12"></a></h2>
 
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
@@ -28589,7 +29403,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_blank">google</a>, which should result in exactly three
 footnotes.
 
-<h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec15"></a></h1>
 
 Here is an equation without label using backslash-bracket environment:
 
@@ -28640,7 +29454,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec14"></a></h1>
+<h1>Exercises  <a name="___sec16"></a></h1>
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
 
@@ -28648,7 +29462,7 @@ Make a program that simulates flipping a coin $latex N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec16"></a></h3>
+<h3>Remarks  <a name="___sec18"></a></h3>
 
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
@@ -28694,7 +29508,7 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
-<h2>Not an exercise  <a name="___sec17"></a></h2>
+<h2>Not an exercise  <a name="___sec19"></a></h2>
 
 Should be possible to stick a normal section in the middle of many
 exercises.
@@ -28790,7 +29604,7 @@ Let $latex R$ and $latex (x_0,y_0)$ be normally distributed.
 <p>
 Filename: <code>circles.pdf</code>.
 
-<h3>Remarks  <a name="___sec20"></a></h3>
+<h3>Remarks  <a name="___sec22"></a></h3>
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
@@ -28898,13 +29712,13 @@ Filename: <code>subexer_b.pdf</code>.
 <b>Solution.</b>
 Here goes the solution of this subexercise.
 
-<h3>Remarks  <a name="___sec22"></a></h3>
+<h3>Remarks  <a name="___sec24"></a></h3>
 
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec25"></a></h2>
 
 Just some text. And some math saying that $latex e^0=1$ on a single line,
 to test that math block insertion is correct:
@@ -28997,7 +29811,7 @@ Equations where the unknown is a function, as $latex y(x)$
 here, are called <em>differential equations</em>, and are solved by
 special techniques.
 
-<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec27"></a></h2>
 
 <b>a)</b>
 What is the capital of Norway?
@@ -29006,11 +29820,11 @@ What is the capital of Norway?
 <b>Answer.</b>
 Oslo.
 
-<h1>Here goes another section  <a name="___sec26"></a></h1>
+<h1>Here goes another section  <a name="___sec28"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec27"></a></h1>
+<h1>More Exercises  <a name="___sec29"></a></h1>
 
 <h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
@@ -29036,7 +29850,7 @@ the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a>
 and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
-<h1>References  <a name="___sec30"></a></h1>
+<h1>References  <a name="___sec32"></a></h1>
 
 <ol>
  <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -29149,7 +29963,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec34"></a></h2>
 
 Some text.
 
@@ -29157,7 +29971,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
 Without label.
 
@@ -29203,7 +30017,7 @@ Bergen
 
 Those from Bergen would claim so, but nobody else.
 
-<h2>Appendix: Testing identical titles  <a name="___sec37"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec39"></a></h2>
 
 Without label.
 
@@ -29292,7 +30106,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec38"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec40"></a></h2>
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -29327,7 +30141,7 @@ you with the minimum information to started with such
 systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec39"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -29418,10 +30232,15 @@ Automatically generated HTML file from Doconce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -29430,23 +30249,23 @@ Automatically generated HTML file from Doconce source
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -29455,23 +30274,23 @@ Automatically generated HTML file from Doconce source
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -29480,11 +30299,11 @@ Automatically generated HTML file from Doconce source
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -29493,12 +30312,12 @@ Automatically generated HTML file from Doconce source
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -29591,45 +30410,47 @@ $$
 <h2>Table of contents</h2>
 
 <a href="#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-<a href="#___sec13"> LaTeX Mathematics </a><br>
-<a href="#___sec14"> Exercises </a><br>
+<a href="#___sec15"> LaTeX Mathematics </a><br>
+<a href="#___sec16"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec22"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec24"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Example 8: Just an example </a><br>
-<a href="#___sec26"> Here goes another section </a><br>
-<a href="#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Example 8: Just an example </a><br>
+<a href="#___sec28"> Here goes another section </a><br>
+<a href="#___sec29"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="#___sec30"> References </a><br>
+<a href="#___sec32"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -29680,6 +30501,20 @@ Here is a nested list:
 
 </ul>
 
+<b>Here is a list with paragraph heading.</b>
+
+<ul>
+  <li> item1</li>
+  <li> item2</li>
+</ul>
+
+<h3>Here is a list with subsubsection heading  <a name="___sec1"></a></h3>
+
+<ul>
+  <li> item1</li>
+  <li> item2</li>
+</ul>
+
 <blockquote>
     Here are two lines that make up
     a block quote.
@@ -29704,7 +30539,7 @@ The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a hre
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec2"></a></h3>
+<h3>Computer code  <a name="___sec3"></a></h3>
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -29762,6 +30597,7 @@ and finally the complete file:
 </pre></div>
 <p>
 Testing other code environments. First Python:
+
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
@@ -29778,6 +30614,26 @@ which gets rendered as
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
+</pre></div>
+<p>
+Test paragraph and subsubsection headings before code.
+
+<p>
+<b>Paragraph heading before code.</b>
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
+    <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+</pre></div>
+
+<h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
+    <span style="color: #008000; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
 </pre></div>
 <p>
 Now a complete program to be shown via Python Online Tutorial:
@@ -29925,7 +30781,7 @@ this correctly when HTML is the output format. <br />
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec3"></a></h3>
+<h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
@@ -29936,7 +30792,7 @@ from
 Python.
 </pre></div>
 
-<h3>Footnotes  <a name="___sec4"></a></h3>
+<h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
@@ -30060,7 +30916,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec7"></a></h2>
+<h2>Custom Environments  <a name="___sec9"></a></h2>
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
@@ -30191,7 +31047,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
+<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
@@ -30207,7 +31063,7 @@ Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec10"></a></h2>
+<h2>Bibliography test  <a name="___sec12"></a></h2>
 
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
@@ -30324,7 +31180,7 @@ footnotes.
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec15"></a></h1>
 
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
@@ -30369,7 +31225,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec14"></a></h1>
+<h1>Exercises  <a name="___sec16"></a></h1>
 
 <!-- --- begin exercise --- -->
 
@@ -30384,7 +31240,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec16"></a></h3>
+<h3>Remarks  <a name="___sec18"></a></h3>
 
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
@@ -30427,7 +31283,7 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec17"></a></h2>
+<h2>Not an exercise  <a name="___sec19"></a></h2>
 
 Should be possible to stick a normal section in the middle of many
 exercises.
@@ -30546,7 +31402,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec20"></a></h3>
+<h3>Remarks  <a name="___sec22"></a></h3>
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
@@ -30652,7 +31508,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3>Remarks  <a name="___sec22"></a></h3>
+<h3>Remarks  <a name="___sec24"></a></h3>
 
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -30664,7 +31520,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec25"></a></h2>
 
 <!-- Another minimalistic exercise -->
 
@@ -30695,22 +31551,22 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
-<p>
-<b>Question:</b> Given
+<!-- begin quiz -->
+Given
 
 $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><b>Choice 1:</b>
+<p><div title="Right!"><b>Choice 1:</b>
 \( y=e^{-y} \)
-</p>
+</div></p>
 
-<p><b>Choice 2:</b>
+<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
 \( y=e^{y} \)
-</p>
+</div></p>
 
-<p><b>Choice 3:</b>
+<p><div title="Wrong!"><b>Choice 3:</b>
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
@@ -30719,19 +31575,17 @@ What is the solution of this equation?</p>
     <span style="color: #008000; font-weight: bold">return</span> exp(x)
 </pre></div>
 <p>
-</p>
+</div></p>
 
-<p><b>Choice 4:</b>
+<p><div title="Wrong!"><b>Choice 4:</b>
 The solution cannot be found because there is a derivative in the equation.
-</p>
+</div></p>
 
-<p><b>Choice 5:</b>
+<p><div title="Wrong!"><b>Choice 5:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
-</p>
-
-</table>
-
+</div></p>
+<!-- end quiz -->
 
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
@@ -30739,7 +31593,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec27"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -30755,11 +31609,11 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec26"></a></h1>
+<h1>Here goes another section  <a name="___sec28"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec27"></a></h1>
+<h1>More Exercises  <a name="___sec29"></a></h1>
 
 <!-- --- begin exercise --- -->
 
@@ -30796,7 +31650,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec30"></a></h1>
+<h1>References  <a name="___sec32"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -30913,7 +31767,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec34"></a></h2>
 
 Some text.
 
@@ -30921,7 +31775,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
 Without label.
 
@@ -30935,30 +31789,30 @@ What about inserting a quiz?
 
 <p>
 <!-- !split -->
+<!-- begin quiz -->
+<hr>
 <p>
 <b>Question:</b> What is the capital of Norway?</p>
 
-<p><b>Choice 1:</b>
+<p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
 Stockholm
-</p>
+</div></p>
 
-<p><b>Choice 2:</b>
+<p><div title="Wrong!"><b>Choice 2:</b>
 London
-</p>
+</div></p>
 
-<p><b>Choice 3:</b>
+<p><div title="Right!"><b>Choice 3:</b>
 Oslo
-</p>
+</div></p>
 
-<p><b>Choice 4:</b>
+<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
 Bergen
-</p>
-
-</table>
-
+</div></p>
+<!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec37"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec39"></a></h2>
 
 Without label.
 
@@ -31047,7 +31901,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec38"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec40"></a></h2>
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
@@ -31083,7 +31937,7 @@ systems. Numerous other tutorials contain more comprehensive material
 and in-depth explanations of the concepts and tools.</em>]</font>
 <!-- end inline comment -->
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec39"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -31531,6 +32385,23 @@ Here is a nested list:
 \end{itemize}
 
 \noindent
+\paragraph{Here is a list with paragraph heading.}
+
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
+\paragraph{Here is a list with subsubsection heading.}
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
 
 \begin{quote}
 Here are two lines that make up
@@ -31609,6 +32480,7 @@ C     END1
 \efpro
 
 Testing other code environments. First Python:
+
 \bccq
 !bc pycod
 def f(x):
@@ -31620,6 +32492,21 @@ which gets rendered as
 \bpycod
 def f(x):
     return x+1
+\epycod
+
+Test paragraph and subsubsection headings before code.
+
+\paragraph{Paragraph heading before code.}
+
+\bpycod
+def g(y):
+    return y+1
+\epycod
+
+\paragraph{Subsubsection heading before code.}
+\bpycod
+def h(z):
+    return z+1
 \epycod
 
 Now a complete program to be shown via Python Online Tutorial:
@@ -32585,6 +33472,34 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
+
+% begin quiz
+\noindent
+
+Given
+
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+What is the solution of this equation?
+\begin{description}
+\item[Choice 1:]
+$y=e^{-y}$
+\item[Choice 2:]
+$y=e^{y}$
+\item[Choice 3:]
+\bpycod
+from math import exp
+def f(x):
+    return exp(x)
+\epycod
+\item[Choice 4:]
+The solution cannot be found because there is a derivative in the equation.
+\item[Choice 5:]
+The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+\end{description}
+% end quiz
+
+
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
 % --- end exercise ---
@@ -32701,6 +33616,24 @@ With label.
 \label{test:title:id2}
 
 What about inserting a quiz?
+
+
+
+% begin quiz
+\noindent
+paragraph{Question:}
+What is the capital of Norway?
+\begin{description}
+\item[Choice 1:]
+Stockholm
+\item[Choice 2:]
+London
+\item[Choice 3:]
+Oslo
+\item[Choice 4:]
+Bergen
+\end{description}
+% end quiz
 
 
 
@@ -35182,45 +36115,47 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
      <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
+     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
      <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
      <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
      <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
      <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
      <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
      <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
      <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
      <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
      <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
      <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
      <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -35232,10 +36167,15 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -35244,23 +36184,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -35269,23 +36209,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -35294,11 +36234,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -35307,12 +36247,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 
@@ -35403,45 +36343,47 @@ $$
 <h2>Table of contents</h2>
 
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec14"> Exercises </a><br>
+<a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec16"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec30"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec32"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -35568,45 +36510,47 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
      <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
+     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
      <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
      <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
      <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
      <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
      <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
      <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
      <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
      <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
      <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
      <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
      <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -35618,10 +36562,15 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -35630,23 +36579,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -35655,23 +36604,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -35680,11 +36629,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -35693,12 +36642,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 
@@ -35789,45 +36738,47 @@ $$
 <h2>Table of contents</h2>
 
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec14"> Exercises </a><br>
+<a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec16"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec30"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec32"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -35954,45 +36905,47 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
      <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
+     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
      <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
      <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
      <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
      <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
      <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
      <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
      <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
      <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
      <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
      <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
      <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -36004,10 +36957,15 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -36016,23 +36974,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -36041,23 +36999,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -36066,11 +37024,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -36079,12 +37037,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 
@@ -36175,6 +37133,20 @@ Here is a nested list:
 
 </ul>
 
+<b>Here is a list with paragraph heading.</b>
+
+<ul>
+  <li> item1</li>
+  <li> item2</li>
+</ul>
+
+<h3>Here is a list with subsubsection heading  <a name="___sec1"></a></h3>
+
+<ul>
+  <li> item1</li>
+  <li> item2</li>
+</ul>
+
 <blockquote>
     Here are two lines that make up
     a block quote.
@@ -36199,7 +37171,7 @@ The appendices <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testi
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec2"></a></h3>
+<h3>Computer code  <a name="___sec3"></a></h3>
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -36257,6 +37229,7 @@ and finally the complete file:
 </pre></div>
 <p>
 Testing other code environments. First Python:
+
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
@@ -36273,6 +37246,26 @@ which gets rendered as
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
+</pre></div>
+<p>
+Test paragraph and subsubsection headings before code.
+
+<p>
+<b>Paragraph heading before code.</b>
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
+    <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+</pre></div>
+
+<h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
+    <span style="color: #008000; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
 </pre></div>
 <p>
 Now a complete program to be shown via Python Online Tutorial:
@@ -36420,7 +37413,7 @@ this correctly when HTML is the output format. <br />
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec3"></a></h3>
+<h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
@@ -36431,7 +37424,7 @@ from
 Python.
 </pre></div>
 
-<h3>Footnotes  <a name="___sec4"></a></h3>
+<h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Could say contexts too..."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, which gives flexibility
@@ -36555,7 +37548,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec7"></a></h2>
+<h2>Custom Environments  <a name="___sec9"></a></h2>
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
@@ -36686,7 +37679,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec9"></a></h2>
+<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
@@ -36702,7 +37695,7 @@ Here is another sentence that &quot;caused&quot; a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec10"></a></h2>
+<h2>Bibliography test  <a name="___sec12"></a></h2>
 
 Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> gave
@@ -36944,45 +37937,47 @@ h1, h2, h3, h4, h5, h6 {
      -->
      <!-- Doconce automatically fills in the table of contents -->
           <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
+     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
      <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec2"> Computer code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Footnotes </a></li>
+     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
+     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
+     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
+     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
      <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
      <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec7"> Custom Environments </a></li>
+     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
      <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec10"> Bibliography test </a></li>
+     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
+     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
      <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
      <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec13"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec14"> Exercises </a></li>
+     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
+     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
      <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec16"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec17"> Not an exercise </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
+     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
      <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
      <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec20"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
      <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec23"> Some exercise without the "Exercise:" prefix </a></li>
+     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
+     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
+     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
      <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec26"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec27"> More Exercises </a></li>
+     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
+     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
+     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
      <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
      <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec30"> References </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec32"> A subsection within an appendix </a></li>
+     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
      <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
      <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec37"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec38"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
+     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
+     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
 
     </ul>
    </div>
@@ -36994,10 +37989,15 @@ h1, h2, h3, h4, h5, h6 {
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
+              (' Here is a list with subsubsection heading ',
+               3,
+               None,
+               '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec2'),
-              (' Running OS commands ', 3, None, '___sec3'),
-              (' Footnotes ', 3, None, '___sec4'),
+              (' Computer code ', 3, None, '___sec3'),
+              (' Subsubsection heading before code ', 3, None, '___sec4'),
+              (' Running OS commands ', 3, None, '___sec5'),
+              (' Footnotes ', 3, None, '___sec6'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -37006,23 +38006,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec7'),
+              (' Custom Environments ', 2, None, '___sec9'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec9'),
-              (' Bibliography test ', 2, None, '___sec10'),
+               '___sec11'),
+              (' Bibliography test ', 2, None, '___sec12'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec13'),
-              (' Exercises ', 1, None, '___sec14'),
+              (' LaTeX Mathematics ', 1, None, '___sec15'),
+              (' Exercises ', 1, None, '___sec16'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec16'),
-              (' Not an exercise ', 2, None, '___sec17'),
+              (' Remarks ', 3, None, '___sec18'),
+              (' Not an exercise ', 2, None, '___sec19'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -37031,23 +38031,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec20'),
+              (' Remarks ', 3, None, '___sec22'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec22'),
+              (' Remarks ', 3, None, '___sec24'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec25'),
-              (' Here goes another section ', 1, None, '___sec26'),
-              (' More Exercises ', 1, None, '___sec27'),
+              (' Example 8: Just an example ', 2, None, '___sec27'),
+              (' Here goes another section ', 1, None, '___sec28'),
+              (' More Exercises ', 1, None, '___sec29'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -37056,11 +38056,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec30'),
+              (' References ', 1, None, '___sec32'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec32'),
+              (' A subsection within an appendix ', 2, None, '___sec34'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec34'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec36'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -37069,12 +38069,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec37'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec38'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec39'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec40'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec39')]}
+               '___sec41')]}
 end of tocinfo -->
 
 
@@ -37122,7 +38122,7 @@ $$
 <a name="part0002"></a>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec13"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec15"></a></h1>
 
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
@@ -37167,7 +38167,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec14"></a></h1>
+<h1>Exercises  <a name="___sec16"></a></h1>
 
 <!-- --- begin exercise --- -->
 
@@ -37182,7 +38182,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec16"></a></h3>
+<h3>Remarks  <a name="___sec18"></a></h3>
 
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
@@ -37244,7 +38244,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec17"></a></h2>
+<h2>Not an exercise  <a name="___sec19"></a></h2>
 
 Should be possible to stick a normal section in the middle of many
 exercises.
@@ -37371,7 +38371,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec20"></a></h3>
+<h3>Remarks  <a name="___sec22"></a></h3>
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
@@ -37501,7 +38501,7 @@ Here goes the solution of this subexercise.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3>Remarks  <a name="___sec22"></a></h3>
+<h3>Remarks  <a name="___sec24"></a></h3>
 
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -37513,7 +38513,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec23"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec25"></a></h2>
 
 <!-- Another minimalistic exercise -->
 
@@ -37544,8 +38544,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
-<p>
-<b>Question:</b> Given
+<!-- begin quiz -->
+Given
 
 $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
@@ -37553,16 +38553,27 @@ What is the solution of this equation?</p>
 
 <p><b>Choice 1:</b>
 \( y=e^{-y} \)
+<div class="collapse-group">
+<p>
+<div class="collapse" id="quiz_id_1_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Correct!
+</div>
+</p>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_1" style="font-size: 80%;">Info</a>
+</div>
 </p>
 
 <p><b>Choice 2:</b>
 \( y=e^{y} \)
 <div class="collapse-group">
-<p class="collapse" id="quiz_id_1_2">
-wrong!<br>
+<p>
+<div class="collapse" id="quiz_id_1_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Almost, but the sign is wrong (note the minus!).
+</div>
 </p>
-<a class="btn showdetails" data-toggle="collapse" data-target="#quiz_id_1_2" style="font-size: 80%;">Info...</a>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_2" style="font-size: 80%;">Info</a>
 </div>
 </p>
 
@@ -37576,39 +38587,50 @@ Almost, but the sign is wrong (note the minus!).
 </pre></div>
 <p>
 <div class="collapse-group">
-<p class="collapse" id="quiz_id_1_3">
-wrong!<br>
+<p>
+<div class="collapse" id="quiz_id_1_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
 $$ y(x) = e^{-y}.$$
+</div>
 </p>
-<a class="btn showdetails" data-toggle="collapse" data-target="#quiz_id_1_3" style="font-size: 80%;">Info...</a>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_3" style="font-size: 80%;">Info</a>
 </div>
 </p>
 
 <p><b>Choice 4:</b>
 The solution cannot be found because there is a derivative in the equation.
 <div class="collapse-group">
-<p class="collapse" id="quiz_id_1_4">
-wrong!<br>
+<p>
+<div class="collapse" id="quiz_id_1_4">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Equations with derivatives can be solved;
 they are termed <em>differential
 equations</em>.
+</div>
 </p>
-<a class="btn showdetails" data-toggle="collapse" data-target="#quiz_id_1_4" style="font-size: 80%;">Info...</a>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_4" style="font-size: 80%;">Info</a>
 </div>
 </p>
 
 <p><b>Choice 5:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
+<div class="collapse-group">
+<p>
+<div class="collapse" id="quiz_id_1_5">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div>
 </p>
-
-</table>
-
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_5" style="font-size: 80%;">Info</a>
+</div>
+</p>
+<!-- end quiz -->
 
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
@@ -37616,7 +38638,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec25"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec27"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -37632,11 +38654,11 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec26"></a></h1>
+<h1>Here goes another section  <a name="___sec28"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec27"></a></h1>
+<h1>More Exercises  <a name="___sec29"></a></h1>
 
 <!-- --- begin exercise --- -->
 
@@ -37673,7 +38695,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec30"></a></h1>
+<h1>References  <a name="___sec32"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -37790,7 +38812,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec32"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec34"></a></h2>
 
 Some text.
 
@@ -37798,7 +38820,7 @@ Some text.
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec34"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec36"></a></h2>
 
 Without label.
 
@@ -37930,6 +38952,19 @@ Here is a nested list:
       continuing on a new line
 
 
+**Here is a list with paragraph heading.**
+
+  * item1
+
+  * item2
+
+Here is a list with subsubsection heading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * item1
+
+  * item2
+
 
 ..
 
@@ -38024,6 +39059,7 @@ and finally the complete file:
 
 Testing other code environments. First Python:
 
+
 .. code-block:: text
 
 
@@ -38039,6 +39075,27 @@ which gets rendered as
 
         def f(x):
             return x+1
+
+
+Test paragraph and subsubsection headings before code.
+
+**Paragraph heading before code.**
+
+
+.. code-block:: python
+
+        def g(y):
+            return y+1
+
+
+Subsubsection heading before code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: python
+
+        def h(z):
+            return z+1
 
 
 Now a complete program to be shown via Python Online Tutorial:
@@ -39134,6 +40191,42 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
+.. raw:: html
+    <!-- begin quiz -->
+    Given
+    
+    
+    .. math::
+             \frac{dy}{dx} = -y(x),\quad y(0)=1 
+    
+    What is the solution of this equation?</p>
+    
+    <p><div title="Right!"><b>Choice 1:</b>
+    :math:`y=e^{-y}`
+    </div></p>
+    
+    <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
+    :math:`y=e^{y}`
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 3:</b>
+    .. code-block:: python
+    
+            from math import exp
+            def f(x):
+                return exp(x)
+    </div></p>
+    
+    <p><div title="Wrong! Equations with derivatives can be solved; they are termed *differential equations*."><b>Choice 4:</b>
+    The solution cannot be found because there is a derivative in the equation.
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 5:</b>
+    The equation is meaningless: an equation must be an equation
+    for :math:`x` or :math:`y`, not a function :math:`y(x)`.
+    </div></p>
+    <!-- end quiz -->
+
 
 .. --- end explanation of choice 5 ---
 
@@ -39383,6 +40476,30 @@ Appendix: Testing identical titles  (3)
 ---------------------------------------
 
 What about inserting a quiz?
+
+.. raw:: html
+    <!-- !split -->
+    <!-- begin quiz -->
+    <hr>
+    <p>
+    <b>Question:</b> What is the capital of Norway?</p>
+    
+    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+    Stockholm
+    </div></p>
+    
+    <p><div title="Wrong!"><b>Choice 2:</b>
+    London
+    </div></p>
+    
+    <p><div title="Right!"><b>Choice 3:</b>
+    Oslo
+    </div></p>
+    
+    <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
+    Bergen
+    </div></p>
+    <!-- end quiz -->
 
 
 
@@ -68629,25 +69746,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
-************************************************************
-unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
-
-
-<!-- tocinfo
-{'highest level': 4, 'sections': []}
-end of tocinfo -->
-
-
-<!-- ------------------- main content ---------------------- -->
-
-Text with a name like &#197;smund &#216;deg&#229;rd works in general.
-
-<p>
-
-<!-- ------------------- end of main content --------------- -->
-
-
-
 ************** File: encoding3.p.tex-ascii-verb *****************
 
 % ------------------- main content ----------------------
@@ -69154,33 +70252,6 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 ************************************************************
 unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
-
-
-<!-- tocinfo
-{'highest level': 4, 'sections': []}
-end of tocinfo -->
-
-
-<!-- ------------------- main content ---------------------- -->
-
-Text with a name like Åsmund Ødegård works in general.
-Verbatim blocks with non-ASCII text does not work for HTML, but it works
-for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
-
-<p>
-<!-- begin verbatim block -->
-<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-
-<!-- ------------------- end of main content --------------- -->
-
-
-
-************************************************************
-unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
 
 
 <!-- tocinfo
@@ -70051,75 +71122,6 @@ $$
 \newcommand{\xbm}{\bm{x}}
 \newcommand{\normalvecbm}{\bm{n}}
 \newcommand{\ubm}{\bm{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
-
-
-<!-- ------------------- main content ---------------------- -->
-
-Text with a name like Åsmund Ødegård works in general.
-
-<p>
-This block (in format html)
-triggers use of <code>mako</code>. For all formats, <code>mako</code> has
-problem with non-ASCII characters anywhere in the text. The remedy
-for all formats is to read the file with UTF-8 encoding. With --debug
-one can see the internal str/unicode representation of the text
-through the various stages of the text transformation process.
-
-<p>
-\( b = 1 \) is a value suggested by Åsmund Ødegård.
-
-<!-- ------------------- end of main content --------------- -->
-
-
-
-************************************************************
-unicode>>> The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):
-
-
-<!-- tocinfo
-{'highest level': 4, 'sections': []}
-end of tocinfo -->
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
 $$
 
 
@@ -73882,7 +74884,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Apr 30 19:35:03 2014.
+# sphinx-quickstart on Thu May  1 16:00:11 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -89372,9 +90374,10 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-(./testdoc.out.pyg [3]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [4]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg) [6]
+[3] (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) [4] (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
+[5]) (./testdoc.out.pyg) [6]
 
 
 ...rest of part of LaTeX line number...
@@ -89470,7 +90473,7 @@ ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
-t line 1013.
+t line 1048.
 
 
 
@@ -89490,7 +90493,7 @@ t line 1013.
 
 
 
-t line 1022.
+t line 1057.
 
 
 
@@ -89510,7 +90513,7 @@ t line 1022.
 
 
 
-t line 1026.
+t line 1061.
 
 
 
@@ -89654,7 +90657,8 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] [19]
+(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] (./testdoc.out.pyg
+[19])
 
 
 .
@@ -89874,6 +90878,8 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -89884,6 +90890,7 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
+ testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
  ***********
@@ -90150,9 +91157,9 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
-(./testdoc.out.pyg) [7]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7]
 <../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
@@ -90238,7 +91245,7 @@ ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
-t line 1013.
+t line 1048.
 
 
 
@@ -90258,7 +91265,7 @@ t line 1013.
 
 
 
-t line 1022.
+t line 1057.
 
 
 
@@ -90278,7 +91285,7 @@ t line 1022.
 
 
 
-t line 1026.
+t line 1061.
 
 
 
@@ -90357,7 +91364,8 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
+(./testdoc.out.pyg [20])
 No file testdoc.bbl.
 [21] [22] [23]
 No file testdoc.ind.
@@ -90545,6 +91553,8 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -90555,6 +91565,7 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
+ testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
  ***********
@@ -90834,9 +91845,9 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
-(./testdoc.out.pyg) [7]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7]
 <../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
@@ -90922,7 +91933,7 @@ ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 
 
-t line 1013.
+t line 1048.
 
 
 
@@ -90942,7 +91953,7 @@ t line 1013.
 
 
 
-t line 1022.
+t line 1057.
 
 
 
@@ -90962,7 +91973,7 @@ t line 1022.
 
 
 
-t line 1026.
+t line 1061.
 
 
 
@@ -91041,12 +92052,13 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
-(./testdoc.bbl [21] [22]) [23] [24] (./testdoc.ind [25]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
+(./testdoc.out.pyg [20]) (./testdoc.bbl [21] [22]) [23] [24] [25]
+(./testdoc.ind [26]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[26]) (./testdoc.aux)
+[27]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -91230,6 +92242,8 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -91240,6 +92254,7 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
+ testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
@@ -91279,7 +92294,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (26 pages, ).
+Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -91503,9 +92518,9 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [6]
-(./testdoc.out.pyg) [7]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7]
 <../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
@@ -91598,12 +92613,13 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] [20]
-(./testdoc.bbl [21] [22]) [23] [24] (./testdoc.ind [25]
+[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
+(./testdoc.out.pyg [20]) (./testdoc.bbl [21] [22]) [23] [24] [25]
+(./testdoc.ind [26]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[26]) (./testdoc.aux)
+[27]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -91787,6 +92803,8 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -91797,6 +92815,7 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
+ testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.bbl
@@ -91830,7 +92849,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (26 pages, ).
+Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
@@ -92019,22 +93038,6 @@ found info about 10 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
-
-...doconce translation: handled figures 23.2 s
-
-...doconce translation: handled handled lists 23.3 s
-
-...doconce translation: handled inline substitutions 23.3 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 23.4 s
-
-...doconce translation: handled !benvir/!eenvir constructions 23.4 s
-
-...doconce translation: handled handled second reformatting of quizzes 23.4 s
-
-
-...doconce format used 23.4 s to translate the document (1631 lines)
-
 output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
@@ -92122,8 +93125,8 @@ reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc000.rst:10: ERROR: Duplicate substitution definition name: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:369: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:369: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
@@ -92248,22 +93251,6 @@ found info about 10 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format rst
-
-...doconce translation: handled figures 30.7 s
-
-...doconce translation: handled handled lists 30.8 s
-
-...doconce translation: handled inline substitutions 30.9 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 30.9 s
-
-...doconce translation: handled !benvir/!eenvir constructions 30.9 s
-
-...doconce translation: handled handled second reformatting of quizzes 30.9 s
-
-
-...doconce format used 30.9 s to translate the document (1524 lines)
-
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + system doconce format epytext testdoc.do.txt --examples_as_exercises
@@ -92337,24 +93324,8 @@ found info about 10 exercises, written to .testdoc.exerinfo
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
-
-...doconce translation: handled figures 29.7 s
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
-
-...doconce translation: handled handled lists 29.8 s
-
-...doconce translation: handled inline substitutions 29.8 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 29.8 s
-
-...doconce translation: handled !benvir/!eenvir constructions 29.8 s
-
-...doconce translation: handled handled second reformatting of quizzes 29.8 s
-
-
-...doconce format used 29.8 s to translate the document (1411 lines)
-
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system doconce format mwiki testdoc.do.txt --examples_as_exercises
@@ -100536,9 +101507,11 @@ replacing `myfile.py` file by `myfile.py` in tmp2.do.txt
 + doconce format plain tmp2
 translating doconce text in tmp2.do.txt to plain
 
-*** error: must have a plain sentence before
+*** error: must in format "plain" have a plain sentence before
 a code block like !bc/!bt/@@@CODE, not a section/paragraph heading,
 table, or comment:
+
+---------------------------------
 fore code is caught by the syntax check ===
  
 
@@ -100547,6 +101520,7 @@ more verbatime stuff
 !ec
 
 Next we see if backslashes are detected: \\
+---------------------------------
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce subst 'failure\}\n\n!bc' 'failure}\n\nHello\n!bc' tmp2.do.txt
 failure\}\n\n!bc replaced by failure}\n\nHello\n!bc in tmp2.do.txt
@@ -100592,9 +101566,11 @@ replacing \cite by cite in tmp2.do.txt
 + doconce format rst tmp2
 translating doconce text in tmp2.do.txt to rst
 
-*** error: must have a plain sentence before
+*** error: must in format "rst" have a plain sentence before
 a code block like !bc/!bt/@@@CODE, not a section/paragraph heading,
 table, or comment:
+
+---------------------------------
 ybook}.
 
 __Paragraph before code is bad.__
@@ -100606,6 +101582,7 @@ More verbatim stuff.
 !ec
 
 Can we successfully say `__call__` and `__ad
+---------------------------------
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce subst -s '__Paragraph before.+!bc' '!bc' tmp2.do.txt
 __Paragraph before.+!bc replaced by !bc in tmp2.do.txt

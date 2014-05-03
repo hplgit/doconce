@@ -179,7 +179,7 @@ def gwiki_ref_and_label(section_label2title, format, filestr):
     return wiki_ref_and_label_common(section_label2title, format, filestr)
 
 def gwiki_quiz(quiz):
-    return 'Cannot typeset a quiz'
+    return 'Cannot typeset quiz %s' % quiz.get('question', '')
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

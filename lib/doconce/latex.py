@@ -1521,10 +1521,12 @@ def latex_%s(block, format, title='%s'):
 
 def latex_subsubsection(m):
     title = m.group('subst').strip()
+    print 'XXX', m.group()
     if title[-1] in ('?', '!', '.', ':',):
         pass
     else:
         title += '.'
+    print 'XXXT', title
     return r'\paragraph{%s}' % title
 
 
@@ -1562,11 +1564,11 @@ def latex_quiz(quiz):
     else:
         text += r'paragraph{Question:}'
     text += '\n' + quiz['question'] + '\n'
-    text += r'\begin{description}' + '\n'
+    text += '\\begin{description}\n'
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
-        text += r'\item[Choice %d:] %s' % (choice_no, choice[1]) + '\n'
-    text += r'\end{description}' + '\n'
+        text += '\\item[Choice %d:]\n%s\n' % (choice_no, choice[1])
+    text += '\\end{description}\n'
     text += '% end quiz\n\n'
     return text
 
