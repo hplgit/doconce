@@ -1278,11 +1278,12 @@ def html_quiz(quiz):
         text += '<!-- !split -->\n'
 
     text += '<!-- begin quiz -->\n'
+    question_prefix = quiz.get('question prefix', 'Question:')
     # Don't write Question: ... if inside an exercise section
     if quiz.get('embedding', 'None') in ['exercise',]:
         pass
     else:
-        text += '<hr>\n<p>\n<b>Question:</b> '
+        text += '<hr>\n<p>\n<b>%s</b> ' % question_prefix
 
     text += quiz['question'] + '</p>\n'
 
@@ -1292,6 +1293,11 @@ def html_quiz(quiz):
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
         answer = choice[0].capitalize() + '!'
+        choice_prefix = quiz['choice prefix'][i] if isinstance(quiz['choice prefix'][i], basestring) else 'Choice'
+        if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
+            pass  # don't add choice number
+        else:
+            choice_prefix += ' %d:' % choice_no
         if not bootstrap:  # plain html: show tooltip when hovering over choices
             tooltip = answer
             if len(choice) == 3:
@@ -1306,7 +1312,7 @@ def html_quiz(quiz):
             if expl:
                 tooltip += ' ' + ' '.join(expl.splitlines())
             tooltip = ' title="%s"' % tooltip
-            text += '\n<p><div%s><b>Choice %d:</b>\n%s\n</div></p>\n' % (tooltip, choice_no, choice[1])
+            text += '\n<p><div%s><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
         else:
             id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
             if len(choice) == 3:
@@ -1319,7 +1325,7 @@ def html_quiz(quiz):
             # Use collapse functionality, see http://jsfiddle.net/8cYFj/
             '''
             text += """
-<p><b>Choice %d:</b>
+<p><b>%s</b>
 %s
 <div class="collapse-group">
 <p><div class="collapse" id="%s">
@@ -1330,13 +1336,13 @@ def html_quiz(quiz):
  data-target="#%s" style="font-size: 80%%;">%s</a>
 </div>
 </p>
-""" % (choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
+""" % (choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
             '''
             text += """
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
  data-target="#%s" style="font-size: 80%%;">%s</a>
-&nbsp;<b>Choice %d:</b>
+&nbsp;<b>%s</b>
 %s
 <div class="collapse-group">
 <p><div class="collapse" id="%s">
@@ -1345,7 +1351,9 @@ def html_quiz(quiz):
 </div></p>
 </div>
 </p>
-""" % (id, button_text, choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
+""" % (id, button_text, choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
+    if not bootstrap:
+        text += '<hr>\n'
     text += '<!-- end quiz -->\n'
     return text
 

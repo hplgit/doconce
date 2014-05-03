@@ -88,7 +88,7 @@ inserted to the right in exercises - "default" and "none" are allowed
     ('--html_links_in_new_window',
      """Open HTML links in a new window."""),
     ('--html_quiz_button_text=',
-     'Text on buttons for collapsing/expanding answers and explanations in quizzes'),
+     'Text on buttons for collapsing/expanding answers and explanations\nin quizzes (with bootstrap styles). Default: Empty (just pencil glyphion).'),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',

@@ -2633,12 +2633,29 @@ def extract_quizzes(filestr, format):
         pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:
-            data[-1]['question'] = m.group(1).strip()
+            question = m.group(1).strip()
+            # Check if question prefix is specified
+            # Q: [] Here goes the question...
+            prefix_pattern = r'^\[(.*?)\]'
+            m = re.search(prefix_pattern, question)
+            if m:
+                prefix = m.group(1)
+                question = re.sub(prefix_pattern, '', question).strip()
+                data[-1]['question prefix'] = prefix
+            data[-1]['question'] = question
         pattern = '^' + bct('quiz choice (\d+) \((right|wrong)\)', cp) + '(.+?)' + ect('quiz choice .+?', cp)
         choices = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         data[-1]['choices'] = []
+        data[-1]['choice prefix'] = [None]*len(choices)
         for i, right, choice in choices:
-            data[-1]['choices'].append([right, choice.strip()])
+            choice = choice.strip()
+            # choice can be of the form [Solution:] Here goes the text...
+            m = re.search(prefix_pattern, choice)
+            if m:
+                prefix = m.group(1).strip()
+                choice = re.sub(prefix_pattern, '', choice).strip()
+                data[-1]['choice prefix'][int(i)-1] = prefix
+            data[-1]['choices'].append([right, choice])
         pattern = '^' + bct('explanation of choice (\d+)', cp) + '(.+?)' + ect('explanation of choice \d+', cp)
         explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         for i_str, explanation in explanations:
