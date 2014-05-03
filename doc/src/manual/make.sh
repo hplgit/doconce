@@ -30,7 +30,7 @@ EOF
 
 d2f="doconce format"
 # doconce html format:
-$d2f html manual.do.txt --no_mako --no_pygments_html
+$d2f html manual.do.txt --no_mako --pygments_html_style=none
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 # Need a fix: remove newcommands (and math) when displayed on googlecode
 doconce subst -s '<!\-\- newcommands.*?\$\$.*?\$\$' '' manual.html

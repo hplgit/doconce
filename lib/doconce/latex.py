@@ -4,13 +4,11 @@ import os, commands, re, sys, glob, shutil
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
-     insert_code_and_tex, _abort, is_file_or_url
+     insert_code_and_tex, _abort, is_file_or_url, chapter_pattern
 from misc import option
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
-
-chapter_pattern = r'^\s*=========\s*[A-Za-z0-9].+?========='  # chapter regex
 
 def underscore_in_code(m):
     """For pattern r'\\code\{(.*?)\}', insert \_ for _ in group 1."""
@@ -371,7 +369,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             new_line = line.replace(r'\code{', r'\protect\code{')
             filestr = filestr.replace(line, new_line)
 
-    if option('latex_no_section_numbering'):
+    if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
 
     return filestr

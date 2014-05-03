@@ -25,15 +25,17 @@ _registered_command_line_options = [
      'Make Mako report on undefined variables.'),
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
-    ('--no_pygments_html',
-     """Do not use pygments to typeset computer code in HTML,
-use plain <pre> tags."""),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
      'Specify the minted style to be used for typesetting code in LaTeX.'),
     ('--pygments_html_style=',
-     'Specify the minted style to be used for typesetting code in HTML.'),
+     """Specify the minted/pygments style to be used for typesetting code in HTML.
+Default: default (other values: monokai, manni, rrt, perldoc, borland,
+colorful, murphy, trac, tango, fruity, autumn, emacs, vim, pastie, friendly,
+native).
+none, no, off: turn off pygments to typeset computer code in HTML,
+use plain <pre> tags."""),
     ('--pygments_html_linenos',
      """Turn on line numbers in pygmentized computer code in HTML.
 (In LaTeX line numbers can be added via doconce subst or replace
@@ -85,6 +87,8 @@ inserted to the right in exercises - "default" and "none" are allowed
      """Width of the icon image specified as --html_exercise_icon."""),
     ('--html_links_in_new_window',
      """Open HTML links in a new window."""),
+    ('--html_quiz_button_text=',
+     'Text on buttons for collapsing/expanding answers and explanations in quizzes'),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',
@@ -102,8 +106,8 @@ siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
      """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
-    ('--latex_no_section_numbering',
-     'Turn off default numbering of sections.'),
+    ('--section_numbering=',
+     'Turn section numbering on/off. Default: off for all formats except latex and pdflatex (on for those).'),
     ('--latex_table_align=',
      'Default: quote. Other values: left, center.'),
     ('--latex_title_layout=',
@@ -178,7 +182,7 @@ Either rgb tuple or saturated color a la yellow!5:
 (note the quotes, needed for bash, in the latter example)
 """),
     ('--latex_admon_title_no_period',
-     'Do not add a period at the end of admon titles in LaTeX.'),
+     'Do not add a period at the end of admon titles in LaTeX if it is missing.'),
     ('--latex_admon_envir_map=',
      """Mapping of code envirs to new envir names inside admons (e.g., to get
 a different code typesetting inside admons. If a number, say 2, as in

@@ -38,6 +38,6 @@ doconce subst '<!-- Bootstrap navigation bar -->' '<div class="masthead">\n<div 
 doconce subst -s '<!-- Bootstrap footer.+?-->' '<footer><a href="http://simula.no"><img width="250" align=right src="http://cbc.simula.no/pub/figs/simula_logo_pos.png"></a></footer>' cbc.html
 
 # index.html file with links to all the demos
-doconce format html index --html_style=bootswatch_spacelab --no_pygments_html --html_links_in_new_window
+doconce format html index --html_style=bootswatch_spacelab --pygments_html_style=none --html_links_in_new_window
 
 cp *.html .*.html ../../../pub/bootstrap

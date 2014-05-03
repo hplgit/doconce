@@ -263,6 +263,7 @@ def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
     html_style = option('html_style=', '')
+    pygm_style = option('pygments_html_style=', default=None)
 
     # Mapping from envir (+cod/pro if present) to pygment style
     types2languages = dict(py='python', cy='cython', f='fortran',
@@ -287,7 +288,7 @@ def html_code(filestr, code_blocks, code_block_types,
     except ImportError:
         pygm = None
     # Can turn off pygments on the cmd line
-    if option('no_pygments_html'):
+    if pygm_style in ('no', 'none', 'off'):
         pygm = None
     if pygm is not None:
         # Note: ipython pygments requires
@@ -302,7 +303,6 @@ def html_code(filestr, code_blocks, code_block_types,
                 print '    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
                 types2languages['ipy'] = 'python'
 
-        pygm_style = option('pygments_html_style=', default=None)
         if pygm_style is None:
             # Set sensible default values
             if option('html_style=') == 'solarized':
@@ -311,13 +311,13 @@ def html_code(filestr, code_blocks, code_block_types,
                 pygm_style = 'default'
 
         legal_styles = list(get_all_styles())
-        legal_styles += ['no', 'none']
+        legal_styles += ['no', 'none', 'off']
         if pygm_style not in legal_styles:
             print 'pygments style "%s" is not legal, must be among\n%s' % (pygm_style, ', '.join(legal_styles))
             #_abort()
             print 'using the default style...'
             pygm_style = 'default'
-        if pygm_style in ['no', 'none']:
+        if pygm_style in ['no', 'none', 'off']:
             pygm = None
 
         linenos = option('pygments_html_linenos')
@@ -1288,6 +1288,7 @@ def html_quiz(quiz):
 
     # List choices as paragraphs
     bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
+    button_text = option('html_quiz_button_text=', 'Info')
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
         answer = choice[0].capitalize() + '!'
@@ -1326,10 +1327,10 @@ def html_quiz(quiz):
 %s
 </div>
 </p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#%s" style="font-size: 80%%;">Info</a>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#%s" style="font-size: 80%%;">%s</a>
 </div>
 </p>
-""" % (choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id)
+""" % (choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
     text += '<!-- end quiz -->\n'
     return text
 
@@ -1611,8 +1612,8 @@ def define(FILENAME_EXTENSION,
     else:
         css = css_blueish # default
 
-    if not option('no_pygments_html') and \
-           option('html_style=', 'blueish') != 'solarized':
+    if option('pygments_html_style=', None) not in ('no', 'none', 'off') \
+        and option('html_style=', 'blueish') != 'solarized':
         # Remove pre style as it destroys the background for pygments
         css = re.sub(r'pre .*?\{.+?\}', '', css, flags=re.DOTALL)
 

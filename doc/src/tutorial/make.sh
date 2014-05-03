@@ -3,7 +3,7 @@ set -x
 sh -x ./clean.sh
 
 # html
-doconce format html tutorial  --no_pygments_html
+doconce format html tutorial  --pygments_html_style=none
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # latex

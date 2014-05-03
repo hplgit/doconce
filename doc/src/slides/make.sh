@@ -170,7 +170,7 @@ doconce slides_html demo ${slide_tp} --html_slide_theme=simple --html_footer_log
 cp demo.html demo_${slide_tp}_uio.html
 
 # Combined UiO and Simula footer
-doconce format html demo --no_pygments_html SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula"
+doconce format html demo --pygments_html_style=none SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula"
 doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
 cp demo.html demo_${slide_tp}_uio_simula.html
 

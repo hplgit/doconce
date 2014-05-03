@@ -10,6 +10,9 @@ import re, sys, urllib, os
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
 _MATH_BLOCK = '<<<!!MATH_BLOCK'
 
+# Chapter regex
+chapter_pattern = r'^\s*=========\s*[A-Za-z0-9].+?========='
+
 # Functions for creating and reading comment tags
 def begin_end_comment_tags(tag):
     return '--- begin ' + tag + ' ---', '--- end ' + tag + ' ---'

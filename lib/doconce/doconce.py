@@ -2428,6 +2428,50 @@ def typeset_authors(filestr, format):
     filestr = filestr.replace('XXXAUTHOR', author_block)
     return filestr
 
+def typeset_section_numbering(filestr, format):
+    chapter = section = subsection = subsubsection = 0
+    # Do we have chapters?
+    from common import chapter_pattern
+    if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
+        has_chapters = True
+    else:
+        has_chapters = False
+
+    lines = filestr.splitlines()
+    for i in range(len(lines)):
+        if lines[i].startswith('========= '):
+            chapter += 1
+            section = subsection = subsubsection = 0
+            counter = str(chapter)
+            lines[i] = re.sub(r'^========= ', '========= %s: ' % counter,
+                              lines[i])
+        elif lines[i].startswith('======= '):
+            section += 1
+            subsection = subsubsection = 0
+            if has_chapter:
+                counter = '.'.join([chapter, section])
+            else:
+                counter = str(section)
+            lines[i] = re.sub(r'^======= ', '======= %s: ' % counter,
+                              lines[i])
+        elif lines[i].startswith('===== '):
+            subsection += 1
+            subsubsection = 0
+            if has_chapter:
+                counter = '.'.join([chapter, section, subsection])
+            else:
+                counter = '.'.join([section, subsection])
+            lines[i] = re.sub(r'^===== ', '===== %s: ' % counter,
+                              lines[i])
+        elif lines[i].startswith('=== '):
+            subsubsection += 1
+            if has_chapter:
+                counter = '.'.join([chapter, section, subsection, subsubsection])
+            else:
+                counter = '.'.join([section, subsection, subsubsection])
+            lines[i] = re.sub(r'^=== ', '=== %s: ' % counter,
+                              lines[i])
+    return '\n'.join(lines)
 
 def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
     """
@@ -2501,7 +2545,7 @@ def interpret_quiz_text(text, insert_missing_heading= False,
                 text = '===== Exercise: %s =====\n\n' % heading + text
                 # no label, file=, solution= are needed for quizes
                 previous_heading_tp = 'exercise'
-        heading_comment = ct('--- quiz heading: ' + heading) + '\n' + ct('--- previous quiz heading type: ' + str(previous_heading_tp))
+        heading_comment = ct('--- quiz heading: ' + heading) + '\n' + ct('--- previous heading type: ' + str(previous_heading_tp))
         text = re.sub(pattern, heading_comment, text, flags=re.MULTILINE)
 
     def begin_end_tags(tag, content):
@@ -2584,10 +2628,9 @@ def extract_quizzes(filestr, format):
         pattern = '^' + ct('--- quiz heading: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
-            words = m.group(1).strip().split()
             heading = ' '.join(words[:-1])
-            data[-1]['heading'] = heading
-        pattern = '^' + ct('--- previous quiz heading type: (.+)', cp)
+            data[-1]['heading'] = m.group(1).strip().split()
+        pattern = '^' + ct('--- previous heading type: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['embedding'] = m.group(1).strip()
@@ -3044,6 +3087,11 @@ def doconce2format(filestr, format):
         for s in 7, 3:
             filestr = re.sub(r'^ *%s +(\{?(Exercise|Problem|Project|Example)\}?):\s*(.+?) +%s' % ('='*s, '='*s), '===== \g<1>: \g<3> =====', filestr, flags=re.MULTILINE)
         debugpr('The file after changing the level of section headings:', filestr)
+
+    # Next step: section numbering?
+    if format not in ('latex', 'pdflatex'):
+        if option('section_numbering=', 'off') == 'on':
+            filestr = typeset_section_numbering(filestr, format)
 
     # Remove linebreaks within paragraphs
     if option('oneline_paragraphs'):  # (does not yet work well)
