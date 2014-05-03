@@ -273,9 +273,23 @@ Cw: Denmark
 
 # #endif
 
-======= Typesetting of mathematics and computer code =======
+======= Typesetting of mathematics =======
 
-# math quiz
+===== Inline formulas =====
+
+===== Equations =====
+
+# math quiz inline formulas
+# math quiz equations
 # line computer code quiz
 # block code quiz
+
+======= Typesetting of computer code =======
+
+===== Inline monospace font =====
+
+===== Blocks of computer code =====
+
+===== Example: Putting it all together =====
+
 # code, math, figure/movie (animated gif?)
