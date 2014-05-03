@@ -33,6 +33,21 @@ hr {
   border-bottom: 1px solid #ffffff;
 }
 
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  text-decoration: none;
+  background-color: #8a0808;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #8a0808;
+  white-space: nowrap;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
 select,
 textarea,
 input[type="text"],
@@ -145,6 +160,10 @@ input[type="color"],
   color: #ffffff;
 }
 
+.alert a {
+  color: #fffff0;
+}
+
 .alert-success {
   background-color: #8a0808;
   border-color: #720808;
@@ -173,6 +192,24 @@ input[type="color"],
 .navbar {
   background-color: #8a0808;
   color: #ffffff;
+}
+
+a:hover,
+a:focus {
+  color: #8a0808;
+  text-decoration: underline;
+}
+
+.navbar .navbar-header a:hover,
+a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar .navbar-collapse .nav .dropdown a:hover,
+a:focus {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .navbar-default .navbar-brand {
