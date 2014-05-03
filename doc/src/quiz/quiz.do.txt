@@ -1,0 +1,281 @@
+TITLE: A Software Tool for Typesetting Quizzes
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+__Summary.__ This note describes a system for writing quizzes
+(multiple-choice questions) in a compact text format. The
+format can be automatically translated to HTML and also rendered
+as nicely typeset quizzes in web pages.
+
+!split
+======= A pure text quiz =======
+
+===== Question and choices =====
+
+Here is a typical quiz with a question and four alternative answers:
+
+!bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+!equiz
+Click on the symbol to the left of _Choice_ to see whether the choice is
+correct or not.
+
+The above quiz can be specified by the text
+
+!bc
+|bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+|equiz
+!ec
+
+!bnotice Syntax
+
+ * The quiz is specified between `!bquiz`
+   (``begin quiz'') and `!equiz` (``end quiz'') tags.
+ * The question starts right after `Q:`.
+ * Wrong choices are specified with `Cw:`, and right choices with `Cr:`.
+ * The instructions `!bquiz`, `!equiz`, `Q:`, `Cw:`, and `Cr:` must appear
+   at the beginning of a line.
+ * The text of (e.g.) a wrong answer (`Cr:`) lasts up to the next
+   instruction (like `Cw:`, `Cr:`, `!equiz`).
+ * One can have as many wrong and right
+   choices as desired.
+
+!enotice
+
+===== Explanations of choices =====
+
+Sometimes it is desireable to give some explanation why certain choices
+are wrong (or right).
+If you click on the symbols in the quiz below, explanations
+will be shown for Choices 1 and 2.
+
+!bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+The corresponding typesetting applies `E: ...` after the choice to
+give an explanation of that choice.
+
+!bc
+|bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+|equiz
+!ec
+This time we also added some spaces for enhanced reading of the text.
+
+===== Typesetting =====
+
+It is easy to use *emphasize font*, _boldface_, color{red}{color},
+"hyperlinks": "http://google.com", etc.,
+since the text in the specification of questions, choices,
+and explanations are rendered according to the
+"Doconce": "https://github.com/hplgit/doconce" markup language.
+For simple typesetting (emphasize, boldface, links) Doconce also
+accepts Markdown syntax.
+Here is an example:
+
+!bquiz
+Q: Here is a famous quote:
+
+!bquote
+*Premature optimization is the root of all evil.*
+!equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to "Wikiquote": "http://en.wikiquote.org/wiki/Donald_Knuth",
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+!equiz
+
+The corresponding specification reads
+
+!bc
+|bquiz
+Q: Here is a famous quote:
+
+|bquote
+*Premature optimization is the root of all evil.*
+|equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to "Wikiquote": "http://en.wikiquote.org/wiki/Donald_Knuth",
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+|equiz
+!ec
+
+===== Specification in HTML =====
+
+Instead of using the compact text specification with Doconce
+formatting, one can use a more verbose syntax and specify everything
+in HTML. The previous example then reads
+
+## Note that the HTML text is indented such that it is not interpreted
+## as a quiz by Doconce.
+
+!bc htmlcod
+ <!-- --- begin quiz --- -->
+ <!-- --- begin quiz question --- -->
+ Here is a famous quote:
+
+ <blockquote>
+     <em>Premature optimization is the root of all evil.</em>
+ </blockquote>
+
+ This quote is attributed to
+ <!-- --- end quiz question --- -->
+
+ <!-- --- begin quiz choice 1 (wrong) --- -->
+ Geroge W. Bush
+ <!-- --- end quiz choice 1 (wrong) --- -->
+
+ <!-- --- begin quiz choice 2 (right) --- -->
+ Donald Knuth
+ <!-- --- end quiz choice 2 (right) --- -->
+
+ <!-- --- begin explanation of choice 2 --- -->
+ According to
+ <a href="http://en.wikiquote.org/wiki/Donald_Knuth"
+  target="_self">Wikiquote</a>,
+ Donald Knuth wrote this statement in <em>Structured Programming with
+ Goto Statements</em>. Computing Surveys, <b>6</b>:4,
+ pp. 261-301, <b>1974</b>.
+ <!-- --- end explanation of choice 2 --- -->
+
+ <!-- --- begin quiz choice 3 (wrong) --- -->
+ Ole-Johan Dahl
+ <!-- --- end quiz choice 3 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 3 --- -->
+ Ole-Johan Dahl was a famous Norwegian professor of computer science
+ and together with Kristen Nygaard the inventor of object-oriented
+ programming, but he is not the man behind this quote.
+ <!-- --- end explanation of choice 3 --- -->
+ <!-- --- end quiz --- -->
+!ec
+This syntax applies begin-end comments to mark the start and end
+of the question, the choices, and the explanations.
+
+!bwarning
+The HTML specification of a quiz is not a meaningful HTML code for
+displaying the quiz in a browser, it is just an application of the
+HTML language to specify information and have full control of
+the typesetting details. Some program must interpret the
+HTML above and typset questions, choices, and explanations adequately.
+# #if FORMAT in ("sphinx", "html")
+(As done elsewhere in this document.)
+# #endif
+!ewarning
+
+# #ifdef DOCONCE
+===== Quiz inside admonitions in Doconce =====
+
+Question admonitions may well feature quizzes. A plain question
+admonition is
+
+!bquestion
+What is the capital of Norway?
+!equestion
+specified by the Doconce syntax
+
+!bc
+|bquestion
+What is the capital of Norway?
+|equestion
+!ec
+The quiz version is
+
+!bquestion
+!bquiz
+Q: [] What is the capital of Norway?
+
+Cw: [Answer:] Stockholm
+E: Stockholm is the capital of Sweden, Norway's neighboring country.
+
+Cw: Bergen
+E: Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+!equestion
+specified as
+
+!bc
+|bquestion
+|bquiz
+Q: [] What is the capital of Norway?
+
+Cw: [Answer:] Stockholm
+E: Stockholm is the capital of Sweden, Norway's neighboring country.
+
+Cw: Bergen
+E: Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+
+Cr: Oslo
+
+Cw: Denmark
+|equiz
+|equstion
+!ec
+
+
+# #endif
+
+======= Typesetting of mathematics and computer code =======
+
+# math quiz
+# line computer code quiz
+# block code quiz
+# code, math, figure/movie (animated gif?)

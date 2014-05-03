@@ -244,6 +244,17 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--bootwatch_theme=', 'Boostrap themes from bootwatch.com. See http://strapdownjs.com/ for names. Default: spacelab.'),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
+    ('--quiz_question_prefix=', """\
+Prefix/title before question in quizzes. Default: "Question:". Can also be
+set in square brackets for each individual question.
+("Q: [] What is 1+1?" results in no prefix/title before the "What is 1+1?"."""),
+    ('--quiz_choice_prefix=', """\
+Prefix/title before choices in quizzes. Default: "Choice", resulting in
+numbered choices "Choice 1:", "Choice 2:", etc. A value with colon, period,
+or question mark (e.g., "Answer:") leaves out the numbering. Can also be
+set in square brackets for each individual choice.
+("Cr: [] Two" results in no prefix/title before the the answer "Two"."""),
+    ('--quiz_horizontal_rule=', 'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
     ]
 
 _legal_command_line_options = \

@@ -1273,27 +1273,31 @@ def html_toc(sections):
     return s
 
 def html_quiz(quiz):
+    bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
+    button_text = option('html_quiz_button_text=', '')
+    question_prefix = quiz.get('question prefix',
+                               option('quiz_question_prefix=', 'Question:'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice'))
+    hr = '<hr>' if option('quiz_horizontal_rule=', 'on') == 'on' else ''
+
     text = ''
     if 'new page' in quiz:
         text += '<!-- !split -->\n'
 
     text += '<!-- begin quiz -->\n'
-    question_prefix = quiz.get('question prefix', 'Question:')
     # Don't write Question: ... if inside an exercise section
     if quiz.get('embedding', 'None') in ['exercise',]:
         pass
     else:
-        text += '<hr>\n<p>\n<b>%s</b> ' % question_prefix
+        text += '%s\n<p>\n<b>%s</b> ' % (hr, question_prefix)
 
     text += quiz['question'] + '</p>\n'
 
     # List choices as paragraphs
-    bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
-    button_text = option('html_quiz_button_text=', '')
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
         answer = choice[0].capitalize() + '!'
-        choice_prefix = quiz['choice prefix'][i] if isinstance(quiz['choice prefix'][i], basestring) else 'Choice'
+        choice_prefix = quiz['choice prefix'][i] if isinstance(quiz['choice prefix'][i], basestring) else common_choice_prefix
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
             pass  # don't add choice number
         else:
@@ -1352,8 +1356,8 @@ def html_quiz(quiz):
 </div>
 </p>
 """ % (id, button_text, choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
-    if not bootstrap:
-        text += '<hr>\n'
+    if not bootstrap and hr:
+        text += '%s\n' % hr
     text += '<!-- end quiz -->\n'
     return text
 
