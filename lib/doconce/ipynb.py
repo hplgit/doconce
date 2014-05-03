@@ -257,4 +257,4 @@ def define(FILENAME_EXTENSION,
     EXERCISE['ipynb'] = plain_exercise
     TOC['ipynb'] = lambda s: ''
     FIGURE_EXT['ipynb'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
-    QUIZ['ipynb'] = lambda quiz: '**Cannot typeset quiz %s**' % quiz.get('heading', '')
+    QUIZ['ipynb'] = lambda quiz: '**Cannot typeset quiz**: "%s"' % quiz.get('heading', '')

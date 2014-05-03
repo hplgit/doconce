@@ -175,7 +175,7 @@ doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_log
 cp demo.html demo_${slide_tp}_uio_simula.html
 
 # Solarized without pygments
-doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME=solarized
+doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
 doconce slides_html demo reveal --html_slide_theme=solarized
 cp demo.html demo_reveal_solarized_plainpre.html
 
@@ -232,7 +232,7 @@ doconce slides_html demo reveal --html_slide_theme=solarized
 </pre>
 <p><li><a target="_blank" href="demo_reveal_solarized_plainpre.html">reveal, solarized theme with plain pre, no pygments</a>
 <pre>
-doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME=solarized
+doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
 doconce slides_html demo reveal --html_slide_theme=solarized
 </pre>
 <li><a target="_blank" href="demo_reveal_darkgray.html">reveal, darkgray theme</a>
@@ -287,7 +287,7 @@ doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio
 </pre>
 <li><a target="_blank" href="demo_reveal_uio_simula.html">reveal, combined uio+simula theme</a>
 <pre>
-doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME="uio+simula"
+doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME="uio+simula"
 doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_simula_symbol
 </pre>
 <li><a target="_blank" href="demo_reveal_sky.html">reveal, sky theme</a>

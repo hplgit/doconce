@@ -429,7 +429,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['mwiki'] = plain_exercise
     INDEX_BIB['mwiki'] = plain_index_bib
     TOC['mwiki'] = lambda s: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
-    QUIZ['mwiki'] = lambda quiz: 'Cannot typeset quiz "%s"' % quiz.get('question', '')
+    QUIZ['mwiki'] = lambda quiz: 'Cannot typeset quiz: "%s"' % quiz.get('question', '')
 
     # document start:
     INTRO['mwiki'] = ''

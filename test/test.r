@@ -8501,6 +8501,7 @@ Exercise 7: Solution of differential equation
     The equation is meaningless: an equation must be an equation
     for x or y, not a function y(x).
     </div></p>
+    <hr>
     <!-- end quiz -->
 
 
@@ -8775,6 +8776,7 @@ What about inserting a quiz?
     <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
     Bergen
     </div></p>
+    <hr>
     <!-- end quiz -->
 
 
@@ -10229,6 +10231,7 @@ Exercise 7: Solution of differential equation
     The equation is meaningless: an equation must be an equation
     for :math:`x` or :math:`y`, not a function :math:`y(x)`.
     </div></p>
+    <hr>
     <!-- end quiz -->
 
 
@@ -10503,6 +10506,7 @@ What about inserting a quiz?
     <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
     Bergen
     </div></p>
+    <hr>
     <!-- end quiz -->
 
 
@@ -11710,7 +11714,12 @@ lambda x: x+2
 
 ==== Exercise 7: Solution of differential equation ====
 
-Cannot typeset a quiz
+Cannot typeset quiz: "Given
+
+{{{
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+}}}
+What is the solution of this equation?"
 <wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -11827,7 +11836,7 @@ With label.
 
 What about inserting a quiz?
 
-Cannot typeset a quiz
+Cannot typeset quiz: "What is the capital of Norway?"
 
 
 ==== Appendix: Testing identical titles ====
@@ -13018,7 +13027,12 @@ lambda x: x+2
 
 ==== Exercise 7: Solution of differential equation ====
 
-Cannot typeset quiz SOlution of differential
+Cannot typeset quiz: "Given
+
+:<math>
+ \frac{dy}{dx} = -y(x),\quad y(0)=1 
+</math>
+What is the solution of this equation?"
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
 
@@ -13223,7 +13237,7 @@ With label.
 
 What about inserting a quiz?
 
-Cannot typeset quiz Capital of
+Cannot typeset quiz: "What is the capital of Norway?"
 
 
 ==== Appendix: Testing identical titles ====
@@ -14382,7 +14396,12 @@ lambda x: x+2
 == Exercise 7: Solution of differential equation ==
 
 
-**Cannot typeset quiz SOlution of differential**
+**Cannot typeset quiz**: "Given
+
+{{{
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+}}}
+What is the solution of this equation?"
 <wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -14503,7 +14522,7 @@ With label.
 
 What about inserting a quiz?
 
-**Cannot typeset quiz Capital of**
+**Cannot typeset quiz**: "What is the capital of Norway?"
 
 
 == Appendix: Testing identical titles ==
@@ -19901,7 +19920,12 @@ lambda x: x+2
 
 ### Exercise 7: Solution of differential equation
 
-Cannot typeset a quiz
+*Cannot typeset quiz*: "Given
+
+$$
+ \frac{dy}{dx} = -y(x),\quad y(0)=1 
+$$
+What is the solution of this equation?"
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
 
@@ -20118,7 +20142,7 @@ With label.
 
 What about inserting a quiz?
 
-Cannot typeset a quiz
+*Cannot typeset quiz*: "What is the capital of Norway?"
 
 
 ### Appendix: Testing identical titles
@@ -21744,7 +21768,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin quiz --- -->\n",
       "<!-- --- quiz heading: SOlution of differential equation -->\n",
-      "<!-- --- previous quiz heading type: exercise -->\n",
+      "<!-- --- previous heading type: exercise -->\n",
       "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
@@ -22063,7 +22087,7 @@ is at the end with only one newline.
       "<!-- --- begin quiz --- -->\n",
       "<!-- --- new quiz page: Test of quizzes -->\n",
       "<!-- --- quiz heading: Capital of Norway -->\n",
-      "<!-- --- previous quiz heading type: subsection -->\n",
+      "<!-- --- previous heading type: subsection -->\n",
       "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
@@ -22395,7 +22419,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous quiz heading type: exercise\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.',
+  'text': '# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.',
   'title': 'Solution of differential equation',
   'type': 'Exercise',
   'type_visible': True},
@@ -23886,7 +23910,10 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <!-- --- begin exercise --- -->
 
 <h3 id="exercise-7-solution-of-differential-equation">Exercise 7: Solution of differential equation</h3>
-<p>Cannot typeset a quiz <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></p>
+<p><em>Cannot typeset quiz</em>: &quot;Given</p>
+<p><span class="math">\[
+ \frac{dy}{dx} = -y(x),\quad y(0)=1 
+\]</span> What is the solution of this equation?&quot; <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></p>
 <!-- --- begin exercise --- -->
 
 <h3 id="example-8-just-an-example">Example 8: Just an example</h3>
@@ -23960,7 +23987,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>With label.</p>
 <h3 id="appendix-testing-identical-titles-2">Appendix: Testing identical titles</h3>
 <p>What about inserting a quiz?</p>
-<p>Cannot typeset a quiz</p>
+<p><em>Cannot typeset quiz</em>: &quot;What is the capital of Norway?&quot;</p>
 <h3 id="appendix-testing-identical-titles-3">Appendix: Testing identical titles</h3>
 <p>Without label.</p>
 <p><em>Tip.</em><space> Here is a tip or hint box, typeset as a notice box.</p>
@@ -27946,6 +27973,7 @@ The solution cannot be found because there is a derivative in the equation.
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
+<hr>
 <!-- end quiz -->
 
 <!-- --- end explanation of choice 5 --- -->
@@ -28407,6 +28435,7 @@ Oslo
 <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
 Bergen
 </div></p>
+<hr>
 <!-- end quiz -->
 
 
@@ -31585,6 +31614,7 @@ The solution cannot be found because there is a derivative in the equation.
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
+<hr>
 <!-- end quiz -->
 
 <!-- --- end explanation of choice 5 --- -->
@@ -31809,6 +31839,7 @@ Oslo
 <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
 Bergen
 </div></p>
+<hr>
 <!-- end quiz -->
 
 
@@ -34384,7 +34415,7 @@ doconce grab --from 'Compute a Probability' --to- 'drawing uniformly' _testdoc.d
 doconce grab --from- '\*\s+\$.+normally' _testdoc.do.txt >> testdoc.tmp
 
 # Test html templates
-system doconce format html html_template --html_template=template1.html --no_pygments_html
+system doconce format html html_template --html_template=template1.html --pygments_html_style=none
 cp html_template.html html_template1.html
 
 system doconce format html html_template --html_template=template_inf1100.html  --pygments_html_style=emacs
@@ -34587,17 +34618,17 @@ doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
 # Unicode with Norwegian chars in plain text and verbatim blocks
 doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO  --encoding=utf-8  --no_pygments_html --debug
+doconce format html encoding3 -DMAKO  --encoding=utf-8  --pygments_html_style=off --debug
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
-system doconce format html mako_test2 --no_pygments_html  # % lines inside code, but need for mako
-system doconce format html mako_test3 --no_pygments_html  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --no_pygments_html # no problem message
-system doconce format html mako_test4 --no_pygments_html  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
@@ -34645,7 +34676,6 @@ doconce format pdflatex tmp2
 echo
 echo "When we reach this point in the script,"
 echo "it is clearly a successful run of all tests!"
-
 
 ************** File: math_test.do.txt *****************
 TITLE: How various formats can deal with LaTeX math
@@ -38551,33 +38581,36 @@ $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><b>Choice 1:</b>
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
 \( y=e^{-y} \)
 <div class="collapse-group">
-<p>
-<div class="collapse" id="quiz_id_1_1">
+<p><div class="collapse" id="quiz_id_1_1">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
-</div>
-</p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_1" style="font-size: 80%;">Info</a>
+</div></p>
 </div>
 </p>
 
-<p><b>Choice 2:</b>
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
 \( y=e^{y} \)
 <div class="collapse-group">
-<p>
-<div class="collapse" id="quiz_id_1_2">
+<p><div class="collapse" id="quiz_id_1_2">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Almost, but the sign is wrong (note the minus!).
-</div>
-</p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_2" style="font-size: 80%;">Info</a>
+</div></p>
 </div>
 </p>
 
-<p><b>Choice 3:</b>
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
 <p>
 
 <!-- code=python (from !bc pycod) typeset with pygments style "default" -->
@@ -38587,8 +38620,7 @@ Almost, but the sign is wrong (note the minus!).
 </pre></div>
 <p>
 <div class="collapse-group">
-<p>
-<div class="collapse" id="quiz_id_1_3">
+<p><div class="collapse" id="quiz_id_1_3">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
 must be considered as a good answer. It is more natural,
@@ -38596,38 +38628,36 @@ though, to write the solution to the problem
 in mathematical notation:
 
 $$ y(x) = e^{-y}.$$
-</div>
-</p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_3" style="font-size: 80%;">Info</a>
+</div></p>
 </div>
 </p>
 
-<p><b>Choice 4:</b>
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_4" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 4:</b>
 The solution cannot be found because there is a derivative in the equation.
 <div class="collapse-group">
-<p>
-<div class="collapse" id="quiz_id_1_4">
+<p><div class="collapse" id="quiz_id_1_4">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Equations with derivatives can be solved;
 they are termed <em>differential
 equations</em>.
-</div>
-</p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_4" style="font-size: 80%;">Info</a>
+</div></p>
 </div>
 </p>
 
-<p><b>Choice 5:</b>
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_5" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 5:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 <div class="collapse-group">
-<p>
-<div class="collapse" id="quiz_id_1_5">
+<p><div class="collapse" id="quiz_id_1_5">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
-</div>
-</p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#quiz_id_1_5" style="font-size: 80%;">Info</a>
+</div></p>
 </div>
 </p>
 <!-- end quiz -->
@@ -40225,6 +40255,7 @@ Exercise 7: Solution of differential equation
     The equation is meaningless: an equation must be an equation
     for :math:`x` or :math:`y`, not a function :math:`y(x)`.
     </div></p>
+    <hr>
     <!-- end quiz -->
 
 
@@ -40499,6 +40530,7 @@ What about inserting a quiz?
     <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
     Bergen
     </div></p>
+    <hr>
     <!-- end quiz -->
 
 
@@ -69690,6 +69722,19 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 ************************************************************
+unicode>>> After replacement of !bc and !ec (pygmentized code):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like &#197;smund &#216;deg&#229;rd works in general.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
 unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
 
 
@@ -69777,11 +69822,10 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
+</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -70188,8 +70232,33 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
 !bc
-a = 1  # Value suggested by Åsmund Ødegård.
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
+</pre></div>
 !ec
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+************************************************************
+unicode>>> After replacement of !bc and !ec (pygmentized code):
+
+
+<!-- ------------------- main content ---------------------- -->
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+<p>
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
+</pre></div>
+<p>
 
 <p>
 
@@ -70212,11 +70281,10 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
+</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -70239,11 +70307,10 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
+</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -70266,11 +70333,10 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
+</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -74884,7 +74950,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu May  1 16:00:11 2014.
+# sphinx-quickstart on Sat May  3 13:15:36 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76021,7 +76087,7 @@ sh ./clean.sh
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-system doconce format html quickref --no_pygments_html --no_preprocess
+system doconce format html quickref --pygments_html_style=none --no_preprocess
 
 # latex (shpro because of @@@CODE copy, need minted style)
 system doconce format latex quickref --no_preprocess --latex_font=helvetica
@@ -89827,6 +89893,74 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
+XXX === Here is a list with subsubsection heading ===
+
+XXXT Here is a list with subsubsection heading.
+XXX === Subsection 1 ===
+XXXT Subsection 1.
+XXX === Computer code ===
+
+XXXT Computer code.
+XXX === Subsubsection heading before code ===
+
+XXXT Subsubsection heading before code.
+XXX === Running OS commands ===
+
+XXXT Running OS commands.
+XXX === Footnotes ===
+
+XXXT Footnotes.
+XXX === Subsection 2: Testing figures ===
+XXXT Subsection 2: Testing figures.
+XXX === The $\theta$ parameter (not $\nabla$?) ===
+XXXT The $\theta$ parameter (not $\nabla$?).
+XXX === Custom Environments ===
+
+XXXT Custom Environments.
+XXX === Tables ===
+XXXT Tables.
+XXX === A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ===
+
+XXXT A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`.
+XXX === Bibliography test ===
+
+XXXT Bibliography test.
+XXX === URLs ===
+XXXT URLs.
+XXX === Test of Some {\LaTeX} Fixes ===
+
+XXXT Test of Some {\LaTeX} Fixes.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Not an exercise ===
+
+XXXT Not an exercise.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === A subsection within an appendix ===
+
+XXXT A subsection within an appendix.
+XXX === Appendix: Testing identical titles ===
+
+XXXT Appendix: Testing identical titles.
+XXX === Appendix: Testing identical titles ===
+XXXT Appendix: Testing identical titles.
+XXX === Appendix: Testing identical titles ===
+XXXT Appendix: Testing identical titles.
+XXX === Appendix: Testing identical titles ===
+
+XXXT Appendix: Testing identical titles.
+XXX === Appendix: Testing inline comments ===
+
+XXXT Appendix: Testing inline comments.
+XXX === Appendix: Testing headings ending with `verbatim inline` ===
+
+XXXT Appendix: Testing headings ending with `verbatim inline`.
 *** made directory latex_figs for admon figures
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
@@ -90032,6 +90166,30 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
+XXX === Here is a list with subsubsection heading ===
+
+XXXT Here is a list with subsubsection heading.
+XXX === Computer code ===
+
+XXXT Computer code.
+XXX === Subsubsection heading before code ===
+
+XXXT Subsubsection heading before code.
+XXX === Running OS commands ===
+
+XXXT Running OS commands.
+XXX === Footnotes ===
+
+XXXT Footnotes.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -90095,6 +90253,30 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
+XXX === Here is a list with subsubsection heading ===
+
+XXXT Here is a list with subsubsection heading.
+XXX === Computer code ===
+
+XXXT Computer code.
+XXX === Subsubsection heading before code ===
+
+XXXT Subsubsection heading before code.
+XXX === Running OS commands ===
+
+XXXT Running OS commands.
+XXX === Footnotes ===
+
+XXXT Footnotes.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
 output in testdoc.p.tex
@@ -93593,6 +93775,30 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
+XXX === Here is a list with subsubsection heading ===
+
+XXXT Here is a list with subsubsection heading.
+XXX === Computer code ===
+
+XXXT Computer code.
+XXX === Subsubsection heading before code ===
+
+XXXT Subsubsection heading before code.
+XXX === Running OS commands ===
+
+XXXT Running OS commands.
+XXX === Footnotes ===
+
+XXXT Footnotes.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
+XXX === Remarks ===
+
+XXXT Remarks.
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
@@ -93792,6 +93998,9 @@ figure file ../doc/src/slides/fig/latex_paper1:
     can use ../doc/src/slides/fig/latex_paper1.png for format pdflatex
 figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format pdflatex
+XXX === This is an H4/paragraph heading ===
+
+XXXT This is an H4/paragraph heading.
 output in slides2.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides2 envir=minted
@@ -93876,8 +94085,8 @@ to generate the slides
 + '[' 0 -ne 0 ']'
 + doconce grab --from 'Compute a Probability' --to- 'drawing uniformly' _testdoc.do.txt
 + doconce grab --from- '\*\s+\$.+normally' _testdoc.do.txt
-+ system doconce format html html_template --html_template=template1.html --no_pygments_html
-+ doconce format html html_template --html_template=template1.html --no_pygments_html
++ system doconce format html html_template --html_template=template1.html --pygments_html_style=none
++ doconce format html html_template --html_template=template1.html --pygments_html_style=none
 translating doconce text in html_template.do.txt to html
 output in html_template.html
 + '[' 0 -ne 0 ']'
@@ -99694,6 +99903,27 @@ translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
 
 exporting publish database papers.pub to papers.bib:
+XXX === Python version 2 or 3? ===
+
+XXXT Python version 2 or 3?
+XXX === Acknowledgments ===
+
+XXXT Acknowledgments.
+XXX === Problem ===
+
+XXXT Problem.
+XXX === Solution ===
+
+XXXT Solution.
+XXX === Redirecting standard input, output, and error ===
+
+XXXT Redirecting standard input, output, and error.
+XXX === Note ===
+
+XXXT Note.
+XXX === References ===
+
+XXXT References.
 Warning: found "!bc py", but py is not a standard predefined ptex2tex environment
 output in Springer_T2_book.p.tex
 + '[' 0 -ne 0 ']'
@@ -101397,6 +101627,8 @@ u'ight: 125%">a = 1  # Value suggested by \xc3\x85smund \xc3\x98deg\xc3\xa5rd.\n
     remedies: fix character or try --encoding=utf-8
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
+*** warning: unrecognized command-line option
+    --no_pygments_html
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
@@ -101421,7 +101653,7 @@ translating doconce text in tmp_mako__encoding3.do.txt to latex
 open file with encoding utf-8
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-utf8
-+ doconce format html encoding3 -DMAKO --encoding=utf-8 --no_pygments_html --debug
++ doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
@@ -101432,32 +101664,32 @@ open file with encoding utf-8
 output in encoding3.html
 + cp encoding3.html encoding3.html-utf8
 + cat _doconce_debugging.log
-+ system doconce format html mako_test1 --no_pygments_html
-+ doconce format html mako_test1 --no_pygments_html
++ system doconce format html mako_test1 --pygments_html_style=off
++ doconce format html mako_test1 --pygments_html_style=off
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
 translating doconce text in tmp_mako__mako_test1.do.txt to html
 output in mako_test1.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test2 --no_pygments_html
-+ doconce format html mako_test2 --no_pygments_html
++ system doconce format html mako_test2 --pygments_html_style=off
++ doconce format html mako_test2 --pygments_html_style=off
 translating doconce text in mako_test2.do.txt to html
 output in mako_test2.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test3 --no_pygments_html
-+ doconce format html mako_test3 --no_pygments_html
++ system doconce format html mako_test3 --pygments_html_style=off
++ doconce format html mako_test3 --pygments_html_style=off
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + cp mako_test3.html mako_test3b.html
-+ system doconce format html mako_test3 --no_pygments_html
-+ doconce format html mako_test3 --no_pygments_html
++ system doconce format html mako_test3 --pygments_html_style=none
++ doconce format html mako_test3 --pygments_html_style=none
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test4 --no_pygments_html
-+ doconce format html mako_test4 --no_pygments_html
++ system doconce format html mako_test4 --pygments_html_style=no
++ doconce format html mako_test4 --pygments_html_style=no
 running mako on mako_test4.do.txt to make tmp_mako__mako_test4.do.txt
 translating doconce text in tmp_mako__mako_test4.do.txt to html
 output in mako_test4.html
@@ -101814,6 +102046,8 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
     found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+XXX === Section heading before code is caught by the syntax check ===
+XXXT Section heading before code is caught by the syntax check.
 output in tmp2.p.tex
 + echo
 
@@ -101826,8 +102060,8 @@ it is clearly a successful run of all tests!
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce
-+ system doconce format html quickref --no_pygments_html --no_preprocess
-+ doconce format html quickref --no_pygments_html --no_preprocess
++ system doconce format html quickref --pygments_html_style=none --no_preprocess
++ doconce format html quickref --pygments_html_style=none --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
