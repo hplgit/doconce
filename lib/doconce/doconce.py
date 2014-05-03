@@ -2485,7 +2485,7 @@ def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
     # Find the heading before each quiz (can be compared with H: ...)
     pieces = filestr.split('!bquiz')
     if len(pieces) == len(quiztexts) + 1:  # not any extra inline !bquiz word inside text, just !bquiz in quiz envirs
-        for i, piece in enumerate(pieces):
+        for i, piece in enumerate(pieces[:-1]):
             for line in reversed(piece.splitlines()):
                 if line.startswith('===== '):
                     if re.search(r'=====\s+\{?(Exercise|Project|Problem|Example)', line):
@@ -2628,7 +2628,6 @@ def extract_quizzes(filestr, format):
         pattern = '^' + ct('--- quiz heading: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
-            heading = ' '.join(words[:-1])
             data[-1]['heading'] = m.group(1).strip().split()
         pattern = '^' + ct('--- previous heading type: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
