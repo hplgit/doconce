@@ -1288,7 +1288,7 @@ def html_quiz(quiz):
 
     # List choices as paragraphs
     bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
-    button_text = option('html_quiz_button_text=', 'Info')
+    button_text = option('html_quiz_button_text=', '')
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
         answer = choice[0].capitalize() + '!'
@@ -1317,20 +1317,35 @@ def html_quiz(quiz):
                 else:
                     expl = 'Wrong!'
             # Use collapse functionality, see http://jsfiddle.net/8cYFj/
+            '''
             text += """
 <p><b>Choice %d:</b>
 %s
 <div class="collapse-group">
-<p>
-<div class="collapse" id="%s">
+<p><div class="collapse" id="%s">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
 %s
-</div>
-</p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse" data-target="#%s" style="font-size: 80%%;">%s</a>
+</div></p>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse"
+ data-target="#%s" style="font-size: 80%%;">%s</a>
 </div>
 </p>
 """ % (choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
+            '''
+            text += """
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#%s" style="font-size: 80%%;">%s</a>
+&nbsp;<b>Choice %d:</b>
+%s
+<div class="collapse-group">
+<p><div class="collapse" id="%s">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
+%s
+</div></p>
+</div>
+</p>
+""" % (id, button_text, choice_no, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
     text += '<!-- end quiz -->\n'
     return text
 

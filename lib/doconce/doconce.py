@@ -2437,39 +2437,36 @@ def typeset_section_numbering(filestr, format):
     else:
         has_chapters = False
 
+    def counter(*args):
+        # Make 1.3.2 type of section number
+        # args: chapter, section, subsection,
+        if has_chapters:
+            return '.'.join([str(s) for s in args])
+        else:
+            return '.'.join([str(s) for s in args[1:]])
+
     lines = filestr.splitlines()
     for i in range(len(lines)):
         if lines[i].startswith('========= '):
             chapter += 1
             section = subsection = subsubsection = 0
-            counter = str(chapter)
-            lines[i] = re.sub(r'^========= ', '========= %s: ' % counter,
-                              lines[i])
+            lines[i] = re.sub(r'^========= ', '========= %s: ' %
+                              counter(chapter), lines[i])
         elif lines[i].startswith('======= '):
             section += 1
             subsection = subsubsection = 0
-            if has_chapter:
-                counter = '.'.join([chapter, section])
-            else:
-                counter = str(section)
-            lines[i] = re.sub(r'^======= ', '======= %s: ' % counter,
-                              lines[i])
+            lines[i] = re.sub(r'^======= ', '======= %s: ' %
+                              counter(chapter, section), lines[i])
         elif lines[i].startswith('===== '):
             subsection += 1
             subsubsection = 0
-            if has_chapter:
-                counter = '.'.join([chapter, section, subsection])
-            else:
-                counter = '.'.join([section, subsection])
-            lines[i] = re.sub(r'^===== ', '===== %s: ' % counter,
+            lines[i] = re.sub(r'^===== ', '===== %s: ' %
+                              counter(chapter, section, subsection),
                               lines[i])
         elif lines[i].startswith('=== '):
             subsubsection += 1
-            if has_chapter:
-                counter = '.'.join([chapter, section, subsection, subsubsection])
-            else:
-                counter = '.'.join([section, subsection, subsubsection])
-            lines[i] = re.sub(r'^=== ', '=== %s: ' % counter,
+            lines[i] = re.sub(r'^=== ', '=== %s: ' %
+                              counter(chapter, section, subsection, subsubsection),
                               lines[i])
     return '\n'.join(lines)
 

@@ -11,7 +11,7 @@ _CODE_BLOCK = '<<<!!CODE_BLOCK'
 _MATH_BLOCK = '<<<!!MATH_BLOCK'
 
 # Chapter regex
-chapter_pattern = r'^\s*=========\s*[A-Za-z0-9].+?========='
+chapter_pattern = r'^=========\s*[A-Za-z0-9].+?========='
 
 # Functions for creating and reading comment tags
 def begin_end_comment_tags(tag):
@@ -816,23 +816,29 @@ INLINE_TAGS = {
     # previous: r'^\s*_{7}(?P<subst>[^ ].*?)_+\s*$',
     #r'^\s*[_=]{7}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
     #r'^\s*[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]{7} *$',
+    #r'^ *[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]{7} *$',
+    r'^={7}\s*(?P<subst>[^ =-].+?)\s*={7} *$',
 
     'chapter':
     #r'^\s*[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]{9} *$',
+    #r'^ *[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]{9} *$',
+    r'^={9}\s*(?P<subst>[^ =-].+?)\s*={9} *$',
 
     'subsection':
     #r'^\s*_{5}(?P<subst>[^ ].*?)_+\s*$',
     #r'^\s*[_=]{5}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
     #r'^\s*[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]{5} *$',
+    #r'^ *[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]{5} *$',
+    r'^={5}\s*(?P<subst>[^ =-].+?)\s*={5} *$',
 
     'subsubsection':
     #r'^\s*_{3}(?P<subst>[^ ].*?)_+\s*$',
     #r'^\s*[_=]{3}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
     #r'^\s*[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]{3}\s*$',  # final \s for latex
+    # final \s is needed for latex to make \paragraph attached to text
+    # with no blank line
+    #r'^ *[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]{3}\s*$',
+    r'^={3}\s*(?P<subst>[^ =-].+?)\s*={3}\s*$',
 
     # __Two underscores for Inline Paragraph Title.__
     'paragraph':
