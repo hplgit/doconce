@@ -197,7 +197,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['cwiki'] = plain_exercise
     INDEX_BIB['cwiki'] = plain_index_bib
     TOC['cwiki'] = lambda s: '<<TableOfContents>>'
-    QUIZ['cwiki'] = lambda quiz: '**Cannot typeset quiz %s**' % quiz.get('question', '')
+    QUIZ['cwiki'] = lambda quiz: '**Cannot typeset quiz**: "%s"' % quiz.get('question', '')
     # document start:
     INTRO['cwiki'] = ''
     #INTRO['cwiki'] = '#summary YourOneLineSummary\n<wiki:toc max_depth="1" />\n'

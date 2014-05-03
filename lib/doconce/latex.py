@@ -1519,12 +1519,10 @@ def latex_%s(block, format, title='%s'):
 
 def latex_subsubsection(m):
     title = m.group('subst').strip()
-    print 'XXX', m.group()
     if title[-1] in ('?', '!', '.', ':',):
         pass
     else:
         title += '.'
-    print 'XXXT', title
     return r'\paragraph{%s}' % title
 
 

@@ -379,7 +379,7 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 doconce format latex encoding3 --debug
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --no_pygments_html --debug
+doconce format html encoding3 --pygments_html_style=off --debug
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
@@ -388,7 +388,7 @@ doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
 doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --no_pygments_html --debug # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
@@ -396,17 +396,17 @@ doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
 # Unicode with Norwegian chars in plain text and verbatim blocks
 doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO  --encoding=utf-8  --no_pygments_html --debug
+doconce format html encoding3 -DMAKO  --encoding=utf-8  --pygments_html_style=off --debug
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
-system doconce format html mako_test2 --no_pygments_html  # % lines inside code, but need for mako
-system doconce format html mako_test3 --no_pygments_html  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --no_pygments_html # no problem message
-system doconce format html mako_test4 --no_pygments_html  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
@@ -454,4 +454,3 @@ doconce format pdflatex tmp2
 echo
 echo "When we reach this point in the script,"
 echo "it is clearly a successful run of all tests!"
-
