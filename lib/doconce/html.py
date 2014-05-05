@@ -1277,7 +1277,7 @@ def html_quiz(quiz):
     button_text = option('html_quiz_button_text=', '')
     question_prefix = quiz.get('question prefix',
                                option('quiz_question_prefix=', 'Question:'))
-    common_choice_prefix = option('quiz_choice_prefix=', 'Choice'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
     hr = '<hr>' if option('quiz_horizontal_rule=', 'on') == 'on' else ''
 
     text = ''

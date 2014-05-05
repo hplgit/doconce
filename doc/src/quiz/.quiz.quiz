@@ -1,6 +1,6 @@
 [{'choice prefix': [None, None, None, None],
-  'choices': [[u'wrong', u'Stockholm'],
-              [u'wrong', u'Bergen'],
+  'choices': [[u'wrong', u'Helsinki'],
+              [u'wrong', u'Drammen'],
               [u'right', u'Oslo'],
               [u'wrong', u'Denmark']],
   'no': 1,
