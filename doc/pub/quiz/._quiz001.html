@@ -1,0 +1,601 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Software Tool for Typesetting Quizzes">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' A pure text quiz ', 1, None, '___sec0'),
+              (' Question and choices ', 2, None, '___sec1'),
+              (' Explanations of choices ', 2, None, '___sec2'),
+              (' Typesetting ', 2, None, '___sec3'),
+              (' Specification in HTML ', 2, None, '___sec4'),
+              (' Quiz inside admonitions in Doconce ', 2, None, '___sec5'),
+              (' Typesetting of mathematics ', 1, None, '___sec6'),
+              (' Inline formulas ', 2, None, '___sec7'),
+              (' Equations ', 2, None, '___sec8'),
+              (' Typesetting of computer code ', 1, None, '___sec9'),
+              (' Inline monospace font ', 2, None, '___sec10'),
+              (' Blocks of computer code ', 2, None, '___sec11'),
+              (' Example: Putting it all together ', 2, None, '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="quiz.html">A Software Tool for Typesetting Quizzes</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " A pure text quiz " --> <li>  <a href="._quiz001.html#___sec0"> A pure text quiz </a></li>
+     <!-- navigation toc: " Question and choices " --> <li> &nbsp;  <a href="._quiz001.html#___sec1"> Question and choices </a></li>
+     <!-- navigation toc: " Explanations of choices " --> <li> &nbsp;  <a href="._quiz001.html#___sec2"> Explanations of choices </a></li>
+     <!-- navigation toc: " Typesetting " --> <li> &nbsp;  <a href="._quiz001.html#___sec3"> Typesetting </a></li>
+     <!-- navigation toc: " Specification in HTML " --> <li> &nbsp;  <a href="._quiz001.html#___sec4"> Specification in HTML </a></li>
+     <!-- navigation toc: " Quiz inside admonitions in Doconce " --> <li> &nbsp;  <a href="._quiz001.html#___sec5"> Quiz inside admonitions in Doconce </a></li>
+     <!-- navigation toc: " Typesetting of mathematics " --> <li>  <a href="._quiz001.html#___sec6"> Typesetting of mathematics </a></li>
+     <!-- navigation toc: " Inline formulas " --> <li> &nbsp;  <a href="._quiz001.html#___sec7"> Inline formulas </a></li>
+     <!-- navigation toc: " Equations " --> <li> &nbsp;  <a href="._quiz001.html#___sec8"> Equations </a></li>
+     <!-- navigation toc: " Typesetting of computer code " --> <li>  <a href="._quiz001.html#___sec9"> Typesetting of computer code </a></li>
+     <!-- navigation toc: " Inline monospace font " --> <li> &nbsp;  <a href="._quiz001.html#___sec10"> Inline monospace font </a></li>
+     <!-- navigation toc: " Blocks of computer code " --> <li> &nbsp;  <a href="._quiz001.html#___sec11"> Blocks of computer code </a></li>
+     <!-- navigation toc: " Example: Putting it all together " --> <li> &nbsp;  <a href="._quiz001.html#___sec12"> Example: Putting it all together </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h1>A pure text quiz  <a name="___sec0"></a></h1>
+
+<h2>Question and choices  <a name="___sec1"></a></h2>
+
+Here is a typical quiz with a question and four alternative answers:
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> What is the capital of Norway?</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+Helsinki
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+Drammen
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+Oslo
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Correct!
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_4" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 4:</b>
+Denmark
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_4">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+Click on the pencil symbol to the left of <b>Choice</b> to see whether the choice is
+correct or not.
+
+<p>
+The above quiz can be specified by the text
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+!equiz
+</pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Syntax.</b>
+
+<ul>
+ <li> The quiz is specified between <code>!bquiz</code>
+   (&quot;begin quiz&quot;) and <code>!equiz</code> (&quot;end quiz&quot;) tags.</li>
+ <li> The question starts right after <code>Q:</code>.</li>
+ <li> Wrong choices are specified with <code>Cw:</code>, and right choices with <code>Cr:</code>.</li>
+ <li> The instructions <code>!bquiz</code>, <code>!equiz</code>, <code>Q:</code>, <code>Cw:</code>, and <code>Cr:</code> must appear
+   at the beginning of a line.</li>
+ <li> The text of (e.g.) a wrong answer (<code>Cr:</code>) lasts up to the next
+   instruction (like <code>Cw:</code>, <code>Cr:</code>, <code>!equiz</code>).</li>
+ <li> One can have as many wrong and right
+   choices as desired.</li>
+</ul>
+</div>
+
+
+<h2>Explanations of choices  <a name="___sec2"></a></h2>
+
+Sometimes it is desireable to give some explanation why certain choices
+are wrong (or right).
+If you click on the symbols in the quiz below, explanations
+will be shown for Choices 1 and 2.
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> What is the capital of Norway?</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_2_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+Helsinki
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_2_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Helsinki is the capital of Finland.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_2_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+Drammen
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_2_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Drammen is a small city close to Oslo.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_2_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+Oslo
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_2_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Correct!
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_2_4" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 4:</b>
+Denmark
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_2_4">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+The corresponding typesetting applies <code>E: ...</code> after the choice to
+give an explanation of that choice.
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+</pre></div>
+<p>
+This time we also added some spaces for enhanced reading of the text.
+
+<h2>Typesetting  <a name="___sec3"></a></h2>
+
+It is easy to use <em>emphasize font</em>, <b>boldface</b>, <font color="red">color</font>,
+<a href="http://google.com" target="_self">hyperlinks</a>, etc.,
+since the text in the specification of questions, choices,
+and explanations are rendered according to the
+<a href="https://github.com/hplgit/doconce" target="_self">Doconce</a> markup language.
+For simple typesetting (emphasize, boldface, links) Doconce also
+accepts Markdown syntax.
+Here is an example:
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> Here is a famous quote:
+
+<p>
+<blockquote>
+    <em>Premature optimization is the root of all evil.</em>
+</blockquote>
+
+This quote is attributed to</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_3_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+Geroge W. Bush
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_3_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_3_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+Donald Knuth
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_3_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+According to <a href="http://en.wikiquote.org/wiki/Donald_Knuth" target="_self">Wikiquote</a>,
+Donald Knuth wrote this statement in <em>Structured Programming with
+Goto Statements</em>. Computing Surveys, <b>6</b>:4,
+pp. 261-301, <b>1974</b>.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_3_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+Ole-Johan Dahl
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_3_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+
+<p>
+The corresponding specification reads
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquiz
+Q: Here is a famous quote:
+
+!bquote
+*Premature optimization is the root of all evil.*
+!equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to &quot;Wikiquote&quot;: &quot;http://en.wikiquote.org/wiki/Donald_Knuth&quot;,
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+!equiz
+</pre></div>
+
+<h2>Specification in HTML  <a name="___sec4"></a></h2>
+
+Instead of using the compact text specification with Doconce
+formatting, one can use a more verbose syntax and specify everything
+in HTML. The previous example then reads
+
+<p>
+
+<!-- code=html (from !bc htmlcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz --- --&gt;</span>
+ <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz question --- --&gt;</span>
+ Here is a famous quote:
+
+ <span style="color: #008000; font-weight: bold">&lt;blockquote&gt;</span>
+     <span style="color: #008000; font-weight: bold">&lt;em&gt;</span>Premature optimization is the root of all evil.<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span>
+ <span style="color: #008000; font-weight: bold">&lt;/blockquote&gt;</span>
+
+ This quote is attributed to
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz question --- --&gt;</span>
+
+ <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz choice 1 (wrong) --- --&gt;</span>
+ Geroge W. Bush
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz choice 1 (wrong) --- --&gt;</span>
+
+ <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz choice 2 (right) --- --&gt;</span>
+ Donald Knuth
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz choice 2 (right) --- --&gt;</span>
+
+ <span style="color: #408080; font-style: italic">&lt;!-- --- begin explanation of choice 2 --- --&gt;</span>
+ According to
+ <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #7D9029">href=</span><span style="color: #BA2121">&quot;http://en.wikiquote.org/wiki/Donald_Knuth&quot;</span>
+  <span style="color: #7D9029">target=</span><span style="color: #BA2121">&quot;_self&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Wikiquote<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span>,
+ Donald Knuth wrote this statement in <span style="color: #008000; font-weight: bold">&lt;em&gt;</span>Structured Programming with
+ Goto Statements<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span>. Computing Surveys, <span style="color: #008000; font-weight: bold">&lt;b&gt;</span>6<span style="color: #008000; font-weight: bold">&lt;/b&gt;</span>:4,
+ pp. 261-301, <span style="color: #008000; font-weight: bold">&lt;b&gt;</span>1974<span style="color: #008000; font-weight: bold">&lt;/b&gt;</span>.
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end explanation of choice 2 --- --&gt;</span>
+
+ <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz choice 3 (wrong) --- --&gt;</span>
+ Ole-Johan Dahl
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz choice 3 (wrong) --- --&gt;</span>
+
+ <span style="color: #408080; font-style: italic">&lt;!-- --- begin explanation of choice 3 --- --&gt;</span>
+ Ole-Johan Dahl was a famous Norwegian professor of computer science
+ and together with Kristen Nygaard the inventor of object-oriented
+ programming, but he is not the man behind this quote.
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end explanation of choice 3 --- --&gt;</span>
+ <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz --- --&gt;</span>
+</pre></div>
+<p>
+This syntax applies begin-end comments to mark the start and end
+of the question, the choices, and the explanations.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+The HTML specification of a quiz is not a meaningful HTML code for
+displaying the quiz in a browser, it is just an application of the
+HTML language to specify information and have full control of
+the typesetting details. Some program must interpret the
+HTML above and typset questions, choices, and explanations adequately.
+(As done elsewhere in this document.)
+</div>
+
+
+<h2>Quiz inside admonitions in Doconce  <a name="___sec5"></a></h2>
+
+Question admonitions may well feature quizzes. A plain question
+admonition is
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+What is the capital of Norway?
+</div>
+
+specified by the Doconce syntax
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquestion
+What is the capital of Norway?
+!equestion
+</pre></div>
+<p>
+The quiz version is
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+<!-- begin quiz -->
+
+<p>
+<b></b> What is the capital of Norway?</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_4_1" style="font-size: 80%;"></a>
+&nbsp;<b>Answer:</b>
+Stockholm
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_4_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Stockholm is the capital of Sweden, Norway's neighboring country.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_4_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+Bergen
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_4_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_4_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+Oslo
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_4_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Correct!
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_4_4" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 4:</b>
+Denmark
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_4_4">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Wrong!
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+</div>
+
+specified as
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquestion
+!bquiz
+Q: [] What is the capital of Norway?
+
+Cw: [Answer:] Stockholm
+E: Stockholm is the capital of Sweden, Norway&#39;s neighboring country.
+
+Cw: Bergen
+E: Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+|equstion
+</pre></div>
+
+<h1>Typesetting of mathematics  <a name="___sec6"></a></h1>
+
+<h2>Inline formulas  <a name="___sec7"></a></h2>
+
+<h2>Equations  <a name="___sec8"></a></h2>
+
+<!-- math quiz inline formulas -->
+<!-- math quiz equations -->
+<!-- line computer code quiz -->
+<!-- block code quiz -->
+
+<h1>Typesetting of computer code  <a name="___sec9"></a></h1>
+
+<h2>Inline monospace font  <a name="___sec10"></a></h2>
+
+<h2>Blocks of computer code  <a name="___sec11"></a></h2>
+
+<h2>Example: Putting it all together  <a name="___sec12"></a></h2>
+
+<!-- code, math, figure/movie (animated gif?) -->
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._quiz000.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

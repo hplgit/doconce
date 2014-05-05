@@ -2,10 +2,18 @@ TITLE: A Software Tool for Typesetting Quizzes
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
+!bwarning
+This is an ultra-preliminary draft of very incomplete documentation...
+!ewarning
+
 __Summary.__ This note describes a system for writing quizzes
-(multiple-choice questions) in a compact text format. The
-format can be automatically translated to HTML and also rendered
-as nicely typeset quizzes in web pages.
+(multiple-choice questions) in a compact text format with support
+for mathematics, computer code, and flexible formatting. The text
+format can be automatically translated to HTML and to a Python
+data structure. The HTML can be rendered directly in web pages,
+and the data structure can (in the future) be fed to online quiz/survey
+services a la Kahoot, JotForm, and Google forms.
+#"Kahoot": "http://getkahoot.com",
 
 !split
 ======= A pure text quiz =======
@@ -21,10 +29,10 @@ Cw: Drammen
 Cr: Oslo
 Cw: Denmark
 !equiz
-Click on the symbol to the left of _Choice_ to see whether the choice is
+Click on the pencil symbol to the left of _Choice_ to see whether the choice is
 correct or not.
 
-The above quiz can be specified by the text
+The above quiz can be specified by the compact text
 
 !bc
 |bquiz
@@ -36,7 +44,7 @@ Cw: Denmark
 |equiz
 !ec
 
-!bnotice Syntax
+!bnotice Syntax:
 
  * The quiz is specified between `!bquiz`
    (``begin quiz'') and `!equiz` (``end quiz'') tags.
@@ -103,7 +111,7 @@ accepts Markdown syntax.
 Here is an example:
 
 !bquiz
-Q: Here is a famous quote:
+Q: This is a very famous quote:
 
 !bquote
 *Premature optimization is the root of all evil.*
