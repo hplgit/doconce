@@ -262,6 +262,7 @@ def _doconce_join(values):
     entry = values[1] + ". \n    " + ",\n    ".join(values[2:]) + "." + "\n"
     entry = entry.replace("{", "")
     entry = entry.replace("}", "")
+    entry = entry.replace("\\&", "&")
     entry = "  o " + values[0] + " " + entry
     return entry
 
