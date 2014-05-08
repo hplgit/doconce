@@ -1424,8 +1424,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 """ % (filename, exer_filename))
         f.write(all_exer_str)
         f.close()
-        print 'found info about %d exercises, written to %s' % \
-              (len(all_exer), exer_filename)
+        print 'found info about %d exercises' % (len(all_exer))
         debugpr('The file after interpreting exercises:', filestr)
     else:
         debugpr('No exercises found.')
