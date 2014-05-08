@@ -700,16 +700,17 @@ MathJax.Hub.Config({
         # Insert toc
         if '***TABLE_OF_CONTENTS***' in filestr:
             filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
-        # Fix jumbotron for title, author, date, toc, abstract, intro
-        pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
-        m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
-        if m:
-            # If the user has a !split in the beginning, insert a button
-            # to click (typically bootstrap design)
-            button = '<!-- potential-jumbotron-button -->' \
-                     if '!split' in m.group(2) else ''
-            text = '<div class="jumbotron">\n' + m.group(1) + \
-                   button + '\n</div> <!-- end jumbotron -->\n\n' + m.group(2)
+        if option('html_bootstrap_jumbotron=', 'on') != 'off':
+            # Fix jumbotron for title, author, date, toc, abstract, intro
+            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
+            m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+            if m:
+                # If the user has a !split in the beginning, insert a button
+                # to click (typically bootstrap design)
+                button = '<!-- potential-jumbotron-button -->' \
+                         if '!split' in m.group(2) else ''
+                text = '<div class="jumbotron">\n' + m.group(1) + \
+                       button + '\n</div> <!-- end jumbotron -->\n\n' + m.group(2)
             filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
         # Fix slidecells? Just a start...this is hard...
         if '<!-- !bslidecell' in filestr:
@@ -1820,6 +1821,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 """
+    bootstrap_title_bar = ''
     m = re.search(r'^TITLE: *(.+)$', filestr, flags=re.MULTILINE)
     if m:
         title = m.group(1).strip()
@@ -1836,7 +1838,8 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                 if not outfilename.endswith('html'):
                     outfilename += '.html'
 
-            bootstrap_title_bar = """
+            if option('html_bootstrap_navbar=', 'on') != 'off':
+                bootstrap_title_bar = """
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -1858,7 +1861,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 """ % (outfilename, title)
 
 

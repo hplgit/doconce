@@ -118,10 +118,16 @@ def latex_code(filestr, code_blocks, code_block_types,
                     current_code_envir = words[1]
             if current_code_envir is None:
                 # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec, line', i
+                print '*** errror: mismatch between !bc and !ec'
+                print '\n'.join(lines[i-3:i+4])
                 _abort()
             lines[i] = '\\b' + current_code_envir
         if lines[i].startswith('!ec'):
+            if current_code_envir is None:
+                # There should have been checks for this in doconce.py
+                print '*** errror: mismatch between !bc and !ec'
+                print '\n'.join(lines[i-3:i+4])
+                _abort()
             lines[i] = '\\e' + current_code_envir
             current_code_envir = None
     filestr = safe_join(lines, '\n')
