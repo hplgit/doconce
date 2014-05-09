@@ -34601,7 +34601,7 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 doconce format latex encoding3 --debug
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --no_pygments_html --debug
+doconce format html encoding3 --pygments_html_style=off --debug
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
@@ -34610,7 +34610,7 @@ doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
 doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --no_pygments_html --debug # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
@@ -50507,7 +50507,7 @@ $$
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -50670,7 +50670,7 @@ $$
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -51259,7 +51259,7 @@ $$
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -69722,19 +69722,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 ************************************************************
-unicode>>> After replacement of !bc and !ec (pygmentized code):
-
-
-<!-- ------------------- main content ---------------------- -->
-
-Text with a name like &#197;smund &#216;deg&#229;rd works in general.
-
-<p>
-
-<!-- ------------------- end of main content --------------- -->
-
-
-************************************************************
 unicode>>> The file after inserting intro/outro and tex/code blocks, and fixing last format-specific issues:
 
 
@@ -69822,10 +69809,11 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
-</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -70232,33 +70220,8 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
 !bc
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
-</pre></div>
+a = 1  # Value suggested by Åsmund Ødegård.
 !ec
-
-<p>
-
-<!-- ------------------- end of main content --------------- -->
-
-
-************************************************************
-unicode>>> After replacement of !bc and !ec (pygmentized code):
-
-
-<!-- ------------------- main content ---------------------- -->
-
-Text with a name like Åsmund Ødegård works in general.
-Verbatim blocks with non-ASCII text does not work for HTML, but it works
-for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
-
-<p>
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
-</pre></div>
-<p>
 
 <p>
 
@@ -70281,10 +70244,11 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
-</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -70307,10 +70271,11 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
-</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -70333,10 +70298,11 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
+<!-- begin verbatim block -->
+<pre><code>a = 1  # Value suggested by Åsmund Ødegård.
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = 1  # Value suggested by Åsmund Ødegård.
-</pre></div>
 <p>
 
 <!-- ------------------- end of main content --------------- -->
@@ -74273,7 +74239,7 @@ $$
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -74454,7 +74420,7 @@ $$
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -74750,7 +74716,7 @@ $$
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -74950,7 +74916,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat May  3 13:15:36 2014.
+# sphinx-quickstart on Fri May  9 16:00:18 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -89775,7 +89741,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
     found!
 figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D:
@@ -89819,7 +89785,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -89884,7 +89850,7 @@ copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 transforming sections: subsection to subsubsection...
 transforming sections: section to subsection...
 transforming sections: chapter to section...
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -89893,74 +89859,6 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
-XXX === Here is a list with subsubsection heading ===
-
-XXXT Here is a list with subsubsection heading.
-XXX === Subsection 1 ===
-XXXT Subsection 1.
-XXX === Computer code ===
-
-XXXT Computer code.
-XXX === Subsubsection heading before code ===
-
-XXXT Subsubsection heading before code.
-XXX === Running OS commands ===
-
-XXXT Running OS commands.
-XXX === Footnotes ===
-
-XXXT Footnotes.
-XXX === Subsection 2: Testing figures ===
-XXXT Subsection 2: Testing figures.
-XXX === The $\theta$ parameter (not $\nabla$?) ===
-XXXT The $\theta$ parameter (not $\nabla$?).
-XXX === Custom Environments ===
-
-XXXT Custom Environments.
-XXX === Tables ===
-XXXT Tables.
-XXX === A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ===
-
-XXXT A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`.
-XXX === Bibliography test ===
-
-XXXT Bibliography test.
-XXX === URLs ===
-XXXT URLs.
-XXX === Test of Some {\LaTeX} Fixes ===
-
-XXXT Test of Some {\LaTeX} Fixes.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Not an exercise ===
-
-XXXT Not an exercise.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === A subsection within an appendix ===
-
-XXXT A subsection within an appendix.
-XXX === Appendix: Testing identical titles ===
-
-XXXT Appendix: Testing identical titles.
-XXX === Appendix: Testing identical titles ===
-XXXT Appendix: Testing identical titles.
-XXX === Appendix: Testing identical titles ===
-XXXT Appendix: Testing identical titles.
-XXX === Appendix: Testing identical titles ===
-
-XXXT Appendix: Testing identical titles.
-XXX === Appendix: Testing inline comments ===
-
-XXXT Appendix: Testing inline comments.
-XXX === Appendix: Testing headings ending with `verbatim inline` ===
-
-XXXT Appendix: Testing headings ending with `verbatim inline`.
 *** made directory latex_figs for admon figures
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
@@ -89997,7 +89895,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90045,7 +89943,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90096,7 +89994,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90157,7 +90055,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90166,30 +90064,6 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
-XXX === Here is a list with subsubsection heading ===
-
-XXXT Here is a list with subsubsection heading.
-XXX === Computer code ===
-
-XXXT Computer code.
-XXX === Subsubsection heading before code ===
-
-XXXT Subsubsection heading before code.
-XXX === Running OS commands ===
-
-XXXT Running OS commands.
-XXX === Footnotes ===
-
-XXXT Footnotes.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -90244,7 +90118,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90253,30 +90127,6 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
-XXX === Here is a list with subsubsection heading ===
-
-XXXT Here is a list with subsubsection heading.
-XXX === Computer code ===
-
-XXXT Computer code.
-XXX === Subsubsection heading before code ===
-
-XXXT Subsubsection heading before code.
-XXX === Running OS commands ===
-
-XXXT Running OS commands.
-XXX === Footnotes ===
-
-XXXT Footnotes.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
 output in testdoc.p.tex
@@ -93070,7 +92920,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -93103,7 +92953,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 *** warning: footnotes are not supported for format st
     footnotes will be left in the doconce syntax
 output in testdoc.st
@@ -93158,7 +93008,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93215,7 +93065,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93428,7 +93278,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93465,7 +93315,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 *** warning: footnotes are not supported for format epytext
     footnotes will be left in the doconce syntax
 output in testdoc.epytext
@@ -93501,7 +93351,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93540,7 +93390,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93598,7 +93448,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93641,7 +93491,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93681,7 +93531,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93766,7 +93616,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93775,30 +93625,6 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
-XXX === Here is a list with subsubsection heading ===
-
-XXXT Here is a list with subsubsection heading.
-XXX === Computer code ===
-
-XXXT Computer code.
-XXX === Subsubsection heading before code ===
-
-XXXT Subsubsection heading before code.
-XXX === Running OS commands ===
-
-XXXT Running OS commands.
-XXX === Footnotes ===
-
-XXXT Footnotes.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
-XXX === Remarks ===
-
-XXXT Remarks.
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
@@ -93862,7 +93688,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: fpro)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises, written to .testdoc.exerinfo
+found info about 10 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -93924,7 +93750,7 @@ slides written to slides1.tex
 running preprocess -DFORMAT=html -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to html
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
-found info about 1 exercises, written to .slides2.exerinfo
+found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
     can use ../doc/src/slides/fig/iphones.jpg for format html
 figure file ../doc/src/slides/fig/imac:
@@ -93979,7 +93805,7 @@ slides written to slides2.html
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
-found info about 1 exercises, written to .slides2.exerinfo
+found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
     can use ../doc/src/slides/fig/iphones.jpg for format pdflatex
 figure file ../doc/src/slides/fig/imac:
@@ -93998,9 +93824,6 @@ figure file ../doc/src/slides/fig/latex_paper1:
     can use ../doc/src/slides/fig/latex_paper1.png for format pdflatex
 figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format pdflatex
-XXX === This is an H4/paragraph heading ===
-
-XXXT This is an H4/paragraph heading.
 output in slides2.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides2 envir=minted
@@ -99903,27 +99726,6 @@ translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
 
 exporting publish database papers.pub to papers.bib:
-XXX === Python version 2 or 3? ===
-
-XXXT Python version 2 or 3?
-XXX === Acknowledgments ===
-
-XXXT Acknowledgments.
-XXX === Problem ===
-
-XXXT Problem.
-XXX === Solution ===
-
-XXXT Solution.
-XXX === Redirecting standard input, output, and error ===
-
-XXXT Redirecting standard input, output, and error.
-XXX === Note ===
-
-XXXT Note.
-XXX === References ===
-
-XXXT References.
 Warning: found "!bc py", but py is not a standard predefined ptex2tex environment
 output in Springer_T2_book.p.tex
 + '[' 0 -ne 0 ']'
@@ -101605,7 +101407,7 @@ running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_prepro
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii
-+ doconce format html encoding3 --no_pygments_html --debug
++ doconce format html encoding3 --pygments_html_style=off --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
@@ -101626,9 +101428,7 @@ u'ight: 125%">a = 1  # Value suggested by \xc3\x85smund \xc3\x98deg\xc3\xa5rd.\n
                                           ^
     remedies: fix character or try --encoding=utf-8
 Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --no_pygments_html --debug
-*** warning: unrecognized command-line option
-    --no_pygments_html
++ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --pygments_html_style=none --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
@@ -102046,8 +101846,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
     found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
-XXX === Section heading before code is caught by the syntax check ===
-XXXT Section heading before code is caught by the syntax check.
 output in tmp2.p.tex
 + echo
 
