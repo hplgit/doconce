@@ -248,14 +248,18 @@ css_bloodish = """\
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
-def toc2html():
+def toc2html(level_depth=2, indent=3):
+    # level_depth: how many levels that are represented in the toc
     global tocinfo  # computed elsewhere
     level_min = tocinfo['highest level']
+    level_max = level_min + level_depth - 1
     toc_html = ''
     for title, level, label, href in tocinfo['sections']:
-        nspaces = 1
-        indent = '&nbsp; '*(nspaces*(level - level_min))
-        toc_html += '     <!-- navigation toc: "%s" --> <li> %s <a href="#%s">%s</a></li>\n' % (title, indent, href, title)
+        if level > level_max:
+            continue
+        spaces = '&nbsp;'*(indent*(level - level_min))
+        title = title.strip()
+        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s">%s%s</a></li>\n' % (title, href, spaces, title)
     return toc_html
 
 
