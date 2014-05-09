@@ -283,8 +283,14 @@ the previous blocks with line breaks.
 === Footnotes ===
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+ * list items
+ * even with math $\nabla^2u$ [^math1]
+ * and code `h[i] += 1` [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -292,7 +298,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
