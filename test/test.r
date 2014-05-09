@@ -299,8 +299,14 @@ the previous blocks with line breaks.
 === Footnotes ===
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+ * list items
+ * even with math $\nabla^2u$ [^math1]
+ * and code `h[i] += 1` [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -308,7 +314,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -2308,15 +2316,20 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format.
-Plain text does nothing, {\LaTeX} removes the
-definition and inserts the footnote as part of the {\LaTeX} text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
-syntax, just displayed properly in HTML.}, which are handy in text.
-They are used in different flavors\footnote{Could say contexts too...}, which gives flexibility
-in writing. This is the third\footnote{Not much to add here, but the footnote
-is at the end with only one newline.} example.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+They are used in different flavors, now in
+
+\begin{itemize}
+ \item list items
+
+ \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
+
+ \item and code `h[i] += 1`\footnote{One-line footnote.},
+\end{itemize}
+
+\noindent
+which gives flexibility in writing.
+This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
 
 
 
@@ -4223,15 +4236,20 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format.
-Plain text does nothing, {\LaTeX} removes the
-definition and inserts the footnote as part of the {\LaTeX} text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
-syntax, just displayed properly in HTML.}, which are handy in text.
-They are used in different flavors\footnote{Could say contexts too...}, which gives flexibility
-in writing. This is the third\footnote{Not much to add here, but the footnote
-is at the end with only one newline.} example.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+They are used in different flavors, now in
+
+\begin{itemize}
+ \item list items
+
+ \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
+
+ \item and code `h[i] += 1`\footnote{One--line footnote.},
+\end{itemize}
+
+\noindent
+which gives flexibility in writing.
+This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
 
 
 
@@ -6134,15 +6152,20 @@ end{Verbatim}end{quote}
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format.
-Plain text does nothing, {\LaTeX} removes the
-definition and inserts the footnote as part of the {\LaTeX} text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
-syntax, just displayed properly in HTML.}, which are handy in text.
-They are used in different flavors\footnote{Could say contexts too...}, which gives flexibility
-in writing. This is the third\footnote{Not much to add here, but the footnote
-is at the end with only one newline.} example.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+They are used in different flavors, now in
+
+\begin{itemize}
+ \item list items
+
+ \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
+
+ \item and code `h[i] += 1`\footnote{One--line footnote.},
+\end{itemize}
+
+\noindent
+which gives flexibility in writing.
+This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
 
 
 
@@ -7654,8 +7677,16 @@ Footnotes
 ~~~~~~~~~
 
 Here is a test of footnotes [#footnote]_, which are handy in text.
-They are used in different flavors [#flavor]_, which gives flexibility
-in writing. This is the third [#example-of-the-third-footnote]_ example.
+They are used in different flavors, now in
+
+ * list items
+
+ * even with math \nabla^2u [#math1]_
+
+ * and code ``h[i] += 1`` [#code]_,
+
+which gives flexibility in writing.
+This is the third [#example-of-the-third-footnote]_ example.
 
 .. [#footnote] Typesetting of the footnote depends on the format.
    Plain text does nothing, LaTeX removes the
@@ -7664,7 +7695,10 @@ in writing. This is the third [#example-of-the-third-footnote]_ example.
    as Extended Markdown and Doconce, and in HTML we keep the same
    syntax, just displayed properly in HTML.
 
-.. [#flavor] Could say contexts too...
+.. [#math1] Math footnotes can be dangerous since it
+   interferes with an exponent.
+
+.. [#code] One-line footnote.
 
 
 Here is some more text before a new definition of a footnote that was used
@@ -9288,8 +9322,16 @@ Footnotes
 ~~~~~~~~~
 
 Here is a test of footnotes [#footnote]_, which are handy in text.
-They are used in different flavors [#flavor]_, which gives flexibility
-in writing. This is the third [#example-of-the-third-footnote]_ example.
+They are used in different flavors, now in
+
+ * list items
+
+ * even with math :math:`\nabla^2u` [#math1]_
+
+ * and code ``h[i] += 1`` [#code]_,
+
+which gives flexibility in writing.
+This is the third [#example-of-the-third-footnote]_ example.
 
 .. [#footnote] Typesetting of the footnote depends on the format.
    Plain text does nothing, LaTeX removes the
@@ -9298,7 +9340,10 @@ in writing. This is the third [#example-of-the-third-footnote]_ example.
    as Extended Markdown and Doconce, and in HTML we keep the same
    syntax, just displayed properly in HTML.
 
-.. [#flavor] Could say contexts too...
+.. [#math1] Math footnotes can be dangerous since it
+   interferes with an exponent.
+
+.. [#code] One-line footnote.
 
 
 Here is some more text before a new definition of a footnote that was used
@@ -10956,8 +11001,15 @@ Python.
 ==== Footnotes ====
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+
+ * list items
+ * even with math `\nabla^2u` [^math1]
+ * and code `h[i] += 1` [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -10965,7 +11017,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -12283,8 +12337,17 @@ Python.
 ==== Footnotes ====
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+
+<ul>
+ <li> list items
+ <li> even with math <math>\nabla^2u</math> [^math1]
+ <li> and code <code>h[i] += 1</code> [^code],
+</ul>
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -12292,7 +12355,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -13683,8 +13748,15 @@ Python.
 === Footnotes ===
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+
+ * list items
+ * even with math {{{\nabla^2u}}} [^math1]
+ * and code {{{h[i] += 1}}} [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -13692,7 +13764,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -14930,8 +15004,14 @@ Running OS commands::
 Footnotes
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+ - list items
+ - even with math \nabla^2u [^math1]
+ - and code 'h[i] += 1' [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -14939,7 +15019,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -16264,8 +16346,14 @@ Footnotes
 ~~~~~~~~~
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+ - list items
+ - even with math M{\nabla^2u} [^math1]
+ - and code C{h[i] += 1} [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -16273,7 +16361,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -17708,8 +17798,16 @@ Footnotes
 ~~~~~~~~~
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+ * list items
+
+ * even with math \nabla^2u [^math1]
+
+ * and code h[i] += 1 [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -17717,7 +17815,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -19156,8 +19256,16 @@ Python.
 #### Footnotes
 
 Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors [^flavor], which gives flexibility
-in writing. This is the third[^example-of-the-third-footnote] example.
+They are used in different flavors, now in
+
+ * list items
+
+ * even with math $\nabla^2u$ [^math1]
+
+ * and code `h[i] += 1` [^code],
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
 
   [^footnote]: Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -19165,7 +19273,9 @@ definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
-[^flavor]: Could say contexts too...
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -20815,8 +20925,16 @@ is at the end with only one newline.
       "#### Footnotes\n",
       "\n",
       "Here is a test of footnotes[^footnote], which are handy in text.\n",
-      "They are used in different flavors [^flavor], which gives flexibility\n",
-      "in writing. This is the third[^example-of-the-third-footnote] example.\n",
+      "They are used in different flavors, now in\n",
+      "\n",
+      " * list items\n",
+      "\n",
+      " * even with math $\\nabla^2u$ [^math1]\n",
+      "\n",
+      " * and code `h[i] += 1` [^code],\n",
+      "\n",
+      "which gives flexibility in writing.\n",
+      "This is the third[^example-of-the-third-footnote] example.\n",
       "\n",
       "  [^footnote]: Typesetting of the footnote depends on the format.\n",
       "Plain text does nothing, LaTeX removes the\n",
@@ -20824,7 +20942,9 @@ is at the end with only one newline.
       "reStructuredText and Sphinx employ a similar type of typesetting\n",
       "as Extended Markdown and Doconce, and in HTML we keep the same\n",
       "syntax, just displayed properly in HTML.\n",
-      "[^flavor]: Could say contexts too...\n",
+      "[^math1]: Math footnotes can be dangerous since it\n",
+      "interferes with an exponent.\n",
+      "[^code]: One-line footnote.\n",
       "\n",
       "Here is some more text before a new definition of a footnote that was used\n",
       "used above.\n",
@@ -22668,7 +22788,13 @@ output
 from
 Python.</code></pre>
 <h4 id="footnotes.">Footnotes.</h4>
-<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, which gives flexibility in writing. This is the third<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> example.</p>
+<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors, now in</p>
+<ul>
+<li><p>list items</p></li>
+<li><p>even with math <span class="math">\(\nabla^2u\)</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
+<li><p>and code `h[i] += 1`<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</p></li>
+</ul>
+<p>which gives flexibility in writing. This is the third<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
 <p>[Non-breaking space character.] This paragraph aims to test <a href="{http://en.wikipedia.org/wiki/Non-breaking_space}">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a <a href="{http://google.com}">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
 <h2 id="subsec:ex">Subsection 2: Testing figures</h2>
@@ -23113,8 +23239,9 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <hr />
 <ol>
 <li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, <span>LaTeX</span> removes the definition and inserts the footnote as part of the <span>LaTeX</span> text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Could say contexts too...<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref3">↩</a></p></li>
+<li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref4">↩</a></p></li>
 </ol>
 </div>
 </body>
@@ -23151,6 +23278,7 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta name="author" content="A. Dummy Author" />
   <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
+  <meta name="date" content="2014-05-10" />
   <title>A Document for Testing Doconce</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -23381,7 +23509,13 @@ output
 from
 Python.</code></pre>
 <h4 id="footnotes">Footnotes</h4>
-<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, which gives flexibility in writing. This is the third<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> example.</p>
+<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors, now in</p>
+<ul>
+<li><p>list items</p></li>
+<li><p>even with math <span class="math">\(\nabla^2u\)</span> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
+<li><p>and code <code>h[i] += 1</code> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</p></li>
+</ul>
+<p>which gives flexibility in writing. This is the third<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
 <p><em>Non-breaking space character.</em><space> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
@@ -24009,8 +24143,9 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <hr />
 <ol>
 <li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Could say contexts too...<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref3">↩</a></p></li>
+<li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref4">↩</a></p></li>
 </ol>
 </div>
 </body>
@@ -26920,8 +27055,18 @@ Python.
 </td></tr></table><h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
-They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
-in writing. This is the third [<a name="link_footnote_3"><a><a href="._testdoc003.html#def_footnote_3">3</a>] example.
+They are used in different flavors, now in
+
+<p><table border="0">
+
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> list items</li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> even with math \( \nabla^2u \) [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
+</td></tr></table>
+
+
+which gives flexibility in writing.
+This is the third [<a name="link_footnote_4"><a><a href="._testdoc003.html#def_footnote_4">4</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -26930,7 +27075,10 @@ reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
-<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Could say contexts too...
+<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
+interferes with an exponent.
+
+<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -28574,7 +28722,7 @@ case in LaTeX.
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_3"></a><a href="._testdoc001.html#link_footnote_3"><b>3:</b></a> Not much to add here, but the footnote
+<p><a name="def_footnote_4"></a><a href="._testdoc001.html#link_footnote_4"><b>4:</b></a> Not much to add here, but the footnote
 is at the end with only one newline.
 
 <p>
@@ -29075,8 +29223,16 @@ Python.
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
-They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
-in writing. This is the third [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>] example.
+They are used in different flavors, now in
+
+<ul>
+ <li> list items</li>
+ <li> even with math $latex \nabla^2u$ [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
+ <li> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
+</ul>
+
+which gives flexibility in writing.
+This is the third [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -29085,7 +29241,10 @@ reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
-<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Could say contexts too...
+<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
+interferes with an exponent.
+
+<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -30180,7 +30339,7 @@ case in LaTeX.
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> Not much to add here, but the footnote
+<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> Not much to add here, but the footnote
 is at the end with only one newline.
 
 
@@ -30824,8 +30983,16 @@ Python.
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
-They are used in different flavors [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>], which gives flexibility
-in writing. This is the third [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>] example.
+They are used in different flavors, now in
+
+<ul>
+ <li> list items</li>
+ <li> even with math \( \nabla^2u \) [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
+ <li> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
+</ul>
+
+which gives flexibility in writing.
+This is the third [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -30834,7 +31001,10 @@ reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
-<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Could say contexts too...
+<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
+interferes with an exponent.
+
+<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -31978,7 +32148,7 @@ case in LaTeX.
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> Not much to add here, but the footnote
+<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> Not much to add here, but the footnote
 is at the end with only one newline.
 
 <!-- ------------------- end of main content --------------- -->
@@ -32687,15 +32857,20 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format.
-Plain text does nothing, {\LaTeX} removes the
-definition and inserts the footnote as part of the {\LaTeX} text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
-syntax, just displayed properly in HTML.}, which are handy in text.
-They are used in different flavors\footnote{Could say contexts too...}, which gives flexibility
-in writing. This is the third\footnote{Not much to add here, but the footnote
-is at the end with only one newline.} example.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+They are used in different flavors, now in
+
+\begin{itemize}
+ \item list items
+
+ \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
+
+ \item and code `h[i] += 1`\footnote{One-line footnote.},
+\end{itemize}
+
+\noindent
+which gives flexibility in writing.
+This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
 
 
 
@@ -35394,6 +35569,7 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="HPL" />
+  <meta name="date" content="2014-05-10" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -36144,48 +36320,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
-     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
-     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -36539,48 +36707,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
-     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
-     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -36934,48 +37094,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
-     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
-     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -37457,8 +37609,16 @@ Python.
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
 Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
-They are used in different flavors <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Could say contexts too..."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, which gives flexibility
-in writing. This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button> example.
+They are used in different flavors, now in
+
+<ul>
+ <li> list items</li>
+ <li> even with math \( \nabla^2u \) <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Math footnotes can be dangerous since it interferes with an exponent."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button></li>
+ <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="One-line footnote."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button>,</li>
+</ul>
+
+which gives flexibility in writing.
+This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_4"><a><a href="#def_footnote_4" style="color: white">4</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -37467,7 +37627,10 @@ reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and Doconce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
-<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Could say contexts too...
+<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
+interferes with an exponent.
+
+<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -37966,48 +38129,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Section 1 " --> <li>  <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a></li>
-     <!-- navigation toc: " Here is a list with subsubsection heading " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a></li>
-     <!-- navigation toc: " Subsection 1 " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a></li>
-     <!-- navigation toc: " Computer code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a></li>
-     <!-- navigation toc: " Subsubsection heading before code " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a></li>
-     <!-- navigation toc: " Running OS commands " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a></li>
-     <!-- navigation toc: " Footnotes " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a></li>
-     <!-- navigation toc: " Subsection 2: Testing figures " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a></li>
-     <!-- navigation toc: " The \( \theta \) parameter (not \( \nabla \)?) " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a></li>
-     <!-- navigation toc: " Custom Environments " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a></li>
-     <!-- navigation toc: " Tables " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a></li>
-     <!-- navigation toc: " A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a></li>
-     <!-- navigation toc: " Bibliography test " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#___sec12"> Bibliography test </a></li>
-     <!-- navigation toc: " Example 1: Examples can be typeset as exercises " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a></li>
-     <!-- navigation toc: " URLs " --> <li> &nbsp;  <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a></li>
-     <!-- navigation toc: " LaTeX Mathematics " --> <li>  <a href="._testdoc_vagrant002.html#___sec15"> LaTeX Mathematics </a></li>
-     <!-- navigation toc: " Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec16"> Exercises </a></li>
-     <!-- navigation toc: " Problem 2: Flip a Coin " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec18"> Remarks </a></li>
-     <!-- navigation toc: " Not an exercise " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec19"> Not an exercise </a></li>
-     <!-- navigation toc: " Project 3: Compute a Probability " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a></li>
-     <!-- navigation toc: " Project 4: Explore Distributions of Random Circles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec22"> Remarks </a></li>
-     <!-- navigation toc: " Exercise 5: Determine some Distance " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a></li>
-     <!-- navigation toc: " Remarks " --> <li> &nbsp; &nbsp;  <a href="._testdoc_vagrant002.html#___sec24"> Remarks </a></li>
-     <!-- navigation toc: " Some exercise without the "Exercise:" prefix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec25"> Some exercise without the "Exercise:" prefix </a></li>
-     <!-- navigation toc: " Exercise 7: Solution of differential equation " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a></li>
-     <!-- navigation toc: " Example 8: Just an example " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec27"> Example 8: Just an example </a></li>
-     <!-- navigation toc: " Here goes another section " --> <li>  <a href="._testdoc_vagrant002.html#___sec28"> Here goes another section </a></li>
-     <!-- navigation toc: " More Exercises " --> <li>  <a href="._testdoc_vagrant002.html#___sec29"> More Exercises </a></li>
-     <!-- navigation toc: " Exercise 9: Make references to projects and problems " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a></li>
-     <!-- navigation toc: " Project 10: References in a headings do not work well in html " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a></li>
-     <!-- navigation toc: " References " --> <li>  <a href="._testdoc_vagrant002.html#___sec32"> References </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part I " --> <li>  <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a></li>
-     <!-- navigation toc: " A subsection within an appendix " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec34"> A subsection within an appendix </a></li>
-     <!-- navigation toc: " Appendix: Just for testing; part II " --> <li>  <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#___sec36"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing identical titles " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec39"> Appendix: Testing identical titles </a></li>
-     <!-- navigation toc: " Appendix: Testing inline comments " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec40"> Appendix: Testing inline comments </a></li>
-     <!-- navigation toc: " Appendix: Testing headings ending with <code>verbatim inline</code> " --> <li> &nbsp;  <a href="._testdoc_vagrant003.html#___sec41"> Appendix: Testing headings ending with <code>verbatim inline</code> </a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -39295,8 +39450,16 @@ Footnotes
 ~~~~~~~~~
 
 Here is a test of footnotes [#footnote]_, which are handy in text.
-They are used in different flavors [#flavor]_, which gives flexibility
-in writing. This is the third [#example-of-the-third-footnote]_ example.
+They are used in different flavors, now in
+
+ * list items
+
+ * even with math :math:`\nabla^2u` [#math1]_
+
+ * and code ``h[i] += 1`` [#code]_,
+
+which gives flexibility in writing.
+This is the third [#example-of-the-third-footnote]_ example.
 
 .. [#footnote] Typesetting of the footnote depends on the format.
    Plain text does nothing, LaTeX removes the
@@ -39305,7 +39468,10 @@ in writing. This is the third [#example-of-the-third-footnote]_ example.
    as Extended Markdown and Doconce, and in HTML we keep the same
    syntax, just displayed properly in HTML.
 
-.. [#flavor] Could say contexts too...
+.. [#math1] Math footnotes can be dangerous since it
+   interferes with an exponent.
+
+.. [#code] One-line footnote.
 
 
 Here is some more text before a new definition of a footnote that was used
@@ -49899,12 +50065,12 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
+          <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
     </ul>
    </div>
@@ -50495,12 +50661,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -50658,12 +50824,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Introduction " --> <li>  <a href="#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="#___sec5"> The end </a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -51247,12 +51413,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Introduction " --> <li>  <a href="._admon_bootstrap_alert001.html#___sec0"> Introduction </a></li>
-     <!-- navigation toc: " Code " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec1"> Code </a></li>
-     <!-- navigation toc: " Quotes and boxes " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec2"> Quotes and boxes </a></li>
-     <!-- navigation toc: " Admonitions " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec3"> Admonitions </a></li>
-     <!-- navigation toc: " Going deeper environments " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec4"> Going deeper environments </a></li>
-     <!-- navigation toc: " The end " --> <li> &nbsp;  <a href="._admon_bootstrap_alert001.html#___sec5"> The end </a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -74227,12 +74393,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
-     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
-     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
-     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
-     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
-     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -74408,12 +74571,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
-     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
-     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
-     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
-     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
-     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -74704,12 +74864,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._test_boots001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
-     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._test_boots001.html#___sec1"> Demonstrations of admons </a></li>
-     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._test_boots002.html#sec:examples"> Horizontal alignment of document elements </a></li>
-     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec3"> Principles of grid structures </a></li>
-     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec4"> Example on a 1x3 grid structure </a></li>
-     <!-- navigation toc: " Variation of the previous grid structure using panels " --> <li> &nbsp; &nbsp;  <a href="._test_boots002.html#___sec5"> Variation of the previous grid structure using panels </a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -74916,7 +75073,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri May  9 16:00:18 2014.
+# sphinx-quickstart on Sat May 10 00:09:53 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -90414,21 +90571,25 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 ...rest of part of LaTeX line number...
 
-
-
-
-<../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [7]
 
+
+...rest of part of LaTeX line number...
+
+
+
+
+<../doc/src/manual/fig/wave1D.pdf, id=90, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=104, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=108, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=106, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=110, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
+<./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -90453,7 +90614,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[10 <./downloaded_figures/f_plot.png>]
+
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -90466,18 +90627,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[11]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=137, 586.8324pt x 442.292
+[11] [12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=143, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=138, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=144, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=145, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=140, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=146, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=141, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=147, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=142, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=148, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90499,126 +90660,126 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+t line 1053.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1062.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1066.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-
-t line 1048.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1057.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1061.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-[13]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[14]
 
 
 .
@@ -90642,7 +90803,6 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[14]
 
 
 
@@ -90652,6 +90812,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[15]
 
 
 ...rest of part of LaTeX line number...
@@ -90671,7 +90832,6 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[15]
 
 
 
@@ -90689,8 +90849,8 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [16] (./testdoc.out.pyg) [17] [18] (./testdoc.out.pyg
-[19])
+[16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.out.pyg)
+[20]
 
 
 .
@@ -90716,19 +90876,19 @@ Package amsmath Warning: Foreign command \over;
 
 
 No file testdoc.bbl.
-[20]
-
-
-...rest of part of LaTeX line number...
-
 [21]
 
 
 ...rest of part of LaTeX line number...
 
 [22]
+
+
+...rest of part of LaTeX line number...
+
+[23]
 No file testdoc.ind.
-[23] (./testdoc.aux)
+[24] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -90941,8 +91101,8 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
@@ -90964,7 +91124,7 @@ f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (23 pages, ).
+Output written on testdoc.pdf (24 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -91191,16 +91351,15 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=258, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8]
-
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=273, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=276, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=275, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=278, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+ <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -91225,7 +91384,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>]
+
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -91238,18 +91397,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=301, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=302, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=304, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=305, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=306, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91271,137 +91430,137 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+t line 1053.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1062.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1066.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-
-t line 1048.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1057.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1061.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[15]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
-(./testdoc.out.pyg [20])
+[16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
+(./testdoc.out.pyg) [21]
 No file testdoc.bbl.
-[21] [22] [23]
+[22] [23] [24]
 No file testdoc.ind.
-[24] (./testdoc.aux)
+[25] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -91611,8 +91770,8 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
@@ -91635,7 +91794,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (24 pages, ).
+Output written on testdoc.pdf (25 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -91879,16 +92038,15 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=258, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8]
-
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=273, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=276, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=275, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=278, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+ <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -91913,7 +92071,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>]
+
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -91926,18 +92084,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=301, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=302, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=304, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=305, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=306, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91959,134 +92117,134 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+t line 1053.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1062.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1066.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-
-t line 1048.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1057.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1061.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[15]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
-(./testdoc.out.pyg [20]) (./testdoc.bbl [21] [22]) [23] [24] [25]
-(./testdoc.ind [26]
+[16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
+(./testdoc.out.pyg) [21] (./testdoc.bbl [22]) [23] [24] [25] (./testdoc.ind
+[26]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -92302,8 +92460,8 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
@@ -92552,16 +92710,15 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7]
-<../doc/src/manual/fig/wave1D.pdf, id=247, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=258, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8]
-
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=273, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=276, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=275, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=278, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+ <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -92586,7 +92743,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>]
+
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -92599,18 +92756,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=301, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=302, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=304, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=305, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=306, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92632,22 +92789,22 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[14]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[15]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[15] [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19]
-(./testdoc.out.pyg [20]) (./testdoc.bbl [21] [22]) [23] [24] [25]
-(./testdoc.ind [26]
+[16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
+(./testdoc.out.pyg) [21] (./testdoc.bbl [22]) [23] [24] [25] (./testdoc.ind
+[26]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -92857,8 +93014,8 @@ downloaded_figures/f_plot.png
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm
-/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
@@ -93157,8 +93314,8 @@ reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc000.rst:10: ERROR: Duplicate substitution definition name: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:369: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:369: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 looking for now-outdated files... none found
 pickling environment... done
