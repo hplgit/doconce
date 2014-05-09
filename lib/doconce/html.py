@@ -700,17 +700,24 @@ MathJax.Hub.Config({
         # Insert toc
         if '***TABLE_OF_CONTENTS***' in filestr:
             filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
-        if option('html_bootstrap_jumbotron=', 'on') != 'off':
+        jumbotron = option('html_bootstrap_jumbotron=', 'on')
+        if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
             pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
             m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
             if m:
                 # If the user has a !split in the beginning, insert a button
-                # to click (typically bootstrap design)
+                # to click (typically bootstrap design).
+                # Also make the title h2 instead of h1 since h1 is REALLY
+                # big in the jumbotron.
+                core = m.group(1)
+                rest = m.group(2)
+                if jumbotron == 'h2':
+                    core = core.replace('h1>', 'h2>')
                 button = '<!-- potential-jumbotron-button -->' \
                          if '!split' in m.group(2) else ''
-                text = '<div class="jumbotron">\n' + m.group(1) + \
-                       button + '\n</div> <!-- end jumbotron -->\n\n' + m.group(2)
+                text = '<div class="jumbotron">\n' + core + \
+                       button + '\n</div> <!-- end jumbotron -->\n\n' + rest
             filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
         # Fix slidecells? Just a start...this is hard...
         if '<!-- !bslidecell' in filestr:

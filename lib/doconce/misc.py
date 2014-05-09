@@ -92,7 +92,7 @@ inserted to the right in exercises - "default" and "none" are allowed
     ('--html_bootstrap_navbar=',
      'Turns the Bootstrap navigation bar on/off. Default: on.'),
     ('--html_bootstrap_jumbotron=',
-     'Turns the Bootstrap jumbotron intro on/off. Default: on.'),
+     'Turns the Bootstrap jumbotron intro on/off and governs the size of the heading. Default: on. Other values: h2, off (h2 gives h2 heading instead of h1, off gives no jumbotron).'),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',
