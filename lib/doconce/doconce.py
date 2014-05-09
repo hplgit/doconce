@@ -523,7 +523,7 @@ def syntax_check(filestr, format):
     refs_labels = re.findall(pattern, filestr)
     for tp, label in refs_labels:
         if ' ' in label:
-            print '*** error: space in label - missing }'
+            print '*** error: space in label is not allowed!'
             print '    %s{%s}\n' % (tp, label)
             _abort()
 
@@ -2213,7 +2213,7 @@ def handle_index_and_bib(filestr, format, has_title):
     #             re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
     #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
     # Footnote pattern has a word prior to the footnote [^name]
-    pattern_footnote = r'(?<=\w)(?P<footnote> *\[\^(?P<name>.+?)\])'
+    pattern_footnote = r'(?<=(\w|\$|`))(?P<footnote> *\[\^(?P<name>.+?)\])'
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}
@@ -3506,12 +3506,17 @@ away from the beginning of the line.
             if formula[0] == '{':
                 if formula[1] == '}':
                     suggestion = 'as $\,{}...$'
-                if formula[1:7] == r'\cal O}':
+                elif formula[1:7] == r'\cal O}':
                     suggestion = r'as \newcommand{\Oof}[1]{{\cal O}{#1}}'
+                elif re.search(r'^\{[A-Za-z0-9_]+\}', formula):  # Mako variable?
+                    break
+                elif re.search(r'^\{[A-Za-z0-9_]+\(', formula):  # Mako func?
+                    break
                 else:
                     suggestion = 'or make a newcommand'
                 print """\
-*** error: potential problem with formula $%s$'
+*** error: potential problem with the math formula
+           $%s$
     since ${ can confuse Mako - rewrite %s""" % (formula, suggestion)
                 _abort()
 

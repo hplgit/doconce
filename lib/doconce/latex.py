@@ -686,6 +686,9 @@ def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
     def subst_footnote(m):
         name = m.group('name')
         text = footnotes[name].strip()
+        # Make the footnote on one line in case it appears in lists
+        # (newline will then end the list)
+        text = ' '.join(text.splitlines())
         return '\\footnote{%s}' % text
 
     filestr = re.sub(pattern_footnote, subst_footnote, filestr)
