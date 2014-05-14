@@ -348,6 +348,12 @@ Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
+# #if FORMAT in ("html", "sphinx")
+Test SVG figure:
+
+FIGURE: [http://openclipart.org/people/jpneok/junebug.svg, width=200]
+# #endif
+
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"
 FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.

@@ -259,6 +259,8 @@ def toc2html(level_depth=2, indent=3, font_size=80):
             continue
         spaces = '&nbsp;'*(indent*(level - level_min))
         title = title.strip()
+        if level_depth == 2 and level == level_min:
+            title = '<b>%s</b>' % title  # bold for highest level
         toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, title)
     return toc_html
 
@@ -300,11 +302,12 @@ def html_code(filestr, code_blocks, code_block_types,
         if 'ipy' in code_block_types:
             try:
                 get_lexer_by_name('ipython')
-            except:
+            except Exception as e:
                 print '*** warning: !bc ipy used for IPython sessions, but'
                 print '    ipython is not supported for syntax highlighting!'
                 print '    install'
                 print '    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
+                print e
                 types2languages['ipy'] = 'python'
 
         if pygm_style is None:
@@ -1628,7 +1631,7 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg')
+    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg', '.svg')
     CROSS_REFS['html'] = html_ref_and_label
     TABLE['html'] = html_table
     INDEX_BIB['html'] = html_index_bib
