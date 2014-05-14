@@ -2012,7 +2012,7 @@ def handle_figures(filestr, format):
             basepath, ext = os.path.splitext(figfile)
             # Avoid ext = '.05' etc from numbers in the filename
             if not ext.lower() in ['.eps', '.pdf', '.png', '.jpg', 'jpeg',
-                                   '.gif', '.tif', '.tiff']:
+                                   '.gif', '.tif', '.tiff', '.svg']:
                 ext = ''
             if ext:
                 if is_file_or_url(figfile) != 'url':

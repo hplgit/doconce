@@ -142,13 +142,13 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             else:
                 # Seemingly successful opening of a file, but check if
                 # this is a special GitHub error message file
-                special_hosts = ('github.', 'www.uio.no')
+                special_hosts = ('github.', 'www.uio.no', 'openclipart.org')
                 special_host = False
                 for host in special_hosts:
                     if host in filename:
                         special_host = True
                         break
-                if special_host and '>404' in text:
+                if special_host and '>404' in text: # <title>404 ...?
                     # HTML file with an error message: file not found
                     if msg or debug:
                         print '    not found (%s, 404 error)' % filename
