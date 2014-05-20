@@ -527,6 +527,10 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_admon_color=0.34,0.02,0.8`
  * `--latex_admon_envir_map=2`
  * `--latex_exercise_numbering=absolute,chapter`
+ * `--latex_movie=media9,href,multimedia,movie15`
+ * `--latex_movie_controls=on`
+ * `--latex_external_movie_viewer` (for `movie15` package)
+ * `--xelatex`
 
 __Step 2.__ Run `ptex2tex` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -539,35 +543,16 @@ that comes with Doconce:
 Terminal> doconce ptex2tex mydoc
 !ec
 
-The `.p.tex` file contains a lot of preprocessor variables (like C macros)
-that can be used to steer certain properties of the LaTeX document.
-For example, to turn on the Helvetica font instead of the standard
-Computer Modern font, run
-!bc sys
-Terminal> ptex2tex -DHELVETICA mydoc
-Terminal> doconce ptex2tex mydoc -DHELVETICA  # alternative
-!ec
+The `ptex2tex` command can set two preprocessor variables:
 
-Preprocessor variables to be defined or undefined are
-
- * `XELATEX` for processing by `xelatex`
- * `MOVIE` for specifying how movies are handled: the value `media9`
-   implies the `media9` package and the `\includemedia` command
-   for `.flv` and `.mp4` movies,
-   or `movie15` and the `\includemovie` command for `.mpeg` and `.avi`
-   movies;
-   `multimedia` for Beamer-style `\movie` command,
-   or `href` for the plain `\href{run:file}` command. The latter
-   is default.
- * `MOVIE_CONTROLS` adds buttons for starting/stopping movies if the
-   `media9` package is used.
  * `PREAMBLE` to turn the LaTeX preamble on or off (i.e., complete document
    or document to be included elsewhere - and note that
    the preamble is only included
    if the document has a title, author, and date)
  * `MINTED` for inclusion of the minted package for typesetting of
    code with the Pygments tool (which requires `latex`
-   or `pdflatex` to be run with the `-shell-escape` option)
+   or `pdflatex` to be run with the `-shell-escape` option); not used
+   for `doconce ptex2tex` only in the `ptex2tex` program
 
 If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option `--latex_preamble=myfile`.
@@ -585,12 +570,10 @@ terminal session, where `sys` is set to a certain environment in
 `.ptex2tex.cfg` (e.g., `CodeTerminal`).  There are about 40 styles to
 choose from, and you can easily add new ones.
 
-Also the `doconce ptex2tex` command supports preprocessor directives
-for processing the `.p.tex` file. The command allows specifications
+The `doconce ptex2tex` allows specifications
 of code environments as well. Here is an example:
 !bc sys
-Terminal> doconce ptex2tex mydoc -DLATEX_HEADING=traditional \
-          -DPALATINO -DA6PAPER \
+Terminal> doconce ptex2tex mydoc \
           "sys=\begin{quote}\begin{verbatim}@\end{verbatim}\end{quote}" \
           fpro=minted fcod=minted shcod=Verbatim envir=ans:nt
 !ec

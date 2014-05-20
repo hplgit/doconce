@@ -386,10 +386,10 @@ command-line option when running `doconce format`.
 Movies are easiest shown in the HTML format.
 The reST and Sphinx formats apply the same raw HTML code as the
 HTML format and therefore have the same capabilities.
-The LaTeX format results in a `.p.tex` file that have three
-methods for showing movies, set by the option `-DMOVIE=...` to
-`ptex2tex` or `doconce ptex2tex`. The values of `MOVIE` are
+The LaTeX format supports different methods for embedding
+movies via the option `-latex_movie=...`. Proper values are listed below.
 
+ o `href`: the `\href{run:file}{link}` is used for all movies (default).
  o `media9`:
    the `media9` package is used for Flash and MP4 movies, `movie15`
    for MPEG and AVI files, and a simple `\href{run:file}{link}` command
@@ -397,7 +397,7 @@ methods for showing movies, set by the option `-DMOVIE=...` to
    type of movies.
  o `multimedia`: the `\movie` command (known from LaTeX Beamer) is used
    for movies.
- o `href`: the `\href{run:file}{link}` is used for all movies (default).
+ o `movie15`: the old `movie15` package is used.
 
 For all other formats, an HTML file that acts as a movie player is
 generated and linked from the output document. This movie player
@@ -513,7 +513,7 @@ in lines on the form
 !bc
 \begin{animateinline}[controls,loop]{2} % frames: f000.png -> f098.png
 !ec
-Setting the rate to 12 in for this particular movie based on the
+Setting the rate to 12 instead for this particular movie based on the
 `f%03.png` files, the following `doconce subst` command does the job
 in a script:
 
@@ -3205,6 +3205,3 @@ syntax and not references for explaining parts of the text.
 !ewarning
 
 BIBFILE: papers.pub
-
-
-
