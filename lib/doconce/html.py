@@ -258,10 +258,10 @@ def toc2html(level_depth=2, indent=3, font_size=80):
         if level > level_max:
             continue
         spaces = '&nbsp;'*(indent*(level - level_min))
-        title = title.strip()
+        btitle = title = title.strip()
         if level_depth == 2 and level == level_min:
-            title = '<b>%s</b>' % title  # bold for highest level
-        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, title)
+            btitle = '<b>%s</b>' % btitle  # bold for highest level
+        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, btitle)
     return toc_html
 
 

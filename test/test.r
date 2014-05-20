@@ -364,6 +364,12 @@ Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
+# #if FORMAT in ("html", "sphinx")
+Test SVG figure:
+
+FIGURE: [http://openclipart.org/people/jpneok/junebug.svg, width=200]
+# #endif
+
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"
 FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
@@ -2391,6 +2397,7 @@ Test URL as figure name:
 \end{center}
 
 
+
 % Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -4311,6 +4318,7 @@ Test URL as figure name:
 \end{center}
 
 
+
 % Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -6227,6 +6235,7 @@ Test URL as figure name:
 \end{center}
 
 
+
 % Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -7757,6 +7766,7 @@ Test URL as figure name:
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
+
 
 
 
@@ -9408,6 +9418,14 @@ Test URL as figure name:
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
+
+
+
+Test SVG figure:
+
+
+.. figure:: http://openclipart.org/people/jpneok/junebug.svg
+   :width: 200
 
 
 
@@ -11106,6 +11124,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 
+
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 
@@ -12398,6 +12417,7 @@ Test URL as figure name:
 
 
 [[File:f_plot.png|frame|500,px|link=https://raw.github.com/hplgit/doconce/master/doc/src/blog|alt=f_plot.png|<span title=""></span>]]
+
 
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -13798,6 +13818,7 @@ Test URL as figure name:
 
 {{https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png|}}
 
+
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 
@@ -15050,6 +15071,7 @@ FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning se
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
+
 
 
 
@@ -16393,6 +16415,7 @@ FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning se
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
+
 
 
 
@@ -17852,6 +17875,7 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 
+
 *Remark.*
 Movies are tested in separate file movies.do.txt.
 
@@ -19306,6 +19330,7 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 ![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
+
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
@@ -20974,6 +20999,7 @@ is at the end with only one newline.
       "Test URL as figure name:\n",
       "\n",
       "![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)\n",
+      "\n",
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
@@ -27116,6 +27142,12 @@ Test URL as figure name:
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
+
+<p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
@@ -29276,6 +29308,12 @@ Test URL as figure name:
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
+
+<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
 
@@ -31040,6 +31078,12 @@ Test URL as figure name:
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
+
+<p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -32910,6 +32954,7 @@ Test URL as figure name:
 \end{center}
 
 
+
 % Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -34691,25 +34736,20 @@ system doconce format html $name --no_mp4_webm_ogg_alternatives
 cp movies.html movie_demo
 
 rm -f $name.aux
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9
+system doconce format pdflatex $name --latex_movie=media9
+system doconce ptex2tex $name
 system pdflatex $name
 pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+system doconce format pdflatex $name --latex_movie=media9 --latex_external_movie_viewer
+system doconce ptex2tex $name
 system pdflatex $name
 cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
 
 # multimedia (beamer \movie command) does not work well
 #rm $name.aux
-#system doconce format pdflatex $name
-#system doconce ptex2tex $name -DMOVIE=multimedia
-#system pdflatex $name
-#cp $name.pdf movie_demo/${name}_multimedia.pdf
-#cp $name.tex ${name}_multimedia.tex
 
 rm -f $name.aux
 system doconce format pdflatex $name
@@ -36276,7 +36316,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -36286,8 +36326,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -36296,14 +36336,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -36663,7 +36703,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -36673,8 +36713,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -36683,14 +36723,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -37050,7 +37090,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -37060,8 +37100,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -37070,14 +37110,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -37646,6 +37686,12 @@ Test URL as figure name:
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
+
+<p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
@@ -38085,7 +38131,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -38095,8 +38141,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -38105,14 +38151,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -39503,6 +39549,14 @@ Test URL as figure name:
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
+
+
+
+Test SVG figure:
+
+
+.. figure:: http://openclipart.org/people/jpneok/junebug.svg
+   :width: 200
 
 
 
@@ -50010,7 +50064,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+          <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -50606,7 +50660,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -50769,7 +50823,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -51358,7 +51412,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -62228,7 +62282,7 @@ open=right               % start new chapters on odd-numbered pages
 
 \usepackage{ptex2tex}
 
-% Movies:
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -67390,7 +67444,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{ptex2tex}
 
-% Movies:
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -67797,7 +67851,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-% Movies:
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -68197,10 +68251,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-% Movies:
+% Movies are handled by the media9 package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
-
+\usepackage{media9}
+\usepackage{movie15}
 \usepackage{animate,graphicx}
 
 
@@ -68321,8 +68376,19 @@ Here is the same movie in MP4 format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% link to external viewer
-\href{run:../doc/src/manual/mov/wave.mp4}{\nolinkurl{../doc/src/manual/mov/wave.mp4}}
+% media9 package
+\includemedia[
+label=docsrcmanualmovwavemp4,
+width=0.8\linewidth,
+activate=pageopen,         % or onclick or pagevisible
+addresource=../doc/src/manual/mov/wave.mp4,  % embed the video in the PDF
+flashvars={
+source=../doc/src/manual/mov/wave.mp4
+&autoPlay=true
+&loop=true
+&scaleMode=letterbox       % preserve aspect ratio while scaling this video
+}]{}{VPlayer.swf}
+%\mediabutton[mediacommand=docsrcmanualmovwavemp4:playPause]{\fbox{\strut Play/Pause}}
 \end{center}
 
 \begin{center}  % movie caption
@@ -68337,8 +68403,19 @@ Here is the same movie in Flash format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% link to external viewer
-\href{run:../doc/src/manual/mov/wave.flv}{\nolinkurl{../doc/src/manual/mov/wave.flv}}
+% media9 package
+\includemedia[
+label=docsrcmanualmovwaveflv,
+width=0.8\linewidth,
+activate=pageopen,         % or onclick or pagevisible
+addresource=../doc/src/manual/mov/wave.flv,  % embed the video in the PDF
+flashvars={
+source=../doc/src/manual/mov/wave.flv
+&autoPlay=true
+&loop=true
+&scaleMode=letterbox       % preserve aspect ratio while scaling this video
+}]{}{VPlayer.swf}
+%\mediabutton[mediacommand=docsrcmanualmovwaveflv:playPause]{\fbox{\strut Play/Pause}}
 \end{center}
 
 \begin{center}  % movie caption
@@ -68492,8 +68569,21 @@ The movie above in MPEG format, typeset in a box:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% link to external viewer
-\href{run:../doc/src/manual/mov/wave.mpeg}{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}
+% movie15 package
+\includemovie[poster,
+label=docsrcmanualmovwavempeg,
+autoplay,
+controls,
+toolbar,
+text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
+
+\movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
+\movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
+\movieref[default]{docsrcmanualmovwavempeg}{Normal}
+\movieref[pause]{docsrcmanualmovwavempeg}{Play/Pause}
+\movieref[stop]{docsrcmanualmovwavempeg}{Stop}
 \end{center}
 
 \begin{center}  % movie caption
@@ -68511,8 +68601,21 @@ Here is the same movie in AVI format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% link to external viewer
-\href{run:../doc/src/manual/mov/wave.avi}{\nolinkurl{../doc/src/manual/mov/wave.avi}}
+% movie15 package
+\includemovie[poster,
+label=docsrcmanualmovwaveavi,
+autoplay,
+controls,
+toolbar,
+text={\small (Loading ../doc/src/manual/mov/wave.avi)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.avi}
+
+\movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
+\movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
+\movieref[default]{docsrcmanualmovwaveavi}{Normal}
+\movieref[pause]{docsrcmanualmovwaveavi}{Play/Pause}
+\movieref[stop]{docsrcmanualmovwaveavi}{Stop}
 \end{center}
 
 \begin{center}  % movie caption
@@ -68539,7 +68642,16 @@ Here is a YouTube video:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-\href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
+\includemedia[
+width=0.6\linewidth,height=0.45\linewidth,
+activate=pageopen,
+flashvars={
+modestbranding=1   % no YouTube logo in control bar
+&autohide=1        % controlbar autohide
+&showinfo=0        % no title and other info before start
+&rel=0             % no related videos after end
+},
+]{}{http://www.youtube.com/watch?v=_O7iUiftbKU}
 \end{center}
 
 \begin{center}  % movie caption
@@ -74029,7 +74141,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -74207,7 +74319,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -74500,7 +74612,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -74709,7 +74821,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue May 20 09:20:17 2014.
+# sphinx-quickstart on Tue May 20 11:33:07 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78145,7 +78257,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{ptex2tex}
 
-% Movies:
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -89512,6 +89624,8 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
     found!
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -89552,6 +89666,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -89662,6 +89778,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -89710,6 +89828,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -89761,6 +89881,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -90267,7 +90389,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1053.
+t line 1054.
 
 
 
@@ -90287,7 +90409,7 @@ t line 1053.
 
 
 
-t line 1062.
+t line 1063.
 
 
 
@@ -90307,7 +90429,7 @@ t line 1062.
 
 
 
-t line 1066.
+t line 1067.
 
 
 
@@ -91037,7 +91159,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1053.
+t line 1054.
 
 
 
@@ -91057,7 +91179,7 @@ t line 1053.
 
 
 
-t line 1062.
+t line 1063.
 
 
 
@@ -91077,7 +91199,7 @@ t line 1062.
 
 
 
-t line 1066.
+t line 1067.
 
 
 
@@ -91724,7 +91846,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1053.
+t line 1054.
 
 
 
@@ -91744,7 +91866,7 @@ t line 1053.
 
 
 
-t line 1062.
+t line 1063.
 
 
 
@@ -91764,7 +91886,7 @@ t line 1062.
 
 
 
-t line 1066.
+t line 1067.
 
 
 
@@ -92775,6 +92897,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + mv -f testdoc.rst testdoc.sphinx.rst
@@ -92832,6 +92956,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
@@ -92922,6 +93048,7 @@ reading sources... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -92937,7 +93064,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded, 5 warnings.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -97168,8 +97295,8 @@ output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
 + rm -f movies.aux
-+ system doconce format pdflatex movies
-+ doconce format pdflatex movies
++ system doconce format pdflatex movies --latex_movie=media9
++ doconce format pdflatex movies --latex_movie=media9
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
@@ -97177,8 +97304,8 @@ translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex movies -DMOVIE=media9
-+ doconce ptex2tex movies -DMOVIE=media9
++ system doconce ptex2tex movies
++ doconce ptex2tex movies
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -97226,11 +97353,104 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
-
-
-
 
 
 
@@ -97265,6 +97485,7 @@ No file movies.aux.
 
 
 
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
@@ -97277,165 +97498,198 @@ No file movies.aux.
 
 
 
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=19, 586.8324pt x 442.2924
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 161 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 188 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=27, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=34, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=41, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=76, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
-ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=83, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
-ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=90, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=97, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
-ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=104, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
+mov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
+mov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=111, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=335, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=342, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=349, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=356, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=363, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
 Overfull \hbox (81.58096pt too wide) 
  []\T1/lmr/m/n/10 (-20) : 
-[2]
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 
 
 
 No file movies.ind.
-[3] (./movies.aux)
+*************************************************
+* media9 warning: "rerun"
+* 
+* Rerun to get media labels right!
+*************************************************
+
+Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+(movie15)                @@ Rerun to get object references right! @@
+(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+
+[5] (./movies.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -97470,11 +97724,65 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
- animate.sty    2014/02/11 PDF animations from files and inline graphics
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/07/24 v4576 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+ movie15.sty    2009/07/07
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
@@ -97504,7 +97812,6 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -97601,9 +97908,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on movies.pdf (3 pages, ).
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
+Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
 + pdflatex movies
@@ -97649,11 +97957,104 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
-
-
-
 
 
 
@@ -97687,6 +98088,7 @@ Writing index file movies.idx
 
 
 
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
@@ -97699,162 +98101,190 @@ Writing index file movies.idx
 
 
 
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=19, 586.8324pt x 442.2924
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 161 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 188 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=27, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=34, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=41, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=76, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
-ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=83, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
-ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=90, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=97, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
-ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=104, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
+mov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
+mov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=111, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=335, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=342, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=349, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=356, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=363, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
 Overfull \hbox (81.58096pt too wide) 
  []\T1/lmr/m/n/10 (-20) : 
-[2]
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 No file movies.ind.
-[3] (./movies.aux)
+
+Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+(movie15)                @@ Rerun to get object references right! @@
+(movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+
+[5] (./movies.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -97889,11 +98319,65 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
- animate.sty    2014/02/11 PDF animations from files and inline graphics
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/07/24 v4576 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+ movie15.sty    2009/07/07
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
@@ -97923,7 +98407,6 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -98011,14 +98494,15 @@ newcommands_replace.tex
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on movies.pdf (3 pages, ).
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
+Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + cp movies.pdf movie_demo/movies_media9.pdf
 + cp movies.tex movies_media9.tex
-+ system doconce format pdflatex movies
-+ doconce format pdflatex movies
++ system doconce format pdflatex movies --latex_movie=media9 --latex_external_movie_viewer
++ doconce format pdflatex movies --latex_movie=media9 --latex_external_movie_viewer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
@@ -98026,8 +98510,8 @@ translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex movies -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
-+ doconce ptex2tex movies -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
++ system doconce ptex2tex movies
++ doconce ptex2tex movies
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -98075,11 +98559,104 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3tl-analysis.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
+)) 
+
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
-
-
-
 
 
 
@@ -98113,6 +98690,7 @@ Writing index file movies.idx
 
 
 
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
@@ -98125,162 +98703,185 @@ Writing index file movies.idx
 
 
 
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=19, 586.8324pt x 442.2924
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 161 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
+*************************************************
+* media9 warning: "zero size"
+* 
+* Media annotation on line 188 has zero
+* size in at least one dimension.
+* 
+* Provide a poster text with non-zero width and
+* height, or specify a suitable size via `width'
+* and `height' options.
+*************************************************
+<<../doc/src/manual/mov/wave.flv>>
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=27, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=34, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=41, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=76, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
-ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=83, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
-ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=90, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=97, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
-ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=104, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
+mov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
+mov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=111, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=335, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=342, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=349, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=356, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=363, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
 Overfull \hbox (81.58096pt too wide) 
  []\T1/lmr/m/n/10 (-20) : 
-[2]
+[2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
+]
 No file movies.ind.
-[3] (./movies.aux)
+[5] (./movies.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -98315,11 +98916,65 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
- animate.sty    2014/02/11 PDF animations from files and inline graphics
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
+l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
+l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
+   l3str.sty    2013/07/24 v4576 L3 Experimental strings
+  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
+l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+ns
+l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+ movie15.sty    2009/07/07
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
+ animate.sty    2014/02/11 PDF animations from files and inline graphics
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
@@ -98349,7 +99004,6 @@ letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -98437,9 +99091,10 @@ newcommands_replace.tex
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on movies.pdf (3 pages, ).
+/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+9.pfb>
+Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
 + cp movies.pdf movie_demo/movies_media9_extviewer.pdf

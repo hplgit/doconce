@@ -636,7 +636,7 @@ transparent
             elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
                 # Use old movie15 package which will launch a separate player
                 external_viewer = option('latex_external_movie_viewer')
-                external = 'externalviewer,\n' if external_viewer else ''
+                external = '\nexternalviewer,' if external_viewer else ''
                 text += r"""
 %% movie15 package
 \includemovie[poster,
@@ -656,9 +656,24 @@ repeat,
 \movieref[pause]{%(label)s}{Play/Pause}
 \movieref[stop]{%(label)s}{Stop}
 """ % vars()
+            else:
+                # Use a link for other formats
+                if filename.startswith('http'):
+                    # Just plain link
+                    text += r"""
+%% link to web movie
+\href{%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+                else:
+                # \href{run:localfile}{linktext}
+                    text += r"""
+%% link to external viewer
+\href{run:%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+
         elif movie == 'movie15':
             external_viewer = option('latex_external_movie_viewer')
-            external = 'externalviewer,\n' if external_viewer else ''
+            external = '\nexternalviewer,' if external_viewer else ''
             text += r"""
 %% movie15 package
 \includemovie[poster,
@@ -666,7 +681,7 @@ label=%(label)s,
 autoplay,
 controls,
 toolbar,%(external)s
-text={\small (Loading %(filename)s)},
+%%text={\small (Loading %(filename)s)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{%(filename)s}
 """ % vars()
@@ -1918,7 +1933,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         elif movie == 'multimedia':
             package = r'\usepackage{multimedia}'
         INTRO['latex'] += r"""
-%% Movies:
+%% Movies are handled by the %(movie)s package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 %(package)s
@@ -1934,7 +1949,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             else:
                 non_flv_mp4_files = True
         if non_flv_mp4_files and movie == 'media9':
-            INTRO['latex'] += r'\usepackage{movie15}'
+            INTRO['latex'] += r'\usepackage{movie15}' + '\n'
         if animated_files:
             if xelatex:
                 INTRO['latex'] += r"""\usepackage[xetex]{animate}
