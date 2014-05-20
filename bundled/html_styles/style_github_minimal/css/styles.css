@@ -183,7 +183,8 @@ footer {
   width:270px;
   float:left;
   position:fixed;
-  bottom:50px;
+  /*bottom:50px; original value */
+  bottom: 0px;
 }
 
 @media print, screen and (max-width: 960px) {
