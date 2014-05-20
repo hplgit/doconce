@@ -127,6 +127,14 @@ beamer: layout for beamer slides."""),
 loe: special, separate list of exercises,
 toc: exercises included as part of the table of contents,
 none (default): no list of exercises."""),
+    ('--latex_movie=',
+     """Specify package for handling movie/video content.
+Default: href (hyperlink to movie file).
+Other options: media9, movie15, multimedia (Beamer's \\movie command)."""),
+    ('--latex_movie_controls=',
+     'Specify control panel for movies. Default: on. Other options: off.'),
+    ('--latex_external_movie_viewer',
+     'Allow external movie viewer for movie15 package.'),
     ('--latex_fancy_header',
      """Typesetting of headers on each page:
 If article: section name to the left and page number to the right
@@ -200,6 +208,7 @@ chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
          with a chapter prefix."""),
     ('--latex_subex_header_postfix=',
      'Default: ). Gives headers a), b), etc. Can be set to period, colon, etc.'),
+    ('--xelatex', 'Use xelatex instead of latex/pdflatex.'),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!"""),

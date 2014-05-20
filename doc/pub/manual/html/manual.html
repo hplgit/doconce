@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -82,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 16, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 20, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -177,19 +178,19 @@ The impatient way to install what is needed is to run the
 <h2>Doconce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h2>
 <p>Doconce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.  Its installation from the
 Git source follows the standard procedure:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">#</span> Doconce
-<span class="go">git clone git@github.com:hplgit/doconce.git</span>
-<span class="go">cd doconce</span>
-<span class="go">sudo python setup.py install</span>
-<span class="go">cd ..</span>
+<div class="highlight-text"><div class="highlight"><pre># Doconce
+git clone git@github.com:hplgit/doconce.git
+cd doconce
+sudo python setup.py install
+cd ..
 </pre></div>
 </div>
 <p>Since Doconce is frequently updated, it is recommended to use the
 above procedure and whenever a problem occurs, make sure to
 update to the most recent version:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">cd doconce</span>
-<span class="go">git pull origin master</span>
-<span class="go">sudo python setup.py install</span>
+<div class="highlight-text"><div class="highlight"><pre>cd doconce
+git pull origin master
+sudo python setup.py install
 </pre></div>
 </div>
 </div>
@@ -207,22 +208,22 @@ Ubuntu, you can jump to the script in the section <a class="reference internal" 
 <h3>Preprocessors<a class="headerlink" href="#preprocessors" title="Permalink to this headline">¶</a></h3>
 <p>If you make use of the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a>
 preprocessor, this program must be installed:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess</span>
-<span class="go">cd preprocess</span>
-<span class="go">cd doconce</span>
-<span class="go">sudo python setup.py install</span>
-<span class="go">cd ..</span>
+<div class="highlight-text"><div class="highlight"><pre>svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
+cd preprocess
+cd doconce
+sudo python setup.py install
+cd ..
 </pre></div>
 </div>
 <p>A much more advanced alternative to Preprocess is
 <a class="reference external" href="http://www.makotemplates.org">Mako</a>. Its installation is most
 conveniently done by <tt class="docutils literal"><span class="pre">pip</span></tt>,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">pip install Mako</span>
+<div class="highlight-text"><div class="highlight"><pre>pip install Mako
 </pre></div>
 </div>
 <p>This command requires <tt class="docutils literal"><span class="pre">pip</span></tt> to be installed. On Debian Linux systems,
 such as Ubuntu, the installation is simply done by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install python-pip</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install python-pip
 </pre></div>
 </div>
 <p>Alternatively, one can install from the <tt class="docutils literal"><span class="pre">pip</span></tt> <a class="reference external" href="http://pypi.python.org/pypi/pip">source code</a>.</p>
@@ -240,19 +241,19 @@ calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all
 major platforms.  On Debian Linux (including Ubuntu) systems one can
 simply write</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install imagemagick</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install imagemagick
 </pre></div>
 </div>
 <p>The convenience program <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>, for combining several
 images into one, will use <tt class="docutils literal"><span class="pre">montage</span></tt> and <tt class="docutils literal"><span class="pre">convert</span></tt> from ImageMagick and
 the <tt class="docutils literal"><span class="pre">pdftk</span></tt>, <tt class="docutils literal"><span class="pre">pdfnup</span></tt>, and <tt class="docutils literal"><span class="pre">pdfcrop</span></tt> programs from the <tt class="docutils literal"><span class="pre">texlive-extra-utils</span></tt>
 Debian package. The latter gets installed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install texlive-extra-utils</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive-extra-utils
 </pre></div>
 </div>
 <p>Automatic image conversion from EPS to PDF calls up <tt class="docutils literal"><span class="pre">epstopdf</span></tt>, which
 can be installed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install texlive-font-utils</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive-font-utils
 </pre></div>
 </div>
 </div>
@@ -260,7 +261,7 @@ can be installed by</p>
 <h3>Spellcheck<a class="headerlink" href="#spellcheck" title="Permalink to this headline">¶</a></h3>
 <p>The utility <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> applies the <tt class="docutils literal"><span class="pre">ispell</span></tt> program for
 spellcheck. On Debian (including Ubuntu) it is installed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install ispell</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install ispell
 </pre></div>
 </div>
 </div>
@@ -269,13 +270,13 @@ spellcheck. On Debian (including Ubuntu) it is installed by</p>
 <p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
 in your document. On the website, click on <em>Clone</em>, copy the
 command and run it:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone https://bitbucket.org/logg/publish</span>
+<div class="highlight-text"><div class="highlight"><pre>hg clone https://bitbucket.org/logg/publish
 </pre></div>
 </div>
 <p>Thereafter go to the <tt class="docutils literal"><span class="pre">publish</span></tt> directory and run the <tt class="docutils literal"><span class="pre">setup.py</span></tt> script
 for installing Publish:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">cd publish</span>
-<span class="go">sudo python setup.py</span>
+<div class="highlight-text"><div class="highlight"><pre>cd publish
+sudo python setup.py
 </pre></div>
 </div>
 </div>
@@ -284,22 +285,22 @@ for installing Publish:</p>
 <p>To make LaTeX documents with very flexible choice of typesetting of
 verbatim code blocks you need <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a>,
 which is installed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex</span>
-<span class="go">cd ptex2tex</span>
-<span class="go">sudo python setup.py install</span>
+<div class="highlight-text"><div class="highlight"><pre>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install
 </pre></div>
 </div>
 <p>It may happen that you need additional style files, you can run
 a script, <tt class="docutils literal"><span class="pre">cp2texmf.sh</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">cd latex</span>
-<span class="go">sh cp2texmf.sh  # copy stylefiles to ~/texmf directory</span>
-<span class="go">cd ../..</span>
+<div class="highlight-text"><div class="highlight"><pre>cd latex
+sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
+cd ../..
 </pre></div>
 </div>
 <p>This script copies some special stylefiles that
 that <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> potentially makes use of. Some more standard stylefiles
 are also needed. These are installed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install texlive</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive
 </pre></div>
 </div>
 <p>on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
@@ -312,17 +313,17 @@ program.</p>
 and popular among many
 users. This style requires the package <a class="reference external" href="http://pygments.org">Pygments</a>
 to be installed. On Debian Linux,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install python-pygments</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install python-pygments
 </pre></div>
 </div>
 <p>Alternatively, the package can be installed manually:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments</span>
-<span class="go">cd pygments</span>
-<span class="go">sudo python setup.py install</span>
+<div class="highlight-text"><div class="highlight"><pre>hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
+cd pygments
+sudo python setup.py install
 </pre></div>
 </div>
 <p>One can also do the simple</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">pip install sphinx</span>
+<div class="highlight-text"><div class="highlight"><pre>pip install sphinx
 </pre></div>
 </div>
 <p>which also installs pygments.</p>
@@ -382,20 +383,20 @@ by the <tt class="docutils literal"><span class="pre">cp2texmf.sh</span></tt> sc
 <p>The <tt class="docutils literal"><span class="pre">rst</span></tt> output from Doconce allows further transformation to LaTeX,
 HTML, XML, OpenOffice, and so on, through the <a class="reference external" href="http://docutils.sourceforge.net">docutils</a> package.  The installation of the
 most recent version can be done by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">svn checkout \</span>
-<span class="go">  http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils</span>
-<span class="go">cd docutils</span>
-<span class="go">sudo python setup.py install</span>
-<span class="go">cd ..</span>
+<div class="highlight-text"><div class="highlight"><pre>svn checkout \
+  http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
+cd docutils
+sudo python setup.py install
+cd ..
 </pre></div>
 </div>
 <p>The command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">pip install sphinx</span>
+<div class="highlight-text"><div class="highlight"><pre>pip install sphinx
 </pre></div>
 </div>
 <p>installs Docutils along with Sphinx and Pygments.</p>
 <p>To use the OpenOffice suite you will typically on Debian systems install</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install unovonv libreoffice libreoffice-dmaths</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install unovonv libreoffice libreoffice-dmaths
 </pre></div>
 </div>
 <p>There is a possibility to create PDF files from reST documents
@@ -409,14 +410,14 @@ run the usual <tt class="docutils literal"><span class="pre">sudo</span> <span c
 <p>Output to <tt class="docutils literal"><span class="pre">sphinx</span></tt> requires of course the
 <a class="reference external" href="http://sphinx.pocoo.org">Sphinx software</a>,
 installed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone https://bitbucket.org/birkenfeld/sphinx</span>
-<span class="go">cd sphinx</span>
-<span class="go">sudo python setup.py install</span>
-<span class="go">cd ..</span>
+<div class="highlight-text"><div class="highlight"><pre>hg clone https://bitbucket.org/birkenfeld/sphinx
+cd sphinx
+sudo python setup.py install
+cd ..
 </pre></div>
 </div>
 <p>An alternative is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">pip install sphinx</span>
+<div class="highlight-text"><div class="highlight"><pre>pip install sphinx
 </pre></div>
 </div>
 <p>Doconce comes with many Sphinx themes that are not part of the
@@ -440,7 +441,7 @@ above.</p>
 extended Markdown format, which via the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program can be
 translated to a range of other formats. Installation of <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, written in Haskell, is most
 easily done by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install pandoc</span>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install pandoc
 </pre></div>
 </div>
 <p>on Debian (Ubuntu) systems.</p>
@@ -449,10 +450,10 @@ easily done by</p>
 <h3>Epydoc Output<a class="headerlink" href="#epydoc-output" title="Permalink to this headline">¶</a></h3>
 <p>When the output format is <tt class="docutils literal"><span class="pre">epydoc</span></tt> one needs that program too, installed
 by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc</span>
-<span class="go">cd epydoc</span>
-<span class="go">sudo make install</span>
-<span class="go">cd ..</span>
+<div class="highlight-text"><div class="highlight"><pre>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
+cd epydoc
+sudo make install
+cd ..
 </pre></div>
 </div>
 <p><strong>Remark.</strong>
@@ -577,14 +578,14 @@ cd ../../..
 <h2>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">The current text is generated from a Doconce format stored in the
 directory</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doc/manual/manual.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>doc/manual/manual.do.txt
 </pre></div>
 </div>
 <p>file in the Doconce source code tree. Here you can run a
 <tt class="docutils literal"><span class="pre">make.sh</span></tt> script to generate a lot of different
 formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <tt class="docutils literal"><span class="pre">demo</span></tt>.</p>
 <p>Another demo is found in</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doc/tutorial/tutorial.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>doc/tutorial/tutorial.do.txt
 </pre></div>
 </div>
 <p>In the <tt class="docutils literal"><span class="pre">tutorial</span></tt> directory there is also a <tt class="docutils literal"><span class="pre">make.sh</span></tt> file producing a
@@ -595,11 +596,11 @@ lot of formats in the subdirectory <tt class="docutils literal"><span class="pre
 <span id="doconce2formats"></span><h1>From Doconce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h1>
 <p>Transformation of a Doconce document <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> to various other
 formats apply the script <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format formatname mydoc.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format formatname mydoc.do.txt
 </pre></div>
 </div>
 <p>or drop the extension:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format formatname mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format formatname mydoc
 </pre></div>
 </div>
 <div class="section" id="generating-a-makefile">
@@ -612,7 +613,7 @@ then be placed in a script that acts as a &#8220;makefile&#8221;.</p>
 such a makefile, more precisely a Python script <tt class="docutils literal"><span class="pre">make.py</span></tt>, which
 carries out the commands explained below. If our Doconce source
 is in <tt class="docutils literal"><span class="pre">main_myproj.do.txt</span></tt>, we run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce makefile main_myproj html pdflatex sphinx</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce makefile main_myproj html pdflatex sphinx
 </pre></div>
 </div>
 <p>to produce the necessary output for generating HTML, pdfLaTeX, and
@@ -633,8 +634,8 @@ statements are present and runs the corresponding programs, first
 filename with the syntax <tt class="docutils literal"><span class="pre">-DMYVAR</span></tt> or <tt class="docutils literal"><span class="pre">MYVAR=True</span></tt> for defining
 a variable <tt class="docutils literal"><span class="pre">MYVAR</span></tt>, or <tt class="docutils literal"><span class="pre">-DMYVAR=val</span></tt> or <tt class="docutils literal"><span class="pre">MYVAR=val</span></tt> for giving
 <tt class="docutils literal"><span class="pre">MYVAR</span></tt> the value <tt class="docutils literal"><span class="pre">val</span></tt>. For example,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format sphinx mydoc -Dextra_sections -DVAR1=5</span>
-<span class="go">Terminal&gt; doconce format sphinx mydoc extra_sections=True VAR1=5</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+Terminal&gt; doconce format sphinx mydoc extra_sections=True VAR1=5
 </pre></div>
 </div>
 <p>The variable <tt class="docutils literal"><span class="pre">FORMAT</span></tt> is always defined as the current format when
@@ -652,7 +653,7 @@ the result of running <tt class="docutils literal"><span class="pre">mako</span>
 <p>The command-line arguments <tt class="docutils literal"><span class="pre">--no_preprocess</span></tt> and <tt class="docutils literal"><span class="pre">--no_mako</span></tt> turn off
 running <tt class="docutils literal"><span class="pre">preprocess</span></tt> and <tt class="docutils literal"><span class="pre">mako</span></tt>, respectively.</p>
 <p>Inline comments in the text are removed from the output by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc --skip_inline_comments</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --skip_inline_comments
 </pre></div>
 </div>
 <p>One can also remove all such comments from the original Doconce
@@ -688,7 +689,7 @@ in the coming sections.</p>
 <h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
 <p>Making an HTML version of a Doconce file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>
 is performed by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format html mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc
 </pre></div>
 </div>
 <p>The resulting file <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> can be loaded into any web browser for viewing.</p>
@@ -759,7 +760,7 @@ containing the template and the CSS and JavaScript files to your
 document directory, edit the template as needed (also check that
 paths to the <tt class="docutils literal"><span class="pre">css</span></tt> and <tt class="docutils literal"><span class="pre">js</span></tt> subdirectories are correct - according
 to how you store the template files), and run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format html mydoc --html_template=mytemplate.html</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --html_template=mytemplate.html
 </pre></div>
 </div>
 <p>The template in <tt class="docutils literal"><span class="pre">style_vagrant</span></tt> also needs an extra option
@@ -784,16 +785,16 @@ filestem of the associated HTML files. The
 for the HTML document. Here is an example on making three versions of
 the HTML document: <tt class="docutils literal"><span class="pre">mydoc_bloodish.html</span></tt>, <tt class="docutils literal"><span class="pre">mydoc_solarized</span></tt>, and
 <tt class="docutils literal"><span class="pre">mydoc_vagrant</span></tt>.</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format html mydoc --html_style=bloodish \</span>
-<span class="go">          --html_output=mydoc_bloodish</span>
-<span class="go">Terminal&gt; doconce split_html mydoc_bloodish.html</span>
-<span class="go">Terminal&gt; doconce format html mydoc --html_style=solarized \</span>
-<span class="go">          --html_output=mydoc_solarized \</span>
-<span class="go">          --pygments_html_style=perldoc --html_admon=apricot</span>
-<span class="go">Terminal&gt; doconce format html mydoc --html_style=vagrant \</span>
-<span class="go">          --html_output=mydoc_vagrant --pygments_html_style=default \</span>
-<span class="go">          --html_template=templates/my_adapted_vagrant_template.html</span>
-<span class="go">Terminal&gt; doconce split_html mydoc_vagrant.html</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --html_style=bloodish \
+          --html_output=mydoc_bloodish
+Terminal&gt; doconce split_html mydoc_bloodish.html
+Terminal&gt; doconce format html mydoc --html_style=solarized \
+          --html_output=mydoc_solarized \
+          --pygments_html_style=perldoc --html_admon=apricot
+Terminal&gt; doconce format html mydoc --html_style=vagrant \
+          --html_output=mydoc_vagrant --pygments_html_style=default \
+          --html_template=templates/my_adapted_vagrant_template.html
+Terminal&gt; doconce split_html mydoc_vagrant.html
 </pre></div>
 </div>
 </div>
@@ -862,12 +863,12 @@ for mathematics in the text, though.</p>
 <div class="section" id="pandoc-and-markdown">
 <h2>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h2>
 <p>Output in Pandoc&#8217;s extended Markdown format results from</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc
 </pre></div>
 </div>
 <p>The name of the output file is <tt class="docutils literal"><span class="pre">mydoc.md</span></tt>.
 From this format one can go to numerous other formats:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
 </pre></div>
 </div>
 <p>Pandoc supports <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">odt</span></tt> (OpenOffice), <tt class="docutils literal"><span class="pre">docx</span></tt> (Microsoft
@@ -881,8 +882,8 @@ for the many features of the <tt class="docutils literal"><span class="pre">pand
 <p>The HTML output from
 <tt class="docutils literal"><span class="pre">pandoc</span></tt> needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">md2html</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc</span>
-<span class="go">Terminal&gt; doconce m2html mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc
+Terminal&gt; doconce m2html mydoc
 </pre></div>
 </div>
 <p>The result <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> can be viewed in a browser.</p>
@@ -895,10 +896,10 @@ document): <tt class="docutils literal"><span class="pre">doconce</span> <span c
 <span class="pre">md2latex</span></tt> (which runs <tt class="docutils literal"><span class="pre">pandoc</span></tt>), or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">latex</span></tt>, and then
 going from LaTeX to the desired format using <tt class="docutils literal"><span class="pre">pandoc</span></tt>.
 Here is an example on the latter strategy:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc</span>
-<span class="go">Terminal&gt; doconce ptex2tex mydoc</span>
-<span class="go">Terminal&gt; doconce replace &#39;\Verb!&#39; &#39;\verb!&#39; mydoc.tex</span>
-<span class="go">Terminal&gt; pandoc -f latex -t docx -o mydoc.docx mydoc.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
+Terminal&gt; doconce ptex2tex mydoc
+Terminal&gt; doconce replace &#39;\Verb!&#39; &#39;\verb!&#39; mydoc.tex
+Terminal&gt; pandoc -f latex -t docx -o mydoc.docx mydoc.tex
 </pre></div>
 </div>
 <p>When we go through <tt class="docutils literal"><span class="pre">pandoc</span></tt>, only single equations, <tt class="docutils literal"><span class="pre">align</span></tt>, or <tt class="docutils literal"><span class="pre">align*</span></tt>
@@ -963,7 +964,7 @@ def f(x, a=1, b=1, c=1):
 </pre></div>
 </div>
 <p>Say this text is stored in a file <tt class="docutils literal"><span class="pre">mycomments.do.txt</span></tt>. Running</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mycomments --github_md</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mycomments --github_md
 </pre></div>
 </div>
 <p>produces the Markdown file <tt class="docutils literal"><span class="pre">mycomments.md</span></tt>, which can be pasted into
@@ -985,9 +986,9 @@ text nicely in a web browser by just inserting an HTML header and
 footer in the Markdown file and load the file into a browser.
 The option <tt class="docutils literal"><span class="pre">--strapdown</span></tt> outputs the relevant header and footer.
 The output file must be renamed such that it gets the extension <tt class="docutils literal"><span class="pre">.html</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pandoc mydoc --strict_markdown_output \</span>
-<span class="go">          --strapdown --bootstrap_bootwatch_theme=slate</span>
-<span class="go">Terminal&gt; mv mydoc.md mydoc.html</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc --strict_markdown_output \
+          --strapdown --bootstrap_bootwatch_theme=slate
+Terminal&gt; mv mydoc.md mydoc.html
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">--bootstrap_bootwatch_theme=theme</span></tt> option is used to choose
@@ -1045,7 +1046,7 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 <p><strong>Step 1.</strong>
 Filter the doconce text to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> &#8220;pre-LaTeX form&#8221;
 <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
 </pre></div>
 </div>
 <p>LaTeX-specific commands (&#8220;newcommands&#8221;) in math formulas and similar
@@ -1081,48 +1082,34 @@ look for options starting with <tt class="docutils literal"><span class="pre">--
 <li><tt class="docutils literal"><span class="pre">--latex_admon_color=0.34,0.02,0.8</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_admon_envir_map=2</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_exercise_numbering=absolute,chapter</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_movie=media9,href,multimedia,movie15</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_movie_controls=on</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_external_movie_viewer</span></tt> (for <tt class="docutils literal"><span class="pre">movie15</span></tt> package)</li>
+<li><tt class="docutils literal"><span class="pre">--xelatex</span></tt></li>
 </ul>
 </div></blockquote>
 <p><strong>Step 2.</strong>
 Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex mydoc
 </pre></div>
 </div>
 <p>In case you do not have <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>, you may run the (simplified) version
 that comes with Doconce:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce ptex2tex mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce ptex2tex mydoc
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file contains a lot of preprocessor variables (like C macros)
-that can be used to steer certain properties of the LaTeX document.
-For example, to turn on the Helvetica font instead of the standard
-Computer Modern font, run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex -DHELVETICA mydoc</span>
-<span class="go">Terminal&gt; doconce ptex2tex mydoc -DHELVETICA  # alternative</span>
-</pre></div>
-</div>
-<p>Preprocessor variables to be defined or undefined are</p>
+<p>The <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> command can set two preprocessor variables:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">XELATEX</span></tt> for processing by <tt class="docutils literal"><span class="pre">xelatex</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">MOVIE</span></tt> for specifying how movies are handled: the value <tt class="docutils literal"><span class="pre">media9</span></tt>
-implies the <tt class="docutils literal"><span class="pre">media9</span></tt> package and the <tt class="docutils literal"><span class="pre">\includemedia</span></tt> command
-for <tt class="docutils literal"><span class="pre">.flv</span></tt> and <tt class="docutils literal"><span class="pre">.mp4</span></tt> movies,
-or <tt class="docutils literal"><span class="pre">movie15</span></tt> and the <tt class="docutils literal"><span class="pre">\includemovie</span></tt> command for <tt class="docutils literal"><span class="pre">.mpeg</span></tt> and <tt class="docutils literal"><span class="pre">.avi</span></tt>
-movies;
-<tt class="docutils literal"><span class="pre">multimedia</span></tt> for Beamer-style <tt class="docutils literal"><span class="pre">\movie</span></tt> command,
-or <tt class="docutils literal"><span class="pre">href</span></tt> for the plain <cite>h:ref:`run:file`</cite> command. The latter
-is default.</li>
-<li><tt class="docutils literal"><span class="pre">MOVIE_CONTROLS</span></tt> adds buttons for starting/stopping movies if the
-<tt class="docutils literal"><span class="pre">media9</span></tt> package is used.</li>
 <li><tt class="docutils literal"><span class="pre">PREAMBLE</span></tt> to turn the LaTeX preamble on or off (i.e., complete document
 or document to be included elsewhere - and note that
 the preamble is only included
 if the document has a title, author, and date)</li>
 <li><tt class="docutils literal"><span class="pre">MINTED</span></tt> for inclusion of the minted package for typesetting of
 code with the Pygments tool (which requires <tt class="docutils literal"><span class="pre">latex</span></tt>
-or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> to be run with the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> option)</li>
+or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> to be run with the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> option); not used
+for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> only in the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program</li>
 </ul>
 </div></blockquote>
 <p>If you are not satisfied with the generated Doconce preamble, you can provide
@@ -1139,13 +1126,11 @@ styles as defined in your <tt class="docutils literal"><span class="pre">.ptex2t
 terminal session, where <tt class="docutils literal"><span class="pre">sys</span></tt> is set to a certain environment in
 <tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> (e.g., <tt class="docutils literal"><span class="pre">CodeTerminal</span></tt>).  There are about 40 styles to
 choose from, and you can easily add new ones.</p>
-<p>Also the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> command supports preprocessor directives
-for processing the <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file. The command allows specifications
+<p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> allows specifications
 of code environments as well. Here is an example:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce ptex2tex mydoc -DLATEX_HEADING=traditional \</span>
-<span class="go">          -DPALATINO -DA6PAPER \</span>
-<span class="go">          &quot;sys=\begin{quote}\begin{verbatim}@\end{verbatim}\end{quote}&quot; \</span>
-<span class="go">          fpro=minted fcod=minted shcod=Verbatim envir=ans:nt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce ptex2tex mydoc \
+          &quot;sys=\begin{quote}\begin{verbatim}@\end{verbatim}\end{quote}&quot; \
+          fpro=minted fcod=minted shcod=Verbatim envir=ans:nt
 </pre></div>
 </div>
 <p>Note that <tt class="docutils literal"><span class="pre">&#64;</span></tt> must be used to separate the begin and end LaTeX
@@ -1173,15 +1158,15 @@ edited with the aid of the <tt class="docutils literal"><span class="pre">doconc
 commands. The former works with substituting text directly, while the
 latter performs substitutions using regular expressions.
 You will use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> to edit <tt class="docutils literal"><span class="pre">section{</span></tt> to <tt class="docutils literal"><span class="pre">section*{</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.tex
 </pre></div>
 </div>
 <p>For fixing the line break of a title, you may pick a word in the
 title, say &#8220;Using&#8221;, and insert a break after than word. With
 <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> this is easy employing regular expressions with
 a group before &#8220;Using&#8221; and a group after:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce subst &#39;title\{(.+)Using (.+)\}&#39; \</span>
-<span class="go">          &#39;title{\g&lt;1&gt; \\\\ [1.5mm] Using \g&lt;2&gt;&#39; mydoc.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce subst &#39;title\{(.+)Using (.+)\}&#39; \
+          &#39;title{\g&lt;1&gt; \\\\ [1.5mm] Using \g&lt;2&gt;&#39; mydoc.tex
 </pre></div>
 </div>
 <p>A lot of tailored fixes to the LaTeX document can be done by
@@ -1192,12 +1177,12 @@ generating PDF from the LaTeX file so the <tt class="docutils literal"><span cla
 <p><strong>Step 3.</strong>
 Compile <tt class="docutils literal"><span class="pre">mydoc.tex</span></tt>
 and create the PDF file:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; latex mydoc</span>
-<span class="go">Terminal&gt; latex mydoc</span>
-<span class="go">Terminal&gt; makeindex mydoc   # if index</span>
-<span class="go">Terminal&gt; bibitem mydoc     # if bibliography</span>
-<span class="go">Terminal&gt; latex mydoc</span>
-<span class="go">Terminal&gt; dvipdf mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex mydoc
+Terminal&gt; latex mydoc
+Terminal&gt; makeindex mydoc   # if index
+Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; latex mydoc
+Terminal&gt; dvipdf mydoc
 </pre></div>
 </div>
 <p>See the next two sections for compilation with XeLaTeX or pdfLaTeX.</p>
@@ -1208,18 +1193,18 @@ typesetting code blocks (<tt class="docutils literal"><span class="pre">Minted_P
 needed.  This package is automatically included by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> if
 the minted style is used, while you have to include the
 <tt class="docutils literal"><span class="pre">-DMINTED</span></tt> preprocessor option when running the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ptex2tex -DMINTED mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex -DMINTED mydoc
 </pre></div>
 </div>
 <p>If the minted style is used, <tt class="docutils literal"><span class="pre">latex</span></tt> (or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> or <tt class="docutils literal"><span class="pre">xelatex</span></tt>)
 <em>must</em> be run with the
 <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> option:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; latex -shell-escape mydoc</span>
-<span class="go">Terminal&gt; latex -shell-escape mydoc</span>
-<span class="go">Terminal&gt; makeindex mydoc   # if index</span>
-<span class="go">Terminal&gt; bibitem mydoc     # if bibliography</span>
-<span class="go">Terminal&gt; latex -shell-escape mydoc</span>
-<span class="go">Terminal&gt; dvipdf mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex -shell-escape mydoc
+Terminal&gt; latex -shell-escape mydoc
+Terminal&gt; makeindex mydoc   # if index
+Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; latex -shell-escape mydoc
+Terminal&gt; dvipdf mydoc
 </pre></div>
 </div>
 </div>
@@ -1227,14 +1212,14 @@ the minted style is used, while you have to include the
 <h2>PDFLaTeX<a class="headerlink" href="#pdflatex" title="Permalink to this headline">¶</a></h2>
 <p>Running <tt class="docutils literal"><span class="pre">pdflatex</span></tt> instead of <tt class="docutils literal"><span class="pre">latex</span></tt> follows almost the same steps,
 but the start is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
 </pre></div>
 </div>
 <p>Then <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> is run as explained above, and finally</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pdflatex -shell-escape mydoc</span>
-<span class="go">Terminal&gt; makeindex mydoc   # if index</span>
-<span class="go">Terminal&gt; bibitem mydoc     # if bibliography</span>
-<span class="go">Terminal&gt; pdflatex -shell-escape mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pdflatex -shell-escape mydoc
+Terminal&gt; makeindex mydoc   # if index
+Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; pdflatex -shell-escape mydoc
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1239,7 @@ Terminal&gt; xelatex mydoc
 <p>We can go from Doconce &#8220;back to&#8221; plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
 </pre></div>
 </div>
 </div>
@@ -1263,14 +1248,14 @@ computer source code:</p>
 <p>Going from Doconce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the Doconce text to a
 reStructuredText file <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format rst mydoc.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format rst mydoc.do.txt
 </pre></div>
 </div>
 <p>We may now produce various other formats:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; rst2html.py  mydoc.rst &gt; mydoc.html # html</span>
-<span class="go">Terminal&gt; rst2latex.py mydoc.rst &gt; mydoc.tex  # latex</span>
-<span class="go">Terminal&gt; rst2xml.py   mydoc.rst &gt; mydoc.xml  # XML</span>
-<span class="go">Terminal&gt; rst2odt.py   mydoc.rst &gt; mydoc.odt  # OpenOffice</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; rst2html.py  mydoc.rst &gt; mydoc.html # html
+Terminal&gt; rst2latex.py mydoc.rst &gt; mydoc.tex  # latex
+Terminal&gt; rst2xml.py   mydoc.rst &gt; mydoc.xml  # XML
+Terminal&gt; rst2odt.py   mydoc.rst &gt; mydoc.odt  # OpenOffice
 </pre></div>
 </div>
 <p>The OpenOffice file <tt class="docutils literal"><span class="pre">mydoc.odt</span></tt> can be loaded into OpenOffice and
@@ -1278,16 +1263,16 @@ saved in, among other things, the RTF format or the Microsoft Word format.
 However, it is more convenient to use the program <tt class="docutils literal"><span class="pre">unovonv</span></tt>
 to convert between the many formats OpenOffice supports <em>on the command line</em>.
 Run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; unoconv --show</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; unoconv --show
 </pre></div>
 </div>
 <p>to see all the formats that are supported.
 For example, the following commands take
 <tt class="docutils literal"><span class="pre">mydoc.odt</span></tt> to Microsoft Office Open XML format,
 classic MS Word format, and PDF:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; unoconv -f ooxml mydoc.odt</span>
-<span class="go">Terminal&gt; unoconv -f doc mydoc.odt</span>
-<span class="go">Terminal&gt; unoconv -f pdf mydoc.odt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; unoconv -f ooxml mydoc.odt
+Terminal&gt; unoconv -f doc mydoc.odt
+Terminal&gt; unoconv -f pdf mydoc.odt
 </pre></div>
 </div>
 <p><strong>Remark about Mathematical Typesetting.</strong>
@@ -1308,9 +1293,9 @@ Some links for going from LaTeX to Word are listed below.</p>
 <h2>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
 <p>Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> command:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \</span>
-<span class="go">          title=&quot;some title&quot; version=1.0 dirname=sphinxdir \</span>
-<span class="go">          theme=mytheme mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
+          title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
+          theme=mytheme mydoc
 </pre></div>
 </div>
 <p>The keywords <tt class="docutils literal"><span class="pre">author</span></tt>, <tt class="docutils literal"><span class="pre">title</span></tt>, and <tt class="docutils literal"><span class="pre">version</span></tt> are used in the headings
@@ -1320,7 +1305,7 @@ The default value of <tt class="docutils literal"><span class="pre">dirname</spa
 keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is <tt class="docutils literal"><span class="pre">'default'</span></tt>).</p>
 <p>One often just runs the simple command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce sphinx_dir mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir mydoc
 </pre></div>
 </div>
 <p>which creates the Sphinx directory <tt class="docutils literal"><span class="pre">sphinx-rootdir</span></tt> with
@@ -1328,12 +1313,12 @@ relevant files.</p>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> command generates a script
 <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> for compiling the Sphinx document into an HTML
 document.  Run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python automake_sphinx.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python automake_sphinx.py
 </pre></div>
 </div>
 <p>As the output also tells, you can see the Sphinx HTML version of the document
 by running</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; google-chrome sphinx-rootdir/_build/html/index.html</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; google-chrome sphinx-rootdir/_build/html/index.html
 </pre></div>
 </div>
 <p>or loading the <tt class="docutils literal"><span class="pre">index.html</span></tt> file manually into your favorite web browser.</p>
@@ -1341,7 +1326,7 @@ by running</p>
 HTML output, you should observe that <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> does not
 recompile the Doconce file if the Sphinx <tt class="docutils literal"><span class="pre">.rst</span></tt> version already exists.
 In each edit-and-watch cycle do</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; rm mydoc.rst; python automake_sphinx.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; rm mydoc.rst; python automake_sphinx.py
 </pre></div>
 </div>
 <div class="admonition-tip admonition">
@@ -1403,7 +1388,7 @@ own <tt class="docutils literal"><span class="pre">conf.py</span></tt> file can 
 <tt class="docutils literal"><span class="pre">make-themes.sh</span></tt> can make HTML documents with one or more themes.
 For example,
 to realize the themes <tt class="docutils literal"><span class="pre">fenics</span></tt>, <tt class="docutils literal"><span class="pre">pyramid</span></tt>, and <tt class="docutils literal"><span class="pre">pylon</span></tt> one writes</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ./make-themes.sh fenics pyramid pylon</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ./make-themes.sh fenics pyramid pylon
 </pre></div>
 </div>
 <p>The resulting directories with HTML documents are <tt class="docutils literal"><span class="pre">_build/html_fenics</span></tt>
@@ -1450,8 +1435,8 @@ to replace a portion of text in <tt class="docutils literal"><span class="pre">c
 <p>Obviously, we could also have changed colors in the edit above.
 The final alternative is to save the edited <tt class="docutils literal"><span class="pre">conf.py</span></tt> file somewhere
 and reuse it the next time <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> is run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce sphinx_dir theme=scipy_lectures \</span>
-<span class="go">                   conf.py=../some/path/conf.py mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce sphinx_dir theme=scipy_lectures \
+                   conf.py=../some/path/conf.py mydoc
 </pre></div>
 </div>
 <div class="section" id="the-manual-sphinx-procedure">
@@ -1461,37 +1446,37 @@ above, here is the complete manual procedure of generating a
 Sphinx document from a file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>.</p>
 <p><strong>Step 1.</strong>
 Translate Doconce into the Sphinx format:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format sphinx mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format sphinx mydoc
 </pre></div>
 </div>
 <p><strong>Step 2.</strong>
 Create a Sphinx root directory
 either manually or by using the interactive <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt>
 program. Here is a scripted version of the steps with the latter:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">mkdir sphinx-rootdir</span>
-<span class="go">sphinx-quickstart &lt;&lt;EOF</span>
-<span class="go">sphinx-rootdir</span>
-<span class="go">n</span>
-<span class="go">_</span>
-<span class="go">Name of My Sphinx Document</span>
-<span class="go">Author</span>
-<span class="go">version</span>
-<span class="go">version</span>
-<span class="go">.rst</span>
-<span class="go">index</span>
-<span class="go">n</span>
-<span class="go">y</span>
-<span class="go">n</span>
-<span class="go">n</span>
-<span class="go">n</span>
-<span class="go">n</span>
-<span class="go">y</span>
-<span class="go">n</span>
-<span class="go">n</span>
-<span class="go">y</span>
-<span class="go">y</span>
-<span class="go">y</span>
-<span class="go">EOF</span>
+<div class="highlight-text"><div class="highlight"><pre>mkdir sphinx-rootdir
+sphinx-quickstart &lt;&lt;EOF
+sphinx-rootdir
+n
+_
+Name of My Sphinx Document
+Author
+version
+version
+.rst
+index
+n
+y
+n
+n
+n
+n
+y
+n
+n
+y
+y
+y
+EOF
 </pre></div>
 </div>
 <p>The autogenerated <tt class="docutils literal"><span class="pre">conf.py</span></tt> file
@@ -1501,7 +1486,7 @@ file where, among other things, several useful Sphinx extensions
 are included.</p>
 <p><strong>Step 3.</strong>
 Copy the <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt> file to the Sphinx root directory:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; cp mydoc.rst sphinx-rootdir</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; cp mydoc.rst sphinx-rootdir
 </pre></div>
 </div>
 <p>If you have figures in your document, the relative paths to those will
@@ -1522,8 +1507,8 @@ is included, i.e., add <tt class="docutils literal"><span class="pre">mydoc</spa
 <p>(The spaces before <tt class="docutils literal"><span class="pre">mydoc</span></tt> are important!)</p>
 <p><strong>Step 5.</strong>
 Generate, for instance, an HTML version of the Sphinx source:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">make clean   # remove old versions</span>
-<span class="go">make html</span>
+<div class="highlight-text"><div class="highlight"><pre>make clean   # remove old versions
+make html
 </pre></div>
 </div>
 <p>Sphinx can generate a range of different formats:
@@ -1533,7 +1518,7 @@ and Devhelp projects), epub, LaTeX, PDF (via LaTeX), pure text, man pages,
 and Texinfo files.</p>
 <p><strong>Step 6.</strong>
 View the result:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; firefox _build/html/index.html</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; firefox _build/html/index.html
 </pre></div>
 </div>
 <p>Note that verbatim code blocks can be typeset in a variety of ways
@@ -1551,9 +1536,9 @@ all such arguments can be customized both for Sphinx and LaTeX output.</p>
 These formats are called
 <tt class="docutils literal"><span class="pre">gwiki</span></tt>, <tt class="docutils literal"><span class="pre">mwiki</span></tt>, and <tt class="docutils literal"><span class="pre">cwiki</span></tt>, respectively.
 Transformation from Doconce to these formats is done by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format gwiki mydoc.do.txt</span>
-<span class="go">Terminal&gt; doconce format mwiki mydoc.do.txt</span>
-<span class="go">Terminal&gt; doconce format cwiki mydoc.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format gwiki mydoc.do.txt
+Terminal&gt; doconce format mwiki mydoc.do.txt
+Terminal&gt; doconce format cwiki mydoc.do.txt
 </pre></div>
 </div>
 <p>The produced MediaWiki can be tested in the <a class="reference external" href="http://en.wikibooks.org/wiki/Sandbox">sandbox of
@@ -1851,8 +1836,8 @@ included in the formatted caption).</p>
 </div>
 <p>Combining several image files into one, in a table fashion, can be done by the
 <tt class="docutils literal"><span class="pre">montage</span></tt> program from the ImageMagick suite:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">montage -background white -geometry 100% -tile 2x \</span>
-<span class="go">        file1.png file2.png ... file4.png result.png</span>
+<div class="highlight-text"><div class="highlight"><pre>montage -background white -geometry 100% -tile 2x \
+        file1.png file2.png ... file4.png result.png
 </pre></div>
 </div>
 <p>The option <tt class="docutils literal"><span class="pre">-tile</span> <span class="pre">XxY</span></tt> gives <tt class="docutils literal"><span class="pre">X</span></tt> figures in the horizontal direction and
@@ -1863,9 +1848,9 @@ TIFF). Images in the PDF format should be mounted together
 using <tt class="docutils literal"><span class="pre">pdftk</span></tt> (to combine images to one file),
 <tt class="docutils literal"><span class="pre">pdfnup</span></tt> (to align them in tabular format), and <tt class="docutils literal"><span class="pre">pdfcrop</span></tt> (to
 remove surrounding whitespace):</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf</span>
-<span class="go">Terminal&gt; pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf</span>
-<span class="go">Terminal&gt; pdfcrop tmp-nup.pdf result.png  # output in FE1.png</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
+Terminal&gt; pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
+Terminal&gt; pdfcrop tmp-nup.pdf result.png  # output in FE1.png
 </pre></div>
 </div>
 </div>
@@ -1925,10 +1910,10 @@ command-line option when running <tt class="docutils literal"><span class="pre">
 <p>Movies are easiest shown in the HTML format.
 The reST and Sphinx formats apply the same raw HTML code as the
 HTML format and therefore have the same capabilities.
-The LaTeX format results in a <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file that have three
-methods for showing movies, set by the option <tt class="docutils literal"><span class="pre">-DMOVIE=...</span></tt> to
-<tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>. The values of <tt class="docutils literal"><span class="pre">MOVIE</span></tt> are</p>
+The LaTeX format supports different methods for embedding
+movies via the option <tt class="docutils literal"><span class="pre">-latex_movie=...</span></tt>. Proper values are listed below.</p>
 <ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">href</span></tt>: the <cite>h:ref:`run:file`{link}</cite> is used for all movies (default).</li>
 <li><tt class="docutils literal"><span class="pre">media9</span></tt>:
 the <tt class="docutils literal"><span class="pre">media9</span></tt> package is used for Flash and MP4 movies, <tt class="docutils literal"><span class="pre">movie15</span></tt>
 for MPEG and AVI files, and a simple <cite>h:ref:`run:file`{link}</cite> command
@@ -1936,7 +1921,7 @@ for other formats. Only Acrobat Reader supports displaying these
 type of movies.</li>
 <li><tt class="docutils literal"><span class="pre">multimedia</span></tt>: the <tt class="docutils literal"><span class="pre">\movie</span></tt> command (known from LaTeX Beamer) is used
 for movies.</li>
-<li><tt class="docutils literal"><span class="pre">href</span></tt>: the <cite>h:ref:`run:file`{link}</cite> is used for all movies (default).</li>
+<li><tt class="docutils literal"><span class="pre">movie15</span></tt>: the old <tt class="docutils literal"><span class="pre">movie15</span></tt> package is used.</li>
 </ol>
 <p>For all other formats, an HTML file that acts as a movie player is
 generated and linked from the output document. This movie player
@@ -3379,7 +3364,7 @@ in lines on the form</p>
 <div class="highlight-text"><div class="highlight"><pre>\begin{animateinline}[controls,loop]{2} % frames: f000.png -&gt; f098.png
 </pre></div>
 </div>
-<p>Setting the rate to 12 in for this particular movie based on the
+<p>Setting the rate to 12 instead for this particular movie based on the
 <tt class="docutils literal"><span class="pre">f%03.png</span></tt> files, the following <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> command does the job
 in a script:</p>
 <div class="last highlight-text"><div class="highlight"><pre>doconce subst &#39;,loop]{2}( .+: f000)&#39; &#39;,loop{12}\g&lt;1&gt;&#39; mydoc.do.txt
@@ -3410,9 +3395,9 @@ The output is copied into the Doconce source. For example,</p>
 </pre></div>
 </div>
 <p>results in</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python -c &#39;print &quot;Hello,\nWorld!&quot;&#39;</span>
-<span class="go">Hello,</span>
-<span class="go">World!</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python -c &#39;print &quot;Hello,\nWorld!&quot;&#39;
+Hello,
+World!
 </pre></div>
 </div>
 <p>There is a command-line option <tt class="docutils literal"><span class="pre">--os_prompt=</span></tt> that can be used to
@@ -3537,8 +3522,8 @@ for HTML output only, then plain links to local files work fine.</p>
 viewed in the browser rather than being downloaded, we recommend
 to transform the source code file to HTML format by running
 <tt class="docutils literal"><span class="pre">pygmentize</span></tt>, e.g.,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; pygmentize -l bash -f html -O full,style=emacs \</span>
-<span class="go">          -o _static/make.sh.html subdir/make.sh</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pygmentize -l bash -f html -O full,style=emacs \
+          -o _static/make.sh.html subdir/make.sh
 </pre></div>
 </div>
 <p>Then you can link to <tt class="docutils literal"><span class="pre">_static/make.sh.html</span></tt> instead of
@@ -3569,8 +3554,8 @@ quotes:</p>
 <p>To candidates for find double quotes that should be transferred to the above
 type of quotation (which is a common mistake),
 one can run a regular expression search like</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; find . -name &#39;*.do.txt&#39; -exec grep -E \</span>
-<span class="go">          &#39;[^(&quot;]&quot;[A-Za-z0-9 ,]+&quot; *[^:`)&quot;]&#39; {} \; -print</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; find . -name &#39;*.do.txt&#39; -exec grep -E \
+          &#39;[^(&quot;]&quot;[A-Za-z0-9 ,]+&quot; *[^:`)&quot;]&#39; {} \; -print
 </pre></div>
 </div>
 <p>This search may give many false hits as double quotes are frequently
@@ -3592,8 +3577,8 @@ works between characters, numbers, and the math dollar sign.)
 <blockquote>
 <div>Here comes a long line with a specification of a number with unit at the end,
 which is an example that requires a <a class="reference external" href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>: 7.4&nbsp;km is traveled
-in~:math:<cite>7.4/5.5approx 1.345`~s. (Computer code, where the tilde has a
-meaning, as in ``y = ~x`</cite>, is not affected. The non-breaking character only
+in&nbsp;<span class="math">\(7.4/5.5\approx 1.345\)</span>&nbsp;s. (Computer code, where the tilde has a
+meaning, as in <tt class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">~x</span></tt>, is not affected. The non-breaking character only
 works between characters, numbers, and the math dollar sign.)</div></blockquote>
 </div>
 <div class="section" id="footnotes">
@@ -4067,8 +4052,8 @@ on).</p>
 assume that you have two files, <tt class="docutils literal"><span class="pre">refs1.bib</span></tt> and <tt class="docutils literal"><span class="pre">refs2.bib</span></tt>. These can
 be imported to a Publish database, residing in the file <tt class="docutils literal"><span class="pre">papers.pub</span></tt>,
 by the commands</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">publish import refs1.bib</span>
-<span class="go">publish import refs2.bib</span>
+<div class="highlight-text"><div class="highlight"><pre>publish import refs1.bib
+publish import refs2.bib
 </pre></div>
 </div>
 <p>During import, Publish may ask you for accepting the name of new
@@ -4115,7 +4100,7 @@ file directly when adding new references.</p>
 <h3>Exporting the database<a class="headerlink" href="#exporting-the-database" title="Permalink to this headline">¶</a></h3>
 <p>Export of everything in the database to
 BibTeX is done by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">publish export mybibtexfile.bib</span>
+<div class="highlight-text"><div class="highlight"><pre>publish export mybibtexfile.bib
 </pre></div>
 </div>
 <p>You can easily export subsets of the database, e.g., only papers associated
@@ -4177,8 +4162,8 @@ text is produced from the database.</p>
 <h3>LaTeX bibliography style<a class="headerlink" href="#latex-bibliography-style" title="Permalink to this headline">¶</a></h3>
 <p>The bibliography style is &#8220;plain&#8221; in LaTeX output. To change this, just
 edit the <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file. For example,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce format latex mydoc</span>
-<span class="go">doconce replace &#39;bibliographystyle{plain}&#39; &#39;bibliographystyle{abbrev}&#39; mydoc.p.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce format latex mydoc
+doconce replace &#39;bibliographystyle{plain}&#39; &#39;bibliographystyle{abbrev}&#39; mydoc.p.tex
 </pre></div>
 </div>
 </div>
@@ -4253,7 +4238,7 @@ where <tt class="docutils literal"><span class="pre">X</span></tt> is the table 
 load tables into spreadsheet programs for further analysis.</p>
 <p>Data in CSV format can be transformed to Doconce table format
 by the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">csv2table</span></tt> utility:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce csv2table somefile.csv &gt; table.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce csv2table somefile.csv &gt; table.do.txt
 </pre></div>
 </div>
 <p>This is a quick way of writing tables. For example, we can
@@ -4280,13 +4265,13 @@ write a text file <tt class="docutils literal"><span class="pre">tmp.csv</span><
 <p>Doconce has special support for four types of &#8220;exercises&#8221;, named
 <em>exercise</em>, <em>problem</em>, <em>project</em>, or <em>example</em>.
 These are all typeset as special kind of
-sections. Such sections start with a subsection
-headline, 5 <tt class="docutils literal"><span class="pre">=</span></tt> characters, and last up to the
+subsections. Such subsections start with a subsection
+headline surrounded 5 <tt class="docutils literal"><span class="pre">=</span></tt> characters, and last up to the
 next headline or the end of the file. The headline itself must
 consists of the word &#8220;Exercise&#8221;, &#8220;Problem&#8221;, &#8220;Project&#8221;, or &#8220;Example&#8221;, followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
-name of result file (if the answer to the exercise is to be handed
+name of the result file (if the answer to the exercise is to be handed
 in) and a solution file. The Doconce code looks like this:</p>
 <div class="highlight-text"><div class="highlight"><pre>===== Project: Determine the Distance to the Moon =====
 label{proj:moondist}
@@ -4297,8 +4282,9 @@ Here goes the running text of the project....
 </pre></div>
 </div>
 <p>Doconce will recognize the exercise, problem, project, or example <em>title</em>,
-the <em>label</em>, the <em>result file</em>, the <em>solution</em> (if any of
-these three entities is present), and the <em>running text</em>. In addition,
+the optional <em>label</em>, the optional <em>name of the answer file</em> (<tt class="docutils literal"><span class="pre">file=</span></tt>), the
+optional name of the <em>solution</em> file (<tt class="docutils literal"><span class="pre">solution=</span></tt>),
+and the <em>running text</em>. In addition,
 one can add subexercise environments, starting with <tt class="docutils literal"><span class="pre">!bsubex</span></tt> and ending
 with <tt class="docutils literal"><span class="pre">!esubex</span></tt>, on the beginning of separate lines.
 Within the main exercise or
@@ -4307,11 +4293,11 @@ a subexercise, three other environments are possible: (full) solution,
 directives <tt class="docutils literal"><span class="pre">!bans</span></tt>, <tt class="docutils literal"><span class="pre">!eans</span></tt>, <tt class="docutils literal"><span class="pre">!bsol</span></tt>, <tt class="docutils literal"><span class="pre">!esol</span></tt>, <tt class="docutils literal"><span class="pre">!bhint</span></tt>, <tt class="docutils literal"><span class="pre">!ehint</span></tt>, which
 all must appear on the beginning of a separate line (just as
 <tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt>).</p>
-<p>The solution environment allows inline
-solution as an alternative to the <tt class="docutils literal"><span class="pre">solution=...</span></tt> directive mentioned above,
-which requires that the solution is in a separate file. Comment lines
-are inserted so that the beginning and end of answers and solutions can
-be identified and removed if desired.</p>
+<p>The solution environment with <tt class="docutils literal"><span class="pre">!bsol</span></tt> and <tt class="docutils literal"><span class="pre">!esol</span></tt> allows inline
+solution as an alternative to the <tt class="docutils literal"><span class="pre">solution=...</span></tt> directive mentioned
+above, which requires that the solution is in a separate file. Comment
+lines are inserted so that the beginning and end of answers and
+solutions can be identified and removed if desired.</p>
 <p>A full exercise set-up can be sketched as follows:</p>
 <div class="highlight-text"><div class="highlight"><pre>===== Exercise: Determine the Distance to the Moon =====
 label{exer:moondist}
@@ -4423,8 +4409,9 @@ typesetting of the example looks like an exercise equipped with a solution.</p>
 <h3>List of Exercises, Problems, and Projects<a class="headerlink" href="#list-of-exercises-problems-and-projects" title="Permalink to this headline">¶</a></h3>
 <p>Doconce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
-By default, no such listing is enabled. When running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> or
-<tt class="docutils literal"><span class="pre">ptex2tex</span></tt>, there is a preprocessor variable <tt class="docutils literal"><span class="pre">LIST_OF_EXERCISES</span></tt>
+By default, no such listing is enabled. When running
+<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pdflatex</span></tt> (or <tt class="docutils literal"><span class="pre">latex</span></tt>)
+there is a command-line option <tt class="docutils literal"><span class="pre">--list_of_exercises</span></tt>
 that can be set to</p>
 <blockquote>
 <div><ul class="simple">
@@ -4434,6 +4421,10 @@ the table of contents</li>
 which appears after the table of contents</li>
 </ul>
 </div></blockquote>
+<p>There is a special LaTeX environment for the exercises that one can
+use to further tailor the appearance of exercises (given that one
+edits the <tt class="docutils literal"><span class="pre">.tex</span></tt> file, preferably by a script after each <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
+command).</p>
 </div>
 </div>
 <div class="section" id="blocks-of-verbatim-computer-code">
@@ -5026,8 +5017,8 @@ recognize <tt class="docutils literal"><span class="pre">!split</span></tt> inst
 as a postprocess, where the <tt class="docutils literal"><span class="pre">*</span></tt> means <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, or <tt class="docutils literal"><span class="pre">beamer</span></tt>.</p>
 <p><strong>HTML.</strong>
 Splitting an HTML document is done by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format html mydoc</span>
-<span class="go">Terminal&gt; doconce split_html mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc
+Terminal&gt; doconce split_html mydoc
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> document created by the first command is replaced
@@ -5051,10 +5042,10 @@ equations with labels are given numbers.</p>
 and next document. These are not customizable directly, but one can easily
 look up the HTML code and use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> to edit the links to
 the images used for navigation. Some more colorful images arise from</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce replace &#39;prev1.png&#39; &#39;Knob_Left.png&#39; \</span>
-<span class="go">          mydoc.html ._mydoc*.html</span>
-<span class="go">Terminal&gt; doconce replace &#39;next1.png&#39; &#39;Knob_Forward.png&#39; \</span>
-<span class="go">          mydoc.html ._mydoc*.html</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce replace &#39;prev1.png&#39; &#39;Knob_Left.png&#39; \
+          mydoc.html ._mydoc*.html
+Terminal&gt; doconce replace &#39;next1.png&#39; &#39;Knob_Forward.png&#39; \
+          mydoc.html ._mydoc*.html
 </pre></div>
 </div>
 <p>This works because the <tt class="docutils literal"><span class="pre">Knob*.png</span></tt> images live in the same place in the
@@ -5067,11 +5058,11 @@ source.</p>
 <p><strong>reStructuredText and Sphinx.</strong>
 Here is a typical split of a large Sphinx document <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>
 into smaller pieces:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce sphinx_dir author=&quot;Some Author&quot; \</span>
-<span class="go">          title=&quot;Short title&quot; theme=fenics dirname=mydir mydoc</span>
-<span class="go">Terminal&gt; doconce format sphinx mydoc</span>
-<span class="go">Terminal&gt; doconce split_rst mydoc</span>
-<span class="go">Terminal&gt; python automake_sphinx.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir author=&quot;Some Author&quot; \
+          title=&quot;Short title&quot; theme=fenics dirname=mydir mydoc
+Terminal&gt; doconce format sphinx mydoc
+Terminal&gt; doconce split_rst mydoc
+Terminal&gt; python automake_sphinx.py
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">sphinx</span> <span class="pre">mydoc</span></tt> command is needed to produce <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>,
@@ -5261,10 +5252,10 @@ LaTeX Beamer slides.</p>
 <h2>HTML5 Slides<a class="headerlink" href="#html5-slides" title="Permalink to this headline">¶</a></h2>
 <p>Not yet written...</p>
 <p>Just a very preliminary sketch of commands:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format html myslides \</span>
-<span class="go">          --pygments_html_style=native --keep_pygments_html_bg</span>
-<span class="go">Terminal&gt; doconce slides_html myslides reveal \</span>
-<span class="go">          --html_slide_theme=darkgray</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html myslides \
+          --pygments_html_style=native --keep_pygments_html_bg
+Terminal&gt; doconce slides_html myslides reveal \
+          --html_slide_theme=darkgray
 </pre></div>
 </div>
 <div class="section" id="potential-problems">
@@ -5576,7 +5567,7 @@ time in a Python script. In the Doconce source we place a line</p>
 <p>which is meant to generate a table with figures where the numbers
 correspond to arguments in the <tt class="docutils literal"><span class="pre">generative_native_table</span></tt> function.</p>
 <p>Suppose we have run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format sphinx mydoc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format sphinx mydoc
 </pre></div>
 </div>
 <p>In the resulting <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt> file we have the magic line <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;FIGTABLE</span> <span class="pre">...</span></tt>.
@@ -5792,13 +5783,16 @@ Now Doconce supports NumPy-style docstrings. Doconce can also do
 automatic references to Python documentation, say the <a class="reference external" href="http://docs.python.org/2.7/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
 module, but the link only works in case of Sphinx output.
 Typical syntax is</p>
-<div class="highlight-text"><div class="highlight"><pre>With :mod:`numpy:numpy` and the :func:`scipy:scipy.io.loadmat` function in
-the :mod:`scipy:scipy.io` module, we can ...
+<div class="highlight-text"><div class="highlight"><pre>With :mod:`numpy` and the :func:`scipy.io.loadmat` function in
+the :mod:`scipy.io` module, we can ...
 </pre></div>
 </div>
-<p>The prefix <tt class="docutils literal"><span class="pre">numpy</span></tt>, <tt class="docutils literal"><span class="pre">scipy</span></tt>, and <tt class="docutils literal"><span class="pre">python</span></tt> (for the standard library)
-are predefined in <tt class="docutils literal"><span class="pre">conf.py</span></tt> as generated by the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt>
-command.</p>
+<p>In case of ambiguous names, say a local <tt class="docutils literal"><span class="pre">math</span></tt> module, one can
+use <tt class="docutils literal"><span class="pre">python</span></tt>, <tt class="docutils literal"><span class="pre">numpy</span></tt>, <tt class="docutils literal"><span class="pre">scipy</span></tt>, and <tt class="docutils literal"><span class="pre">mpl</span></tt> (matplotlib) as prefix
+(as defined in <tt class="docutils literal"><span class="pre">conf.py</span></tt>, generated by the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt>):</p>
+<div class="highlight-text"><div class="highlight"><pre>With :func:`python:math.sin` instead of :func:`math.sin` ...
+</pre></div>
+</div>
 <p>(More info in the Sphinx API doc by the author - under development.)</p>
 <p class="last">A Mako function can provide greater flexibility such that
 other formats than Sphinx can take advantage of such references
@@ -5934,9 +5928,11 @@ Springer,
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Doconce Description</a></li>
