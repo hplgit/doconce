@@ -140,7 +140,7 @@ css_solarized = """\
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -974,8 +974,12 @@ def html_movie(m):
         # frame_%04d.png:0->120
         # http://some.net/files/frame_%04d.png:0->120
         import DocWriter
-        header, jscode, form, footer, frames = \
-                DocWriter.html_movie(filename, **kwargs)
+        try:
+            header, jscode, form, footer, frames = \
+                    DocWriter.html_movie(filename, **kwargs)
+        except ValueError as e:
+            print '*** error: %s' % str(e)
+            _abort()
         text = jscode + form
         if caption:
             text += '\n<br><em>' + caption + '</em><br>\n\n'
@@ -993,7 +997,7 @@ def html_movie(m):
 <iframe width="%s" height="%s" src="%s" frameborder="0" allowfullscreen></iframe>
 """ % (width, height, filename)
         if caption:
-            text += """\n<em>%s</em>\n\n""" % caption
+            text += """\n<p><em>%s</em></p>\n\n""" % caption
     elif 'vimeo.com' in filename:
         if not 'player.vimeo.com/video/' in filename:
             if not filename.startswith('http://'):
@@ -1124,14 +1128,20 @@ def html_ref_and_label(section_label2title, format, filestr):
     pattern = r'[Cc]hapter(s?)\s+ref\{'
     replacement = r'the chapter\g<1> ref{'
     filestr = re.sub(pattern, replacement, filestr)
+    # Do not use "the appendix" since the headings in appendices
+    # have "Appendix: title"
     pattern = r'[Aa]ppendix\s+ref\{'
-    replacement = r'the appendix ref{'
+    #replacement = r'the appendix ref{'
+    replacement = r' ref{'
     filestr = re.sub(pattern, replacement, filestr)
     pattern = r'[Aa]ppendices\s+ref\{'
-    replacement = r'the appendices ref{'
+    #replacement = r'the appendices ref{'
+    replacement = r' ref{'
     filestr = re.sub(pattern, replacement, filestr)
     # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!]\s+|^)the (sections?|chapters?|appendix|appendices)\s+ref'
+    # Check: end of previous sentence (?.!) or start of new paragraph.
+    #pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?|appendix|appendices)\s+ref'
+    pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?)\s+ref'
     replacement = r'\g<1>The \g<2> ref'
     filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
@@ -1798,6 +1808,18 @@ def define(FILENAME_EXTENSION,
             boots_style = default if 'bootswatch_' not in html_style else \
                           html_style.split('_')[1]
             urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
+            # Dark styles need some recommended options
+            dark_styles = 'amelia cyborg darkly slate superhero'.split()
+            if boots_style in dark_styles:
+                if not option('keep_pygments_html_bg') or option('pygments_html_style=', None) is None or option('html_code_style=', None) is None or option('html_pre_style=', None) is None:
+                    print """\
+*** warning: bootswatch style "%s" is dark and some
+    options to doconce format html are recommended:
+    --pygments_html_style=monokai     # dark background
+    --keep_pygments_html_bg           # keep code background in admons
+    --html_code_style=inherit         # use <code> style in surroundings (no red)
+    --html_pre_style=inherit          # use <pre> style in surroundings
+    """
 
         style = """
 <!-- Bootstrap style: %s -->
