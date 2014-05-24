@@ -62,6 +62,11 @@ def rst_movie(m):
     html_text = html_movie(m)
     html_text = indent_lines(html_text, 'sphinx')
     rst_text = '.. raw:: html\n' + html_text + '\n'
+
+    filename = m.group('filename')
+    if not filename.startswith('http') and not filename.startswith('mov'):
+        print '*** warning: movie file %s' % filename
+        print '    is not in mov* subdirectory - this will give problems with sphinx'
     return rst_text
 
 # these global patterns are used in st, epytext, plaintext as well:

@@ -356,14 +356,30 @@ Here is a movie in the MPEG format:
 
 MOVIE: [mov/wave.mpeg, width=600 height=470]
 
+realized by the specific command
+
+!bc
+MOVIE: [mov/wave.mpeg, width=600 height=470]
+!ec
 And here is a movie in the Ogg format:
 
 MOVIE: [mov/wave.ogg, width=600] A movie in Ogg format.
 
 A URL works too as movie address:
 
+!bc
+MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg] Ogg movie in cyberspace.
+!ec
+
 MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg] Ogg movie in cyberspace.
 
+!bwarning Important
+Movies will not work properly in `sphinx` format unless they are located
+in a directory (tree) with a name starting with `mov`. Make it a habit
+to place figures in `fig-X` and movies in `mov-X` directories, where `X`
+is a short logical name for the current document (or let the names of
+the directories be just `fig` and `mov`).
+!ewarning
 
 === MP4, WebM, and Ogg Movies in HTML ===
 

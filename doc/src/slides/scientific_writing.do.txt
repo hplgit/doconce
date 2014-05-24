@@ -34,8 +34,8 @@ FIGURE: [fig/doconce1b, width=400 frac=0.5]
 ======= Scientific writing = LaTeX =======
 
  * Pre 1980: Handwriting + publisher (paper or book)
- * Post 1984: scientists write TeX and LaTeX
- * Post 1995: publish LaTeX on the web or in journals and books
+ * Post 1985: scientists write LaTeX
+ * Post 1995: publish LaTeX on the web and in journals and books
 
 !bc latexcod
 \providecommand{\shadedskip}{}
@@ -56,7 +56,9 @@ print 'Hello, World!'
 \end{Verbatim}
 !ec
 
-Big late 1990s question: Will MS Word replace LaTeX? It never did!
+!bblock Big late 1990s question:
+Will MS Word replace LaTeX? It never did!
+!eblock
 
 !split
 ======= Scientific publishing needs to address new media =======
@@ -1213,7 +1215,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 #   for multiple formats. However: Doconce makes a fix so that Sphinx and
 #   other formats works with labels in align environments :-)
 
-Figures:
+Figures and movies:
 
  * Prepare figures in the right format: EPS for `latex`, PDF for `pdflatex`,
    PNG, GIF or JPEG for HTML formats (`html`, and HTML output from
@@ -1223,6 +1225,10 @@ Figures:
    (Recall that PDF and EPS are vector graphics formats that can scale to
    any size with much higher quality than PNG or other bitmap formats.)
  * Use `doconce combine_images` to combine several images into one.
+ * Store all figures in a directory (tree) with name `fig` or `fig-X`,
+   where `X` is some short logical name for the current document.
+ * Store all movies in a directory (tree) with name `mov` or `mov-X`.
+ * Favor the movie formats MP4, WebM, and Ogg (best suited for modern browsers).
 
 !split
 ======= Doconce writing tips =======

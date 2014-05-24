@@ -43,8 +43,13 @@ such that the verbatim environments become like
 \begin{minted}[...,linenos=true,...].)"""),
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
-    ('--html_style=',
-     'Name of theme for HTML style: plain, blueish, blueish2, bloodish, solarized, vagrant, bootstrap, bootswatch, bootstrap_*, bootswatch_*, ...).'),
+    ('--html_style=', """Name of theme for HTML style:
+plain, blueish, blueish2, bloodish, solarized, vagrant, bootstrap, bootswatch,
+bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
+bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
+                simplex, spacelab, united, yeti
+                (dark:) amelia, cyborg, darkly, slate, spruce,
+                superhero (demo: bootswatch.com"""),
     ('--html_code_style=',
      'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). Default: on.'),
     ('--html_pre_style=',
@@ -254,7 +259,6 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Turn on github-flavored-markdown dialect of the pandoc translator'),
     ('--strapdown',
      'Wrap Markdown output in HTML header/footer such that the output file (renamed as .html) can automatically be rendered as an HTML via strapdownjs.com technology. Combine with --github_md for richer output. Styles are set with --bootwatch_theme=cyborg (for instance).'),
-    ('--bootwatch_theme=', 'Boostrap themes from bootwatch.com. See http://strapdownjs.com/ for names. Default: spacelab.'),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ('--quiz_question_prefix=', """\

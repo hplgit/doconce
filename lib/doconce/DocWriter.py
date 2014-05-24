@@ -790,7 +790,7 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
 
             plotfiles = glob.glob(filename_generator)
             if not plotfiles:
-                raise ValueError('No plotfiles on the form' %
+                raise ValueError('No plotfiles on the form %s' %
                                  filename_generator)
             plotfiles.sort()
         elif '->' in filename_generator:
