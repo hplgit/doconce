@@ -676,15 +676,21 @@ Terminal> pdflatex -shell-escape mydoc
 ===== XeLaTeX =====
 
 XeLaTeX is an alternative to pdfLaTeX and is run in almost the
-same way, except for the `-DXELATEX` flag to ptex2tex:
+same way, except for the `--xelatex` flag to `doconce format`:
 
 !bc
-Terminal> doconce format pdflatex mydoc
-Terminal> doconce ptex2tex mydoc -DXELATEX
-Terminal> ptex2tex -DXELATEX mydoc  # alternative
+Terminal> doconce format pdflatex mydoc --xelatex
+Terminal> doconce ptex2tex mydoc
 Terminal> xelatex mydoc
 !ec
 
+===== From PDF to e-book formats =====
+
+PDF (as generated from LaTeX above) can be read on most devices today.
+However, for Kindle and other devices specialized for e-books you
+need to convert to their format. The "Calibre": "http://calibre-ebook.com/"
+program can produce epub, mobi, and other e-book formats from PDF,
+see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html".
 
 ===== Plain ASCII Text =====
 
