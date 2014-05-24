@@ -9,7 +9,7 @@ Doconce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Apr 16, 2014
+:Date: May 20, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -130,7 +130,7 @@ Doconce
 Doconce itself is pure Python code hosted at `<https://github.com/hplgit/doconce>`_.  Its installation from the
 Git source follows the standard procedure:
 
-.. code-block:: console
+.. code-block:: text
 
         # Doconce
         git clone git@github.com:hplgit/doconce.git
@@ -143,7 +143,7 @@ above procedure and whenever a problem occurs, make sure to
 update to the most recent version:
 
 
-.. code-block:: console
+.. code-block:: text
 
         cd doconce
         git pull origin master
@@ -174,7 +174,7 @@ If you make use of the `Preprocess <http://code.google.com/p/preprocess>`_
 preprocessor, this program must be installed:
 
 
-.. code-block:: console
+.. code-block:: text
 
         svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
         cd preprocess
@@ -188,7 +188,7 @@ A much more advanced alternative to Preprocess is
 conveniently done by ``pip``,
 
 
-.. code-block:: console
+.. code-block:: text
 
         pip install Mako
 
@@ -196,7 +196,7 @@ This command requires ``pip`` to be installed. On Debian Linux systems,
 such as Ubuntu, the installation is simply done by
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install python-pip
 
@@ -219,7 +219,7 @@ major platforms.  On Debian Linux (including Ubuntu) systems one can
 simply write
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install imagemagick
 
@@ -230,7 +230,7 @@ the ``pdftk``, ``pdfnup``, and ``pdfcrop`` programs from the ``texlive-extra-uti
 Debian package. The latter gets installed by
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install texlive-extra-utils
 
@@ -239,7 +239,7 @@ Automatic image conversion from EPS to PDF calls up ``epstopdf``, which
 can be installed by
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install texlive-font-utils
 
@@ -251,7 +251,7 @@ The utility ``doconce spellcheck`` applies the ``ispell`` program for
 spellcheck. On Debian (including Ubuntu) it is installed by
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install ispell
 
@@ -265,7 +265,7 @@ in your document. On the website, click on *Clone*, copy the
 command and run it:
 
 
-.. code-block:: console
+.. code-block:: text
 
         hg clone https://bitbucket.org/logg/publish
 
@@ -273,7 +273,7 @@ Thereafter go to the ``publish`` directory and run the ``setup.py`` script
 for installing Publish:
 
 
-.. code-block:: console
+.. code-block:: text
 
         cd publish
         sudo python setup.py
@@ -288,7 +288,7 @@ verbatim code blocks you need `ptex2tex <http://code.google.com/p/ptex2tex>`_,
 which is installed by
 
 
-.. code-block:: console
+.. code-block:: text
 
         svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
         cd ptex2tex
@@ -298,7 +298,7 @@ It may happen that you need additional style files, you can run
 a script, ``cp2texmf.sh``:
 
 
-.. code-block:: console
+.. code-block:: text
 
         cd latex
         sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
@@ -309,7 +309,7 @@ that ``ptex2tex`` potentially makes use of. Some more standard stylefiles
 are also needed. These are installed by
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install texlive
 
@@ -326,13 +326,13 @@ and popular among many
 users. This style requires the package `Pygments <http://pygments.org>`_
 to be installed. On Debian Linux,
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install python-pygments
 
 Alternatively, the package can be installed manually:
 
-.. code-block:: console
+.. code-block:: text
 
         hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
         cd pygments
@@ -341,7 +341,7 @@ Alternatively, the package can be installed manually:
 One can also do the simple
 
 
-.. code-block:: console
+.. code-block:: text
 
         pip install sphinx
 
@@ -420,7 +420,7 @@ HTML, XML, OpenOffice, and so on, through the `docutils <http://docutils.sourcef
 most recent version can be done by
 
 
-.. code-block:: console
+.. code-block:: text
 
         svn checkout \
           http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
@@ -431,7 +431,7 @@ most recent version can be done by
 The command
 
 
-.. code-block:: console
+.. code-block:: text
 
         pip install sphinx
 
@@ -439,7 +439,7 @@ installs Docutils along with Sphinx and Pygments.
 
 To use the OpenOffice suite you will typically on Debian systems install
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install unovonv libreoffice libreoffice-dmaths
 
@@ -458,7 +458,7 @@ Output to ``sphinx`` requires of course the
 installed by
 
 
-.. code-block:: console
+.. code-block:: text
 
         hg clone https://bitbucket.org/birkenfeld/sphinx
         cd sphinx
@@ -468,7 +468,7 @@ installed by
 An alternative is
 
 
-.. code-block:: console
+.. code-block:: text
 
         pip install sphinx
 
@@ -499,7 +499,7 @@ translated to a range of other formats. Installation of `Pandoc <http://johnmacf
 easily done by
 
 
-.. code-block:: console
+.. code-block:: text
 
         sudo apt-get install pandoc
 
@@ -511,7 +511,7 @@ Epydoc Output
 When the output format is ``epydoc`` one needs that program too, installed
 by
 
-.. code-block:: console
+.. code-block:: text
 
         svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
         cd epydoc
@@ -646,7 +646,7 @@ Demos
 The current text is generated from a Doconce format stored in the
 directory
 
-.. code-block:: console
+.. code-block:: text
 
         doc/manual/manual.do.txt
 
@@ -656,7 +656,7 @@ formats: HTML, LaTeX, plain text, etc., stored in the subdirectory ``demo``.
 
 Another demo is found in
 
-.. code-block:: console
+.. code-block:: text
 
         doc/tutorial/tutorial.do.txt
 
@@ -676,14 +676,14 @@ Transformation of a Doconce document ``mydoc.do.txt`` to various other
 formats apply the script ``doconce format``:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format formatname mydoc.do.txt
 
 or drop the extension:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format formatname mydoc
 
@@ -702,7 +702,7 @@ carries out the commands explained below. If our Doconce source
 is in ``main_myproj.do.txt``, we run
 
 
-.. code-block:: console
+.. code-block:: text
 
         doconce makefile main_myproj html pdflatex sphinx
 
@@ -728,7 +728,7 @@ filename with the syntax ``-DMYVAR`` or ``MYVAR=True`` for defining
 a variable ``MYVAR``, or ``-DMYVAR=val`` or ``MYVAR=val`` for giving
 ``MYVAR`` the value ``val``. For example,
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format sphinx mydoc -Dextra_sections -DVAR1=5
         Terminal> doconce format sphinx mydoc extra_sections=True VAR1=5
@@ -752,7 +752,7 @@ running ``preprocess`` and ``mako``, respectively.
 
 Inline comments in the text are removed from the output by
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format latex mydoc --skip_inline_comments
 
@@ -797,7 +797,7 @@ Basics
 Making an HTML version of a Doconce file ``mydoc.do.txt``
 is performed by
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format html mydoc
 
@@ -877,7 +877,7 @@ document directory, edit the template as needed (also check that
 paths to the ``css`` and ``js`` subdirectories are correct - according
 to how you store the template files), and run
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format html mydoc --html_template=mytemplate.html
 
@@ -907,7 +907,7 @@ the HTML document: ``mydoc_bloodish.html``, ``mydoc_solarized``, and
 ``mydoc_vagrant``.
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format html mydoc --html_style=bloodish \
                   --html_output=mydoc_bloodish
@@ -1008,7 +1008,7 @@ Pandoc and Markdown
 Output in Pandoc's extended Markdown format results from
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format pandoc mydoc
 
@@ -1016,7 +1016,7 @@ The name of the output file is ``mydoc.md``.
 From this format one can go to numerous other formats:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
 
@@ -1035,7 +1035,7 @@ The HTML output from
 mathematics, and for this purpose one should use ``doconce md2html``:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format pandoc mydoc
         Terminal> doconce m2html mydoc
@@ -1052,7 +1052,7 @@ md2latex`` (which runs ``pandoc``), or ``doconce format latex``, and then
 going from LaTeX to the desired format using ``pandoc``.
 Here is an example on the latter strategy:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format latex mydoc
         Terminal> doconce ptex2tex mydoc
@@ -1130,7 +1130,7 @@ where one first quotes the issue and then provides an answer:
 Say this text is stored in a file ``mycomments.do.txt``. Running
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format pandoc mycomments --github_md
 
@@ -1158,7 +1158,7 @@ The option ``--strapdown`` outputs the relevant header and footer.
 The output file must be renamed such that it gets the extension ``.html``:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format pandoc mydoc --strict_markdown_output \
                   --strapdown --bootstrap_bootwatch_theme=slate
@@ -1242,7 +1242,7 @@ either the ``ptex2tex`` program or Doconce's (simplified) version of it:
 Filter the doconce text to the ``ptex2tex`` "pre-LaTeX form"
 ``mydoc.p.tex``:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format latex mydoc
 
@@ -1297,48 +1297,31 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_exercise_numbering=absolute,chapter``
 
+ * ``--latex_movie=media9,href,multimedia,movie15``
+
+ * ``--latex_movie_controls=on``
+
+ * ``--latex_external_movie_viewer`` (for ``movie15`` package)
+
+ * ``--xelatex``
+
 **Step 2.**
 Run ``ptex2tex`` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> ptex2tex mydoc
 
 In case you do not have ``ptex2tex``, you may run the (simplified) version
 that comes with Doconce:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce ptex2tex mydoc
 
 
-The ``.p.tex`` file contains a lot of preprocessor variables (like C macros)
-that can be used to steer certain properties of the LaTeX document.
-For example, to turn on the Helvetica font instead of the standard
-Computer Modern font, run
-
-.. code-block:: console
-
-        Terminal> ptex2tex -DHELVETICA mydoc
-        Terminal> doconce ptex2tex mydoc -DHELVETICA  # alternative
-
-
-Preprocessor variables to be defined or undefined are
-
- * ``XELATEX`` for processing by ``xelatex``
-
- * ``MOVIE`` for specifying how movies are handled: the value ``media9``
-   implies the ``media9`` package and the ``\includemedia`` command
-   for ``.flv`` and ``.mp4`` movies,
-   or ``movie15`` and the ``\includemovie`` command for ``.mpeg`` and ``.avi``
-   movies;
-   ``multimedia`` for Beamer-style ``\movie`` command,
-   or ``href`` for the plain `\h:ref:`run:file`` command. The latter
-   is default.
-
- * ``MOVIE_CONTROLS`` adds buttons for starting/stopping movies if the
-   ``media9`` package is used.
+The ``ptex2tex`` command can set two preprocessor variables:
 
  * ``PREAMBLE`` to turn the LaTeX preamble on or off (i.e., complete document
    or document to be included elsewhere - and note that
@@ -1347,7 +1330,8 @@ Preprocessor variables to be defined or undefined are
 
  * ``MINTED`` for inclusion of the minted package for typesetting of
    code with the Pygments tool (which requires ``latex``
-   or ``pdflatex`` to be run with the ``-shell-escape`` option)
+   or ``pdflatex`` to be run with the ``-shell-escape`` option); not used
+   for ``doconce ptex2tex`` only in the ``ptex2tex`` program
 
 If you are not satisfied with the generated Doconce preamble, you can provide
 your own preamble by adding the command-line option ``--latex_preamble=myfile``.
@@ -1365,14 +1349,12 @@ terminal session, where ``sys`` is set to a certain environment in
 ``.ptex2tex.cfg`` (e.g., ``CodeTerminal``).  There are about 40 styles to
 choose from, and you can easily add new ones.
 
-Also the ``doconce ptex2tex`` command supports preprocessor directives
-for processing the ``.p.tex`` file. The command allows specifications
+The ``doconce ptex2tex`` allows specifications
 of code environments as well. Here is an example:
 
-.. code-block:: console
+.. code-block:: text
 
-        Terminal> doconce ptex2tex mydoc -DLATEX_HEADING=traditional \
-                  -DPALATINO -DA6PAPER \
+        Terminal> doconce ptex2tex mydoc \
                   "sys=\begin{quote}\begin{verbatim}@\end{verbatim}\end{quote}" \
                   fpro=minted fcod=minted shcod=Verbatim envir=ans:nt
 
@@ -1406,7 +1388,7 @@ latter performs substitutions using regular expressions.
 You will use ``doconce replace`` to edit ``section{`` to ``section*{``:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce replace 'section{' 'section*{' mydoc.tex
 
@@ -1416,7 +1398,7 @@ title, say "Using", and insert a break after than word. With
 a group before "Using" and a group after:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce subst 'title\{(.+)Using (.+)\}' \
                   'title{\g<1> \\\\ [1.5mm] Using \g<2>' mydoc.tex
@@ -1431,7 +1413,7 @@ generating PDF from the LaTeX file so the ``doconce subst`` or
 Compile ``mydoc.tex``
 and create the PDF file:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> latex mydoc
         Terminal> latex mydoc
@@ -1450,7 +1432,7 @@ needed.  This package is automatically included by ``doconce ptex2tex`` if
 the minted style is used, while you have to include the
 ``-DMINTED`` preprocessor option when running the ``ptex2tex`` program:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> ptex2tex -DMINTED mydoc
 
@@ -1459,7 +1441,7 @@ If the minted style is used, ``latex`` (or ``pdflatex`` or ``xelatex``)
 ``-shell-escape`` option:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> latex -shell-escape mydoc
         Terminal> latex -shell-escape mydoc
@@ -1475,13 +1457,13 @@ PDFLaTeX
 Running ``pdflatex`` instead of ``latex`` follows almost the same steps,
 but the start is
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format latex mydoc
 
 Then ``ptex2tex`` is run as explained above, and finally
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> pdflatex -shell-escape mydoc
         Terminal> makeindex mydoc   # if index
@@ -1513,7 +1495,7 @@ We can go from Doconce "back to" plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
 
@@ -1525,13 +1507,13 @@ Going from Doconce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the Doconce text to a
 reStructuredText file ``mydoc.rst``:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format rst mydoc.do.txt
 
 We may now produce various other formats:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> rst2html.py  mydoc.rst > mydoc.html # html
         Terminal> rst2latex.py mydoc.rst > mydoc.tex  # latex
@@ -1545,7 +1527,7 @@ However, it is more convenient to use the program ``unovonv``
 to convert between the many formats OpenOffice supports *on the command line*.
 Run
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> unoconv --show
 
@@ -1554,7 +1536,7 @@ For example, the following commands take
 ``mydoc.odt`` to Microsoft Office Open XML format,
 classic MS Word format, and PDF:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> unoconv -f ooxml mydoc.odt
         Terminal> unoconv -f doc mydoc.odt
@@ -1580,7 +1562,7 @@ Sphinx
 Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the ``doconce sphinx_dir`` command:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce sphinx_dir author="authors' names" \
                   title="some title" version=1.0 dirname=sphinxdir \
@@ -1595,7 +1577,7 @@ Sphinx (the default theme is ``'default'``).
 
 One often just runs the simple command
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce sphinx_dir mydoc
 
@@ -1607,7 +1589,7 @@ The ``doconce sphinx_dir`` command generates a script
 document.  Run
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> python automake_sphinx.py
 
@@ -1615,7 +1597,7 @@ As the output also tells, you can see the Sphinx HTML version of the document
 by running
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> google-chrome sphinx-rootdir/_build/html/index.html
 
@@ -1627,7 +1609,7 @@ recompile the Doconce file if the Sphinx ``.rst`` version already exists.
 In each edit-and-watch cycle do
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> rm mydoc.rst; python automake_sphinx.py
 
@@ -1701,7 +1683,7 @@ A script
 For example,
 to realize the themes ``fenics``, ``pyramid``, and ``pylon`` one writes
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> ./make-themes.sh fenics pyramid pylon
 
@@ -1756,7 +1738,7 @@ The final alternative is to save the edited ``conf.py`` file somewhere
 and reuse it the next time ``doconce sphinx_dir`` is run
 
 
-.. code-block:: console
+.. code-block:: text
 
         doconce sphinx_dir theme=scipy_lectures \
                            conf.py=../some/path/conf.py mydoc
@@ -1772,7 +1754,7 @@ Sphinx document from a file ``mydoc.do.txt``.
 **Step 1.**
 Translate Doconce into the Sphinx format:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format sphinx mydoc
 
@@ -1782,7 +1764,7 @@ Create a Sphinx root directory
 either manually or by using the interactive ``sphinx-quickstart``
 program. Here is a scripted version of the steps with the latter:
 
-.. code-block:: console
+.. code-block:: text
 
         mkdir sphinx-rootdir
         sphinx-quickstart <<EOF
@@ -1819,7 +1801,7 @@ are included.
 **Step 3.**
 Copy the ``mydoc.rst`` file to the Sphinx root directory:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> cp mydoc.rst sphinx-rootdir
 
@@ -1847,7 +1829,7 @@ is included, i.e., add ``mydoc`` to the ``toctree`` section so that it becomes
 **Step 5.**
 Generate, for instance, an HTML version of the Sphinx source:
 
-.. code-block:: console
+.. code-block:: text
 
         make clean   # remove old versions
         make html
@@ -1862,7 +1844,7 @@ and Texinfo files.
 **Step 6.**
 View the result:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> firefox _build/html/index.html
 
@@ -1884,7 +1866,7 @@ These formats are called
 ``gwiki``, ``mwiki``, and ``cwiki``, respectively.
 Transformation from Doconce to these formats is done by
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format gwiki mydoc.do.txt
         Terminal> doconce format mwiki mydoc.do.txt
@@ -2287,7 +2269,7 @@ The caption may contain a label for referencing the figure.
 Combining several image files into one, in a table fashion, can be done by the
 ``montage`` program from the ImageMagick suite:
 
-.. code-block:: console
+.. code-block:: text
 
         montage -background white -geometry 100% -tile 2x \
                 file1.png file2.png ... file4.png result.png
@@ -2303,7 +2285,7 @@ using ``pdftk`` (to combine images to one file),
 remove surrounding whitespace):
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
         Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
@@ -2402,20 +2384,21 @@ Movie Handling in Various Formats
 Movies are easiest shown in the HTML format.
 The reST and Sphinx formats apply the same raw HTML code as the
 HTML format and therefore have the same capabilities.
-The LaTeX format results in a ``.p.tex`` file that have three
-methods for showing movies, set by the option ``-DMOVIE=...`` to
-``ptex2tex`` or ``doconce ptex2tex``. The values of ``MOVIE`` are
+The LaTeX format supports different methods for embedding
+movies via the option ``-latex_movie=...``. Proper values are listed below.
 
-1. ``media9``:
+1. ``href``: the `\h:ref:`run:file`{link}` is used for all movies (default).
+
+2. ``media9``:
    the ``media9`` package is used for Flash and MP4 movies, ``movie15``
    for MPEG and AVI files, and a simple `\h:ref:`run:file`{link}` command
    for other formats. Only Acrobat Reader supports displaying these
    type of movies.
 
-2. ``multimedia``: the ``\movie`` command (known from LaTeX Beamer) is used
+3. ``multimedia``: the ``\movie`` command (known from LaTeX Beamer) is used
    for movies.
 
-3. ``href``: the `\h:ref:`run:file`{link}` is used for all movies (default).
+4. ``movie15``: the old ``movie15`` package is used.
 
 For all other formats, an HTML file that acts as a movie player is
 generated and linked from the output document. This movie player
@@ -3903,7 +3886,7 @@ Here is an example:
    
            \begin{animateinline}[controls,loop]{2} % frames: f000.png -> f098.png
    
-   Setting the rate to 12 in for this particular movie based on the
+   Setting the rate to 12 instead for this particular movie based on the
    ``f%03.png`` files, the following ``doconce subst`` command does the job
    in a script:
    
@@ -3950,7 +3933,7 @@ The output is copied into the Doconce source. For example,
 results in
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> python -c 'print "Hello,\nWorld!"'
         Hello,
@@ -4134,7 +4117,7 @@ viewed in the browser rather than being downloaded, we recommend
 to transform the source code file to HTML format by running
 ``pygmentize``, e.g.,
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> pygmentize -l bash -f html -O full,style=emacs \
                   -o _static/make.sh.html subdir/make.sh
@@ -4210,7 +4193,7 @@ type of quotation (which is a common mistake),
 one can run a regular expression search like
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> find . -name '*.do.txt' -exec grep -E \
                   '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
@@ -4246,7 +4229,7 @@ This is rendered as
 
     Here comes a long line with a specification of a number with unit at the end,
     which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_: 7.4 |nbsp| km is traveled
-    in~:math:`7.4/5.5\approx 1.345`~s. (Computer code, where the tilde has a
+    in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s. (Computer code, where the tilde has a
     meaning, as in ``y = ~x``, is not affected. The non-breaking character only
     works between characters, numbers, and the math dollar sign.)
 
@@ -4906,7 +4889,7 @@ be imported to a Publish database, residing in the file ``papers.pub``,
 by the commands
 
 
-.. code-block:: console
+.. code-block:: text
 
         publish import refs1.bib
         publish import refs2.bib
@@ -4968,7 +4951,7 @@ Export of everything in the database to
 BibTeX is done by
 
 
-.. code-block:: console
+.. code-block:: text
 
         publish export mybibtexfile.bib
 
@@ -5051,7 +5034,7 @@ The bibliography style is "plain" in LaTeX output. To change this, just
 edit the ``.p.tex`` file. For example,
 
 
-.. code-block:: console
+.. code-block:: text
 
         doconce format latex mydoc
         doconce replace 'bibliographystyle{plain}' 'bibliographystyle{abbrev}' mydoc.p.tex
@@ -5122,7 +5105,7 @@ Data in CSV format can be transformed to Doconce table format
 by the ``doconce csv2table`` utility:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce csv2table somefile.csv > table.do.txt
 
@@ -5158,13 +5141,13 @@ Exercises, Problems, Projects, and Examples
 Doconce has special support for four types of "exercises", named
 *exercise*, *problem*, *project*, or *example*.
 These are all typeset as special kind of
-sections. Such sections start with a subsection
-headline, 5 ``=`` characters, and last up to the
+subsections. Such subsections start with a subsection
+headline surrounded 5 ``=`` characters, and last up to the
 next headline or the end of the file. The headline itself must
 consists of the word "Exercise", "Problem", "Project", or "Example", followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
-name of result file (if the answer to the exercise is to be handed
+name of the result file (if the answer to the exercise is to be handed
 in) and a solution file. The Doconce code looks like this:
 
 
@@ -5180,8 +5163,9 @@ in) and a solution file. The Doconce code looks like this:
         
 
 Doconce will recognize the exercise, problem, project, or example *title*,
-the *label*, the *result file*, the *solution* (if any of
-these three entities is present), and the *running text*. In addition,
+the optional *label*, the optional *name of the answer file* (``file=``), the
+optional name of the *solution* file (``solution=``),
+and the *running text*. In addition,
 one can add subexercise environments, starting with ``!bsubex`` and ending
 with ``!esubex``, on the beginning of separate lines.
 Within the main exercise or
@@ -5191,13 +5175,14 @@ directives ``!bans``, ``!eans``, ``!bsol``, ``!esol``, ``!bhint``, ``!ehint``, w
 all must appear on the beginning of a separate line (just as
 ``!bc`` and ``!ec``).
 
-The solution environment allows inline
-solution as an alternative to the ``solution=...`` directive mentioned above,
-which requires that the solution is in a separate file. Comment lines
-are inserted so that the beginning and end of answers and solutions can
-be identified and removed if desired.
+The solution environment with ``!bsol`` and ``!esol`` allows inline
+solution as an alternative to the ``solution=...`` directive mentioned
+above, which requires that the solution is in a separate file. Comment
+lines are inserted so that the beginning and end of answers and
+solutions can be identified and removed if desired.
 
 A full exercise set-up can be sketched as follows:
+
 
 .. code-block:: text
 
@@ -5321,8 +5306,9 @@ List of Exercises, Problems, and Projects
 
 Doconce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
-By default, no such listing is enabled. When running ``doconce ptex2tex`` or
-``ptex2tex``, there is a preprocessor variable ``LIST_OF_EXERCISES``
+By default, no such listing is enabled. When running
+``doconce format pdflatex`` (or ``latex``)
+there is a command-line option ``--list_of_exercises``
 that can be set to
 
  * ``toc``: include exercises, problems, and projects as part of
@@ -5330,6 +5316,11 @@ that can be set to
 
  * ``loe``: make a separate list of exercises, problems, and projects,
    which appears after the table of contents
+
+There is a special LaTeX environment for the exercises that one can
+use to further tailor the appearance of exercises (given that one
+edits the ``.tex`` file, preferably by a script after each ``doconce format``
+command).
 
 .. _sec:verbatim:blocks:
 
@@ -6101,7 +6092,7 @@ as a postprocess, where the ``*`` means ``html``, ``rst``, or ``beamer``.
 Splitting an HTML document is done by
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format html mydoc
         Terminal> doconce split_html mydoc
@@ -6131,7 +6122,7 @@ look up the HTML code and use ``doconce replace`` to edit the links to
 the images used for navigation. Some more colorful images arise from
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce replace 'prev1.png' 'Knob_Left.png' \
                   mydoc.html ._mydoc*.html
@@ -6152,7 +6143,7 @@ Here is a typical split of a large Sphinx document ``mydoc.rst``
 into smaller pieces:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce sphinx_dir author="Some Author" \
                   title="Short title" theme=fenics dirname=mydir mydoc
@@ -6345,7 +6336,7 @@ Not yet written...
 
 Just a very preliminary sketch of commands:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format html myslides \
                   --pygments_html_style=native --keep_pygments_html_bg
@@ -6721,7 +6712,7 @@ correspond to arguments in the ``generative_native_table`` function.
 Suppose we have run
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> doconce format sphinx mydoc
 
@@ -6995,12 +6986,18 @@ Typesetting of Function Arguments, Return Values, and Variables
    .. code-block:: text
    
    
-           With :mod:`numpy:numpy` and the :func:`scipy:scipy.io.loadmat` function in
-           the :mod:`scipy:scipy.io` module, we can ...
+           With :mod:`numpy` and the :func:`scipy.io.loadmat` function in
+           the :mod:`scipy.io` module, we can ...
    
-   The prefix ``numpy``, ``scipy``, and ``python`` (for the standard library)
-   are predefined in ``conf.py`` as generated by the ``doconce sphinx_dir``
-   command.
+   In case of ambiguous names, say a local ``math`` module, one can
+   use ``python``, ``numpy``, ``scipy``, and ``mpl`` (matplotlib) as prefix
+   (as defined in ``conf.py``, generated by the ``doconce sphinx_dir``):
+   
+   
+   .. code-block:: text
+   
+   
+           With :func:`python:math.sin` instead of :func:`math.sin` ...
    
    (More info in the Sphinx API doc by the author - under development.)
    

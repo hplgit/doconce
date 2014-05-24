@@ -258,10 +258,10 @@ def toc2html(level_depth=2, indent=3, font_size=80):
         if level > level_max:
             continue
         spaces = '&nbsp;'*(indent*(level - level_min))
-        title = title.strip()
+        btitle = title = title.strip()
         if level_depth == 2 and level == level_min:
-            title = '<b>%s</b>' % title  # bold for highest level
-        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, title)
+            btitle = '<b>%s</b>' % btitle  # bold for highest level
+        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, btitle)
     return toc_html
 
 
@@ -710,7 +710,9 @@ MathJax.Hub.Config({
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
-            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
+            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
+            # Exclude lists (not a good idea if they are part of the intro...)
+            #pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
             m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
             if m:
                 # If the user has a !split in the beginning, insert a button

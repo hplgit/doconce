@@ -327,25 +327,20 @@ system doconce format html $name --no_mp4_webm_ogg_alternatives
 cp movies.html movie_demo
 
 rm -f $name.aux
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9
+system doconce format pdflatex $name --latex_movie=media9
+system doconce ptex2tex $name
 system pdflatex $name
 pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+system doconce format pdflatex $name --latex_movie=media9 --latex_external_movie_viewer
+system doconce ptex2tex $name
 system pdflatex $name
 cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
 
 # multimedia (beamer \movie command) does not work well
 #rm $name.aux
-#system doconce format pdflatex $name
-#system doconce ptex2tex $name -DMOVIE=multimedia
-#system pdflatex $name
-#cp $name.pdf movie_demo/${name}_multimedia.pdf
-#cp $name.tex ${name}_multimedia.tex
 
 rm -f $name.aux
 system doconce format pdflatex $name

@@ -364,6 +364,12 @@ Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
+# #if FORMAT in ("html", "sphinx")
+Test SVG figure:
+
+FIGURE: [http://openclipart.org/people/jpneok/junebug.svg, width=200]
+# #endif
+
 # Test wikimedia type of files that otherwise reside in subdirs
 # #if FORMAT == "mwiki"
 FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
@@ -1713,21 +1719,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -2400,6 +2395,7 @@ Test URL as figure name:
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
 \end{center}
+
 
 
 % Test wikimedia type of files that otherwise reside in subdirs
@@ -4322,6 +4318,7 @@ Test URL as figure name:
 \end{center}
 
 
+
 % Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -6238,6 +6235,7 @@ Test URL as figure name:
 \end{center}
 
 
+
 % Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -7768,6 +7766,7 @@ Test URL as figure name:
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
+
 
 
 
@@ -9419,6 +9418,14 @@ Test URL as figure name:
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
+
+
+
+Test SVG figure:
+
+
+.. figure:: http://openclipart.org/people/jpneok/junebug.svg
+   :width: 200
 
 
 
@@ -11117,6 +11124,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 
+
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 
@@ -12409,6 +12417,7 @@ Test URL as figure name:
 
 
 [[File:f_plot.png|frame|500,px|link=https://raw.github.com/hplgit/doconce/master/doc/src/blog|alt=f_plot.png|<span title=""></span>]]
+
 
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -13809,6 +13818,7 @@ Test URL as figure name:
 
 {{https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png|}}
 
+
 <wiki:comment> Test wikimedia type of files that otherwise reside in subdirs </wiki:comment>
 
 
@@ -15061,6 +15071,7 @@ FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning se
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
+
 
 
 
@@ -16404,6 +16415,7 @@ FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning se
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
+
 
 
 
@@ -17863,6 +17875,7 @@ FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, w
 
 
 
+
 *Remark.*
 Movies are tested in separate file movies.do.txt.
 
@@ -19317,6 +19330,7 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 ![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
+
 
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
@@ -20985,6 +20999,7 @@ is at the end with only one newline.
       "Test URL as figure name:\n",
       "\n",
       "![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)\n",
+      "\n",
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
@@ -23278,7 +23293,7 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta name="author" content="A. Dummy Author" />
   <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
-  <meta name="date" content="2014-05-10" />
+  <meta name="date" content="2014-05-20" />
   <title>A Document for Testing Doconce</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -25442,21 +25457,10 @@ open=right               % start new chapters on odd-numbered pages
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -27136,6 +27140,12 @@ Test URL as figure name:
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
+
+<p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
 
 <p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
@@ -29298,6 +29308,12 @@ Test URL as figure name:
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
+
+<p>
 <b>Remark.</b>
 Movies are tested in separate file <code>movies.do.txt</code>.
 
@@ -31064,6 +31080,12 @@ Test URL as figure name:
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
+
+<p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
@@ -32211,21 +32233,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -32941,6 +32952,7 @@ Test URL as figure name:
 \begin{center}  % inline figure
   \centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
 \end{center}
+
 
 
 % Test wikimedia type of files that otherwise reside in subdirs
@@ -34724,25 +34736,20 @@ system doconce format html $name --no_mp4_webm_ogg_alternatives
 cp movies.html movie_demo
 
 rm -f $name.aux
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9
+system doconce format pdflatex $name --latex_movie=media9
+system doconce ptex2tex $name
 system pdflatex $name
 pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+system doconce format pdflatex $name --latex_movie=media9 --latex_external_movie_viewer
+system doconce ptex2tex $name
 system pdflatex $name
 cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
 
 # multimedia (beamer \movie command) does not work well
 #rm $name.aux
-#system doconce format pdflatex $name
-#system doconce ptex2tex $name -DMOVIE=multimedia
-#system pdflatex $name
-#cp $name.pdf movie_demo/${name}_multimedia.pdf
-#cp $name.tex ${name}_multimedia.tex
 
 rm -f $name.aux
 system doconce format pdflatex $name
@@ -35569,7 +35576,7 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="HPL" />
-  <meta name="date" content="2014-05-10" />
+  <meta name="date" content="2014-05-20" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -35747,21 +35754,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -36320,7 +36316,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -36330,8 +36326,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -36340,14 +36336,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -36707,7 +36703,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -36717,8 +36713,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -36727,14 +36723,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -37094,7 +37090,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -37104,8 +37100,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -37114,14 +37110,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -37690,6 +37686,12 @@ Test URL as figure name:
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
 
 <p>
+Test SVG figure:
+
+<p>
+<center><p><img src="http://openclipart.org/people/jpneok/junebug.svg" align="bottom" width=200></p></center>
+
+<p>
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 <p>
@@ -38129,7 +38131,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -38139,8 +38141,8 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
      <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
@@ -38149,14 +38151,14 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
      <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
      <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
      <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;">References</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
@@ -39550,6 +39552,14 @@ Test URL as figure name:
 
 
 
+Test SVG figure:
+
+
+.. figure:: http://openclipart.org/people/jpneok/junebug.svg
+   :width: 200
+
+
+
 .. Test wikimedia type of files that otherwise reside in subdirs
 
 
@@ -40885,21 +40895,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -50065,7 +50064,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+          <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -50661,7 +50660,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -50824,7 +50823,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -51413,7 +51412,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -59707,21 +59706,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -62294,51 +62282,20 @@ open=right               % start new chapters on odd-numbered pages
 
 \usepackage{ptex2tex}
 
-% #ifndef MOVIE
-% #define MOVIE "href"
-% #ifndef MOVIE_CONTROLS
-% #define MOVIE_CONTROLS
-% #endif
-% #endif
-
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-% #if MOVIE == "media9"
-% #ifdef XELATEX
-\usepackage[xetex]{media9}
-% #else
-\usepackage{media9}
-% #endif
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href"
-% #endif
-
-% #if MOVIE == "media9"
-\usepackage{movie15}
-% #endif
 
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -63021,20 +62978,7 @@ and rendered as
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\includemedia[
-width=0.6\linewidth,height=0.45\linewidth,
-activate=pageopen,
-flashvars={
-modestbranding=1   % no YouTube logo in control bar
-&autohide=1        % controlbar autohide
-&showinfo=0        % no title and other info before start
-&rel=0             % no related videos after end
-},
-]{}{http://www.youtube.com/embed/P8VcZzgdfSc}
-% #else
 \href{{http://www.youtube.com/embed/P8VcZzgdfSc}}{\nolinkurl{http://www.youtube.com/embed/P8VcZzgdfSc}}
-% #endif
 \end{center}
 \end{doconce:movie}
 
@@ -65092,21 +65036,10 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -67511,58 +67444,22 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{ptex2tex}
 
-% #ifndef MOVIE
-% #define MOVIE "href"
-% #ifndef MOVIE_CONTROLS
-% #define MOVIE_CONTROLS
-% #endif
-% #endif
-
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-% #if MOVIE == "media9"
-% #ifdef XELATEX
-\usepackage[xetex]{media9}
-% #else
-\usepackage{media9}
-% #endif
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href"
-% #endif
-
-% #if MOVIE == "media9"
-\usepackage{movie15}
-% #endif
-
-% #ifdef XELATEX
-\usepackage[xetex]{animate}
-\usepackage{graphicx}
-% #else
 \usepackage{animate,graphicx}
-% #endif
+
 
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -67644,19 +67541,8 @@ Here is a movie in WebM format.
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=../doc/src/manual/mov/wave.webm,
-width=0.9\linewidth,
-autostart]{\nolinkurl{../doc/src/manual/mov/wave.webm}}{../doc/src/manual/mov/wave.webm}
-% #else
-\href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -67671,19 +67557,8 @@ Here is the same movie in Ogg format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=../doc/src/manual/mov/wave.ogg,
-width=0.9\linewidth,
-autostart]{\nolinkurl{../doc/src/manual/mov/wave.ogg}}{../doc/src/manual/mov/wave.ogg}
-% #else
-\href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -67698,32 +67573,8 @@ Here is the same movie in MP4 format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\includemedia[
-label=docsrcmanualmovwavemp4,
-width=0.8\linewidth,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.mp4,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.mp4
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-%\mediabutton[mediacommand=docsrcmanualmovwavemp4:playPause]{\fbox{\strut Play/Pause}}
-% #endif
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=../doc/src/manual/mov/wave.mp4,
-width=0.9\linewidth,
-autostart]{\nolinkurl{../doc/src/manual/mov/wave.mp4}}{../doc/src/manual/mov/wave.mp4}
-% #else
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.mp4}{\nolinkurl{../doc/src/manual/mov/wave.mp4}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -67738,32 +67589,8 @@ Here is the same movie in Flash format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\includemedia[
-label=docsrcmanualmovwaveflv,
-width=0.8\linewidth,
-activate=pageopen,         % or onclick or pagevisible
-addresource=../doc/src/manual/mov/wave.flv,  % embed the video in the PDF
-flashvars={
-source=../doc/src/manual/mov/wave.flv
-&autoPlay=true
-&loop=true
-&scaleMode=letterbox       % preserve aspect ratio while scaling this video
-}]{}{VPlayer.swf}
-
-% #ifdef MOVIE_CONTROLS
-%\mediabutton[mediacommand=docsrcmanualmovwaveflv:playPause]{\fbox{\strut Play/Pause}}
-% #endif
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=../doc/src/manual/mov/wave.flv,
-width=0.9\linewidth,
-autostart]{\nolinkurl{../doc/src/manual/mov/wave.flv}}{../doc/src/manual/mov/wave.flv}
-% #else
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.flv}{\nolinkurl{../doc/src/manual/mov/wave.flv}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -67917,35 +67744,8 @@ The movie above in MPEG format, typeset in a box:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\includemovie[poster,
-label=docsrcmanualmovwavempeg,
-autoplay,
-controls,
-toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
-\movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
-\movieref[default]{docsrcmanualmovwavempeg}{Normal}
-\movieref[pause]{docsrcmanualmovwavempeg}{Play/Pause}
-\movieref[stop]{docsrcmanualmovwavempeg}{Stop}
-% #endif
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=../doc/src/manual/mov/wave.mpeg,
-width=0.9\linewidth,
-autostart]{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}{../doc/src/manual/mov/wave.mpeg}
-% #else
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.mpeg}{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -67963,35 +67763,8 @@ Here is the same movie in AVI format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\includemovie[poster,
-label=docsrcmanualmovwaveavi,
-autoplay,
-controls,
-toolbar,
-% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-% #endif
-text={\small (Loading ../doc/src/manual/mov/wave.avi)},
-repeat,
-]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.avi}
-% #ifndef EXTERNAL_MOVIE_VIEWER
-\movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
-\movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
-\movieref[default]{docsrcmanualmovwaveavi}{Normal}
-\movieref[pause]{docsrcmanualmovwaveavi}{Play/Pause}
-\movieref[stop]{docsrcmanualmovwaveavi}{Stop}
-% #endif
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=../doc/src/manual/mov/wave.avi,
-width=0.9\linewidth,
-autostart]{\nolinkurl{../doc/src/manual/mov/wave.avi}}{../doc/src/manual/mov/wave.avi}
-% #else
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.avi}{\nolinkurl{../doc/src/manual/mov/wave.avi}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -68006,19 +67779,8 @@ Here is the same movie, but with a URL to GitHub:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\href{run:http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
-
-% #elif MOVIE == "multimedia"
-% Beamer-style \movie command
-\movie[
-showcontrols,
-label=http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg,
-width=0.9\linewidth,
-autostart]{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}
-% #else
+% link to web movie
 \href{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
-% #endif
 \end{center}
 \end{doconce:movie}
 
@@ -68029,20 +67791,7 @@ Here is a YouTube video:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-% #if MOVIE == "media9"
-\includemedia[
-width=0.6\linewidth,height=0.45\linewidth,
-activate=pageopen,
-flashvars={
-modestbranding=1   % no YouTube logo in control bar
-&autohide=1        % controlbar autohide
-&showinfo=0        % no title and other info before start
-&rel=0             % no related videos after end
-},
-]{}{http://www.youtube.com/watch?v=_O7iUiftbKU}
-% #else
 \href{{http://www.youtube.com/watch?v=_O7iUiftbKU}}{\nolinkurl{http://www.youtube.com/watch?v=_O7iUiftbKU}}
-% #endif
 \end{center}
 
 \begin{center}  % movie caption
@@ -68102,13 +67851,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-
-
 \usepackage{animate,graphicx}
+
 
 
 \usepackage[T1]{fontenc}
@@ -68195,6 +67943,7 @@ Here is a movie in WebM format.
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
 \end{center}
 
@@ -68210,6 +67959,7 @@ Here is the same movie in Ogg format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
 \end{center}
 
@@ -68225,6 +67975,7 @@ Here is the same movie in MP4 format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.mp4}{\nolinkurl{../doc/src/manual/mov/wave.mp4}}
 \end{center}
 
@@ -68240,6 +67991,7 @@ Here is the same movie in Flash format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.flv}{\nolinkurl{../doc/src/manual/mov/wave.flv}}
 \end{center}
 
@@ -68394,6 +68146,7 @@ The movie above in MPEG format, typeset in a box:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.mpeg}{\nolinkurl{../doc/src/manual/mov/wave.mpeg}}
 \end{center}
 
@@ -68412,6 +68165,7 @@ Here is the same movie in AVI format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.avi}{\nolinkurl{../doc/src/manual/mov/wave.avi}}
 \end{center}
 
@@ -68427,6 +68181,7 @@ Here is the same movie, but with a URL to GitHub:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to web movie
 \href{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
 \end{center}
 \end{doconce:movie}
@@ -68496,15 +68251,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-
+% Movies are handled by the media9 package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
-
 \usepackage{media9}
-
 \usepackage{movie15}
-
 \usepackage{animate,graphicx}
+
 
 
 \usepackage[T1]{fontenc}
@@ -68591,8 +68344,8 @@ Here is a movie in WebM format.
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.webm}{\nolinkurl{../doc/src/manual/mov/wave.webm}}
-
 \end{center}
 
 \begin{center}  % movie caption
@@ -68607,8 +68360,8 @@ Here is the same movie in Ogg format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% link to external viewer
 \href{run:../doc/src/manual/mov/wave.ogg}{\nolinkurl{../doc/src/manual/mov/wave.ogg}}
-
 \end{center}
 
 \begin{center}  % movie caption
@@ -68623,6 +68376,7 @@ Here is the same movie in MP4 format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% media9 package
 \includemedia[
 label=docsrcmanualmovwavemp4,
 width=0.8\linewidth,
@@ -68634,7 +68388,7 @@ source=../doc/src/manual/mov/wave.mp4
 &loop=true
 &scaleMode=letterbox       % preserve aspect ratio while scaling this video
 }]{}{VPlayer.swf}
-
+%\mediabutton[mediacommand=docsrcmanualmovwavemp4:playPause]{\fbox{\strut Play/Pause}}
 \end{center}
 
 \begin{center}  % movie caption
@@ -68649,6 +68403,7 @@ Here is the same movie in Flash format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% media9 package
 \includemedia[
 label=docsrcmanualmovwaveflv,
 width=0.8\linewidth,
@@ -68660,7 +68415,7 @@ source=../doc/src/manual/mov/wave.flv
 &loop=true
 &scaleMode=letterbox       % preserve aspect ratio while scaling this video
 }]{}{VPlayer.swf}
-
+%\mediabutton[mediacommand=docsrcmanualmovwaveflv:playPause]{\fbox{\strut Play/Pause}}
 \end{center}
 
 \begin{center}  % movie caption
@@ -68814,6 +68569,7 @@ The movie above in MPEG format, typeset in a box:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% movie15 package
 \includemovie[poster,
 label=docsrcmanualmovwavempeg,
 autoplay,
@@ -68822,6 +68578,7 @@ toolbar,
 text={\small (Loading ../doc/src/manual/mov/wave.mpeg)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.mpeg}
+
 \movieref[rate=0.5]{docsrcmanualmovwavempeg}{Slower}
 \movieref[rate=2]{docsrcmanualmovwavempeg}{Faster}
 \movieref[default]{docsrcmanualmovwavempeg}{Normal}
@@ -68844,6 +68601,7 @@ Here is the same movie in AVI format:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
+% movie15 package
 \includemovie[poster,
 label=docsrcmanualmovwaveavi,
 autoplay,
@@ -68852,6 +68610,7 @@ toolbar,
 text={\small (Loading ../doc/src/manual/mov/wave.avi)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{../doc/src/manual/mov/wave.avi}
+
 \movieref[rate=0.5]{docsrcmanualmovwaveavi}{Slower}
 \movieref[rate=2]{docsrcmanualmovwaveavi}{Faster}
 \movieref[default]{docsrcmanualmovwaveavi}{Normal}
@@ -68871,8 +68630,8 @@ Here is the same movie, but with a URL to GitHub:
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-\href{run:http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
-
+% link to web movie
+\href{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}{\nolinkurl{http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg}}
 \end{center}
 \end{doconce:movie}
 
@@ -72060,21 +71819,10 @@ BIBFILE: papers.pub
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -74393,7 +74141,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -74571,7 +74319,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -74864,7 +74612,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing Doconce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -75073,7 +74821,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat May 10 00:09:53 2014.
+# sphinx-quickstart on Tue May 20 11:33:07 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78509,46 +78257,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{ptex2tex}
 
-% #ifndef MOVIE
-% #define MOVIE "href"
-% #ifndef MOVIE_CONTROLS
-% #define MOVIE_CONTROLS
-% #endif
-% #endif
-
+% Movies are handled by the href package:
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-% #if MOVIE == "media9"
-% #ifdef XELATEX
-\usepackage[xetex]{media9}
-% #else
-\usepackage{media9}
-% #endif
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href"
-% #endif
-
-% #if MOVIE == "media9"
-\usepackage{movie15}
-% #endif
 
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
 
-% #ifdef XELATEX
-% xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
-\defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-\setromanfont{Kinnari}
-% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
-% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -78557,7 +78275,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \RequirePackage{helvet}
 \renewcommand\familydefault{phv}
 
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
@@ -89907,6 +89624,8 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
     found!
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -89947,6 +89666,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -90057,6 +89778,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -90105,6 +89828,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -90156,6 +89881,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -90662,7 +90389,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1053.
+t line 1054.
 
 
 
@@ -90682,7 +90409,7 @@ t line 1053.
 
 
 
-t line 1062.
+t line 1063.
 
 
 
@@ -90702,7 +90429,7 @@ t line 1062.
 
 
 
-t line 1066.
+t line 1067.
 
 
 
@@ -91432,7 +91159,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1053.
+t line 1054.
 
 
 
@@ -91452,7 +91179,7 @@ t line 1053.
 
 
 
-t line 1062.
+t line 1063.
 
 
 
@@ -91472,7 +91199,7 @@ t line 1062.
 
 
 
-t line 1066.
+t line 1067.
 
 
 
@@ -92119,7 +91846,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1053.
+t line 1054.
 
 
 
@@ -92139,7 +91866,7 @@ t line 1053.
 
 
 
-t line 1062.
+t line 1063.
 
 
 
@@ -92159,7 +91886,7 @@ t line 1062.
 
 
 
-t line 1066.
+t line 1067.
 
 
 
@@ -93170,6 +92897,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + mv -f testdoc.rst testdoc.sphinx.rst
@@ -93227,6 +92956,8 @@ found info about 10 exercises
     found!
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
 output in testdoc.rst
 + doconce split_rst testdoc
 testdoc split into
@@ -93317,6 +93048,7 @@ reading sources... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -93332,7 +93064,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded, 5 warnings.
 
 Build finished. The HTML pages are in _build/html.
 <title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
@@ -97563,8 +97295,8 @@ output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
 + rm -f movies.aux
-+ system doconce format pdflatex movies
-+ doconce format pdflatex movies
++ system doconce format pdflatex movies --latex_movie=media9
++ doconce format pdflatex movies --latex_movie=media9
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
@@ -97572,8 +97304,8 @@ translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex movies -DMOVIE=media9
-+ doconce ptex2tex movies -DMOVIE=media9
++ system doconce ptex2tex movies
++ doconce ptex2tex movies
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -97769,7 +97501,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 162 has zero
+* Media annotation on line 161 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -98372,7 +98104,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 162 has zero
+* Media annotation on line 161 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -98769,8 +98501,8 @@ Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + cp movies.pdf movie_demo/movies_media9.pdf
 + cp movies.tex movies_media9.tex
-+ system doconce format pdflatex movies
-+ doconce format pdflatex movies
++ system doconce format pdflatex movies --latex_movie=media9 --latex_external_movie_viewer
++ doconce format pdflatex movies --latex_movie=media9 --latex_external_movie_viewer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
@@ -98778,8 +98510,8 @@ translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex movies -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
-+ doconce ptex2tex movies -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
++ system doconce ptex2tex movies
++ doconce ptex2tex movies
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -98974,7 +98706,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 162 has zero
+* Media annotation on line 161 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and

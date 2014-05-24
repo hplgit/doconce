@@ -181,11 +181,10 @@ def latex_code(filestr, code_blocks, code_block_types,
         # of the hyperref package?)
 #        filestr, n = re.subn(exercise_pattern,
 #                         r"""subsection*{\g<1> \g<2>: \g<3>
-#% #if LIST_OF_EXERCISES == "toc"
+# % table of contents with exercises:
 #\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
-#% #elif LIST_OF_EXERCISES == "loe"
+# % separate list of exercises:
 #\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
-#% #endif
 #""", filestr)
         exercise_headings = re.findall(exercise_pattern, filestr)
         if exercise_headings:
@@ -513,6 +512,8 @@ def latex_movie(m):
                                     ': "file://%s"' % html_viewer_file_abs)
         return '\n' + text + '\n'
 
+    movie = option('latex_movie=', 'href')
+    controls = option('latex_movie_controls=', 'on')
     # Do not typeset movies in figure environments since Doconce documents
     # assume inline movies
     text = r"""
@@ -520,8 +521,8 @@ def latex_movie(m):
 \refstepcounter{doconce:movie:counter}
 \begin{center}"""
     if 'youtube.com' in filename:
-        text += r"""
-%% #if MOVIE == "media9"
+        if movie == 'media9':
+            text += r"""
 \includemedia[
 width=0.6\linewidth,height=0.45\linewidth,
 activate=pageopen,
@@ -532,9 +533,11 @@ modestbranding=1   %% no YouTube logo in control bar
 &rel=0             %% no related videos after end
 },
 ]{}{%(filename)s}
-%% #else
+""" % vars()
+        else:
+            # Just a link
+            text += r"""
 "`%(filename)s`": "%(filename)s"
-%% #endif
 """ % vars()
     elif 'vimeo.com' in filename:
         # Can only provide a link to the Vimeo movie
@@ -575,10 +578,33 @@ modestbranding=1   %% no YouTube logo in control bar
 
         label = filename.replace('/', '').replace('.', '').replace('-','')
         stem, ext = os.path.splitext(filename)
-        if ext.lower() in ('.mp4', '.flv'):
-            # Can use media9 package
+
+        if movie == 'multimedia':
             text += r"""
-%% #if MOVIE == "media9"
+%% Beamer-style \movie command
+\movie[
+showcontrols,
+label=%(filename)s,
+width=0.9\linewidth,
+autostart]{\nolinkurl{%(filename)s}}{%(filename)s}
+""" % vars()
+        elif movie not in ('media9', 'movie15'):
+            if filename.startswith('http'):
+                # Just plain link
+                text += r"""
+%% link to web movie
+\href{%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+            else:
+                # \href{run:localfile}{linktext}
+                text += r"""
+%% link to external viewer
+\href{run:%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+        elif movie == 'media9':
+            if ext.lower() in ('.mp4', '.flv'):
+                text += r"""
+%% media9 package
 \includemedia[
 label=%(label)s,
 width=0.8\linewidth,
@@ -590,14 +616,13 @@ source=%(filename)s
 &loop=true
 &scaleMode=letterbox       %% preserve aspect ratio while scaling this video
 }]{}{VPlayer.swf}
-
-%% #ifdef MOVIE_CONTROLS
-%%\mediabutton[mediacommand=%(label)s:playPause]{\fbox{\strut Play/Pause}}
-%% #endif""" % vars()
-        elif ext.lower() in ('.mp3',):
-            # Can use media9 package
-            text += r"""
-%% #if MOVIE == "media9"
+""" % vars()
+                if controls:
+                    text += r"""%%\mediabutton[mediacommand=%(label)s:playPause]{\fbox{\strut Play/Pause}}
+""" % vars()
+            elif ext.lower() in ('.mp3',):
+                text += r"""
+%% media9 package
 \includemedia[
 label=%(label)s,
 addresource=%(filename)s,  %% embed the video in the PDF
@@ -607,65 +632,67 @@ source=%(filename)s
 },
 transparent
 ]{\framebox[0.5\linewidth[c]{\nolinkurl{%(filename)s}}}{APlayer9.swf}
-%% #else
 """ % vars()
-            if filename.startswith('http'):
-                # Just plain link
-                text += r'\href{%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
-            else:
-                # \href{run:localfile}{linktext}
-                text += r'\href{run:%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
-            text += '\n% #endif\n'
-
-        elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
-            # Use old movie15 package which will launch a separate
-            # player
-            text += r"""
-%% #if MOVIE == "media9"
+            elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
+                # Use old movie15 package which will launch a separate player
+                external_viewer = option('latex_external_movie_viewer')
+                external = '\nexternalviewer,' if external_viewer else ''
+                text += r"""
+%% movie15 package
 \includemovie[poster,
 label=%(label)s,
 autoplay,
 controls,
-toolbar,
-%% #ifdef EXTERNAL_MOVIE_VIEWER
-externalviewer,
-%% #endif
+toolbar,%(external)s
 text={\small (Loading %(filename)s)},
 repeat,
 ]{0.9\linewidth}{0.9\linewidth}{%(filename)s}
-%% #ifndef EXTERNAL_MOVIE_VIEWER
+""" % vars()
+                if not external_viewer:
+                    text += r"""
 \movieref[rate=0.5]{%(label)s}{Slower}
 \movieref[rate=2]{%(label)s}{Faster}
 \movieref[default]{%(label)s}{Normal}
 \movieref[pause]{%(label)s}{Play/Pause}
 \movieref[stop]{%(label)s}{Stop}
-%% #endif""" % vars()
-        else:
-            # Use simple old href technique since neither media9 nor movie15
-            # can handle this format (typically .webm or .ogg)
-            text += r"""
-%% #if MOVIE == "media9"
+""" % vars()
+            else:
+                # Use a link for other formats
+                if filename.startswith('http'):
+                    # Just plain link
+                    text += r"""
+%% link to web movie
+\href{%(filename)s}{\nolinkurl{%(filename)s}}
+""" % vars()
+                else:
+                # \href{run:localfile}{linktext}
+                    text += r"""
+%% link to external viewer
 \href{run:%(filename)s}{\nolinkurl{%(filename)s}}
 """ % vars()
-        # Add latex code for other methods for showing movies
-        # (these are the same for all movie types)
-        text += r"""
-%% #elif MOVIE == "multimedia"
-%% Beamer-style \movie command
-\movie[
-showcontrols,
-label=%(filename)s,
-width=0.9\linewidth,
-autostart]{\nolinkurl{%(filename)s}}{%(filename)s}
-%% #else
+
+        elif movie == 'movie15':
+            external_viewer = option('latex_external_movie_viewer')
+            external = '\nexternalviewer,' if external_viewer else ''
+            text += r"""
+%% movie15 package
+\includemovie[poster,
+label=%(label)s,
+autoplay,
+controls,
+toolbar,%(external)s
+%%text={\small (Loading %(filename)s)},
+repeat,
+]{0.9\linewidth}{0.9\linewidth}{%(filename)s}
 """ % vars()
-        if filename.startswith('http'):
-            # Just plain link
-            text += r'\href{%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
-        else:
-            # \href{run:localfile}{linktext}
-            text += r'\href{run:%(filename)s}{\nolinkurl{%(filename)s}}' % vars()
-        text += '\n% #endif\n'
+            if not external_viewer:
+                text += r"""
+\movieref[rate=0.5]{%(label)s}{Slower}
+\movieref[rate=2]{%(label)s}{Faster}
+\movieref[default]{%(label)s}{Normal}
+\movieref[pause]{%(label)s}{Play/Pause}
+\movieref[stop]{%(label)s}{Stop}
+""" % vars()
 
     text += '\\end{center}\n'
     if caption:
@@ -1890,55 +1917,46 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 \usepackage{ptex2tex}
 """
+    xelatex = option('xelatex')
+
     # Add packages for movies
     if re.search(r'^MOVIE:\s*\[', filestr, flags=re.MULTILINE):
+        movie = option('latex_movie=', 'href')
+        package = ''
+        if movie == 'media9':
+            if xelatex:
+                package = r'\usepackage[xetex]{media9}'
+            else:
+                package = r'\usepackage{media9}'
+        if movie == 'movie15':
+            package = r'\usepackage{movie15}'
+        elif movie == 'multimedia':
+            package = r'\usepackage{multimedia}'
         INTRO['latex'] += r"""
-% #ifndef MOVIE
-% #define MOVIE "href"
-% #ifndef MOVIE_CONTROLS
-% #define MOVIE_CONTROLS
-% #endif
-% #endif
-
+%% Movies are handled by the %(movie)s package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
-
-% #if MOVIE == "media9"
-% #ifdef XELATEX
-\usepackage[xetex]{media9}
-% #else
-\usepackage{media9}
-% #endif
-% #elif MOVIE == "multimedia"
-\usepackage{multimedia}
-% #elif MOVIE == "href"
-% #endif
-"""
-    movies = re.findall(r'^MOVIE: \[(.+?)\]', filestr, flags=re.MULTILINE)
-    animated_files = False
-    non_flv_mp4_files = False  # need for old movie15?
-    for filename in movies:
-        if '*' in filename or '->' in filename:
-            animated_files = True
-        if '.mp4' in filename.lower() or '.flv' in filename.lower():
-            pass # ok, media9 can be used
-        else:
-            non_flv_mp4_files = True
-    if non_flv_mp4_files:
-        INTRO['latex'] += r"""
-% #if MOVIE == "media9"
-\usepackage{movie15}
-% #endif
-"""
-    if animated_files:
-        INTRO['latex'] += r"""
-% #ifdef XELATEX
-\usepackage[xetex]{animate}
-\usepackage{graphicx}
-% #else
-\usepackage{animate,graphicx}
-% #endif
-"""
+%(package)s
+""" % vars()
+        movies = re.findall(r'^MOVIE: \[(.+?)\]', filestr, flags=re.MULTILINE)
+        animated_files = False
+        non_flv_mp4_files = False  # need for old movie15 instead of media9?
+        for filename in movies:
+            if '*' in filename or '->' in filename:
+                animated_files = True
+            if '.mp4' in filename.lower() or '.flv' in filename.lower():
+                pass # ok, media9 can be used
+            else:
+                non_flv_mp4_files = True
+        if non_flv_mp4_files and movie == 'media9':
+            INTRO['latex'] += r'\usepackage{movie15}' + '\n'
+        if animated_files:
+            if xelatex:
+                INTRO['latex'] += r"""\usepackage[xetex]{animate}
+\usepackage{graphicx}"""
+            else:
+                INTRO['latex'] += r'\usepackage{animate,graphicx}'
+            INTRO['latex'] += '\n\n'
 
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
@@ -1948,8 +1966,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usemintedstyle{default}
 % #endif
 """
-    INTRO['latex'] += r"""
-% #ifdef XELATEX
+    if xelatex:
+        INTRO['latex'] += r"""
 % xelatex settings
 \usepackage{fontspec}
 \usepackage{xunicode}
@@ -1958,7 +1976,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \setromanfont{Kinnari}
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
-% #else
+"""
+    else:
+        INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
@@ -1976,7 +1996,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
     INTRO['latex'] += r"""
-% #endif
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
     # Make sure hyperlinks are black (as the text) for printout
