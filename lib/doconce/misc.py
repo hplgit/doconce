@@ -7236,25 +7236,30 @@ class DoconceLexer(RegexLexer):
     aliases = ['doconce']
     filenames = ['*.do.txt']
     mimetypes = ['text/x-doconce']
+    #flags = re.MULTILINE | re.DOTALL  # did not work
 
     tokens = {
         'root': [
             (r' .*\n', Text),
             (r'\#.*\n', Comment),
-            (r'label\{.+?\}', Name.Builtin),
-            (r'TITLE:', Generic.Heading),
+            (r'(label|ref|idx)\{.+?\}', Name.Builtin),
+            (r'\\(begin|end)\{.+?\}', Name.Builtin),
+            #(r'\$.+?\$', String),  # works only occasionally
+            #(r'label\{.+?\}', Name.Builtin),
+            #('idx', Keyword),
+            (r'TITLE:.+\n', Generic.Heading),
             (r'AUTHOR:', Generic.Heading),
             (r'DATE:', Generic.Heading),
             (r'TOC:', Generic.Heading),
             (r'FIGURE:.*\n', Name.Builtin),
             (r'MOVIE:.*\n', Name.Builtin),
-            (r'!.+\n', Name.Builtin),
+            (r'![a-z]+', Keyword),
             (r'@@@CODE .*\n', Generic.Subheading),
             (r'__.+?__', Generic.Subheading),
-            (r'`(?s).*?`', String.Backtick),
-            (r'"(?s).*?"', String),
-            #(r'".+?"', String),  # does not work
-            (r'={5,9} .* ={5,9}\n', Generic.Heading),
+            (r'\|.+\|\n', String),  # tables
+            (r'`.+?`', String.Backtick),  # does not work
+            (r'".+?"', String),  # does not work
+            (r'={3,9} .* ={3,9}\n', Generic.Heading),
             (r'.*\n', Text),
         ],
     }

@@ -66,7 +66,8 @@ def pandoc_code(filestr, code_blocks, code_block_types,
         m = re.search(r'\\begin\{(.+?)\}', tex_blocks[i])
         if m:
             envir = m.group(1)
-            if envir not in ('equation', 'equation*', 'align*', 'align'):
+            if envir not in ('equation', 'equation*', 'align*', 'align',
+                             'array'):
                 print """\
 *** warning: latex envir \\begin{%s} does not work well.
 """ % envir
