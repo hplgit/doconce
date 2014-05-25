@@ -1782,7 +1782,8 @@ def clean():
                    glob.glob(_part_filename_wildcard + '.rst') +
                    glob.glob('.*.exerinfo') +
                    glob.glob('.*_html_file_collection'))
-    directories = ['sphinx-rootdir', 'html_images']
+    directories = ['html_images', 'latex_figs'] + glob.glob('sphinx-*') + \
+                  glob.glob('sphinx_*')
     for d in directories:
         if os.path.isdir(d):
             removed.append(d)
@@ -7223,9 +7224,13 @@ class DoconceLexer(RegexLexer):
     def analyse_text(text):
         return True
 
-# This is the best one so far (still far from complete, it was
-# made from a text lexer: DiffLexer, IniLexer, ... need to
-# understand such lexers to make progress)
+# The version below is the best one so far (still far from complete, not
+# everything works as intended, so much experimentation is needed to
+# extend it, but the result with doconce pygmentize mydoc perldoc looks
+# fine). Need to understand more of how the lexers work to make
+# further progress: look at DiffLexer, TexLexer, RstLexer, and other text
+# lexers in /usr/local/lib/python2.7/dist-packages/Pygments-1.6dev_20131113-py2.7.egg/pygments/lexers/text.py.
+# It seems that there is no markdown lexer on the net.
 
 class DoconceLexer(RegexLexer):
     """

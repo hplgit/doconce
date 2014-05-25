@@ -150,6 +150,9 @@ that %s is not preceded by text which can be extended with :: (required).
             lines[i] = '| ' + lines[i] + '\n'
     filestr = '\n'.join(lines)
 
+    # Remove too much vertical space
+    filestr = re.sub(r'\n\n\n+', '\n\n', filestr)
+
     return filestr
 
 def fix_underlines_in_headings(filestr):
@@ -550,7 +553,7 @@ def define(FILENAME_EXTENSION,
     TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
     QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
-.. Automatically generated reST file from Doconce source
+.. Automatically generated reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 """
