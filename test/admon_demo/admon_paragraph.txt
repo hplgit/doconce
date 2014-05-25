@@ -3,7 +3,7 @@ Testing admons
 
 hpl
 
-Date: May 20, 2014
+Date: May 25, 2014
 
 # !split
 Introduction
@@ -11,23 +11,18 @@ Introduction
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-
 Code
 ----
 
 Need some code outside admons for color and font comparisons::
 
-
         def some_code(x):
             return sin(x)*exp(1-x)
 
-
 And some plain text verbatim::
-
 
         x=1.0 y=0.9 z=0.4
         x=1.1 y=0.3 z=0.1
-
 
 Quotes and boxes
 ----------------
@@ -44,7 +39,6 @@ Here is a plain quote environment.
 
 Does quotes with title also work? No...cannot work in LaTeX and HTML
 and then it does not make sense to support it.
-
 
 A plain *box* is sometimes useful. Let's show it here for comparison
 with admons (especially the block admon has much in common with a box).
@@ -87,8 +81,6 @@ Let's begin a new paragraph and show a box with code only:
 |------------------------------------|
 
 
-
-
 Admonitions
 -----------
 
@@ -124,12 +116,10 @@ Title ending with math \sqrt{2}\approx 1.4 --------------|
 |                                                        |
 | Also some code::                                       |
 |                                                        |
-|                                                        |
 |         def f(x):                                      |
 |             return x                                   |
 |                                                        |
 | And a complete program::                               |
-|                                                        |
 |                                                        |
 |         print "Hello, World!"                          |
 |--------------------------------------------------------|
@@ -160,7 +150,6 @@ Block with title --------------------------------------------------------|
 
 
 
-
 Block ----------------------------------------------------------------------------|
 |                                                                                 |
 | Here is a block of text with no title. As above, it is typeset without any icon |
@@ -173,7 +162,6 @@ must be removed in the mdfbox admon also in graybox2 if
 code is present).
 
 
-
 Note, eventually! ----------------------------------------------------------|
 |                                                                           |
 | Ah, we are soon close to the end (with illegal font size specification!). |
@@ -184,7 +172,6 @@ Note, eventually! ----------------------------------------------------------|
 |         \bm{r} &= \varrho\bm{i}                                           |
 |         \end{align*}                                                      |
 |---------------------------------------------------------------------------|
-
 
 
 
@@ -218,7 +205,6 @@ Tip -----------------------------------------------------|
 | 2. read hints and tips carefully                       |
 |                                                        |
 | Because here the thing is to do::                      |
-|                                                        |
 |                                                        |
 |         import urllib                                  |
 |                                                        |
@@ -259,10 +245,8 @@ Going deeper. ---------------------------------------------------------|
 |         \frac{1}{2}\pmb{x} &= \pmb{n}                                |
 |         \end{align*}                                                 |
 |                                                                      |
-|                                                                      |
 | The implementation of such complicated equations in computer         |
 | code is task that this "Going deeper" environment targets::          |
-|                                                                      |
 |                                                                      |
 |         def Dudt(u):                                                 |
 |             r = diff(u, t) + u*grad(u)                               |
@@ -273,7 +257,6 @@ Going deeper. ---------------------------------------------------------|
 |                                                                      |
 | And some more text that can help going into the next page.           |
 | Longer computer code requires vertical space::                       |
-|                                                                      |
 |                                                                      |
 |         class Diff:                                                  |
 |             def __init__(self, f, h=1E-5):                           |
@@ -318,7 +301,6 @@ Going deeper. ---------------------------------------------------------|
 |                                                                      |
 | FIGURE: [../doc/src/manual/fig/wave1D, width=400 frac=0.7]           |
 |----------------------------------------------------------------------|
-
 
 
 The end

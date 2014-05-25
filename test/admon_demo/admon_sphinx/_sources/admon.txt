@@ -1,11 +1,11 @@
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 Testing admons
 ==============
 
 :Author: hpl
-:Date: May 20, 2014
+:Date: May 25, 2014
 
 .. !split
 
@@ -22,22 +22,17 @@ Code
 
 Need some code outside admons for color and font comparisons:
 
-
 .. code-block:: python
 
         def some_code(x):
             return sin(x)*exp(1-x)
 
-
 And some plain text verbatim:
-
 
 .. code-block:: text
 
-
         x=1.0 y=0.9 z=0.4
         x=1.1 y=0.3 z=0.1
-
 
 Quotes and boxes
 ----------------
@@ -82,7 +77,6 @@ First a simple block with text, an equation, and a list:
 
 A generic equation
 
-
 .. math::
          f(x) = 0 
 
@@ -123,8 +117,6 @@ Let's begin a new paragraph and show a box with code only:
             return sin(x)*exp(1-x)
 
 
-
-
 Admonitions
 -----------
 
@@ -160,14 +152,12 @@ Test warning with title:
    
    Also some code:
    
-   
    .. code-block:: python
    
            def f(x):
                return x
    
    And a complete program
-   
    
    .. code-block:: python
    
@@ -226,12 +216,10 @@ code is present).
 .. those formats automatically add : to the admonition title.
 
 
-
 .. admonition:: Note, eventually
 
    Ah, we are soon close to the end (with illegal font size specification!).
    But first a bit of math where we define :math:`\theta` and :math:`\boldsymbol{r}`:
-   
    
    .. math::
            
@@ -242,7 +230,6 @@ code is present).
 
 
 .. Test one word with a number
-
 
 
 .. admonition:: Point1
@@ -278,7 +265,6 @@ code is present).
    2. read hints and tips carefully
    
    Because here the thing is to do
-   
    
    .. code-block:: python
    
@@ -320,7 +306,6 @@ text, math and code.
    
    Let us start with some equations:
    
-   
    .. math::
            
            \frac{Du}{dt} &= 0
@@ -329,10 +314,8 @@ text, math and code.
            \frac{1}{2}\pmb{x} &= \pmb{n}
            
    
-   
    The implementation of such complicated equations in computer
    code is task that this "Going deeper" environment targets.
-   
    
    .. code-block:: python
    
@@ -345,7 +328,6 @@ text, math and code.
    
    And some more text that can help going into the next page.
    Longer computer code requires vertical space:
-   
    
    .. code-block:: python
    
@@ -390,10 +372,8 @@ text, math and code.
    
    And then we add a figure too.
    
-   
    .. figure:: wave1D.png
       :width: 400
-
 
 
 
