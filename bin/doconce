@@ -490,7 +490,7 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
     if os.path.isfile(filename + '.old~~'):
         os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
-    if '.. Open external links in new windows.' in text:
+    if '.. NOTE: Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
     f = open(filename, 'w'); f.write(text); f.close()
