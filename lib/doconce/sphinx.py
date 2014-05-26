@@ -351,7 +351,12 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     filestr = '\n'.join(lines)
 
     if option('html_links_in_new_window'):
-        filestr = '\n\n.. Open external links in new windows.\n\n' + filestr
+        # Insert a comment to be recognized by automake_sphinx.py such that it
+        # can replace the default links by proper modified target= option.
+        filestr = '\n\n.. NOTE: Open external links in new windows.\n\n' + filestr
+
+    # Remove too much vertical space
+    filestr = re.sub(r'\n{3,}', '\n\n', filestr)
 
     return filestr
 
@@ -445,8 +450,10 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['sphinx'] = sphinx_index_bib
     TABLE['sphinx'] = TABLE['rst']
     EXERCISE['sphinx'] = EXERCISE['rst']
-    INTRO['sphinx'] = INTRO['rst']
     ENVIRS['sphinx'] = ENVIRS['rst']
+    INTRO['sphinx'] = INTRO['rst'].replace(
+        '.. Automatically generated reStructuredText',
+        '.. Automatically generated Sphinx-extended reStructuredText')
 
     # make true copy of INLINE_TAGS_SUBST:
     INLINE_TAGS_SUBST['sphinx'] = {}

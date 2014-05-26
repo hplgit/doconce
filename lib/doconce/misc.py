@@ -43,8 +43,13 @@ such that the verbatim environments become like
 \begin{minted}[...,linenos=true,...].)"""),
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
-    ('--html_style=',
-     'Name of theme for HTML style: plain, blueish, blueish2, bloodish, solarized, vagrant, bootstrap, bootswatch, bootstrap_*, bootswatch_*, ...).'),
+    ('--html_style=', """Name of theme for HTML style:
+plain, blueish, blueish2, bloodish, solarized, vagrant, bootstrap, bootswatch,
+bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
+bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
+                simplex, spacelab, united, yeti
+                (dark:) amelia, cyborg, darkly, slate, spruce,
+                superhero (demo: bootswatch.com"""),
     ('--html_code_style=',
      'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). Default: on.'),
     ('--html_pre_style=',
@@ -254,7 +259,6 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
      'Turn on github-flavored-markdown dialect of the pandoc translator'),
     ('--strapdown',
      'Wrap Markdown output in HTML header/footer such that the output file (renamed as .html) can automatically be rendered as an HTML via strapdownjs.com technology. Combine with --github_md for richer output. Styles are set with --bootwatch_theme=cyborg (for instance).'),
-    ('--bootwatch_theme=', 'Boostrap themes from bootwatch.com. See http://strapdownjs.com/ for names. Default: spacelab.'),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ('--quiz_question_prefix=', """\
@@ -1778,7 +1782,8 @@ def clean():
                    glob.glob(_part_filename_wildcard + '.rst') +
                    glob.glob('.*.exerinfo') +
                    glob.glob('.*_html_file_collection'))
-    directories = ['sphinx-rootdir', 'html_images']
+    directories = ['html_images', 'latex_figs'] + glob.glob('sphinx-*') + \
+                  glob.glob('sphinx_*')
     for d in directories:
         if os.path.isdir(d):
             removed.append(d)
@@ -7219,9 +7224,13 @@ class DoconceLexer(RegexLexer):
     def analyse_text(text):
         return True
 
-# This is the best one so far (still far from complete, it was
-# made from a text lexer: DiffLexer, IniLexer, ... need to
-# understand such lexers to make progress)
+# The version below is the best one so far (still far from complete, not
+# everything works as intended, so much experimentation is needed to
+# extend it, but the result with doconce pygmentize mydoc perldoc looks
+# fine). Need to understand more of how the lexers work to make
+# further progress: look at DiffLexer, TexLexer, RstLexer, and other text
+# lexers in /usr/local/lib/python2.7/dist-packages/Pygments-1.6dev_20131113-py2.7.egg/pygments/lexers/text.py.
+# It seems that there is no markdown lexer on the net.
 
 class DoconceLexer(RegexLexer):
     """
@@ -7232,25 +7241,30 @@ class DoconceLexer(RegexLexer):
     aliases = ['doconce']
     filenames = ['*.do.txt']
     mimetypes = ['text/x-doconce']
+    #flags = re.MULTILINE | re.DOTALL  # did not work
 
     tokens = {
         'root': [
             (r' .*\n', Text),
             (r'\#.*\n', Comment),
-            (r'label\{.+?\}', Name.Builtin),
-            (r'TITLE:', Generic.Heading),
+            (r'(label|ref|idx)\{.+?\}', Name.Builtin),
+            (r'\\(begin|end)\{.+?\}', Name.Builtin),
+            #(r'\$.+?\$', String),  # works only occasionally
+            #(r'label\{.+?\}', Name.Builtin),
+            #('idx', Keyword),
+            (r'TITLE:.+\n', Generic.Heading),
             (r'AUTHOR:', Generic.Heading),
             (r'DATE:', Generic.Heading),
             (r'TOC:', Generic.Heading),
             (r'FIGURE:.*\n', Name.Builtin),
             (r'MOVIE:.*\n', Name.Builtin),
-            (r'!.+\n', Name.Builtin),
+            (r'![a-z]+', Keyword),
             (r'@@@CODE .*\n', Generic.Subheading),
             (r'__.+?__', Generic.Subheading),
-            (r'`(?s).*?`', String.Backtick),
-            (r'"(?s).*?"', String),
-            #(r'".+?"', String),  # does not work
-            (r'={5,9} .* ={5,9}\n', Generic.Heading),
+            (r'\|.+\|\n', String),  # tables
+            (r'`.+?`', String.Backtick),  # does not work
+            (r'".+?"', String),  # does not work
+            (r'={3,9} .* ={3,9}\n', Generic.Heading),
             (r'.*\n', Text),
         ],
     }

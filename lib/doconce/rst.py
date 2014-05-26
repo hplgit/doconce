@@ -62,6 +62,11 @@ def rst_movie(m):
     html_text = html_movie(m)
     html_text = indent_lines(html_text, 'sphinx')
     rst_text = '.. raw:: html\n' + html_text + '\n'
+
+    filename = m.group('filename')
+    if not filename.startswith('http') and not filename.startswith('mov'):
+        print '*** warning: movie file %s' % filename
+        print '    is not in mov* subdirectory - this will give problems with sphinx'
     return rst_text
 
 # these global patterns are used in st, epytext, plaintext as well:
@@ -144,6 +149,9 @@ that %s is not preceded by text which can be extended with :: (required).
             inside_block = False
             lines[i] = '| ' + lines[i] + '\n'
     filestr = '\n'.join(lines)
+
+    # Remove too much vertical space
+    filestr = re.sub(r'\n\n\n+', '\n\n', filestr)
 
     return filestr
 
@@ -545,7 +553,7 @@ def define(FILENAME_EXTENSION,
     TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
     QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
-.. Automatically generated reST file from Doconce source
+.. Automatically generated reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 """

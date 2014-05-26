@@ -551,7 +551,7 @@ def syntax_check(filestr, format):
             print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
-    # right before them
+    # right before them in rst/sphinx
     constructions = {'comment': r'^\s*#.*?$',
                      'table': r'-\|\s*$',
                      'figure': r'^\s*FIGURE:.+$',
@@ -651,12 +651,20 @@ def syntax_check(filestr, format):
         _abort()
 
     # Movie without comma between filename and options? Or initial spaces?
-    pattern = r'^MOVIE:\s*\[[^,\]]+ +[^\]]*\]'
+    pattern = r'^MOVIE: *\[[^,\]]+ +[^\]]*\]'
     cpattern = re.compile(pattern, re.MULTILINE)
     matches = cpattern.findall(filestr)
     if matches:
         print '\n*** error: missing comma after filename, before options in MOVIE'
         print '\n'.join(matches)
+        _abort()
+
+    # Movie or figure with initial space in filename:
+    pattern = r'^((MOVIE|FIGURE): *\[ +[A-Za-z_0-9/.]+)'
+    matches = re.findall(pattern, filestr, flags=re.MULTILINE)
+    if matches:
+        print '\n*** error: wrong initial space in filename'
+        print '\n'.join([match for match, tp in matches])
         _abort()
 
     # Keywords at the beginning of the lines:

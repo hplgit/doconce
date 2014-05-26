@@ -412,23 +412,28 @@ for part in %(parts_names)s:
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
-    destdir = os.path.join(sphinx_rootdir, figdir)
+    if figdir.startswith('fig'):
+        # Figures can be anywhere (copied by sphinx to _images)
+        destdir = os.path.join(sphinx_rootdir, figdir)
+    elif figdir.startswith('mov'):
+        # Movies must be in _static
+        destdir = os.path.join(sphinx_rootdir, '_static', figdir)
     if os.path.isdir(figdir) and not os.path.isdir(destdir):
-        print 'copying', figdir, 'to', sphinx_rootdir
         shutil.copytree(figdir, destdir)
+        print 'copying', figdir, 'to', destdir
 
-# Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \\
+# Copy needed figure files in current dir (not in fig*)
+for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
                glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
     import re
-    media_files = [name.strip() for name in
-                   re.findall('.. figure:: (.+)', text)]
-    local_media_files = [name for name in media_files if not os.sep in name]
+    figfiles = [name.strip() for name in
+                re.findall('.. figure:: (.+)', text)]
+    local_figfiles = [name for name in figfiles if not os.sep in name]
 
-    for name in media_files:
+    for name in figfiles:
         basename = os.path.basename(name)
         if name.startswith('http') or name.startswith('ftp'):
             pass
@@ -436,7 +441,7 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \\
             if not os.path.isfile(os.path.join(sphinx_rootdir, basename)):
                 print 'copying', name, 'to', sphinx_rootdir
                 shutil.copy(name, sphinx_rootdir)
-            if name not in local_media_files:
+            if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
                 # since it is copied to sphinx_rootdir
                 text = text.replace('.. figure:: %%s' %% name,
@@ -458,13 +463,21 @@ print os.getcwd()
 system('make clean')
 system('make html')
 
-print 'Fix generated files:'
+print 'Fix generated files:',
 os.chdir('_build/html')
 for filename in glob.glob('*.html') + glob.glob('.*.html'):
+    print filename,
+    f = open(filename, 'r'); text = f.read(); f.close()
     # Fix double title in <title> tags
-    system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %%s' %% filename, echo=False)
+    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+    # Fix untranslated math (e.g. in figure captions and raw html)
+    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+    # Fix links to movies
+    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+    # Fix movie frames in javascript player
+    text = text.replace(r'.src = "mov', '.src = "_static/mov')
     # Fix admonition style
-    system("""doconce replace "</head>" "
+    text = text.replace('</head>', """
    <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
@@ -472,16 +485,17 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
      }
    </style>
   </head>
-" %%s""" %% filename, echo=False)
+""")
+
     if os.path.isfile(filename + '.old~~'):
         os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
-    f = open(filename, 'r');  text = f.read();  f.close()
-    if '.. Open external links in new windows.' in text:
+    if '.. NOTE: Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
-        f = open(filename, 'w');  f.write(text);  f.close()
+    f = open(filename, 'w'); f.write(text); f.close()
 print """
+
 google-chrome %(sphinx_rootdir)s/_build/html/index.html
 """
 ''' % vars())
