@@ -2535,11 +2535,11 @@ def doconce_split_html(header, parts, footer, basename, filename):
             lines.append('<!-- begin top navigation -->') # for easy removal
             if pn > 0:
                 lines.append("""
-<a href="%s"><img src="%s" border=0 alt="previous"></a>
+<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
 """ % (prev_part_filename, button_prev_filename))
             if pn < len(parts)-1:
                 lines.append("""
-<a href="%s"><img src="%s" border=0 alt="next"></a>
+<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end top navigation -->\n\n')
             lines.append('<p>\n')
@@ -2560,11 +2560,11 @@ def doconce_split_html(header, parts, footer, basename, filename):
             lines.append('<!-- begin bottom navigation -->')
             if pn > 0:
                 lines.append("""
-<a href="%s"><img src="%s" border=0 alt="previous"></a>
+<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
 """ % (prev_part_filename, button_prev_filename))
             if pn < len(parts)-1:
                 lines.append("""
-<a href="%s"><img src="%s" border=0 alt="next"></a>
+<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end bottom navigation -->\n\n')
             lines += footer
@@ -4079,7 +4079,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename'
+    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename [--handout]'
 
 def slides_beamer():
     """
@@ -4219,10 +4219,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     admons = 'notice', 'summary', 'warning', 'question', 'block'
     for admon in admons:
         Admon = admon[0].upper() + admon[1:]
-        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon':
+        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon', 'mdfbox':
             slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
-    for envir in 'paragraph', 'mdfbox', 'graybox2':
+    for envir in 'paragraph', 'graybox2':
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
@@ -4333,7 +4333,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             if m:
                 titlepage_figure = m.group(1)
                 # Move titlepage figure to \date{}
-                part = part.replace('% <titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
+                part = part.replace('% <optional titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
                 # Remove original titlepage figure
                 part = re.sub(r'\\begin\{center\} +% inline figure.+?\\end\{center\}', '', part, flags=re.DOTALL)
             slides += r"""
@@ -4355,6 +4355,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \end{document}
 """
     slides = re.sub(r'% !split\s+', '', slides)
+    if handout:
+        print 'handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf'
     return slides
 
 def _usage_split_rst0():
