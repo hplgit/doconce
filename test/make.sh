@@ -163,7 +163,7 @@ cp slides1.html slides1_deck.html
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
-system doconce slides_beamer slides1
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall

@@ -157,6 +157,21 @@ the pieces using the `preprocess` directive `#include "piece.do.txt"`.
 The error message comes with the Doconce file contains too much text
 for Emacs to handle.
 
+===== My machine hangs if I have many movies =====
+
+Doconce has no limits on the amount of movies. When the output is
+in HTML, one big HTML file may contain too many movies (local movie
+files or embedded YouTube movies) for the browser to handle.
+The remedy is to split the document into smaller pieces by inserting
+
+!bc
+!split
+!ec
+for every new page. After `doconce format html mydoc`, run
+`doconce split_html mydoc.html` to get the document split into
+a main document `mydoc.html` and pieces `._mydocXXX.html`, where
+`XXX` stands for three digits (`000`, `001`, `002`, and so forth).
+
 ===== How can I use quotes in a link? =====
 
 Links are typeset inside double quotes, but Doconce applies double backticks
@@ -659,4 +674,3 @@ Usually the HTML5 slides work best in Firefox.
 
 Seems to be a problem with reveal slides. The *Forward* button is not
 clickable.
-
