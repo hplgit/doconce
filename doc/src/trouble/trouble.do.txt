@@ -133,7 +133,7 @@ This may happen if there is a paragraph heading without
 proceeding text before some section heading.
 
 
-===== Found !bt but no tex blocks extracted (BUG) =====
+===== Found `!bt` but no tex blocks extracted (BUG) =====
 
 This message points to a bug, but has been resolved by removing blank lines
 between the text and the first `!bt` (inserting the blanks again did not

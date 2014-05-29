@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,10 +26,28 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Doconce Troubleshooting" href="#" />
-    <link rel="next" title="Doconce Troubleshooting" href="trouble.html" /> 
+    <link rel="next" title="Doconce Troubleshooting" href="trouble.html" />
+ 
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -66,12 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">Doconce aborts because of a syntax error that is not an error</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-is-fooled-by-doconce-text">The Mako preprocessor is fooled by Doconce text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-claims-a-variable-is-undefined">The Mako preprocessor claims a variable is undefined</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#something-goes-wrong-in-the-preprocessing-step">Something goes wrong in the preprocessing step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#figure-captions-are-incomplete">Figure captions are incomplete</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#preprocessor-directives-do-not-work">Preprocessor directives do not work</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#problems-with-boldface-and-emphasize">Problems with boldface and emphasize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#links-to-local-directories-do-not-work">Links to local directories do not work</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#links-are-not-typeset-correctly">Links are not typeset correctly</a></li>
@@ -80,9 +93,23 @@
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#strange-non-english-characters">Strange non-English characters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#wrong-norwegian-charcters">Wrong Norwegian charcters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#too-short-underlining-of-rest-headlines">Too short underlining of reST headlines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trouble.html#found-bt-but-no-tex-blocks-extracted-bug">Found !bt but no tex blocks extracted (BUG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#found-bt-but-no-tex-blocks-extracted-bug">Found <tt class="docutils literal"><span class="pre">!bt</span></tt> but no tex blocks extracted (BUG)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#examples-are-typset-with-environment-delimiters-visible">Examples are typset with environment delimiters visible</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#emacs-editing-does-not-work-properly-because-of-regexp-overflow">Emacs editing does not work properly because of &#8220;regexp overflow&#8221;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#my-machine-hangs-if-i-have-many-movies">My machine hangs if I have many movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#how-can-i-use-quotes-in-a-link">How can I use quotes in a link?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#conversion-from-doconce-to-google-docs">Conversion from Doconce to Google Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#convesion-from-google-docs-to-doconce">Convesion from Google Docs to Doconce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#are-there-any-tools-for-shared-online-writing-of-doconce-documents">Are there any tools for shared online writing of Doconce documents?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html#preprocess-mako-problems">Preprocess/Mako problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-gives-strange-error-messages">The Mako preprocessor gives strange error messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-is-fooled-by-doconce-text">The Mako preprocessor is fooled by Doconce text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#the-mako-preprocessor-claims-a-variable-is-undefined">The Mako preprocessor claims a variable is undefined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#something-goes-wrong-in-the-preprocessing-step">Something goes wrong in the preprocessing step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#preprocessor-directives-do-not-work">Preprocessor directives do not work</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html#problems-with-code-or-tex-blocks">Problems with code or Tex Blocks</a><ul>
@@ -128,6 +155,12 @@
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#why-do-figures-look-ugly-when-using-html-templates">Why do figures look ugly when using HTML templates?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html#problems-with-reveal-deck-html5-slides">Problems with reveal/deck HTML5 slides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#reveal-slides-are-moving-steadily-to-the-left">Reveal slides are moving steadily to the left</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#youtube-movies-do-not-work">YouTube movies do not work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble.html#online-python-tutor-does-not-work">Online Python Tutor does not work</a></li>
 </ul>
 </li>
 </ul>
@@ -194,8 +227,8 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2013, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; Copyright 2014, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>
