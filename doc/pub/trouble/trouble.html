@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -33,6 +32,32 @@ Automatically generated HTML file from Doconce source
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #bababa;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #f8f8f8;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -50,145 +75,177 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec3'),
-              (' The Mako preprocessor is seemingly not run ',
-               2,
-               None,
-               '___sec4'),
-              (' The Mako preprocessor is fooled by Doconce text ',
-               2,
-               None,
-               '___sec5'),
-              (' The Mako preprocessor claims a variable is undefined ',
-               2,
-               None,
-               '___sec6'),
-              (' Something goes wrong in the preprocessing step ',
-               2,
-               None,
-               '___sec7'),
-              (' Figure captions are incomplete ', 2, None, '___sec8'),
-              (' Preprocessor directives do not work ', 2, None, '___sec9'),
-              (' Problems with boldface and emphasize ', 2, None, '___sec10'),
+              (' Figure captions are incomplete ', 2, None, '___sec4'),
+              (' Problems with boldface and emphasize ', 2, None, '___sec5'),
               (' Links to local directories do not work ',
                2,
                None,
-               '___sec11'),
-              (' Links are not typeset correctly ', 2, None, '___sec12'),
-              (' Inline verbatim code is not detected ', 2, None, '___sec13'),
+               '___sec6'),
+              (' Links are not typeset correctly ', 2, None, '___sec7'),
+              (' Inline verbatim code is not detected ', 2, None, '___sec8'),
               (' Inline verbatim text is not formatted correctly ',
                2,
                None,
-               '___sec14'),
-              (' Strange non-English characters ', 2, None, '___sec15'),
-              (' Wrong Norwegian charcters ', 2, None, '___sec16'),
+               '___sec9'),
+              (' Strange non-English characters ', 2, None, '___sec10'),
+              (' Wrong Norwegian charcters ', 2, None, '___sec11'),
               (' Too short underlining of reST headlines ',
                2,
                None,
-               '___sec17'),
-              (' Found !bt but no tex blocks extracted (BUG) ',
+               '___sec12'),
+              (' Found `!bt` but no tex blocks extracted (BUG) ',
                2,
                None,
-               '___sec18'),
+               '___sec13'),
               (' Examples are typset with environment delimiters visible ',
                2,
                None,
-               '___sec19'),
+               '___sec14'),
               (' Emacs editing does not work properly because of "regexp overflow" ',
                2,
                None,
+               '___sec15'),
+              (' My machine hangs if I have many movies ',
+               2,
+               None,
+               '___sec16'),
+              (' How can I use quotes in a link? ', 2, None, '___sec17'),
+              (' Conversion from Doconce to Google Docs ',
+               2,
+               None,
+               '___sec18'),
+              (' Convesion from Google Docs to Doconce ',
+               2,
+               None,
+               '___sec19'),
+              (' Are there any tools for shared online writing of Doconce documents? ',
+               2,
+               None,
                '___sec20'),
-              (' Problems with code or Tex Blocks ', 1, None, '___sec21'),
-              (' Code or math block errors in reST ', 2, None, '___sec22'),
-              (' Strange errors around code or TeX blocks in reST ',
+              (' Preprocess/Mako problems ', 1, None, '___sec21'),
+              (' The Mako preprocessor is seemingly not run ',
+               2,
+               None,
+               '___sec22'),
+              (' The Mako preprocessor gives strange error messages ',
                2,
                None,
                '___sec23'),
-              (' Something is wrong with a verbatim code block ',
+              (' The Mako preprocessor is fooled by Doconce text ',
                2,
                None,
                '___sec24'),
-              (' Code/TeX block is not shown in reST format ',
+              (' The Mako preprocessor claims a variable is undefined ',
                2,
                None,
                '___sec25'),
-              (' Verbatim code blocks inside lists look ugly ',
+              (' Something goes wrong in the preprocessing step ',
                2,
                None,
                '___sec26'),
-              (' LaTeX code blocks inside lists look ugly ',
+              (' Preprocessor directives do not work ', 2, None, '___sec27'),
+              (' Problems with code or Tex Blocks ', 1, None, '___sec28'),
+              (' Code or math block errors in reST ', 2, None, '___sec29'),
+              (' Strange errors around code or TeX blocks in reST ',
                2,
                None,
-               '___sec27'),
-              (' Problems with reST/Sphinx Output ', 1, None, '___sec28'),
-              (' Title level inconsistent ', 2, None, '___sec29'),
-              (' Lists do not appear in .rst files ', 2, None, '___sec30'),
-              (' Error message "Undefined substitution..." from reST ',
+               '___sec30'),
+              (' Something is wrong with a verbatim code block ',
                2,
                None,
                '___sec31'),
-              (' Warning about duplicate link names ', 2, None, '___sec32'),
-              (' Inconsistent headings in reST ', 2, None, '___sec33'),
-              (' No code environment appears before "bc ipy" blocks ',
+              (' Code/TeX block is not shown in reST format ',
+               2,
+               None,
+               '___sec32'),
+              (' Verbatim code blocks inside lists look ugly ',
+               2,
+               None,
+               '___sec33'),
+              (' LaTeX code blocks inside lists look ugly ',
                2,
                None,
                '___sec34'),
-              (' Problems with LaTeX Output ', 1, None, '___sec35'),
-              (' LaTeX does not like underscores in URLs ',
-               2,
-               None,
-               '___sec36'),
-              (' How can I have unnumbered sections? ', 2, None, '___sec37'),
-              (" Error when running latex: You must have 'pygmentize' installed ",
+              (' Problems with reST/Sphinx Output ', 1, None, '___sec35'),
+              (' Title level inconsistent ', 2, None, '___sec36'),
+              (' Lists do not appear in .rst files ', 2, None, '___sec37'),
+              (' Error message "Undefined substitution..." from reST ',
                2,
                None,
                '___sec38'),
-              (' Why are the LaTeX section headings smaller than normal? ',
-               2,
-               None,
-               '___sec39'),
-              (' I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises ',
-               2,
-               None,
-               '___sec40'),
-              (' Can I have LaTeX figures with shadows? ',
+              (' Warning about duplicate link names ', 2, None, '___sec39'),
+              (' Inconsistent headings in reST ', 2, None, '___sec40'),
+              (' No code environment appears before "bc ipy" blocks ',
                2,
                None,
                '___sec41'),
-              (' How can I use my fancy LaTeX environments? ',
+              (' Problems with LaTeX Output ', 1, None, '___sec42'),
+              (' LaTeX does not like underscores in URLs ',
                2,
                None,
-               '___sec42'),
-              (' The LaTeX file does not compile ', 2, None, '___sec43'),
-              (' The LaTeX Beamer file does not compile ',
+               '___sec43'),
+              (' How can I have unnumbered sections? ', 2, None, '___sec44'),
+              (" Error when running latex: You must have 'pygmentize' installed ",
                2,
                None,
-               '___sec44'),
-              (' Inline verbatim gives error  ', 2, None, '___sec45'),
-              (' Errors in figure captions ', 2, None, '___sec46'),
-              (' Chapters are ignored ', 2, None, '___sec47'),
-              (' I want to tune the top (preamble) of the LaTeX file ',
+               '___sec45'),
+              (' Why are the LaTeX section headings smaller than normal? ',
+               2,
+               None,
+               '___sec46'),
+              (' I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises ',
+               2,
+               None,
+               '___sec47'),
+              (' Can I have LaTeX figures with shadows? ',
                2,
                None,
                '___sec48'),
-              (' Problems with gwiki Output ', 1, None, '___sec49'),
-              (' Strange nested lists in gwiki ', 2, None, '___sec50'),
-              (' Lists in gwiki look ugly in the gwiki source ',
+              (' How can I use my fancy LaTeX environments? ',
+               2,
+               None,
+               '___sec49'),
+              (' The LaTeX file does not compile ', 2, None, '___sec50'),
+              (' The LaTeX Beamer file does not compile ',
                2,
                None,
                '___sec51'),
-              (' Problems with HTML Output ', 1, None, '___sec52'),
+              (' Inline verbatim gives error  ', 2, None, '___sec52'),
+              (' Errors in figure captions ', 2, None, '___sec53'),
+              (' Chapters are ignored ', 2, None, '___sec54'),
+              (' I want to tune the top (preamble) of the LaTeX file ',
+               2,
+               None,
+               '___sec55'),
+              (' Problems with gwiki Output ', 1, None, '___sec56'),
+              (' Strange nested lists in gwiki ', 2, None, '___sec57'),
+              (' Lists in gwiki look ugly in the gwiki source ',
+               2,
+               None,
+               '___sec58'),
+              (' Problems with HTML Output ', 1, None, '___sec59'),
               (' MathJax formulas are not properly rendered ',
                2,
                None,
-               '___sec53'),
+               '___sec60'),
               (' How can I change the layout of the HTML page? ',
                2,
                None,
-               '___sec54'),
+               '___sec61'),
               (' Why do figures look ugly when using HTML templates? ',
                2,
                None,
-               '___sec55')]}
+               '___sec62'),
+              (' Problems with reveal/deck HTML5 slides ',
+               1,
+               None,
+               '___sec63'),
+              (' Reveal slides are moving steadily to the left ',
+               2,
+               None,
+               '___sec64'),
+              (' YouTube movies do not work ', 2, None, '___sec65'),
+              (' Online Python Tutor does not work ', 2, None, '___sec66')]}
 end of tocinfo -->
 
 <body>
@@ -234,7 +291,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Nov 25, 2013</h4></center> <!-- date -->
+<center><h4>May 28, 2014</h4></center> <!-- date -->
 <p>
 <b>Disclaimer.</b>
 Doconce has some support for syntax checking.  If you encounter Python
@@ -245,11 +302,10 @@ regular expressions to a large extent for transforming text, and
 regular expressions may sometimes fail. Therefore, there is a chance that legal
 Doconce syntax is not treated properly.
 
-<h2>General Problems  <a name="___sec0"></a></h2>
+<h1>General Problems  <a name="___sec0"></a></h1>
 
-<h3>Spellcheck reports a lot of mistakes related to LaTeX math  <a name="___sec1"></a></h3>
+<h2>Spellcheck reports a lot of mistakes related to LaTeX math  <a name="___sec1"></a></h2>
 
-<p>
 The <code>doconce spellcheck</code> command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
@@ -265,9 +321,8 @@ Find the problem in the corresponding Doconce file and correct it.
 A similar error can be caused by wrong matching
 of equation environments between <code>!bt</code> and <code>!et</code>.
 
-<h3>Text between subexercises are moved  <a name="___sec2"></a></h3>
+<h2>Text between subexercises are moved  <a name="___sec2"></a></h2>
 
-<p>
 If you insert text between a <code>!esubex</code> and the next <code>!bsubex</code>, this
 text is moved before all the subexercises. This is a feature, not a
 bug (exercises have certain elements: main text, subexercises, hints,
@@ -276,9 +331,8 @@ what appears in the Doconce source file). If you need a comment
 between two subexercises, just place the comment at the end of the
 previous subexercise.
 
-<h3>Doconce aborts because of a syntax error that is not an error  <a name="___sec3"></a></h3>
+<h2>Doconce aborts because of a syntax error that is not an error  <a name="___sec3"></a></h2>
 
-<p>
 Doconce searches for typical syntax errors and usually aborts the
 execution if errors are found. However, it may happen,
 especially in verbatim blocks, that Doconce reports syntax errors
@@ -286,89 +340,20 @@ that are not errors. To continue execution, simply add the
 <code>--no_abort</code> option on the command line. You may send an email
 to the Doconce author at <code>hpl@simula.no</code> and report the problem.
 
-<h3>The Mako preprocessor is seemingly not run  <a name="___sec4"></a></h3>
+<h2>Figure captions are incomplete  <a name="___sec4"></a></h2>
 
-<p>
-If you have lines starting with <code>%</code> inside code segments (for example,
-SWIG code or Matlab comment lines), the Mako preprocessor will crash
-because it thinks these lines are Mako statements. Doconce detects
-this problem and avoids running Mako.  Examine the output from
-Doconce: warnings are issued if Mako is not run.
-
-<h3>The Mako preprocessor is fooled by Doconce text  <a name="___sec5"></a></h3>
-
-<p>
-Here are possible problems for Mako:
-
-<p>
-
-<ul>
- <li> Strings with <code>'T<%.1f'</code> look as openings of Mako blocks (<code><%</code>); change
-   to <code>'T < %.1f'</code> to avoid this confusion.</li>
-</ul>
-
-<h3>The Mako preprocessor claims a variable is undefined  <a name="___sec6"></a></h3>
-
-<p>
-Very often such errors are related to typos when using Mako
-variables or functions, or correct yet undesired LaTeX syntax.
-For example, \( {\cal O}(\Delta x^2) \) is valid LaTeX, but
-the dollar sign and curly braces confuse Mako. Rewrite such
-mathematics. It is wise to not use <code>${</code> anywhere in LaTeX mathematics.
-Create a newcommand if there are no other possible rewritings.
-A known common problem is <code>${}^+$</code> type of indication of superscripts.
-A suggested rewrite is <code>$\,{}^+$</code>.
-
-<p>
-The error message will ask you to rerun <code>doconce</code> with
-<code>--mako_strict_undefined</code>, which will display the variable that
-is confusing Mako. However, do not continue to use
-<code>--mako_strict_undefined</code> while you are debugging because this
-variable or a new variable will then always be undefined in that mode.
-Rerun without <code>--mako_strict_undefined</code> to see if the problem
-is gone. If not, try the option again, and if no progress,
-use <code># #ifdef</code> directives to comment out large portions of
-the text and apply a "bisection" procedure to locate where
-the Mako problem is (without <code>--mako_strict_undefined</code>).
-A "bisection" procedure means that you comment out the last half,
-find in which half the problem is, comment out half of that half,
-find in which half the problem is, and so on.
-
-<h3>Something goes wrong in the preprocessing step  <a name="___sec7"></a></h3>
-
-<p>
-You can examine <code>tmp_preprocess__filename</code> and <code>tmp_mako__filename</code>,
-where <code>filename</code> is the complete name of the Doconce file, to see
-what the preprocessors actually to and if something is wrong in these
-files before Doconce starts translating the text.
-One or both of those files may be missing, but examine the beginning
-of the output from Doconce to see exactly which preprocessors are run
-and on which files.
-
-<h3>Figure captions are incomplete  <a name="___sec8"></a></h3>
-
-<p>
 If only the first part of a figure caption in the Doconce file is seen
 in the target output format, the reason is usually that the caption
 occupies multiple lines in the Doconce file. The figure caption must
 be written as <em>one line</em>, at the same line as the FIGURE keyword.
 
-<h3>Preprocessor directives do not work  <a name="___sec9"></a></h3>
+<h2>Problems with boldface and emphasize  <a name="___sec5"></a></h2>
 
-<p>
-Make sure the preprocessor instructions, in Preprocess or Mako, have
-correct syntax. Also make sure that you do not mix Preprocess and Mako
-instructions. Doconce will then only run Preprocess.
-
-<h3>Problems with boldface and emphasize  <a name="___sec10"></a></h3>
-
-<p>
 Two boldface or emphasize expressions after each other are not rendered
 correctly. Merge them into one common expression.
 
-<h3>Links to local directories do not work  <a name="___sec11"></a></h3>
+<h2>Links to local directories do not work  <a name="___sec6"></a></h2>
 
-<p>
 Links of the type
 <!-- begin verbatim block -->
 <pre><code>see the &quot;examples directory&quot;: &quot;src/examples&quot;
@@ -385,9 +370,8 @@ your files are collected in the Sphinx directory tree bundle.
 With plain <code>html</code> output only, you can link to whatever, but remember
 to move all files you link to if you move the primary <code>.html</code> file.
 
-<h3>Links are not typeset correctly  <a name="___sec12"></a></h3>
+<h2>Links are not typeset correctly  <a name="___sec7"></a></h2>
 
-<p>
 Not all formats will allow formatting of the links. Verbatim words
 in links are allowed if the whole link is typeset in verbatim:
 <!-- begin verbatim block -->
@@ -402,19 +386,16 @@ However, the following will not be typeset correctly:
 The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
 
-<h3>Inline verbatim code is not detected  <a name="___sec13"></a></h3>
+<h2>Inline verbatim code is not detected  <a name="___sec8"></a></h2>
 
-<p>
 Make sure there is a space before the first back-tick.
 
-<h3>Inline verbatim text is not formatted correctly  <a name="___sec14"></a></h3>
+<h2>Inline verbatim text is not formatted correctly  <a name="___sec9"></a></h2>
 
-<p>
 Make sure there is whitespace surrounding the text in back-ticks.
 
-<h3>Strange non-English characters  <a name="___sec15"></a></h3>
+<h2>Strange non-English characters  <a name="___sec10"></a></h2>
 
-<p>
 The former reason for this problem is that Doconce could only work with latin1
 (ISO-8859) encoding and not UTF-8. After May 2013, Doconce applies
 UTF-8 both for HTML and LaTeX.
@@ -434,39 +415,34 @@ Terminal&gt; iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>Wrong Norwegian charcters  <a name="___sec16"></a></h3>
+<h2>Wrong Norwegian charcters  <a name="___sec11"></a></h2>
 
-<p>
 When Doconce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
 the section "Strange non-English characters" above for how to
 run <code>doconce change_encoding</code> to change the encoding of the Doconce file.
 
-<h3>Too short underlining of reST headlines  <a name="___sec17"></a></h3>
+<h2>Too short underlining of reST headlines  <a name="___sec12"></a></h2>
 
-<p>
 This may happen if there is a paragraph heading without
 proceeding text before some section heading.
 
-<h3>Found !bt but no tex blocks extracted (BUG)  <a name="___sec18"></a></h3>
+<h2>Found <code>!bt</code> but no tex blocks extracted (BUG)  <a name="___sec13"></a></h2>
 
-<p>
 This message points to a bug, but has been resolved by removing blank lines
 between the text and the first <code>!bt</code> (inserting the blanks again did not
 trigger the error message again...).
 
-<h3>Examples are typset with environment delimiters visible  <a name="___sec19"></a></h3>
+<h2>Examples are typset with environment delimiters visible  <a name="___sec14"></a></h2>
 
-<p>
 If you see an Example section containing <code>!bsubex</code>, <code>!bsol</code>, or other
 begin and end tags for environments, it means that you have intended
 to typeset examples as exercises, but forgotten the command-line
 option <code>--examples_as_exercises</code>. The text in the example is typeset
 as is unless this option is included.
 
-<h3>Emacs editing does not work properly because of "regexp overflow"  <a name="___sec20"></a></h3>
+<h2>Emacs editing does not work properly because of "regexp overflow"  <a name="___sec15"></a></h2>
 
-<p>
 Sometimes the Doonce editing mode (see the section ref{emacs:doconce}) in Emacs
 leads to an error message ending with "overflow in regexp matcher".
 This error is due to some regular expression used in the Doconce editing
@@ -475,11 +451,182 @@ the pieces using the <code>preprocess</code> directive <code>#include "piece.do.
 The error message comes with the Doconce file contains too much text
 for Emacs to handle.
 
-<h2>Problems with code or Tex Blocks  <a name="___sec21"></a></h2>
+<h2>My machine hangs if I have many movies  <a name="___sec16"></a></h2>
 
-<h3>Code or math block errors in reST  <a name="___sec22"></a></h3>
+Doconce has no limits on the amount of movies. When the output is
+in HTML, one big HTML file may contain too many movies (local movie
+files or embedded YouTube movies) for the browser to handle.
+The remedy is to split the document into smaller pieces by inserting
 
 <p>
+<!-- begin verbatim block -->
+<pre><code>!split
+</code></pre>
+<!-- end verbatim block -->
+for every new page. After <code>doconce format html mydoc</code>, run
+<code>doconce split_html mydoc.html</code> to get the document split into
+a main document <code>mydoc.html</code> and pieces <code>._mydocXXX.html</code>, where
+<code>XXX</code> stands for three digits (<code>000</code>, <code>001</code>, <code>002</code>, and so forth).
+
+<h2>How can I use quotes in a link?  <a name="___sec17"></a></h2>
+
+Links are typeset inside double quotes, but Doconce applies double backticks
+and double single quotes to typeset quotes, so the right form is
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>&quot;This is a ``link text'' to google&quot;: &quot;http://google.com&quot;.
+</code></pre>
+<!-- end verbatim block -->
+It appears as
+
+<p>
+<blockquote>
+    <a href="http://google.com" target="_self">This is a &quot;link text&quot; to google</a>.
+</blockquote>
+
+
+<h2>Conversion from Doconce to Google Docs  <a name="___sec18"></a></h2>
+
+<ul>
+ <li> Transform the Doconce document to HTML, upload to Google Drive,
+   right-click the file and open as Google Docs.</li>
+ <li> It might be necessary to adjust formatting, e.g., insert an extra
+   line between paragraphs.</li>
+ <li> MathJax code is not converted to the Google Docs LaTeX counterpart
+   and appears verbatim.</li>
+ <li> Pygmentized computer code and admons look fine.</li>
+</ul>
+
+<h2>Convesion from Google Docs to Doconce  <a name="___sec19"></a></h2>
+
+<ul>
+ <li> Save as HTML file and use Pandoc to convert to Markdown.
+   Use the <code>--markdown</code> and <code>--md2do_output=</code> options to
+   `doconce format to convert to Doconce.</li>
+ <li> Lists in Markdown must be intended.</li>
+ <li> Notes in Google Docs become (potentially many) footnotes.
+   Some tailored editing is necessary.</li>
+</ul>
+
+This solution is not much explored and more text transformations from
+Pandoc-generated Markdown is certainly needed.
+
+<h2>Are there any tools for shared online writing of Doconce documents?  <a name="___sec20"></a></h2>
+
+In theory, <a href="http://draftin.com" target="_self"><tt>http://draftin.com</tt></a> and <a href="https://stackedit.io" target="_self"><tt>https://stackedit.io</tt></a>
+can be used to share Markdown documents and these can be transform
+to and from Doconce documents. Tested to a little degree, but may
+work for very simple documents (sections, lists, code - no labels, refs,
+math, admons, code copied from file).
+Not all of Extended Markdown is interpreted by Doconce, and Doconce
+transforms to Panddoc-extended Markdown, not the Extended Markdown
+used by these sites.
+
+<h1>Preprocess/Mako problems  <a name="___sec21"></a></h1>
+
+<h2>The Mako preprocessor is seemingly not run  <a name="___sec22"></a></h2>
+
+If you have lines starting with <code>%</code> inside code segments (for example,
+SWIG code or Matlab comment lines), the Mako preprocessor will crash
+because it thinks these lines are Mako statements. Doconce detects
+this problem and avoids running Mako.  Examine the output from
+Doconce: warnings are issued if Mako is not run.
+
+<h2>The Mako preprocessor gives strange error messages  <a name="___sec23"></a></h2>
+
+If you to a little syntax error in Mako, the consequences can be
+quite unpredictable. Especially, if you forget curly braces around
+variables or function calls, the forthcoming text is processed as
+part of the Mako command. Pay attention to the line number reported
+by Mako: this is the line number after Preprocess has processed
+the Doconce document, so you need to load <code>tmp_preprocess__mydoc.do.txt</code>
+and go to the right line in that file to see the Mako problem
+(here the Doconce document is named <code>mydoc.do.txt</code>).
+
+<p>
+Look through the specific Mako problems
+reported below, and if they do not bring you to a solution of
+the problem, search for all occurences of dollar, left curly brace
+and check the syntax carefully. Likewise, check the syntax of
+Mako if-tests.
+
+<p>
+Another widely used technique is to copy out small parts of
+the complete document to a separate file and run <code>doconce format</code>.
+In this way you can easier see which parts of the document that
+work and where the error suddenly appears.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Tip: Compile your Doconce document frequently.</b>
+The best means against Mako problems is to run <code>doconce format</code>
+often. Combined Git, you can take
+a <code>git diff</code> to see what you have recently changed and get an idea
+what can be wrong.
+</div>
+
+
+<h2>The Mako preprocessor is fooled by Doconce text  <a name="___sec24"></a></h2>
+
+Here are possible problems for Mako:
+
+<ul>
+ <li> Strings with <code>'T<%.1f'</code> look as openings of Mako blocks (<code><%</code>); change
+   to <code>'T < %.1f'</code> to avoid this confusion.</li>
+</ul>
+
+<h2>The Mako preprocessor claims a variable is undefined  <a name="___sec25"></a></h2>
+
+Very often such errors are related to typos when using Mako
+variables or functions, or correct yet undesired LaTeX syntax.
+For example, \( {\cal O}(\Delta x^2) \) is valid LaTeX, but
+the dollar sign and curly braces confuse Mako. Rewrite such
+mathematics. It is wise to not use <code>${</code> anywhere in LaTeX mathematics.
+Create a newcommand if there are no other possible rewritings.
+A known common problem is <code>${}^+$</code> type of indication of superscripts.
+A suggested rewrite is <code>$\,{}^+$</code>.
+
+<p>
+The error message will ask you to rerun <code>doconce</code> with
+<code>--mako_strict_undefined</code>, which will display the variable that is
+confusing Mako. Sometimes the variable is printed, sometimes a totally
+different name is said to be undefined. This is confusing, because
+then you have to use the bisection method below to narrow down the
+problem yourself.
+
+<p>
+Do not continue to use <code>--mako_strict_undefined</code> while you are
+debugging because this variable or a new variable will then always be
+undefined in that mode.  Rerun without <code>--mako_strict_undefined</code> to
+see if the problem is gone. If not, try the option again, and if no
+progress, use <code># #ifdef</code> directives to comment out large portions of
+the text and apply a bisection procedure to locate where the Mako
+problem is (without <code>--mako_strict_undefined</code>).  A bisection procedure
+means that you comment out the last half, find in which half the
+problem is, comment out half of that half, find in which half the
+problem is, and so on. The procedure converges pretty quickly, even
+for large books.
+
+<h2>Something goes wrong in the preprocessing step  <a name="___sec26"></a></h2>
+
+You can examine <code>tmp_preprocess__filename</code> and <code>tmp_mako__filename</code>,
+where <code>filename</code> is the complete name of the Doconce file, to see
+what the preprocessors actually to and if something is wrong in these
+files before Doconce starts translating the text.
+One or both of those files may be missing, but examine the beginning
+of the output from Doconce to see exactly which preprocessors are run
+and on which files.
+
+<h2>Preprocessor directives do not work  <a name="___sec27"></a></h2>
+
+Make sure the preprocessor instructions, in Preprocess or Mako, have
+correct syntax. Also make sure that you do not mix Preprocess and Mako
+instructions. Doconce will then only run Preprocess.
+
+<h1>Problems with code or Tex Blocks  <a name="___sec28"></a></h1>
+
+<h2>Code or math block errors in reST  <a name="___sec29"></a></h2>
+
 First note that a code or math block must come after some plain
 sentence (at least for successful output in reST), not directly
 after a section/paragraph heading, table, comment, figure, or
@@ -499,9 +646,8 @@ mentioned. Then <code>!bc</code> will most likely be replaced and a double colon
 at the preceding line will appear (which is the right way in reST to
 indicate a verbatim block of text).
 
-<h3>Strange errors around code or TeX blocks in reST  <a name="___sec23"></a></h3>
+<h2>Strange errors around code or TeX blocks in reST  <a name="___sec30"></a></h2>
 
-<p>
 If <code>idx</code> commands for defining indices are placed inside paragraphs,
 and especially right before a code block, the reST translator
 (rst and sphinx formats) may get confused and produce strange
@@ -509,23 +655,20 @@ code blocks that cause errors when the reST text is transformed to
 other formats. The remedy is to define items for the index outside
 paragraphs.
 
-<h3>Something is wrong with a verbatim code block  <a name="___sec24"></a></h3>
+<h2>Something is wrong with a verbatim code block  <a name="___sec31"></a></h2>
 
-<p>
 Check first that there is a "normal" sentence right before
 the block (this is important for reST and similar
 "ASCII-close" formats).
 
-<h3>Code/TeX block is not shown in reST format  <a name="___sec25"></a></h3>
+<h2>Code/TeX block is not shown in reST format  <a name="___sec32"></a></h2>
 
-<p>
 A comment right before a code or tex block will treat the whole
 block also as a comment. It is important that there is normal
 running text right before <code>!bt</code> and <code>!bc</code> environments.
 
-<h3>Verbatim code blocks inside lists look ugly  <a name="___sec26"></a></h3>
+<h2>Verbatim code blocks inside lists look ugly  <a name="___sec33"></a></h2>
 
-<p>
 Read the the section ref{sec:verbatim:blocks} above.  Start the
 <code>!bc</code> and <code>!ec</code> tags in column 1 of the file, and be careful with
 indenting the surrounding plain text of the list item correctly. If
@@ -533,46 +676,40 @@ you cannot resolve the problem this way, get rid of the list and use
 paragraph headings instead. In fact, that is what is recommended:
 avoid verbatim code blocks inside lists (it makes life easier).
 
-<h3>LaTeX code blocks inside lists look ugly  <a name="___sec27"></a></h3>
+<h2>LaTeX code blocks inside lists look ugly  <a name="___sec34"></a></h2>
 
-<p>
 Same solution as for computer code blocks as described in the
 previous paragraph. Make sure the <code>!bt</code> and <code>!et</code> tags are in column 1
 and that the rest of the non-LaTeX surrounding text is correctly indented.
 Using paragraphs instead of list items is a good idea also here.
 
-<h2>Problems with reST/Sphinx Output  <a name="___sec28"></a></h2>
+<h1>Problems with reST/Sphinx Output  <a name="___sec35"></a></h1>
 
-<h3>Title level inconsistent  <a name="___sec29"></a></h3>
+<h2>Title level inconsistent  <a name="___sec36"></a></h2>
 
-<p>
 reST does not like jumps in the levels of headings. For example, you cannot
 have a <code>===</code> (paragraph) heading after a <code>=======</code> (section) heading without
 a <code>====</code> (subsection) heading in between.
 
-<h3>Lists do not appear in .rst files  <a name="___sec30"></a></h3>
+<h2>Lists do not appear in .rst files  <a name="___sec37"></a></h2>
 
-<p>
 Check if you have a comment right above the list. That comment
 will include the list if the list is indentend. Remove the comment.
 
-<h3>Error message "Undefined substitution..." from reST  <a name="___sec31"></a></h3>
+<h2>Error message "Undefined substitution..." from reST  <a name="___sec38"></a></h2>
 
-<p>
 This may happen if there is much inline math in the text. reST cannot
 understand inline LaTeX commands and interprets them as illegal code.
 Just ignore these error messages.
 
-<h3>Warning about duplicate link names  <a name="___sec32"></a></h3>
+<h2>Warning about duplicate link names  <a name="___sec39"></a></h2>
 
-<p>
 Link names should be unique, but if (e.g.) "file" is used as link text
 several places in a reST file, the links still work. The warning can
 therefore be ignorned.
 
-<h3>Inconsistent headings in reST  <a name="___sec33"></a></h3>
+<h2>Inconsistent headings in reST  <a name="___sec40"></a></h2>
 
-<p>
 The <code>rst2*.py</code> and Sphinx converters abort if the headers of sections
 are not consistent, i.e., a subsection must come under a section,
 and a subsubsection must come under a subsection (you cannot have
@@ -580,19 +717,17 @@ a subsubsection directly under a section). Search for <code>===</code>,
 count the number of equality signs (or underscores if you use that)
 and make sure they decrease by two every time a lower level is encountered.
 
-<h3>No code environment appears before "bc ipy" blocks  <a name="___sec34"></a></h3>
+<h2>No code environment appears before "bc ipy" blocks  <a name="___sec41"></a></h2>
 
-<p>
 The <code>!bc ipy</code> directive behaves this way for <code>sphinx</code> output because
 interactive sessions are automatically handled. If this is not
 appropriate, shift to <code>!bc cod</code> or another specification of the
 verbatim environment.
 
-<h2>Problems with LaTeX Output  <a name="___sec35"></a></h2>
+<h1>Problems with LaTeX Output  <a name="___sec42"></a></h1>
 
-<h3>LaTeX does not like underscores in URLs  <a name="___sec36"></a></h3>
+<h2>LaTeX does not like underscores in URLs  <a name="___sec43"></a></h2>
 
-<p>
 Suppose you have a URL reference like
 
 <p>
@@ -613,9 +748,8 @@ The remedy is to format the link text with inline verbatim tags (backticks):
 <!-- end verbatim block -->
 Verbatim text in links works fine with underscores.
 
-<h3>How can I have unnumbered sections?  <a name="___sec37"></a></h3>
+<h2>How can I have unnumbered sections?  <a name="___sec44"></a></h2>
 
-<p>
 Do an automatic edit like this:
 
 <p>
@@ -624,9 +758,8 @@ Do an automatic edit like this:
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>Error when running latex: You must have 'pygmentize' installed  <a name="___sec38"></a></h3>
+<h2>Error when running latex: You must have 'pygmentize' installed  <a name="___sec45"></a></h2>
 
-<p>
 This message points to the use of the minted style for typesetting verbatim
 code. You need to include the <code>-shell-escape</code> command-line argument when
 running <code>latex</code> or <code>pdflatex</code>:
@@ -641,9 +774,8 @@ preprocessor option <code>-DMINTED</code> to turn on the minted package.
 When this package is included, <code>latex</code> or <code>pdflatex</code> runs the
 <code>pygmentize</code> program and the <code>shell-escape</code> option is required.
 
-<h3>Why are the LaTeX section headings smaller than normal?  <a name="___sec39"></a></h3>
+<h2>Why are the LaTeX section headings smaller than normal?  <a name="___sec46"></a></h2>
 
-<p>
 Doconce inserts a special command to make the headings
 more compact:
 
@@ -667,18 +799,16 @@ You can easily make the headings even smaller than the normal font
 by replacing <code>[compact]</code> by <code>[compact,small]</code> as parameter specification
 for <code>titlesec</code>.
 
-<h3>I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises  <a name="___sec40"></a></h3>
+<h2>I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises  <a name="___sec47"></a></h2>
 
-<p>
 When using colored boxes for code in LaTeX, a code snippet is needed
 in the ordinary running text <em>before</em> code snippets inside exercises, problems,
 or projects. This is a kind of bug in Doconce that is challenging to fix.
 It is usually only a problem when writing documents mainly containing
 exercises, problems, or projects.
 
-<h3>Can I have LaTeX figures with shadows?  <a name="___sec41"></a></h3>
+<h2>Can I have LaTeX figures with shadows?  <a name="___sec48"></a></h2>
 
-<p>
 This is easy by including the <code>fancybox</code> and <code>graphicx</code> packages
 and wrapping all <code>\includegraphics</code> in a shadow box:
 
@@ -692,16 +822,14 @@ Terminal&gt; doconce subst '(\\includegraphics\[.+\}\})' \
 </code></pre>
 <!-- end verbatim block -->
 
-<h3>How can I use my fancy LaTeX environments?  <a name="___sec42"></a></h3>
+<h2>How can I use my fancy LaTeX environments?  <a name="___sec49"></a></h2>
 
-<p>
 See the section ref{manual:theorem:envir} for how to make a custom
 theorem environment also in Doconce, without using implementations
 restricted to LaTeX.
 
-<h3>The LaTeX file does not compile  <a name="___sec43"></a></h3>
+<h2>The LaTeX file does not compile  <a name="___sec50"></a></h2>
 
-<p>
 If the problem is undefined control sequence involving
 <!-- begin verbatim block -->
 <pre><code>\code{...}
@@ -711,14 +839,12 @@ the cause is usually a verbatim inline text (in back-ticks in the
 Doconce file) spans more than one line. Make sure, in the Doconce source,
 that all inline verbatim text appears on the same line.
 
-<h3>The LaTeX Beamer file does not compile  <a name="___sec44"></a></h3>
+<h2>The LaTeX Beamer file does not compile  <a name="___sec51"></a></h2>
 
-<p>
 Make sure you have a <code>!split</code> before every slide heading.
 
-<h3>Inline verbatim gives error   <a name="___sec45"></a></h3>
+<h2>Inline verbatim gives error   <a name="___sec52"></a></h2>
 
-<p>
 Check if the inline verbatim contains typical LaTeX commands, e.g.,
 <!-- begin verbatim block -->
 <pre><code>some text with `\usepackage{mypack}` is difficult because
@@ -736,9 +862,8 @@ blocks - that is safe.
 <!-- Could have doconce configure file where inline verbatim is -->
 <!-- configured to be \fontsize... directly, not via ptex2tex \code{}. -->
 
-<h3>Errors in figure captions  <a name="___sec46"></a></h3>
+<h2>Errors in figure captions  <a name="___sec53"></a></h2>
 
-<p>
 Such errors typically arise from unbalanced curly braces, or dollar signs
 around math, and similar LaTeX syntax errors.
 
@@ -748,16 +873,14 @@ but Doconce will automatically replace verbatim text in back-ticks by
 a proper <code>texttt</code> command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
-<h3>Chapters are ignored  <a name="___sec47"></a></h3>
+<h2>Chapters are ignored  <a name="___sec54"></a></h2>
 
-<p>
 The default LaTeX style is "article". If you chapters in the Doconce file,
 you need to run <code>ptex2tex</code> with the option <code>-DBOOK</code> to set the LaTeX
 documentstyle to "book".
 
-<h3>I want to tune the top (preamble) of the LaTeX file  <a name="___sec48"></a></h3>
+<h2>I want to tune the top (preamble) of the LaTeX file  <a name="___sec55"></a></h2>
 
-<p>
 The default preamble generated by Doconce has several <code>preprocess</code>
 options to set the font, type of titlepage, etc., when running
 <code>ptex2tex</code> or <code>doconce ptex2tex</code>. However, it is easy to provide
@@ -780,17 +903,15 @@ There are comment lines with <code>--- begin preamble ---</code> and
 <code>--- end preamble ---</code> in the generate <code>.p.tex</code> file that can be
 used to replace the whole preamble by something more suitable.
 
-<h2>Problems with gwiki Output  <a name="___sec49"></a></h2>
+<h1>Problems with gwiki Output  <a name="___sec56"></a></h1>
 
-<h3>Strange nested lists in gwiki  <a name="___sec50"></a></h3>
+<h2>Strange nested lists in gwiki  <a name="___sec57"></a></h2>
 
-<p>
 Doconce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the <code>.gwiki</code> file directly.
 
-<h3>Lists in gwiki look ugly in the gwiki source  <a name="___sec51"></a></h3>
+<h2>Lists in gwiki look ugly in the gwiki source  <a name="___sec58"></a></h2>
 
-<p>
 Because the Google Code wiki format requires all text of a list item to
 be on one line, Doconce simply concatenates lines in that format,
 and because of the indentation in the original Doconce text, the gwiki
@@ -798,14 +919,11 @@ output looks somewhat ugly. The good thing is that this gwiki source
 is seldom to be looked at - it is the Doconce source that one edits
 further.
 
-<h2>Problems with HTML Output  <a name="___sec52"></a></h2>
+<h1>Problems with HTML Output  <a name="___sec59"></a></h1>
 
-<h3>MathJax formulas are not properly rendered  <a name="___sec53"></a></h3>
+<h2>MathJax formulas are not properly rendered  <a name="___sec60"></a></h2>
 
-<p>
 Here are some common problems:
-
-<p>
 
 <ul>
  <li> Two equations cannot have identical label (this error often arises
@@ -813,9 +931,8 @@ Here are some common problems:
  <li> <code>[</code> and <code>]</code> brackets must sometimes be replaced by <code>\lbrack</code> and <code>\rbrack</code></li>
 </ul>
 
-<h3>How can I change the layout of the HTML page?  <a name="___sec54"></a></h3>
+<h2>How can I change the layout of the HTML page?  <a name="___sec61"></a></h2>
 
-<p>
 The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 Doconce document to HTML. The edits should therefore be automated
@@ -855,9 +972,8 @@ is used (if installed) and can be turned off by <code>--no_pygments_html</code>
 The easiest way is to get fancy layouts in HTML is to
 use the <code>sphinx</code> format and one its many themes.
 
-<h3>Why do figures look ugly when using HTML templates?  <a name="___sec55"></a></h3>
+<h2>Why do figures look ugly when using HTML templates?  <a name="___sec62"></a></h2>
 
-<p>
 The HTML header that Doconce generates contain special styles for
 figure captions and the horizontal rule above figures. When using
 templates these styles are not defined, resulting in a rule that
@@ -873,6 +989,24 @@ doconce replace '&lt;hr class=&quot;figure&quot;&gt;' \
  '&lt;hr style=&quot;width: 50%&quot;&gt;' mydoc.html
 </code></pre>
 <!-- end verbatim block -->
+
+<h1>Problems with reveal/deck HTML5 slides  <a name="___sec63"></a></h1>
+
+<h2>Reveal slides are moving steadily to the left  <a name="___sec64"></a></h2>
+
+This seems to be a problem when one has used the mouse to scroll down
+on a slide and continue to use the right arrow for moving to the
+next slide. Click on the arrow in the slide instead of using the arrow key.
+
+<h2>YouTube movies do not work  <a name="___sec65"></a></h2>
+
+They do not work in reveal or deck unless the Chrome browser is used.
+Usually the HTML5 slides work best in Firefox.
+
+<h2>Online Python Tutor does not work  <a name="___sec66"></a></h2>
+
+Seems to be a problem with reveal slides. The <em>Forward</em> button is not
+clickable.
 
 <!-- ------------------- end of main content --------------- -->
 
