@@ -1422,6 +1422,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -1562,7 +1563,7 @@ $$
     
 <a name="part0000"></a>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -1658,7 +1659,7 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -6124,12 +6125,12 @@ end{Verbatim}end{quote}
 It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! The
 exclamation mark inside the verbatim text is potentially not smart
 since latex use ! in the \Verb!Verb! typesetting, but this should now
-be fixed: test \Verb~!bc~ and \Verb~!ec~ as well as \Verb~!bsummary~.
+be fixed: test \Verb?!bc? and \Verb?!ec? as well as \Verb?!bsummary?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}! in inline
 verbatim text. Since the exclamation mark is used as delimiter
-in {\LaTeX} inline verbatim, we need to test it, as in \Verb~a != b~,
-and a Doconce directive a la \Verb~!bc~.
+in {\LaTeX} inline verbatim, we need to test it, as in \Verb?a != b?,
+and a Doconce directive a la \Verb?!bc?.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -21903,7 +21904,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in  a != b , and a Doconce directive a la  !bc .</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test ?!bc? and ?!ec? as well as ?!bsummary?. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in ?a != b?, and a Doconce directive a la ?!bc?.</p>
 <p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -22402,7 +22403,6 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta name="author" content="A. Dummy Author" />
   <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
-  <meta name="date" content="2014-05-25" />
   <title>A Document for Testing Doconce</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -24235,6 +24235,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -25241,6 +25242,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -25381,7 +25383,7 @@ $$
     
 <a name="part0000"></a>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -25477,7 +25479,7 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -25566,6 +25568,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -25706,9 +25709,9 @@ $$
     
 <a name="part0001"></a>
 <!-- begin top navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -26558,9 +26561,9 @@ footnotes.
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -26649,6 +26652,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -26789,9 +26793,9 @@ $$
     
 <a name="part0002"></a>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -27425,9 +27429,9 @@ What about inserting a quiz?
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -27516,6 +27520,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -27656,7 +27661,7 @@ $$
     
 <a name="part0003"></a>
 <!-- begin top navigation -->
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 <!-- end top navigation -->
 
 <p>
@@ -27825,7 +27830,7 @@ is at the end with only one newline.
 
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -27897,6 +27902,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -29518,6 +29524,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -33584,7 +33591,7 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html
+system doconce split_html testdoc.html --nav_button=gray2
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
@@ -33688,7 +33695,7 @@ cp slides1.html slides1_deck.html
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
-system doconce slides_beamer slides1
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
@@ -34416,6 +34423,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -34692,7 +34700,6 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="HPL" />
-  <meta name="date" content="2014-05-25" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -35400,40 +35407,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -35787,40 +35794,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -36174,40 +36181,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -36699,7 +36706,7 @@ They are used in different flavors, now in
 </ul>
 
 which gives flexibility in writing.
-This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_4"><a><a href="#def_footnote_4" style="color: white">4</a></button> example.
+This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_4"><a><a href="._testdoc_vagrant003.html#def_footnote_4" style="color: white">4</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -37216,40 +37223,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -45227,6 +45234,7 @@ Automatically generated HTML file from Doconce source
                 background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Forward.png); }
     .block    { color: #00529B; background-color: #BDE5F8; }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -45756,6 +45764,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -46283,6 +46292,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -47210,6 +47220,7 @@ Automatically generated HTML file from Doconce source
     .alert-text-large   { font-size: 130%%; }
     .alert-text-normal  { font-size: 90%%;  }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -47814,6 +47825,7 @@ Automatically generated HTML file from Doconce source
     .alert-text-large   { font-size: 130%%; }
     .alert-text-normal  { font-size: 90%%;  }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -48397,6 +48409,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -49542,12 +49555,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -50294,12 +50307,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -57514,6 +57527,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -58774,8 +58788,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 % !split
@@ -58925,9 +58939,9 @@ title (Warning) since no title is specified.
 
 %-------------------- begin beamer-specific preamble ----------------------
 
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usetheme{default}
+\usetheme{blue_shadow}
 \usecolortheme{default}
 
 % turn off the almost invisible, yet disturbing, navigation symbols:
@@ -59001,24 +59015,28 @@ title (Warning) since no title is specified.
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -59064,8 +59082,8 @@ title (Warning) since no title is specified.
 Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 \begin{frame}[plain,fragile]
@@ -61375,8 +61393,8 @@ open=right               % start new chapters on odd-numbered pages
 \institute{Cyber Space Ltd\inst{1}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 \begin{center}  % inline figure
@@ -62263,24 +62281,28 @@ Last page gets rendered to
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -62324,7 +62346,7 @@ Last page gets rendered to
 \institute{Cyber Space Ltd\inst{1}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
+\date{Jan 32, 2100
 \\ \ \\ 
 \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
 }
@@ -62779,7 +62801,7 @@ Inline math as in {\LaTeX}:
 gets rendered as ...where $a=\int_{\Omega}fdx$ is an integral.
 
 
-An equation environment is surrounded by \Verb~!bt~ and \Verb~!et~ tags,
+An equation environment is surrounded by \Verb?!bt? and \Verb?!et? tags,
 the rest is plain {\LaTeX}:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -62805,7 +62827,7 @@ which is rendered as
 \begin{frame}[plain,fragile]
 \frametitle{Doconce: displaying code}
 
-Code is enclosed in \Verb~!bc~ and \Verb~!ec~ tags:
+Code is enclosed in \Verb?!bc? and \Verb?!ec? tags:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !bc pycod
@@ -62842,7 +62864,7 @@ def solver(I, a, T, dt, theta):
 
 
 \begin{notice_mdfboxadmon}[Language-dependent typesetting of code:]
-The \Verb~!bc~ command can be followed by a specification of the computer
+The \Verb?!bc? command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
 forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
@@ -62854,7 +62876,7 @@ forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! f
 
 \label{slide:pot}
 
-With \Verb~!bc pyoptpro~ or a file \Verb!*.pyopt!, the code applies the
+With \Verb?!bc pyoptpro? or a file \Verb!*.pyopt!, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
@@ -63036,7 +63058,7 @@ And maybe a final comment?
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
-MN is surrounded by \Verb~!bslidecell MN~ and \Verb~!eslidecell~
+MN is surrounded by \Verb?!bslidecell MN? and \Verb?!eslidecell?
 tags. Below is an example with a bullet list to the left and
 a figure to the right (two cells, numbered 00 and 01).
 
@@ -64100,8 +64122,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 Department of Informatics, University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 \begin{center}  % inline figure
@@ -64354,24 +64376,28 @@ qualitatively correct results.
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -64417,7 +64443,7 @@ qualitatively correct results.
 Department of Informatics, University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
+\date{Jan 32, 2100
 \\ \ \\ 
 \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
 }
@@ -64792,6 +64818,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -65533,6 +65560,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -72982,9 +73010,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -73160,9 +73188,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -73453,9 +73481,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -73662,7 +73690,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun May 25 16:04:20 2014.
+# sphinx-quickstart on Wed Jun 11 07:08:29 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75817,6 +75845,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -88380,8 +88409,8 @@ no answers/solutions to exercises found in testdoc.html
 + system doconce html_colorbullets testdoc.html
 + doconce html_colorbullets testdoc.html
 + '[' 0 -ne 0 ']'
-+ system doconce split_html testdoc.html
-+ doconce split_html testdoc.html
++ system doconce split_html testdoc.html --nav_button=gray2
++ doconce split_html testdoc.html --nav_button=gray2
 testdoc.html now links to the generated files
 ._testdoc000.html, ._testdoc001.html, ._testdoc002.html, ._testdoc003.html
 + '[' 0 -ne 0 ']'
@@ -92110,9 +92139,12 @@ output in slides1.p.tex
 \bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in slides1.tex
 + '[' 0 -ne 0 ']'
-+ system doconce slides_beamer slides1
-+ doconce slides_beamer slides1
++ system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
++ doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
+handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf
 slides written to slides1.tex
+printing for handout:
+pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 slides1.pdf
 + '[' 0 -ne 0 ']'
 + system doconce format html slides2 --pygments_html_style=emacs
 + doconce format html slides2 --pygments_html_style=emacs

@@ -1769,6 +1769,7 @@ def define(FILENAME_EXTENSION,
     style = """
 <style type="text/css">
 %s
+div { text-align: justify; text-justify: inter-word; }
 </style>
 """ % css
     css_filename = option('css=')
