@@ -2428,8 +2428,8 @@ def doconce_split_html(header, parts, footer, basename, filename):
                 elif i == len(parts)+1:
                     part = footer
                 text = ''.join(part).replace(
-                    '<a href="#%s">' % name,
-                    '<a href="%s#%s">' % (name_def_filename, name))
+                    '<a href="#%s"' % name,
+                    '<a href="%s#%s"' % (name_def_filename, name))
                 if i < len(parts):
                     parts[i] = text.splitlines(True)
                 elif i == len(parts):
