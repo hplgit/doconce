@@ -288,6 +288,7 @@ They are used in different flavors, now in
  * list items
  * even with math $\nabla^2u$ [^math1]
  * and code `h[i] += 1` [^code],
+ * and "links": "http://google.com" [^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -301,6 +302,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: URL: "google.com" is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
