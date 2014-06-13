@@ -1370,7 +1370,7 @@ Automatically generated HTML file from Doconce source
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -1422,6 +1422,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -1562,7 +1563,7 @@ $$
     
 <a name="part0000"></a>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -1658,7 +1659,7 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -6124,12 +6125,12 @@ end{Verbatim}end{quote}
 It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! The
 exclamation mark inside the verbatim text is potentially not smart
 since latex use ! in the \Verb!Verb! typesetting, but this should now
-be fixed: test \Verb~!bc~ and \Verb~!ec~ as well as \Verb~!bsummary~.
+be fixed: test \Verb?!bc? and \Verb?!ec? as well as \Verb?!bsummary?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}! in inline
 verbatim text. Since the exclamation mark is used as delimiter
-in {\LaTeX} inline verbatim, we need to test it, as in \Verb~a != b~,
-and a Doconce directive a la \Verb~!bc~.
+in {\LaTeX} inline verbatim, we need to test it, as in \Verb?a != b?,
+and a Doconce directive a la \Verb?!bc?.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -7333,9 +7334,8 @@ in a separate document: \Verb!admon.do.txt!.
 
 
 ************** File: testdoc.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -7349,14 +7349,7 @@ A Document for Testing Doconce
 .. contents:: Table of Contents
    :depth: 2
 
-
-
-
 .. !split
-
-
-
-
 
 The format of this document is
 rst
@@ -7372,9 +7365,7 @@ is part of the abstract.
 
 .. is mutually exclusive in LaTeX
 
-
 .. _sec1:
-
 
 Section 1
 =========
@@ -7394,14 +7385,12 @@ Here is a nested list:
 
     * and a subitem2
 
-
   * and perhaps an ordered sublist
 
    1. first item
 
    2. second item,
       continuing on a new line
-
 
 **Here is a list with paragraph heading.**
 
@@ -7426,17 +7415,14 @@ Here is a list with subsubsection heading
 
 Here is a reference to Equation (my:eq1).
 
-
 .. _subsec1:
 
 Subsection 1
 ------------
 
-
 .. Refer to section/appendix etc. at the beginning of the line
 
 .. and other special fix situations for HTML.
-
 
 More text, with a reference back to
 the section `Section 1`_ and `Subsection 1`_, and further to the
@@ -7444,15 +7430,12 @@ the sections `Subsection 1`_ and `URLs`_, which
 encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 9: Make references to projects and problems`_.
 Appendices     `Appendix: Just for testing; part I`_ and `Appendix: Just for testing; part II`_ are also nice elements.
 
-
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
-
 
 Computer code
 ~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end::
-
 
               subroutine test()
               integer i
@@ -7470,7 +7453,6 @@ Let's do some copying from files too. First from subroutine up to the very end::
 
 and then just the subroutine::
 
-
         
               subroutine test()
               integer i
@@ -7482,7 +7464,6 @@ and then just the subroutine::
               return
 
 and finally the complete file::
-
 
         C     a comment
         
@@ -7500,9 +7481,7 @@ and finally the complete file::
               call test()
               return
 
-
 Testing other code environments. First Python::
-
 
         !bc pycod
         def f(x):
@@ -7511,16 +7490,12 @@ Testing other code environments. First Python::
 
 which gets rendered as::
 
-
         def f(x):
             return x+1
-
-
 
 Here is a program that is supposed to be interactive via
 Python Online Tutorial, but that service is not accessible
 for the present format::
-
 
         class Line:
             def __init__(self, a, b):
@@ -7534,10 +7509,8 @@ for the present format::
         y = line(x=3)
         print y
 
-
 Some more Python code (actually specified as a sage cell, but
 such cells are not supported by this format)::
-
 
         a = 2
         b = 3
@@ -7552,26 +7525,19 @@ such cells are not supported by this format)::
         xlabel('x'); ylabel('y')
         show()
 
-
-
 Then Cython::
-
 
         cpdef f(double x):
             return x + 1
 
-
 Standard Python shell sessions::
-
 
         >>> from numpy import sin
         >>> # Some comment
         >>> x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 IPython sessions::
-
 
         In [1]: from numpy import sin
         
@@ -7580,11 +7546,9 @@ IPython sessions::
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 .. This one tests a + sign before a code environment
 
 C++::
-
 
         #include <iostream>
         
@@ -7598,7 +7562,6 @@ C++::
 
 And a little bit of Fortran::
 
-
         !bc cod
               subroutine midpt(x, length, a, b)
               real*8 a, b, x
@@ -7610,7 +7573,6 @@ And a little bit of Fortran::
 
 which then is typeset as::
 
-
               subroutine midpt(x, length, a, b)
               real*8 a, b, x
               x = (a + b)/2
@@ -7618,9 +7580,7 @@ which then is typeset as::
               return
               end
 
-
 HTML::
-
 
         <table>
         <tr><td>Column 1</td><td>Column 2</td></tr>
@@ -7628,16 +7588,13 @@ HTML::
         <!-- comment -->
         </table>
 
-
 System call::
-
 
         Terminal> mkdir test
         Terminal> cd test
         Terminal> myprog -f
         output1
         output2
-
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
@@ -7662,14 +7619,11 @@ the previous blocks with line breaks.
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
 
-
         Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
         Testing
         output
         from
         Python.
-
-
 
 Footnotes
 ~~~~~~~~~
@@ -7698,7 +7652,6 @@ This is the third [#example-of-the-third-footnote]_ example.
 
 .. [#code] One-line footnote.
 
-
 Here is some more text before a new definition of a footnote that was used
 used above.
 
@@ -7724,7 +7677,6 @@ Subsection 2: Testing figures
 Test of figures. In particular we refer to Figure `fig:impact`_ in which
 there is a flow.
 
-
 .. _fig:impact:
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
@@ -7732,23 +7684,15 @@ there is a flow.
 
    *Visualization of a wave*  (fig:impact)
 
-
 Figures without captions are allowed and will be inlined.
-
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 200
 
-
-
-
-
 .. Test multi-line caption in figure
-
 
 Here is figure `myfig`_ with a long multi-line caption
 and an extra space before the FIGURE keyword.
-
 
 .. _myfig:
 
@@ -7757,29 +7701,19 @@ and an extra space before the FIGURE keyword.
 
    *A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in $t_{i+1}$*  (myfig)
 
-
 .. Must be a blank line after MOVIE or FIGURE to detect this problem
 
-
 Test URL as figure name:
-
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
-
-
-
 .. Test wikimedia type of files that otherwise reside in subdirs
-
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
 
-
 .. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 .. _decay:sec:theta:
 
@@ -7789,10 +7723,8 @@ The \theta parameter (not \nabla?)
 Functions do not always need to be advanced, here is one
 involving \theta::
 
-
         def f(theta):
             return theta**2
-
 
 **More on \theta.**
 Here is more text following headline with math.
@@ -7808,7 +7740,6 @@ both inline and in block::
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
-
 Or with align with label and numbers::
 
         \begin{align}
@@ -7819,8 +7750,6 @@ Or with align with label and numbers::
         label{aligneq2}
         \end{align}
 
-
-
 Custom Environments
 -------------------
 
@@ -7829,16 +7758,12 @@ Here is an attempt to create a theorem environment via Mako
 the ``.tex`` by proper begin-end LaTeX environments for theorems.
 Should look nice in most formats!
 
-
-
 .. begin theorem
-
 
 **Theorem 5.**
 Let a=1 and b=2. Then c=3.
 
 .. end theorem
-
 
 .. begin proof
 
@@ -7847,22 +7772,17 @@ Since c=a+b, the result follows from straightforward addition.
 END
 .. end proof
 
-
 As we see, the proof of Theorem 5 is a modest
 achievement.
-
 
 .. _subsec:table:
 
 Tables
 ------
 
-
 .. index with comma could fool sphinx
 
-
 Let us take this table from the manual:
-
 
 ============  ============  ============  
     time        velocity    acceleration  
@@ -7872,9 +7792,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-
 The Doconce source code reads::
-
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -7883,7 +7801,6 @@ The Doconce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -7934,8 +7851,6 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-
-
 =========================================================  =========================================================  =========================================================  
                                                                                                                                                                                  
 =========================================================  =========================================================  =========================================================  
@@ -7943,7 +7858,6 @@ and URLs.
                            a=b                             `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
                    \nabla\cdot\bm{u} =0                    `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
 =========================================================  =========================================================  =========================================================  
-
 
 A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_file_v2``
 -----------------------------------------------------------------------------------------
@@ -7960,7 +7874,6 @@ LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that "caused" a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like ``.txt``.
-
 
 Bibliography test
 -----------------
@@ -7990,9 +7903,6 @@ More retro citations are
 the old ME-IN323 book [Ref19]_ and the
 [Ref20]_ OONSKI '94 paper.
 
-
-
-
 .. --- begin exercise ---
 
 .. _Example:
@@ -8004,7 +7914,6 @@ Examples can start with a subsection heading starting with ``Example:``
 and then, with the command-line option ``--examples_as_exercises`` be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
-
 
 **a)**
 State some problem.
@@ -8026,7 +7935,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 .. _subsubsec:ex:
 
@@ -8060,11 +7968,9 @@ is used), as in this reference to
 `decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
 and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
-
 .. Comments should be inserted outside paragraphs (because in the rst
 
 .. format extra blanks make a paragraph break).
-
 
 .. Note that when there is no http: or file:, it can be a file link
 
@@ -8072,17 +7978,13 @@ and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
 .. if rst output is desired, but placed in a ``_static*`` folder.
 
-
 More tough tests: repeated URLs whose footnotes when using the
 ``--device=paper`` option must be correct. We have
 `google <http://google.com>`_, `google <http://google.com>`_, and
 `google <http://google.com>`_, which should result in exactly three
 footnotes.
 
-
-
 .. !split and check if these extra words are included properly in the comment
-
 
 LaTeX Mathematics
 =================
@@ -8106,20 +8008,14 @@ Here is a system without equation numbers, using the align-astrisk environment::
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
 
-
-
-
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have `Problem 2: Flip a Coin`_ and `Project 3: Compute a Probability`_,
 as well as `Project 4: Explore Distributions of Random Circles`_ and `Project 10: References in a headings do not work well in rst`_, and in
 between there we have `Exercise 9: Make references to projects and problems`_.
 
-
 Exercises
 =========
-
-
 
 .. --- begin exercise ---
 
@@ -8129,17 +8025,11 @@ Problem 2: Flip a Coin
 ----------------------
 .. keywords = random numbers; Monte Carlo simulation
 
-
 .. Torture tests
-
 
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
 
 Remarks  (1)
 ~~~~~~~~~~~~
@@ -8166,7 +8056,6 @@ Draw an integer among \{1,2\} with
 
 .. --- end hint in exercise ---
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
@@ -8175,11 +8064,9 @@ head, otherwise tail. Repeat this N number of times.
 
 .. --- end answer of exercise ---
 
-
 .. --- begin solution of exercise ---
 
 **Solution.**::
-
 
         import sys, random
         N = int(sys.argv[1])
@@ -8190,24 +8077,19 @@ head, otherwise tail. Repeat this N number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
-
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-
 .. --- end exercise ---
-
 
 Not an exercise
 ---------------
 
 Should be possible to stick a normal section in the middle of many
 exercises.
-
-
 
 .. --- begin exercise ---
 
@@ -8218,11 +8100,8 @@ Project 3: Compute a Probability
 
 .. Minimalistic exercise
 
-
-
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
-
 
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
@@ -8243,9 +8122,6 @@ compute the probability as M/N.
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 .. _proj:circle1:
@@ -8265,7 +8141,6 @@ center point, and t is a parameter in the unit interval [0,1].
 For any t, (x,y) is a point on the circle.
 The formula can be used to generate ``n`` points on a circle::
 
-
         import numpy as np
         
         def circle(R, x0, y0, n=501):
@@ -8276,16 +8151,13 @@ The formula can be used to generate ``n`` points on a circle::
         
         x, y = circle(2.0, 0, 0)
 
-
 .. Often in an exercise we have some comments about the solution
 
 .. which we normally want to keep where they are.
 
-
 The goal of this project is to draw N circles with random
 center and radius. Plot each circle using the ``circle`` function
 above.
-
 
 **a)**
 Let R be normally distributed and (x_0,y_0) uniformly distributed.
@@ -8298,14 +8170,12 @@ x_0, y_0, and R quantities.
 
 .. --- end hint in exercise ---
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
 Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
-
 
 .. --- begin solution of exercise ---
 
@@ -8325,18 +8195,13 @@ Filename: ``circles.pdf``.
 
 .. Closing remarks for this Project
 
-
 Remarks  (2)
 ~~~~~~~~~~~~
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -8346,10 +8211,6 @@ Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-
-
 
 .. No meaning in this weired test example:
 
@@ -8372,13 +8233,11 @@ With some math a=b in this solution::
 
 And code ``a=b`` in this solution::
 
-
         a = b  # code in solution
 
 End of solution is here.
 
 .. --- end solution of exercise ---
-
 
 **a)**
 Subexercises are numbered a), b), etc.
@@ -8393,10 +8252,8 @@ With math a=b in hint::
 
 And with code (in plain verbatim) returning x+1 in hint::
 
-
         def func(x):
             return x + 1  # with code in hint
-
 
 .. --- end hint in exercise ---
 
@@ -8415,7 +8272,6 @@ Test list in hint:
 
 Filename: ``subexer_a.pdf``.
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
@@ -8427,11 +8283,9 @@ With math in answer: a=b.
 **b)**
 Here goes the text for subexercise b).
 
-
 Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
-
 
 .. --- begin hint in exercise ---
 
@@ -8442,7 +8296,6 @@ A hint for this subexercise.
 
 Filename: ``subexer_b.pdf``.
 
-
 .. --- begin solution of exercise ---
 
 **Solution.**
@@ -8452,7 +8305,6 @@ Here goes the solution of this subexercise.
 
 .. Closing remarks for this Exercise
 
-
 Remarks  (3)
 ~~~~~~~~~~~~
 
@@ -8460,11 +8312,7 @@ Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -8473,28 +8321,20 @@ Some exercise without the "Exercise:" prefix
 
 .. Another minimalistic exercise
 
-
 Just some text. And some math saying that e^0=1 on a single line,
 to test that math block insertion is correct::
 
         \[ \exp{(0)} = 1 \]
 
-
 And a test that the code ``lambda x: x+2`` is correctly placed here::
 
-
         lambda x: x+2
-
 
 .. the Filename: ... is written correctly.
 
 .. Have some comments at the end of the exercise to see that
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -8542,9 +8382,6 @@ Exercise 7: Solution of differential equation
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 Example 8: Just an example
@@ -8554,8 +8391,6 @@ Example 8: Just an example
 
 .. it is just typeset as it is written.
 
-
-
 **a)**
 What is the capital of Norway?
 
@@ -8564,7 +8399,6 @@ Oslo.
 
 .. --- end exercise ---
 
-
 Here goes another section
 =========================
 
@@ -8572,8 +8406,6 @@ With some text, before we continue with exercises.
 
 More Exercises
 ==============
-
-
 
 .. --- begin exercise ---
 
@@ -8598,9 +8430,6 @@ Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 .. _exer:you:
@@ -8614,7 +8443,6 @@ and this one as `Project 10: References in a headings do not work well in rst`_.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 References
 ==========
@@ -8744,10 +8572,6 @@ References
    edited by **A. Vermeulen**,
    1994.
 
-
-
-
-
 .. _app1:
 
 Appendix: Just for testing; part I
@@ -8771,7 +8595,6 @@ Appendix: Testing identical titles  (1)
 ---------------------------------------
 
 Without label.
-
 
 .. _test:title:id1:
 
@@ -8813,8 +8636,6 @@ What about inserting a quiz?
     <!-- end quiz -->
 
 
-
-
 Appendix: Testing identical titles  (4)
 ---------------------------------------
 
@@ -8824,8 +8645,6 @@ Without label.
 .. admonition:: Tip
 
    Here is a tip or hint box, typeset as a notice box.
-
-
 
 
 
@@ -8905,7 +8724,6 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-
 Appendix: Testing inline comments
 ---------------------------------
 
@@ -8944,9 +8762,8 @@ in a separate document: ``admon.do.txt``.
    is at the end with only one newline.
 
 ************** File: testdoc.sphinx.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -8958,10 +8775,6 @@ A Document for Testing Doconce
 :Date: Jan 32, 2100
 
 .. !split
-
-
-
-
 
 The format of this document is
 sphinx
@@ -8977,9 +8790,7 @@ is part of the abstract.
 
 .. is mutually exclusive in LaTeX
 
-
 .. _sec1:
-
 
 Section 1
 =========
@@ -8999,14 +8810,12 @@ Here is a nested list:
 
     * and a subitem2
 
-
   * and perhaps an ordered sublist
 
    1. first item
 
    2. second item,
       continuing on a new line
-
 
 **Here is a list with paragraph heading.**
 
@@ -9032,20 +8841,16 @@ Here is a list with subsubsection heading
 Here is a reference to Equation :eq:`my:eq1`.
 This equation appears in another part if this document is split.
 
-
 .. _subsec1:
 
 Subsection 1
 ------------
 
-
 .. index:: somefunc function
-
 
 .. Refer to section/appendix etc. at the beginning of the line
 
 .. and other special fix situations for HTML.
-
 
 More text, with a reference back to
 the section :ref:`sec1` and :ref:`subsec1`, and further to the
@@ -9053,15 +8858,12 @@ the sections :ref:`subsec1` and :ref:`subsubsec:ex`, which
 encourages you to do the tasks in :ref:`demo:ex:1` and :ref:`exer:some:formula`.
 Appendices     :ref:`app1` and :ref:`app2` are also nice elements.
 
-
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
-
 
 Computer code
 ~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end,
-
 
 .. code-block:: fortran
 
@@ -9112,12 +8914,9 @@ and finally the complete file:
               call test()
               return
 
-
 Testing other code environments. First Python:
 
-
 .. code-block:: text
-
 
         !bc pycod
         def f(x):
@@ -9126,36 +8925,29 @@ Testing other code environments. First Python:
 
 which gets rendered as
 
-
 .. code-block:: python
 
         def f(x):
             return x+1
 
-
 Test paragraph and subsubsection headings before code.
 
 **Paragraph heading before code.**
-
 
 .. code-block:: python
 
         def g(y):
             return y+1
 
-
 Subsubsection heading before code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 .. code-block:: python
 
         def h(z):
             return z+1
 
-
 Now a complete program to be shown via Python Online Tutorial:
-
 
 .. raw:: html
 
@@ -9163,9 +8955,7 @@ Now a complete program to be shown via Python Online Tutorial:
                 src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
         </iframe>
 
-
 Another complete program to be typeset as a sage cell:
-
 
 .. sagecellserver::
 
@@ -9182,8 +8972,6 @@ Another complete program to be typeset as a sage cell:
         xlabel('x'); ylabel('y')
         show()
 
-
-
 Then Cython:
 
 .. code-block:: cython
@@ -9191,9 +8979,7 @@ Then Cython:
         cpdef f(double x):
             return x + 1
 
-
 Standard Python shell sessions:
-
 
 .. code-block:: python
 
@@ -9202,9 +8988,7 @@ Standard Python shell sessions:
         >>> x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 IPython sessions:
-
 
 .. code-block:: python
 
@@ -9214,7 +8998,6 @@ IPython sessions:
         
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
-
 
 .. This one tests a + sign before a code environment
 
@@ -9234,9 +9017,7 @@ C++:
 
 And a little bit of Fortran:
 
-
 .. code-block:: text
-
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -9249,7 +9030,6 @@ And a little bit of Fortran:
 
 which then is typeset as
 
-
 .. code-block:: fortran
 
               subroutine midpt(x, length, a, b)
@@ -9259,9 +9039,7 @@ which then is typeset as
               return
               end
 
-
 HTML:
-
 
 .. code-block:: html
 
@@ -9270,7 +9048,6 @@ HTML:
         <tr><td>0.67526 </td><td>0.92871 </td></tr>
         <!-- comment -->
         </table>
-
 
 System call:
 
@@ -9281,7 +9058,6 @@ System call:
         Terminal> myprog -f
         output1
         output2
-
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
@@ -9306,7 +9082,6 @@ the previous blocks with line breaks.
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
 
-
 .. code-block:: console
 
         Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -9314,8 +9089,6 @@ Running OS commands
         output
         from
         Python.
-
-
 
 Footnotes
 ~~~~~~~~~
@@ -9344,7 +9117,6 @@ This is the third [#example-of-the-third-footnote]_ example.
 
 .. [#code] One-line footnote.
 
-
 Here is some more text before a new definition of a footnote that was used
 used above.
 
@@ -9369,10 +9141,8 @@ Subsection 2: Testing figures
 
 .. index:: figures
 
-
 Test of figures. In particular we refer to Figure :ref:`fig:impact` in which
 there is a flow.
-
 
 .. _fig:impact:
 
@@ -9381,26 +9151,17 @@ there is a flow.
 
    *Visualization of a wave*
 
-
 Figures without captions are allowed and will be inlined.
-
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 200
 
-
-
-
 .. index:: movies
-
-
 
 .. Test multi-line caption in figure
 
-
 Here is figure :ref:`myfig` with a long multi-line caption
 and an extra space before the FIGURE keyword.
-
 
 .. _myfig:
 
@@ -9409,36 +9170,24 @@ and an extra space before the FIGURE keyword.
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
 
-
 .. Must be a blank line after MOVIE or FIGURE to detect this problem
 
-
 Test URL as figure name:
-
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
-
-
 Test SVG figure:
-
 
 .. figure:: http://openclipart.org/people/jpneok/junebug.svg
    :width: 200
 
-
-
 .. Test wikimedia type of files that otherwise reside in subdirs
-
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
 
-
 .. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 .. _decay:sec:theta:
 
@@ -9450,10 +9199,8 @@ involving :math:`\theta`:
 
 .. code-block:: text
 
-
         def f(theta):
             return theta**2
-
 
 **More on :math:`\theta`.**
 Here is more text following headline with math.
@@ -9461,7 +9208,6 @@ Here is more text following headline with math.
 Newcommands must also be tested in this test report:
 :math:`\frac{1}{2}`, :math:`{1/2}`, :math:`\pmb{x}`, :math:`\frac{Du}{dt}`,
 both inline and in block:
-
 
 .. math::
         
@@ -9471,9 +9217,7 @@ both inline and in block:
         \frac{1}{2}\pmb{x} &= \pmb{n}
         
 
-
 Or with align with label and numbers:
-
 
 .. math::
    :label: aligneq1
@@ -9482,14 +9226,10 @@ Or with align with label and numbers:
         
         
 
-
-
 .. math::
           
         \frac{1}{2} = {1/2}
         
-
-
 
 .. math::
    :label: aligneq2
@@ -9497,7 +9237,6 @@ Or with align with label and numbers:
         \frac{1}{2}\pmb{x} = \pmb{n}
         
         
-
 
 Sphinx makes a fix here and splits align into multiple equation
 environments.
@@ -9510,16 +9249,12 @@ Here is an attempt to create a theorem environment via Mako
 the ``.tex`` by proper begin-end LaTeX environments for theorems.
 Should look nice in most formats!
 
-
-
 .. begin theorem
-
 
 **Theorem 5.**
 Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 
 .. end theorem
-
 
 .. begin proof
 
@@ -9528,36 +9263,27 @@ Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
 .. end proof
 
-
 As we see, the proof of Theorem 5 is a modest
 achievement.
-
 
 .. _subsec:table:
 
 Tables
 ------
 
-
 .. index:: test index with verbatim text which is possible
 
-
 .. index:: test two (separate) verbatim expressions which is also possible
-
 
 .. index::
    single: index with; subindex
 
-
 .. index with comma could fool sphinx
-
 
 .. index::
    single: index, with comma, and one more
 
-
 Let us take this table from the manual:
-
 
 ============  ============  ============  
     time        velocity    acceleration  
@@ -9566,7 +9292,6 @@ Let us take this table from the manual:
 2.0               1.376512        11.919  
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
-
 
 The Doconce source code reads
 
@@ -9579,7 +9304,6 @@ The Doconce source code reads
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -9630,8 +9354,6 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-
-
 =========================================================  =========================================================  =========================================================  
                                                                                                                                                                                  
 =========================================================  =========================================================  =========================================================  
@@ -9639,7 +9361,6 @@ and URLs.
                        :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
            :math:`\nabla\cdot\boldsymbol{u} =0`            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
 =========================================================  =========================================================  =========================================================  
-
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -9656,7 +9377,6 @@ LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that "caused" a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like ``.txt``.
-
 
 Bibliography test
 -----------------
@@ -9686,9 +9406,6 @@ More retro citations are
 the old ME-IN323 book [Ref19]_ and the
 [Ref20]_ OONSKI '94 paper.
 
-
-
-
 .. --- begin exercise ---
 
 .. _Example:
@@ -9700,7 +9417,6 @@ Examples can start with a subsection heading starting with ``Example:``
 and then, with the command-line option ``--examples_as_exercises`` be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
-
 
 **a)**
 State some problem.
@@ -9722,7 +9438,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 .. _subsubsec:ex:
 
@@ -9756,11 +9471,9 @@ is used), as in this reference to
 `decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
 and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
-
 .. Comments should be inserted outside paragraphs (because in the rst
 
 .. format extra blanks make a paragraph break).
-
 
 .. Note that when there is no http: or file:, it can be a file link
 
@@ -9768,17 +9481,13 @@ and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
 .. if rst output is desired, but placed in a ``_static*`` folder.
 
-
 More tough tests: repeated URLs whose footnotes when using the
 ``--device=paper`` option must be correct. We have
 `google <http://google.com>`_, `google <http://google.com>`_, and
 `google <http://google.com>`_, which should result in exactly three
 footnotes.
 
-
-
 .. !split and check if these extra words are included properly in the comment
-
 
 LaTeX Mathematics
 =================
@@ -9806,8 +9515,6 @@ Here is a system without equation numbers, using the align-astrisk environment:
         b &= \nabla^2 u + \nabla^4 v
         
 
-
-
 And here is a system of equations with labels in an align environment:
 
 .. math::
@@ -9815,8 +9522,6 @@ And here is a system of equations with labels in an align environment:
         
         a = q + 4 + 5+ 6  
         
-
-
 
 .. math::
    :label: eq2
@@ -9828,18 +9533,14 @@ We can refer to :eq:`eq1`-:eq:`eq2`. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in ``CG-2``.
 Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
 
-
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have :ref:`demo:ex:1` and :ref:`demo:ex:2`,
 as well as :ref:`proj:circle1` and :ref:`exer:you`, and in
 between there we have :ref:`exer:some:formula`.
 
-
 Exercises
 =========
-
-
 
 .. --- begin exercise ---
 
@@ -9849,17 +9550,11 @@ Problem 2: Flip a Coin
 ----------------------
 .. keywords = random numbers; Monte Carlo simulation
 
-
 .. Torture tests
-
 
 Make a program that simulates flipping a coin :math:`N` times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
 
 Remarks  (1)
 ~~~~~~~~~~~~
@@ -9886,7 +9581,6 @@ Draw an integer among :math:`\{1,2\}` with
 
 .. --- end hint in exercise ---
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
@@ -9894,7 +9588,6 @@ If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end answer of exercise ---
-
 
 .. --- begin solution of exercise ---
 
@@ -9911,24 +9604,19 @@ head, otherwise tail. Repeat this :math:`N` number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
-
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-
 .. --- end exercise ---
-
 
 Not an exercise
 ---------------
 
 Should be possible to stick a normal section in the middle of many
 exercises.
-
-
 
 .. --- begin exercise ---
 
@@ -9939,11 +9627,8 @@ Project 3: Compute a Probability
 
 .. Minimalistic exercise
 
-
-
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
-
 
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
@@ -9964,9 +9649,6 @@ compute the probability as :math:`M/N`.
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 .. _proj:circle1:
@@ -9976,13 +9658,10 @@ Project 4: Explore Distributions of Random Circles
 
 The formula for a circle is given by
 
-
 .. math::
         
         x = x_0 + R\cos 2\pi t,
         
-
-
 
 .. math::
           
@@ -9993,7 +9672,6 @@ where :math:`R` is the radius of the circle, :math:`(x_0,y_0)` is the
 center point, and :math:`t` is a parameter in the unit interval :math:`[0,1]`.
 For any :math:`t`, :math:`(x,y)` is a point on the circle.
 The formula can be used to generate ``n`` points on a circle:
-
 
 .. code-block:: python
 
@@ -10007,16 +9685,13 @@ The formula can be used to generate ``n`` points on a circle:
         
         x, y = circle(2.0, 0, 0)
 
-
 .. Often in an exercise we have some comments about the solution
 
 .. which we normally want to keep where they are.
 
-
 The goal of this project is to draw :math:`N` circles with random
 center and radius. Plot each circle using the ``circle`` function
 above.
-
 
 **a)**
 Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
@@ -10029,14 +9704,12 @@ Use the ``numpy.random`` module to draw the
 
 .. --- end hint in exercise ---
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
 Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
-
 
 .. --- begin solution of exercise ---
 
@@ -10056,18 +9729,13 @@ Filename: ``circles.pdf``.
 
 .. Closing remarks for this Project
 
-
 Remarks  (2)
 ~~~~~~~~~~~~
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -10077,10 +9745,6 @@ Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-
-
 
 .. No meaning in this weired test example:
 
@@ -10106,13 +9770,11 @@ And code ``a=b`` in this solution:
 
 .. code-block:: text
 
-
         a = b  # code in solution
 
 End of solution is here.
 
 .. --- end solution of exercise ---
-
 
 **a)**
 Subexercises are numbered a), b), etc.
@@ -10123,19 +9785,15 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math :math:`a=b` in hint:
 
-
 .. math::
          a=b. 
 
 And with code (in plain verbatim) returning :math:`x+1` in hint:
 
-
 .. code-block:: text
-
 
         def func(x):
             return x + 1  # with code in hint
-
 
 .. --- end hint in exercise ---
 
@@ -10154,7 +9812,6 @@ Test list in hint:
 
 Filename: ``subexer_a.pdf``.
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
@@ -10166,13 +9823,10 @@ With math in answer: :math:`a=b`.
 **b)**
 Here goes the text for subexercise b).
 
-
 Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
-
 
 .. math::
          \cos^2 x + \sin^2 x = 1 \thinspace .
-
 
 .. --- begin hint in exercise ---
 
@@ -10183,7 +9837,6 @@ A hint for this subexercise.
 
 Filename: ``subexer_b.pdf``.
 
-
 .. --- begin solution of exercise ---
 
 **Solution.**
@@ -10193,7 +9846,6 @@ Here goes the solution of this subexercise.
 
 .. Closing remarks for this Exercise
 
-
 Remarks  (3)
 ~~~~~~~~~~~~
 
@@ -10201,11 +9853,7 @@ Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -10214,33 +9862,23 @@ Some exercise without the "Exercise:" prefix
 
 .. Another minimalistic exercise
 
-
 Just some text. And some math saying that :math:`e^0=1` on a single line,
 to test that math block insertion is correct:
-
 
 .. math::
          \exp{(0)} = 1 
 
-
 And a test that the code ``lambda x: x+2`` is correctly placed here:
-
 
 .. code-block:: text
 
-
         lambda x: x+2
-
 
 .. the Filename: ... is written correctly.
 
 .. Have some comments at the end of the exercise to see that
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -10252,7 +9890,6 @@ Exercise 7: Solution of differential equation
 .. raw:: html
     <!-- begin quiz -->
     Given
-    
     
     .. math::
              \frac{dy}{dx} = -y(x),\quad y(0)=1 
@@ -10291,9 +9928,6 @@ Exercise 7: Solution of differential equation
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 Example 8: Just an example
@@ -10303,8 +9937,6 @@ Example 8: Just an example
 
 .. it is just typeset as it is written.
 
-
-
 **a)**
 What is the capital of Norway?
 
@@ -10313,7 +9945,6 @@ Oslo.
 
 .. --- end exercise ---
 
-
 Here goes another section
 =========================
 
@@ -10321,8 +9952,6 @@ With some text, before we continue with exercises.
 
 More Exercises
 ==============
-
-
 
 .. --- begin exercise ---
 
@@ -10347,9 +9976,6 @@ Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 .. _exer:you:
@@ -10363,7 +9989,6 @@ and this one as :ref:`exer:you`.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 References
 ==========
@@ -10493,10 +10118,6 @@ References
    edited by **A. Vermeulen**,
    1994.
 
-
-
-
-
 .. _app1:
 
 Appendix: Just for testing; part I
@@ -10520,7 +10141,6 @@ Appendix: Testing identical titles  (1)
 ---------------------------------------
 
 Without label.
-
 
 .. _test:title:id1:
 
@@ -10562,8 +10182,6 @@ What about inserting a quiz?
     <!-- end quiz -->
 
 
-
-
 Appendix: Testing identical titles  (4)
 ---------------------------------------
 
@@ -10573,8 +10191,6 @@ Without label.
 .. admonition:: Tip
 
    Here is a tip or hint box, typeset as a notice box.
-
-
 
 
 
@@ -10653,7 +10269,6 @@ The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
-
 
 Appendix: Testing inline comments
 ---------------------------------
@@ -14735,9 +14350,6 @@ BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Lab
 DATE: Jan 32, 2100
 # !split
 
-
-
-
 The format of this document is
 st
 *Abstract.* This is a document with many test constructions for doconce syntax.
@@ -14746,8 +14358,6 @@ numerous constructions, also special and less common cases.
 
 And exactly for test purposes we have an extra line here, which
 is part of the abstract.
-
-
 
 Section 1
 
@@ -14766,7 +14376,6 @@ Here is a nested list:
    2. second item,
       continuing on a new line
 
-
 *Here is a list with paragraph heading.*
 
   - item1
@@ -14783,10 +14392,7 @@ Here is a list with subsubsection heading
 
 Here is a reference to Equation (my:eq1).
 
-
 Subsection 1
-
-
 
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
@@ -14794,12 +14400,9 @@ the sections "Subsection 1" and "URLs", which
 encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
-
-
 Computer code
 
 Let's do some copying from files too. First from subroutine up to the very end::
-
 
               subroutine test()
               integer i
@@ -14817,7 +14420,6 @@ Let's do some copying from files too. First from subroutine up to the very end::
 
 and then just the subroutine::
 
-
         
               subroutine test()
               integer i
@@ -14829,7 +14431,6 @@ and then just the subroutine::
               return
 
 and finally the complete file::
-
 
         C     a comment
         
@@ -14847,9 +14448,7 @@ and finally the complete file::
               call test()
               return
 
-
 Testing other code environments. First Python::
-
 
         !bc pycod
         def f(x):
@@ -14858,16 +14457,12 @@ Testing other code environments. First Python::
 
 which gets rendered as::
 
-
         def f(x):
             return x+1
-
-
 
 Here is a program that is supposed to be interactive via
 Python Online Tutorial, but that service is not accessible
 for the present format::
-
 
         class Line:
             def __init__(self, a, b):
@@ -14881,10 +14476,8 @@ for the present format::
         y = line(x=3)
         print y
 
-
 Some more Python code (actually specified as a sage cell, but
 such cells are not supported by this format)::
-
 
         a = 2
         b = 3
@@ -14899,26 +14492,19 @@ such cells are not supported by this format)::
         xlabel('x'); ylabel('y')
         show()
 
-
-
 Then Cython::
-
 
         cpdef f(double x):
             return x + 1
 
-
 Standard Python shell sessions::
-
 
         >>> from numpy import sin
         >>> # Some comment
         >>> x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 IPython sessions::
-
 
         In [1]: from numpy import sin
         
@@ -14927,9 +14513,7 @@ IPython sessions::
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 C++::
-
 
         #include <iostream>
         
@@ -14940,7 +14524,6 @@ C++::
         }
 
 And a little bit of Fortran::
-
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -14953,7 +14536,6 @@ And a little bit of Fortran::
 
 which then is typeset as::
 
-
               subroutine midpt(x, length, a, b)
               real*8 a, b, x
               x = (a + b)/2
@@ -14961,9 +14543,7 @@ which then is typeset as::
               return
               end
 
-
 HTML::
-
 
         <table>
         <tr><td>Column 1</td><td>Column 2</td></tr>
@@ -14971,16 +14551,13 @@ HTML::
         <!-- comment -->
         </table>
 
-
 System call::
-
 
         Terminal> mkdir test
         Terminal> cd test
         Terminal> myprog -f
         output1
         output2
-
 
 It is time to test 'verbatim inline font' especially with 'a newline
 inside the text' and an exclamation mark at the end: 'BEGIN'! The
@@ -15002,14 +14579,11 @@ the previous blocks with line breaks.
 
 Running OS commands::
 
-
         Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
         Testing
         output
         from
         Python.
-
-
 
 Footnotes
 
@@ -15049,7 +14623,6 @@ of course remain a tilde in those contexts.)
 
 Subsection 2: Testing figures
 
-
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
@@ -15059,36 +14632,25 @@ Figures without captions are allowed and will be inlined.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
-
-
-
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like 'my_file_v1' and 'my_file_v2' as well as math with subscript as in t_{i+1}. {myfig} 
 
-
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
-
-
-
 *Remark.*
 Movies are tested in separate file 'movies.do.txt'.
-
-
 
 The \theta parameter (not \nabla?)
 
 Functions do not always need to be advanced, here is one
 involving \theta::
 
-
         def f(theta):
             return theta**2
-
 
 *More on \theta.* Here is more text following headline with math.
 
@@ -15103,7 +14665,6 @@ both inline and in block::
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
-
 Or with align with label and numbers::
 
         \begin{align}
@@ -15114,17 +14675,12 @@ Or with align with label and numbers::
         label{aligneq2}
         \end{align}
 
-
-
 Custom Environments
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the '.tex' by proper begin-end LaTeX environments for theorems.
 Should look nice in most formats!
-
-
-
 
 *Theorem 5.*
 Let a=1 and b=2. Then c=3.
@@ -15136,13 +14692,9 @@ END
 As we see, the proof of Theorem 5 is a modest
 achievement.
 
-
 Tables
 
-
-
 Let us take this table from the manual:
-
 
 ============  ============  ============  
     time        velocity    acceleration  
@@ -15152,9 +14704,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-
 The Doconce source code reads::
-
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -15163,7 +14713,6 @@ The Doconce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -15208,8 +14757,6 @@ and '|' right before and after verbatim word (with no space):
 Finally, a table with math
 and URLs.
 
-
-
 ======================================================  ======================================================  ======================================================  
                                                                                                                                                                         
 ======================================================  ======================================================  ======================================================  
@@ -15217,7 +14764,6 @@ and URLs.
                          a=b                            ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'  
                  \nabla\cdot\bm{u} =0                   ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'  
 ======================================================  ======================================================  ======================================================  
-
 
 A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_file_v2'
 
@@ -15232,7 +14778,6 @@ LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that "caused" a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like '.txt'.
-
 
 Bibliography test
 
@@ -15261,9 +14806,6 @@ More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
 
-
-
-
 # --- begin exercise ---
 
 Example 1: Examples can be typeset as exercises
@@ -15272,7 +14814,6 @@ Examples can start with a subsection heading starting with 'Example:'
 and then, with the command-line option '--examples_as_exercises' be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
-
 
 *a)*
 State some problem.
@@ -15294,7 +14835,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 # --- end exercise ---
-
 
 URLs
 
@@ -15325,16 +14865,11 @@ is used), as in this reference to
 https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py:'decay_mod', http://tinyurl.com/pwyasaa/formulas.ball1.py:'ball1.py',
 and http://tinyurl.com/pwyasaa/formulas.ball2.py:'ball2.py'.
 
-
-
-
 More tough tests: repeated URLs whose footnotes when using the
 '--device=paper' option must be correct. We have
 "http://google.com":google, "http://google.com":google, and
 "http://google.com":google, which should result in exactly three
 footnotes.
-
-
 
 # !split and check if these extra words are included properly in the comment
 
@@ -15359,33 +14894,21 @@ Here is a system without equation numbers, using the align-astrisk environment::
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
 
-
-
-
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
 as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for st", and in
 between there we have  "Exercise 9: Make references to projects and problems".
 
-
 Exercises
-
-
 
 # --- begin exercise ---
 
 Problem 2: Flip a Coin
 
-
-
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
 
 Remarks
 
@@ -15410,7 +14933,6 @@ Draw an integer among \{1,2\} with
 
 # --- end hint in exercise ---
 
-
 # --- begin answer of exercise ---
 *Answer.*
 If the 'random.random()' function returns a number <1/2, let it be
@@ -15418,10 +14940,8 @@ head, otherwise tail. Repeat this N number of times.
 
 # --- end answer of exercise ---
 
-
 # --- begin solution of exercise ---
 *Solution.*::
-
 
         import sys, random
         N = int(sys.argv[1])
@@ -15432,29 +14952,22 @@ head, otherwise tail. Repeat this N number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
-
 # --- end solution of exercise ---
 Filenames: 'flip_coin.py', 'flip_coin.pdf'.
 
 # --- end exercise ---
-
 
 Not an exercise
 
 Should be possible to stick a normal section in the middle of many
 exercises.
 
-
-
 # --- begin exercise ---
 
 Project 3: Compute a Probability
 
-
-
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
-
 
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
@@ -15474,9 +14987,6 @@ compute the probability as M/N.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Project 4: Explore Distributions of Random Circles
@@ -15493,7 +15003,6 @@ center point, and t is a parameter in the unit interval [0,1].
 For any t, (x,y) is a point on the circle.
 The formula can be used to generate 'n' points on a circle::
 
-
         import numpy as np
         
         def circle(R, x0, y0, n=501):
@@ -15504,12 +15013,9 @@ The formula can be used to generate 'n' points on a circle::
         
         x, y = circle(2.0, 0, 0)
 
-
-
 The goal of this project is to draw N circles with random
 center and radius. Plot each circle using the 'circle' function
 above.
-
 
 *a)*
 Let R be normally distributed and (x_0,y_0) uniformly distributed.
@@ -15522,13 +15028,11 @@ x_0, y_0, and R quantities.
 
 # --- end hint in exercise ---
 
-
 # --- begin answer of exercise ---
 *Answer.*
 Here goes the short answer to part a).
 
 # --- end answer of exercise ---
-
 
 # --- begin solution of exercise ---
 *Solution.*
@@ -15545,27 +15049,18 @@ Let R and (x_0,y_0) be normally distributed.
 
 Filename: 'circles.pdf'.
 
-
 Remarks
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Exercise 5: Determine some Distance
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-
-
 
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
@@ -15584,13 +15079,11 @@ With some math a=b in this solution::
 
 And code 'a=b' in this solution::
 
-
         a = b  # code in solution
 
 End of solution is here.
 
 # --- end solution of exercise ---
-
 
 *a)*
 Subexercises are numbered a), b), etc.
@@ -15605,10 +15098,8 @@ With math a=b in hint::
 
 And with code (in plain verbatim) returning x+1 in hint::
 
-
         def func(x):
             return x + 1  # with code in hint
-
 
 # --- end hint in exercise ---
 
@@ -15625,7 +15116,6 @@ Test list in hint:
 # --- end hint in exercise ---
 Filename: 'subexer_a.pdf'.
 
-
 # --- begin answer of exercise ---
 *Answer.*
 Short answer to subexercise a).
@@ -15636,11 +15126,9 @@ With math in answer: a=b.
 *b)*
 Here goes the text for subexercise b).
 
-
 Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
-
 
 # --- begin hint in exercise ---
 
@@ -15650,13 +15138,11 @@ A hint for this subexercise.
 # --- end hint in exercise ---
 Filename: 'subexer_b.pdf'.
 
-
 # --- begin solution of exercise ---
 *Solution.*
 Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
-
 
 Remarks
 
@@ -15664,40 +15150,26 @@ Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Some exercise without the "Exercise:" prefix
-
 
 Just some text. And some math saying that e^0=1 on a single line,
 to test that math block insertion is correct::
 
         \[ \exp{(0)} = 1 \]
 
-
 And a test that the code 'lambda x: x+2' is correctly placed here::
-
 
         lambda x: x+2
 
-
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Exercise 7: Solution of differential equation
-
-
 
 Given::
 
@@ -15711,11 +15183,9 @@ y=e^{y}
 
 Almost, but the sign is wrong (note the minus!)::
 
-
         from math import exp
         def f(x):
             return exp(x)
-
 
 Ooops, forgot a minus: 'exp(-x)', otherwise this Python code
 must be considered as a good answer. It is more natural,
@@ -15723,7 +15193,6 @@ though, to write the solution to the problem
 in mathematical notation::
 
         \[ y(x) = e^{-y}.\]
-
 
 The solution cannot be found because there is a derivative in the equation.
 
@@ -15740,14 +15209,9 @@ special techniques.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Example 8: Just an example
-
-
 
 *a)*
 What is the capital of Norway?
@@ -15757,14 +15221,11 @@ Oslo.
 
 # --- end exercise ---
 
-
 Here goes another section
 
 With some text, before we continue with exercises.
 
 More Exercises
-
-
 
 # --- begin exercise ---
 
@@ -15783,9 +15244,6 @@ Filename: 'verify_formula.py'.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Project 10: References to  "Project 3: Compute a Probability" in a heading works for st
@@ -15796,7 +15254,6 @@ and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading 
 Filename: 'selc_composed.pdf'.
 
 # --- end exercise ---
-
 
 References
 
@@ -15921,7 +15378,6 @@ Appendix: Testing identical titles
 
 Without label.
 
-
 Appendix: Testing identical titles
 
 With label.
@@ -15929,8 +15385,6 @@ With label.
 Appendix: Testing identical titles
 
 What about inserting a quiz?
-
-
 
 What is the capital of Norway?
 
@@ -15946,15 +15400,12 @@ Bergen
 
 Those from Bergen would claim so, but nobody else.
 
-
 Appendix: Testing identical titles
 
 Without label.
 
 *Tip.*\g<space>
 Here is a tip or hint box, typeset as a notice box.
-
-
 
 
 
@@ -16030,7 +15481,6 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-
 Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
@@ -16072,9 +15522,6 @@ BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Lab
 DATE: Jan 32, 2100
 # !split
 
-
-
-
 The format of this document is
 epytext
 
@@ -16084,8 +15531,6 @@ numerous constructions, also special and less common cases.
 
 And exactly for test purposes we have an extra line here, which
 is part of the abstract.
-
-
 
 Section 1
 =========
@@ -16105,7 +15550,6 @@ Here is a nested list:
    2. second item,
       continuing on a new line
 
-
 I{Here is a list with paragraph heading.}
 
   - item1
@@ -16123,11 +15567,8 @@ Here is a list with subsubsection heading
 
 Here is a reference to Equation (my:eq1).
 
-
 Subsection 1
 ------------
-
-
 
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
@@ -16135,13 +15576,10 @@ the sections "Subsection 1" and "URLs", which
 encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
-
-
 Computer code
 ~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end::
-
 
               subroutine test()
               integer i
@@ -16159,7 +15597,6 @@ Let's do some copying from files too. First from subroutine up to the very end::
 
 and then just the subroutine::
 
-
         
               subroutine test()
               integer i
@@ -16171,7 +15608,6 @@ and then just the subroutine::
               return
 
 and finally the complete file::
-
 
         C     a comment
         
@@ -16189,9 +15625,7 @@ and finally the complete file::
               call test()
               return
 
-
 Testing other code environments. First Python::
-
 
         !bc pycod
         def f(x):
@@ -16200,16 +15634,12 @@ Testing other code environments. First Python::
 
 which gets rendered as::
 
-
         def f(x):
             return x+1
-
-
 
 Here is a program that is supposed to be interactive via
 Python Online Tutorial, but that service is not accessible
 for the present format::
-
 
         class Line:
             def __init__(self, a, b):
@@ -16223,10 +15653,8 @@ for the present format::
         y = line(x=3)
         print y
 
-
 Some more Python code (actually specified as a sage cell, but
 such cells are not supported by this format)::
-
 
         a = 2
         b = 3
@@ -16241,26 +15669,19 @@ such cells are not supported by this format)::
         xlabel('x'); ylabel('y')
         show()
 
-
-
 Then Cython::
-
 
         cpdef f(double x):
             return x + 1
 
-
 Standard Python shell sessions::
-
 
         >>> from numpy import sin
         >>> # Some comment
         >>> x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 IPython sessions::
-
 
         In [1]: from numpy import sin
         
@@ -16269,9 +15690,7 @@ IPython sessions::
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 C++::
-
 
         #include <iostream>
         
@@ -16282,7 +15701,6 @@ C++::
         }
 
 And a little bit of Fortran::
-
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -16295,7 +15713,6 @@ And a little bit of Fortran::
 
 which then is typeset as::
 
-
               subroutine midpt(x, length, a, b)
               real*8 a, b, x
               x = (a + b)/2
@@ -16303,9 +15720,7 @@ which then is typeset as::
               return
               end
 
-
 HTML::
-
 
         <table>
         <tr><td>Column 1</td><td>Column 2</td></tr>
@@ -16313,16 +15728,13 @@ HTML::
         <!-- comment -->
         </table>
 
-
 System call::
-
 
         Terminal> mkdir test
         Terminal> cd test
         Terminal> myprog -f
         output1
         output2
-
 
 It is time to test C{verbatim inline font} especially with C{a newline
 inside the text} and an exclamation mark at the end: C{BEGIN}! The
@@ -16345,13 +15757,8 @@ the previous blocks with line breaks.
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
 
-
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
-
-
 
 Footnotes
 ~~~~~~~~~
@@ -16393,7 +15800,6 @@ of course remain a tilde in those contexts.)
 Subsection 2: Testing figures
 -----------------------------
 
-
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
@@ -16403,26 +15809,17 @@ Figures without captions are allowed and will be inlined.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
-
-
-
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like C{my_file_v1} and C{my_file_v2} as well as math with subscript as in M{t_{i+1}}. {myfig} 
 
-
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
-
-
-
 I{Remark.}
 Movies are tested in separate file C{movies.do.txt}.
-
-
 
 The M{\theta} parameter (not M{\nabla}?)
 ----------------------------------------
@@ -16430,10 +15827,8 @@ The M{\theta} parameter (not M{\nabla}?)
 Functions do not always need to be advanced, here is one
 involving M{\theta}::
 
-
         def f(theta):
             return theta**2
-
 
 I{More on M{\theta}.} Here is more text following headline with math.
 
@@ -16448,7 +15843,6 @@ both inline and in block::
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
-
 Or with align with label and numbers::
 
         \begin{align}
@@ -16459,8 +15853,6 @@ Or with align with label and numbers::
         label{aligneq2}
         \end{align}
 
-
-
 Custom Environments
 -------------------
 
@@ -16468,9 +15860,6 @@ Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the C{.tex} by proper begin-end LaTeX environments for theorems.
 Should look nice in most formats!
-
-
-
 
 I{Theorem 5.}
 Let M{a=1} and M{b=2}. Then M{c=3}.
@@ -16482,14 +15871,10 @@ M{END}
 As we see, the proof of Theorem 5 is a modest
 achievement.
 
-
 Tables
 ------
 
-
-
 Let us take this table from the manual:
-
 
 ============  ============  ============  
     time        velocity    acceleration  
@@ -16499,9 +15884,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-
 The Doconce source code reads::
-
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -16510,7 +15893,6 @@ The Doconce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -16555,8 +15937,6 @@ and C{|} right before and after verbatim word (with no space):
 Finally, a table with math
 and URLs.
 
-
-
 ===========================================================  ===========================================================  ===========================================================  
                                                                                                                                                                                        
 ===========================================================  ===========================================================  ===========================================================  
@@ -16564,7 +15944,6 @@ and URLs.
                            M{a=b}                            U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}  
                   M{\nabla\cdot\bm{u} =0 }                   U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}  
 ===========================================================  ===========================================================  ===========================================================  
-
 
 A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{my_file_v2}
 ------------------------------------------------------------------------------------------
@@ -16580,7 +15959,6 @@ LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that "caused" a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like C{.txt}.
-
 
 Bibliography test
 -----------------
@@ -16610,9 +15988,6 @@ More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
 
-
-
-
 # --- begin exercise ---
 
 Example 1: Examples can be typeset as exercises
@@ -16622,7 +15997,6 @@ Examples can start with a subsection heading starting with C{Example:}
 and then, with the command-line option C{--examples_as_exercises} be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
-
 
 I{a)}
 State some problem.
@@ -16644,7 +16018,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 # --- end exercise ---
-
 
 URLs
 ----
@@ -16676,16 +16049,11 @@ is used), as in this reference to
 U{C{decay_mod}<https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>}, U{C{ball1.py}<http://tinyurl.com/pwyasaa/formulas.ball1.py>},
 and U{C{ball2.py}<http://tinyurl.com/pwyasaa/formulas.ball2.py>}.
 
-
-
-
 More tough tests: repeated URLs whose footnotes when using the
 C{--device=paper} option must be correct. We have
 U{google<http://google.com>}, U{google<http://google.com>}, and
 U{google<http://google.com>}, which should result in exactly three
 footnotes.
-
-
 
 # !split and check if these extra words are included properly in the comment
 
@@ -16698,22 +16066,15 @@ Here is an equation without label using backslash-bracket environment::
 
 or with number and label, as in Equation (my:eq1), using the equation environment::
 
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
 
 We can refer to this equation by Equation (my:eq1).
 
 Here is a system without equation numbers, using the align-astrisk environment::
 
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
-
-
-
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
@@ -16721,26 +16082,17 @@ Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability"
 as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for epytext", and in
 between there we have  "Exercise 9: Make references to projects and problems".
 
-
 Exercises
 =========
-
-
 
 # --- begin exercise ---
 
 Problem 2: Flip a Coin
 ----------------------
 
-
-
 Make a program that simulates flipping a coin M{N} times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
 
 Remarks
 ~~~~~~~
@@ -16766,7 +16118,6 @@ C{r = random.randint(1,2)} and define head when C{r} is 1.
 
 # --- end hint in exercise ---
 
-
 # --- begin answer of exercise ---
 I{Answer.}
 If the C{random.random()} function returns a number M{<1/2}, let it be
@@ -16774,10 +16125,8 @@ head, otherwise tail. Repeat this M{N} number of times.
 
 # --- end answer of exercise ---
 
-
 # --- begin solution of exercise ---
 I{Solution.}::
-
 
         import sys, random
         N = int(sys.argv[1])
@@ -16788,12 +16137,10 @@ I{Solution.}::
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
-
 # --- end solution of exercise ---
 Filenames: C{flip_coin.py}, C{flip_coin.pdf}.
 
 # --- end exercise ---
-
 
 Not an exercise
 ---------------
@@ -16801,18 +16148,13 @@ Not an exercise
 Should be possible to stick a normal section in the middle of many
 exercises.
 
-
-
 # --- begin exercise ---
 
 Project 3: Compute a Probability
 --------------------------------
 
-
-
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval M{[0,1)}?
-
 
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
@@ -16832,9 +16174,6 @@ compute the probability as M{M/N}.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Project 4: Explore Distributions of Random Circles
@@ -16852,7 +16191,6 @@ center point, and M{t} is a parameter in the unit interval M{[0,1]}.
 For any M{t}, M{(x,y)} is a point on the circle.
 The formula can be used to generate C{n} points on a circle::
 
-
         import numpy as np
         
         def circle(R, x0, y0, n=501):
@@ -16863,12 +16201,9 @@ The formula can be used to generate C{n} points on a circle::
         
         x, y = circle(2.0, 0, 0)
 
-
-
 The goal of this project is to draw M{N} circles with random
 center and radius. Plot each circle using the C{circle} function
 above.
-
 
 I{a)}
 Let M{R} be normally distributed and M{(x_0,y_0)} uniformly distributed.
@@ -16881,13 +16216,11 @@ M{x_0}, M{y_0}, and M{R} quantities.
 
 # --- end hint in exercise ---
 
-
 # --- begin answer of exercise ---
 I{Answer.}
 Here goes the short answer to part a).
 
 # --- end answer of exercise ---
-
 
 # --- begin solution of exercise ---
 I{Solution.}
@@ -16904,18 +16237,13 @@ Let M{R} and M{(x_0,y_0)} be normally distributed.
 
 Filename: C{circles.pdf}.
 
-
 Remarks
 ~~~~~~~
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
@@ -16923,10 +16251,6 @@ Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-
-
 
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
@@ -16945,13 +16269,11 @@ With some math M{a=b} in this solution::
 
 And code C{a=b} in this solution::
 
-
         a = b  # code in solution
 
 End of solution is here.
 
 # --- end solution of exercise ---
-
 
 I{a)}
 Subexercises are numbered a), b), etc.
@@ -16966,10 +16288,8 @@ With math M{a=b} in hint::
 
 And with code (in plain verbatim) returning M{x+1} in hint::
 
-
         def func(x):
             return x + 1  # with code in hint
-
 
 # --- end hint in exercise ---
 
@@ -16986,7 +16306,6 @@ Test list in hint:
 # --- end hint in exercise ---
 Filename: C{subexer_a.pdf}.
 
-
 # --- begin answer of exercise ---
 I{Answer.}
 Short answer to subexercise a).
@@ -16997,11 +16316,9 @@ With math in answer: M{a=b}.
 I{b)}
 Here goes the text for subexercise b).
 
-
 Some math M{\cos^2 x + \sin^2 x = 1} written one a single line::
 
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
-
 
 # --- begin hint in exercise ---
 
@@ -17011,13 +16328,11 @@ A hint for this subexercise.
 # --- end hint in exercise ---
 Filename: C{subexer_b.pdf}.
 
-
 # --- begin solution of exercise ---
 I{Solution.}
 Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
-
 
 Remarks
 ~~~~~~~
@@ -17026,42 +16341,28 @@ Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
 
-
 Just some text. And some math saying that M{e^0=1} on a single line,
 to test that math block insertion is correct::
 
         \[ \exp{(0)} = 1 \]
 
-
 And a test that the code C{lambda x: x+2} is correctly placed here::
-
 
         lambda x: x+2
 
-
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Exercise 7: Solution of differential equation
 ---------------------------------------------
-
-
 
 Given::
 
@@ -17075,11 +16376,9 @@ M{y=e^{y}}
 
 Almost, but the sign is wrong (note the minus!)::
 
-
         from math import exp
         def f(x):
             return exp(x)
-
 
 Ooops, forgot a minus: C{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
@@ -17087,7 +16386,6 @@ though, to write the solution to the problem
 in mathematical notation::
 
         \[ y(x) = e^{-y}.\]
-
 
 The solution cannot be found because there is a derivative in the equation.
 
@@ -17104,15 +16402,10 @@ special techniques.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Example 8: Just an example
 --------------------------
-
-
 
 I{a)}
 What is the capital of Norway?
@@ -17122,7 +16415,6 @@ Oslo.
 
 # --- end exercise ---
 
-
 Here goes another section
 =========================
 
@@ -17130,8 +16422,6 @@ With some text, before we continue with exercises.
 
 More Exercises
 ==============
-
-
 
 # --- begin exercise ---
 
@@ -17151,9 +16441,6 @@ Filename: C{verify_formula.py}.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Project 10: References to  "Project 3: Compute a Probability" in a heading works for epytext
@@ -17165,7 +16452,6 @@ and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading 
 Filename: C{selc_composed.pdf}.
 
 # --- end exercise ---
-
 
 References
 ==========
@@ -17295,7 +16581,6 @@ Appendix: Testing identical titles
 
 Without label.
 
-
 Appendix: Testing identical titles
 ----------------------------------
 
@@ -17305,8 +16590,6 @@ Appendix: Testing identical titles
 ----------------------------------
 
 What about inserting a quiz?
-
-
 
 What is the capital of Norway?
 
@@ -17322,7 +16605,6 @@ Bergen
 
 Those from Bergen would claim so, but nobody else.
 
-
 Appendix: Testing identical titles
 ----------------------------------
 
@@ -17330,8 +16612,6 @@ Without label.
 
 I{Tip.}\g<space>
 Here is a tip or hint box, typeset as a notice box.
-
-
 
 
 
@@ -17406,7 +16686,6 @@ The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
-
 
 Appendix: Testing inline comments
 ---------------------------------
@@ -17509,14 +16788,7 @@ Table of contents:
    Appendix: Testing inline comments 
    Appendix: Testing headings ending with verbatim inline 
 
-
-
-
-
 # !split
-
-
-
 
 The format of this document is
 plain
@@ -17527,7 +16799,6 @@ numerous constructions, also special and less common cases.
 
 And exactly for test purposes we have an extra line here, which
 is part of the abstract.
-
 
 Section 1
 =========
@@ -17547,14 +16818,12 @@ Here is a nested list:
 
     * and a subitem2
 
-
   * and perhaps an ordered sublist
 
    1. first item
 
    2. second item,
       continuing on a new line
-
 
 *Here is a list with paragraph heading.*
 
@@ -17575,11 +16844,8 @@ Here is a list with subsubsection heading
 
 Here is a reference to Equation (my:eq1).
 
-
 Subsection 1
 ------------
-
-
 
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
@@ -17587,13 +16853,10 @@ the sections "Subsection 1" and "URLs", which
 encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
-
-
 Computer code
 ~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end::
-
 
               subroutine test()
               integer i
@@ -17611,7 +16874,6 @@ Let's do some copying from files too. First from subroutine up to the very end::
 
 and then just the subroutine::
 
-
         
               subroutine test()
               integer i
@@ -17623,7 +16885,6 @@ and then just the subroutine::
               return
 
 and finally the complete file::
-
 
         C     a comment
         
@@ -17641,9 +16902,7 @@ and finally the complete file::
               call test()
               return
 
-
 Testing other code environments. First Python::
-
 
         !bc pycod
         def f(x):
@@ -17652,16 +16911,12 @@ Testing other code environments. First Python::
 
 which gets rendered as::
 
-
         def f(x):
             return x+1
-
-
 
 Here is a program that is supposed to be interactive via
 Python Online Tutorial, but that service is not accessible
 for the present format::
-
 
         class Line:
             def __init__(self, a, b):
@@ -17675,10 +16930,8 @@ for the present format::
         y = line(x=3)
         print y
 
-
 Some more Python code (actually specified as a sage cell, but
 such cells are not supported by this format)::
-
 
         a = 2
         b = 3
@@ -17693,26 +16946,19 @@ such cells are not supported by this format)::
         xlabel('x'); ylabel('y')
         show()
 
-
-
 Then Cython::
-
 
         cpdef f(double x):
             return x + 1
 
-
 Standard Python shell sessions::
-
 
         >>> from numpy import sin
         >>> # Some comment
         >>> x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 IPython sessions::
-
 
         In [1]: from numpy import sin
         
@@ -17721,9 +16967,7 @@ IPython sessions::
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 C++::
-
 
         #include <iostream>
         
@@ -17734,7 +16978,6 @@ C++::
         }
 
 And a little bit of Fortran::
-
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -17747,7 +16990,6 @@ And a little bit of Fortran::
 
 which then is typeset as::
 
-
               subroutine midpt(x, length, a, b)
               real*8 a, b, x
               x = (a + b)/2
@@ -17755,9 +16997,7 @@ which then is typeset as::
               return
               end
 
-
 HTML::
-
 
         <table>
         <tr><td>Column 1</td><td>Column 2</td></tr>
@@ -17765,16 +17005,13 @@ HTML::
         <!-- comment -->
         </table>
 
-
 System call::
-
 
         Terminal> mkdir test
         Terminal> cd test
         Terminal> myprog -f
         output1
         output2
-
 
 It is time to test verbatim inline font especially with a newline
 inside the text and an exclamation mark at the end: BEGIN! The
@@ -17797,14 +17034,11 @@ the previous blocks with line breaks.
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
 
-
         Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
         Testing
         output
         from
         Python.
-
-
 
 Footnotes
 ~~~~~~~~~
@@ -17850,7 +17084,6 @@ Non-breaking space character ---------------------------------------------------
 Subsection 2: Testing figures
 -----------------------------
 
-
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
@@ -17860,26 +17093,17 @@ Figures without captions are allowed and will be inlined.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 
-
-
-
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. {myfig} 
 
-
 Test URL as figure name:
 
 FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
 
-
-
-
 *Remark.*
 Movies are tested in separate file movies.do.txt.
-
-
 
 The \theta parameter (not \nabla?)
 ----------------------------------
@@ -17887,10 +17111,8 @@ The \theta parameter (not \nabla?)
 Functions do not always need to be advanced, here is one
 involving \theta::
 
-
         def f(theta):
             return theta**2
-
 
 *More on \theta.* Here is more text following headline with math.
 
@@ -17905,7 +17127,6 @@ both inline and in block::
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
-
 Or with align with label and numbers::
 
         \begin{align}
@@ -17916,8 +17137,6 @@ Or with align with label and numbers::
         label{aligneq2}
         \end{align}
 
-
-
 Custom Environments
 -------------------
 
@@ -17925,9 +17144,6 @@ Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the .tex by proper begin-end LaTeX environments for theorems.
 Should look nice in most formats!
-
-
-
 
 *Theorem 5.*
 Let a=1 and b=2. Then c=3.
@@ -17939,14 +17155,10 @@ END
 As we see, the proof of Theorem 5 is a modest
 achievement.
 
-
 Tables
 ------
 
-
-
 Let us take this table from the manual:
-
 
 ============  ============  ============  
     time        velocity    acceleration  
@@ -17956,9 +17168,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-
 The Doconce source code reads::
-
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -17967,7 +17177,6 @@ The Doconce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -18012,8 +17221,6 @@ and | right before and after verbatim word (with no space):
 Finally, a table with math
 and URLs.
 
-
-
 ======================================================  ======================================================  ======================================================  
                                                                                                                                                                         
 ======================================================  ======================================================  ======================================================  
@@ -18021,7 +17228,6 @@ and URLs.
                          a=b                            090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)  
                  \nabla\cdot\bm{u} =0                   100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)  
 ======================================================  ======================================================  ======================================================  
-
 
 A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
 ---------------------------------------------------------------------------------
@@ -18037,7 +17243,6 @@ LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that "caused" a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like .txt.
-
 
 Bibliography test
 -----------------
@@ -18067,9 +17272,6 @@ More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
 
-
-
-
 # --- begin exercise ---
 
 Example 1: Examples can be typeset as exercises
@@ -18079,7 +17281,6 @@ Examples can start with a subsection heading starting with Example:
 and then, with the command-line option --examples_as_exercises be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
-
 
 *a)*
 State some problem.
@@ -18101,7 +17302,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 # --- end exercise ---
-
 
 URLs
 ----
@@ -18133,16 +17333,11 @@ is used), as in this reference to
 decay_mod (https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), ball1.py (http://tinyurl.com/pwyasaa/formulas.ball1.py),
 and ball2.py (http://tinyurl.com/pwyasaa/formulas.ball2.py).
 
-
-
-
 More tough tests: repeated URLs whose footnotes when using the
 --device=paper option must be correct. We have
 google (http://google.com), google (http://google.com), and
 google (http://google.com), which should result in exactly three
 footnotes.
-
-
 
 # !split and check if these extra words are included properly in the comment
 
@@ -18168,35 +17363,23 @@ Here is a system without equation numbers, using the align-astrisk environment::
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
 
-
-
-
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
 as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for plain", and in
 between there we have  "Exercise 9: Make references to projects and problems".
 
-
 Exercises
 =========
-
-
 
 # --- begin exercise ---
 
 Problem 2: Flip a Coin
 ----------------------
 
-
-
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
 
 Remarks
 ~~~~~~~
@@ -18223,7 +17406,6 @@ r = random.randint(1,2) and define head when r is 1.
 
 # --- end hint in exercise ---
 
-
 # --- begin answer of exercise ---
 *Answer.*
 If the random.random() function returns a number <1/2, let it be
@@ -18231,10 +17413,8 @@ head, otherwise tail. Repeat this N number of times.
 
 # --- end answer of exercise ---
 
-
 # --- begin solution of exercise ---
 *Solution.*::
-
 
         import sys, random
         N = int(sys.argv[1])
@@ -18245,12 +17425,10 @@ head, otherwise tail. Repeat this N number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
-
 # --- end solution of exercise ---
 Filenames: flip_coin.py, flip_coin.pdf.
 
 # --- end exercise ---
-
 
 Not an exercise
 ---------------
@@ -18258,18 +17436,13 @@ Not an exercise
 Should be possible to stick a normal section in the middle of many
 exercises.
 
-
-
 # --- begin exercise ---
 
 Project 3: Compute a Probability
 --------------------------------
 
-
-
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
-
 
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
@@ -18290,9 +17463,6 @@ compute the probability as M/N.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Project 4: Explore Distributions of Random Circles
@@ -18310,7 +17480,6 @@ center point, and t is a parameter in the unit interval [0,1].
 For any t, (x,y) is a point on the circle.
 The formula can be used to generate n points on a circle::
 
-
         import numpy as np
         
         def circle(R, x0, y0, n=501):
@@ -18321,12 +17490,9 @@ The formula can be used to generate n points on a circle::
         
         x, y = circle(2.0, 0, 0)
 
-
-
 The goal of this project is to draw N circles with random
 center and radius. Plot each circle using the circle function
 above.
-
 
 *a)*
 Let R be normally distributed and (x_0,y_0) uniformly distributed.
@@ -18339,13 +17505,11 @@ x_0, y_0, and R quantities.
 
 # --- end hint in exercise ---
 
-
 # --- begin answer of exercise ---
 *Answer.*
 Here goes the short answer to part a).
 
 # --- end answer of exercise ---
-
 
 # --- begin solution of exercise ---
 *Solution.*
@@ -18362,18 +17526,13 @@ Let R and (x_0,y_0) be normally distributed.
 
 Filename: circles.pdf.
 
-
 Remarks
 ~~~~~~~
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
@@ -18381,10 +17540,6 @@ Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-
-
 
 The text here belongs to the main (intro) part of the exercise. Need
 closing remarks to have text after subexercises.
@@ -18404,13 +17559,11 @@ With some math a=b in this solution::
 
 And code a=b in this solution::
 
-
         a = b  # code in solution
 
 End of solution is here.
 
 # --- end solution of exercise ---
-
 
 *a)*
 Subexercises are numbered a), b), etc.
@@ -18425,10 +17578,8 @@ With math a=b in hint::
 
 And with code (in plain verbatim) returning x+1 in hint::
 
-
         def func(x):
             return x + 1  # with code in hint
-
 
 # --- end hint in exercise ---
 
@@ -18446,7 +17597,6 @@ Test list in hint:
 # --- end hint in exercise ---
 Filename: subexer_a.pdf.
 
-
 # --- begin answer of exercise ---
 *Answer.*
 Short answer to subexercise a).
@@ -18457,11 +17607,9 @@ With math in answer: a=b.
 *b)*
 Here goes the text for subexercise b).
 
-
 Some math \cos^2 x + \sin^2 x = 1 written one a single line::
 
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
-
 
 # --- begin hint in exercise ---
 
@@ -18471,13 +17619,11 @@ A hint for this subexercise.
 # --- end hint in exercise ---
 Filename: subexer_b.pdf.
 
-
 # --- begin solution of exercise ---
 *Solution.*
 Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
-
 
 Remarks
 ~~~~~~~
@@ -18486,42 +17632,28 @@ Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Some exercise without the "Exercise:" prefix
 --------------------------------------------
 
-
 Just some text. And some math saying that e^0=1 on a single line,
 to test that math block insertion is correct::
 
         \[ \exp{(0)} = 1 \]
 
-
 And a test that the code lambda x: x+2 is correctly placed here::
-
 
         lambda x: x+2
 
-
-
 # --- end exercise ---
-
-
-
 
 # --- begin exercise ---
 
 Exercise 7: Solution of differential equation
 ---------------------------------------------
-
-
 
 Given::
 
@@ -18535,11 +17667,9 @@ y=e^{y}
 
 Almost, but the sign is wrong (note the minus!)::
 
-
         from math import exp
         def f(x):
             return exp(x)
-
 
 Ooops, forgot a minus: exp(-x), otherwise this Python code
 must be considered as a good answer. It is more natural,
@@ -18547,7 +17677,6 @@ though, to write the solution to the problem
 in mathematical notation::
 
         \[ y(x) = e^{-y}.\]
-
 
 The solution cannot be found because there is a derivative in the equation.
 
@@ -18564,15 +17693,10 @@ special techniques.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Example 8: Just an example
 --------------------------
-
-
 
 *a)*
 What is the capital of Norway?
@@ -18582,7 +17706,6 @@ Oslo.
 
 # --- end exercise ---
 
-
 Here goes another section
 =========================
 
@@ -18590,8 +17713,6 @@ With some text, before we continue with exercises.
 
 More Exercises
 ==============
-
-
 
 # --- begin exercise ---
 
@@ -18612,9 +17733,6 @@ Filename: verify_formula.py.
 
 # --- end exercise ---
 
-
-
-
 # --- begin exercise ---
 
 Project 10: References to  "Project 3: Compute a Probability" in a heading works for plain
@@ -18626,7 +17744,6 @@ and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading 
 Filename: selc_composed.pdf.
 
 # --- end exercise ---
-
 
 References
 ==========
@@ -18775,7 +17892,6 @@ Appendix: Testing identical titles
 
 Without label.
 
-
 Appendix: Testing identical titles
 ----------------------------------
 
@@ -18785,8 +17901,6 @@ Appendix: Testing identical titles
 ----------------------------------
 
 What about inserting a quiz?
-
-
 
 What is the capital of Norway?
 
@@ -18802,7 +17916,6 @@ Bergen
 
 Those from Bergen would claim so, but nobody else.
 
-
 Appendix: Testing identical titles
 ----------------------------------
 
@@ -18813,8 +17926,6 @@ Tip --------------------------------------------------|
 |                                                     |
 | Here is a tip or hint box, typeset as a notice box. |
 |-----------------------------------------------------|
-
-
 
 
 Need a lot of text to surround the summary box.
@@ -18890,7 +18001,6 @@ The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
-
 
 Appendix: Testing inline comments
 ---------------------------------
@@ -22794,7 +21904,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test  !bc  and  !ec  as well as  !bsummary . Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in  a != b , and a Doconce directive a la  !bc .</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test ?!bc? and ?!ec? as well as ?!bsummary?. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in ?a != b?, and a Doconce directive a la ?!bc?.</p>
 <p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -23293,7 +22403,6 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta name="author" content="A. Dummy Author" />
   <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
-  <meta name="date" content="2014-05-20" />
   <title>A Document for Testing Doconce</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -25126,6 +24235,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -25366,7 +24476,7 @@ The text is rendered to
 <p>
 <blockquote>
     Generalized references are described in
-    The section <a href="#genrefs">Generalized References</a>.
+    the section <a href="#genrefs">Generalized References</a>.
 </blockquote>
 
 
@@ -25719,7 +24829,7 @@ Inline math, $a=b$, is the only math in this document.
 
 
 ************** File: author1.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 Test of one author at one institution
@@ -25729,7 +24839,6 @@ Test of one author at one institution
 :Date: Jan 32, 2100
 
 .. Externaldocument: testdoc
-
 
 .. _genrefs:
 
@@ -25753,7 +24862,6 @@ the ``xr`` feature in LaTeX.
 The syntax of generalized references reads
 
 .. code-block:: text
-
 
         ref[internal][cite][external]
 
@@ -25779,7 +24887,6 @@ in a document:
 
 .. code-block:: text
 
-
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
@@ -25793,7 +24900,6 @@ With ``latex`` or ``pdflatex`` as output, this translates to
 
 .. code-block:: text
 
-
         As explained in
         Section ref{subsec:ex}, Doconce documents may include tables.
 
@@ -25801,7 +24907,6 @@ if the label ``{subsec:ex}`` appears in the present Doconce source, and
 otherwise
 
 .. code-block:: text
-
 
         As explained in
         Section ref{subsec:ex} in "Langtangen, 2012":
@@ -25812,7 +24917,6 @@ In a format different from ``latex`` and ``pdflatex``, the effective Doconce
 text becomes
 
 .. code-block:: text
-
 
         As explained in
         a "section":
@@ -25837,9 +24941,7 @@ A reference to an entire external document, which is usually a chapter
 if the reference is internal in the Doconce source, applies the
 ``refch`` syntax:
 
-
 .. code-block:: text
-
 
         As explained in
         refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
@@ -25852,9 +24954,7 @@ if the reference is internal in the Doconce source, applies the
 The output now if ``ch:testdoc`` is not a label in the document,
 becomes in the ``latex`` and ``pdflatex`` case
 
-
 .. code-block:: text
-
 
         As explained in
         "Langtangen, 2012":
@@ -25881,9 +24981,7 @@ have links to local files, so a complete URL on the form
 
 And here is another example with internal references only:
 
-
 .. code-block:: text
-
 
         Generalized references are described in ref[Section ref{genrefs}][dummy1][
         dummy2].
@@ -25904,7 +25002,6 @@ Test of math
 .. Here we test the chapter heading to see if latex output then has
 
 .. book style rather than article style.
-
 
 Inline math, :math:`a=b`, is the only math in this document.
 
@@ -25947,7 +25044,6 @@ the xr feature in LaTeX.
 
 The syntax of generalized references reads::
 
-
         ref[internal][cite][external]
 
 If all ref{label} references in the text internal are references
@@ -25970,7 +25066,6 @@ text will be the output.
 Here is an example on a specific generalized reference to a section
 in a document::
 
-
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
@@ -25982,13 +25077,11 @@ in a document::
 
 With latex or pdflatex as output, this translates to::
 
-
         As explained in
         Section ref{subsec:ex}, Doconce documents may include tables.
 
 if the label {subsec:ex} appears in the present Doconce source, and
 otherwise::
-
 
         As explained in
         Section ref{subsec:ex} in "Langtangen, 2012":
@@ -25997,7 +25090,6 @@ otherwise::
 
 In a format different from latex and pdflatex, the effective Doconce
 text becomes::
-
 
         As explained in
         a "section":
@@ -26018,7 +25110,6 @@ A reference to an entire external document, which is usually a chapter
 if the reference is internal in the Doconce source, applies the
 refch syntax::
 
-
         As explained in
         refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
@@ -26029,7 +25120,6 @@ refch syntax::
 
 The output now if ch:testdoc is not a label in the document,
 becomes in the latex and pdflatex case::
-
 
         As explained in
         "Langtangen, 2012":
@@ -26052,7 +25142,6 @@ http://... must be used.
 
 And here is another example with internal references only::
 
-
         Generalized references are described in ref[Section ref{genrefs}][dummy1][
         dummy2].
 
@@ -26064,7 +25153,6 @@ The text is rendered to
 
 Test of math
 %%%%%%%%%%%%
-
 
 Inline math, a=b, is the only math in this document.
 
@@ -26102,7 +25190,7 @@ Automatically generated HTML file from Doconce source
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -26154,6 +25242,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -26294,7 +25383,7 @@ $$
     
 <a name="part0000"></a>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -26390,7 +25479,7 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -26427,7 +25516,7 @@ Automatically generated HTML file from Doconce source
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -26479,6 +25568,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -26619,9 +25709,9 @@ $$
     
 <a name="part0001"></a>
 <!-- begin top navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -26709,9 +25799,10 @@ This equation appears in another part if this document is split.
 
 <p>
 More text, with a reference back to
-The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
+the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
 encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
-The appendices <a href="._testdoc002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
+ <a href="._testdoc002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
@@ -27470,9 +26561,9 @@ footnotes.
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -27509,7 +26600,7 @@ Automatically generated HTML file from Doconce source
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -27561,6 +26652,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -27701,9 +26793,9 @@ $$
     
 <a name="part0002"></a>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -28337,9 +27429,9 @@ What about inserting a quiz?
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -28376,7 +27468,7 @@ Automatically generated HTML file from Doconce source
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -28428,6 +27520,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -28568,7 +27661,7 @@ $$
     
 <a name="part0003"></a>
 <!-- begin top navigation -->
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 <!-- end top navigation -->
 
 <p>
@@ -28737,7 +27830,7 @@ is at the end with only one newline.
 
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
@@ -28809,6 +27902,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -28973,9 +28067,10 @@ This equation appears in another part if this document is split.
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
 More text, with a reference back to
-The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
+the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
-The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
+ <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3>Computer code  <a name="___sec3"></a></h3>
 
@@ -30429,6 +29524,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -30736,9 +29832,10 @@ This equation appears in another part if this document is split.
 
 <p>
 More text, with a reference back to
-The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
+the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
-The appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
+ <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
@@ -34194,23 +33291,27 @@ for part in ['._testdoc000', '._testdoc001', '._testdoc002']:
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
-    destdir = os.path.join(sphinx_rootdir, figdir)
+    if figdir.startswith('fig'):
+        # Figures can be anywhere (copied by sphinx to _images)
+        destdir = os.path.join(sphinx_rootdir, figdir)
+    elif figdir.startswith('mov'):
+        # Movies must be in _static
+        destdir = os.path.join(sphinx_rootdir, '_static', figdir)
     if os.path.isdir(figdir) and not os.path.isdir(destdir):
-        print 'copying', figdir, 'to', sphinx_rootdir
         shutil.copytree(figdir, destdir)
+        print 'copying', figdir, 'to', destdir
 
-# Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
-               glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
+# Copy needed figure files in current dir (not in fig*)
+for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +                glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
     import re
-    media_files = [name.strip() for name in
-                   re.findall('.. figure:: (.+)', text)]
-    local_media_files = [name for name in media_files if not os.sep in name]
+    figfiles = [name.strip() for name in
+                re.findall('.. figure:: (.+)', text)]
+    local_figfiles = [name for name in figfiles if not os.sep in name]
 
-    for name in media_files:
+    for name in figfiles:
         basename = os.path.basename(name)
         if name.startswith('http') or name.startswith('ftp'):
             pass
@@ -34218,7 +33319,7 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
             if not os.path.isfile(os.path.join(sphinx_rootdir, basename)):
                 print 'copying', name, 'to', sphinx_rootdir
                 shutil.copy(name, sphinx_rootdir)
-            if name not in local_media_files:
+            if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
                 # since it is copied to sphinx_rootdir
                 text = text.replace('.. figure:: %s' % name,
@@ -34240,13 +33341,21 @@ print os.getcwd()
 system('make clean')
 system('make html')
 
-print 'Fix generated files:'
+print 'Fix generated files:',
 os.chdir('_build/html')
 for filename in glob.glob('*.html') + glob.glob('.*.html'):
+    print filename,
+    f = open(filename, 'r'); text = f.read(); f.close()
     # Fix double title in <title> tags
-    system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %s' % filename, echo=False)
+    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+    # Fix untranslated math (e.g. in figure captions and raw html)
+    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+    # Fix links to movies
+    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+    # Fix movie frames in javascript player
+    text = text.replace(r'.src = "mov', '.src = "_static/mov')
     # Fix admonition style
-    system("""doconce replace "</head>" "
+    text = text.replace('</head>', """
    <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
@@ -34254,16 +33363,17 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
      }
    </style>
   </head>
-" %s""" % filename, echo=False)
+""")
+
     if os.path.isfile(filename + '.old~~'):
         os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
-    f = open(filename, 'r');  text = f.read();  f.close()
-    if '.. Open external links in new windows.' in text:
+    if '.. NOTE: Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
-        f = open(filename, 'w');  f.write(text);  f.close()
+    f = open(filename, 'w'); f.write(text); f.close()
 print """
+
 google-chrome sphinx-testdoc/_build/html/index.html
 """
 
@@ -34318,23 +33428,27 @@ shutil.copy('%s.rst' % filename, sphinx_rootdir)
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
-    destdir = os.path.join(sphinx_rootdir, figdir)
+    if figdir.startswith('fig'):
+        # Figures can be anywhere (copied by sphinx to _images)
+        destdir = os.path.join(sphinx_rootdir, figdir)
+    elif figdir.startswith('mov'):
+        # Movies must be in _static
+        destdir = os.path.join(sphinx_rootdir, '_static', figdir)
     if os.path.isdir(figdir) and not os.path.isdir(destdir):
-        print 'copying', figdir, 'to', sphinx_rootdir
         shutil.copytree(figdir, destdir)
+        print 'copying', figdir, 'to', destdir
 
-# Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
-               glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
+# Copy needed figure files in current dir (not in fig*)
+for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +                glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
     import re
-    media_files = [name.strip() for name in
-                   re.findall('.. figure:: (.+)', text)]
-    local_media_files = [name for name in media_files if not os.sep in name]
+    figfiles = [name.strip() for name in
+                re.findall('.. figure:: (.+)', text)]
+    local_figfiles = [name for name in figfiles if not os.sep in name]
 
-    for name in media_files:
+    for name in figfiles:
         basename = os.path.basename(name)
         if name.startswith('http') or name.startswith('ftp'):
             pass
@@ -34342,7 +33456,7 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \
             if not os.path.isfile(os.path.join(sphinx_rootdir, basename)):
                 print 'copying', name, 'to', sphinx_rootdir
                 shutil.copy(name, sphinx_rootdir)
-            if name not in local_media_files:
+            if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
                 # since it is copied to sphinx_rootdir
                 text = text.replace('.. figure:: %s' % name,
@@ -34364,13 +33478,21 @@ print os.getcwd()
 system('make clean')
 system('make html')
 
-print 'Fix generated files:'
+print 'Fix generated files:',
 os.chdir('_build/html')
 for filename in glob.glob('*.html') + glob.glob('.*.html'):
+    print filename,
+    f = open(filename, 'r'); text = f.read(); f.close()
     # Fix double title in <title> tags
-    system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %s' % filename, echo=False)
+    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+    # Fix untranslated math (e.g. in figure captions and raw html)
+    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+    # Fix links to movies
+    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+    # Fix movie frames in javascript player
+    text = text.replace(r'.src = "mov', '.src = "_static/mov')
     # Fix admonition style
-    system("""doconce replace "</head>" "
+    text = text.replace('</head>', """
    <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
@@ -34378,16 +33500,17 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
      }
    </style>
   </head>
-" %s""" % filename, echo=False)
+""")
+
     if os.path.isfile(filename + '.old~~'):
         os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
-    f = open(filename, 'r');  text = f.read();  f.close()
-    if '.. Open external links in new windows.' in text:
+    if '.. NOTE: Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
-        f = open(filename, 'w');  f.write(text);  f.close()
+    f = open(filename, 'w'); f.write(text); f.close()
 print """
+
 google-chrome sphinx-rootdir-math/_build/html/index.html
 """
 
@@ -34468,7 +33591,7 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html
+system doconce split_html testdoc.html --nav_button=gray2
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
@@ -34572,7 +33695,7 @@ cp slides1.html slides1_deck.html
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
-system doconce slides_beamer slides1
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
@@ -35300,6 +34423,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -35576,7 +34700,6 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="HPL" />
-  <meta name="date" content="2014-05-20" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -35987,7 +35110,7 @@ and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 
 
 ************** File: math_test.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 How various formats can deal with LaTeX math
@@ -36005,18 +35128,14 @@ Here is a sentence contains the equation :math:`u(t)=e^{-at}`.
 **Test 2: A single equation without label.**
 Here it is
 
-
 .. math::
          u(t)=e^{-at} 
-
 
 **Test 3: A single equation with label.**
 Here it is as a one-line
 latex code,
 
-
 .. code-block:: text
-
 
         !bt
         \begin{equation} u(t)=e^{-at} label{eq1}\end{equation}
@@ -36024,16 +35143,13 @@ latex code,
 
 looking like
 
-
 .. math::
    :label: eq1
          u(t)=e^{-at} 
 
 and as a three-line latex code:
 
-
 .. code-block:: text
-
 
         !bt
         \begin{equation}
@@ -36043,7 +35159,6 @@ and as a three-line latex code:
 
 looking like
 
-
 .. math::
    :label: eq1b
         
@@ -36052,15 +35167,12 @@ looking like
 
 This equation has label :eq:`eq1b`.
 
-
 **Test 4: Multiple, aligned equations without label.**
 Only the align
 environment is supported by other formats than LaTeX for typesetting
 multiple, aligned equations. The code reads
 
-
 .. code-block:: text
-
 
         !bt
         \begin{align*}
@@ -36071,21 +35183,17 @@ multiple, aligned equations. The code reads
 
 and results in
 
-
 .. math::
         
         u(t)&=e^{-at}\\ 
         v(t) - 1 &= \frac{du}{dt}
         
 
-
 **Test 5: Multiple, aligned equations with label.**
 We use align with
 labels:
 
-
 .. code-block:: text
-
 
         !bt
         \begin{align}
@@ -36098,14 +35206,11 @@ labels:
 
 and results in
 
-
 .. math::
    :label: eq2b
         
         u(t)=e^{-at} 
         
-
-
 
 .. math::
    :label: eq3b
@@ -36122,7 +35227,6 @@ with labels. Hence the user can write one code with align and labels
 and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
 in the present case is
 
-
 .. code-block:: rst
 
         .. math::
@@ -36137,16 +35241,11 @@ in the present case is
                 v(t) - 1 = \frac{du}{dt}
         
 
-
-
-
 **Test 6: Multiple, aligned eqnarray equations without label.**
 Let us
 try the old eqnarray environment.
 
-
 .. code-block:: text
-
 
         !bt
         \begin{eqnarray*}
@@ -36157,21 +35256,17 @@ try the old eqnarray environment.
 
 and results in
 
-
 .. math::
         
         u(t) &=  e^{-at}\\ 
         v(t) - 1  &=  \frac{du}{dt}
         
 
-
 **Test 7: Multiple, eqnarrayed equations with label.**
 We use eqnarray with
 labels:
 
-
 .. code-block:: text
-
 
         !bt
         \begin{eqnarray}
@@ -36184,7 +35279,6 @@ labels:
 
 and results in
 
-
 .. math::
         
         u(t) &=  e^{-at} \\ 
@@ -36195,7 +35289,6 @@ Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`?
 No, unfortunately not.
 Note: Doconce takes the eqnarray with labels and replaces it automatically
 by the Sphinx code
-
 
 .. code-block:: rst
 
@@ -36212,7 +35305,6 @@ math engines?). The rule of thumb is to avoid equarray.
 **Test 8: newcommands and boldface bm vs pmb.**
 We have
 
-
 .. math::
          \color{blue}{\frac{\partial\pmb{u}}{\partial t}} +
         \nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
@@ -36220,7 +35312,6 @@ We have
 
 and :math:`\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}`
 with plain old pmb. Here are the same formulas using ``\bm``:
-
 
 .. math::
          \color{blue}{\frac{\partial\boldsymbol{u}}{\partial t}} +
@@ -36316,40 +35407,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -36703,40 +35794,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -37090,40 +36181,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -37342,9 +36433,10 @@ This equation appears in another part if this document is split.
 
 <p>
 More text, with a reference back to
-The section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
+the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
+the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
 encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
-The appendices <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc_vagrant002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
+ <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc_vagrant002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
@@ -37614,7 +36706,7 @@ They are used in different flavors, now in
 </ul>
 
 which gives flexibility in writing.
-This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_4"><a><a href="#def_footnote_4" style="color: white">4</a></button> example.
+This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_4"><a><a href="._testdoc_vagrant003.html#def_footnote_4" style="color: white">4</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -38131,40 +37223,40 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="#___sec32" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec32" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
     </ul>
    </div>
@@ -39068,9 +38160,8 @@ While the <div class="deep-blue">rest of the</div> getting started
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -39090,10 +38181,6 @@ A Document for Testing Doconce
 
 .. !split
 
-
-
-
-
 The format of this document is
 sphinx
 
@@ -39108,9 +38195,7 @@ is part of the abstract.
 
 .. is mutually exclusive in LaTeX
 
-
 .. _sec1:
-
 
 Section 1
 =========
@@ -39130,14 +38215,12 @@ Here is a nested list:
 
     * and a subitem2
 
-
   * and perhaps an ordered sublist
 
    1. first item
 
    2. second item,
       continuing on a new line
-
 
 **Here is a list with paragraph heading.**
 
@@ -39163,20 +38246,16 @@ Here is a list with subsubsection heading
 Here is a reference to Equation :ref:`(3.1) <Eq:my:eq1>`.
 This equation appears in another part if this document is split.
 
-
 .. _subsec1:
 
 Subsection 1
 ------------
 
-
 .. index:: somefunc function
-
 
 .. Refer to section/appendix etc. at the beginning of the line
 
 .. and other special fix situations for HTML.
-
 
 More text, with a reference back to
 the section :ref:`sec1` and :ref:`subsec1`, and further to the
@@ -39184,15 +38263,12 @@ the sections :ref:`subsec1` and :ref:`subsubsec:ex`, which
 encourages you to do the tasks in :ref:`demo:ex:1` and :ref:`exer:some:formula`.
 Appendices     :ref:`app1` and :ref:`app2` are also nice elements.
 
-
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
-
 
 Computer code
 ~~~~~~~~~~~~~
 
 Let's do some copying from files too. First from subroutine up to the very end,
-
 
 .. code-block:: fortran
 
@@ -39243,12 +38319,9 @@ and finally the complete file:
               call test()
               return
 
-
 Testing other code environments. First Python:
 
-
 .. code-block:: text
-
 
         !bc pycod
         def f(x):
@@ -39257,36 +38330,29 @@ Testing other code environments. First Python:
 
 which gets rendered as
 
-
 .. code-block:: python
 
         def f(x):
             return x+1
 
-
 Test paragraph and subsubsection headings before code.
 
 **Paragraph heading before code.**
-
 
 .. code-block:: python
 
         def g(y):
             return y+1
 
-
 Subsubsection heading before code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 .. code-block:: python
 
         def h(z):
             return z+1
 
-
 Now a complete program to be shown via Python Online Tutorial:
-
 
 .. raw:: html
 
@@ -39294,9 +38360,7 @@ Now a complete program to be shown via Python Online Tutorial:
                 src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
         </iframe>
 
-
 Another complete program to be typeset as a sage cell:
-
 
 .. sagecellserver::
 
@@ -39313,8 +38377,6 @@ Another complete program to be typeset as a sage cell:
         xlabel('x'); ylabel('y')
         show()
 
-
-
 Then Cython:
 
 .. code-block:: cython
@@ -39322,9 +38384,7 @@ Then Cython:
         cpdef f(double x):
             return x + 1
 
-
 Standard Python shell sessions:
-
 
 .. code-block:: python
 
@@ -39333,9 +38393,7 @@ Standard Python shell sessions:
         >>> x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
-
 IPython sessions:
-
 
 .. code-block:: python
 
@@ -39345,7 +38403,6 @@ IPython sessions:
         
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
-
 
 .. This one tests a + sign before a code environment
 
@@ -39365,9 +38422,7 @@ C++:
 
 And a little bit of Fortran:
 
-
 .. code-block:: text
-
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -39380,7 +38435,6 @@ And a little bit of Fortran:
 
 which then is typeset as
 
-
 .. code-block:: fortran
 
               subroutine midpt(x, length, a, b)
@@ -39390,9 +38444,7 @@ which then is typeset as
               return
               end
 
-
 HTML:
-
 
 .. code-block:: html
 
@@ -39401,7 +38453,6 @@ HTML:
         <tr><td>0.67526 </td><td>0.92871 </td></tr>
         <!-- comment -->
         </table>
-
 
 System call:
 
@@ -39412,7 +38463,6 @@ System call:
         Terminal> myprog -f
         output1
         output2
-
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
@@ -39437,7 +38487,6 @@ the previous blocks with line breaks.
 Running OS commands
 ~~~~~~~~~~~~~~~~~~~
 
-
 .. code-block:: console
 
         Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
@@ -39445,8 +38494,6 @@ Running OS commands
         output
         from
         Python.
-
-
 
 Footnotes
 ~~~~~~~~~
@@ -39475,7 +38522,6 @@ This is the third [#example-of-the-third-footnote]_ example.
 
 .. [#code] One-line footnote.
 
-
 Here is some more text before a new definition of a footnote that was used
 used above.
 
@@ -39500,10 +38546,8 @@ Subsection 2: Testing figures
 
 .. index:: figures
 
-
 Test of figures. In particular we refer to Figure :ref:`fig:impact` in which
 there is a flow.
-
 
 .. _fig:impact:
 
@@ -39512,26 +38556,17 @@ there is a flow.
 
    *Visualization of a wave*
 
-
 Figures without captions are allowed and will be inlined.
-
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 200
 
-
-
-
 .. index:: movies
-
-
 
 .. Test multi-line caption in figure
 
-
 Here is figure :ref:`myfig` with a long multi-line caption
 and an extra space before the FIGURE keyword.
-
 
 .. _myfig:
 
@@ -39540,36 +38575,24 @@ and an extra space before the FIGURE keyword.
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
 
-
 .. Must be a blank line after MOVIE or FIGURE to detect this problem
 
-
 Test URL as figure name:
-
 
 .. figure:: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
    :width: 500
 
-
-
 Test SVG figure:
-
 
 .. figure:: http://openclipart.org/people/jpneok/junebug.svg
    :width: 200
 
-
-
 .. Test wikimedia type of files that otherwise reside in subdirs
-
-
 
 **Remark.**
 Movies are tested in separate file ``movies.do.txt``.
 
-
 .. Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
-
 
 .. _decay:sec:theta:
 
@@ -39581,10 +38604,8 @@ involving :math:`\theta`:
 
 .. code-block:: text
 
-
         def f(theta):
             return theta**2
-
 
 **More on :math:`\theta`.**
 Here is more text following headline with math.
@@ -39592,7 +38613,6 @@ Here is more text following headline with math.
 Newcommands must also be tested in this test report:
 :math:`\frac{1}{2}`, :math:`{1/2}`, :math:`\pmb{x}`, :math:`\frac{Du}{dt}`,
 both inline and in block:
-
 
 .. math::
         
@@ -39602,9 +38622,7 @@ both inline and in block:
         \frac{1}{2}\pmb{x} &= \pmb{n}
         
 
-
 Or with align with label and numbers:
-
 
 .. _Eq:aligneq1:
 
@@ -39615,14 +38633,10 @@ Or with align with label and numbers:
         
         
 
-
-
 .. math::
           
         \frac{1}{2} = {1/2}
         
-
-
 
 .. _Eq:aligneq2:
 
@@ -39632,7 +38646,6 @@ Or with align with label and numbers:
         \frac{1}{2}\pmb{x} = \pmb{n}
         
         
-
 
 Sphinx makes a fix here and splits align into multiple equation
 environments.
@@ -39645,16 +38658,12 @@ Here is an attempt to create a theorem environment via Mako
 the ``.tex`` by proper begin-end LaTeX environments for theorems.
 Should look nice in most formats!
 
-
-
 .. begin theorem
-
 
 **Theorem 5.**
 Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 
 .. end theorem
-
 
 .. begin proof
 
@@ -39663,36 +38672,27 @@ Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
 .. end proof
 
-
 As we see, the proof of Theorem 5 is a modest
 achievement.
-
 
 .. _subsec:table:
 
 Tables
 ------
 
-
 .. index:: test index with verbatim text which is possible
 
-
 .. index:: test two (separate) verbatim expressions which is also possible
-
 
 .. index::
    single: index with; subindex
 
-
 .. index with comma could fool sphinx
-
 
 .. index::
    single: index, with comma, and one more
 
-
 Let us take this table from the manual:
-
 
 ============  ============  ============  
     time        velocity    acceleration  
@@ -39701,7 +38701,6 @@ Let us take this table from the manual:
 2.0               1.376512        11.919  
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
-
 
 The Doconce source code reads
 
@@ -39714,7 +38713,6 @@ The Doconce source code reads
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -39765,8 +38763,6 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-
-
 =========================================================  =========================================================  =========================================================  
                                                                                                                                                                                  
 =========================================================  =========================================================  =========================================================  
@@ -39774,7 +38770,6 @@ and URLs.
                        :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
            :math:`\nabla\cdot\boldsymbol{u} =0`            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
 =========================================================  =========================================================  =========================================================  
-
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -39791,7 +38786,6 @@ LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
 Here is another sentence that "caused" a bug in the past
 because double backtick quotes could imply verbatim text up to
 a verbatim word starting with period, like ``.txt``.
-
 
 Bibliography test
 -----------------
@@ -39821,9 +38815,6 @@ More retro citations are
 the old ME-IN323 book [Ref19]_ and the
 [Ref20]_ OONSKI '94 paper.
 
-
-
-
 .. --- begin exercise ---
 
 .. _Example:
@@ -39835,7 +38826,6 @@ Examples can start with a subsection heading starting with ``Example:``
 and then, with the command-line option ``--examples_as_exercises`` be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
-
 
 **a)**
 State some problem.
@@ -39857,7 +38847,6 @@ The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
 .. --- end exercise ---
-
 
 .. _subsubsec:ex:
 
@@ -39891,11 +38880,9 @@ is used), as in this reference to
 `decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
 and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
-
 .. Comments should be inserted outside paragraphs (because in the rst
 
 .. format extra blanks make a paragraph break).
-
 
 .. Note that when there is no http: or file:, it can be a file link
 
@@ -39903,14 +38890,11 @@ and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
 .. if rst output is desired, but placed in a ``_static*`` folder.
 
-
 More tough tests: repeated URLs whose footnotes when using the
 ``--device=paper`` option must be correct. We have
 `google <http://google.com>`_, `google <http://google.com>`_, and
 `google <http://google.com>`_, which should result in exactly three
 footnotes.
-
-
 
 
 ************** File: ._testdoc002.rst *****************
@@ -39920,7 +38904,6 @@ footnotes.
    :trim:
 
 .. !split and check if these extra words are included properly in the comment
-
 
 LaTeX Mathematics
 =================
@@ -39950,8 +38933,6 @@ Here is a system without equation numbers, using the align-astrisk environment:
         b &= \nabla^2 u + \nabla^4 v
         
 
-
-
 And here is a system of equations with labels in an align environment:
 
 .. _Eq:eq1:
@@ -39961,8 +38942,6 @@ And here is a system of equations with labels in an align environment:
         
         a = q + 4 + 5+ 6  
         
-
-
 
 .. _Eq:eq2:
 
@@ -39976,18 +38955,14 @@ We can refer to :eq:`eq1`-:eq:`eq2`. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in ``CG-2``.
 Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
 
-
 More mathematical typesetting is demonstrated in the coming exercises.
 
 Below, we have :ref:`demo:ex:1` and :ref:`demo:ex:2`,
 as well as :ref:`proj:circle1` and :ref:`exer:you`, and in
 between there we have :ref:`exer:some:formula`.
 
-
 Exercises
 =========
-
-
 
 .. --- begin exercise ---
 
@@ -39997,17 +38972,11 @@ Problem 2: Flip a Coin
 ----------------------
 .. keywords = random numbers; Monte Carlo simulation
 
-
 .. Torture tests
-
 
 Make a program that simulates flipping a coin :math:`N` times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
 
 Remarks  (1)
 ~~~~~~~~~~~~
@@ -40034,7 +39003,6 @@ Draw an integer among :math:`\{1,2\}` with
 
 .. --- end hint in exercise ---
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
@@ -40042,7 +39010,6 @@ If the ``random.random()`` function returns a number :math:`<1/2`, let it be
 head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end answer of exercise ---
-
 
 .. --- begin solution of exercise ---
 
@@ -40059,24 +39026,19 @@ head, otherwise tail. Repeat this :math:`N` number of times.
                 heads += 1
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
-
 .. --- end solution of exercise ---
 
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
-
 .. --- end exercise ---
-
 
 Not an exercise
 ---------------
 
 Should be possible to stick a normal section in the middle of many
 exercises.
-
-
 
 .. --- begin exercise ---
 
@@ -40087,11 +39049,8 @@ Project 3: Compute a Probability
 
 .. Minimalistic exercise
 
-
-
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
-
 
 At the end we have a list because that caused problems in LaTeX
 in previous Doconce versions:
@@ -40112,9 +39071,6 @@ compute the probability as :math:`M/N`.
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 .. _proj:circle1:
@@ -40124,13 +39080,10 @@ Project 4: Explore Distributions of Random Circles
 
 The formula for a circle is given by
 
-
 .. math::
         
         x = x_0 + R\cos 2\pi t,
         
-
-
 
 .. math::
           
@@ -40141,7 +39094,6 @@ where :math:`R` is the radius of the circle, :math:`(x_0,y_0)` is the
 center point, and :math:`t` is a parameter in the unit interval :math:`[0,1]`.
 For any :math:`t`, :math:`(x,y)` is a point on the circle.
 The formula can be used to generate ``n`` points on a circle:
-
 
 .. code-block:: python
 
@@ -40155,16 +39107,13 @@ The formula can be used to generate ``n`` points on a circle:
         
         x, y = circle(2.0, 0, 0)
 
-
 .. Often in an exercise we have some comments about the solution
 
 .. which we normally want to keep where they are.
 
-
 The goal of this project is to draw :math:`N` circles with random
 center and radius. Plot each circle using the ``circle`` function
 above.
-
 
 **a)**
 Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
@@ -40177,14 +39126,12 @@ Use the ``numpy.random`` module to draw the
 
 .. --- end hint in exercise ---
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
 Here goes the short answer to part a).
 
 .. --- end answer of exercise ---
-
 
 .. --- begin solution of exercise ---
 
@@ -40204,18 +39151,13 @@ Filename: ``circles.pdf``.
 
 .. Closing remarks for this Project
 
-
 Remarks  (2)
 ~~~~~~~~~~~~
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -40225,10 +39167,6 @@ Exercise 5: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-
-
 
 .. No meaning in this weired test example:
 
@@ -40254,13 +39192,11 @@ And code ``a=b`` in this solution:
 
 .. code-block:: text
 
-
         a = b  # code in solution
 
 End of solution is here.
 
 .. --- end solution of exercise ---
-
 
 **a)**
 Subexercises are numbered a), b), etc.
@@ -40271,19 +39207,15 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math :math:`a=b` in hint:
 
-
 .. math::
          a=b. 
 
 And with code (in plain verbatim) returning :math:`x+1` in hint:
 
-
 .. code-block:: text
-
 
         def func(x):
             return x + 1  # with code in hint
-
 
 .. --- end hint in exercise ---
 
@@ -40302,7 +39234,6 @@ Test list in hint:
 
 Filename: ``subexer_a.pdf``.
 
-
 .. --- begin answer of exercise ---
 
 **Answer.**
@@ -40314,13 +39245,10 @@ With math in answer: :math:`a=b`.
 **b)**
 Here goes the text for subexercise b).
 
-
 Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
-
 
 .. math::
          \cos^2 x + \sin^2 x = 1 \thinspace .
-
 
 .. --- begin hint in exercise ---
 
@@ -40331,7 +39259,6 @@ A hint for this subexercise.
 
 Filename: ``subexer_b.pdf``.
 
-
 .. --- begin solution of exercise ---
 
 **Solution.**
@@ -40341,7 +39268,6 @@ Here goes the solution of this subexercise.
 
 .. Closing remarks for this Exercise
 
-
 Remarks  (3)
 ~~~~~~~~~~~~
 
@@ -40349,11 +39275,7 @@ Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -40362,33 +39284,23 @@ Some exercise without the "Exercise:" prefix
 
 .. Another minimalistic exercise
 
-
 Just some text. And some math saying that :math:`e^0=1` on a single line,
 to test that math block insertion is correct:
-
 
 .. math::
          \exp{(0)} = 1 
 
-
 And a test that the code ``lambda x: x+2`` is correctly placed here:
-
 
 .. code-block:: text
 
-
         lambda x: x+2
-
 
 .. the Filename: ... is written correctly.
 
 .. Have some comments at the end of the exercise to see that
 
-
 .. --- end exercise ---
-
-
-
 
 .. --- begin exercise ---
 
@@ -40400,7 +39312,6 @@ Exercise 7: Solution of differential equation
 .. raw:: html
     <!-- begin quiz -->
     Given
-    
     
     .. math::
              \frac{dy}{dx} = -y(x),\quad y(0)=1 
@@ -40439,9 +39350,6 @@ Exercise 7: Solution of differential equation
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 Example 8: Just an example
@@ -40451,8 +39359,6 @@ Example 8: Just an example
 
 .. it is just typeset as it is written.
 
-
-
 **a)**
 What is the capital of Norway?
 
@@ -40461,7 +39367,6 @@ Oslo.
 
 .. --- end exercise ---
 
-
 Here goes another section
 =========================
 
@@ -40469,8 +39374,6 @@ With some text, before we continue with exercises.
 
 More Exercises
 ==============
-
-
 
 .. --- begin exercise ---
 
@@ -40495,9 +39398,6 @@ Filename: ``verify_formula.py``.
 
 .. --- end exercise ---
 
-
-
-
 .. --- begin exercise ---
 
 .. _exer:you:
@@ -40511,7 +39411,6 @@ and this one as :ref:`exer:you`.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
-
 
 References
 ==========
@@ -40641,10 +39540,6 @@ References
    edited by **A. Vermeulen**,
    1994.
 
-
-
-
-
 .. _app1:
 
 Appendix: Just for testing; part I
@@ -40668,7 +39563,6 @@ Appendix: Testing identical titles  (1)
 ---------------------------------------
 
 Without label.
-
 
 .. _test:title:id1:
 
@@ -40710,8 +39604,6 @@ What about inserting a quiz?
     <!-- end quiz -->
 
 
-
-
 Appendix: Testing identical titles  (4)
 ---------------------------------------
 
@@ -40721,8 +39613,6 @@ Without label.
 .. admonition:: Tip
 
    Here is a tip or hint box, typeset as a notice box.
-
-
 
 
 
@@ -40801,7 +39691,6 @@ The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
-
 
 Appendix: Testing inline comments
 ---------------------------------
@@ -46345,6 +45234,7 @@ Automatically generated HTML file from Doconce source
                 background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Forward.png); }
     .block    { color: #00529B; background-color: #BDE5F8; }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -46874,6 +45764,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -47401,6 +46292,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -47916,7 +46808,7 @@ exercises (and problems and projects too).
     <link rel="prev" title="Testing admons" href="index.html" />
  
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -48328,6 +47220,7 @@ Automatically generated HTML file from Doconce source
     .alert-text-large   { font-size: 130%%; }
     .alert-text-normal  { font-size: 90%%;  }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -48932,6 +47825,7 @@ Automatically generated HTML file from Doconce source
     .alert-text-large   { font-size: 130%%; }
     .alert-text-normal  { font-size: 90%%;  }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -49463,7 +48357,7 @@ Automatically generated HTML file from Doconce source
       line-height: 1.3em;
       color: #657b83;
     }
-    a { color: #657b83; text-decoration:none; }
+    a { color: #657b83; text-decoration:underline; }
     a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
     h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
     h2 { font-variant: small-caps; }
@@ -49515,6 +48409,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -50660,12 +49555,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -51412,12 +50307,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -52239,7 +51134,7 @@ exercises (and problems and projects too).
 
 
 ************** File: admon.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 Testing admons
@@ -52263,22 +51158,17 @@ Code
 
 Need some code outside admons for color and font comparisons:
 
-
 .. code-block:: python
 
         def some_code(x):
             return sin(x)*exp(1-x)
 
-
 And some plain text verbatim:
-
 
 .. code-block:: text
 
-
         x=1.0 y=0.9 z=0.4
         x=1.1 y=0.3 z=0.1
-
 
 Quotes and boxes
 ----------------
@@ -52323,7 +51213,6 @@ First a simple block with text, an equation, and a list:
 
 A generic equation
 
-
 .. math::
          f(x) = 0 
 
@@ -52364,8 +51253,6 @@ Let's begin a new paragraph and show a box with code only:
             return sin(x)*exp(1-x)
 
 
-
-
 Admonitions
 -----------
 
@@ -52401,14 +51288,12 @@ Test warning with title:
    
    Also some code:
    
-   
    .. code-block:: python
    
            def f(x):
                return x
    
    And a complete program
-   
    
    .. code-block:: python
    
@@ -52467,12 +51352,10 @@ code is present).
 .. those formats automatically add : to the admonition title.
 
 
-
 .. admonition:: Note, eventually
 
    Ah, we are soon close to the end (with illegal font size specification!).
    But first a bit of math where we define :math:`\theta` and :math:`\boldsymbol{r}`:
-   
    
    .. math::
            
@@ -52483,7 +51366,6 @@ code is present).
 
 
 .. Test one word with a number
-
 
 
 .. admonition:: Point1
@@ -52519,7 +51401,6 @@ code is present).
    2. read hints and tips carefully
    
    Because here the thing is to do
-   
    
    .. code-block:: python
    
@@ -52561,7 +51442,6 @@ text, math and code.
    
    Let us start with some equations:
    
-   
    .. math::
            
            \frac{Du}{dt} &= 0
@@ -52570,10 +51450,8 @@ text, math and code.
            \frac{1}{2}\pmb{x} &= \pmb{n}
            
    
-   
    The implementation of such complicated equations in computer
    code is task that this "Going deeper" environment targets.
-   
    
    .. code-block:: python
    
@@ -52586,7 +51464,6 @@ text, math and code.
    
    And some more text that can help going into the next page.
    Longer computer code requires vertical space:
-   
    
    .. code-block:: python
    
@@ -52631,10 +51508,8 @@ text, math and code.
    
    And then we add a figure too.
    
-   
    .. figure:: ../doc/src/manual/fig/wave1D.png
       :width: 400
-
 
 
 
@@ -52674,23 +51549,18 @@ Introduction
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-
 Code
 ----
 
 Need some code outside admons for color and font comparisons::
 
-
         def some_code(x):
             return sin(x)*exp(1-x)
 
-
 And some plain text verbatim::
-
 
         x=1.0 y=0.9 z=0.4
         x=1.1 y=0.3 z=0.1
-
 
 Quotes and boxes
 ----------------
@@ -52707,7 +51577,6 @@ Here is a plain quote environment.
 
 Does quotes with title also work? No...cannot work in LaTeX and HTML
 and then it does not make sense to support it.
-
 
 A plain *box* is sometimes useful. Let's show it here for comparison
 with admons (especially the block admon has much in common with a box).
@@ -52750,8 +51619,6 @@ Let's begin a new paragraph and show a box with code only:
 |------------------------------------|
 
 
-
-
 Admonitions
 -----------
 
@@ -52787,12 +51654,10 @@ Title ending with math \sqrt{2}\approx 1.4 --------------|
 |                                                        |
 | Also some code::                                       |
 |                                                        |
-|                                                        |
 |         def f(x):                                      |
 |             return x                                   |
 |                                                        |
 | And a complete program::                               |
-|                                                        |
 |                                                        |
 |         print "Hello, World!"                          |
 |--------------------------------------------------------|
@@ -52823,7 +51688,6 @@ Block with title --------------------------------------------------------|
 
 
 
-
 Block ----------------------------------------------------------------------------|
 |                                                                                 |
 | Here is a block of text with no title. As above, it is typeset without any icon |
@@ -52836,7 +51700,6 @@ must be removed in the mdfbox admon also in graybox2 if
 code is present).
 
 
-
 Note, eventually! ----------------------------------------------------------|
 |                                                                           |
 | Ah, we are soon close to the end (with illegal font size specification!). |
@@ -52847,7 +51710,6 @@ Note, eventually! ----------------------------------------------------------|
 |         \bm{r} &= \varrho\bm{i}                                           |
 |         \end{align*}                                                      |
 |---------------------------------------------------------------------------|
-
 
 
 
@@ -52881,7 +51743,6 @@ Tip -----------------------------------------------------|
 | 2. read hints and tips carefully                       |
 |                                                        |
 | Because here the thing is to do::                      |
-|                                                        |
 |                                                        |
 |         import urllib                                  |
 |                                                        |
@@ -52922,10 +51783,8 @@ Going deeper. ---------------------------------------------------------|
 |         \frac{1}{2}\pmb{x} &= \pmb{n}                                |
 |         \end{align*}                                                 |
 |                                                                      |
-|                                                                      |
 | The implementation of such complicated equations in computer         |
 | code is task that this "Going deeper" environment targets::          |
-|                                                                      |
 |                                                                      |
 |         def Dudt(u):                                                 |
 |             r = diff(u, t) + u*grad(u)                               |
@@ -52936,7 +51795,6 @@ Going deeper. ---------------------------------------------------------|
 |                                                                      |
 | And some more text that can help going into the next page.           |
 | Longer computer code requires vertical space::                       |
-|                                                                      |
 |                                                                      |
 |         class Diff:                                                  |
 |             def __init__(self, f, h=1E-5):                           |
@@ -52981,7 +51839,6 @@ Going deeper. ---------------------------------------------------------|
 |                                                                      |
 | FIGURE: [../doc/src/manual/fig/wave1D, width=400 frac=0.7]           |
 |----------------------------------------------------------------------|
-
 
 
 The end
@@ -58670,6 +57527,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -59930,8 +58788,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 % !split
@@ -60081,9 +58939,9 @@ title (Warning) since no title is specified.
 
 %-------------------- begin beamer-specific preamble ----------------------
 
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usetheme{default}
+\usetheme{blue_shadow}
 \usecolortheme{default}
 
 % turn off the almost invisible, yet disturbing, navigation symbols:
@@ -60157,24 +59015,28 @@ title (Warning) since no title is specified.
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -60220,8 +59082,8 @@ title (Warning) since no title is specified.
 Univiversity of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 \begin{frame}[plain,fragile]
@@ -62282,7 +61144,7 @@ open=right               % start new chapters on odd-numbered pages
 
 \usepackage{ptex2tex}
 
-% Movies are handled by the href package:
+% Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -62531,8 +61393,8 @@ open=right               % start new chapters on odd-numbered pages
 \institute{Cyber Space Ltd\inst{1}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 \begin{center}  % inline figure
@@ -63419,24 +62281,28 @@ Last page gets rendered to
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -63480,7 +62346,7 @@ Last page gets rendered to
 \institute{Cyber Space Ltd\inst{1}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
+\date{Jan 32, 2100
 \\ \ \\ 
 \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
 }
@@ -63935,7 +62801,7 @@ Inline math as in {\LaTeX}:
 gets rendered as ...where $a=\int_{\Omega}fdx$ is an integral.
 
 
-An equation environment is surrounded by \Verb~!bt~ and \Verb~!et~ tags,
+An equation environment is surrounded by \Verb?!bt? and \Verb?!et? tags,
 the rest is plain {\LaTeX}:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -63961,7 +62827,7 @@ which is rendered as
 \begin{frame}[plain,fragile]
 \frametitle{Doconce: displaying code}
 
-Code is enclosed in \Verb~!bc~ and \Verb~!ec~ tags:
+Code is enclosed in \Verb?!bc? and \Verb?!ec? tags:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !bc pycod
@@ -63998,7 +62864,7 @@ def solver(I, a, T, dt, theta):
 
 
 \begin{notice_mdfboxadmon}[Language-dependent typesetting of code:]
-The \Verb~!bc~ command can be followed by a specification of the computer
+The \Verb?!bc? command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
 forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
@@ -64010,7 +62876,7 @@ forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! f
 
 \label{slide:pot}
 
-With \Verb~!bc pyoptpro~ or a file \Verb!*.pyopt!, the code applies the
+With \Verb?!bc pyoptpro? or a file \Verb!*.pyopt!, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
@@ -64192,7 +63058,7 @@ And maybe a final comment?
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
-MN is surrounded by \Verb~!bslidecell MN~ and \Verb~!eslidecell~
+MN is surrounded by \Verb?!bslidecell MN? and \Verb?!eslidecell?
 tags. Below is an example with a bullet list to the left and
 a figure to the right (two cells, numbered 00 and 01).
 
@@ -65256,8 +64122,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 Department of Informatics, University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
-% <titlepage figure>
+\date{Jan 32, 2100
+% <optional titlepage figure>
 }
 
 \begin{center}  % inline figure
@@ -65510,24 +64376,28 @@ qualitatively correct results.
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
+\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
@@ -65573,7 +64443,7 @@ qualitatively correct results.
 Department of Informatics, University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
-\date{Jan 32, 2100}
+\date{Jan 32, 2100
 \\ \ \\ 
 \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
 }
@@ -65948,6 +64818,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -66627,7 +65498,7 @@ Here is a YouTube video:
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
 
-<em>YouTube movie.</em>
+<p><em>YouTube movie.</em></p>
 
 
 
@@ -66689,6 +65560,7 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -67368,7 +66240,7 @@ Here is a YouTube video:
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/_O7iUiftbKU" frameborder="0" allowfullscreen></iframe>
 
-<em>YouTube movie.</em>
+<p><em>YouTube movie.</em></p>
 
 
 
@@ -67444,7 +66316,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{ptex2tex}
 
-% Movies are handled by the href package:
+% Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -67851,7 +66723,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-% Movies are handled by the href package:
+% Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -68251,7 +67123,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-% Movies are handled by the media9 package:
+% Movies are handled by the media9 package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 \usepackage{media9}
@@ -68715,9 +67587,7 @@ Animated collection of images. ../doc/src/manual/mov/wave_frames/frame_*.png: lo
 
 Here is the same collection, but with images in cyberspace, given as URLs::
 
-
         http://hplgit.github.io/animate/..../frame_%04d.png:80->129
-
 
 Taking images to animate from cyberspace. http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129: load movie_player6.html (movie_player6.html) into a browser
 
@@ -68744,7 +67614,6 @@ YouTube movie. http://www.youtube.com/watch?v=_O7iUiftbKU: load movie_player10.h
 And a vimeo video:
 
 Vimeo movie. http://vimeo.com/55562330: load movie_player11.html (movie_player11.html) into a browser
-
 
 Finally, let us demonstrate referencing the movie ref{mov:wave}.
 
@@ -74141,9 +73010,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -74319,9 +73188,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -74612,9 +73481,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -74821,7 +73690,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue May 20 11:33:07 2014.
+# sphinx-quickstart on Wed Jun 11 07:08:29 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76976,6 +75845,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -78257,7 +77127,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{ptex2tex}
 
-% Movies are handled by the href package:
+% Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
@@ -79655,9 +78525,8 @@ examine the Doconce source and the \code{doc/src/make.sh} script).
 
 
 ************** File: quickref.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -79670,8 +78539,6 @@ Doconce Quick Reference
 
 .. contents:: Table of Contents
    :depth: 2
-
-
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -79718,7 +78585,6 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 --------------------
 
@@ -79758,7 +78624,6 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads::
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -79768,7 +78633,6 @@ reads::
 
 The entire title must appear on a single line.
 The author syntax is::
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -79785,7 +78649,6 @@ The date can be set as any text different from ``today`` if not the
 current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
-
 
 .. _quick:sections:
 
@@ -79824,22 +78687,18 @@ Words surrounded by ``*`` are emphasized: ``*emphasized words*`` becomes
 appear in boldface: ``_boldface_`` becomes **boldface**. Colored words
 are also possible: the text::
 
-
         `color{red}{two red words}`
 
 becomes <font color="red">two red words</font>.
 Quotations appear inside double backticks and double single quotes::
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by ``<linebreak>`` at the point where the
 linebreak in the output is wanted.
 
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears::
-
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
@@ -79849,12 +78708,9 @@ preferably after the paragraph where the footnote appears::
         
         Here comes a new paragraph...
 
-
 Non-breaking space is inserted using the tilde character as in LaTeX::
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-
 
 Lists
 -----
@@ -79864,7 +78720,6 @@ with ``*``, *enumeration lists*, where each item starts with ``o`` and gets
 consqutive numbers,
 and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon::
-
 
         Here is a bullet list:
         
@@ -79907,7 +78762,6 @@ Here is a bullet list:
 
   * subitem2 of item2
 
-
  * item3
 
 Note that sublists are indented.
@@ -79922,7 +78776,6 @@ Here is an enumeration list:
  1. subitem1 of item2
 
  2. subitem2 of item2
-
 
 3. item3
 
@@ -79961,14 +78814,12 @@ When using the Mako preprocessor one can also place comments in
 the Doconce source file that will be removed by Mako before
 Doconce starts processing the file.
 
-
 Inline comments
 ---------------
 
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax::
-
 
         [name: running text]
 
@@ -79984,7 +78835,6 @@ make it very easy to spot the comments.
 
 Running::
 
-
         doconce format html mydoc.do.txt --skip_inline_comments
 
 removes all inline comments from the output. This feature makes it easy
@@ -79993,15 +78843,12 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by::
 
-
         doconce remove_inline_comments mydoc.do.txt
-
 
 Verbatim/Computer Code
 ----------------------
 
 Inline verbatim code is typeset within back-ticks, as in::
-
 
         Some sentence with `words in verbatim style`.
 
@@ -80022,7 +78869,6 @@ in programming ``X``, where ``X`` may be ``py`` for Python,
 defined verbatim environment in the ``ptex2tex`` configuration file
 (``.ptex2tex.cfg``). For ``sphinx`` output one can insert a comment::
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (``xxx``) onto valid language types for
@@ -80035,19 +78881,16 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax)::
 
-
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
-
 
 .. When showing copy from file in !bc envir, indent a character - otherwise
 
 .. ptex2tex is confused and starts copying...
 
 Computer code can also be copied from a file::
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -80098,7 +78941,6 @@ Ax=b. To help increase readability in other formats than ``sphinx``,
 ``latex``, and ``pdflatex``, inline mathematics may have a more human
 readable companion expression. The syntax is like::
 
-
         $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
@@ -80110,14 +78952,12 @@ Blocks of LaTeX mathematics are written within
 and
 ``!et`` (begin/end TeX) directives starting on the beginning of a line::
 
-
         !bt
         \begin{align*}
         \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
-
 
 This LaTeX code gets rendered as::
 
@@ -80128,7 +78968,6 @@ This LaTeX code gets rendered as::
 
 Here is a single equation::
 
-
         !bt
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
         !et
@@ -80136,7 +78975,6 @@ Here is a single equation::
 which results in::
 
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
-
 
 Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
@@ -80178,12 +79016,10 @@ without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 ----------
 
 Links use either a link text or the raw URL::
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -80196,12 +79032,10 @@ Links use either a link text or the raw URL::
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 ------------------
 
 Figures and movies have almost equal syntax::
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -80236,7 +79070,6 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the::
 
-
         doconce combine_images image1 image2 ... output_image
 
 This command applies ``montage`` or PDF-based tools to combine the images
@@ -80244,7 +79077,6 @@ to get the highest quality.
 
 YouTube and Vimeo movies will be embedded in ``html`` and ``sphinx`` documents
 and otherwise be represented by a link. The syntax is::
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -80260,15 +79092,11 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
-
-
-
 Tables
 ------
 
 The table in the section `Section Types`_ was written with this
 syntax::
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -80279,7 +79107,6 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -80315,7 +79142,6 @@ is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
 inserted anywhere, using the syntax::
 
-
         label{name}
 
 with no backslash
@@ -80326,7 +79152,6 @@ some abbreviations for a section and/or subsection for the topic and
 
 A reference to the label ``name`` is written as::
 
-
         ref{name}
 
 again with no backslash before ``ref``.
@@ -80335,12 +79160,10 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 --------------------------
 
 Single citations are written as::
-
 
         cite{name}
 
@@ -80352,9 +79175,7 @@ Bibliography citations often have ``name`` on the form
 Multiple citations at once is possible by separating the logical names
 by comma::
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
@@ -80373,7 +79194,6 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is::
-
 
         ref[internal][cite][external]
         
@@ -80402,7 +79222,6 @@ Doconce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
-
         index{name}
 
 It is recommended to place any index of this type outside
@@ -80418,7 +79237,6 @@ Capabilities of The Program ``doconce``
 The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
-
 
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
@@ -80571,7 +79389,6 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 ---------
 
@@ -80604,7 +79421,6 @@ Exercise, problem, project, or example sections contains certain *elements*:
 
 A typical sketch of a a problem without subexercises goes as follows::
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -80627,14 +79443,12 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads::
 
-
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
 the title becomes just "Derive the ...".
 
 An exercise with subproblems, answers and full solutions has this
 setup-up::
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -80689,7 +79503,6 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 ------------
 
@@ -80731,7 +79544,6 @@ Here is a typical example on utilizing ``preprocess`` to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
-
         # #include "myotherdoc.do.txt"
         
         # #if FORMAT in ("latex", "pdflatex")
@@ -80761,7 +79573,6 @@ constructions::
         ....large portions of text...
         # #endif
 
-
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
@@ -80773,9 +79584,8 @@ Resources
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.sphinx.rst *****************
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -80831,7 +79641,6 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 --------------------
 
@@ -80873,7 +79682,6 @@ reads
 
 .. code-block:: text
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -80885,7 +79693,6 @@ The entire title must appear on a single line.
 The author syntax is
 
 .. code-block:: text
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -80902,7 +79709,6 @@ The date can be set as any text different from ``today`` if not the
 current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
-
 
 .. _quick:sections:
 
@@ -80941,21 +79747,16 @@ Words surrounded by ``*`` are emphasized: ``*emphasized words*`` becomes
 appear in boldface: ``_boldface_`` becomes **boldface**. Colored words
 are also possible: the text
 
-
 .. code-block:: text
-
 
         `color{red}{two red words}`
 
 becomes <font color="red">two red words</font>.
 Quotations appear inside double backticks and double single quotes:
 
-
 .. code-block:: text
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by ``<linebreak>`` at the point where the
 linebreak in the output is wanted.
@@ -80963,9 +79764,7 @@ linebreak in the output is wanted.
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:
 
-
 .. code-block:: text
-
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
@@ -80975,15 +79774,11 @@ preferably after the paragraph where the footnote appears:
         
         Here comes a new paragraph...
 
-
 Non-breaking space is inserted using the tilde character as in LaTeX:
-
 
 .. code-block:: text
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-
 
 Lists
 -----
@@ -80995,7 +79790,6 @@ and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon.
 
 .. code-block:: text
-
 
         Here is a bullet list:
         
@@ -81038,7 +79832,6 @@ Here is a bullet list:
 
   * subitem2 of item2
 
-
  * item3
 
 Note that sublists are indented.
@@ -81053,7 +79846,6 @@ Here is an enumeration list:
  1. subitem1 of item2
 
  2. subitem2 of item2
-
 
 3. item3
 
@@ -81092,7 +79884,6 @@ When using the Mako preprocessor one can also place comments in
 the Doconce source file that will be removed by Mako before
 Doconce starts processing the file.
 
-
 Inline comments
 ---------------
 
@@ -81101,7 +79892,6 @@ in particular,
 are enabled by the syntax
 
 .. code-block:: text
-
 
         [name: running text]
 
@@ -81131,14 +79921,12 @@ removed from the Doconce source by
 
         doconce remove_inline_comments mydoc.do.txt
 
-
 Verbatim/Computer Code
 ----------------------
 
 Inline verbatim code is typeset within back-ticks, as in
 
 .. code-block:: text
-
 
         Some sentence with `words in verbatim style`.
 
@@ -81161,7 +79949,6 @@ defined verbatim environment in the ``ptex2tex`` configuration file
 
 .. code-block:: text
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (``xxx``) onto valid language types for
@@ -81174,14 +79961,12 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax):
 
-
 .. code-block:: python
 
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
-
 
 .. When showing copy from file in !bc envir, indent a character - otherwise
 
@@ -81190,7 +79975,6 @@ for exact syntax):
 Computer code can also be copied from a file:
 
 .. code-block:: text
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -81243,7 +80027,6 @@ readable companion expression. The syntax is like
 
 .. code-block:: text
 
-
         $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
@@ -81255,9 +80038,7 @@ Blocks of LaTeX mathematics are written within
 and
 ``!et`` (begin/end TeX) directives starting on the beginning of a line:
 
-
 .. code-block:: text
-
 
         !bt
         \begin{align*}
@@ -81266,9 +80047,7 @@ and
         \end{align*}
         !et
 
-
 This LaTeX code gets rendered as
-
 
 .. math::
         
@@ -81278,9 +80057,7 @@ This LaTeX code gets rendered as
 
 Here is a single equation:
 
-
 .. code-block:: text
-
 
         !bt
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
@@ -81288,10 +80065,8 @@ Here is a single equation:
 
 which results in
 
-
 .. math::
          \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
-
 
 Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
@@ -81333,15 +80108,12 @@ without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 ----------
 
 Links use either a link text or the raw URL:
 
-
 .. code-block:: text
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -81354,14 +80126,12 @@ Links use either a link text or the raw URL:
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 ------------------
 
 Figures and movies have almost equal syntax:
 
 .. code-block:: text
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -81406,9 +80176,7 @@ to get the highest quality.
 YouTube and Vimeo movies will be embedded in ``html`` and ``sphinx`` documents
 and otherwise be represented by a link. The syntax is
 
-
 .. code-block:: text
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -81424,9 +80192,6 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
-
-
-
 Tables
 ------
 
@@ -81434,7 +80199,6 @@ The table in the section :ref:`quick:sections` was written with this
 syntax:
 
 .. code-block:: text
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -81445,7 +80209,6 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -81483,7 +80246,6 @@ inserted anywhere, using the syntax
 
 .. code-block:: text
 
-
         label{name}
 
 with no backslash
@@ -81496,7 +80258,6 @@ A reference to the label ``name`` is written as
 
 .. code-block:: text
 
-
         ref{name}
 
 again with no backslash before ``ref``.
@@ -81505,14 +80266,12 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 --------------------------
 
 Single citations are written as
 
 .. code-block:: text
-
 
         cite{name}
 
@@ -81526,9 +80285,7 @@ by comma:
 
 .. code-block:: text
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
@@ -81549,7 +80306,6 @@ a book assembly of some of the small elements.
 The syntax of a generalized reference is
 
 .. code-block:: text
-
 
         ref[internal][cite][external]
         
@@ -81580,7 +80336,6 @@ backslash!)
 
 .. code-block:: text
 
-
         index{name}
 
 It is recommended to place any index of this type outside
@@ -81596,7 +80351,6 @@ Capabilities of The Program ``doconce``
 The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities:
-
 
 .. code-block:: bash
 
@@ -81751,7 +80505,6 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 ---------
 
@@ -81786,7 +80539,6 @@ A typical sketch of a a problem without subexercises goes as follows:
 
 .. code-block:: text
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -81809,9 +80561,7 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads
 
-
 .. code-block:: text
-
 
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
@@ -81820,9 +80570,7 @@ the title becomes just "Derive the ...".
 An exercise with subproblems, answers and full solutions has this
 setup-up:
 
-
 .. code-block:: text
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -81877,7 +80625,6 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 ------------
 
@@ -81919,9 +80666,7 @@ Here is a typical example on utilizing ``preprocess`` to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions:
 
-
 .. code-block:: text
-
 
         # #include "myotherdoc.do.txt"
         
@@ -81951,7 +80696,6 @@ constructions:
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
-
 
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
@@ -85051,7 +83795,6 @@ formats are 'latex', 'pdflatex', 'sphinx', and 'html'; and to a slightly
 less extent 'mwiki' and 'pandoc'. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 
 The file "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el":.doconce-mode.el
@@ -85089,7 +83832,6 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads::
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -85099,7 +83841,6 @@ reads::
 
 The entire title must appear on a single line.
 The author syntax is::
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -85116,7 +83857,6 @@ The date can be set as any text different from 'today' if not the
 current date is wanted, e.g., 'Jan 32, 2100'.
 
 The table of contents is removed by writing 'TOC: off'.
-
 
 Section Types
 
@@ -85151,22 +83891,18 @@ Words surrounded by '*' are emphasized: '*emphasized words*' becomes
 appear in boldface: '_boldface_' becomes **boldface**. Colored words
 are also possible: the text::
 
-
         `color{red}{two red words}`
 
 becomes two red words.
 Quotations appear inside double backticks and double single quotes::
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by '<linebreak>' at the point where the
 linebreak in the output is wanted.
 
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears::
-
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
@@ -85176,12 +83912,9 @@ preferably after the paragraph where the footnote appears::
         
         Here comes a new paragraph...
 
-
 Non-breaking space is inserted using the tilde character as in LaTeX::
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-
 
 Lists
 
@@ -85190,7 +83923,6 @@ with '*', *enumeration lists*, where each item starts with 'o' and gets
 consqutive numbers,
 and *description* lists, where each item starts with '-' followed
 by a keyword and a colon::
-
 
         Here is a bullet list:
         
@@ -85276,13 +84008,11 @@ When using the Mako preprocessor one can also place comments in
 the Doconce source file that will be removed by Mako before
 Doconce starts processing the file.
 
-
 Inline comments
 
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax::
-
 
         [name: running text]
 
@@ -85298,7 +84028,6 @@ make it very easy to spot the comments.
 
 Running::
 
-
         doconce format html mydoc.do.txt --skip_inline_comments
 
 removes all inline comments from the output. This feature makes it easy
@@ -85307,14 +84036,11 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by::
 
-
         doconce remove_inline_comments mydoc.do.txt
-
 
 Verbatim/Computer Code
 
 Inline verbatim code is typeset within back-ticks, as in::
-
 
         Some sentence with `words in verbatim style`.
 
@@ -85335,7 +84061,6 @@ in programming 'X', where 'X' may be 'py' for Python,
 defined verbatim environment in the 'ptex2tex' configuration file
 ('.ptex2tex.cfg'). For 'sphinx' output one can insert a comment::
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments ('xxx') onto valid language types for
@@ -85348,15 +84073,12 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax)::
 
-
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
-
 Computer code can also be copied from a file::
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -85405,7 +84127,6 @@ Ax=b. To help increase readability in other formats than 'sphinx',
 'latex', and 'pdflatex', inline mathematics may have a more human
 readable companion expression. The syntax is like::
 
-
         $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
@@ -85417,14 +84138,12 @@ Blocks of LaTeX mathematics are written within
 and
 '!et' (begin/end TeX) directives starting on the beginning of a line::
 
-
         !bt
         \begin{align*}
         \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
-
 
 This LaTeX code gets rendered as::
 
@@ -85435,7 +84154,6 @@ This LaTeX code gets rendered as::
 
 Here is a single equation::
 
-
         !bt
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
         !et
@@ -85443,7 +84161,6 @@ Here is a single equation::
 which results in::
 
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
-
 
 Any LaTeX syntax is accepted, but if output in the 'sphinx', 'pandoc',
 'mwiki', 'html', or 'ipynb' formats
@@ -85482,11 +84199,9 @@ without LaTeX support. For 'html', 'sphinx', 'latex', 'pdflatex',
 'mwiki', 'ipynb', and 'pandoc', the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 
 Links use either a link text or the raw URL::
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -85499,11 +84214,9 @@ Links use either a link text or the raw URL::
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 
 Figures and movies have almost equal syntax::
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -85535,7 +84248,6 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the::
 
-
         doconce combine_images image1 image2 ... output_image
 
 This command applies 'montage' or PDF-based tools to combine the images
@@ -85543,7 +84255,6 @@ to get the highest quality.
 
 YouTube and Vimeo movies will be embedded in 'html' and 'sphinx' documents
 and otherwise be represented by a link. The syntax is::
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -85554,12 +84265,10 @@ The latter results in
 
 Vimeo movie. 'http://vimeo.com/55562330': load movie_player1.html:'movie_player1.html' into a browser
 
-
 Tables
 
 The table in the section "Section Types" was written with this
 syntax::
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -85570,7 +84279,6 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -85601,7 +84309,6 @@ is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
 inserted anywhere, using the syntax::
 
-
         label{name}
 
 with no backslash
@@ -85612,7 +84319,6 @@ some abbreviations for a section and/or subsection for the topic and
 
 A reference to the label 'name' is written as::
 
-
         ref{name}
 
 again with no backslash before 'ref'.
@@ -85621,11 +84327,9 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 
 Single citations are written as::
-
 
         cite{name}
 
@@ -85637,9 +84341,7 @@ Bibliography citations often have 'name' on the form
 Multiple citations at once is possible by separating the logical names
 by comma::
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line 'BIBFILE: papers.pub',
 where 'papers.pub' is a publication database in the
@@ -85657,7 +84359,6 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is::
-
 
         ref[internal][cite][external]
         
@@ -85685,7 +84386,6 @@ Doconce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
-
         index{name}
 
 It is recommended to place any index of this type outside
@@ -85700,7 +84400,6 @@ Capabilities of The Program 'doconce'
 The 'doconce' program can be used for a number of purposes besides
 transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
-
 
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
@@ -85853,7 +84552,6 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 
 Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
@@ -85877,7 +84575,6 @@ Exercise, problem, project, or example sections contains certain *elements*:
 
 A typical sketch of a a problem without subexercises goes as follows::
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -85900,14 +84597,12 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads::
 
-
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
 the title becomes just "Derive the ...".
 
 An exercise with subproblems, answers and full solutions has this
 setup-up::
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -85962,7 +84657,6 @@ The command-line arguments '--without_answers' and '--without_solutions'
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 
 Doconce environments start with '!benvirname' and end with '!eenvirname',
@@ -85994,7 +84688,6 @@ Here is a typical example on utilizing 'preprocess' to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
-
         # #include "myotherdoc.do.txt"
         
         # #if FORMAT in ("latex", "pdflatex")
@@ -86023,7 +84716,6 @@ constructions::
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
-
 
 With the 'mako' preprocessor the if-else tests have slightly different syntax.
 An "http://hplgit.github.com/bioinf-py/":example document contains
@@ -86071,7 +84763,6 @@ formats are C{latex}, C{pdflatex}, C{sphinx}, and C{html}; and to a slightly
 less extent C{mwiki} and C{pandoc}. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 --------------------
 
@@ -86111,7 +84802,6 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads::
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -86121,7 +84811,6 @@ reads::
 
 The entire title must appear on a single line.
 The author syntax is::
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -86138,7 +84827,6 @@ The date can be set as any text different from C{today} if not the
 current date is wanted, e.g., C{Jan 32, 2100}.
 
 The table of contents is removed by writing C{TOC: off}.
-
 
 Section Types
 -------------
@@ -86175,15 +84863,12 @@ I{emphasized words}. Similarly, an underscore surrounds words that
 appear in boldface: C{_boldface_} becomes B{boldface}. Colored words
 are also possible: the text::
 
-
         `color{red}{two red words}`
 
 becomes two red words.
 Quotations appear inside double backticks and double single quotes::
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by C{<linebreak>} at the point where the
 linebreak in the output is wanted.
@@ -86191,18 +84876,12 @@ linebreak in the output is wanted.
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears::
 
-
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
 
-
-
 Non-breaking space is inserted using the tilde character as in LaTeX::
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-
 
 Lists
 -----
@@ -86212,7 +84891,6 @@ with C{*}, I{enumeration lists}, where each item starts with C{o} and gets
 consqutive numbers,
 and I{description} lists, where each item starts with C{-} followed
 by a keyword and a colon::
-
 
         Here is a bullet list:
         
@@ -86299,14 +84977,12 @@ When using the Mako preprocessor one can also place comments in
 the Doconce source file that will be removed by Mako before
 Doconce starts processing the file.
 
-
 Inline comments
 ---------------
 
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax::
-
 
         [name: running text]
 
@@ -86322,7 +84998,6 @@ make it very easy to spot the comments.
 
 Running::
 
-
         doconce format html mydoc.do.txt --skip_inline_comments
 
 removes all inline comments from the output. This feature makes it easy
@@ -86331,15 +85006,12 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by::
 
-
         doconce remove_inline_comments mydoc.do.txt
-
 
 Verbatim/Computer Code
 ----------------------
 
 Inline verbatim code is typeset within back-ticks, as in::
-
 
         Some sentence with `words in verbatim style`.
 
@@ -86360,7 +85032,6 @@ C{pl} for Perl. For output in C{latex} one can let C{xxx} reflect any
 defined verbatim environment in the C{ptex2tex} configuration file
 (C{.ptex2tex.cfg}). For C{sphinx} output one can insert a comment::
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (C{xxx}) onto valid language types for
@@ -86373,15 +85044,12 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax)::
 
-
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
-
 Computer code can also be copied from a file::
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -86431,11 +85099,8 @@ M{Ax=b}. To help increase readability in other formats than C{sphinx},
 C{latex}, and C{pdflatex}, inline mathematics may have a more human
 readable companion expression. The syntax is like::
 
-
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
 symbol) and the more readable expression appears to the right. Both
@@ -86446,35 +85111,23 @@ C{!bt}
 and
 C{!et} (begin/end TeX) directives starting on the beginning of a line::
 
-
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
-
 
 This LaTeX code gets rendered as::
 
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
 
 Here is a single equation::
 
-
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
 
 which results in::
 
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
-
 
 Any LaTeX syntax is accepted, but if output in the C{sphinx}, C{pandoc},
 C{mwiki}, C{html}, or C{ipynb} formats
@@ -86513,12 +85166,10 @@ without LaTeX support. For C{html}, C{sphinx}, C{latex}, C{pdflatex},
 C{mwiki}, C{ipynb}, and C{pandoc}, the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 ----------
 
 Links use either a link text or the raw URL::
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -86531,12 +85182,10 @@ Links use either a link text or the raw URL::
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 ------------------
 
 Figures and movies have almost equal syntax::
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -86568,7 +85217,6 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the::
 
-
         doconce combine_images image1 image2 ... output_image
 
 This command applies C{montage} or PDF-based tools to combine the images
@@ -86576,7 +85224,6 @@ to get the highest quality.
 
 YouTube and Vimeo movies will be embedded in C{html} and C{sphinx} documents
 and otherwise be represented by a link. The syntax is::
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -86587,13 +85234,11 @@ The latter results in
 
 Vimeo movie. C{http://vimeo.com/55562330}: load U{C{movie_player1.html}<movie_player1.html>} into a browser
 
-
 Tables
 ------
 
 The table in the section "Section Types" was written with this
 syntax::
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -86604,7 +85249,6 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -86636,7 +85280,6 @@ is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
 inserted anywhere, using the syntax::
 
-
         label{name}
 
 with no backslash
@@ -86647,7 +85290,6 @@ C{c} is some name for the particular unit that has a label.
 
 A reference to the label C{name} is written as::
 
-
         ref{name}
 
 again with no backslash before C{ref}.
@@ -86656,12 +85298,10 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 --------------------------
 
 Single citations are written as::
-
 
         cite{name}
 
@@ -86673,9 +85313,7 @@ C{YYYY} is the year of the publication.
 Multiple citations at once is possible by separating the logical names
 by comma::
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line C{BIBFILE: papers.pub},
 where C{papers.pub} is a publication database in the
@@ -86694,7 +85332,6 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is::
-
 
         ref[internal][cite][external]
         
@@ -86723,7 +85360,6 @@ Doconce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
-
         index{name}
 
 It is recommended to place any index of this type outside
@@ -86739,7 +85375,6 @@ Capabilities of The Program C{doconce}
 The C{doconce} program can be used for a number of purposes besides
 transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
-
 
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
@@ -86892,7 +85527,6 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 ---------
 
@@ -86917,7 +85551,6 @@ Exercise, problem, project, or example sections contains certain I{elements}:
 
 A typical sketch of a a problem without subexercises goes as follows::
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -86940,14 +85573,12 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads::
 
-
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
 the title becomes just "Derive the ...".
 
 An exercise with subproblems, answers and full solutions has this
 setup-up::
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -87002,7 +85633,6 @@ The command-line arguments C{--without_answers} and C{--without_solutions}
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 ------------
 
@@ -87036,12 +85666,8 @@ Here is a typical example on utilizing C{preprocess} to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
-
-
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
-
-
 
 With the C{mako} preprocessor the if-else tests have slightly different syntax.
 An U{example document<http://hplgit.github.com/bioinf-py/>} contains
@@ -87089,9 +85715,6 @@ Table of contents:
  Preprocessing 
  Resources 
 
-
-
-
 _WARNING: This quick reference is very incomplete!_
 
 *Mission.* Enable writing documentation with much mathematics and
@@ -87136,7 +85759,6 @@ formats are latex, pdflatex, sphinx, and html; and to a slightly
 less extent mwiki and pandoc. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 --------------------
 
@@ -87176,7 +85798,6 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads::
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -87186,7 +85807,6 @@ reads::
 
 The entire title must appear on a single line.
 The author syntax is::
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -87203,7 +85823,6 @@ The date can be set as any text different from today if not the
 current date is wanted, e.g., Jan 32, 2100.
 
 The table of contents is removed by writing TOC: off.
-
 
 Section Types
 -------------
@@ -87240,22 +85859,18 @@ Words surrounded by * are emphasized: *emphasized words* becomes
 appear in boldface: _boldface_ becomes _boldface_. Colored words
 are also possible: the text::
 
-
         `color{red}{two red words}`
 
 becomes two red words.
 Quotations appear inside double backticks and double single quotes::
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by <linebreak> at the point where the
 linebreak in the output is wanted.
 
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears::
-
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
@@ -87265,12 +85880,9 @@ preferably after the paragraph where the footnote appears::
         
         Here comes a new paragraph...
 
-
 Non-breaking space is inserted using the tilde character as in LaTeX::
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-
 
 Lists
 -----
@@ -87280,7 +85892,6 @@ with *, *enumeration lists*, where each item starts with o and gets
 consqutive numbers,
 and *description* lists, where each item starts with - followed
 by a keyword and a colon::
-
 
         Here is a bullet list:
         
@@ -87323,7 +85934,6 @@ Here is a bullet list:
 
   * subitem2 of item2
 
-
  * item3
 
 Note that sublists are indented.
@@ -87338,7 +85948,6 @@ Here is an enumeration list:
  1. subitem1 of item2
 
  2. subitem2 of item2
-
 
 3. item3
 
@@ -87377,14 +85986,12 @@ When using the Mako preprocessor one can also place comments in
 the Doconce source file that will be removed by Mako before
 Doconce starts processing the file.
 
-
 Inline comments
 ---------------
 
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax::
-
 
         [name: running text]
 
@@ -87400,7 +86007,6 @@ make it very easy to spot the comments.
 
 Running::
 
-
         doconce format html mydoc.do.txt --skip_inline_comments
 
 removes all inline comments from the output. This feature makes it easy
@@ -87409,15 +86015,12 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the Doconce source by::
 
-
         doconce remove_inline_comments mydoc.do.txt
-
 
 Verbatim/Computer Code
 ----------------------
 
 Inline verbatim code is typeset within back-ticks, as in::
-
 
         Some sentence with `words in verbatim style`.
 
@@ -87438,7 +86041,6 @@ pl for Perl. For output in latex one can let xxx reflect any
 defined verbatim environment in the ptex2tex configuration file
 (.ptex2tex.cfg). For sphinx output one can insert a comment::
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (xxx) onto valid language types for
@@ -87451,15 +86053,12 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax)::
 
-
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
-
 Computer code can also be copied from a file::
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -87510,7 +86109,6 @@ Ax=b. To help increase readability in other formats than sphinx,
 latex, and pdflatex, inline mathematics may have a more human
 readable companion expression. The syntax is like::
 
-
         $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
@@ -87522,14 +86120,12 @@ Blocks of LaTeX mathematics are written within
 and
   !et (begin/end TeX) directives starting on the beginning of a line::
 
-
         !bt
         \begin{align*}
         \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
-
 
 This LaTeX code gets rendered as::
 
@@ -87540,7 +86136,6 @@ This LaTeX code gets rendered as::
 
 Here is a single equation::
 
-
         !bt
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
         !et
@@ -87548,7 +86143,6 @@ Here is a single equation::
 which results in::
 
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
-
 
 Any LaTeX syntax is accepted, but if output in the sphinx, pandoc,
 mwiki, html, or ipynb formats
@@ -87590,12 +86184,10 @@ without LaTeX support. For html, sphinx, latex, pdflatex,
 mwiki, ipynb, and pandoc, the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 ----------
 
 Links use either a link text or the raw URL::
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -87608,12 +86200,10 @@ Links use either a link text or the raw URL::
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 ------------------
 
 Figures and movies have almost equal syntax::
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -87648,7 +86238,6 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the::
 
-
         doconce combine_images image1 image2 ... output_image
 
 This command applies montage or PDF-based tools to combine the images
@@ -87656,7 +86245,6 @@ to get the highest quality.
 
 YouTube and Vimeo movies will be embedded in html and sphinx documents
 and otherwise be represented by a link. The syntax is::
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -87667,13 +86255,11 @@ The latter results in
 
 Vimeo movie. http://vimeo.com/55562330: load movie_player1.html (movie_player1.html) into a browser
 
-
 Tables
 ------
 
 The table in the section "Section Types" was written with this
 syntax::
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -87684,7 +86270,6 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -87720,7 +86305,6 @@ is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
 inserted anywhere, using the syntax::
 
-
         label{name}
 
 with no backslash
@@ -87731,7 +86315,6 @@ c is some name for the particular unit that has a label.
 
 A reference to the label name is written as::
 
-
         ref{name}
 
 again with no backslash before ref.
@@ -87740,12 +86323,10 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 --------------------------
 
 Single citations are written as::
-
 
         cite{name}
 
@@ -87757,9 +86338,7 @@ YYYY is the year of the publication.
 Multiple citations at once is possible by separating the logical names
 by comma::
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line BIBFILE: papers.pub,
 where papers.pub is a publication database in the
@@ -87778,7 +86357,6 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is::
-
 
         ref[internal][cite][external]
         
@@ -87807,7 +86385,6 @@ Doconce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
-
         index{name}
 
 It is recommended to place any index of this type outside
@@ -87823,7 +86400,6 @@ Capabilities of The Program doconce
 The doconce program can be used for a number of purposes besides
 transforming a .do.txt file to some format. Here is the
 list of capabilities::
-
 
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
@@ -87976,7 +86552,6 @@ list of capabilities::
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 ---------
 
@@ -88009,7 +86584,6 @@ Exercise, problem, project, or example sections contains certain *elements*:
 
 A typical sketch of a a problem without subexercises goes as follows::
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -88032,14 +86606,12 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads::
 
-
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
 the title becomes just "Derive the ...".
 
 An exercise with subproblems, answers and full solutions has this
 setup-up::
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -88094,7 +86666,6 @@ The command-line arguments --without_answers and --without_solutions
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 ------------
 
@@ -88136,7 +86707,6 @@ Here is a typical example on utilizing preprocess to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
-
         # #include "myotherdoc.do.txt"
         
         # #if FORMAT in ("latex", "pdflatex")
@@ -88165,7 +86735,6 @@ constructions::
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
-
 
 With the mako preprocessor the if-else tests have slightly different syntax.
 An example document (http://hplgit.github.com/bioinf-py/) contains
@@ -89840,8 +88409,8 @@ no answers/solutions to exercises found in testdoc.html
 + system doconce html_colorbullets testdoc.html
 + doconce html_colorbullets testdoc.html
 + '[' 0 -ne 0 ']'
-+ system doconce split_html testdoc.html
-+ doconce split_html testdoc.html
++ system doconce split_html testdoc.html --nav_button=gray2
++ doconce split_html testdoc.html --nav_button=gray2
 testdoc.html now links to the generated files
 ._testdoc000.html, ._testdoc001.html, ._testdoc002.html, ._testdoc003.html
 + '[' 0 -ne 0 ']'
@@ -93044,9 +91613,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc000.rst:10: ERROR: Duplicate substitution definition name: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:378: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc000.rst:9: ERROR: Duplicate substitution definition name: "nbsp".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -93067,72 +91636,12 @@ dumping object inventory... done
 build succeeded, 5 warnings.
 
 Build finished. The HTML pages are in _build/html.
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in search.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in index.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in genindex.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc002.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in ._testdoc002.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc001.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in ._testdoc001.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in ._testdoc000.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in ._testdoc000.html
-copying movie_demo to sphinx-testdoc
+copying movie_demo to sphinx-testdoc/_static/movie_demo
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
 /home/hpl/vc/doconce/test/sphinx-testdoc
 running make clean
 running make html
-Fix generated files:
+Fix generated files: search.html index.html genindex.html ._testdoc002.html ._testdoc001.html ._testdoc000.html 
 
 google-chrome sphinx-testdoc/_build/html/index.html
 
@@ -93630,9 +92139,12 @@ output in slides1.p.tex
 \bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 output in slides1.tex
 + '[' 0 -ne 0 ']'
-+ system doconce slides_beamer slides1
-+ doconce slides_beamer slides1
++ system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
++ doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
+handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf
 slides written to slides1.tex
+printing for handout:
+pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 slides1.pdf
 + '[' 0 -ne 0 ']'
 + system doconce format html slides2 --pygments_html_style=emacs
 + doconce format html slides2 --pygments_html_style=emacs
@@ -94209,51 +92721,11 @@ dumping object inventory... done
 build succeeded.
 
 Build finished. The HTML pages are in _build/html.
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in search.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in index.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in math_test.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in math_test.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in genindex.html
-copying movie_demo to sphinx-rootdir-math
+copying movie_demo to sphinx-rootdir-math/_static/movie_demo
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
 running make clean
 running make html
-Fix generated files:
+Fix generated files: search.html index.html math_test.html genindex.html 
 
 google-chrome sphinx-rootdir-math/_build/html/index.html
 
@@ -97155,55 +95627,15 @@ dumping object inventory... done
 build succeeded.
 
 Build finished. The HTML pages are in _build/html.
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in search.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in index.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in genindex.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in admon.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in admon.html
 doconce format sphinx admon 
 running doconce format sphinx admon 
 running doconce guess_encoding admon.rst
-copying movie_demo to tmp_admon
+copying movie_demo to tmp_admon/_static/movie_demo
 copying ../doc/src/manual/fig/wave1D.png to tmp_admon
 /home/hpl/vc/doconce/test/tmp_admon
 running make clean
 running make html
-Fix generated files:
+Fix generated files: search.html index.html genindex.html admon.html 
 
 google-chrome tmp_admon/_build/html/index.html
 
@@ -99616,6 +98048,7 @@ open file with encoding utf-8
 
 exporting publish database papers.pub to papers.bib:
 Warning: found "!bc py", but py is not a standard predefined ptex2tex environment
+*** made directory latex_figs for admon figures
 output in Springer_T2_book.p.tex
 + '[' 0 -ne 0 ']'
 + system ptex2tex Springer_T2_book
@@ -102648,50 +101081,10 @@ dumping object inventory... done
 build succeeded.
 
 Build finished. The HTML pages are in _build/html.
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in search.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in search.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in index.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in index.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in quickref.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in quickref.html
-<title>(.+?) &mdash;.+?</title> replaced by <title>\g<1></title> in genindex.html
-replacing </head> by 
-   <style type=text/css>
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
- in genindex.html
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
 running make clean
 running make html
-Fix generated files:
+Fix generated files: search.html index.html quickref.html genindex.html 
 
 google-chrome sphinx-rootdir/_build/html/index.html
 

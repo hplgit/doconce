@@ -17,12 +17,6 @@ name=scientific_writing
 # Note: since Doconce syntax is demonstrated inside !bc/!ec
 # blocks we need a few fixes
 
-html=${name}-reveal
-system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-system doconce slides_html $html reveal --html_slide_theme=darkgray
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
 function editfix {
 # Fix selected backslashes inside verbatim envirs that doconce has added
 # (only a problem when we want to show full doconce code with
@@ -35,6 +29,9 @@ doconce replace '\eqref{myeq}' '(ref{myeq})' $1
 doconce replace '\eqref{mysec:eq:Dudt}' '(ref{mysec:eq:Dudt})' $1
 }
 
+html=${name}-reveal
+system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce slides_html $html reveal --html_slide_theme=darkgray
 editfix $html.html
 
 html=${name}-reveal-beige
@@ -49,15 +46,12 @@ editfix $html.html
 
 html=${name}-deck
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 system doconce slides_html $html deck --html_slide_theme=sandstone.default
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix $html.html
 
 # Plain HTML documents
 html=${name}-solarized
 system doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_admon=apricot --html_links_in_new_window --html_output=$html
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix $html.html
 
 html=${name}-plain

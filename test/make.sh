@@ -59,7 +59,7 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html
+system doconce split_html testdoc.html --nav_button=gray2
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
@@ -163,7 +163,7 @@ cp slides1.html slides1_deck.html
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
-system doconce slides_beamer slides1
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall

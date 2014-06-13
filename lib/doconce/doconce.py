@@ -320,7 +320,11 @@ def syntax_check(filestr, format):
             print '\n*** error: %s is not at the beginning of a line' % \
                   (m.group(2))
             print '    surrounding text:'
-            print filestr[m.start()-100:m.start()+100]
+            print filestr[m.start()-100:m.start()+100], '\n'
+            if m.group(1).strip() == '':
+                print 'set %s at the beginning of the line' % m.group(2)
+            else:
+                print 'did you mean to write `%s` in some sentence?' % m.group(2)
             _abort()
 
         # Check that envirs have b and e before their name
@@ -349,7 +353,9 @@ def syntax_check(filestr, format):
         links  = re.findall(INLINE_TAGS['linkURL2'], filestr)
         links += re.findall(INLINE_TAGS['linkURL3'], filestr)
         for link, url1, url2 in links:
-            if '`' in link[1:-1]:
+            if '``' in link[1:-1]:
+                pass # quotes are ok
+            elif '`' in link[1:-1]:
                 print '\n*** error: verbatim code in part of link is not allowed in format', format
                 print '   ', '"%s": "%s"' % (link, url1)
                 print '    use either link as verbatim code only, %s,' % '"`%s`"' % link.replace('`', '')
@@ -809,7 +815,7 @@ def insert_code_from_file(filestr, format):
     # Create dummy file if specified file not found?
     CREATE_DUMMY_FILE = False
 
-    # Filename prefix
+    # Get filename prefix to be added to the found path
     path_prefix = option('code_prefix=', '')
     if '~' in path_prefix:
         path_prefix = os.path.expanduser(path_prefix)

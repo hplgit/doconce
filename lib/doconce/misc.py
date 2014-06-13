@@ -76,6 +76,10 @@ values are boostrap_panel, bootstrap_alert."""),
      'Boundary color of admon in HTML.'),
     ('--css=',
      """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
+    ('--nav_button=', """\
+Type of navigation button: text, gray1 (default), gray2, bigblue, blue, green.
+See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
+for examples on these types (from left to right)."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
@@ -1061,6 +1065,10 @@ def combine_images():
         num_columns = 2
 
     imagefiles = sys.argv[1:-1]
+    for name in imagefiles:
+        if not os.path.isfile(name):
+            print '*** error: file "%s" is non-existing' % name
+            _abort()
     output_file = sys.argv[-1]
     ext = [os.path.splitext(f)[1] for f in imagefiles]
     formats = '.png', '.tif.', '.tiff', '.gif', '.jpeg', 'jpg'
@@ -1516,7 +1524,7 @@ download preprocess from http://code.google.com/p/preprocess""")
     verb_command = 'Verb'  # requires fancyvrb package, otherwise use std 'verb'
 
     verb_delimiter = '!'
-    alt_verb_delimiter = '~'  # can't use '%' in latex
+    alt_verb_delimiter = '?'  # can't use ~,%,#,$,^,&,* in latex headings, alternative is @
     cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'-])""", re.DOTALL)
     # Check if the verbatim text contains verb_delimiter and make
     # special solutions for these first
@@ -2025,7 +2033,11 @@ def html_colorbullets():
         f.close()
 
 def _usage_split_html():
-    print 'Usage: doconce split_html mydoc.html'
+    print 'Usage: doconce split_html mydoc.html --nav_button=name'
+    print 'where name can be gray1, gray2, bigblue, blue, green, text'
+    print '(name of navigation buttons, or just pure text for navigation).'
+    print '-nav_button is ignored if doconce format html used'
+    print '--html_theme=vagrant, bootstrap*, or bootswatch.'
 
 def split_html():
     """
@@ -2349,18 +2361,36 @@ def doconce_split_html(header, parts, footer, basename, filename):
     else:
         local_navigation_pics = False    # avoid copying images to subdir...
 
-    prev_part = 'prev1'  # "Knob_Left"
-    next_part = 'next1'  # "Knob_Forward"
+    nav_button = option('nav_button=', 'gray1')
+    # Map nav_button name to actual image file in bundled/html_images
+    if nav_button == 'gray1':
+        prev_button = 'prev1'
+        next_button = 'next1'
+    elif nav_button == 'gray2':
+        prev_button = 'prev2'
+        next_button = 'next2'
+    elif nav_button == 'bigblue':
+        prev_button = 'prev3'
+        next_button = 'next3'
+    elif nav_button == 'blue':
+        prev_button = 'prev4'
+        next_button = 'next4'
+    elif nav_button == 'green':
+        prev_button = 'Knob_Left'
+        next_button = 'Knob_Forward'
+    elif nav_button == 'text':
+        pass
+
     header_part_line = ''  # 'colorline'
     if local_navigation_pics:
         copy_datafiles(html_images)  # copy html_images subdir if needed
-        button_prev_filename = html_imagefile(prev_part)
-        button_next_filename = html_imagefile(next_part)
+        button_prev_filename = html_imagefile(prev_button)
+        button_next_filename = html_imagefile(next_button)
         html.add_to_file_collection(button_prev_filename, filename, 'a')
         html.add_to_file_collection(button_next_filename, filename, 'a')
     else:
-        button_prev_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_part
-        button_next_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_part
+        button_prev_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_button
+        button_next_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_button
 
 
     # Fix internal links to point to the right splitted file
@@ -2398,8 +2428,8 @@ def doconce_split_html(header, parts, footer, basename, filename):
                 elif i == len(parts)+1:
                     part = footer
                 text = ''.join(part).replace(
-                    '<a href="#%s">' % name,
-                    '<a href="%s#%s">' % (name_def_filename, name))
+                    '<a href="#%s"' % name,
+                    '<a href="%s#%s"' % (name_def_filename, name))
                 if i < len(parts):
                     parts[i] = text.splitlines(True)
                 elif i == len(parts):
@@ -2534,12 +2564,22 @@ def doconce_split_html(header, parts, footer, basename, filename):
             # Simple navigation buttons at the top and bottom of the page
             lines.append('<!-- begin top navigation -->') # for easy removal
             if pn > 0:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="previous"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">&laquo; Previous</a>
+""" % (prev_part_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
 """ % (prev_part_filename, button_prev_filename))
             if pn < len(parts)-1:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="next"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">Next &raquo;</a>
+""" % (next_part_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end top navigation -->\n\n')
             lines.append('<p>\n')
@@ -2559,12 +2599,22 @@ def doconce_split_html(header, parts, footer, basename, filename):
         else:
             lines.append('<!-- begin bottom navigation -->')
             if pn > 0:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="previous"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">&laquo; Previous</a>
+""" % (prev_part_filename, button_prev_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
 """ % (prev_part_filename, button_prev_filename))
             if pn < len(parts)-1:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="next"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">Next &raquo;></a>
+""" % (next_part_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end bottom navigation -->\n\n')
             lines += footer
@@ -4079,7 +4129,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename'
+    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename [--handout]'
 
 def slides_beamer():
     """
@@ -4219,10 +4269,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     admons = 'notice', 'summary', 'warning', 'question', 'block'
     for admon in admons:
         Admon = admon[0].upper() + admon[1:]
-        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon':
+        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon', 'mdfbox':
             slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
-    for envir in 'paragraph', 'mdfbox', 'graybox2':
+    for envir in 'paragraph', 'graybox2':
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
@@ -4333,7 +4383,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             if m:
                 titlepage_figure = m.group(1)
                 # Move titlepage figure to \date{}
-                part = part.replace('% <titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
+                part = part.replace('% <optional titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
                 # Remove original titlepage figure
                 part = re.sub(r'\\begin\{center\} +% inline figure.+?\\end\{center\}', '', part, flags=re.DOTALL)
             slides += r"""
@@ -4355,6 +4405,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \end{document}
 """
     slides = re.sub(r'% !split\s+', '', slides)
+    if handout:
+        print 'handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf'
     return slides
 
 def _usage_split_rst0():

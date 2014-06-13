@@ -34,7 +34,8 @@ utilizes ${SLIDE_TYPE} slides with the theme `${SLIDE_THEME}`.
 !bnotice
 Speaker notes show up by
 % if SLIDE_TYPE == 'reveal':
-pressing "s".
+pressing "s" (but you must run reveal locally and
+some packages installed, see "this description": "https://github.com/hakimel/reveal.js/#installation").
 % elif SLIDE_TYPE == 'deck':
 pressing "n".
 % elif SLIDE_TYPE == 'csss':
@@ -172,4 +173,3 @@ Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 !esummary
 !epop
-

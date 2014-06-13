@@ -1,6 +1,5 @@
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
@@ -9,7 +8,7 @@ Doconce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: May 20, 2014
+:Date: Jun 11, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -56,7 +55,6 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 --------------------
 
@@ -98,7 +96,6 @@ reads
 
 .. code-block:: text
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -110,7 +107,6 @@ The entire title must appear on a single line.
 The author syntax is
 
 .. code-block:: text
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -127,7 +123,6 @@ The date can be set as any text different from ``today`` if not the
 current date is wanted, e.g., ``Feb 22, 2016``.
 
 The table of contents is removed by writing ``TOC: off``.
-
 
 .. _quick:sections:
 
@@ -166,21 +161,16 @@ Words surrounded by ``*`` are emphasized: ``*emphasized words*`` becomes
 appear in boldface: ``_boldface_`` becomes **boldface**. Colored words
 are also possible: the text
 
-
 .. code-block:: text
-
 
         `color{red}{two red words}`
 
 becomes <font color="red">two red words</font>.
 Quotations appear inside double backticks and double single quotes:
 
-
 .. code-block:: text
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by ``<linebreak>`` at the point where the
 linebreak in the output is wanted.
@@ -188,9 +178,7 @@ linebreak in the output is wanted.
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:
 
-
 .. code-block:: text
-
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
@@ -200,15 +188,11 @@ preferably after the paragraph where the footnote appears:
         
         Here comes a new paragraph...
 
-
 Non-breaking space is inserted using the tilde character as in LaTeX:
-
 
 .. code-block:: text
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-
 
 Lists
 -----
@@ -220,7 +204,6 @@ and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon.
 
 .. code-block:: text
-
 
         Here is a bullet list:
         
@@ -263,7 +246,6 @@ Here is a bullet list:
 
   * subitem2 of item2
 
-
  * item3
 
 Note that sublists are indented.
@@ -278,7 +260,6 @@ Here is an enumeration list:
  1. subitem1 of item2
 
  2. subitem2 of item2
-
 
 3. item3
 
@@ -317,7 +298,6 @@ When using the Mako preprocessor one can also place comments in
 the Doconce source file that will be removed by Mako before
 Doconce starts processing the file.
 
-
 Inline comments
 ---------------
 
@@ -326,7 +306,6 @@ in particular,
 are enabled by the syntax
 
 .. code-block:: text
-
 
         [name: running text]
 
@@ -356,14 +335,12 @@ removed from the Doconce source by
 
         doconce remove_inline_comments mydoc.do.txt
 
-
 Verbatim/Computer Code
 ----------------------
 
 Inline verbatim code is typeset within back-ticks, as in
 
 .. code-block:: text
-
 
         Some sentence with `words in verbatim style`.
 
@@ -386,7 +363,6 @@ defined verbatim environment in the ``ptex2tex`` configuration file
 
 .. code-block:: text
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (``xxx``) onto valid language types for
@@ -399,14 +375,12 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax):
 
-
 .. code-block:: python
 
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
-
 
 .. When showing copy from file in !bc envir, indent a character - otherwise
 
@@ -415,7 +389,6 @@ for exact syntax):
 Computer code can also be copied from a file:
 
 .. code-block:: text
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -468,7 +441,6 @@ readable companion expression. The syntax is like
 
 .. code-block:: text
 
-
         $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
@@ -480,9 +452,7 @@ Blocks of LaTeX mathematics are written within
 and
 ``!et`` (begin/end TeX) directives starting on the beginning of a line:
 
-
 .. code-block:: text
-
 
         !bt
         \begin{align*}
@@ -491,9 +461,7 @@ and
         \end{align*}
         !et
 
-
 This LaTeX code gets rendered as
-
 
 .. math::
         
@@ -503,9 +471,7 @@ This LaTeX code gets rendered as
 
 Here is a single equation:
 
-
 .. code-block:: text
-
 
         !bt
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
@@ -513,10 +479,8 @@ Here is a single equation:
 
 which results in
 
-
 .. math::
          \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
-
 
 Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
@@ -558,15 +522,12 @@ without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 ----------
 
 Links use either a link text or the raw URL:
 
-
 .. code-block:: text
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -579,14 +540,12 @@ Links use either a link text or the raw URL:
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 ------------------
 
 Figures and movies have almost equal syntax:
 
 .. code-block:: text
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -631,9 +590,7 @@ to get the highest quality.
 YouTube and Vimeo movies will be embedded in ``html`` and ``sphinx`` documents
 and otherwise be represented by a link. The syntax is
 
-
 .. code-block:: text
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -649,9 +606,6 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
-
-
-
 Tables
 ------
 
@@ -659,7 +613,6 @@ The table in the section :ref:`quick:sections` was written with this
 syntax:
 
 .. code-block:: text
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -670,7 +623,6 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -708,7 +660,6 @@ inserted anywhere, using the syntax
 
 .. code-block:: text
 
-
         label{name}
 
 with no backslash
@@ -721,7 +672,6 @@ A reference to the label ``name`` is written as
 
 .. code-block:: text
 
-
         ref{name}
 
 again with no backslash before ``ref``.
@@ -730,14 +680,12 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 --------------------------
 
 Single citations are written as
 
 .. code-block:: text
-
 
         cite{name}
 
@@ -751,9 +699,7 @@ by comma:
 
 .. code-block:: text
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
@@ -774,7 +720,6 @@ a book assembly of some of the small elements.
 The syntax of a generalized reference is
 
 .. code-block:: text
-
 
         ref[internal][cite][external]
         
@@ -805,7 +750,6 @@ backslash!)
 
 .. code-block:: text
 
-
         index{name}
 
 It is recommended to place any index of this type outside
@@ -821,7 +765,6 @@ Capabilities of The Program ``doconce``
 The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities:
-
 
 .. code-block:: bash
 
@@ -976,7 +919,6 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 ---------
 
@@ -1011,7 +953,6 @@ A typical sketch of a a problem without subexercises goes as follows:
 
 .. code-block:: text
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -1034,9 +975,7 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads
 
-
 .. code-block:: text
-
 
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
@@ -1045,9 +984,7 @@ the title becomes just "Derive the ...".
 An exercise with subproblems, answers and full solutions has this
 setup-up:
 
-
 .. code-block:: text
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -1102,7 +1039,6 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 ------------
 
@@ -1144,9 +1080,7 @@ Here is a typical example on utilizing ``preprocess`` to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions:
 
-
 .. code-block:: text
-
 
         # #include "myotherdoc.do.txt"
         
@@ -1176,7 +1110,6 @@ constructions:
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
-
 
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`_ contains

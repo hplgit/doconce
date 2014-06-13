@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,10 +26,28 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Doconce Troubleshooting" href="index.html" />
-    <link rel="prev" title="Doconce Troubleshooting" href="index.html" /> 
+    <link rel="prev" title="Doconce Troubleshooting" href="index.html" />
+ 
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -64,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 25, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 28, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -115,70 +133,12 @@ that are not errors. To continue execution, simply add the
 <tt class="docutils literal"><span class="pre">--no_abort</span></tt> option on the command line. You may send an email
 to the Doconce author at <tt class="docutils literal"><span class="pre">hpl&#64;simula.no</span></tt> and report the problem.</p>
 </div>
-<div class="section" id="the-mako-preprocessor-is-seemingly-not-run">
-<h2>The Mako preprocessor is seemingly not run<a class="headerlink" href="#the-mako-preprocessor-is-seemingly-not-run" title="Permalink to this headline">¶</a></h2>
-<p>If you have lines starting with <tt class="docutils literal"><span class="pre">%</span></tt> inside code segments (for example,
-SWIG code or Matlab comment lines), the Mako preprocessor will crash
-because it thinks these lines are Mako statements. Doconce detects
-this problem and avoids running Mako.  Examine the output from
-Doconce: warnings are issued if Mako is not run.</p>
-</div>
-<div class="section" id="the-mako-preprocessor-is-fooled-by-doconce-text">
-<h2>The Mako preprocessor is fooled by Doconce text<a class="headerlink" href="#the-mako-preprocessor-is-fooled-by-doconce-text" title="Permalink to this headline">¶</a></h2>
-<p>Here are possible problems for Mako:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Strings with <tt class="docutils literal"><span class="pre">'T&lt;%.1f'</span></tt> look as openings of Mako blocks (<tt class="docutils literal"><span class="pre">&lt;%</span></tt>); change
-to <tt class="docutils literal"><span class="pre">'T</span> <span class="pre">&lt;</span> <span class="pre">%.1f'</span></tt> to avoid this confusion.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="the-mako-preprocessor-claims-a-variable-is-undefined">
-<h2>The Mako preprocessor claims a variable is undefined<a class="headerlink" href="#the-mako-preprocessor-claims-a-variable-is-undefined" title="Permalink to this headline">¶</a></h2>
-<p>Very often such errors are related to typos when using Mako
-variables or functions, or correct yet undesired LaTeX syntax.
-For example, <span class="math">\({\cal O}(\Delta x^2)\)</span> is valid LaTeX, but
-the dollar sign and curly braces confuse Mako. Rewrite such
-mathematics. It is wise to not use <tt class="docutils literal"><span class="pre">${</span></tt> anywhere in LaTeX mathematics.
-Create a newcommand if there are no other possible rewritings.
-A known common problem is <tt class="docutils literal"><span class="pre">${}^+$</span></tt> type of indication of superscripts.
-A suggested rewrite is <tt class="docutils literal"><span class="pre">$\,{}^+$</span></tt>.</p>
-<p>The error message will ask you to rerun <tt class="docutils literal"><span class="pre">doconce</span></tt> with
-<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>, which will display the variable that
-is confusing Mako. However, do not continue to use
-<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> while you are debugging because this
-variable or a new variable will then always be undefined in that mode.
-Rerun without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> to see if the problem
-is gone. If not, try the option again, and if no progress,
-use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></tt> directives to comment out large portions of
-the text and apply a &#8220;bisection&#8221; procedure to locate where
-the Mako problem is (without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>).
-A &#8220;bisection&#8221; procedure means that you comment out the last half,
-find in which half the problem is, comment out half of that half,
-find in which half the problem is, and so on.</p>
-</div>
-<div class="section" id="something-goes-wrong-in-the-preprocessing-step">
-<h2>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h2>
-<p>You can examine <tt class="docutils literal"><span class="pre">tmp_preprocess__filename</span></tt> and <tt class="docutils literal"><span class="pre">tmp_mako__filename</span></tt>,
-where <tt class="docutils literal"><span class="pre">filename</span></tt> is the complete name of the Doconce file, to see
-what the preprocessors actually to and if something is wrong in these
-files before Doconce starts translating the text.
-One or both of those files may be missing, but examine the beginning
-of the output from Doconce to see exactly which preprocessors are run
-and on which files.</p>
-</div>
 <div class="section" id="figure-captions-are-incomplete">
 <h2>Figure captions are incomplete<a class="headerlink" href="#figure-captions-are-incomplete" title="Permalink to this headline">¶</a></h2>
 <p>If only the first part of a figure caption in the Doconce file is seen
 in the target output format, the reason is usually that the caption
 occupies multiple lines in the Doconce file. The figure caption must
 be written as <em>one line</em>, at the same line as the FIGURE keyword.</p>
-</div>
-<div class="section" id="preprocessor-directives-do-not-work">
-<h2>Preprocessor directives do not work<a class="headerlink" href="#preprocessor-directives-do-not-work" title="Permalink to this headline">¶</a></h2>
-<p>Make sure the preprocessor instructions, in Preprocess or Mako, have
-correct syntax. Also make sure that you do not mix Preprocess and Mako
-instructions. Doconce will then only run Preprocess.</p>
 </div>
 <div class="section" id="problems-with-boldface-and-emphasize">
 <h2>Problems with boldface and emphasize<a class="headerlink" href="#problems-with-boldface-and-emphasize" title="Permalink to this headline">¶</a></h2>
@@ -253,7 +213,7 @@ run <tt class="docutils literal"><span class="pre">doconce</span> <span class="p
 proceeding text before some section heading.</p>
 </div>
 <div class="section" id="found-bt-but-no-tex-blocks-extracted-bug">
-<h2>Found !bt but no tex blocks extracted (BUG)<a class="headerlink" href="#found-bt-but-no-tex-blocks-extracted-bug" title="Permalink to this headline">¶</a></h2>
+<h2>Found <tt class="docutils literal"><span class="pre">!bt</span></tt> but no tex blocks extracted (BUG)<a class="headerlink" href="#found-bt-but-no-tex-blocks-extracted-bug" title="Permalink to this headline">¶</a></h2>
 <p>This message points to a bug, but has been resolved by removing blank lines
 between the text and the first <tt class="docutils literal"><span class="pre">!bt</span></tt> (inserting the blanks again did not
 trigger the error message again...).</p>
@@ -275,6 +235,163 @@ mode. The remedy is to split the file into smaller pieces and include
 the pieces using the <tt class="docutils literal"><span class="pre">preprocess</span></tt> directive <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;piece.do.txt&quot;</span></tt>.
 The error message comes with the Doconce file contains too much text
 for Emacs to handle.</p>
+</div>
+<div class="section" id="my-machine-hangs-if-i-have-many-movies">
+<h2>My machine hangs if I have many movies<a class="headerlink" href="#my-machine-hangs-if-i-have-many-movies" title="Permalink to this headline">¶</a></h2>
+<p>Doconce has no limits on the amount of movies. When the output is
+in HTML, one big HTML file may contain too many movies (local movie
+files or embedded YouTube movies) for the browser to handle.
+The remedy is to split the document into smaller pieces by inserting</p>
+<div class="highlight-text"><div class="highlight"><pre>!split
+</pre></div>
+</div>
+<p>for every new page. After <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></tt>, run
+<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span> <span class="pre">mydoc.html</span></tt> to get the document split into
+a main document <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> and pieces <tt class="docutils literal"><span class="pre">._mydocXXX.html</span></tt>, where
+<tt class="docutils literal"><span class="pre">XXX</span></tt> stands for three digits (<tt class="docutils literal"><span class="pre">000</span></tt>, <tt class="docutils literal"><span class="pre">001</span></tt>, <tt class="docutils literal"><span class="pre">002</span></tt>, and so forth).</p>
+</div>
+<div class="section" id="how-can-i-use-quotes-in-a-link">
+<h2>How can I use quotes in a link?<a class="headerlink" href="#how-can-i-use-quotes-in-a-link" title="Permalink to this headline">¶</a></h2>
+<p>Links are typeset inside double quotes, but Doconce applies double backticks
+and double single quotes to typeset quotes, so the right form is</p>
+<div class="highlight-text"><div class="highlight"><pre>&quot;This is a ``link text&#39;&#39; to google&quot;: &quot;http://google.com&quot;.
+</pre></div>
+</div>
+<p>It appears as</p>
+<blockquote>
+<div>&#8220;This is a &#8220;link text` to google &lt;<a class="reference external" href="http://google.com">http://google.com</a>&gt;`_.</div></blockquote>
+</div>
+<div class="section" id="conversion-from-doconce-to-google-docs">
+<h2>Conversion from Doconce to Google Docs<a class="headerlink" href="#conversion-from-doconce-to-google-docs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Transform the Doconce document to HTML, upload to Google Drive,
+right-click the file and open as Google Docs.</li>
+<li>It might be necessary to adjust formatting, e.g., insert an extra
+line between paragraphs.</li>
+<li>MathJax code is not converted to the Google Docs LaTeX counterpart
+and appears verbatim.</li>
+<li>Pygmentized computer code and admons look fine.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="convesion-from-google-docs-to-doconce">
+<h2>Convesion from Google Docs to Doconce<a class="headerlink" href="#convesion-from-google-docs-to-doconce" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Save as HTML file and use Pandoc to convert to Markdown.
+Use the <tt class="docutils literal"><span class="pre">--markdown</span></tt> and <tt class="docutils literal"><span class="pre">--md2do_output=</span></tt> options to
+<a href="#id1"><span class="problematic" id="id2">`</span></a>doconce format to convert to Doconce.</li>
+<li>Lists in Markdown must be intended.</li>
+<li>Notes in Google Docs become (potentially many) footnotes.
+Some tailored editing is necessary.</li>
+</ul>
+</div></blockquote>
+<p>This solution is not much explored and more text transformations from
+Pandoc-generated Markdown is certainly needed.</p>
+</div>
+<div class="section" id="are-there-any-tools-for-shared-online-writing-of-doconce-documents">
+<h2>Are there any tools for shared online writing of Doconce documents?<a class="headerlink" href="#are-there-any-tools-for-shared-online-writing-of-doconce-documents" title="Permalink to this headline">¶</a></h2>
+<p>In theory, <a class="reference external" href="http://draftin.com">http://draftin.com</a> and <a class="reference external" href="https://stackedit.io">https://stackedit.io</a>
+can be used to share Markdown documents and these can be transform
+to and from Doconce documents. Tested to a little degree, but may
+work for very simple documents (sections, lists, code - no labels, refs,
+math, admons, code copied from file).
+Not all of Extended Markdown is interpreted by Doconce, and Doconce
+transforms to Panddoc-extended Markdown, not the Extended Markdown
+used by these sites.</p>
+</div>
+</div>
+<div class="section" id="preprocess-mako-problems">
+<h1>Preprocess/Mako problems<a class="headerlink" href="#preprocess-mako-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-mako-preprocessor-is-seemingly-not-run">
+<h2>The Mako preprocessor is seemingly not run<a class="headerlink" href="#the-mako-preprocessor-is-seemingly-not-run" title="Permalink to this headline">¶</a></h2>
+<p>If you have lines starting with <tt class="docutils literal"><span class="pre">%</span></tt> inside code segments (for example,
+SWIG code or Matlab comment lines), the Mako preprocessor will crash
+because it thinks these lines are Mako statements. Doconce detects
+this problem and avoids running Mako.  Examine the output from
+Doconce: warnings are issued if Mako is not run.</p>
+</div>
+<div class="section" id="the-mako-preprocessor-gives-strange-error-messages">
+<h2>The Mako preprocessor gives strange error messages<a class="headerlink" href="#the-mako-preprocessor-gives-strange-error-messages" title="Permalink to this headline">¶</a></h2>
+<p>If you to a little syntax error in Mako, the consequences can be
+quite unpredictable. Especially, if you forget curly braces around
+variables or function calls, the forthcoming text is processed as
+part of the Mako command. Pay attention to the line number reported
+by Mako: this is the line number after Preprocess has processed
+the Doconce document, so you need to load <tt class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></tt>
+and go to the right line in that file to see the Mako problem
+(here the Doconce document is named <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>).</p>
+<p>Look through the specific Mako problems
+reported below, and if they do not bring you to a solution of
+the problem, search for all occurences of dollar, left curly brace
+and check the syntax carefully. Likewise, check the syntax of
+Mako if-tests.</p>
+<p>Another widely used technique is to copy out small parts of
+the complete document to a separate file and run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>.
+In this way you can easier see which parts of the document that
+work and where the error suddenly appears.</p>
+<div class="admonition-tip-compile-your-doconce-document-frequently admonition">
+<p class="first admonition-title">Tip: Compile your Doconce document frequently</p>
+<p class="last">The best means against Mako problems is to run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
+often. Combined Git, you can take
+a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to see what you have recently changed and get an idea
+what can be wrong.</p>
+</div>
+</div>
+<div class="section" id="the-mako-preprocessor-is-fooled-by-doconce-text">
+<h2>The Mako preprocessor is fooled by Doconce text<a class="headerlink" href="#the-mako-preprocessor-is-fooled-by-doconce-text" title="Permalink to this headline">¶</a></h2>
+<p>Here are possible problems for Mako:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Strings with <tt class="docutils literal"><span class="pre">'T&lt;%.1f'</span></tt> look as openings of Mako blocks (<tt class="docutils literal"><span class="pre">&lt;%</span></tt>); change
+to <tt class="docutils literal"><span class="pre">'T</span> <span class="pre">&lt;</span> <span class="pre">%.1f'</span></tt> to avoid this confusion.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="the-mako-preprocessor-claims-a-variable-is-undefined">
+<h2>The Mako preprocessor claims a variable is undefined<a class="headerlink" href="#the-mako-preprocessor-claims-a-variable-is-undefined" title="Permalink to this headline">¶</a></h2>
+<p>Very often such errors are related to typos when using Mako
+variables or functions, or correct yet undesired LaTeX syntax.
+For example, <span class="math">\({\cal O}(\Delta x^2)\)</span> is valid LaTeX, but
+the dollar sign and curly braces confuse Mako. Rewrite such
+mathematics. It is wise to not use <tt class="docutils literal"><span class="pre">${</span></tt> anywhere in LaTeX mathematics.
+Create a newcommand if there are no other possible rewritings.
+A known common problem is <tt class="docutils literal"><span class="pre">${}^+$</span></tt> type of indication of superscripts.
+A suggested rewrite is <tt class="docutils literal"><span class="pre">$\,{}^+$</span></tt>.</p>
+<p>The error message will ask you to rerun <tt class="docutils literal"><span class="pre">doconce</span></tt> with
+<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>, which will display the variable that is
+confusing Mako. Sometimes the variable is printed, sometimes a totally
+different name is said to be undefined. This is confusing, because
+then you have to use the bisection method below to narrow down the
+problem yourself.</p>
+<p>Do not continue to use <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> while you are
+debugging because this variable or a new variable will then always be
+undefined in that mode.  Rerun without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> to
+see if the problem is gone. If not, try the option again, and if no
+progress, use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></tt> directives to comment out large portions of
+the text and apply a bisection procedure to locate where the Mako
+problem is (without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>).  A bisection procedure
+means that you comment out the last half, find in which half the
+problem is, comment out half of that half, find in which half the
+problem is, and so on. The procedure converges pretty quickly, even
+for large books.</p>
+</div>
+<div class="section" id="something-goes-wrong-in-the-preprocessing-step">
+<h2>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h2>
+<p>You can examine <tt class="docutils literal"><span class="pre">tmp_preprocess__filename</span></tt> and <tt class="docutils literal"><span class="pre">tmp_mako__filename</span></tt>,
+where <tt class="docutils literal"><span class="pre">filename</span></tt> is the complete name of the Doconce file, to see
+what the preprocessors actually to and if something is wrong in these
+files before Doconce starts translating the text.
+One or both of those files may be missing, but examine the beginning
+of the output from Doconce to see exactly which preprocessors are run
+and on which files.</p>
+</div>
+<div class="section" id="preprocessor-directives-do-not-work">
+<h2>Preprocessor directives do not work<a class="headerlink" href="#preprocessor-directives-do-not-work" title="Permalink to this headline">¶</a></h2>
+<p>Make sure the preprocessor instructions, in Preprocess or Mako, have
+correct syntax. Also make sure that you do not mix Preprocess and Mako
+instructions. Doconce will then only run Preprocess.</p>
 </div>
 </div>
 <div class="section" id="problems-with-code-or-tex-blocks">
@@ -401,7 +518,7 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 <div class="section" id="how-can-i-have-unnumbered-sections">
 <h2>How can I have unnumbered sections?<a class="headerlink" href="#how-can-i-have-unnumbered-sections" title="Permalink to this headline">¶</a></h2>
 <p>Do an automatic edit like this:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.do.txt</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.do.txt
 </pre></div>
 </div>
 </div>
@@ -410,8 +527,8 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 <p>This message points to the use of the minted style for typesetting verbatim
 code. You need to include the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> command-line argument when
 running <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; latex -shell-escape file mydoc.tex</span>
-<span class="go">Terminal&gt; pdflatex -shell-escape file mydoc.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex -shell-escape file mydoc.tex
+Terminal&gt; pdflatex -shell-escape file mydoc.tex
 </pre></div>
 </div>
 <p>Using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> will turn on the minted style if specified as
@@ -429,8 +546,8 @@ more compact:</p>
 </div>
 <p>as explained in the <a class="reference external" href="http://www.ctex.org/documents/packages/layout/titlesec.pdf">titlesec</a> package documentation.
 To retrieve the standard LaTeX headings, comment out this line or remove it:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pdflatex mydoc</span>
-<span class="go">Terminal&gt; doconce subst &#39;\\usepack.+\{titlesec\} &#39;&#39; mydoc.p.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc
+Terminal&gt; doconce subst &#39;\\usepack.+\{titlesec\} &#39;&#39; mydoc.p.tex
 </pre></div>
 </div>
 <p>You can easily make the headings even smaller than the normal font
@@ -449,11 +566,11 @@ exercises, problems, or projects.</p>
 <h2>Can I have LaTeX figures with shadows?<a class="headerlink" href="#can-i-have-latex-figures-with-shadows" title="Permalink to this headline">¶</a></h2>
 <p>This is easy by including the <tt class="docutils literal"><span class="pre">fancybox</span></tt> and <tt class="docutils literal"><span class="pre">graphicx</span></tt> packages
 and wrapping all <tt class="docutils literal"><span class="pre">\includegraphics</span></tt> in a shadow box:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format pdflatex mydoc</span>
-<span class="go">Terminal&gt; doconce replace \</span>
-<span class="go">          &#39;microtype}&#39;, &#39;microtype,fancybox,graphicx}&#39; mydoc.p.tex</span>
-<span class="go">Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \</span>
-<span class="go">          &#39;\\shadowbox{\g&lt;1&gt;}&#39; mydoc.p.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc
+Terminal&gt; doconce replace \
+          &#39;microtype}&#39;, &#39;microtype,fancybox,graphicx}&#39; mydoc.p.tex
+Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \
+          &#39;\\shadowbox{\g&lt;1&gt;}&#39; mydoc.p.tex
 </pre></div>
 </div>
 </div>
@@ -512,7 +629,7 @@ documentstyle to &#8220;book&#8221;.</p>
 options to set the font, type of titlepage, etc., when running
 <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>. However, it is easy to provide
 a customized preamble text:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex
 </pre></div>
 </div>
 <p>If <tt class="docutils literal"><span class="pre">mytop.tex</span></tt> starts with a <tt class="docutils literal"><span class="pre">documentclass</span></tt> specification, the whole
@@ -604,6 +721,25 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 </div>
 </div>
 </div>
+<div class="section" id="problems-with-reveal-deck-html5-slides">
+<h1>Problems with reveal/deck HTML5 slides<a class="headerlink" href="#problems-with-reveal-deck-html5-slides" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="reveal-slides-are-moving-steadily-to-the-left">
+<h2>Reveal slides are moving steadily to the left<a class="headerlink" href="#reveal-slides-are-moving-steadily-to-the-left" title="Permalink to this headline">¶</a></h2>
+<p>This seems to be a problem when one has used the mouse to scroll down
+on a slide and continue to use the right arrow for moving to the
+next slide. Click on the arrow in the slide instead of using the arrow key.</p>
+</div>
+<div class="section" id="youtube-movies-do-not-work">
+<h2>YouTube movies do not work<a class="headerlink" href="#youtube-movies-do-not-work" title="Permalink to this headline">¶</a></h2>
+<p>They do not work in reveal or deck unless the Chrome browser is used.
+Usually the HTML5 slides work best in Firefox.</p>
+</div>
+<div class="section" id="online-python-tutor-does-not-work">
+<h2>Online Python Tutor does not work<a class="headerlink" href="#online-python-tutor-does-not-work" title="Permalink to this headline">¶</a></h2>
+<p>Seems to be a problem with reveal slides. The <em>Forward</em> button is not
+clickable.</p>
+</div>
+</div>
 
 
           </div>
@@ -618,12 +754,7 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li><a class="reference internal" href="#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
 <li><a class="reference internal" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">Doconce aborts because of a syntax error that is not an error</a></li>
-<li><a class="reference internal" href="#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
-<li><a class="reference internal" href="#the-mako-preprocessor-is-fooled-by-doconce-text">The Mako preprocessor is fooled by Doconce text</a></li>
-<li><a class="reference internal" href="#the-mako-preprocessor-claims-a-variable-is-undefined">The Mako preprocessor claims a variable is undefined</a></li>
-<li><a class="reference internal" href="#something-goes-wrong-in-the-preprocessing-step">Something goes wrong in the preprocessing step</a></li>
 <li><a class="reference internal" href="#figure-captions-are-incomplete">Figure captions are incomplete</a></li>
-<li><a class="reference internal" href="#preprocessor-directives-do-not-work">Preprocessor directives do not work</a></li>
 <li><a class="reference internal" href="#problems-with-boldface-and-emphasize">Problems with boldface and emphasize</a></li>
 <li><a class="reference internal" href="#links-to-local-directories-do-not-work">Links to local directories do not work</a></li>
 <li><a class="reference internal" href="#links-are-not-typeset-correctly">Links are not typeset correctly</a></li>
@@ -632,9 +763,23 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 <li><a class="reference internal" href="#strange-non-english-characters">Strange non-English characters</a></li>
 <li><a class="reference internal" href="#wrong-norwegian-charcters">Wrong Norwegian charcters</a></li>
 <li><a class="reference internal" href="#too-short-underlining-of-rest-headlines">Too short underlining of reST headlines</a></li>
-<li><a class="reference internal" href="#found-bt-but-no-tex-blocks-extracted-bug">Found !bt but no tex blocks extracted (BUG)</a></li>
+<li><a class="reference internal" href="#found-bt-but-no-tex-blocks-extracted-bug">Found <tt class="docutils literal"><span class="pre">!bt</span></tt> but no tex blocks extracted (BUG)</a></li>
 <li><a class="reference internal" href="#examples-are-typset-with-environment-delimiters-visible">Examples are typset with environment delimiters visible</a></li>
 <li><a class="reference internal" href="#emacs-editing-does-not-work-properly-because-of-regexp-overflow">Emacs editing does not work properly because of &#8220;regexp overflow&#8221;</a></li>
+<li><a class="reference internal" href="#my-machine-hangs-if-i-have-many-movies">My machine hangs if I have many movies</a></li>
+<li><a class="reference internal" href="#how-can-i-use-quotes-in-a-link">How can I use quotes in a link?</a></li>
+<li><a class="reference internal" href="#conversion-from-doconce-to-google-docs">Conversion from Doconce to Google Docs</a></li>
+<li><a class="reference internal" href="#convesion-from-google-docs-to-doconce">Convesion from Google Docs to Doconce</a></li>
+<li><a class="reference internal" href="#are-there-any-tools-for-shared-online-writing-of-doconce-documents">Are there any tools for shared online writing of Doconce documents?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#preprocess-mako-problems">Preprocess/Mako problems</a><ul>
+<li><a class="reference internal" href="#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
+<li><a class="reference internal" href="#the-mako-preprocessor-gives-strange-error-messages">The Mako preprocessor gives strange error messages</a></li>
+<li><a class="reference internal" href="#the-mako-preprocessor-is-fooled-by-doconce-text">The Mako preprocessor is fooled by Doconce text</a></li>
+<li><a class="reference internal" href="#the-mako-preprocessor-claims-a-variable-is-undefined">The Mako preprocessor claims a variable is undefined</a></li>
+<li><a class="reference internal" href="#something-goes-wrong-in-the-preprocessing-step">Something goes wrong in the preprocessing step</a></li>
+<li><a class="reference internal" href="#preprocessor-directives-do-not-work">Preprocessor directives do not work</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-code-or-tex-blocks">Problems with code or Tex Blocks</a><ul>
@@ -682,6 +827,12 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 <li><a class="reference internal" href="#why-do-figures-look-ugly-when-using-html-templates">Why do figures look ugly when using HTML templates?</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#problems-with-reveal-deck-html5-slides">Problems with reveal/deck HTML5 slides</a><ul>
+<li><a class="reference internal" href="#reveal-slides-are-moving-steadily-to-the-left">Reveal slides are moving steadily to the left</a></li>
+<li><a class="reference internal" href="#youtube-movies-do-not-work">YouTube movies do not work</a></li>
+<li><a class="reference internal" href="#online-python-tutor-does-not-work">Online Python Tutor does not work</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -722,8 +873,8 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2013, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; Copyright 2014, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>
