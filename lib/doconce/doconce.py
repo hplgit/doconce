@@ -635,7 +635,7 @@ def syntax_check(filestr, format):
         print '\n'.join(matches)
         _abort()
 
-    pattern = re.compile(r'^__.+?[^.:?]__', re.MULTILINE)
+    pattern = re.compile(r'^__[^_]+?[^.:?]__', re.MULTILINE)
     matches = pattern.findall(filestr)
     if matches:
         print '*** warning: missing ., : or ? after paragraph heading:'
