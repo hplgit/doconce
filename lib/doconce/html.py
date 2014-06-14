@@ -866,7 +866,21 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
             text = ' '.join(footnotes[name].strip().splitlines())
             # Note: formatting does not work well with a tooltip
             # could issue a warning of we find * (emphasis) or "..": ".." link
-            html = ' <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
+            if '*' in text:
+                newtext, n = re.subn(r'\*(.+?)\*', r'\g<1>', text)
+                if n > 0:
+                    print '*** warning: found emphasis tag *...* in footnote, which was removed'
+                    print '    since it does not work with bootstrap tooltips'
+                    print text
+                text = newtext
+            if '"' in text:
+                newtext, n = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
+                if n > 0:
+                    print '*** warning: found link tag "...": "..." in footnote, which was removed'
+                    print '    since it does not work with bootstrap tooltips'
+                    print text
+                text = newtext
+            html = ' <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
         else:
             html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
         return html
