@@ -25,6 +25,7 @@ _registered_command_line_options = [
      'Make Mako report on undefined variables.'),
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
+    ('--runestone', 'Make RunestoneInteractive version of a Sphinx docoment'),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
