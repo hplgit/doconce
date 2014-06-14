@@ -5,6 +5,9 @@ from rst import *
 from common import align2equations, online_python_tutor, bibliography
 from misc import option
 
+video_counter = 0
+activecode_counter = 0
+
 legal_pygments_languages = [
     'Cucumber', 'cucumber', 'Gherkin', 'gherkin',
     'abap', 'ada', 'ada95ada2005',
@@ -125,6 +128,25 @@ def sphinx_figure(m):
         result += '\n\n'
     #print 'sphinx figure: caption=\n', caption, '\nresult:\n', result
     return result
+
+def sphinx_movie(m):
+    filename = m.group('filename')
+    special_movie = '*' in filename or '->' in filename or 'youtu.be' in filename or 'youtube.com' in filename or 'vimeo.com' in filename
+    if option('runestone') and not special_movie:
+        # Use RunestoneInteractive video environment
+        global video_counter
+        video_counter += 1
+        text = """
+.. video:: video_%d
+   :controls:
+
+   %s
+""" % (video_counter, filename)
+        return text
+    else:
+        # Use plain html code
+        return rst_movie(m)
+
 
 from latex import fix_latex_command_regex as fix_latex
 
@@ -302,13 +324,46 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                 key = 'pypro'
 
         if key == 'pyoptpro':
-            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-                             '\n.. raw:: html\n\n',
-                             filestr, flags=re.MULTILINE)
+            if option('runestone'):
+                global codelens_counter
+                codelens_counter += 1
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 '\n.. codelens:: codelens_%d\n   :showoutput:\n\n' % codelens_counter,
+                                 filestr, flags=re.MULTILINE)
+            else:
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 '\n.. raw:: html\n\n',
+                                 filestr, flags=re.MULTILINE)
         elif key == 'pyscpro':
-            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-                             '\n.. sagecellserver::\n\n',
-                             filestr, flags=re.MULTILINE)
+            if option('runestone'):
+                global activecode_counter
+                activecode_counter += 1
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 """
+.. activecode:: activecode_%d
+   :language: python
+
+""" % (activecode_counter), filestr, flags=re.MULTILINE)
+            else:
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 '\n.. sagecellserver::\n\n',
+                                 filestr, flags=re.MULTILINE)
+        elif key == 'pysccod':
+            if option('runestone'):
+                global activecode_counter
+                activecode_counter += 1
+                # Include (i.e., run) all previous code segments...
+                # NOTE: this is most likely not what we want
+                include = ', '.join([i for i in range(1, activecode_counter)])
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 """
+.. activecode:: activecode_%d
+   :language: python
+   "include: %s
+""" % (activecode_counter, include), filestr, flags=re.MULTILINE)
+            else:
+                print '*** error: pysccod is not supported without the --runestone flag'
+                _abort()
         else:
             filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                              '\n.. code-block:: %s\n\n' % \
@@ -467,6 +522,7 @@ def define(FILENAME_EXTENSION,
     #INLINE_TAGS_SUBST['sphinx']['math2'] = r'\g<begin>:math:`\g<latexmath>`\g<end>'
     INLINE_TAGS_SUBST['sphinx']['math2'] = lambda m: r'%s:math:`%s`%s' % (m.group('begin'), m.group('latexmath').strip(), m.group('end'))
     INLINE_TAGS_SUBST['sphinx']['figure'] = sphinx_figure
+    INLINE_TAGS_SUBST['sphinx']['movie'] = sphinx_movie
     CODE['sphinx'] = sphinx_code  # function for typesetting code
 
     ARGLIST['sphinx'] = {

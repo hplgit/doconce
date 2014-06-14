@@ -380,7 +380,6 @@ def rst_box(block, format, text_size='normal'):
     return """
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
-..
 
 %s
 """ % block
