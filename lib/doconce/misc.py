@@ -4540,7 +4540,7 @@ def doconce_rst_split(parts, basename, filename):
             label2tag[label] = '%d.%d' % (pn+1, local_eq_no)
             local_eq_no += 1
 
-    # The definition of |nbsp| must be repeated in each part.
+    # The definition of |nbsp| must be repeated in each part, except the first.
     # The definition is inserted in the beginning of the document, i.e.,
     # in parts[0].
     nbsp = '.. |nbsp| unicode:: 0xA0' in ''.join(parts[0])
@@ -4579,7 +4579,7 @@ def doconce_rst_split(parts, basename, filename):
         part_filename = _part_filename % (basename, pn) + '.rst'
         generated_files.append(part_filename)
 
-        if nbsp:
+        if nbsp and pn > 0:
             text = """
 
 .. |nbsp| unicode:: 0xA0

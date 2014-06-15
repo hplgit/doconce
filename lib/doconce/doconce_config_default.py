@@ -18,6 +18,7 @@ no_mako = False
 no_preprocess = False
 mako_strict_undefined = False
 no_header_footer = False
+runestone = False
 keep_pygments_html_bg = False
 #minted_latex_style = 
 #pygments_html_style = 

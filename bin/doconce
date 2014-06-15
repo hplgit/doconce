@@ -476,12 +476,12 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + \
         f.write(text)
         f.close()
 
-# Copy linked local files, placed in _static*, to %(source_dir)s/_static
+# Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %%s/* %(source_dir)s/_static/' %% staticdir)
-    # (Note: must do cp -r since shutil.copy/copytree cannot copy a la cp -r)
+    system('cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars())
 ''' % vars())
+    # (Note: must do cp -r above since shutil.copy/copytree cannot copy a la cp -r)
     if runestone:
         # Fix paver script
         system("""doconce replace "project_name = 'template'" "project_name = '%s'" pavement.py""" % title)
@@ -1105,4 +1105,3 @@ def main():
             print ', '.join(commands)
 
 main()
-

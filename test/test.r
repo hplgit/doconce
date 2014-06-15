@@ -304,6 +304,7 @@ They are used in different flavors, now in
  * list items
  * even with math $\nabla^2u$ [^math1]
  * and code `h[i] += 1` [^code],
+ * and "links": "http://google.com" [^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -317,6 +318,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: URL: "google.com" is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -2321,11 +2325,15 @@ They are used in different flavors, now in
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
  \item and code `h[i] += 1`\footnote{One-line footnote.},
+
+ \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
 \end{itemize}
 
 \noindent
 which gives flexibility in writing.
 This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
+
+
 
 
 
@@ -4242,11 +4250,15 @@ They are used in different flavors, now in
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
  \item and code `h[i] += 1`\footnote{One--line footnote.},
+
+ \item and \href{{http://google.com}}{links}\footnote{\texttt{http://google.com}}\footnote{\href{{google.com}}{\nolinkurl{google.com}\footnote{\texttt{google.com}}} is perhaps the most famous web site today.}
 \end{itemize}
 
 \noindent
 which gives flexibility in writing.
 This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
+
+
 
 
 
@@ -6159,11 +6171,15 @@ They are used in different flavors, now in
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
  \item and code `h[i] += 1`\footnote{One--line footnote.},
+
+ \item and \href{{http://google.com}}{links}\footnote{\texttt{http://google.com}}\footnote{\href{{google.com}}{\nolinkurl{google.com}\footnote{\texttt{google.com}}} is perhaps the most famous web site today.}
 \end{itemize}
 
 \noindent
 which gives flexibility in writing.
 This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
+
+
 
 
 
@@ -7637,6 +7653,8 @@ They are used in different flavors, now in
 
  * and code ``h[i] += 1`` [#code]_,
 
+ * and `links <http://google.com>`_ [#google-search]_
+
 which gives flexibility in writing.
 This is the third [#example-of-the-third-footnote]_ example.
 
@@ -7651,6 +7669,9 @@ This is the third [#example-of-the-third-footnote]_ example.
    interferes with an exponent.
 
 .. [#code] One-line footnote.
+
+.. [#google-search] `<google.com>`_ is perhaps the most famous
+   web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -9102,6 +9123,8 @@ They are used in different flavors, now in
 
  * and code ``h[i] += 1`` [#code]_,
 
+ * and `links <http://google.com>`_ [#google-search]_
+
 which gives flexibility in writing.
 This is the third [#example-of-the-third-footnote]_ example.
 
@@ -9116,6 +9139,9 @@ This is the third [#example-of-the-third-footnote]_ example.
    interferes with an exponent.
 
 .. [#code] One-line footnote.
+
+.. [#google-search] `<google.com>`_ is perhaps the most famous
+   web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -10629,6 +10655,7 @@ They are used in different flavors, now in
  * list items
  * even with math `\nabla^2u` [^math1]
  * and code `h[i] += 1` [^code],
+ * and [http://google.com links] [^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -10642,6 +10669,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: google.com is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -11967,6 +11997,7 @@ They are used in different flavors, now in
  <li> list items
  <li> even with math <math>\nabla^2u</math> [^math1]
  <li> and code <code>h[i] += 1</code> [^code],
+ <li> and [http://google.com links] [^google-search]
 </ul>
 
 which gives flexibility in writing.
@@ -11981,6 +12012,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: google.com is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -13378,6 +13412,7 @@ They are used in different flavors, now in
  * list items
  * even with math {{{\nabla^2u}}} [^math1]
  * and code {{{h[i] += 1}}} [^code],
+ * and [[http://google.com|links]] [^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -13391,6 +13426,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: [[google.com]] is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -14593,6 +14631,7 @@ They are used in different flavors, now in
  - list items
  - even with math \nabla^2u [^math1]
  - and code 'h[i] += 1' [^code],
+ - and "http://google.com":links [^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -14606,6 +14645,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: "google.com":google.com is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -15769,6 +15811,7 @@ They are used in different flavors, now in
  - list items
  - even with math M{\nabla^2u} [^math1]
  - and code C{h[i] += 1} [^code],
+ - and U{links<http://google.com>} [^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -15782,6 +15825,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: U{google.com<google.com>} is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -17052,6 +17098,8 @@ They are used in different flavors, now in
 
  * and code h[i] += 1 [^code],
 
+ * and links (http://google.com) [^google-search]
+
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
 
@@ -17064,6 +17112,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: google.com is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -18387,6 +18438,8 @@ They are used in different flavors, now in
 
  * and code `h[i] += 1` [^code],
 
+ * and [links](http://google.com) [^google-search]
+
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
 
@@ -18399,6 +18452,9 @@ syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
 [^code]: One-line footnote.
+
+[^google-search]: <google.com> is perhaps the most famous
+web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -20057,6 +20113,8 @@ is at the end with only one newline.
       "\n",
       " * and code `h[i] += 1` [^code],\n",
       "\n",
+      " * and [links](http://google.com) [^google-search]\n",
+      "\n",
       "which gives flexibility in writing.\n",
       "This is the third[^example-of-the-third-footnote] example.\n",
       "\n",
@@ -20069,6 +20127,9 @@ is at the end with only one newline.
       "[^math1]: Math footnotes can be dangerous since it\n",
       "interferes with an exponent.\n",
       "[^code]: One-line footnote.\n",
+      "\n",
+      "[^google-search]: <google.com> is perhaps the most famous\n",
+      "web site today.\n",
       "\n",
       "Here is some more text before a new definition of a footnote that was used\n",
       "used above.\n",
@@ -21918,8 +21979,9 @@ Python.</code></pre>
 <li><p>list items</p></li>
 <li><p>even with math <span class="math">\(\nabla^2u\)</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
 <li><p>and code `h[i] += 1`<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</p></li>
+<li><p>and <a href="{http://google.com}">links</a><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p></li>
 </ul>
-<p>which gives flexibility in writing. This is the third<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> example.</p>
+<p>which gives flexibility in writing. This is the third<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
 <p>[Non-breaking space character.] This paragraph aims to test <a href="{http://en.wikipedia.org/wiki/Non-breaking_space}">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a <a href="{http://google.com}">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
 <h2 id="subsec:ex">Subsection 2: Testing figures</h2>
@@ -22366,7 +22428,8 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, <span>LaTeX</span> removes the definition and inserts the footnote as part of the <span>LaTeX</span> text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
 <li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref4">↩</a></p></li>
+<li id="fn4"><p><a href="{google.com}"></a> is perhaps the most famous web site today.<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref5">↩</a></p></li>
 </ol>
 </div>
 </body>
@@ -22638,8 +22701,9 @@ Python.</code></pre>
 <li><p>list items</p></li>
 <li><p>even with math <span class="math">\(\nabla^2u\)</span> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
 <li><p>and code <code>h[i] += 1</code> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</p></li>
+<li><p>and <a href="http://google.com">links</a> <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p></li>
 </ul>
-<p>which gives flexibility in writing. This is the third<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> example.</p>
+<p>which gives flexibility in writing. This is the third<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
 <p><em>Non-breaking space character.</em><space> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
@@ -23269,7 +23333,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
 <li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref4">↩</a></p></li>
+<li id="fn4"><p><google.com> is perhaps the most famous web site today.<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref5">↩</a></p></li>
 </ol>
 </div>
 </body>
@@ -26157,11 +26222,12 @@ They are used in different flavors, now in
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> list items</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> even with math \( \nabla^2u \) [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and <a href="http://google.com" target="_self">links</a> [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>]</li>
 </td></tr></table>
 
 
 which gives flexibility in writing.
-This is the third [<a name="link_footnote_4"><a><a href="._testdoc003.html#def_footnote_4">4</a>] example.
+This is the third [<a name="link_footnote_5"><a><a href="._testdoc003.html#def_footnote_5">5</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -26174,6 +26240,9 @@ syntax, just displayed properly in HTML.
 interferes with an exponent.
 
 <p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
+
+<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous
+web site today.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -27825,7 +27894,7 @@ case in LaTeX.
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_4"></a><a href="._testdoc001.html#link_footnote_4"><b>4:</b></a> Not much to add here, but the footnote
+<p><a name="def_footnote_5"></a><a href="._testdoc001.html#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote
 is at the end with only one newline.
 
 <p>
@@ -28334,10 +28403,11 @@ They are used in different flavors, now in
  <li> list items</li>
  <li> even with math $latex \nabla^2u$ [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
  <li> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
+ <li> and <a href="http://google.com" target="_blank">links</a> [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>]</li>
 </ul>
 
 which gives flexibility in writing.
-This is the third [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>] example.
+This is the third [<a name="link_footnote_5"><a><a href="#def_footnote_5">5</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -28350,6 +28420,9 @@ syntax, just displayed properly in HTML.
 interferes with an exponent.
 
 <p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
+
+<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_blank"><tt>google.com</tt></a> is perhaps the most famous
+web site today.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -29450,7 +29523,7 @@ case in LaTeX.
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> Not much to add here, but the footnote
+<p><a name="def_footnote_5"></a><a href="#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote
 is at the end with only one newline.
 
 
@@ -30102,10 +30175,11 @@ They are used in different flavors, now in
  <li> list items</li>
  <li> even with math \( \nabla^2u \) [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
  <li> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
+ <li> and <a href="http://google.com" target="_self">links</a> [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>]</li>
 </ul>
 
 which gives flexibility in writing.
-This is the third [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>] example.
+This is the third [<a name="link_footnote_5"><a><a href="#def_footnote_5">5</a>] example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -30118,6 +30192,9 @@ syntax, just displayed properly in HTML.
 interferes with an exponent.
 
 <p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
+
+<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous
+web site today.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -31267,7 +31344,7 @@ case in LaTeX.
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> Not much to add here, but the footnote
+<p><a name="def_footnote_5"></a><a href="#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote
 is at the end with only one newline.
 
 <!-- ------------------- end of main content --------------- -->
@@ -31974,11 +32051,15 @@ They are used in different flavors, now in
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
  \item and code `h[i] += 1`\footnote{One-line footnote.},
+
+ \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
 \end{itemize}
 
 \noindent
 which gives flexibility in writing.
 This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
+
+
 
 
 
@@ -33268,7 +33349,7 @@ import glob, sys, os, commands, shutil
 command_line_options = ' '.join(['"%s"' % arg for arg in sys.argv[1:]])
 
 sphinx_rootdir = 'sphinx-testdoc'
-
+source_dir = sphinx_rootdir
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
@@ -33286,23 +33367,23 @@ def system(cmd, capture_output=False, echo=True):
 filename = 'testdoc'
 # Not used: shutil.copy('%s.rst' % filename, sphinx_rootdir)
 for part in ['._testdoc000', '._testdoc001', '._testdoc002']:
-    shutil.copy('%s.rst' % part, sphinx_rootdir)
+    shutil.copy('%s.rst' % part, source_dir)
 
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
     if figdir.startswith('fig'):
         # Figures can be anywhere (copied by sphinx to _images)
-        destdir = os.path.join(sphinx_rootdir, figdir)
+        destdir = os.path.join(source_dir, figdir)
     elif figdir.startswith('mov'):
         # Movies must be in _static
-        destdir = os.path.join(sphinx_rootdir, '_static', figdir)
+        destdir = os.path.join(source_dir, '_static', figdir)
     if os.path.isdir(figdir) and not os.path.isdir(destdir):
         shutil.copytree(figdir, destdir)
         print 'copying', figdir, 'to', destdir
 
 # Copy needed figure files in current dir (not in fig*)
-for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +                glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
+for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) +                glob.glob(os.path.join(source_dir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
@@ -33316,12 +33397,12 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +               
         if name.startswith('http') or name.startswith('ftp'):
             pass
         else:
-            if not os.path.isfile(os.path.join(sphinx_rootdir, basename)):
-                print 'copying', name, 'to', sphinx_rootdir
-                shutil.copy(name, sphinx_rootdir)
+            if not os.path.isfile(os.path.join(source_dir, basename)):
+                print 'copying', name, 'to', source_dir
+                shutil.copy(name, source_dir)
             if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
-                # since it is copied to sphinx_rootdir
+                # since it is copied to source_dir
                 text = text.replace('.. figure:: %s' % name,
                                     '.. figure:: %s' % basename)
     if text != text_orig:
@@ -33329,11 +33410,10 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +               
         f.write(text)
         f.close()
 
-# Copy linked local files, placed in _static*, to sphinx-testdoc/_static
+# Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %s/* sphinx-testdoc/_static/' % staticdir)
-    # (Note: must do cp -r since shutil.copy/copytree cannot copy a la cp -r)
+    system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
 
 # Compile web version of the sphinx document
 os.chdir(sphinx_rootdir)
@@ -33393,7 +33473,7 @@ import glob, sys, os, commands, shutil
 command_line_options = ' '.join(['"%s"' % arg for arg in sys.argv[1:]])
 
 sphinx_rootdir = 'sphinx-rootdir-math'
-
+source_dir = sphinx_rootdir
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
@@ -33410,7 +33490,7 @@ def system(cmd, capture_output=False, echo=True):
 # Compile the doconce file if a sphinx version of it is not found
 filename = 'math_test'
 if not os.path.isfile(filename + '.rst'):
-    # Filter doconce format to sphinx format and copy to sphinx directory
+    # Transform doconce format to sphinx format and copy to sphinx directory
     cmd = 'doconce format sphinx %s %s' % (filename, command_line_options)
     print cmd
     system(cmd)
@@ -33422,24 +33502,24 @@ if not os.path.isfile(filename + '.rst'):
         # sphinx does not like non-English characters in iso-8859-1
         system('doconce change_encoding iso-8859-1 utf-8 %s.rst' % filename)
 
-# Copy generated sphinx file to sphinx root directory
-shutil.copy('%s.rst' % filename, sphinx_rootdir)
+# Copy generated sphinx file to sphinx directory
+shutil.copy('%s.rst' % filename, source_dir)
 
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
     if figdir.startswith('fig'):
         # Figures can be anywhere (copied by sphinx to _images)
-        destdir = os.path.join(sphinx_rootdir, figdir)
+        destdir = os.path.join(source_dir, figdir)
     elif figdir.startswith('mov'):
         # Movies must be in _static
-        destdir = os.path.join(sphinx_rootdir, '_static', figdir)
+        destdir = os.path.join(source_dir, '_static', figdir)
     if os.path.isdir(figdir) and not os.path.isdir(destdir):
         shutil.copytree(figdir, destdir)
         print 'copying', figdir, 'to', destdir
 
 # Copy needed figure files in current dir (not in fig*)
-for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +                glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
+for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) +                glob.glob(os.path.join(source_dir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
@@ -33453,12 +33533,12 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +               
         if name.startswith('http') or name.startswith('ftp'):
             pass
         else:
-            if not os.path.isfile(os.path.join(sphinx_rootdir, basename)):
-                print 'copying', name, 'to', sphinx_rootdir
-                shutil.copy(name, sphinx_rootdir)
+            if not os.path.isfile(os.path.join(source_dir, basename)):
+                print 'copying', name, 'to', source_dir
+                shutil.copy(name, source_dir)
             if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
-                # since it is copied to sphinx_rootdir
+                # since it is copied to source_dir
                 text = text.replace('.. figure:: %s' % name,
                                     '.. figure:: %s' % basename)
     if text != text_orig:
@@ -33466,11 +33546,10 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) +               
         f.write(text)
         f.close()
 
-# Copy linked local files, placed in _static*, to sphinx-rootdir-math/_static
+# Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %s/* sphinx-rootdir-math/_static/' % staticdir)
-    # (Note: must do cp -r since shutil.copy/copytree cannot copy a la cp -r)
+    system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
 
 # Compile web version of the sphinx document
 os.chdir(sphinx_rootdir)
@@ -36696,17 +36775,18 @@ Python.
 
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
-Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
+Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors, now in
 
 <ul>
  <li> list items</li>
- <li> even with math \( \nabla^2u \) <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Math footnotes can be dangerous since it interferes with an exponent."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button></li>
- <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="One-line footnote."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button>,</li>
+ <li> even with math \( \nabla^2u \) <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Math footnotes can be dangerous since it interferes with an exponent."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button></li>
+ <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="One-line footnote."><a name="link_footnote_3"><a><a href="#def_footnote_3" style="color: white">3</a></button>,</li>
+ <li> and <a href="http://google.com" target="_self">links</a> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="<a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous web site today."><a name="link_footnote_4"><a><a href="#def_footnote_4" style="color: white">4</a></button></li>
 </ul>
 
 which gives flexibility in writing.
-This is the third <button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_4"><a><a href="._testdoc_vagrant003.html#def_footnote_4" style="color: white">4</a></button> example.
+This is the third <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a name="link_footnote_5"><a><a href="._testdoc_vagrant003.html#def_footnote_5" style="color: white">5</a></button> example.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -36719,6 +36799,9 @@ syntax, just displayed properly in HTML.
 interferes with an exponent.
 
 <p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
+
+<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous
+web site today.
 
 <p>
 Here is some more text before a new definition of a footnote that was used
@@ -38155,11 +38238,6 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 
 ************** File: ._testdoc000.rst *****************
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
@@ -38507,6 +38585,8 @@ They are used in different flavors, now in
 
  * and code ``h[i] += 1`` [#code]_,
 
+ * and `links <http://google.com>`_ [#google-search]_
+
 which gives flexibility in writing.
 This is the third [#example-of-the-third-footnote]_ example.
 
@@ -38521,6 +38601,9 @@ This is the third [#example-of-the-third-footnote]_ example.
    interferes with an exponent.
 
 .. [#code] One-line footnote.
+
+.. [#google-search] `<google.com>`_ is perhaps the most famous
+   web site today.
 
 Here is some more text before a new definition of a footnote that was used
 used above.
@@ -51209,7 +51292,6 @@ First a simple block with text, an equation, and a list:
 
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
-..
 
 A generic equation
 
@@ -51232,7 +51314,6 @@ box, it is not a new paragraph):
 
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
-..
 
 
 .. math::
@@ -51244,7 +51325,6 @@ Let's begin a new paragraph and show a box with code only:
 
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
-..
 
 
 .. code-block:: python
@@ -73690,7 +73770,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Jun 11 07:08:29 2014.
+# sphinx-quickstart on Sun Jun 15 08:20:42 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -88875,15 +88955,15 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=90, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=98, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=108, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=116, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=110, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=118, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
 <./downloaded_figures/f_plot.png>]
 
@@ -88924,17 +89004,17 @@ Underfull \hbox (badness 3291)
 
 
 [11] [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=143, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=151, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=144, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=152, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=145, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=153, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=154, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=147, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=155, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=148, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -88958,27 +89038,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1054.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1063.
+t line 1058.
 
 
 
@@ -88999,6 +89059,26 @@ t line 1063.
 
 
 t line 1067.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1071.
 
 
 
@@ -89395,31 +89475,33 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
-/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/palatino/uplr8a.pfb>
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/sha
+re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (24 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
@@ -89648,12 +89730,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=258, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=276, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=278, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -89694,17 +89776,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89728,27 +89810,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1054.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1063.
+t line 1058.
 
 
 
@@ -89769,6 +89831,26 @@ t line 1063.
 
 
 t line 1067.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1071.
 
 
 
@@ -90064,32 +90146,34 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
-/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
-fb>
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/sha
+re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (25 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
@@ -90335,12 +90419,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=258, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=276, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=278, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -90381,17 +90465,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90415,27 +90499,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1054.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1063.
+t line 1058.
 
 
 
@@ -90456,6 +90520,26 @@ t line 1063.
 
 
 t line 1067.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1071.
 
 
 
@@ -90754,32 +90838,34 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
-/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
-fb>
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/sha
+re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
@@ -91007,12 +91093,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=258, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=276, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=278, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -91053,17 +91139,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=308, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=309, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=311, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=312, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=313, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91308,32 +91394,34 @@ downloaded_figures/f_plot.png
  ***********
 
  )
-(see the transcript file for additional information){/usr/share/texmf/fonts/enc
-/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/us
-r/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
-/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
-fb>
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/sha
+re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
@@ -91429,22 +91517,24 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-*** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
-    recommended to be _static/mailto:hpl@simula.no for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
-    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
+    recommended to be _static/frame_0085.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
     recommended to be _static/frame_0100.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
     recommended to be _static/frame_0095.png for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
-    recommended to be _static/frame_0085.png for sphinx
+*** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
+    recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
     recommended to be _static/frame_0090.png for sphinx
-*** warning: hyperlink to URL testdoc.do.txt is to a local file,
-    recommended to be _static/testdoc.do.txt for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
     recommended to be _static/frame_0080.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
+    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL google.com is to a local file,
+    recommended to be _static/google.com for sphinx
+*** warning: hyperlink to URL testdoc.do.txt is to a local file,
+    recommended to be _static/testdoc.do.txt for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
@@ -91488,22 +91578,24 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-*** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
-    recommended to be _static/mailto:hpl@simula.no for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
-    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
+    recommended to be _static/frame_0085.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
     recommended to be _static/frame_0100.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
     recommended to be _static/frame_0095.png for sphinx
-*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
-    recommended to be _static/frame_0085.png for sphinx
+*** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
+    recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
     recommended to be _static/frame_0090.png for sphinx
-*** warning: hyperlink to URL testdoc.do.txt is to a local file,
-    recommended to be _static/testdoc.do.txt for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
     recommended to be _static/frame_0080.png for sphinx
+*** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
+    recommended to be _static/frame_0105.png for sphinx
+*** warning: hyperlink to URL google.com is to a local file,
+    recommended to be _static/google.com for sphinx
+*** warning: hyperlink to URL testdoc.do.txt is to a local file,
+    recommended to be _static/testdoc.do.txt for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
@@ -91613,9 +91705,8 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc000.rst:9: ERROR: Duplicate substitution definition name: "nbsp".
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:334: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:336: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:336: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -91633,7 +91724,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 5 warnings.
+build succeeded, 4 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying movie_demo to sphinx-testdoc/_static/movie_demo
