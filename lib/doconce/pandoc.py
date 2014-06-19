@@ -2,10 +2,15 @@
 See http://johnmacfarlane.net/pandoc/README.html
 for syntax.
 """
+# Remaining key issue: github_md dialect hardcodes all the newlines so
+# lines in paragraphs should be joined if the resulting Markdown text
+# is published as an issue on github.com. (Difficult to solve. Current
+# solution seems to be manual editing, which is doable for small
+# documents and issues.)
 
 import re, sys
 from common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, bibliography
+     insert_code_and_tex, bibliography, indent_lines
 from html import html_movie, html_table
 from misc import option
 
@@ -83,6 +88,8 @@ def pandoc_code(filestr, code_blocks, code_block_types,
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
+    github_md = option('github_md')
+
     if not option('strict_markdown_output'):
         # Mapping of envirs to correct Pandoc verbatim environment
         defs = dict(cod='Python', pycod='Python',
@@ -99,8 +106,6 @@ def pandoc_code(filestr, code_blocks, code_block_types,
                     ipy='Python', pyshell='Python')
             # (the "Python" typesetting is neutral if the text
             # does not parse as python)
-
-        github_md = option('github_md')
 
         # Code blocks apply the ~~~~~ delimiter, with blank lines before
         # and after
@@ -123,10 +128,14 @@ def pandoc_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(r'^!bc.*$', replacement, filestr, flags=re.MULTILINE)
 
         if github_md:
-            replacement = '\n```\n'
+            replacement = '```\n'
         else:
             replacement = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
         filestr = re.sub(r'^!ec\s*$', replacement, filestr, flags=re.MULTILINE)
+    else:
+        # Strict Markdown: just indented blocks
+        filestr = re.sub(r'^!bc.*$', '', filestr, flags=re.MULTILINE)
+        filestr = re.sub(r'^!ec\s*$', '', filestr, flags=re.MULTILINE)
 
     filestr = re.sub(r'^!bt *\n', '', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '', filestr, flags=re.MULTILINE)
@@ -364,7 +373,8 @@ def define(FILENAME_EXTENSION,
         'description':
         {'begin': '', 'item': '%s\n  :   ', 'end': '\n'},
 
-        'separator': '\n',
+        #'separator': '\n',
+        'separator': '',
         }
     CROSS_REFS['pandoc'] = pandoc_ref_and_label
 
