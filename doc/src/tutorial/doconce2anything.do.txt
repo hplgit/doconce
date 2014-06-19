@@ -45,24 +45,46 @@ file. The Doconce program detects whether `preprocess` and/or `mako`
 statements are present and runs the corresponding programs, first
 `preprocess` and then `mako`.
 
-Options to `preprocess` and/or `mako` can be added after the
-filename with the syntax `-DMYVAR` or `MYVAR=True` for defining
-a variable `MYVAR`, or `-DMYVAR=val` or `MYVAR=val` for giving
-`MYVAR` the value `val`. For example,
+Variables to `preprocess` and/or `mako` can be added after the
+filename with the syntax `-DMYVAR`, `-DMYVAR=val` or `MYVAR=val`.
+
+ * The form `-DMYVAR` defines the variable `MYVAR` for `preprocess` (like the
+   same syntax for the C preprocessor - `MYVAR` is defined, but has
+   not specific value). When running `mako`, `-DMYVAR` means that
+   `MYVAR` has the (Python) value `True`.
+ * The expressions `-DMYVAR=val` and `MYVAR=val` are
+   equivalent. When running `preprocess`, `MYVAR` is defined and has
+   the value `val` (`# #ifdef MYVAR` and `# #if MYVAR == "val"` are both
+   true tests), while for `mako`, `MYVAR` exists as
+   variable and has the value `val` (`% if MYVAR == "val"` is true).
+
+Note that `MYVAR=False` defines `MYVAR` in `preprocess` and
+any test `# #ifdef MYVAR` is always true, regardless of the value one has
+set `MYVAR` to, so a better test is
+`# #if MYVAR == True`. In general, it is recommended to go with
+`preprocess` directives if the tests are very simple, as in
+`# #ifdef MYVAR` or `# #if FORMAT == "latex"`, otherwise use
+only `mako` syntax like `% if MYVAR or YOURVAR:` to incorporate
+`if` tests in the preprocessor phases.
+
+Two examples on defining preprocessor variables are
+
 !bc sys
 Terminal> doconce format sphinx mydoc -Dextra_sections -DVAR1=5
 Terminal> doconce format sphinx mydoc extra_sections=True VAR1=5
 !ec
+
 The variable `FORMAT` is always defined as the current format when
 running `preprocess` or `mako`. That is, in the above examples, `FORMAT` is
 defined as `sphinx`. Inside the Doconce document one can then perform
 format specific actions through tests like `#if FORMAT == "sphinx"`
 (for `preprocess`) or `% if FORMAT == "sphinx":` (for `mako`).
 
-The result of a Doconce file `mydoc.do.txt` after running `preprocess`
+The result of running `preprocess` on a Doconce file `mydoc.do.txt`
 is available in a file `tmp_preprocess__mydoc.do.txt`. Similarly,
 the result of running `mako` is available in
-`tmp_mako__mydoc.do.txt`.
+`tmp_mako__mydoc.do.txt`. By examining these files one can see exactly
+what the preprocessors have done.
 
 ===== Removal of inline comments =====
 
