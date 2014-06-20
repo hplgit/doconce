@@ -1,4 +1,4 @@
-In a movie or written demo of Doconce, show how to debug:
+In a movie or written demo of DocOnce, show how to debug:
 
 Mako errors:
 
@@ -16,7 +16,7 @@ Table errors:
 
  * Forgotten a horizontal rule
 
-Doconce syntax errors:
+DocOnce syntax errors:
 
  * FIGURE and other keywords do not start in column 1
  * label with backslash

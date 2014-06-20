@@ -1,6 +1,6 @@
 ## Missing: FIGURE, MOVIE, Exercise, environments
 
-TITLE: Doconce: Document Once, Include Anywhere
+TITLE: DocOnce: Document Once, Include Anywhere
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -27,7 +27,7 @@ DATE: today
 If any of these questions are of interest, you should keep on reading.
 
 
-======= Some Doconce Features =======
+======= Some DocOnce Features =======
 
  * Strong support for texts with much math and code.
 
@@ -40,7 +40,7 @@ If any of these questions are of interest, you should keep on reading.
    o "Sphinx HTML documents with 20+ different designs": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
    o "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
    o HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
-   o "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
+   o "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
    o Markdown
    o IPython notebook
 
@@ -66,9 +66,9 @@ If any of these questions are of interest, you should keep on reading.
    for warnings, questions, hints, remarks, summaries, etc.
 
 
-======= What Does Doconce Look Like? =======
+======= What Does DocOnce Look Like? =======
 
-Doconce text looks like ordinary text (much like Markdown), but there
+DocOnce text looks like ordinary text (much like Markdown), but there
 are some almost invisible text constructions that allow you to control
 the formating. Here are some examples.
 
@@ -118,7 +118,7 @@ the formating. Here are some examples.
     included. With Mako a single text can output its program examples
     in two or more languages.
 
-===== What Can Doconce Be Used For? =====
+===== What Can DocOnce Be Used For? =====
 
 LaTeX is ideal for articles, thesis, and books, but not so suited
 for web documents. Nice environments for web documents, such as
@@ -130,15 +130,15 @@ requirements of books and thesis.
 What about migrating a part of a book to blog posts? What about making
 an MS Word version of parts or an untagged text for inclusion in
 email?  What about efficiently generating slides in modern HTML5
-style?  Doconce enables all this with just *one source* (the slogan is
+style?  DocOnce enables all this with just *one source* (the slogan is
 *document once - include anywhere*).
-Doconce also
+DocOnce also
 has many extra features for supporting documents with much code and
 mathematics, not found in any of the mentioned formats.
 
 ===== Basic Syntax =====
 
-Here is an example of some simple text written in the Doconce format:
+Here is an example of some simple text written in the DocOnce format:
 
 !bc
 ======= First a Section Heading =======
@@ -170,9 +170,9 @@ Lists can also have automatically numbered items instead of bullets,
 __Hyperlinks.__ Paragraph headings are surrounded by double underscores.
 URLs with a link word are possible, as in "hpl": "http://folk.uio.no/hpl".
 If the word is URL, the URL itself becomes the link name,
-as in "URL": "tutorial.do.txt". Doconce distinguishes between paper
+as in "URL": "tutorial.do.txt". DocOnce distinguishes between paper
 and screen output. In traditional paper output, in PDF generated from LaTeX
-generated from Doconce, the URLs of links appear as footnotes.
+generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
 
@@ -182,7 +182,7 @@ Section ref{my:first:sec}. References to equations such as
 (ref{myeq1}) work in the same way.
 
 __Inline comments.__
-Doconce also allows inline comments of the form [name: comment] (with
+DocOnce also allows inline comments of the form [name: comment] (with
 a space after `name:`), e.g., such as [hpl: here I will make some
 remarks to the text]. Inline comments can be removed from the output
 by a command-line argument (see Section ref{doconce2formats} for an
@@ -205,7 +205,7 @@ Tables are also written in the plain text way, e.g.,
 
 # lines beginning with # are comment lines
 !ec
-The Doconce text above results in the following little document:
+The DocOnce text above results in the following little document:
 
 
 ======= First a Section Heading =======
@@ -238,9 +238,9 @@ Lists can also have numbered items instead of bullets, just use an `o`
 __Hyperlinks.__ Paragraph headings are surrounded by double underscores.
 URLs with a link word are possible, as in "hpl": "http://folk.uio.no/hpl".
 If the word is URL, the URL itself becomes the link name,
-as in "URL": "tutorial.do.txt". Doconce distinguishes between paper
+as in "URL": "tutorial.do.txt". DocOnce distinguishes between paper
 and screen output. In traditional paper output, in PDF generated from LaTeX
-generated from Doconce, the URLs of links appear as footnotes.
+generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
 
@@ -251,7 +251,7 @@ Section ref{my:first:sec}. References to equations such as
 (ref{myeq1}) work in the same way.
 
 __Inline comments.__
-Doconce also allows inline comments such as [hpl: here I will make
+DocOnce also allows inline comments such as [hpl: here I will make
 some remarks to the text] for allowing authors to make notes. Inline
 comments can be removed from the output by a command-line argument
 (see Section ref{doconce2formats} for an example). Ordinary comment
@@ -316,7 +316,7 @@ Blocks of mathematics are typeset with raw LaTeX, inside
 ## tex and code blocks in inside verbatim blocks and are replaced
 ## by !bt, !et, !bc, and !ec after all other formatting is finished.
 ## (Comment lines starting with ## are not copied to the output
-## format and hence much used to explain the Doconce syntax
+## format and hence much used to explain the DocOnce syntax
 ## used in special constructions.)
 The result looks like this:
 
@@ -366,7 +366,7 @@ duplicated in the documentation (important for the principle of
 avoiding copying information!).
 
 Another document can be included by writing `# #include "mynote.do.txt"`
-at the beginning of a line.  Doconce documents have
+at the beginning of a line.  DocOnce documents have
 extension `do.txt`. The `do` part stands for doconce, while the
 trailing `.txt` denotes a text document so that editors gives you
 plain text editing capabilities.
@@ -375,13 +375,13 @@ plain text editing capabilities.
 ===== Macros (Newcommands), Cross-References, Index, and Bibliography =====
 label{newcommands}
 
-Doconce supports a type of macros via a LaTeX-style *newcommand*
+DocOnce supports a type of macros via a LaTeX-style *newcommand*
 construction.  The newcommands are defined in files with names
 `newcommands*.tex`, using standard LaTeX syntax. Only newcommands
 for use inside math environments are supported.
 
 Labels, corss-references, citations, and support of an index and
-bibliography are much inspired by LaTeX syntax, but Doconce features
+bibliography are much inspired by LaTeX syntax, but DocOnce features
 no backslashes. Use labels for sections and equations only, and
 preceed the reference by "Section" or "Chapter", or in case of
 an equation, surround the reference by parenthesis.
@@ -422,26 +422,26 @@ BIBFILE: papers.pub
 
 For further details on functionality and
 syntax we refer to the `doc/manual/manual.do.txt` file
-in the Doconce source and a "Sphinx version": "http://hplgit.github.io/doconce/doc/pub/manual/html/" of this document.
+in the DocOnce source and a "Sphinx version": "http://hplgit.github.io/doconce/doc/pub/manual/html/" of this document.
 
 
-## Example on including another Doconce file (using preprocess):
+## Example on including another DocOnce file (using preprocess):
 
 # #include "doconce2anything.do.txt"
 
 
 ===== Demos =====
 
-The current text is generated from a Doconce format stored in the file
+The current text is generated from a DocOnce format stored in the file
 !bc
 doc/tutorial/tutorial.do.txt
 !ec
 The file `make.sh` in the `tutorial` directory of the
-Doconce source code contains a demo of how to produce a variety of
+DocOnce source code contains a demo of how to produce a variety of
 formats.  The source of this tutorial, `tutorial.do.txt` is the
 starting point.  Running `make.sh` and studying the various generated
 files and comparing them with the original `tutorial.do.txt` file,
-gives a quick introduction to how Doconce is used in a real case.
+gives a quick introduction to how DocOnce is used in a real case.
 
 There is another demo in the `docs/manual` directory which
 translates the more comprehensive documentation, `manual.do.txt`, to

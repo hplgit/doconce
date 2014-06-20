@@ -59,6 +59,32 @@ Cw: Denmark
 
 !enotice
 
+Multiple correct choices are possible. Writing
+
+!bc
+|bquiz
+Q: Which of the following cities are capitals?
+Cw: Sidney
+Cr: Kigali
+Cw: Bonn
+Cr: Bern
+Cr: Ottawa
+Cw: New York
+|equiz
+!ec
+gives rise to the quiz
+
+!bquiz
+Q: Which of the following cities are capitals?
+Cw: Sidney
+Cr: Kigali
+Cw: Bonn
+Cr: Bern
+Cr: Ottawa
+Cw: New York
+!equiz
+
+
 ===== Explanations of choices =====
 
 Sometimes it is desireable to give some explanation why certain choices
@@ -105,8 +131,8 @@ It is easy to use *emphasize font*, _boldface_, color{red}{color},
 "hyperlinks": "http://google.com", etc.,
 since the text in the specification of questions, choices,
 and explanations are rendered according to the
-"Doconce": "https://github.com/hplgit/doconce" markup language.
-For simple typesetting (emphasize, boldface, links) Doconce also
+"DocOnce": "https://github.com/hplgit/doconce" markup language.
+For simple typesetting (emphasize, boldface, links) DocOnce also
 accepts Markdown syntax.
 Here is an example:
 
@@ -162,12 +188,12 @@ quote.
 
 ===== Specification in HTML =====
 
-Instead of using the compact text specification with Doconce
+Instead of using the compact text specification with DocOnce
 formatting, one can use a more verbose syntax and specify everything
 in HTML. The previous example then reads
 
 ## Note that the HTML text is indented such that it is not interpreted
-## as a quiz by Doconce.
+## as a quiz by DocOnce.
 
 !bc htmlcod
  <!-- --- begin quiz --- -->
@@ -224,7 +250,7 @@ HTML above and typset questions, choices, and explanations adequately.
 !ewarning
 
 # #ifdef DOCONCE
-===== Quiz inside admonitions in Doconce =====
+===== Quiz inside admonitions in DocOnce =====
 
 Question admonitions may well feature quizzes. A plain question
 admonition is
@@ -232,7 +258,7 @@ admonition is
 !bquestion
 What is the capital of Norway?
 !equestion
-specified by the Doconce syntax
+specified by the DocOnce syntax
 
 !bc
 |bquestion
@@ -275,17 +301,22 @@ Cr: Oslo
 
 Cw: Denmark
 |equiz
-|equstion
+|equestion
 !ec
 
 
 # #endif
 
-======= Typesetting of mathematics =======
+======= Typesetting of mathematics and computer code =======
 
-===== Inline formulas =====
+===== Mathematics =====
 
-===== Equations =====
+Mathematical typesetting follows a restricted LaTeX syntax. Inline
+formulas appear inside dollar signs, while separate equations
+appear inside `!bt` (``begin TeX'') and `!et` (``end TeX'') tags.
+
+
+===== Code =====
 
 # math quiz inline formulas
 # math quiz equations

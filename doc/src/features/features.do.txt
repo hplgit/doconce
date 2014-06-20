@@ -1,9 +1,9 @@
-TITLE: Demonstration of features in Doconce
+TITLE: Demonstration of features in DocOnce
 AUTHOR: Hans Petter Langtangen at Simula & University of Oslo
 DATE: today
 
 __Summary.__ This document demonstrates the various features that
-are present in the Doconce markup language. The abstract starts
+are present in the DocOnce markup language. The abstract starts
 with `__Abstract.__` or `__Summary.__` in the first column and
 lasts up to the table of contents or the first heading.
 
@@ -34,7 +34,7 @@ a `paragraph` command is used for subsubsections.
 
 ===== Inline tagging =====
 
-Doconce features _boldface words_, *emphasized words*, `inline verbatim
+DocOnce features _boldface words_, *emphasized words*, `inline verbatim
 computer code` (in monospace font), [hpl: Inline comments, e.g.,
 for other authors. These comments stand out and can easily be
 ignore at compile time.]
@@ -42,7 +42,7 @@ ignore at compile time.]
 !bnotice Non-breaking space character
 This paragraph aims to test "non-breaking space character":
 "http://en.wikipedia.org/wiki/Non-breaking_space", which is a tilde in
-Doconce. A typical example where this is needed is in physical units:
+DocOnce. A typical example where this is needed is in physical units:
 7.4~km is traveled in~$7.4/5.5\approx 1.345$~s.  Also check that
 a~"link": "http://google.com"~is not broken across lines (drag the
 browser window to test this).  (On the other hand, the tilde is used
@@ -83,7 +83,7 @@ label{eq2}
 
 ## Markdown sections
 
-Doconce allows simple (extended) Mardown input, such as **boldface** notation,
+DocOnce allows simple (extended) Mardown input, such as **boldface** notation,
 `inline verbatim code` in monospace font, *emphasized words*,
 footnotes [^footnote], special link syntax: [link to google][1],
 and code blocks,

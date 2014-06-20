@@ -155,7 +155,7 @@ of understanding.
 # #if FORMAT == "sphinx"
 Admonitions must have a title in Sphinx, otherwise they are not
 shown. Here, for the following *block admon* (`!bblock`)
-we have not specified any title, and Doconce then
+we have not specified any title, and DocOnce then
 applies the generic title "Notice:" for the Sphinx format:
 # #endif
 
@@ -190,11 +190,11 @@ Ah, we are soon close to the end.
 !enotice
 
 !bquestion
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 !equestion
 
 !bquestion
-  o Once more, how many admonition environments does Doconce support?
+  o Once more, how many admonition environments does DocOnce support?
 !equestion
 
 !bwarning Tip
@@ -216,7 +216,7 @@ def grab(url, filename):
 Next is a warning without a title ("none" implies no title).
 # #if FORMAT == "sphinx"
 Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, we have not specified any title, and Doconce then
+shown. Here, we have not specified any title, and DocOnce then
 applies the generic title "Notice:"
 # #endif
 

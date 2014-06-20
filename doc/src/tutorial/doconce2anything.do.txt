@@ -1,8 +1,8 @@
 
-======= From Doconce to Other Formats =======
+======= From DocOnce to Other Formats =======
 label{doconce2formats}
 
-Transformation of a Doconce document `mydoc.do.txt` to various other
+Transformation of a DocOnce document `mydoc.do.txt` to various other
 formats apply the script `doconce format`:
 
 !bc sys
@@ -17,13 +17,13 @@ Terminal> doconce format formatname mydoc
 ===== Generating a makefile =====
 
 Producing HTML, Sphinx, and in particular LaTeX documents from
-Doconce sources requires a few commands. Often you want to
+DocOnce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
 then be placed in a script that acts as a ``makefile''.
 
 The `doconce makefile` can be used to automatically generate
 such a makefile, more precisely a Python script `make.py`, which
-carries out the commands explained below. If our Doconce source
+carries out the commands explained below. If our DocOnce source
 is in `main_myproj.do.txt`, we run
 
 !bc sys
@@ -41,7 +41,7 @@ and if something goes wrong, the script aborts.
 ===== Preprocessing =====
 
 The `preprocess` and `mako` programs are used to preprocess the
-file. The Doconce program detects whether `preprocess` and/or `mako`
+file. The DocOnce program detects whether `preprocess` and/or `mako`
 statements are present and runs the corresponding programs, first
 `preprocess` and then `mako`.
 
@@ -76,11 +76,11 @@ Terminal> doconce format sphinx mydoc extra_sections=True VAR1=5
 
 The variable `FORMAT` is always defined as the current format when
 running `preprocess` or `mako`. That is, in the above examples, `FORMAT` is
-defined as `sphinx`. Inside the Doconce document one can then perform
+defined as `sphinx`. Inside the DocOnce document one can then perform
 format specific actions through tests like `#if FORMAT == "sphinx"`
 (for `preprocess`) or `% if FORMAT == "sphinx":` (for `mako`).
 
-The result of running `preprocess` on a Doconce file `mydoc.do.txt`
+The result of running `preprocess` on a DocOnce file `mydoc.do.txt`
 is available in a file `tmp_preprocess__mydoc.do.txt`. Similarly,
 the result of running `mako` is available in
 `tmp_mako__mydoc.do.txt`. By examining these files one can see exactly
@@ -95,17 +95,17 @@ Inline comments in the text are removed from the output by
 !bc sys
 Terminal> doconce format latex mydoc --skip_inline_comments
 !ec
-One can also remove all such comments from the original Doconce
+One can also remove all such comments from the original DocOnce
 file by running:
 !bc
 Terminal> doconce remove_inline_comments mydoc
 !ec
-This action is convenient when a Doconce document reaches its final form
+This action is convenient when a DocOnce document reaches its final form
 and comments by different authors should be removed.
 
 ===== Notes =====
 
-Doconce does not have a tag for longer notes, because implementation
+DocOnce does not have a tag for longer notes, because implementation
 of a "notes feature" is so easy using the `preprocess` or `mako`
 programs. Just introduce some variable, say `NOTES`, that you define
 through `-DNOTES` (or not) when running `doconce format ...`. Inside
@@ -127,7 +127,7 @@ in the coming sections.
 
 === Basics ===
 
-Making an HTML version of a Doconce file `mydoc.do.txt`
+Making an HTML version of a DocOnce file `mydoc.do.txt`
 is performed by
 !bc sys
 Terminal> doconce format html mydoc
@@ -173,7 +173,7 @@ specified as `--html_style=name`, where `name` can be
  * `bloodish`: as `bluish`, but dark read as color.
 
 Using `--css=filename` where `filename` is a non-existing file makes
-Doconce write the built-in style to that file. Otherwise the HTML
+DocOnce write the built-in style to that file. Otherwise the HTML
 links to the CSS stylesheet in `filename`. Several stylesheets can
 be specified: `--ccs=file1.css,file2.css,file3.css`.
 
@@ -181,8 +181,8 @@ be specified: `--ccs=file1.css,file2.css,file3.css`.
 
 Templates are HTML files with "slots" `%(main)s` for the main body
 of text, `%(title)s` for the title, and `%(date)s` for the date.
-Doconce comes with a few templates. The usage of templates is
-described in a "separate document": "". That document describes how you your Doconce-generated
+DocOnce comes with a few templates. The usage of templates is
+described in a "separate document": "". That document describes how you your DocOnce-generated
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored
@@ -190,11 +190,11 @@ design, see a "tutorial": "http://hplgit.github.io/doconce/doc/pub/tech_wrapper.
 valid HTML code and can have three "slots": `%(title)s` for a title,
 `%(date)s` for a date, and `%(main)s` for the main body of text. The
 latter is the
-Doconce document translated to HTML. The title becomes the first
-heading in the Doconce document, or the title (but a title is not
+DocOnce document translated to HTML. The title becomes the first
+heading in the DocOnce document, or the title (but a title is not
 recommended when using templates). The date is extracted from the
 `DATE:` line. With the template feature one can easily embed
-the text in the look and feel of a website. Doconce comes with
+the text in the look and feel of a website. DocOnce comes with
 two templates in `bundled/html_styles`. Just copy the directory
 containing the template and the CSS and JavaScript files to your
 document directory, edit the template as needed (also check that
@@ -211,13 +211,13 @@ it into many pages.
 === The HTML File Collection ===
 
 There are usually a range of files needed for an HTML document arising
-from a Doconce source. The needed files are listed in
+from a DocOnce source. The needed files are listed in
 `.basename_html_file_collection`, where `basename` is the filestem of
-the Doconce file (i.e., the Doconce source is in `basename.do.txt`).
+the DocOnce file (i.e., the DocOnce source is in `basename.do.txt`).
 
 === Filenames ===
 
-An HTML version of a Doconce document is often made in different styles,
+An HTML version of a DocOnce document is often made in different styles,
 calling for a need to rename the HTML output file. This is conveniently
 done by the `--html_output=basename` option, where `basename` is the
 filestem of the associated HTML files. The
@@ -241,12 +241,12 @@ Terminal> doconce split_html mydoc_vagrant.html
 
 ===== Blog Posts =====
 
-Doconce can be used for writing blog posts provided the blog site accepts
+DocOnce can be used for writing blog posts provided the blog site accepts
 raw HTML code. Google's Blogger service (`blogger.com` or
 `blogname.blogspot.com`) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.
 
- o Write the text of the blog post as a Doconce document without any
+ o Write the text of the blog post as a DocOnce document without any
    title, author, and date.
  o Generate HTML as described above.
  o Copy the text and paste it into the
@@ -272,7 +272,7 @@ as prefix to all figure names (a similar `--movie_prefix=` option exists as
 well).
 
 Changing figure names in a blog post can also be done ``manually'' by
-some editing code in the script that compiles the Doconce document
+some editing code in the script that compiles the DocOnce document
 to HTML format:
 
 !bc shcod
@@ -306,7 +306,7 @@ and a "scientific report": "http://doconcereportdemo.wordpress.com/"
 to see blog posts with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project URL:
-"http://pressbooks.com" can take raw HTML code (from Doconce, for
+"http://pressbooks.com" can take raw HTML code (from DocOnce, for
 instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.
 
@@ -359,7 +359,7 @@ Terminal> pandoc -f latex -t docx -o mydoc.docx mydoc.tex
 When we go through `pandoc`, only single equations, `align`, or `align*`
 environments are well understood for output to HTML.
 
-Note that Doconce applies the `Verb` macro from the `fancyvrb` package
+Note that DocOnce applies the `Verb` macro from the `fancyvrb` package
 while `pandoc` only supports the standard `verb` construction for
 inline verbatim text.  Moreover, quite some additional `doconce
 replace` and `doconce subst` edits might be needed on the `.mkd` or
@@ -459,14 +459,14 @@ found on the "Strapdown page": "http://strapdownjs.com".
 !bnotice
 XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
-of the documentation of the Doconce to LaTeX translation.
+of the documentation of the DocOnce to LaTeX translation.
 !enotice
 
 Making a LaTeX file `mydoc.tex` from `mydoc.do.txt` is done in two steps:
-1) compile the Doconce source to the `ptex2tex` format, and 2) compile
+1) compile the DocOnce source to the `ptex2tex` format, and 2) compile
 the `ptex2tex` format to standard LaTeX.
 The "`ptex2tex`": "http://code.google.com/p/ptex2tex" format can be
-viewed as an extended LaTeX. For Doconce users, the `ptex2tex` format
+viewed as an extended LaTeX. For DocOnce users, the `ptex2tex` format
 essentially means that the file consists of
 
  o `if-else` statements for the `preprocess` processor such that
@@ -479,23 +479,23 @@ formatting that requires you to use a configuration file and
 the `ptex2tex` program.
 
 The reason for generating `ptex2tex` and not standard LaTeX directly
-from Doconce was that the `ptex2tex` format shows a range of possible
+from DocOnce was that the `ptex2tex` format shows a range of possible
 LaTeX constructions for controlling the layout. It can be instructive
 for LaTeX users to look at this code before choosing specific parts
 for some desired layout. Experts may also want to edit this code
 (which should be automated by a script such that the edits can be
-repeated when the Doconce source is modified, see Step 2b below).
+repeated when the DocOnce source is modified, see Step 2b below).
 (Direct control of the LaTeX layout in the `doconce format` program
 would not spit out alternative LaTeX constructs as is now done through
 the `ptex2tex` step.)
 
 Going from `ptex2tex` format to standard LaTeX format is enabled by
-either the `ptex2tex` program or Doconce's (simplified) version of it:
+either the `ptex2tex` program or DocOnce's (simplified) version of it:
 `doconce ptex2tex`. Details are given below.
 
 !bnotice Information on typesetting of inline verbatim
 The `ptex2tex` and the `doconce ptex2tex` programs take inline verbatim
-code, typeset with backticks in Doconce, and translate this to
+code, typeset with backticks in DocOnce, and translate this to
 
 !bc
 \Verb!text!
@@ -560,7 +560,7 @@ Python ptex2tex package) to make a standard LaTeX file,
 Terminal> ptex2tex mydoc
 !ec
 In case you do not have `ptex2tex`, you may run the (simplified) version
-that comes with Doconce:
+that comes with DocOnce:
 !bc sys
 Terminal> doconce ptex2tex mydoc
 !ec
@@ -576,17 +576,17 @@ The `ptex2tex` command can set two preprocessor variables:
    or `pdflatex` to be run with the `-shell-escape` option); not used
    for `doconce ptex2tex` only in the `ptex2tex` program
 
-If you are not satisfied with the generated Doconce preamble, you can provide
+If you are not satisfied with the generated DocOnce preamble, you can provide
 your own preamble by adding the command-line option `--latex_preamble=myfile`.
-In case `myfile` contains a documentclass definition, Doconce assumes
+In case `myfile` contains a documentclass definition, DocOnce assumes
 that the file contains the *complete* preamble you want (not that all
 the packages listed in the default preamble are required and must be
 present in `myfile`). Otherwise, `myfile` is assumed to contain
-*additional* LaTeX code to be added to the Doconce default preamble.
+*additional* LaTeX code to be added to the DocOnce default preamble.
 
 The `ptex2tex` tool makes it possible to easily switch between many
 different fancy formattings of computer code in LaTeX documents. After
-any `!bc` command in the Doconce source you can insert verbatim block
+any `!bc` command in the DocOnce source you can insert verbatim block
 styles as defined in your `.ptex2tex.cfg` file, e.g., `!bc sys` for a
 terminal session, where `sys` is set to a certain environment in
 `.ptex2tex.cfg` (e.g., `CodeTerminal`).  There are about 40 styles to
@@ -716,7 +716,7 @@ see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html"
 
 ===== Plain ASCII Text =====
 
-We can go from Doconce "back to" plain untagged text suitable for viewing
+We can go from DocOnce "back to" plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:
 !bc sys
@@ -725,8 +725,8 @@ Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
 
 ===== reStructuredText =====
 
-Going from Doconce to reStructuredText gives a lot of possibilities to
-go to other formats. First we filter the Doconce text to a
+Going from DocOnce to reStructuredText gives a lot of possibilities to
+go to other formats. First we filter the DocOnce text to a
 reStructuredText file `mydoc.rst`:
 !bc sys
 Terminal> doconce format rst mydoc.do.txt
@@ -758,7 +758,7 @@ Terminal> unoconv -f pdf mydoc.odt
 !ec
 
 __Remark about Mathematical Typesetting.__
-At the time of this writing, there is no easy way to go from Doconce
+At the time of this writing, there is no easy way to go from DocOnce
 and LaTeX mathematics to reST and further to OpenOffice and the
 "MS Word world". Mathematics is only fully supported by `latex` as
 output and to a wide extent also supported by the `sphinx` output format.
@@ -808,9 +808,9 @@ Terminal> google-chrome sphinx-rootdir/_build/html/index.html
 !ec
 or loading the `index.html` file manually into your favorite web browser.
 
-If you cycle through editing the Doconce file and watching the
+If you cycle through editing the DocOnce file and watching the
 HTML output, you should observe that `automake_sphinx.py` does not
-recompile the Doconce file if the Sphinx `.rst` version already exists.
+recompile the DocOnce file if the Sphinx `.rst` version already exists.
 In each edit-and-watch cycle do
 
 !bc sys
@@ -831,7 +831,7 @@ __Links.__
 The `automake_sphinx.py` script copies directories named `fig*`
 over to the Sphinx directory so that figures are accessible
 in the Sphinx compilation.  It also examines `MOVIE:` and `FIGURE:`
-commands in the Doconce file to find other image files and copies
+commands in the DocOnce file to find other image files and copies
 these too. I strongly recommend to put files
 to which there are local links (not `http:` or `file:` URLs) in
 a directory named `_static`. The `automake_sphinx.py` copies
@@ -844,10 +844,10 @@ accordingly. For example, a link to `dir1/dir2/myfile.txt` is changed
 to `_static/myfile.txt` and `myfile.txt` is copied to `_static`.
 However, I recommend instead that you manually copy
 files to `_static` when you want to link to them, or let your
-script which compiles the Doconce document do it automatically.
+script which compiles the DocOnce document do it automatically.
 
 __Themes.__
-Doconce comes with a rich collection of HTML themes for Sphinx documents,
+DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 `agni`,
@@ -870,7 +870,7 @@ All the themes are packed out in the Sphinx directory, and the
 `doconce sphinx_dir` insert lots of extra code in the `conf.py`
 file to enable easy specification and customization of themes.
 For example, modules are loaded for the additional themes that
-come with Doconce, code is inserted to allow customization of
+come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc. The `conf.py` file is a
 good starting point for fine-tuning your favorite team, and your
 own `conf.py` file can later be supplied and used when running
@@ -891,7 +891,7 @@ it is easy to check out various themes to find the one that is most
 attractive for your document.
 
 You may supply your own theme and avoid copying all the themes
-that come with Doconce into the Sphinx directory. Just specify
+that come with DocOnce into the Sphinx directory. Just specify
 `theme_dir=path` on the command line, where `path` is the relative
 path to the directory containing the Sphinx theme. You must also
 specify a configure file by `conf.py=path`, where `path` is the
@@ -942,7 +942,7 @@ If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file `mydoc.do.txt`.
 
-__Step 1.__ Translate Doconce into the Sphinx format:
+__Step 1.__ Translate DocOnce into the Sphinx format:
 !bc sys
 Terminal> doconce format sphinx mydoc
 !ec
@@ -1029,13 +1029,13 @@ all such arguments can be customized both for Sphinx and LaTeX output.
 
 ===== Wiki Formats =====
 
-There are many different wiki formats, but Doconce only supports three:
+There are many different wiki formats, but DocOnce only supports three:
 "Googlecode wiki": "http://code.google.com/p/support/wiki/WikiSyntax",
 "MediaWiki": "http://www.mediawiki.org/wiki/Help:Formatting", and
 "Creole Wiki": "http://www.wikicreole.org/wiki/Creole1.0".
 These formats are called
 `gwiki`, `mwiki`, and `cwiki`, respectively.
-Transformation from Doconce to these formats is done by
+Transformation from DocOnce to these formats is done by
 !bc sys
 Terminal> doconce format gwiki mydoc.do.txt
 Terminal> doconce format mwiki mydoc.do.txt
@@ -1045,7 +1045,7 @@ Terminal> doconce format cwiki mydoc.do.txt
 The produced MediaWiki can be tested in the "sandbox of
 wikibooks.org": "http://en.wikibooks.org/wiki/Sandbox". The format
 works well with Wikipedia, Wikibooks, and
-"ShoutWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page",
+"ShoutWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page",
 but not always well elsewhere
 (see "this example":
 "http://doconcedemo.jumpwiki.com/wiki/First_demo").
@@ -1055,7 +1055,7 @@ Large MediaWiki documents can be made with the
 "http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=book_creator".
 From the MediaWiki format one can go to other formats with aid
 of "mwlib": "http://pediapress.com/code/". This means that one can
-easily use Doconce to write "Wikibooks": "http://en.wikibooks.org"
+easily use DocOnce to write "Wikibooks": "http://en.wikibooks.org"
 and publish these in PDF and MediaWiki format, while
 at the same time, the book can also be published as a
 standard LaTeX book, a Sphinx web document, or a collection of HTML files.
@@ -1067,7 +1067,7 @@ in a directory which is a clone of the wiki part of the Googlecode project.
 This is far easier than copying and pasting the entire text into the
 wiki editor in a web browser.
 
-When the Doconce file contains figures, each figure filename must in
+When the DocOnce file contains figures, each figure filename must in
 the `.gwiki` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
@@ -1075,8 +1075,8 @@ one performs this substitution automatically (see next section).
 ===== Google Docs =====
 
 Google Docs are normally made online in the interactive editor. However,
-you may upload a Doconce document to Google Docs. This requires transforming
-the Doconce document to one of the accepted formats for Google Docs:
+you may upload a DocOnce document to Google Docs. This requires transforming
+the DocOnce document to one of the accepted formats for Google Docs:
 
  * OpenOffice: `doconce format rst` and then run
    `rst2odt` (or `rst2odt.py`). Upload the `.odt` file, click
@@ -1100,16 +1100,16 @@ Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the "googledoc2latex": "http://code.google.com/p/googledoc2latex" script can convert a Google document to LaTeX.
 
-===== Tweaking the Doconce Output =====
+===== Tweaking the DocOnce Output =====
 
 Occasionally, one would like to tweak the output in a certain format
-from Doconce. One example is figure filenames when transforming
-Doconce to reStructuredText. Since Doconce does not know if the
+from DocOnce. One example is figure filenames when transforming
+DocOnce to reStructuredText. Since DocOnce does not know if the
 `.rst` file is going to be filtered to LaTeX or HTML, it cannot know
 if `.eps` or `.png` is the most appropriate image filename.
 The solution is to use a text substitution command or code with, e.g., sed,
 perl, python, or scitools subst, to automatically edit the output file
-from Doconce. It is then wise to run Doconce and the editing commands
-from a script to automate all steps in going from Doconce to the final
+from DocOnce. It is then wise to run DocOnce and the editing commands
+from a script to automate all steps in going from DocOnce to the final
 format(s). The `make.sh` files in `docs/manual` and `docs/tutorial`
 constitute comprehensive examples on how such scripts can be made.

@@ -26,7 +26,7 @@ def tfig(fileno):
 |${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
 |-------------------------------------------------|
 
-===== Solution 2: Mako Function for the Entire Table in Doconce Format =====
+===== Solution 2: Mako Function for the Entire Table in DocOnce Format =====
 
 <%
 def generate_doconce_table(start, end, step, no_of_columns):

@@ -1,7 +1,7 @@
-TITLE: Scientific Writing with Doconce
+TITLE: Scientific Writing with DocOnce
 # index.html file for looking at the various versions of scientific_writing
 
-Doconce motivation and introduction talk *Scientific Writing and Publishing Anno 2013*:
+DocOnce motivation and introduction talk *Scientific Writing and Publishing Anno 2013*:
 
  * "HTML5 Slides": "scientific_writing-reveal.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" darkgray theme
  * "HTML5 Slides": "scientific_writing-reveal-beige.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" beige theme
@@ -17,4 +17,4 @@ Some other document-style versions of the slides above
  * "PDF (LaTeX)": "scientific_writing-anslistings.pdf" (anslistings.sty for code)
  * "PDF (LaTeX)": "scientific_writing-minted.pdf" (minted.sty for code)
 
-Doconce supports many slide styles, see the "demo collection": "demo/index.html".
+DocOnce supports many slide styles, see the "demo collection": "demo/index.html".

@@ -1,10 +1,10 @@
 
-# Test of Markdown input syntax in Doconce
+# Test of Markdown input syntax in DocOnce
 
-Doconce can recognize basic Markdown as input in the `.do.txt` file
-and transform such text to native Doconce.
+DocOnce can recognize basic Markdown as input in the `.do.txt` file
+and transform such text to native DocOnce.
 
-# Doconce comments also start with #, and can be confused with
+# DocOnce comments also start with #, and can be confused with
 # Markdown headings. The confusion is avoided by not having blanks
 # after the # character in single-line comments. Multi-line
 # comments work well and are never confused with Markdown headings.

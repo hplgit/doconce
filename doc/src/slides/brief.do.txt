@@ -5,7 +5,7 @@ DATE: today
 
 
 !split
-======= Doconce: example on slide code with cells =======
+======= DocOnce: example on slide code with cells =======
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -40,7 +40,7 @@ FIGURE: [fig/broken_pen_and_paper, width=400]
 !ec
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 Last page gets rendered to
 

@@ -14,11 +14,11 @@ can be used, while references to sections in other documents are
 written differently, sometimes involving a link (URL) and a citation.
 Especially if both the individual documents and the large assembly document
 are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers *generalized references* which allows
+For this purpose, DocOnce offers *generalized references* which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since LaTeX supports
 references to labels in external documents via the `xr` package,
-the generalized references in Doconce has a syntax that may utilize
+the generalized references in DocOnce has a syntax that may utilize
 the `xr` feature in LaTeX.
 
 The syntax of generalized references reads
@@ -50,32 +50,32 @@ ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
 cite{testdoc:12}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 !ec
 With `latex` or `pdflatex` as output, this translates to
 !bc
 As explained in
-Section ref{subsec:ex}, Doconce documents may include tables.
+Section ref{subsec:ex}, DocOnce documents may include tables.
 !ec
-if the label `{subsec:ex}` appears in the present Doconce source, and
+if the label `{subsec:ex}` appears in the present DocOnce source, and
 otherwise
 !bc
 As explained in
 Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 !ec
-In a format different from `latex` and `pdflatex`, the effective Doconce
+In a format different from `latex` and `pdflatex`, the effective DocOnce
 text becomes
 !bc
 As explained in
 a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 !ec
 The rendered text in the current format `${FORMAT}` becomes
 
@@ -85,13 +85,13 @@ ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
 cite{testdoc:12}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 !equote
 
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
+if the reference is internal in the DocOnce source, applies the
 `refch` syntax:
 
 !bc
@@ -99,9 +99,9 @@ As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}][the document
-"A Document for Testing Doconce":
+"A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 !ec
 The output now if `ch:testdoc` is not a label in the document,
 becomes in the `latex` and `pdflatex` case
@@ -110,7 +110,7 @@ becomes in the `latex` and `pdflatex` case
 As explained in
 "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 !ec
 That is, the internal reference `Chapter ...` is omitted since
 it is not meaningful to refer to an external document as "Chapter".
@@ -121,9 +121,9 @@ As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}][the document
-"A Document for Testing Doconce":
+"A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 !equote
 
 Note that LaTeX cannot
