@@ -1,7 +1,7 @@
 # Note on the Springer T2 style: used the modifications in t2do.sty
-# and svmonodo.cls (come bundled with Doconce).
+# and svmonodo.cls (come bundled with DocOnce).
 
-TITLE:  A Test of Doconce a Book with Springer's T2 Style
+TITLE:  A Test of DocOnce a Book with Springer's T2 Style
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -625,7 +625,7 @@ cite{NumPy}.
 
 ========= Appendix: Styles for Springer T2 =========
 
-The T2 style for Doconce-generated LaTeX should make use of
+The T2 style for DocOnce-generated LaTeX should make use of
 slightly modified `svmono.cls` and `t2.sty` files:
 
  * `svmonodo.cls`

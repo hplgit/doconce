@@ -16,8 +16,8 @@
 ## If the vagrant demo link shows the text after the toc, zoom out
 ##
 
-#TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
-#TITLE: Scientific Writing Anno 2013: The Doconce Way
+#TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way
+#TITLE: Scientific Writing Anno 2013: The DocOnce Way
 TITLE: Scientific Writing and Publishing Anno 2013
 AUTHOR: Hans Petter Langtangen
 DATE: Today
@@ -302,9 +302,9 @@ based on HTML and vice versa.
  * Sphinx and Markdown has some limited math support
 
 !split
-======= Solution II: Use Doconce =======
+======= Solution II: Use DocOnce =======
 
-"Doconce": "http://hplgit.github.io/doconce/doc/web/index.html"
+"DocOnce": "http://hplgit.github.io/doconce/doc/web/index.html"
 offers minimalistic typing, great flexibility wrt format,
 especially for scientific writing with *much math and code*.
 
@@ -315,18 +315,18 @@ especially for scientific writing with *much math and code*.
  * Many special features (code snippets from files, embedded movies,
    admonitions, modern LaTeX layouts, ...)
  * Very effective for generating slides from ordinary text
- * Applies Mako: Doconce text is a program (!)
+ * Applies Mako: DocOnce text is a program (!)
  * Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 
 # #if not FORMAT in ("latex", "pdflatex")
 # latex interprets 9 = as chapter and then needs book style...
 !split
 ## Example on big headline (new section...)
-========= Doconce =========
+========= DocOnce =========
 # #endif
 
 !split
-======= Doconce demos =======
+======= DocOnce demos =======
 
 URL: "http://hplgit.github.com/teamods/writing_reports/"
 
@@ -334,24 +334,24 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" for blog posts
- * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html"
+ * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
+ * DocOnce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html"
 
 !split
-======= Doconce disclaimer =======
+======= DocOnce disclaimer =======
 
  * Based on text transformations (reg.exp.) so valid syntax may
    occasionally give problems
 
 # * Actively developed and maintained, but one-man show
 
-!bwarning Doconce divorce
-At any time one can divorce from Doconce and marry one of the output
+!bwarning DocOnce divorce
+At any time one can divorce from DocOnce and marry one of the output
 formats, such as LaTeX or Sphinx. The generated code is clean.
 !ewarning
 
 !split
-======= Doconce experience: code generation is a great thing =======
+======= DocOnce experience: code generation is a great thing =======
 
 !bblock
 
@@ -360,7 +360,7 @@ you can generate (parts of) the syntax.
 
  * Use a preprocessor a la Mako
  * Write your own read-and-generate code
- * or both (like Doconce)
+ * or both (like DocOnce)
 
 Advantages:
 
@@ -399,9 +399,9 @@ The default answer is LaTeX.
 
 # #if FORMAT in ("latex", "pdflatex")
 # latex interprets 9 = as chapter and then needs book style...
-======= A tour of Doconce =======
+======= A tour of DocOnce =======
 # #else
-========= A tour of Doconce =========
+========= A tour of DocOnce =========
 # #endif
 
 !split
@@ -592,7 +592,7 @@ Limit math environments to
 \end{align}
 !ec
 
-!bnotice Doconce fix of shortcomings
+!bnotice DocOnce fix of shortcomings
  * Sphinx, Markdown, and MediaWiki cannot have
    `align` with labels
  * MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot
@@ -707,7 +707,7 @@ Works only in Sphinx documents (but HTML support is possible).
 ======= Demonstrating code execution; IPython notebook =======
 label{slide:ipynb}
 
-Can take a "Doconce source": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and transform to an "IPython notebook": "http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" with "source": "http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html"
+Can take a "DocOnce source": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and transform to an "IPython notebook": "http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" with "source": "http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html"
 
 !split
 ======= Tables =======
@@ -780,7 +780,7 @@ format (easy to make from BibTeX).
 !split
 ======= Exercises =======
 
-Doconce offers a special format for *exercises*, *problems*, *projects*,
+DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
 
 !bc
@@ -873,7 +873,7 @@ processing (e.g., making a book of problems).
 
 
 !split
-======= Doconce admonitions =======
+======= DocOnce admonitions =======
 
 !bwarning Use with caution!
 Such environments may light up the document, but can be disturbing too.
@@ -903,7 +903,7 @@ Conclusion:
 
 Very effective way to generate slides from running text:
 
- * Take a copy of your Doconce prose
+ * Take a copy of your DocOnce prose
  * Strip off as much text as possible
  * Emphasize key points in bullet items
  * Focus on key equations, figures, movies, key code snippets
@@ -1051,7 +1051,7 @@ FIGURE: [fig/broken_pen_and_paper, width=400]
    * "dzslides": "http://paulrouget.com/dzslides/"
    * "csss": "http://leaverou.github.com/csss/#intro"
  * _Problem_: each package has its own syntax (though similar)
-   * _Solution_: slide code is autogenerated from Doconce
+   * _Solution_: slide code is autogenerated from DocOnce
  * _Problem_: reveal and deck have numerous styles
    * _Solution_: easy "to autogenerate all styles": "http://hplgit.github.com/teamods/doconce/demo/index.html" for a talk
  * _Problem_: HTML5 slides need many style files
@@ -1059,12 +1059,12 @@ FIGURE: [fig/broken_pen_and_paper, width=400]
  * _Problem_: original versions of the styles have too large fonts,
    centering, and other features not so suitable for lectures
    with much math and code
-   * _Solution_: Doconce contains adjusted css files
+   * _Solution_: DocOnce contains adjusted css files
 !epop
 
 
 !split
-======= Doconce to HTML =======
+======= DocOnce to HTML =======
 
 Run in terminal window:
 !bc
@@ -1091,7 +1091,7 @@ Two formats of blog posts are supported:
  * Google's "blogspot.com": "http://doconce-report-demo.blogspot.no/":
    just paste the raw HTML (full support of math and code)
  * "Wordpress": "http://doconcereportdemo.wordpress.com/":
-   despite limited math, Doconce manipulates the math
+   despite limited math, DocOnce manipulates the math
    such that even `equation` and `align` work in Wordpress :-)
 
 For wordpress, add `--wordpress`:
@@ -1103,7 +1103,7 @@ and paste the code into the text area.
 
 
 !split
-======= Doconce to pdfLaTeX =======
+======= DocOnce to pdfLaTeX =======
 
 !bc
 doconce format pdflatex doconcefile
@@ -1127,7 +1127,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 !ec
 
 !split
-======= Doconce to Sphinx =======
+======= DocOnce to Sphinx =======
 
 !bc
 doconce format sphinx doconcefile
@@ -1155,7 +1155,7 @@ doconce format mwiki doconcefile
 
 Recommended site:
 
- * "ShoutWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page"
+ * "ShoutWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page"
    for standard wikis
 
 Publishing of "official" documents:
@@ -1166,7 +1166,7 @@ Publishing of "official" documents:
 
 
 !split
-======= Doconce to other formats =======
+======= DocOnce to other formats =======
 
 !bc
 doconce format pandoc doconcefile  # (Pandoc extended) Markdown
@@ -1188,7 +1188,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
    * Easy for slides: only `preprocess` is needed :-)
 
 !split
-======= Writing tips for LaTeX writers who want to convert to Doconce  =======
+======= Writing tips for LaTeX writers who want to convert to DocOnce  =======
 
  * `doconce latex2doconce` helps the translation
  * Use `\[ \]`, `equation`, `equation*`, `align`, `align*` and nothing more for
@@ -1200,19 +1200,19 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Do not use *algorithm* environments, use simple list formatting instead
  * Avoid math in section headings
  * Use `pdflatex` or `xetex`
- * Use BibTeX (can easily be converted to "publish": "https://bitbucket.org/logg/publish" used by Doconce)
+ * Use BibTeX (can easily be converted to "publish": "https://bitbucket.org/logg/publish" used by DocOnce)
  * Use `\href` for links (and insert links frequently)
  * Use the `bm` package for boldface $\bm{u}$
  * Place all newcommands in a separate file, with one definition per line
-   (multiline definitions goes to a separate LaTeX preamble file in Doconce)
+   (multiline definitions goes to a separate LaTeX preamble file in DocOnce)
  * Avoid all fancy LaTeX constructs - more backslashes than needed in math
    and sections is a bad thing...
 
 !split
-======= Doconce writing tips =======
+======= DocOnce writing tips =======
 
 # * See the previous *Typesetting concerns I, II and III* slides for issues when writing
-#   for multiple formats. However: Doconce makes a fix so that Sphinx and
+#   for multiple formats. However: DocOnce makes a fix so that Sphinx and
 #   other formats works with labels in align environments :-)
 
 Figures and movies:
@@ -1231,12 +1231,12 @@ Figures and movies:
  * Favor the movie formats MP4, WebM, and Ogg (best suited for modern browsers).
 
 !split
-======= Doconce writing tips =======
+======= DocOnce writing tips =======
 
  * `\bm{u}` gives nicer boldface typesetting of math symbols than
    the alternatives `\boldsymbol{u}` and `\pmb{u}`.
  * For HTML-based formats using MathJax, `\bm{u}` is not supported
-   and therefore automatically replaced by `\boldsymbol{u}` by Doconce.
+   and therefore automatically replaced by `\boldsymbol{u}` by DocOnce.
  * Use `\color{blue}{formula}` in math expressions to color a part.
  * Not all LaTeX math is supported by MathJax. Some legal LaTeX math
    might give MathJax problems - then one has to rewrite the expression

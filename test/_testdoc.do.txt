@@ -9,11 +9,11 @@ to test the use of Mako as preprocessor.
 
 The format of this document is
 % if FORMAT == 'html':
-plain, homemade HTML (from Doconce).
+plain, homemade HTML (from DocOnce).
   % elif FORMAT == 'latex':
-plain, homemade LaTeX (from Doconce).
+plain, homemade LaTeX (from DocOnce).
   % elif FORMAT == 'pdflatex':
-plain, homemade pdfLaTeX (from Doconce).
+plain, homemade pdfLaTeX (from DocOnce).
   %else:
 ${FORMAT}
 % endif
@@ -267,7 +267,7 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a Doconce directive a la `!bc`.
+and a DocOnce directive a la `!bc`.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
@@ -297,7 +297,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -485,7 +485,7 @@ label{mytab}
 \end{table}
 % endif
 
-The Doconce source code reads
+The DocOnce source code reads
 !bc ccq
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -704,7 +704,7 @@ or maybe also prof. Ting,
 will go to the Dept. of Science to test how Mr. Hansen is doing together
 with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
 Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
-handled. Likewise, this is test no. $i$ of Doconce features.
+handled. Likewise, this is test no. $i$ of DocOnce features.
 A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
@@ -877,7 +877,7 @@ compute the probability as $M/N$.
 !ehint
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
  o item1
  o item2

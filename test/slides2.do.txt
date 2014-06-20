@@ -156,7 +156,7 @@ based on HTML and vice versa.
 
 
 !split
-======= Doconce demo =======
+======= DocOnce demo =======
 
 URL: "http://hplgit.github.com/teamods/writing_reports/"
 
@@ -164,21 +164,21 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
- * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
+ * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
+ * DocOnce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
 
 
 !split
 
 # #if FORMAT in ("latex", "pdflatex")
 # latex interprets 9 = as chapter and then needs book style...
-======= A tour of Doconce =======
+======= A tour of DocOnce =======
 # #else
-========= A tour of Doconce =========
+========= A tour of DocOnce =========
 # #endif
 
 !split
-======= Doconce: title, authors, date, toc =======
+======= DocOnce: title, authors, date, toc =======
 
 !bc
 TITLE: Some Title
@@ -195,7 +195,7 @@ Title and authors must have all information *on a single line*!
 !enotice
 
 !split
-======= Doconce: abstract =======
+======= DocOnce: abstract =======
 
 !bc
 __Abstract.__
@@ -210,7 +210,7 @@ Here goes the summary...
 
 
 !split
-======= Doconce: section headings =======
+======= DocOnce: section headings =======
 
 Headings are surrounded by `=` signs:
 !bc
@@ -239,7 +239,7 @@ __This is a paragraph heading.__
 
 
 !split
-======= Doconce: markup and lists =======
+======= DocOnce: markup and lists =======
 
 !bc
  * Bullet list items start with `*`
@@ -264,7 +264,7 @@ This gets rendered as
    o items are just indented as you would do in email
 
 !split
-======= Doconce: labels, references, index items =======
+======= DocOnce: labels, references, index items =======
 
 !bc
 # Insert index items in the source
@@ -290,7 +290,7 @@ URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split
-======= Doconce: figures and movies =======
+======= DocOnce: figures and movies =======
 
 !bnotice
 Figure with HTML and LaTeX info, and caption, *all on one line*:
@@ -313,7 +313,7 @@ and rendered as
 MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 
 !split
-======= Doconce: math =======
+======= DocOnce: math =======
 
 Inline math as in LaTeX:
 
@@ -349,7 +349,7 @@ label{b:eq}
 
 
 !split
-======= Doconce: displaying code =======
+======= DocOnce: displaying code =======
 
 Code is enclosed in `!bc` and `!ec` tags:
 
@@ -395,7 +395,7 @@ forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
 
 
 !split
-======= Doconce: displaying interactive demo code =======
+======= DocOnce: displaying interactive demo code =======
 label{slide:pot}
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
@@ -408,9 +408,9 @@ program flow and state of variables:
 
 
 !split
-======= Doconce: exercises =======
+======= DocOnce: exercises =======
 
-Doconce offers a special format for *exercises*, *problems*, *projects*,
+DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
 
 !bc
@@ -450,7 +450,7 @@ of getting at least three heads out of 5 throws.
 Solutions/answers can easily be left out of the document.
 
 !split
-======= Doconce: exercises =======
+======= DocOnce: exercises =======
 
 Last page gets rendered as follows:
 
@@ -487,7 +487,7 @@ of getting at least three heads out of 5 throws.
 
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 !bc
 !split
@@ -515,7 +515,7 @@ And maybe a final comment?
 !ec
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 Last page gets rendered to
 
@@ -535,7 +535,7 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Doconce: example on slide code with cells =======
+======= DocOnce: example on slide code with cells =======
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -574,7 +574,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !ec
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 Last page gets rendered to
 

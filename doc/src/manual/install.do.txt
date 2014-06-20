@@ -1,26 +1,26 @@
 
 
-======= Installation of Doconce and its Dependencies =======
+======= Installation of DocOnce and its Dependencies =======
 
 Below, we explain the manual installation of all software that may be
-needed when working with Doconce documents.
+needed when working with DocOnce documents.
 The impatient way to install what is needed is to run the
 "`install_doconce.sh`": "install_doconce.sh" (or
 "`install_doconce.py`": "install_doconce.py") script.
 
-===== Doconce =====
+===== DocOnce =====
 
-Doconce itself is pure Python code hosted at URL:
+DocOnce itself is pure Python code hosted at URL:
 "https://github.com/hplgit/doconce".  Its installation from the
 Git source follows the standard procedure:
 !bc sys
-# Doconce
+# DocOnce
 git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
 !ec
-Since Doconce is frequently updated, it is recommended to use the
+Since DocOnce is frequently updated, it is recommended to use the
 above procedure and whenever a problem occurs, make sure to
 update to the most recent version:
 
@@ -96,7 +96,7 @@ the usual `sudo python setup.py install`.
 
 Different output formats require different formats of image files.
 For example, PostScript or Encapuslated PostScript is required for
-`latex` output, while HTML needs JPEG, GIF, or PNG formats.  Doconce
+`latex` output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
 calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The "ImageMagick suite":
 "http://www.imagemagick.org/script/index.php" can be installed on all
@@ -183,7 +183,7 @@ the necessary stylefiles (if not, they can be found by googling and installed
 manually in the `~/texmf/tex/latex/misc` directory).
 
 Note that the `doconce ptex2tex` command, which needs no installation
-beyond Doconce itself, can be used as a simpler alternative to the `ptex2tex`
+beyond DocOnce itself, can be used as a simpler alternative to the `ptex2tex`
 program.
 
 The *minted* LaTeX style is offered by `ptex2tex` and `doconce ptext2tex`
@@ -266,7 +266,7 @@ by the `cp2texmf.sh` script executed above.
 
 === reStructuredText (reST) Output ===
 
-The `rst` output from Doconce allows further transformation to LaTeX,
+The `rst` output from DocOnce allows further transformation to LaTeX,
 HTML, XML, OpenOffice, and so on, through the "docutils":
 "http://docutils.sourceforge.net" package.  The installation of the
 most recent version can be done by
@@ -314,7 +314,7 @@ An alternative is
 pip install sphinx
 !ec
 
-Doconce comes with many Sphinx themes that are not part of the
+DocOnce comes with many Sphinx themes that are not part of the
 standard Sphinx source distribution. Some of these themes require
 additional Python/Sphinx modules to be installed:
 
@@ -329,7 +329,7 @@ above.
 
 === Markdown and Pandoc Output ===
 
-The Doconce format `pandoc` outputs the document in the Pandoc
+The DocOnce format `pandoc` outputs the document in the Pandoc
 extended Markdown format, which via the `pandoc` program can be
 translated to a range of other formats. Installation of "Pandoc":
 "http://johnmacfarlane.net/pandoc/", written in Haskell, is most
@@ -365,7 +365,7 @@ Mercurial (`hg`) directories, go to the directory, run
 The `doconce diff file1 file prog` command for illustrating differences between
 two files `file1` and `file2` using the program `prog` requires `prog`
 to be installed. By default, `prog` is `difflib` which comes with Python
-and is always present if you have Doconce installed. Another choice, `diff`,
+and is always present if you have DocOnce installed. Another choice, `diff`,
 should be available on all Unix/Linux systems. Other choices, their
 URL, and their `sudo apt-get install` command on Debian (Ubuntu) systems
 appear in the table below.
@@ -386,7 +386,7 @@ appear in the table below.
 label{install:debian:script}
 
 On Debian (including Ubuntu) systems, it is straightforward to install the
-long series of Doconce dependencies:
+long series of DocOnce dependencies:
 
 !bc
 # Version control systems
@@ -419,7 +419,7 @@ sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#e
 sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
 sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
 
-# Doconce itself
+# DocOnce itself
 rm -rf srclib   # put downloaded software in srclib
 mkdir srclib
 cd srclib

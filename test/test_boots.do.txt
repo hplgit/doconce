@@ -1,6 +1,6 @@
 TITLE: Test of the Bootstrap style
 
-Doconce can work with Bootstrap HTML styles:
+DocOnce can work with Bootstrap HTML styles:
 way:
 
 !bc sys
@@ -13,7 +13,7 @@ Here goes optional text.
 # for going to the first real page
 
 !split
-========= More details on writing Doconce documents with Bootstrap layout =========
+========= More details on writing DocOnce documents with Bootstrap layout =========
 
 
 ======= Demonstrations of admons =======
@@ -61,12 +61,12 @@ This is the notice admon with nice-to-have information.
 !enotice
 
 !bquestion Testing the understanding
-How many admon styles are supported by the Doconce Boostrap and Bootswatch
+How many admon styles are supported by the DocOnce Boostrap and Bootswatch
 styles?
 !equestion
 
 !bsummary
-Doconce supports the following elements of Bootstrap elements:
+DocOnce supports the following elements of Bootstrap elements:
 
  * Admons
  * Panels (via admons)

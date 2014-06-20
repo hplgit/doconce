@@ -9,7 +9,7 @@ documentation may start out to be the same, different physical files
 must be used since very different tagging is required for different
 output formats. Over time the duplicated information starts to
 diverge. Severe problems with such unsynchronized documentation was
-one motivation for developing the Doconce concept and tool.
+one motivation for developing the DocOnce concept and tool.
 
 __Tagging Issues in Python Documentation.__ A problem with doc
 strings in Python is that they benefit greatly from some tagging,
@@ -45,7 +45,7 @@ in verbatim environments). To summarize, we need
   o Tools for inserting appropriately filtered versions of a "singleton"
     documentation file in other documents (manuals, tutorials, doc strings).
 
-One answer to these points is the Doconce markup language, its
+One answer to these points is the DocOnce markup language, its
 associated tools, and a "C-style preprocessor tool":
 "http://code.google.com/p/preprocess" or the "Mako template system":
 "http://www.makotemplates.org/".  Then we can *write once, include
@@ -55,31 +55,31 @@ But isn't reStructuredText exactly the format that fulfills the needs
 above? Yes and no. Yes, because reStructuredText can be filtered to a
 lot of the mentioned formats. No, because of the reasons listed
 in Section ref{what:is:doconce}, but perhaps the strongest feature
-of Doconce is that it integrates well with LaTeX: Large LaTeX documents (book)
-can be made of many smaller Doconce units, typically describing examples
+of DocOnce is that it integrates well with LaTeX: Large LaTeX documents (book)
+can be made of many smaller DocOnce units, typically describing examples
 and computer codes, glued with mathematical pieces written entirely
 in LaTeX and with heavy cross-referencing of equations, as is usual
-in mathematical texts. All the Doconce units can then be available
+in mathematical texts. All the DocOnce units can then be available
 also as stand-alone examples in wikis or Sphinx pages and thereby used
 in other occasions (including software documentation and teaching material).
 This is a promising way of composing future books of units that can
 be reused in many contexts and formats, currently being explored by
-the Doconce maintainer.
+the DocOnce maintainer.
 
-A final warning may be necessary: The Doconce format is a minimalistic
+A final warning may be necessary: The DocOnce format is a minimalistic
 formatting language. It is ideal when you start a new project when you
 are uncertain about which format to choose. At some later stage, when
 you need quite some sophisticated formatting and layout, you can
-perform the final filtering of Doconce into something more appropriate
+perform the final filtering of DocOnce into something more appropriate
 for future demands. The convenient thing is that the format decision
 can be posponed (maybe forever - which is the common experience of the
-Doconce developer).
+DocOnce developer).
 
-===== The Doconce Software Documentation Strategy ===== 
+===== The DocOnce Software Documentation Strategy ===== 
 label{doconce:strategy}
 
    * Write software documentation, both tutorials and manuals, in
-     the Doconce format. Use many files - and never duplicate information!
+     the DocOnce format. Use many files - and never duplicate information!
 
    * Use `#include` statements in source code (especially in doc
      strings) and in LaTeX documents for including documentation
@@ -113,7 +113,7 @@ filtered to `docstrings/doc1.epytext` and renamed to
 `basename.p.py` file and create a real Python file
 `basename.py`. Finally, we run Epydoc on this file. Alternatively, and
 nowadays preferably, we use Sphinx for API documentation and then the
-Doconce `docstrings/doc1.do.txt` file is filtered to
+DocOnce `docstrings/doc1.do.txt` file is filtered to
 `docstrings/doc1.rst` and renamed to `docstrings/doc1.dst.txt`. A
 Sphinx directory must have been made with the right `index.rst` and
 `conf.py` files. Going to this directory and typing `make html` makes
@@ -174,17 +174,17 @@ the http://www.docutils.org<Docutils package>) and Epytext (part of
 http://epydoc.sourceforge.net/<Epydoc for Python APIs>).  The
 http://sphinx.pocoo.org<Sphinx documentation system>, now being the
 standard Python documentation system, builds on reStructuredText.
-http://www.pault.com/xmlalternatives.html<Other minimum-tagged markup languages do also exist>. So why is Doconce needed?
+http://www.pault.com/xmlalternatives.html<Other minimum-tagged markup languages do also exist>. So why is DocOnce needed?
 
   - Simplicity:
-    Doconce supports only a handful of formatting constructions and
+    DocOnce supports only a handful of formatting constructions and
     is therefore simpler than Epytext and reStructuredText.
     Consequently, the latter two are more flexible. However,
     their parsing modules are also much more complex, and it is
     an order of magnitude simpler to add support for a new format
-    in Doconce than in most other markup languages. 
+    in DocOnce than in most other markup languages. 
 
-    The simple Doconce format is less cluttered and easier 
+    The simple DocOnce format is less cluttered and easier 
     to read than more flexible and advanced ASCII-based markup languages,
     such as reStructuredText. Many who receive close-to-plain ASCII
     text in email tend to be annoyed by the tagging and may remove tags
@@ -192,35 +192,35 @@ http://www.pault.com/xmlalternatives.html<Other minimum-tagged markup languages 
 
   - Flexibility:
     Epydoc and Sphinx produce complete module/package documentation.
-    Doconce can work with small pieces of documentation, e.g.,
+    DocOnce can work with small pieces of documentation, e.g.,
     module doc strings to be filtered to and used by Epydoc or Sphinx, and
     also included in a LaTeX thesis or a Word document.
 
   - Math:
-    Doconce supports inline mathematical expressions and blocks
+    DocOnce supports inline mathematical expressions and blocks
     of mathematical LaTeX code. (Epytext is easily fooled by TeX
     code with the backslashes and gives lots of error messages
     even if the code block is to be typeset in varbatim mode.) 
 
   - Clean output:
-    The LaTeX output of Doconce was much cleaner than the source produced by
-    reStructuredText at the time Doconce was constructed. TThis may be important if a book or manual in
+    The LaTeX output of DocOnce was much cleaner than the source produced by
+    reStructuredText at the time DocOnce was constructed. TThis may be important if a book or manual in
     LaTeX is to be built from some building blocks in a more general
     format and the LaTeX output needs some tweeking before it can
     qualify for a book/manual context. Typically, one wants parts of
     the book/manual to be available in several formats, e.g., through
-    Sphinx. Doconce may then be a better source for these building
+    Sphinx. DocOnce may then be a better source for these building
     blocks than reStructuredText.
 
   - More formats:
-    Doconce can currently be translated to HTML, LaTeX, reStructuredText,
+    DocOnce can currently be translated to HTML, LaTeX, reStructuredText,
     Sphinx, StructuredText, Epytext, Wiki, and (important!) plain 
     "untagged" ASCII. 
 
-    When Doconce is transformed to reStructuredText, the text can
+    When DocOnce is transformed to reStructuredText, the text can
     further be transformed to HTML, LaTeX, and XML.  The
     reStructuredText support for Docbook, RTF, and OpenOffice is under
-    development. Doconce can also be transformed to Epytext or Sphinx
+    development. DocOnce can also be transformed to Epytext or Sphinx
     for formatting of API documentation of Python modules, or to
     StructuredText used by the older HappyDoc tool for API
     documentation.  The plain untagged ASCII text is very suitable for
@@ -232,5 +232,5 @@ http://www.pault.com/xmlalternatives.html<Other minimum-tagged markup languages 
     A page of code, containing definitions of how emphasized text, 
     verbatim text, lists, etc. are rendered, is all you need to 
     implement a new format.
-    (Everything except lists are parsed by regular expressions in Doconce.)
+    (Everything except lists are parsed by regular expressions in DocOnce.)
 

@@ -1,4 +1,4 @@
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 # #ifdef PREPROCESS
 Verbatim blocks with non-ASCII text does not work for HTML, but it works

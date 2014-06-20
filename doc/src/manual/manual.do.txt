@@ -1,4 +1,4 @@
-TITLE: Doconce Description
+TITLE: DocOnce Description
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -7,7 +7,7 @@ DATE: today
 # (documents can also have mako comment lines)
 
 
-======= What Is Doconce? =======
+======= What Is DocOnce? =======
 label{what:is:doconce}
 idx{doconce!short explanation}
 
@@ -33,12 +33,12 @@ idx{doconce!short explanation}
 
 idx{demos}
 
-The current text is generated from a Doconce format stored in the
+The current text is generated from a DocOnce format stored in the
 directory
 !bc sys
 doc/manual/manual.do.txt
 !ec
-file in the Doconce source code tree. Here you can run a
+file in the DocOnce source code tree. Here you can run a
 `make.sh` script to generate a lot of different
 formats: HTML, LaTeX, plain text, etc., stored in the subdirectory `demo`.
 
@@ -49,15 +49,15 @@ doc/tutorial/tutorial.do.txt
 In the `tutorial` directory there is also a `make.sh` file producing a
 lot of formats in the subdirectory `demo`.
 
-# Example on including another Doconce file:
+# Example on including another DocOnce file:
 
 # #include "../tutorial/doconce2anything.do.txt"
 
 
 
-======= The Doconce Markup Language =======
+======= The DocOnce Markup Language =======
 
-The Doconce format introduces four constructs to markup text:
+The DocOnce format introduces four constructs to markup text:
 lists, special lines, inline tags, and environments.
 
 ===== Lists =====
@@ -97,7 +97,7 @@ This list gets typeset as
 
 # #if FORMAT == "gwiki"
 (As seen, nested lists in (g)wiki format are not treated well by
-Doconce. Plain unnested lists work fine. And the (g)wiki format
+DocOnce. Plain unnested lists work fine. And the (g)wiki format
 automatically puts multiple lines of an item on a single line as
 required :-)
 # #endif
@@ -153,7 +153,7 @@ The result becomes
 
 ===== Special lines =====
 
-The Doconce markup language has a concept called *special lines*.
+The DocOnce markup language has a concept called *special lines*.
 Such lines starts with a markup at the very beginning of the
 line and are used to mark document title, authors, date,
 sections, subsections, paragraphs, figures, movies, etc.
@@ -236,7 +236,7 @@ or equal signs (=):
 
 Headings can be surrounded by as many blanks as desired.
 
-Doconce also supports abstracts. This is typeset as a paragraph, but
+DocOnce also supports abstracts. This is typeset as a paragraph, but
 *must* be followed by a section heading (everything up to the first
 section heading is taken as part of the text of the abstract).
 
@@ -278,9 +278,9 @@ Figures are recognized by the special line syntax
 FIGURE:[filename, height=400 width=600 frac=0.8] caption
 
 !ec
-The filename can be without extension, and Doconce will search for an
+The filename can be without extension, and DocOnce will search for an
 appropriate file with the right extension. If the extension is wrong,
-say `.eps` when requesting an HTML format, Doconce tries to find another
+say `.eps` when requesting an HTML format, DocOnce tries to find another
 file, and if not, the given file is converted to a proper format
 (using ImageMagick's `convert` utility).
 
@@ -384,7 +384,7 @@ the directories be just `fig` and `mov`).
 === MP4, WebM, and Ogg Movies in HTML ===
 
 If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
-Doconce will check if the movie file is also in the other formats among
+DocOnce will check if the movie file is also in the other formats among
 Ogg, MP4, and WebM, and include these as well such that the movie has
 backup formats in case the browser does not support a particular format.
 Providing a movie in Ogg, MP4, *and* WebM format is therefore the safest
@@ -420,13 +420,13 @@ generated and linked from the output document. This movie player
 has essentially the same code as the HTML format would have, except
 that the `video` tag is not used, only the `embed` tag. Some wiki
 types do have support for videos, e.g., Wikipedia can work with
-Ogg files, but Doconce has not yet implemented robust schemes for
+Ogg files, but DocOnce has not yet implemented robust schemes for
 anything but LaTeX, HTML, and Sphinx output.
 
 === YouTube and Vimeo Movies ===
 
-Many publish their scientific movies on YouTube or Vimeo, and Doconce recognizes
-YouTube and Vimeo URLs as movies. When the output from Doconce
+Many publish their scientific movies on YouTube or Vimeo, and DocOnce recognizes
+YouTube and Vimeo URLs as movies. When the output from DocOnce
 is an HTML file, the movie will
 be embedded, otherwise a URL to the YouTube or Vimeo page is inserted.
 You should equip the `MOVIE:` command with the right width and height
@@ -458,7 +458,7 @@ JavaScript code to show the frames in sequence.
 LaTeX employs the `animate` package for the same purpose.
 Other formats generates a file (`movie_playerX.py`, where `X` is a number)
 containing the HTML code with JavaScript to show and control the animation.
-The Doconce document has a link to this movie viewer.
+The DocOnce document has a link to this movie viewer.
 
 There is an alternative syntax to the Unix wildcard notation:
 
@@ -481,7 +481,7 @@ Here is an example:
 MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:0->320]
 
 !bnotice Recommendations
-It is challenging to write robust Doconce code with movies.
+It is challenging to write robust DocOnce code with movies.
 The recommended formats in HTML are MP4, WebM, and Ogg. One should
 preferably make all three. These also works in reST and Sphinx.
 
@@ -501,7 +501,7 @@ To have really robust code, use filename generators and not movie files.
 MOVIE: [../experiments/frame_*.png]
 !ec
 
-One can, of course, write flexible Doconce code and decide at run time
+One can, of course, write flexible DocOnce code and decide at run time
 if HTML output should have movie files or filename generators.
 A relevant snippet using Mako is
 
@@ -547,7 +547,7 @@ Section ref{sec:verbatim:blocks} below.
 
 ===== Inserting the Output from Operating System Commands =====
 
-When Doconce is used to document computer program and results from
+When DocOnce is used to document computer program and results from
 computer code it is important to ensure that the document contains
 the latest version of the code and the corresponding output.
 The former is handled by the `@@@CODE` directive, while the latter
@@ -557,7 +557,7 @@ has its own directive `@@@OSCMD`. The syntax reads
 @@@OSCMD cmd
 !ec
 where `cmd` is any text that can be run in the operating system.
-The output is copied into the Doconce source. For example,
+The output is copied into the DocOnce source. For example,
 
 !bc
 @@@OSCMD python -c 'print "Hello,\nWorld!"'
@@ -582,7 +582,7 @@ label{inline:tagging}
 idx{inline tagging} idx{emphasized words} idx{boldface words} idx{verbatim text}
 idx{inline comments}idx{non-breaking space}idx{nbsp}
 
-Doconce supports tags for *emphasized phrases*, _boldface phrases_,
+DocOnce supports tags for *emphasized phrases*, _boldface phrases_,
 and `verbatim text` (also called type writer text, for inline code),
 color{blue}{colored words},
 plus LaTeX/TeX inline mathematics, such as $\nu = \sin(x)$|$v = sin(x)$.
@@ -618,14 +618,14 @@ The typesetting result looks like this:
 while `void myfunc(double *a, double *b)` must be C.
 
 It is recommended to have inline verbatim text on the same line in
-the Doconce file, because some formats (LaTeX and `ptex2tex`) will have
+the DocOnce file, because some formats (LaTeX and `ptex2tex`) will have
 problems with inline verbatim text that is split over two lines.
 
 !bnotice
 Watch out for mixing back-ticks and asterisk (i.e., verbatim and
-emphasized code): the Doconce interpreter is not very smart so inline
+emphasized code): the DocOnce interpreter is not very smart so inline
 computer code can soon lead to problems in the final format. Go back to the
-Doconce source and modify it so the format to which you want to go
+DocOnce source and modify it so the format to which you want to go
 becomes correct (sometimes a trial and error process - sticking to
 very simple formatting usually avoids such problems).
 !enotice
@@ -672,9 +672,9 @@ Links to files ending in `.txt`, `.html`, `.pdf`, `.py`, `.f`,
 `.c`, `.cpp`, `.cxx`, `.pl`, and `.java` follows the same
 setup:
 !bc
-see the "Doconce Manual": "manual.do.txt".
+see the "DocOnce Manual": "manual.do.txt".
 !ec
-which appears as see the "Doconce Manual": "manual.do.txt".
+which appears as see the "DocOnce Manual": "manual.do.txt".
 However, linking to local files like this needs caution:
 
   * In the `html` format the links work well if the files are
@@ -688,9 +688,9 @@ However, linking to local files like this needs caution:
 
 As a consequence, we strongly recommend that one copies the relevant
 files to a `_static` or `_static-name` directory and makes links to
-files in this directory only (`name` is the nickname of the Doconce
+files in this directory only (`name` is the nickname of the DocOnce
 document, usually the name of the parent directory or main document).
-Other links to files should use the full URL. If Doconce is used
+Other links to files should use the full URL. If DocOnce is used
 for HTML output only, then plain links to local files work fine.
 
 If you want a link to a local source code file and have it
@@ -798,7 +798,7 @@ numbered footnotes. Other formats employ the logical name.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
 Footnotes are preferably defined after the paragraph they are used.
@@ -821,7 +821,7 @@ numbered footnotes. Other formats employ the logical name.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
 Footnotes are preferably defined after the paragraph they are used.
@@ -834,7 +834,7 @@ case of spaces.
 
 === Inline Comments ===
 
-Doconce also supports inline comments in the text:
+DocOnce also supports inline comments in the text:
 !bc
 [name: comment]
 !ec
@@ -892,7 +892,7 @@ hence nice math formatting is only obtained in LaTeX, HTML, MediaWiki,
 and Sphinx (Epytext has some inline math support that is utilized).
 However, mathematical expressions in LaTeX syntax often contains
 special formatting commands, which may appear annoying in plain
-text. Doconce therefore supports an extended inline math syntax where
+text. DocOnce therefore supports an extended inline math syntax where
 the writer can provide an alternative syntax suited for formats close
 to plain ASCII:
 
@@ -914,10 +914,10 @@ are vectors of length $n$|$n$."
 ===== Comments =====
 
 Comments intended to be (sometimes) visible in the output document and
-read by readers are known as *inline comments* in Doconce and
+read by readers are known as *inline comments* in DocOnce and
 described in Section ref{inline:tagging}.
 
-Here we address comments in the Doconce source file that are not
+Here we address comments in the DocOnce source file that are not
 intended to be visible in the output document. Basic comment
 lines start with the hash `#`:
 !bc
@@ -931,13 +931,13 @@ formats because following lines are taken as part of the comment if
 there is not a blank line after the comment.
 
 The Mako preprocessor supports comments that are filtered out *before*
-Doconce starts translating the document. Such comments are very valuable
+DocOnce starts translating the document. Such comments are very valuable
 as they will never interfere with the output format and they are only
-present in the Doconce source. Mako has two types of comments:
+present in the DocOnce source. Mako has two types of comments:
 lines starting with a double hash `##` and lines enclosed by
 the `<%doc>` (beginning) and `<%doc/>` (closing) tags.
 
-If you need a lot of comments in the Doconce file, consider using
+If you need a lot of comments in the DocOnce file, consider using
 Mako comments instead of the single hash, unless you want the
 comments to be in the source code of the output document.
 
@@ -987,7 +987,7 @@ large document, typically a book.
 In the book one wants to make cross references between chapters
 and sections, while these become references to external documents
 when the chapters (or sections) are compiled as stand-alone
-documents. For example, one can in a Doconce file `file1.do.txt`
+documents. For example, one can in a DocOnce file `file1.do.txt`
 have text like
 
 !bc
@@ -1015,7 +1015,7 @@ the above reference as
 ...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
 !ec
 
-To treat all these cases simultanesouly, Doconce
+To treat all these cases simultanesouly, DocOnce
 features *generalized references* which allows
 a reference to have different formulations, depending on whether
 the label is present in the document or is present in an
@@ -1026,7 +1026,7 @@ The syntax of generalized references reads
 ref[internal][cite][external]
 !ec
 If all `ref{label}` references in the text `internal` are
-to labels defined in the Doconce document, the
+to labels defined in the DocOnce document, the
 generalized reference becomes the text `internal`.
 If one or more labels are not present in the document and
 `latex` or `pdflatex` is output format, the generalized reference becomes the
@@ -1040,7 +1040,7 @@ The example above can now be written as the generalized reference
 the document "Mathematical Equations":
 "http://some.net/doc/matheqs.html" cite{math_eqs_2020}].
 !ec
-When `label{sec:eqs}` is found in the current Doconce document,
+When `label{sec:eqs}` is found in the current DocOnce document,
 the generalized reference becomes
 
 !bc
@@ -1060,7 +1060,7 @@ the document "Mathematical Equations":
 
 For the reference to a label in an external document
 to work in the LaTeX case it is required to list this
-document in the Doconce file as
+document in the DocOnce file as
 
 !bc
 # Externaldocuments: file2
@@ -1154,42 +1154,42 @@ the LaTeX output also has a hyperlink:
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{Doconce:test}][a "section":
+cite{DocOnce:test}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], Doconce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !ec
 With `latex` or `pdflatex` as output, this translates to
 !bc
 As explained in
-Section ref{subsec:ex}, Doconce documents may include tables.
+Section ref{subsec:ex}, DocOnce documents may include tables.
 !ec
-if the label `{subsec:ex}` appears in the present Doconce source, and
+if the label `{subsec:ex}` appears in the present DocOnce source, and
 otherwise
 !bc
 As explained in
 Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{Doconce:test}, Doconce documents may include tables.
+cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
-The latter Doconce code is translated to the following
+The latter DocOnce code is translated to the following
 LaTeX code:
 !bc
 As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-\cite{Doconce:test}, Doconce documents may include tables.
+\cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
-In a format different from `latex` and `pdflatex`, the effective Doconce
+In a format different from `latex` and `pdflatex`, the effective DocOnce
 text becomes
 !bc
 As explained in
 a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}, Doconce documents may include tables.
+cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
 The rendered text in the current format becomes
 
@@ -1197,11 +1197,11 @@ The rendered text in the current format becomes
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{Doconce:test}][a "section":
+cite{DocOnce:test}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], Doconce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !equote
 
 A complete "chapter" reference may look like
@@ -1210,10 +1210,10 @@ A complete "chapter" reference may look like
 As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}][the document
-"A Document for Testing Doconce":
+cite{DocOnce:test}][the document
+"A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], Doconce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !ec
 The output now, if `ch:testdoc` is not a label in the document,
 becomes in the `latex` and `pdflatex` case
@@ -1222,7 +1222,7 @@ becomes in the `latex` and `pdflatex` case
 As explained in
 "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}, Doconce documents may include tables.
+cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
 That is, the internal reference `Chapter ...` is omitted since
 it is not meaningful to refer to an external document as "Chapter".
@@ -1231,10 +1231,10 @@ The resulting rendered text in the current format becomes
 As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}][the document
-"A Document for Testing Doconce":
+cite{DocOnce:test}][the document
+"A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], Doconce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !equote
 
 Note that LaTeX cannot
@@ -1283,11 +1283,11 @@ tag in `html` output such that search engines can make use of the them.
 
 ===== Bibliography/References =====
 
-Doconce applies the software tool "Publish":
+DocOnce applies the software tool "Publish":
 "https://bitbucket.org/logg/publish" to handle the bibliography in a
 document. With Publish it is easy to import BibTeX data and maintain a
 database in a clean, self-explanatory textual format. From the Publish
-format it is easy to go BibTeX and reST or straightforward Doconce
+format it is easy to go BibTeX and reST or straightforward DocOnce
 typesetting (and from there to HTML, plain text, wiki formats, and so
 on).
 
@@ -1311,7 +1311,7 @@ institutions or journals. Publish already have a database of journals
 and institutions/departments, but when you add new, you also get
 a file `venues.list` (in the current working directory) which will be used
 for future imports in this directory. Make sure you store `publish.pub`
-and `venues.list` along with your Doconce document files (e.g., add them to
+and `venues.list` along with your DocOnce document files (e.g., add them to
 your version control system).
 
 === Requirements to input data ===
@@ -1358,7 +1358,7 @@ publish export mybibtexfile.bib
 !ec
 You can easily export subsets of the database, e.g., only papers associated
 with a particular author (the Publish manual has details on how this is
-done). Doconce will automatically export the database to BibTeX if
+done). DocOnce will automatically export the database to BibTeX if
 the output format is `latex` or `pdflatex`.
 
 === Referring to publications ===
@@ -1399,7 +1399,7 @@ are cited.
 
 === Specifying the Publish database ===
 
-The specification of the Publish database file in the Doconce document
+The specification of the Publish database file in the DocOnce document
 is done one a line containing `BIBFILE: papers.pub` (you may give
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
@@ -1450,7 +1450,7 @@ is built up of pipe symbols and dashes:
   |--------------------------------|
 !ec
 The pipes and column values do not need to be aligned (but why write
-the Doconce source in an ugly way?). In the line below the heading,
+the DocOnce source in an ugly way?). In the line below the heading,
 one can insert the characters `c`, `r`, or `l` to specify the
 alignment of the columns (centered, right, or left, respectively).
 Similar character can be inserted in the line above the header to
@@ -1471,17 +1471,17 @@ column left-adjusted and the others right-adjusted looks like
 
 Note that not all formats offer alignment of heading or entries
 in tables (`rst` and `sphinx` are examples). Also note that
-Doconce tables are very simple: neither entries nor
+DocOnce tables are very simple: neither entries nor
 headings can span several columns or rows. When that functionality
 is needed, one can make use of the preprocessor and if-tests on
 the format and insert format-specific code for tables.
 
 The command-line option `--tables2csv` (to `doconce format`)
-makes Doconce dump each table to CSV format in a file `table_X.csv`,
+makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
-Data in CSV format can be transformed to Doconce table format
+Data in CSV format can be transformed to DocOnce table format
 by the `doconce csv2table` utility:
 
 !bc sys
@@ -1510,7 +1510,7 @@ Running `doconce csv2table tmp.csv` creates the table
 
 ===== Exercises, Problems, Projects, and Examples =====
 
-Doconce has special support for four types of "exercises", named
+DocOnce has special support for four types of "exercises", named
 *exercise*, *problem*, *project*, or *example*.
 These are all typeset as special kind of
 subsections. Such subsections start with a subsection
@@ -1520,7 +1520,7 @@ consists of the word "Exercise", "Problem", "Project", or "Example", followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
 name of the result file (if the answer to the exercise is to be handed
-in) and a solution file. The Doconce code looks like this:
+in) and a solution file. The DocOnce code looks like this:
 
 !bc
 ===== Project: Determine the Distance to the Moon =====
@@ -1531,7 +1531,7 @@ solution=eart2moon_sol.do.txt
 Here goes the running text of the project....
 
 !ec
-Doconce will recognize the exercise, problem, project, or example *title*,
+DocOnce will recognize the exercise, problem, project, or example *title*,
 the optional *label*, the optional *name of the answer file* (`file=`), the
 optional name of the *solution* file (`solution=`),
 and the *running text*. In addition,
@@ -1624,7 +1624,7 @@ the heading "Find a solution to a problem".
 
 The various elements of exercises are collected in a special data
 structure (list of dictionaries) stored in a file `.mydoc.exerinfo`,
-if `mydoc.do.txt` is the name of the Doconce file.  The file contains
+if `mydoc.do.txt` is the name of the DocOnce file.  The file contains
 a list of dictionaries, where keys in the dictionary corresponds to
 elements in the exercise: filename, solution file, answer, label, list
 of hints, list of subexercises, closing remarks, and the main body of
@@ -1637,12 +1637,12 @@ use of the elements in an exercise.  For example, one can image web
 formats where the hints are displayed one by one when needed and where
 the result file can be uploaded. One can also think of mechanisms for
 downloading the solution file if the result file meets certain
-criteria.  Doconce does not yet generate such functionality in any
+criteria.  DocOnce does not yet generate such functionality in any
 output format, but this is an intended future feature to be
 impelemented.
 
 For now, exercises, problems, projects, examples are typeset as ordinary
-Doconce sections (this is the most general approach that will work for many
+DocOnce sections (this is the most general approach that will work for many
 formats). One must therefore refer to an exercise, problem, project, or
 example by its label, which normally will translate to the section number
 (in LaTeX, for instance) or a link to the title of the section.
@@ -1656,7 +1656,7 @@ works well in all formats (i.e., no double "Problem Problem" appears).
 __Remark.__
 Examples are *not* typeset similarly to exercises unless one adds
 the command-line option `--examples_as_exercises`. That is, without
-this option, any heading and starting with `Example:` makes Doconce
+this option, any heading and starting with `Example:` makes DocOnce
 treat the forthcoming text as ordinary text without any interpretation
 of exercise-style instructions.
 With the command-line option `--examples_as_exercises`,
@@ -1666,7 +1666,7 @@ typesetting of the example looks like an exercise equipped with a solution.
 
 === List of Exercises, Problems, and Projects ===
 
-Doconce also supports listing all exercises, problems, and projects
+DocOnce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
 By default, no such listing is enabled. When running
 `doconce format pdflatex` (or `latex`)
@@ -1749,7 +1749,7 @@ map onto with respect to typesetting, a similar possibility is
 supported for Sphinx as well.  The argument after `!bc` is in case of
 Sphinx output mapped onto a valid Pygments language for typesetting of
 the verbatim block by Pygments. This mapping takes place in an
-optional comment to be inserted in the Doconce source file, e.g.,
+optional comment to be inserted in the DocOnce source file, e.g.,
 !bc
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 !ec
@@ -1865,7 +1865,7 @@ directive above:
 
 @@@CODE __testcode.f fromto:subroutine\s+test@^C\s{5}END1
 
-Note that the "to" line is not copied into the Doconce file, but the
+Note that the "to" line is not copied into the DocOnce file, but the
 "from" line is. Sometimes it is convenient to also neglect the
 "from" line, a feature that is allowed by replacing `fromto:` by
 `from-to` ("from with minus"). This allows for copying very similar
@@ -1894,9 +1894,9 @@ With only `fromto:` this would be impossible.
 
 Remark for those familiar with `ptex2tex`: The from-to
 syntax is slightly different from that used in `ptex2tex`. When
-transforming Doconce to LaTeX, one first transforms the document to a
+transforming DocOnce to LaTeX, one first transforms the document to a
 `.p.tex` file to be treated by `ptex2tex`. However, the `@@@CODE` line
-is interpreted by Doconce and replaced by the mentioned
+is interpreted by DocOnce and replaced by the mentioned
 pro or cod environment which are defined in the `ptex2tex` configuration
 file.
 
@@ -1950,7 +1950,7 @@ output beyond LaTeX (`latex` and `pdflatex` formats), stick to
 simple `\[` and `\]` or `equation` and `align` or `align*` environments,
 and avoid referring to equations in MediaWikis.
 
-Going from Doconce to MS Word is most easily done by outputting in
+Going from DocOnce to MS Word is most easily done by outputting in
 the `latex` format and then using the Pandoc program to translate
 from LaTeX to MS Word (note that only a subset of LaTeX will be
 translated correctly).
@@ -1979,11 +1979,11 @@ alternatively:
 
 === Mathematics for PowerPoint/OpenOffice ===
 
-If you have LaTeX mathematics written in Doconce, it is fairly easy
+If you have LaTeX mathematics written in DocOnce, it is fairly easy
 to generate PNG images of all mathematical formulas and equations for
 use with PowerPoint or OpenOffice presentations.
 
-  o Make a Sphinx version of the Doconce file.
+  o Make a Sphinx version of the DocOnce file.
   o Go to the Sphinx directory and load the `conf.py` file into
     a browser.
   o Search for "math" and comment out the
@@ -2007,12 +2007,12 @@ use with PowerPoint or OpenOffice presentations.
 ===== Macros (Newcommands) =====
 label{newcommands}
 
-Doconce supports a type of macros via a LaTeX-style *newcommand*
+DocOnce supports a type of macros via a LaTeX-style *newcommand*
 construction.  The newcommands defined in a file with name
-`newcommand_replace.tex` are expanded when Doconce is filtered to
+`newcommand_replace.tex` are expanded when DocOnce is filtered to
 other formats, except for LaTeX (since LaTeX performs the expansion
 itself).  Newcommands in files with names `newcommands.tex` and
-`newcommands_keep.tex` are kept unaltered when Doconce text is
+`newcommands_keep.tex` are kept unaltered when DocOnce text is
 filtered to other formats, except for the Sphinx format. Since Sphinx
 understands LaTeX math, but not newcommands if the Sphinx output is
 HTML, it makes most sense to expand all newcommands.  Normally, a user
@@ -2021,7 +2021,7 @@ will put all newcommands that appear in math blocks surrounded by
 least if they contribute to make the raw LaTeX math text easier to
 read in the formats that cannot render LaTeX.  Newcommands used
 elsewhere throughout the text will usually be placed in
-`newcommands_replace.tex` and expanded by Doconce.  The definitions of
+`newcommands_replace.tex` and expanded by DocOnce.  The definitions of
 newcommands in the `newcommands*.tex` files *must* appear on a single
 line (multi-line newcommands are too hard to parse with regular
 expressions).
@@ -2055,7 +2055,7 @@ in the current format.
 
 ===== Admonitions =====
 
-Doconce offers strong support for admonition environments, such
+DocOnce offers strong support for admonition environments, such
 as warning boxes, notification boxes, question boxes,
 and summary boxes. The boxes normally have an icon, a heading,
 and may also have a background color. A special box, the block,
@@ -2095,7 +2095,7 @@ The main message is to utilize the admonition styles for
 marking different parts of the text
 |esummary
 !ec
-The above Doconce code is in the present format rendered as
+The above DocOnce code is in the present format rendered as
 
 !bwarning
 Here is a warning!
@@ -2218,9 +2218,9 @@ rule, or a conclusion.
 
 ===== Typesetting of Algorithms =====
 
-Doconce has no support for typesetting of algorithms, while LaTeX
+DocOnce has no support for typesetting of algorithms, while LaTeX
 has quite sophisticated support. LaTeX writes need some strategy with
-dealing with algorithms in Doconce: they should be sophisticated
+dealing with algorithms in DocOnce: they should be sophisticated
 when the output is in LaTeX and they should be readable when the
 output is in other formats that have no native support for
 algorithms.
@@ -2251,7 +2251,7 @@ if feature in element:
 
 ===== Preprocessing Steps =====
 
-Doconce allows preprocessor commands for, e.g., including files,
+DocOnce allows preprocessor commands for, e.g., including files,
 leaving out text, or inserting special text depending on the format.
 Two preprocessors are supported: preprocess
 (URL:"http://code.google.com/p/preprocess") and mako
@@ -2260,16 +2260,16 @@ statements much like the well-known preprocessor in C and C++ (but it
 does not allow sophisticated macro substitutions). The latter
 preprocessor is a very powerful template system.  With Mako you can
 automatically generate various type of text and steer the generation
-through Python code embedded in the Doconce document. An arbitrary set
+through Python code embedded in the DocOnce document. An arbitrary set
 of `name=value` command-line arguments (at the end of the command line)
 automatically define Mako variables that are substituted in the document.
 
-Doconce will detect if preprocess or Mako commands are used and run
-the relevant preprocessor prior to translating the Doconce source to a
+DocOnce will detect if preprocess or Mako commands are used and run
+the relevant preprocessor prior to translating the DocOnce source to a
 specific format.
 
 The preprocess and mako programs always have the variable `FORMAT`
-defined as the desired output format of Doconce (`html`, `latex`,
+defined as the desired output format of DocOnce (`html`, `latex`,
 `plain`, `rst`, `sphinx`, `epydoc`, `st`).  It is then easy to test on
 the value of `FORMAT` and take different actions for different
 formats. Below is an example:
@@ -2292,21 +2292,21 @@ the writing of parts of the document.
 
 ===== Splitting Documents into Smaller Pieces =====
 
-Long documents are conveniently split into smaller Doconce files.
+Long documents are conveniently split into smaller DocOnce files.
 However, there must be a master document including all the pieces,
 otherwise references to sections and the index will not work properly.
 The master document is preferably a file just containing a set of
 preprocessor include statements of the form `#include "file.do.txt"`.
-The preprocessor will put together all the pieces so that Doconce
+The preprocessor will put together all the pieces so that DocOnce
 sees a long file with the complete text.
 
 # #ifdef DEPRECATED
 For reST and Sphinx documents it is a point to have
 separate `.rst` files and an index file listing the various `.rst`
 that build up the document. To generate the various `.rst` files one
-should not run Doconce on the individual `.do.txt` files, because then
+should not run DocOnce on the individual `.do.txt` files, because then
 references and index entries are not treated correctly. Instead,
-run Doconce on the master file and invoke the script `doconce split_rst`
+run DocOnce on the master file and invoke the script `doconce split_rst`
 to split the long, complete `.rst` into pieces. This process requires
 that each `#include "file.do.txt` line in the master file is preceded by a
 "marker line" having the syntax `#>>>>>> part: file >>>>>>`, where
@@ -2346,11 +2346,11 @@ variable `files` above.
 # #endif
 
 For web documents it is often desired to split long pages into shorter
-ones. This is done by the Doconce command `!split` placed at the
+ones. This is done by the DocOnce command `!split` placed at the
 beginning of a line. The `!split` commands works with output in
 `html`, `rst`, `sphinx`, `latex`, and `pdflatex`. The `!split` command
 are normally placed before section headings. It is very actively used
-when writing slides with Doconce. The `doconce format` command does not
+when writing slides with DocOnce. The `doconce format` command does not
 recognize `!split` instructions: one needs to run `doconce split_*`
 as a postprocess, where the `*` means `html`, `rst`, or `beamer`.
 
@@ -2418,7 +2418,7 @@ in the compiled directory (usually `sphinx-rootdir/_build/html`) and
 can easily be moved around.
 
 
-LaTeX Beamer slides generated from Doconce source also apply `!split` to
+LaTeX Beamer slides generated from DocOnce source also apply `!split` to
 indicate the start of individual slides. However, the split is
 performed by the `doconce slides_beamer` command and does not result
 in individual files like `split_rst` and `split_html` do.
@@ -2426,25 +2426,25 @@ in individual files like `split_rst` and `split_html` do.
 
 ===== Missing Features =====
 
-Doconce does not aim to support sophisticated typesetting, simply because
+DocOnce does not aim to support sophisticated typesetting, simply because
 sophisticated typesetting usually depend quite strongly on the particular
 output format chosen. When a particular feature needed is not supported
-by Doconce, it is recommended to hardcode that feature for a particular
+by DocOnce, it is recommended to hardcode that feature for a particular
 format and use the if-else construction of the preprocessor. For example,
 if a sophisticated table is desired in LaTeX output, do something like
 
 @@@CODE _format_specific2.do.txt envir=cc
 
 Similarly, if certain adjustments are needed, like
-pagebreaks in LaTeX, hardcode that in the Doconce format (and recall
+pagebreaks in LaTeX, hardcode that in the DocOnce format (and recall
 that this is really LaTeX dependent - pagebreaks are not
 relevant HTML formats).
 
-Instead of inserting special code in the Doconce document, one can
-alternatively script editing of the output from Doconce. That is,
+Instead of inserting special code in the DocOnce document, one can
+alternatively script editing of the output from DocOnce. That is,
 we develop a Python or Bash script that runs the translation of
-a Doconce document to a ready docoment in another format. Inside this
-script, we may edit and fine-tune the output from Doconce.
+a DocOnce document to a ready docoment in another format. Inside this
+script, we may edit and fine-tune the output from DocOnce.
 
 
 ===== Header and Footer =====
@@ -2452,31 +2452,31 @@ script, we may edit and fine-tune the output from Doconce.
 Some formats use a header and footer in the document. LaTeX and
 HTML are two examples of such formats. When the document is to be
 included in another document (which is often the case with
-Doconce-based documents), the header and footer are not wanted, while
+DocOnce-based documents), the header and footer are not wanted, while
 these are needed (at least in a LaTeX context) if the document is
 stand-alone. We have introduced the convention that if `TITLE:`
 is found at the beginning of the line (i.e., the document
 has a title), the header and footer are included, otherwise not.
 
 
-===== Emacs Doconce Formatter =====
+===== Emacs DocOnce Formatter =====
 label{emacs:doconce}
 
 ## Note: check http://www.latex-community.org/viewtopic.php?f=28&t=208
 ## for highly configurable latex editors that perhaps can be adapted
 ## to doconce (Kile seems to be the choice because of extensibility)
 
-The file ".doconce-mode.el": "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" in the Doconce source distribution
-gives a "Doconce Editing Mode" in Emacs.
+The file ".doconce-mode.el": "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" in the DocOnce source distribution
+gives a "DocOnce Editing Mode" in Emacs.
 
-Here is how to get the Doconce Editing Mode in Emacs: Download ".doconce-mode.el": "https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el" and save it in your home directory, then add these lines to `~/.emacs`:
+Here is how to get the DocOnce Editing Mode in Emacs: Download ".doconce-mode.el": "https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el" and save it in your home directory, then add these lines to `~/.emacs`:
 !bc
 (load-file "~/.doconce-mode.el")
 !ec
 Emacs will now recognize files with extension `.do.txt` and enter
-the Doconce Editing Mode.
+the DocOnce Editing Mode.
 
-The major advantage with the Doconce Editing Mode in Emacs is that
+The major advantage with the DocOnce Editing Mode in Emacs is that
 many keyboard shortcuts are defined:
 
 |--------------------------------------------------------|
@@ -2502,12 +2502,12 @@ many keyboard shortcuts are defined:
 
 Typing `Ctrl+c help` prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
-Doconce and saving much typing!
+DocOnce and saving much typing!
 
 
 ======= Writing Slides =======
 
-It is a fast procedure to make slides from large amounts of Doconce
+It is a fast procedure to make slides from large amounts of DocOnce
 text, in particular for condensing running material for teaching or
 just providing the slide set as an overview or study guide.
 The slides can either be ordinary, separate slides - or just
@@ -2534,7 +2534,7 @@ Points to consider (just sketches...):
 
 ===== Overview =====
 
-Basically, Doconce slides are ordinary Doconce text with `!split`
+Basically, DocOnce slides are ordinary DocOnce text with `!split`
 inserted before each slide. Nevertheless, contents of slide differ
 considerably from ordinary running text. Some guidelines on
 the elements within each slide are necessary to produce effective
@@ -2553,7 +2553,7 @@ slide sets:
    `frac` parameter for LaTeX Beamer) so they become effective
    on the slide.
 
-Doconce can generate two types of slides: HTML5+CSS3 type of
+DocOnce can generate two types of slides: HTML5+CSS3 type of
 slides to be presented through a web browser, and classical
 LaTeX Beamer slides.
 
@@ -2576,7 +2576,7 @@ Terminal> doconce slides_html myslides reveal \
 
  * Some newer Firefox does not show rounded corners of the
    admonition boxes, e.g., notice and warning (tested on Ubuntu)
- * Doconce performs some adjustments of the spacing around
+ * DocOnce performs some adjustments of the spacing around
    equations. More edits (automate with `doconce subst`) might be needed.
 
 ===== LaTeX Beamer Slides =====
@@ -2585,7 +2585,7 @@ Not yet written...
 
 === Themes ===
 
-Four themes come with Doconce: `X_Y`, where `X` is `blue` or `red`
+Four themes come with DocOnce: `X_Y`, where `X` is `blue` or `red`
 (the main color of the slides) and `Y` is "`plain`":
 "http://hplgit.github.io/teamods/doconce/demo/demo_red_plain.pdf"
 for simple layout and
@@ -2595,7 +2595,7 @@ for shadowed boxes and more visual structure in the slides.
 ======= Mako Programming =======
 
 The "Mako": "http://docs.makotemplates.org/" templating engine is used
-as preprocessor for Doconce documents, but the "Preprocess": "http://code.google.com/p/preprocess" is run prior to Mako and is recommended for
+as preprocessor for DocOnce documents, but the "Preprocess": "http://code.google.com/p/preprocess" is run prior to Mako and is recommended for
 including other files via `# #include "filename"`. Preprocess is also
 sufficient for if-else tests to steer which parts of the text that
 are to be compiled. For more demanding tasks, use Mako, which resembles
@@ -2663,12 +2663,12 @@ comment in Mako.
 <%doc/>
 !ec
 
-One can use Mako to extend the Doconce syntax. Two examples are given next.
+One can use Mako to extend the DocOnce syntax. Two examples are given next.
 
 ===== Example: Extending Tables to Handle Figures =====
 label{manual:tables:wfigs}
 
-Doconce tables cannot contain figures, since figures must appear on
+DocOnce tables cannot contain figures, since figures must appear on
 a single line with the special syntax `FIGURE: [file, ...]`.
 What if you want a table of thumbnail figures with hyperlinks?
 
@@ -2693,7 +2693,7 @@ A 3x3 table of figures then look like
 |-------------------------------------------------|
 !ec
 We do not want a heading, just a grid of figures, but a heading is
-required in Doconce figures, so the solution is to provide
+required in DocOnce figures, so the solution is to provide
 empty column names in the heading. This solution
 gives acceptable results in HTML and LaTeX.
 
@@ -2719,7 +2719,7 @@ the figure.
 A corresponding solution
 for Sphinx will not work because inline figures in Sphinx has
 a syntax with pipe symbols ('|') that interfer with the
-column separator in tables in Doconce. Returning the HTML
+column separator in tables in DocOnce. Returning the HTML
 code in case of Sphinx will just display that HTML code
 in the cells, not the rendered HTML code. A solution that
 includes Sphinx is provided later.
@@ -2795,13 +2795,13 @@ ${generate_table(80, 120, 5, 3)}
 !ec
 The result is a table like the one above, except that the horizontal rules
 and the heading are very short lines (but this is legal syntax -
-it just does not look appealing in the Doconce source).
+it just does not look appealing in the DocOnce source).
 
 === Generating the Entire Table in a Native Format via Mako ===
 
 To allow Sphinx and other formats, it is best to generate the entire
 table. This can be done either by a Mako function or as a post
-process after Doconce has created the output file. We show the Mako
+process after DocOnce has created the output file. We show the Mako
 solution here.
 
 !bnotice Tip
@@ -2809,7 +2809,7 @@ A pure Python function Mako is easiest to develop in a seperate
 Python program file because Python has better error messages
 than Mako. Also, Python has debugging facilities that make the
 development of the code much more efficient than writing in Mako.
-When the Python function works, it can be inserted in the Doconce
+When the Python function works, it can be inserted in the DocOnce
 file inside the Mako directives `<%` and `%>`.
 !enotice
 
@@ -2869,7 +2869,7 @@ def generate_native_table(start, end, step, no_of_columns):
     return text
 %>
 
-## Example on call in Doconce source
+## Example on call in DocOnce source
 ${generate_native_table(80, 120, 5, 3)}
 !ec
 One can easily add support for various other formats, such as `pandoc`,
@@ -2909,10 +2909,10 @@ The output in the current format is shown below.
 === Generating the Entire Table in a Native Format as a Post Process ===
 
 Instead of using Mako as shown above, we can invent our own syntax line
-for the table with figures and apply a script to the Doconce output file
+for the table with figures and apply a script to the DocOnce output file
 to replace the special line with proper native code.
 We use the same `generate_native_table` function as above, but this
-time in a Python script. In the Doconce source we place a line
+time in a Python script. In the DocOnce source we place a line
 
 !bc
 @@@FIGTABLE 80 120 5 3
@@ -2961,14 +2961,14 @@ filestr = '\n'.join(lines)  # make one string from all separate lines
 !ec
 
 !bnotice Recommendation
-This latter way of inserting specialized native text after Doconce
+This latter way of inserting specialized native text after DocOnce
 has generated the output file is easier than using Mako and usually
 also safer.
 !enotice
 
 !bsummary Lesson Learned
 The above examples show different techniques for extending the
-Doconce capabilities. The ideas are not restricted to Doconce: using
+DocOnce capabilities. The ideas are not restricted to DocOnce: using
 Mako as a preprocessing step or inserting "magic" lines that you
 can later substitute by a script is possible in all types of
 ASCII-based documents, e.g., LaTeX, Sphinx, and Markdown.
@@ -2977,13 +2977,13 @@ ASCII-based documents, e.g., LaTeX, Sphinx, and Markdown.
 ===== Example: Defining a Theorem Environment =====
 label{manual:theorem:envir}
 
-Doconce supports only basic formatting elements (headings, paragraphs,
+DocOnce supports only basic formatting elements (headings, paragraphs,
 lists, etc.), while LaTeX users are used to fancy environments for, e.g.,
 theorems. A flexible strategy is to typeset theorems
 using paragraph headings, which will look satisfactorily in all
 formats, but add comment lines that can be replaced by LaTeX environments
 via `doconce replace`. Theorems can be numbered using a variable in Mako.
-Here is an example on raw Doconce code:
+Here is an example on raw DocOnce code:
 
 !bc
 <%
@@ -3075,7 +3075,7 @@ achievement.
 !ec
 Even better, HTML output looks nice as well.
 
-Note that Doconce supports fancy environments for verbatim code via
+Note that DocOnce supports fancy environments for verbatim code via
 the `ptex2tex` program with all its flexibility for choosing environments.
 Also `doconce ptex2tex` has quite some flexibility for typesetting
 computer code.
@@ -3083,23 +3083,23 @@ computer code.
 
 
 
-===== Tools for Writing Doconce Documents =====
+===== Tools for Writing DocOnce Documents =====
 
- * Emacs (with the modest Doconce syntax highlighting), Vim, Gedit, etc.
- * "TeXMaker": "http://www.xm1math.net/texmaker/" and "Kile": "http://kile.sourceforge.net/" can in theory be adapted to handle Doconce compilation and maybe even Doconce constructs.
+ * Emacs (with the modest DocOnce syntax highlighting), Vim, Gedit, etc.
+ * "TeXMaker": "http://www.xm1math.net/texmaker/" and "Kile": "http://kile.sourceforge.net/" can in theory be adapted to handle DocOnce compilation and maybe even DocOnce constructs.
 
 
 
 ===== Debugging =====
 
 Given a problem, extract a small portion of text surrounding the
-problematic area and debug that small piece of text. Doconce does a
+problematic area and debug that small piece of text. DocOnce does a
 series of transformations of the text. The effect of each of these
 transformation steps are dumped to a logfile, named
 `_doconce_debugging.log`, if the to `doconce format` after the filename
-is `debug`. The logfile is inteded for the developers of Doconce, but
+is `debug`. The logfile is inteded for the developers of DocOnce, but
 may still give some idea of what is wrong.  The section "Basic Parsing
-Ideas" explains how the Doconce text is transformed into a specific
+Ideas" explains how the DocOnce text is transformed into a specific
 format, and you need to know these steps to make use of the logfile.
 
 
@@ -3138,11 +3138,11 @@ are used for this purpose.
 The final step is to insert the code and TeX blocks again (these should
 be untouched and are therefore left out of the previous parsing).
 
-It is important to keep the Doconce format and parsing simple.  When a
+It is important to keep the DocOnce format and parsing simple.  When a
 new format is needed and this format is not obtained by a simple edit
 of the definition of existing formats, it might be better to convert
 the document to reST and then to XML, parse the XML and
-write out in the new format.  When the Doconce format is not
+write out in the new format.  When the DocOnce format is not
 sufficient to getting the layout you want, it is suggested to filter
 the document to another, more complex format, say reST or
 LaTeX, and work further on the document in this format.
@@ -3152,7 +3152,7 @@ LaTeX, and work further on the document in this format.
 
 !bnotice Note
 This text is somewhat outdated.
-Now Doconce supports NumPy-style docstrings. Doconce can also do
+Now DocOnce supports NumPy-style docstrings. DocOnce can also do
 automatic references to Python documentation, say the :mod:`math`
 module, but the link only works in case of Sphinx output.
 Typical syntax is

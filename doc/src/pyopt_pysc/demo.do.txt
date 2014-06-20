@@ -80,7 +80,7 @@ It's pretty cool!
 ======= What do I write? =======
 
 Python Online Tutor typesetting of code is enabled by using the
-Doconce environment `!bc pyoptpro` (note `pro`, which indicates that
+DocOnce environment `!bc pyoptpro` (note `pro`, which indicates that
 it is a complete program - no additional code is needed to run it
 as a stand-alone program).
 
