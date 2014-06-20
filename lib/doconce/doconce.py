@@ -2591,7 +2591,8 @@ def interpret_quiz_text(text, insert_missing_heading= False,
             right = choice_text.startswith('Cr')  # right or wrong choice?
             explanation = ''
             if re.search(r'^E:', choice, flags=re.MULTILINE):
-                choice, explanation = choice.split('E:')
+                choice, explanation = re.split(r'^E:\s*',
+                                               choice, flags=re.MULTILINE)
                 text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()) + begin_end_tags('explanation of choice %d' % counter, explanation.strip()))
             else:
                 text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()))
@@ -2670,6 +2671,9 @@ def extract_quizzes(filestr, format):
                 choice = re.sub(prefix_pattern, '', choice).strip()
                 data[-1]['choice prefix'][int(i)-1] = prefix
             data[-1]['choices'].append([right, choice])
+        # Include choice prefix only if it is needed
+        if data[-1]['choice prefix'] == [None]*len(choices):
+            del data[-1]['choice prefix']
         pattern = '^' + bct('explanation of choice (\d+)', cp) + '(.+?)' + ect('explanation of choice \d+', cp)
         explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         for i_str, explanation in explanations:

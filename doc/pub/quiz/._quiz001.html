@@ -720,7 +720,10 @@ Good attempt, especially when referring to the following story.
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_6_2">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
-Correct!
+Seems trivial, but once upon a time...
+
+<p>
+<center><p><img src="fig/1p1.gif" align="bottom" width=180></p></center>
 </div></p>
 </div>
 </p>
@@ -742,7 +745,7 @@ It is indeed possible to add pure numbers without any units.
 
 
 <p>
-The DocOnce code for above quiz reads
+The source code for defining above quiz reads
 
 <p>
 
@@ -763,6 +766,9 @@ join the ropes together, then I have five knots.*
 !equote
 
 Cr: 4.
+E: Seems trivial, but once upon a time...
+
+FIGURE: [fig/1p1, width=180 frac=0.3]
 
 Cw: The computation does not make sense when $a$ and $b$ are given without
 units.
@@ -848,7 +854,7 @@ and \( \nabla\cdot\boldsymbol{u} \) is the divergence of a vector field \( \bold
  data-target="#quiz_id_7_3" style="font-size: 80%;"></a>
 &nbsp;<b>Choice 3:</b>
 The equation implies that there exists a vector potential \( \boldsymbol{A} \)
-such that \boldsymbol{u}=\nabla\times\boldsymbol{A}$.
+such that \( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_7_3">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
@@ -876,13 +882,13 @@ we have \( \nabla\times\boldsymbol{u}=0 \).
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
  data-target="#quiz_id_7_5" style="font-size: 80%;"></a>
 &nbsp;<b>Choice 5:</b>
-The equation implies that \( bm{u} \) must be a constant vector field.
+The equation implies that \( \boldsymbol{u} \) must be a constant vector field.
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_7_5">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
-No, it is the <em>sum</em> of derivatives of different components \( \boldsymbol{u} \)
+No, it is the <em>sum</em> of derivatives of different components of \( \boldsymbol{u} \)
 that is zero. Only in one dimension, where \( \boldsymbol{u}=u_x\boldsymbol{i} \)
-and \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be constant.
+and consequently \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be constant.
 </div></p>
 </div>
 </p>
@@ -923,7 +929,7 @@ E: Yes, *divergence free* is often used as synonym for *zero divergence*,
 and $\nabla\cdot\boldsymbol{u}$ is the divergence of a vector field $\boldsymbol{u}$.
 
 Cw: The equation implies that there exists a vector potential $\boldsymbol{A}$
-such that \boldsymbol{u}=\nabla\times\boldsymbol{A}$.
+such that $\boldsymbol{u}=\nabla\times\boldsymbol{A}$.
 E: Yes, this is an important result in vector calculus that is much
 used in electromagnetics.
 
@@ -931,10 +937,10 @@ Cr: The equation implies $\nabla\times\boldsymbol{u}=0$.
 E: No, only if $\boldsymbol{u}=\nabla\phi$, for some scalar potential $\phi$,
 we have $\nabla\times\boldsymbol{u}=0$.
 
-Cr: The equation implies that $bm{u}$ must be a constant vector field.
-E: No, it is the *sum* of derivatives of different components $\boldsymbol{u}$
+Cr: The equation implies that $\boldsymbol{u}$ must be a constant vector field.
+E: No, it is the *sum* of derivatives of different components of $\boldsymbol{u}$
 that is zero. Only in one dimension, where $\boldsymbol{u}=u_x\boldsymbol{i}$
-and $\nabla\cdot\boldsymbol{u}=du/dx$, the vector field must be constant.
+and consequently $\nabla\cdot\boldsymbol{u}=du/dx$, the vector field must be constant.
 !equiz
 </pre></div>
 

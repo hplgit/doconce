@@ -59,7 +59,8 @@ Cw: Denmark
 
 !enotice
 
-Multiple correct choices are possible. Writing
+Multiple correct choices are possible. Here is an example with three
+right choices:
 
 !bc
 |bquiz
@@ -72,7 +73,6 @@ Cr: Ottawa
 Cw: New York
 |equiz
 !ec
-gives rise to the quiz
 
 !bquiz
 Q: Which of the following cities are capitals?
@@ -304,9 +304,23 @@ Cw: Denmark
 |equestion
 !ec
 
+!bnotice Choice and question prefix
+In the above example, we demonstrate the possibility to control
+the word preceding the question and the choices.
+# #if FORMAT in ("html",)
+For the current HTML format, questions are by default preceded by
+`Question:` and choices by `Choice X:`, where `X` is the
+number of the choice.
+# #endif
+The prefix appears inside square brackets. Empty brackets, as those
+in the question, leads to no prefix. The choice `Stockholm` has
+a prefix `[Answer:]`, and exactly the text inside the square brackets
+precedes the text of this choice in the output.
+!enotice
 
 # #endif
 
+!split
 ======= Typesetting of mathematics and computer code =======
 
 ===== Mathematics =====
@@ -584,7 +598,7 @@ local variable, while in the main program, `u` refers to the
 global variable, and the local variable `u` in `D` no longer exists, because
 it was deleted when returning from the function.
 Inside `D`, we can actually access the global `u` by `globals()['u']`,
-but that almost never comes to use.
+but that almost never comes to use and is also bad coding.
 
 Cw: The call `D(lambda x: return 2*x, 2)` is equivalent to defining
 
@@ -622,5 +636,23 @@ E: Yes, the finite difference approximation used in `D` is exact
 for quadratic polynomials!
 !equiz
 
+!split
+======= The Python data structure for quizzes =======
 
-# code, math, figure/movie (animated gif?)
+When a DocOnce file `mydoc.do.txt`
+containing quizzes (and other types of text, like this document)
+is translated to some format by the `doconce format` command,
+a Python list of all the quizzes is created and written to
+`.mydoc.quiz`. Each list element represents one quiz as a
+dictionary. The list corresponding to the quizzes in the current
+document starts with
+
+!bc pycod
+[{'choice prefix': [None, None, None, None],
+  'choices': [[u'wrong', u'Helsinki'],
+              [u'wrong', u'Drammen'],
+              [u'right', u'Oslo'],
+              [u'wrong', u'Denmark']],
+  'no': 1,
+  'question': u'What is the capital of Norway?'},
+!ec
