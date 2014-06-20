@@ -314,13 +314,13 @@ def syntax_check(filestr, format):
         # Check that environments !bc, !ec, !bans, !eans, etc.
         # appear at the very beginning of the line
         # (allow e.g. `!benvir argument` and comment lines)
-        pattern = re.compile(r'^([^#\n].+?[^`\n]| +)(![eb]%s)' % envir, re.MULTILINE)
+        pattern = re.compile(r'^([^#\n].+?[^`(\n]| +)(![eb]%s)' % envir, re.MULTILINE)
         m = pattern.search(filestr)
         if m:
             print '\n*** error: %s is not at the beginning of a line' % \
                   (m.group(2))
             print '    surrounding text:'
-            print filestr[m.start()-100:m.start()+100], '\n'
+            print filestr[m.start()-100:m.end()+100], '\n'
             if m.group(1).strip() == '':
                 print 'set %s at the beginning of the line' % m.group(2)
             else:

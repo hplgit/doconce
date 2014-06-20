@@ -358,7 +358,7 @@ def html_code(filestr, code_blocks, code_block_types,
             if code_block_types[i] == 'ccq':
                 result = '<blockquote>\n%s</blockquote>' % result
 
-            result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (from !bc %s)' % code_block_types[i], pygm_style) + result
+            result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (!bc %s)' % code_block_types[i], pygm_style) + result
             # Fix ugly error boxes
             result = re.sub(r'<span style="border: 1px .*?">(.+?)</span>',
                             '\g<1>', result)
@@ -1345,7 +1345,10 @@ def html_quiz(quiz):
     for i, choice in enumerate(quiz['choices']):
         choice_no = i+1
         answer = choice[0].capitalize() + '!'
-        choice_prefix = quiz['choice prefix'][i] if isinstance(quiz['choice prefix'][i], basestring) else common_choice_prefix
+        choice_prefix = common_choice_prefix
+        if 'choice prefix' in quiz:
+            if isinstance(quiz['choice prefix'][i], basestring):
+                choice_prefix = quiz['choice prefix'][i]
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
             pass  # don't add choice number
         else:

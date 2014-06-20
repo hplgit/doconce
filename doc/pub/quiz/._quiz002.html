@@ -1,0 +1,681 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Software Tool for Typesetting Quizzes">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' A pure text quiz ', 1, None, '___sec0'),
+              (' Question and choices ', 2, None, '___sec1'),
+              (' Explanations of choices ', 2, None, '___sec2'),
+              (' Typesetting ', 2, None, '___sec3'),
+              (' Specification in HTML ', 2, None, '___sec4'),
+              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec5'),
+              (' Typesetting of mathematics and computer code ',
+               1,
+               None,
+               '___sec6'),
+              (' Mathematics ', 2, None, '___sec7'),
+              (' Simple example ', 3, None, '___sec8'),
+              (' A more complicated example ', 3, None, '___sec9'),
+              (' Code ', 2, None, '___sec10'),
+              (' Example: Putting it all together ', 2, None, '___sec11'),
+              (' The Python data structure for quizzes ',
+               1,
+               None,
+               '___sec12')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="quiz.html">A Software Tool for Typesetting Quizzes</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "A pure text quiz" --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
+     <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
+     <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
+     <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
+     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
+     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec6" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: "Code" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz003.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h1>Typesetting of mathematics and computer code  <a name="___sec6"></a></h1>
+
+<h2>Mathematics  <a name="___sec7"></a></h2>
+
+Mathematical typesetting follows a restricted LaTeX syntax. Inline
+formulas appear inside dollar signs, while separate equations
+appear inside <code>!bt</code> (&quot;begin TeX&quot;) and <code>!et</code> (&quot;end TeX&quot;) tags.
+
+<h3>Simple example  <a name="___sec8"></a></h3>
+
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> Compute the result of \( a+b \) in the case \( a=2 \) and \( b=2 \).</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_6_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+5.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_6_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Good attempt, especially when referring to the following story.
+
+<p>
+<blockquote>
+    An anthropologist was asking a primitive tribesman about arithmetic.
+    When the anthropologist asked, <em>What does two and two make?</em> the
+    tribesman replied, <em>Five.</em> Asked to explain, the tribesman said, <em>If I
+    have a rope with two knots, and another rope with two knots, and I
+    join the ropes together, then I have five knots.</em>
+</blockquote>
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_6_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+4.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_6_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Seems trivial, but once upon a time...
+
+<p>
+<center><p><img src="fig/1p1.gif" align="bottom" width=180></p></center>
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_6_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+The computation does not make sense when \( a \) and \( b \) are given without
+units.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_6_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+It is indeed possible to add pure numbers without any units.
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+
+<p>
+The source code for defining above quiz reads
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquiz
+Q: Compute the result of $a+b$ in the case $a=2$ and $b=2$.
+
+Cw: 5.
+
+E: Good attempt, especially when referring to the following story.
+
+!bquote
+An anthropologist was asking a primitive tribesman about arithmetic.
+When the anthropologist asked, *What does two and two make?* the
+tribesman replied, *Five.* Asked to explain, the tribesman said, *If I
+have a rope with two knots, and another rope with two knots, and I
+join the ropes together, then I have five knots.*
+!equote
+
+Cr: 4.
+E: Seems trivial, but once upon a time...
+
+FIGURE: [fig/1p1, width=180 frac=0.3]
+
+Cw: The computation does not make sense when $a$ and $b$ are given without
+units.
+
+E: It is indeed possible to add pure numbers without any units.
+!equiz
+</pre></div>
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Only a subset of LaTeX equation environment is supported!</b>
+To make sure blocks with equations come out correctly in different
+output formats (LaTeX, HTML, Sphinx, Markdown), only four types
+of standard LaTeX equation environments should be used:
+
+<ol>
+<li> Single equation without number: <code>\[ ... \]</code> or
+   <code>\begin{equation*} ... \end{equation*}</code></li>
+<li> Single equation with number: <code>\begin{equation} ... \end{equation}</code></li>
+<li> Multiple, aligned equations without numbers:
+   <code>\begin{align*} ... \end{align*}</code></li>
+<li> Multiple, aligned equations with numbers:
+   <code>\begin{align} ... \end{align}</code></li>
+</ol>
+
+This means that one has to stay away from <code>eqnarray</code>, <code>alignat</code>,
+and other common LaTeX equation environments. However, inside an equation,
+standard LaTeX math typesetting works (like <code>\alpha</code>, <code>\mbox{...}</code>, etc.).
+</div>
+
+
+<h3>A more complicated example  <a name="___sec9"></a></h3>
+
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> The equation
+
+$$
+\begin{equation}
+\nabla\cdot\boldsymbol{u} = 0
+\tag{2}
+\end{equation}
+$$
+
+is famous in physics. Select the wrong assertion(s):</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_7_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+The equation tells that the net outflow of something with
+velocity \( \boldsymbol{u} \) in region is zero.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_7_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+This is right: integrating <a href="#mjx-eqn-2">(2)</a> over an arbitrary domain
+\( \Omega \) and using Gauss' divergence theorem, we get the surface integral
+
+$$ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,$$
+
+where \( \boldsymbol{n} \) is an outward unit normal on the boundary \( \partial\Omega \).
+The quantity \( \boldsymbol{u}\cdot\boldsymbol{n}dS \) is the outflow of volume per
+time unit if \( \boldsymbol{u} \) is velocity.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_7_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+The equation tells that the vector field \( \boldsymbol{u} \) is divergence free.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_7_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Yes, <em>divergence free</em> is often used as synonym for <em>zero divergence</em>,
+and \( \nabla\cdot\boldsymbol{u} \) is the divergence of a vector field \( \boldsymbol{u} \).
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_7_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+The equation implies that there exists a vector potential \( \boldsymbol{A} \)
+such that \( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_7_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_7_4" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 4:</b>
+The equation implies \( \nabla\times\boldsymbol{u}=0 \).
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_7_4">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+No, only if \( \boldsymbol{u}=\nabla\phi \), for some scalar potential \( \phi \),
+we have \( \nabla\times\boldsymbol{u}=0 \).
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_7_5" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 5:</b>
+The equation implies that \( \boldsymbol{u} \) must be a constant vector field.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_7_5">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+No, it is the <em>sum</em> of derivatives of different components of \( \boldsymbol{u} \)
+that is zero. Only in one dimension, where \( \boldsymbol{u}=u_x\boldsymbol{i} \)
+and consequently \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be constant.
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+
+<p>
+The corresponding code to define this quiz is listed below.
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquiz
+Q: The equation
+
+!bt
+\begin{equation}
+\nabla\cdot\boldsymbol{u} = 0
+label{cont:eq}
+\end{equation}
+!et
+is famous in physics. Select the wrong assertion(s):
+
+Cw: The equation tells that the net outflow of something with
+velocity $\boldsymbol{u}$ in region is zero.
+E: This is right: integrating <a href="#mjx-eqn-2">(2)</a> over an arbitrary domain
+$\Omega$ and using Gauss&#39; divergence theorem, we get the surface integral
+
+!bt
+\[ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,\]
+!et
+where $\boldsymbol{n}$ is an outward unit normal on the boundary $\partial\Omega$.
+The quantity $\boldsymbol{u}\cdot\boldsymbol{n}dS$ is the outflow of volume per
+time unit if $\boldsymbol{u}$ is velocity.
+
+Cw: The equation tells that the vector field $\boldsymbol{u}$ is divergence free.
+E: Yes, *divergence free* is often used as synonym for *zero divergence*,
+and $\nabla\cdot\boldsymbol{u}$ is the divergence of a vector field $\boldsymbol{u}$.
+
+Cw: The equation implies that there exists a vector potential $\boldsymbol{A}$
+such that $\boldsymbol{u}=\nabla\times\boldsymbol{A}$.
+E: Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+
+Cr: The equation implies $\nabla\times\boldsymbol{u}=0$.
+E: No, only if $\boldsymbol{u}=\nabla\phi$, for some scalar potential $\phi$,
+we have $\nabla\times\boldsymbol{u}=0$.
+
+Cr: The equation implies that $\boldsymbol{u}$ must be a constant vector field.
+E: No, it is the *sum* of derivatives of different components of $\boldsymbol{u}$
+that is zero. Only in one dimension, where $\boldsymbol{u}=u_x\boldsymbol{i}$
+and consequently $\nabla\cdot\boldsymbol{u}=du/dx$, the vector field must be constant.
+!equiz
+</pre></div>
+
+<h2>Code  <a name="___sec10"></a></h2>
+
+Inline computer code (variables, expressions, statements) are
+normally typeset with a monospace font, and this is enabled by
+enclosing the code in backticks. Blocks of computer code are typeset
+with <code>!bc</code> (&quot;begin code&quot;) and <code>!ec</code> (&quot;end code&quot;) tags.
+One can specify the computer language as part of the <code>!bc</code> tag:
+<code>!bc LX</code>, where <code>L</code> is the language (<code>py</code> for Python, <code>m</code> for Matlab,
+<code>cpp</code> for C++, for instance) and <code>X</code> can be <code>pro</code> for a complete
+executable program or <code>cod</code> for a code snippet (cannot be executed without
+additional statements) <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="X can also be hide for code that is not supposed to be shown, but possibly required to execute other snippets in an interactive document (that allows code to be edited and executed by the reader). This is currently being implemented in DocOnce's support for Runestone Interactive books (using the Sphinx format)."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>. The quizzes below demonstrate the syntax.
+
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> <code>X</code> can also be <code>hide</code> for code that is not supposed to be
+shown, but possibly required to execute other snippets in an
+interactive document (that allows code to be edited and executed
+by the reader). This is currently being implemented in DocOnce's
+support for Runestone Interactive books (using the Sphinx format).
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> We want to create a Python list object of length <code>n</code> where each
+element is <code>0</code>. Is the following code then what we need?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
+mylist <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros(n)
+</pre></div>
+<p></p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_8_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+Yes.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_8_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Not exactly: <code>numpy.zeros</code> creates an array of zeros, not a list.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_8_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+Yes, provided we write <code>np</code> instead of <code>numpy</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+mylist <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+</pre></div>
+<p>
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_8_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+No, this is fully equivalent to the original code, so <code>mylist</code> becomes
+an array, not a list.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_8_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+No.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_8_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+One would need to do <code>mylist = [0]*n</code> or <code>numpy.zeros(n).tolist()</code>.
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+
+<h2>Example: Putting it all together  <a name="___sec11"></a></h2>
+
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> Given a complete program
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">D</span>(u, t, dt<span style="color: #666666">=1E-5</span>):
+    <span style="color: #008000; font-weight: bold">return</span> (u(t <span style="color: #666666">+</span> dt) <span style="color: #666666">-</span> u(t <span style="color: #666666">-</span> dt))<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>dt)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">u</span>(t):
+    <span style="color: #BA2121">&quot;A quadratic function.&quot;</span>
+    <span style="color: #008000; font-weight: bold">return</span> t<span style="color: #666666">^2</span>
+
+<span style="color: #008000; font-weight: bold">print</span> D(u, t<span style="color: #666666">=4</span>),
+<span style="color: #008000; font-weight: bold">print</span> D(<span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x, <span style="color: #666666">2</span>)
+</pre></div>
+<p>
+The purpose of this program is to differentiate the two mathematical
+functions
+
+$$
+\begin{align*}
+u(t) &= t^2,\\
+f(x) &= 2x.
+\end{align*}
+$$
+
+Determine which of the following assertions that is <b>wrong</b>.</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+In Python, the syntax for \( t^2 \) is <code>t**2</code>, not <code>t^2</code>, so the
+<code>u</code> function contains an error.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_1">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+True. However, <code>t^2</code> will work for integer <code>t</code> in Python, but the computation is nonsense in this case since \( u(t) \) is supposed to be \( t^2 \).
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+The string in the <code>u</code> function is a valid doc string.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_2">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Yes, a doc string can be any string after the function heading. It can
+have single quotes <code>'...'</code>, double quotes <code>"..."</code>,
+triple single quotes <code>'''...'''</code>, or triple double quotes <code>"""..."""</code>.
+The latter is the most popular for doc strings. Recall that triple quotes
+allow the string to span multiple lines.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+The output from the program is on a single line, despite two <code>print</code>
+statements.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_3">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Yes, because of the comma after the first <code>print</code> statement: it suppresses
+the newline character that is normally appended to <code>print</code> statements in
+Python.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_4" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 4:</b>
+One cannot use <code>u</code> both inside the <code>D</code> function and in the
+outer calling code (the main program).
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_4">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Yes, you can, because the <code>u</code> argument in the <code>D</code> function
+(holding a function)
+is a <em>local</em> variable inside the <code>D</code> function. The <code>u</code> in the calling
+code is <em>global</em> variable, holding a function object.
+Inside <code>D</code>, <code>u</code> refers to the
+local variable, while in the main program, <code>u</code> refers to the
+global variable, and the local variable <code>u</code> in <code>D</code> no longer exists, because
+it was deleted when returning from the function.
+Inside <code>D</code>, we can actually access the global <code>u</code> by <code>globals()['u']</code>,
+but that almost never comes to use and is also bad coding.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_5" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 5:</b>
+The call <code>D(lambda x: return 2*x, 2)</code> is equivalent to defining
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x
+</pre></div>
+<p>
+and then calling <code>D(f, 2)</code>.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_5">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<code>f(x)</code> is defined as a lambda function, which is a short-hand for
+defining functions as an expression, in a function call as here, or
+in the right-hand side of an assignment, e.g.,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_6" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 6:</b>
+There is danger of integer division in the <code>D</code> function.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_6">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+True, here is an example: <code>D(lambda t: t, dt=1)</code>. We get
+<code>(t+1 - t-1)/(2*1)</code>, which for any integer <code>t</code> gives <code>int/int</code>
+and hence integer division.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_7" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 7:</b>
+The <code>D</code> function computes an approximate derivative of the
+function <code>u(t)</code>.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_7">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Yes, <code>D</code> applies a widely used finite difference approximation
+formula to the derivative.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_9_8" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 8:</b>
+Both calls to <code>D</code> results in the exact derivative, provided we
+replace <code>t^2</code> by <code>t**2</code>.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_9_8">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Yes, the finite difference approximation used in <code>D</code> is exact
+for quadratic polynomials!
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._quiz001.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._quiz003.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

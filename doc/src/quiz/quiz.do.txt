@@ -639,20 +639,83 @@ for quadratic polynomials!
 !split
 ======= The Python data structure for quizzes =======
 
-When a DocOnce file `mydoc.do.txt`
-containing quizzes (and other types of text, like this document)
-is translated to some format by the `doconce format` command,
-a Python list of all the quizzes is created and written to
-`.mydoc.quiz`. Each list element represents one quiz as a
-dictionary. The list corresponding to the quizzes in the current
+When a DocOnce file `mydoc.do.txt` containing quizzes (and other types
+of text, like this document) is translated to some format by the
+`doconce format` command, a Python list of all the quizzes is created
+and written to `.mydoc.quiz`. Each list element represents one quiz as
+a dictionary. The list corresponding to the quizzes in the current
 document starts with
 
 !bc pycod
-[{'choice prefix': [None, None, None, None],
-  'choices': [[u'wrong', u'Helsinki'],
+[{'choices': [[u'wrong', u'Helsinki'],
               [u'wrong', u'Drammen'],
               [u'right', u'Oslo'],
               [u'wrong', u'Denmark']],
   'no': 1,
   'question': u'What is the capital of Norway?'},
+!ec
+
+A more complicated quiz with specification of prefix for the question and
+one choice (see example above in the question admonition) has explanations
+in the list for each choice, as well as two more
+keys (`choice prefix` and `question prefix`):
+
+!bc pycod
+ {'choice prefix': [u'Answer:', None, None, None],
+  'choices': [
+    [u'wrong',
+     u'Stockholm',
+     u"Stockholm is the capital of Sweden, Norway's neighboring country."],
+    [u'wrong',
+     u'Bergen',
+     u'Some people from Bergen may claim so... It is just the second\nlargest city in Norway.'],
+    [u'right', u'Oslo'],
+    [u'wrong', u'Denmark']],
+  'no': 5,
+  'question': u'What is the capital of Norway?',
+  'question prefix': u''},
+!ec
+
+The text in the Python list-dictionary data structure is ready-made for
+being displayed in HTML. Here is an example involving mathematics
+(MathJax syntax):
+
+!bc pycod
+ {'choices': [
+   [u'wrong',
+    u'5.',
+    u'Good attempt, especially when referring to the following story.
+\n\n<p>\n<blockquote>\n    An anthropologist was asking a primitive tribesman ab
+out arithmetic.\n    When the anthropologist asked, <em>What does two and two ma
+ke?</em> the\n    tribesman replied, <em>Five.</em> Asked to explain, the tribes
+man said, <em>If I\n    have a rope with two knots, and another rope with two kn
+ots, and I\n    join the ropes together, then I have five knots.</em>\n</blockqu
+ote>'],
+   [u'right',
+    u'4.',
+    u'Seems trivial, but once upon a time...\n\n<p>\n<center><p><img src="fig/1p1.gif" align="bottom" width=180></p></center>'],
+   [u'wrong',
+    u'The computation does not make sense when \\( a \\) and \\( b \\) are given without\nunits.',
+    u'It is indeed possible to add pure numbers without any units.']],
+  'no': 6,
+  'question': u'Compute the result of \\( a+b \\) in the case \\( a=2 \\) and \\( b=2 \\).'},
+!ec
+
+Computer code gets typeset by nice colors by default (using the Pygments
+package):
+
+!bc pycod
+{'choices':
+   [[u'wrong',
+     u'Yes.',
+     u'Not exactly: <code>numpy.zeros</code> creates an array of zeros
+, not a list.'],
+    [u'wrong',
+     u'Yes, provided we write <code>np</code> instead of <code>numpy</code>:\n\n<p>\n\n<!-- code=python (!bc pycod) typeset with pygments style "default" -->\n<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>\nmylist <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)\n</pre></div>\n<p>',
+     u'No, this is fully equivalent to the original code, so <code>mylist</code> becomes\nan array, not a list.'],
+    [u'right',
+     u'No.',
+     u'One would need to do <code>mylist = [0]*n</code> or <code>numpy.zeros(n).tolist()</code>.']],
+  'no': 8,
+  'question': u'We want to create a Python list object of length <code>n</code> where each\nelement is <code>0</code>. Is the following code then what we need?\n\n<p>\n\n<!-- code=python (!bc pycod) typeset with pygments style "default" -->\n<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>\nmylist <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros(n)\n</pre></div>\n<p>'}
 !ec

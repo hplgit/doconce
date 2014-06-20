@@ -329,7 +329,7 @@ element is <code>0</code>. Is the following code then what we need?
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
 mylist <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros(n)
 </pre></div>
@@ -352,7 +352,7 @@ Yes, provided we write <code>np</code> instead of <code>numpy</code>:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 mylist <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
 </pre></div>
@@ -384,7 +384,7 @@ Given a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">D</span>(u, t, dt<span style="color: #666666">=1E-5</span>):
@@ -466,7 +466,7 @@ local variable, while in the main program, <code>u</code> refers to the
 global variable, and the local variable <code>u</code> in <code>D</code> no longer exists, because
 it was deleted when returning from the function.
 Inside <code>D</code>, we can actually access the global <code>u</code> by <code>globals()['u']</code>,
-but that almost never comes to use.
+but that almost never comes to use and is also bad coding.
 <!-- --- end explanation of choice 4 --- -->
 
 <p>
@@ -475,7 +475,7 @@ The call <code>D(lambda x: return 2*x, 2)</code> is equivalent to defining
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x
 </pre></div>
@@ -491,7 +491,7 @@ in the right-hand side of an assignment, e.g.,
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x
 </pre></div>
 <p>
