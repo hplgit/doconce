@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Doconce Quick Reference</title>
+    <title>DocOnce Quick Reference</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -75,14 +75,14 @@
           <div class="body">
             
   <div class="section" id="doconce-quick-reference">
-<h1>Doconce Quick Reference<a class="headerlink" href="#doconce-quick-reference" title="Permalink to this headline">¶</a></h1>
+<h1>DocOnce Quick Reference<a class="headerlink" href="#doconce-quick-reference" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 15, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 20, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -98,7 +98,7 @@ mathematics and code.</p>
 </div>
 <div class="section" id="supported-formats">
 <h1>Supported Formats<a class="headerlink" href="#supported-formats" title="Permalink to this headline">¶</a></h1>
-<p>Doconce currently translates files to the following formats:</p>
+<p>DocOnce currently translates files to the following formats:</p>
 <blockquote>
 <div><ul class="simple">
 <li>LaTeX (format <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>)</li>
@@ -123,10 +123,10 @@ Google and Wordpress.</p>
 <div class="section" id="emacs-syntax-support">
 <h1>Emacs syntax support<a class="headerlink" href="#emacs-syntax-support" title="Permalink to this headline">¶</a></h1>
 <p>The file <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a>
-in the Doconce source distribution gives a &#8220;Doconce Editing Mode&#8221; in
+in the DocOnce source distribution gives a &#8220;DocOnce Editing Mode&#8221; in
 Emacs. Store the raw version of the file in the home directory and add
 <tt class="docutils literal"><span class="pre">(load-file</span> <span class="pre">&quot;~/.doconce-mode.el&quot;)</span></tt> to the <tt class="docutils literal"><span class="pre">.emacs</span></tt> file.</p>
-<p>Besides syntax highlighting of Doconce documents, this Emacs mode
+<p>Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -400,13 +400,13 @@ blocks, verbatim code blocks, or lists if the formats <tt class="docutils litera
 <tt class="docutils literal"><span class="pre">sphinx</span></tt> are desired.</p>
 <p>Comment lines starting with <tt class="docutils literal"><span class="pre">##</span></tt> are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.</p>
+the DocOnce file.</p>
 <p>Large portions of text can be left out using Preprocess. Just place
 <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">EXTRA</span></tt> and <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></tt> around the text. The command line
 option <tt class="docutils literal"><span class="pre">-DEXTRA</span></tt> will bring the text alive again.</p>
 <p>When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.</p>
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.</p>
 </div>
 <div class="section" id="inline-comments">
 <h1>Inline comments<a class="headerlink" href="#inline-comments" title="Permalink to this headline">¶</a></h1>
@@ -432,7 +432,7 @@ make it very easy to spot the comments.</p>
 <p>removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.</p>
 <p>All inline comments to readers can also be physically
-removed from the Doconce source by</p>
+removed from the DocOnce source by</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce remove_inline_comments mydoc.do.txt
 </pre></div>
 </div>
@@ -513,7 +513,7 @@ paragraphs with headings.</li>
 </div>
 <div class="section" id="latex-mathematics">
 <h1>LaTeX Mathematics<a class="headerlink" href="#latex-mathematics" title="Permalink to this headline">¶</a></h1>
-<p>Doconce supports inline mathematics and blocks of mathematics, using
+<p>DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">latex</span></tt>,
 pdflatex`, <tt class="docutils literal"><span class="pre">pandoc</span></tt>, and <tt class="docutils literal"><span class="pre">mwiki</span></tt> work with this syntax while all other
 formats will just display the raw LaTeX code.</p>
@@ -563,7 +563,7 @@ is also important, one should follow these rules:</p>
 <li>MediaWiki (<tt class="docutils literal"><span class="pre">mwiki</span></tt>) does not support references to equations.</li>
 </ul>
 </div></blockquote>
-<p>(Doconce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt> and other formats such that
+<p>(DocOnce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt> and other formats such that
 labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -624,9 +624,9 @@ around the <tt class="docutils literal"><span class="pre">=</span></tt> characte
 <li>there must be a blank line after the command.</li>
 </ol>
 </div></blockquote>
-<p>The figure file can be listed without extension. Doconce will then find
+<p>The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.</p>
 <p>The caption is optional. If omitted, the figure will be inlined (meaning
 no use of any figure environment in HTML or LaTeX formats). The <tt class="docutils literal"><span class="pre">width</span></tt>
@@ -688,7 +688,7 @@ have no effect.</li>
 </ul>
 </div></blockquote>
 <p>The command-line option <tt class="docutils literal"><span class="pre">--tables2csv</span></tt> (to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>)
-makes Doconce dump each table to CSV format in a file <tt class="docutils literal"><span class="pre">table_X.csv</span></tt>,
+makes DocOnce dump each table to CSV format in a file <tt class="docutils literal"><span class="pre">table_X.csv</span></tt>,
 where <tt class="docutils literal"><span class="pre">X</span></tt> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.</p>
 </div>
@@ -735,12 +735,12 @@ by comma:</p>
 where <tt class="docutils literal"><span class="pre">papers.pub</span></tt> is a publication database in the
 <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> format.
 BibTeX <tt class="docutils literal"><span class="pre">.bib</span></tt> files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).</p>
 </div>
 <div class="section" id="generalized-citations">
 <h1>Generalized Citations<a class="headerlink" href="#generalized-citations" title="Permalink to this headline">¶</a></h1>
-<p>There is a <em>generalized referencing</em> feature in Doconce that allows
+<p>There is a <em>generalized referencing</em> feature in DocOnce that allows
 a reference with <tt class="docutils literal"><span class="pre">ref</span></tt> to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -753,8 +753,8 @@ The syntax of a generalized reference is</p>
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
 &quot;testdoc.html#___sec2&quot; in the document
-&quot;A Document for Testing Doconce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
-Doconce documents may include movies.
+&quot;A Document for Testing DocOnce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
+DocOnce documents may include movies.
 </pre></div>
 </div>
 <p>The output from a generalized reference is the text <tt class="docutils literal"><span class="pre">internal</span></tt> if all
@@ -770,7 +770,7 @@ documents.  If none of the two situations above applies, the
 </div>
 <div class="section" id="index-of-keywords">
 <h1>Index of Keywords<a class="headerlink" href="#index-of-keywords" title="Permalink to this headline">¶</a></h1>
-<p>Doconce supports creating an index of keywords. A certain keyword
+<p>DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)</p>
 <div class="highlight-text"><div class="highlight"><pre>index{name}
@@ -943,7 +943,7 @@ doconce latex_exercise_toc myfile
 </div>
 <div class="section" id="exercises">
 <h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
-<p>Doconce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
+<p>DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain <em>elements</em>:</p>
@@ -1048,7 +1048,7 @@ examples.</p>
 </div>
 <div class="section" id="environments">
 <h1>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h1>
-<p>Doconce environments start with <tt class="docutils literal"><span class="pre">!benvirname</span></tt> and end with <tt class="docutils literal"><span class="pre">!eenvirname</span></tt>,
+<p>DocOnce environments start with <tt class="docutils literal"><span class="pre">!benvirname</span></tt> and end with <tt class="docutils literal"><span class="pre">!eenvirname</span></tt>,
 where <tt class="docutils literal"><span class="pre">envirname</span></tt> is the name of the environment. Here is a listing of
 the environments:</p>
 <blockquote>
@@ -1081,7 +1081,7 @@ slide</p>
 </div>
 <div class="section" id="preprocessing">
 <h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h1>
-<p>Doconce documents may utilize a preprocessor, either <tt class="docutils literal"><span class="pre">preprocess</span></tt> and/or
+<p>DocOnce documents may utilize a preprocessor, either <tt class="docutils literal"><span class="pre">preprocess</span></tt> and/or
 <tt class="docutils literal"><span class="pre">mako</span></tt>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor is much more advanced - it is actually a full
@@ -1123,7 +1123,7 @@ constructions:</p>
 <p>With the <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor the if-else tests have slightly different syntax.
 An <a class="reference external" href="http://hplgit.github.com/bioinf-py/">example document</a> contains
 some illustrations on how to utilize <tt class="docutils literal"><span class="pre">mako</span></tt> (clone the GitHub project and
-examine the Doconce source and the <tt class="docutils literal"><span class="pre">doc/src/make.sh</span></tt> script).</p>
+examine the DocOnce source and the <tt class="docutils literal"><span class="pre">doc/src/make.sh</span></tt> script).</p>
 </div>
 <div class="section" id="resources">
 <h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
@@ -1142,7 +1142,7 @@ examine the Doconce source and the <tt class="docutils literal"><span class="pre
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Doconce Quick Reference</a></li>
+<li><a class="reference internal" href="#">DocOnce Quick Reference</a></li>
 <li><a class="reference internal" href="#supported-formats">Supported Formats</a></li>
 <li><a class="reference internal" href="#emacs-syntax-support">Emacs syntax support</a></li>
 <li><a class="reference internal" href="#title-authors-and-date">Title, Authors, and Date</a></li>

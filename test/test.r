@@ -1,6 +1,6 @@
 
 ************** File: testdoc.do.txt *****************
-TITLE: A Document for Testing Doconce
+TITLE: A Document for Testing DocOnce
 AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 AUTHOR: Kaare Dump at Segfault, Cyberspace
 AUTHOR: A. Dummy Author
@@ -25,11 +25,11 @@ to test the use of Mako as preprocessor.
 
 The format of this document is
 % if FORMAT == 'html':
-plain, homemade HTML (from Doconce).
+plain, homemade HTML (from DocOnce).
   % elif FORMAT == 'latex':
-plain, homemade LaTeX (from Doconce).
+plain, homemade LaTeX (from DocOnce).
   % elif FORMAT == 'pdflatex':
-plain, homemade pdfLaTeX (from Doconce).
+plain, homemade pdfLaTeX (from DocOnce).
   %else:
 ${FORMAT}
 % endif
@@ -283,7 +283,7 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a Doconce directive a la `!bc`.
+and a DocOnce directive a la `!bc`.
 
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
@@ -313,7 +313,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -501,7 +501,7 @@ label{mytab}
 \end{table}
 % endif
 
-The Doconce source code reads
+The DocOnce source code reads
 !bc ccq
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -720,7 +720,7 @@ or maybe also prof. Ting,
 will go to the Dept. of Science to test how Mr. Hansen is doing together
 with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
 Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
-handled. Likewise, this is test no. $i$ of Doconce features.
+handled. Likewise, this is test no. $i$ of DocOnce features.
 A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
@@ -893,7 +893,7 @@ compute the probability as $M/N$.
 !ehint
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
  o item1
  o item2
@@ -1355,7 +1355,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -1574,9 +1574,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
-<center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
+<center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
@@ -1963,7 +1963,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % ----------------- title -------------------------
 
-\title{A Document for Testing Doconce}
+\title{A Document for Testing DocOnce}
 
 % ----------------- author(s) -------------------------
 
@@ -1993,7 +1993,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 The format of this document is
-plain, homemade {\LaTeX} (from Doconce).
+plain, homemade {\LaTeX} (from DocOnce).
 
 \begin{abstract}
 This is a document with many test constructions for doconce syntax.
@@ -2296,7 +2296,7 @@ Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 \code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
-and a Doconce directive a la \code{!bc}.
+and a DocOnce directive a la \code{!bc}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -2316,7 +2316,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -2514,7 +2514,7 @@ with the preprocessor.
 \noindent
 \end{table}
 
-The Doconce source code reads
+The DocOnce source code reads
 \bccq
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -2742,7 +2742,7 @@ or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
-handled. Likewise, this is test no.~$i$ of Doconce features.
+handled. Likewise, this is test no.~$i$ of DocOnce features.
 A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
@@ -2921,7 +2921,7 @@ drawing uniformly distributed random numbers from the interval $[0,1)$?
 
 
 At the end we have a list because that caused problems in {\LaTeX}
-in previous Doconce versions:
+in previous DocOnce versions:
 
 \begin{enumerate}
 \item item1
@@ -3828,7 +3828,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}A Document for Testing Doconce}
+{\color{seccolor}A Document for Testing DocOnce}
 \\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
 }}}
@@ -3884,7 +3884,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 The format of this document is
-plain, homemade \textsc{pdf}{\LaTeX} (from Doconce).
+plain, homemade \textsc{pdf}{\LaTeX} (from DocOnce).
 
 \begin{abstract}
 This is a document with many test constructions for doconce syntax.
@@ -4219,7 +4219,7 @@ Also test backslashes and braces like {\Verb!\begin!}, {\Verb!\begin{enumerate}!
 {\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!} in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in {\Verb~a != b~},
-and a Doconce directive a la {\Verb~!bc~}.
+and a DocOnce directive a la {\Verb~!bc~}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -4241,7 +4241,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -4441,7 +4441,7 @@ with the preprocessor.
 \noindent
 \end{table}
 
-The Doconce source code reads
+The DocOnce source code reads
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
   |--------------------------------|
@@ -4672,7 +4672,7 @@ or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
-handled. Likewise, this is test no.~$i$ of Doconce features.
+handled. Likewise, this is test no.~$i$ of DocOnce features.
 A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
@@ -4854,7 +4854,7 @@ drawing uniformly distributed random numbers from the interval $[0,1)$?
 
 
 At the end we have a list because that caused problems in {\LaTeX}
-in previous Doconce versions:
+in previous DocOnce versions:
 
 \begin{enumerate}
 \item item1
@@ -5787,7 +5787,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{\color{seccolor}A Document for Testing Doconce}
+{\color{seccolor}A Document for Testing DocOnce}
 \\[0.4cm] {\color{seccolor}\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
 }}}
@@ -5843,7 +5843,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 The format of this document is
-plain, homemade \textsc{pdf}{\LaTeX} (from Doconce).
+plain, homemade \textsc{pdf}{\LaTeX} (from DocOnce).
 
 \begin{abstract}
 This is a document with many test constructions for doconce syntax.
@@ -6142,7 +6142,7 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}! in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in \Verb?a != b?,
-and a Doconce directive a la \Verb?!bc?.
+and a DocOnce directive a la \Verb?!bc?.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -6162,7 +6162,7 @@ end{Verbatim}end{quote}
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -6360,7 +6360,7 @@ with the preprocessor.
 \noindent
 \end{table}
 
-The Doconce source code reads
+The DocOnce source code reads
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -6589,7 +6589,7 @@ or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
-handled. Likewise, this is test no.~$i$ of Doconce features.
+handled. Likewise, this is test no.~$i$ of DocOnce features.
 A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
@@ -6770,7 +6770,7 @@ drawing uniformly distributed random numbers from the interval $[0,1)$?
 
 
 At the end we have a list because that caused problems in {\LaTeX}
-in previous Doconce versions:
+in previous DocOnce versions:
 
 \begin{enumerate}
 \item item1
@@ -7356,7 +7356,7 @@ in a separate document: \Verb!admon.do.txt!.
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-A Document for Testing Doconce
+A Document for Testing DocOnce
 ==============================
 
 :Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
@@ -7621,7 +7621,7 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 ``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in ``a != b``,
-and a Doconce directive a la ``!bc``.
+and a DocOnce directive a la ``!bc``.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -7662,7 +7662,7 @@ This is the third [#example-of-the-third-footnote]_ example.
    Plain text does nothing, LaTeX removes the
    definition and inserts the footnote as part of the LaTeX text.
    reStructuredText and Sphinx employ a similar type of typesetting
-   as Extended Markdown and Doconce, and in HTML we keep the same
+   as Extended Markdown and DocOnce, and in HTML we keep the same
    syntax, just displayed properly in HTML.
 
 .. [#math1] Math footnotes can be dangerous since it
@@ -7813,7 +7813,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-The Doconce source code reads::
+The DocOnce source code reads::
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -8125,7 +8125,7 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
 
@@ -8789,7 +8789,7 @@ in a separate document: ``admon.do.txt``.
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-A Document for Testing Doconce
+A Document for Testing DocOnce
 ==============================
 
 :Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
@@ -9089,7 +9089,7 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 ``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in ``a != b``,
-and a Doconce directive a la ``!bc``.
+and a DocOnce directive a la ``!bc``.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -9132,7 +9132,7 @@ This is the third [#example-of-the-third-footnote]_ example.
    Plain text does nothing, LaTeX removes the
    definition and inserts the footnote as part of the LaTeX text.
    reStructuredText and Sphinx employ a similar type of typesetting
-   as Extended Markdown and Doconce, and in HTML we keep the same
+   as Extended Markdown and DocOnce, and in HTML we keep the same
    syntax, just displayed properly in HTML.
 
 .. [#math1] Math footnotes can be dangerous since it
@@ -9319,7 +9319,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-The Doconce source code reads
+The DocOnce source code reads
 
 .. code-block:: text
 
@@ -9657,7 +9657,7 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
 
@@ -10334,7 +10334,7 @@ in a separate document: ``admon.do.txt``.
    is at the end with only one newline.
 
 ************** File: testdoc.gwiki *****************
-#summary A Document for Testing Doconce
+#summary A Document for Testing DocOnce
 
 By *Hans Petter Langtangen* (hpl at simula.no), *Kaare Dump*, *A. Dummy Author*, *I. S. Overworked and Outburned*, and *J. Doe* (j_doe at cyberspace.com)
 ==== Jan 32, 2100 ====
@@ -10623,7 +10623,7 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a Doconce directive a la `!bc`.
+and a DocOnce directive a la `!bc`.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -10664,7 +10664,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -10858,7 +10858,7 @@ Let us take this table from the manual:
 
 
 
-The Doconce source code reads
+The DocOnce source code reads
 {{{
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -11167,7 +11167,7 @@ drawing uniformly distributed random numbers from the interval `[0,1)`?
 
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 
 # item1
@@ -11664,7 +11664,7 @@ is at the end with only one newline.
 
 
 ************** File: testdoc.mwiki *****************
-#TITLE (actually governed by the filename): A Document for Testing Doconce
+#TITLE (actually governed by the filename): A Document for Testing DocOnce
 
 By '''Hans Petter Langtangen''' (hpl at simula.no), '''Kaare Dump''', '''A. Dummy Author''', '''I. S. Overworked and Outburned''', and '''J. Doe''' (j_doe at cyberspace.com)
 ==== Jan 32, 2100 ====
@@ -11967,7 +11967,7 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a Doconce directive a la <code>!bc</code>.
+and a DocOnce directive a la <code>!bc</code>.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. <br />
@@ -12007,7 +12007,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -12170,7 +12170,7 @@ Let us take this table from the manual:
 </tbody>
 </table>
 
-The Doconce source code reads
+The DocOnce source code reads
 <syntaxhighlight lang="text">
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -12490,7 +12490,7 @@ drawing uniformly distributed random numbers from the interval <math>[0,1)</math
 
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 
 <ol>
@@ -13092,7 +13092,7 @@ is at the end with only one newline.
 
 
 ************** File: testdoc.cwiki *****************
-#summary A Document for Testing Doconce
+#summary A Document for Testing DocOnce
 <wiki:toc max_depth="2" />
 By **Hans Petter Langtangen** (hpl at simula.no), **Kaare Dump**, **A. Dummy Author**, **I. S. Overworked and Outburned**, and **J. Doe** (j_doe at cyberspace.com)
 === Jan 32, 2100 ===
@@ -13383,7 +13383,7 @@ Also test backslashes and braces like {{{\begin}}}, {{{\begin{enumerate}}}},
 {{{\end{this}\end{that}}}}, and {{{{something \inside braces}}}} in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in {{{a != b}}},
-and a Doconce directive a la {{{!bc}}}.
+and a DocOnce directive a la {{{!bc}}}.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. <br />
@@ -13421,7 +13421,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -13563,7 +13563,7 @@ Let us take this table from the manual:
 
 
 
-The Doconce source code reads
+The DocOnce source code reads
 {{{
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -13876,7 +13876,7 @@ drawing uniformly distributed random numbers from the interval {{{[0,1)}}}?
 
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 
 # item1
@@ -14383,7 +14383,7 @@ is at the end with only one newline.
 
 
 ************** File: testdoc.st *****************
-TITLE: A Document for Testing Doconce
+TITLE: A Document for Testing DocOnce
 BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
 DATE: Jan 32, 2100
 # !split
@@ -14606,7 +14606,7 @@ Also test backslashes and braces like '\begin', '\begin{enumerate}',
 '\end{this}\end{that}', and '{something \inside braces}' in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in 'a != b',
-and a Doconce directive a la '!bc'.
+and a DocOnce directive a la '!bc'.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
@@ -14640,7 +14640,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -14746,7 +14746,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-The Doconce source code reads::
+The DocOnce source code reads::
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -15012,7 +15012,7 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
 2. item2
@@ -15559,7 +15559,7 @@ in a separate document: 'admon.do.txt'.
 is at the end with only one newline.
 
 ************** File: testdoc.epytext *****************
-TITLE: A Document for Testing Doconce
+TITLE: A Document for Testing DocOnce
 BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
 DATE: Jan 32, 2100
 # !split
@@ -15787,7 +15787,7 @@ Also test backslashes and braces like C{\begin}, C{\begin{enumerate}},
 C{\end{this}\end{that}}, and C{{something \inside braces}} in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in C{a != b},
-and a Doconce directive a la C{!bc}.
+and a DocOnce directive a la C{!bc}.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
@@ -15820,7 +15820,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -15930,7 +15930,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-The Doconce source code reads::
+The DocOnce source code reads::
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -16203,7 +16203,7 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval M{[0,1)}?
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
 2. item2
@@ -16771,7 +16771,7 @@ in a separate document: C{admon.do.txt}.
 is at the end with only one newline.
 
 ************** File: testdoc.txt *****************
-A Document for Testing Doconce
+A Document for Testing DocOnce
 ==============================
 
 Hans Petter Langtangen [1, 2] (hpl@simula.no)
@@ -17068,7 +17068,7 @@ Also test backslashes and braces like \begin, \begin{enumerate},
 \end{this}\end{that}, and {something \inside braces} in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in a != b,
-and a Doconce directive a la !bc.
+and a DocOnce directive a la !bc.
 
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
@@ -17107,7 +17107,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -17219,7 +17219,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-The Doconce source code reads::
+The DocOnce source code reads::
 
           |--------------------------------|
           |time  | velocity | acceleration |
@@ -17496,7 +17496,7 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
 
@@ -18091,7 +18091,7 @@ in a separate document: admon.do.txt.
 is at the end with only one newline.
 
 ************** File: testdoc.md *****************
-% A Document for Testing Doconce
+% A Document for Testing DocOnce
 % **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
 % Jan 32, 2100
 
@@ -18124,23 +18124,15 @@ is part of the abstract.
 Here is a nested list:
 
   * item1
-
   * item2
-
   * item3 which continues
     on the next line to test that feature
-
   * and a sublist
-
     * with indented subitem1
-
     * and a subitem2
 
-
   * and perhaps an ordered sublist
-
    1. first item
-
    2. second item,
       continuing on a new line
 
@@ -18148,13 +18140,11 @@ Here is a nested list:
 *Here is a list with paragraph heading.*
 
   * item1
-
   * item2
 
 #### Here is a list with subsubsection heading
 
   * item1
-
   * item2
 
 > Here are two lines that make up
@@ -18407,7 +18397,7 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 `\end{this}\end{that}`, and `{something \inside braces}` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a Doconce directive a la `!bc`.
+and a DocOnce directive a la `!bc`.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. \n
@@ -18433,11 +18423,8 @@ Here is a test of footnotes[^footnote], which are handy in text.
 They are used in different flavors, now in
 
  * list items
-
  * even with math $\nabla^2u$ [^math1]
-
  * and code `h[i] += 1` [^code],
-
  * and [links](http://google.com) [^google-search]
 
 which gives flexibility in writing.
@@ -18447,7 +18434,7 @@ This is the third[^example-of-the-third-footnote] example.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 [^math1]: Math footnotes can be dangerous since it
 interferes with an exponent.
@@ -18607,7 +18594,7 @@ Let us take this table from the manual:
 
 
 
-The Doconce source code reads
+The DocOnce source code reads
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   |--------------------------------|
@@ -18879,7 +18866,6 @@ Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
 
 1. Mark 1.
-
 2. Mark 2.
 
 <!-- --- begin hint in exercise --- -->
@@ -18946,10 +18932,9 @@ drawing uniformly distributed random numbers from the interval $[0,1)$?
 
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
-
 2. item2
 
 <!-- --- begin hint in exercise --- -->
@@ -19074,7 +19059,6 @@ closing remarks to have text after subexercises.
 Test list in exercise:
 
 1. item1
-
 2. item2
 
 <!-- --- begin solution of exercise --- -->
@@ -19125,7 +19109,6 @@ Second hint to subexercise a).
 Test list in hint:
 
 1. item1
-
 2. item2
 
 <!-- --- end hint in exercise --- -->
@@ -19259,7 +19242,6 @@ Test list at the end of an exercise without other elements (like subexercise,
 hint, etc.):
 
 1. item1
-
 2. item2
 
 Filename: `verify_formula.py`.
@@ -19289,77 +19271,65 @@ Filename: `selc_composed.pdf`.
     7(1),
     pp. 187-204,
     2002.
-
  2. \label{Langtangen_et_al_2002} _H. P. Langtangen, K.-A. Mardal and R. Winther_. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
-
  3. \label{Langtangen_1994a} _H. P. Langtangen_. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
-
  4. \label{Mardal_et_al_2003a} _K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen_. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by _H. P. Langtangen and A. Tveito_,
     Springer,
     2003.
-
  5. \label{Langtangen_1988d} _H. P. Langtangen_. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     1989.
-
  6. \label{Langtangen_1992c} _H. P. Langtangen_. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
-
  7. \label{Mortensen_et_al_2011} _M. Mortensen, H. P. Langtangen and G. N. Wells_. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
-
  8. \label{Glimsdal_et_al_20006} _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt_. 
     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
-
  9. \label{Rahman_et_al_2006b} _S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen_. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-
 10. \label{Haga_et_al_2011a} _J. B. Haga, H. Osnes and H. P. Langtangen_. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
     2011,
     <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
-
 11. \label{Langtangen_2003a} _H. P. Langtangen_. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     Springer,
     2003.
-
 12. \label{Langtangen_2008a} _H. P. Langtangen_. 
     *Python Scripting for Computational Science*,
     Springer,
     2008.
-
 13. \label{Langtangen:95} _H. P. Langtangen and G. Pedersen_. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
@@ -19368,39 +19338,32 @@ Filename: `selc_composed.pdf`.
     pp. pp. 117-126,
     1995,
     <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
-
 14. \label{Langtangen_2012} _H. P. Langtangen_. 
     *A Primer on Scientific Programming With Python*,
     Springer,
     2012.
-
 15. \label{Jeberg_et_al_2004} _P. V. Jeberg, H. P. Langtangen and C. B. Terp_. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     2004.
-
 16. \label{Langtangen_1989e} _H. P. Langtangen_. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-
 17. \label{Langtangen_talk_2007a} _H. P. Langtangen_. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-
 18. \label{Langtangen:85} _H. P. Langtangen_. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-
 19. \label{Langtangen:91} _H. P. Langtangen and A. Tveito_. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-
 20. \label{Langtangen:94b} _H. P. Langtangen_. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
@@ -19567,7 +19530,7 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "# A Document for Testing Doconce\n",
+      "# A Document for Testing DocOnce\n",
       "_Jan 32, 2100_\n",
       "\n",
       "<!-- !split -->\n",
@@ -20071,7 +20034,7 @@ is at the end with only one newline.
       "`\\end{this}\\end{that}`, and `{something \\inside braces}` in inline\n",
       "verbatim text. Since the exclamation mark is used as delimiter\n",
       "in LaTeX inline verbatim, we need to test it, as in `a != b`,\n",
-      "and a Doconce directive a la `!bc`.\n",
+      "and a DocOnce directive a la `!bc`.\n",
       "\n",
       "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
       "green color containing a linebreak. \n",
@@ -20122,7 +20085,7 @@ is at the end with only one newline.
       "Plain text does nothing, LaTeX removes the\n",
       "definition and inserts the footnote as part of the LaTeX text.\n",
       "reStructuredText and Sphinx employ a similar type of typesetting\n",
-      "as Extended Markdown and Doconce, and in HTML we keep the same\n",
+      "as Extended Markdown and DocOnce, and in HTML we keep the same\n",
       "syntax, just displayed properly in HTML.\n",
       "[^math1]: Math footnotes can be dangerous since it\n",
       "interferes with an exponent.\n",
@@ -20325,7 +20288,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "\n",
-      "The Doconce source code reads"
+      "The DocOnce source code reads"
      ]
     },
     {
@@ -20704,7 +20667,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "At the end we have a list because that caused problems in LaTeX\n",
-      "in previous Doconce versions:\n",
+      "in previous DocOnce versions:\n",
       "\n",
       "1. item1\n",
       "\n",
@@ -21641,7 +21604,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# Minimalistic exercise\n\n\nWhat is the probability of getting a number between 0.5 and 0.6 when\ndrawing uniformly distributed random numbers from the interval $[0,1)$?\n\n\nAt the end we have a list because that caused problems in LaTeX\nin previous Doconce versions:\n\n o item1\n o item2',
+  'text': '# Minimalistic exercise\n\n\nWhat is the probability of getting a number between 0.5 and 0.6 when\ndrawing uniformly distributed random numbers from the interval $[0,1)$?\n\n\nAt the end we have a list because that caused problems in LaTeX\nin previous DocOnce versions:\n\n o item1\n o item2',
   'title': 'Compute a Probability',
   'type': 'Project',
   'type_visible': True},
@@ -21797,7 +21760,7 @@ iso-8859-1
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<p>The format of this document is plain, homemade <span>LaTeX</span> (from Doconce).</p>
+<p>The format of this document is plain, homemade <span>LaTeX</span> (from DocOnce).</p>
 <p>This is a document with many test constructions for doconce syntax. It was used heavily for the development and kept for testing numerous constructions, also special and less common cases.</p>
 <p>And exactly for test purposes we have an extra line here, which is part of the abstract.</p>
 <h1 id="sec1">Section 1</h1>
@@ -21965,7 +21928,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test ?!bc? and ?!ec? as well as ?!bsummary?. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in ?a != b?, and a Doconce directive a la ?!bc?.</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test ?!bc? and ?!ec? as well as ?!bsummary?. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in ?a != b?, and a DocOnce directive a la ?!bc?.</p>
 <p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -22051,7 +22014,7 @@ Python.</code></pre>
 </tr>
 </tbody>
 </table>
-<p>The Doconce source code reads</p>
+<p>The DocOnce source code reads</p>
 </blockquote>
 <pre><code>|--------------------------------|
   |time  | velocity | acceleration |
@@ -22192,7 +22155,7 @@ Python.</code></pre>
 <p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>, <a href="{http://tinyurl.com/pwyasaa/formulas.ball1.py}"></a>, and <a href="{http://tinyurl.com/pwyasaa/formulas.ball2.py}"></a>.</p>
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
 <h2 id="test-of-some-latex-fixes">Test of Some <span>LaTeX</span> Fixes</h2>
-<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of Doconce features. A sentence containing “refines lines” could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
+<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of DocOnce features. A sentence containing “refines lines” could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
 <h1 id="latex-mathematics"><span>LaTeX</span> Mathematics</h1>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
 <p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
@@ -22263,7 +22226,7 @@ print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
 <p>Should be possible to stick a normal section in the middle of many exercises.</p>
 <h2 id="demo:ex:2" class="unnumbered">Project : Compute a Probability</h2>
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
-<p>At the end we have a list because that caused problems in <span>LaTeX</span> in previous Doconce versions:</p>
+<p>At the end we have a list because that caused problems in <span>LaTeX</span> in previous DocOnce versions:</p>
 <ol style="list-style-type: decimal">
 <li><p>item1</p></li>
 <li><p>item2</p></li>
@@ -22425,7 +22388,7 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, <span>LaTeX</span> removes the definition and inserts the footnote as part of the <span>LaTeX</span> text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, <span>LaTeX</span> removes the definition and inserts the footnote as part of the <span>LaTeX</span> text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
 <li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
 <li id="fn4"><p><a href="{google.com}"></a> is perhaps the most famous web site today.<a href="#fnref4">↩</a></p></li>
@@ -22466,7 +22429,7 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta name="author" content="A. Dummy Author" />
   <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
   <meta name="author" content="J. Doe" />
-  <title>A Document for Testing Doconce</title>
+  <title>A Document for Testing DocOnce</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
@@ -22491,7 +22454,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </head>
 <body>
 <div id="header">
-<h1 class="title">A Document for Testing Doconce</h1>
+<h1 class="title">A Document for Testing DocOnce</h1>
 <h2 class="author"><strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
 <h2 class="author"><strong>Kaare Dump</strong> at Segfault, Cyberspace</h2>
 <h2 class="author"><strong>A. Dummy Author</strong></h2>
@@ -22519,29 +22482,29 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2 id="section-1">Section 1</h2>
 <p>Here is a nested list:</p>
 <ul>
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-<li><p>item3 which continues on the next line to test that feature</p></li>
-<li><p>and a sublist</p>
+<li>item1</li>
+<li>item2</li>
+<li>item3 which continues on the next line to test that feature</li>
+<li>and a sublist
 <ul>
-<li><p>with indented subitem1</p></li>
-<li><p>and a subitem2</p></li>
+<li>with indented subitem1</li>
+<li>and a subitem2</li>
 </ul></li>
-<li><p>and perhaps an ordered sublist</p></li>
+<li>and perhaps an ordered sublist</li>
 </ul>
 <ol style="list-style-type: decimal">
-<li><p>first item</p></li>
-<li><p>second item, continuing on a new line</p></li>
+<li>first item</li>
+<li>second item, continuing on a new line</li>
 </ol>
 <p><em>Here is a list with paragraph heading.</em></p>
 <ul>
-<li><p>item1</p></li>
-<li><p>item2</p></li>
+<li>item1</li>
+<li>item2</li>
 </ul>
 <h4 id="here-is-a-list-with-subsubsection-heading">Here is a list with subsubsection heading</h4>
 <ul>
-<li><p>item1</p></li>
-<li><p>item2</p></li>
+<li>item1</li>
+<li>item2</li>
 </ul>
 <blockquote>
 <p>Here are two lines that make up a block quote.</p>
@@ -22687,7 +22650,7 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>, and a Doconce directive a la <code>!bc</code>.</p>
+<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>, and a DocOnce directive a la <code>!bc</code>.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -22698,10 +22661,10 @@ Python.</code></pre>
 <h4 id="footnotes">Footnotes</h4>
 <p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors, now in</p>
 <ul>
-<li><p>list items</p></li>
-<li><p>even with math <span class="math">\(\nabla^2u\)</span> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
-<li><p>and code <code>h[i] += 1</code> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</p></li>
-<li><p>and <a href="http://google.com">links</a> <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p></li>
+<li>list items</li>
+<li>even with math <span class="math">\(\nabla^2u\)</span> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></li>
+<li>and code <code>h[i] += 1</code> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</li>
+<li>and <a href="http://google.com">links</a> <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></li>
 </ul>
 <p>which gives flexibility in writing. This is the third<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
@@ -22804,7 +22767,7 @@ Python.</code></pre>
 </tr>
 </tbody>
 </table>
-<p>The Doconce source code reads</p>
+<p>The DocOnce source code reads</p>
 <pre><code>  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -23029,8 +22992,8 @@ b = \nabla^2 u + \nabla^4 x \label{eq2}
 <h4 id="remarks">Remarks</h4>
 <p>Remarks with such a subsubsection heading would previously mark the beginning of a new exercise and cause trouble. Maybe a list</p>
 <ol style="list-style-type: decimal">
-<li><p>Mark 1.</p></li>
-<li><p>Mark 2.</p></li>
+<li>Mark 1.</li>
+<li>Mark 2.</li>
 </ol>
 <!-- --- begin hint in exercise --- -->
 
@@ -23072,10 +23035,10 @@ heads = <span class="dv">0</span>
 
 
 <p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
-<p>At the end we have a list because that caused problems in LaTeX in previous Doconce versions:</p>
+<p>At the end we have a list because that caused problems in LaTeX in previous DocOnce versions:</p>
 <ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
+<li>item1</li>
+<li>item2</li>
 </ol>
 <!-- --- begin hint in exercise --- -->
 
@@ -23150,8 +23113,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
 <p>Test list in exercise:</p>
 <ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
+<li>item1</li>
+<li>item2</li>
 </ol>
 <!-- --- begin solution of exercise --- -->
 <p><em>Solution.</em> Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[
@@ -23178,8 +23141,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p><em>Hint 2.</em> Second hint to subexercise a).</p>
 <p>Test list in hint:</p>
 <ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
+<li>item1</li>
+<li>item2</li>
 </ol>
 <!-- --- end hint in exercise --- -->
 <p>Filename: <code>subexer_a.pdf</code>.</p>
@@ -23258,8 +23221,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>Pick a statement from <a href="#s">Project 4: Explore Distributions of Random Circles</a> or <a href="#n">Problem 2: Flip a Coin</a> and verify it.</p>
 <p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
 <ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
+<li>item1</li>
+<li>item2</li>
 </ol>
 <p>Filename: <code>verify_formula.py</code>.</p>
 <!-- --- end exercise --- -->
@@ -23276,26 +23239,26 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 
 <h2 id="references">References</h2>
 <ol style="list-style-type: decimal">
-<li><p> <em>H. P. Langtangen and G. Pedersen</em>. Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Engineering</em>, 7(1), pp. 187-204, 2002.</p></li>
-<li><p> <em>H. P. Langtangen, K.-A. Mardal and R. Winther</em>. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002.</p></li>
-<li><p> <em>H. P. Langtangen</em>. Numerical Solution of First Passage Problems in Random Vibrations, <em>SIAM Journal of Scientific and Statistical Computing</em>, 15, pp. 997-996, 1994.</p></li>
-<li><p> <em>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</em>. Software Tools for Multigrid Methods, <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>, edited by <em>H. P. Langtangen and A. Tveito</em>, Springer, 2003.</p></li>
-<li><p> <em>H. P. Langtangen</em>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989.</p></li>
-<li><p> <em>H. P. Langtangen</em>. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process, <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992.</p></li>
-<li><p> <em>M. Mortensen, H. P. Langtangen and G. N. Wells</em>. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations, <em>Advances in Water Resources</em>, 34(9), <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>, 2011.</p></li>
-<li><p> <em>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L</em>. Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics, <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006.</p></li>
-<li><p> <em>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</em>. Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel, <em>Physical Review B: Condensed Matter and Materials Physics</em>, 74, 2006.</p></li>
-<li><p> <em>J. B. Haga, H. Osnes and H. P. Langtangen</em>. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media, <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>, <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>, 2011, <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract">http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</a>.</p></li>
-<li><p> <em>H. P. Langtangen</em>. <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>, Springer, 2003.</p></li>
-<li><p> <em>H. P. Langtangen</em>. <em>Python Scripting for Computational Science</em>, Springer, 2008.</p></li>
-<li><p> <em>H. P. Langtangen and G. Pedersen</em>. Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by <em>J. Grue, B. Gjevik and J. E. Weber</em>, Kluwer Academic Publishers, pp. pp. 117-126, 1995, <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310">http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</a>.</p></li>
-<li><p> <em>H. P. Langtangen</em>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</p></li>
-<li><p> <em>P. V. Jeberg, H. P. Langtangen and C. B. Terp</em>. Optimization With Diffpack: Practical Example From Welding, <em>Simula Research Laboratory</em>, 2004.</p></li>
-<li><p> <em>H. P. Langtangen</em>. Computational Methods for Two-Phase Flow in Oil Reservoirs, Ph.D. Thesis, Mechanics Division, Department of Mathematics, University of Oslo, 1989.</p></li>
-<li><p> <em>H. P. Langtangen</em>. Computational Modeling of Huge Tsunamis From Asteroid Impacts, Invited keynote lecture at the conference on Computational Science 2007 (ICCS'07), Beijing, China, 2007.</p></li>
-<li><p> <em>H. P. Langtangen</em>. Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions, M.Sc. Thesis, Mechanics Division, Department of Mathematics, University of Oslo, 1985.</p></li>
-<li><p> <em>H. P. Langtangen and A. Tveito</em>. Numerical Methods in Continuum Mechanics, <em>Center for Industrial Research</em>, 1991.</p></li>
-<li><p> <em>H. P. Langtangen</em>. Diffpack: Software for Partial Differential Equations, <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>, edited by <em>A. Vermeulen</em>, 1994.</p></li>
+<li> <em>H. P. Langtangen and G. Pedersen</em>. Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Engineering</em>, 7(1), pp. 187-204, 2002.</li>
+<li> <em>H. P. Langtangen, K.-A. Mardal and R. Winther</em>. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002.</li>
+<li> <em>H. P. Langtangen</em>. Numerical Solution of First Passage Problems in Random Vibrations, <em>SIAM Journal of Scientific and Statistical Computing</em>, 15, pp. 997-996, 1994.</li>
+<li> <em>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</em>. Software Tools for Multigrid Methods, <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>, edited by <em>H. P. Langtangen and A. Tveito</em>, Springer, 2003.</li>
+<li> <em>H. P. Langtangen</em>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989.</li>
+<li> <em>H. P. Langtangen</em>. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process, <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992.</li>
+<li> <em>M. Mortensen, H. P. Langtangen and G. N. Wells</em>. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations, <em>Advances in Water Resources</em>, 34(9), <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>, 2011.</li>
+<li> <em>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L</em>. Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics, <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006.</li>
+<li> <em>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</em>. Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel, <em>Physical Review B: Condensed Matter and Materials Physics</em>, 74, 2006.</li>
+<li> <em>J. B. Haga, H. Osnes and H. P. Langtangen</em>. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media, <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>, <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>, 2011, <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract">http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</a>.</li>
+<li> <em>H. P. Langtangen</em>. <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>, Springer, 2003.</li>
+<li> <em>H. P. Langtangen</em>. <em>Python Scripting for Computational Science</em>, Springer, 2008.</li>
+<li> <em>H. P. Langtangen and G. Pedersen</em>. Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by <em>J. Grue, B. Gjevik and J. E. Weber</em>, Kluwer Academic Publishers, pp. pp. 117-126, 1995, <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310">http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</a>.</li>
+<li> <em>H. P. Langtangen</em>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</li>
+<li> <em>P. V. Jeberg, H. P. Langtangen and C. B. Terp</em>. Optimization With Diffpack: Practical Example From Welding, <em>Simula Research Laboratory</em>, 2004.</li>
+<li> <em>H. P. Langtangen</em>. Computational Methods for Two-Phase Flow in Oil Reservoirs, Ph.D. Thesis, Mechanics Division, Department of Mathematics, University of Oslo, 1989.</li>
+<li> <em>H. P. Langtangen</em>. Computational Modeling of Huge Tsunamis From Asteroid Impacts, Invited keynote lecture at the conference on Computational Science 2007 (ICCS'07), Beijing, China, 2007.</li>
+<li> <em>H. P. Langtangen</em>. Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions, M.Sc. Thesis, Mechanics Division, Department of Mathematics, University of Oslo, 1985.</li>
+<li> <em>H. P. Langtangen and A. Tveito</em>. Numerical Methods in Continuum Mechanics, <em>Center for Industrial Research</em>, 1991.</li>
+<li> <em>H. P. Langtangen</em>. Diffpack: Software for Partial Differential Equations, <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>, edited by <em>A. Vermeulen</em>, 1994.</li>
 </ol>
 <h2 id="appendix-just-for-testing-part-i">Appendix: Just for testing; part I</h2>
 <p>This is the first appendix.</p>
@@ -23330,7 +23293,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
 <li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
 <li id="fn4"><p><google.com> is perhaps the most famous web site today.<a href="#fnref4">↩</a></p></li>
@@ -23364,7 +23327,7 @@ DATE: today
 
 ===== This is a test of HTML templates =====
 
-Note: When using HTML templates, the Doconce file cannot have a title
+Note: When using HTML templates, the DocOnce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 ======= This is a 7 heading =======
@@ -23386,9 +23349,9 @@ class Forward1(Diff):
 
 The template can be any HTML file with header and footer and
 three possible slots: *title*, *date* and *main*,
-where *main* will become the Doconce file (the main body of text),
-*title* is the first heading in the Doconce file, and
-*date* is extracted from the Doconce file (if present).
+where *main* will become the DocOnce file (the main body of text),
+*title* is the first heading in the DocOnce file, and
+*date* is extracted from the DocOnce file (if present).
 
 
 
@@ -23464,7 +23427,7 @@ end of tocinfo -->
 
 <h2>This is a test of HTML templates  <a name="___sec0"></a></h2>
 
-Note: When using HTML templates, the Doconce file cannot have a title
+Note: When using HTML templates, the DocOnce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 <h1>This is a 7 heading  <a name="___sec1"></a></h1>
@@ -23487,9 +23450,9 @@ class Forward1(Diff):
 
 The template can be any HTML file with header and footer and
 three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
-where <em>main</em> will become the Doconce file (the main body of text),
-<em>title</em> is the first heading in the Doconce file, and
-<em>date</em> is extracted from the Doconce file (if present).
+where <em>main</em> will become the DocOnce file (the main body of text),
+<em>title</em> is the first heading in the DocOnce file, and
+<em>date</em> is extracted from the DocOnce file (if present).
 
 <p>
 
@@ -23706,7 +23669,7 @@ end of tocinfo -->
 
 <h2>This is a test of HTML templates  <a name="___sec0"></a></h2>
 
-Note: When using HTML templates, the Doconce file cannot have a title
+Note: When using HTML templates, the DocOnce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 <h1>This is a 7 heading  <a name="___sec1"></a></h1>
@@ -23714,7 +23677,7 @@ Note: When using HTML templates, the Doconce file cannot have a title
 Here is some code:
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">Diff</span>:
     <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -23730,9 +23693,9 @@ Here is some code:
 
 The template can be any HTML file with header and footer and
 three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
-where <em>main</em> will become the Doconce file (the main body of text),
-<em>title</em> is the first heading in the Doconce file, and
-<em>date</em> is extracted from the Doconce file (if present).
+where <em>main</em> will become the DocOnce file (the main body of text),
+<em>title</em> is the first heading in the DocOnce file, and
+<em>date</em> is extracted from the DocOnce file (if present).
 
 <p>
 
@@ -24388,11 +24351,11 @@ can be used, while references to sections in other documents are
 written differently, sometimes involving a link (URL) and a citation.
 Especially if both the individual documents and the large assembly document
 are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers <em>generalized references</em> which allows
+For this purpose, DocOnce offers <em>generalized references</em> which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since LaTeX supports
 references to labels in external documents via the <code>xr</code> package,
-the generalized references in Doconce has a syntax that may utilize
+the generalized references in DocOnce has a syntax that may utilize
 the <code>xr</code> feature in LaTeX.
 
 <p>
@@ -24431,9 +24394,9 @@ ref[Section ref{subsec:ex}][in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
 cite{testdoc:12}][a &quot;section&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
-the document &quot;A Document for Testing Doconce&quot;:
+the document &quot;A Document for Testing DocOnce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 </pre></div>
 <p>
 With <code>latex</code> or <code>pdflatex</code> as output, this translates to
@@ -24441,10 +24404,10 @@ With <code>latex</code> or <code>pdflatex</code> as output, this translates to
 
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
-Section ref{subsec:ex}, Doconce documents may include tables.
+Section ref{subsec:ex}, DocOnce documents may include tables.
 </pre></div>
 <p>
-if the label <code>{subsec:ex}</code> appears in the present Doconce source, and
+if the label <code>{subsec:ex}</code> appears in the present DocOnce source, and
 otherwise
 <p>
 
@@ -24452,10 +24415,10 @@ otherwise
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
 Section ref{subsec:ex} in &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot;
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 </pre></div>
 <p>
-In a format different from <code>latex</code> and <code>pdflatex</code>, the effective Doconce
+In a format different from <code>latex</code> and <code>pdflatex</code>, the effective DocOnce
 text becomes
 <p>
 
@@ -24463,9 +24426,9 @@ text becomes
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
 a &quot;section&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex&quot; in
-the document &quot;A Document for Testing Doconce&quot;:
+the document &quot;A Document for Testing DocOnce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 </pre></div>
 <p>
 The rendered text in the current format <code>html</code> becomes
@@ -24474,14 +24437,14 @@ The rendered text in the current format <code>html</code> becomes
 <blockquote>
     As explained in
     a <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" target="_self">section</a> in
-    the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
-    <a href="#testdoc:12">[1]</a>, Doconce documents may include tables.
+    the document <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing DocOnce</a>
+    <a href="#testdoc:12">[1]</a>, DocOnce documents may include tables.
 </blockquote>
 
 
 <p>
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
+if the reference is internal in the DocOnce source, applies the
 <code>refch</code> syntax:
 
 <p>
@@ -24491,9 +24454,9 @@ if the reference is internal in the Doconce source, applies the
 refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
 cite{testdoc:12}][the document
-&quot;A Document for Testing Doconce&quot;:
+&quot;A Document for Testing DocOnce&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 </pre></div>
 <p>
 The output now if <code>ch:testdoc</code> is not a label in the document,
@@ -24505,7 +24468,7 @@ becomes in the <code>latex</code> and <code>pdflatex</code> case
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">As explained in
 &quot;Langtangen, 2012&quot;:
 &quot;http://hplgit.github.io/doconce/test/demo_testdoc.html&quot;
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 </pre></div>
 <p>
 That is, the internal reference <code>Chapter ...</code> is omitted since
@@ -24516,8 +24479,8 @@ The resulting rendered text in the current format <code>html</code> becomes
 <blockquote>
     As explained in
     the document
-    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing Doconce</a>
-    <a href="#testdoc:12">[1]</a>, Doconce documents may include tables.
+    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self">A Document for Testing DocOnce</a>
+    <a href="#testdoc:12">[1]</a>, DocOnce documents may include tables.
 </blockquote>
 
 
@@ -24736,11 +24699,11 @@ can be used, while references to sections in other documents are
 written differently, sometimes involving a link (URL) and a citation.
 Especially if both the individual documents and the large assembly document
 are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers \emph{generalized references} which allows
+For this purpose, DocOnce offers \emph{generalized references} which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since {\LaTeX} supports
 references to labels in external documents via the \code{xr} package,
-the generalized references in Doconce has a syntax that may utilize
+the generalized references in DocOnce has a syntax that may utilize
 the \code{xr} feature in {\LaTeX}.
 
 The syntax of generalized references reads
@@ -24772,32 +24735,32 @@ ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
 cite{testdoc:12}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 \eccq
 With \code{latex} or \code{pdflatex} as output, this translates to
 \bccq
 As explained in
-Section ref{subsec:ex}, Doconce documents may include tables.
+Section ref{subsec:ex}, DocOnce documents may include tables.
 \eccq
-if the label \code{{subsec:ex}} appears in the present Doconce source, and
+if the label \code{{subsec:ex}} appears in the present DocOnce source, and
 otherwise
 \bccq
 As explained in
 Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-In a format different from \code{latex} and \code{pdflatex}, the effective Doconce
+In a format different from \code{latex} and \code{pdflatex}, the effective DocOnce
 text becomes
 \bccq
 As explained in
 a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-the document "A Document for Testing Doconce":
+the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
 The rendered text in the current format \code{latex} becomes
 
@@ -24805,12 +24768,12 @@ The rendered text in the current format \code{latex} becomes
 \begin{quote}
 As explained in
 Section~\ref{subsec:ex}in \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include tables.
+\cite{testdoc:12}, DocOnce documents may include tables.
 \end{quote}
 
 
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
+if the reference is internal in the DocOnce source, applies the
 \code{refch} syntax:
 
 \bccq
@@ -24818,9 +24781,9 @@ As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}][the document
-"A Document for Testing Doconce":
+"A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}], Doconce documents may include tables.
+cite{testdoc:12}], DocOnce documents may include tables.
 \eccq
 The output now if \code{ch:testdoc} is not a label in the document,
 becomes in the \code{latex} and \code{pdflatex} case
@@ -24829,7 +24792,7 @@ becomes in the \code{latex} and \code{pdflatex} case
 As explained in
 "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{testdoc:12}, Doconce documents may include tables.
+cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
 That is, the internal reference \code{Chapter ...} is omitted since
 it is not meaningful to refer to an external document as "Chapter".
@@ -24839,7 +24802,7 @@ The resulting rendered text in the current format \code{latex} becomes
 \begin{quote}
 As explained in
 \href{{http://hplgit.github.io/doconce/test/demo_testdoc.html}}{Langtangen, 2012}
-\cite{testdoc:12}, Doconce documents may include tables.
+\cite{testdoc:12}, DocOnce documents may include tables.
 \end{quote}
 
 
@@ -24917,11 +24880,11 @@ can be used, while references to sections in other documents are
 written differently, sometimes involving a link (URL) and a citation.
 Especially if both the individual documents and the large assembly document
 are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers *generalized references* which allows
+For this purpose, DocOnce offers *generalized references* which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since LaTeX supports
 references to labels in external documents via the ``xr`` package,
-the generalized references in Doconce has a syntax that may utilize
+the generalized references in DocOnce has a syntax that may utilize
 the ``xr`` feature in LaTeX.
 
 The syntax of generalized references reads
@@ -24957,18 +24920,18 @@ in a document:
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
         cite{testdoc:12}][a "section":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce":
+        the document "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include tables.
+        cite{testdoc:12}], DocOnce documents may include tables.
 
 With ``latex`` or ``pdflatex`` as output, this translates to
 
 .. code-block:: text
 
         As explained in
-        Section ref{subsec:ex}, Doconce documents may include tables.
+        Section ref{subsec:ex}, DocOnce documents may include tables.
 
-if the label ``{subsec:ex}`` appears in the present Doconce source, and
+if the label ``{subsec:ex}`` appears in the present DocOnce source, and
 otherwise
 
 .. code-block:: text
@@ -24976,9 +24939,9 @@ otherwise
         As explained in
         Section ref{subsec:ex} in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}, Doconce documents may include tables.
+        cite{testdoc:12}, DocOnce documents may include tables.
 
-In a format different from ``latex`` and ``pdflatex``, the effective Doconce
+In a format different from ``latex`` and ``pdflatex``, the effective DocOnce
 text becomes
 
 .. code-block:: text
@@ -24986,9 +24949,9 @@ text becomes
         As explained in
         a "section":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce":
+        the document "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}, Doconce documents may include tables.
+        cite{testdoc:12}, DocOnce documents may include tables.
 
 The rendered text in the current format ``sphinx`` becomes
 
@@ -24997,13 +24960,13 @@ The rendered text in the current format ``sphinx`` becomes
 
     As explained in
     a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
-    the document `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
-    [Ref1]_, Doconce documents may include tables.
+    the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, DocOnce documents may include tables.
 
 
 
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
+if the reference is internal in the DocOnce source, applies the
 ``refch`` syntax:
 
 .. code-block:: text
@@ -25012,9 +24975,9 @@ if the reference is internal in the Doconce source, applies the
         refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}][the document
-        "A Document for Testing Doconce":
+        "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include tables.
+        cite{testdoc:12}], DocOnce documents may include tables.
 
 The output now if ``ch:testdoc`` is not a label in the document,
 becomes in the ``latex`` and ``pdflatex`` case
@@ -25024,7 +24987,7 @@ becomes in the ``latex`` and ``pdflatex`` case
         As explained in
         "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}, Doconce documents may include tables.
+        cite{testdoc:12}, DocOnce documents may include tables.
 
 That is, the internal reference ``Chapter ...`` is omitted since
 it is not meaningful to refer to an external document as "Chapter".
@@ -25035,8 +24998,8 @@ The resulting rendered text in the current format ``sphinx`` becomes
 
     As explained in
     the document
-    `A Document for Testing Doconce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
-    [Ref1]_, Doconce documents may include tables.
+    `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    [Ref1]_, DocOnce documents may include tables.
 
 
 
@@ -25100,11 +25063,11 @@ can be used, while references to sections in other documents are
 written differently, sometimes involving a link (URL) and a citation.
 Especially if both the individual documents and the large assembly document
 are to exist side by side, a flexible way of referencing is needed.
-For this purpose, Doconce offers *generalized references* which allows
+For this purpose, DocOnce offers *generalized references* which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since LaTeX supports
 references to labels in external documents via the xr package,
-the generalized references in Doconce has a syntax that may utilize
+the generalized references in DocOnce has a syntax that may utilize
 the xr feature in LaTeX.
 
 The syntax of generalized references reads::
@@ -25136,52 +25099,52 @@ in a document::
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
         cite{testdoc:12}][a "section":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce":
+        the document "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include tables.
+        cite{testdoc:12}], DocOnce documents may include tables.
 
 With latex or pdflatex as output, this translates to::
 
         As explained in
-        Section ref{subsec:ex}, Doconce documents may include tables.
+        Section ref{subsec:ex}, DocOnce documents may include tables.
 
-if the label {subsec:ex} appears in the present Doconce source, and
+if the label {subsec:ex} appears in the present DocOnce source, and
 otherwise::
 
         As explained in
         Section ref{subsec:ex} in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{testdoc:12}, Doconce documents may include tables.
+        cite{testdoc:12}, DocOnce documents may include tables.
 
-In a format different from latex and pdflatex, the effective Doconce
+In a format different from latex and pdflatex, the effective DocOnce
 text becomes::
 
         As explained in
         a "section":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
-        the document "A Document for Testing Doconce":
+        the document "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}, Doconce documents may include tables.
+        cite{testdoc:12}, DocOnce documents may include tables.
 
 The rendered text in the current format plain becomes
 
         As explained in
         a section (http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex) in
-        the document A Document for Testing Doconce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
-        [1], Doconce documents may include tables.
+        the document A Document for Testing DocOnce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
+        [1], DocOnce documents may include tables.
 
 
 A reference to an entire external document, which is usually a chapter
-if the reference is internal in the Doconce source, applies the
+if the reference is internal in the DocOnce source, applies the
 refch syntax::
 
         As explained in
         refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
         cite{testdoc:12}][the document
-        "A Document for Testing Doconce":
+        "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}], Doconce documents may include tables.
+        cite{testdoc:12}], DocOnce documents may include tables.
 
 The output now if ch:testdoc is not a label in the document,
 becomes in the latex and pdflatex case::
@@ -25189,7 +25152,7 @@ becomes in the latex and pdflatex case::
         As explained in
         "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{testdoc:12}, Doconce documents may include tables.
+        cite{testdoc:12}, DocOnce documents may include tables.
 
 That is, the internal reference Chapter ... is omitted since
 it is not meaningful to refer to an external document as "Chapter".
@@ -25197,8 +25160,8 @@ The resulting rendered text in the current format plain becomes
 
         As explained in
         the document
-        A Document for Testing Doconce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
-        [1], Doconce documents may include tables.
+        A Document for Testing DocOnce (http://hplgit.github.io/doconce/test/demo_testdoc.html)
+        [1], DocOnce documents may include tables.
 
 
 Note that LaTeX cannot
@@ -25236,7 +25199,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -25455,9 +25418,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
-<center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
+<center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
@@ -25562,7 +25525,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -25784,7 +25747,7 @@ $$
 
 <p>
 The format of this document is
-plain, homemade HTML (from Doconce).
+plain, homemade HTML (from DocOnce).
 
 <p>
 <b>Abstract.</b> This is a document with many test constructions for doconce syntax.
@@ -25878,7 +25841,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
 
-<!-- code=fortran (from !bc fcod) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -25909,7 +25872,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 and then just the subroutine,
 <p>
 
-<!-- code=fortran (from !bc fcod) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -25930,7 +25893,7 @@ and then just the subroutine,
 and finally the complete file:
 <p>
 
-<!-- code=fortran (from !bc fpro) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fpro) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -25980,7 +25943,7 @@ which gets rendered as
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
     <span style="color: #AA22FF; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
@@ -25993,7 +25956,7 @@ Test paragraph and subsubsection headings before code.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">g</span>(y):
     <span style="color: #AA22FF; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
@@ -26001,7 +25964,7 @@ Test paragraph and subsubsection headings before code.
 </td></tr></table><h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">h</span>(z):
     <span style="color: #AA22FF; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
@@ -26020,7 +25983,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (from !bc pyscpro) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyscpro) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -26049,7 +26012,7 @@ show()
 Then Cython:
 <p>
 
-<!-- code=cython (from !bc cycod) typeset with pygments style "emacs" -->
+<!-- code=cython (!bc cycod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">cpdef</span> <span style="color: #00A000">f</span>(double x):
     <span style="color: #AA22FF; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
@@ -26059,7 +26022,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26073,7 +26036,7 @@ IPython sessions:
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "emacs" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26091,7 +26054,7 @@ IPython sessions:
 C++:
 <p>
 
-<!-- code=c++ (from !bc cpppro) typeset with pygments style "emacs" -->
+<!-- code=c++ (!bc cpppro) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26134,7 +26097,7 @@ which then is typeset as
 
 <p>
 
-<!-- code=text (from !bc cod) typeset with pygments style "emacs" -->
+<!-- code=text (!bc cod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26152,7 +26115,7 @@ HTML:
 
 <p>
 
-<!-- code=html (from !bc htmlcod) typeset with pygments style "emacs" -->
+<!-- code=html (!bc htmlcod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26167,7 +26130,7 @@ HTML:
 System call:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "emacs" -->
+<!-- code=text (!bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26188,7 +26151,7 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a Doconce directive a la <code>!bc</code>.
+and a DocOnce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -26201,7 +26164,7 @@ the previous blocks with line breaks.
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
-<!-- code=text (from !bc sys) typeset with pygments style "emacs" -->
+<!-- code=text (!bc sys) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26233,7 +26196,7 @@ This is the third [<a name="link_footnote_5"><a><a href="._testdoc003.html#def_f
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
 <p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
@@ -26406,10 +26369,10 @@ Let us take this table from the manual:
 </tbody>
 </table>
 <p>
-The Doconce source code reads
+The DocOnce source code reads
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "emacs" -->
+<!-- code=text (!bc ccq) typeset with pygments style "emacs" -->
 <blockquote>
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
@@ -26650,7 +26613,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -26994,7 +26957,7 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 
 <p>
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
@@ -27037,7 +27000,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pypro) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -27274,7 +27237,7 @@ What is the solution of this equation?</p>
 <p><div title="Wrong!"><b>Choice 3:</b>
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #AA22FF; font-weight: bold">import</span> exp
@@ -27518,7 +27481,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -27917,7 +27880,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -27984,9 +27947,9 @@ div { text-align: justify; text-justify: inter-word; }
 
 
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
-<center><h1>A Document for Testing Doconce</h1></center>  
+<center><h1>A Document for Testing DocOnce</h1></center>  
 
 <p>
 
@@ -28072,7 +28035,7 @@ div { text-align: justify; text-justify: inter-word; }
 </p>
 <p>
 The format of this document is
-plain, homemade HTML (from Doconce).
+plain, homemade HTML (from DocOnce).
 
 <p>
 <b>Abstract.</b> This is a document with many test constructions for doconce syntax.
@@ -28373,7 +28336,7 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a Doconce directive a la <code>!bc</code>.
+and a DocOnce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -28413,7 +28376,7 @@ This is the third [<a name="link_footnote_5"><a><a href="#def_footnote_5">5</a>]
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
 <p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
@@ -28579,7 +28542,7 @@ Let us take this table from the manual:
 </tbody>
 </table>
 <p>
-The Doconce source code reads
+The DocOnce source code reads
 <p>
 
 
@@ -28892,7 +28855,7 @@ drawing uniformly distributed random numbers from the interval $latex [0,1)$?
 
 <p>
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 <ol>
 <li> item1</li>
@@ -29543,7 +29506,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="A Document for Testing Doconce">
+<meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
 
@@ -29739,9 +29702,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
-<center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
+<center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
@@ -29830,7 +29793,7 @@ $$
 
 <p>
 The format of this document is
-plain, homemade HTML (from Doconce).
+plain, homemade HTML (from DocOnce).
 
 <p>
 <!-- Just a comment -->
@@ -29919,7 +29882,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
 
-<!-- code=fortran (from !bc fcod) typeset with pygments style "default" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
       <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
       <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
@@ -29938,7 +29901,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 and then just the subroutine,
 <p>
 
-<!-- code=fortran (from !bc fcod) typeset with pygments style "default" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
       <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
       <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
@@ -29952,7 +29915,7 @@ and then just the subroutine,
 and finally the complete file:
 <p>
 
-<!-- code=fortran (from !bc fpro) typeset with pygments style "default" -->
+<!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
 
       <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
@@ -29985,7 +29948,7 @@ which gets rendered as
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
 </pre></div>
@@ -29997,7 +29960,7 @@ Test paragraph and subsubsection headings before code.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
     <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
 </pre></div>
@@ -30005,7 +29968,7 @@ Test paragraph and subsubsection headings before code.
 <h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
     <span style="color: #008000; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
 </pre></div>
@@ -30023,7 +29986,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (from !bc pyscpro) typeset with pygments style "default" -->
+<!-- code=python (!bc pyscpro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
@@ -30041,7 +30004,7 @@ show()
 Then Cython:
 <p>
 
-<!-- code=cython (from !bc cycod) typeset with pygments style "default" -->
+<!-- code=cython (!bc cycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">cpdef</span> <span style="color: #0000FF">f</span>(double x):
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
@@ -30050,7 +30013,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
 <span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
 <span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
@@ -30061,7 +30024,7 @@ IPython sessions:
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
 <span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
@@ -30074,7 +30037,7 @@ IPython sessions:
 C++:
 <p>
 
-<!-- code=c++ (from !bc cpppro) typeset with pygments style "default" -->
+<!-- code=c++ (!bc cpppro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -30104,7 +30067,7 @@ which then is typeset as
 
 <p>
 
-<!-- code=text (from !bc cod) typeset with pygments style "default" -->
+<!-- code=text (!bc cod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -30117,7 +30080,7 @@ HTML:
 
 <p>
 
-<!-- code=html (from !bc htmlcod) typeset with pygments style "default" -->
+<!-- code=html (!bc htmlcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;table&gt;</span>
 <span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
 <span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
@@ -30128,7 +30091,7 @@ HTML:
 System call:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir test
 Terminal&gt; cd test
 Terminal&gt; myprog -f
@@ -30145,7 +30108,7 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a Doconce directive a la <code>!bc</code>.
+and a DocOnce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -30158,7 +30121,7 @@ the previous blocks with line breaks.
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
 output
@@ -30185,7 +30148,7 @@ This is the third [<a name="link_footnote_5"><a><a href="#def_footnote_5">5</a>]
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
 <p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
@@ -30357,10 +30320,10 @@ Let us take this table from the manual:
 </tbody>
 </table>
 <p>
-The Doconce source code reads
+The DocOnce source code reads
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
@@ -30696,7 +30659,7 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 
 <p>
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 <ol>
 <li> item1</li>
@@ -30739,7 +30702,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">circle</span>(R, x0, y0, n<span style="color: #666666">=501</span>):
@@ -30964,7 +30927,7 @@ What is the solution of this equation?</p>
 <p><div title="Wrong!"><b>Choice 3:</b>
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(x)
@@ -31651,7 +31614,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-A Document for Testing Doconce
+A Document for Testing DocOnce
 \end{spacing}
 }
 \end{center}
@@ -31717,7 +31680,7 @@ Jan 32, 2100
 
 
 The format of this document is
-plain, homemade {\LaTeX} (from Doconce).
+plain, homemade {\LaTeX} (from DocOnce).
 
 % Just a comment
 
@@ -32022,7 +31985,7 @@ Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
 \code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
-and a Doconce directive a la \code{!bc}.
+and a DocOnce directive a la \code{!bc}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
 green color containing a linebreak. \\
@@ -32042,7 +32005,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -32239,7 +32202,7 @@ with the preprocessor.
 \noindent
 \end{table}
 
-The Doconce source code reads
+The DocOnce source code reads
 \bccq
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -32464,7 +32427,7 @@ or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
-handled. Likewise, this is test no.~$i$ of Doconce features.
+handled. Likewise, this is test no.~$i$ of DocOnce features.
 A sentence containing "refines lines" could easily
 fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
@@ -32622,7 +32585,7 @@ drawing uniformly distributed random numbers from the interval $[0,1)$?
 
 
 At the end we have a list because that caused problems in {\LaTeX}
-in previous Doconce versions:
+in previous DocOnce versions:
 
 \begin{enumerate}
 \item item1
@@ -34157,7 +34120,7 @@ We can refer to the last equations as the system (ref{eq2b})-(ref{eq3b}).
 # #if FORMAT == "sphinx"
 Actually, *Sphinx does not support the align environment with labels*,
 such as we write above,
-but Doconce splits in this case the equations into separate, single equations
+but DocOnce splits in this case the equations into separate, single equations
 with labels. Hence the user can write one code with align and labels
 and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
 in the present case is
@@ -34183,7 +34146,7 @@ does not work with labels and multiple equations. `doconce md2html`
 fixes the trouble by adding full support for MathJax and avoiding
 that eqref references become empty.
 
-One can write with align and labels in the Doconce document and get excellent
+One can write with align and labels in the DocOnce document and get excellent
 output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without
 `doconce md2html` one must accept that labeles have very limited support
 compared to more advanced MathJax.
@@ -34234,7 +34197,7 @@ v(t) - 1 &=& \frac{du}{dt} label{eq3c}
 Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})?
 # #if FORMAT == "sphinx"
 No, unfortunately not.
-Note: Doconce takes the eqnarray with labels and replaces it automatically
+Note: DocOnce takes the eqnarray with labels and replaces it automatically
 by the Sphinx code
 
 !bc rst
@@ -34268,7 +34231,7 @@ with plain old pmb. Here are the same formulas using `\bm`:
 and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 
 # #if FORMAT in ("html", "sphinx", "pandoc", "ipynb")
-Note: for the ${FORMAT} format, `\bm` was substituted by Doconce
+Note: for the ${FORMAT} format, `\bm` was substituted by DocOnce
 to `\boldsymbol`.
 # #endif
 
@@ -34390,7 +34353,7 @@ does not work with labels and multiple equations. `doconce md2html`
 fixes the trouble by adding full support for MathJax and avoiding
 that eqref references become empty.
 
-One can write with align and labels in the Doconce document and get excellent
+One can write with align and labels in the DocOnce document and get excellent
 output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without
 `doconce md2html` one must accept that labeles have very limited support
 compared to more advanced MathJax.
@@ -34461,7 +34424,7 @@ $$
 $$
 and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 
-Note: for the pandoc format, `\bm` was substituted by Doconce
+Note: for the pandoc format, `\bm` was substituted by DocOnce
 to `\boldsymbol`.
 
 
@@ -34758,7 +34721,7 @@ $$ \color{blue}{\frac{\partial\ubm}{\partial t}} +
 and \( \nabla\ubm (\xbm)\cdot\normalvecbm \).
 
 <p>
-Note: for the html format, <code>\bm</code> was substituted by Doconce
+Note: for the html format, <code>\bm</code> was substituted by DocOnce
 to <code>\boldsymbol</code>.
 
 <p>
@@ -34858,7 +34821,7 @@ v(t) - 1 = \frac{du}{dt} \label{eq3b}
 \end{equation}
 \]</span> We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.</p>
 <p>Original Pandoc-extended Markdown transformed to HTML via Pandoc does not work with labels and multiple equations. <code>doconce md2html</code> fixes the trouble by adding full support for MathJax and avoiding that eqref references become empty.</p>
-<p>One can write with align and labels in the Doconce document and get excellent output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without <code>doconce md2html</code> one must accept that labeles have very limited support compared to more advanced MathJax.</p>
+<p>One can write with align and labels in the DocOnce document and get excellent output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without <code>doconce md2html</code> one must accept that labeles have very limited support compared to more advanced MathJax.</p>
 <p><em>Test 6: Multiple, aligned eqnarray equations without label.</em> Let us try the old eqnarray environment.</p>
 <pre><code>!bt
 \begin{eqnarray*}
@@ -34900,7 +34863,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 \nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
 \frac{1}{\varrho}\nabla p,
 \]</span> and <span class="math">\(\nabla\ubm (\xbm)\cdot\normalvecbm\)</span>.</p>
-<p>Note: for the pandoc format, <code>\bm</code> was substituted by Doconce to <code>\boldsymbol</code>.</p>
+<p>Note: for the pandoc format, <code>\bm</code> was substituted by DocOnce to <code>\boldsymbol</code>.</p>
 </body>
 </html>
 
@@ -35301,7 +35264,7 @@ We can refer to the last equations as the system :eq:`eq2b`-:eq:`eq3b`.
 
 Actually, *Sphinx does not support the align environment with labels*,
 such as we write above,
-but Doconce splits in this case the equations into separate, single equations
+but DocOnce splits in this case the equations into separate, single equations
 with labels. Hence the user can write one code with align and labels
 and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
 in the present case is
@@ -35366,7 +35329,7 @@ and results in
 
 Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`?
 No, unfortunately not.
-Note: Doconce takes the eqnarray with labels and replaces it automatically
+Note: DocOnce takes the eqnarray with labels and replaces it automatically
 by the Sphinx code
 
 .. code-block:: rst
@@ -35399,7 +35362,7 @@ with plain old pmb. Here are the same formulas using ``\bm``:
 
 and :math:`\nabla\boldsymbol{u} (\boldsymbol{x})\cdot\boldsymbol{n}`.
 
-Note: for the sphinx format, ``\bm`` was substituted by Doconce
+Note: for the sphinx format, ``\bm`` was substituted by DocOnce
 to ``\boldsymbol``.
 
 ************** File: testdoc_vagrant.html *****************
@@ -35452,7 +35415,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -35665,9 +35628,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
-<center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
+<center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
@@ -35839,7 +35802,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -36052,9 +36015,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
-<center><h1>A Document for Testing Doconce</h1></center>  <!-- document title -->
+<center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, and J. Doe -->
@@ -36226,7 +36189,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -36440,7 +36403,7 @@ $$
 
 <p>
 The format of this document is
-plain, homemade HTML (from Doconce).
+plain, homemade HTML (from DocOnce).
 
 <p>
 <b>Abstract.</b> This is a document with many test constructions for doconce syntax.
@@ -36526,7 +36489,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
 
-<!-- code=fortran (from !bc fcod) typeset with pygments style "default" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
       <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
       <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
@@ -36545,7 +36508,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 and then just the subroutine,
 <p>
 
-<!-- code=fortran (from !bc fcod) typeset with pygments style "default" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
       <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
       <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
@@ -36559,7 +36522,7 @@ and then just the subroutine,
 and finally the complete file:
 <p>
 
-<!-- code=fortran (from !bc fpro) typeset with pygments style "default" -->
+<!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
 
       <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
@@ -36592,7 +36555,7 @@ which gets rendered as
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
 </pre></div>
@@ -36604,7 +36567,7 @@ Test paragraph and subsubsection headings before code.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
     <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
 </pre></div>
@@ -36612,7 +36575,7 @@ Test paragraph and subsubsection headings before code.
 <h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
     <span style="color: #008000; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
 </pre></div>
@@ -36630,7 +36593,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (from !bc pyscpro) typeset with pygments style "default" -->
+<!-- code=python (!bc pyscpro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
@@ -36648,7 +36611,7 @@ show()
 Then Cython:
 <p>
 
-<!-- code=cython (from !bc cycod) typeset with pygments style "default" -->
+<!-- code=cython (!bc cycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">cpdef</span> <span style="color: #0000FF">f</span>(double x):
     <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 </pre></div>
@@ -36657,7 +36620,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
 <span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
 <span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
@@ -36668,7 +36631,7 @@ IPython sessions:
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
 <span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
@@ -36681,7 +36644,7 @@ IPython sessions:
 C++:
 <p>
 
-<!-- code=c++ (from !bc cpppro) typeset with pygments style "default" -->
+<!-- code=c++ (!bc cpppro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -36711,7 +36674,7 @@ which then is typeset as
 
 <p>
 
-<!-- code=text (from !bc cod) typeset with pygments style "default" -->
+<!-- code=text (!bc cod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -36724,7 +36687,7 @@ HTML:
 
 <p>
 
-<!-- code=html (from !bc htmlcod) typeset with pygments style "default" -->
+<!-- code=html (!bc htmlcod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;table&gt;</span>
 <span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
 <span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
@@ -36735,7 +36698,7 @@ HTML:
 System call:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir test
 Terminal&gt; cd test
 Terminal&gt; myprog -f
@@ -36752,7 +36715,7 @@ Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerat
 <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a Doconce directive a la <code>!bc</code>.
+and a DocOnce directive a la <code>!bc</code>.
 
 <p>
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
@@ -36765,7 +36728,7 @@ the previous blocks with line breaks.
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
 output
@@ -36775,7 +36738,7 @@ Python.
 
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
-Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and Doconce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
+Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors, now in
 
 <ul>
@@ -36792,7 +36755,7 @@ This is the third <button type="button" class="btn btn-primary btn-xs" rel="tool
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and Doconce, and in HTML we keep the same
+as Extended Markdown and DocOnce, and in HTML we keep the same
 syntax, just displayed properly in HTML.
 
 <p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
@@ -36964,10 +36927,10 @@ Let us take this table from the manual:
 </tbody>
 </table>
 <p>
-The Doconce source code reads
+The DocOnce source code reads
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
@@ -37272,7 +37235,7 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
 
-<title>A Document for Testing Doconce</title>
+<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -37588,7 +37551,7 @@ head, otherwise tail. Repeat this \( N \) number of times.
 <b>Solution.</b>
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">random</span>
 N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
 heads <span style="color: #666666">=</span> <span style="color: #666666">0</span>
@@ -37624,7 +37587,7 @@ drawing uniformly distributed random numbers from the interval \( [0,1) \)?
 
 <p>
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 <ol>
 <li> item1</li>
@@ -37667,7 +37630,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">circle</span>(R, x0, y0, n<span style="color: #666666">=501</span>):
@@ -37945,7 +37908,7 @@ Almost, but the sign is wrong (note the minus!).
 &nbsp;<b>Choice 3:</b>
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> exp(x)
@@ -38244,7 +38207,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-A Document for Testing Doconce
+A Document for Testing DocOnce
 ==============================
 
 :Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
@@ -38551,7 +38514,7 @@ Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
 ``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
 verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in ``a != b``,
-and a Doconce directive a la ``!bc``.
+and a DocOnce directive a la ``!bc``.
 
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
@@ -38594,7 +38557,7 @@ This is the third [#example-of-the-third-footnote]_ example.
    Plain text does nothing, LaTeX removes the
    definition and inserts the footnote as part of the LaTeX text.
    reStructuredText and Sphinx employ a similar type of typesetting
-   as Extended Markdown and Doconce, and in HTML we keep the same
+   as Extended Markdown and DocOnce, and in HTML we keep the same
    syntax, just displayed properly in HTML.
 
 .. [#math1] Math footnotes can be dangerous since it
@@ -38785,7 +38748,7 @@ Let us take this table from the manual:
 4.0                 1.1E+1     14.717624  
 ============  ============  ============  
 
-The Doconce source code reads
+The DocOnce source code reads
 
 .. code-block:: text
 
@@ -39136,7 +39099,7 @@ What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
 
 At the end we have a list because that caused problems in LaTeX
-in previous Doconce versions:
+in previous DocOnce versions:
 
 1. item1
 
@@ -40324,7 +40287,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_mdfboxadmon}[Question.]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_mdfboxadmon}
 
 
@@ -40332,7 +40295,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_mdfboxadmon}[Question.]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -40922,7 +40885,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_colors1admon}[Question]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_colors1admon}
 
 
@@ -40930,7 +40893,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_colors1admon}[Question]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -41525,7 +41488,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_colors2admon}[Question]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_colors2admon}
 
 
@@ -41533,7 +41496,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_colors2admon}[Question]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -42171,7 +42134,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_mdfboxadmon}[Question.]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_mdfboxadmon}
 
 
@@ -42179,7 +42142,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_mdfboxadmon}[Question.]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -42725,7 +42688,7 @@ Ah, we are soon close to the end.
 
 
 \begin{graybox2admon}[Question.]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{graybox2admon}
 
 
@@ -42735,7 +42698,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{graybox2admon}[Question.]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -43341,7 +43304,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_grayiconadmon}[Question]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_grayiconadmon}
 
 
@@ -43349,7 +43312,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_grayiconadmon}[Question]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -43849,7 +43812,7 @@ Ah, we are soon close to the end.
 
 
 \begin{paragraphadmon}[Question.]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{paragraphadmon}
 
 
@@ -43857,7 +43820,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{paragraphadmon}[Question.]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -44457,7 +44420,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_yellowiconadmon}[Question]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_yellowiconadmon}
 
 
@@ -44465,7 +44428,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_yellowiconadmon}[Question]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -45103,7 +45066,7 @@ Ah, we are soon close to the end.
 
 
 \begin{question_mdfboxadmon}[Question.]
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 \end{question_mdfboxadmon}
 
 
@@ -45111,7 +45074,7 @@ So, how many admonition environments does Doconce support?
 
 \begin{question_mdfboxadmon}[Question.]
 \begin{enumerate}
- \item Once more, how many admonition environments does Doconce support?
+ \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
@@ -45407,7 +45370,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -45490,7 +45453,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -45536,7 +45499,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #FEEFB3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -45545,7 +45508,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #FEEFB3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -45617,7 +45580,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="question alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -45625,7 +45588,7 @@ So, how many admonition environments does Doconce support?
 <div class="question alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -45643,7 +45606,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #FEEFB3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -45694,7 +45657,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #BDE5F8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -45708,7 +45671,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #BDE5F8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -45937,7 +45900,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -46020,7 +45983,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -46066,7 +46029,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -46075,7 +46038,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -46147,7 +46110,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -46155,7 +46118,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -46173,7 +46136,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -46224,7 +46187,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -46238,7 +46201,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -46465,7 +46428,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -46548,7 +46511,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px; box-shadow: 8px 8px 5px #888888;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -46594,7 +46557,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -46603,7 +46566,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -46675,7 +46638,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -46683,7 +46646,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -46701,7 +46664,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -46752,7 +46715,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -46766,7 +46729,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -47052,7 +47015,7 @@ of understanding.</p>
 </div>
 <p>Admonitions must have a title in Sphinx, otherwise they are not
 shown. Here, for the following <em>block admon</em> (<tt class="docutils literal"><span class="pre">!bblock</span></tt>)
-we have not specified any title, and Doconce then
+we have not specified any title, and DocOnce then
 applies the generic title &#8220;Notice:&#8221; for the Sphinx format:</p>
 <div class="admonition-notice admonition">
 <p class="first admonition-title">Notice</p>
@@ -47076,12 +47039,12 @@ But first a bit of math where we define <span class="math">\(\theta\)</span> and
 </div>
 <div class="admonition-question admonition">
 <p class="first admonition-title">Question</p>
-<p class="last">So, how many admonition environments does Doconce support?</p>
+<p class="last">So, how many admonition environments does DocOnce support?</p>
 </div>
 <div class="admonition-question admonition">
 <p class="first admonition-title">Question</p>
 <ol class="last arabic simple">
-<li>Once more, how many admonition environments does Doconce support?</li>
+<li>Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 <div class="admonition-tip admonition">
@@ -47101,7 +47064,7 @@ But first a bit of math where we define <span class="math">\(\theta\)</span> and
 </div>
 <p>Next is a warning without a title (&#8220;none&#8221; implies no title).
 Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, we have not specified any title, and Doconce then
+shown. Here, we have not specified any title, and DocOnce then
 applies the generic title &#8220;Notice:&#8221;</p>
 <div class="admonition-notice admonition">
 <p class="first admonition-title">Notice</p>
@@ -47393,7 +47356,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -47476,7 +47439,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -47537,7 +47500,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -47546,7 +47509,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p></div>
@@ -47660,7 +47623,7 @@ $$</div>
 <th align="left" valign="middle"><b>Question.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
-<div class="alert-text-normal">So, how many admonition environments does Doconce support?</div>
+<div class="alert-text-normal">So, how many admonition environments does DocOnce support?</div>
 </p></td></tr>
 </table>
 
@@ -47676,7 +47639,7 @@ $$</div>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
 <div class="alert-text-normal">
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol></div>
 </p></td></tr>
 </table>
@@ -47702,7 +47665,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -47769,7 +47732,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -47783,7 +47746,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -47998,7 +47961,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -48081,7 +48044,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -48133,7 +48096,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -48142,7 +48105,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -48232,7 +48195,7 @@ Ah, we are soon close to the end.
 
 <!-- admonition: question, typeset as paragraph -->
 <div class="alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -48243,7 +48206,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -48264,7 +48227,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -48321,7 +48284,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -48335,7 +48298,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -48582,7 +48545,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
     <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
 </pre></div>
@@ -48665,7 +48628,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
     <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
 </pre></div>
@@ -48711,7 +48674,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
     <span style="color: #8B008B; font-weight: bold">return</span> x
 </pre></div>
@@ -48720,7 +48683,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -48792,7 +48755,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -48800,7 +48763,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -48818,7 +48781,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">urllib</span>
 
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">grab</span>(url, filename):
@@ -48869,7 +48832,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Dudt</span>(u):
     r = diff(u, t) + u*grad(u)
     <span style="color: #8B008B; font-weight: bold">return</span> r
@@ -48883,7 +48846,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Diff</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
         <span style="color: #658b00">self</span>.f = f
@@ -49138,7 +49101,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -49221,7 +49184,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -49267,7 +49230,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -49276,7 +49239,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -49348,7 +49311,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -49356,7 +49319,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -49374,7 +49337,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -49425,7 +49388,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -49439,7 +49402,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -49855,7 +49818,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -49938,7 +49901,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -49993,7 +49956,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -50002,7 +49965,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -50098,7 +50061,7 @@ Ah, we are soon close to the end.
   <h3 class="panel-title">Question</h3>
   </div>
 <div class="panel-body">
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 </div>
 
@@ -50111,7 +50074,7 @@ So, how many admonition environments does Doconce support?
 <div class="panel-body">
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 </div>
@@ -50134,7 +50097,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -50195,7 +50158,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -50209,7 +50172,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -50421,7 +50384,7 @@ Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -50504,7 +50467,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -50550,7 +50513,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -50559,7 +50522,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
@@ -50631,7 +50594,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -50639,7 +50602,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -50657,7 +50620,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -50708,7 +50671,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -50722,7 +50685,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -51053,7 +51016,7 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 {{mbox
 | type = Question.
 | textstyle = font-size: 90%;
-| text = '''Question.''' So, how many admonition environments does Doconce support?
+| text = '''Question.''' So, how many admonition environments does DocOnce support?
 }}
 
 
@@ -51064,7 +51027,7 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 | textstyle = font-size: 90%;
 | text = '''Question.''' 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?
+ <li> Once more, how many admonition environments does DocOnce support?
 </ol>
 }}
 
@@ -51411,7 +51374,7 @@ Then we test a block, which is guaranteed to never have any admon icon.
 
 Admonitions must have a title in Sphinx, otherwise they are not
 shown. Here, for the following *block admon* (``!bblock``)
-we have not specified any title, and Doconce then
+we have not specified any title, and DocOnce then
 applies the generic title "Notice:" for the Sphinx format:
 
 
@@ -51458,7 +51421,7 @@ code is present).
 
 .. admonition:: Question
 
-   So, how many admonition environments does Doconce support?
+   So, how many admonition environments does DocOnce support?
 
 
 
@@ -51466,7 +51429,7 @@ code is present).
 
 .. admonition:: Question
 
-    1. Once more, how many admonition environments does Doconce support?
+    1. Once more, how many admonition environments does DocOnce support?
 
 
 
@@ -51494,7 +51457,7 @@ code is present).
 
 Next is a warning without a title ("none" implies no title).
 Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, we have not specified any title, and Doconce then
+shown. Here, we have not specified any title, and DocOnce then
 applies the generic title "Notice:"
 
 
@@ -51802,14 +51765,14 @@ Point1 -----------------------------|
 
 Question ----------------------------------------------------|
 |                                                            |
-| So, how many admonition environments does Doconce support? |
+| So, how many admonition environments does DocOnce support? |
 |------------------------------------------------------------|
 
 
 
 Question ---------------------------------------------------------------|
 |                                                                       |
-|  1. Once more, how many admonition environments does Doconce support? |
+|  1. Once more, how many admonition environments does DocOnce support? |
 |-----------------------------------------------------------------------|
 
 
@@ -51942,7 +51905,7 @@ The remarks and hint environments are not allowed outside
 exercises (and problems and projects too).
 
 ************** File: slides1.do.txt *****************
-TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way
 AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & Univiversity of Oslo
 DATE: Today
 
@@ -52053,7 +52016,7 @@ title (Warning) since no title is specified.
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
+<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
 
 
@@ -52195,9 +52158,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</title>
+<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
-<center><h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</h1></center>  <!-- document title -->
+<center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -52330,7 +52293,7 @@ Python implementation:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
@@ -57554,7 +57517,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
+<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
 
 
@@ -57669,9 +57632,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</title>
+<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
-<center><h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</h1></center>  <!-- document title -->
+<center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -57768,7 +57731,7 @@ Python implementation:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
@@ -57830,7 +57793,7 @@ title (Warning) since no title is specified.
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way">
+<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
 
 
@@ -58021,9 +57984,9 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</title>
+<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
-<center><h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</h1></center>  <!-- document title -->
+<center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -58152,7 +58115,7 @@ Python implementation:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
@@ -58858,7 +58821,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % ----------------- title -------------------------
 
-\title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
+\title{On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way}
 
 % ----------------- author(s) -------------------------
 
@@ -59152,7 +59115,7 @@ title (Warning) since no title is specified.
 
 % ----------------- title -------------------------
 
-\title{On the Technicalities of Scientific Writing Anno 2012: The Doconce Way}
+\title{On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way}
 
 % ----------------- author(s) -------------------------
 
@@ -59464,7 +59427,7 @@ based on HTML and vice versa.
 
 
 !split
-======= Doconce demo =======
+======= DocOnce demo =======
 
 URL: "http://hplgit.github.com/teamods/writing_reports/"
 
@@ -59472,21 +59435,21 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
  * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
  * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
  * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
- * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" (Wikipedia, Wikibooks, etc)
- * Doconce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
+ * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
+ * DocOnce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "manual": "http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html"
 
 
 !split
 
 # #if FORMAT in ("latex", "pdflatex")
 # latex interprets 9 = as chapter and then needs book style...
-======= A tour of Doconce =======
+======= A tour of DocOnce =======
 # #else
-========= A tour of Doconce =========
+========= A tour of DocOnce =========
 # #endif
 
 !split
-======= Doconce: title, authors, date, toc =======
+======= DocOnce: title, authors, date, toc =======
 
 !bc
 TITLE: Some Title
@@ -59503,7 +59466,7 @@ Title and authors must have all information *on a single line*!
 !enotice
 
 !split
-======= Doconce: abstract =======
+======= DocOnce: abstract =======
 
 !bc
 __Abstract.__
@@ -59518,7 +59481,7 @@ Here goes the summary...
 
 
 !split
-======= Doconce: section headings =======
+======= DocOnce: section headings =======
 
 Headings are surrounded by `=` signs:
 !bc
@@ -59547,7 +59510,7 @@ __This is a paragraph heading.__
 
 
 !split
-======= Doconce: markup and lists =======
+======= DocOnce: markup and lists =======
 
 !bc
  * Bullet list items start with `*`
@@ -59572,7 +59535,7 @@ This gets rendered as
    o items are just indented as you would do in email
 
 !split
-======= Doconce: labels, references, index items =======
+======= DocOnce: labels, references, index items =======
 
 !bc
 # Insert index items in the source
@@ -59598,7 +59561,7 @@ URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split
-======= Doconce: figures and movies =======
+======= DocOnce: figures and movies =======
 
 !bnotice
 Figure with HTML and LaTeX info, and caption, *all on one line*:
@@ -59621,7 +59584,7 @@ and rendered as
 MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 
 !split
-======= Doconce: math =======
+======= DocOnce: math =======
 
 Inline math as in LaTeX:
 
@@ -59657,7 +59620,7 @@ label{b:eq}
 
 
 !split
-======= Doconce: displaying code =======
+======= DocOnce: displaying code =======
 
 Code is enclosed in `!bc` and `!ec` tags:
 
@@ -59703,7 +59666,7 @@ forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
 
 
 !split
-======= Doconce: displaying interactive demo code =======
+======= DocOnce: displaying interactive demo code =======
 label{slide:pot}
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
@@ -59716,9 +59679,9 @@ program flow and state of variables:
 
 
 !split
-======= Doconce: exercises =======
+======= DocOnce: exercises =======
 
-Doconce offers a special format for *exercises*, *problems*, *projects*,
+DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
 
 !bc
@@ -59758,7 +59721,7 @@ of getting at least three heads out of 5 throws.
 Solutions/answers can easily be left out of the document.
 
 !split
-======= Doconce: exercises =======
+======= DocOnce: exercises =======
 
 Last page gets rendered as follows:
 
@@ -59795,7 +59758,7 @@ of getting at least three heads out of 5 throws.
 
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 !bc
 !split
@@ -59823,7 +59786,7 @@ And maybe a final comment?
 !ec
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 Last page gets rendered to
 
@@ -59843,7 +59806,7 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Doconce: example on slide code with cells =======
+======= DocOnce: example on slide code with cells =======
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -59882,7 +59845,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !ec
 
 !split
-======= Doconce: example on slide code =======
+======= DocOnce: example on slide code =======
 
 Last page gets rendered to
 
@@ -60097,29 +60060,29 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Fundamental question </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> LaTeX is very rich; other tools support only some elements </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec7"> LaTeX is very rich; other tools support only some elements </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Doconce demo </a><br>
-<a href="#___sec9"> A tour of Doconce </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Doconce: title, authors, date, toc </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Doconce: abstract </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Doconce: section headings </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> DocOnce demo </a><br>
+<a href="#___sec9"> A tour of DocOnce </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> DocOnce: title, authors, date, toc </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> DocOnce: abstract </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> DocOnce: section headings </a><br>
 <a href="#___sec13"> This is an H1/chapter heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec14"> This is an H2/section heading </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> This is an H3/subsection heading </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> This is an H4/paragraph heading </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Doconce: markup and lists </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Doconce: labels, references, index items </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Doconce: figures and movies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Doconce: math </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Doconce: displaying code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#slide:pot"> Doconce: displaying interactive demo code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Doconce: exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Doconce: exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> DocOnce: markup and lists </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> DocOnce: labels, references, index items </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> DocOnce: figures and movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> DocOnce: math </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> DocOnce: displaying code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#slide:pot"> DocOnce: displaying interactive demo code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> DocOnce: exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> DocOnce: exercises </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 1: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Doconce: example on slide code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Doconce: example on slide code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> DocOnce: example on slide code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> DocOnce: example on slide code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec28"> Headline </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Doconce: example on slide code with cells </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Doconce: example on slide code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec29"> DocOnce: example on slide code with cells </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> DocOnce: example on slide code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Headline </a><br>
 </p>
 <p>
@@ -60407,7 +60370,7 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>Doconce demo  <a name="___sec8"></a></h1>
+<h1>DocOnce demo  <a name="___sec8"></a></h1>
 
 <a href="http://hplgit.github.com/teamods/writing_reports/" target="_self"><tt>http://hplgit.github.com/teamods/writing_reports/</tt></a>
 
@@ -60416,8 +60379,8 @@ based on HTML and vice versa.
  <p><li> <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_do.html" target="_self">Plain HTML</a> or with a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" target="_self">template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" target="_self">another template</a> or <a href="http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html" target="_self">solarized</a></li>
  <p><li> Sphinx: <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html" target="_self">agni</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html" target="_self">pyramid</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html" target="_self">classy</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html" target="_self">fenics</a>, <a href="http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html" target="_self">redcloud</a></li>
  <p><li> HTML for <a href="http://doconce-report-demo.blogspot.no/" target="_self">Google</a> or <a href="http://doconcereportdemo.wordpress.com/" target="_self">Wordpress</a> blog posts</li>
- <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page" target="_self">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
- <p><li> Doconce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_self">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html" target="_self">manual</a></li>
+ <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" target="_self">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
+ <p><li> DocOnce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_self">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html" target="_self">manual</a></li>
 </ul>
 <p>
 
@@ -60427,7 +60390,7 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>A tour of Doconce  <a name="___sec9"></a></h1> <hr>
+<h1>A tour of DocOnce  <a name="___sec9"></a></h1> <hr>
 
 <p>
 
@@ -60436,7 +60399,7 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>Doconce: title, authors, date, toc  <a name="___sec10"></a></h1>
+<h1>DocOnce: title, authors, date, toc  <a name="___sec10"></a></h1>
 
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -60461,7 +60424,7 @@ Title and authors must have all information <em>on a single line</em>!
 
 <section>
 
-<h1>Doconce: abstract  <a name="___sec11"></a></h1>
+<h1>DocOnce: abstract  <a name="___sec11"></a></h1>
 
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -60483,7 +60446,7 @@ Here goes the summary...
 
 <section>
 
-<h1>Doconce: section headings  <a name="___sec12"></a></h1>
+<h1>DocOnce: section headings  <a name="___sec12"></a></h1>
 
 Headings are surrounded by <code>=</code> signs:
 <p>
@@ -60519,7 +60482,7 @@ Result:
 
 <section>
 
-<h1>Doconce: markup and lists  <a name="___sec17"></a></h1>
+<h1>DocOnce: markup and lists  <a name="___sec17"></a></h1>
 
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -60558,7 +60521,7 @@ This gets rendered as
 
 <section>
 
-<h1>Doconce: labels, references, index items  <a name="___sec18"></a></h1>
+<h1>DocOnce: labels, references, index items  <a name="___sec18"></a></h1>
 
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -60590,7 +60553,7 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 
 <section>
 
-<h1>Doconce: figures and movies  <a name="___sec19"></a></h1>
+<h1>DocOnce: figures and movies  <a name="___sec19"></a></h1>
 
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:
@@ -60628,7 +60591,7 @@ and rendered as
 
 <section>
 
-<h1>Doconce: math  <a name="___sec20"></a></h1>
+<h1>DocOnce: math  <a name="___sec20"></a></h1>
 
 Inline math as in LaTeX:
 
@@ -60678,7 +60641,7 @@ $$
 
 <section>
 
-<h1>Doconce: displaying code  <a name="___sec21"></a></h1>
+<h1>DocOnce: displaying code  <a name="___sec21"></a></h1>
 
 Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
 
@@ -60705,7 +60668,7 @@ This gets rendered as
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
     <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(dt)           <span style="color: #008800; font-style: italic"># avoid integer division</span>
@@ -60735,7 +60698,7 @@ forth (<code>c</code> for C, <code>cpp</code> for C++, <code>sh</code> for Unix 
 
 <section>
 
-<h1>Doconce: displaying interactive demo code <a name="slide:pot"></a></h1>
+<h1>DocOnce: displaying interactive demo code <a name="slide:pot"></a></h1>
 
 With <code>!bc pyoptpro</code> or a file <code>*.pyopt</code>, the code applies the
 <a href="http://pythontutor.com" target="_self">Online Python Tutor</a> for displaying
@@ -60753,9 +60716,9 @@ program flow and state of variables:
 
 <section>
 
-<h1>Doconce: exercises  <a name="___sec23"></a></h1>
+<h1>DocOnce: exercises  <a name="___sec23"></a></h1>
 
-Doconce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
+DocOnce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
 and <em>examples</em>:
 
 <p>
@@ -60803,7 +60766,7 @@ Solutions/answers can easily be left out of the document.
 
 <section>
 
-<h1>Doconce: exercises  <a name="___sec24"></a></h1>
+<h1>DocOnce: exercises  <a name="___sec24"></a></h1>
 
 Last page gets rendered as follows:
 
@@ -60866,7 +60829,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <section>
 
-<h1>Doconce: example on slide code  <a name="___sec26"></a></h1>
+<h1>DocOnce: example on slide code  <a name="___sec26"></a></h1>
 
 
 <!-- code=text typeset with pygments style "emacs" -->
@@ -60900,7 +60863,7 @@ And maybe a final comment?
 
 <section>
 
-<h1>Doconce: example on slide code  <a name="___sec27"></a></h1>
+<h1>DocOnce: example on slide code  <a name="___sec27"></a></h1>
 
 Last page gets rendered to
 
@@ -60932,7 +60895,7 @@ And maybe a final comment?
 
 <section>
 
-<h1>Doconce: example on slide code with cells  <a name="___sec29"></a></h1>
+<h1>DocOnce: example on slide code with cells  <a name="___sec29"></a></h1>
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -60978,7 +60941,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 
 <section>
 
-<h1>Doconce: example on slide code  <a name="___sec30"></a></h1>
+<h1>DocOnce: example on slide code  <a name="___sec30"></a></h1>
 
 Last page gets rendered to
 
@@ -61741,7 +61704,7 @@ based on HTML and vice versa.
 
 
 % !split
-\section{Doconce demo}
+\section{DocOnce demo}
 
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
@@ -61754,19 +61717,19 @@ based on HTML and vice versa.
 
  \item HTML for \href{{http://doconce-report-demo.blogspot.no/}}{Google} or \href{{http://doconcereportdemo.wordpress.com/}}{Wordpress} blog posts
 
- \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
+ \item \href{{http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
- \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html}}{manual}
+ \item DocOnce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html}}{manual}
 \end{itemize}
 
 \noindent
 % !split
 
 % latex interprets 9 = as chapter and then needs book style...
-\section{A tour of Doconce}
+\section{A tour of DocOnce}
 
 % !split
-\section{Doconce: title, authors, date, toc}
+\section{DocOnce: title, authors, date, toc}
 
 \bccq
 TITLE: Some Title
@@ -61786,7 +61749,7 @@ Title and authors must have all information \emph{on a single line}!
 
 
 % !split
-\section{Doconce: abstract}
+\section{DocOnce: abstract}
 
 \bccq
 __Abstract.__
@@ -61801,7 +61764,7 @@ Here goes the summary...
 
 
 % !split
-\section{Doconce: section headings}
+\section{DocOnce: section headings}
 
 Headings are surrounded by \code{=} signs:
 \bccq
@@ -61829,7 +61792,7 @@ Result:
 
 
 % !split
-\section{Doconce: markup and lists}
+\section{DocOnce: markup and lists}
 
 \bccq
  * Bullet list items start with `*`
@@ -61867,7 +61830,7 @@ This gets rendered as
 
 \noindent
 % !split
-\section{Doconce: labels, references, index items}
+\section{DocOnce: labels, references, index items}
 
 \bccq
 # Insert index items in the source
@@ -61893,7 +61856,7 @@ URL: "https://github.com/hplgit/doconce"
 \eccq
 
 % !split
-\section{Doconce: figures and movies}
+\section{DocOnce: figures and movies}
 
 
 \begin{notice_mdfboxadmon}[Notice.]
@@ -61926,7 +61889,7 @@ and rendered as
 
 
 % !split
-\section{Doconce: math}
+\section{DocOnce: math}
 
 Inline math as in {\LaTeX}:
 
@@ -61960,7 +61923,7 @@ which is rendered as
 
 
 % !split
-\section{Doconce: displaying code}
+\section{DocOnce: displaying code}
 
 Code is enclosed in \code{!bc} and \code{!ec} tags:
 
@@ -62009,7 +61972,7 @@ forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} f
 
 
 % !split
-\section{Doconce: displaying interactive demo code}
+\section{DocOnce: displaying interactive demo code}
 \label{slide:pot}
 
 With \code{!bc pyoptpro} or a file \code{*.pyopt}, the code applies the
@@ -62040,9 +62003,9 @@ print u
 
 
 % !split
-\section{Doconce: exercises}
+\section{DocOnce: exercises}
 
-Doconce offers a special format for \emph{exercises}, \emph{problems}, \emph{projects},
+DocOnce offers a special format for \emph{exercises}, \emph{problems}, \emph{projects},
 and \emph{examples}:
 
 \bccq
@@ -62082,7 +62045,7 @@ of getting at least three heads out of 5 throws.
 Solutions/answers can easily be left out of the document.
 
 % !split
-\section{Doconce: exercises}
+\section{DocOnce: exercises}
 
 Last page gets rendered as follows:
 
@@ -62137,7 +62100,7 @@ of getting at least three heads out of 5 throws.
 
 
 % !split
-\section{Doconce: example on slide code}
+\section{DocOnce: example on slide code}
 
 \bccq
 !split
@@ -62165,7 +62128,7 @@ And maybe a final comment?
 \eccq
 
 % !split
-\section{Doconce: example on slide code}
+\section{DocOnce: example on slide code}
 
 Last page gets rendered to
 
@@ -62190,7 +62153,7 @@ Key equation:
 And maybe a final comment?
 
 % !split
-\section{Doconce: example on slide code with cells}
+\section{DocOnce: example on slide code with cells}
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -62229,7 +62192,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 \eccq
 
 % !split
-\section{Doconce: example on slide code}
+\section{DocOnce: example on slide code}
 
 Last page gets rendered to
 
@@ -62688,7 +62651,7 @@ based on HTML and vice versa.
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce demo}
+\frametitle{DocOnce demo}
 
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
@@ -62701,16 +62664,16 @@ based on HTML and vice versa.
 
  \item HTML for \href{{http://doconce-report-demo.blogspot.no/}}{Google} or \href{{http://doconcereportdemo.wordpress.com/}}{Wordpress} blog posts
 
- \item \href{{http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
+ \item \href{{http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page}}{MediaWiki} (Wikipedia, Wikibooks, etc)
 
- \item Doconce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html}}{manual}
+ \item DocOnce \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html}}{source code} and \href{{http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html}}{manual}
 \end{itemize}
 
 \noindent
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: title, authors, date, toc}
+\frametitle{DocOnce: title, authors, date, toc}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 TITLE: Some Title
@@ -62729,7 +62692,7 @@ Title and authors must have all information \emph{on a single line}!
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: abstract}
+\frametitle{DocOnce: abstract}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 __Abstract.__
@@ -62744,7 +62707,7 @@ Here goes the summary...
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: section headings}
+\frametitle{DocOnce: section headings}
 
 Headings are surrounded by \Verb!=! signs:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -62772,7 +62735,7 @@ Result:
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: markup and lists}
+\frametitle{DocOnce: markup and lists}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
  * Bullet list items start with `*`
@@ -62812,7 +62775,7 @@ This gets rendered as
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: labels, references, index items}
+\frametitle{DocOnce: labels, references, index items}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 # Insert index items in the source
@@ -62839,7 +62802,7 @@ URL: "https://github.com/hplgit/doconce"
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: figures and movies}
+\frametitle{DocOnce: figures and movies}
 
 \begin{notice_mdfboxadmon}[Notice.]
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
@@ -62871,7 +62834,7 @@ and rendered as
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: math}
+\frametitle{DocOnce: math}
 
 Inline math as in {\LaTeX}:
 
@@ -62905,7 +62868,7 @@ which is rendered as
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: displaying code}
+\frametitle{DocOnce: displaying code}
 
 Code is enclosed in \Verb?!bc? and \Verb?!ec? tags:
 
@@ -62952,7 +62915,7 @@ forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! f
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: displaying interactive demo code}
+\frametitle{DocOnce: displaying interactive demo code}
 
 \label{slide:pot}
 
@@ -62981,9 +62944,9 @@ print u
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: exercises}
+\frametitle{DocOnce: exercises}
 
-Doconce offers a special format for \emph{exercises}, \emph{problems}, \emph{projects},
+DocOnce offers a special format for \emph{exercises}, \emph{problems}, \emph{projects},
 and \emph{examples}:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
@@ -63024,7 +62987,7 @@ Solutions/answers can easily be left out of the document.
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: exercises}
+\frametitle{DocOnce: exercises}
 
 Last page gets rendered as follows:
 
@@ -63079,7 +63042,7 @@ of getting at least three heads out of 5 throws.
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: example on slide code}
+\frametitle{DocOnce: example on slide code}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !split
@@ -63108,7 +63071,7 @@ And maybe a final comment?
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: example on slide code}
+\frametitle{DocOnce: example on slide code}
 
 Last page gets rendered to
 
@@ -63134,7 +63097,7 @@ And maybe a final comment?
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: example on slide code with cells}
+\frametitle{DocOnce: example on slide code with cells}
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -63174,7 +63137,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Doconce: example on slide code}
+\frametitle{DocOnce: example on slide code}
 
 Last page gets rendered to
 
@@ -63236,7 +63199,7 @@ FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
 ======= Goal =======
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with "Doconce": "https://github.com/hplgit/doconce"
+talks with "DocOnce": "https://github.com/hplgit/doconce"
 and get them rendered in numerous HTML formats.
 # #if FORMAT in ("html", "pdflatex", "latex")
 !bnotice Layout
@@ -63575,7 +63538,7 @@ $$
 <h1>Goal  <a name="___sec0"></a></h1>
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
 This version
@@ -63707,7 +63670,7 @@ The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
     <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(dt)           <span style="color: #008800; font-style: italic"># avoid integer division</span>
@@ -64217,7 +64180,7 @@ Department of Informatics, University of Oslo\inst{2}}
 \section{Goal}
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
+talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
 and get them rendered in numerous HTML formats.
 
 \begin{notice_mdfboxadmon}[Layout.]
@@ -64538,7 +64501,7 @@ Department of Informatics, University of Oslo\inst{2}}
 \frametitle{Goal}
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with \href{{https://github.com/hplgit/doconce}}{Doconce}
+talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
 and get them rendered in numerous HTML formats.
 
 \begin{notice_mdfboxadmon}[Layout.]
@@ -64757,7 +64720,6 @@ i,h_i,\bar T_i,L_i
 > ```Python
 > def f(x):
 >     return 1 + x
-> 
 > ```
 > 
 > This function should be quadratic.
@@ -64770,15 +64732,12 @@ OK, this is fixed:
 ```Python
 def f(x, a=1, b=1, c=1):
     return a*x**2 + b*x + c
-
 ```
 
 ### Updated task list
 
    - [x] Offer an `f(x)` function
-
    - [ ] Extension to cubic functions
-
    - [x] Allowing general coefficient in the quadratic function
 
 #### Remaining functionality
@@ -64796,7 +64755,7 @@ def f(x, a=1, b=1, c=1):
 
 
 ************** File: movies.do.txt *****************
-TITLE: This is a demo of movies in Doconce
+TITLE: This is a demo of movies in DocOnce
 AUTHOR: HPL
 DATE: today
 
@@ -64871,7 +64830,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="This is a demo of movies in Doconce">
+<meta name="description" content="This is a demo of movies in DocOnce">
 
 
 
@@ -64913,9 +64872,9 @@ end of tocinfo -->
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>This is a demo of movies in Doconce</title>
+<title>This is a demo of movies in DocOnce</title>
 
-<center><h1>This is a demo of movies in Doconce</h1></center>  <!-- document title -->
+<center><h1>This is a demo of movies in DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): HPL -->
@@ -65613,7 +65572,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="This is a demo of movies in Doconce">
+<meta name="description" content="This is a demo of movies in DocOnce">
 
 
 
@@ -65655,9 +65614,9 @@ end of tocinfo -->
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>This is a demo of movies in Doconce</title>
+<title>This is a demo of movies in DocOnce</title>
 
-<center><h1>This is a demo of movies in Doconce</h1></center>  <!-- document title -->
+<center><h1>This is a demo of movies in DocOnce</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): HPL -->
@@ -66463,7 +66422,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-This is a demo of movies in Doconce
+This is a demo of movies in DocOnce
 \end{spacing}
 }
 \end{center}
@@ -66865,7 +66824,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-This is a demo of movies in Doconce
+This is a demo of movies in DocOnce
 \end{spacing}
 }
 \end{center}
@@ -67266,7 +67225,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-This is a demo of movies in Doconce
+This is a demo of movies in DocOnce
 \end{spacing}
 }
 \end{center}
@@ -67637,7 +67596,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 
 ************** File: movies.txt *****************
-This is a demo of movies in Doconce
+This is a demo of movies in DocOnce
 ===================================
 
 HPL
@@ -68260,7 +68219,7 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 </html>
 
 ************** File: encoding3.do.txt *****************
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 # #ifdef PREPROCESS
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
@@ -68331,7 +68290,7 @@ Found use of 2 preprocess directives # #if|define|include in file encoding3.do.t
 ************************************************************
 str>>> The file after running preprocess and/or mako:
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 
 
@@ -68340,7 +68299,7 @@ Text with a name like Åsmund Ødegård works in general.
 ************************************************************
 str>>> The file after running @@@OSCMD (from file):
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 
 
@@ -68349,7 +68308,7 @@ Text with a name like Åsmund Ødegård works in general.
 ************************************************************
 str>>> The file after inserting @@@CODE (from file):
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 
 
@@ -68358,7 +68317,7 @@ Text with a name like Åsmund Ødegård works in general.
 ************************************************************
 str>>> The file after removal of code/tex blocks:
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 
 
@@ -68712,7 +68671,7 @@ Found use of 2 preprocess directives # #if|define|include in file encoding3.do.t
 ************************************************************
 unicode>>> The file after running preprocess and/or mako:
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
@@ -68727,7 +68686,7 @@ a = 1  # Value suggested by Åsmund Ødegård.
 ************************************************************
 unicode>>> The file after running @@@OSCMD (from file):
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
@@ -68742,7 +68701,7 @@ a = 1  # Value suggested by Åsmund Ødegård.
 ************************************************************
 unicode>>> The file after inserting @@@CODE (from file):
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
@@ -68757,7 +68716,7 @@ a = 1  # Value suggested by Åsmund Ødegård.
 ************************************************************
 unicode>>> The file after removal of code/tex blocks:
 
-## Test of handling non-ASCII characters in Doconce
+## Test of handling non-ASCII characters in DocOnce
 Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
@@ -70075,9 +70034,9 @@ files="genref2.do.txt"  # files to which substitutions apply
 
 ************** File: Springer_T2/Springer_T2_book.do.txt *****************
 # Note on the Springer T2 style: used the modifications in t2do.sty
-# and svmonodo.cls (come bundled with Doconce).
+# and svmonodo.cls (come bundled with DocOnce).
 
-TITLE:  A Test of Doconce a Book with Springer's T2 Style
+TITLE:  A Test of DocOnce a Book with Springer's T2 Style
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -70701,7 +70660,7 @@ cite{NumPy}.
 
 ========= Appendix: Styles for Springer T2 =========
 
-The T2 style for Doconce-generated LaTeX should make use of
+The T2 style for DocOnce-generated LaTeX should make use of
 slightly modified `svmono.cls` and `t2.sty` files:
 
  * `svmonodo.cls`
@@ -70960,7 +70919,7 @@ BIBFILE: papers.pub
 % ------------------- main content ----------------------
 
 % Note on the Springer T2 style: used the modifications in t2do.sty
-% and svmonodo.cls (come bundled with Doconce).
+% and svmonodo.cls (come bundled with DocOnce).
 
 
 \frontmatter
@@ -70977,7 +70936,7 @@ BIBFILE: papers.pub
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 {\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Test of Doconce a Book with Springer's T2 Style}
+{A Test of DocOnce a Book with Springer's T2 Style}
 \\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
 }}}
@@ -71654,7 +71613,7 @@ as well as Python itself \cite{Python}, and of course NumPy
 
 \chapter{Styles for Springer T2}
 
-The T2 style for Doconce-generated {\LaTeX} should make use of
+The T2 style for DocOnce-generated {\LaTeX} should make use of
 slightly modified \code{svmono.cls} and \code{t2.sty} files:
 
 \begin{itemize}
@@ -71903,7 +71862,7 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 % ------------------- main content ----------------------
 
 % Note on the Springer T2 style: used the modifications in t2do.sty
-% and svmonodo.cls (come bundled with Doconce).
+% and svmonodo.cls (come bundled with DocOnce).
 
 
 \frontmatter
@@ -71920,7 +71879,7 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 {\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Test of Doconce a Book with Springer's T2 Style}
+{A Test of DocOnce a Book with Springer's T2 Style}
 \\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
 }}}
@@ -72719,7 +72678,7 @@ as well as Python itself \cite{Python}, and of course NumPy
 
 \chapter{Styles for Springer T2}
 
-The T2 style for Doconce-generated {\LaTeX} should make use of
+The T2 style for DocOnce-generated {\LaTeX} should make use of
 slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 \begin{itemize}
@@ -72751,7 +72710,7 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 ************** File: test_boots.do.txt *****************
 TITLE: Test of the Bootstrap style
 
-Doconce can work with Bootstrap HTML styles:
+DocOnce can work with Bootstrap HTML styles:
 way:
 
 !bc sys
@@ -72764,7 +72723,7 @@ Here goes optional text.
 # for going to the first real page
 
 !split
-========= More details on writing Doconce documents with Bootstrap layout =========
+========= More details on writing DocOnce documents with Bootstrap layout =========
 
 
 ======= Demonstrations of admons =======
@@ -72812,12 +72771,12 @@ This is the notice admon with nice-to-have information.
 !enotice
 
 !bquestion Testing the understanding
-How many admon styles are supported by the Doconce Boostrap and Bootswatch
+How many admon styles are supported by the DocOnce Boostrap and Bootswatch
 styles?
 !equestion
 
 !bsummary
-Doconce supports the following elements of Bootstrap elements:
+DocOnce supports the following elements of Bootstrap elements:
 
  * Admons
  * Panels (via admons)
@@ -73015,7 +72974,7 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+ 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
                0,
                None,
                '___sec0'),
@@ -73090,7 +73049,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -73115,12 +73074,12 @@ $$
 <center><h1>Test of the Bootstrap style</h1></center>  <!-- document title -->
 
 <p>
-Doconce can work with Bootstrap HTML styles:
+DocOnce can work with Bootstrap HTML styles:
 way:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 </pre></div>
 <p>
@@ -73193,7 +73152,7 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+ 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
                0,
                None,
                '___sec0'),
@@ -73268,7 +73227,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -73288,7 +73247,7 @@ $$
 
 
 <div class="page-header">
-  <h1>More details on writing Doconce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+  <h1>More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
 </div>
 
 <h1>Demonstrations of admons  <a name="___sec1"></a></h1>
@@ -73311,7 +73270,7 @@ Below are some examples on admons.
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
@@ -73356,7 +73315,7 @@ This is the notice admon with nice-to-have information.
   <h3 class="panel-title">Testing the understanding</h3>
   </div>
 <div class="panel-body">
-How many admon styles are supported by the Doconce Boostrap and Bootswatch
+How many admon styles are supported by the DocOnce Boostrap and Bootswatch
 styles?
 </div>
 </div>
@@ -73368,7 +73327,7 @@ styles?
   <h3 class="panel-title">Summary</h3>
   </div>
 <div class="panel-body">
-Doconce supports the following elements of Bootstrap elements:
+DocOnce supports the following elements of Bootstrap elements:
 
 <ul>
  <li> Admons</li>
@@ -73486,7 +73445,7 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+ 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
                0,
                None,
                '___sec0'),
@@ -73561,7 +73520,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing Doconce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing Doconce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -73624,7 +73583,7 @@ The Python implementation reads
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
@@ -73642,7 +73601,7 @@ With a main program
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
@@ -73653,7 +73612,7 @@ we can run the program:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
@@ -73693,7 +73652,7 @@ The Python implementation reads
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
@@ -73716,7 +73675,7 @@ With a main program
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
@@ -73727,7 +73686,7 @@ we can run the program:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
@@ -73770,7 +73729,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jun 15 08:20:42 2014.
+# sphinx-quickstart on Fri Jun 20 23:28:12 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -74269,12 +74228,12 @@ texinfo_documents = [
 
 ************** File: mdinput2do.do.txt *****************
 
-======= Test of Markdown input syntax in Doconce =======
+======= Test of Markdown input syntax in DocOnce =======
 
-Doconce can recognize basic Markdown as input in the `.do.txt` file
-and transform such text to native Doconce.
+DocOnce can recognize basic Markdown as input in the `.do.txt` file
+and transform such text to native DocOnce.
 
-# Doconce comments also start with #, and can be confused with
+# DocOnce comments also start with #, and can be confused with
 # Markdown headings. The confusion is avoided by not having blanks
 # after the # character in single-line comments. Multi-line
 # comments work well and are never confused with Markdown headings.
@@ -75007,7 +74966,7 @@ dest=../../../../doconce.wiki
 cp -r demo/quickref.rst $dest
 
 ************** File: quickref.do.txt *****************
-TITLE: Doconce Quick Reference
+TITLE: DocOnce Quick Reference
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 TOC: on
@@ -75024,7 +74983,7 @@ mathematics and code.
 
 ===== Supported Formats =====
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format `latex` and `pdflatex`)
  * HTML (format `html`)
@@ -75049,11 +75008,11 @@ Google and Wordpress.
 
 The file ".doconce-mode.el":
 "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el"
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 `(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 |--------------------------------------------------------|
@@ -75255,15 +75214,15 @@ blocks, verbatim code blocks, or lists if the formats `rst` and
 
 Comment lines starting with `##` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 `# #ifdef EXTRA` and `# #endif` around the text. The command line
 option `-DEXTRA` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 ===== Inline comments =====
@@ -75292,7 +75251,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 !bc sys
 doconce remove_inline_comments mydoc.do.txt
 !ec
@@ -75379,7 +75338,7 @@ Important warnings:
 
 ===== LaTeX Mathematics =====
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats `html`, `sphinx`, `latex`,
 pdflatex`, `pandoc`, and `mwiki` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -75442,7 +75401,7 @@ is also important, one should follow these rules:
     `equation`, `equation*`, `align`, and `align*`.
   * MediaWiki (`mwiki`) does not support references to equations.
 
-(Doconce performs extensions to `sphinx` and other formats such that
+(DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 !bnotice
@@ -75505,9 +75464,9 @@ Note three important syntax details:
   o all of the command must appear on a single line,
   o there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -75575,7 +75534,7 @@ Note that
    have no effect.
 
 The command-line option `--tables2csv` (to `doconce format`)
-makes Doconce dump each table to CSV format in a file `table_X.csv`,
+makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -75626,12 +75585,12 @@ The bibliography is specified by a line `BIBFILE: papers.pub`,
 where `papers.pub` is a publication database in the
 "Publish": "https://bitbucket.org/logg/publish" format.
 BibTeX `.bib` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 ===== Generalized Citations =====
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -75645,8 +75604,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 !ec
 The output from a generalized reference is the text `internal` if all
 `ref{label}` references in `internal` are references to labels in the
@@ -75661,7 +75620,7 @@ documents.  If none of the two situations above applies, the
 
 ===== Index of Keywords =====
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 !bc
@@ -75684,7 +75643,7 @@ list of capabilities:
 
 ===== Exercises =====
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -75792,7 +75751,7 @@ examples.
 
 ===== Environments =====
 
-Doconce environments start with `!benvirname` and end with `!eenvirname`,
+DocOnce environments start with `!benvirname` and end with `!eenvirname`,
 where `envirname` is the name of the environment. Here is a listing of
 the environments:
 
@@ -75811,7 +75770,7 @@ the environments:
 
 ===== Preprocessing =====
 
-Doconce documents may utilize a preprocessor, either `preprocess` and/or
+DocOnce documents may utilize a preprocessor, either `preprocess` and/or
 `mako`. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The `mako` preprocessor is much more advanced - it is actually a full
@@ -75856,7 +75815,7 @@ constructions:
 With the `mako` preprocessor the if-else tests have slightly different syntax.
 An "example document": "http://hplgit.github.com/bioinf-py/" contains
 some illustrations on how to utilize `mako` (clone the GitHub project and
-examine the Doconce source and the `doc/src/make.sh` script).
+examine the DocOnce source and the `doc/src/make.sh` script).
 
 ===== Resources =====
 
@@ -75872,7 +75831,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Doconce Quick Reference">
+<meta name="description" content="DocOnce Quick Reference">
 
 
 
@@ -75984,9 +75943,9 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Doconce Quick Reference</title>
+<title>DocOnce Quick Reference</title>
 
-<center><h1>Doconce Quick Reference</h1></center>  <!-- document title -->
+<center><h1>DocOnce Quick Reference</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -76044,7 +76003,7 @@ mathematics and code.
 
 <h2>Supported Formats  <a name="___sec0"></a></h2>
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
 <ul>
  <li> LaTeX (format <code>latex</code> and <code>pdflatex</code>)</li>
@@ -76069,12 +76028,12 @@ Google and Wordpress.
 <h2>Emacs syntax support  <a name="___sec1"></a></h2>
 
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 <code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
 
 <p>
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 <p>
@@ -76317,7 +76276,7 @@ blocks, verbatim code blocks, or lists if the formats <code>rst</code> and
 <p>
 Comment lines starting with <code>##</code> are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 <p>
 Large portions of text can be left out using Preprocess. Just place
@@ -76326,8 +76285,8 @@ option <code>-DEXTRA</code> will bring the text alive again.
 
 <p>
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 <h2>Inline comments  <a name="___sec7"></a></h2>
 
@@ -76363,7 +76322,7 @@ to turn on and off notes to authors during the development of the document.
 
 <p>
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 <!-- begin verbatim block  sys-->
 <pre><code>doconce remove_inline_comments mydoc.do.txt
 </code></pre>
@@ -76464,7 +76423,7 @@ Important warnings:
 
 <h2>LaTeX Mathematics  <a name="___sec9"></a></h2>
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
 pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -76535,7 +76494,7 @@ is also important, one should follow these rules:
   <li> MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
 </ul>
 
-(Doconce performs extensions to <code>sphinx</code> and other formats such that
+(DocOnce performs extensions to <code>sphinx</code> and other formats such that
 labels in <code>align</code> environments work well.)
 
 <p>
@@ -76605,9 +76564,9 @@ Note three important syntax details:
  <li> there must be a blank line after the command.</li>
 </ol>
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 <p>
@@ -76689,7 +76648,7 @@ Note that
 </ul>
 
 The command-line option <code>--tables2csv</code> (to <code>doconce format</code>)
-makes Doconce dump each table to CSV format in a file <code>table_X.csv</code>,
+makes DocOnce dump each table to CSV format in a file <code>table_X.csv</code>,
 where <code>X</code> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -76746,12 +76705,12 @@ The bibliography is specified by a line <code>BIBFILE: papers.pub</code>,
 where <code>papers.pub</code> is a publication database in the
 <a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> format.
 BibTeX <code>.bib</code> files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 <h2>Generalized Citations  <a name="___sec15"></a></h2>
 
-There is a <em>generalized referencing</em> feature in Doconce that allows
+There is a <em>generalized referencing</em> feature in DocOnce that allows
 a reference with <code>ref</code> to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -76765,8 +76724,8 @@ The syntax of a generalized reference is
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
 &quot;testdoc.html#___sec2&quot; in the document
-&quot;A Document for Testing Doconce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
-Doconce documents may include movies.
+&quot;A Document for Testing DocOnce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
+DocOnce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
 The output from a generalized reference is the text <code>internal</code> if all
@@ -76782,7 +76741,7 @@ documents.  If none of the two situations above applies, the
 
 <h2>Index of Keywords  <a name="___sec16"></a></h2>
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 <!-- begin verbatim block -->
@@ -76959,7 +76918,7 @@ doconce latex_exercise_toc myfile
 
 <h2>Exercises  <a name="___sec18"></a></h2>
 
-Doconce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
+DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain <em>elements</em>:
@@ -77074,7 +77033,7 @@ examples.
 
 <h2>Environments  <a name="___sec19"></a></h2>
 
-Doconce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
+DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
 where <code>envirname</code> is the name of the environment. Here is a listing of
 the environments:
 
@@ -77094,7 +77053,7 @@ the environments:
 
 <h2>Preprocessing  <a name="___sec20"></a></h2>
 
-Doconce documents may utilize a preprocessor, either <code>preprocess</code> and/or
+DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
 <code>mako</code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The <code>mako</code> preprocessor is much more advanced - it is actually a full
@@ -77143,7 +77102,7 @@ constructions:
 With the <code>mako</code> preprocessor the if-else tests have slightly different syntax.
 An <a href="http://hplgit.github.com/bioinf-py/" target="_self">example document</a> contains
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
-examine the Doconce source and the <code>doc/src/make.sh</code> script).
+examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 <h2>Resources  <a name="___sec21"></a></h2>
 
@@ -77454,7 +77413,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-Doconce Quick Reference
+DocOnce Quick Reference
 \end{spacing}
 }
 \end{center}
@@ -77501,7 +77460,7 @@ mathematics and code.
 
 \subsection{Supported Formats}
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
 \begin{itemize}
  \item {\LaTeX} (format \code{latex} and \code{pdflatex})
@@ -77539,11 +77498,11 @@ Google and Wordpress.
 \subsection{Emacs syntax support}
 
 The file \href{{https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el}}{.doconce-mode.el}
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 \code{(load-file "~/.doconce-mode.el")} to the \code{.emacs} file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
@@ -77785,15 +77744,15 @@ blocks, verbatim code blocks, or lists if the formats \code{rst} and
 
 Comment lines starting with \code{##} are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 \code{# #ifdef EXTRA} and \code{# #endif} around the text. The command line
 option \code{-DEXTRA} will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 \subsection{Inline comments}
@@ -77822,7 +77781,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 \bsys
 doconce remove_inline_comments mydoc.do.txt
 \esys
@@ -77913,7 +77872,7 @@ Important warnings:
 \noindent
 \subsection{{\LaTeX} Mathematics}
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard {\LaTeX} syntax. The output formats \code{html}, \code{sphinx}, \code{latex},
 pdflatex`, \code{pandoc}, and \code{mwiki} work with this syntax while all other
 formats will just display the raw {\LaTeX} code.
@@ -77973,7 +77932,7 @@ is also important, one should follow these rules:
 \end{itemize}
 
 \noindent
-(Doconce performs extensions to \code{sphinx} and other formats such that
+(DocOnce performs extensions to \code{sphinx} and other formats such that
 labels in \code{align} environments work well.)
 
 
@@ -78045,9 +78004,9 @@ Note three important syntax details:
 \end{enumerate}
 
 \noindent
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -78131,7 +78090,7 @@ Note that
 
 \noindent
 The command-line option \code{--tables2csv} (to \code{doconce format})
-makes Doconce dump each table to CSV format in a file \code{table_X.csv},
+makes DocOnce dump each table to CSV format in a file \code{table_X.csv},
 where \code{X} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -78182,12 +78141,12 @@ The bibliography is specified by a line \code{BIBFILE: papers.pub},
 where \code{papers.pub} is a publication database in the
 \href{{https://bitbucket.org/logg/publish}}{Publish} format.
 \textsc{Bib}\negthinspace{\TeX} \code{.bib} files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than {\LaTeX}).
 
 \subsection{Generalized Citations}
 
-There is a \emph{generalized referencing} feature in Doconce that allows
+There is a \emph{generalized referencing} feature in DocOnce that allows
 a reference with \code{ref} to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -78201,8 +78160,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 \eccq
 The output from a generalized reference is the text \code{internal} if all
 \code{ref{label}} references in \code{internal} are references to labels in the
@@ -78217,7 +78176,7 @@ documents.  If none of the two situations above applies, the
 
 \subsection{Index of Keywords}
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 \bccq
@@ -78391,7 +78350,7 @@ doconce latex_exercise_toc myfile
 
 \subsection{Exercises}
 
-Doconce supports \emph{Exercise}, \emph{Problem}, \emph{Project}, and \emph{Example}.
+DocOnce supports \emph{Exercise}, \emph{Problem}, \emph{Project}, and \emph{Example}.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain \emph{elements}:
@@ -78510,7 +78469,7 @@ examples.
 
 \subsection{Environments}
 
-Doconce environments start with \code{!benvirname} and end with \code{!eenvirname},
+DocOnce environments start with \code{!benvirname} and end with \code{!eenvirname},
 where \code{envirname} is the name of the environment. Here is a listing of
 the environments:
 
@@ -78539,7 +78498,7 @@ the environments:
 \noindent
 \subsection{Preprocessing}
 
-Doconce documents may utilize a preprocessor, either \code{preprocess} and/or
+DocOnce documents may utilize a preprocessor, either \code{preprocess} and/or
 \code{mako}. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The \code{mako} preprocessor is much more advanced - it is actually a full
@@ -78584,7 +78543,7 @@ constructions:
 With the \code{mako} preprocessor the if-else tests have slightly different syntax.
 An \href{{http://hplgit.github.com/bioinf-py/}}{example document} contains
 some illustrations on how to utilize \code{mako} (clone the GitHub project and
-examine the Doconce source and the \code{doc/src/make.sh} script).
+examine the DocOnce source and the \code{doc/src/make.sh} script).
 
 \subsection{Resources}
 
@@ -78611,7 +78570,7 @@ examine the Doconce source and the \code{doc/src/make.sh} script).
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-Doconce Quick Reference
+DocOnce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
@@ -78634,7 +78593,7 @@ mathematics and code.
 Supported Formats
 -----------------
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format ``latex`` and ``pdflatex``)
 
@@ -78669,11 +78628,11 @@ Emacs syntax support
 --------------------
 
 The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ==========================================  ==========================================  
@@ -78884,15 +78843,15 @@ blocks, verbatim code blocks, or lists if the formats ``rst`` and
 
 Comment lines starting with ``##`` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 ``# #ifdef EXTRA`` and ``# #endif`` around the text. The command line
 option ``-DEXTRA`` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 ---------------
@@ -78921,7 +78880,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by::
+removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
 
@@ -79010,7 +78969,7 @@ Important warnings:
 LaTeX Mathematics
 -----------------
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats ``html``, ``sphinx``, ``latex``,
 pdflatex`, ``pandoc``, and ``mwiki`` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -79065,7 +79024,7 @@ is also important, one should follow these rules:
 
   * MediaWiki (``mwiki``) does not support references to equations.
 
-(Doconce performs extensions to ``sphinx`` and other formats such that
+(DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
 
 
@@ -79133,9 +79092,9 @@ Note three important syntax details:
 
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -79210,7 +79169,7 @@ Note that
    have no effect.
 
 The command-line option ``--tables2csv`` (to ``doconce format``)
-makes Doconce dump each table to CSV format in a file ``table_X.csv``,
+makes DocOnce dump each table to CSV format in a file ``table_X.csv``,
 where ``X`` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -79261,13 +79220,13 @@ The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
 `Publish <https://bitbucket.org/logg/publish>`_ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 ---------------------
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with ``ref`` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -79281,8 +79240,8 @@ The syntax of a generalized reference is::
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
 ``label`_` references in ``internal`` are references to labels in the
@@ -79298,7 +79257,7 @@ documents.  If none of the two situations above applies, the
 Index of Keywords
 -----------------
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
@@ -79472,7 +79431,7 @@ list of capabilities::
 Exercises
 ---------
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -79586,7 +79545,7 @@ examples.
 Environments
 ------------
 
-Doconce environments start with ``!benvirname`` and end with ``!eenvirname``,
+DocOnce environments start with ``!benvirname`` and end with ``!eenvirname``,
 where ``envirname`` is the name of the environment. Here is a listing of
 the environments:
 
@@ -79613,7 +79572,7 @@ the environments:
 Preprocessing
 -------------
 
-Doconce documents may utilize a preprocessor, either ``preprocess`` and/or
+DocOnce documents may utilize a preprocessor, either ``preprocess`` and/or
 ``mako``. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The ``mako`` preprocessor is much more advanced - it is actually a full
@@ -79656,7 +79615,7 @@ constructions::
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
-examine the Doconce source and the ``doc/src/make.sh`` script).
+examine the DocOnce source and the ``doc/src/make.sh`` script).
 
 Resources
 ---------
@@ -79670,7 +79629,7 @@ Resources
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-Doconce Quick Reference
+DocOnce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
@@ -79690,7 +79649,7 @@ mathematics and code.
 Supported Formats
 -----------------
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format ``latex`` and ``pdflatex``)
 
@@ -79725,11 +79684,11 @@ Emacs syntax support
 --------------------
 
 The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ==========================================  ==========================================  
@@ -79954,15 +79913,15 @@ blocks, verbatim code blocks, or lists if the formats ``rst`` and
 
 Comment lines starting with ``##`` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 ``# #ifdef EXTRA`` and ``# #endif`` around the text. The command line
 option ``-DEXTRA`` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 ---------------
@@ -79995,7 +79954,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 
 .. code-block:: text
 
@@ -80094,7 +80053,7 @@ Important warnings:
 LaTeX Mathematics
 -----------------
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats ``html``, ``sphinx``, ``latex``,
 pdflatex`, ``pandoc``, and ``mwiki`` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -80157,7 +80116,7 @@ is also important, one should follow these rules:
 
   * MediaWiki (``mwiki``) does not support references to equations.
 
-(Doconce performs extensions to ``sphinx`` and other formats such that
+(DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
 
 
@@ -80229,9 +80188,9 @@ Note three important syntax details:
 
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -80312,7 +80271,7 @@ Note that
    have no effect.
 
 The command-line option ``--tables2csv`` (to ``doconce format``)
-makes Doconce dump each table to CSV format in a file ``table_X.csv``,
+makes DocOnce dump each table to CSV format in a file ``table_X.csv``,
 where ``X`` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -80371,13 +80330,13 @@ The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
 `Publish <https://bitbucket.org/logg/publish>`_ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 ---------------------
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with ``ref`` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -80393,8 +80352,8 @@ The syntax of a generalized reference is
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
 `:ref:`label`` references in ``internal`` are references to labels in the
@@ -80410,7 +80369,7 @@ documents.  If none of the two situations above applies, the
 Index of Keywords
 -----------------
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 
@@ -80588,7 +80547,7 @@ list of capabilities:
 Exercises
 ---------
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -80708,7 +80667,7 @@ examples.
 Environments
 ------------
 
-Doconce environments start with ``!benvirname`` and end with ``!eenvirname``,
+DocOnce environments start with ``!benvirname`` and end with ``!eenvirname``,
 where ``envirname`` is the name of the environment. Here is a listing of
 the environments:
 
@@ -80735,7 +80694,7 @@ the environments:
 Preprocessing
 -------------
 
-Doconce documents may utilize a preprocessor, either ``preprocess`` and/or
+DocOnce documents may utilize a preprocessor, either ``preprocess`` and/or
 ``mako``. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The ``mako`` preprocessor is much more advanced - it is actually a full
@@ -80780,7 +80739,7 @@ constructions:
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
-examine the Doconce source and the ``doc/src/make.sh`` script).
+examine the DocOnce source and the ``doc/src/make.sh`` script).
 
 Resources
 ---------
@@ -80788,7 +80747,7 @@ Resources
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.gwiki *****************
-#summary Doconce Quick Reference
+#summary DocOnce Quick Reference
 
 By *Hans Petter Langtangen*
 ==== Jan 32, 2100 ====
@@ -80809,7 +80768,7 @@ mathematics and code.
 
 ==== Supported Formats ====
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
 
  * LaTeX (format `latex` and `pdflatex`)
@@ -80834,11 +80793,11 @@ Google and Wordpress.
 ==== Emacs syntax support ====
 
 The file [https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el .doconce-mode.el]
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 `(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
@@ -81041,15 +81000,15 @@ blocks, verbatim code blocks, or lists if the formats `rst` and
 
 Comment lines starting with `##` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 `# #ifdef EXTRA` and `# #endif` around the text. The command line
 option `-DEXTRA` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 ==== Inline comments ====
@@ -81078,7 +81037,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 {{{
 doconce remove_inline_comments mydoc.do.txt
 }}}
@@ -81162,7 +81121,7 @@ Important warnings:
 
 ==== LaTeX Mathematics ====
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats `html`, `sphinx`, `latex`,
 pdflatex`, `pandoc`, and `mwiki` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -81222,7 +81181,7 @@ is also important, one should follow these rules:
   * Use only the equation environments `\[`, `\]`,    `equation`, `equation*`, `align`, and `align*`.
   * MediaWiki (`mwiki`) does not support references to equations.
 
-(Doconce performs extensions to `sphinx` and other formats such that
+(DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 *Notice.*\g<space>
@@ -81286,9 +81245,9 @@ Note three important syntax details:
  # all of the command must appear on a single line,
  # there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -81348,7 +81307,7 @@ Note that
  * Many output formats are so primitive that heading and column alignment   have no effect.
 
 The command-line option `--tables2csv` (to `doconce format`)
-makes Doconce dump each table to CSV format in a file `table_X.csv`,
+makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -81399,12 +81358,12 @@ The bibliography is specified by a line `BIBFILE: papers.pub`,
 where `papers.pub` is a publication database in the
 [https://bitbucket.org/logg/publish Publish] format.
 BibTeX `.bib` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 ==== Generalized Citations ====
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -81418,8 +81377,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 }}}
 The output from a generalized reference is the text `internal` if all
 `label` references in `internal` are references to labels in the
@@ -81434,7 +81393,7 @@ documents.  If none of the two situations above applies, the
 
 ==== Index of Keywords ====
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 {{{
@@ -81608,7 +81567,7 @@ doconce latex_exercise_toc myfile
 
 ==== Exercises ====
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -81713,7 +81672,7 @@ examples.
 
 ==== Environments ====
 
-Doconce environments start with `!benvirname` and end with `!eenvirname`,
+DocOnce environments start with `!benvirname` and end with `!eenvirname`,
 where `envirname` is the name of the environment. Here is a listing of
 the environments:
 
@@ -81730,7 +81689,7 @@ the environments:
 
 ==== Preprocessing ====
 
-Doconce documents may utilize a preprocessor, either `preprocess` and/or
+DocOnce documents may utilize a preprocessor, either `preprocess` and/or
 `mako`. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The `mako` preprocessor is much more advanced - it is actually a full
@@ -81775,7 +81734,7 @@ constructions:
 With the `mako` preprocessor the if-else tests have slightly different syntax.
 An [http://hplgit.github.com/bioinf-py/ example document] contains
 some illustrations on how to utilize `mako` (clone the GitHub project and
-examine the Doconce source and the `doc/src/make.sh` script).
+examine the DocOnce source and the `doc/src/make.sh` script).
 
 ==== Resources ====
 
@@ -81784,7 +81743,7 @@ examine the Doconce source and the `doc/src/make.sh` script).
 
 
 ************** File: quickref.mwiki *****************
-#TITLE (actually governed by the filename): Doconce Quick Reference
+#TITLE (actually governed by the filename): DocOnce Quick Reference
 
 By '''Hans Petter Langtangen'''
 ==== Jan 32, 2100 ====
@@ -81806,7 +81765,7 @@ mathematics and code.
 
 ==== Supported Formats ====
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
 
 <ul>
@@ -81833,11 +81792,11 @@ Google and Wordpress.
 ==== Emacs syntax support ====
 
 The file [https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el .doconce-mode.el]
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 <code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 <table border="1">
@@ -82060,15 +82019,15 @@ blocks, verbatim code blocks, or lists if the formats <code>rst</code> and
 
 Comment lines starting with <code>##</code> are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 <code># #ifdef EXTRA</code> and <code># #endif</code> around the text. The command line
 option <code>-DEXTRA</code> will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 ==== Inline comments ====
@@ -82097,7 +82056,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 <syntaxhighlight lang="bash">
 doconce remove_inline_comments mydoc.do.txt
 </syntaxhighlight>
@@ -82187,7 +82146,7 @@ Important warnings:
 
 ==== LaTeX Mathematics ====
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
 pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -82250,7 +82209,7 @@ is also important, one should follow these rules:
   <li> MediaWiki (<code>mwiki</code>) does not support references to equations.
 </ul>
 
-(Doconce performs extensions to <code>sphinx</code> and other formats such that
+(DocOnce performs extensions to <code>sphinx</code> and other formats such that
 labels in <code>align</code> environments work well.)
 
 
@@ -82321,9 +82280,9 @@ Note three important syntax details:
  <li> there must be a blank line after the command.
 </ol>
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -82394,7 +82353,7 @@ Note that
 </ul>
 
 The command-line option <code>--tables2csv</code> (to <code>doconce format</code>)
-makes Doconce dump each table to CSV format in a file <code>table_X.csv</code>,
+makes DocOnce dump each table to CSV format in a file <code>table_X.csv</code>,
 where <code>X</code> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -82445,12 +82404,12 @@ The bibliography is specified by a line <code>BIBFILE: papers.pub</code>,
 where <code>papers.pub</code> is a publication database in the
 [https://bitbucket.org/logg/publish Publish] format.
 BibTeX <code>.bib</code> files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 ==== Generalized Citations ====
 
-There is a ''generalized referencing'' feature in Doconce that allows
+There is a ''generalized referencing'' feature in DocOnce that allows
 a reference with <code>ref</code> to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -82464,8 +82423,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 </syntaxhighlight>
 The output from a generalized reference is the text <code>internal</code> if all
 <code>label</code> references in <code>internal</code> are references to labels in the
@@ -82480,7 +82439,7 @@ documents.  If none of the two situations above applies, the
 
 ==== Index of Keywords ====
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 <syntaxhighlight lang="text">
@@ -82654,7 +82613,7 @@ doconce latex_exercise_toc myfile
 
 ==== Exercises ====
 
-Doconce supports ''Exercise'', ''Problem'', ''Project'', and ''Example''.
+DocOnce supports ''Exercise'', ''Problem'', ''Project'', and ''Example''.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain ''elements'':
@@ -82765,7 +82724,7 @@ examples.
 
 ==== Environments ====
 
-Doconce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
+DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
 where <code>envirname</code> is the name of the environment. Here is a listing of
 the environments:
 
@@ -82786,7 +82745,7 @@ the environments:
 
 ==== Preprocessing ====
 
-Doconce documents may utilize a preprocessor, either <code>preprocess</code> and/or
+DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
 <code>mako</code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The <code>mako</code> preprocessor is much more advanced - it is actually a full
@@ -82831,7 +82790,7 @@ constructions:
 With the <code>mako</code> preprocessor the if-else tests have slightly different syntax.
 An [http://hplgit.github.com/bioinf-py/ example document] contains
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
-examine the Doconce source and the <code>doc/src/make.sh</code> script).
+examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 ==== Resources ====
 
@@ -82842,7 +82801,7 @@ examine the Doconce source and the <code>doc/src/make.sh</code> script).
 
 
 ************** File: quickref.cwiki *****************
-#summary Doconce Quick Reference
+#summary DocOnce Quick Reference
 <wiki:toc max_depth="2" />
 By **Hans Petter Langtangen**
 === Jan 32, 2100 ===
@@ -82863,7 +82822,7 @@ mathematics and code.
 
 == Supported Formats ==
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
 
  * LaTeX (format {{{latex}}} and {{{pdflatex}}})
@@ -82888,11 +82847,11 @@ Google and Wordpress.
 == Emacs syntax support ==
 
 The file [[https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el|.doconce-mode.el]]
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 {{{(load-file "~/.doconce-mode.el")}}} to the {{{.emacs}}} file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
@@ -83096,15 +83055,15 @@ blocks, verbatim code blocks, or lists if the formats {{{rst}}} and
 
 Comment lines starting with {{{##}}} are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 {{{# #ifdef EXTRA}}} and {{{# #endif}}} around the text. The command line
 option {{{-DEXTRA}}} will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 == Inline comments ==
@@ -83133,7 +83092,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 {{{
 doconce remove_inline_comments mydoc.do.txt
 }}}
@@ -83217,7 +83176,7 @@ Important warnings:
 
 == LaTeX Mathematics ==
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats {{{html}}}, {{{sphinx}}}, {{{latex}}},
 pdflatex`, {{{pandoc}}}, and {{{mwiki}}} work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -83277,7 +83236,7 @@ is also important, one should follow these rules:
   * Use only the equation environments {{{\[}}}, {{{\]}}},    {{{equation}}}, {{{equation*}}}, {{{align}}}, and {{{align*}}}.
   * MediaWiki ({{{mwiki}}}) does not support references to equations.
 
-(Doconce performs extensions to {{{sphinx}}} and other formats such that
+(DocOnce performs extensions to {{{sphinx}}} and other formats such that
 labels in {{{align}}} environments work well.)
 
 //Notice.//\g<space>
@@ -83341,9 +83300,9 @@ Note three important syntax details:
  # all of the command must appear on a single line,
  # there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -83403,7 +83362,7 @@ Note that
  * Many output formats are so primitive that heading and column alignment   have no effect.
 
 The command-line option {{{--tables2csv}}} (to {{{doconce format}}})
-makes Doconce dump each table to CSV format in a file {{{table_X.csv}}},
+makes DocOnce dump each table to CSV format in a file {{{table_X.csv}}},
 where {{{X}}} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -83454,12 +83413,12 @@ The bibliography is specified by a line {{{BIBFILE: papers.pub}}},
 where {{{papers.pub}}} is a publication database in the
 [[https://bitbucket.org/logg/publish|Publish]] format.
 BibTeX {{{.bib}}} files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 == Generalized Citations ==
 
-There is a //generalized referencing// feature in Doconce that allows
+There is a //generalized referencing// feature in DocOnce that allows
 a reference with {{{ref}}} to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -83473,8 +83432,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 }}}
 The output from a generalized reference is the text {{{internal}}} if all
 {{{label}}} references in {{{internal}}} are references to labels in the
@@ -83489,7 +83448,7 @@ documents.  If none of the two situations above applies, the
 
 == Index of Keywords ==
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 {{{
@@ -83663,7 +83622,7 @@ doconce latex_exercise_toc myfile
 
 == Exercises ==
 
-Doconce supports //Exercise//, //Problem//, //Project//, and //Example//.
+DocOnce supports //Exercise//, //Problem//, //Project//, and //Example//.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain //elements//:
@@ -83768,7 +83727,7 @@ examples.
 
 == Environments ==
 
-Doconce environments start with {{{!benvirname}}} and end with {{{!eenvirname}}},
+DocOnce environments start with {{{!benvirname}}} and end with {{{!eenvirname}}},
 where {{{envirname}}} is the name of the environment. Here is a listing of
 the environments:
 
@@ -83785,7 +83744,7 @@ the environments:
 
 == Preprocessing ==
 
-Doconce documents may utilize a preprocessor, either {{{preprocess}}} and/or
+DocOnce documents may utilize a preprocessor, either {{{preprocess}}} and/or
 {{{mako}}}. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The {{{mako}}} preprocessor is much more advanced - it is actually a full
@@ -83830,7 +83789,7 @@ constructions:
 With the {{{mako}}} preprocessor the if-else tests have slightly different syntax.
 An [[http://hplgit.github.com/bioinf-py/|example document]] contains
 some illustrations on how to utilize {{{mako}}} (clone the GitHub project and
-examine the Doconce source and the {{{doc/src/make.sh}}} script).
+examine the DocOnce source and the {{{doc/src/make.sh}}} script).
 
 == Resources ==
 
@@ -83840,7 +83799,7 @@ examine the Doconce source and the {{{doc/src/make.sh}}} script).
 
 
 ************** File: quickref.st *****************
-TITLE: Doconce Quick Reference
+TITLE: DocOnce Quick Reference
 BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo)
 DATE: Jan 32, 2100
 **WARNING: This quick reference is very incomplete!**
@@ -83855,7 +83814,7 @@ mathematics and code.
 
 Supported Formats
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  - LaTeX (format 'latex' and 'pdflatex')
  - HTML (format 'html')
@@ -83878,11 +83837,11 @@ Google and Wordpress.
 Emacs syntax support
 
 The file "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el":.doconce-mode.el
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 '(load-file "~/.doconce-mode.el")' to the '.emacs' file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ======================================  ======================================  
@@ -84078,15 +84037,15 @@ blocks, verbatim code blocks, or lists if the formats 'rst' and
 
 Comment lines starting with '##' are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 '# #ifdef EXTRA' and '# #endif' around the text. The command line
 option '-DEXTRA' will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 
@@ -84114,7 +84073,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by::
+removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
 
@@ -84196,7 +84155,7 @@ Important warnings:
 
 LaTeX Mathematics
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats 'html', 'sphinx', 'latex',
 pdflatex`, 'pandoc', and 'mwiki' work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -84250,7 +84209,7 @@ is also important, one should follow these rules:
     'equation', 'equation*', 'align', and 'align*'.
   - MediaWiki ('mwiki') does not support references to equations.
 
-(Doconce performs extensions to 'sphinx' and other formats such that
+(DocOnce performs extensions to 'sphinx' and other formats such that
 labels in 'align' environments work well.)
 
 *Notice.*\g<space>
@@ -84311,9 +84270,9 @@ Note three important syntax details:
  3. all of the command must appear on a single line,
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -84378,7 +84337,7 @@ Note that
    have no effect.
 
 The command-line option '--tables2csv' (to 'doconce format')
-makes Doconce dump each table to CSV format in a file 'table_X.csv',
+makes DocOnce dump each table to CSV format in a file 'table_X.csv',
 where 'X' is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -84427,12 +84386,12 @@ The bibliography is specified by a line 'BIBFILE: papers.pub',
 where 'papers.pub' is a publication database in the
 "https://bitbucket.org/logg/publish":Publish format.
 BibTeX '.bib' files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with 'ref' to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -84446,8 +84405,8 @@ The syntax of a generalized reference is::
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text 'internal' if all
 'ref{label}' references in 'internal' are references to labels in the
@@ -84462,7 +84421,7 @@ documents.  If none of the two situations above applies, the
 
 Index of Keywords
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
@@ -84634,7 +84593,7 @@ list of capabilities::
 
 Exercises
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -84739,7 +84698,7 @@ examples.
 
 Environments
 
-Doconce environments start with '!benvirname' and end with '!eenvirname',
+DocOnce environments start with '!benvirname' and end with '!eenvirname',
 where 'envirname' is the name of the environment. Here is a listing of
 the environments:
 
@@ -84757,7 +84716,7 @@ the environments:
 
 Preprocessing
 
-Doconce documents may utilize a preprocessor, either 'preprocess' and/or
+DocOnce documents may utilize a preprocessor, either 'preprocess' and/or
 'mako'. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The 'mako' preprocessor is much more advanced - it is actually a full
@@ -84800,14 +84759,14 @@ constructions::
 With the 'mako' preprocessor the if-else tests have slightly different syntax.
 An "http://hplgit.github.com/bioinf-py/":example document contains
 some illustrations on how to utilize 'mako' (clone the GitHub project and
-examine the Doconce source and the 'doc/src/make.sh' script).
+examine the DocOnce source and the 'doc/src/make.sh' script).
 
 Resources
 
  - Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.epytext *****************
-TITLE: Doconce Quick Reference
+TITLE: DocOnce Quick Reference
 BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo)
 DATE: Jan 32, 2100
 B{WARNING: This quick reference is very incomplete!}
@@ -84823,7 +84782,7 @@ mathematics and code.
 Supported Formats
 -----------------
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  - LaTeX (format C{latex} and C{pdflatex})
  - HTML (format C{html})
@@ -84847,11 +84806,11 @@ Emacs syntax support
 --------------------
 
 The file U{.doconce-mode.el<https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>}
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 C{(load-file "~/.doconce-mode.el")} to the C{.emacs} file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ========================================  ========================================  
@@ -85047,15 +85006,15 @@ C{sphinx} are desired.
 
 Comment lines starting with C{##} are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 C{# #ifdef EXTRA} and C{# #endif} around the text. The command line
 option C{-DEXTRA} will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 ---------------
@@ -85084,7 +85043,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by::
+removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
 
@@ -85168,7 +85127,7 @@ Important warnings:
 LaTeX Mathematics
 -----------------
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats C{html}, C{sphinx}, C{latex},
 pdflatex`, C{pandoc}, and C{mwiki} work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -85217,7 +85176,7 @@ is also important, one should follow these rules:
     C{equation}, C{equation*}, C{align}, and C{align*}.
   - MediaWiki (C{mwiki}) does not support references to equations.
 
-(Doconce performs extensions to C{sphinx} and other formats such that
+(DocOnce performs extensions to C{sphinx} and other formats such that
 labels in C{align} environments work well.)
 
 I{Notice.}\g<space>
@@ -85280,9 +85239,9 @@ Note three important syntax details:
  3. all of the command must appear on a single line,
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -85348,7 +85307,7 @@ Note that
    have no effect.
 
 The command-line option C{--tables2csv} (to C{doconce format})
-makes Doconce dump each table to CSV format in a file C{table_X.csv},
+makes DocOnce dump each table to CSV format in a file C{table_X.csv},
 where C{X} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -85399,13 +85358,13 @@ The bibliography is specified by a line C{BIBFILE: papers.pub},
 where C{papers.pub} is a publication database in the
 U{Publish<https://bitbucket.org/logg/publish>} format.
 BibTeX C{.bib} files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 ---------------------
 
-There is a I{generalized referencing} feature in Doconce that allows
+There is a I{generalized referencing} feature in DocOnce that allows
 a reference with C{ref} to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -85419,8 +85378,8 @@ The syntax of a generalized reference is::
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text C{internal} if all
 C{ref{label}} references in C{internal} are references to labels in the
@@ -85436,7 +85395,7 @@ C{external} text will be the output.
 Index of Keywords
 -----------------
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
@@ -85610,7 +85569,7 @@ list of capabilities::
 Exercises
 ---------
 
-Doconce supports I{Exercise}, I{Problem}, I{Project}, and I{Example}.
+DocOnce supports I{Exercise}, I{Problem}, I{Project}, and I{Example}.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain I{elements}:
@@ -85716,7 +85675,7 @@ examples.
 Environments
 ------------
 
-Doconce environments start with C{!benvirname} and end with C{!eenvirname},
+DocOnce environments start with C{!benvirname} and end with C{!eenvirname},
 where C{envirname} is the name of the environment. Here is a listing of
 the environments:
 
@@ -85735,7 +85694,7 @@ the environments:
 Preprocessing
 -------------
 
-Doconce documents may utilize a preprocessor, either C{preprocess} and/or
+DocOnce documents may utilize a preprocessor, either C{preprocess} and/or
 C{mako}. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The C{mako} preprocessor is much more advanced - it is actually a full
@@ -85752,7 +85711,7 @@ constructions::
 With the C{mako} preprocessor the if-else tests have slightly different syntax.
 An U{example document<http://hplgit.github.com/bioinf-py/>} contains
 some illustrations on how to utilize C{mako} (clone the GitHub project and
-examine the Doconce source and the C{doc/src/make.sh} script).
+examine the DocOnce source and the C{doc/src/make.sh} script).
 
 Resources
 ---------
@@ -85760,7 +85719,7 @@ Resources
  - Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.txt *****************
-Doconce Quick Reference
+DocOnce Quick Reference
 =======================
 
 Hans Petter Langtangen [1, 2] 
@@ -85808,7 +85767,7 @@ mathematics and code.
 Supported Formats
 -----------------
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format latex and pdflatex)
 
@@ -85843,11 +85802,11 @@ Emacs syntax support
 --------------------
 
 The file .doconce-mode.el (https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el)
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 (load-file "~/.doconce-mode.el") to the .emacs file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ==================================  ==================================  
@@ -86056,15 +86015,15 @@ sphinx are desired.
 
 Comment lines starting with ## are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 # #ifdef EXTRA and # #endif around the text. The command line
 option -DEXTRA will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 ---------------
@@ -86093,7 +86052,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by::
+removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
 
@@ -86178,7 +86137,7 @@ Important warnings:
 LaTeX Mathematics
 -----------------
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats html, sphinx, latex,
 pdflatex`, pandoc, and mwiki work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -86233,7 +86192,7 @@ is also important, one should follow these rules:
 
   * MediaWiki (mwiki) does not support references to equations.
 
-(Doconce performs extensions to sphinx and other formats such that
+(DocOnce performs extensions to sphinx and other formats such that
 labels in align environments work well.)
 
 
@@ -86301,9 +86260,9 @@ Note three important syntax details:
 
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -86373,7 +86332,7 @@ Note that
    have no effect.
 
 The command-line option --tables2csv (to doconce format)
-makes Doconce dump each table to CSV format in a file table_X.csv,
+makes DocOnce dump each table to CSV format in a file table_X.csv,
 where X is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -86424,13 +86383,13 @@ The bibliography is specified by a line BIBFILE: papers.pub,
 where papers.pub is a publication database in the
 Publish (https://bitbucket.org/logg/publish) format.
 BibTeX .bib files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 ---------------------
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with ref to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -86444,8 +86403,8 @@ The syntax of a generalized reference is::
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text internal if all
 ref{label} references in internal are references to labels in the
@@ -86461,7 +86420,7 @@ external text will be the output.
 Index of Keywords
 -----------------
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)::
 
@@ -86635,7 +86594,7 @@ list of capabilities::
 Exercises
 ---------
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -86749,7 +86708,7 @@ examples.
 Environments
 ------------
 
-Doconce environments start with !benvirname and end with !eenvirname,
+DocOnce environments start with !benvirname and end with !eenvirname,
 where envirname is the name of the environment. Here is a listing of
 the environments:
 
@@ -86776,7 +86735,7 @@ the environments:
 Preprocessing
 -------------
 
-Doconce documents may utilize a preprocessor, either preprocess and/or
+DocOnce documents may utilize a preprocessor, either preprocess and/or
 mako. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The mako preprocessor is much more advanced - it is actually a full
@@ -86819,7 +86778,7 @@ constructions::
 With the mako preprocessor the if-else tests have slightly different syntax.
 An example document (http://hplgit.github.com/bioinf-py/) contains
 some illustrations on how to utilize mako (clone the GitHub project and
-examine the Doconce source and the doc/src/make.sh script).
+examine the DocOnce source and the doc/src/make.sh script).
 
 Resources
 ---------
@@ -86827,7 +86786,7 @@ Resources
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.md *****************
-% Doconce Quick Reference
+% DocOnce Quick Reference
 % **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 % Jan 32, 2100
 
@@ -86847,30 +86806,19 @@ mathematics and code.
 
 ### Supported Formats
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format `latex` and `pdflatex`)
-
  * HTML (format `html`)
-
  * reStructuredText (format `rst`)
-
  * plain (untagged) ASCII (format `plain`)
-
  * Sphinx (format `sphinx`)
-
  * IPython notebook (format `ipynb`)
-
  * MediaWiki (format `mwiki`)
-
  * (Pandoc extended) Markdown (format `pandoc`)
-
  * Googlecode wiki (format `gwiki`)
-
  * Creoloe wiki (format `cwiki`)
-
  * Epydoc (format `epydoc`)
-
  * StructuredText (format `st`)
 
 For documents with much code and mathematics, the best (and most supported)
@@ -86882,11 +86830,11 @@ Google and Wordpress.
 ### Emacs syntax support
 
 The file [.doconce-mode.el](https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el)
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 `(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
@@ -87061,13 +87009,9 @@ The code above follows.
 Here is a bullet list:
 
  * item1
-
  * item2
-
   * subitem1 of item2
-
   * subitem2 of item2
-
 
  * item3
 
@@ -87075,15 +87019,11 @@ Note that sublists are indented.
 Here is an enumeration list:
 
 1. item1
-
 2. item2
    may appear on
    multiple lines
-
  1. subitem1 of item2
-
  2. subitem2 of item2
-
 
 3. item3
 
@@ -87095,11 +87035,9 @@ And finally a description list:
    some text
    over multiple
    lines
-
  keyword2:
   :    
    followed by text on the next line
-
  keyword3:
   :    
    and its description may fit on one line
@@ -87114,15 +87052,15 @@ blocks, verbatim code blocks, or lists if the formats `rst` and
 
 Comment lines starting with `##` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 `# #ifdef EXTRA` and `# #endif` around the text. The command line
 option `-DEXTRA` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 ### Inline comments
@@ -87155,7 +87093,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce remove_inline_comments mydoc.do.txt
@@ -87244,14 +87182,13 @@ Important warnings:
  * A code block must come after some plain sentence (at least for successful
    output in reStructredText), not directly after a section/paragraph heading,
    table, comment, figure, or movie.
-
  * Verbatim code blocks inside lists can be ugly typeset in some
    output formats. A more robust approach is to replace the list by
    paragraphs with headings.
 
 ### LaTeX Mathematics
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats `html`, `sphinx`, `latex`,
 pdflatex`, `pandoc`, and `mwiki` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -87314,10 +87251,9 @@ is also important, one should follow these rules:
 
   * Use only the equation environments `\[`, `\]`,
     `equation`, `equation*`, `align`, and `align*`.
-
   * MediaWiki (`mwiki`) does not support references to equations.
 
-(Doconce performs extensions to `sphinx` and other formats such that
+(DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 *Notice.*\g<space>
@@ -87379,17 +87315,14 @@ MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must 
 Note three important syntax details:
 
  1. A mandatory comma after the figure/movie filename,
-
  2. no comments between `width`, `height`, and `frac` and no spaces
     around the `=` characters,
-
  3. all of the command must appear on a single line,
-
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -87452,9 +87385,7 @@ syntax:
 Note that
 
  * Each line begins and ends with a vertical bar (pipe symbol).
-
  * Column data are separated by a vertical bar (pipe symbol).
-
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -87462,16 +87393,14 @@ Note that
    headings (center, left, right), and the horizontal rule after the
    heading line may indicate how to align the data in the columns
    (center, left, right).
-
  * If the horizontal rules are without alignment information there should
    be no vertical bar (pipe symbol) between the columns. Otherwise, such
    a bar indicates a vertical bar between columns in LaTeX.
-
  * Many output formats are so primitive that heading and column alignment
    have no effect.
 
 The command-line option `--tables2csv` (to `doconce format`)
-makes Doconce dump each table to CSV format in a file `table_X.csv`,
+makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -87529,12 +87458,12 @@ The bibliography is specified by a line `BIBFILE: papers.pub`,
 where `papers.pub` is a publication database in the
 [Publish](https://bitbucket.org/logg/publish) format.
 BibTeX `.bib` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 ### Generalized Citations
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -87549,8 +87478,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The output from a generalized reference is the text `internal` if all
@@ -87566,7 +87495,7 @@ documents.  If none of the two situations above applies, the
 
 ### Index of Keywords
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 
@@ -87743,7 +87672,7 @@ doconce latex_exercise_toc myfile
 
 ### Exercises
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -87751,21 +87680,13 @@ Exercise, problem, project, or example sections contains certain *elements*:
   * a headline at the level of a subsection
     containing one of the words "Exercise:", "Problem:",
     "Project:", or "Example:", followed by a title (required)
-
   * a label (optional)
-
   * a solution file (optional)
-
   * name of file with a student solution (optional)
-
   * main exercise text (required)
-
   * a short answer (optional)
-
   * a full solution (optional)
-
   * one or more hints (optional)
-
   * one or more subexercises (subproblems, subprojects), which can also
     contain a text, a short answer, a full solution, name student file
     to be handed in, and one or more hints (optional)
@@ -87865,33 +87786,25 @@ examples.
 
 ### Environments
 
-Doconce environments start with `!benvirname` and end with `!eenvirname`,
+DocOnce environments start with `!benvirname` and end with `!eenvirname`,
 where `envirname` is the name of the environment. Here is a listing of
 the environments:
 
  * `c`: computer code (or verbatim text)
-
  * `t`: math blocks with LaTeX syntax
-
  * `subex`: sub-exercise
-
  * `ans`: short answer to exercise or sub-exercise
-
  * `sol`: full solution to exercise or sub-exercise
-
  * `quote`: indented text
-
  * `notice`, `summary`, `warning`, `question`, `hint`: admonition boxes with
     custom title, special icon, and (frequently) background color
-
  * `pop`: text to gradually pop up in slide presentations
-
  * `slidecell`: indication of cells in a grid layout for elements on a
    slide
 
 ### Preprocessing
 
-Doconce documents may utilize a preprocessor, either `preprocess` and/or
+DocOnce documents may utilize a preprocessor, either `preprocess` and/or
 `mako`. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The `mako` preprocessor is much more advanced - it is actually a full
@@ -87937,7 +87850,7 @@ constructions:
 With the `mako` preprocessor the if-else tests have slightly different syntax.
 An [example document](http://hplgit.github.com/bioinf-py/) contains
 some illustrations on how to utilize `mako` (clone the GitHub project and
-examine the Doconce source and the `doc/src/make.sh` script).
+examine the DocOnce source and the `doc/src/make.sh` script).
 
 ### Resources
 
@@ -93010,15 +92923,17 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 
 (./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
-<../doc/src/manual/fig/wave1D.pdf, id=66, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [5]
 <latex_figs/summary.pdf, id=71, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
+
+
+[6 <../doc/src/manual/fig/wave1D.pdf>]
 No file admon_colors1.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>] [7]
-(./admon_colors1.aux)
+[7 <./latex_figs/summary.pdf>] (./admon_colors1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -100528,14 +100443,10 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12] [13] [14] [15] [16]
-Overfull \hbox (7.769pt too wide) 
-\T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
+[12] [13] [14] [15] [16] [17]
+Overfull \hbox (0.31688pt too wide) 
+\T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
-Overfull \hbox (0.45898pt too wide) 
-\T1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] a
-nd/or [].
-[17]
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
@@ -100901,14 +100812,10 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13] [14] [15] [16]
-Overfull \hbox (7.769pt too wide) 
-\T1/phv/m/n/10 Doconce en-vi-ron-ments start with [] and end with [], where
+[13] [14] [15] [16] [17]
+Overfull \hbox (0.31688pt too wide) 
+\T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
-Overfull \hbox (0.45898pt too wide) 
-\T1/phv/m/n/10 Doconce doc-u-ments may uti-lize a pre-pro-ces-sor, ei-ther [] a
-nd/or [].
-[17]
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
@@ -101130,7 +101037,7 @@ source files. Use the Makefile to build the docs, like so:
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in quickref.do.txt
-Using title "Doconce Quick Reference" from quickref
+Using title "DocOnce Quick Reference" from quickref
 Using title "On an Ultimate Markup Language" from quickref
 title: On an Ultimate Markup Language
 author: HPL
@@ -101463,7 +101370,7 @@ Overfull \hbox (71.00006pt too wide)
  
 
 Overfull \hbox (107.00006pt too wide) 
-[]\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
+[]\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 
 Overfull \hbox (3431.00006pt too wide) 
@@ -101665,8 +101572,8 @@ d `!eremarks`
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
 [16]
-Overfull \hbox (2.38828pt too wide) 
-\T1/ptm/m/n/10 Doconce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
+Overfull \hbox (4.60825pt too wide) 
+\T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
@@ -101959,7 +101866,7 @@ Overfull \hbox (71.00006pt too wide)
  
 
 Overfull \hbox (107.00006pt too wide) 
-[]\T1/pcr/m/n/10 "A Document for Testing Doconce": "testdoc.html" cite{testdoc:
+[]\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 
 Overfull \hbox (3431.00006pt too wide) 
@@ -102161,8 +102068,8 @@ d `!eremarks`
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
 [17]
-Overfull \hbox (2.38828pt too wide) 
-\T1/ptm/m/n/10 Doconce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
+Overfull \hbox (4.60825pt too wide) 
+\T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 

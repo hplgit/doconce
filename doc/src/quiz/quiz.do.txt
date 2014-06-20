@@ -357,7 +357,7 @@ units.
 E: It is indeed possible to add pure numbers without any units.
 !equiz
 
-The source code for defining above quiz reads
+The source code for defining the above quiz reads
 
 !bc
 |bquiz
@@ -449,7 +449,7 @@ that is zero. Only in one dimension, where $\bm{u}=u_x\bm{i}$
 and consequently $\nabla\cdot\bm{u}=du/dx$, the vector field must be constant.
 !equiz
 
-The corresponding code to define this quiz is listed below.
+The corresponding code needed to define this quiz is listed below.
 
 !bc
 |bquiz
@@ -544,7 +544,6 @@ E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
 ===== Example: Putting it all together =====
 
 !bquiz
-Q: Given a complete program
 
 !bc pypro
 from math import sin

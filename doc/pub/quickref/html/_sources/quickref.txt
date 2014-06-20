@@ -4,11 +4,11 @@
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-Doconce Quick Reference
+DocOnce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Jun 15, 2014
+:Date: Jun 20, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -24,7 +24,7 @@ mathematics and code.
 Supported Formats
 -----------------
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format ``latex`` and ``pdflatex``)
 
@@ -59,11 +59,11 @@ Emacs syntax support
 --------------------
 
 The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ==========================================  ==========================================  
@@ -288,15 +288,15 @@ blocks, verbatim code blocks, or lists if the formats ``rst`` and
 
 Comment lines starting with ``##`` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 ``# #ifdef EXTRA`` and ``# #endif`` around the text. The command line
 option ``-DEXTRA`` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 ---------------
@@ -329,7 +329,7 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 
 .. code-block:: text
 
@@ -428,7 +428,7 @@ Important warnings:
 LaTeX Mathematics
 -----------------
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats ``html``, ``sphinx``, ``latex``,
 pdflatex`, ``pandoc``, and ``mwiki`` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -491,7 +491,7 @@ is also important, one should follow these rules:
 
   * MediaWiki (``mwiki``) does not support references to equations.
 
-(Doconce performs extensions to ``sphinx`` and other formats such that
+(DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
 
 
@@ -563,9 +563,9 @@ Note three important syntax details:
 
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -646,7 +646,7 @@ Note that
    have no effect.
 
 The command-line option ``--tables2csv`` (to ``doconce format``)
-makes Doconce dump each table to CSV format in a file ``table_X.csv``,
+makes DocOnce dump each table to CSV format in a file ``table_X.csv``,
 where ``X`` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -705,13 +705,13 @@ The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
 `Publish <https://bitbucket.org/logg/publish>`_ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 ---------------------
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with ``ref`` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -727,8 +727,8 @@ The syntax of a generalized reference is
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
 `:ref:`label`` references in ``internal`` are references to labels in the
@@ -744,7 +744,7 @@ documents.  If none of the two situations above applies, the
 Index of Keywords
 -----------------
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 
@@ -922,7 +922,7 @@ list of capabilities:
 Exercises
 ---------
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -1042,7 +1042,7 @@ examples.
 Environments
 ------------
 
-Doconce environments start with ``!benvirname`` and end with ``!eenvirname``,
+DocOnce environments start with ``!benvirname`` and end with ``!eenvirname``,
 where ``envirname`` is the name of the environment. Here is a listing of
 the environments:
 
@@ -1069,7 +1069,7 @@ the environments:
 Preprocessing
 -------------
 
-Doconce documents may utilize a preprocessor, either ``preprocess`` and/or
+DocOnce documents may utilize a preprocessor, either ``preprocess`` and/or
 ``mako``. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The ``mako`` preprocessor is much more advanced - it is actually a full
@@ -1114,7 +1114,7 @@ constructions:
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
-examine the Doconce source and the ``doc/src/make.sh`` script).
+examine the DocOnce source and the ``doc/src/make.sh`` script).
 
 Resources
 ---------

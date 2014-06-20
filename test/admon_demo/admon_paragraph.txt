@@ -3,7 +3,7 @@ Testing admons
 
 hpl
 
-Date: Jun 15, 2014
+Date: Jun 20, 2014
 
 # !split
 Introduction
@@ -184,14 +184,14 @@ Point1 -----------------------------|
 
 Question ----------------------------------------------------|
 |                                                            |
-| So, how many admonition environments does Doconce support? |
+| So, how many admonition environments does DocOnce support? |
 |------------------------------------------------------------|
 
 
 
 Question ---------------------------------------------------------------|
 |                                                                       |
-|  1. Once more, how many admonition environments does Doconce support? |
+|  1. Once more, how many admonition environments does DocOnce support? |
 |-----------------------------------------------------------------------|
 
 
