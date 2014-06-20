@@ -8,14 +8,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Doconce: Document Once, Include Anywhere &mdash; Doconce: Document Once, Include Anywhere</title>
+    <title>DocOnce: Document Once, Include Anywhere &mdash; DocOnce: Document Once, Include Anywhere</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,26 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
-    <link rel="top" title="Doconce: Document Once, Include Anywhere" href="#" />
-    <link rel="next" title="Doconce: Document Once, Include Anywhere" href="tutorial.html" />
- 
+    <link rel="top" title="DocOnce: Document Once, Include Anywhere" href="#" />
+    <link rel="next" title="DocOnce: Document Once, Include Anywhere" href="tutorial.html" /> 
   </head>
   <body>
     <div class="related">
@@ -55,9 +37,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="tutorial.html" title="Doconce: Document Once, Include Anywhere"
+          <a href="tutorial.html" title="DocOnce: Document Once, Include Anywhere"
              accesskey="N">next</a> |</li>
-        <li><a href="#">Doconce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li><a href="#">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -67,14 +49,14 @@
           <div class="body">
             
   <div class="section" id="doconce-document-once-include-anywhere">
-<h1>Doconce: Document Once, Include Anywhere<a class="headerlink" href="#doconce-document-once-include-anywhere" title="Permalink to this headline">¶</a></h1>
+<h1>DocOnce: Document Once, Include Anywhere<a class="headerlink" href="#doconce-document-once-include-anywhere" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Doconce: Document Once, Include Anywhere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#some-doconce-features">Some Doconce Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#what-does-doconce-look-like">What Does Doconce Look Like?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#what-can-doconce-be-used-for">What Can Doconce Be Used For?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">DocOnce: Document Once, Include Anywhere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#some-doconce-features">Some DocOnce Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#what-does-doconce-look-like">What Does DocOnce Look Like?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#what-can-doconce-be-used-for">What Can DocOnce Be Used For?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#basic-syntax">Basic Syntax</a></li>
 </ul>
 </li>
@@ -84,7 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#macros-newcommands-cross-references-index-and-bibliography">Macros (Newcommands), Cross-References, Index, and Bibliography</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#from-doconce-to-other-formats">From Doconce to Other Formats</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#generating-a-makefile">Generating a makefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#preprocessing">Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#removal-of-inline-comments">Removal of inline comments</a></li>
@@ -96,17 +78,18 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#id5">LaTeX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#pdflatex">PDFLaTeX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#xelatex">XeLaTeX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#plain-ascii-text">Plain ASCII Text</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#id6">reStructuredText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#id7">Sphinx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#wiki-formats">Wiki Formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#google-docs">Google Docs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#tweaking-the-doconce-output">Tweaking the Doconce Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#demos">Demos</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html#installation-of-doconce-and-its-dependencies">Installation of Doconce and its Dependencies</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#doconce">Doconce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#doconce">DocOnce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#dependencies">Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#quick-debian-ubuntu-install">Quick Debian/Ubuntu Install</a></li>
 </ul>
@@ -131,7 +114,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Doconce: Document Once, Include Anywhere</a><ul>
+<li><a class="reference internal" href="#">DocOnce: Document Once, Include Anywhere</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
@@ -139,7 +122,7 @@
 
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorial.html"
-                        title="next chapter">Doconce: Document Once, Include Anywhere</a></p>
+                        title="next chapter">DocOnce: Document Once, Include Anywhere</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -169,14 +152,14 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="tutorial.html" title="Doconce: Document Once, Include Anywhere"
+          <a href="tutorial.html" title="DocOnce: Document Once, Include Anywhere"
              >next</a> |</li>
-        <li><a href="#">Doconce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li><a href="#">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Hans Petter Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

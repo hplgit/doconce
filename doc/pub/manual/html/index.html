@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,28 +27,10 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
     <link rel="top" title="Doconce Manual" href="#" />
-    <link rel="next" title="Doconce Description" href="manual.html" />
- 
+    <link rel="next" title="DocOnce Description" href="manual.html" /> 
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -64,7 +46,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="manual.html" title="Doconce Description"
+          <a href="manual.html" title="DocOnce Description"
              accesskey="N">next</a> |</li>
         <li><a href="#">Doconce Manual</a> &raquo;</li> 
       </ul>
@@ -80,16 +62,16 @@
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="manual.html">Doconce Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual.html#what-is-doconce">What Is Doconce?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manual.html#installation-of-doconce-and-its-dependencies">Installation of Doconce and its Dependencies</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#doconce">Doconce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">DocOnce Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html#what-is-doconce">What Is DocOnce?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#doconce">DocOnce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#dependencies">Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#quick-debian-ubuntu-install">Quick Debian/Ubuntu Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#demos">Demos</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="manual.html#from-doconce-to-other-formats">From Doconce to Other Formats</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="manual.html#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#generating-a-makefile">Generating a makefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#preprocessing">Preprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#removal-of-inline-comments">Removal of inline comments</a></li>
@@ -101,15 +83,16 @@
 <li class="toctree-l2"><a class="reference internal" href="manual.html#latex">LaTeX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#pdflatex">PDFLaTeX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#xelatex">XeLaTeX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#plain-ascii-text">Plain ASCII Text</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#restructuredtext">reStructuredText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#sphinx">Sphinx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#wiki-formats">Wiki Formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#google-docs">Google Docs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#tweaking-the-doconce-output">Tweaking the Doconce Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="manual.html#the-doconce-markup-language">The Doconce Markup Language</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="manual.html#the-doconce-markup-language">The DocOnce Markup Language</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#lists">Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#special-lines">Special lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#heading-with-title-and-author-s">Heading with title and author(s)</a></li>
@@ -136,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="manual.html#splitting-documents-into-smaller-pieces">Splitting Documents into Smaller Pieces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#missing-features">Missing Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#header-and-footer">Header and Footer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#emacs-doconce-formatter">Emacs Doconce Formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#emacs-doconce-formatter">Emacs DocOnce Formatter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual.html#writing-slides">Writing Slides</a><ul>
@@ -149,7 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="manual.html#the-basics-of-mako">The Basics of Mako</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#tools-for-writing-doconce-documents">Tools for Writing Doconce Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#tools-for-writing-doconce-documents">Tools for Writing DocOnce Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#debugging">Debugging</a></li>
 </ul>
 </li>
@@ -191,7 +174,7 @@
 
   <h4>Next topic</h4>
   <p class="topless"><a href="manual.html"
-                        title="next chapter">Doconce Description</a></p>
+                        title="next chapter">DocOnce Description</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -221,7 +204,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="manual.html" title="Doconce Description"
+          <a href="manual.html" title="DocOnce Description"
              >next</a> |</li>
         <li><a href="#">Doconce Manual</a> &raquo;</li> 
       </ul>

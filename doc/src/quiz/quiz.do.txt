@@ -311,6 +311,11 @@ Cw: Denmark
 
 ===== Mathematics =====
 
+Mathematical typesetting follows a restricted LaTeX syntax. Inline
+formulas appear inside dollar signs, while separate equations
+appear inside `!bt` (``begin TeX'') and `!et` (``end TeX'') tags.
+
+
 ===== Code =====
 
 # math quiz inline formulas
