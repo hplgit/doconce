@@ -35,17 +35,38 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' Explanations of choices ', 2, None, '___sec2'),
               (' Typesetting ', 2, None, '___sec3'),
               (' Specification in HTML ', 2, None, '___sec4'),
-              (' Quiz inside admonitions in Doconce ', 2, None, '___sec5'),
-              (' Typesetting of mathematics ', 1, None, '___sec6'),
-              (' Inline formulas ', 2, None, '___sec7'),
-              (' Equations ', 2, None, '___sec8'),
-              (' Typesetting of computer code ', 1, None, '___sec9'),
-              (' Inline monospace font ', 2, None, '___sec10'),
-              (' Blocks of computer code ', 2, None, '___sec11'),
-              (' Example: Putting it all together ', 2, None, '___sec12')]}
+              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec5'),
+              (' Typesetting of mathematics and computer code ',
+               1,
+               None,
+               '___sec6'),
+              (' Mathematics ', 2, None, '___sec7'),
+              (' Simple example ', 3, None, '___sec8'),
+              (' A more complicated example ', 3, None, '___sec9'),
+              (' Code ', 2, None, '___sec10'),
+              (' Example: Putting it all together ', 2, None, '___sec11')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
 
     
 <!-- Bootstrap navigation bar -->
@@ -63,31 +84,29 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " A pure text quiz " --> <li>  <a href="._quiz001.html#___sec0"> A pure text quiz </a></li>
-     <!-- navigation toc: " Question and choices " --> <li> &nbsp;  <a href="._quiz001.html#___sec1"> Question and choices </a></li>
-     <!-- navigation toc: " Explanations of choices " --> <li> &nbsp;  <a href="._quiz001.html#___sec2"> Explanations of choices </a></li>
-     <!-- navigation toc: " Typesetting " --> <li> &nbsp;  <a href="._quiz001.html#___sec3"> Typesetting </a></li>
-     <!-- navigation toc: " Specification in HTML " --> <li> &nbsp;  <a href="._quiz001.html#___sec4"> Specification in HTML </a></li>
-     <!-- navigation toc: " Quiz inside admonitions in Doconce " --> <li> &nbsp;  <a href="._quiz001.html#___sec5"> Quiz inside admonitions in Doconce </a></li>
-     <!-- navigation toc: " Typesetting of mathematics " --> <li>  <a href="._quiz001.html#___sec6"> Typesetting of mathematics </a></li>
-     <!-- navigation toc: " Inline formulas " --> <li> &nbsp;  <a href="._quiz001.html#___sec7"> Inline formulas </a></li>
-     <!-- navigation toc: " Equations " --> <li> &nbsp;  <a href="._quiz001.html#___sec8"> Equations </a></li>
-     <!-- navigation toc: " Typesetting of computer code " --> <li>  <a href="._quiz001.html#___sec9"> Typesetting of computer code </a></li>
-     <!-- navigation toc: " Inline monospace font " --> <li> &nbsp;  <a href="._quiz001.html#___sec10"> Inline monospace font </a></li>
-     <!-- navigation toc: " Blocks of computer code " --> <li> &nbsp;  <a href="._quiz001.html#___sec11"> Blocks of computer code </a></li>
-     <!-- navigation toc: " Example: Putting it all together " --> <li> &nbsp;  <a href="._quiz001.html#___sec12"> Example: Putting it all together </a></li>
+     <!-- navigation toc: "A pure text quiz" --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
+     <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
+     <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
+     <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
+     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
+     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz001.html#___sec6" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz001.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: "Code" --> <li><a href="._quiz001.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
+<a name="part0000"></a>
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
@@ -111,7 +130,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 5, 2014</h4></center> <!-- date -->
+<center><h4>Jun 20, 2014</h4></center> <!-- date -->
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
 This is an ultra-preliminary draft of very incomplete documentation...
@@ -142,6 +161,11 @@ services a la Kahoot, JotForm, and Google forms.
   <li class="next">
     <a href="._quiz001.html">Next &rarr;</a>
   </li>
+
+</ul>
+<p>
+<ul class="pager">
+
 
 </ul>
 <!-- ------------------- end of main content --------------- -->
