@@ -2228,7 +2228,7 @@ def handle_index_and_bib(filestr, format, has_title):
     #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
     # Footnote pattern has a word prior to the footnote [^name]
     # or math, inline code, link
-    pattern_footnote = r'(?<=(\w|\$|`|"))(?P<footnote> *\[\^(?P<name>.+?)\])'
+    pattern_footnote = r'(?<=(\w|[$`")]))(?P<footnote> *\[\^(?P<name>.+?)\])'
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}

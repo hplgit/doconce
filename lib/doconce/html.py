@@ -865,11 +865,18 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
             # Use a tooltip construction so the footnote appears when hovering over
             text = ' '.join(footnotes[name].strip().splitlines())
             # Note: formatting does not work well with a tooltip
-            # could issue a warning of we find * (emphasis) or "..": ".." link
+            # could issue a warning of we find * (emphasis) or ` or "..": ".." link
             if '*' in text:
                 newtext, n = re.subn(r'\*(.+?)\*', r'\g<1>', text)
                 if n > 0:
                     print '*** warning: found emphasis tag *...* in footnote, which was removed'
+                    print '    since it does not work with bootstrap tooltips'
+                    print text
+                text = newtext
+            if '`' in text:
+                newtext, n = re.subn(r'`(.+?)`', r'\g<1>', text)
+                if n > 0:
+                    print '*** warning: found inline code tag `...` in footnote, which was removed'
                     print '    since it does not work with bootstrap tooltips'
                     print text
                 text = newtext

@@ -3,4 +3,4 @@ doconce format html quiz --html_style=bootstrap --html_code_style=inherit -DDOCO
 doconce split_html quiz.html
 
 # publish
-cp quiz.html ._quiz*.html ../../pub/quiz
+cp -r quiz.html ._quiz*.html fig ../../pub/quiz
