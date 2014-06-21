@@ -1248,70 +1248,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             else:
                 instruction_line = False
 
-            # [[[
-            # Read the suggestions below. Multiple choice must be
-            # a separate functionality so we can insert !bmchoice also
-            # outside exercises. Just read the text into a data structure
-            # and let formats have a new SURVEY[format] function to typeset
-            # the questions. One can generate plain HTML or create full
-            # surveys, see TODO/quiz.do.txt.
-
-            # Start interpreting exercises with interpret_mchoice, which
-            # grabs all !bmchoice envirs, generates the corresponding
-            # doconce and format code, and js code. Best if we have one
-            # js code for all multiple-choce questions. What if we
-            # have !split? Then the js code should only display the
-            # relevant code. Best if forms are plain HTML and that
-            # the js code is only used for answer feedback (then it can be
-            # common to all pages and inserted in all pages).
-            # Make this for HTML first. Just replace renderQuiz with
-            # the plain HTML code in INF1100 quiz. Need a Check my answer
-            # button, Try again, and My score under each question
-            # such that the user can get feedback on the score so far
-
-            # Regarding syntax: must allow the question to be arbitrarily
-            # doconce-complex, i.e., have movies, lists, whatever.
-            # Each choice and explanation can also be complex or quick.
-            # Maybe have two types of syntax: one begin-end for complex
-            # stuff, and one compact and simple as suggested below.
-            # No, think Q:.+ up to next ^(E|Q|Cf|Cr): notation at the
-            # beginning of the line is sufficient, as explained below.
-
-            # syntax:
-            # T: title (or give it as part of header !bmchoice title)
-            # Q: can be multiline whatever (up to C(f|r):)
-            # A: answer-type: default (none) means choices; text, radio, check
-            # Don't need this since multiple Cr means check
-            # Cr: right choice
-            # C: just a choice (for survey), check or radio according to A:
-            # E: corresponding explanation to last C/Cr/Cw
-            # Cw: another but wrong answer, can be multiline
-            # regex (inside all the bmchoice text): (Cw|Cr):.+?^(E|Cw|Cr|ENDMARKER), re.DOTALL, problem: if not E:, re.findall will not pick out all because the match goes up to and including the next Cw/Cr. Maybe look ahead at ^(E|Cw|Cr|ENDMARKER) can solve this? Try out first! (Must add ENDMARKER to the end of the text)
-            # Could add a remarks section for lessons learned, etc.?
-            #
-
-            # Example code: intro-programming quiz, that is basic js
-            # Really simple, read this first about HTML and jquery!!: http://www.hungrypiranha.org/make-a-website/html-quiz (seems more straightforward than any other solution)
-            # Some js theory for pop-up surveys: http://www.jensbits.com/2010/01/29/pop-up-survey-with-jquery-ui-dialog/
-            # Simple js: https://www.inkling.com/read/javascript-jquery-david-sawyer-mcfarland-2nd/chapter-3/tutorial-a-simple-quiz
-            # are jQuery.Survey: http://flesler.webs.com/jQuery.Survey/ (see source for use), see also https://github.com/jdarling/jQuery.Survey
-
-            # syntax: Cw/Cr: ..., required E: ... for explanation (can be empty)
-            # Cw is a false choice, Cr is a right choice (or False:/True:)
-            # Easy to use a regex to pick out the structure of the multiple
-            # choice text (False|True):(.+?)(E|Explanation|$): (with $ explanations are optional - NO!!)
-            # Better: do a split on True: and then a split on False,
-            # for each True/False, extract E: if it exists (split?)
-            # (E|Explanation):(.+?)($|False|True)
-            # HTML can generate JavaScript a la INF1100 quiz (put all
-            # js in the html file), latex can use fancy constructions,
-            # others can use a plain list. --with_sol determines if
-            # the solution is published (as for the answer/solution).
-            # Should have possibility to have textarea as answer to
-            # question for future smart regex checks of the answer, maybe
-            # also upload files.
-            # Should also have the possibility to include sound files
-            # for applause etc. from Dropbox/collected../ideas/doconce/sound
             if inside_subex and not instruction_line:
                 if inside_answer:
                     subex['answer'].append(lines[line_no])
@@ -1677,7 +1613,7 @@ def typeset_tables(filestr, format):
 def typeset_envirs(filestr, format):
     # Note: exercises are done (and translated to doconce syntax)
     # before this function is called. bt/bc are taken elsewhere.
-    # quiz is taken later
+    # quiz is taken later.
     envirs = doconce_envirs()[8:-1]
 
     for envir in envirs:
@@ -2489,7 +2425,20 @@ def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
     Find all multiple choice questions in the string (file) filestr.
     Return filestr with comment indications for various parts of
     the quizzes.
+
+    Method: extract all quizzes, replace each quiz by a new format
+    consisting of digested text between begin-end comments, run
+    doconce text transformations, interpret the begin-end comments
+    and store quiz info in a data structure, send data structure
+    to a format-specific function for final rendering (the text is
+    already in the right format).
     """
+    # Should have possibility to have textarea as answer to
+    # question for future smart regex checks of the answer, maybe
+    # also upload files.
+    # Should also have the possibility to include sound files
+    # for applause etc. from Dropbox/collected../ideas/doconce/sound
+
     pattern = '^!bquiz.+?^!equiz'
     quiztexts = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
     headings = [('', None)]*(len(quiztexts))
@@ -2565,6 +2514,13 @@ def interpret_quiz_text(text, insert_missing_heading= False,
 %s
 %s
 """ % (bct(tag), content, ect(tag))
+
+    # Keywords
+    pattern = r'^(K:(.+))$'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        keywords = [s.strip() for s in m.group(2).split(';')]
+        text = text.replace(m.group(1), begin_end_tags('keywords', str(keywords)))
 
     # Question
     pattern = r'(^Q:(.+?))(?=^C[rw]:)'
@@ -2645,6 +2601,11 @@ def extract_quizzes(filestr, format):
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['embedding'] = m.group(1).strip()
+        pattern = '^' + bct('keywords', cp) + '(.+?)' + ect('keywords', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        if m:
+            keywords = eval(m.group(1))  # should have list format
+            data[-1]['keywords'] = keywords
         pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:

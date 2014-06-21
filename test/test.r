@@ -81,7 +81,8 @@ Here are two lines that make up
 a block quote.
 !equote
 
-Here is a reference to Equation (ref{my:eq1}).
+Here are two references. Equation~(ref{my:eq1}) is fine. Eq.~(ref{my:eq1}) too.
+Even Equation (ref{my:eq1}) without the tilde.
 # #if FORMAT in ("sphinx", "html")
 This equation appears in another part if this document is split.
 # #endif
@@ -1085,7 +1086,7 @@ label{sec:this:exer:de}
 
 !bquiz
 H: SOlution of differential equation
-
+K: derivatives; exponential function; equation, differential; differential equation
 Q: Given
 
 !bt
@@ -1211,12 +1212,13 @@ What about inserting a quiz?
 !bquiz
 NP: Test of quizzes
 H: Capital of Norway
+K: capitals; basic intelligence; geography
 
-Q: What is the capital of Norway?
-Cw: Stockholm
+Q: [Fundamental test:] What is the capital of Norway?
+Cw: [Answer 1:] Stockholm
 E: Stockholm is the capital of Sweden.
-Cw: London
-Cr: Oslo
+Cw: [Answer 2:] London
+Cr: [Answer 3:] Oslo
 Cw: Bergen
 E: Those from Bergen would claim so, but nobody else.
 !equiz
@@ -2069,7 +2071,8 @@ a block quote.
 \end{quote}
 
 
-Here is a reference to Equation (\ref{my:eq1}).
+Here are two references. Equation~(\ref{my:eq1}) is fine. Eq.~(\ref{my:eq1}) too.
+Even Equation (\ref{my:eq1}) without the tilde.
 
 
 \subsection{Subsection 1}
@@ -3960,7 +3963,8 @@ a block quote.
 \end{quote}
 
 
-Here is a reference to Equation (\ref{my:eq1}).
+Here are two references. Equation~(\ref{my:eq1}) is fine. Eq.~(\ref{my:eq1}) too.
+Even Equation (\ref{my:eq1}) without the tilde.
 
 
 \subsection{Subsection 1}
@@ -5919,7 +5923,8 @@ a block quote.
 \end{quote}
 
 
-Here is a reference to Equation (\ref{my:eq1}).
+Here are two references. Equation~(\ref{my:eq1}) is fine. Eq.~(\ref{my:eq1}) too.
+Even Equation (\ref{my:eq1}) without the tilde.
 
 
 \subsection{Subsection 1}
@@ -7429,7 +7434,8 @@ Here is a list with subsubsection heading
 
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation |nbsp| (`my:eq1`_) is fine. Eq. |nbsp| (`my:eq1`_) too.
+Even Equation (`my:eq1`_) without the tilde.
 
 .. _subsec1:
 
@@ -8516,7 +8522,7 @@ References
    2011.
 
 .. [Ref08]
-   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec. |nbsp| 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
    *International Journal of Fluid Mechanics Research*,
    33(1),
    pp. 15-43,
@@ -8636,17 +8642,17 @@ What about inserting a quiz?
     <!-- begin quiz -->
     <hr>
     <p>
-    <b>Question:</b> What is the capital of Norway?</p>
+    <b>Fundamental test:</b> What is the capital of Norway?</p>
     
-    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
     Stockholm
     </div></p>
     
-    <p><div title="Wrong!"><b>Choice 2:</b>
+    <p><div title="Wrong!"><b>Answer 2:</b>
     London
     </div></p>
     
-    <p><div title="Right!"><b>Choice 3:</b>
+    <p><div title="Right!"><b>Answer 3:</b>
     Oslo
     </div></p>
     
@@ -8859,7 +8865,8 @@ Here is a list with subsubsection heading
 
 
 
-Here is a reference to Equation :eq:`my:eq1`.
+Here are two references. Equation |nbsp| :eq:`my:eq1` is fine. Eq. |nbsp| :eq:`my:eq1` too.
+Even Equation :eq:`my:eq1` without the tilde.
 This equation appears in another part if this document is split.
 
 .. _subsec1:
@@ -10067,7 +10074,7 @@ References
    2011.
 
 .. [Ref08]
-   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec. |nbsp| 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
    *International Journal of Fluid Mechanics Research*,
    33(1),
    pp. 15-43,
@@ -10187,17 +10194,17 @@ What about inserting a quiz?
     <!-- begin quiz -->
     <hr>
     <p>
-    <b>Question:</b> What is the capital of Norway?</p>
+    <b>Fundamental test:</b> What is the capital of Norway?</p>
     
-    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
     Stockholm
     </div></p>
     
-    <p><div title="Wrong!"><b>Choice 2:</b>
+    <p><div title="Wrong!"><b>Answer 2:</b>
     London
     </div></p>
     
-    <p><div title="Right!"><b>Choice 3:</b>
+    <p><div title="Right!"><b>Answer 3:</b>
     Oslo
     </div></p>
     
@@ -10399,7 +10406,8 @@ Here is a nested list:
 
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation (my:eq1) is fine. Eq. (my:eq1) too.
+Even Equation (my:eq1) without the tilde.
 
 
 ==== Subsection 1 ====
@@ -11502,7 +11510,7 @@ Filename: `selc_composed.pdf`.
  # H. P. Langtangen.     The FEMDEQS Program System,    *Department of Mathematics, University of Oslo*,    1989.
  # H. P. Langtangen.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    *SIAM Journal on Scientific Computing*,    13,    pp. 1394-1417,    1992.
  # M. Mortensen, H. P. Langtangen and G. N. Wells.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    *Advances in Water Resources*,    34(9),    [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],    2011.
- # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    *International Journal of Fluid Mechanics Research*,    33(1),    pp. 15-43,    2006.
+ # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    *International Journal of Fluid Mechanics Research*,    33(1),    pp. 15-43,    2006.
  # S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    *Physical Review B: Condensed Matter and Materials Physics*,    74,    2006.
 # J. B. Haga, H. Osnes and H. P. Langtangen.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    *International Journal of Analytical and Numerical Methods in Geomechanics*,    [http://dx.doi.org/10.1002/nag.1062 doi: 10.1002/nag.1062],    2011,    http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
 # H. P. Langtangen.     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,    Springer,    2003.
@@ -11744,7 +11752,8 @@ a block quote.
 
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation&nbsp;(my:eq1) is fine. Eq.&nbsp;(my:eq1) too.
+Even Equation (my:eq1) without the tilde.
 
 
 ==== Subsection 1 ====
@@ -12868,7 +12877,7 @@ Filename: <code>selc_composed.pdf</code>.
     [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],
     2011.
  <li> S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     ''International Journal of Fluid Mechanics Research'',
     33(1),
     pp. 15-43,
@@ -13157,7 +13166,8 @@ Here is a nested list:
 
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation (my:eq1) is fine. Eq. (my:eq1) too.
+Even Equation (my:eq1) without the tilde.
 
 
 == Subsection 1 ==
@@ -14216,7 +14226,7 @@ Filename: {{{selc_composed.pdf}}}.
  # H. P. Langtangen.     The FEMDEQS Program System,    //Department of Mathematics, University of Oslo//,    1989.
  # H. P. Langtangen.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    //SIAM Journal on Scientific Computing//,    13,    pp. 1394-1417,    1992.
  # M. Mortensen, H. P. Langtangen and G. N. Wells.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    //Advances in Water Resources//,    34(9),    [[http://dx.doi.org/10.1016/j.advwatres.2011.02.013|doi: 10.1016/j.advwatres.2011.02.013]],    2011.
- # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    //International Journal of Fluid Mechanics Research//,    33(1),    pp. 15-43,    2006.
+ # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    //International Journal of Fluid Mechanics Research//,    33(1),    pp. 15-43,    2006.
  # S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    //Physical Review B: Condensed Matter and Materials Physics//,    74,    2006.
 # J. B. Haga, H. Osnes and H. P. Langtangen.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    //International Journal of Analytical and Numerical Methods in Geomechanics//,    [[http://dx.doi.org/10.1002/nag.1062|doi: 10.1002/nag.1062]],    2011,    [[http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract]].
 # H. P. Langtangen.     //Computational Partial Differential Equations - Numerical Methods and Diffpack Programming//,    Springer,    2003.
@@ -14428,7 +14438,8 @@ Here is a list with subsubsection heading
 
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation (ref{my:eq1}) is fine. Eq. (ref{my:eq1}) too.
+Even Equation (ref{my:eq1}) without the tilde.
 
 Subsection 1
 
@@ -15213,6 +15224,8 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
 
 Exercise 7: Solution of differential equation
 
+['derivatives', 'exponential function', 'equation, differential', 'differential equation']
+
 Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -15340,7 +15353,7 @@ References
     "http://dx.doi.org/10.1016/j.advwatres.2011.02.013":doi: 10.1016/j.advwatres.2011.02.013,
     2011.
  8. S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
@@ -15428,15 +15441,17 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-What is the capital of Norway?
+['capitals', 'basic intelligence', 'geography']
 
-Stockholm
+[Fundamental test:] What is the capital of Norway?
+
+[Answer 1:] Stockholm
 
 Stockholm is the capital of Sweden.
 
-London
+[Answer 2:] London
 
-Oslo
+[Answer 3:] Oslo
 
 Bergen
 
@@ -15607,7 +15622,8 @@ Here is a list with subsubsection heading
 
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation (ref{my:eq1}) is fine. Eq. (ref{my:eq1}) too.
+Even Equation (ref{my:eq1}) without the tilde.
 
 Subsection 1
 ------------
@@ -16410,6 +16426,8 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
+['derivatives', 'exponential function', 'equation, differential', 'differential equation']
+
 Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -16543,7 +16561,7 @@ References
     U{doi: 10.1016/j.advwatres.2011.02.013<http://dx.doi.org/10.1016/j.advwatres.2011.02.013>},
     2011.
  8. S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     I{International Journal of Fluid Mechanics Research},
     33(1),
     pp. 15-43,
@@ -16637,15 +16655,17 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-What is the capital of Norway?
+['capitals', 'basic intelligence', 'geography']
 
-Stockholm
+[Fundamental test:] What is the capital of Norway?
+
+[Answer 1:] Stockholm
 
 Stockholm is the capital of Sweden.
 
-London
+[Answer 2:] London
 
-Oslo
+[Answer 3:] Oslo
 
 Bergen
 
@@ -16888,7 +16908,8 @@ Here is a list with subsubsection heading
         a block quote.
 
 
-Here is a reference to Equation (my:eq1).
+Here are two references. Equation (ref{my:eq1}) is fine. Eq. (ref{my:eq1}) too.
+Even Equation (ref{my:eq1}) without the tilde.
 
 Subsection 1
 ------------
@@ -17706,6 +17727,8 @@ And a test that the code lambda x: x+2 is correctly placed here::
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
+['derivatives', 'exponential function', 'equation, differential', 'differential equation']
+
 Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -17847,7 +17870,7 @@ References
     2011.
 
  8. S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
@@ -17953,15 +17976,17 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-What is the capital of Norway?
+['capitals', 'basic intelligence', 'geography']
 
-Stockholm
+[Fundamental test:] What is the capital of Norway?
+
+[Answer 1:] Stockholm
 
 Stockholm is the capital of Sweden.
 
-London
+[Answer 2:] London
 
-Oslo
+[Answer 3:] Oslo
 
 Bergen
 
@@ -18152,7 +18177,8 @@ Here is a nested list:
 
 
 
-Here is a reference to Equation \eqref{my:eq1}.
+Here are two references. Equation\ \eqref{my:eq1} is fine. Eq.\ \eqref{my:eq1} too.
+Even Equation \eqref{my:eq1} without the tilde.
 
 
 ### Subsection 1
@@ -19306,7 +19332,7 @@ Filename: `selc_composed.pdf`.
     [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
  8. \label{Glimsdal_et_al_20006} _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt_. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
@@ -19596,7 +19622,8 @@ is at the end with only one newline.
       "a block quote.\n",
       "!equote\n",
       "\n",
-      "Here is a reference to Equation Eq (my:eq1).\n",
+      "Here are two references. Equation Eq (my:eq1) is fine. Eq. Eq (my:eq1) too.\n",
+      "Even Equation Eq (my:eq1) without the tilde.\n",
       "\n",
       "\n",
       "### Subsection 1\n",
@@ -21039,6 +21066,10 @@ is at the end with only one newline.
       "<!-- --- quiz heading: SOlution of differential equation -->\n",
       "<!-- --- previous heading type: exercise -->\n",
       "\n",
+      "<!-- --- begin keywords --- -->\n",
+      "['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n",
+      "<!-- --- end keywords --- -->\n",
+      "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
       "Given"
@@ -21252,7 +21283,7 @@ is at the end with only one newline.
       "    2011.\n",
       "\n",
       " 8. \\label{Glimsdal_et_al_20006} _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt_. \n",
-      "    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,\n",
+      "    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,\n",
       "    *International Journal of Fluid Mechanics Research*,\n",
       "    33(1),\n",
       "    pp. 15-43,\n",
@@ -21358,13 +21389,18 @@ is at the end with only one newline.
       "<!-- --- quiz heading: Capital of Norway -->\n",
       "<!-- --- previous heading type: subsection -->\n",
       "\n",
+      "<!-- --- begin keywords --- -->\n",
+      "['capitals', 'basic intelligence', 'geography']\n",
+      "<!-- --- end keywords --- -->\n",
+      "\n",
+      "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
-      "What is the capital of Norway?\n",
+      "[Fundamental test:] What is the capital of Norway?\n",
       "<!-- --- end quiz question --- -->\n",
       "\n",
       "<!-- --- begin quiz choice 1 (wrong) --- -->\n",
-      "Stockholm\n",
+      "[Answer 1:] Stockholm\n",
       "<!-- --- end quiz choice 1 (wrong) --- -->\n",
       "\n",
       "<!-- --- begin explanation of choice 1 --- -->\n",
@@ -21372,11 +21408,11 @@ is at the end with only one newline.
       "<!-- --- end explanation of choice 1 --- -->\n",
       "\n",
       "<!-- --- begin quiz choice 2 (wrong) --- -->\n",
-      "London\n",
+      "[Answer 2:] London\n",
       "<!-- --- end quiz choice 2 (wrong) --- -->\n",
       "\n",
       "<!-- --- begin quiz choice 3 (right) --- -->\n",
-      "Oslo\n",
+      "[Answer 3:] Oslo\n",
       "<!-- --- end quiz choice 3 (right) --- -->\n",
       "\n",
       "<!-- --- begin quiz choice 4 (wrong) --- -->\n",
@@ -21688,7 +21724,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': '# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.',
+  'text': "# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n\n# --- begin keywords ---\n['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n# --- end keywords ---\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.",
   'title': 'Solution of differential equation',
   'type': 'Exercise',
   'type_visible': True},
@@ -21793,7 +21829,7 @@ iso-8859-1
 <blockquote>
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
-<p>Here is a reference to Equation ([my:eq1]).</p>
+<p>Here are two references. Equation ([my:eq1]) is fine. Eq. ([my:eq1]) too. Even Equation ([my:eq1]) without the tilde.</p>
 <h2 id="subsec1">Subsection 1</h2>
 <p>More text, with a reference back to Section [sec1] and [subsec1], and further to the sections [subsec1] and [subsubsec:ex], which encourages you to do the tasks in the Exercises [demo:ex:1] and [exer:some:formula]. Appendices [app1] and [app2] are also nice elements.</p>
 <h4 id="computer-code.">Computer code.</h4>
@@ -22509,7 +22545,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <blockquote>
 <p>Here are two lines that make up a block quote.</p>
 </blockquote>
-<p>Here is a reference to Equation .</p>
+<p>Here are two references. Equation  is fine. Eq.  too. Even Equation  without the tilde.</p>
 <h3 id="subsection-1">Subsection 1</h3>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
@@ -23246,7 +23282,7 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <li> <em>H. P. Langtangen</em>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989.</li>
 <li> <em>H. P. Langtangen</em>. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process, <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992.</li>
 <li> <em>M. Mortensen, H. P. Langtangen and G. N. Wells</em>. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations, <em>Advances in Water Resources</em>, 34(9), <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>, 2011.</li>
-<li> <em>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L</em>. Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics, <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006.</li>
+<li> <em>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L</em>. Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics, <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006.</li>
 <li> <em>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</em>. Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel, <em>Physical Review B: Condensed Matter and Materials Physics</em>, 74, 2006.</li>
 <li> <em>J. B. Haga, H. Osnes and H. P. Langtangen</em>. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media, <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>, <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>, 2011, <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract">http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</a>.</li>
 <li> <em>H. P. Langtangen</em>. <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>, Springer, 2003.</li>
@@ -25817,7 +25853,8 @@ Here is a nested list:
 
 
 <p>
-Here is a reference to Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a>.
+Here are two references. Equation&nbsp;<a href="._testdoc002.html#mjx-eqn-3">(3)</a> is fine. Eq.&nbsp;<a href="._testdoc002.html#mjx-eqn-3">(3)</a> too.
+Even Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a> without the tilde.
 This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
@@ -27367,7 +27404,7 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
@@ -27701,17 +27738,17 @@ $$
 <!-- begin quiz -->
 <hr>
 <p>
-<b>Question:</b> What is the capital of Norway?</p>
+<b>Fundamental test:</b> What is the capital of Norway?</p>
 
-<p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+<p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
 Stockholm
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 2:</b>
+<p><div title="Wrong!"><b>Answer 2:</b>
 London
 </div></p>
 
-<p><div title="Right!"><b>Choice 3:</b>
+<p><div title="Right!"><b>Answer 3:</b>
 Oslo
 </div></p>
 
@@ -28093,7 +28130,8 @@ Here is a nested list:
 
 
 <p>
-Here is a reference to Equation <b>(REF to equation my:eq1 not supported)</b>.
+Here are two references. Equation&nbsp;<b>(REF to equation my:eq1 not supported)</b> is fine. Eq.&nbsp;<b>(REF to equation my:eq1 not supported)</b> too.
+Even Equation <b>(REF to equation my:eq1 not supported)</b> without the tilde.
 This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
@@ -29076,6 +29114,11 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
 
+['derivatives', 'exponential function', 'equation, differential', 'differential equation']
+
+
+<p>
+
 Given
 
 <p>
@@ -29229,7 +29272,7 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_blank">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
@@ -29320,12 +29363,17 @@ What about inserting a quiz?
 
 <p>
 
-What is the capital of Norway?
+['capitals', 'basic intelligence', 'geography']
 
 
 <p>
 
-Stockholm
+[Fundamental test:] What is the capital of Norway?
+
+
+<p>
+
+[Answer 1:] Stockholm
 
 
 <p>
@@ -29335,12 +29383,12 @@ Stockholm is the capital of Sweden.
 
 <p>
 
-London
+[Answer 2:] London
 
 
 <p>
 
-Oslo
+[Answer 3:] Oslo
 
 
 <p>
@@ -29858,7 +29906,8 @@ Here is a nested list:
 
 
 <p>
-Here is a reference to Equation \eqref{my:eq1}.
+Here are two references. Equation&nbsp;\eqref{my:eq1} is fine. Eq.&nbsp;\eqref{my:eq1} too.
+Even Equation \eqref{my:eq1} without the tilde.
 This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
@@ -31055,7 +31104,7 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
@@ -31151,17 +31200,17 @@ What about inserting a quiz?
 <!-- begin quiz -->
 <hr>
 <p>
-<b>Question:</b> What is the capital of Norway?</p>
+<b>Fundamental test:</b> What is the capital of Norway?</p>
 
-<p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+<p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
 Stockholm
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 2:</b>
+<p><div title="Wrong!"><b>Answer 2:</b>
 London
 </div></p>
 
-<p><div title="Right!"><b>Choice 3:</b>
+<p><div title="Right!"><b>Answer 3:</b>
 Oslo
 </div></p>
 
@@ -31758,7 +31807,8 @@ a block quote.
 \end{quote}
 
 
-Here is a reference to Equation (\ref{my:eq1}).
+Here are two references. Equation~(\ref{my:eq1}) is fine. Eq.~(\ref{my:eq1}) too.
+Even Equation (\ref{my:eq1}) without the tilde.
 
 
 \paragraph{Subsection 1.}
@@ -36465,7 +36515,8 @@ Here is a nested list:
 
 
 <p>
-Here is a reference to Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a>.
+Here are two references. Equation&nbsp;<a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> is fine. Eq.&nbsp;<a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> too.
+Even Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> without the tilde.
 This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
@@ -38066,7 +38117,7 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
  <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
-    Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
@@ -38284,7 +38335,8 @@ Here is a list with subsubsection heading
 
 
 
-Here is a reference to Equation :ref:`(3.1) <Eq:my:eq1>`.
+Here are two references. Equation |nbsp| :ref:`(3.1) <Eq:my:eq1>` is fine. Eq. |nbsp| :ref:`(3.1) <Eq:my:eq1>` too.
+Even Equation :ref:`(3.1) <Eq:my:eq1>` without the tilde.
 This equation appears in another part if this document is split.
 
 .. _subsec1:
@@ -39509,7 +39561,7 @@ References
    2011.
 
 .. [Ref08]
-   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec.~26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec. |nbsp| 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
    *International Journal of Fluid Mechanics Research*,
    33(1),
    pp. 15-43,
@@ -39629,17 +39681,17 @@ What about inserting a quiz?
     <!-- begin quiz -->
     <hr>
     <p>
-    <b>Question:</b> What is the capital of Norway?</p>
+    <b>Fundamental test:</b> What is the capital of Norway?</p>
     
-    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Choice 1:</b>
+    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
     Stockholm
     </div></p>
     
-    <p><div title="Wrong!"><b>Choice 2:</b>
+    <p><div title="Wrong!"><b>Answer 2:</b>
     London
     </div></p>
     
-    <p><div title="Right!"><b>Choice 3:</b>
+    <p><div title="Right!"><b>Answer 3:</b>
     Oslo
     </div></p>
     
@@ -73729,7 +73781,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Jun 20 23:28:12 2014.
+# sphinx-quickstart on Sat Jun 21 15:33:53 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -88844,6 +88896,12 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
+
+
+
+
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -88951,7 +89009,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1058.
+t line 1059.
 
 
 
@@ -88971,7 +89029,7 @@ t line 1058.
 
 
 
-t line 1067.
+t line 1068.
 
 
 
@@ -88991,7 +89049,7 @@ t line 1067.
 
 
 
-t line 1071.
+t line 1072.
 
 
 
@@ -89643,12 +89701,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=268, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=286, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -89689,17 +89747,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89723,7 +89781,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1058.
+t line 1059.
 
 
 
@@ -89743,7 +89801,7 @@ t line 1058.
 
 
 
-t line 1067.
+t line 1068.
 
 
 
@@ -89763,7 +89821,7 @@ t line 1067.
 
 
 
-t line 1071.
+t line 1072.
 
 
 
@@ -90332,12 +90390,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=268, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=286, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -90378,17 +90436,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90412,7 +90470,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1058.
+t line 1059.
 
 
 
@@ -90432,7 +90490,7 @@ t line 1058.
 
 
 
-t line 1067.
+t line 1068.
 
 
 
@@ -90452,7 +90510,7 @@ t line 1067.
 
 
 
-t line 1071.
+t line 1072.
 
 
 
@@ -91006,12 +91064,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=268, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=286, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -91052,17 +91110,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91618,8 +91676,8 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:336: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:336: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:337: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:337: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found

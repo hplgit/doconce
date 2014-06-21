@@ -295,7 +295,8 @@ def align2equations(filestr, format):
 
 def ref2equations(filestr):
     """
-    Replace references to equations:
+    Replace references to equations. Unless "Equation(s)" already
+    precedes the reference, the following transformations are done:
 
     (ref{my:label}) -> Equation (my:label)
     (ref{my:label1})-(ref{my:label2}) -> Equations (my:label1)-(my:label2)
@@ -303,6 +304,10 @@ def ref2equations(filestr):
     (ref{my:label1}), (ref{my:label2}) and (ref{my:label3}) -> Equations (my:label1), (my:label2) and (ref{my:label2})
 
     """
+    # "Store away" references that are prefixed by Equation/Eq.
+    filestr = re.sub(r'(Equations?|Eqs?\.)([ ~]) *(\(ref\{)',
+                     r'XXX___\g<1>\g<2>___XXX',  # coding of the prefix
+                     filestr)
     filestr = re.sub(r'\(ref\{(.+?)\}\)-\(ref\{(.+?)\}\)',
                      r'Equations (\g<1>)-(\g<2>)', filestr)
     filestr = re.sub(r'\(ref\{(.+?)\}\)\s+and\s+\(ref\{(.+?)\}\)',
@@ -312,13 +317,8 @@ def ref2equations(filestr):
     filestr = re.sub(r'\(ref\{(.+?)\}\)',
                      r'Equation (\g<1>)', filestr)
 
-    # Note that we insert "Equation(s)" here, assuming that this word
-    # is *not* used in running text prior to a reference. Sometimes
-    # sentences are started with "Equation ref{...}" and this double
-    # occurence of Equation must be fixed.
-
-    filestr = re.sub('Equation\s+Equation', 'Equation', filestr)
-    filestr = re.sub('Equations\s+Equations', 'Equations', filestr)
+    # Restore Equation/Eq. prefix
+    filestr = re.sub(r'XXX___(.+?)___XXX', r'\g<1>(ref{', filestr)
     return filestr
 
 def default_movie(m):
@@ -875,7 +875,7 @@ INLINE_TAGS = {
     #'non-breaking-space': r'(?<=[$A-Za-z0-9])~(?=[$A-Za-z0-9])',
     # This one allows HTML MathJax formulas and HTML tags to surround the ~
     # (i.e., after substitutions of $...$, color, etc.)
-    'non-breaking-space': r'(?<=[})>$A-Za-z0-9_`])~(?=[{\\<$A-Za-z0-9`:])',
+    'non-breaking-space': r'(?<=[})>$A-Za-z0-9_`.])~(?=[{(\\<$A-Za-z0-9`:])',
     'horizontal-rule': r'^----+$',
 
     }
