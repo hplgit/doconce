@@ -3193,7 +3193,6 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-
 % begin quiz
 \noindent
 
@@ -3202,23 +3201,25 @@ Given
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
 
-A.  
+\vspace{2mm}
+
+\textbf{A}. 
 $y=e^{-y}$
 
-B.  
+\textbf{B}. 
 $y=e^{y}$
 
-C.  
+\textbf{C}. 
 \bpycod
 from math import exp
 def f(x):
     return exp(x)
 \epycod
 
-D.  
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-E.  
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -3228,27 +3229,34 @@ for $x$ or $y$, not a function $y(x)$.
 % --- end answer of exercise ---
 
 % --- begin solution of exercise ---
-\paragraph{Solution.}
+\noindent {\bf Solution:}\\
 
-A:  Right. 
 
-B:  Wrong. Almost, but the sign is wrong (note the minus!).
+\textbf{A}: Right. 
 
-C:  Wrong. Ooops, forgot a minus: \code{exp(-x)}, otherwise this Python code
+\textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
+
+\textbf{C}: Wrong. Ooops, forgot a minus: \code{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
 \[ y(x) = e^{-y}.\]
 
-D:  Wrong. Equations with derivatives can be solved;
+\textbf{D}: Wrong. Equations with derivatives can be solved;
 they are termed \emph{differential
 equations}.
 
-E:  Wrong. 
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+% end quiz
+
 
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
@@ -3374,22 +3382,23 @@ With label.
 What about inserting a quiz?
 
 
-
 % begin quiz
 \noindent
-paragraph{Question:}
+\paragraph{Question:}
 What is the capital of Norway?
 
-A.  
+\vspace{2mm}
+
+\textbf{A}. 
 Stockholm
 
-B.  
+\textbf{B}. 
 London
 
-C.  
+\textbf{C}. 
 Oslo
 
-D.  
+\textbf{D}. 
 Bergen
 
 
@@ -3398,18 +3407,25 @@ Bergen
 % --- end answer of exercise ---
 
 % --- begin solution of exercise ---
-\paragraph{Solution.}
+\noindent {\bf Solution:}\\
 
-A:  Wrong. Stockholm is the capital of Sweden.
 
-B:  Wrong. 
+\textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-C:  Right. 
+\textbf{B}: Wrong. 
 
-D:  Wrong. Those from Bergen would claim so, but nobody else.
+\textbf{C}: Right. 
+
+\textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
 
 % --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+% end quiz
+
 
 
 
@@ -5187,7 +5203,6 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-
 % begin quiz
 \noindent
 
@@ -5196,13 +5211,15 @@ Given
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
 
-A.  
+\vspace{2mm}
+
+\textbf{A}. 
 $y=e^{-y}$
 
-B.  
+\textbf{B}. 
 $y=e^{y}$
 
-C.  
+\textbf{C}. 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from math import exp
 def f(x):
@@ -5210,10 +5227,10 @@ def f(x):
 \end{minted}
 \noindent
 
-D.  
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-E.  
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -5223,27 +5240,34 @@ for $x$ or $y$, not a function $y(x)$.
 % --- end answer of exercise ---
 
 % --- begin solution of exercise ---
-\paragraph{Solution.}
+\noindent {\bf Solution:}\\
 
-A:  Right. 
 
-B:  Wrong. Almost, but the sign is wrong (note the minus!).
+\textbf{A}: Right. 
 
-C:  Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
+\textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
+
+\textbf{C}: Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
 \[ y(x) = e^{-y}.\]
 
-D:  Wrong. Equations with derivatives can be solved;
+\textbf{D}: Wrong. Equations with derivatives can be solved;
 they are termed \emph{differential
 equations}.
 
-E:  Wrong. 
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+% end quiz
+
 
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
@@ -5372,22 +5396,23 @@ With label.
 What about inserting a quiz?
 
 
-
 % begin quiz
 \noindent
-paragraph{Question:}
+\paragraph{Question:}
 What is the capital of Norway?
 
-A.  
+\vspace{2mm}
+
+\textbf{A}. 
 Stockholm
 
-B.  
+\textbf{B}. 
 London
 
-C.  
+\textbf{C}. 
 Oslo
 
-D.  
+\textbf{D}. 
 Bergen
 
 
@@ -5396,18 +5421,25 @@ Bergen
 % --- end answer of exercise ---
 
 % --- begin solution of exercise ---
-\paragraph{Solution.}
+\noindent {\bf Solution:}\\
 
-A:  Wrong. Stockholm is the capital of Sweden.
 
-B:  Wrong. 
+\textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-C:  Right. 
+\textbf{B}: Wrong. 
 
-D:  Wrong. Those from Bergen would claim so, but nobody else.
+\textbf{C}: Right. 
+
+\textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
 
 % --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+% end quiz
+
 
 
 
@@ -7145,7 +7177,6 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-
 % begin quiz
 \noindent
 
@@ -7154,23 +7185,25 @@ Given
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
 
-A.  
+\vspace{2mm}
+
+\textbf{A}. 
 $y=e^{-y}$
 
-B.  
+\textbf{B}. 
 $y=e^{y}$
 
-C.  
+\textbf{C}. 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from math import exp
 def f(x):
     return exp(x)
 \end{minted}
 
-D.  
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-E.  
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -7180,27 +7213,34 @@ for $x$ or $y$, not a function $y(x)$.
 % --- end answer of exercise ---
 
 % --- begin solution of exercise ---
-\paragraph{Solution.}
+\noindent {\bf Solution:}\\
 
-A:  Right. 
 
-B:  Wrong. Almost, but the sign is wrong (note the minus!).
+\textbf{A}: Right. 
 
-C:  Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+\textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
+
+\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
 \[ y(x) = e^{-y}.\]
 
-D:  Wrong. Equations with derivatives can be solved;
+\textbf{D}: Wrong. Equations with derivatives can be solved;
 they are termed \emph{differential
 equations}.
 
-E:  Wrong. 
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+% end quiz
+
 
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
@@ -7329,22 +7369,23 @@ With label.
 What about inserting a quiz?
 
 
-
 % begin quiz
 \noindent
-paragraph{Question:}
+\paragraph{Question:}
 What is the capital of Norway?
 
-A.  
+\vspace{2mm}
+
+\textbf{A}. 
 Stockholm
 
-B.  
+\textbf{B}. 
 London
 
-C.  
+\textbf{C}. 
 Oslo
 
-D.  
+\textbf{D}. 
 Bergen
 
 
@@ -7353,18 +7394,25 @@ Bergen
 % --- end answer of exercise ---
 
 % --- begin solution of exercise ---
-\paragraph{Solution.}
+\noindent {\bf Solution:}\\
 
-A:  Wrong. Stockholm is the capital of Sweden.
 
-B:  Wrong. 
+\textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-C:  Right. 
+\textbf{B}: Wrong. 
 
-D:  Wrong. Those from Bergen would claim so, but nobody else.
+\textbf{C}: Right. 
+
+\textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
 
 % --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+% end quiz
+
 
 
 
@@ -22354,23 +22402,22 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <h2 id="sec:this:exer:de" class="unnumbered">Exercise : Solution of differential equation</h2>
 <p>Given</p>
 <p><span class="math">\[\frac{dy}{dx} = -y(x),\quad y(0)=1\]</span> What is the solution of this equation?</p>
-<p>A. <span class="math">\(y=e^{-y}\)</span></p>
-<p>B. <span class="math">\(y=e^{y}\)</span></p>
-<p>C.</p>
+<p><strong>A</strong>. <span class="math">\(y=e^{-y}\)</span></p>
+<p><strong>B</strong>. <span class="math">\(y=e^{y}\)</span></p>
+<p><strong>C</strong>.</p>
 <pre><code>from math import exp
 def f(x):
     return exp(x)</code></pre>
-<p>D. The solution cannot be found because there is a derivative in the equation.</p>
-<p>E. The equation is meaningless: an equation must be an equation for <span class="math">\(x\)</span> or <span class="math">\(y\)</span>, not a function <span class="math">\(y(x)\)</span>.</p>
+<p><strong>D</strong>. The solution cannot be found because there is a derivative in the equation.</p>
+<p><strong>E</strong>. The equation is meaningless: an equation must be an equation for <span class="math">\(x\)</span> or <span class="math">\(y\)</span>, not a function <span class="math">\(y(x)\)</span>.</p>
 <h4 id="answer">Answer:</h4>
 <p>A.</p>
-<h4 id="solution.-6">Solution.</h4>
-<p>A: Right.</p>
-<p>B: Wrong. Almost, but the sign is wrong (note the minus!).</p>
-<p>C: Wrong. Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation:</p>
+<p><br /> <strong>A</strong>: Right.</p>
+<p><strong>B</strong>: Wrong. Almost, but the sign is wrong (note the minus!).</p>
+<p><strong>C</strong>: Wrong. Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation:</p>
 <p><span class="math">\[y(x) = e^{-y}.\]</span></p>
-<p>D: Wrong. Equations with derivatives can be solved; they are termed <em>differential equations</em>.</p>
-<p>E: Wrong.</p>
+<p><strong>D</strong>: Wrong. Equations with derivatives can be solved; they are termed <em>differential equations</em>.</p>
+<p><strong>E</strong>: Wrong.</p>
 <h2 id="example-just-an-example" class="unnumbered">Example : Just an example</h2>
 <p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> What is the capital of Norway?</p>
 <h4 id="answer.-3">Answer.</h4>
@@ -22400,18 +22447,18 @@ def f(x):
 <p>With label.</p>
 <h2 id="test:title:id2">Appendix: Testing identical titles</h2>
 <p>What about inserting a quiz?</p>
-<p>paragraph<span>Question:</span> What is the capital of Norway?</p>
-<p>A. Stockholm</p>
-<p>B. London</p>
-<p>C. Oslo</p>
-<p>D. Bergen</p>
+<h4 id="question">Question:</h4>
+<p>What is the capital of Norway?</p>
+<p><strong>A</strong>. Stockholm</p>
+<p><strong>B</strong>. London</p>
+<p><strong>C</strong>. Oslo</p>
+<p><strong>D</strong>. Bergen</p>
 <h4 id="answer-1">Answer:</h4>
 <p>C.</p>
-<h4 id="solution.-7">Solution.</h4>
-<p>A: Wrong. Stockholm is the capital of Sweden.</p>
-<p>B: Wrong.</p>
-<p>C: Right.</p>
-<p>D: Wrong. Those from Bergen would claim so, but nobody else.</p>
+<p><br /> <strong>A</strong>: Wrong. Stockholm is the capital of Sweden.</p>
+<p><strong>B</strong>: Wrong.</p>
+<p><strong>C</strong>: Right.</p>
+<p><strong>D</strong>: Wrong. Those from Bergen would claim so, but nobody else.</p>
 <h2 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h2>
 <p>Without label.</p>
 <p>[Tip.] Here is a tip or hint box, typeset as a notice box.</p>
@@ -32889,7 +32936,6 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-
 % begin quiz
 \noindent
 
@@ -32898,25 +32944,33 @@ Given
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
 
-0.  $igcirc$ 
+\vspace{2mm}
+
+\textbf{A}. $\Box$ 
 $y=e^{-y}$
 
-1.  $igcirc$ 
+\textbf{B}. $\Box$ 
 $y=e^{y}$
 
-2.  $igcirc$ 
+\textbf{C}. $\Box$ 
 \bpycod
 from math import exp
 def f(x):
     return exp(x)
 \epycod
 
-3.  $igcirc$ 
+\textbf{D}. $\Box$ 
 The solution cannot be found because there is a derivative in the equation.
 
-4.  $igcirc$ 
+\textbf{E}. $\Box$ 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
+
+
+
+\vspace{3mm}
+
+% end quiz
 
 
 % --- end explanation of choice 5 ---
@@ -33037,23 +33091,30 @@ With label.
 What about inserting a quiz?
 
 
-
 % begin quiz
 \noindent
-paragraph{Question:}
+\paragraph{Question:}
 What is the capital of Norway?
 
-0.  $igcirc$ 
+\vspace{2mm}
+
+\textbf{A}. $\Box$ 
 Stockholm
 
-1.  $igcirc$ 
+\textbf{B}. $\Box$ 
 London
 
-2.  $igcirc$ 
+\textbf{C}. $\Box$ 
 Oslo
 
-3.  $igcirc$ 
+\textbf{D}. $\Box$ 
 Bergen
+
+
+
+\vspace{3mm}
+
+% end quiz
 
 
 
@@ -73530,7 +73591,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jun 22 12:56:04 2014.
+# sphinx-quickstart on Sun Jun 22 14:53:42 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -88094,6 +88155,8 @@ Other Publications:                 1
 Total:                              21
 
 Exported 21 paper(s) to papers.bib.
+*** warning: unrecognized command-line option
+    --latex_quiz_choice=number+circle
 running preprocess -DFORMAT=latex -DDEVICE=screen -DSOMEVAR testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'latex'}
@@ -88981,6 +89044,9 @@ Package amsmath Warning: Foreign command \over;
 ...rest of part of LaTeX line number...
 
 [16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.out.pyg)
+
+Underfull \hbox (badness 10000) 
+
 [20]
 
 
@@ -89008,6 +89074,8 @@ Package amsmath Warning: Foreign command \over;
 
 No file testdoc.bbl.
 [21]
+Underfull \hbox (badness 10000) 
+
 
 
 ...rest of part of LaTeX line number...
@@ -89689,9 +89757,15 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
-(./testdoc.out.pyg) [21]
+(./testdoc.out.pyg)
+Underfull \hbox (badness 10000) 
+
+[21]
 No file testdoc.bbl.
-[22] [23] [24]
+[22]
+Underfull \hbox (badness 10000) 
+
+[23] [24]
 No file testdoc.ind.
 [25] (./testdoc.aux)
 
@@ -90378,8 +90452,13 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
-(./testdoc.out.pyg) [21] (./testdoc.bbl [22] [23]) [24] [25] [26]
-(./testdoc.ind [27]
+(./testdoc.out.pyg)
+Underfull \hbox (badness 10000) 
+
+[21] (./testdoc.bbl [22] [23]) [24]
+Underfull \hbox (badness 10000) 
+
+[25] [26] (./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -90940,8 +91019,13 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
-(./testdoc.out.pyg) [21] (./testdoc.bbl [22] [23]) [24] [25] [26]
-(./testdoc.ind [27]
+(./testdoc.out.pyg)
+Underfull \hbox (badness 10000) 
+
+[21] (./testdoc.bbl [22] [23]) [24]
+Underfull \hbox (badness 10000) 
+
+[25] [26] (./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which

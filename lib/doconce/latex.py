@@ -1590,17 +1590,18 @@ def latex_inline_comment(m):
 
 def latex_quiz(quiz):
     part_of_exercise = quiz.get('embedding', 'None') in ['exercise',]
-    choice_tp = option('latex_quiz_choice=', 'letter+checkbox')
-    text = '\n\n% begin quiz\n\\noindent\n'
+    choice_tp = option('quiz_choice_prefix=', 'letter+checkbox')
+    text = '\n% begin quiz\n\\noindent\n'
     if not part_of_exercise:
-        text += r'paragraph{Question:}'
-    text += '\n' + quiz['question'] + '\n\n'
+        text += '\\paragraph{Question:}'
+    text += '\n' + quiz['question']
+    text += '\n\n\\vspace{2mm}\n\n'  # some space down to choices
     import string
     for i, choice in enumerate(quiz['choices']):
         if 'letter' in choice_tp:
-            text += string.uppercase[i] + '.  '
+            text += '\\textbf{%s}. ' % string.uppercase[i]
         elif 'number' in choice_tp:
-            text += str(i) + '.  '
+            text += '\\textbf{%s}. ' % str(i+1)
         if option('without_answers') and option('without_solutions'):
             if 'box' in choice_tp:
                 text += '$\Box$ '
@@ -1627,24 +1628,30 @@ def latex_quiz(quiz):
     if not option('without_solutions'):
         begin, end = envir_delimiter_lines['sol']
         solution = ''
+        one_line = True  # True if no explanations
+        for choice in quiz['choices']:
+            if len(choice) > 2:
+                one_line = False
+                break
+
         for i, choice in enumerate(quiz['choices']):
             if 'letter' in choice_tp:
-                solution += string.uppercase[i] + ':  '
+                solution += '\\textbf{%s}: ' % string.uppercase[i]
             else:
-                solution += str(i) + ':  '
+                solution += '\\textbf{%s}: ' % str(i+1)
             solution += choice[0].capitalize() + '. '
             if len(choice) == 3:
                 solution += choice[2]
-            solution += '\n\n'
-
+            if not one_line:
+                solution += '\n\n'
+        separator = '' if one_line else '\\\\\n\n'
         text += r"""
 %% %s
-\paragraph{Solution.}
-
+\noindent {\bf Solution:}%s
 %s
 %% %s
-""" % (begin, solution, end)
-
+""" % (begin, separator, solution, end)
+    text += '\n\n\\vspace{3mm}\n\n% end quiz\n\n'  # some space
 
     '''
     # For the exam documentclass

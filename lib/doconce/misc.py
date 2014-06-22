@@ -26,6 +26,8 @@ _registered_command_line_options = [
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
     ('--runestone', 'Make RunestoneInteractive version of a Sphinx docoment'),
+    ('--max_bc_linelength=',
+     'Strip lines in !bc environments that are longer than specified (to prevent too long lines). Default: None (no restriction on length).'),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
@@ -137,11 +139,6 @@ beamer: layout for beamer slides."""),
 loe: special, separate list of exercises,
 toc: exercises included as part of the table of contents,
 none (default): no list of exercises."""),
-    ('--latex_quiz_choice=', """Prefix for the choices in a quiz.
-Values: letter (default), number, checkbox, circle,
-or combinations like letter+checkbox. The checkbox or circle is
-always omitted if answers or solutions are included (i.e., if
-none of the --without_answers and --without_solutions is set)."""),
     ('--latex_movie=',
      """Specify package for handling movie/video content.
 Default: href (hyperlink to movie file).
@@ -276,11 +273,17 @@ Prefix/title before question in quizzes. Default: "Question:". Can also be
 set in square brackets for each individual question.
 ("Q: [] What is 1+1?" results in no prefix/title before the "What is 1+1?"."""),
     ('--quiz_choice_prefix=', """\
-Prefix/title before choices in quizzes. Default: "Choice", resulting in
+Prefix/title before choices in quizzes. Default for HTML: "Choice", resulting in
 numbered choices "Choice 1:", "Choice 2:", etc. A value with colon, period,
-or question mark (e.g., "Answer:") leaves out the numbering. Can also be
-set in square brackets for each individual choice.
-("Cr: [] Two" results in no prefix/title before the the answer "Two"."""),
+or question mark (e.g., "Answer:") leaves out the numbering.
+Default for latex/pdflatex: letter or letter+checkbox. Other values:
+number, number+checkbox, number+circle, letter+circle, letter.
+The checkbox or circle is always omitted if answers or solutions are
+included (i.e., if none of the --without_answers and --without_solutions
+is set).
+The choice prefix can also be set in square brackets for each individual choice.
+("Cr: [] Two" results in no prefix/title before the the answer "Two".
+"""),
     ('--quiz_horizontal_rule=', 'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
     ]
 

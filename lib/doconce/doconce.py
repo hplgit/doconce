@@ -2068,7 +2068,7 @@ def handle_figures(filestr, format):
                                 print """\
 *** warning: need to convert from %s to %s
 using ImageMagick's convert program, but the result will
-be loss of quality. Generate a proper %s file.""" % \
+be loss of quality. Generate a proper %s file (if possible).""" % \
                                 (figfile, converted_file, converted_file)
                         failure = os.system(cmd)
                         if not failure:
@@ -2461,7 +2461,9 @@ def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
     headings = [('', None)]*(len(quiztexts))
     # Find the heading before each quiz (can be compared with H: ...)
     pieces = filestr.split('!bquiz')
-    if len(pieces) == len(quiztexts) + 1:  # not any extra inline !bquiz word inside text, just !bquiz in quiz envirs
+    # Can only do this when there are no extra inline !bquiz words
+    # inside the text (because of the above split), just !bquiz in quiz envirs
+    if len(pieces) == len(quiztexts) + 1:
         for i, piece in enumerate(pieces[:-1]):
             for line in reversed(piece.splitlines()):
                 if line.startswith('===== '):
@@ -2524,6 +2526,11 @@ def interpret_quiz_text(text, insert_missing_heading= False,
                 previous_heading_tp = 'exercise'
         heading_comment = ct('--- quiz heading: ' + heading) + '\n' + ct('--- previous heading type: ' + str(previous_heading_tp))
         text = re.sub(pattern, heading_comment, text, flags=re.MULTILINE)
+    else:
+        # Give info about previous heading type
+        if previous_heading_tp is not None:
+            text = ct('--- previous heading type: ' + str(previous_heading_tp)) + '\n' + text
+
 
     def begin_end_tags(tag, content):
         return """

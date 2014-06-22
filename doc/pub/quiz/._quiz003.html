@@ -48,7 +48,17 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' The Python data structure for quizzes ',
                1,
                None,
-               '___sec12')]}
+               '___sec12'),
+              (' Interpreting the quiz format ', 1, None, '___sec13'),
+              (' HTML ', 2, None, '___sec14'),
+              (' Plain HTML ', 3, None, '___sec15'),
+              (' Bootstrap HTML ', 3, None, '___sec16'),
+              (' Multiple page HTML document ', 3, None, '___sec17'),
+              (' Setting the question and choice prefix ',
+               3,
+               None,
+               '___sec18'),
+              (' LaTeX ', 2, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -99,6 +109,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: "Code" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
      <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz003.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: "Interpreting the quiz format" --> <li><a href="._quiz004.html#___sec13" style="font-size: 80%;"><b>Interpreting the quiz format</b></a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._quiz004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz004.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
 
         </ul>
       </li>
@@ -205,6 +218,29 @@ package):
   <span style="color: #BA2121">&#39;question&#39;</span>: <span style="color: #BA2121">u&#39;We want to create a Python list object of length &lt;code&gt;n&lt;/code&gt; where each</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">element is &lt;code&gt;0&lt;/code&gt;. Is the following code then what we need?</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;p&gt;</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">mylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; numpy&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;/pre&gt;&lt;/div&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;p&gt;&#39;</span>}
 </pre></div>
 <p>
+<!-- There is no embedding key in the quiz dictionary representation since -->
+<!-- this document has !bquiz outside quiz environments (the method to -->
+<!-- extract the previous section header does not work in that case.) -->
+
+<p>
+The keys in the dictionaries in this data structure are
+
+<ul>
+ <li> <code>question</code>: the text of the question. This key is always present.</li>
+ <li> <code>no</code>: the number of the quiz (starts at 1). This key is always present.</li>
+ <li> <code>keywords</code>: a list of specified keywords for the quiz.</li>
+ <li> <code>choices</code>: list of all the choices as 2- or 3-lists. First element
+   is <code>right</code> or <code>wrong</code>, second is the text of the choice, the optional
+   third element is the explanation (if it was specified).</li>
+ <li> <code>choice prefix</code>: list of the prefix specified for each choice. <code>None</code>
+   implies the default prefix (depends on the format, see the documentation
+   of the <code>--quiz_choice_prefix=</code> option by typing <code>doconce format --help</code>).
+   This key is absent if there are no specifications of such a prefix.</li>
+ <li> <code>question prefix</code>: The prefix specified for the question, if different
+   from the default value <code>Question:</code>.</li>
+ <li> <code>new page</code>: Headline for a new page of quizzes - indicates that a
+   new page is to be made.</li>
+</ul>
 
 <p>
 <ul class="pager">
@@ -212,6 +248,9 @@ package):
     <a href="._quiz002.html">&larr; Prev</a>
   </li>
 
+  <li class="next">
+    <a href="._quiz004.html">Next &rarr;</a>
+  </li>
 
 </ul>
 <!-- ------------------- end of main content --------------- -->

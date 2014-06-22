@@ -2,9 +2,6 @@ TITLE: A Software Tool for Typesetting Quizzes
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
-!bwarning
-This is an ultra-preliminary draft of very incomplete documentation...
-!ewarning
 
 __Summary.__ This note describes a system for writing quizzes
 (multiple-choice questions) in a compact text format with support
@@ -29,8 +26,10 @@ Cw: Drammen
 Cr: Oslo
 Cw: Denmark
 !equiz
+# #if FORMAT == "html"
 Click on the pencil symbol to the left of _Choice_ to see whether the choice is
 correct or not.
+# #endif
 
 The above quiz can be specified by the compact text
 
@@ -349,7 +348,7 @@ join the ropes together, then I have five knots.*
 Cr: 4.
 E: Seems trivial, but once upon a time...
 
-FIGURE: [fig/1p1, width=180 frac=0.3]
+FIGURE: [fig/1p1, width=140 frac=0.2]
 
 Cw: The computation does not make sense when $a$ and $b$ are given without
 units.
@@ -392,13 +391,10 @@ To make sure blocks with equations come out correctly in different
 output formats (LaTeX, HTML, Sphinx, Markdown), only four types
 of standard LaTeX equation environments should be used:
 
- o Single equation without number: `\[ ... \]` or
-   `\begin{equation*} ... \end{equation*}`
- o Single equation with number: `\begin{equation} ... \end{equation}`
- o Multiple, aligned equations without numbers:
-   `\begin{align*} ... \end{align*}`
- o Multiple, aligned equations with numbers:
-   `\begin{align} ... \end{align}`
+ o Single equation without number: `\[ ... \]` or `equation*` environment
+ o Single equation with number: `equation` environment
+ o Multiple, aligned equations without numbers: `align*` environment
+ o Multiple, aligned equations with numbers: `align` environment
 
 This means that one has to stay away from `eqnarray`, `alignat`,
 and other common LaTeX equation environments. However, inside an equation,
@@ -417,6 +413,8 @@ label{cont:eq}
 \end{equation}
 !et
 is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
 
 Cw: The equation tells that the net outflow of something with
 velocity $\bm{u}$ in region is zero.
@@ -450,6 +448,11 @@ and consequently $\nabla\cdot\bm{u}=du/dx$, the vector field must be constant.
 !equiz
 
 The corresponding code needed to define this quiz is listed below.
+Note a new line: `K: gradient; divergence; ...`. This
+construction allows specification of a set of keywords separated
+by semi-colon. The feature is handy when automatically selecting
+quizzes from a large database. There is no output of the keywords
+in typeset quizzes.
 
 !bc
 |bquiz
@@ -462,6 +465,8 @@ label{cont:eq}
 \end{equation}
 |et
 is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
 
 Cw: The equation tells that the net outflow of something with
 velocity $\bm{u}$ in region is zero.
@@ -747,3 +752,108 @@ package):
   'no': 8,
   'question': u'We want to create a Python list object of length <code>n</code> where each\nelement is <code>0</code>. Is the following code then what we need?\n\n<p>\n\n<!-- code=python (!bc pycod) typeset with pygments style "default" -->\n<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>\nmylist <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros(n)\n</pre></div>\n<p>'}
 !ec
+
+# There is no embedding key in the quiz dictionary representation since
+# this document has !bquiz outside quiz environments (the method to
+# extract the previous section header does not work in that case.)
+
+The keys in the dictionaries in this data structure are
+
+ * `question`: the text of the question. This key is always present.
+ * `no`: the number of the quiz (starts at 1). This key is always present.
+ * `keywords`: a list of specified keywords for the quiz.
+ * `choices`: list of all the choices as 2- or 3-lists. First element
+   is `right` or `wrong`, second is the text of the choice, the optional
+   third element is the explanation (if it was specified).
+ * `choice prefix`: list of the prefix specified for each choice. `None`
+   implies the default prefix (depends on the format, see the documentation
+   of the `--quiz_choice_prefix=` option by typing `doconce format --help`).
+   This key is absent if there are no specifications of such a prefix.
+ * `question prefix`: The prefix specified for the question, if different
+   from the default value `Question:`.
+ * `new page`: Headline for a new page of quizzes - indicates that a
+   new page is to be made.
+
+!split
+======= Interpreting the quiz format =======
+
+The program `doconce` must be run to interpret the quiz format, translate
+it to LaTeX, HTML, or other formats, and produce the Python representation
+of the collection of quizzes in a document. Let the name of the
+document with quiz specifications and optional text be `myquiz.do.txt`.
+Documents to play around with are "`pure_quiz.do.txt`": "https://github.com/hplgit/doconce/tree/master/doc/src/quiz/pure_quiz.do.txt" or
+"the present document": "https://github.com/hplgit/doconce/tree/master/doc/src/quiz/quiz.do.txt".
+
+===== HTML =====
+
+=== Plain HTML ===
+
+A simple HTML rendering of quizzes is done by
+
+!bc sys
+Terminal> doconce format html myquiz
+!ec
+The result `myquiz.html` can be loaded into a browser.
+
+=== Bootstrap HTML ===
+
+A more sophisticated rendering is offered if a Bootstrap HTML style
+is adopted,
+
+!bc sys
+Terminal> doconce format html myquiz --html_style=bootstrap
+!ec
+Other variations of this class of styles are `bootswatch`, and
+`bootswatch_X`, where `X` is the name of a Bootswatch style, e.g.,
+`journal`.
+
+The Bootstrap-based styles have a striking red color for inline computer
+code, which can be avoided by giving the option `html_code_style=inherit`.
+See the documentation of "DocOnce and Bootstrap": "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" for details and examples.
+
+By default, there is a horizontal rule enclosing each quiz in the HTML format.
+This can be turned off by the option `--quiz_horizontal_rule=off`.
+
+=== Multiple page HTML document ===
+
+By inserting `!split` before headings in a DocOnce document, one can run
+
+!bc sys
+Terminal> doconce split_html myquiz.html
+!ec
+to create a multi-page document with navigation arrows. Bootstrap styles
+will also have a *Contents* pull-down menu to the right in the top bar.
+Without the `split_html` command (and `!split` instructions in the document),
+all the text will be in one HTML page.
+
+=== Setting the question and choice prefix ===
+
+The prefix before a question is `Question:` and before a choice is `Choice X`,
+where `X` is a number. To set a different prefix, see the
+`--quiz_question_prefix` and `--quiz_choice_prefix` commands
+when running `doconce format --help`.
+
+===== LaTeX =====
+
+The standard command to produce a LaTeX document is
+
+!bc sys
+Terminal> doconce format pdflatex myquiz \
+          --without_answers --without_solutions
+!ec
+If desired, the correct answer to each quiz can be included by omitting
+`--without_answers`. Omitting `--without_solutions` will print
+the right answers and the available explanations below the quiz.
+
+The next steps are
+
+!bc sys
+Terminal> doconce ptex2tex myquiz envir=minted
+Terminal> pdflatex -shell-escape myquiz
+!ec
+to produce a PDF `myquiz.pdf`. The `doconce ptex2tex` step enables a lot
+of different typesetting of blocks of computer code.
+Here, we use the `minted` style, which applies the Pygments package.
+The default (no `envir` specification) is a plain LaTeX verbatim environment.
+Even more possibilities for typesetting computer code exist if
+one runs the `ptex2tex` program (and not `doconce ptex2tex`).

@@ -48,7 +48,17 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' The Python data structure for quizzes ',
                1,
                None,
-               '___sec12')]}
+               '___sec12'),
+              (' Interpreting the quiz format ', 1, None, '___sec13'),
+              (' HTML ', 2, None, '___sec14'),
+              (' Plain HTML ', 3, None, '___sec15'),
+              (' Bootstrap HTML ', 3, None, '___sec16'),
+              (' Multiple page HTML document ', 3, None, '___sec17'),
+              (' Setting the question and choice prefix ',
+               3,
+               None,
+               '___sec18'),
+              (' LaTeX ', 2, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -99,6 +109,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: "Code" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
      <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz003.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: "Interpreting the quiz format" --> <li><a href="._quiz004.html#___sec13" style="font-size: 80%;"><b>Interpreting the quiz format</b></a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._quiz004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz004.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
 
         </ul>
       </li>
@@ -162,7 +175,7 @@ Good attempt, especially when referring to the following story.
 Seems trivial, but once upon a time...
 
 <p>
-<center><p><img src="fig/1p1.gif" align="bottom" width=180></p></center>
+<center><p><img src="fig/1p1.gif" align="bottom" width=140></p></center>
 </div></p>
 </div>
 </p>
@@ -222,13 +235,10 @@ output formats (LaTeX, HTML, Sphinx, Markdown), only four types
 of standard LaTeX equation environments should be used:
 
 <ol>
-<li> Single equation without number: <code>\[ ... \]</code> or
-   <code>\begin{equation*} ... \end{equation*}</code></li>
-<li> Single equation with number: <code>\begin{equation} ... \end{equation}</code></li>
-<li> Multiple, aligned equations without numbers:
-   <code>\begin{align*} ... \end{align*}</code></li>
-<li> Multiple, aligned equations with numbers:
-   <code>\begin{align} ... \end{align}</code></li>
+<li> Single equation without number: <code>\[ ... \]</code> or <code>equation*</code> environment</li>
+<li> Single equation with number: <code>equation</code> environment</li>
+<li> Multiple, aligned equations without numbers: <code>align*</code> environment</li>
+<li> Multiple, aligned equations with numbers: <code>align</code> environment</li>
 </ol>
 
 This means that one has to stay away from <code>eqnarray</code>, <code>alignat</code>,
@@ -251,7 +261,12 @@ $$
 \end{equation}
 $$
 
-is famous in physics. Select the wrong assertion(s):</p>
+is famous in physics. Select the wrong assertion(s):
+
+<p>
+<!-- --- begin keywords --- -->
+['gradient', 'divergence', 'curl', 'vector calculus']
+<!-- --- end keywords --- --></p>
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
@@ -336,6 +351,11 @@ and consequently \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
 
 <p>
 The corresponding code needed to define this quiz is listed below.
+Note a new line: <code>K: gradient; divergence; ...</code>. This
+construction allows specification of a set of keywords separated
+by semi-colon. The feature is handy when automatically selecting
+quizzes from a large database. There is no output of the keywords
+in typeset quizzes.
 
 <p>
 
@@ -350,6 +370,8 @@ label{cont:eq}
 \end{equation}
 !et
 is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
 
 Cw: The equation tells that the net outflow of something with
 velocity $\boldsymbol{u}$ in region is zero.

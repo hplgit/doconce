@@ -467,6 +467,22 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
      smaller and smaller parts of each file)"""
         _abort()
 
+    from misc import option
+    max_linelength = option('max_bc_linelength=', None)
+    if max_linelength is not None:
+        max_linelength = int(max_linelength)
+
+        for i in range(len(code_blocks)):
+            lines = code_blocks[i].splitlines()
+            truncated = False
+            for j in range(len(lines)):
+                if len(lines[j]) > max_linelength:
+                    lines[j] = lines[j][:max_linelength] + '...'
+                    truncated = True
+            if truncated:
+                code_blocks[i] = '\n'.join(lines) + '\n'
+
+
     lines = filestr.splitlines()
 
     # Note: re.sub cannot be used because newlines, \nabla, etc
