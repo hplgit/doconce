@@ -1702,10 +1702,12 @@ def typeset_lists(filestr, format, debug_info=[]):
     lastline = lines[0]
     # for debugging only:
     _code_block_no = 0; _tex_block_no = 0
-    exercise_comment_line = r'--- (begin|end) .*?exercise ---'
+    special_comment = r'--- (begin|end) [A-Za-z0-9,();\- ]*? ---'
+    #exercise_comment_line = r'--- (begin|end) .*?exercise ---'
 
     for i, line in enumerate(lines):
-        debugpr('\n------------------------\nsource line=[%s]' % line)
+        db_line = '[%s]' % line
+        #debugpr('\n------------------------\nsource line=[%s]' % line)
         # do a syntax check:
         for tag in INLINE_TAGS_BUGS:
             bug = INLINE_TAGS_BUGS[tag]
@@ -1723,7 +1725,8 @@ def typeset_lists(filestr, format, debug_info=[]):
             if not lists:
                 result.write(BLANKLINE[format])
             # else: drop writing out blank line inside lists
-                debugpr('  > This is a blank line')
+                db_line_tp = 'blank line'
+                #debugpr('  > This is a blank line')
             lastline = line
             continue
 
@@ -1732,17 +1735,18 @@ def typeset_lists(filestr, format, debug_info=[]):
             # first do some debug output:
             if line.startswith('#!!CODE') and len(debug_info) >= 1:
                 result.write(line + '\n')
-                debugpr('  > Here is a code block:\n%s\n--------' % \
-                      debug_info[0][_code_block_no])
+                db_line_tp = 'code block:\n%s\n-----------' % debug_info[0][_code_block_no]
+                #debugpr('  > Here is a code block:\n%s\n--------' % debug_info[0][_code_block_no])
                 _code_block_no += 1
             elif line.startswith('#!!TEX') and len(debug_info) >= 2:
                 result.write(line + '\n')
-                debugpr('  > Here is a latex block:\n%s\n--------' % \
-                      debug_info[1][_tex_block_no])
+                db_line_tp = 'latex block:\n%s\n-----------' % debug_info[0][_code_block_no]
+                #debugpr('  > Here is a latex block:\n%s\n--------' % debug_info[1][_tex_block_no])
                 _tex_block_no += 1
 
             else:
-                debugpr('  > This is just a comment line')
+                #debugpr('  > This is just a comment line')
+                db_line= 'comment line'
                 # the comment can be propagated to some formats
                 # (rst, latex, html):
                 if 'comment' in INLINE_TAGS_SUBST[format]:
@@ -1754,16 +1758,18 @@ def typeset_lists(filestr, format, debug_info=[]):
 
                     # Exercises has comment lines that make end of lists,
                     # let these be treated as ordinary new, nonindented
-                    # lines
-                    if not re.search(exercise_comment_line, line):
+                    # lines, same for special comments in quiz
+                    if not re.search(special_comment, line):
                         # Ordinary comment
                         result.write(new_comment + '\n')
+                        db_line_tp = 'comment'
                     else:
-                        # Special exercise comment (ordinary line)
+                        # Special comment (keep it as ordinary line)
                         line = new_comment  # will be printed later
+                        db_line_tp = 'special comment'
 
             lastline = line
-            if not re.search(exercise_comment_line, line):
+            if not re.search(special_comment, line):
                 # Ordinary comment
                 continue
             # else: just proceed and use zero indent as indicator
@@ -1783,7 +1789,8 @@ def typeset_lists(filestr, format, debug_info=[]):
             listtype = LIST_SYMBOL[listtype]
         keyword = m.group('keyword')
         text = m.group('text')
-        debugpr('  > indent=%d (previous indent=%d), keyword=[%s], text=[%s]' % (indent, lastindent, keyword, text))
+        db_indent = '  > indent=%d (from %d)' % (indent, lastindent)
+        #debugpr('  > indent=%d (previous indent=%d), keyword=[%s], text=[%s]' % (indent, lastindent, keyword, text))
 
         # new (sub)section makes end of any indent (we could demand
         # (sub)sections to start in column 1, but we have later relaxed
@@ -1794,7 +1801,8 @@ def typeset_lists(filestr, format, debug_info=[]):
 
 
         if indent > lastindent and listtype:
-            debugpr('  > This is a new list of type "%s"' % listtype)
+            #debugpr('  > This is a new list of type "%s"' % listtype)
+            db_line_tp = 'new list %s' % listtype
             # begin a new list or sublist:
             lists.append({'listtype': listtype, 'indent': indent})
             result.write(LIST[format][listtype]['begin'])
@@ -1814,15 +1822,15 @@ def typeset_lists(filestr, format, debug_info=[]):
             # end a list or sublist, nest back all list
             # environments on the lists stack:
             while lists and lists[-1]['indent'] > indent:
-                 debugpr('  > This is the end of a %s list' % \
-                       lists[-1]['listtype'])
-                 result.write(LIST[format][lists[-1]['listtype']]['end'])
-                 del lists[-1]
+                #debugpr('  > This is the end of a %s list' % lists[-1]['listtype'])
+                db_line_tp = 'end of a %s list' % lists[-1]['listtype']
+                result.write(LIST[format][lists[-1]['listtype']]['end'])
+                del lists[-1]
             lastindent = indent
 
-        if indent == lastindent:
-            debugpr('  > This line belongs to the previous block since it has '\
-                  'the same indent (%d blanks)' % indent)
+        #if indent == lastindent:
+        #    debugpr('  > This line belongs to the previous block since it has '\
+        #          'the same indent (%d blanks)' % indent)
 
         if listtype:
             # (a separator (blank line) is written above because we need
@@ -1835,7 +1843,8 @@ def typeset_lists(filestr, format, debug_info=[]):
                 itemformat = itemformat*len(lists)  # *, **, #, ## etc. for sublists
             item = itemformat
             if listtype == 'enumerate':
-                debugpr('  > This is an item in an enumerate list')
+                #debugpr('  > This is an item in an enumerate list')
+                db_line_tp = 'item enumerate list'
                 enumerate_counter += 1
                 if '%d' in itemformat:
                     item = itemformat % enumerate_counter
@@ -1854,8 +1863,8 @@ def typeset_lists(filestr, format, debug_info=[]):
                     if keyword:
                         keyword = parse_keyword(keyword, format) + ':'
                         item = itemformat % keyword + ' '
-                        debugpr('  > This is an item in a description list '\
-                              'with parsed keyword=[%s]' % keyword)
+                        #debugpr('  > This is an item in a description list with parsed keyword=[%s]' % keyword)
+                        db_line_tp = 'description list'
                         keyword = '' # to avoid adding keyword up in
                         # below (ugly hack, but easy linescan parsing...)
                     else:
@@ -1872,12 +1881,14 @@ def typeset_lists(filestr, format, debug_info=[]):
                     else:
                         result.write('\n' + ' '*(indent))
             else:
-                debugpr('  > This is an item in a bullet list')
+                #debugpr('  > This is an item in a bullet list')
+                db_line_tp = 'bullet list'
                 result.write(' '*(indent-2))  # indent here counts with '* '
                 result.write(item + ' ')
 
         else:
-            debugpr('  > This line is some ordinary line, no special list syntax involved')
+            #debugpr('  > This line is some ordinary line, no special list syntax involved')
+            db_line_tp = 'ordinary line'
             # should check emph, verbatim, etc., syntax check and common errors
             result.write(' '*indent)      # ordinary line
 
@@ -1886,7 +1897,8 @@ def typeset_lists(filestr, format, debug_info=[]):
         # line if a : present in an ordinary line
         if keyword:
             text = keyword + text
-        debugpr('text=[%s]' % text)
+        #debugpr('text=[%s]' % text)
+        db_result = '[%s]' % text
 
         # hack to make wiki have all text in an item on a single line:
         newline = '' if lists and format in ('gwiki', 'cwiki') else '\n'
@@ -1894,10 +1906,15 @@ def typeset_lists(filestr, format, debug_info=[]):
         result.write(text + newline)
         lastindent = indent
         lastline = line
+        if db_line_tp != 'ordinary line':
+            debugpr('%s (%s)\n--> %s' % (db_line, db_line_tp, db_result.rstrip()))
+        else:
+            pass
+            #debugpr('%s (%s)' % (db_line, db_line_tp))
 
     # end lists if any are left:
     while lists:
-        debugpr('  > This is the end of a %s list' % lists[-1]['listtype'])
+        debugpr('closing list: end of a %s list' % lists[-1]['listtype'])
         result.write(LIST[format][lists[-1]['listtype']]['end'])
         del lists[-1]
 
@@ -2577,7 +2594,6 @@ def extract_quizzes(filestr, format):
     ect = end_comment_tag
     cp = INLINE_TAGS_SUBST[format].get('comment', '# %s') # comment pattern
     if format in ("rst", "sphinx"):
-        # cp is function, replace by standard pattern
         cp = '.. %s\n'
     if not isinstance(cp, str):
         raise TypeError
@@ -2639,7 +2655,24 @@ def extract_quizzes(filestr, format):
         explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         for i_str, explanation in explanations:
             i = int(i_str)
-            data[-1]['choices'][i-1].append(explanation.strip())
+            try:
+                data[-1]['choices'][i-1].append(explanation.strip())
+            except IndexError:
+                print """
+*** error: quiz question
+"%s"
+has choices
+%s
+Something is wrong with the matching of choices and explanations
+(compare the list above with the source code of the quiz).
+This is a bug or wrong quiz syntax.
+
+The raw code of this quiz at this stage of processing reads
+
+%s
+""" % (data[-1]['question'], data[-1]['choices'], i, quiz)
+                _abort()
+
     return data, quizzes, filestr
 
 def typeset_quizzes2(filestr, format):
@@ -3227,25 +3260,6 @@ def doconce2format(filestr, format):
 
     debugpr('The file after typesetting of admons and the rest of the !b/!e environments:', filestr)
 
-    # Next step: remove exercise solution/answers, notes, etc
-    # (Note: must be done after code and tex blocks are inserted!
-    # Otherwise there is a mismatch between all original blocks
-    # and those present after solutions, answers, etc. are removed)
-    envir2option = dict(sol='solutions', ans='answers', hint='hints')
-    # Recall that the comment syntax is now dependent on the format
-    comment_pattern = INLINE_TAGS_SUBST[format].get('comment', '# %s')
-    for envir in 'sol', 'ans', 'hint':
-        option_name = 'without_' + envir2option[envir]
-        if option(option_name):
-            pattern = comment_pattern % envir_delimiter_lines[envir][0] + \
-                      '\n.+?' + comment_pattern % \
-                      envir_delimiter_lines[envir][1] + '\n'
-            replacement = comment_pattern % ('removed !b%s ... !e%s environment\n' % (envir, envir)) + comment_pattern % ('(because of the command-line option --%s)\n' % option_name)
-            filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
-
-
-    debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
-
     # Check if we have wrong-spelled environments
     if not option('examples_as_exercises'):
         pattern = r'^(![be].+)'
@@ -3275,7 +3289,7 @@ def doconce2format(filestr, format):
     # newcommands files are inserted)
     filestr = bm2boldsymbol(filestr, format)
 
-    # Final step: replace environments starting with | (instead of !)
+    # Next step: replace environments starting with | (instead of !)
     # by ! (for illustration of doconce syntax inside !bc/!ec directives).
     # Enough to consider |bc, |ec, |bt, and |et since all other environments
     # are processed when code and tex blocks are removed from the document.
@@ -3291,6 +3305,25 @@ def doconce2format(filestr, format):
         filestr = typeset_quizzes2(filestr, format)
         debugpr('The file after second reformatting of quizzes:', filestr)
         report_progress('handled second reformatting of quizzes')
+
+    # Next step: remove exercise solution/answers, notes, etc
+    # (Note: must be done after code and tex blocks are inserted!
+    # Otherwise there is a mismatch between all original blocks
+    # and those present after solutions, answers, etc. are removed)
+    envir2option = dict(sol='solutions', ans='answers', hint='hints')
+    # Recall that the comment syntax is now dependent on the format
+    comment_pattern = INLINE_TAGS_SUBST[format].get('comment', '# %s')
+    for envir in 'sol', 'ans', 'hint':
+        option_name = 'without_' + envir2option[envir]
+        if option(option_name):
+            pattern = comment_pattern % envir_delimiter_lines[envir][0] + \
+                      '\n.+?' + comment_pattern % \
+                      envir_delimiter_lines[envir][1] + '\n'
+            replacement = comment_pattern % ('removed !b%s ... !e%s environment\n' % (envir, envir)) + comment_pattern % ('(because of the command-line option --%s)\n' % option_name)
+            filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
+
+
+    debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
 
     cpu = time.time() - t0
     if cpu > 15:

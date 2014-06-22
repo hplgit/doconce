@@ -727,7 +727,7 @@ MathJax.Hub.Config({
                          if '!split' in m.group(2) else ''
                 text = '<div class="jumbotron">\n' + core + \
                        button + '\n</div> <!-- end jumbotron -->\n\n' + rest
-            filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+                filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
         # Fix slidecells? Just a start...this is hard...
         if '<!-- !bslidecell' in filestr:
             filestr = process_grid_areas(filestr)

@@ -70,7 +70,7 @@ def rst_movie(m):
     return rst_text
 
 # these global patterns are used in st, epytext, plaintext as well:
-bc_regex_pattern = r'''([a-zA-Z0-9)'"`.*_\[\]{}#@=-^~+])[\n:.?!, ]\s*?^!bc.*?$'''
+bc_regex_pattern = r'''([a-zA-Z0-9)'"`.*_\[\]{}#@=-^~+-])[\n:.?!, ]\s*?^!bc.*?$'''
 bt_regex_pattern = r'''([a-zA-Z0-9)'"`.*_}=-^~])[\n:.?!, ]\s*?^!bt.*?$'''
 
 def rst_code(filestr, code_blocks, code_block_types,
@@ -87,12 +87,14 @@ def rst_code(filestr, code_blocks, code_block_types,
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
 
     # substitute !bc and !ec appropriately:
-    # the line before the !bc block must end in [a-zA-z0-9)"]
+    # the line before the !bc block must end in [a-zA-z0-9)"...]
     # followed by [\n:.?!,] see the bc_regex_pattern global variable above
     # (problems with substituting !bc and !bt may be caused by
     # missing characters in these two families)
     #c = re.compile(bc_regex_pattern, re.DOTALL)
     filestr = re.sub(bc_regex_pattern, r'\g<1>::\n\n', filestr, flags=re.MULTILINE|re.DOTALL)
+    # Need a fix for :: appended to special comment lines (---:: -> ---\nCode::)
+    filestr = re.sub(r' ---::\n\n', ' ---\nCode::\n\n', filestr)
     filestr = re.sub(r'^!ec\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '', filestr, flags=re.MULTILINE)
 
@@ -101,7 +103,7 @@ def rst_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'^!bt\n', '.. latex-math::\n\n', filestr, re.MULTILINE)
     #filestr = re.sub(r'^!bt\n', '.. latex::\n\n', filestr, re.MULTILINE)
 
-    # just use the same substitution as for code blocks:
+    # just use the same substitution for tex blocks as for code blocks:
     filestr = re.sub(bt_regex_pattern, r'\g<1>::\n', filestr,
                      flags=re.MULTILINE)
     #filestr = re.sub(r'^!et *\n', '\n\n', filestr, flags=re.MULTILINE)
@@ -571,4 +573,3 @@ def define(FILENAME_EXTENSION,
             _abort()
         else:
             INTRO['rst'] += nbsp
-

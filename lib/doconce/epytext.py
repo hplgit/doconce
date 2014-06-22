@@ -121,7 +121,8 @@ def define(FILENAME_EXTENSION,
         'module variable': '@var',
         }
     TOC['epytext'] = lambda x: '\n'  # no toc for epydoc
-    QUIZ['epytext'] = lambda quiz: '\nB{Cannot typeset quiz}: "%s"\n' % quiz.get('heading', '')
+    from plaintext import plain_quiz
+    QUIZ['epytext'] = plain_quiz
 
     #insert QUIZ in various .py files, plaintext can do something simple, problem: cannot insert headline and exercise because then the exercise is not interpreted! problem2: quiz will just be a part of an exercises, unrendered
     #solution problem1: typeset_quizzes1 inserts the headline if the first headline prior to the quiz is not Exercise: heading, if heading is missing see if it can be obtained from the last Exercise|Project|Problem heading (if last heading is of this type)

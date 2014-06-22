@@ -1589,19 +1589,90 @@ def latex_inline_comment(m):
                (name, comment, caption_comment)
 
 def latex_quiz(quiz):
+    part_of_exercise = quiz.get('embedding', 'None') in ['exercise',]
+    choice_tp = option('latex_quiz_choice=', 'letter+checkbox')
     text = '\n\n% begin quiz\n\\noindent\n'
-    # Don't write Question: ... if inside an exercise section
-    if quiz.get('embedding', 'None') in ['exercise',]:
-        pass
-    else:
+    if not part_of_exercise:
         text += r'paragraph{Question:}'
-    text += '\n' + quiz['question'] + '\n'
-    text += '\\begin{description}\n'
+    text += '\n' + quiz['question'] + '\n\n'
+    import string
     for i, choice in enumerate(quiz['choices']):
-        choice_no = i+1
-        text += '\\item[Choice %d:]\n%s\n' % (choice_no, choice[1])
-    text += '\\end{description}\n'
+        if 'letter' in choice_tp:
+            text += string.uppercase[i] + '.  '
+        elif 'number' in choice_tp:
+            text += str(i) + '.  '
+        if option('without_answers') and option('without_solutions'):
+            if 'box' in choice_tp:
+                text += '$\Box$ '
+            elif 'circle' in choice_tp:
+                text += '$\bigcirc$ '
+
+        text += '\n' + choice[1] + '\n\n'
+    from common import envir_delimiter_lines
+    if not option('without_answers'):
+        begin, end = envir_delimiter_lines['ans']
+        correct = [i for i, choice in enumerate(quiz['choices'])
+                   if choice[0] == 'right']
+        if 'letter' in choice_tp:
+            correct = [string.uppercase[i] for i in correct]
+        else:
+            # keep number but add 1
+            correct = [str(i+1) for i in correct]
+        correct = ', '.join(correct)
+        text += r"""
+%% %s
+\paragraph{Answer:} %s.
+%% %s
+""" % (begin, correct, end)
+    if not option('without_solutions'):
+        begin, end = envir_delimiter_lines['sol']
+        solution = ''
+        for i, choice in enumerate(quiz['choices']):
+            if 'letter' in choice_tp:
+                solution += string.uppercase[i] + ':  '
+            else:
+                solution += str(i) + ':  '
+            solution += choice[0].capitalize() + '. '
+            if len(choice) == 3:
+                solution += choice[2]
+            solution += '\n\n'
+
+        text += r"""
+%% %s
+\paragraph{Solution.}
+
+%s
+%% %s
+""" % (begin, solution, end)
+
+
+    '''
+    # For the exam documentclass
+    text += '\\begin{questions}\n'
+    # Don't write Question: ... if inside an exercise section
+    if not part_of_exercise:
+        text += r'paragraph{Question:}'
+    text += '\\question\n'
+    text += '\n' + quiz['question'] + '\n'
+    if choice_tp in ('letter', 'number'):
+        text += '\\begin{choices}\n'
+        latex_choice_tp = 'choices'
+    elif choice_tp == 'checkbox':
+        text += '\\begin{checkboxes}\n'
+        latex_choice_tp = 'checkboxes'
+    for i, choice in enumerate(quiz['choices']):
+        # choice is ['wrong/right', choice] or ['wrong/right', choice, explanation]
+        text += '\\choice\n' + choice[1] + '\n'
+    text += '\\end{%s}\n' % latex_choice_tp
+    text += '\\end{questions}\n'
+
     text += '% end quiz\n\n'
+    """
+    # Add answers
+    if part_of_exercise and not option('without_answers'):
+        for i, choice in enumerate(quiz['choices']):
+    """
+    '''
     return text
 
 def define(FILENAME_EXTENSION,
@@ -1998,6 +2069,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
+
+    '''
+    # Package for quiz
+    # http://ctan.uib.no/macros/latex/contrib/exam/examdoc.pdf
+    # Requires documentclass{exam} and cannot be used in combination
+    # with other documentclass
+    if '!bquiz' in filestr:
+        INTRO['latex'] += r"""
+\usepackage{exam}            % for quiz typesetting
+\newcommand{\questionlabel}{}
+\CorrectChoiceEmphasis{\itshape}
+\checkboxchar{$\Box$}\checkedchar{$\blacksquare$}
+"""
+    '''
+
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
     linkcolor = 'linkcolor'

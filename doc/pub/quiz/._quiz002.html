@@ -184,7 +184,7 @@ It is indeed possible to add pure numbers without any units.
 
 
 <p>
-The source code for defining above quiz reads
+The source code for defining the above quiz reads
 
 <p>
 
@@ -335,7 +335,7 @@ and consequently \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
 
 
 <p>
-The corresponding code to define this quiz is listed below.
+The corresponding code needed to define this quiz is listed below.
 
 <p>
 
@@ -466,14 +466,43 @@ One would need to do <code>mylist = [0]*n</code> or <code>numpy.zeros(n).tolist(
 <!-- end quiz -->
 
 
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquiz
+Q: We want to create a Python list object of length `n` where each
+element is `0`. Is the following code then what we need?
+
+!bc pycod
+import numpy
+mylist = numpy.zeros(n)
+!ec
+
+Cw: Yes.
+
+E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
+
+Cw: Yes, provided we write `np` instead of `numpy`:
+
+!bc pycod
+import numpy as np
+mylist = np.zeros(n)
+!ec
+
+E: No, this is fully equivalent to the original code, so `mylist` becomes
+an array, not a list.
+
+Cr: No.
+E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
+!equiz
+</pre></div>
+
 <h2>Example: Putting it all together  <a name="___sec11"></a></h2>
 
 <!-- begin quiz -->
 
 <p>
-<b>Question:</b> Given a complete program
-
-<p>
+<b>Question:</b> <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin

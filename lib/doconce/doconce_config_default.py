@@ -56,6 +56,7 @@ html_links_in_new_window = False
 #latex_title_layout = 
 #latex_papersize = 
 #latex_list_of_exercises = 
+#latex_quiz_choice = 
 #latex_movie = 
 #latex_movie_controls = 
 latex_external_movie_viewer = False

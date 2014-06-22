@@ -46,7 +46,7 @@ cp testdoc.html testdoc_wordpress.html
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
 cp testdoc.html testdoc_no_solutions.html
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .

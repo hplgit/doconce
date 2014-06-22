@@ -132,7 +132,7 @@ def plain_box(text, title=''):
 
 def plain_quiz(quiz):
     # Simple typesetting of a quiz
-    s = ''
+    s = 'Here goes a quiz "%s"\nBut typesetting of quiz is not yet implemented in this format.' % quiz['question']
     return s
 
 def define(FILENAME_EXTENSION,

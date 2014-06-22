@@ -540,10 +540,39 @@ Cr: No.
 E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
 !equiz
 
+!bc
+|bquiz
+Q: We want to create a Python list object of length `n` where each
+element is `0`. Is the following code then what we need?
+
+|bc pycod
+import numpy
+mylist = numpy.zeros(n)
+|ec
+
+Cw: Yes.
+
+E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
+
+Cw: Yes, provided we write `np` instead of `numpy`:
+
+|bc pycod
+import numpy as np
+mylist = np.zeros(n)
+|ec
+
+E: No, this is fully equivalent to the original code, so `mylist` becomes
+an array, not a list.
+
+Cr: No.
+E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
+|equiz
+!ec
 
 ===== Example: Putting it all together =====
 
 !bquiz
+Q:
 
 !bc pypro
 from math import sin

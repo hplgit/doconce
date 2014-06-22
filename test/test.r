@@ -3201,25 +3201,54 @@ Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
-\begin{description}
-\item[Choice 1:]
+
+A.  
 $y=e^{-y}$
-\item[Choice 2:]
+
+B.  
 $y=e^{y}$
-\item[Choice 3:]
+
+C.  
 \bpycod
 from math import exp
 def f(x):
     return exp(x)
 \epycod
-\item[Choice 4:]
+
+D.  
 The solution cannot be found because there is a derivative in the equation.
-\item[Choice 5:]
+
+E.  
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
-\end{description}
-% end quiz
 
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} A.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+
+A:  Right. 
+
+B:  Wrong. Almost, but the sign is wrong (note the minus!).
+
+C:  Wrong. Ooops, forgot a minus: \code{exp(-x)}, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+\[ y(x) = e^{-y}.\]
+
+D:  Wrong. Equations with derivatives can be solved;
+they are termed \emph{differential
+equations}.
+
+E:  Wrong. 
+
+
+% --- end solution of exercise ---
 
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
@@ -3350,18 +3379,37 @@ What about inserting a quiz?
 \noindent
 paragraph{Question:}
 What is the capital of Norway?
-\begin{description}
-\item[Choice 1:]
-Stockholm
-\item[Choice 2:]
-London
-\item[Choice 3:]
-Oslo
-\item[Choice 4:]
-Bergen
-\end{description}
-% end quiz
 
+A.  
+Stockholm
+
+B.  
+London
+
+C.  
+Oslo
+
+D.  
+Bergen
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} C.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+
+A:  Wrong. Stockholm is the capital of Sweden.
+
+B:  Wrong. 
+
+C:  Right. 
+
+D:  Wrong. Those from Bergen would claim so, but nobody else.
+
+
+% --- end solution of exercise ---
 
 
 
@@ -5147,26 +5195,55 @@ Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
-\begin{description}
-\item[Choice 1:]
+
+A.  
 $y=e^{-y}$
-\item[Choice 2:]
+
+B.  
 $y=e^{y}$
-\item[Choice 3:]
+
+C.  
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from math import exp
 def f(x):
     return exp(x)
 \end{minted}
 \noindent
-\item[Choice 4:]
+
+D.  
 The solution cannot be found because there is a derivative in the equation.
-\item[Choice 5:]
+
+E.  
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
-\end{description}
-% end quiz
 
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} A.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+
+A:  Right. 
+
+B:  Wrong. Almost, but the sign is wrong (note the minus!).
+
+C:  Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+\[ y(x) = e^{-y}.\]
+
+D:  Wrong. Equations with derivatives can be solved;
+they are termed \emph{differential
+equations}.
+
+E:  Wrong. 
+
+
+% --- end solution of exercise ---
 
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
@@ -5300,18 +5377,37 @@ What about inserting a quiz?
 \noindent
 paragraph{Question:}
 What is the capital of Norway?
-\begin{description}
-\item[Choice 1:]
-Stockholm
-\item[Choice 2:]
-London
-\item[Choice 3:]
-Oslo
-\item[Choice 4:]
-Bergen
-\end{description}
-% end quiz
 
+A.  
+Stockholm
+
+B.  
+London
+
+C.  
+Oslo
+
+D.  
+Bergen
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} C.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+
+A:  Wrong. Stockholm is the capital of Sweden.
+
+B:  Wrong. 
+
+C:  Right. 
+
+D:  Wrong. Those from Bergen would claim so, but nobody else.
+
+
+% --- end solution of exercise ---
 
 
 
@@ -7057,25 +7153,54 @@ Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
-\begin{description}
-\item[Choice 1:]
+
+A.  
 $y=e^{-y}$
-\item[Choice 2:]
+
+B.  
 $y=e^{y}$
-\item[Choice 3:]
+
+C.  
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from math import exp
 def f(x):
     return exp(x)
 \end{minted}
-\item[Choice 4:]
+
+D.  
 The solution cannot be found because there is a derivative in the equation.
-\item[Choice 5:]
+
+E.  
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
-\end{description}
-% end quiz
 
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} A.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+
+A:  Right. 
+
+B:  Wrong. Almost, but the sign is wrong (note the minus!).
+
+C:  Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+\[ y(x) = e^{-y}.\]
+
+D:  Wrong. Equations with derivatives can be solved;
+they are termed \emph{differential
+equations}.
+
+E:  Wrong. 
+
+
+% --- end solution of exercise ---
 
 % --- end explanation of choice 5 ---
 \end{doconceexercise}
@@ -7209,18 +7334,37 @@ What about inserting a quiz?
 \noindent
 paragraph{Question:}
 What is the capital of Norway?
-\begin{description}
-\item[Choice 1:]
-Stockholm
-\item[Choice 2:]
-London
-\item[Choice 3:]
-Oslo
-\item[Choice 4:]
-Bergen
-\end{description}
-% end quiz
 
+A.  
+Stockholm
+
+B.  
+London
+
+C.  
+Oslo
+
+D.  
+Bergen
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} C.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+
+A:  Wrong. Stockholm is the capital of Sweden.
+
+B:  Wrong. 
+
+C:  Right. 
+
+D:  Wrong. Those from Bergen would claim so, but nobody else.
+
+
+% --- end solution of exercise ---
 
 
 
@@ -8387,7 +8531,8 @@ Exercise 7: Solution of differential equation
     </div></p>
     
     <p><div title="Wrong!"><b>Choice 3:</b>
-    !bc pycod
+    Code::
+    
             from math import exp
             def f(x):
                 return exp(x)
@@ -8406,7 +8551,6 @@ Exercise 7: Solution of differential equation
 
 
 .. --- end explanation of choice 5 ---
-
 .. --- end exercise ---
 
 .. --- begin exercise ---
@@ -9958,7 +10102,6 @@ Exercise 7: Solution of differential equation
 
 
 .. --- end explanation of choice 5 ---
-
 .. --- end exercise ---
 
 .. --- begin exercise ---
@@ -15224,44 +15367,13 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
 
 Exercise 7: Solution of differential equation
 
-['derivatives', 'exponential function', 'equation, differential', 'differential equation']
-
-Given::
+Here goes a quiz "Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 
-What is the solution of this equation?
-
-y=e^{-y}
-
-y=e^{y}
-
-Almost, but the sign is wrong (note the minus!)::
-
-        from math import exp
-        def f(x):
-            return exp(x)
-
-Ooops, forgot a minus: 'exp(-x)', otherwise this Python code
-must be considered as a good answer. It is more natural,
-though, to write the solution to the problem
-in mathematical notation::
-
-        \[ y(x) = e^{-y}.\]
-
-The solution cannot be found because there is a derivative in the equation.
-
-Equations with derivatives can be solved;
-they are termed *differential
-equations*.
-
-The equation is meaningless: an equation must be an equation
-for x or y, not a function y(x).
-
-Equations where the unknown is a function, as y(x)
-here, are called *differential equations*, and are solved by
-special techniques.
-
+What is the solution of this equation?"
+But typesetting of quiz is not yet implemented in this format.
+# --- end explanation of choice 5 ---
 # --- end exercise ---
 
 # --- begin exercise ---
@@ -15441,21 +15553,8 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-['capitals', 'basic intelligence', 'geography']
-
-[Fundamental test:] What is the capital of Norway?
-
-[Answer 1:] Stockholm
-
-Stockholm is the capital of Sweden.
-
-[Answer 2:] London
-
-[Answer 3:] Oslo
-
-Bergen
-
-Those from Bergen would claim so, but nobody else.
+Here goes a quiz "What is the capital of Norway?"
+But typesetting of quiz is not yet implemented in this format.
 
 Appendix: Testing identical titles
 
@@ -16426,44 +16525,13 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
-['derivatives', 'exponential function', 'equation, differential', 'differential equation']
-
-Given::
+Here goes a quiz "Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 
-What is the solution of this equation?
-
-M{y=e^{-y}}
-
-M{y=e^{y}}
-
-Almost, but the sign is wrong (note the minus!)::
-
-        from math import exp
-        def f(x):
-            return exp(x)
-
-Ooops, forgot a minus: C{exp(-x)}, otherwise this Python code
-must be considered as a good answer. It is more natural,
-though, to write the solution to the problem
-in mathematical notation::
-
-        \[ y(x) = e^{-y}.\]
-
-The solution cannot be found because there is a derivative in the equation.
-
-Equations with derivatives can be solved;
-they are termed I{differential
-equations}.
-
-The equation is meaningless: an equation must be an equation
-for M{x} or M{y}, not a function M{y(x)}.
-
-Equations where the unknown is a function, as M{y(x)}
-here, are called I{differential equations}, and are solved by
-special techniques.
-
+What is the solution of this equation?"
+But typesetting of quiz is not yet implemented in this format.
+# --- end explanation of choice 5 ---
 # --- end exercise ---
 
 # --- begin exercise ---
@@ -16655,21 +16723,8 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-['capitals', 'basic intelligence', 'geography']
-
-[Fundamental test:] What is the capital of Norway?
-
-[Answer 1:] Stockholm
-
-Stockholm is the capital of Sweden.
-
-[Answer 2:] London
-
-[Answer 3:] Oslo
-
-Bergen
-
-Those from Bergen would claim so, but nobody else.
+Here goes a quiz "What is the capital of Norway?"
+But typesetting of quiz is not yet implemented in this format.
 
 Appendix: Testing identical titles
 ----------------------------------
@@ -17727,44 +17782,13 @@ And a test that the code lambda x: x+2 is correctly placed here::
 Exercise 7: Solution of differential equation
 ---------------------------------------------
 
-['derivatives', 'exponential function', 'equation, differential', 'differential equation']
-
-Given::
+Here goes a quiz "Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 
-What is the solution of this equation?
-
-y=e^{-y}
-
-y=e^{y}
-
-Almost, but the sign is wrong (note the minus!)::
-
-        from math import exp
-        def f(x):
-            return exp(x)
-
-Ooops, forgot a minus: exp(-x), otherwise this Python code
-must be considered as a good answer. It is more natural,
-though, to write the solution to the problem
-in mathematical notation::
-
-        \[ y(x) = e^{-y}.\]
-
-The solution cannot be found because there is a derivative in the equation.
-
-Equations with derivatives can be solved;
-they are termed *differential
-equations*.
-
-The equation is meaningless: an equation must be an equation
-for x or y, not a function y(x).
-
-Equations where the unknown is a function, as y(x)
-here, are called *differential equations*, and are solved by
-special techniques.
-
+What is the solution of this equation?"
+But typesetting of quiz is not yet implemented in this format.
+# --- end explanation of choice 5 ---
 # --- end exercise ---
 
 # --- begin exercise ---
@@ -17976,21 +18000,8 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-['capitals', 'basic intelligence', 'geography']
-
-[Fundamental test:] What is the capital of Norway?
-
-[Answer 1:] Stockholm
-
-Stockholm is the capital of Sweden.
-
-[Answer 2:] London
-
-[Answer 3:] Oslo
-
-Bergen
-
-Those from Bergen would claim so, but nobody else.
+Here goes a quiz "What is the capital of Norway?"
+But typesetting of quiz is not yet implemented in this format.
 
 Appendix: Testing identical titles
 ----------------------------------
@@ -22343,23 +22354,23 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <h2 id="sec:this:exer:de" class="unnumbered">Exercise : Solution of differential equation</h2>
 <p>Given</p>
 <p><span class="math">\[\frac{dy}{dx} = -y(x),\quad y(0)=1\]</span> What is the solution of this equation?</p>
-<dl>
-<dt>Choice 1:</dt>
-<dd><p><span class="math">\(y=e^{-y}\)</span></p>
-</dd>
-<dt>Choice 2:</dt>
-<dd><p><span class="math">\(y=e^{y}\)</span></p>
-</dd>
-<dt>Choice 3:</dt>
-<dd><p>from math import exp def f(x): return exp(x)</p>
-</dd>
-<dt>Choice 4:</dt>
-<dd><p>The solution cannot be found because there is a derivative in the equation.</p>
-</dd>
-<dt>Choice 5:</dt>
-<dd><p>The equation is meaningless: an equation must be an equation for <span class="math">\(x\)</span> or <span class="math">\(y\)</span>, not a function <span class="math">\(y(x)\)</span>.</p>
-</dd>
-</dl>
+<p>A. <span class="math">\(y=e^{-y}\)</span></p>
+<p>B. <span class="math">\(y=e^{y}\)</span></p>
+<p>C.</p>
+<pre><code>from math import exp
+def f(x):
+    return exp(x)</code></pre>
+<p>D. The solution cannot be found because there is a derivative in the equation.</p>
+<p>E. The equation is meaningless: an equation must be an equation for <span class="math">\(x\)</span> or <span class="math">\(y\)</span>, not a function <span class="math">\(y(x)\)</span>.</p>
+<h4 id="answer">Answer:</h4>
+<p>A.</p>
+<h4 id="solution.-6">Solution.</h4>
+<p>A: Right.</p>
+<p>B: Wrong. Almost, but the sign is wrong (note the minus!).</p>
+<p>C: Wrong. Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation:</p>
+<p><span class="math">\[y(x) = e^{-y}.\]</span></p>
+<p>D: Wrong. Equations with derivatives can be solved; they are termed <em>differential equations</em>.</p>
+<p>E: Wrong.</p>
 <h2 id="example-just-an-example" class="unnumbered">Example : Just an example</h2>
 <p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> What is the capital of Norway?</p>
 <h4 id="answer.-3">Answer.</h4>
@@ -22390,20 +22401,17 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <h2 id="test:title:id2">Appendix: Testing identical titles</h2>
 <p>What about inserting a quiz?</p>
 <p>paragraph<span>Question:</span> What is the capital of Norway?</p>
-<dl>
-<dt>Choice 1:</dt>
-<dd><p>Stockholm</p>
-</dd>
-<dt>Choice 2:</dt>
-<dd><p>London</p>
-</dd>
-<dt>Choice 3:</dt>
-<dd><p>Oslo</p>
-</dd>
-<dt>Choice 4:</dt>
-<dd><p>Bergen</p>
-</dd>
-</dl>
+<p>A. Stockholm</p>
+<p>B. London</p>
+<p>C. Oslo</p>
+<p>D. Bergen</p>
+<h4 id="answer-1">Answer:</h4>
+<p>C.</p>
+<h4 id="solution.-7">Solution.</h4>
+<p>A: Wrong. Stockholm is the capital of Sweden.</p>
+<p>B: Wrong.</p>
+<p>C: Right.</p>
+<p>D: Wrong. Those from Bergen would claim so, but nobody else.</p>
 <h2 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h2>
 <p>Without label.</p>
 <p>[Tip.] Here is a tip or hint box, typeset as a notice box.</p>
@@ -32889,24 +32897,26 @@ Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
-\begin{description}
-\item[Choice 1:]
+
+0.  $igcirc$ 
 $y=e^{-y}$
-\item[Choice 2:]
+
+1.  $igcirc$ 
 $y=e^{y}$
-\item[Choice 3:]
+
+2.  $igcirc$ 
 \bpycod
 from math import exp
 def f(x):
     return exp(x)
 \epycod
-\item[Choice 4:]
+
+3.  $igcirc$ 
 The solution cannot be found because there is a derivative in the equation.
-\item[Choice 5:]
+
+4.  $igcirc$ 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
-\end{description}
-% end quiz
 
 
 % --- end explanation of choice 5 ---
@@ -33032,17 +33042,18 @@ What about inserting a quiz?
 \noindent
 paragraph{Question:}
 What is the capital of Norway?
-\begin{description}
-\item[Choice 1:]
+
+0.  $igcirc$ 
 Stockholm
-\item[Choice 2:]
+
+1.  $igcirc$ 
 London
-\item[Choice 3:]
+
+2.  $igcirc$ 
 Oslo
-\item[Choice 4:]
+
+3.  $igcirc$ 
 Bergen
-\end{description}
-% end quiz
 
 
 
@@ -33670,7 +33681,7 @@ cp testdoc.html testdoc_wordpress.html
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
 cp testdoc.html testdoc_no_solutions.html
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
@@ -39445,7 +39456,6 @@ Exercise 7: Solution of differential equation
 
 
 .. --- end explanation of choice 5 ---
-
 .. --- end exercise ---
 
 .. --- begin exercise ---
@@ -68407,31 +68417,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
-------------------------
-source line=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[Text with a name like &#197;smund &#216;deg&#229;rd works in general.]
-
-
-
-------------------------
-source line=[]
-
-
-  > This is a blank line
-
-
-
 ************************************************************
 unicode>>> The file after typesetting of lists:
 
@@ -68815,90 +68800,6 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *** List typesetting phase + comments and blank lines ***
-
-
-
-------------------------
-source line=[Text with a name like Åsmund Ødegård works in general.]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like Åsmund Ødegård works in general.]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[Text with a name like Åsmund Ødegård works in general.]
-
-
-
-------------------------
-source line=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[Verbatim blocks with non-ASCII text does not work for HTML, but it works]
-
-
-
-------------------------
-source line=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.]
-
-
-
-------------------------
-source line=[]
-
-
-  > This is a blank line
-
-
-
-------------------------
-source line=[0 <<<!!CODE_BLOCK ]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[0 <<<!!CODE_BLOCK ]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[0 <<<!!CODE_BLOCK ]
-
-
-
-------------------------
-source line=[]
-
-
-  > This is a blank line
 
 
 
@@ -69413,158 +69314,6 @@ $b = 1$ is a value suggested by Åsmund Ødegård.
 
 
 
-------------------------
-source line=[Text with a name like Åsmund Ødegård works in general.]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[Text with a name like Åsmund Ødegård works in general.]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[Text with a name like Åsmund Ødegård works in general.]
-
-
-
-------------------------
-source line=[]
-
-
-  > This is a blank line
-
-
-
-------------------------
-source line=[This block (in format html)]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[This block (in format html)]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[This block (in format html)]
-
-
-
-------------------------
-source line=[triggers use of `mako`. For all formats, `mako` has]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[triggers use of `mako`. For all formats, `mako` has]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[triggers use of `mako`. For all formats, `mako` has]
-
-
-
-------------------------
-source line=[problem with non-ASCII characters anywhere in the text. The remedy]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[problem with non-ASCII characters anywhere in the text. The remedy]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[problem with non-ASCII characters anywhere in the text. The remedy]
-
-
-
-------------------------
-source line=[for all formats is to read the file with UTF-8 encoding. With --debug]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[for all formats is to read the file with UTF-8 encoding. With --debug]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[for all formats is to read the file with UTF-8 encoding. With --debug]
-
-
-
-------------------------
-source line=[one can see the internal str/unicode representation of the text]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[one can see the internal str/unicode representation of the text]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[one can see the internal str/unicode representation of the text]
-
-
-
-------------------------
-source line=[through the various stages of the text transformation process.]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[through the various stages of the text transformation process.]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[through the various stages of the text transformation process.]
-
-
-
-------------------------
-source line=[]
-
-
-  > This is a blank line
-
-
-
-------------------------
-source line=[$b = 1$ is a value suggested by Åsmund Ødegård.]
-
-
-  > indent=0 (previous indent=0), keyword=[None], text=[$b = 1$ is a value suggested by Åsmund Ødegård.]
-
-
-  > This line belongs to the previous block since it has the same indent (0 blanks)
-
-
-  > This line is some ordinary line, no special list syntax involved
-
-
-text=[$b = 1$ is a value suggested by Åsmund Ødegård.]
-
-
-
 ************************************************************
 unicode>>> The file after typesetting of lists:
 
@@ -70036,9 +69785,9 @@ MathJax.Hub.Config({
 $$
 \renewcommand{\u}{\pmb{u}}
 
-\newcommand{\xbm}{\bm{x}}
-\newcommand{\normalvecbm}{\bm{n}}
-\newcommand{\ubm}{\bm{u}}
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
 $$
 
 
@@ -73781,7 +73530,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Jun 21 15:33:53 2014.
+# sphinx-quickstart on Sun Jun 22 12:56:04 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -74430,6 +74179,41 @@ n\in\mathbb N$ is via the Euler integral
 \[ \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,. \]
 !et
 
+************** File: .testdoc.quiz *****************
+[{'choices': [['right', '$y=e^{-y}$'],
+              ['wrong',
+               '$y=e^{y}$',
+               'Almost, but the sign is wrong (note the minus!).'],
+              ['wrong',
+               '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}\nfrom math import exp\ndef f(x):\n    return exp(x)\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',
+               'Ooops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n$$\n y(x) = e^{-y}.\n$$'],
+              ['wrong',
+               'The solution cannot be found because there is a derivative in the equation.',
+               'Equations with derivatives can be solved;\nthey are termed *differential\nequations*.'],
+              ['wrong',
+               'The equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.']],
+  'embedding': 'exercise',
+  'heading': ['SOlution', 'of', 'differential', 'equation'],
+  'keywords': ['derivatives',
+               'exponential function',
+               'equation, differential',
+               'differential equation'],
+  'no': 1,
+  'question': 'Given\n\n$$\n \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \n$$\nWhat is the solution of this equation?'},
+ {'choice prefix': ['Answer 1:', 'Answer 2:', 'Answer 3:', None],
+  'choices': [['wrong', 'Stockholm', 'Stockholm is the capital of Sweden.'],
+              ['wrong', 'London'],
+              ['right', 'Oslo'],
+              ['wrong',
+               'Bergen',
+               'Those from Bergen would claim so, but nobody else.']],
+  'embedding': 'subsection',
+  'heading': ['Capital', 'of', 'Norway'],
+  'keywords': ['capitals', 'basic intelligence', 'geography'],
+  'new page': 'Test of quizzes',
+  'no': 2,
+  'question': 'What is the capital of Norway?',
+  'question prefix': 'Fundamental test:'}]
 ************** File: tmp_Doconce.do.txt *****************
 
 TITLE: My Test of Class Doconce
@@ -88286,8 +88070,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
-+ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down
-+ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down
++ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
++ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
 
 Summary of papers
 -----------------
@@ -90594,12 +90378,12 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
-(./testdoc.out.pyg) [21] (./testdoc.bbl [22]) [23] [24] [25] (./testdoc.ind
-[26]
+(./testdoc.out.pyg) [21] (./testdoc.bbl [22] [23]) [24] [25] [26]
+(./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[27]) (./testdoc.aux)
+[28]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -90837,7 +90621,7 @@ public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (27 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -91156,12 +90940,12 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
-(./testdoc.out.pyg) [21] (./testdoc.bbl [22]) [23] [24] [25] (./testdoc.ind
-[26]
+(./testdoc.out.pyg) [21] (./testdoc.bbl [22] [23]) [24] [25] [26]
+(./testdoc.ind [27]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[27]) (./testdoc.aux)
+[28]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -91393,7 +91177,7 @@ public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (27 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted

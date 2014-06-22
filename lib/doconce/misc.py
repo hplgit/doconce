@@ -137,6 +137,11 @@ beamer: layout for beamer slides."""),
 loe: special, separate list of exercises,
 toc: exercises included as part of the table of contents,
 none (default): no list of exercises."""),
+    ('--latex_quiz_choice=', """Prefix for the choices in a quiz.
+Values: letter (default), number, checkbox, circle,
+or combinations like letter+checkbox. The checkbox or circle is
+always omitted if answers or solutions are included (i.e., if
+none of the --without_answers and --without_solutions is set)."""),
     ('--latex_movie=',
      """Specify package for handling movie/video content.
 Default: href (hyperlink to movie file).
