@@ -2608,6 +2608,9 @@ variables or call functions, while LaTeX mathematics sometimes applies
 the same syntax, e.g., `${\cal O}(\Delta x^2)$` which looks like a
 Mako function call. This problem can give rise to strange error
 messages from Mako, usually that a variable is not defined.
+The solution is to avoid such Mako-style syntax when writing
+LaTeX mathematics, e.g., by defining newcommands if it is otherwise
+problematic.
 !ewarning
 
 ===== The Basics of Mako =====
@@ -2663,7 +2666,74 @@ comment in Mako.
 <%doc/>
 !ec
 
-One can use Mako to extend the DocOnce syntax. Two examples are given next.
+One can use Mako to extend the DocOnce syntax. Three examples are given next.
+
+===== Example: Executing Python and using SymPy Objects in LaTeX =====
+
+Here is an example where we want to illustrate how to calculate a
+double integral. All mathematics is to be done in SymPy, and results
+are supposed to be embedded in the document's text.
+We can include Python code to be executed, anywhere in the document,
+and a variable `var` in the Python code is reached by `${var}`.
+Here, we run SymPy and use SymPy's LaTeX converter to make LaTeX
+code out of computed SymPy expressions:
+
+!bc
+# Execute Python code
+<%
+import sympy as sm
+x, y, a = sm.symbols('x y a')
+f = a*x + sm.sin(y)
+step1 = sm.Integral(f, x, y)
+step2 = sm.Integral(sm.Integralf, x).doit(), y)
+step3 = step2.doit()
+%>
+
+# Make use of results in the above block when writing LaTeX math
+|bt
+\begin{align*}
+${sm.latex(step1)} &= ${sm.latex(step2)}\\
+&= ${sm.latex(step3)}
+\end{align*}
+|et
+!ec
+
+The result of the LaTeX block above, after Mako is run, becomes
+
+!bc latexcod
+\begin{align*}
+\iint a x + y^{2} \sin{\left (y \right )}\, dx\, dy &=
+\int \frac{a x^{2}}{2} + x y^{2} \sin{\left (y \right )}\, dy\\
+&= \frac{a y}{2} x^{2} + x \left(- y^{2} \cos{\left (y \right )} +
+2 y \sin{\left (y \right )} + 2 \cos{\left (y \right )}\right)
+\end{align*}
+!ec
+
+Debugging Python code in Mako is less convenient than debugging Python
+files directly, so one may prefer to just include the Python code
+that Mako is supposed to run by
+
+!bc
+<%
+# #include "src/ex1.py"
+%>
+!ec
+This is the recommended way to make use of SymPy
+to automate the mathematical derivations: first develop and test
+the SymPy code files, include the files in the document inside
+Mako's Python code environment.
+
+__Remark.__ Executing Python code inside the DocOnce document is
+closely related to *literate programming*. Tools supporting
+creating a document while running a Python programming cover
+"Pweave": "http://mpastell.com/pweave/",
+"Python literate": "https://github.com/stdbrouw/python-literate",
+"PyWebTool": "http://pywebtool.sourceforge.net/",
+"Antiweb": "http://pythonhosted.org/antiweb/index.html",
+"Literate Programming in Python": "http://en.literateprograms.org/Literate_Programming_(Python)",
+"Pyreport": "http://gael-varoquaux.info/computers/pyreport/",
+and also IPython notebooks.
+
 
 ===== Example: Extending Tables to Handle Figures =====
 label{manual:tables:wfigs}
