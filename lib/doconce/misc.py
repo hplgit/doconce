@@ -2042,11 +2042,13 @@ def html_colorbullets():
         f.close()
 
 def _usage_split_html():
-    print 'Usage: doconce split_html mydoc.html --nav_button=name'
+    print 'Usage: doconce split_html mydoc.html --nav_button=name --pagination'
     print 'where name can be gray1, gray2, bigblue, blue, green, text'
     print '(name of navigation buttons, or just pure text for navigation).'
     print '-nav_button is ignored if doconce format html used'
     print '--html_theme=vagrant, bootstrap*, or bootswatch.'
+    print '\n--pagination means that one can click on pages at the button'
+    print 'if a bootstrap theme is used in the document.'
 
 def split_html():
     """
@@ -2337,7 +2339,8 @@ def doconce_split_html(header, parts, footer, basename, filename):
 
     if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        bootstrap_navigation_passive = """\
+        # This text is found in vagrant style and will be replaced later
+        bootstrap_navigation_vagrant = """\
 <!-- Navigation buttons at the bottom:
      Doconce will automatically fill in the right URL in these
      buttons when doconce html_split is run. Otherwise they are empty.
@@ -2351,22 +2354,38 @@ def doconce_split_html(header, parts, footer, basename, filename):
 </ul>
 -->
 """
-        bootstrap_navigation_active = """\
-<ul class="pager">
-%s
-%s
-</ul>
-"""
-        bootstrap_navigation_prev = """\
+        def bootstrap_navigation(pn, prev_part_filename, next_part_filename):
+            if '--pagination' in sys.argv and len(parts) < 19:
+                # Use Bootstrap pagination
+                text = '\n<ul class="pagination">\n'
+                if pn > 0:
+                    text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
+                for i in range(len(parts)):
+                    if i == pn:
+                       text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                    else:
+                       text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                if pn < len(parts)-1:
+                    text += '  <li><a href="%s">&raquo;</a></li>\n' % next_part_filename
+                text += '</ul>\n'
+            else:
+                # Use plain next and prev buttons with arrows, but
+                # Bootstrap style
+                text = '\n<ul class="pager">\n'
+                if pn > 0:
+                    text += """\
   <li class="previous">
-    <a href="%s">&larr; %s</a>
+    <a href="%s">&larr; Prev</a>
   </li>
-"""
-        bootstrap_navigation_next = """\
+""" % prev_part_filename
+                if pn < len(parts)-1:
+                    text += """\
   <li class="next">
-    <a href="%s">%s &rarr;</a>
+    <a href="%s">Next &rarr;</a>
   </li>
-"""
+""" % next_part_filename
+                text += '</ul>\n'
+            return text
     else:
         local_navigation_pics = False    # avoid copying images to subdir...
 
@@ -2564,11 +2583,8 @@ def doconce_split_html(header, parts, footer, basename, filename):
                               '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &raquo;</a></p>\n\n' % next_part_filename)
                         break
 
-            if pn > 0:
-               prev_ = bootstrap_navigation_prev % (prev_part_filename, "Prev")
-            if pn < len(parts)-1:
-               next_ = bootstrap_navigation_next % (next_part_filename, "Next")
-            buttons = bootstrap_navigation_active % (prev_, next_)
+
+            buttons = bootstrap_navigation(pn, prev_part_filename, next_part_filename)
         else:
             # Simple navigation buttons at the top and bottom of the page
             lines.append('<!-- begin top navigation -->') # for easy removal
@@ -2601,7 +2617,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
         lines.append('<p>\n')
         if vagrant:
             footer_text = ''.join(footer).replace(
-                bootstrap_navigation_passive, buttons)
+                bootstrap_navigation_vagrant, buttons)
             lines += footer_text.splitlines(True)
         elif bootstrap:
             lines += buttons.splitlines(True) + footer

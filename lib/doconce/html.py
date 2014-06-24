@@ -4,6 +4,11 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
 from misc import option
 
+# fold/unfold: use !bblock Title unfold
+# to indicate and use bootstrap choice unfolding for quiz as technique
+# Can with bootstrap typeset all answers and solutions in exercises
+# using folding
+
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
 
@@ -1320,6 +1325,23 @@ def html_toc(sections):
 
     return s
 
+def bootstrap_collapse(visible_text, collapsed_text,
+                       id, button_text='', icon='pencil'):
+    """Generate HTML Bootstrap code for a collapsing/unfolding text."""
+    text = """
+<p>
+<a class="glyphicon glyphicon-%(icon)s showdetails" data-toggle="collapse"
+ data-target="#%(id)s" style="font-size: 80%%;">%(button_text)s</a>
+%(visible_text)s
+<div class="collapse-group">
+<p><div class="collapse" id="%(id)s">
+%(collapsed_text)s
+</div></p>
+</div>
+</p>
+""" % vars()
+    return text
+
 def html_quiz(quiz):
     bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
     button_text = option('html_quiz_button_text=', '')
@@ -1330,7 +1352,7 @@ def html_quiz(quiz):
 
     text = ''
     if 'new page' in quiz:
-        text += '<!-- !split -->\n'
+        text += '<!-- !split -->\n<h2>%s</h2>' % quiz['new page']
 
     text += '<!-- begin quiz -->\n'
     # Don't write Question: ... if inside an exercise section
@@ -1393,6 +1415,7 @@ def html_quiz(quiz):
 </p>
 """ % (choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
             '''
+            '''
             text += """
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
@@ -1407,6 +1430,13 @@ def html_quiz(quiz):
 </div>
 </p>
 """ % (id, button_text, choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
+            '''
+            visible_text = '&nbsp;<b>%s</b>\n%s' % (choice_prefix, choice[1])
+            collapsed_text = '<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">\n%s' % ('correct' if choice[0] == 'right' else 'incorrect', expl)
+            text += bootstrap_collapse(
+               visible_text, collapsed_text,
+               id, button_text, icon='pencil')
+
     if not bootstrap and hr:
         text += '%s\n' % hr
     text += '<!-- end quiz -->\n'

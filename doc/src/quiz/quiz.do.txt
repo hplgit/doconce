@@ -47,7 +47,7 @@ Cw: Denmark
 
  * The quiz is specified between `!bquiz`
    (``begin quiz'') and `!equiz` (``end quiz'') tags.
- * The question starts right after `Q:`.
+ * The question starts right after `Q:` (``question'').
  * Wrong choices are specified with `Cw:`, and right choices with `Cr:`.
  * The instructions `!bquiz`, `!equiz`, `Q:`, `Cw:`, and `Cr:` must appear
    at the beginning of a line.
@@ -104,7 +104,7 @@ Cr: Oslo
 
 Cw: Denmark
 !equiz
-The corresponding typesetting applies `E: ...` after the choice to
+The quiz syntax applies `E: ...` after the choice to
 give an explanation of that choice.
 
 !bc
@@ -122,7 +122,7 @@ Cr: Oslo
 Cw: Denmark
 |equiz
 !ec
-This time we also added some spaces for enhanced reading of the text.
+This time we also added some whitespace for enhanced reading of the text.
 
 ===== Typesetting =====
 
@@ -185,68 +185,6 @@ quote.
 |equiz
 !ec
 
-===== Specification in HTML =====
-
-Instead of using the compact text specification with DocOnce
-formatting, one can use a more verbose syntax and specify everything
-in HTML. The previous example then reads
-
-## Note that the HTML text is indented such that it is not interpreted
-## as a quiz by DocOnce.
-
-!bc htmlcod
- <!-- --- begin quiz --- -->
- <!-- --- begin quiz question --- -->
- Here is a famous quote:
-
- <blockquote>
-     <em>Premature optimization is the root of all evil.</em>
- </blockquote>
-
- This quote is attributed to
- <!-- --- end quiz question --- -->
-
- <!-- --- begin quiz choice 1 (wrong) --- -->
- Geroge W. Bush
- <!-- --- end quiz choice 1 (wrong) --- -->
-
- <!-- --- begin quiz choice 2 (right) --- -->
- Donald Knuth
- <!-- --- end quiz choice 2 (right) --- -->
-
- <!-- --- begin explanation of choice 2 --- -->
- According to
- <a href="http://en.wikiquote.org/wiki/Donald_Knuth"
-  target="_self">Wikiquote</a>,
- Donald Knuth wrote this statement in <em>Structured Programming with
- Goto Statements</em>. Computing Surveys, <b>6</b>:4,
- pp. 261-301, <b>1974</b>.
- <!-- --- end explanation of choice 2 --- -->
-
- <!-- --- begin quiz choice 3 (wrong) --- -->
- Ole-Johan Dahl
- <!-- --- end quiz choice 3 (wrong) --- -->
-
- <!-- --- begin explanation of choice 3 --- -->
- Ole-Johan Dahl was a famous Norwegian professor of computer science
- and together with Kristen Nygaard the inventor of object-oriented
- programming, but he is not the man behind this quote.
- <!-- --- end explanation of choice 3 --- -->
- <!-- --- end quiz --- -->
-!ec
-This syntax applies begin-end comments to mark the start and end
-of the question, the choices, and the explanations.
-
-!bwarning
-The HTML specification of a quiz is not a meaningful HTML code for
-displaying the quiz in a browser, it is just an application of the
-HTML language to specify information and have full control of
-the typesetting details. Some program must interpret the
-HTML above and typset questions, choices, and explanations adequately.
-# #if FORMAT in ("sphinx", "html")
-(As done elsewhere in this document.)
-# #endif
-!ewarning
 
 # #ifdef DOCONCE
 ===== Quiz inside admonitions in DocOnce =====
@@ -323,6 +261,7 @@ precedes the text of this choice in the output.
 ======= Typesetting of mathematics and computer code =======
 
 ===== Mathematics =====
+label{sec:math}
 
 Mathematical typesetting follows a restricted LaTeX syntax. Inline
 formulas appear inside dollar signs, while separate equations
@@ -415,6 +354,7 @@ label{cont:eq}
 is famous in physics. Select the wrong assertion(s):
 
 K: gradient; divergence; curl; vector calculus
+L: div:assert
 
 Cw: The equation tells that the net outflow of something with
 velocity $\bm{u}$ in region is zero.
@@ -448,11 +388,19 @@ and consequently $\nabla\cdot\bm{u}=du/dx$, the vector field must be constant.
 !equiz
 
 The corresponding code needed to define this quiz is listed below.
-Note a new line: `K: gradient; divergence; ...`. This
-construction allows specification of a set of keywords separated
-by semi-colon. The feature is handy when automatically selecting
-quizzes from a large database. There is no output of the keywords
-in typeset quizzes.
+Note two new features:
+
+ * The `K: gradient; divergence; ...`
+   construction allows specification of a set of keywords separated
+   by semi-colon. The feature is handy when automatically selecting
+   quizzes from a large database. There is no output of the keywords
+   in typeset quizzes.
+ * `L: div:assert` defines a label for the quiz. This can be used
+   as a logical name in the same way as labels are used in LaTeX.
+   For example, a collection of labels can be specified for selecting
+   a collection quizzes. The label is invisible in a typeset quiz.
+
+Keywords and label should appear before or right after the question.
 
 !bc
 |bquiz
@@ -467,6 +415,7 @@ label{cont:eq}
 is famous in physics. Select the wrong assertion(s):
 
 K: gradient; divergence; curl; vector calculus
+L: div:assert
 
 Cw: The equation tells that the net outflow of something with
 velocity $\bm{u}$ in region is zero.
@@ -500,7 +449,7 @@ and consequently $\nabla\cdot\bm{u}=du/dx$, the vector field must be constant.
 |equiz
 !ec
 
-===== Code =====
+===== Computer code =====
 
 Inline computer code (variables, expressions, statements) are
 normally typeset with a monospace font, and this is enabled by
@@ -526,6 +475,8 @@ element is `0`. Is the following code then what we need?
 import numpy
 mylist = numpy.zeros(n)
 !ec
+
+K: list, array
 
 Cw: Yes.
 
@@ -554,6 +505,8 @@ element is `0`. Is the following code then what we need?
 import numpy
 mylist = numpy.zeros(n)
 |ec
+
+K: list, array
 
 Cw: Yes.
 
@@ -603,9 +556,13 @@ f(x) &= 2x.
 !et
 Determine which of the following assertions that is _wrong_.
 
+K: Python programming; debugging; lambda functions; finding errors
+
 Cw: In Python, the syntax for $t^2$ is `t**2`, not `t^2`, so the
 `u` function contains an error.
-E: True. However, `t^2` will work for integer `t` in Python, but the computation is nonsense in this case since $u(t)$ is supposed to be $t^2$.
+E: True. However, `t^2` will work for integer `t` in Python,
+but the computation is nonsense in this case since $u(t)$ is
+supposed to be $t^2$.
 
 Cw: The string in the `u` function is a valid doc string.
 E: Yes, a doc string can be any string after the function heading. It can
@@ -622,16 +579,15 @@ Python.
 
 Cr: One cannot use `u` both inside the `D` function and in the
 outer calling code (the main program).
-E: Yes, you can, because the `u` argument in the `D` function
-(holding a function)
-is a *local* variable inside the `D` function. The `u` in the calling
-code is *global* variable, holding a function object.
-Inside `D`, `u` refers to the
-local variable, while in the main program, `u` refers to the
-global variable, and the local variable `u` in `D` no longer exists, because
-it was deleted when returning from the function.
-Inside `D`, we can actually access the global `u` by `globals()['u']`,
-but that almost never comes to use and is also bad coding.
+E: Yes, you can, because the `u` argument in the `D` function (holding
+a function) is a *local* variable inside the `D` function. The `u` in
+the calling code is *global* variable, holding a function object.
+Inside `D`, `u` refers to the local variable, while in the main
+program, `u` refers to the global variable, and the local variable `u`
+in `D` no longer exists, because it was deleted when returning from
+the function.  Inside `D`, we can actually access the global `u` by
+`globals()['u']`, but that almost never comes to use and is also bad
+coding.
 
 Cw: The call `D(lambda x: return 2*x, 2)` is equivalent to defining
 
@@ -668,6 +624,113 @@ replace `t^2` by `t**2`.
 E: Yes, the finite difference approximation used in `D` is exact
 for quadratic polynomials!
 !equiz
+
+
+!split
+===== Specification in HTML =====
+
+Instead of using the compact text specification with DocOnce
+formatting, one can use a more verbose syntax and specify everything
+in HTML. The second example in Section ref{sec:math} then reads
+
+## Note that the HTML text is indented such that it is not interpreted
+## as a quiz by DocOnce.
+
+!bc htmlcod
+ <!-- --- begin quiz --- -->
+ <!-- --- begin quiz question --- -->
+ The equation
+
+ $$
+ \begin{equation}
+ \nabla\cdot\boldsymbol{u} = 0
+ \label{cont:eq}
+ \end{equation}
+ $$
+
+ is famous in physics. Select the wrong assertion(s):
+ <!-- --- end quiz question --- -->
+ <!-- --- keywords:['gradient', 'divergence', 'curl', 'vector calculus'] -->
+ <!-- --- label:div:assert -->
+
+ <!-- --- begin quiz choice 1 (wrong) --- -->
+ The equation tells that the net outflow of something with
+ velocity \( \boldsymbol{u} \) in region is zero.
+ <!-- --- end quiz choice 1 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 1 --- -->
+ This is right: integrating \eqref{cont:eq} over an arbitrary
+ domain \( \Omega \) and using Gauss' divergence theorem, we
+ get the surface integral
+
+ $$ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,$$
+
+ where \( \boldsymbol{n} \) is an outward unit normal on the
+ boundary \( \partial\Omega \).
+ The quantity \( \boldsymbol{u}\cdot\boldsymbol{n}dS \) is the
+ outflow of volume per time unit if \( \boldsymbol{u} \) is
+ velocity.
+ <!-- --- end explanation of choice 1 --- -->
+
+ <!-- --- begin quiz choice 2 (wrong) --- -->
+ The equation tells that the vector field \( \boldsymbol{u} \)
+ is divergence free.
+ <!-- --- end quiz choice 2 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 2 --- -->
+ Yes, <em>divergence free</em> is often used as synonym for
+ <em>zero divergence</em>, and \( \nabla\cdot\boldsymbol{u} \)
+ is the divergence of a vector field \( \boldsymbol{u} \).
+ <!-- --- end explanation of choice 2 --- -->
+
+ <!-- --- begin quiz choice 3 (wrong) --- -->
+ The equation implies that there exists a vector potential
+ \( \boldsymbol{A} \) such that
+ \( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
+ <!-- --- end quiz choice 3 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 3 --- -->
+ Yes, this is an important result in vector calculus that is much
+ used in electromagnetics.
+ <!-- --- end explanation of choice 3 --- -->
+
+ <!-- --- begin quiz choice 4 (right) --- -->
+ The equation implies \( \nabla\times\boldsymbol{u}=0 \).
+ <!-- --- end quiz choice 4 (right) --- -->
+
+ <!-- --- begin explanation of choice 4 --- -->
+ No, only if \( \boldsymbol{u}=\nabla\phi \), for some scalar
+ potential \( \phi \), we have \( \nabla\times\boldsymbol{u}=0 \).
+ <!-- --- end explanation of choice 4 --- -->
+
+ <!-- --- begin quiz choice 5 (right) --- -->
+ The equation implies that \( \boldsymbol{u} \)
+ must be a constant vector field.
+ <!-- --- end quiz choice 5 (right) --- -->
+
+ <!-- --- begin explanation of choice 5 --- -->
+ No, it is the <em>sum</em> of derivatives of different components
+ of \( \boldsymbol{u} \) that is zero. Only in one dimension,
+ where \( \boldsymbol{u}=u_x\boldsymbol{i} \) and consequently
+ \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
+ constant.
+ <!-- --- end explanation of choice 5 --- -->
+ <!-- --- end quiz --- -->
+!ec
+This syntax applies begin-end comments to mark the start and end
+of the question, the choices, and the explanations.
+
+!bwarning
+The HTML specification of a quiz is not a meaningful HTML code for
+displaying the quiz in a browser, it is just an application of the
+HTML language to specify information and have full control of
+the typesetting details. Some program must interpret the
+HTML above and typset questions, choices, and explanations adequately.
+# #if FORMAT in ("sphinx", "html")
+(As done elsewhere in this document.)
+# #endif
+!ewarning
+
 
 !split
 ======= The Python data structure for quizzes =======
@@ -761,18 +824,21 @@ The keys in the dictionaries in this data structure are
 
  * `question`: the text of the question. This key is always present.
  * `no`: the number of the quiz (starts at 1). This key is always present.
- * `keywords`: a list of specified keywords for the quiz.
+ * `keywords`: an optional list of keywords for the quiz.
+ * `label`: an optional logical name for this quiz.
  * `choices`: list of all the choices as 2- or 3-lists. First element
    is `right` or `wrong`, second is the text of the choice, the optional
-   third element is the explanation (if it was specified).
- * `choice prefix`: list of the prefix specified for each choice. `None`
-   implies the default prefix (depends on the format, see the documentation
+   third element is the explanation (if it was specified). This key
+   is always present.
+ * `choice prefix`: optional list of the prefix specified for each choice.
+   `None` implies the default prefix (depends on the format,
+   see the documentation
    of the `--quiz_choice_prefix=` option by typing `doconce format --help`).
    This key is absent if there are no specifications of such a prefix.
- * `question prefix`: The prefix specified for the question, if different
-   from the default value `Question:`.
- * `new page`: Headline for a new page of quizzes - indicates that a
-   new page is to be made.
+ * `question prefix`: The optional prefix specified for the question,
+   if different from the default value `Question:`.
+ * `new page`: Optional headline for a new page of quizzes. Also
+   indicates that a new page is to be made.
 
 !split
 ======= Interpreting the quiz format =======

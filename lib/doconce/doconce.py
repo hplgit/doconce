@@ -2539,35 +2539,48 @@ def interpret_quiz_text(text, insert_missing_heading= False,
 %s
 """ % (bct(tag), content, ect(tag))
 
+    # Question
+    pattern = r'(^Q:(.+?))(?=^(C[rw]|K|L):)'
+    m = re.search(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    if m:
+        question = m.group(2).strip()
+        print question
+        text = text.replace(m.group(1), begin_end_tags('quiz question', question))
+        print 'XXX', text
+    else:
+        print '*** error: found quiz without question!'
+        print text
+        _abort()
+
     # Keywords
     pattern = r'^(K:(.+))$'
     m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
         keywords = [s.strip() for s in m.group(2).split(';')]
-        text = text.replace(m.group(1), begin_end_tags('keywords', str(keywords)))
+        text = text.replace(m.group(1), ct('--- keywords: ' + str(keywords)))
 
-    # Question
-    pattern = r'(^Q:(.+?))(?=^C[rw]:)'
-    m = re.search(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    # Label
+    pattern = r'^(L:(.+))$'
+    m = re.search(pattern, text, flags=re.MULTILINE)
     if m:
-        question = m.group(2).strip()
-        text = text.replace(m.group(1), begin_end_tags('quiz question', question))
-    else:
-        print '*** error: found quiz without question!'
-        print text
-        _abort()
+        text = text.replace(m.group(1), ct('--- label: ' + str(m.group(2).strip())))
 
     # Choices: grab choices + optional explanations first,
     # then extract explanations.
     # Need end-of-string marker, cannot use $ since we want ^ and
     # re.MULTILINE ($ is then end of line)
     text += '_EOS_'
-    pattern = r'^(C[rw]:(.+?))(?=(^C[rw]:|_EOS_|^!equiz))'
+    pattern = r'^(C[rw]:(.+?))(?=(^C[rw]:|L|K|_EOS_|^!equiz))'
     choices = re.findall(pattern, text, flags=re.MULTILINE|re.DOTALL)
     text = text[:-5]  # remove _EOS_ marker
     counter = 1
     if choices:
         for choice_text, choice, _lookahead in choices:
+            if re.search(r'^[KL]:', choice, flags=re.MULTILINE):
+                print '*** error: keyword or label cannot appear between a'
+                print '    choice and explanation in a quiz:'
+                print choice
+                _abort()
             right = choice_text.startswith('Cr')  # right or wrong choice?
             explanation = ''
             if re.search(r'^E:', choice, flags=re.MULTILINE):
@@ -2624,11 +2637,15 @@ def extract_quizzes(filestr, format):
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['embedding'] = m.group(1).strip()
-        pattern = '^' + bct('keywords', cp) + '(.+?)' + ect('keywords', cp)
+        pattern = '^' + ct('--- keywords: (.+?)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:
             keywords = eval(m.group(1))  # should have list format
             data[-1]['keywords'] = keywords
+        pattern = '^' + ct('--- label: (.+?)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        if m:
+            data[-1]['label'] = m.group(1).strip()
         pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:

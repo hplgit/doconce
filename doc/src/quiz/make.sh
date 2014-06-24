@@ -3,7 +3,8 @@ sh -x clean.sh
 
 # HTML Bootstrap format
 doconce format html quiz --html_style=bootstrap --html_code_style=inherit -DDOCONCE --quiz_horizontal_rule=off
-doconce split_html quiz.html
+doconce split_html quiz.html #--pagination
+exit
 
 # PDF via latex including full solutions
 doconce format pdflatex quiz --max_bc_linelength=67 --without_answers

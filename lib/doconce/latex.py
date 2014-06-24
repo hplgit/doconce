@@ -1591,10 +1591,20 @@ def latex_inline_comment(m):
 def latex_quiz(quiz):
     part_of_exercise = quiz.get('embedding', 'None') in ['exercise',]
     choice_tp = option('quiz_choice_prefix=', 'letter+checkbox')
-    text = '\n% begin quiz\n\\noindent\n'
+    text = '\n\\begin{doconcequiz}\\refstepcounter{doconcequizcounter}\n'
+    text += '\\label{%s}\n\n' % quiz.get('label', 'quiz:%d' % quiz['no'])
     if not part_of_exercise:
-        text += '\\paragraph{Question:}'
-    text += '\n' + quiz['question']
+        if 'heading' in quiz:
+            heading = quiz['heading']
+            if heading[-1] not in '.;?:':
+                heading += '.'
+            text += '\\paragraph{%s}' % heading
+        else:
+            text += '\\paragraph{%s}' % quiz.get('question prefix', 'Question:')
+    else:
+        # no heading, avoid indent
+        text += '\n\\noindent'
+    text += '\n' +  quiz['question']
     text += '\n\n\\vspace{2mm}\n\n'  # some space down to choices
     import string
     for i, choice in enumerate(quiz['choices']):
@@ -1651,7 +1661,7 @@ def latex_quiz(quiz):
 %s
 %% %s
 """ % (begin, separator, solution, end)
-    text += '\n\n\\vspace{3mm}\n\n% end quiz\n\n'  # some space
+    text += '\n\n\\vspace{3mm}\n\n\\end{doconcequiz}\n\n'  # some space
 
     '''
     # For the exam documentclass
@@ -2075,6 +2085,19 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+"""
+
+    if '!bquiz' in filestr:
+        INTRO['latex'] += r"""
+\newenvironment{doconcequiz}{}{}
+\newcounter{doconcequizcounter}
+"""
+        quiz_numbering = option('latex_exercise_numbering=', 'absolute')
+        if chapters and quiz_numbering == 'chapter':
+            INTRO['latex'] += r"""
+% Let quizzes be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconcequizcounter}{chapter}
 """
 
     '''
@@ -2629,7 +2652,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             if latex_style != 'Springer_T2':
                 INTRO['latex'] += r"""
 
-% ------ header in subexercises ------
+% ------ header in subexercises, special formatting for T2 style ------
 %\newcommand{\subex}[1]{\paragraph{#1}}
 %\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
 \makeatletter
