@@ -1591,16 +1591,12 @@ def latex_inline_comment(m):
 def latex_quiz(quiz):
     part_of_exercise = quiz.get('embedding', 'None') in ['exercise',]
     choice_tp = option('quiz_choice_prefix=', 'letter+checkbox')
-    text = '\n\\begin{doconcequiz}\\refstepcounter{doconcequizcounter}\n'
+    text = '\n\\begin{doconcequiz}\n\\refstepcounter{doconcequizcounter}\n'
     text += '\\label{%s}\n\n' % quiz.get('label', 'quiz:%d' % quiz['no'])
+    if 'heading' in quiz:
+        text += '\n\\noindent\\textbf{\large %s}\n' % quiz['heading']
     if not part_of_exercise:
-        if 'heading' in quiz:
-            heading = quiz['heading']
-            if heading[-1] not in '.;?:':
-                heading += '.'
-            text += '\\paragraph{%s}' % heading
-        else:
-            text += '\\paragraph{%s}' % quiz.get('question prefix', 'Question:')
+        text += '\\paragraph{%s}' % quiz.get('question prefix', 'Question:')
     else:
         # no heading, avoid indent
         text += '\n\\noindent'
@@ -2652,7 +2648,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             if latex_style != 'Springer_T2':
                 INTRO['latex'] += r"""
 
-% ------ header in subexercises, special formatting for T2 style ------
+% ------ header in subexercises ------
 %\newcommand{\subex}[1]{\paragraph{#1}}
 %\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
 \makeatletter

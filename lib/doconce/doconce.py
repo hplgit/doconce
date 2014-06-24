@@ -2544,9 +2544,7 @@ def interpret_quiz_text(text, insert_missing_heading= False,
     m = re.search(pattern, text, flags=re.MULTILINE|re.DOTALL)
     if m:
         question = m.group(2).strip()
-        print question
         text = text.replace(m.group(1), begin_end_tags('quiz question', question))
-        print 'XXX', text
     else:
         print '*** error: found quiz without question!'
         print text
@@ -2570,7 +2568,7 @@ def interpret_quiz_text(text, insert_missing_heading= False,
     # Need end-of-string marker, cannot use $ since we want ^ and
     # re.MULTILINE ($ is then end of line)
     text += '_EOS_'
-    pattern = r'^(C[rw]:(.+?))(?=(^C[rw]:|L|K|_EOS_|^!equiz))'
+    pattern = r'^(C[rw]:(.+?))(?=(^C[rw]:|L:|K:|_EOS_|^!equiz))'
     choices = re.findall(pattern, text, flags=re.MULTILINE|re.DOTALL)
     text = text[:-5]  # remove _EOS_ marker
     counter = 1
@@ -2632,20 +2630,12 @@ def extract_quizzes(filestr, format):
         pattern = '^' + ct('--- quiz heading: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
-            data[-1]['heading'] = m.group(1).strip().split()
+            data[-1]['heading'] = m.group(1).strip()
         pattern = '^' + ct('--- previous heading type: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['embedding'] = m.group(1).strip()
-        pattern = '^' + ct('--- keywords: (.+?)', cp)
-        m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
-        if m:
-            keywords = eval(m.group(1))  # should have list format
-            data[-1]['keywords'] = keywords
-        pattern = '^' + ct('--- label: (.+?)', cp)
-        m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
-        if m:
-            data[-1]['label'] = m.group(1).strip()
+
         pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:
@@ -2659,6 +2649,24 @@ def extract_quizzes(filestr, format):
                 question = re.sub(prefix_pattern, '', question).strip()
                 data[-1]['question prefix'] = prefix
             data[-1]['question'] = question
+
+        pattern = '^' + ct('--- keywords: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            try:
+                keywords = eval(m.group(1))  # should have list format
+            except Exception as e:
+                print '*** keywords in quiz have wrong syntax (should be semi-colon separated list):'
+                print m.group(1)
+                print '    Quiz question:', question
+                _abort()
+            data[-1]['keywords'] = keywords
+
+        pattern = '^' + ct('--- label: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['label'] = m.group(1).strip()
+
         pattern = '^' + bct('quiz choice (\d+) \((right|wrong)\)', cp) + '(.+?)' + ect('quiz choice .+?', cp)
         choices = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         data[-1]['choices'] = []

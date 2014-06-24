@@ -400,7 +400,8 @@ Note two new features:
    For example, a collection of labels can be specified for selecting
    a collection quizzes. The label is invisible in a typeset quiz.
 
-Keywords and label should appear before or right after the question.
+Keywords and label should appear before or right after the question
+and they cannot span more than one line.
 
 !bc
 |bquiz

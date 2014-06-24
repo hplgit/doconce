@@ -1078,6 +1078,8 @@ Q: Given
 !et
 What is the solution of this equation?
 
+L: quiz:diff:eq1
+
 Cr: $y=e^{-y}$
 
 Cw: $y=e^{y}$

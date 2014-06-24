@@ -279,7 +279,7 @@ cp admon.html admon_vagrant.html
 
 system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 cp admon.html admon_bootstrap_alert.html
-doconce split_html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html --pagination
 
 system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 cp admon.html admon_bootswatch_panel.html

@@ -1352,7 +1352,7 @@ def html_quiz(quiz):
 
     text = ''
     if 'new page' in quiz:
-        text += '<!-- !split -->\n<h2>%s</h2>' % quiz['new page']
+        text += '<!-- !split -->\n<h2>%s</h2>\n\n' % quiz['new page']
 
     text += '<!-- begin quiz -->\n'
     # Don't write Question: ... if inside an exercise section

@@ -1094,6 +1094,8 @@ Q: Given
 !et
 What is the solution of this equation?
 
+L: quiz:diff:eq1
+
 Cr: $y=e^{-y}$
 
 Cw: $y=e^{y}$
@@ -1731,6 +1733,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[utf8]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+\newenvironment{doconcequiz}{}{}
+\newcounter{doconcequizcounter}
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -3193,9 +3198,14 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-% begin quiz
-\noindent
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:diff:eq1}
 
+
+\noindent\textbf{\large SOlution of differential equation}
+
+\noindent
 Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -3255,7 +3265,7 @@ equations}.
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 % --- end explanation of choice 5 ---
@@ -3382,9 +3392,13 @@ With label.
 What about inserting a quiz?
 
 
-% begin quiz
-\noindent
-\paragraph{Question:}
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:2}
+
+
+\noindent\textbf{\large Capital of Norway}
+\paragraph{Fundamental test:}
 What is the capital of Norway?
 
 \vspace{2mm}
@@ -3424,7 +3438,7 @@ Bergen
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 
@@ -3597,6 +3611,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+\newenvironment{doconcequiz}{}{}
+\newcounter{doconcequizcounter}
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -5203,9 +5220,14 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-% begin quiz
-\noindent
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:diff:eq1}
 
+
+\noindent\textbf{\large SOlution of differential equation}
+
+\noindent
 Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -5266,7 +5288,7 @@ equations}.
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 % --- end explanation of choice 5 ---
@@ -5396,9 +5418,13 @@ With label.
 What about inserting a quiz?
 
 
-% begin quiz
-\noindent
-\paragraph{Question:}
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:2}
+
+
+\noindent\textbf{\large Capital of Norway}
+\paragraph{Fundamental test:}
 What is the capital of Norway?
 
 \vspace{2mm}
@@ -5438,7 +5464,7 @@ Bergen
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 
@@ -5621,6 +5647,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+\newenvironment{doconcequiz}{}{}
+\newcounter{doconcequizcounter}
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -7177,9 +7206,14 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-% begin quiz
-\noindent
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:diff:eq1}
 
+
+\noindent\textbf{\large SOlution of differential equation}
+
+\noindent
 Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -7239,7 +7273,7 @@ equations}.
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 % --- end explanation of choice 5 ---
@@ -7369,9 +7403,13 @@ With label.
 What about inserting a quiz?
 
 
-% begin quiz
-\noindent
-\paragraph{Question:}
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:2}
+
+
+\noindent\textbf{\large Capital of Norway}
+\paragraph{Fundamental test:}
 What is the capital of Norway?
 
 \vspace{2mm}
@@ -7411,7 +7449,7 @@ Bergen
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 
@@ -8831,6 +8869,8 @@ What about inserting a quiz?
 
 .. raw:: html
     <!-- !split -->
+    <h2>Test of quizzes</h2>
+    
     <!-- begin quiz -->
     <hr>
     <p>
@@ -10382,6 +10422,8 @@ What about inserting a quiz?
 
 .. raw:: html
     <!-- !split -->
+    <h2>Test of quizzes</h2>
+    
     <!-- begin quiz -->
     <hr>
     <p>
@@ -21124,11 +21166,7 @@ is at the end with only one newline.
       "<!-- --- begin quiz --- -->\n",
       "<!-- --- quiz heading: SOlution of differential equation -->\n",
       "<!-- --- previous heading type: exercise -->\n",
-      "\n",
-      "<!-- --- begin keywords --- -->\n",
-      "['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n",
-      "<!-- --- end keywords --- -->\n",
-      "\n",
+      "<!-- --- keywords: ['derivatives', 'exponential function', 'equation, differential', 'differential equation'] -->\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
       "Given"
@@ -21149,6 +21187,8 @@ is at the end with only one newline.
      "source": [
       "What is the solution of this equation?\n",
       "<!-- --- end quiz question --- -->\n",
+      "<!-- --- label: quiz:diff:eq1 -->\n",
+      "\n",
       "\n",
       "<!-- --- begin quiz choice 1 (right) --- -->\n",
       "$y=e^{-y}$\n",
@@ -21447,11 +21487,7 @@ is at the end with only one newline.
       "<!-- --- new quiz page: Test of quizzes -->\n",
       "<!-- --- quiz heading: Capital of Norway -->\n",
       "<!-- --- previous heading type: subsection -->\n",
-      "\n",
-      "<!-- --- begin keywords --- -->\n",
-      "['capitals', 'basic intelligence', 'geography']\n",
-      "<!-- --- end keywords --- -->\n",
-      "\n",
+      "<!-- --- keywords: ['capitals', 'basic intelligence', 'geography'] -->\n",
       "\n",
       "\n",
       "<!-- --- begin quiz question --- -->\n",
@@ -21783,7 +21819,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': "# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n\n# --- begin keywords ---\n['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n# --- end keywords ---\n\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.",
+  'text': "# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n# --- keywords: ['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n# --- label: quiz:diff:eq1\n\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.",
   'title': 'Solution of differential equation',
   'type': 'Exercise',
   'type_visible': True},
@@ -22400,6 +22436,8 @@ x, y = circle(2.0, 0, 0)</code></pre>
 <p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
 <pre><code>lambda x: x+2</code></pre>
 <h2 id="sec:this:exer:de" class="unnumbered">Exercise : Solution of differential equation</h2>
+<p>[quiz:diff:eq1]</p>
+<p><strong>SOlution of differential equation</strong></p>
 <p>Given</p>
 <p><span class="math">\[\frac{dy}{dx} = -y(x),\quad y(0)=1\]</span> What is the solution of this equation?</p>
 <p><strong>A</strong>. <span class="math">\(y=e^{-y}\)</span></p>
@@ -22447,7 +22485,9 @@ def f(x):
 <p>With label.</p>
 <h2 id="test:title:id2">Appendix: Testing identical titles</h2>
 <p>What about inserting a quiz?</p>
-<h4 id="question">Question:</h4>
+<p>[quiz:2]</p>
+<p><strong>Capital of Norway</strong></p>
+<h4 id="fundamental-test">Fundamental test:</h4>
 <p>What is the capital of Norway?</p>
 <p><strong>A</strong>. Stockholm</p>
 <p><strong>B</strong>. London</p>
@@ -27790,6 +27830,8 @@ $$
 
 <p>
 <!-- !split -->
+<h2>Test of quizzes</h2>
+
 <!-- begin quiz -->
 <hr>
 <p>
@@ -29169,11 +29211,6 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
 
-['derivatives', 'exponential function', 'equation, differential', 'differential equation']
-
-
-<p>
-
 Given
 
 <p>
@@ -29182,6 +29219,7 @@ $latex  \frac{dy}{dx} = -y(x),\quad y(0)=1  $
 
 
 What is the solution of this equation?
+
 
 
 <p>
@@ -29415,11 +29453,6 @@ With label.
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
 What about inserting a quiz?
-
-<p>
-
-['capitals', 'basic intelligence', 'geography']
-
 
 <p>
 
@@ -31252,6 +31285,8 @@ What about inserting a quiz?
 
 <p>
 <!-- !split -->
+<h2>Test of quizzes</h2>
+
 <!-- begin quiz -->
 <hr>
 <p>
@@ -31479,6 +31514,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[utf8]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+\newenvironment{doconcequiz}{}{}
+\newcounter{doconcequizcounter}
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -32936,9 +32974,14 @@ lambda x: x+2
 \label{sec:this:exer:de}
 
 
-% begin quiz
-\noindent
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:diff:eq1}
 
+
+\noindent\textbf{\large SOlution of differential equation}
+
+\noindent
 Given
 
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
@@ -32970,7 +33013,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 % --- end explanation of choice 5 ---
@@ -33091,9 +33134,13 @@ With label.
 What about inserting a quiz?
 
 
-% begin quiz
-\noindent
-\paragraph{Question:}
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:2}
+
+
+\noindent\textbf{\large Capital of Norway}
+\paragraph{Fundamental test:}
 What is the capital of Norway?
 
 \vspace{2mm}
@@ -33114,7 +33161,7 @@ Bergen
 
 \vspace{3mm}
 
-% end quiz
+\end{doconcequiz}
 
 
 
@@ -33975,7 +34022,7 @@ cp admon.html admon_vagrant.html
 
 system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 cp admon.html admon_bootstrap_alert.html
-doconce split_html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html --pagination
 
 system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 cp admon.html admon_bootswatch_panel.html
@@ -35852,12 +35899,11 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
-<ul class="pager">
 
+<ul class="pager">
   <li class="next">
     <a href="._testdoc_vagrant001.html">Next &rarr;</a>
   </li>
-
 </ul>
 
  </div>
@@ -36239,12 +36285,11 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
-<ul class="pager">
 
+<ul class="pager">
   <li class="next">
     <a href="._testdoc_vagrant001.html">Next &rarr;</a>
   </li>
-
 </ul>
 
  </div>
@@ -37283,15 +37328,14 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
+
 <ul class="pager">
   <li class="previous">
     <a href="._testdoc_vagrant000.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._testdoc_vagrant002.html">Next &rarr;</a>
   </li>
-
 </ul>
 
  </div>
@@ -38298,15 +38342,14 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
+
 <ul class="pager">
   <li class="previous">
     <a href="._testdoc_vagrant001.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._testdoc_vagrant003.html">Next &rarr;</a>
   </li>
-
 </ul>
 
  </div>
@@ -39749,6 +39792,8 @@ What about inserting a quiz?
 
 .. raw:: html
     <!-- !split -->
+    <h2>Test of quizzes</h2>
+    
     <!-- begin quiz -->
     <hr>
     <p>
@@ -49772,12 +49817,11 @@ $$
 </div> <!-- end jumbotron -->
 
 <p>
-<ul class="pager">
 
-  <li class="next">
-    <a href="._admon_bootstrap_alert001.html">Next &rarr;</a>
-  </li>
-
+<ul class="pagination">
+  <li class="active"><a href="._admon_bootstrap_alert000.html">1</a></li>
+  <li><a href="._admon_bootstrap_alert001.html">2</a></li>
+  <li><a href="._admon_bootstrap_alert001.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
@@ -50876,12 +50920,11 @@ The <code>remarks</code> and <code>hint</code> environments are not allowed outs
 exercises (and problems and projects too).
 
 <p>
-<ul class="pager">
-  <li class="previous">
-    <a href="._admon_bootstrap_alert000.html">&larr; Prev</a>
-  </li>
 
-
+<ul class="pagination">
+<li><a href="._admon_bootstrap_alert000.html">&laquo;</a></li>
+  <li><a href="._admon_bootstrap_alert000.html">1</a></li>
+  <li class="active"><a href="._admon_bootstrap_alert001.html">2</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
@@ -72960,12 +73003,11 @@ Here goes optional text.
 </div> <!-- end jumbotron -->
 
 <p>
-<ul class="pager">
 
+<ul class="pager">
   <li class="next">
     <a href="._test_boots001.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
@@ -73250,15 +73292,14 @@ And then with plain words:
 </div> <!-- col-xs-5 -->
 <p>
 <p>
+
 <ul class="pager">
   <li class="previous">
     <a href="._test_boots000.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._test_boots002.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
@@ -73561,12 +73602,11 @@ we can run the program:
 
 
 <p>
+
 <ul class="pager">
   <li class="previous">
     <a href="._test_boots001.html">&larr; Prev</a>
   </li>
-
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
@@ -73591,7 +73631,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jun 22 14:53:42 2014.
+# sphinx-quickstart on Tue Jun 24 19:04:36 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -74254,11 +74294,12 @@ n\in\mathbb N$ is via the Euler integral
               ['wrong',
                'The equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.']],
   'embedding': 'exercise',
-  'heading': ['SOlution', 'of', 'differential', 'equation'],
+  'heading': 'SOlution of differential equation',
   'keywords': ['derivatives',
                'exponential function',
                'equation, differential',
                'differential equation'],
+  'label': 'quiz:diff:eq1',
   'no': 1,
   'question': 'Given\n\n$$\n \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \n$$\nWhat is the solution of this equation?'},
  {'choice prefix': ['Answer 1:', 'Answer 2:', 'Answer 3:', None],
@@ -74269,7 +74310,7 @@ n\in\mathbb N$ is via the Euler integral
                'Bergen',
                'Those from Bergen would claim so, but nobody else.']],
   'embedding': 'subsection',
-  'heading': ['Capital', 'of', 'Norway'],
+  'heading': 'Capital of Norway',
   'keywords': ['capitals', 'basic intelligence', 'geography'],
   'new page': 'Test of quizzes',
   'no': 2,
@@ -88856,7 +88897,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1059.
+t line 1062.
 
 
 
@@ -88876,7 +88917,7 @@ t line 1059.
 
 
 
-t line 1068.
+t line 1071.
 
 
 
@@ -88896,7 +88937,7 @@ t line 1068.
 
 
 
-t line 1072.
+t line 1075.
 
 
 
@@ -89633,7 +89674,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1059.
+t line 1062.
 
 
 
@@ -89653,7 +89694,7 @@ t line 1059.
 
 
 
-t line 1068.
+t line 1071.
 
 
 
@@ -89673,7 +89714,7 @@ t line 1068.
 
 
 
-t line 1072.
+t line 1075.
 
 
 
@@ -90328,7 +90369,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1059.
+t line 1062.
 
 
 
@@ -90348,7 +90389,7 @@ t line 1059.
 
 
 
-t line 1068.
+t line 1071.
 
 
 
@@ -90368,7 +90409,7 @@ t line 1068.
 
 
 
-t line 1072.
+t line 1075.
 
 
 
@@ -95436,7 +95477,7 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_bootstrap_alert.html
-+ doconce split_html admon_bootstrap_alert.html
++ doconce split_html admon_bootstrap_alert.html --pagination
 admon_bootstrap_alert.html now links to the generated files
 ._admon_bootstrap_alert000.html, ._admon_bootstrap_alert001.html
 + system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
