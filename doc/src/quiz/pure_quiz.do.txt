@@ -142,6 +142,7 @@ label{cont:eq}
 is famous in physics. Select the wrong assertion(s):
 
 K: gradient; divergence; curl; vector calculus
+L: div:assert
 
 Cw: The equation tells that the net outflow of something with
 velocity $\bm{u}$ in region is zero.
@@ -186,6 +187,8 @@ element is `0`. Is the following code then what we need?
 import numpy
 mylist = numpy.zeros(n)
 !ec
+
+K: list, array
 
 Cw: Yes.
 
@@ -236,9 +239,13 @@ f(x) &= 2x.
 !et
 Determine which of the following assertions that is _wrong_.
 
+K: Python programming; debugging; lambda functions; finding errors
+
 Cw: In Python, the syntax for $t^2$ is `t**2`, not `t^2`, so the
 `u` function contains an error.
-E: True. However, `t^2` will work for integer `t` in Python, but the computation is nonsense in this case since $u(t)$ is supposed to be $t^2$.
+E: True. However, `t^2` will work for integer `t` in Python,
+but the computation is nonsense in this case since $u(t)$ is
+supposed to be $t^2$.
 
 Cw: The string in the `u` function is a valid doc string.
 E: Yes, a doc string can be any string after the function heading. It can
@@ -255,16 +262,15 @@ Python.
 
 Cr: One cannot use `u` both inside the `D` function and in the
 outer calling code (the main program).
-E: Yes, you can, because the `u` argument in the `D` function
-(holding a function)
-is a *local* variable inside the `D` function. The `u` in the calling
-code is *global* variable, holding a function object.
-Inside `D`, `u` refers to the
-local variable, while in the main program, `u` refers to the
-global variable, and the local variable `u` in `D` no longer exists, because
-it was deleted when returning from the function.
-Inside `D`, we can actually access the global `u` by `globals()['u']`,
-but that almost never comes to use and is also bad coding.
+E: Yes, you can, because the `u` argument in the `D` function (holding
+a function) is a *local* variable inside the `D` function. The `u` in
+the calling code is *global* variable, holding a function object.
+Inside `D`, `u` refers to the local variable, while in the main
+program, `u` refers to the global variable, and the local variable `u`
+in `D` no longer exists, because it was deleted when returning from
+the function.  Inside `D`, we can actually access the global `u` by
+`globals()['u']`, but that almost never comes to use and is also bad
+coding.
 
 Cw: The call `D(lambda x: return 2*x, 2)` is equivalent to defining
 

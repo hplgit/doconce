@@ -1794,10 +1794,11 @@ def clean():
                 generated_files.remove(filename)
         for f in generated_files:
             removed.append(f)
-    removed.extend(glob.glob('*~') + glob.glob('tmp*') +
+    removed.extend(glob.glob('*~') + glob.glob('.*~') + glob.glob('tmp*') +
                    glob.glob(_part_filename_wildcard + '.html') +
                    glob.glob(_part_filename_wildcard + '.rst') +
                    glob.glob('.*.exerinfo') +
+                   glob.glob('.*.quiz*') +
                    glob.glob('.*_html_file_collection'))
     directories = ['html_images', 'latex_figs'] + glob.glob('sphinx-*') + \
                   glob.glob('sphinx_*')
