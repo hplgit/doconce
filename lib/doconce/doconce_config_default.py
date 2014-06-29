@@ -37,7 +37,6 @@ html_admon_shadow = False
 #html_admon_bg_color = 
 #html_admon_bd_color = 
 #css = 
-#nav_button = 
 html_box_shadow = False
 #html_slide_theme = 
 #html_footer_logo = 

@@ -79,10 +79,6 @@ values are boostrap_panel, bootstrap_alert."""),
      'Boundary color of admon in HTML.'),
     ('--css=',
      """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
-    ('--nav_button=', """\
-Type of navigation button: text, gray1 (default), gray2, bigblue, blue, green.
-See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
-for examples on these types (from left to right)."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
@@ -1055,11 +1051,15 @@ def latex_exercise_toc():
 
 
 def _usage_combine_images():
-    print 'Usage: doconce combine_images [-4] image1 image2 ... output_file'
-    print 'Applies montage if not PDF or EPS images, else use'
-    print 'pdftk, pdfnup and pdfcrop.'
-    print 'Images are combined with two each row, by default, but'
-    print 'doconce combine_images -3 ... gives 3 images in each row.'
+    print """\
+Usage: doconce combine_images [pdf|png] [-4] image1 image2 ... output_file
+Applies montage if not PDF or EPS images, else
+pdftk, pdfnup and pdfcrop.
+Images are combined with two each row, by default, but
+doconce combine_images -3 ... gives 3 images in each row.
+The first command-line argument can be a file extension and
+the filenames can then be given without extension.
+"""
 
 def combine_images():
 
@@ -1067,23 +1067,39 @@ def combine_images():
         _usage_combine_images()
         sys.exit(1)
 
+    if sys.argv[1] in ('pdf', 'png', 'jpg', 'eps', 'ps', 'jpeg', 'tif', 'tiff'):
+        extension = sys.argv[1]
+        del sys.argv[1]
+    else:
+        extension = None
+
     if sys.argv[1].startswith('-'):
         num_columns = int(sys.argv[1][1:])
         del sys.argv[1]
     else:
         num_columns = 2
 
+    bitmap_formats = '.png', '.tif.', '.tiff', '.gif', '.jpeg', 'jpg'
     imagefiles = sys.argv[1:-1]
+    # See if files have extension
+    for i in range(len(imagefiles)):
+        basename, ext = os.path.splitext(imagefiles[i])
+        if not ext and extension is not None:
+            imagefiles[i] = imagefiles[i] + '.' + extension
+
     for name in imagefiles:
         if not os.path.isfile(name):
             print '*** error: file "%s" is non-existing' % name
             _abort()
     output_file = sys.argv[-1]
+    basename, ext = os.path.splitext(output_file)
+    if not ext and extension is not None:
+        output_file += '.' + extension
+
     ext = [os.path.splitext(f)[1] for f in imagefiles]
-    formats = '.png', '.tif.', '.tiff', '.gif', '.jpeg', 'jpg'
     montage = False
     # If one of the formats in formats: montage = True
-    for format in formats:
+    for format in bitmap_formats:
         if format in ext:
             montage = True
 
@@ -2043,13 +2059,26 @@ def html_colorbullets():
         f.close()
 
 def _usage_split_html():
-    print 'Usage: doconce split_html mydoc.html --nav_button=name --pagination'
-    print 'where name can be gray1, gray2, bigblue, blue, green, text'
-    print '(name of navigation buttons, or just pure text for navigation).'
-    print '-nav_button is ignored if doconce format html used'
-    print '--html_theme=vagrant, bootstrap*, or bootswatch.'
-    print '\n--pagination means that one can click on pages at the button'
-    print 'if a bootstrap theme is used in the document.'
+    print """\
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination'
+where name can be gray1, gray2, bigblue, blue, green, text
+(name of navigation buttons, or just pure text for navigation).
+
+--method=split|space8|hrule|colorline specifies physical
+split (split) or just N blank lines (spaceN) or a horizontal
+rule (hrule) with blank lines above and below, or a colored rule
+instead of <hr> rule. Default is split.
+
+--nav_button=name sets the type of navigation button (next, previous):
+text, gray1 (default), gray2, bigblue, blue, green.
+See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
+for examples on these types (from left to right).
+--nav_button is ignored if the "doconce format html" command used
+bootstrap styles: --html_theme=vagrant, bootstrap*, or bootswatch.
+
+--pagination means that one can click on pages at the button
+if a bootstrap theme is used in the document.
+"""
 
 def split_html():
     """
@@ -2067,10 +2096,43 @@ def split_html():
     else:
         basename = filename[:-5]
 
-    header, parts, footer = get_header_parts_footer(filename, "html")
-    files = doconce_split_html(header, parts, footer, basename, filename)
-    print '%s now links to the generated files' % filename
-    print ', '.join(files)
+    method = 'split'
+    if len(sys.argv) > 2:
+        if sys.argv[2].startswith('--method='):
+            method = sys.argv[2].split('=')[1]
+    if method != 'split':
+        # Load text
+        f = open(filename, 'r')
+        filestr = f.read()
+        f.close()
+
+    if method.startswith('space'):
+        if len(method) > len('space'):
+            num_lines = int(method[5:])
+        else:
+            num_lines = 8
+        filestr = filestr.replace(
+            '<!-- !split -->',
+            '<!-- !split -->' + '<br>'*num_lines)
+    elif method in ('hr', 'hrule'):
+        filestr = filestr.replace(
+            '<!-- !split -->',
+            '<!-- !split -->' + '<br><br><br><hr><br><br><br>')
+    elif method in ('colorline',):
+        filestr = filestr.replace(
+            '<!-- !split -->',
+            '<!-- !split -->' + '<br><br><br><img src="%s"><br><br><br>'
+            % 'http://hplgit.github.io/doconce/bundled/html_images/colorline.png')
+    else:
+        header, parts, footer = get_header_parts_footer(filename, "html")
+        files = doconce_split_html(header, parts, footer, basename, filename)
+        print '%s now links to the generated files' % filename
+        print ', '.join(files)
+
+    if method != 'split':
+        f = open(filename, 'w')
+        f.write(filestr)
+        f.close()
 
 
 def _usage_slides_html():
@@ -2390,7 +2452,11 @@ def doconce_split_html(header, parts, footer, basename, filename):
     else:
         local_navigation_pics = False    # avoid copying images to subdir...
 
-    nav_button = option('nav_button=', 'gray1')
+    nav_button = 'gray1'
+    for arg in sys.argv:
+        if arg.startswith('--nav_button='):
+            nav_button = arg.split('=')[1]
+            break
     # Map nav_button name to actual image file in bundled/html_images
     if nav_button == 'gray1':
         prev_button = 'prev1'

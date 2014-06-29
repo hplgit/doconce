@@ -53,7 +53,7 @@ cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
 system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=template_vagrant.html
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
-doconce split_html testdoc_vagrant.html
+doconce split_html testdoc_vagrant.html --method=split
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
 
