@@ -34,22 +34,25 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' Question and choices ', 2, None, '___sec1'),
               (' Explanations of choices ', 2, None, '___sec2'),
               (' Typesetting ', 2, None, '___sec3'),
-              (' Specification in HTML ', 2, None, '___sec4'),
-              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec5'),
+              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
               (' Typesetting of mathematics and computer code ',
                1,
                None,
-               '___sec6'),
-              (' Mathematics ', 2, None, '___sec7'),
-              (' Simple example ', 3, None, '___sec8'),
-              (' A more complicated example ', 3, None, '___sec9'),
-              (' Code ', 2, None, '___sec10'),
-              (' Example: Putting it all together ', 2, None, '___sec11'),
+               '___sec5'),
+              (' Mathematics ', 2, 'sec:math', 'sec:math'),
+              (' Simple example ', 3, None, '___sec7'),
+              (' A more complicated example ', 3, None, '___sec8'),
+              (' Computer code ', 2, None, '___sec9'),
+              (' Example: Putting it all together ', 2, None, '___sec10'),
+              (' Specification in HTML ', 2, None, '___sec11'),
               (' The Python data structure for quizzes ',
                1,
                None,
                '___sec12'),
-              (' Interpreting the quiz format ', 1, None, '___sec13'),
+              (' Translating the quiz format to HTML or PDF ',
+               1,
+               None,
+               '___sec13'),
               (' HTML ', 2, None, '___sec14'),
               (' Plain HTML ', 3, None, '___sec15'),
               (' Bootstrap HTML ', 3, None, '___sec16'),
@@ -102,16 +105,16 @@ MathJax.Hub.Config({
      <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
      <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
      <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
-     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
-     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
-     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec6" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
-     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
-     <!-- navigation toc: "Code" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
-     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz003.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
-     <!-- navigation toc: "Interpreting the quiz format" --> <li><a href="._quiz004.html#___sec13" style="font-size: 80%;"><b>Interpreting the quiz format</b></a></li>
-     <!-- navigation toc: "HTML" --> <li><a href="._quiz004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
-     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz004.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
+     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: "Computer code" --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
+     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: "Translating the quiz format to HTML or PDF" --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
 
         </ul>
       </li>
@@ -127,15 +130,15 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1>Typesetting of mathematics and computer code  <a name="___sec6"></a></h1>
+<h1>Typesetting of mathematics and computer code  <a name="___sec5"></a></h1>
 
-<h2>Mathematics  <a name="___sec7"></a></h2>
+<h2>Mathematics <a name="sec:math"></a></h2>
 
 Mathematical typesetting follows a restricted LaTeX syntax. Inline
 formulas appear inside dollar signs, while separate equations
 appear inside <code>!bt</code> (&quot;begin TeX&quot;) and <code>!et</code> (&quot;end TeX&quot;) tags.
 
-<h3>Simple example  <a name="___sec8"></a></h3>
+<h3>Simple example  <a name="___sec7"></a></h3>
 
 <!-- begin quiz -->
 
@@ -247,7 +250,7 @@ standard LaTeX math typesetting works (like <code>\alpha</code>, <code>\mbox{...
 </div>
 
 
-<h3>A more complicated example  <a name="___sec9"></a></h3>
+<h3>A more complicated example  <a name="___sec8"></a></h3>
 
 <!-- begin quiz -->
 
@@ -257,16 +260,11 @@ standard LaTeX math typesetting works (like <code>\alpha</code>, <code>\mbox{...
 $$
 \begin{equation}
 \nabla\cdot\boldsymbol{u} = 0
-\tag{2}
+\tag{3}
 \end{equation}
 $$
 
-is famous in physics. Select the wrong assertion(s):
-
-<p>
-<!-- --- begin keywords --- -->
-['gradient', 'divergence', 'curl', 'vector calculus']
-<!-- --- end keywords --- --></p>
+is famous in physics. Select the wrong assertion(s):</p>
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
@@ -277,7 +275,7 @@ velocity \( \boldsymbol{u} \) in region is zero.
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_7_1">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-This is right: integrating <a href="#mjx-eqn-2">(2)</a> over an arbitrary domain
+This is right: integrating <a href="._quiz003.html#mjx-eqn-3">(3)</a> over an arbitrary domain
 \( \Omega \) and using Gauss' divergence theorem, we get the surface integral
 
 $$ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,$$
@@ -351,11 +349,22 @@ and consequently \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
 
 <p>
 The corresponding code needed to define this quiz is listed below.
-Note a new line: <code>K: gradient; divergence; ...</code>. This
-construction allows specification of a set of keywords separated
-by semi-colon. The feature is handy when automatically selecting
-quizzes from a large database. There is no output of the keywords
-in typeset quizzes.
+Note two new features:
+
+<ul>
+ <li> The <code>K: gradient; divergence; ...</code>
+   construction allows specification of a set of keywords separated
+   by semi-colon. The feature is handy when automatically selecting
+   quizzes from a large database. There is no output of the keywords
+   in typeset quizzes.</li>
+ <li> <code>L: div:assert</code> defines a label for the quiz. This can be used
+   as a logical name in the same way as labels are used in LaTeX.
+   For example, a collection of labels can be specified for selecting
+   a collection quizzes. The label is invisible in a typeset quiz.</li>
+</ul>
+
+Keywords and label should appear before or right after the question
+and they cannot span more than one line.
 
 <p>
 
@@ -372,10 +381,11 @@ label{cont:eq}
 is famous in physics. Select the wrong assertion(s):
 
 K: gradient; divergence; curl; vector calculus
+L: div:assert
 
 Cw: The equation tells that the net outflow of something with
 velocity $\boldsymbol{u}$ in region is zero.
-E: This is right: integrating <a href="#mjx-eqn-2">(2)</a> over an arbitrary domain
+E: This is right: integrating <a href="._quiz003.html#mjx-eqn-3">(3)</a> over an arbitrary domain
 $\Omega$ and using Gauss&#39; divergence theorem, we get the surface integral
 
 !bt
@@ -405,7 +415,7 @@ and consequently $\nabla\cdot\boldsymbol{u}=du/dx$, the vector field must be con
 !equiz
 </pre></div>
 
-<h2>Code  <a name="___sec10"></a></h2>
+<h2>Computer code  <a name="___sec9"></a></h2>
 
 Inline computer code (variables, expressions, statements) are
 normally typeset with a monospace font, and this is enabled by
@@ -500,6 +510,8 @@ import numpy
 mylist = numpy.zeros(n)
 !ec
 
+K: list, array
+
 Cw: Yes.
 
 E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
@@ -518,8 +530,29 @@ Cr: No.
 E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
 !equiz
 </pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Summary of quiz syntax:</b>
 
-<h2>Example: Putting it all together  <a name="___sec11"></a></h2>
+<ul>
+ <li> Each quiz is enclosed in <code>!bquiz</code> and <code>!equiz</code></li>
+ <li> <code>Q</code>: question</li>
+ <li> <code>Q [prefix]</code>: question with prefix (defaults to <em>Question</em>)</li>
+ <li> <code>Cr</code>: right (correct) choice</li>
+ <li> <code>Cw</code>: wrong (incorrect) choice</li>
+ <li> <code>Cr [prefix]</code>: right (correct) choice with prefix (defaults to <em>Choice X</em>,
+   where <em>X</em> is the choice number in HTML, and to an upper case letter in
+   LaTeX)</li>
+ <li> <code>Cw [prefix]</code>: wrong (incorrect) choice with prefix</li>
+ <li> <code>E</code>: explanation of last choice</li>
+ <li> <code>K</code>: keywords</li>
+ <li> <code>L</code>: label (logical name)</li>
+ <li> <code>NP</code>: heading for new page</li>
+ <li> <code>H</code>: quiz heading</li>
+</ul>
+</div>
+
+
+<h2>Example: Putting it all together  <a name="___sec10"></a></h2>
 
 <!-- begin quiz -->
 
@@ -561,7 +594,9 @@ In Python, the syntax for \( t^2 \) is <code>t**2</code>, not <code>t^2</code>, 
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_9_1">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-True. However, <code>t^2</code> will work for integer <code>t</code> in Python, but the computation is nonsense in this case since \( u(t) \) is supposed to be \( t^2 \).
+True. However, <code>t^2</code> will work for integer <code>t</code> in Python,
+but the computation is nonsense in this case since \( u(t) \) is
+supposed to be \( t^2 \).
 </div></p>
 </div>
 </p>
@@ -608,16 +643,15 @@ outer calling code (the main program).
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_9_4">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
-Yes, you can, because the <code>u</code> argument in the <code>D</code> function
-(holding a function)
-is a <em>local</em> variable inside the <code>D</code> function. The <code>u</code> in the calling
-code is <em>global</em> variable, holding a function object.
-Inside <code>D</code>, <code>u</code> refers to the
-local variable, while in the main program, <code>u</code> refers to the
-global variable, and the local variable <code>u</code> in <code>D</code> no longer exists, because
-it was deleted when returning from the function.
-Inside <code>D</code>, we can actually access the global <code>u</code> by <code>globals()['u']</code>,
-but that almost never comes to use and is also bad coding.
+Yes, you can, because the <code>u</code> argument in the <code>D</code> function (holding
+a function) is a <em>local</em> variable inside the <code>D</code> function. The <code>u</code> in
+the calling code is <em>global</em> variable, holding a function object.
+Inside <code>D</code>, <code>u</code> refers to the local variable, while in the main
+program, <code>u</code> refers to the global variable, and the local variable <code>u</code>
+in <code>D</code> no longer exists, because it was deleted when returning from
+the function.  Inside <code>D</code>, we can actually access the global <code>u</code> by
+<code>globals()['u']</code>, but that almost never comes to use and is also bad
+coding.
 </div></p>
 </div>
 </p>
@@ -702,15 +736,14 @@ for quadratic polynomials!
 
 <p>
 <p>
+
 <ul class="pager">
   <li class="previous">
     <a href="._quiz001.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._quiz003.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

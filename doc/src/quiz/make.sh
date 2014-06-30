@@ -4,7 +4,9 @@ sh -x clean.sh
 # HTML Bootstrap format
 doconce format html quiz --html_style=bootstrap --html_code_style=inherit -DDOCONCE --quiz_horizontal_rule=off
 doconce split_html quiz.html #--pagination
-exit
+
+# HTML solarized format
+doconce format html quiz --html_style=solarized --html_output=quiz-solarized -DDOCONCE --quiz_horizontal_rule=off
 
 # PDF via latex including full solutions
 doconce format pdflatex quiz --max_bc_linelength=67 --without_answers
@@ -24,4 +26,4 @@ doconce ptex2tex quiz envir=minted
 pdflatex -shell-escape quiz
 
 # publish
-cp -r quiz*.pdf quiz.html ._quiz*.html fig ../../pub/quiz
+cp -r quiz*.pdf quiz*.html ._quiz*.html fig ../../pub/quiz

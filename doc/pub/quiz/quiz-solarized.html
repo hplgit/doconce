@@ -1,0 +1,1215 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Software Tool for Typesetting Quizzes">
+
+
+
+<style type="text/css">
+    /* solarized style */
+    body {
+      margin:5;
+      padding:0;
+      border:0;	/* Remove the border around the viewport in old versions of IE */
+      width:100%;
+      background: #fdf6e3;
+      min-width:600px;	/* Minimum width of layout - remove if not required */
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.3em;
+      color: #657b83;
+    }
+    a { color: #657b83; text-decoration:underline; }
+    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+    h2 { font-variant: small-caps; }
+    pre {
+      background: #fdf6e3;
+      -webkit-box-shadow: inset 0 0 2px #000000;
+      -moz-box-shadow: inset 0 0 2px #000000;
+      box-shadow: inset 0 0 2px #000000;
+      color: #586e75;
+      margin-left: 0px;
+      font-family: 'Droid Sans Mono', monospace;
+      padding: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    tt, code { font-family: "Courier New", Courier; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p { text-indent: 0px; }
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #FFBF00;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #fbeed5;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' A pure text quiz ', 1, None, '___sec0'),
+              (' Question and choices ', 2, None, '___sec1'),
+              (' Explanations of choices ', 2, None, '___sec2'),
+              (' Typesetting ', 2, None, '___sec3'),
+              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
+              (' Typesetting of mathematics and computer code ',
+               1,
+               None,
+               '___sec5'),
+              (' Mathematics ', 2, 'sec:math', 'sec:math'),
+              (' Simple example ', 3, None, '___sec7'),
+              (' A more complicated example ', 3, None, '___sec8'),
+              (' Computer code ', 2, None, '___sec9'),
+              (' Example: Putting it all together ', 2, None, '___sec10'),
+              (' Specification in HTML ', 2, None, '___sec11'),
+              (' The Python data structure for quizzes ',
+               1,
+               None,
+               '___sec12'),
+              (' Translating the quiz format to HTML or PDF ',
+               1,
+               None,
+               '___sec13'),
+              (' HTML ', 2, None, '___sec14'),
+              (' Plain HTML ', 3, None, '___sec15'),
+              (' Bootstrap HTML ', 3, None, '___sec16'),
+              (' Multiple page HTML document ', 3, None, '___sec17'),
+              (' Setting the question and choice prefix ',
+               3,
+               None,
+               '___sec18'),
+              (' LaTeX ', 2, None, '___sec19')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>A Software Tool for Typesetting Quizzes</title>
+
+<center><h1>A Software Tool for Typesetting Quizzes</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Jun 30, 2014</h4></center> <!-- date -->
+<p>
+<b>Summary.</b> This note describes a system for writing quizzes
+(multiple-choice questions) in a compact text format with support
+for mathematics, computer code, and flexible formatting. The text
+format can be automatically translated to HTML and to a Python
+data structure. The HTML can be rendered directly in web pages,
+and the data structure can (in the future) be fed to online quiz/survey
+services a la Kahoot, JotForm, and Google forms.
+<!-- <a href="http://getkahoot.com" target="_self">Kahoot</a>, -->
+
+<p>
+<!-- !split -->
+
+<h1>A pure text quiz  <a name="___sec0"></a></h1>
+
+<h2>Question and choices  <a name="___sec1"></a></h2>
+
+Here is a typical quiz with a question and four alternative answers:
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> What is the capital of Norway?</p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+Helsinki
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 2:</b>
+Drammen
+</div></p>
+
+<p><div title="Right!"><b>Choice 3:</b>
+Oslo
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 4:</b>
+Denmark
+</div></p>
+<!-- end quiz -->
+
+Click on the pencil symbol to the left of <b>Choice</b> to see whether the choice is
+correct or not.
+
+<p>
+The above quiz can be specified by the compact text
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+!equiz
+</pre></div>
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Syntax:</b>
+
+<ul>
+ <li> Each individual quiz (question with multiple-choice answers)
+   is specified between <code>!bquiz</code> (&quot;begin quiz&quot;) and <code>!equiz</code>
+   (&quot;end quiz&quot;) tags.</li>
+ <li> The question starts right after <code>Q:</code> (&quot;question&quot;).</li>
+ <li> Wrong choices are specified with <code>Cw:</code>, and right choices with <code>Cr:</code>.</li>
+ <li> The instructions <code>!bquiz</code>, <code>!equiz</code>, <code>Q:</code>, <code>Cw:</code>, and <code>Cr:</code> must appear
+   at the beginning of a line.</li>
+ <li> The text of (e.g.) a wrong answer (<code>Cr:</code>) lasts up to the next
+   instruction (like <code>Cw:</code>, <code>Cr:</code>, <code>!equiz</code>).</li>
+ <li> One can have as many wrong and right
+   choices as desired.</li>
+</ul>
+</div>
+
+
+<p>
+Multiple correct choices are possible. Here is an example with three
+right choices:
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: Which of the following cities are capitals?
+Cw: Sidney
+Cr: Kigali
+Cw: Bonn
+Cr: Bern
+Cr: Ottawa
+Cw: New York
+!equiz
+</pre></div>
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> Which of the following cities are capitals?</p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+Sidney
+</div></p>
+
+<p><div title="Right!"><b>Choice 2:</b>
+Kigali
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 3:</b>
+Bonn
+</div></p>
+
+<p><div title="Right!"><b>Choice 4:</b>
+Bern
+</div></p>
+
+<p><div title="Right!"><b>Choice 5:</b>
+Ottawa
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 6:</b>
+New York
+</div></p>
+<!-- end quiz -->
+
+
+<h2>Explanations of choices  <a name="___sec2"></a></h2>
+
+Sometimes it is desireable to give some explanation why certain choices
+are wrong (or right).
+If you click on the symbols in the quiz below, explanations
+will be shown for Choices 1 and 2.
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> What is the capital of Norway?</p>
+
+<p><div title="Wrong! Helsinki is the capital of Finland."><b>Choice 1:</b>
+Helsinki
+</div></p>
+
+<p><div title="Wrong! Drammen is a small city close to Oslo."><b>Choice 2:</b>
+Drammen
+</div></p>
+
+<p><div title="Right!"><b>Choice 3:</b>
+Oslo
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 4:</b>
+Denmark
+</div></p>
+<!-- end quiz -->
+
+The quiz syntax applies <code>E: ...</code> after the choice to
+give an explanation of that choice.
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+</pre></div>
+<p>
+This time we also added some whitespace for enhanced reading of the text.
+
+<h2>Typesetting  <a name="___sec3"></a></h2>
+
+It is easy to use <em>emphasize font</em>, <b>boldface</b>, <font color="red">color</font>,
+<a href="http://google.com" target="_self">hyperlinks</a>, etc.,
+since the text in the specification of questions, choices,
+and explanations are rendered according to the
+<a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a> markup language.
+For simple typesetting (emphasize, boldface, links) DocOnce also
+accepts Markdown syntax.
+Here is an example:
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> This is a very famous quote:
+
+<p>
+<blockquote>
+    <em>Premature optimization is the root of all evil.</em>
+</blockquote>
+
+This quote is attributed to</p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+Geroge W. Bush
+</div></p>
+
+<p><div title="Right!"><b>Choice 2:</b>
+Donald Knuth
+</div></p>
+
+<p><div title="Wrong! Ole-Johan Dahl was a famous Norwegian professor of computer science and together with Kristen Nygaard the inventor of object-oriented programming, but he is not the man behind this quote."><b>Choice 3:</b>
+Ole-Johan Dahl
+</div></p>
+<!-- end quiz -->
+
+
+<p>
+The corresponding specification reads
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: Here is a famous quote:
+
+!bquote
+*Premature optimization is the root of all evil.*
+!equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to &quot;Wikiquote&quot;: &quot;http://en.wikiquote.org/wiki/Donald_Knuth&quot;,
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+!equiz
+</pre></div>
+
+<h2>Quiz inside admonitions in DocOnce  <a name="___sec4"></a></h2>
+
+Question admonitions may well feature quizzes. A plain question
+admonition is
+
+<p>
+<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+What is the capital of Norway?
+</div>
+
+specified by the DocOnce syntax
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquestion
+What is the capital of Norway?
+!equestion
+</pre></div>
+<p>
+The quiz version is
+
+<p>
+<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<!-- begin quiz -->
+
+<p>
+<b></b> What is the capital of Norway?</p>
+
+<p><div title="Wrong! Stockholm is the capital of Sweden, Norway's neighboring country."><b>Answer:</b>
+Stockholm
+</div></p>
+
+<p><div title="Wrong! Some people from Bergen may claim so... It is just the second largest city in Norway."><b>Choice 2:</b>
+Bergen
+</div></p>
+
+<p><div title="Right!"><b>Choice 3:</b>
+Oslo
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 4:</b>
+Denmark
+</div></p>
+<!-- end quiz -->
+
+</div>
+
+specified as
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquestion
+!bquiz
+Q: [] What is the capital of Norway?
+
+Cw: [Answer:] Stockholm
+E: Stockholm is the capital of Sweden, Norway&#39;s neighboring country.
+
+Cw: Bergen
+E: Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+!equestion
+</pre></div>
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Choice and question prefix.</b>
+In the above example, we demonstrate the possibility to control
+the word preceding the question and the choices.
+For the current HTML format, questions are by default preceded by
+<code>Question:</code> and choices by <code>Choice X:</code>, where <code>X</code> is the
+number of the choice.
+The prefix appears inside square brackets. Empty brackets, as those
+in the question, leads to no prefix. The choice <code>Stockholm</code> has
+a prefix <code>[Answer:]</code>, and exactly the text inside the square brackets
+precedes the text of this choice in the output.
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h1>Typesetting of mathematics and computer code  <a name="___sec5"></a></h1>
+
+<h2>Mathematics <a name="sec:math"></a></h2>
+
+Mathematical typesetting follows a restricted LaTeX syntax. Inline
+formulas appear inside dollar signs, while separate equations
+appear inside <code>!bt</code> (&quot;begin TeX&quot;) and <code>!et</code> (&quot;end TeX&quot;) tags.
+
+<h3>Simple example  <a name="___sec7"></a></h3>
+
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> Compute the result of \( a+b \) in the case \( a=2 \) and \( b=2 \).</p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+5.
+</div></p>
+
+<p><div title="Right!"><b>Choice 2:</b>
+4.
+</div></p>
+
+<p><div title="Wrong! It is indeed possible to add pure numbers without any units."><b>Choice 3:</b>
+The computation does not make sense when \( a \) and \( b \) are given without
+units.
+</div></p>
+<!-- end quiz -->
+
+
+<p>
+The source code for defining the above quiz reads
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: Compute the result of $a+b$ in the case $a=2$ and $b=2$.
+
+Cw: 5.
+
+E: Good attempt, especially when referring to the following story.
+
+!bquote
+An anthropologist was asking a primitive tribesman about arithmetic.
+When the anthropologist asked, *What does two and two make?* the
+tribesman replied, *Five.* Asked to explain, the tribesman said, *If I
+have a rope with two knots, and another rope with two knots, and I
+join the ropes together, then I have five knots.*
+!equote
+
+Cr: 4.
+E: Seems trivial, but once upon a time...
+
+FIGURE: [fig/1p1, width=180 frac=0.3]
+
+Cw: The computation does not make sense when $a$ and $b$ are given without
+units.
+
+E: It is indeed possible to add pure numbers without any units.
+!equiz
+</pre></div>
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Only a subset of LaTeX equation environment is supported!</b>
+To make sure blocks with equations come out correctly in different
+output formats (LaTeX, HTML, Sphinx, Markdown), only four types
+of standard LaTeX equation environments should be used:
+
+<ol>
+<li> Single equation without number: <code>\[ ... \]</code> or <code>equation*</code> environment</li>
+<li> Single equation with number: <code>equation</code> environment</li>
+<li> Multiple, aligned equations without numbers: <code>align*</code> environment</li>
+<li> Multiple, aligned equations with numbers: <code>align</code> environment</li>
+</ol>
+
+This means that one has to stay away from <code>eqnarray</code>, <code>alignat</code>,
+and other common LaTeX equation environments. However, inside an equation,
+standard LaTeX math typesetting works (like <code>\alpha</code>, <code>\mbox{...}</code>, etc.).
+</div>
+
+
+<h3>A more complicated example  <a name="___sec8"></a></h3>
+
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> The equation
+
+$$
+\begin{equation}
+\nabla\cdot\boldsymbol{u} = 0
+\label{cont:eq}
+\end{equation}
+$$
+
+is famous in physics. Select the wrong assertion(s):</p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+The equation tells that the net outflow of something with
+velocity \( \boldsymbol{u} \) in region is zero.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 2:</b>
+The equation tells that the vector field \( \boldsymbol{u} \) is divergence free.
+</div></p>
+
+<p><div title="Wrong! Yes, this is an important result in vector calculus that is much used in electromagnetics."><b>Choice 3:</b>
+The equation implies that there exists a vector potential \( \boldsymbol{A} \)
+such that \( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
+</div></p>
+
+<p><div title="Right!"><b>Choice 4:</b>
+The equation implies \( \nabla\times\boldsymbol{u}=0 \).
+</div></p>
+
+<p><div title="Right!"><b>Choice 5:</b>
+The equation implies that \( \boldsymbol{u} \) must be a constant vector field.
+</div></p>
+<!-- end quiz -->
+
+
+<p>
+The corresponding code needed to define this quiz is listed below.
+Note two new features:
+
+<ul>
+ <li> The <code>K: gradient; divergence; ...</code>
+   construction allows specification of a set of keywords separated
+   by semi-colon. The feature is handy when automatically selecting
+   quizzes from a large database. There is no output of the keywords
+   in typeset quizzes.</li>
+ <li> <code>L: div:assert</code> defines a label for the quiz. This can be used
+   as a logical name in the same way as labels are used in LaTeX.
+   For example, a collection of labels can be specified for selecting
+   a collection quizzes. The label is invisible in a typeset quiz.</li>
+</ul>
+
+Keywords and label should appear before or right after the question
+and they cannot span more than one line.
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: The equation
+
+!bt
+\begin{equation}
+\nabla\cdot\boldsymbol{u} = 0
+label{cont:eq}
+\end{equation}
+!et
+is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
+L: div:assert
+
+Cw: The equation tells that the net outflow of something with
+velocity $\boldsymbol{u}$ in region is zero.
+E: This is right: integrating \eqref{cont:eq} over an arbitrary domain
+$\Omega$ and using Gauss&#39; divergence theorem, we get the surface integral
+
+!bt
+\[ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,\]
+!et
+where $\boldsymbol{n}$ is an outward unit normal on the boundary $\partial\Omega$.
+The quantity $\boldsymbol{u}\cdot\boldsymbol{n}dS$ is the outflow of volume per
+time unit if $\boldsymbol{u}$ is velocity.
+
+Cw: The equation tells that the vector field $\boldsymbol{u}$ is divergence free.
+E: Yes, *divergence free* is often used as synonym for *zero divergence*,
+and $\nabla\cdot\boldsymbol{u}$ is the divergence of a vector field $\boldsymbol{u}$.
+
+Cw: The equation implies that there exists a vector potential $\boldsymbol{A}$
+such that $\boldsymbol{u}=\nabla\times\boldsymbol{A}$.
+E: Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+
+Cr: The equation implies $\nabla\times\boldsymbol{u}=0$.
+E: No, only if $\boldsymbol{u}=\nabla\phi$, for some scalar potential $\phi$,
+we have $\nabla\times\boldsymbol{u}=0$.
+
+Cr: The equation implies that $\boldsymbol{u}$ must be a constant vector field.
+E: No, it is the *sum* of derivatives of different components of $\boldsymbol{u}$
+that is zero. Only in one dimension, where $\boldsymbol{u}=u_x\boldsymbol{i}$
+and consequently $\nabla\cdot\boldsymbol{u}=du/dx$, the vector field must be constant.
+!equiz
+</pre></div>
+
+<h2>Computer code  <a name="___sec9"></a></h2>
+
+Inline computer code (variables, expressions, statements) are
+normally typeset with a monospace font, and this is enabled by
+enclosing the code in backticks. Blocks of computer code are typeset
+with <code>!bc</code> (&quot;begin code&quot;) and <code>!ec</code> (&quot;end code&quot;) tags.
+One can specify the computer language as part of the <code>!bc</code> tag:
+<code>!bc LX</code>, where <code>L</code> is the language (<code>py</code> for Python, <code>m</code> for Matlab,
+<code>cpp</code> for C++, for instance) and <code>X</code> can be <code>pro</code> for a complete
+executable program or <code>cod</code> for a code snippet (cannot be executed without
+additional statements) [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>]. The quizzes below demonstrate the syntax.
+
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> <code>X</code> can also be <code>hide</code> for code that is not supposed to be
+shown, but possibly required to execute other snippets in an
+interactive document (that allows code to be edited and executed
+by the reader). This is currently being implemented in DocOnce's
+support for Runestone Interactive books (using the Sphinx format).
+
+<p>
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> We want to create a Python list object of length <code>n</code> where each
+element is <code>0</code>. Is the following code then what we need?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span>
+mylist = numpy.zeros(n)
+</pre></div>
+<p></p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+Yes.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 2:</b>
+Yes, provided we write <code>np</code> instead of <code>numpy</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+mylist = np.zeros(n)
+</pre></div>
+<p>
+</div></p>
+
+<p><div title="Right!"><b>Choice 3:</b>
+No.
+</div></p>
+<!-- end quiz -->
+
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bquiz
+Q: We want to create a Python list object of length `n` where each
+element is `0`. Is the following code then what we need?
+
+!bc pycod
+import numpy
+mylist = numpy.zeros(n)
+!ec
+
+K: list, array
+
+Cw: Yes.
+
+E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
+
+Cw: Yes, provided we write `np` instead of `numpy`:
+
+!bc pycod
+import numpy as np
+mylist = np.zeros(n)
+!ec
+
+E: No, this is fully equivalent to the original code, so `mylist` becomes
+an array, not a list.
+
+Cr: No.
+E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
+!equiz
+</pre></div>
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Summary of quiz syntax:</b>
+
+<ul>
+ <li> Each quiz is enclosed in <code>!bquiz</code> and <code>!equiz</code></li>
+ <li> <code>Q</code>: question</li>
+ <li> <code>Q [prefix]</code>: question with prefix (defaults to <em>Question</em>)</li>
+ <li> <code>Cr</code>: right (correct) choice</li>
+ <li> <code>Cw</code>: wrong (incorrect) choice</li>
+ <li> <code>Cr [prefix]</code>: right (correct) choice with prefix (defaults to <em>Choice X</em>,
+   where <em>X</em> is the choice number in HTML, and to an upper case letter in
+   LaTeX)</li>
+ <li> <code>Cw [prefix]</code>: wrong (incorrect) choice with prefix</li>
+ <li> <code>E</code>: explanation of last choice</li>
+ <li> <code>K</code>: keywords</li>
+ <li> <code>L</code>: label (logical name)</li>
+ <li> <code>NP</code>: heading for new page</li>
+ <li> <code>H</code>: quiz heading</li>
+</ul>
+</div>
+
+
+<h2>Example: Putting it all together  <a name="___sec10"></a></h2>
+
+<!-- begin quiz -->
+
+<p>
+<b>Question:</b> <p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">D</span>(u, t, dt=<span style="color: #B452CD">1E-5</span>):
+    <span style="color: #8B008B; font-weight: bold">return</span> (u(t + dt) - u(t - dt))/(<span style="color: #B452CD">2</span>*dt)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">u</span>(t):
+    <span style="color: #CD5555">&quot;A quadratic function.&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> t^<span style="color: #B452CD">2</span>
+
+<span style="color: #8B008B; font-weight: bold">print</span> D(u, t=<span style="color: #B452CD">4</span>),
+<span style="color: #8B008B; font-weight: bold">print</span> D(<span style="color: #8B008B; font-weight: bold">lambda</span> x: <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*x, <span style="color: #B452CD">2</span>)
+</pre></div>
+<p>
+The purpose of this program is to differentiate the two mathematical
+functions
+
+$$
+\begin{align*}
+u(t) &= t^2,\\
+f(x) &= 2x.
+\end{align*}
+$$
+
+Determine which of the following assertions that is <b>wrong</b>.</p>
+
+<p><div title="Wrong!"><b>Choice 1:</b>
+In Python, the syntax for \( t^2 \) is <code>t**2</code>, not <code>t^2</code>, so the
+<code>u</code> function contains an error.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 2:</b>
+The string in the <code>u</code> function is a valid doc string.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 3:</b>
+The output from the program is on a single line, despite two <code>print</code>
+statements.
+</div></p>
+
+<p><div title="Right!"><b>Choice 4:</b>
+One cannot use <code>u</code> both inside the <code>D</code> function and in the
+outer calling code (the main program).
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 5:</b>
+The call <code>D(lambda x: return 2*x, 2)</code> is equivalent to defining
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*x
+</pre></div>
+<p>
+and then calling <code>D(f, 2)</code>.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 6:</b>
+There is danger of integer division in the <code>D</code> function.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 7:</b>
+The <code>D</code> function computes an approximate derivative of the
+function <code>u(t)</code>.
+</div></p>
+
+<p><div title="Wrong!"><b>Choice 8:</b>
+Both calls to <code>D</code> results in the exact derivative, provided we
+replace <code>t^2</code> by <code>t**2</code>.
+</div></p>
+<!-- end quiz -->
+
+
+<p>
+<!-- !split -->
+
+<h2>Specification in HTML  <a name="___sec11"></a></h2>
+
+Instead of using the compact text specification with DocOnce
+formatting, one can use a more verbose syntax and specify everything
+in HTML. The second example in the section <a href="#sec:math">Mathematics</a> then reads
+
+<p>
+
+<!-- code=html (!bc htmlcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"> <span style="color: #228B22">&lt;!-- --- begin quiz --- --&gt;</span>
+ <span style="color: #228B22">&lt;!-- --- begin quiz question --- --&gt;</span>
+ The equation
+
+ $$
+ \begin{equation}
+ \nabla\cdot\boldsymbol{u} = 0
+ \label{cont:eq}
+ \end{equation}
+ $$
+
+ is famous in physics. Select the wrong assertion(s):
+ <span style="color: #228B22">&lt;!-- --- end quiz question --- --&gt;</span>
+ <span style="color: #228B22">&lt;!-- --- keywords:[&#39;gradient&#39;, &#39;divergence&#39;, &#39;curl&#39;, &#39;vector calculus&#39;] --&gt;</span>
+ <span style="color: #228B22">&lt;!-- --- label:div:assert --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin quiz choice 1 (wrong) --- --&gt;</span>
+ The equation tells that the net outflow of something with
+ velocity \( \boldsymbol{u} \) in region is zero.
+ <span style="color: #228B22">&lt;!-- --- end quiz choice 1 (wrong) --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin explanation of choice 1 --- --&gt;</span>
+ This is right: integrating \eqref{cont:eq} over an arbitrary
+ domain \( \Omega \) and using Gauss&#39; divergence theorem, we
+ get the surface integral
+
+ $$ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,$$
+
+ where \( \boldsymbol{n} \) is an outward unit normal on the
+ boundary \( \partial\Omega \).
+ The quantity \( \boldsymbol{u}\cdot\boldsymbol{n}dS \) is the
+ outflow of volume per time unit if \( \boldsymbol{u} \) is
+ velocity.
+ <span style="color: #228B22">&lt;!-- --- end explanation of choice 1 --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin quiz choice 2 (wrong) --- --&gt;</span>
+ The equation tells that the vector field \( \boldsymbol{u} \)
+ is divergence free.
+ <span style="color: #228B22">&lt;!-- --- end quiz choice 2 (wrong) --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin explanation of choice 2 --- --&gt;</span>
+ Yes, <span style="color: #8B008B; font-weight: bold">&lt;em&gt;</span>divergence free<span style="color: #8B008B; font-weight: bold">&lt;/em&gt;</span> is often used as synonym for
+ <span style="color: #8B008B; font-weight: bold">&lt;em&gt;</span>zero divergence<span style="color: #8B008B; font-weight: bold">&lt;/em&gt;</span>, and \( \nabla\cdot\boldsymbol{u} \)
+ is the divergence of a vector field \( \boldsymbol{u} \).
+ <span style="color: #228B22">&lt;!-- --- end explanation of choice 2 --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin quiz choice 3 (wrong) --- --&gt;</span>
+ The equation implies that there exists a vector potential
+ \( \boldsymbol{A} \) such that
+ \( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
+ <span style="color: #228B22">&lt;!-- --- end quiz choice 3 (wrong) --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin explanation of choice 3 --- --&gt;</span>
+ Yes, this is an important result in vector calculus that is much
+ used in electromagnetics.
+ <span style="color: #228B22">&lt;!-- --- end explanation of choice 3 --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin quiz choice 4 (right) --- --&gt;</span>
+ The equation implies \( \nabla\times\boldsymbol{u}=0 \).
+ <span style="color: #228B22">&lt;!-- --- end quiz choice 4 (right) --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin explanation of choice 4 --- --&gt;</span>
+ No, only if \( \boldsymbol{u}=\nabla\phi \), for some scalar
+ potential \( \phi \), we have \( \nabla\times\boldsymbol{u}=0 \).
+ <span style="color: #228B22">&lt;!-- --- end explanation of choice 4 --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin quiz choice 5 (right) --- --&gt;</span>
+ The equation implies that \( \boldsymbol{u} \)
+ must be a constant vector field.
+ <span style="color: #228B22">&lt;!-- --- end quiz choice 5 (right) --- --&gt;</span>
+
+ <span style="color: #228B22">&lt;!-- --- begin explanation of choice 5 --- --&gt;</span>
+ No, it is the <span style="color: #8B008B; font-weight: bold">&lt;em&gt;</span>sum<span style="color: #8B008B; font-weight: bold">&lt;/em&gt;</span> of derivatives of different components
+ of \( \boldsymbol{u} \) that is zero. Only in one dimension,
+ where \( \boldsymbol{u}=u_x\boldsymbol{i} \) and consequently
+ \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
+ constant.
+ <span style="color: #228B22">&lt;!-- --- end explanation of choice 5 --- --&gt;</span>
+ <span style="color: #228B22">&lt;!-- --- end quiz --- --&gt;</span>
+</pre></div>
+<p>
+This syntax applies begin-end comments to mark the start and end
+of the question, the choices, and the explanations.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+The HTML specification of a quiz is not a meaningful HTML code for
+displaying the quiz in a browser, it is just an application of the
+HTML language to specify information and have full control of
+the typesetting details. Some program must interpret the
+HTML above and typset questions, choices, and explanations adequately.
+(As done elsewhere in this document.)
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h1>The Python data structure for quizzes  <a name="___sec12"></a></h1>
+
+When a DocOnce file <code>mydoc.do.txt</code> containing quizzes (and other types
+of text, like this document) is translated to some format by the
+<code>doconce format</code> command, a Python list of all the quizzes is created
+and written to <code>.mydoc.quiz</code>. Each list element represents one quiz as
+a dictionary. The list corresponding to the quizzes in the current
+document starts with
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">[{<span style="color: #CD5555">&#39;choices&#39;</span>: [[<span style="color: #CD5555">u&#39;wrong&#39;</span>, <span style="color: #CD5555">u&#39;Helsinki&#39;</span>],
+              [<span style="color: #CD5555">u&#39;wrong&#39;</span>, <span style="color: #CD5555">u&#39;Drammen&#39;</span>],
+              [<span style="color: #CD5555">u&#39;right&#39;</span>, <span style="color: #CD5555">u&#39;Oslo&#39;</span>],
+              [<span style="color: #CD5555">u&#39;wrong&#39;</span>, <span style="color: #CD5555">u&#39;Denmark&#39;</span>]],
+  <span style="color: #CD5555">&#39;no&#39;</span>: <span style="color: #B452CD">1</span>,
+  <span style="color: #CD5555">&#39;question&#39;</span>: <span style="color: #CD5555">u&#39;What is the capital of Norway?&#39;</span>},
+</pre></div>
+<p>
+A more complicated quiz with specification of prefix for the question and
+one choice (see example above in the question admonition) has explanations
+in the list for each choice, as well as two more
+keys (<code>choice prefix</code> and <code>question prefix</code>):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"> {<span style="color: #CD5555">&#39;choice prefix&#39;</span>: [<span style="color: #CD5555">u&#39;Answer:&#39;</span>, <span style="color: #658b00">None</span>, <span style="color: #658b00">None</span>, <span style="color: #658b00">None</span>],
+  <span style="color: #CD5555">&#39;choices&#39;</span>: [
+    [<span style="color: #CD5555">u&#39;wrong&#39;</span>,
+     <span style="color: #CD5555">u&#39;Stockholm&#39;</span>,
+     <span style="color: #CD5555">u&quot;Stockholm is the capital of Sweden, Norway&#39;s neighboring country.&quot;</span>],
+    [<span style="color: #CD5555">u&#39;wrong&#39;</span>,
+     <span style="color: #CD5555">u&#39;Bergen&#39;</span>,
+     <span style="color: #CD5555">u&#39;Some people from Bergen may claim so... It is just the second\nlargest city in Norway.&#39;</span>],
+    [<span style="color: #CD5555">u&#39;right&#39;</span>, <span style="color: #CD5555">u&#39;Oslo&#39;</span>],
+    [<span style="color: #CD5555">u&#39;wrong&#39;</span>, <span style="color: #CD5555">u&#39;Denmark&#39;</span>]],
+  <span style="color: #CD5555">&#39;no&#39;</span>: <span style="color: #B452CD">5</span>,
+  <span style="color: #CD5555">&#39;question&#39;</span>: <span style="color: #CD5555">u&#39;What is the capital of Norway?&#39;</span>,
+  <span style="color: #CD5555">&#39;question prefix&#39;</span>: <span style="color: #CD5555">u&#39;&#39;</span>},
+</pre></div>
+<p>
+The text in the Python list-dictionary data structure is ready-made for
+being displayed in HTML. Here is an example involving mathematics
+(MathJax syntax):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"> {<span style="color: #CD5555">&#39;choices&#39;</span>: [
+   [<span style="color: #CD5555">u&#39;wrong&#39;</span>,
+    <span style="color: #CD5555">u&#39;5.&#39;</span>,
+    <span style="color: #CD5555">u&#39;Good attempt, especially when referring to the following story.</span>
+\n\n&lt;p&gt;\n&lt;blockquote&gt;\n    An anthropologist was asking a primitive tribesman ab
+out arithmetic.\n    When the anthropologist asked, &lt;em&gt;What does two <span style="color: #8B008B">and</span> two ma
+ke<span style="color: #a61717; background-color: #e3d2d2">?</span>&lt;/em&gt; the\n    tribesman replied, &lt;em&gt;Five.&lt;/em&gt; Asked to explain, the tribes
+man said, &lt;em&gt;If I\n    have a rope <span style="color: #8B008B; font-weight: bold">with</span> two knots, <span style="color: #8B008B">and</span> another rope <span style="color: #8B008B; font-weight: bold">with</span> two kn
+ots, <span style="color: #8B008B">and</span> I\n    join the ropes together, then I have five knots.&lt;/em&gt;\n&lt;/blockqu
+ote&gt;<span style="color: #CD5555">&#39;],</span>
+   [<span style="color: #CD5555">u&#39;right&#39;</span>,
+    <span style="color: #CD5555">u&#39;4.&#39;</span>,
+    <span style="color: #CD5555">u&#39;Seems trivial, but once upon a time...\n\n&lt;p&gt;\n&lt;center&gt;&lt;p&gt;&lt;img src=&quot;fig/1p1.gif&quot; align=&quot;bottom&quot; width=180&gt;&lt;/p&gt;&lt;/center&gt;&#39;</span>],
+   [<span style="color: #CD5555">u&#39;wrong&#39;</span>,
+    <span style="color: #CD5555">u&#39;The computation does not make sense when \\( a \\) and \\( b \\) are given without\nunits.&#39;</span>,
+    <span style="color: #CD5555">u&#39;It is indeed possible to add pure numbers without any units.&#39;</span>]],
+  <span style="color: #CD5555">&#39;no&#39;</span>: <span style="color: #B452CD">6</span>,
+  <span style="color: #CD5555">&#39;question&#39;</span>: <span style="color: #CD5555">u&#39;Compute the result of \\( a+b \\) in the case \\( a=2 \\) and \\( b=2 \\).&#39;</span>},
+</pre></div>
+<p>
+Computer code gets typeset by nice colors by default (using the Pygments
+package):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">{<span style="color: #CD5555">&#39;choices&#39;</span>:
+   [[<span style="color: #CD5555">u&#39;wrong&#39;</span>,
+     <span style="color: #CD5555">u&#39;Yes.&#39;</span>,
+     <span style="color: #CD5555">u&#39;Not exactly: &lt;code&gt;numpy.zeros&lt;/code&gt; creates an array of zeros</span>
+, <span style="color: #8B008B">not</span> a <span style="color: #658b00">list</span>.<span style="color: #CD5555">&#39;],</span>
+    [<span style="color: #CD5555">u&#39;wrong&#39;</span>,
+     <span style="color: #CD5555">u&#39;Yes, provided we write &lt;code&gt;np&lt;/code&gt; instead of &lt;code&gt;numpy&lt;/code&gt;:\n\n&lt;p&gt;\n\n&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;\n&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt; &lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;as&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;np&lt;/span&gt;\nmylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; np&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)\n&lt;/pre&gt;&lt;/div&gt;\n&lt;p&gt;&#39;</span>,
+     <span style="color: #CD5555">u&#39;No, this is fully equivalent to the original code, so &lt;code&gt;mylist&lt;/code&gt; becomes\nan array, not a list.&#39;</span>],
+    [<span style="color: #CD5555">u&#39;right&#39;</span>,
+     <span style="color: #CD5555">u&#39;No.&#39;</span>,
+     <span style="color: #CD5555">u&#39;One would need to do &lt;code&gt;mylist = [0]*n&lt;/code&gt; or &lt;code&gt;numpy.zeros(n).tolist()&lt;/code&gt;.&#39;</span>]],
+  <span style="color: #CD5555">&#39;no&#39;</span>: <span style="color: #B452CD">8</span>,
+  <span style="color: #CD5555">&#39;question&#39;</span>: <span style="color: #CD5555">u&#39;We want to create a Python list object of length &lt;code&gt;n&lt;/code&gt; where each\nelement is &lt;code&gt;0&lt;/code&gt;. Is the following code then what we need?\n\n&lt;p&gt;\n\n&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;\n&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt;\nmylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; numpy&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)\n&lt;/pre&gt;&lt;/div&gt;\n&lt;p&gt;&#39;</span>}
+</pre></div>
+<p>
+<!-- There is no embedding key in the quiz dictionary representation since -->
+<!-- this document has !bquiz outside quiz environments (the method to -->
+<!-- extract the previous section header does not work in that case.) -->
+
+<p>
+The keys in the dictionaries in this data structure are
+
+<ul>
+ <li> <code>question</code>: the text of the question. This key is always present.</li>
+ <li> <code>no</code>: the number of the quiz (starts at 1). This key is always present.</li>
+ <li> <code>keywords</code>: an optional list of keywords for the quiz.</li>
+ <li> <code>label</code>: an optional logical name for this quiz.</li>
+ <li> <code>choices</code>: list of all the choices as 2- or 3-lists. First element
+   is <code>right</code> or <code>wrong</code>, second is the text of the choice, the optional
+   third element is the explanation (if it was specified). This key
+   is always present.</li>
+ <li> <code>choice prefix</code>: optional list of the prefix specified for each choice.
+   <code>None</code> implies the default prefix (depends on the format,
+   see the documentation
+   of the <code>--quiz_choice_prefix=</code> option by typing <code>doconce format --help</code>).
+   This key is absent if there are no specifications of such a prefix.</li>
+ <li> <code>question prefix</code>: The optional prefix specified for the question,
+   if different from the default value <code>Question:</code>.</li>
+ <li> <code>new page</code>: Optional headline for a new page of quizzes. Also
+   indicates that a new page is to be made.</li>
+</ul>
+
+<!-- !split -->
+
+<h1>Translating the quiz format to HTML or PDF  <a name="___sec13"></a></h1>
+
+The program <code>doconce</code> must be run to interpret the quiz format, translate
+it to LaTeX, HTML, or other formats, and produce the Python representation
+of the collection of quizzes in a document. Let the name of the
+document with quiz specifications and optional text be <code>myquiz.do.txt</code>.
+Documents to play around with are <a href="https://github.com/hplgit/doconce/tree/master/doc/src/quiz/pure_quiz.do.txt" target="_self"><tt>pure_quiz.do.txt</tt></a> or
+<a href="https://github.com/hplgit/doconce/tree/master/doc/src/quiz/quiz.do.txt" target="_self">the present document</a>.
+
+<h2>HTML  <a name="___sec14"></a></h2>
+
+<h3>Plain HTML  <a name="___sec15"></a></h3>
+
+A simple HTML rendering of quizzes is done by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; doconce format html myquiz
+</pre></div>
+<p>
+The result <code>myquiz.html</code> can be loaded into a browser.
+
+<h3>Bootstrap HTML  <a name="___sec16"></a></h3>
+
+A more sophisticated rendering is offered if a Bootstrap HTML style
+is adopted,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; doconce format html myquiz --html_style=bootstrap
+</pre></div>
+<p>
+Other variations of this class of styles are <code>bootswatch</code>, and
+<code>bootswatch_X</code>, where <code>X</code> is the name of a Bootswatch style, e.g.,
+<code>journal</code>.
+
+<p>
+The Bootstrap-based styles have a striking red color for inline computer
+code, which can be avoided by giving the option <code>html_code_style=inherit</code>.
+See the documentation of <a href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" target="_self">DocOnce and Bootstrap</a> for details and examples.
+
+<p>
+By default, there is a horizontal rule enclosing each quiz in the HTML format.
+This can be turned off by the option <code>--quiz_horizontal_rule=off</code>.
+
+<h3>Multiple page HTML document  <a name="___sec17"></a></h3>
+
+By inserting <code>!split</code> before headings in a DocOnce document, one can run
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; doconce split_html myquiz.html
+</pre></div>
+<p>
+to create a multi-page document with navigation arrows. Bootstrap styles
+will also have a <em>Contents</em> pull-down menu to the right in the top bar.
+Without the <code>split_html</code> command (and <code>!split</code> instructions in the document),
+all the text will be in one HTML page.
+
+<h3>Setting the question and choice prefix  <a name="___sec18"></a></h3>
+
+The prefix before a question is <code>Question:</code> and before a choice is <code>Choice X</code>,
+where <code>X</code> is a number. To set a different prefix, see the
+<code>--quiz_question_prefix</code> and <code>--quiz_choice_prefix</code> commands
+when running <code>doconce format --help</code>.
+
+<h2>LaTeX  <a name="___sec19"></a></h2>
+
+The standard command to produce a LaTeX document is
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex myquiz \
+          --without_answers --without_solutions
+</pre></div>
+<p>
+If desired, the correct answer to each quiz can be included by omitting
+<code>--without_answers</code>. Omitting <code>--without_solutions</code> will print
+the right answers and the available explanations below the quiz.
+
+<p>
+The next steps are
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; doconce ptex2tex myquiz envir=minted
+Terminal&gt; pdflatex -shell-escape myquiz
+</pre></div>
+<p>
+to produce a PDF <code>myquiz.pdf</code>. The <code>doconce ptex2tex</code> step enables a lot
+of different typesetting of blocks of computer code.
+Here, we use the <code>minted</code> style, which applies the Pygments package.
+The default (no <code>envir</code> specification) is a plain LaTeX verbatim environment.
+Even more possibilities for typesetting computer code exist if
+one runs the <code>ptex2tex</code> program (and not <code>doconce ptex2tex</code>).
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

@@ -34,22 +34,25 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' Question and choices ', 2, None, '___sec1'),
               (' Explanations of choices ', 2, None, '___sec2'),
               (' Typesetting ', 2, None, '___sec3'),
-              (' Specification in HTML ', 2, None, '___sec4'),
-              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec5'),
+              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
               (' Typesetting of mathematics and computer code ',
                1,
                None,
-               '___sec6'),
-              (' Mathematics ', 2, None, '___sec7'),
-              (' Simple example ', 3, None, '___sec8'),
-              (' A more complicated example ', 3, None, '___sec9'),
-              (' Code ', 2, None, '___sec10'),
-              (' Example: Putting it all together ', 2, None, '___sec11'),
+               '___sec5'),
+              (' Mathematics ', 2, 'sec:math', 'sec:math'),
+              (' Simple example ', 3, None, '___sec7'),
+              (' A more complicated example ', 3, None, '___sec8'),
+              (' Computer code ', 2, None, '___sec9'),
+              (' Example: Putting it all together ', 2, None, '___sec10'),
+              (' Specification in HTML ', 2, None, '___sec11'),
               (' The Python data structure for quizzes ',
                1,
                None,
                '___sec12'),
-              (' Interpreting the quiz format ', 1, None, '___sec13'),
+              (' Translating the quiz format to HTML or PDF ',
+               1,
+               None,
+               '___sec13'),
               (' HTML ', 2, None, '___sec14'),
               (' Plain HTML ', 3, None, '___sec15'),
               (' Bootstrap HTML ', 3, None, '___sec16'),
@@ -102,16 +105,16 @@ MathJax.Hub.Config({
      <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
      <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
      <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
-     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
-     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
-     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec6" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
-     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
-     <!-- navigation toc: "Code" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
-     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz003.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
-     <!-- navigation toc: "Interpreting the quiz format" --> <li><a href="._quiz004.html#___sec13" style="font-size: 80%;"><b>Interpreting the quiz format</b></a></li>
-     <!-- navigation toc: "HTML" --> <li><a href="._quiz004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
-     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz004.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
+     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: "Computer code" --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
+     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: "Translating the quiz format to HTML or PDF" --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
 
         </ul>
       </li>
@@ -213,9 +216,10 @@ Cw: Denmark
 <div class="alert alert-block alert-success alert-text-normal"><b>Syntax:</b>
 
 <ul>
- <li> The quiz is specified between <code>!bquiz</code>
-   (&quot;begin quiz&quot;) and <code>!equiz</code> (&quot;end quiz&quot;) tags.</li>
- <li> The question starts right after <code>Q:</code>.</li>
+ <li> Each individual quiz (question with multiple-choice answers)
+   is specified between <code>!bquiz</code> (&quot;begin quiz&quot;) and <code>!equiz</code>
+   (&quot;end quiz&quot;) tags.</li>
+ <li> The question starts right after <code>Q:</code> (&quot;question&quot;).</li>
  <li> Wrong choices are specified with <code>Cw:</code>, and right choices with <code>Cr:</code>.</li>
  <li> The instructions <code>!bquiz</code>, <code>!equiz</code>, <code>Q:</code>, <code>Cw:</code>, and <code>Cr:</code> must appear
    at the beginning of a line.</li>
@@ -396,7 +400,7 @@ Wrong!
 </p>
 <!-- end quiz -->
 
-The corresponding typesetting applies <code>E: ...</code> after the choice to
+The quiz syntax applies <code>E: ...</code> after the choice to
 give an explanation of that choice.
 
 <p>
@@ -417,7 +421,7 @@ Cw: Denmark
 !equiz
 </pre></div>
 <p>
-This time we also added some spaces for enhanced reading of the text.
+This time we also added some whitespace for enhanced reading of the text.
 
 <h2>Typesetting  <a name="___sec3"></a></h2>
 
@@ -520,70 +524,7 @@ quote.
 !equiz
 </pre></div>
 
-<h2>Specification in HTML  <a name="___sec4"></a></h2>
-
-Instead of using the compact text specification with DocOnce
-formatting, one can use a more verbose syntax and specify everything
-in HTML. The previous example then reads
-
-<p>
-
-<!-- code=html (!bc htmlcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz --- --&gt;</span>
- <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz question --- --&gt;</span>
- Here is a famous quote:
-
- <span style="color: #008000; font-weight: bold">&lt;blockquote&gt;</span>
-     <span style="color: #008000; font-weight: bold">&lt;em&gt;</span>Premature optimization is the root of all evil.<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span>
- <span style="color: #008000; font-weight: bold">&lt;/blockquote&gt;</span>
-
- This quote is attributed to
- <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz question --- --&gt;</span>
-
- <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz choice 1 (wrong) --- --&gt;</span>
- Geroge W. Bush
- <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz choice 1 (wrong) --- --&gt;</span>
-
- <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz choice 2 (right) --- --&gt;</span>
- Donald Knuth
- <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz choice 2 (right) --- --&gt;</span>
-
- <span style="color: #408080; font-style: italic">&lt;!-- --- begin explanation of choice 2 --- --&gt;</span>
- According to
- <span style="color: #008000; font-weight: bold">&lt;a</span> <span style="color: #7D9029">href=</span><span style="color: #BA2121">&quot;http://en.wikiquote.org/wiki/Donald_Knuth&quot;</span>
-  <span style="color: #7D9029">target=</span><span style="color: #BA2121">&quot;_self&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>Wikiquote<span style="color: #008000; font-weight: bold">&lt;/a&gt;</span>,
- Donald Knuth wrote this statement in <span style="color: #008000; font-weight: bold">&lt;em&gt;</span>Structured Programming with
- Goto Statements<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span>. Computing Surveys, <span style="color: #008000; font-weight: bold">&lt;b&gt;</span>6<span style="color: #008000; font-weight: bold">&lt;/b&gt;</span>:4,
- pp. 261-301, <span style="color: #008000; font-weight: bold">&lt;b&gt;</span>1974<span style="color: #008000; font-weight: bold">&lt;/b&gt;</span>.
- <span style="color: #408080; font-style: italic">&lt;!-- --- end explanation of choice 2 --- --&gt;</span>
-
- <span style="color: #408080; font-style: italic">&lt;!-- --- begin quiz choice 3 (wrong) --- --&gt;</span>
- Ole-Johan Dahl
- <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz choice 3 (wrong) --- --&gt;</span>
-
- <span style="color: #408080; font-style: italic">&lt;!-- --- begin explanation of choice 3 --- --&gt;</span>
- Ole-Johan Dahl was a famous Norwegian professor of computer science
- and together with Kristen Nygaard the inventor of object-oriented
- programming, but he is not the man behind this quote.
- <span style="color: #408080; font-style: italic">&lt;!-- --- end explanation of choice 3 --- --&gt;</span>
- <span style="color: #408080; font-style: italic">&lt;!-- --- end quiz --- --&gt;</span>
-</pre></div>
-<p>
-This syntax applies begin-end comments to mark the start and end
-of the question, the choices, and the explanations.
-
-<p>
-<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
-The HTML specification of a quiz is not a meaningful HTML code for
-displaying the quiz in a browser, it is just an application of the
-HTML language to specify information and have full control of
-the typesetting details. Some program must interpret the
-HTML above and typset questions, choices, and explanations adequately.
-(As done elsewhere in this document.)
-</div>
-
-
-<h2>Quiz inside admonitions in DocOnce  <a name="___sec5"></a></h2>
+<h2>Quiz inside admonitions in DocOnce  <a name="___sec4"></a></h2>
 
 Question admonitions may well feature quizzes. A plain question
 admonition is
@@ -706,15 +647,14 @@ precedes the text of this choice in the output.
 
 <p>
 <p>
+
 <ul class="pager">
   <li class="previous">
     <a href="._quiz000.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._quiz002.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

@@ -45,8 +45,9 @@ Cw: Denmark
 
 !bnotice Syntax:
 
- * The quiz is specified between `!bquiz`
-   (``begin quiz'') and `!equiz` (``end quiz'') tags.
+ * Each individual quiz (question with multiple-choice answers)
+   is specified between `!bquiz` (``begin quiz'') and `!equiz`
+   (``end quiz'') tags.
  * The question starts right after `Q:` (``question'').
  * Wrong choices are specified with `Cw:`, and right choices with `Cr:`.
  * The instructions `!bquiz`, `!equiz`, `Q:`, `Cw:`, and `Cr:` must appear
@@ -528,6 +529,25 @@ E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
 |equiz
 !ec
 
+!bnotice Summary of quiz syntax:
+
+ * Each quiz is enclosed in `!bquiz` and `!equiz`
+ * `Q`: question
+ * `Q [prefix]`: question with prefix (defaults to *Question*)
+ * `Cr`: right (correct) choice
+ * `Cw`: wrong (incorrect) choice
+ * `Cr [prefix]`: right (correct) choice with prefix (defaults to *Choice X*,
+   where *X* is the choice number in HTML, and to an upper case letter in
+   LaTeX)
+ * `Cw [prefix]`: wrong (incorrect) choice with prefix
+ * `E`: explanation of last choice
+ * `K`: keywords
+ * `L`: label (logical name)
+ * `NP`: heading for new page
+ * `H`: quiz heading
+
+!enotice
+
 ===== Example: Putting it all together =====
 
 !bquiz
@@ -842,7 +862,7 @@ The keys in the dictionaries in this data structure are
    indicates that a new page is to be made.
 
 !split
-======= Interpreting the quiz format =======
+======= Translating the quiz format to HTML or PDF =======
 
 The program `doconce` must be run to interpret the quiz format, translate
 it to LaTeX, HTML, or other formats, and produce the Python representation
