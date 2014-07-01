@@ -1,0 +1,278 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A Software Tool for Typesetting Quizzes">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' A pure text quiz ', 1, None, '___sec0'),
+              (' Question and choices ', 2, None, '___sec1'),
+              (' Explanations of choices ', 2, None, '___sec2'),
+              (' Typesetting ', 2, None, '___sec3'),
+              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
+              (' Typesetting of mathematics and computer code ',
+               1,
+               None,
+               '___sec5'),
+              (' Mathematics ', 2, 'sec:math', 'sec:math'),
+              (' Simple example ', 3, None, '___sec7'),
+              (' A more complicated example ', 3, None, '___sec8'),
+              (' Computer code ', 2, None, '___sec9'),
+              (' Example: Putting it all together ', 2, None, '___sec10'),
+              (' Specification in HTML ', 2, None, '___sec11'),
+              (' The Python data structure for quizzes ',
+               1,
+               None,
+               '___sec12'),
+              (' Translating the quiz format to HTML or PDF ',
+               1,
+               None,
+               '___sec13'),
+              (' HTML ', 2, None, '___sec14'),
+              (' Plain HTML ', 3, None, '___sec15'),
+              (' Bootstrap HTML ', 3, None, '___sec16'),
+              (' Multiple page HTML document ', 3, None, '___sec17'),
+              (' Setting the question and choice prefix ',
+               3,
+               None,
+               '___sec18'),
+              (' LaTeX ', 2, None, '___sec19')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="quiz.html">A Software Tool for Typesetting Quizzes</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "A pure text quiz" --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
+     <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
+     <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
+     <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
+     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
+     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: "Computer code" --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
+     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: "Translating the quiz format to HTML or PDF" --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0004"></a>
+<!-- !split -->
+
+<h1>The Python data structure for quizzes  <a name="___sec12"></a></h1>
+
+When a DocOnce file <code>mydoc.do.txt</code> containing quizzes (and other types
+of text, like this document) is translated to some format by the
+<code>doconce format</code> command, a Python list of all the quizzes is created
+and written to <code>.mydoc.quiz</code>. Each list element represents one quiz as
+a dictionary. The list corresponding to the quizzes in the current
+document starts with
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[{<span style="color: #BA2121">&#39;choices&#39;</span>: [[<span style="color: #BA2121">u&#39;wrong&#39;</span>, <span style="color: #BA2121">u&#39;Helsinki&#39;</span>],
+              [<span style="color: #BA2121">u&#39;wrong&#39;</span>, <span style="color: #BA2121">u&#39;Drammen&#39;</span>],
+              [<span style="color: #BA2121">u&#39;right&#39;</span>, <span style="color: #BA2121">u&#39;Oslo&#39;</span>],
+              [<span style="color: #BA2121">u&#39;wrong&#39;</span>, <span style="color: #BA2121">u&#39;Denmark&#39;</span>]],
+  <span style="color: #BA2121">&#39;no&#39;</span>: <span style="color: #666666">1</span>,
+  <span style="color: #BA2121">&#39;question&#39;</span>: <span style="color: #BA2121">u&#39;What is the capital of Norway?&#39;</span>},
+</pre></div>
+<p>
+A more complicated quiz with specification of prefix for the question and
+one choice (see example above in the question admonition) has explanations
+in the list for each choice, as well as two more
+keys (<code>choice prefix</code> and <code>question prefix</code>):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> {<span style="color: #BA2121">&#39;choice prefix&#39;</span>: [<span style="color: #BA2121">u&#39;Answer:&#39;</span>, <span style="color: #008000">None</span>, <span style="color: #008000">None</span>, <span style="color: #008000">None</span>],
+  <span style="color: #BA2121">&#39;choices&#39;</span>: [
+    [<span style="color: #BA2121">u&#39;wrong&#39;</span>,
+     <span style="color: #BA2121">u&#39;Stockholm&#39;</span>,
+     <span style="color: #BA2121">u&quot;Stockholm is the capital of Sweden, Norway&#39;s neighboring country.&quot;</span>],
+    [<span style="color: #BA2121">u&#39;wrong&#39;</span>,
+     <span style="color: #BA2121">u&#39;Bergen&#39;</span>,
+     <span style="color: #BA2121">u&#39;Some people from Bergen may claim so... It is just the second</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">largest city in Norway.&#39;</span>],
+    [<span style="color: #BA2121">u&#39;right&#39;</span>, <span style="color: #BA2121">u&#39;Oslo&#39;</span>],
+    [<span style="color: #BA2121">u&#39;wrong&#39;</span>, <span style="color: #BA2121">u&#39;Denmark&#39;</span>]],
+  <span style="color: #BA2121">&#39;no&#39;</span>: <span style="color: #666666">5</span>,
+  <span style="color: #BA2121">&#39;question&#39;</span>: <span style="color: #BA2121">u&#39;What is the capital of Norway?&#39;</span>,
+  <span style="color: #BA2121">&#39;question prefix&#39;</span>: <span style="color: #BA2121">u&#39;&#39;</span>},
+</pre></div>
+<p>
+The text in the Python list-dictionary data structure is ready-made for
+being displayed in HTML. Here is an example involving mathematics
+(MathJax syntax):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> {<span style="color: #BA2121">&#39;choices&#39;</span>: [
+   [<span style="color: #BA2121">u&#39;wrong&#39;</span>,
+    <span style="color: #BA2121">u&#39;5.&#39;</span>,
+    <span style="color: #BA2121">u&#39;Good attempt, especially when referring to the following story.</span>
+\n\n<span style="color: #666666">&lt;</span>p<span style="color: #666666">&gt;</span>\n<span style="color: #666666">&lt;</span>blockquote<span style="color: #666666">&gt;</span>\n    An anthropologist was asking a primitive tribesman ab
+out arithmetic<span style="color: #666666">.</span>\n    When the anthropologist asked, <span style="color: #666666">&lt;</span>em<span style="color: #666666">&gt;</span>What does two <span style="color: #AA22FF; font-weight: bold">and</span> two ma
+ke?<span style="color: #666666">&lt;/</span>em<span style="color: #666666">&gt;</span> the\n    tribesman replied, <span style="color: #666666">&lt;</span>em<span style="color: #666666">&gt;</span>Five<span style="color: #666666">.&lt;/</span>em<span style="color: #666666">&gt;</span> Asked to explain, the tribes
+man said, <span style="color: #666666">&lt;</span>em<span style="color: #666666">&gt;</span>If I\n    have a rope <span style="color: #008000; font-weight: bold">with</span> two knots, <span style="color: #AA22FF; font-weight: bold">and</span> another rope <span style="color: #008000; font-weight: bold">with</span> two kn
+ots, <span style="color: #AA22FF; font-weight: bold">and</span> I\n    join the ropes together, then I have five knots<span style="color: #666666">.&lt;/</span>em<span style="color: #666666">&gt;</span>\n<span style="color: #666666">&lt;/</span>blockqu
+ote<span style="color: #666666">&gt;</span><span style="color: #BA2121">&#39;],</span>
+   [<span style="color: #BA2121">u&#39;right&#39;</span>,
+    <span style="color: #BA2121">u&#39;4.&#39;</span>,
+    <span style="color: #BA2121">u&#39;Seems trivial, but once upon a time...</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;p&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;center&gt;&lt;p&gt;&lt;img src=&quot;fig/1p1.gif&quot; align=&quot;bottom&quot; width=180&gt;&lt;/p&gt;&lt;/center&gt;&#39;</span>],
+   [<span style="color: #BA2121">u&#39;wrong&#39;</span>,
+    <span style="color: #BA2121">u&#39;The computation does not make sense when </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">( a </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">) and </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">( b </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">) are given without</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">units.&#39;</span>,
+    <span style="color: #BA2121">u&#39;It is indeed possible to add pure numbers without any units.&#39;</span>]],
+  <span style="color: #BA2121">&#39;no&#39;</span>: <span style="color: #666666">6</span>,
+  <span style="color: #BA2121">&#39;question&#39;</span>: <span style="color: #BA2121">u&#39;Compute the result of </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">( a+b </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">) in the case </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">( a=2 </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">) and </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">( b=2 </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">).&#39;</span>},
+</pre></div>
+<p>
+Computer code gets typeset by nice colors by default (using the Pygments
+package):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">{<span style="color: #BA2121">&#39;choices&#39;</span>:
+   [[<span style="color: #BA2121">u&#39;wrong&#39;</span>,
+     <span style="color: #BA2121">u&#39;Yes.&#39;</span>,
+     <span style="color: #BA2121">u&#39;Not exactly: &lt;code&gt;numpy.zeros&lt;/code&gt; creates an array of zeros</span>
+, <span style="color: #AA22FF; font-weight: bold">not</span> a <span style="color: #008000">list</span><span style="color: #666666">.</span><span style="color: #BA2121">&#39;],</span>
+    [<span style="color: #BA2121">u&#39;wrong&#39;</span>,
+     <span style="color: #BA2121">u&#39;Yes, provided we write &lt;code&gt;np&lt;/code&gt; instead of &lt;code&gt;numpy&lt;/code&gt;:</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;p&gt;</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt; &lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;as&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;np&lt;/span&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">mylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; np&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;/pre&gt;&lt;/div&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;p&gt;&#39;</span>,
+     <span style="color: #BA2121">u&#39;No, this is fully equivalent to the original code, so &lt;code&gt;mylist&lt;/code&gt; becomes</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">an array, not a list.&#39;</span>],
+    [<span style="color: #BA2121">u&#39;right&#39;</span>,
+     <span style="color: #BA2121">u&#39;No.&#39;</span>,
+     <span style="color: #BA2121">u&#39;One would need to do &lt;code&gt;mylist = [0]*n&lt;/code&gt; or &lt;code&gt;numpy.zeros(n).tolist()&lt;/code&gt;.&#39;</span>]],
+  <span style="color: #BA2121">&#39;no&#39;</span>: <span style="color: #666666">8</span>,
+  <span style="color: #BA2121">&#39;question&#39;</span>: <span style="color: #BA2121">u&#39;We want to create a Python list object of length &lt;code&gt;n&lt;/code&gt; where each</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">element is &lt;code&gt;0&lt;/code&gt;. Is the following code then what we need?</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;p&gt;</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">mylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; numpy&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;/pre&gt;&lt;/div&gt;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&lt;p&gt;&#39;</span>}
+</pre></div>
+<p>
+<!-- There is no embedding key in the quiz dictionary representation since -->
+<!-- this document has !bquiz outside quiz environments (the method to -->
+<!-- extract the previous section header does not work in that case.) -->
+
+<p>
+The keys in the dictionaries in this data structure are
+
+<ul>
+ <li> <code>question</code>: the text of the question. This key is always present.</li>
+ <li> <code>no</code>: the number of the quiz (starts at 1). This key is always present.</li>
+ <li> <code>keywords</code>: an optional list of keywords for the quiz.</li>
+ <li> <code>label</code>: an optional logical name for this quiz.</li>
+ <li> <code>choices</code>: list of all the choices as 2- or 3-lists. First element
+   is <code>right</code> or <code>wrong</code>, second is the text of the choice, the optional
+   third element is the explanation (if it was specified). This key
+   is always present.</li>
+ <li> <code>choice prefix</code>: optional list of the prefix specified for each choice.
+   <code>None</code> implies the default prefix (depends on the format,
+   see the documentation
+   of the <code>--quiz_choice_prefix=</code> option by typing <code>doconce format --help</code>).
+   This key is absent if there are no specifications of such a prefix.</li>
+ <li> <code>question prefix</code>: The optional prefix specified for the question,
+   if different from the default value <code>Question:</code>.</li>
+ <li> <code>new page</code>: Optional headline for a new page of quizzes. Also
+   indicates that a new page is to be made.</li>
+</ul>
+
+<p>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="._quiz003.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._quiz005.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
