@@ -33796,7 +33796,7 @@ cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
 system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=template_vagrant.html
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
-doconce split_html testdoc_vagrant.html
+doconce split_html testdoc_vagrant.html --method=split
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
 
@@ -73631,7 +73631,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Jun 24 19:04:36 2014.
+# sphinx-quickstart on Mon Jul  7 15:32:28 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75335,24 +75335,34 @@ Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
 `mwiki`, `html`, or `ipynb` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments `\[`, `\]`,
-    `equation`, `equation*`, `align`, and `align*`.
-  * MediaWiki (`mwiki`) does not support references to equations.
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
 
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 !bnotice
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as `sphinx`, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically `if FORMAT in ("latex", "pdflatex")`) to
+plots in the same figure (`subfigure` package), margin notes, multi-page
+tables, etc.
+Other output formats, such as `sphinx`, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
 include special code for `latex` and `pdflatex` output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+`.tex` produced by DocOnce.
 !enotice
 
 __LaTeX Newcommands.__
@@ -75758,7 +75768,6 @@ examine the DocOnce source and the `doc/src/make.sh` script).
 ===== Resources =====
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-
 
 ************** File: quickref.html *****************
 <!--
@@ -76427,9 +76436,14 @@ Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pa
 is also important, one should follow these rules:
 
 <ul>
-  <li> Use only the equation environments <code>\[</code>, <code>\]</code>,
-    <code>equation</code>, <code>equation*</code>, <code>align</code>, and <code>align*</code>.</li>
-  <li> MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
+ <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
+   and <code>ipynb</code> formats.</li>
+ <li> Only five equation environments can be used: <code>\[ ... \]</code>,
+   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.</li>
+ <li> Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   <code>newcommands*.tex</code>.</li>
+ <li> MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
 </ul>
 
 (DocOnce performs extensions to <code>sphinx</code> and other formats such that
@@ -76438,15 +76452,21 @@ labels in <code>align</code> environments work well.)
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as <code>sphinx</code>, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically <code>if FORMAT in ("latex", "pdflatex")</code>) to
+plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
+tables, etc.
+Other output formats, such as <code>sphinx</code>, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+<p>
+However, one can use preprocessor if-tests on
+the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
 include special code for <code>latex</code> and <code>pdflatex</code> output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+<code>.tex</code> produced by DocOnce.
 </div>
 
 
@@ -77863,10 +77883,17 @@ Any {\LaTeX} syntax is accepted, but if output in the \code{sphinx}, \code{pando
 is also important, one should follow these rules:
 
 \begin{itemize}
-  \item Use only the equation environments \code{\[}, \code{\]},
-    \code{equation}, \code{equation*}, \code{align}, and \code{align*}.
+ \item AMS {\LaTeX} mathematics is supported, also for the \code{html}, \code{sphinx},
+   and \code{ipynb} formats.
 
-  \item MediaWiki (\code{mwiki}) does not support references to equations.
+ \item Only five equation environments can be used: \code{\[ ... \]},
+   \code{equation*}, \code{equation}, \code{align*}, and \code{align}.
+
+ \item Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   \code{newcommands*.tex}.
+
+ \item MediaWiki (\code{mwiki}) does not support references to equations.
 \end{itemize}
 
 \noindent
@@ -77876,15 +77903,20 @@ labels in \code{align} environments work well.)
 
 \begin{notice_mdfboxadmon}[Notice.]
 {\LaTeX} supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as \code{sphinx}, makes it necessary
-to only utilze very standard {\LaTeX} and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically \code{if FORMAT in ("latex", "pdflatex")}) to
+plots in the same figure (\code{subfigure} package), margin notes, multi-page
+tables, etc.
+Other output formats, such as \code{sphinx}, make it necessary for DocOnce
+to only utilze very standard {\LaTeX}. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically \code{#if FORMAT in ("latex", "pdflatex")}) to
 include special code for \code{latex} and \code{pdflatex} output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced {\LaTeX} features and fine tuning of resulting
-PDF document.
+also allow advanced {\LaTeX} features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+\code{.tex} produced by DocOnce.
 \end{notice_mdfboxadmon}
 
 
@@ -78957,10 +78989,17 @@ Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments ``\[``, ``\]``,
-    ``equation``, ``equation*``, ``align``, and ``align*``.
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
 
-  * MediaWiki (``mwiki``) does not support references to equations.
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``.
+
+ * MediaWiki (``mwiki``) does not support references to equations.
 
 (DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
@@ -78968,15 +79007,20 @@ labels in ``align`` environments work well.)
 
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure, footnotes, margin notes, etc.
-   Allowing other output formats, such as ``sphinx``, makes it necessary
-   to only utilze very standard LaTeX and avoid, for instance, more than
-   one plot per figure. However, one can use preprocessor if-tests on
-   the format (typically ``if FORMAT in ("latex", "pdflatex")``) to
+   plots in the same figure (``subfigure`` package), margin notes, multi-page
+   tables, etc.
+   Other output formats, such as ``sphinx``, make it necessary for DocOnce
+   to only utilze very standard LaTeX. Correspondingly, the writer
+   must stick to simple constructs and avoid, for instance, more than
+   one plot per figure.
+   
+   However, one can use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
    include special code for ``latex`` and ``pdflatex`` output and more
    straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of resulting
-   PDF document.
+   also allow advanced LaTeX features and fine tuning of the resulting
+   PDF document. More tuning can be done by automatic editing of the
+   ``.tex`` produced by DocOnce.
 
 
 
@@ -80049,10 +80093,17 @@ Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments ``\[``, ``\]``,
-    ``equation``, ``equation*``, ``align``, and ``align*``.
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
 
-  * MediaWiki (``mwiki``) does not support references to equations.
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``.
+
+ * MediaWiki (``mwiki``) does not support references to equations.
 
 (DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
@@ -80060,15 +80111,20 @@ labels in ``align`` environments work well.)
 
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure, footnotes, margin notes, etc.
-   Allowing other output formats, such as ``sphinx``, makes it necessary
-   to only utilze very standard LaTeX and avoid, for instance, more than
-   one plot per figure. However, one can use preprocessor if-tests on
-   the format (typically ``if FORMAT in ("latex", "pdflatex")``) to
+   plots in the same figure (``subfigure`` package), margin notes, multi-page
+   tables, etc.
+   Other output formats, such as ``sphinx``, make it necessary for DocOnce
+   to only utilze very standard LaTeX. Correspondingly, the writer
+   must stick to simple constructs and avoid, for instance, more than
+   one plot per figure.
+   
+   However, one can use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
    include special code for ``latex`` and ``pdflatex`` output and more
    straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of resulting
-   PDF document.
+   also allow advanced LaTeX features and fine tuning of the resulting
+   PDF document. More tuning can be done by automatic editing of the
+   ``.tex`` produced by DocOnce.
 
 
 
@@ -81116,23 +81172,30 @@ Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
 is also important, one should follow these rules:
 
 
-  * Use only the equation environments `\[`, `\]`,    `equation`, `equation*`, `align`, and `align*`.
-  * MediaWiki (`mwiki`) does not support references to equations.
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
 
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 *Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as `sphinx`, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically `if FORMAT in ("latex", "pdflatex")`) to
+plots in the same figure (`subfigure` package), margin notes, multi-page
+tables, etc.
+Other output formats, such as `sphinx`, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
 include special code for `latex` and `pdflatex` output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+`.tex` produced by DocOnce.
 
 
 
@@ -82142,9 +82205,14 @@ is also important, one should follow these rules:
 
 
 <ul>
-  <li> Use only the equation environments <code>\[</code>, <code>\]</code>,
-    <code>equation</code>, <code>equation*</code>, <code>align</code>, and <code>align*</code>.
-  <li> MediaWiki (<code>mwiki</code>) does not support references to equations.
+ <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
+   and <code>ipynb</code> formats.
+ <li> Only five equation environments can be used: <code>\[ ... \]</code>,
+   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
+ <li> Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   <code>newcommands*.tex</code>.
+ <li> MediaWiki (<code>mwiki</code>) does not support references to equations.
 </ul>
 
 (DocOnce performs extensions to <code>sphinx</code> and other formats such that
@@ -82155,15 +82223,20 @@ labels in <code>align</code> environments work well.)
 | type = notice
 | textstyle = font-size: 90%;
 | text = '''Notice.''' LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as <code>sphinx</code>, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically <code>if FORMAT in ("latex", "pdflatex")</code>) to
+plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
+tables, etc.
+Other output formats, such as <code>sphinx</code>, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
 include special code for <code>latex</code> and <code>pdflatex</code> output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+<code>.tex</code> produced by DocOnce.
 }}
 
 
@@ -83171,23 +83244,30 @@ Any LaTeX syntax is accepted, but if output in the {{{sphinx}}}, {{{pandoc}}},
 is also important, one should follow these rules:
 
 
-  * Use only the equation environments {{{\[}}}, {{{\]}}},    {{{equation}}}, {{{equation*}}}, {{{align}}}, and {{{align*}}}.
-  * MediaWiki ({{{mwiki}}}) does not support references to equations.
+ * AMS LaTeX mathematics is supported, also for the {{{html}}}, {{{sphinx}}},   and {{{ipynb}}} formats.
+ * Only five equation environments can be used: {{{\[ ... \]}}},   {{{equation*}}}, {{{equation}}}, {{{align*}}}, and {{{align}}}.
+ * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   {{{newcommands*.tex}}}.
+ * MediaWiki ({{{mwiki}}}) does not support references to equations.
 
 (DocOnce performs extensions to {{{sphinx}}} and other formats such that
 labels in {{{align}}} environments work well.)
 
 //Notice.//\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as {{{sphinx}}}, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically {{{if FORMAT in ("latex", "pdflatex")}}}) to
+plots in the same figure ({{{subfigure}}} package), margin notes, multi-page
+tables, etc.
+Other output formats, such as {{{sphinx}}}, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically {{{#if FORMAT in ("latex", "pdflatex")}}}) to
 include special code for {{{latex}}} and {{{pdflatex}}} output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+{{{.tex}}} produced by DocOnce.
 
 
 
@@ -84143,24 +84223,34 @@ Any LaTeX syntax is accepted, but if output in the 'sphinx', 'pandoc',
 'mwiki', 'html', or 'ipynb' formats
 is also important, one should follow these rules:
 
-  - Use only the equation environments '\[', '\]',
-    'equation', 'equation*', 'align', and 'align*'.
-  - MediaWiki ('mwiki') does not support references to equations.
+ - AMS LaTeX mathematics is supported, also for the 'html', 'sphinx',
+   and 'ipynb' formats.
+ - Only five equation environments can be used: '\[ ... \]',
+   'equation*', 'equation', 'align*', and 'align'.
+ - Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   'newcommands*.tex'.
+ - MediaWiki ('mwiki') does not support references to equations.
 
 (DocOnce performs extensions to 'sphinx' and other formats such that
 labels in 'align' environments work well.)
 
 *Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as 'sphinx', makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically 'if FORMAT in ("latex", "pdflatex")') to
+plots in the same figure ('subfigure' package), margin notes, multi-page
+tables, etc.
+Other output formats, such as 'sphinx', make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically '#if FORMAT in ("latex", "pdflatex")') to
 include special code for 'latex' and 'pdflatex' output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+'.tex' produced by DocOnce.
 
 
 
@@ -85110,24 +85200,34 @@ Any LaTeX syntax is accepted, but if output in the C{sphinx}, C{pandoc},
 C{mwiki}, C{html}, or C{ipynb} formats
 is also important, one should follow these rules:
 
-  - Use only the equation environments C{\[}, C{\]},
-    C{equation}, C{equation*}, C{align}, and C{align*}.
-  - MediaWiki (C{mwiki}) does not support references to equations.
+ - AMS LaTeX mathematics is supported, also for the C{html}, C{sphinx},
+   and C{ipynb} formats.
+ - Only five equation environments can be used: C{\[ ... \]},
+   C{equation*}, C{equation}, C{align*}, and C{align}.
+ - Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   C{newcommands*.tex}.
+ - MediaWiki (C{mwiki}) does not support references to equations.
 
 (DocOnce performs extensions to C{sphinx} and other formats such that
 labels in C{align} environments work well.)
 
 I{Notice.}\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as C{sphinx}, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically C{if FORMAT in ("latex", "pdflatex")}) to
+plots in the same figure (C{subfigure} package), margin notes, multi-page
+tables, etc.
+Other output formats, such as C{sphinx}, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically C{#if FORMAT in ("latex", "pdflatex")}) to
 include special code for C{latex} and C{pdflatex} output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+C{.tex} produced by DocOnce.
 
 
 
@@ -86125,28 +86225,40 @@ Any LaTeX syntax is accepted, but if output in the sphinx, pandoc,
 mwiki, html, or ipynb formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments \[, \],
-    equation, equation*, align, and align*.
+ * AMS LaTeX mathematics is supported, also for the html, sphinx,
+   and ipynb formats.
 
-  * MediaWiki (mwiki) does not support references to equations.
+ * Only five equation environments can be used: \[ ... \],
+   equation*, equation, align*, and align.
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   newcommands*.tex.
+
+ * MediaWiki (mwiki) does not support references to equations.
 
 (DocOnce performs extensions to sphinx and other formats such that
 labels in align environments work well.)
 
 
-Notice -----------------------------------------------------------------|
-|                                                                       |
-| LaTeX supports lots of fancy formatting, for example, multiple        |
-| plots in the same figure, footnotes, margin notes, etc.               |
-| Allowing other output formats, such as sphinx, makes it necessary     |
-| to only utilze very standard LaTeX and avoid, for instance, more than |
-| one plot per figure. However, one can use preprocessor if-tests on    |
-| the format (typically if FORMAT in ("latex", "pdflatex")) to          |
-| include special code for latex and pdflatex output and more           |
-| straightforward typesetting for other formats. In this way, one can   |
-| also allow advanced LaTeX features and fine tuning of resulting       |
-| PDF document.                                                         |
-|-----------------------------------------------------------------------|
+Notice ------------------------------------------------------------------|
+|                                                                        |
+| LaTeX supports lots of fancy formatting, for example, multiple         |
+| plots in the same figure (subfigure package), margin notes, multi-page |
+| tables, etc.                                                           |
+| Other output formats, such as sphinx, make it necessary for DocOnce    |
+| to only utilze very standard LaTeX. Correspondingly, the writer        |
+| must stick to simple constructs and avoid, for instance, more than     |
+| one plot per figure.                                                   |
+|                                                                        |
+| However, one can use preprocessor if-tests on                          |
+| the format (typically #if FORMAT in ("latex", "pdflatex")) to          |
+| include special code for latex and pdflatex output and more            |
+| straightforward typesetting for other formats. In this way, one can    |
+| also allow advanced LaTeX features and fine tuning of the resulting    |
+| PDF document. More tuning can be done by automatic editing of the      |
+| .tex produced by DocOnce.                                              |
+|------------------------------------------------------------------------|
 
 
 *LaTeX Newcommands.*
@@ -87187,24 +87299,34 @@ Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
 `mwiki`, `html`, or `ipynb` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments `\[`, `\]`,
-    `equation`, `equation*`, `align`, and `align*`.
-  * MediaWiki (`mwiki`) does not support references to equations.
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
 
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 *Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as `sphinx`, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically `if FORMAT in ("latex", "pdflatex")`) to
+plots in the same figure (`subfigure` package), margin notes, multi-page
+tables, etc.
+Other output formats, such as `sphinx`, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.
+
+However, one can use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
 include special code for `latex` and `pdflatex` output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+`.tex` produced by DocOnce.
 
 
 
@@ -88291,7 +88413,7 @@ figure file ../doc/src/manual/fig/wave1D:
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_vagrant.html
-+ doconce split_html testdoc_vagrant.html
++ doconce split_html testdoc_vagrant.html --method=split
 testdoc_vagrant.html now links to the generated files
 ._testdoc_vagrant000.html, ._testdoc_vagrant001.html, ._testdoc_vagrant002.html, ._testdoc_vagrant003.html
 + system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
@@ -88449,7 +88571,23 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
+...doconce translation: handled figures 18.5 s
+
 exporting publish database papers.pub to papers.bib:
+
+...doconce translation: handled handled lists 18.6 s
+
+...doconce translation: handled inline substitutions 18.7 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 18.7 s
+
+...doconce translation: handled !benvir/!eenvir constructions 18.7 s
+
+...doconce translation: handled handled second reformatting of quizzes 18.7 s
+
+
+...doconce format used 18.7 s to translate the document (1935 lines)
+
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -88512,9 +88650,25 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
+...doconce translation: handled figures 20.7 s
+
 exporting publish database papers.pub to papers.bib:
+
+...doconce translation: handled handled lists 20.8 s
+
+...doconce translation: handled inline substitutions 20.8 s
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
+
+...doconce translation: handled insertion of verbatim and latex blocks 20.8 s
+
+...doconce translation: handled !benvir/!eenvir constructions 20.9 s
+
+...doconce translation: handled handled second reformatting of quizzes 20.9 s
+
+
+...doconce format used 20.9 s to translate the document (2001 lines)
+
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
@@ -91993,7 +92147,23 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
+...doconce translation: handled figures 16.3 s
+
 exporting publish database papers.pub to papers.bib:
+
+...doconce translation: handled handled lists 16.4 s
+
+...doconce translation: handled inline substitutions 16.4 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 16.5 s
+
+...doconce translation: handled !benvir/!eenvir constructions 16.5 s
+
+...doconce translation: handled handled second reformatting of quizzes 16.5 s
+
+
+...doconce format used 16.5 s to translate the document (1897 lines)
+
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
@@ -95683,6 +95853,16 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 19.4 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 19.5 s
+
+...doconce translation: handled !benvir/!eenvir constructions 19.5 s
+
+
+...doconce format used 19.5 s to translate the document (740 lines)
+
 output in movies_3choices.html
 + '[' 0 -ne 0 ']'
 + cp movies_3choices.html movie_demo
@@ -100004,7 +100184,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
+    found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
 *** error: could not translate environment: !bsol
@@ -100081,6 +100261,16 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 16.4 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 16.4 s
+
+...doconce translation: handled !benvir/!eenvir constructions 16.4 s
+
+
+...doconce format used 16.4 s to translate the document (140 lines)
+
 output in tmp2.rst
 + doconce subst -s -m '^!bhint.+?!ehint' '' tmp2.do.txt
 ^!bhint.+?!ehint replaced by  in tmp2.do.txt
@@ -100370,25 +100560,17 @@ Overfull \hbox (25.94336pt too wide)
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [7]
-Overfull \hbox (52.87723pt too wide) 
-\T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+Overfull \hbox (32.16707pt too wide) 
+\T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
+. 
 
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on .
-
+Overfull \hbox (8.97565pt too wide) 
+[]\T1/phv/m/n/10 ) to in-clude spe-cial code for []
 
 
 ...rest of part of LaTeX line number...
 
 [8]
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last split box is empty
-(mdframed)                You have to change the settings on .
-
 
 
 ...rest of part of LaTeX line number...
@@ -100402,10 +100584,9 @@ Package mdframed Warning: You got a bad break
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-
+[11]
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[11]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
@@ -100765,8 +100946,12 @@ Overfull \hbox (25.94336pt too wide)
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
 [7] [8]
-Overfull \hbox (52.87723pt too wide) 
-\T1/phv/m/n/10 pre-pro-ces-sor if-tests on the for-mat (typ-i-cally [])
+Overfull \hbox (32.16707pt too wide) 
+\T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
+. 
+
+Overfull \hbox (8.97565pt too wide) 
+[]\T1/phv/m/n/10 ) to in-clude spe-cial code for []
 [9] [10] [11]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
@@ -100779,7 +100964,7 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13] [14] [15] [16] [17]
+[13] [14] [15] [16] [17] [18]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -100787,7 +100972,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[18] (./quickref.aux)
+[19] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -100937,7 +101122,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.dvi (18 pages, ).
+Output written on quickref.dvi (19 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
 + system doconce format sphinx quickref --no_preprocess
@@ -101242,12 +101427,11 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
+[7]
+Overfull \hbox (29.72876pt too wide) 
+[]\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
+0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
 
-Overfull \hbox (12.58893pt too wide) 
-[]\T1/ptm/m/n/10 Use only the equa-tion en-vi-ron-ments \T1/pcr/m/n/10 \[\T1/pt
-m/m/n/10 , \T1/pcr/m/n/10 \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation\T1/ptm/m/n
-/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-[7] 
 
 
 
@@ -101263,11 +101447,11 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-
+[8]
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
-[8]
+
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
@@ -101284,7 +101468,7 @@ Overfull \hbox (119.00006pt too wide)
  movie. 
 
 
-e 979.
+e 991.
 
 
 Overfull \hbox (107.00006pt too wide) 
@@ -101298,7 +101482,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
 ----|  
-
+[9]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
 `)  |  
@@ -101322,7 +101506,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[9]
+[10]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -101331,7 +101515,7 @@ Overfull \hbox (54.34767pt too wide)
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-[10]
+
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -101339,7 +101523,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-
+[11]
 Overfull \hbox (3431.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -101350,7 +101534,7 @@ ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
 ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
 2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv
 2table  
-[11]
+
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -101400,11 +101584,11 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
-
+[12]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[12]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
 
@@ -101442,7 +101626,7 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
-
+[13]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
@@ -101455,7 +101639,7 @@ Overfull \hbox (101.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
-[13]
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
@@ -101499,10 +101683,10 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
+[14]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[14]
+
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -101516,18 +101700,18 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
-
+[15]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
 
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
-[15]
+
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-
+[16]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -101538,18 +101722,18 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[16]
+
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-
+[17]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[17]
+
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
@@ -101742,12 +101926,11 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
+[8]
+Overfull \hbox (29.72876pt too wide) 
+[]\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
+0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
 
-Overfull \hbox (12.58893pt too wide) 
-[]\T1/ptm/m/n/10 Use only the equa-tion en-vi-ron-ments \T1/pcr/m/n/10 \[\T1/pt
-m/m/n/10 , \T1/pcr/m/n/10 \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation\T1/ptm/m/n
-/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-[8] 
 
 
 
@@ -101763,11 +101946,11 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-
+[9]
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
-[9]
+
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
@@ -101794,7 +101977,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
 ----|  
-
+[10]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
 `)  |  
@@ -101818,7 +102001,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[10]
+[11]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -101827,7 +102010,7 @@ Overfull \hbox (54.34767pt too wide)
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-[11]
+
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -101835,7 +102018,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-
+[12]
 Overfull \hbox (3431.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -101846,7 +102029,7 @@ ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
 ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
 2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv
 2table  
-[12]
+
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -101896,11 +102079,11 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
-
+[13]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[13]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
 
@@ -101938,7 +102121,7 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
-
+[14]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
@@ -101951,7 +102134,7 @@ Overfull \hbox (101.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
-[14]
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
@@ -101995,10 +102178,10 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
+[15]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[15]
+
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -102012,18 +102195,18 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
-
+[16]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
 
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
-[16]
+
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-
+[17]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -102034,18 +102217,18 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[17]
+
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-
+[18]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[18]
+
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub

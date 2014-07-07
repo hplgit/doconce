@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 24, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 7, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -558,8 +558,13 @@ and
 is also important, one should follow these rules:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Use only the equation environments <tt class="docutils literal"><span class="pre">\[</span></tt>, <tt class="docutils literal"><span class="pre">\]</span></tt>,
-<tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt>, and <tt class="docutils literal"><span class="pre">align*</span></tt>.</li>
+<li>AMS LaTeX mathematics is supported, also for the <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
+and <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats.</li>
+<li>Only five equation environments can be used: <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></tt>,
+<tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, and <tt class="docutils literal"><span class="pre">align</span></tt>.</li>
+<li>Newcommands in mathematical formulas are allowed, but not in
+the running text. Newcommands must be defined in files with names
+<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>.</li>
 <li>MediaWiki (<tt class="docutils literal"><span class="pre">mwiki</span></tt>) does not support references to equations.</li>
 </ul>
 </div></blockquote>
@@ -567,16 +572,20 @@ is also important, one should follow these rules:</p>
 labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt>, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically <tt class="docutils literal"><span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
+<p>LaTeX supports lots of fancy formatting, for example, multiple
+plots in the same figure (<tt class="docutils literal"><span class="pre">subfigure</span></tt> package), margin notes, multi-page
+tables, etc.
+Other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt>, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure.</p>
+<p class="last">However, one can use preprocessor if-tests on
+the format (typically <tt class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
 include special code for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.</p>
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+<tt class="docutils literal"><span class="pre">.tex</span></tt> produced by DocOnce.</p>
 </div>
 <p><strong>LaTeX Newcommands.</strong>
 The author can define <tt class="docutils literal"><span class="pre">newcommand</span></tt> statements in files with names

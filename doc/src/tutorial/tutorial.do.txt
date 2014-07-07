@@ -327,10 +327,38 @@ The result looks like this:
 \end{align}
 !et
 Of course, such blocks only looks nice in formats with support
-for LaTeX mathematics, and here the align environment in particular
-(this includes `latex`, `pdflatex`, `html`, and `sphinx`). The raw
-LaTeX syntax appears in simpler formats, but can still be useful
-for those who can read LaTeX syntax.
+for LaTeX mathematics
+(this includes `latex`, `pdflatex`, `html`, `sphinx`, `ipynb`, `pandoc`,
+and `mwiki`). Simpler
+formats have to just list the raw
+LaTeX syntax.
+
+LaTeX writers who adopt DocOnce need to pay attention to the following:
+
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
+
+(DocOnce performs extensions to `sphinx` and other formats such that
+labels in `align` environments work well.)
+
+!bwarning Remark
+Although DocOnce allows user-defined styles in the preamble of LaTeX output,
+HTML-based output cannot make use of such styles. If-else constructs for
+the preprocessor can be used to allow special LaTeX environments for
+LaTeX output and alternative typesetting for other formats, but it is
+recommended to stay away from special environments in the text and
+write in a simpler fashion. For example, DocOnce has no special construction
+for algorithms, so these must be simulated by lists or verbatim blocks.
+Other constructions that should be avoided include margin notes, special
+tables, and
+`subfigure` (combine image files to one file instead, via `doconce combine_images`).
+!ewarning
 
 You can have blocks of computer code, starting and ending with
 `!bc` and `!ec` instructions, respectively.
@@ -448,5 +476,3 @@ translates the more comprehensive documentation, `manual.do.txt`, to
 various formats. The `make.sh` script runs a set of translations.
 
 # #include "../manual/install.do.txt"
-
-

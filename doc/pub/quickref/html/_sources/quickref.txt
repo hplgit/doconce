@@ -8,7 +8,7 @@ DocOnce Quick Reference
 -----------------------
 
 :Author: Hans Petter Langtangen
-:Date: Jun 24, 2014
+:Date: Jul 7, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -486,10 +486,17 @@ Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments ``\[``, ``\]``,
-    ``equation``, ``equation*``, ``align``, and ``align*``.
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
 
-  * MediaWiki (``mwiki``) does not support references to equations.
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``.
+
+ * MediaWiki (``mwiki``) does not support references to equations.
 
 (DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
@@ -497,15 +504,20 @@ labels in ``align`` environments work well.)
 
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure, footnotes, margin notes, etc.
-   Allowing other output formats, such as ``sphinx``, makes it necessary
-   to only utilze very standard LaTeX and avoid, for instance, more than
-   one plot per figure. However, one can use preprocessor if-tests on
-   the format (typically ``if FORMAT in ("latex", "pdflatex")``) to
+   plots in the same figure (``subfigure`` package), margin notes, multi-page
+   tables, etc.
+   Other output formats, such as ``sphinx``, make it necessary for DocOnce
+   to only utilze very standard LaTeX. Correspondingly, the writer
+   must stick to simple constructs and avoid, for instance, more than
+   one plot per figure.
+   
+   However, one can use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
    include special code for ``latex`` and ``pdflatex`` output and more
    straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of resulting
-   PDF document.
+   also allow advanced LaTeX features and fine tuning of the resulting
+   PDF document. More tuning can be done by automatic editing of the
+   ``.tex`` produced by DocOnce.
 
 
 
