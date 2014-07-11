@@ -1563,30 +1563,75 @@ def latex_subsubsection(m):
 
 
 def latex_inline_comment(m):
-    name = m.group('name')
-    comment = m.group('comment')
+    name = m.group('name').strip()
+    comment = m.group('comment').strip()
+
+    """
+    Can use soul package to support corrections as part of comments:
+    http://texdoc.net/texmf-dist/doc/latex/soul/soul.pdf
+
+    Typical commands:
+    \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+    \newcommand{\remove}[1]{{\color{red}\st{#1}}}
+    \newcommand{\addcomment}{\color{red}{, comma}\ }
+
+    Could support:
+    [del:,]  expands to 'delete comma' in red
+    [add:;] expands to '; add semicolon' in red
+    [add: text...] expands to added text in red
+    [del: text...] expands to overstriked text in red
+    [hpl: text -> replacement] expands to overstriking (via soul) of text
+    and adding replacement, both in red.
+
+    Can have a doconce command for turning such correction comments
+    into new, valid text (doing the corrections).
+    """
     #import textwrap
     #caption_comment = textwrap.wrap(comment, width=60,
     #                                break_long_words=False)[0]
     caption_comment = ' '.join(comment.split()[:4])  # for toc for todonotes
 
-    if '_' in comment:
-        # todonotes are bad at handling verbatim code with comments...
-        # inlinecomment is treated before verbatim
-        verbatims = re.findall(r'`.+?`', comment)
-        for verbatim in verbatims:
-            if '_' in verbatim:
-                verbatim_fixed = verbatim.replace('_', '\\_')
-                comment = comment.replace(verbatim, verbatim_fixed)
-
-    if len(comment) <= 100:
-        # Have some extra space inside the braces in the arguments to ensure
-        # correct handling of \code{} commands
-        return r'\shortinlinecomment{%s}{ %s }{ %s }' % \
-               (name, comment, caption_comment)
+    chars = {',': comma, ';': 'semicolon', '.': 'period'}
+    if name == 'del':
+        for char in chars:
+            if comment == char:
+                return r'\color{red}{\ (delete %s)}' % chars[char]
+        return r'(\color{red}{delete: %s})' % comment
+    elif name == 'add':
+        for char in chars:
+            if comment == char:
+                return r'%s \color{red}{\ (add %s)}' % (comment, chars[char])
+        return r'(\remove{%s})' % comment
     else:
-        return r'\longinlinecomment{%s}{ %s }{ %s }' % \
-               (name, comment, caption_comment)
+        # Ordinary name
+        if ' -> ' in comment:
+            # Replacement
+            if comment.count(' -> ') != 1:
+                print '*** wrong syntax in inline comment:'
+                print comment
+                print '(more than two ->)'
+                _abort()
+            orig, new = comment.split(' -> ')
+            return r'\replace{%s}{%s}' % (orig, new)
+
+        # Ordinary comment
+        if '_' in comment:
+            # todonotes are bad at handling verbatim code with comments...
+            # inlinecomment is treated before verbatim
+            verbatims = re.findall(r'`.+?`', comment)
+            for verbatim in verbatims:
+                if '_' in verbatim:
+                    verbatim_fixed = verbatim.replace('_', '\\_')
+                    comment = comment.replace(verbatim, verbatim_fixed)
+
+        if len(comment) <= 100:
+            # Have some extra space inside the braces in the arguments to ensure
+            # correct handling of \code{} commands
+            return r'\shortinlinecomment{%s}{ %s }{ %s }' % \
+                   (name, comment, caption_comment)
+        else:
+            return r'\longinlinecomment{%s}{ %s }{ %s }' % \
+                   (name, comment, caption_comment)
 
 def latex_quiz(quiz):
     part_of_exercise = quiz.get('embedding', 'None') in ['exercise',]
@@ -1991,6 +2036,17 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 """
+    # Inline comments with corrections?
+    if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
+       re.search(r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<correction>.*? -> .*?)\]''', filestr, flags=re.DOTALL!re.MULTILINE):
+    INTRO['latex'] += r"""
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\newcommand{\addcomment}{\color{red}{, comma}\ }
+"""
+
     # fancybox must be loaded prior to fancyvrb and minted
     # (which appears instead of or in addition to ptex2tex)
     if '!bbox' in filestr:
