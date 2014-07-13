@@ -492,7 +492,7 @@ def define(FILENAME_EXTENSION,
         'linkURL2v': r'`\g<link> <\g<url>>`_', # no verbatim, does not work well
         'linkURL3v': r'`\g<link> <\g<url>>`_', # same
         'plainURL':  r'`<\g<url>>`_',
-        'inlinecomment': r'(**\g<name>**: \g<comment>)',
+        'inlinecomment': r'color{red}{(**\g<name>**: \g<comment>})',
         # the replacement string differs, depending on the match object m:
         # (note len(m.group('subst')) gives wrong length for non-ascii strings,
         # better with m.group('subst').decode('utf-8')) or latin-1

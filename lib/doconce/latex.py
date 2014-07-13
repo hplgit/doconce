@@ -1573,14 +1573,13 @@ def latex_inline_comment(m):
     Typical commands:
     \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
     \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-    \newcommand{\addcomment}{\color{red}{, comma}\ }
 
     Could support:
     [del:,]  expands to 'delete comma' in red
     [add:;] expands to '; add semicolon' in red
     [add: text...] expands to added text in red
     [del: text...] expands to overstriked text in red
-    [hpl: text -> replacement] expands to overstriking (via soul) of text
+    [edit: text -> replacement] expands to overstriking (via soul) of text
     and adding replacement, both in red.
 
     Can have a doconce command for turning such correction comments
@@ -1595,13 +1594,13 @@ def latex_inline_comment(m):
     if name == 'del':
         for char in chars:
             if comment == char:
-                return r'\color{red}{\ (delete %s)}' % chars[char]
-        return r'(\color{red}{delete: %s})' % comment
+                return r' color{red}{ (delete %s)}' % chars[char]
+        return r'(\remove{%s})' % comment
     elif name == 'add':
         for char in chars:
             if comment == char:
-                return r'%s \color{red}{\ (add %s)}' % (comment, chars[char])
-        return r'(\remove{%s})' % comment
+                return r'%s color{red}{ (add %s)}' % (comment, chars[char])
+        return r' color{red}{ %s})' % comment
     else:
         # Ordinary name
         if ' -> ' in comment:
@@ -1612,26 +1611,26 @@ def latex_inline_comment(m):
                 print '(more than two ->)'
                 _abort()
             orig, new = comment.split(' -> ')
-            return r'\replace{%s}{%s}' % (orig, new)
-
-        # Ordinary comment
-        if '_' in comment:
-            # todonotes are bad at handling verbatim code with comments...
-            # inlinecomment is treated before verbatim
-            verbatims = re.findall(r'`.+?`', comment)
-            for verbatim in verbatims:
-                if '_' in verbatim:
-                    verbatim_fixed = verbatim.replace('_', '\\_')
-                    comment = comment.replace(verbatim, verbatim_fixed)
-
-        if len(comment) <= 100:
-            # Have some extra space inside the braces in the arguments to ensure
-            # correct handling of \code{} commands
-            return r'\shortinlinecomment{%s}{ %s }{ %s }' % \
-                   (name, comment, caption_comment)
+            return r'color{red}{(%s:)} \replace{%s}{%s}' % (name, orig, new)
         else:
-            return r'\longinlinecomment{%s}{ %s }{ %s }' % \
-                   (name, comment, caption_comment)
+            # Ordinary comment
+            if '_' in comment:
+                # todonotes are bad at handling verbatim code with comments...
+                # inlinecomment is treated before verbatim
+                verbatims = re.findall(r'`.+?`', comment)
+                for verbatim in verbatims:
+                    if '_' in verbatim:
+                        verbatim_fixed = verbatim.replace('_', '\\_')
+                        comment = comment.replace(verbatim, verbatim_fixed)
+
+            if len(comment) <= 100:
+                # Have some extra space inside the braces in the arguments to ensure
+                # correct handling of \code{} commands
+                return r'\shortinlinecomment{%s}{ %s }{ %s }' % \
+                       (name, comment, caption_comment)
+            else:
+                return r'\longinlinecomment{%s}{ %s }{ %s }' % \
+                       (name, comment, caption_comment)
 
 def latex_quiz(quiz):
     part_of_exercise = quiz.get('embedding', 'None') in ['exercise',]

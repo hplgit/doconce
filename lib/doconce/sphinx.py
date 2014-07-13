@@ -463,6 +463,35 @@ def sphinx_index_bib(filestr, index, citations, pubfile, pubdata):
             #    '\n.. index::\n   pair: ' + word3 + '\n')
     return filestr
 
+def sphinx_inline_comment(m):
+    # Use explicit HTML typesetting
+    name = m.group('name').strip()
+    comment = m.group('comment').strip()
+    chars = {',': comma, ';': 'semicolon', '.': 'period'}
+    if name == 'del':
+        for char in chars:
+            if comment == char:
+                return r' color{red}{ (delete %s)}' % chars[char]
+        return r'<del>%s</del>)' % comment
+    elif name == 'add':
+        for char in chars:
+            if comment == char:
+                return r'%s color{red}{ (add %s)}' % (comment, chars[char])
+        return r' color{red}{ %s})' % comment
+    else:
+        # Ordinary name
+        if ' -> ' in comment:
+            # Replacement
+            if comment.count(' -> ') != 1:
+                print '*** wrong syntax in inline comment:'
+                print comment
+                print '(more than two ->)'
+                _abort()
+            orig, new = comment.split(' -> ')
+            return r'color{red}{(%s:)} <del>%s</del> %s' % (name, orig, new)
+        else:
+            # Ordinary comment
+            return r'<font color="red">[<b>%s</b>: <em>%s</em>]</font>' % (name, comment)
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -523,6 +552,7 @@ def define(FILENAME_EXTENSION,
     INLINE_TAGS_SUBST['sphinx']['math2'] = lambda m: r'%s:math:`%s`%s' % (m.group('begin'), m.group('latexmath').strip(), m.group('end'))
     INLINE_TAGS_SUBST['sphinx']['figure'] = sphinx_figure
     INLINE_TAGS_SUBST['sphinx']['movie'] = sphinx_movie
+    INLINE_TAGS_SUBST['sphinx']['inlinecomment'] = sphinx_inline_comment
     CODE['sphinx'] = sphinx_code  # function for typesetting code
 
     ARGLIST['sphinx'] = {

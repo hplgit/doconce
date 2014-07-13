@@ -840,7 +840,8 @@ DocOnce also supports inline comments in the text:
 !ec
 where `name` is the name of the author of the command, and `comment` is a
 plain text text. Note that there must be a space after the colon,
-otherwise the comment is not recognized. [hpl: Inline comments
+otherwise the comment is not recognized. Next is an example.
+[hpl: Inline comments
 can span
 several lines,
 if desired.]
@@ -853,9 +854,49 @@ and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the `.do.txt` file
 (see Section ref{doconce2formats}).
 
-Inline comments are typeset in a simple way (boldface name and the
-comment in parenthesis), but in LaTeX very visible color boxes
-are used (via the `todonotes` package).
+Inline comments are typeset in a simple way: boldface name, a
+numbering of the comment, and the comment, all in red and in
+parenthesis. However, with the `--latex_todonotes` option, LaTeX will
+apply the `todonotespackage` to typeset the comments in very visible
+color boxes.
+
+=== Inline Comments for Editing ===
+
+Inline comments can also be used to markup editing of the text.
+The following syntax is supported:
+
+!bc
+[add:,]
+[add:.]
+[add:;]
+[del:,]
+[del:,]
+[del:.]
+[del:;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+!ec
+That is, one can add, delete, and replace text, and adding or deleting
+a comma, period, or semicolon leads to special typesetting. Below
+is an example.
+
+!bc
+First[add:,] consider a quantity $Q$. [hpl: To this end, -> We note that]
+$Q>0$, because negative [hpl: quantity -> quantities] are [del:just]
+negative. [add: This comes as no surprise.]
+!ec
+The text gets rendered as
+
+!bquote
+First[add:,] consider a quantity $Q$. [hpl: To this end, -> We note that]
+$Q>0$, because negative [hpl: quantity -> quantities] are [del:just]
+negative. [add: This comes as no surprise.]
+!bquote
+
+
+For example, some text can be
 
 === Forced Line Breaks ===
 

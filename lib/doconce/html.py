@@ -1342,6 +1342,35 @@ def bootstrap_collapse(visible_text, collapsed_text,
 """ % vars()
     return text
 
+def html_inline_comment(m):
+    name = m.group('name').strip()
+    comment = m.group('comment').strip()
+    chars = {',': comma, ';': 'semicolon', '.': 'period'}
+    if name == 'del':
+        for char in chars:
+            if comment == char:
+                return r' color{red}{ (delete %s)}' % chars[char]
+        return r'<del>%s</del>)' % comment
+    elif name == 'add':
+        for char in chars:
+            if comment == char:
+                return r'%s color{red}{ (add %s)}' % (comment, chars[char])
+        return r' color{red}{ %s})' % comment
+    else:
+        # Ordinary name
+        if ' -> ' in comment:
+            # Replacement
+            if comment.count(' -> ') != 1:
+                print '*** wrong syntax in inline comment:'
+                print comment
+                print '(more than two ->)'
+                _abort()
+            orig, new = comment.split(' -> ')
+            return r'color{red}{(%s:)} <del>%s</del> %s' % (name, orig, new)
+        else:
+            # Ordinary comment
+            return r'\n<!-- begin inline comment -->\n<font color="red">[<b>%s</b>: <em>%s</em>]</font>\n<!-- end inline comment -->\n' % (name, comment)
+
 def html_quiz(quiz):
     bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
     button_text = option('html_quiz_button_text=', '')
@@ -1635,7 +1664,7 @@ def define(FILENAME_EXTENSION,
         'linkURL2v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
-        'inlinecomment': r'\n<!-- begin inline comment -->\n<font color="red">[<b>\g<name></b>: <em>\g<comment></em>]</font>\n<!-- end inline comment -->\n',
+        'inlinecomment': html_inline_comment,
         'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
         'section':       r'\n<h1>\g<subst></h1>',
         'subsection':    r'\n<h2>\g<subst></h2>',

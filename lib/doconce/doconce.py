@@ -2758,12 +2758,12 @@ def inline_tag_subst(filestr, format):
         'date',
         'movie',
         #'figure',  # done separately
+        'inlinecomment',
         'abstract',  # must become before sections since it tests on ===
         'emphasize', 'math2', 'math',
         # important to do section, subsection, etc. before paragraph and bold:
         'chapter', 'section', 'subsection', 'subsubsection',
         'bold',
-        'inlinecomment',
         'colortext',
         'verbatim',
         'paragraph',  # after bold and emphasize
