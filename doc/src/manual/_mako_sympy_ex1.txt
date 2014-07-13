@@ -1,0 +1,3 @@
+<%
+# #include "src/ex1.py"
+%>

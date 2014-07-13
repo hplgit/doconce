@@ -1304,7 +1304,7 @@ def ptex2tex():
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt'.split()
     envirs += ['htmlcod', 'htmlpro', 'html',
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
@@ -6682,7 +6682,7 @@ def _latex2doconce(filestr):
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
                    'pyshell', 'plin', 'ver', 'warn', 'rule', 'summ',
-                   'dat', ] # sequence important for replace!
+                   'dat', 'txt'] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':
             code_envirs.append(language + tp)
@@ -7079,7 +7079,7 @@ def latex2doconce():
     print filestr  # final output
 
 
-def latex2doconce():
+def html2doconce():
     """
     Apply transformations to an html file to help translate the
     document into Doconce format.
@@ -8072,19 +8072,8 @@ def csv2table():
         _usage_csv2table()
         sys.exit(1)
 
-    align_headings = align_columns = 'c'*num_columns
     delimiter = ','
     for arg in sys.argv[1:]:
-        if arg.startswith('--headings='):
-            align_headings = list(arg.split('=')[1])
-            if len(align_headings) != num_columns:
-                print '*** error: %s has wrong no of columns (should be %d)' % \
-                      (arg, num_columns)
-        if arg.startswith('--columns='):
-            align_columns = list(arg.split('=')[1])
-            if len(align_columns) != num_columns:
-                print '*** error: %s has wrong no of columns (should be %d)' % \
-                      (arg, num_columns)
         if arg.startswith('--delimiter='):
             delimiter = arg.split('=')[1]
 
@@ -8111,6 +8100,21 @@ def csv2table():
     # Add empty cells
     for i in range(len(table)):
         table[i] = table[i] + ['']*(num_columns-len(table[i]))
+
+    align_headings = align_columns = 'c'*num_columns
+    for arg in sys.argv[1:]:
+        if arg.startswith('--headings='):
+            align_headings = list(arg.split('=')[1])
+            if len(align_headings) != num_columns:
+                print '*** error: %s has wrong no of columns (should be %d)' % \
+                      (arg, num_columns)
+        if arg.startswith('--columns='):
+            align_columns = list(arg.split('=')[1])
+            if len(align_columns) != num_columns:
+                print '*** error: %s has wrong no of columns (should be %d)' % \
+                      (arg, num_columns)
+
+
     # Construct doconce table
     width = (max_column_width+2)*num_columns + num_columns+1
     separator0 = '|' + '-'*(width-2) + '|'

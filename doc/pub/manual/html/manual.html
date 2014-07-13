@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,8 +27,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Doconce Manual" href="index.html" />
-    <link rel="prev" title="Doconce Manual" href="index.html" /> 
+    <link rel="prev" title="Doconce Manual" href="index.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -65,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 20, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 13, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -839,7 +857,7 @@ to HTML format:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>cp mydoc.do.txt mydoc2.do.txt
 <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span class="nv">dir</span><span class="o">=</span><span class="s2">&quot;master/project/dir1/dir2&quot;</span>
-<span class="k">for </span>figname in fig1 fig2 fig3<span class="p">;</span> <span class="k">do</span>
+<span class="k">for </span>figname in fig1 fig2 fig3; <span class="k">do</span>
 <span class="k">  </span>doconce replace <span class="s2">&quot;[$figname,&quot;</span> <span class="s2">&quot;[$site/$dir/$figname.png,&quot;</span> <span class="se">\</span>
           mydoc2.do.txt
 <span class="k">done</span>
@@ -1841,7 +1859,7 @@ part of the caption appearing on the same line as <tt class="docutils literal"><
 included in the formatted caption).</p>
 </div>
 <div class="figure" id="fig-viz">
-<img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
 <p class="caption"><em>A wave</em></p>
 </div>
 <p>Combining several image files into one, in a table fashion, can be done by the
@@ -3668,10 +3686,11 @@ case of spaces.</td></tr>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">name</span></tt> is the name of the author of the command, and <tt class="docutils literal"><span class="pre">comment</span></tt> is a
 plain text text. Note that there must be a space after the colon,
-otherwise the comment is not recognized. (<strong>hpl 1</strong>: Inline comments
+otherwise the comment is not recognized. Next is an example.
+&lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;Inline comments
 can span
 several lines,
-if desired.)</p>
+if desired.&lt;/em&gt;]&lt;/font&gt;</p>
 <p>The name and comment are visible in the output unless <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
 is run with a command-line argument <tt class="docutils literal"><span class="pre">--skip_inline_comments</span></tt>
 (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an example). Inline comments
@@ -3679,9 +3698,46 @@ are helpful during development of a document since different authors
 and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file
 (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a>).</p>
-<p>Inline comments are typeset in a simple way (boldface name and the
-comment in parenthesis), but in LaTeX very visible color boxes
-are used (via the <tt class="docutils literal"><span class="pre">todonotes</span></tt> package).</p>
+<p>Inline comments are typeset in a simple way: boldface name, a
+numbering of the comment, and the comment, all in red and in
+parenthesis. However, with the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> option, LaTeX will
+apply the <tt class="docutils literal"><span class="pre">todonotespackage</span></tt> to typeset the comments in very visible
+color boxes.</p>
+</div>
+<div class="section" id="inline-comments-for-editing">
+<h3>Inline Comments for Editing<a class="headerlink" href="#inline-comments-for-editing" title="Permalink to this headline">¶</a></h3>
+<p>Inline comments can also be used to markup editing of the text.
+The following syntax is supported:</p>
+<div class="highlight-text"><div class="highlight"><pre>[add:,]
+[add:.]
+[add:;]
+[del:,]
+[del:,]
+[del:.]
+[del:;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+[name: some text -&gt; some replacement for text]
+</pre></div>
+</div>
+<p>That is, one can add, delete, and replace text, and adding or deleting
+a comma, period, or semicolon leads to special typesetting. Below
+is an example.</p>
+<div class="highlight-text"><div class="highlight"><pre>First[add:,] consider a quantity $Q$. [hpl: To this end, -&gt; We note that]
+$Q&gt;0$, because negative [hpl: quantity -&gt; quantities] are [del:just]
+negative. [add: This comes as no surprise.]
+</pre></div>
+</div>
+<p>The text gets rendered as</p>
+<blockquote>
+<div>First[add:,] consider a quantity <span class="math">\(Q\)</span>. &lt;font color=&#8221;red&#8221;&gt;(hpl 2:)&lt;/font&gt; &lt;del&gt;To this end,&lt;/del&gt; We note that
+<span class="math">\(Q&gt;0\)</span>, because negative &lt;font color=&#8221;red&#8221;&gt;(hpl 3:)&lt;/font&gt; &lt;del&gt;quantity&lt;/del&gt; quantities are [del:just]
+negative. &lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;add 4&lt;/b&gt;: &lt;em&gt;This comes as no surprise.&lt;/em&gt;]&lt;/font&gt;</div></blockquote>
+<p>Such inline comments with edits are only given special typesetting in
+the output formats <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt>.
+Otherwise, just the DocOnce syntax is shown (but that is also quite
+readable as edit instructions.)</p>
 </div>
 <div class="section" id="forced-line-breaks">
 <h3>Forced Line Breaks<a class="headerlink" href="#forced-line-breaks" title="Permalink to this headline">¶</a></h3>
@@ -3705,7 +3761,7 @@ writing. Why is it so? I think the main reason is that a larger
 attention span is needed when working on a large computer program
 than when doing other intellectual tasks.</em></p>
 <div class="line-block">
-<div class="line">Donald Knuth <a class="reference internal" href="#ref1">[Ref1]</a> (p. 18), computer scientist, 1938-.</div>
+<div class="line">Donald Knuth <a class="reference internal" href="#ref1" id="id10">[Ref1]</a> (p. 18), computer scientist, 1938-.</div>
 </div>
 </div></blockquote>
 </div>
@@ -3990,7 +4046,7 @@ cite{Doconce:test}, DocOnce documents may include tables.
 <div>As explained in
 a <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
 the document <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing DocOnce</a>
-<a class="reference internal" href="#ref3">[Ref3]</a>, DocOnce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref3" id="id11">[Ref3]</a>, DocOnce documents may include tables.</div></blockquote>
 <p>A complete &#8220;chapter&#8221; reference may look like</p>
 <div class="highlight-text"><div class="highlight"><pre>As explained in
 refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
@@ -4016,7 +4072,7 @@ The resulting rendered text in the current format becomes</p>
 <div>As explained in
 the document
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing DocOnce</a>
-<a class="reference internal" href="#ref3">[Ref3]</a>, DocOnce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref3" id="id13">[Ref3]</a>, DocOnce documents may include tables.</div></blockquote>
 <p>Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 <tt class="docutils literal"><span class="pre">http://...</span></tt> must be used.</p>
@@ -4140,22 +4196,22 @@ the output format is <tt class="docutils literal"><span class="pre">latex</span>
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <tt class="docutils literal"><span class="pre">key</span></tt>.
-Here is an example: <a class="reference internal" href="#ref4">[Ref4]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref5">[Ref5]</a> gave
+Here is an example: <a class="reference internal" href="#ref4" id="id15">[Ref4]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref5" id="id16">[Ref5]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref6">[Ref6]</a>.
-The book chapter <a class="reference internal" href="#ref7">[Ref7]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref6" id="id17">[Ref6]</a>.
+The book chapter <a class="reference internal" href="#ref7" id="id18">[Ref7]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref8">[Ref8]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref8" id="id19">[Ref8]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref4">[Ref4]</a> <a class="reference internal" href="#ref7">[Ref7]</a>.</p>
+<a class="reference internal" href="#ref4" id="id20">[Ref4]</a> <a class="reference internal" href="#ref7" id="id21">[Ref7]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-text"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref5">[Ref5]</a> (Section 2)
-or <a class="reference internal" href="#ref5">[Ref5]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref5" id="id22">[Ref5]</a> (Section 2)
+or <a class="reference internal" href="#ref5" id="id23">[Ref5]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <tt class="docutils literal"><span class="pre">cite</span></tt> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -4284,6 +4340,9 @@ write a text file <tt class="docutils literal"><span class="pre">tmp.csv</span><
 |--------------------------------------------|
 </pre></div>
 </div>
+<p>If this output is redirected to a file, say <tt class="docutils literal"><span class="pre">mytable.do.txt</span></tt>, one can
+easily include this file by <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;mytable.do.txt&quot;</span></tt> in the
+DocOnce source file.</p>
 </div>
 <div class="section" id="exercises-problems-projects-and-examples">
 <h2>Exercises, Problems, Projects, and Examples<a class="headerlink" href="#exercises-problems-projects-and-examples" title="Permalink to this headline">¶</a></h2>
@@ -5072,7 +5131,7 @@ the previous and next document. These buttons are customizable:</p>
 buttons), <tt class="docutils literal"><span class="pre">gray1</span></tt>, <tt class="docutils literal"><span class="pre">gray2</span></tt>, <tt class="docutils literal"><span class="pre">bigblue</span></tt>, <tt class="docutils literal"><span class="pre">blue</span></tt>, or <tt class="docutils literal"><span class="pre">green</span></tt> as
 shown here, respectively (from left to right):</p>
 <div class="figure">
-<img alt="_images/nav_buttons.png" src="_images/nav_buttons.png" style="width: 300px;" />
+<a class="reference internal image-reference" href="_images/nav_buttons.png"><img alt="_images/nav_buttons.png" src="_images/nav_buttons.png" style="width: 300px;" /></a>
 </div>
 <p>However, if <tt class="docutils literal"><span class="pre">--html_theme=</span></tt> is set to <tt class="docutils literal"><span class="pre">vagrant</span></tt> or any theme starting
 with <tt class="docutils literal"><span class="pre">bootstrap</span></tt> or <tt class="docutils literal"><span class="pre">bootswatch</span></tt>, the navigation buttons are ignored,
@@ -5320,7 +5379,10 @@ lead to problems because Mako applies syntax like <tt class="docutils literal"><
 variables or call functions, while LaTeX mathematics sometimes applies
 the same syntax, e.g., <tt class="docutils literal"><span class="pre">${\cal</span> <span class="pre">O}(\Delta</span> <span class="pre">x^2)$</span></tt> which looks like a
 Mako function call. This problem can give rise to strange error
-messages from Mako, usually that a variable is not defined.</p>
+messages from Mako, usually that a variable is not defined.
+The solution is to avoid such Mako-style syntax when writing
+LaTeX mathematics, e.g., by defining newcommands if it is otherwise
+problematic.</p>
 </div>
 <div class="section" id="the-basics-of-mako">
 <h2>The Basics of Mako<a class="headerlink" href="#the-basics-of-mako" title="Permalink to this headline">¶</a></h2>
@@ -5373,7 +5435,68 @@ comment in Mako.
 &lt;%doc/&gt;
 </pre></div>
 </div>
-<p>One can use Mako to extend the DocOnce syntax. Two examples are given next.</p>
+<p>One can use Mako to extend the DocOnce syntax. Three examples are given next.</p>
+</div>
+<div class="section" id="example-executing-python-and-using-sympy-objects-in-latex">
+<h2>Example: Executing Python and using SymPy Objects in LaTeX<a class="headerlink" href="#example-executing-python-and-using-sympy-objects-in-latex" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example where we want to illustrate how to calculate a
+double integral. All mathematics is to be done in SymPy, and results
+are supposed to be embedded in the document&#8217;s text.
+We can include Python code to be executed, anywhere in the document,
+and a variable <tt class="docutils literal"><span class="pre">var</span></tt> in the Python code is reached by <tt class="docutils literal"><span class="pre">${var}</span></tt>.
+Here, we run SymPy and use SymPy&#8217;s LaTeX converter to make LaTeX
+code out of computed SymPy expressions:</p>
+<div class="highlight-text"><div class="highlight"><pre># Execute Python code
+&lt;%
+import sympy as sm
+x, y, a = sm.symbols(&#39;x y a&#39;)
+f = a*x + sm.sin(y)
+step1 = sm.Integral(f, x, y)
+step2 = sm.Integral(sm.Integralf, x).doit(), y)
+step3 = step2.doit()
+%&gt;
+
+# Make use of results in the above block when writing LaTeX math
+!bt
+\begin{align*}
+${sm.latex(step1)} &amp;= ${sm.latex(step2)}\\
+&amp;= ${sm.latex(step3)}
+\end{align*}
+!et
+</pre></div>
+</div>
+<p>The result of the LaTeX block above, after Mako is run, becomes</p>
+<div class="highlight-text"><div class="highlight"><pre>\begin{align*}
+\iint a x + y^{2} \sin{\left (y \right )}\, dx\, dy &amp;=
+\int \frac{a x^{2}}{2} + x y^{2} \sin{\left (y \right )}\, dy\\
+&amp;= \frac{a y}{2} x^{2} + x \left(- y^{2} \cos{\left (y \right )} +
+2 y \sin{\left (y \right )} + 2 \cos{\left (y \right )}\right)
+\end{align*}
+</pre></div>
+</div>
+<p>Debugging Python code in Mako is less convenient than debugging Python
+files directly, so one may prefer to just include the Python code
+that Mako is supposed to run by</p>
+<div class="highlight-text"><div class="highlight"><pre>&lt;%
+# #include &quot;src/ex1.py&quot;
+%&gt;
+</pre></div>
+</div>
+<p>This is the recommended way to make use of SymPy
+to automate the mathematical derivations: first develop and test
+the SymPy code files, include the files in the document inside
+Mako&#8217;s Python code environment.</p>
+<p><strong>Remark.</strong>
+Executing Python code inside the DocOnce document is
+closely related to <em>literate programming</em>. Tools supporting
+creating a document while running a Python programming cover
+<a class="reference external" href="http://mpastell.com/pweave/">Pweave</a>,
+<a class="reference external" href="https://github.com/stdbrouw/python-literate">Python literate</a>,
+<a class="reference external" href="http://pywebtool.sourceforge.net/">PyWebTool</a>,
+<a class="reference external" href="http://pythonhosted.org/antiweb/index.html">Antiweb</a>,
+<a class="reference external" href="http://en.literateprograms.org/Literate_Programming_(Python)">Literate Programming in Python</a>,
+<a class="reference external" href="http://gael-varoquaux.info/computers/pyreport/">Pyreport</a>,
+and also IPython notebooks.</p>
 </div>
 <div class="section" id="example-extending-tables-to-handle-figures">
 <span id="manual-tables-wfigs"></span><h2>Example: Extending Tables to Handle Figures<a class="headerlink" href="#example-extending-tables-to-handle-figures" title="Permalink to this headline">¶</a></h2>
@@ -5802,7 +5925,7 @@ LaTeX, and work further on the document in this format.</p>
 <p class="first admonition-title">Note</p>
 <p>This text is somewhat outdated.
 Now DocOnce supports NumPy-style docstrings. DocOnce can also do
-automatic references to Python documentation, say the <a class="reference external" href="http://docs.python.org/2.7/library/math.html#math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
+automatic references to Python documentation, say the <a class="reference external" href="http://docs.python.org/2.7/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
 module, but the link only works in case of Sphinx output.
 Typical syntax is</p>
 <div class="highlight-text"><div class="highlight"><pre>With :mod:`numpy` and the :func:`scipy.io.loadmat` function in
@@ -6047,6 +6170,7 @@ Springer,
 <li><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
 <li><a class="reference internal" href="#footnotes">Footnotes</a></li>
 <li><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
+<li><a class="reference internal" href="#inline-comments-for-editing">Inline Comments for Editing</a></li>
 <li><a class="reference internal" href="#forced-line-breaks">Forced Line Breaks</a></li>
 <li><a class="reference internal" href="#inline-mathematics">Inline Mathematics</a></li>
 </ul>
@@ -6105,6 +6229,7 @@ Springer,
 </li>
 <li><a class="reference internal" href="#mako-programming">Mako Programming</a><ul>
 <li><a class="reference internal" href="#the-basics-of-mako">The Basics of Mako</a></li>
+<li><a class="reference internal" href="#example-executing-python-and-using-sympy-objects-in-latex">Example: Executing Python and using SymPy Objects in LaTeX</a></li>
 <li><a class="reference internal" href="#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a><ul>
 <li><a class="reference internal" href="#solution-for-latex-and-html">Solution for LaTeX and HTML</a></li>
 <li><a class="reference internal" href="#generating-the-entire-table">Generating the Entire Table</a></li>

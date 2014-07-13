@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,8 +27,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Doconce Manual" href="#" />
-    <link rel="next" title="DocOnce Description" href="manual.html" /> 
+    <link rel="next" title="DocOnce Description" href="manual.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -130,6 +148,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="manual.html#mako-programming">Mako Programming</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#the-basics-of-mako">The Basics of Mako</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#example-executing-python-and-using-sympy-objects-in-latex">Example: Executing Python and using SymPy Objects in LaTeX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#tools-for-writing-doconce-documents">Tools for Writing DocOnce Documents</a></li>

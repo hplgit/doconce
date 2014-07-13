@@ -1314,15 +1314,13 @@ is very easy to get started with Dropbox, and it allows you to share
 files among [hpl: laptops and mobile units -> computers, tablets,
 and phones].
 
-When several people [del: may] edit files simultaneously, it can be difficult
-detect who did what when, [add: and] roll back to previous [edit:
-versions, and to manually merge the edits when these are incompatible ->
-versions. To manualle merge the edits can be quite a challenge.] Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
+$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
+negative. [add: This comes as no surprise.] [hpl: We
+also
+need multi-line
+comment test.
+]
 
 ===== Appendix: Testing headings ending with `verbatim inline` =====
 

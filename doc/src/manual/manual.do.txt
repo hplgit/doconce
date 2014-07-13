@@ -866,13 +866,13 @@ Inline comments can also be used to markup editing of the text.
 The following syntax is supported:
 
 !bc
-[add:,]
-[add:.]
-[add:;]
-[del:,]
-[del:,]
-[del:.]
-[del:;]
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
 [add: some text]
 [del: some text]
 [edit: some text -> some replacement for text]
@@ -883,20 +883,22 @@ a comma, period, or semicolon leads to special typesetting. Below
 is an example.
 
 !bc
-First[add:,] consider a quantity $Q$. [hpl: To this end, -> We note that]
-$Q>0$, because negative [hpl: quantity -> quantities] are [del:just]
+First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
+$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
 negative. [add: This comes as no surprise.]
 !ec
 The text gets rendered as
 
 !bquote
-First[add:,] consider a quantity $Q$. [hpl: To this end, -> We note that]
-$Q>0$, because negative [hpl: quantity -> quantities] are [del:just]
+First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
+$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
 negative. [add: This comes as no surprise.]
-!bquote
+!equote
 
-
-For example, some text can be
+Such inline comments with edits are only given special typesetting in
+the output formats `latex`, `pdflatex`, `html`, and `sphinx`.
+Otherwise, just the DocOnce syntax is shown (but that is also quite
+readable as edit instructions.)
 
 === Forced Line Breaks ===
 
@@ -2758,11 +2760,11 @@ Debugging Python code in Mako is less convenient than debugging Python
 files directly, so one may prefer to just include the Python code
 that Mako is supposed to run by
 
-!bc
-<%
-# #include "src/ex1.py"
-%>
-!ec
+@@@CODE _mako_sympy_ex1.txt
+
+## Must do a trick above: since we use preprocess syntax, #include
+## will not work, and the code has to be in a separate file.
+
 This is the recommended way to make use of SymPy
 to automate the mathematical derivations: first develop and test
 the SymPy code files, include the files in the document inside

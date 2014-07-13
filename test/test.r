@@ -1327,16 +1327,16 @@ Simply go to URL:"http://dropbox.com" and watch the video. It explains
 how files, like `myfile.py`, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
+$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
+negative. [add: This comes as no surprise.] [hpl: We
+also
+need multi-line
+comment test.
+]
 
 ===== Appendix: Testing headings ending with `verbatim inline` =====
 
@@ -1720,6 +1720,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{ptex2tex}
 
@@ -3544,16 +3550,15 @@ The simplest services for hosting project files is Dropbox. \longinlinecomment{m
 how files, like \code{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+and phones}.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  \longinlinecomment{hpl 3}{ The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools. }{ The following text aims }
+First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
+negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
+also
+need multi-line
+comment test. }{ We also need multi-line }
 
 \subsection{Appendix: Testing headings ending with \protect\code{verbatim inline} }
 
@@ -3596,6 +3601,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{ptex2tex}
 
@@ -5570,16 +5581,15 @@ The simplest services for hosting project files is Dropbox. \longinlinecomment{m
 how files, like \texttt{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+and phones}.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  \longinlinecomment{hpl 3}{ The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in--depth explanations of the concepts and tools. }{ The following text aims }
+First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
+negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
+also
+need multi--line
+comment test. }{ We also need multi--line }
 
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
@@ -5632,6 +5642,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{anslistings,fancyvrb} % packages needed for verbatim environments
 
@@ -7555,16 +7571,15 @@ The simplest services for hosting project files is Dropbox. \longinlinecomment{m
 how files, like \Verb!myfile.py!, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+and phones}.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  \longinlinecomment{hpl 3}{ The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in--depth explanations of the concepts and tools. }{ The following text aims }
+First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
+negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
+also
+need multi--line
+comment test. }{ We also need multi--line }
 
 \subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
 
@@ -8988,24 +9003,24 @@ Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. (**hpl 1**: not sure if in the cloud is understood by all.) I strongly
+cloud" and updated through communication with that site. <font color="red">(**hpl 1**: not sure if in the cloud is understood by all.</font>) I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
-The simplest services for hosting project files is Dropbox. (**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
+The simplest services for hosting project files is Dropbox. <font color="red">(**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
-\partial u/\partial t, are easily communicated between machines.) It
+\partial u/\partial t, are easily communicated between machines.</font>) It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(**hpl 3**: laptops and mobile units -> computers, tablets,
+and phones</font>).
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  (**hpl 3**: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.)
+Firstcolor{red}{(**add 4**: ,}) consider a quantity Q. <font color="red">(**edit 5**: To this end, -> We note that</font>)
+Q>0, because negative <font color="red">(**edit 6**: quantity -> quantities</font>) are <font color="red">(**del 7**: just</font>)
+negative. <font color="red">(**add 8**: This comes as no surprise.</font>) <font color="red">(**hpl 9**: We
+also
+need multi-line
+comment test.
+</font>)
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -10541,24 +10556,23 @@ Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. (**hpl 1**: not sure if in the cloud is understood by all.) I strongly
+cloud" and updated through communication with that site. <font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font> I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
-The simplest services for hosting project files is Dropbox. (**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
+The simplest services for hosting project files is Dropbox. <font color="red">[<b>mp 2</b>: <em>Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
-:math:`\partial u/\partial t`, are easily communicated between machines.) It
+:math:`\partial u/\partial t`, are easily communicated between machines.</em>]</font> It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
+and phones</font>.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  (**hpl 3**: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.)
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
+:math:`Q>0`, because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
+negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> <font color="red">[<b>hpl 9</b>: <em>We
+also
+need multi-line
+comment test.</em>]</font>
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -11885,13 +11899,9 @@ Simply go to http://dropbox.com and watch the video. It explains
 how files, like `myfile.py`, perhaps containing much math, like
 `\partial u/\partial t`, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among .
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  ===== Appendix: Testing headings ending with `verbatim inline` =====
+Firstconsider a quantity `Q`. `Q>0`, because negative are negative. ===== Appendix: Testing headings ending with `verbatim inline` =====
 
 The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -13309,16 +13319,16 @@ The simplest services for hosting project files is Dropbox. [mp 2: Simply go to 
 how files, like <code>myfile.py</code>, perhaps containing much math, like
 <math>\partial u/\partial t</math>, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl 3: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add 4: ,] consider a quantity <math>Q</math>. [edit 5: To this end, -> We note that]
+<math>Q>0</math>, because negative [edit 6: quantity -> quantities] are [del 7: just]
+negative. [add 8: This comes as no surprise.] [hpl 9: We
+also
+need multi-line
+comment test.
+]
 
 ==== Appendix: Testing headings ending with <code>verbatim inline</code> ====
 
@@ -14601,16 +14611,16 @@ The simplest services for hosting project files is Dropbox. [mp 2: Simply go to 
 how files, like {{{myfile.py}}}, perhaps containing much math, like
 {{{\partial u/\partial t}}}, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl 3: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add 4: ,] consider a quantity {{{Q}}}. [edit 5: To this end, -> We note that]
+{{{Q>0}}}, because negative [edit 6: quantity -> quantities] are [del 7: just]
+negative. [add 8: This comes as no surprise.] [hpl 9: We
+also
+need multi-line
+comment test.
+]
 
 == Appendix: Testing headings ending with {{{verbatim inline}}} ==
 
@@ -15739,16 +15749,16 @@ The simplest services for hosting project files is Dropbox. [mp 2: Simply go to 
 how files, like 'myfile.py', perhaps containing much math, like
 \partial u/\partial t, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl 3: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
+Q>0, because negative [edit 6: quantity -> quantities] are [del 7: just]
+negative. [add 8: This comes as no surprise.] [hpl 9: We
+also
+need multi-line
+comment test.
+]
 
 Appendix: Testing headings ending with 'verbatim inline'
 
@@ -16911,16 +16921,16 @@ The simplest services for hosting project files is Dropbox. [mp 2: Simply go to 
 how files, like C{myfile.py}, perhaps containing much math, like
 M{\partial u/\partial t}, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl 3: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add 4: ,] consider a quantity M{Q}. [edit 5: To this end, -> We note that]
+M{Q>0}, because negative [edit 6: quantity -> quantities] are [del 7: just]
+negative. [add 8: This comes as no surprise.] [hpl 9: We
+also
+need multi-line
+comment test.
+]
 
 Appendix: Testing headings ending with C{verbatim inline}
 ---------------------------------------------------------
@@ -18192,16 +18202,16 @@ The simplest services for hosting project files is Dropbox. [mp 2: Simply go to 
 how files, like myfile.py, perhaps containing much math, like
 \partial u/\partial t, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl 3: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
+Q>0, because negative [edit 6: quantity -> quantities] are [del 7: just]
+negative. [add 8: This comes as no surprise.] [hpl 9: We
+also
+need multi-line
+comment test.
+]
 
 Appendix: Testing headings ending with verbatim inline
 ------------------------------------------------------
@@ -19621,16 +19631,16 @@ The simplest services for hosting project files is Dropbox. [mp 2: Simply go to 
 how files, like `myfile.py`, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  [hpl 3: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.]
+First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
+$Q>0$, because negative [edit 6: quantity -> quantities] are [del 7: just]
+negative. [add 8: This comes as no surprise.] [hpl 9: We
+also
+need multi-line
+comment test.
+]
 
 ### Appendix: Testing headings ending with `verbatim inline`
 
@@ -21614,16 +21624,16 @@ is at the end with only one newline.
       "how files, like `myfile.py`, perhaps containing much math, like\n",
       "$\\partial u/\\partial t$, are easily communicated between machines.] It\n",
       "is very easy to get started with Dropbox, and it allows you to share\n",
-      "files among laptops and mobile units.\n",
+      "files among [hpl 3: laptops and mobile units -> computers, tablets,\n",
+      "and phones].\n",
       "\n",
-      "When several people may edit files simultaneously, it can be difficult\n",
-      "detect who did what when, roll back to previous versions, and to\n",
-      "manually merge the edits when these are incompatible. Then one needs\n",
-      "more sophisticated tools than Dropbox: project hosting services with\n",
-      "true version control systems.  [hpl 3: The following text aims at providing\n",
-      "you with the minimum information to started with such\n",
-      "systems. Numerous other tutorials contain more comprehensive material\n",
-      "and in-depth explanations of the concepts and tools.]\n",
+      "First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]\n",
+      "$Q>0$, because negative [edit 6: quantity -> quantities] are [del 7: just]\n",
+      "negative. [add 8: This comes as no surprise.] [hpl 9: We\n",
+      "also\n",
+      "need multi-line\n",
+      "comment test.\n",
+      "]\n",
       "\n",
       "### Appendix: Testing headings ending with `verbatim inline`\n",
       "\n",
@@ -22511,8 +22521,8 @@ def f(x):
 <p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
 <h2 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h2>
 <p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span><strong>hpl 1</strong></span>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among laptops and mobile units.</p>
-<p>When several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox: project hosting services with true version control systems. <span><strong>hpl 3</strong></span>: * The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools. *</p>
+<p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among<br />textcolor<span>red</span><span>(hpl 3:)</span> .</p>
+<p>First,<br />textcolor<span>red</span><span> (<strong>edit 4</strong>: add comma)</span> consider a quantity <span class="math">\(Q\)</span>.<br />textcolor<span>red</span><span>(edit 5:)</span> <span class="math">\(Q&gt;0\)</span>, because negative<br />textcolor<span>red</span><span>(edit 6:)</span> are (<strong>edit 7</strong>:) negative.<br />textcolor<span>red</span><span> (<strong>edit 8</strong>: add) This comes as no surprise.</span>) <span><strong>hpl 9</strong></span>: * We also need multi-line comment test. *</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
@@ -23416,8 +23426,8 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
 <h3 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h3>
 <p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines.] It is very easy to get started with Dropbox, and it allows you to share files among laptops and mobile units.</p>
-<p>When several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox: project hosting services with true version control systems. [hpl 3: The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.]</p>
+<p>The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines.] It is very easy to get started with Dropbox, and it allows you to share files among [hpl 3: laptops and mobile units -&gt; computers, tablets, and phones].</p>
+<p>First[add 4: ,] consider a quantity <span class="math">\(Q\)</span>. [edit 5: To this end, -&gt; We note that] <span class="math">\(Q&gt;0\)</span>, because negative [edit 6: quantity -&gt; quantities] are [del 7: just] negative. [add 8: This comes as no surprise.] [hpl 9: We also need multi-line comment test. ]</p>
 <h3 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h3>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
@@ -26154,32 +26164,32 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
-<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
-<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
-<span style="color: #888888">Value: 0.932039085967</span>
+4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008800; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 IPython sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+In [<span style="color: #666666">2</span>]: <span style="color: #008800; font-style: italic"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
@@ -27951,7 +27961,7 @@ Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
 <!-- end inline comment -->
  I strongly
 recommend you to use such sites for all serious programming and
@@ -27960,25 +27970,24 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
+\( \partial u/\partial t \), are easily communicated between machines.</em>)</font>
 <!-- end inline comment -->
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
+and phones</font>.
 
 <p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
+\( Q>0 \), because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
+negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</em>]</font>
+<font color="red">(<b>hpl 9</b>: <em>We
+also
+need multi-line
+comment test.</em>)</font>
 <!-- end inline comment -->
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
@@ -28377,10 +28386,10 @@ Standard Python shell sessions:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
-<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
-<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
-<span style="color: #888888">Value: 0.932039085967</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 <p>
 IPython sessions:
@@ -28388,12 +28397,12 @@ IPython sessions:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+In [<span style="color: #666666">2</span>]: <span style="color: #408080; font-style: italic"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 <p>
 
@@ -29583,7 +29592,7 @@ Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
 
-<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
 
  I strongly
 recommend you to use such sites for all serious programming and
@@ -29592,25 +29601,24 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
-$latex \partial u/\partial t$, are easily communicated between machines.</em>]</font>
+$latex \partial u/\partial t$, are easily communicated between machines.</em>)</font>
 
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
+and phones</font>.
 
 <p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
+$latex Q>0$, because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
+negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
 
-<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</em>]</font>
+<font color="red">(<b>hpl 9</b>: <em>We
+also
+need multi-line
+comment test.</em>)</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
@@ -30150,24 +30158,24 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
-<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
-<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
-<span style="color: #888888">Value: 0.932039085967</span>
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 <p>
 IPython sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+In [<span style="color: #666666">2</span>]: <span style="color: #408080; font-style: italic"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -31406,7 +31414,7 @@ Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
 <!-- end inline comment -->
  I strongly
 recommend you to use such sites for all serious programming and
@@ -31415,25 +31423,24 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
+\( \partial u/\partial t \), are easily communicated between machines.</em>)</font>
 <!-- end inline comment -->
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
+and phones</font>.
 
 <p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
+\( Q>0 \), because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
+negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</em>]</font>
+<font color="red">(<b>hpl 9</b>: <em>We
+also
+need multi-line
+comment test.</em>)</font>
 <!-- end inline comment -->
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
@@ -31501,6 +31508,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{ptex2tex}
 
@@ -33265,16 +33278,15 @@ The simplest services for hosting project files is Dropbox. \longinlinecomment{m
 how files, like \code{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+and phones}.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  \longinlinecomment{hpl 3}{ The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools. }{ The following text aims }
+First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
+negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
+also
+need multi-line
+comment test. }{ We also need multi-line }
 
 \paragraph{Appendix: Testing headings ending with \protect\code{verbatim inline}.}
 The point here is to test 1) \code{verbatim} code in headings, and 2)
@@ -36788,24 +36800,24 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
-<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
-<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
-<span style="color: #888888">Value: 0.932039085967</span>
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 <p>
 IPython sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+In [<span style="color: #666666">2</span>]: <span style="color: #408080; font-style: italic"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -39911,24 +39923,23 @@ Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. (**hpl 1**: not sure if in the cloud is understood by all.) I strongly
+cloud" and updated through communication with that site. <font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font> I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
-The simplest services for hosting project files is Dropbox. (**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
+The simplest services for hosting project files is Dropbox. <font color="red">[<b>mp 2</b>: <em>Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
-:math:`\partial u/\partial t`, are easily communicated between machines.) It
+:math:`\partial u/\partial t`, are easily communicated between machines.</em>]</font> It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
+and phones</font>.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  (**hpl 3**: The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.)
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
+:math:`Q>0`, because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
+negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> <font color="red">[<b>hpl 9</b>: <em>We
+also
+need multi-line
+comment test.</em>]</font>
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -52397,8 +52408,8 @@ And a line more
 <p>
 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
-in the slide environment.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
+in the slide environment.</em>)</font>
 <!-- end inline comment -->
 
 
@@ -57851,8 +57862,8 @@ And a line more
 <p>
 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
-in the slide environment.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
+in the slide environment.</em>)</font>
 <!-- end inline comment -->
 
 
@@ -58219,8 +58230,8 @@ And a line more
 <p>
 
 <!-- begin inline comment -->
-<font color="red">[<b style="font-weight: bold">hpl 1</b>: <em>Here are some notes that can go to notes typesetting
-in the slide environment.</em>]</font>
+<font color="red">(<b style="font-weight: bold">hpl 1</b>: <em>Here are some notes that can go to notes typesetting
+in the slide environment.</em>)</font>
 <!-- end inline comment -->
 
 
@@ -68561,6 +68572,10 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
+*************** Working with tag "inlinecomment"
+
+
+
 *************** Working with tag "abstract"
 
 
@@ -68594,10 +68609,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 *************** Working with tag "bold"
-
-
-
-*************** Working with tag "inlinecomment"
 
 
 
@@ -68957,6 +68968,10 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 
+*************** Working with tag "inlinecomment"
+
+
+
 *************** Working with tag "abstract"
 
 
@@ -68990,10 +69005,6 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *************** Working with tag "bold"
-
-
-
-*************** Working with tag "inlinecomment"
 
 
 
@@ -69476,6 +69487,10 @@ $b = 1$ is a value suggested by Åsmund Ødegård.
 
 
 
+*************** Working with tag "inlinecomment"
+
+
+
 *************** Working with tag "abstract"
 
 
@@ -69542,10 +69557,6 @@ through the various stages of the text transformation process.
 
 
 *************** Working with tag "bold"
-
-
-
-*************** Working with tag "inlinecomment"
 
 
 
@@ -73174,27 +73185,27 @@ Below are some examples on admons.
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
+In [<span style="color: #666666">2</span>]: x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
-<span style="color: #888888">---------------------------------------------------------------------------</span>
-<span style="color: #888888">NameError                                 Traceback (most recent call last)</span>
-<span style="color: #888888">&lt;ipython-input-3-c1040545fa6c&gt; in &lt;module&gt;()</span>
-<span style="color: #888888">----&gt; 1 y = exp(-0.1*x)*sin(x)</span>
+In [<span style="color: #666666">3</span>]: y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #666666">---------------------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>                                 Traceback (most recent call last)
+<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #008000">input</span><span style="color: #666666">-3-</span>c1040545fa6c<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
+<span style="color: #666666">----&gt;</span> <span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
 
-<span style="color: #888888">NameError: name &#39;exp&#39; is not defined</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;exp&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
 
-<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
+In [<span style="color: #666666">4</span>]: y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
 
-<span style="color: #000080; font-weight: bold">In [5]: </span>y
-<span style="color: #888888">Out[5]:</span>
-<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
-<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
-<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
-<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
+In [<span style="color: #666666">5</span>]: y
+Out[<span style="color: #666666">5</span>]:
+array([  <span style="color: #666666">0.00000000e+00</span>,   <span style="color: #666666">8.38747563e-01</span>,   <span style="color: #666666">4.57160372e-01</span>,
+        <span style="color: #666666">-4.03174933e-01</span>,  <span style="color: #666666">-5.75315545e-01</span>,  <span style="color: #666666">-1.30666897e-16</span>,
+         <span style="color: #666666">4.47461836e-01</span>,   <span style="color: #666666">2.43889614e-01</span>,  <span style="color: #666666">-2.15089026e-01</span>,
+        <span style="color: #666666">-3.06923992e-01</span>,  <span style="color: #666666">-1.39418467e-16</span>])
 </pre></div>
 <p>
 This is the admon for warnings or paying attention.
@@ -73631,7 +73642,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jul  7 15:32:28 2014.
+# sphinx-quickstart on Sun Jul 13 14:36:41 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76248,8 +76259,8 @@ where <code>name</code> is the name or ID of an author or reader making the comm
 and <code>running text</code> is the comment. Here goes an example.
 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
-but the running text can occupy multiple lines.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>There must be a space after the colon,
+but the running text can occupy multiple lines.</em>)</font>
 <!-- end inline comment -->
 
 The inline comments have simple typesetting in most formats, typically boldface
@@ -76722,7 +76733,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -78167,7 +78178,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -78834,8 +78845,8 @@ are enabled by the syntax::
 
 where ``name`` is the name or ID of an author or reader making the comment,
 and ``running text`` is the comment. Here goes an example.
-(**hpl 1**: There must be a space after the colon,
-but the running text can occupy multiple lines.)
+<font color="red">(**hpl 1**: There must be a space after the colon,
+but the running text can occupy multiple lines.</font>)
 The inline comments have simple typesetting in most formats, typically boldface
 name and everything surrounded by parenthesis, but with LaTeX
 output and the ``-DTOTONOTES`` option to ``ptex2tex`` or ``doconce ptex2tex``,
@@ -79260,7 +79271,7 @@ transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -79918,8 +79929,8 @@ are enabled by the syntax
 
 where ``name`` is the name or ID of an author or reader making the comment,
 and ``running text`` is the comment. Here goes an example.
-(**hpl 1**: There must be a space after the colon,
-but the running text can occupy multiple lines.)
+<font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
+but the running text can occupy multiple lines.</em>]</font>
 The inline comments have simple typesetting in most formats, typically boldface
 name and everything surrounded by parenthesis, but with LaTeX
 output and the ``-DTOTONOTES`` option to ``ptex2tex`` or ``doconce ptex2tex``,
@@ -80388,7 +80399,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -81415,7 +81426,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -82471,7 +82482,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -83487,7 +83498,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -84469,7 +84480,7 @@ transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -85454,7 +85465,7 @@ transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -86491,7 +86502,7 @@ transforming a .do.txt file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -87579,7 +87590,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -88248,6 +88259,11 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install
+    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+cannot import name IPythonConsoleLexer
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -88290,6 +88306,11 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install
+    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -88404,6 +88425,11 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install
+    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+cannot import name IPythonConsoleLexer
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -88454,6 +88480,11 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install
+    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -88507,6 +88538,11 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install
+    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -88571,23 +88607,7 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
-...doconce translation: handled figures 18.5 s
-
 exporting publish database papers.pub to papers.bib:
-
-...doconce translation: handled handled lists 18.6 s
-
-...doconce translation: handled inline substitutions 18.7 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 18.7 s
-
-...doconce translation: handled !benvir/!eenvir constructions 18.7 s
-
-...doconce translation: handled handled second reformatting of quizzes 18.7 s
-
-
-...doconce format used 18.7 s to translate the document (1935 lines)
-
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -88650,25 +88670,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
-...doconce translation: handled figures 20.7 s
-
 exporting publish database papers.pub to papers.bib:
-
-...doconce translation: handled handled lists 20.8 s
-
-...doconce translation: handled inline substitutions 20.8 s
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
-
-...doconce translation: handled insertion of verbatim and latex blocks 20.8 s
-
-...doconce translation: handled !benvir/!eenvir constructions 20.9 s
-
-...doconce translation: handled handled second reformatting of quizzes 20.9 s
-
-
-...doconce format used 20.9 s to translate the document (2001 lines)
-
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
@@ -88734,6 +88738,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -89051,7 +89056,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1062.
+t line 1068.
 
 
 
@@ -89071,7 +89076,7 @@ t line 1062.
 
 
 
-t line 1071.
+t line 1077.
 
 
 
@@ -89091,7 +89096,7 @@ t line 1071.
 
 
 
-t line 1075.
+t line 1081.
 
 
 
@@ -89319,6 +89324,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -89564,6 +89570,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -89828,7 +89835,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1062.
+t line 1068.
 
 
 
@@ -89848,7 +89855,7 @@ t line 1062.
 
 
 
-t line 1071.
+t line 1077.
 
 
 
@@ -89868,7 +89875,7 @@ t line 1071.
 
 
 
-t line 1075.
+t line 1081.
 
 
 
@@ -89999,6 +90006,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -90261,6 +90269,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
@@ -90523,7 +90532,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1062.
+t line 1068.
 
 
 
@@ -90543,7 +90552,7 @@ t line 1062.
 
 
 
-t line 1071.
+t line 1077.
 
 
 
@@ -90563,7 +90572,7 @@ t line 1071.
 
 
 
-t line 1075.
+t line 1081.
 
 
 
@@ -90694,6 +90703,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -90940,6 +90950,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
@@ -91261,6 +91272,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -92147,23 +92159,7 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
-...doconce translation: handled figures 16.3 s
-
 exporting publish database papers.pub to papers.bib:
-
-...doconce translation: handled handled lists 16.4 s
-
-...doconce translation: handled inline substitutions 16.4 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 16.5 s
-
-...doconce translation: handled !benvir/!eenvir constructions 16.5 s
-
-...doconce translation: handled handled second reformatting of quizzes 16.5 s
-
-
-...doconce format used 16.5 s to translate the document (1897 lines)
-
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
@@ -95827,6 +95823,11 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._a
 + system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 + doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 translating doconce text in test_boots.do.txt to html
+*** warning: !bc ipy used for IPython sessions, but
+    ipython is not supported for syntax highlighting!
+    install
+    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in test_boots.html
 + '[' 0 -ne 0 ']'
@@ -95853,16 +95854,6 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 19.4 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 19.5 s
-
-...doconce translation: handled !benvir/!eenvir constructions 19.5 s
-
-
-...doconce format used 19.5 s to translate the document (740 lines)
-
 output in movies_3choices.html
 + '[' 0 -ne 0 ']'
 + cp movies_3choices.html movie_demo
@@ -100184,7 +100175,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
-    found!
+    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
 *** error: could not translate environment: !bsol
@@ -100261,16 +100252,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 16.4 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 16.4 s
-
-...doconce translation: handled !benvir/!eenvir constructions 16.4 s
-
-
-...doconce format used 16.4 s to translate the document (140 lines)
-
 output in tmp2.rst
 + doconce subst -s -m '^!bhint.+?!ehint' '' tmp2.do.txt
 ^!bhint.+?!ehint replaced by  in tmp2.do.txt
@@ -101524,7 +101505,7 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [11]
-Overfull \hbox (3431.00006pt too wide) 
+Overfull \hbox (3509.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
@@ -101532,8 +101513,8 @@ e_comments grab remove remove_exercise_answers split_rst split_html slides_html
  slides_beamer latin2html grep latex_header latex_footer latex_problems ref_ext
 ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
 ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
-2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv
-2table  
+2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibte
+x4publish csv2table  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -102019,7 +102000,7 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [12]
-Overfull \hbox (3431.00006pt too wide) 
+Overfull \hbox (3509.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
@@ -102027,8 +102008,8 @@ e_comments grab remove remove_exercise_answers split_rst split_html slides_html
  slides_beamer latin2html grep latex_header latex_footer latex_problems ref_ext
 ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
 ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
-2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv
-2table  
+2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibte
+x4publish csv2table  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik

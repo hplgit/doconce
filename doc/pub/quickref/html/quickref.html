@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 7, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 13, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -418,8 +418,8 @@ are enabled by the syntax</p>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">name</span></tt> is the name or ID of an author or reader making the comment,
 and <tt class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></tt> is the comment. Here goes an example.
-(<strong>hpl 1</strong>: There must be a space after the colon,
-but the running text can occupy multiple lines.)
+&lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;There must be a space after the colon,
+but the running text can occupy multiple lines.&lt;/em&gt;]&lt;/font&gt;
 The inline comments have simple typesetting in most formats, typically boldface
 name and everything surrounded by parenthesis, but with LaTeX
 output and the <tt class="docutils literal"><span class="pre">-DTOTONOTES</span></tt> option to <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>,
@@ -798,7 +798,7 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
-commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 <span class="c"># transform doconce file to another format</span>

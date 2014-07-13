@@ -467,17 +467,17 @@ def sphinx_inline_comment(m):
     # Use explicit HTML typesetting
     name = m.group('name').strip()
     comment = m.group('comment').strip()
-    chars = {',': comma, ';': 'semicolon', '.': 'period'}
-    if name == 'del':
+    chars = {',': 'comma', ';': 'semicolon', '.': 'period'}
+    if name[:4] == 'del ':
         for char in chars:
             if comment == char:
-                return r' color{red}{ (delete %s)}' % chars[char]
-        return r'<del>%s</del>)' % comment
-    elif name == 'add':
+                return r' <font color="red"> (<b>edit %s</b>: delete %s)</font>' % (name[4:], chars[char])
+        return r'<font color="red">(<b>edit %s</b>:)</font> <del>%s</del>' % (name[4:], comment)
+    elif name[:4] == 'add ':
         for char in chars:
             if comment == char:
-                return r'%s color{red}{ (add %s)}' % (comment, chars[char])
-        return r' color{red}{ %s})' % comment
+                return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
+        return r' <font color="red">(<b>edit %s</b>: add) %s</font>' % (name[4:], comment)
     else:
         # Ordinary name
         if ' -> ' in comment:
@@ -488,7 +488,7 @@ def sphinx_inline_comment(m):
                 print '(more than two ->)'
                 _abort()
             orig, new = comment.split(' -> ')
-            return r'color{red}{(%s:)} <del>%s</del> %s' % (name, orig, new)
+            return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
         else:
             # Ordinary comment
             return r'<font color="red">[<b>%s</b>: <em>%s</em>]</font>' % (name, comment)
@@ -783,5 +783,3 @@ def sphinx_code_newmathlabels(filestr, format):
     filestr = re.sub(r'!et *\n', '\n\n', filestr)
 
     return filestr
-
-

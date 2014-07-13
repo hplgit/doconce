@@ -258,7 +258,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jul 7, 2014</h4></center> <!-- date -->
+<center><h4>Jul 13, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -578,32 +578,32 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">&gt;&gt;&gt; from numpy import sin</span>
-<span style="color: #888888">&gt;&gt;&gt; # Some comment</span>
-<span style="color: #888888">&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x</span>
-<span style="color: #888888">Value: 0.932039085967</span>
+4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008800; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 IPython sessions:
 
 <p>
 
-<!-- code=ipython (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+In [<span style="color: #666666">2</span>]: <span style="color: #008800; font-style: italic"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+Value: <span style="color: #666666">0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
@@ -1947,7 +1947,7 @@ Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that site. 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
 <!-- end inline comment -->
  I strongly
 recommend you to use such sites for all serious programming and
@@ -1956,25 +1956,24 @@ scientific writing work - and all other important files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">[<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
+<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>]</font>
+\( \partial u/\partial t \), are easily communicated between machines.</em>)</font>
 <!-- end inline comment -->
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
+and phones</font>.
 
 <p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
+\( Q>0 \), because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
+negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 3</b>: <em>The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</em>]</font>
+<font color="red">(<b>hpl 9</b>: <em>We
+also
+need multi-line
+comment test.</em>)</font>
 <!-- end inline comment -->
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>

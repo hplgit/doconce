@@ -8,7 +8,7 @@ DocOnce Description
 ===================
 
 :Author: Hans Petter Langtangen
-:Date: Jun 20, 2014
+:Date: Jul 13, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -4143,10 +4143,11 @@ DocOnce also supports inline comments in the text:
 
 where ``name`` is the name of the author of the command, and ``comment`` is a
 plain text text. Note that there must be a space after the colon,
-otherwise the comment is not recognized. (**hpl 1**: Inline comments
+otherwise the comment is not recognized. Next is an example.
+<font color="red">[<b>hpl 1</b>: <em>Inline comments
 can span
 several lines,
-if desired.)
+if desired.</em>]</font>
 
 The name and comment are visible in the output unless ``doconce format``
 is run with a command-line argument ``--skip_inline_comments``
@@ -4156,9 +4157,57 @@ and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the ``.do.txt`` file
 (see the section :ref:`doconce2formats`).
 
-Inline comments are typeset in a simple way (boldface name and the
-comment in parenthesis), but in LaTeX very visible color boxes
-are used (via the ``todonotes`` package).
+Inline comments are typeset in a simple way: boldface name, a
+numbering of the comment, and the comment, all in red and in
+parenthesis. However, with the ``--latex_todonotes`` option, LaTeX will
+apply the ``todonotespackage`` to typeset the comments in very visible
+color boxes.
+
+Inline Comments for Editing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Inline comments can also be used to markup editing of the text.
+The following syntax is supported:
+
+.. code-block:: text
+
+        [add:,]
+        [add:.]
+        [add:;]
+        [del:,]
+        [del:,]
+        [del:.]
+        [del:;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+That is, one can add, delete, and replace text, and adding or deleting
+a comma, period, or semicolon leads to special typesetting. Below
+is an example.
+
+.. code-block:: text
+
+        First[add:,] consider a quantity $Q$. [hpl: To this end, -> We note that]
+        $Q>0$, because negative [hpl: quantity -> quantities] are [del:just]
+        negative. [add: This comes as no surprise.]
+
+The text gets rendered as
+
+
+..
+
+    First[add:,] consider a quantity :math:`Q`. <font color="red">(hpl 2:)</font> <del>To this end,</del> We note that
+    :math:`Q>0`, because negative <font color="red">(hpl 3:)</font> <del>quantity</del> quantities are [del:just]
+    negative. <font color="red">[<b>add 4</b>: <em>This comes as no surprise.</em>]</font>
+
+
+
+Such inline comments with edits are only given special typesetting in
+the output formats ``latex``, ``pdflatex``, ``html``, and ``sphinx``.
+Otherwise, just the DocOnce syntax is shown (but that is also quite
+readable as edit instructions.)
 
 Forced Line Breaks
 ~~~~~~~~~~~~~~~~~~
@@ -4894,6 +4943,10 @@ Running ``doconce csv2table tmp.csv`` creates the table
         | 2.0          | 1.376512     | 11.919       |
         | 4.0          | 1.1E+1       | 14.717624    |
         |--------------------------------------------|
+
+If this output is redirected to a file, say ``mytable.do.txt``, one can
+easily include this file by ``# #include "mytable.do.txt"`` in the
+DocOnce source file.
 
 Exercises, Problems, Projects, and Examples
 -------------------------------------------
@@ -6074,6 +6127,9 @@ a real programming language.
     the same syntax, e.g., ``${\cal O}(\Delta x^2)$`` which looks like a
     Mako function call. This problem can give rise to strange error
     messages from Mako, usually that a variable is not defined.
+    The solution is to avoid such Mako-style syntax when writing
+    LaTeX mathematics, e.g., by defining newcommands if it is otherwise
+    problematic.
 
 
 
@@ -6132,7 +6188,76 @@ Just a preliminary sketch of some Mako code (next example is better!):
         comment in Mako.
         <%doc/>
 
-One can use Mako to extend the DocOnce syntax. Two examples are given next.
+One can use Mako to extend the DocOnce syntax. Three examples are given next.
+
+Example: Executing Python and using SymPy Objects in LaTeX
+----------------------------------------------------------
+
+Here is an example where we want to illustrate how to calculate a
+double integral. All mathematics is to be done in SymPy, and results
+are supposed to be embedded in the document's text.
+We can include Python code to be executed, anywhere in the document,
+and a variable ``var`` in the Python code is reached by ``${var}``.
+Here, we run SymPy and use SymPy's LaTeX converter to make LaTeX
+code out of computed SymPy expressions:
+
+.. code-block:: text
+
+        # Execute Python code
+        <%
+        import sympy as sm
+        x, y, a = sm.symbols('x y a')
+        f = a*x + sm.sin(y)
+        step1 = sm.Integral(f, x, y)
+        step2 = sm.Integral(sm.Integralf, x).doit(), y)
+        step3 = step2.doit()
+        %>
+        
+        # Make use of results in the above block when writing LaTeX math
+        !bt
+        \begin{align*}
+        ${sm.latex(step1)} &= ${sm.latex(step2)}\\
+        &= ${sm.latex(step3)}
+        \end{align*}
+        !et
+
+The result of the LaTeX block above, after Mako is run, becomes
+
+.. code-block:: text
+
+        \begin{align*}
+        \iint a x + y^{2} \sin{\left (y \right )}\, dx\, dy &=
+        \int \frac{a x^{2}}{2} + x y^{2} \sin{\left (y \right )}\, dy\\
+        &= \frac{a y}{2} x^{2} + x \left(- y^{2} \cos{\left (y \right )} +
+        2 y \sin{\left (y \right )} + 2 \cos{\left (y \right )}\right)
+        \end{align*}
+
+Debugging Python code in Mako is less convenient than debugging Python
+files directly, so one may prefer to just include the Python code
+that Mako is supposed to run by
+
+.. code-block:: text
+
+        <%
+        # #include "src/ex1.py"
+        %>
+
+This is the recommended way to make use of SymPy
+to automate the mathematical derivations: first develop and test
+the SymPy code files, include the files in the document inside
+Mako's Python code environment.
+
+**Remark.**
+Executing Python code inside the DocOnce document is
+closely related to *literate programming*. Tools supporting
+creating a document while running a Python programming cover
+`Pweave <http://mpastell.com/pweave/>`_,
+`Python literate <https://github.com/stdbrouw/python-literate>`_,
+`PyWebTool <http://pywebtool.sourceforge.net/>`_,
+`Antiweb <http://pythonhosted.org/antiweb/index.html>`_,
+`Literate Programming in Python <http://en.literateprograms.org/Literate_Programming_(Python)>`_,
+`Pyreport <http://gael-varoquaux.info/computers/pyreport/>`_,
+and also IPython notebooks.
 
 .. _manual:tables:wfigs:
 

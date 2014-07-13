@@ -214,11 +214,11 @@ All use of the minted style requires the `-shell-escape` command-line
 argument when running LaTeX, i.e., `latex -shell-escape` or `pdflatex
 -shell-escape`.
 
-Inline comments apply the `todonotes` LaTeX package if the `ptex2tex`
-or `doconce ptex2tex` command is run with `-DTODONOTES`.  The
-`todonotes` package requires several other packages: `xcolor`,
-`ifthen`, `xkeyval`, `tikz`, `calc`, `graphicx`, and `setspace`. The
-relevant Debian packages for installing all this are listed below.
+Inline comments apply the `todonotes` LaTeX package if the option
+`--latex_todonotes` is given.  The `todonotes` package requires
+several other packages: `xcolor`, `ifthen`, `xkeyval`, `tikz`, `calc`,
+`graphicx`, and `setspace`. The relevant Debian packages for
+installing all this are listed below.
 
 === LaTeX packages ===
 
