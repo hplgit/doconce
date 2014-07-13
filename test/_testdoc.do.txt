@@ -1311,11 +1311,13 @@ Simply go to URL:"http://dropbox.com" and watch the video. It explains
 how files, like `myfile.py`, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among laptops and mobile units.
+files among [hpl: laptops and mobile units -> computers, tablets,
+and phones].
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
+When several people [del: may] edit files simultaneously, it can be difficult
+detect who did what when, [add: and] roll back to previous [edit:
+versions, and to manually merge the edits when these are incompatible ->
+versions. To manualle merge the edits can be quite a challenge.] Then one needs
 more sophisticated tools than Dropbox: project hosting services with
 true version control systems.  [hpl: The following text aims at providing
 you with the minimum information to started with such
