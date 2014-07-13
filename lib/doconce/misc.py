@@ -7079,6 +7079,67 @@ def latex2doconce():
     print filestr  # final output
 
 
+def latex2doconce():
+    """
+    Apply transformations to an html file to help translate the
+    document into Doconce format.
+    """
+    print '# #ifdef LATEX2DOCONCE'
+    print 'This is the result of the doconce htmldoconce program.'
+    print 'The translation from HTML is just a helper. The text must'
+    print 'be carefully examined! (Be prepared that some text might also'
+    print 'be lost in the translation - in seldom cases.)\n'
+
+    filename = sys.argv[1]
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    filestr = _html2doconce(filestr)
+
+    print '# #endif'   # end of intro with warnings etc.
+
+    print filestr  # final output to stdout
+
+
+def _html2doconce(filestr):
+    # All headings
+    headings = {1: 7, 2: 5, 3: 3}
+    def subst(m):
+        border = '='*headings[int(m.group(1))]
+        return border + ' ' + m.group(2) + ' ' + border + '\n'
+
+    filestr = re.sub(r'<h(\d)>(.+?)</h\d>', subst, filestr)
+
+    # Paragraphs
+    filestr = re.sub(r'<p>\s*', '\n', filestr)
+    # Various tags
+    filestr = re.sub(r'<em>(.+?)</em>', '*\g<1>*', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'<b>(.+?)</b>', '_\g<1>_', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'^\s*<title>(.+?)</title>', 'TITLE: \g<1>', filestr,
+                     flags=re.MULTILINE)
+    filestr = re.sub(r'<!--(.+?)-->', '#\g<1>', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'<a href="(.+?)">(.+?)</a>', '"\g<2>": "\g<1>"', filestr,
+                     flags=re.DOTALL)
+    filestr = re.sub(r'<img.*? src="(.+?)".*?>',
+                     '\nFIGURE: [\g<1>, width=600 frac=1]\n', filestr,
+                     flags=re.DOTALL)
+    filestr = re.sub(r'<ul>', '\n', filestr)
+    filestr = re.sub(r'</ul>', '\n', filestr)
+    # All lists become bullet lists, read line by line and use a stack
+    # to improve this
+    if '<ol>' in filestr:
+        print '*** warning: enumerated lists become bullet lists'
+    filestr = re.sub(r'<ol>', '\n', filestr)
+    filestr = re.sub(r'</ol>', '\n', filestr)
+    filestr = re.sub(r'<li>', '  * ', filestr)
+
+    if '<table' in filestr:
+        print '*** warning: html2doconce cannot handle tables.'
+        print '    Recommendation: edit manually to CSV format and run'
+        print '    doconce csv2table command to create table.'
+
+    return filestr
+
 def latex_dislikes():
     """
     Report constructions in latex that will not translate to doconce
@@ -8003,18 +8064,35 @@ def fix_bibtex4publish():
         f.close()
 
 def _usage_cvs2table():
-    print 'Usage: doconce csv2table somefile.csv'
+    print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;]'
 
 def csv2table():
     """Convert a csv file to a Doconce table."""
     if len(sys.argv) < 2:
         _usage_csv2table()
         sys.exit(1)
+
+    align_headings = align_columns = 'c'*num_columns
+    delimiter = ','
+    for arg in sys.argv[1:]:
+        if arg.startswith('--headings='):
+            align_headings = list(arg.split('=')[1])
+            if len(align_headings) != num_columns:
+                print '*** error: %s has wrong no of columns (should be %d)' % \
+                      (arg, num_columns)
+        if arg.startswith('--columns='):
+            align_columns = list(arg.split('=')[1])
+            if len(align_columns) != num_columns:
+                print '*** error: %s has wrong no of columns (should be %d)' % \
+                      (arg, num_columns)
+        if arg.startswith('--delimiter='):
+            delimiter = arg.split('=')[1]
+
     import csv
     filename = sys.argv[1]
     csvfile = open(filename, 'r')
     table = []
-    for row in csv.reader(csvfile):
+    for row in csv.reader(csvfile, delimiter=delimiter):
         if row:
             table.append(row)
     csvfile.close()
@@ -8041,11 +8119,12 @@ def csv2table():
 
     s = list(separator1)
     for j in range(num_columns):
-        s[max_column_width/2 + 1 + j*(max_column_width+3)] = 'c'
+        s[max_column_width/2 + 1 + j*(max_column_width+3)] = align_headings[j]
     separator1 = ''.join(s)
+
     s = list(separator2)
     for j in range(num_columns):
-        s[max_column_width/2 + 1 + j*(max_column_width+3)] = 'c'
+        s[max_column_width/2 + 1 + j*(max_column_width+3)] = align_columns[j]
     separator2 = ''.join(s)
 
     column_format = ' %%-%ds ' % max_column_width

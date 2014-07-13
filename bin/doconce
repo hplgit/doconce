@@ -45,6 +45,7 @@ from doconce.misc import (
     makefile,
     latex2doconce,
     latex_dislikes,
+    html2doconce,
     fix_bibtex4publish,
     diff,
     gitdiff,
@@ -903,6 +904,7 @@ old2new_format
 linkchecker
 latex2doconce
 latex_dislikes
+html2doconce
 pygmentize
 makefile
 diff

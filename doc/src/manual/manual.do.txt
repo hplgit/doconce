@@ -1508,6 +1508,10 @@ Running `doconce csv2table tmp.csv` creates the table
 |--------------------------------------------|
 !ec
 
+If this output is redirected to a file, say `mytable.do.txt`, one can
+easily include this file by `# #include "mytable.do.txt"` in the
+DocOnce source file.
+
 ===== Exercises, Problems, Projects, and Examples =====
 
 DocOnce has special support for four types of "exercises", named
