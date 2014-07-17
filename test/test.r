@@ -1315,12 +1315,17 @@ to get started.
 
 ===== Appendix: Testing inline comments =====
 
+# Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl:
-not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion:
+not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp:
 Simply go to URL:"http://dropbox.com" and watch the video. It explains
@@ -1331,12 +1336,8 @@ files among [hpl: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
-$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
-negative. [add: This comes as no surprise.] [hpl: We
-also
-need multi-line
-comment test.
-]
+$Q>0$, because [del: a] negative [edit: quantity is -> quantities
+are] [del: just] negative. [add: This comes as no surprise.]
 
 ===== Appendix: Testing headings ending with `verbatim inline` =====
 
@@ -1725,7 +1726,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{ptex2tex}
 
@@ -3540,25 +3540,27 @@ to get started.
 
 \subsection{Appendix: Testing inline comments}
 
+% Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. \shortinlinecomment{hpl 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
+understood by
+all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
 how files, like \code{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
-First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
-negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
-also
-need multi-line
-comment test. }{ We also need multi-line }
+First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
+are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
 
 \subsection{Appendix: Testing headings ending with \protect\code{verbatim inline} }
 
@@ -3606,7 +3608,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{ptex2tex}
 
@@ -5571,25 +5572,27 @@ to get started.
 
 \subsection{Appendix: Testing inline comments}
 
+% Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. \shortinlinecomment{hpl 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
+understood by
+all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
 how files, like \texttt{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
-First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
-negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
-also
-need multi--line
-comment test. }{ We also need multi--line }
+First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
+are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
 
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
@@ -5647,7 +5650,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{anslistings,fancyvrb} % packages needed for verbatim environments
 
@@ -7561,25 +7563,27 @@ to get started.
 
 \subsection{Appendix: Testing inline comments}
 
+% Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. \shortinlinecomment{hpl 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
+understood by
+all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
 how files, like \Verb!myfile.py!, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
-First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
-negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
-also
-need multi--line
-comment test. }{ We also need multi--line }
+First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
+are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
 
 \subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
 
@@ -9001,11 +9005,16 @@ to get started.
 Appendix: Testing inline comments
 ---------------------------------
 
+.. Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. <font color="red">(**hpl 1**: not sure if in the cloud is understood by all.</font>) I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. <font color="red">(**hpl's semi opinion 1**: not sure if in the cloud is
+understood by
+all.</font>) I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. <font color="red">(**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
@@ -9015,12 +9024,8 @@ files among <font color="red">(**hpl 3**: laptops and mobile units -> computers,
 and phones</font>).
 
 Firstcolor{red}{(**add 4**: ,}) consider a quantity Q. <font color="red">(**edit 5**: To this end, -> We note that</font>)
-Q>0, because negative <font color="red">(**edit 6**: quantity -> quantities</font>) are <font color="red">(**del 7**: just</font>)
-negative. <font color="red">(**add 8**: This comes as no surprise.</font>) <font color="red">(**hpl 9**: We
-also
-need multi-line
-comment test.
-</font>)
+Q>0, because <font color="red">(**del 6**: a</font>) negative <font color="red">(**edit 7**: quantity is -> quantities
+are</font>) <font color="red">(**del 8**: just</font>) negative. <font color="red">(**add 9**: This comes as no surprise.</font>)
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -10554,11 +10559,16 @@ to get started.
 Appendix: Testing inline comments
 ---------------------------------
 
+.. Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. <font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font> I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. <font color="red">[<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
+understood by
+all.</em>]</font> I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. <font color="red">[<b>mp 2</b>: <em>Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
@@ -10568,11 +10578,8 @@ files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile uni
 and phones</font>.
 
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-:math:`Q>0`, because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
-negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> <font color="red">[<b>hpl 9</b>: <em>We
-also
-need multi-line
-comment test.</em>]</font>
+:math:`Q>0`, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
+are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -11887,21 +11894,23 @@ to get started.
 
 ==== Appendix: Testing inline comments ====
 
+<wiki:comment> Names can be [ A-Za-z0-9_'+-]+ </wiki:comment>
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl:
-not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site.  I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
-The simplest services for hosting project files is Dropbox. [mp:
-Simply go to http://dropbox.com and watch the video. It explains
-how files, like `myfile.py`, perhaps containing much math, like
-`\partial u/\partial t`, are easily communicated between machines.] It
+The simplest services for hosting project files is Dropbox.  It
 is very easy to get started with Dropbox, and it allows you to share
 files among .
 
-Firstconsider a quantity `Q`. `Q>0`, because negative are negative. ===== Appendix: Testing headings ending with `verbatim inline` =====
+First consider a quantity `Q`. 
+`Q>0`, because  negative   negative. 
+
+==== Appendix: Testing headings ending with `verbatim inline` ====
 
 The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -13309,11 +13318,16 @@ to get started.
 
 ==== Appendix: Testing inline comments ====
 
+<!-- Names can be [ A-Za-z0-9_'+-]+ -->
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp 2: Simply go to http://dropbox.com and watch the video. It explains
 how files, like <code>myfile.py</code>, perhaps containing much math, like
@@ -13323,12 +13337,8 @@ files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add 4: ,] consider a quantity <math>Q</math>. [edit 5: To this end, -> We note that]
-<math>Q>0</math>, because negative [edit 6: quantity -> quantities] are [del 7: just]
-negative. [add 8: This comes as no surprise.] [hpl 9: We
-also
-need multi-line
-comment test.
-]
+<math>Q>0</math>, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
 ==== Appendix: Testing headings ending with <code>verbatim inline</code> ====
 
@@ -14601,11 +14611,16 @@ to get started.
 
 == Appendix: Testing inline comments ==
 
+<wiki:comment> Names can be [ A-Za-z0-9_'+-]+ </wiki:comment>
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp 2: Simply go to [[http://dropbox.com]] and watch the video. It explains
 how files, like {{{myfile.py}}}, perhaps containing much math, like
@@ -14615,12 +14630,8 @@ files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add 4: ,] consider a quantity {{{Q}}}. [edit 5: To this end, -> We note that]
-{{{Q>0}}}, because negative [edit 6: quantity -> quantities] are [del 7: just]
-negative. [add 8: This comes as no surprise.] [hpl 9: We
-also
-need multi-line
-comment test.
-]
+{{{Q>0}}}, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
 == Appendix: Testing headings ending with {{{verbatim inline}}} ==
 
@@ -15741,9 +15752,12 @@ Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp 2: Simply go to "http://dropbox.com":http://dropbox.com and watch the video. It explains
 how files, like 'myfile.py', perhaps containing much math, like
@@ -15753,12 +15767,8 @@ files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
-Q>0, because negative [edit 6: quantity -> quantities] are [del 7: just]
-negative. [add 8: This comes as no surprise.] [hpl 9: We
-also
-need multi-line
-comment test.
-]
+Q>0, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
 Appendix: Testing headings ending with 'verbatim inline'
 
@@ -16913,9 +16923,12 @@ Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp 2: Simply go to U{http://dropbox.com<http://dropbox.com>} and watch the video. It explains
 how files, like C{myfile.py}, perhaps containing much math, like
@@ -16925,12 +16938,8 @@ files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add 4: ,] consider a quantity M{Q}. [edit 5: To this end, -> We note that]
-M{Q>0}, because negative [edit 6: quantity -> quantities] are [del 7: just]
-negative. [add 8: This comes as no surprise.] [hpl 9: We
-also
-need multi-line
-comment test.
-]
+M{Q>0}, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
 Appendix: Testing headings ending with C{verbatim inline}
 ---------------------------------------------------------
@@ -18194,9 +18203,12 @@ Appendix: Testing inline comments
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp 2: Simply go to http://dropbox.com and watch the video. It explains
 how files, like myfile.py, perhaps containing much math, like
@@ -18206,12 +18218,8 @@ files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
-Q>0, because negative [edit 6: quantity -> quantities] are [del 7: just]
-negative. [add 8: This comes as no surprise.] [hpl 9: We
-also
-need multi-line
-comment test.
-]
+Q>0, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
 Appendix: Testing headings ending with verbatim inline
 ------------------------------------------------------
@@ -19621,11 +19629,16 @@ to get started.
 
 ### Appendix: Testing inline comments
 
+<!-- Names can be [ A-Za-z0-9_'+-]+ -->
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <http://dropbox.com> and watch the video. It explains
 how files, like `myfile.py`, perhaps containing much math, like
@@ -19635,12 +19648,8 @@ files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
-$Q>0$, because negative [edit 6: quantity -> quantities] are [del 7: just]
-negative. [add 8: This comes as no surprise.] [hpl 9: We
-also
-need multi-line
-comment test.
-]
+$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
 ### Appendix: Testing headings ending with `verbatim inline`
 
@@ -21614,11 +21623,16 @@ is at the end with only one newline.
       "\n",
       "### Appendix: Testing inline comments\n",
       "\n",
+      "<!-- Names can be [ A-Za-z0-9_'+-]+ -->\n",
+      "\n",
       "Projects that you want to share among several computers or project\n",
       "workers are today most conveniently stored at some web site \"in the\n",
-      "cloud\" and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly\n",
-      "recommend you to use such sites for all serious programming and\n",
-      "scientific writing work - and all other important files.\n",
+      "cloud\" and updated through communication with that\n",
+      "site. [hpl's semi opinion 1: not sure if in the cloud is\n",
+      "understood by\n",
+      "all.] I strongly recommend you to use such sites for all serious\n",
+      "programming and scientific writing work - and all other important\n",
+      "files.\n",
       "\n",
       "The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <http://dropbox.com> and watch the video. It explains\n",
       "how files, like `myfile.py`, perhaps containing much math, like\n",
@@ -21628,12 +21642,8 @@ is at the end with only one newline.
       "and phones].\n",
       "\n",
       "First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]\n",
-      "$Q>0$, because negative [edit 6: quantity -> quantities] are [del 7: just]\n",
-      "negative. [add 8: This comes as no surprise.] [hpl 9: We\n",
-      "also\n",
-      "need multi-line\n",
-      "comment test.\n",
-      "]\n",
+      "$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities\n",
+      "are] [del 8: just] negative. [add 9: This comes as no surprise.]\n",
       "\n",
       "### Appendix: Testing headings ending with `verbatim inline`\n",
       "\n",
@@ -22520,9 +22530,9 @@ def f(x):
 <p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the “master version” at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
 <p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
 <h2 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h2>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span><strong>hpl 1</strong></span>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among<br />textcolor<span>red</span><span>(hpl 3:)</span> .</p>
-<p>First,<br />textcolor<span>red</span><span> (<strong>edit 4</strong>: add comma)</span> consider a quantity <span class="math">\(Q\)</span>.<br />textcolor<span>red</span><span>(edit 5:)</span> <span class="math">\(Q&gt;0\)</span>, because negative<br />textcolor<span>red</span><span>(edit 6:)</span> are (<strong>edit 7</strong>:) negative.<br />textcolor<span>red</span><span> (<strong>edit 8</strong>: add) This comes as no surprise.</span>) <span><strong>hpl 9</strong></span>: * We also need multi-line comment test. *</p>
+<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span><strong>hpl’s semi opinion 1</strong></span>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
+<p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among .</p>
+<p>First consider a quantity <span class="math">\(Q\)</span>. <span class="math">\(Q&gt;0\)</span>, because (<strong>edit 6</strong>:) negative (<strong>edit 8</strong>:) negative. )</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
@@ -23425,9 +23435,11 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the &quot;master version&quot; at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
 <p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
 <h3 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h3>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. [hpl 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
+<!-- Names can be [ A-Za-z0-9_'+-]+ -->
+
+<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. [hpl's semi opinion 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
 <p>The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines.] It is very easy to get started with Dropbox, and it allows you to share files among [hpl 3: laptops and mobile units -&gt; computers, tablets, and phones].</p>
-<p>First[add 4: ,] consider a quantity <span class="math">\(Q\)</span>. [edit 5: To this end, -&gt; We note that] <span class="math">\(Q&gt;0\)</span>, because negative [edit 6: quantity -&gt; quantities] are [del 7: just] negative. [add 8: This comes as no surprise.] [hpl 9: We also need multi-line comment test. ]</p>
+<p>First[add 4: ,] consider a quantity <span class="math">\(Q\)</span>. [edit 5: To this end, -&gt; We note that] <span class="math">\(Q&gt;0\)</span>, because [del 6: a] negative [edit 7: quantity is -&gt; quantities are] [del 8: just] negative. [add 9: This comes as no surprise.]</p>
 <h3 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h3>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
@@ -27957,15 +27969,21 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec40"></a></h2>
 
+<!-- Names can be [ A-Za-z0-9_'+-]+ -->
+
+<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. 
+cloud" and updated through communication with that
+site. 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
+<font color="red">(<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
+understood by
+all.</em>)</font>
 <!-- end inline comment -->
- I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+ I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 <p>
 The simplest services for hosting project files is Dropbox. 
@@ -27981,14 +27999,8 @@ and phones</font>.
 
 <p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-\( Q>0 \), because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
-negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 9</b>: <em>We
-also
-need multi-line
-comment test.</em>)</font>
-<!-- end inline comment -->
+\( Q>0 \), because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
+are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
@@ -29590,13 +29602,16 @@ to get started.
 
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. 
+cloud" and updated through communication with that
+site. 
 
-<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
+<font color="red">(<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
+understood by
+all.</em>)</font>
 
- I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+ I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 <p>
 The simplest services for hosting project files is Dropbox. 
@@ -29612,13 +29627,8 @@ and phones</font>.
 
 <p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-$latex Q>0$, because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
-negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
-
-<font color="red">(<b>hpl 9</b>: <em>We
-also
-need multi-line
-comment test.</em>)</font>
+$latex Q>0$, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
+are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
@@ -31410,15 +31420,21 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec40"></a></h2>
 
+<!-- Names can be [ A-Za-z0-9_'+-]+ -->
+
+<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. 
+cloud" and updated through communication with that
+site. 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>)</font>
+<font color="red">(<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
+understood by
+all.</em>)</font>
 <!-- end inline comment -->
- I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+ I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 <p>
 The simplest services for hosting project files is Dropbox. 
@@ -31434,14 +31450,8 @@ and phones</font>.
 
 <p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-\( Q>0 \), because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
-negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> 
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 9</b>: <em>We
-also
-need multi-line
-comment test.</em>)</font>
-<!-- end inline comment -->
+\( Q>0 \), because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
+are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec41"></a></h2>
 
@@ -31513,7 +31523,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\newcommand{\addcomment}{\color{red}{, comma}\ }
 
 \usepackage{ptex2tex}
 
@@ -33268,25 +33277,27 @@ to get started.
 
 
 \paragraph{Appendix: Testing inline comments.}
+% Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. \shortinlinecomment{hpl 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
+understood by
+all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
 how files, like \code{myfile.py}, perhaps containing much math, like
 $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \\textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
-First, \\textcolor{red}{ (\textbf{edit 4}: add comma)} consider a quantity $Q$. \\textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because negative \\textcolor{red}{(edit 6:)} \replace{quantity}{quantities} are (\textbf{edit 7}:) \remove{just}
-negative.  \\textcolor{red}{ (\textbf{edit 8}: add) This comes as no surprise.}) \shortinlinecomment{hpl 9}{ We
-also
-need multi-line
-comment test. }{ We also need multi-line }
+First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
+are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
 
 \paragraph{Appendix: Testing headings ending with \protect\code{verbatim inline}.}
 The point here is to test 1) \code{verbatim} code in headings, and 2)
@@ -33810,6 +33821,7 @@ cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html --method=split
 
+system doconce apply_inline_edits testdoc.do.txt
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
 
 system doconce remove_exercise_answers testdoc.html
@@ -39921,11 +39933,16 @@ to get started.
 Appendix: Testing inline comments
 ---------------------------------
 
+.. Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. <font color="red">[<b>hpl 1</b>: <em>not sure if in the cloud is understood by all.</em>]</font> I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. <font color="red">[<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
+understood by
+all.</em>]</font> I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. <font color="red">[<b>mp 2</b>: <em>Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
@@ -39935,11 +39952,8 @@ files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile uni
 and phones</font>.
 
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-:math:`Q>0`, because negative <font color="red">(<b>edit 6</b>:)</font> <del>quantity</del> <font color="red">quantities</font> are <font color="red">(<b>edit 7</b>:)</font> <del>just</del>
-negative.  <font color="red">(<b>edit 8</b>: add) This comes as no surprise.</font> <font color="red">[<b>hpl 9</b>: <em>We
-also
-need multi-line
-comment test.</em>]</font>
+:math:`Q>0`, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
+are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -73642,7 +73656,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jul 13 14:36:41 2014.
+# sphinx-quickstart on Thu Jul 17 11:38:27 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75183,14 +75197,26 @@ are enabled by the syntax
 [name: running text]
 !ec
 where `name` is the name or ID of an author or reader making the comment,
-and `running text` is the comment. Here goes an example.
-[hpl: There must be a space after the colon,
+and `running text` is the comment. The name can contain upper and lower
+case characters, digits, single quote, `+` and `-`, as well
+as space. Here goes an example.
+
+!bc
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the `-DTOTONOTES` option to `ptex2tex` or `doconce ptex2tex`,
-colorful margin or inline boxes (using the `todonotes` package)
-make it very easy to spot the comments.
+!ec
+which is rendered as
+
+!bquote
+Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+!equote
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the `--latex_todonotes`
+option to `doconce format`, colorful margin or inline boxes (using the
+`todonotes` package) make it very easy to spot the comments.
 
 Running
 !bc sys
@@ -75203,6 +75229,54 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 !bc sys
 doconce remove_inline_comments mydoc.do.txt
+!ec
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+!bc
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+!ec
+
+For example, the text
+
+!bc
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+!ec
+can be edited as
+
+!bc
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+!ec
+which in the ${FORMAT} output format results in
+
+!bquote
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+!equote
+
+To implement these edits, run
+
+!bc sys
+Terminal> doconce apply_edit_comments mydoc.do.txt
 !ec
 
 ===== Verbatim/Computer Code =====
@@ -76256,18 +76330,34 @@ are enabled by the syntax
 </code></pre>
 <!-- end verbatim block -->
 where <code>name</code> is the name or ID of an author or reader making the comment,
-and <code>running text</code> is the comment. Here goes an example.
+and <code>running text</code> is the comment. The name can contain upper and lower
+case characters, digits, single quote, <code>+</code> and <code>-</code>, as well
+as space. Here goes an example.
 
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: <em>There must be a space after the colon,
-but the running text can occupy multiple lines.</em>)</font>
-<!-- end inline comment -->
+<p>
+<!-- begin verbatim block -->
+<pre><code>Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+</code></pre>
+<!-- end verbatim block -->
+which is rendered as
 
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the <code>-DTOTONOTES</code> option to <code>ptex2tex</code> or <code>doconce ptex2tex</code>,
-colorful margin or inline boxes (using the <code>todonotes</code> package)
-make it very easy to spot the comments.
+<p>
+<blockquote>
+    Some running text. 
+    <!-- begin inline comment -->
+    <font color="red">(<b>hpl 1</b>: <em>There must be a space after the colon,
+    but the running text can occupy multiple lines.</em>)</font>
+    <!-- end inline comment -->
+</blockquote>
+
+
+<p>
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the <code>--latex_todonotes</code>
+option to <code>doconce format</code>, colorful margin or inline boxes (using the
+<code>todonotes</code> package) make it very easy to spot the comments.
 
 <p>
 Running
@@ -76283,6 +76373,67 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 <!-- begin verbatim block  sys-->
 <pre><code>doconce remove_inline_comments mydoc.do.txt
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+[name: some text -&gt; some replacement for text]
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+For example, the text
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>First consider a quantity $Q$. Without loss of generality, we assume
+$Q&gt;0$. There are three, fundamental, basic property of $Q$.
+</code></pre>
+<!-- end verbatim block -->
+can be edited as
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>First[add: ,] consider [edit: a quantity -&gt; the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q&gt;0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -&gt; properties] of $Q$. [add: These are not
+important for the following discussion.]
+</code></pre>
+<!-- end verbatim block -->
+which in the html output format results in
+
+<p>
+<blockquote>
+    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
+    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
+    we assume</del> \( Q>0 \). There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
+    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of \( Q \).  <font color="red">(<b>edit 8</b>: add) These are not
+    important for the following discussion.</font>
+</blockquote>
+
+
+<p>
+To implement these edits, run
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </code></pre>
 <!-- end verbatim block -->
 
@@ -76733,7 +76884,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -76757,6 +76908,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -77132,6 +77286,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
 
 \usepackage{ptex2tex}
 
@@ -77733,14 +77892,28 @@ are enabled by the syntax
 [name: running text]
 \eccq
 where \code{name} is the name or ID of an author or reader making the comment,
-and \code{running text} is the comment. Here goes an example.
-\shortinlinecomment{hpl 1}{ There must be a space after the colon,
+and \code{running text} is the comment. The name can contain upper and lower
+case characters, digits, single quote, \code{+} and \code{-}, as well
+as space. Here goes an example.
+
+\bccq
+Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+\eccq
+which is rendered as
+
+
+\begin{quote}
+Some running text. \shortinlinecomment{hpl 1}{ There must be a space after the colon,
 but the running text can occupy multiple lines. }{ There must be a }
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with {\LaTeX}
-output and the \code{-DTOTONOTES} option to \code{ptex2tex} or \code{doconce ptex2tex},
-colorful margin or inline boxes (using the \code{todonotes} package)
-make it very easy to spot the comments.
+\end{quote}
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with {\LaTeX} output and the \code{--latex_todonotes}
+option to \code{doconce format}, colorful margin or inline boxes (using the
+\code{todonotes} package) make it very easy to spot the comments.
 
 Running
 \bsys
@@ -77753,6 +77926,56 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 \bsys
 doconce remove_inline_comments mydoc.do.txt
+\esys
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+\bccq
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+\eccq
+
+For example, the text
+
+\bccq
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+\eccq
+can be edited as
+
+\bccq
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+\eccq
+which in the latex output format results in
+
+
+\begin{quote}
+First\textcolor{red}{, (\textbf{edit 2}: add comma)} consider \textcolor{red}{(edit 3:)} \replace{a quantity}{the flux}
+(\textbf{edit 4}:) \remove{$Q$. Without loss of generality,
+we assume} $Q>0$. There are three \textcolor{red}{ (\textbf{edit 5}: delete comma)} fundamental(\textbf{edit 6}:) \remove{, basic}
+\textcolor{red}{(edit 7:)} \replace{property}{properties} of $Q$.  \textcolor{red}{ (\textbf{edit 8}: add) These are not
+important for the following discussion.})
+\end{quote}
+
+
+To implement these edits, run
+
+\bsys
+Terminal> doconce apply_edit_comments mydoc.do.txt
 \esys
 
 \subsection{Verbatim/Computer Code}
@@ -78178,7 +78401,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -78202,6 +78425,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -78844,14 +79070,28 @@ are enabled by the syntax::
         [name: running text]
 
 where ``name`` is the name or ID of an author or reader making the comment,
-and ``running text`` is the comment. Here goes an example.
-<font color="red">(**hpl 1**: There must be a space after the colon,
-but the running text can occupy multiple lines.</font>)
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the ``-DTOTONOTES`` option to ``ptex2tex`` or ``doconce ptex2tex``,
-colorful margin or inline boxes (using the ``todonotes`` package)
-make it very easy to spot the comments.
+and ``running text`` is the comment. The name can contain upper and lower
+case characters, digits, single quote, ``+`` and ``-``, as well
+as space. Here goes an example::
+
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+which is rendered as
+
+
+..
+
+    Some running text. <font color="red">(**hpl 1**: There must be a space after the colon,
+    but the running text can occupy multiple lines.</font>)
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the ``--latex_todonotes``
+option to ``doconce format``, colorful margin or inline boxes (using the
+``todonotes`` package) make it very easy to spot the comments.
 
 Running::
 
@@ -78864,6 +79104,51 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing::
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+For example, the text::
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+can be edited as::
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+which in the rst output format results in
+
+
+..
+
+    Firstcolor{red}{(**add 2**: ,}) consider <font color="red">(**edit 3**: a quantity -> the flux</font>)
+    <font color="red">(**del 4**: Q. Without loss of generality,
+    we assume</font>) Q>0. There are threecolor{red}{(**del 5**: ,}) fundamentalcolor{red}{(**del 6**: , basic})
+    <font color="red">(**edit 7**: property -> properties</font>) of Q. <font color="red">(**add 8**: These are not
+    important for the following discussion.</font>)
+
+
+
+To implement these edits, run::
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 Verbatim/Computer Code
 ----------------------
@@ -79271,7 +79556,7 @@ transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -79295,6 +79580,9 @@ list of capabilities::
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
+        
+        # apply all edits specified through inline comments
+        apply_inline_edits
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -79928,14 +80216,30 @@ are enabled by the syntax
         [name: running text]
 
 where ``name`` is the name or ID of an author or reader making the comment,
-and ``running text`` is the comment. Here goes an example.
-<font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
-but the running text can occupy multiple lines.</em>]</font>
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the ``-DTOTONOTES`` option to ``ptex2tex`` or ``doconce ptex2tex``,
-colorful margin or inline boxes (using the ``todonotes`` package)
-make it very easy to spot the comments.
+and ``running text`` is the comment. The name can contain upper and lower
+case characters, digits, single quote, ``+`` and ``-``, as well
+as space. Here goes an example.
+
+.. code-block:: text
+
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+which is rendered as
+
+
+..
+
+    Some running text. <font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
+    but the running text can occupy multiple lines.</em>]</font>
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the ``--latex_todonotes``
+option to ``doconce format``, colorful margin or inline boxes (using the
+``todonotes`` package) make it very easy to spot the comments.
 
 Running
 
@@ -79952,6 +80256,59 @@ removed from the DocOnce source by
 .. code-block:: text
 
         doconce remove_inline_comments mydoc.do.txt
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+.. code-block:: text
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+For example, the text
+
+.. code-block:: text
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+can be edited as
+
+.. code-block:: text
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+which in the sphinx output format results in
+
+
+..
+
+    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
+    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
+    we assume</del> :math:`Q>0`. There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
+    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of :math:`Q`.  <font color="red">(<b>edit 8</b>: add) These are not
+    important for the following discussion.</font>
+
+
+
+To implement these edits, run
+
+.. code-block:: text
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 Verbatim/Computer Code
 ----------------------
@@ -80399,7 +80756,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -80423,6 +80780,9 @@ list of capabilities:
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
+        
+        # apply all edits specified through inline comments
+        apply_inline_edits
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -81025,14 +81385,25 @@ are enabled by the syntax
 [name: running text]
 }}}
 where `name` is the name or ID of an author or reader making the comment,
-and `running text` is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
+and `running text` is the comment. The name can contain upper and lower
+case characters, digits, single quote, `+` and `-`, as well
+as space. Here goes an example.
+
+{{{
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the `-DTOTONOTES` option to `ptex2tex` or `doconce ptex2tex`,
-colorful margin or inline boxes (using the `todonotes` package)
-make it very easy to spot the comments.
+}}}
+which is rendered as
+
+
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the `--latex_todonotes`
+option to `doconce format`, colorful margin or inline boxes (using the
+`todonotes` package) make it very easy to spot the comments.
 
 Running
 {{{
@@ -81045,6 +81416,50 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 {{{
 doconce remove_inline_comments mydoc.do.txt
+}}}
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+{{{
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+}}}
+
+For example, the text
+
+{{{
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+}}}
+can be edited as
+
+{{{
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+}}}
+which in the gwiki output format results in
+
+
+
+
+
+To implement these edits, run
+
+{{{
+Terminal> doconce apply_edit_comments mydoc.do.txt
 }}}
 
 ==== Verbatim/Computer Code ====
@@ -81426,7 +81841,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -81450,6 +81865,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -82051,14 +82469,30 @@ are enabled by the syntax
 [name: running text]
 </syntaxhighlight>
 where <code>name</code> is the name or ID of an author or reader making the comment,
-and <code>running text</code> is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
+and <code>running text</code> is the comment. The name can contain upper and lower
+case characters, digits, single quote, <code>+</code> and <code>-</code>, as well
+as space. Here goes an example.
+
+<syntaxhighlight lang="text">
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the <code>-DTOTONOTES</code> option to <code>ptex2tex</code> or <code>doconce ptex2tex</code>,
-colorful margin or inline boxes (using the <code>todonotes</code> package)
-make it very easy to spot the comments.
+</syntaxhighlight>
+which is rendered as
+
+
+{{quote box
+| quote = Some running text. [hpl 1: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+| textstyle = font-size: 90%;
+}}
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the <code>--latex_todonotes</code>
+option to <code>doconce format</code>, colorful margin or inline boxes (using the
+<code>todonotes</code> package) make it very easy to spot the comments.
 
 Running
 <syntaxhighlight lang="bash">
@@ -82071,6 +82505,58 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 <syntaxhighlight lang="bash">
 doconce remove_inline_comments mydoc.do.txt
+</syntaxhighlight>
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+<syntaxhighlight lang="text">
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+</syntaxhighlight>
+
+For example, the text
+
+<syntaxhighlight lang="text">
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+</syntaxhighlight>
+can be edited as
+
+<syntaxhighlight lang="text">
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+</syntaxhighlight>
+which in the mwiki output format results in
+
+
+{{quote box
+| quote = First[add 2: ,] consider [edit 3: a quantity -> the flux]
+[del 4: <math>Q</math>. Without loss of generality,
+we assume] <math>Q>0</math>. There are three[del 5: ,] fundamental[del 6: , basic]
+[edit 7: property -> properties] of <math>Q</math>. [add 8: These are not
+important for the following discussion.]
+| textstyle = font-size: 90%;
+}}
+
+
+
+To implement these edits, run
+
+<syntaxhighlight lang="bash">
+Terminal> doconce apply_edit_comments mydoc.do.txt
 </syntaxhighlight>
 
 ==== Verbatim/Computer Code ====
@@ -82482,7 +82968,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -82506,6 +82992,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -83097,14 +83586,25 @@ are enabled by the syntax
 [name: running text]
 }}}
 where {{{name}}} is the name or ID of an author or reader making the comment,
-and {{{running text}}} is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
+and {{{running text}}} is the comment. The name can contain upper and lower
+case characters, digits, single quote, {{{+}}} and {{{-}}}, as well
+as space. Here goes an example.
+
+{{{
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the {{{-DTOTONOTES}}} option to {{{ptex2tex}}} or {{{doconce ptex2tex}}},
-colorful margin or inline boxes (using the {{{todonotes}}} package)
-make it very easy to spot the comments.
+}}}
+which is rendered as
+
+
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the {{{--latex_todonotes}}}
+option to {{{doconce format}}}, colorful margin or inline boxes (using the
+{{{todonotes}}} package) make it very easy to spot the comments.
 
 Running
 {{{
@@ -83117,6 +83617,50 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 {{{
 doconce remove_inline_comments mydoc.do.txt
+}}}
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+{{{
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+}}}
+
+For example, the text
+
+{{{
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+}}}
+can be edited as
+
+{{{
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+}}}
+which in the cwiki output format results in
+
+
+
+
+
+To implement these edits, run
+
+{{{
+Terminal> doconce apply_edit_comments mydoc.do.txt
 }}}
 
 == Verbatim/Computer Code ==
@@ -83498,7 +84042,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -83522,6 +84066,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -84085,14 +84632,24 @@ are enabled by the syntax::
         [name: running text]
 
 where 'name' is the name or ID of an author or reader making the comment,
-and 'running text' is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
-but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the '-DTOTONOTES' option to 'ptex2tex' or 'doconce ptex2tex',
-colorful margin or inline boxes (using the 'todonotes' package)
-make it very easy to spot the comments.
+and 'running text' is the comment. The name can contain upper and lower
+case characters, digits, single quote, '+' and '-', as well
+as space. Here goes an example::
+
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+which is rendered as
+
+
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the '--latex_todonotes'
+option to 'doconce format', colorful margin or inline boxes (using the
+'todonotes' package) make it very easy to spot the comments.
 
 Running::
 
@@ -84105,6 +84662,44 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing::
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+For example, the text::
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+can be edited as::
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+which in the st output format results in
+
+
+
+
+
+To implement these edits, run::
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 Verbatim/Computer Code
 
@@ -84480,7 +85075,7 @@ transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -84504,6 +85099,9 @@ list of capabilities::
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
+        
+        # apply all edits specified through inline comments
+        apply_inline_edits
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -85065,14 +85663,24 @@ are enabled by the syntax::
         [name: running text]
 
 where C{name} is the name or ID of an author or reader making the comment,
-and C{running text} is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
-but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the C{-DTOTONOTES} option to C{ptex2tex} or C{doconce ptex2tex},
-colorful margin or inline boxes (using the C{todonotes} package)
-make it very easy to spot the comments.
+and C{running text} is the comment. The name can contain upper and lower
+case characters, digits, single quote, C{+} and C{-}, as well
+as space. Here goes an example::
+
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+which is rendered as
+
+
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the C{--latex_todonotes}
+option to C{doconce format}, colorful margin or inline boxes (using the
+C{todonotes} package) make it very easy to spot the comments.
 
 Running::
 
@@ -85085,6 +85693,44 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing::
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+For example, the text::
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+can be edited as::
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+which in the epytext output format results in
+
+
+
+
+
+To implement these edits, run::
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 Verbatim/Computer Code
 ----------------------
@@ -85465,7 +86111,7 @@ transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -85489,6 +86135,9 @@ list of capabilities::
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
+        
+        # apply all edits specified through inline comments
+        apply_inline_edits
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -86084,14 +86733,24 @@ are enabled by the syntax::
         [name: running text]
 
 where name is the name or ID of an author or reader making the comment,
-and running text is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
-but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the -DTOTONOTES option to ptex2tex or doconce ptex2tex,
-colorful margin or inline boxes (using the todonotes package)
-make it very easy to spot the comments.
+and running text is the comment. The name can contain upper and lower
+case characters, digits, single quote, + and -, as well
+as space. Here goes an example::
+
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+which is rendered as
+
+        Some running text. [hpl 1: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the --latex_todonotes
+option to doconce format, colorful margin or inline boxes (using the
+todonotes package) make it very easy to spot the comments.
 
 Running::
 
@@ -86104,6 +86763,47 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by::
 
         doconce remove_inline_comments mydoc.do.txt
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing::
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+For example, the text::
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+can be edited as::
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+which in the plain output format results in
+
+        First[add 2: ,] consider [edit 3: a quantity -> the flux]
+        [del 4: Q. Without loss of generality,
+        we assume] Q>0. There are three[del 5: ,] fundamental[del 6: , basic]
+        [edit 7: property -> properties] of Q. [add 8: These are not
+        important for the following discussion.]
+
+
+To implement these edits, run::
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 Verbatim/Computer Code
 ----------------------
@@ -86502,7 +87202,7 @@ transforming a .do.txt file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -86526,6 +87226,9 @@ list of capabilities::
         
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
+        
+        # apply all edits specified through inline comments
+        apply_inline_edits
         
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
@@ -87135,14 +87838,28 @@ are enabled by the syntax
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 where `name` is the name or ID of an author or reader making the comment,
-and `running text` is the comment. Here goes an example.
-[hpl 1: There must be a space after the colon,
+and `running text` is the comment. The name can contain upper and lower
+case characters, digits, single quote, `+` and `-`, as well
+as space. Here goes an example.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the `-DTOTONOTES` option to `ptex2tex` or `doconce ptex2tex`,
-colorful margin or inline boxes (using the `todonotes` package)
-make it very easy to spot the comments.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+which is rendered as
+
+> Some running text. [hpl 1: There must be a space after the colon,
+> but the running text can occupy multiple lines.]
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the `--latex_todonotes`
+option to `doconce format`, colorful margin or inline boxes (using the
+`todonotes` package) make it very easy to spot the comments.
 
 Running
 
@@ -87158,6 +87875,60 @@ removed from the DocOnce source by
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 doconce remove_inline_comments mydoc.do.txt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For example, the text
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+can be edited as
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+which in the pandoc output format results in
+
+> First[add 2: ,] consider [edit 3: a quantity -> the flux]
+> [del 4: $Q$. Without loss of generality,
+> we assume] $Q>0$. There are three[del 5: ,] fundamental[del 6: , basic]
+> [edit 7: property -> properties] of $Q$. [add 8: These are not
+> important for the following discussion.]
+
+
+
+To implement these edits, run
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Terminal> doconce apply_edit_comments mydoc.do.txt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Verbatim/Computer Code
@@ -87590,7 +88361,7 @@ list of capabilities:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -87614,6 +88385,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
@@ -88442,6 +89216,10 @@ output in testdoc.html
 + doconce split_html testdoc_vagrant.html --method=split
 testdoc_vagrant.html now links to the generated files
 ._testdoc_vagrant000.html, ._testdoc_vagrant001.html, ._testdoc_vagrant002.html, ._testdoc_vagrant003.html
++ system doconce apply_inline_edits testdoc.do.txt
++ doconce apply_inline_edits testdoc.do.txt
+inline comments removed in testdoc.do.txt
++ '[' 0 -ne 0 ']'
 + system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
 + doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -89056,7 +89834,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1068.
+t line 1067.
 
 
 
@@ -89076,7 +89854,7 @@ t line 1068.
 
 
 
-t line 1077.
+t line 1076.
 
 
 
@@ -89096,7 +89874,7 @@ t line 1077.
 
 
 
-t line 1081.
+t line 1080.
 
 
 
@@ -89755,12 +90533,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=268, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=286, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -89801,17 +90579,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89835,7 +90613,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1068.
+t line 1067.
 
 
 
@@ -89855,7 +90633,7 @@ t line 1068.
 
 
 
-t line 1077.
+t line 1076.
 
 
 
@@ -89875,7 +90653,7 @@ t line 1077.
 
 
 
-t line 1081.
+t line 1080.
 
 
 
@@ -90452,12 +91230,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=268, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=286, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -90498,17 +91276,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90532,7 +91310,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1068.
+t line 1067.
 
 
 
@@ -90552,7 +91330,7 @@ t line 1068.
 
 
 
-t line 1077.
+t line 1076.
 
 
 
@@ -90572,7 +91350,7 @@ t line 1077.
 
 
 
-t line 1081.
+t line 1080.
 
 
 
@@ -91133,12 +91911,12 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=268, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=286, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=288, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
@@ -91179,17 +91957,17 @@ Underfull \hbox (badness 3291)
 
 
 [12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -100385,6 +101163,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -100532,7 +101311,10 @@ Overfull \hbox (18.62192pt too wide)
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[5] [6]
+[5]
+Overfull \hbox (12.68103pt too wide) 
+\T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
+[6] [7]
 Overfull \hbox (4.40176pt too wide) 
 \T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
 /10 reg-u-lar ex-pres-sion []
@@ -100540,7 +101322,7 @@ Overfull \hbox (4.40176pt too wide)
 Overfull \hbox (25.94336pt too wide) 
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
-[7]
+[8]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
@@ -100551,28 +101333,29 @@ Overfull \hbox (8.97565pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[8]
-
-
-...rest of part of LaTeX line number...
-
 [9]
 
 
 ...rest of part of LaTeX line number...
 
 [10]
+
+
+...rest of part of LaTeX line number...
+
+[11]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-[11]
+
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
+[12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[12] [13] [14] [15] [16] [17]
+[13] [14] [15] [16] [17] [18]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -100580,7 +101363,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[18] (./quickref.aux)
+[19] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -100612,6 +101395,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
@@ -100736,7 +101520,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.dvi (18 pages, ).
+Output written on quickref.dvi (19 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + latex -shell-escape quickref.tex
@@ -100775,6 +101559,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -100918,7 +101703,10 @@ Overfull \hbox (18.62192pt too wide)
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[6]
+
+Overfull \hbox (12.68103pt too wide) 
+\T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
+[6] [7]
 Overfull \hbox (4.40176pt too wide) 
 \T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
 /10 reg-u-lar ex-pres-sion []
@@ -100926,34 +101714,34 @@ Overfull \hbox (4.40176pt too wide)
 Overfull \hbox (25.94336pt too wide) 
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
-[7] [8]
+[8] [9]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
 
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[9] [10] [11]
+[10] [11] [12]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[12]
+[13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13] [14] [15] [16] [17] [18]
+[14] [15] [16] [17] [18]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
-
+[19]
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[19] (./quickref.aux)
+[20] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -100985,6 +101773,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
@@ -101103,7 +101892,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.dvi (19 pages, ).
+Output written on quickref.dvi (20 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
 + system doconce format sphinx quickref --no_preprocess
@@ -101372,9 +102161,33 @@ anks..
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
 [4]
+Overfull \hbox (83.00006pt too wide) 
+\T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
+ 
+
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
 [5]
+Overfull \hbox (113.00006pt too wide) 
+\T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
+sume  
+
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 $Q>0$. There are three, fundamental, basic property of $Q$. 
+
+Overfull \hbox (23.00006pt too wide) 
+\T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
+
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
+asic]  
+
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
+
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
+[6]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -101400,7 +102213,7 @@ eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-[6]
+[7]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -101408,7 +102221,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-[7]
+[8]
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
@@ -101428,7 +102241,7 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[8]
+[9]
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
@@ -101449,7 +102262,7 @@ Overfull \hbox (119.00006pt too wide)
  movie. 
 
 
-e 991.
+...rest of part of LaTeX line number...
 
 
 Overfull \hbox (107.00006pt too wide) 
@@ -101463,7 +102276,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
 ----|  
-[9]
+[10]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
 `)  |  
@@ -101487,7 +102300,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[10]
+[11]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -101504,17 +102317,17 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[11]
-Overfull \hbox (3509.00006pt too wide) 
+[12]
+Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
-e_comments grab remove remove_exercise_answers split_rst split_html slides_html
- slides_beamer latin2html grep latex_header latex_footer latex_problems ref_ext
-ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
-ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
-2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibte
-x4publish csv2table  
+e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
+it_html slides_html slides_beamer latin2html grep latex_header latex_footer lat
+ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
+_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
+t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
+f gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -101551,6 +102364,9 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 # apply all edits specified through inline comments  
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
 
@@ -101562,10 +102378,10 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-
+[13]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
-[12]
+
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
@@ -101604,10 +102420,10 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-
+[14]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
-[13]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
@@ -101658,13 +102474,13 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
+[15]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-[14]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
@@ -101678,10 +102494,10 @@ Overfull \hbox (77.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-
+[16]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
-[15]
+
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
@@ -101692,7 +102508,7 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[16]
+[17]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -101710,7 +102526,7 @@ Overfull \hbox (4.60825pt too wide)
 
 Overfull \hbox (47.10902pt too wide) 
 []
-[17]
+[18]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
@@ -101721,7 +102537,7 @@ Overfull \hbox (4.19656pt too wide)
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[18] (./quickref.rst.aux)
+[19] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -101735,7 +102551,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (18 pages, ).
+Output written on quickref.rst.dvi (19 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
@@ -101871,9 +102687,33 @@ anks..
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
 [5]
+Overfull \hbox (83.00006pt too wide) 
+\T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
+ 
+
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
 [6]
+Overfull \hbox (113.00006pt too wide) 
+\T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
+sume  
+
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 $Q>0$. There are three, fundamental, basic property of $Q$. 
+
+Overfull \hbox (23.00006pt too wide) 
+\T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
+
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
+asic]  
+
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
+
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
+[7]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -101899,7 +102739,7 @@ eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-[7]
+[8]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -101907,7 +102747,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-[8]
+[9]
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
@@ -101927,7 +102767,7 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[9]
+[10]
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
@@ -101958,7 +102798,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
 ----|  
-[10]
+[11]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
 `)  |  
@@ -101982,7 +102822,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[11]
+[12]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -101999,17 +102839,17 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[12]
-Overfull \hbox (3509.00006pt too wide) 
+[13]
+Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
-e_comments grab remove remove_exercise_answers split_rst split_html slides_html
- slides_beamer latin2html grep latex_header latex_footer latex_problems ref_ext
-ernal bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_fig
-ure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex
-2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibte
-x4publish csv2table  
+e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
+it_html slides_html slides_beamer latin2html grep latex_header latex_footer lat
+ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
+_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
+t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
+f gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -102046,6 +102886,9 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 # apply all edits specified through inline comments  
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
 
@@ -102057,10 +102900,10 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-
+[14]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
-[13]
+
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
@@ -102099,10 +102942,10 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-
+[15]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
-[14]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
@@ -102153,13 +102996,13 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
+[16]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-[15]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
@@ -102173,10 +103016,10 @@ Overfull \hbox (77.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-
+[17]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
-[16]
+
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
@@ -102187,7 +103030,7 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[17]
+[18]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -102205,7 +103048,7 @@ Overfull \hbox (4.60825pt too wide)
 
 Overfull \hbox (47.10902pt too wide) 
 []
-[18]
+[19]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
@@ -102216,13 +103059,13 @@ Overfull \hbox (4.19656pt too wide)
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[19] (./quickref.rst.aux)
+[20] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (19 pages, ).
+Output written on quickref.rst.dvi (20 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
 + system doconce format plain quickref --no_preprocess

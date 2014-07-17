@@ -136,7 +136,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jul 13, 2014</h4></center> <!-- date -->
+<center><h4>Jul 17, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -473,18 +473,34 @@ are enabled by the syntax
 </code></pre>
 <!-- end verbatim block -->
 where <code>name</code> is the name or ID of an author or reader making the comment,
-and <code>running text</code> is the comment. Here goes an example.
+and <code>running text</code> is the comment. The name can contain upper and lower
+case characters, digits, single quote, <code>+</code> and <code>-</code>, as well
+as space. Here goes an example.
 
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: <em>There must be a space after the colon,
-but the running text can occupy multiple lines.</em>)</font>
-<!-- end inline comment -->
+<p>
+<!-- begin verbatim block -->
+<pre><code>Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+</code></pre>
+<!-- end verbatim block -->
+which is rendered as
 
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the <code>-DTOTONOTES</code> option to <code>ptex2tex</code> or <code>doconce ptex2tex</code>,
-colorful margin or inline boxes (using the <code>todonotes</code> package)
-make it very easy to spot the comments.
+<p>
+<blockquote>
+    Some running text. 
+    <!-- begin inline comment -->
+    <font color="red">(<b>hpl 1</b>: <em>There must be a space after the colon,
+    but the running text can occupy multiple lines.</em>)</font>
+    <!-- end inline comment -->
+</blockquote>
+
+
+<p>
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the <code>--latex_todonotes</code>
+option to <code>doconce format</code>, colorful margin or inline boxes (using the
+<code>todonotes</code> package) make it very easy to spot the comments.
 
 <p>
 Running
@@ -500,6 +516,67 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 <!-- begin verbatim block  sys-->
 <pre><code>doconce remove_inline_comments mydoc.do.txt
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+[name: some text -&gt; some replacement for text]
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+For example, the text
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>First consider a quantity $Q$. Without loss of generality, we assume
+$Q&gt;0$. There are three, fundamental, basic property of $Q$.
+</code></pre>
+<!-- end verbatim block -->
+can be edited as
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>First[add: ,] consider [edit: a quantity -&gt; the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q&gt;0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -&gt; properties] of $Q$. [add: These are not
+important for the following discussion.]
+</code></pre>
+<!-- end verbatim block -->
+which in the html output format results in
+
+<p>
+<blockquote>
+    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
+    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
+    we assume</del> \( Q>0 \). There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
+    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of \( Q \).  <font color="red">(<b>edit 8</b>: add) These are not
+    important for the following discussion.</font>
+</blockquote>
+
+
+<p>
+To implement these edits, run
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </code></pre>
 <!-- end verbatim block -->
 
@@ -950,7 +1027,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -974,6 +1051,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \

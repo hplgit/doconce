@@ -1299,12 +1299,17 @@ to get started.
 
 ===== Appendix: Testing inline comments =====
 
+# Names can be [ A-Za-z0-9_'+-]+
+
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. [hpl:
-not sure if in the cloud is understood by all.] I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+cloud" and updated through communication with that
+site. [hpl's semi opinion:
+not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
 
 The simplest services for hosting project files is Dropbox. [mp:
 Simply go to URL:"http://dropbox.com" and watch the video. It explains
@@ -1315,18 +1320,21 @@ files among [hpl: laptops and mobile units -> computers, tablets,
 and phones].
 
 First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
-$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
-negative. [add: This comes as no surprise.] [hpl: We
-also
-need multi-line
-comment test.
-]
+$Q>0$, because [del: a] negative [edit: quantity is -> quantities
+are] [del: just] negative. [add: This comes as no surprise.]
 
 ===== Appendix: Testing headings ending with `verbatim inline` =====
 
 The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+!bquote
+*Fun is fun.*--- Unknown.
+!equote
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.

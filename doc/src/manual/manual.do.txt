@@ -838,10 +838,12 @@ DocOnce also supports inline comments in the text:
 !bc
 [name: comment]
 !ec
-where `name` is the name of the author of the command, and `comment` is a
-plain text text. Note that there must be a space after the colon,
-otherwise the comment is not recognized. Next is an example.
-[hpl: Inline comments
+where `name` is (e.g.) the name of the author of the comment, and `comment` is a
+plain text text. Note that *there must be a space after the colon*,
+otherwise the comment is not recognized. The name can contain upper and lower
+case characters, digits, single quote, `+` and `-`, as well
+as space. Next is an example.
+[hpl's comment: Inline comments
 can span
 several lines,
 if desired.]
@@ -852,10 +854,10 @@ is run with a command-line argument `--skip_inline_comments`
 are helpful during development of a document since different authors
 and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the `.do.txt` file
-(see Section ref{doconce2formats}).
+by `doconce remove_inline_comments` (see Section ref{doconce2formats}).
 
 Inline comments are typeset in a simple way: boldface name, a
-numbering of the comment, and the comment, all in red and in
+numbering of the comment, and then the comment, all in red and in
 parenthesis. However, with the `--latex_todonotes` option, LaTeX will
 apply the `todonotespackage` to typeset the comments in very visible
 color boxes.
@@ -879,26 +881,49 @@ The following syntax is supported:
 [name: some text -> some replacement for text]
 !ec
 That is, one can add, delete, and replace text, and adding or deleting
-a comma, period, or semicolon leads to special typesetting. Below
-is an example.
+a comma, period, or semicolon leads to special typesetting where
+such a small edit is highlighted. Below
+is an example of a text with inline editing.
+
+Originally, we have the text
 
 !bc
-First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
-$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
-negative. [add: This comes as no surprise.]
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+!ec
+Then, some reader wants to change this text and explicitly demonstrate
+what is deleted, added, and replaced (as when using track changes
+in Microsoft Word). The use of the `add`, `del`, and replacement
+construction with `->` may look as follows.
+
+!bc
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
 !ec
 The text gets rendered as
 
 !bquote
-First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
-$Q>0$, because negative [edit: quantity -> quantities] are [del: just]
-negative. [add: This comes as no surprise.]
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
 !equote
 
 Such inline comments with edits are only given special typesetting in
 the output formats `latex`, `pdflatex`, `html`, and `sphinx`.
 Otherwise, just the DocOnce syntax is shown (but that is also quite
 readable as edit instructions.)
+
+The editing implied by the edit comments can be implemented in the DocOnce
+file by the command
+
+!bc sys
+Terminal> doconce apply_edit_comments mydoc.do.txt
+!ec
 
 === Forced Line Breaks ===
 
@@ -2470,6 +2495,17 @@ indicate the start of individual slides. However, the split is
 performed by the `doconce slides_beamer` command and does not result
 in individual files like `split_rst` and `split_html` do.
 
+===== Header and Footer =====
+
+Some formats use a header and footer in the document. LaTeX and
+HTML are two examples of such formats. When the document is to be
+included in another document (which is often the case with
+DocOnce-based documents), the header and footer are not wanted, while
+these are needed (at least in a LaTeX context) if the document is
+stand-alone. We have introduced the convention that if `TITLE:`
+is found at the beginning of the line (i.e., the document
+has a title), the header and footer are included, otherwise not.
+
 
 ===== Missing Features =====
 
@@ -2494,16 +2530,49 @@ a DocOnce document to a ready docoment in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.
 
 
-===== Header and Footer =====
+===== Guidelines for LaTeX Writers =====
 
-Some formats use a header and footer in the document. LaTeX and
-HTML are two examples of such formats. When the document is to be
-included in another document (which is often the case with
-DocOnce-based documents), the header and footer are not wanted, while
-these are needed (at least in a LaTeX context) if the document is
-stand-alone. We have introduced the convention that if `TITLE:`
-is found at the beginning of the line (i.e., the document
-has a title), the header and footer are included, otherwise not.
+Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
+`mwiki`, `html`, or `ipynb` formats
+is also important, one should follow these rules:
+
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
+
+(DocOnce performs extensions to `sphinx` and other formats such that
+labels in `align` environments work well.)
+
+!bnotice
+LaTeX supports lots of fancy formatting, for example, multiple
+plots in the same figure (`subfigure` package), margin notes, multi-page
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure (combine them into one using `doconce combine_images`),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
+
+However, one can use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
+include special code for `latex` and `pdflatex` output and more
+straightforward typesetting for other formats. In this way, one can
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+`.tex` produced by DocOnce.
+
+One can also use the Mako preprocessor to extend DocOnce functionality
+and implement, e.g., theorem or example environments (see Section
+ref{manual:theorem:envir}) or tables with figures (see Section
+ref{manual:tables:wfigs}). Many other extensions are also possible.
+!enotice
 
 
 ===== Emacs DocOnce Formatter =====
@@ -3086,7 +3155,7 @@ also safer.
 !bsummary Lesson Learned
 The above examples show different techniques for extending the
 DocOnce capabilities. The ideas are not restricted to DocOnce: using
-Mako as a preprocessing step or inserting "magic" lines that you
+Mako as a preprocessing step or inserting ``magic'' lines that you
 can later substitute by a script is possible in all types of
 ASCII-based documents, e.g., LaTeX, Sphinx, and Markdown.
 !esummary

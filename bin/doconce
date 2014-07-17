@@ -10,6 +10,7 @@ from doconce.misc import (
     gwiki_figsubst,
     latin2html,
     remove_inline_comments,
+    apply_inline_edits,
     sphinxfix_localURLs,
     old2new_format,
     latex_header,
@@ -879,6 +880,7 @@ gwiki_figsubst
 md2html
 md2latex
 remove_inline_comments
+apply_inline_edits
 grab
 remove
 remove_exercise_answers
@@ -939,6 +941,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
+
+# apply all edits specified through inline comments
+apply_inline_edits
 
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \

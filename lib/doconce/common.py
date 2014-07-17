@@ -362,8 +362,8 @@ def begin_end_consistency_checks(filestr, envirs):
         begin = '!b' + envir
         end = '!e' + envir
 
-        nb = len(re.compile(r'^%s' % begin, re.MULTILINE).findall(filestr))
-        ne = len(re.compile(r'^%s' % end, re.MULTILINE).findall(filestr))
+        nb = len(re.findall(r'^%s' % begin, filestr, flags=re.MULTILINE))
+        ne = len(re.findall(r'^%s' % end, filestr, flags=re.MULTILINE))
 
         lines = []
         if nb != ne:
@@ -816,8 +816,8 @@ INLINE_TAGS = {
     #r'"?(URL|url)"? ?: ?"(?P<url>.+?)"',
     r'("URL"|"url"|URL|url) ?:\s*"(?P<url>.+?)"',
 
-    'inlinecomment':  # needs re.DOTALL|re.MULTILINE
-    r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<comment>.*?)\]''',
+    'inlinecomment':  # needs re.DOTALL
+    r'''\[(?P<name>[A-Za-z0-9 '+-]+?):(?P<space>\s+)(?P<comment>.*?)\]''',
 
     # __Abstract.__ Any text up to a headline === or toc-like keywords
     # (TOC is already processed)

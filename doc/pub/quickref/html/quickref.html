@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 13, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 17, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -417,14 +417,22 @@ are enabled by the syntax</p>
 </pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">name</span></tt> is the name or ID of an author or reader making the comment,
-and <tt class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></tt> is the comment. Here goes an example.
-&lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;There must be a space after the colon,
-but the running text can occupy multiple lines.&lt;/em&gt;]&lt;/font&gt;
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the <tt class="docutils literal"><span class="pre">-DTOTONOTES</span></tt> option to <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>,
-colorful margin or inline boxes (using the <tt class="docutils literal"><span class="pre">todonotes</span></tt> package)
-make it very easy to spot the comments.</p>
+and <tt class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></tt> is the comment. The name can contain upper and lower
+case characters, digits, single quote, <tt class="docutils literal"><span class="pre">+</span></tt> and <tt class="docutils literal"><span class="pre">-</span></tt>, as well
+as space. Here goes an example.</p>
+<div class="highlight-text"><div class="highlight"><pre>Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+</pre></div>
+</div>
+<p>which is rendered as</p>
+<blockquote>
+<div>Some running text. &lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;There must be a space after the colon,
+but the running text can occupy multiple lines.&lt;/em&gt;]&lt;/font&gt;</div></blockquote>
+<p>The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt>
+option to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>, colorful margin or inline boxes (using the
+<tt class="docutils literal"><span class="pre">todonotes</span></tt> package) make it very easy to spot the comments.</p>
 <p>Running</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce format html mydoc.do.txt --skip_inline_comments
 </pre></div>
@@ -434,6 +442,45 @@ to turn on and off notes to authors during the development of the document.</p>
 <p>All inline comments to readers can also be physically
 removed from the DocOnce source by</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce remove_inline_comments mydoc.do.txt
+</pre></div>
+</div>
+<p>Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:</p>
+<div class="highlight-text"><div class="highlight"><pre>[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+[name: some text -&gt; some replacement for text]
+</pre></div>
+</div>
+<p>For example, the text</p>
+<div class="highlight-text"><div class="highlight"><pre>First consider a quantity $Q$. Without loss of generality, we assume
+$Q&gt;0$. There are three, fundamental, basic property of $Q$.
+</pre></div>
+</div>
+<p>can be edited as</p>
+<div class="highlight-text"><div class="highlight"><pre>First[add: ,] consider [edit: a quantity -&gt; the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q&gt;0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -&gt; properties] of $Q$. [add: These are not
+important for the following discussion.]
+</pre></div>
+</div>
+<p>which in the sphinx output format results in</p>
+<blockquote>
+<div>First&lt;font color=&#8221;red&#8221;&gt;, (&lt;b&gt;edit 2&lt;/b&gt;: add comma)&lt;/font&gt; consider &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 3&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;a quantity&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;the flux&lt;/font&gt;
+&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 4&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;$Q$. Without loss of generality,
+we assume&lt;/del&gt; <span class="math">\(Q&gt;0\)</span>. There are three &lt;font color=&#8221;red&#8221;&gt; (&lt;b&gt;edit 5&lt;/b&gt;: delete comma)&lt;/font&gt; fundamental&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 6&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;, basic&lt;/del&gt;
+&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 7&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;property&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;properties&lt;/font&gt; of <span class="math">\(Q\)</span>.  &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 8&lt;/b&gt;: add) These are not
+important for the following discussion.&lt;/font&gt;</div></blockquote>
+<p>To implement these edits, run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </pre></div>
 </div>
 </div>
@@ -798,7 +845,7 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
-commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 <span class="c"># transform doconce file to another format</span>
@@ -822,6 +869,9 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 
 <span class="c"># remove all inline comments in a doconce file</span>
 doconce remove_inline_comments dofile
+
+<span class="c"># apply all edits specified through inline comments</span>
+apply_inline_edits
 
 <span class="c"># create a directory for the sphinx format</span>
 doconce sphinx_dir <span class="nv">author</span><span class="o">=</span><span class="s1">&#39;John Doe&#39;</span> <span class="nv">title</span><span class="o">=</span><span class="s1">&#39;Long title&#39;</span> <span class="se">\</span>

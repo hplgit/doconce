@@ -266,14 +266,26 @@ are enabled by the syntax
 [name: running text]
 !ec
 where `name` is the name or ID of an author or reader making the comment,
-and `running text` is the comment. Here goes an example.
-[hpl: There must be a space after the colon,
+and `running text` is the comment. The name can contain upper and lower
+case characters, digits, single quote, `+` and `-`, as well
+as space. Here goes an example.
+
+!bc
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the `-DTOTONOTES` option to `ptex2tex` or `doconce ptex2tex`,
-colorful margin or inline boxes (using the `todonotes` package)
-make it very easy to spot the comments.
+!ec
+which is rendered as
+
+!bquote
+Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+!equote
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the `--latex_todonotes`
+option to `doconce format`, colorful margin or inline boxes (using the
+`todonotes` package) make it very easy to spot the comments.
 
 Running
 !bc sys
@@ -286,6 +298,54 @@ All inline comments to readers can also be physically
 removed from the DocOnce source by
 !bc sys
 doconce remove_inline_comments mydoc.do.txt
+!ec
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+!bc
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+!ec
+
+For example, the text
+
+!bc
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+!ec
+can be edited as
+
+!bc
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+!ec
+which in the ${FORMAT} output format results in
+
+!bquote
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+!equote
+
+To implement these edits, run
+
+!bc sys
+Terminal> doconce apply_edit_comments mydoc.do.txt
 !ec
 
 ===== Verbatim/Computer Code =====
@@ -444,11 +504,14 @@ labels in `align` environments work well.)
 !bnotice
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, etc.
-Other output formats, such as `sphinx`, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using `doconce combine_images`),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to

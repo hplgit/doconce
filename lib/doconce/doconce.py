@@ -338,6 +338,16 @@ def syntax_check(filestr, format):
             print filestr[m.start()-100:m.start()+len(m.group())+100]
             _abort()
 
+    # Footnotes cannot be at the beginning of the line
+    pattern = r'^\[\^[A-Za-z].+?\][^:]'
+    m = re.search(pattern, filestr, flags=re.MULTILINE)
+    if m:
+        print '*** error: footnote cannot appear at the beginning of a line:'
+        print filestr[m.start()-50:m.start()+60]
+        _abort()
+
+    # [[[
+
     pattern = r'^[A-Za-z0_9`"].+\n *- +.+\n^[A-Za-z0_9`"]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
@@ -408,6 +418,7 @@ def syntax_check(filestr, format):
         print filestr[m.start()-50:m.start()+50]
         _abort()
 
+    begin_end_consistency_checks(filestr, doconce_envirs())
 
     # Double quotes and not double single quotes in *plain text*:
     inside_code = False
@@ -511,8 +522,6 @@ def syntax_check(filestr, format):
     # Remove tex and code blocks
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr)
-
-    begin_end_consistency_checks(filestr, doconce_envirs())
 
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
@@ -2182,6 +2191,8 @@ def handle_index_and_bib(filestr, format, has_title):
     # Footnote pattern has a word prior to the footnote [^name]
     # or math, inline code, link
     pattern_footnote = r'(?<=(\w|[$`")]))(?P<footnote> *\[\^(?P<name>.+?)\])'
+    # (Note: cannot have footnote at beginning of line, because look behind
+    # does not tolerate ^ in (\w|[$`")]|^)
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}
@@ -2780,8 +2791,10 @@ def inline_tag_subst(filestr, format):
         debugpr('\n*************** Working with tag "%s"' % tag)
         tag_pattern = INLINE_TAGS[tag]
         #print 'working with tag "%s" = "%s"' % (tag, tag_pattern)
-        if tag in ('abstract', 'inlinecomment'):
+        if tag in ('abstract',):
             c = re.compile(tag_pattern, re.MULTILINE|re.DOTALL)
+        elif tag in ('inlinecomment',):
+            c = re.compile(tag_pattern, re.DOTALL)
         else:
             c = re.compile(tag_pattern, re.MULTILINE)
         try:
@@ -2838,8 +2851,8 @@ def inline_tag_subst(filestr, format):
 
 def subst_away_inline_comments(filestr):
     # inline comments: [hpl: this is a comment]
-    pattern = r'\[(?P<name>[A-Za-z0-9_ ,.@]+?): +(?P<comment>[^\]]*?)\]\s*'
-    filestr = re.sub(pattern, '', filestr)
+    pattern = INLINE_TAGS['inlinecomment']
+    filestr = re.sub(pattern, '', filestr, flags=re.DOTALL|re.MULTILINE)
     return filestr
 
 def subst_class_func_mod(filestr, format):
@@ -3160,7 +3173,7 @@ def doconce2format(filestr, format):
     else:
         # Number inline comments
         inline_comments = re.findall(INLINE_TAGS['inlinecomment'], filestr,
-                                     flags=re.DOTALL|re.MULTILINE)
+                                     flags=re.DOTALL)
         counter = 1
         for name, space, comment in inline_comments:
             filestr = filestr.replace(
@@ -3172,6 +3185,7 @@ def doconce2format(filestr, format):
     # Remove comments starting with ##
     pattern = r'^##.+$\n'
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE)
+    # (This is already done by Mako, if the document has Mako markup)
 
     # Fix stand-alone http(s) URLs (after verbatim blocks are removed,
     # but before figure handling and inline_tag_subst)

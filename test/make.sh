@@ -55,6 +55,7 @@ cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html --method=split
 
+system doconce apply_inline_edits testdoc.do.txt
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
 
 system doconce remove_exercise_answers testdoc.html

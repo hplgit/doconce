@@ -456,7 +456,39 @@ def remove_inline_comments():
     filestr = f.read()
     f.close()
     import doconce
-    filestr = doconce.doconce.subst_away_inline_comments(filestr)
+    filestr = doconce.subst_away_inline_comments(filestr)
+    f = open(filename, 'w')
+    f.write(filestr)
+    f.close()
+    print 'inline comments removed in', filename
+
+def apply_inline_edits():
+    try:
+        filename = sys.argv[1]
+    except IndexError:
+        print 'Usage: doconce apply_inline_comments_edits myfile.do.txt'
+        _abort()
+
+    if not os.path.isfile(filename):
+        print '*** error: file %s does not exist!' % filename
+        sys.exit(1)
+
+    shutil.copy(filename, filename + '.old~~')
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    # pattern is taken as INLINE_TAGS['inlinecomment'] but with
+    # modified names and comments patterns.
+    # 1. Replacements
+    pattern = r'''\[(?P<name>[A-Za-z0-9 '+-]+?):(?P<space>\s+)(?P<subst>[^\]]+?) -> (?P<replacement>.+?)\]'''
+    filestr = re.sub(pattern, r'\g<replacement>', filestr, flags=re.DOTALL)
+    # 2. Deletes
+    pattern = r'''\[del:\s+(.*?)\]'''
+    filestr = re.sub(pattern, '', filestr, flags=re.DOTALL)
+    # 3. Adds
+    pattern = r'''\[add:\s+(.*?)\]'''
+    filestr = re.sub(pattern, r'\g<1>', filestr, flags=re.DOTALL)
+
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
@@ -5095,6 +5127,7 @@ _replacements = [
     (r'![be]pop', ''),
     (r'![be]warning', ''),
     (r'![be]summary', ''),
+    (r'![be]question', ''),
     (r'![be]notice', ''),
     (r'![be]quote', ''),
     (r'![be]box', ''),

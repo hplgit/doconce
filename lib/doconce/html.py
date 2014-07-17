@@ -1146,6 +1146,10 @@ def html_author(authors_and_institutions, auth2index,
 
 
 def html_ref_and_label(section_label2title, format, filestr):
+    # This is the first format-specific function to be called.
+    # We therefore do some HTML-specific fixes first.
+
+    # Section references:
     # .... see section ref{my:sec} is replaced by
     # see the section "...section heading..."
     pattern = r'[Ss]ection(s?)\s+ref\{'
@@ -1179,6 +1183,12 @@ def html_ref_and_label(section_label2title, format, filestr):
 
     # Fix side effect from the above that one gets constructions 'the The'
     filestr = re.sub(r'the\s+The', 'the', filestr)
+
+    # Recognize mdash ---
+    # Must be attached to text or to a quote (ending in ., quotes, or
+    # emphasis *)
+    pattern = r'''([A-Za-z0-9.'"*])---([A-Za-z ])'''
+    filestr = re.sub(pattern, '\g<1>&mdash;\g<2>', filestr)
 
     # extract the labels in the text (filestr is now without
     # mathematics and those labels)
