@@ -1345,6 +1345,13 @@ The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+!bquote
+*Fun is fun.*--- Unknown.
+!equote
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.
 
@@ -3568,6 +3575,15 @@ The point here is to test 1) \code{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+\begin{quote}
+\emph{Fun is fun.}--- Unknown.
+\end{quote}
+
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: \code{admon.do.txt}.
 
@@ -5600,6 +5616,15 @@ The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+\begin{quote}
+\emph{Fun is fun.}--- Unknown.
+\end{quote}
+
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: \texttt{admon.do.txt}.
 
@@ -7591,6 +7616,15 @@ The point here is to test 1) \Verb!verbatim! code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+\begin{quote}
+\emph{Fun is fun.}--- Unknown.
+\end{quote}
+
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: \Verb!admon.do.txt!.
 
@@ -9033,6 +9067,16 @@ Appendix: Testing headings ending with ``verbatim inline``
 The point here is to test 1) ``verbatim`` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+..
+
+    *Fun is fun.*--- Unknown.
+
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: ``admon.do.txt``.
@@ -10588,6 +10632,16 @@ The point here is to test 1) ``verbatim`` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+..
+
+    *Fun is fun.*--- Unknown.
+
+
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: ``admon.do.txt``.
 
@@ -11915,6 +11969,13 @@ First consider a quantity `Q`.
 The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.
@@ -13346,6 +13407,17 @@ The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+{{quote box
+| quote = ''Fun is fun.''--- Unknown.
+| textstyle = font-size: 90%;
+}}
+
+
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
@@ -14639,6 +14711,13 @@ The point here is to test 1) {{{verbatim}}} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+
+
+
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: {{{admon.do.txt}}}.
 
@@ -15775,6 +15854,13 @@ Appendix: Testing headings ending with 'verbatim inline'
 The point here is to test 1) 'verbatim' code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: 'admon.do.txt'.
@@ -16947,6 +17033,13 @@ Appendix: Testing headings ending with C{verbatim inline}
 The point here is to test 1) C{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: C{admon.do.txt}.
@@ -18227,6 +18320,12 @@ Appendix: Testing headings ending with verbatim inline
 The point here is to test 1) verbatim code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+        *Fun is fun.*--- Unknown.
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: admon.do.txt.
@@ -19656,6 +19755,13 @@ are] [del 8: just] negative. [add 9: This comes as no surprise.]
 The point here is to test 1) `verbatim` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+> *Fun is fun.*--- Unknown.
+
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.
@@ -21651,6 +21757,13 @@ is at the end with only one newline.
       "ending a heading with verbatim code as this triggers a special\n",
       "case in LaTeX.\n",
       "\n",
+      "We also test mdash---used as alternative to hyphen without spaces around,\n",
+      "or in quotes:\n",
+      "\n",
+      "!bquote\n",
+      "*Fun is fun.*--- Unknown.\n",
+      "!equote\n",
+      "\n",
       "And finally, what about admons, quotes, and boxes? They are tested\n",
       "in a separate document: `admon.do.txt`.\n",
       "\n",
@@ -22535,6 +22648,10 @@ def f(x):
 <p>First consider a quantity <span class="math">\(Q\)</span>. <span class="math">\(Q&gt;0\)</span>, because (<strong>edit 6</strong>:) negative (<strong>edit 8</strong>:) negative. )</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
+<p>We also test mdash—used as alternative to hyphen without spaces around, or in quotes:</p>
+<blockquote>
+<p><em>Fun is fun.</em>— Unknown.</p>
+</blockquote>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
 <div class="footnotes">
 <hr />
@@ -23442,6 +23559,10 @@ x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span clas
 <p>First[add 4: ,] consider a quantity <span class="math">\(Q\)</span>. [edit 5: To this end, -&gt; We note that] <span class="math">\(Q&gt;0\)</span>, because [del 6: a] negative [edit 7: quantity is -&gt; quantities are] [del 8: just] negative. [add 9: This comes as no surprise.]</p>
 <h3 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h3>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
+<p>We also test mdash---used as alternative to hyphen without spaces around, or in quotes:</p>
+<blockquote>
+<p><em>Fun is fun.</em>--- Unknown.</p>
+</blockquote>
 <p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
 <div class="footnotes">
 <hr />
@@ -28009,6 +28130,16 @@ ending a heading with verbatim code as this triggers a special
 case in LaTeX.
 
 <p>
+We also test mdash&mdash;used as alternative to hyphen without spaces around,
+or in quotes:
+
+<p>
+<blockquote>
+    *Fun is fun.*&mdash; Unknown.
+</blockquote>
+
+
+<p>
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
@@ -29635,6 +29766,16 @@ are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+<p>
+We also test mdash&mdash;used as alternative to hyphen without spaces around,
+or in quotes:
+
+<p>
+<blockquote>
+    *Fun is fun.*&mdash; Unknown.
+</blockquote>
+
 
 <p>
 And finally, what about admons, quotes, and boxes? They are tested
@@ -31458,6 +31599,16 @@ are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+<p>
+We also test mdash&mdash;used as alternative to hyphen without spaces around,
+or in quotes:
+
+<p>
+<blockquote>
+    *Fun is fun.*&mdash; Unknown.
+</blockquote>
+
 
 <p>
 And finally, what about admons, quotes, and boxes? They are tested
@@ -33303,6 +33454,15 @@ are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 
 The point here is to test 1) \code{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+\begin{quote}
+\emph{Fun is fun.}--- Unknown.
+\end{quote}
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: \code{admon.do.txt}.
@@ -39961,6 +40121,16 @@ Appendix: Testing headings ending with ``verbatim inline``
 The point here is to test 1) ``verbatim`` code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+..
+
+    *Fun is fun.*--- Unknown.
+
+
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: ``admon.do.txt``.
@@ -73656,7 +73826,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Jul 17 11:38:27 2014.
+# sphinx-quickstart on Thu Jul 17 13:56:02 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75435,11 +75605,14 @@ labels in `align` environments work well.)
 !bnotice
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, etc.
-Other output formats, such as `sphinx`, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using `doconce combine_images`),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -76615,11 +76788,14 @@ labels in <code>align</code> environments work well.)
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
-tables, etc.
-Other output formats, such as <code>sphinx</code>, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as <code>sphinx</code> and <code>html</code>, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using <code>doconce combine_images</code>),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 <p>
 However, one can use preprocessor if-tests on
@@ -78138,11 +78314,14 @@ labels in \code{align} environments work well.)
 \begin{notice_mdfboxadmon}[Notice.]
 {\LaTeX} supports lots of fancy formatting, for example, multiple
 plots in the same figure (\code{subfigure} package), margin notes, multi-page
-tables, etc.
-Other output formats, such as \code{sphinx}, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as \code{sphinx} and \code{html}, make it necessary for DocOnce
 to only utilze very standard {\LaTeX}. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using \code{doconce combine_images}),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see \emph{Typesetting of Algorithms} in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically \code{#if FORMAT in ("latex", "pdflatex")}) to
@@ -79304,11 +79483,14 @@ labels in ``align`` environments work well.)
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
    plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, etc.
-   Other output formats, such as ``sphinx``, make it necessary for DocOnce
+   tables, example and algorithm environments, code listings in figures, etc.
+   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
    to only utilze very standard LaTeX. Correspondingly, the writer
    must stick to simple constructs and avoid, for instance, more than
-   one plot per figure.
+   one plot per figure (combine them into one using ``doconce combine_images``),
+   example environments (use subsection or subsubsection instead),
+   algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+   manual), code listings in figures (use just inline blocks).
    
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
@@ -80480,11 +80662,14 @@ labels in ``align`` environments work well.)
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
    plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, etc.
-   Other output formats, such as ``sphinx``, make it necessary for DocOnce
+   tables, example and algorithm environments, code listings in figures, etc.
+   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
    to only utilze very standard LaTeX. Correspondingly, the writer
    must stick to simple constructs and avoid, for instance, more than
-   one plot per figure.
+   one plot per figure (combine them into one using ``doconce combine_images``),
+   example environments (use subsection or subsubsection instead),
+   algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+   manual), code listings in figures (use just inline blocks).
    
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
@@ -81609,11 +81794,14 @@ labels in `align` environments work well.)
 *Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, etc.
-Other output formats, such as `sphinx`, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using `doconce combine_images`),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -82721,11 +82909,14 @@ labels in <code>align</code> environments work well.)
 | textstyle = font-size: 90%;
 | text = '''Notice.''' LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
-tables, etc.
-Other output formats, such as <code>sphinx</code>, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as <code>sphinx</code> and <code>html</code>, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using <code>doconce combine_images</code>),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see ''Typesetting of Algorithms'' in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
@@ -83810,11 +84001,14 @@ labels in {{{align}}} environments work well.)
 //Notice.//\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure ({{{subfigure}}} package), margin notes, multi-page
-tables, etc.
-Other output formats, such as {{{sphinx}}}, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as {{{sphinx}}} and {{{html}}}, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using {{{doconce combine_images}}}),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see //Typesetting of Algorithms// in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically {{{#if FORMAT in ("latex", "pdflatex")}}}) to
@@ -84844,11 +85038,14 @@ labels in 'align' environments work well.)
 *Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure ('subfigure' package), margin notes, multi-page
-tables, etc.
-Other output formats, such as 'sphinx', make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as 'sphinx' and 'html', make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using 'doconce combine_images'),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically '#if FORMAT in ("latex", "pdflatex")') to
@@ -85872,11 +86069,14 @@ labels in C{align} environments work well.)
 I{Notice.}\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (C{subfigure} package), margin notes, multi-page
-tables, etc.
-Other output formats, such as C{sphinx}, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as C{sphinx} and C{html}, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using C{doconce combine_images}),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see I{Typesetting of Algorithms} in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically C{#if FORMAT in ("latex", "pdflatex")}) to
@@ -86952,24 +87152,27 @@ is also important, one should follow these rules:
 labels in align environments work well.)
 
 
-Notice ------------------------------------------------------------------|
-|                                                                        |
-| LaTeX supports lots of fancy formatting, for example, multiple         |
-| plots in the same figure (subfigure package), margin notes, multi-page |
-| tables, etc.                                                           |
-| Other output formats, such as sphinx, make it necessary for DocOnce    |
-| to only utilze very standard LaTeX. Correspondingly, the writer        |
-| must stick to simple constructs and avoid, for instance, more than     |
-| one plot per figure.                                                   |
-|                                                                        |
-| However, one can use preprocessor if-tests on                          |
-| the format (typically #if FORMAT in ("latex", "pdflatex")) to          |
-| include special code for latex and pdflatex output and more            |
-| straightforward typesetting for other formats. In this way, one can    |
-| also allow advanced LaTeX features and fine tuning of the resulting    |
-| PDF document. More tuning can be done by automatic editing of the      |
-| .tex produced by DocOnce.                                              |
-|------------------------------------------------------------------------|
+Notice ------------------------------------------------------------------------|
+|                                                                              |
+| LaTeX supports lots of fancy formatting, for example, multiple               |
+| plots in the same figure (subfigure package), margin notes, multi-page       |
+| tables, example and algorithm environments, code listings in figures, etc.   |
+| Other output formats, such as sphinx and html, make it necessary for DocOnce |
+| to only utilze very standard LaTeX. Correspondingly, the writer              |
+| must stick to simple constructs and avoid, for instance, more than           |
+| one plot per figure (combine them into one using doconce combine_images),    |
+| example environments (use subsection or subsubsection instead),              |
+| algorithms environments (see *Typesetting of Algorithms* in the DocOnce      |
+| manual), code listings in figures (use just inline blocks).                  |
+|                                                                              |
+| However, one can use preprocessor if-tests on                                |
+| the format (typically #if FORMAT in ("latex", "pdflatex")) to                |
+| include special code for latex and pdflatex output and more                  |
+| straightforward typesetting for other formats. In this way, one can          |
+| also allow advanced LaTeX features and fine tuning of the resulting          |
+| PDF document. More tuning can be done by automatic editing of the            |
+| .tex produced by DocOnce.                                                    |
+|------------------------------------------------------------------------------|
 
 
 *LaTeX Newcommands.*
@@ -88096,11 +88299,14 @@ labels in `align` environments work well.)
 *Notice.*\g<space>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, etc.
-Other output formats, such as `sphinx`, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.
+one plot per figure (combine them into one using `doconce combine_images`),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -101733,10 +101939,10 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14] [15] [16] [17] [18]
+[14] [15] [16] [17] [18] [19]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
-[19]
+
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
@@ -102238,10 +102444,10 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
-
+[9]
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[9]
+
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
@@ -102264,7 +102470,7 @@ Overfull \hbox (119.00006pt too wide)
 
 ...rest of part of LaTeX line number...
 
-
+[10]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -102276,7 +102482,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
 ----|  
-[10]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
 `)  |  
@@ -102375,10 +102581,10 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[13]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-[13]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
@@ -102410,7 +102616,7 @@ Overfull \hbox (125.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
-
+[14]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
@@ -102420,7 +102626,7 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-[14]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -102468,13 +102674,13 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-
+[15]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-[15]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
@@ -102491,10 +102697,10 @@ Overfull \hbox (101.00006pt too wide)
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
-
+[16]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-[16]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
@@ -102764,10 +102970,10 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
-
+[10]
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[10]
+
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
@@ -102786,7 +102992,7 @@ ight=315] YouTube movie.
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
-
+[11]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -102798,7 +103004,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
 ----|  
-[11]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
 `)  |  
@@ -102897,10 +103103,10 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[14]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-[14]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
@@ -102932,7 +103138,7 @@ Overfull \hbox (125.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
-
+[15]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
@@ -102942,7 +103148,7 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-[15]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -102990,13 +103196,13 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-
+[16]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-[16]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
@@ -103013,10 +103219,10 @@ Overfull \hbox (101.00006pt too wide)
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
-
+[17]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-[17]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 

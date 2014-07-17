@@ -621,11 +621,14 @@ labels in <tt class="docutils literal"><span class="pre">align</span></tt> envir
 <p class="first admonition-title">Note</p>
 <p>LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (<tt class="docutils literal"><span class="pre">subfigure</span></tt> package), margin notes, multi-page
-tables, etc.
-Other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt>, make it necessary for DocOnce
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt> and <tt class="docutils literal"><span class="pre">html</span></tt>, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure.</p>
+one plot per figure (combine them into one using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
+manual), code listings in figures (use just inline blocks).</p>
 <p class="last">However, one can use preprocessor if-tests on
 the format (typically <tt class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
 include special code for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output and more

@@ -574,11 +574,14 @@ labels in ``align`` environments work well.)
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
    plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, etc.
-   Other output formats, such as ``sphinx``, make it necessary for DocOnce
+   tables, example and algorithm environments, code listings in figures, etc.
+   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
    to only utilze very standard LaTeX. Correspondingly, the writer
    must stick to simple constructs and avoid, for instance, more than
-   one plot per figure.
+   one plot per figure (combine them into one using ``doconce combine_images``),
+   example environments (use subsection or subsubsection instead),
+   algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+   manual), code listings in figures (use just inline blocks).
    
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
