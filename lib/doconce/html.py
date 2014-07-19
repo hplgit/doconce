@@ -1,7 +1,8 @@
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
-     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
+     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url, \
+     get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option
 
 # fold/unfold: use !bblock Title unfold
@@ -253,8 +254,9 @@ css_bloodish = """\
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
-def toc2html(level_depth=2, indent=3, font_size=80):
+def toc2html(indent=3, font_size=80):
     # level_depth: how many levels that are represented in the toc
+    level_depth = option('html_toc_depth=', 2)
     global tocinfo  # computed elsewhere
     level_min = tocinfo['highest level']
     level_max = level_min + level_depth - 1
@@ -277,19 +279,21 @@ def html_code(filestr, code_blocks, code_block_types,
     pygm_style = option('pygments_html_style=', default=None)
 
     # Mapping from envir (+cod/pro if present) to pygment style
-    types2languages = dict(py='python', cy='cython', f='fortran',
-                           c='c', cpp='c++', sh='bash', rst='rst',
-                           m='matlab', pl='perl', rb='ruby',
-                           swig='c++', latex='latex', tex='latex',
-                           html='html', xml='xml',
-                           js='js', java='java',
-                           #sys='console',
-                           sys='text',
-                           #sys='bash'
-                           dat='text', txt='text', csv='text',
-                           cc='txt', ccq='text',
-                           pyshell='python', ipy='ipython',
-                           pyopt='python', pysc='python')
+    envir2pygments = dict(
+        py='python', cy='cython', f='fortran',
+        c='c', cpp='c++', sh='bash', rst='rst',
+        m='matlab', pl='perl', rb='ruby',
+        swig='c++', latex='latex', tex='latex',
+        html='html', xml='xml',
+        js='js', java='java',
+        #sys='console',
+        sys='text',
+        #sys='bash'
+        dat='text', txt='text', csv='text',
+        cc='txt', ccq='text',
+        pyshell='python', ipy='ipy',
+        pyopt='python', pysc='python',
+        do='doconce')
     try:
         import pygments as pygm
         from pygments.lexers import guess_lexer, get_lexer_by_name
@@ -302,18 +306,12 @@ def html_code(filestr, code_blocks, code_block_types,
     if pygm_style in ('no', 'none', 'off'):
         pygm = None
     if pygm is not None:
-        # Note: ipython pygments requires
-        # https://bitbucket.org/sanguineturtle/pygments-ipython-console
         if 'ipy' in code_block_types:
-            try:
-                get_lexer_by_name('ipython')
-            except Exception as e:
-                print '*** warning: !bc ipy used for IPython sessions, but'
-                print '    ipython is not supported for syntax highlighting!'
-                print '    install'
-                print '    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
-                print e
-                types2languages['ipy'] = 'python'
+            if not has_custom_pygments_lexer('ipy'):
+                envir2pygments['ipy'] = 'python'
+        if 'do' in code_block_types:
+            if not has_custom_pygments_lexer('doconce'):
+                envir2pygments['do'] = 'text'
 
         if pygm_style is None:
             # Set sensible default values
@@ -322,12 +320,13 @@ def html_code(filestr, code_blocks, code_block_types,
             else:
                 pygm_style = 'default'
 
+        legal_lexers = get_legal_pygments_lexers()
         legal_styles = list(get_all_styles())
         legal_styles += ['no', 'none', 'off']
         if pygm_style not in legal_styles:
             print 'pygments style "%s" is not legal, must be among\n%s' % (pygm_style, ', '.join(legal_styles))
             #_abort()
-            print 'using the default style...'
+            print 'using the "default" style...'
             pygm_style = 'default'
         if pygm_style in ['no', 'none', 'off']:
             pygm = None
@@ -351,8 +350,10 @@ def html_code(filestr, code_blocks, code_block_types,
                 type_ = code_block_types[i][:-3]
             else:
                 type_ = code_block_types[i]
-            if type_ in types2languages:
-                language = types2languages[type_]
+            if type_ in envir2pygments:
+                language = envir2pygments[type_]
+            elif type_ in legal_lexers:
+                language = type_
             else:
                 language = 'text'
             lexer = get_lexer_by_name(language)

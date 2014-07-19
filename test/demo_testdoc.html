@@ -258,7 +258,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jul 17, 2014</h4></center> <!-- date -->
+<center><h4>Jul 19, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -578,7 +578,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -592,18 +592,18 @@ IPython sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=ipy (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
 
-In [<span style="color: #666666">2</span>]: <span style="color: #008800; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
 
-In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
@@ -696,6 +696,116 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2
+</pre></div>
+</td></tr></table><p>
+Any valid pygments lexer/language name can appear to, e.g.,
+
+<p>
+
+<!-- code=text typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+</pre></div>
+</td></tr></table><p>
+results in
+
+<p>
+
+<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+<span style="color: #000080; font-weight: bold">Heading</span>
+<span style="color: #000080; font-weight: bold">=======</span>
+
+Some text.
+</pre></div>
+</td></tr></table><p>
+Finally, <code>!bc do</code> supports highlighting of DocOnce source:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+
+<span style="color: #000080; font-weight: bold">===== Computer code =====</span>
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+<span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+<span style="color: #AA22FF">\begin{align*}</span>
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
+\boldsymbol{u} &amp;= \nabla\phi .
+<span style="color: #AA22FF">\end{align*}</span>
+!et
+
+<span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+<span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline

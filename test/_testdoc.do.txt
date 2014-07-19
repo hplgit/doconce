@@ -187,7 +187,7 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-!bc ipy
+!bc pyshell
 >>> from numpy import sin
 >>> # Some comment
 >>> x = sin(1.2); print 'Value:', x
@@ -204,6 +204,7 @@ In [2]: # Some comment
 In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 !ec
+
 
 # This one tests a + sign before a code environment
 C++:
@@ -257,6 +258,66 @@ Terminal> cd test
 Terminal> myprog -f
 output1
 output2
+!ec
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+!bc
+|bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+|ec
+!ec
+results in
+
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+
+Finally, `!bc do` supports highlighting of DocOnce source:
+
+!bc do
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+|bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+|ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+|bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\
+\bm{u} &= \nabla\phi .
+\end{align*}
+|et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
 !ec
 
 It is time to test `verbatim inline font` especially with `a newline

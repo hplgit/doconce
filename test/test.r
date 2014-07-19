@@ -203,7 +203,7 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-!bc ipy
+!bc pyshell
 >>> from numpy import sin
 >>> # Some comment
 >>> x = sin(1.2); print 'Value:', x
@@ -220,6 +220,7 @@ In [2]: # Some comment
 In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 !ec
+
 
 # This one tests a + sign before a code environment
 C++:
@@ -273,6 +274,66 @@ Terminal> cd test
 Terminal> myprog -f
 output1
 output2
+!ec
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+!bc
+|bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+|ec
+!ec
+results in
+
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+
+Finally, `!bc do` supports highlighting of DocOnce source:
+
+!bc do
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+|bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+|ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+|bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\
+\bm{u} &= \nabla\phi .
+\end{align*}
+|et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
 !ec
 
 It is time to test `verbatim inline font` especially with `a newline
@@ -2236,12 +2297,12 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-\bipy
+\bpyshell
 >>> from numpy import sin
 >>> # Some comment
 >>> x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
-\eipy
+\epyshell
 
 IPython sessions:
 
@@ -2253,6 +2314,7 @@ In [2]: # Some comment
 In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 \eipy
+
 
 % This one tests a + sign before a code environment
 C++:
@@ -2307,6 +2369,66 @@ Terminal> myprog -f
 output1
 output2
 \esys
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+\bccq
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+\eccq
+results in
+
+\brestructuredtext
+=======
+Heading
+=======
+
+Some text.
+\erestructuredtext
+
+Finally, \code{!bc do} supports highlighting of DocOnce source:
+
+\bdo
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
+\edo
 
 It is time to test \code{verbatim inline font} especially with \code{a newline
 inside the text} and an exclamation mark at the end: \code{BEGIN}! The
@@ -4227,12 +4349,12 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 >>> from numpy import sin
 >>> # Some comment
 >>> x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
-\end{Verbatim}
+\end{minted}
 \noindent
 
 IPython sessions:
@@ -4246,6 +4368,7 @@ In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 \end{Verbatim}
 \noindent
+
 
 % This one tests a + sign before a code environment
 C++:
@@ -4323,6 +4446,70 @@ Terminal> myprog -f
 output1
 output2
 \end{Verbatim}
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
+fontfamily=tt,xleftmargin=7mm]
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+\end{Verbatim}
+\noindent
+results in
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+=======
+Heading
+=======
+
+Some text.
+\end{Verbatim}
+\noindent
+
+Finally, {\Verb~!bc do~} supports highlighting of DocOnce source:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
+\end{Verbatim}
+\noindent
 
 It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! The
 exclamation mark inside the verbatim text is potentially not smart
@@ -5637,17 +5824,34 @@ in a separate document: \texttt{admon.do.txt}.
 \end{document}
 
 ************** File: testdoc.tex_doconce_ptex2tex *****************
-\bsys (!bc sys) -> begin{quote}begin{Verbatim}
+\bsys (!bc sys) -> \begin{Verbatim}[frame=lines]
+
 \bpypro (!bc pypro) -> \begin{python:nt}
-\bcycod (!bc cycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
-\bfcod (!bc fcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
-\bfpro (!bc fpro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bhtmlcod (!bc htmlcod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
-\bcpppro (!bc cpppro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
-\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+
+\bdo (!bc do) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{doconce}
+
+\brestructuredtext (!bc restructuredtext) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{restructuredtext}
+
+\bcycod (!bc cy) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{cython}
+
+\bipy (!bc ipy) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{ipy}
+
+\bfcod (!bc f) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
+
+\bfpro (!bc f) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{fortran}
+
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpyshell (!bc pyshell) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bhtmlcod (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+
+\bcpppro (!bc cpp) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
+\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cod" is unknown)
+
 output in testdoc.tex
 ----------- end of doconce ptex2tex output ----------------
 %%
@@ -6267,23 +6471,24 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 >>> from numpy import sin
 >>> # Some comment
 >>> x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
-\end{Verbatim}
+\end{minted}
 
 IPython sessions:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{ipy}
 In [1]: from numpy import sin
 
 In [2]: # Some comment
 
 In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
-\end{Verbatim}
+\end{minted}
+
 
 % This one tests a + sign before a code environment
 C++:
@@ -6331,13 +6536,73 @@ HTML:
 \end{minted}
 
 System call:
-begin{quote}begin{Verbatim}
+\begin{Verbatim}[frame=lines]
 Terminal> mkdir test
 Terminal> cd test
 Terminal> myprog -f
 output1
 output2
-end{Verbatim}end{quote}
+\end{Verbatim}
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+\end{Verbatim}
+results in
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{restructuredtext}
+=======
+Heading
+=======
+
+Some text.
+\end{minted}
+
+Finally, \Verb?!bc do? supports highlighting of DocOnce source:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{doconce}
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
+\end{minted}
 
 It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! The
 exclamation mark inside the verbatim text is potentially not smart
@@ -6357,13 +6622,13 @@ But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
-begin{quote}begin{Verbatim}
+\begin{Verbatim}[frame=lines]
 Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
 Testing
 output
 from
 Python.
-end{Verbatim}end{quote}
+\end{Verbatim}
 
 
 \paragraph{Footnotes.}
@@ -7901,6 +8166,61 @@ System call::
         output1
         output2
 
+Any valid pygments lexer/language name can appear to, e.g.::
+
+        !bc restructuredtext
+        =======
+        Heading
+        =======
+        
+        Some text.
+        !ec
+
+results in::
+
+        =======
+        Heading
+        =======
+        
+        Some text.
+
+Finally, ``!bc do`` supports highlighting of DocOnce source::
+
+        ======= DocOnce test file =======
+        
+        ===== Computer code =====
+        
+        Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+        code blocks:
+        
+        !bc pycod
+        from math import sin
+        
+        def f(x):
+            """Example on a function."""
+            return sin(x) + 1
+        
+        print f(0)
+        !ec
+        
+        ===== Mathematics =====
+        
+        Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+        as equations:
+        
+        !bt
+        \begin{align*}
+        \nabla\cdot\bm{u} &= 0,\\ 
+        \bm{u} &= \nabla\phi .
+        \end{align*}
+        !et
+        
+        === Subsubsection heading ===
+        
+        DocOnce files can have chapters, sections, subsections, and subsubsections.
+        
+        __Paragraph heading.__ Paragraphs may have headings.
+
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
 exclamation mark inside the verbatim text is potentially not smart
@@ -9314,7 +9634,7 @@ Standard Python shell sessions:
 
 IPython sessions:
 
-.. code-block:: python
+.. code-block:: ipy
 
         In [1]: from numpy import sin
         
@@ -9382,6 +9702,67 @@ System call:
         Terminal> myprog -f
         output1
         output2
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+.. code-block:: text
+
+        !bc restructuredtext
+        =======
+        Heading
+        =======
+        
+        Some text.
+        !ec
+
+results in
+
+.. code-block:: restructuredtext
+
+        =======
+        Heading
+        =======
+        
+        Some text.
+
+Finally, ``!bc do`` supports highlighting of DocOnce source:
+
+.. code-block:: doconce
+
+        ======= DocOnce test file =======
+        
+        ===== Computer code =====
+        
+        Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+        code blocks:
+        
+        !bc pycod
+        from math import sin
+        
+        def f(x):
+            """Example on a function."""
+            return sin(x) + 1
+        
+        print f(0)
+        !ec
+        
+        ===== Mathematics =====
+        
+        Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+        as equations:
+        
+        !bt
+        \begin{align*}
+        \nabla\cdot\boldsymbol{u} &= 0,\\ 
+        \boldsymbol{u} &= \nabla\phi .
+        \end{align*}
+        !et
+        
+        === Subsubsection heading ===
+        
+        DocOnce files can have chapters, sections, subsections, and subsubsections.
+        
+        __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
@@ -10876,6 +11257,7 @@ In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 }}}
 
+
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
 {{{
@@ -10928,6 +11310,66 @@ Terminal> cd test
 Terminal> myprog -f
 output1
 output2
+}}}
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+{{{
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+}}}
+results in
+
+{{{
+=======
+Heading
+=======
+
+Some text.
+}}}
+
+Finally, `!bc do` supports highlighting of DocOnce source:
+
+{{{
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
 }}}
 
 It is time to test `verbatim inline font` especially with `a newline
@@ -12226,6 +12668,7 @@ In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 </syntaxhighlight>
 
+
 <!-- This one tests a + sign before a code environment -->
 C++:
 <syntaxhighlight lang="cpp">
@@ -12278,6 +12721,66 @@ Terminal> cd test
 Terminal> myprog -f
 output1
 output2
+</syntaxhighlight>
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+<syntaxhighlight lang="text">
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+</syntaxhighlight>
+results in
+
+<syntaxhighlight lang="text">
+=======
+Heading
+=======
+
+Some text.
+</syntaxhighlight>
+
+Finally, <code>!bc do</code> supports highlighting of DocOnce source:
+
+<syntaxhighlight lang="text">
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
 </syntaxhighlight>
 
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -13655,6 +14158,7 @@ In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 }}}
 
+
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
 {{{
@@ -13707,6 +14211,66 @@ Terminal> cd test
 Terminal> myprog -f
 output1
 output2
+}}}
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+{{{
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+}}}
+results in
+
+{{{
+=======
+Heading
+=======
+
+Some text.
+}}}
+
+Finally, {{{!bc do}}} supports highlighting of DocOnce source:
+
+{{{
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
 }}}
 
 It is time to test {{{verbatim inline font}}} especially with {{{a newline
@@ -14941,6 +15505,61 @@ System call::
         output1
         output2
 
+Any valid pygments lexer/language name can appear to, e.g.::
+
+        !bc restructuredtext
+        =======
+        Heading
+        =======
+        
+        Some text.
+        !ec
+
+results in::
+
+        =======
+        Heading
+        =======
+        
+        Some text.
+
+Finally, '!bc do' supports highlighting of DocOnce source::
+
+        ======= DocOnce test file =======
+        
+        ===== Computer code =====
+        
+        Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+        code blocks:
+        
+        !bc pycod
+        from math import sin
+        
+        def f(x):
+            """Example on a function."""
+            return sin(x) + 1
+        
+        print f(0)
+        !ec
+        
+        ===== Mathematics =====
+        
+        Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+        as equations:
+        
+        !bt
+        \begin{align*}
+        \nabla\cdot\bm{u} &= 0,\\ 
+        \bm{u} &= \nabla\phi .
+        \end{align*}
+        !et
+        
+        === Subsubsection heading ===
+        
+        DocOnce files can have chapters, sections, subsections, and subsubsections.
+        
+        __Paragraph heading.__ Paragraphs may have headings.
+
 It is time to test 'verbatim inline font' especially with 'a newline
 inside the text' and an exclamation mark at the end: 'BEGIN'! The
 exclamation mark inside the verbatim text is potentially not smart
@@ -16088,6 +16707,29 @@ System call::
         Terminal> myprog -f
         output1
         output2
+
+Any valid pygments lexer/language name can appear to, e.g.::
+
+        !bc restructuredtext
+        =======
+        Heading
+        =======
+        
+        Some text.
+        !ec
+
+results in::
+
+        =======
+        Heading
+        =======
+        
+        Some text.
+
+Finally, C{!bc do} supports highlighting of DocOnce source::
+
+            NOTE: A verbatim block has been removed because
+                  it causes problems for Epytext.
 
 It is time to test C{verbatim inline font} especially with C{a newline
 inside the text} and an exclamation mark at the end: C{BEGIN}! The
@@ -17336,6 +17978,61 @@ System call::
         Terminal> myprog -f
         output1
         output2
+
+Any valid pygments lexer/language name can appear to, e.g.::
+
+        !bc restructuredtext
+        =======
+        Heading
+        =======
+        
+        Some text.
+        !ec
+
+results in::
+
+        =======
+        Heading
+        =======
+        
+        Some text.
+
+Finally, !bc do supports highlighting of DocOnce source::
+
+        ======= DocOnce test file =======
+        
+        ===== Computer code =====
+        
+        Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+        code blocks:
+        
+        !bc pycod
+        from math import sin
+        
+        def f(x):
+            """Example on a function."""
+            return sin(x) + 1
+        
+        print f(0)
+        !ec
+        
+        ===== Mathematics =====
+        
+        Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+        as equations:
+        
+        !bt
+        \begin{align*}
+        \nabla\cdot\bm{u} &= 0,\\ 
+        \bm{u} &= \nabla\phi .
+        \end{align*}
+        !et
+        
+        === Subsubsection heading ===
+        
+        DocOnce files can have chapters, sections, subsections, and subsubsections.
+        
+        __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test verbatim inline font especially with a newline
 inside the text and an exclamation mark at the end: BEGIN! The
@@ -18630,6 +19327,70 @@ Terminal> cd test
 Terminal> myprog -f
 output1
 output2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+results in
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======
+Heading
+=======
+
+Some text.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Finally, `!bc do` supports highlighting of DocOnce source:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\boldsymbol{u} &= 0,\\ 
+\boldsymbol{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is time to test `verbatim inline font` especially with `a newline
@@ -20268,6 +21029,103 @@ is at the end with only one newline.
       "Terminal> myprog -f\n",
       "output1\n",
       "output2\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Any valid pygments lexer/language name can appear to, e.g.,"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "!bc restructuredtext\n",
+      "=======\n",
+      "Heading\n",
+      "=======\n",
+      "\n",
+      "Some text.\n",
+      "!ec\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "results in"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "=======\n",
+      "Heading\n",
+      "=======\n",
+      "\n",
+      "Some text.\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 1
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Finally, `!bc do` supports highlighting of DocOnce source:"
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "======= DocOnce test file =======\n",
+      "\n",
+      "===== Computer code =====\n",
+      "\n",
+      "Inline verbatim code, as in `import numpy as np`, is allowed, as well as\n",
+      "code blocks:\n",
+      "\n",
+      "!bc pycod\n",
+      "from math import sin\n",
+      "\n",
+      "def f(x):\n",
+      "    \"\"\"Example on a function.\"\"\"\n",
+      "    return sin(x) + 1\n",
+      "\n",
+      "print f(0)\n",
+      "!ec\n",
+      "\n",
+      "===== Mathematics =====\n",
+      "\n",
+      "Formulas can be inline, as in $\\nabla\\cdot\\boldsymbol{u} = 0$, or typeset\n",
+      "as equations:\n",
+      "\n",
+      "!bt\n",
+      "\\begin{align*}\n",
+      "\\nabla\\cdot\\boldsymbol{u} &= 0,\\\\ \n",
+      "\\boldsymbol{u} &= \\nabla\\phi .\n",
+      "\\end{align*}\n",
+      "!et\n",
+      "\n",
+      "=== Subsubsection heading ===\n",
+      "\n",
+      "DocOnce files can have chapters, sections, subsections, and subsubsections.\n",
+      "\n",
+      "__Paragraph heading.__ Paragraphs may have headings.\n"
      ],
      "language": "python",
      "metadata": {},
@@ -22192,6 +23050,55 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
+<p>Any valid pygments lexer/language name can appear to, e.g.,</p>
+<pre><code>!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec</code></pre>
+<p>results in</p>
+<pre><code>=======
+Heading
+=======
+
+Some text.</code></pre>
+<p>Finally, ?!bc do? supports highlighting of DocOnce source:</p>
+<pre><code>======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &amp;= 0,\\ 
+\bm{u} &amp;= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test ?!bc? and ?!ec? as well as ?!bsummary?. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in ?a != b?, and a DocOnce directive a la ?!bc?.</p>
 <p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands.">Running OS commands.</h4>
@@ -22918,6 +23825,55 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2</code></pre>
+<p>Any valid pygments lexer/language name can appear to, e.g.,</p>
+<pre><code>!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec</code></pre>
+<p>results in</p>
+<pre><code>=======
+Heading
+=======
+
+Some text.</code></pre>
+<p>Finally, <code>!bc do</code> supports highlighting of DocOnce source:</p>
+<pre><code>======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
+\boldsymbol{u} &amp;= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>, and a DocOnce directive a la <code>!bc</code>.</p>
 <p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
@@ -26297,7 +27253,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -26311,18 +27267,18 @@ IPython sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=ipy (!bc ipy) typeset with pygments style "emacs" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
 
-In [<span style="color: #666666">2</span>]: <span style="color: #008800; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
 
-In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
@@ -26415,6 +27371,116 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2
+</pre></div>
+</td></tr></table><p>
+Any valid pygments lexer/language name can appear to, e.g.,
+
+<p>
+
+<!-- code=text typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+</pre></div>
+</td></tr></table><p>
+results in
+
+<p>
+
+<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+<span style="color: #000080; font-weight: bold">Heading</span>
+<span style="color: #000080; font-weight: bold">=======</span>
+
+Some text.
+</pre></div>
+</td></tr></table><p>
+Finally, <code>!bc do</code> supports highlighting of DocOnce source:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "emacs" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+
+<span style="color: #000080; font-weight: bold">===== Computer code =====</span>
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+<span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+<span style="color: #AA22FF">\begin{align*}</span>
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
+\boldsymbol{u} &amp;= \nabla\phi .
+<span style="color: #AA22FF">\end{align*}</span>
+!et
+
+<span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+<span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -28540,12 +29606,12 @@ IPython sessions:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
-In [<span style="color: #666666">2</span>]: <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
 
-In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 <p>
 
@@ -28612,6 +29678,73 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2
+</pre></div>
+<p>
+Any valid pygments lexer/language name can appear to, e.g.,
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+</pre></div>
+<p>
+results in
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+<span style="color: #000080; font-weight: bold">Heading</span>
+<span style="color: #000080; font-weight: bold">=======</span>
+
+Some text.
+</pre></div>
+<p>
+Finally, <code>!bc do</code> supports highlighting of DocOnce source:
+
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+
+<span style="color: #000080; font-weight: bold">===== Computer code =====</span>
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+<span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+<span style="color: #008000">\begin{align*}</span>
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
+\boldsymbol{u} &amp;= \nabla\phi .
+<span style="color: #008000">\end{align*}</span>
+!et
+
+<span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+<span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -30309,7 +31442,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
@@ -30320,13 +31453,13 @@ IPython sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
-In [<span style="color: #666666">2</span>]: <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
 
-In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -30393,6 +31526,73 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2
+</pre></div>
+<p>
+Any valid pygments lexer/language name can appear to, e.g.,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+</pre></div>
+<p>
+results in
+
+<p>
+
+<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+<span style="color: #000080; font-weight: bold">Heading</span>
+<span style="color: #000080; font-weight: bold">=======</span>
+
+Some text.
+</pre></div>
+<p>
+Finally, <code>!bc do</code> supports highlighting of DocOnce source:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+
+<span style="color: #000080; font-weight: bold">===== Computer code =====</span>
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+<span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+<span style="color: #008000">\begin{align*}</span>
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
+\boldsymbol{u} &amp;= \nabla\phi .
+<span style="color: #008000">\end{align*}</span>
+!et
+
+<span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+<span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -32220,12 +33420,12 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-\bipy
+\bpyshell
 >>> from numpy import sin
 >>> # Some comment
 >>> x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
-\eipy
+\epyshell
 
 IPython sessions:
 
@@ -32237,6 +33437,7 @@ In [2]: # Some comment
 In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 \eipy
+
 
 % This one tests a + sign before a code environment
 C++:
@@ -32291,6 +33492,66 @@ Terminal> myprog -f
 output1
 output2
 \esys
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+\bccq
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+\eccq
+results in
+
+\brestructuredtext
+=======
+Heading
+=======
+
+Some text.
+\erestructuredtext
+
+Finally, \code{!bc do} supports highlighting of DocOnce source:
+
+\bdo
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
+\edo
 
 It is time to test \code{verbatim inline font} especially with \code{a newline
 inside the text} and an exclamation mark at the end: \code{BEGIN}! The
@@ -34024,9 +35285,12 @@ pdflatex -shell-escape testdoc
 cp testdoc.tex testdoc.tex_ptex2tex
 # testdoc.tex_ptex2tex corresponds to testdoc.pdf
 
-system doconce ptex2tex testdoc sys=\begin{quote}\begin{Verbatim}@\end{Verbatim}\end{quote} pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
+system doconce ptex2tex testdoc "sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}" pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex
 cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
+# Test that latex can treat this file
+rm -f *.aux
+system pdflatex -shell-escape testdoc
 
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
@@ -36574,7 +37838,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+          <!-- navigation toc: "Section 1" --> <li class="active"><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -36972,7 +38236,7 @@ Standard Python shell sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
@@ -36983,13 +38247,13 @@ IPython sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
 
-In [<span style="color: #666666">2</span>]: <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
 
-In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -37056,6 +38320,73 @@ Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
 output2
+</pre></div>
+<p>
+Any valid pygments lexer/language name can appear to, e.g.,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+</pre></div>
+<p>
+results in
+
+<p>
+
+<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+<span style="color: #000080; font-weight: bold">Heading</span>
+<span style="color: #000080; font-weight: bold">=======</span>
+
+Some text.
+</pre></div>
+<p>
+Finally, <code>!bc do</code> supports highlighting of DocOnce source:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+
+<span style="color: #000080; font-weight: bold">===== Computer code =====</span>
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+<span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
+
+Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+as equations:
+
+!bt
+<span style="color: #008000">\begin{align*}</span>
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
+\boldsymbol{u} &amp;= \nabla\phi .
+<span style="color: #008000">\end{align*}</span>
+!et
+
+<span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+<span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
@@ -37630,7 +38961,7 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li class="active"><a href="._testdoc_vagrant002.html#___sec15" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
      <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec16" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
      <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
@@ -38787,7 +40118,7 @@ Standard Python shell sessions:
 
 IPython sessions:
 
-.. code-block:: python
+.. code-block:: ipy
 
         In [1]: from numpy import sin
         
@@ -38855,6 +40186,67 @@ System call:
         Terminal> myprog -f
         output1
         output2
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+.. code-block:: text
+
+        !bc restructuredtext
+        =======
+        Heading
+        =======
+        
+        Some text.
+        !ec
+
+results in
+
+.. code-block:: restructuredtext
+
+        =======
+        Heading
+        =======
+        
+        Some text.
+
+Finally, ``!bc do`` supports highlighting of DocOnce source:
+
+.. code-block:: doconce
+
+        ======= DocOnce test file =======
+        
+        ===== Computer code =====
+        
+        Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+        code blocks:
+        
+        !bc pycod
+        from math import sin
+        
+        def f(x):
+            """Example on a function."""
+            return sin(x) + 1
+        
+        print f(0)
+        !ec
+        
+        ===== Mathematics =====
+        
+        Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
+        as equations:
+        
+        !bt
+        \begin{align*}
+        \nabla\cdot\boldsymbol{u} &= 0,\\ 
+        \boldsymbol{u} &= \nabla\phi .
+        \end{align*}
+        !et
+        
+        === Subsubsection heading ===
+        
+        DocOnce files can have chapters, sections, subsections, and subsubsections.
+        
+        __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
 inside the text`` and an exclamation mark at the end: ``BEGIN``! The
@@ -50715,7 +52107,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Introduction" --> <li class="active"><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
@@ -73326,7 +74718,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li class="active"><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
@@ -73369,27 +74761,27 @@ Below are some examples on admons.
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-In [<span style="color: #666666">2</span>]: x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
+<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 
-In [<span style="color: #666666">3</span>]: y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
-<span style="color: #666666">---------------------------------------------------------------------------</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #0044DD">---------------------------------------------------------------------------</span>
 <span style="color: #D2413A; font-weight: bold">NameError</span>                                 Traceback (most recent call last)
-<span style="color: #666666">&lt;</span>ipython<span style="color: #666666">-</span><span style="color: #008000">input</span><span style="color: #666666">-3-</span>c1040545fa6c<span style="color: #666666">&gt;</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">&lt;</span>module<span style="color: #666666">&gt;</span>()
-<span style="color: #666666">----&gt;</span> <span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #0000FF; font-weight: bold">&lt;ipython-input-3-c1040545fa6c&gt;</span> in <span style="color: #999999; font-weight: bold">&lt;module&gt;</span><span style="color: #008000; font-weight: bold">()</span>
+<span style="color: #D2413A; font-weight: bold">----&gt; </span><span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
 
-<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;exp&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name &#39;exp&#39; is not defined
 
-In [<span style="color: #666666">4</span>]: y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
 
-In [<span style="color: #666666">5</span>]: y
-Out[<span style="color: #666666">5</span>]:
-array([  <span style="color: #666666">0.00000000e+00</span>,   <span style="color: #666666">8.38747563e-01</span>,   <span style="color: #666666">4.57160372e-01</span>,
-        <span style="color: #666666">-4.03174933e-01</span>,  <span style="color: #666666">-5.75315545e-01</span>,  <span style="color: #666666">-1.30666897e-16</span>,
-         <span style="color: #666666">4.47461836e-01</span>,   <span style="color: #666666">2.43889614e-01</span>,  <span style="color: #666666">-2.15089026e-01</span>,
-        <span style="color: #666666">-3.06923992e-01</span>,  <span style="color: #666666">-1.39418467e-16</span>])
+<span style="color: #000080; font-weight: bold">In [5]: </span>y
+<span style="color: #000080; font-weight: bold">Out[5]:</span>
+<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
+<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
+<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
+<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
 </pre></div>
 <p>
 This is the admon for warnings or paying attention.
@@ -73620,7 +75012,7 @@ $$
         <ul class="dropdown-menu">
      <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -73826,7 +75218,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Jul 17 13:56:02 2014.
+# sphinx-quickstart on Sat Jul 19 16:10:21 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -73864,9 +75256,16 @@ extensions = [
           'sphinx.ext.doctest',
           'sphinx.ext.viewcode',
           'sphinx.ext.intersphinx',
-          'sphinx.ext.inheritance_diagram']
+          'sphinx.ext.inheritance_diagram',
+          'IPython.sphinxext.ipython_console_highlighting']
 
 #pngmath_dvipng_args = ['-D 200', '-bg Transparent', '-gamma 1.5']  # large math fonts (200)
+
+# Make sphinx aware of the DocOnce lexer
+def setup(app):
+    from sphinx.highlighting import lexers
+    from doconce.misc import DocOnceLexer
+    lexers['doconce'] = DocOnceLexer()
 
 # Check which additional themes that are installed
 additional_themes_installed = []
@@ -75268,6 +76667,30 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 !ec
 
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+!bc
+---------
+!ec
+
+The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
+indicated by three hyphens: `---`. Here is an example:
+
+!bc
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+!ec
+This text is in the ${FORMAT} rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
 ===== Lists =====
 
 There are three types of lists: *bullet lists*, where each item starts
@@ -76381,6 +77804,39 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 <pre><code>This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 </code></pre>
 <!-- end verbatim block -->
+
+<p>
+A horizontal rule for separating content vertically, like this:
+
+<p>
+<hr>
+
+<p>
+is typeset as four or more hyphens on a single line:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>---------
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+The <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code> formats support em-dash,
+indicated by three hyphens: <code>---</code>. Here is an example:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+</code></pre>
+<!-- end verbatim block -->
+This text is in the html rendered as
+
+<p>
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences&mdash;this way, or in quotes:
+*Premature optimization is the root of all evil.*&mdash; Donald Knuth.
 
 <h2>Lists  <a name="___sec5"></a></h2>
 
@@ -77941,6 +79397,30 @@ Non-breaking space is inserted using the tilde character as in {\LaTeX}:
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 \eccq
 
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+\bccq
+---------
+\eccq
+
+The \code{latex}, \code{pdflatex}, \code{sphinx}, and \code{html} formats support em-dash,
+indicated by three hyphens: \code{---}. Here is an example:
+
+\bccq
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+\eccq
+This text is in the latex rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+\emph{Premature optimization is the root of all evil.}--- Donald Knuth.
+
 \subsection{Lists}
 
 There are three types of lists: \emph{bullet lists}, where each item starts
@@ -79137,6 +80617,25 @@ Non-breaking space is inserted using the tilde character as in LaTeX::
 
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
+A horizontal rule for separating content vertically, like this:
+
+is typeset as four or more hyphens on a single line::
+
+        ---------
+
+The ``latex``, ``pdflatex``, ``sphinx``, and ``html`` formats support em-dash,
+indicated by three hyphens: ``---``. Here is an example::
+
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+This text is in the rst rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
 Lists
 -----
 
@@ -80281,6 +81780,29 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 .. code-block:: text
 
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+
+A horizontal rule for separating content vertically, like this:
+
+is typeset as four or more hyphens on a single line:
+
+.. code-block:: text
+
+        ---------
+
+The ``latex``, ``pdflatex``, ``sphinx``, and ``html`` formats support em-dash,
+indicated by three hyphens: ``---``. Here is an example:
+
+.. code-block:: text
+
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+This text is in the sphinx rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
 
 Lists
 -----
@@ -81467,6 +82989,30 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 }}}
 
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+{{{
+---------
+}}}
+
+The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
+indicated by three hyphens: `---`. Here is an example:
+
+{{{
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+}}}
+This text is in the gwiki rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
 ==== Lists ====
 
 There are three types of lists: *bullet lists*, where each item starts
@@ -82539,6 +84085,30 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 <syntaxhighlight lang="text">
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 </syntaxhighlight>
+
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+<syntaxhighlight lang="text">
+---------
+</syntaxhighlight>
+
+The <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code> formats support em-dash,
+indicated by three hyphens: <code>---</code>. Here is an example:
+
+<syntaxhighlight lang="text">
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+</syntaxhighlight>
+This text is in the mwiki rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+''Premature optimization is the root of all evil.''--- Donald Knuth.
 
 ==== Lists ====
 
@@ -83674,6 +85244,30 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 }}}
 
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+{{{
+---------
+}}}
+
+The {{{latex}}}, {{{pdflatex}}}, {{{sphinx}}}, and {{{html}}} formats support em-dash,
+indicated by three hyphens: {{{---}}}. Here is an example:
+
+{{{
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+}}}
+This text is in the cwiki rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+//Premature optimization is the root of all evil.//--- Donald Knuth.
+
 == Lists ==
 
 There are three types of lists: //bullet lists//, where each item starts
@@ -84725,6 +86319,25 @@ Non-breaking space is inserted using the tilde character as in LaTeX::
 
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
+A horizontal rule for separating content vertically, like this:
+
+is typeset as four or more hyphens on a single line::
+
+        ---------
+
+The 'latex', 'pdflatex', 'sphinx', and 'html' formats support em-dash,
+indicated by three hyphens: '---'. Here is an example::
+
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+This text is in the st rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
 Lists
 
 There are three types of lists: *bullet lists*, where each item starts
@@ -85755,6 +87368,25 @@ preferably after the paragraph where the footnote appears::
 Non-breaking space is inserted using the tilde character as in LaTeX::
 
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+
+A horizontal rule for separating content vertically, like this:
+
+is typeset as four or more hyphens on a single line::
+
+        ---------
+
+The C{latex}, C{pdflatex}, C{sphinx}, and C{html} formats support em-dash,
+indicated by three hyphens: C{---}. Here is an example::
+
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+This text is in the epytext rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+I{Premature optimization is the root of all evil.}--- Donald Knuth.
 
 Lists
 -----
@@ -86820,6 +88452,25 @@ preferably after the paragraph where the footnote appears::
 Non-breaking space is inserted using the tilde character as in LaTeX::
 
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
+
+A horizontal rule for separating content vertically, like this:
+
+is typeset as four or more hyphens on a single line::
+
+        ---------
+
+The latex, pdflatex, sphinx, and html formats support em-dash,
+indicated by three hyphens: ---. Here is an example::
+
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+This text is in the plain rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
 
 Lists
 -----
@@ -87931,6 +89582,33 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
+indicated by three hyphens: `---`. Here is an example:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This text is in the pandoc rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
 
 ### Lists
 
@@ -89239,11 +90917,6 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-*** warning: !bc ipy used for IPython sessions, but
-    ipython is not supported for syntax highlighting!
-    install
-    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
-cannot import name IPythonConsoleLexer
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -89286,11 +90959,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-*** warning: !bc ipy used for IPython sessions, but
-    ipython is not supported for syntax highlighting!
-    install
-    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
-cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -89405,11 +91073,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-*** warning: !bc ipy used for IPython sessions, but
-    ipython is not supported for syntax highlighting!
-    install
-    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
-cannot import name IPythonConsoleLexer
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -89464,11 +91127,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-*** warning: !bc ipy used for IPython sessions, but
-    ipython is not supported for syntax highlighting!
-    install
-    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
-cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -89522,11 +91180,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-*** warning: !bc ipy used for IPython sessions, but
-    ipython is not supported for syntax highlighting!
-    install
-    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
-cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -89943,13 +91596,8 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 [3] (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [4] (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) [6]
-
-
-...rest of part of LaTeX line number...
-
-[7]
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+[5] (./testdoc.out.pyg) (./testdoc.out.pyg) [6] [7]
 
 
 ...rest of part of LaTeX line number...
@@ -89957,17 +91605,17 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=98, 586.83241pt x 442.29242pt>
+[8] <../doc/src/manual/fig/wave1D.pdf, id=106, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8 <../doc/src/manual/fig/wave1D.pdf>]
+[9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=116, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=120, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=118, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [9] [10 <../doc/src/manual/fig/wave1D.png> 
-<./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=122, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+ <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -90005,18 +91653,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[11] [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=151, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=152, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=157, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=158, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=154, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=159, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=155, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=160, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=161, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90040,7 +91688,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1067.
+t line 1132.
 
 
 
@@ -90060,7 +91708,7 @@ t line 1067.
 
 
 
-t line 1076.
+t line 1141.
 
 
 
@@ -90080,35 +91728,7 @@ t line 1076.
 
 
 
-t line 1080.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1145.
 
 
 
@@ -90144,20 +91764,48 @@ t line 1080.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[14]
+[15]
 
 
 .
@@ -90190,7 +91838,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[15]
+[16]
 
 
 ...rest of part of LaTeX line number...
@@ -90227,11 +91875,11 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[16] (./testdoc.out.pyg) [17] (./testdoc.out.pyg) [18] [19] (./testdoc.out.pyg)
+[17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20] (./testdoc.out.pyg)
 
 Underfull \hbox (badness 10000) 
 
-[20]
+[21]
 
 
 .
@@ -90257,21 +91905,21 @@ Underfull \hbox (badness 10000)
 
 
 No file testdoc.bbl.
-[21]
+[22]
 Underfull \hbox (badness 10000) 
 
 
 
 ...rest of part of LaTeX line number...
 
-[22]
+[23]
 
 
 ...rest of part of LaTeX line number...
 
-[23]
+[24]
 No file testdoc.ind.
-[24] (./testdoc.aux)
+[25] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -90456,6 +92104,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -90510,7 +92159,7 @@ type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb><
 public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (24 pages, ).
+Output written on testdoc.pdf (25 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -90738,14 +92387,15 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+(./testdoc.out.pyg) [7] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=273, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
+[10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=288, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+<downloaded_figures/f_plot.png, id=290, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11] [12 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90784,18 +92434,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
+[13] [14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90819,7 +92469,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1067.
+t line 1132.
 
 
 
@@ -90839,7 +92489,7 @@ t line 1067.
 
 
 
-t line 1076.
+t line 1141.
 
 
 
@@ -90859,35 +92509,7 @@ t line 1076.
 
 
 
-t line 1080.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1145.
 
 
 
@@ -90923,37 +92545,65 @@ t line 1080.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[15]
+[16]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
+[17] [18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21]
 (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
-[21]
-No file testdoc.bbl.
 [22]
+No file testdoc.bbl.
+[23]
 Underfull \hbox (badness 10000) 
 
-[23] [24]
+[24] [25]
 No file testdoc.ind.
-[25] (./testdoc.aux)
+[26] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -91140,6 +92790,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -91190,7 +92841,7 @@ public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (25 pages, ).
+Output written on testdoc.pdf (26 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -91435,14 +93086,15 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+(./testdoc.out.pyg) [7] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=273, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
+[10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=288, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+<downloaded_figures/f_plot.png, id=290, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11] [12 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91481,18 +93133,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
+[13] [14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91516,7 +93168,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1067.
+t line 1132.
 
 
 
@@ -91536,7 +93188,7 @@ t line 1067.
 
 
 
-t line 1076.
+t line 1141.
 
 
 
@@ -91556,35 +93208,7 @@ t line 1076.
 
 
 
-t line 1080.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1145.
 
 
 
@@ -91620,37 +93244,65 @@ t line 1080.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[15]
+[16]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
+[17] [18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21]
 (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
-[21] (./testdoc.bbl [22] [23]) [24]
+[22] (./testdoc.bbl [23] [24]) [25]
 Underfull \hbox (badness 10000) 
 
-[25] [26] (./testdoc.ind [27]
+[26] [27] (./testdoc.ind [28]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[28]) (./testdoc.aux)
+[29]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -91837,6 +93489,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -91889,7 +93542,7 @@ public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (28 pages, ).
+Output written on testdoc.pdf (29 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -92116,14 +93769,15 @@ dmap/pdftex.map}] (./testdoc.toc) (./testdoc.loe [2]) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [5]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=266, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+(./testdoc.out.pyg) [7] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=273, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=284, 586.8324pt x 442.2924pt>
+[10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=288, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=286, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+<downloaded_figures/f_plot.png, id=290, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11] [12 <../doc/src/manual/fig/wave1D.png>
  <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92162,18 +93816,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=316, 586.8324pt x 442.292
+[13] [14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=318, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=319, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92195,31 +93849,31 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[15]
+[16]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[16] [17] (./testdoc.out.pyg) [18] (./testdoc.out.pyg) [19] [20]
+[17] [18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21]
 (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
-[21] (./testdoc.bbl [22] [23]) [24]
+[22] (./testdoc.bbl [23] [24]) [25]
 Underfull \hbox (badness 10000) 
 
-[25] [26] (./testdoc.ind [27]
+[26] [27] (./testdoc.ind [28]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[28]) (./testdoc.aux)
+[29]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -92406,6 +94060,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+ testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -92452,14 +94107,860 @@ public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (28 pages, ).
+Output written on testdoc.pdf (29 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
-+ system doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
-+ doconce ptex2tex testdoc 'sys=begin{quote}begin{Verbatim}@end{Verbatim}end{quote}' pypro=ans:nt envir=minted
++ system doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
++ doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
 + '[' 0 -ne 0 ']'
 + echo '----------- end of doconce ptex2tex output ----------------'
 + cat testdoc.tex
++ rm -f testdoc.aux
++ system pdflatex -shell-escape testdoc
++ pdflatex -shell-escape testdoc
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ \write18 enabled.
+entering extended mode
+(./testdoc.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+
+(./testdoc.w18))/usr/local/bin/pygmentize
+) (./testdoc.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
+ioning.code.tex)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
+ws.code.tex
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
+gs.code.tex
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: `showlabels' v1.6.6 <2013/12/06>
+with amsmath equation tags
+) 
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
+
+Writing index file testdoc.idx
+No file testdoc.aux.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
+(./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}]
+
+Package hyperref Warning: old toc file detected, not used; run LaTeX again.
+
+
+Package hyperref Warning: old loe file detected, not used; run LaTeX again.
+
+
+Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
+
+[2] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+[3] (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) [4] (./testdoc.out.pyg) (./testdoc.out.pyg)
+
+(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+(./testdoc.out.pyg) [7]
+
+
+...rest of part of LaTeX line number...
+
+[8]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+<../doc/src/manual/fig/wave1D.pdf, id=227, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9 <../doc/src/manual/fig/wave1D.pdf>]
+
+
+
+<../doc/src/manual/fig/wave1D.png, id=244, 586.8324pt x 442.2924pt>
+<use ../doc/src/manual/fig/wave1D.png>
+<downloaded_figures/f_plot.png, id=246, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+ <./downloaded_figures/f_plot.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\theta' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\nabla' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on .
+
+
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
+\T1/lmtt/m/n/8 verbatim
+
+
+
+
+
+
+
+
+
+[12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=271, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=272, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=273, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=274, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=275, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=276, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [13]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+
+t line 1086.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1095.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1099.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
+../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
+rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| 
+[15]
+
+
+.
+
+
+
+.
+
+
+
+.
+
+
+
+
+
+
+
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on .
+
+
+
+
+
+
+
+
+
+
+[16]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+[17] (./testdoc.out.pyg) [18] [19] [20] (./testdoc.out.pyg)
+Underfull \hbox (badness 10000) 
+
+[21]
+
+
+.
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+.
+
+
+
+
+(./testdoc.bbl [22] [23]) [24]
+Underfull \hbox (badness 10000) 
+
+
+
+...rest of part of LaTeX line number...
+
+[25]
+
+
+...rest of part of LaTeX line number...
+
+[26]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+(./testdoc.ind [27]
+Overfull \hbox (9.21497pt too wide) 
+[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
+e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+[28]) (./testdoc.aux)
+
+ *File List*
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+geometry.sty    2010/09/12 v5.6 Page Geometry
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ relsize.sty    2013/03/29 ver 4.1
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+ makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2013/08/26 1.5b (Carsten Heinz)
+ lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
+listings.cfg    2013/08/26 1.5b listings configuration
+fancyvrb.sty    2008/02/07
+  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+   float.sty    2001/11/08 v1.3d Float enhancements (AL)
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ testdoc.w18
+ testdoc.pyg
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+placeins.sty    2005/04/18  v 2.2
+ xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
+ xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+todonotes.sty    2012/07/25
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+showlabels.sty    2013/12/06 v1.6.6
+fancyhdr.sty    
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
+ l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
+l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+l3basics.sty    2014/01/04 v4642 L3 Basic definitions
+ l3expan.sty    2014/01/04 v4642 L3 Argument expansion
+    l3tl.sty    2013/12/27 v4625 L3 Token lists
+   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
+   l3int.sty    2013/08/02 v4583 L3 Integers
+ l3quark.sty    2013/12/14 v4623 L3 Quarks
+   l3prg.sty    2014/01/04 v4642 L3 Control structures
+ l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
+ l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
+  l3prop.sty    2013/12/14 v4623 L3 Property lists
+   l3msg.sty    2013/07/28 v4581 L3 Messages
+  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
+  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
+  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
+    l3fp.sty    2014/01/04 v4642 L3 Floating points
+   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
+l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
+ l3color.sty    2012/08/29 v4156 L3 Experimental color support
+l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
+l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
+ ttlkeys.def    2011/12/15
+ theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+     thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+ testdoc.out
+ testdoc.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+lstlang1.sty    2013/08/26 1.5b listings language file
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.out.pyg
+../doc/src/manual/fig/wave1D.pdf
+../doc/src/manual/fig/wave1D.pdf
+../doc/src/manual/fig/wave1D.png
+downloaded_figures/f_plot.png
+../doc/src/manual/mov/wave_frames/frame_0080.png
+../doc/src/manual/mov/wave_frames/frame_0085.png
+../doc/src/manual/mov/wave_frames/frame_0090.png
+../doc/src/manual/mov/wave_frames/frame_0095.png
+../doc/src/manual/mov/wave_frames/frame_0100.png
+../doc/src/manual/mov/wave_frames/frame_0105.png
+ testdoc.out.pyg
+ testdoc.out.pyg
+ testdoc.bbl
+ testdoc.ind
+ ***********
+
+
+Package rerunfilecheck Warning: File `testdoc.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/sha
+re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/palatino/uplr8a.pfb>
+Output written on testdoc.pdf (28 pages, ).
+Transcript written on testdoc.log.
++ '[' 0 -ne 0 ']'
 + system doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
 + doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
 running preprocess -DFORMAT=plain -DDEVICE=screen -DSOMEVAR=1 testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -92735,8 +95236,8 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:337: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:337: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:398: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:398: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -93148,17 +95649,34 @@ output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
 + doconce ptex2tex testdoc
-\bpypro (!bc pypro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bfpro (!bc fpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bcycod (!bc cycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bfcod (!bc fcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-\bhtmlcod (!bc htmlcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bfcod (!bc fcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("fcod" is unknown)
+
+\bfpro (!bc fpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("fpro" is unknown)
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
+\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unknown)
+
+\bpypro (!bc pypro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pypro" is unknown)
+
+\bcycod (!bc cycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cycod" is unknown)
+
+\bpyshell (!bc pyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pyshell" is unknown)
+
+\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ipy" is unknown)
+
+\bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cpppro" is unknown)
+
+\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cod" is unknown)
+
+\bhtmlcod (!bc htmlcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("htmlcod" is unknown)
+
+\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("sys" is unknown)
+
+\brestructuredtext (!bc restructuredtext) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("restructuredtext" is unknown)
+
+\bdo (!bc do) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("do" is unknown)
+
 output in testdoc.tex
 + '[' 0 -ne 0 ']'
 + system doconce replace '\Verb!' '\verb!' testdoc.tex
@@ -93257,7 +95775,8 @@ output in slides1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides1
 + doconce ptex2tex slides1
-\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unknown)
+
 output in slides1.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
@@ -93350,9 +95869,12 @@ output in slides2.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides2 envir=minted
 + doconce ptex2tex slides2 envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in slides2.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides2
@@ -93403,7 +95925,8 @@ output in slides3.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides3 envir=minted
 + doconce ptex2tex slides3 envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
 output in slides3.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides3 --beamer_slide_theme=red3
@@ -93498,7 +96021,8 @@ running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.
 translating doconce text in tmp_mako__math_test.do.txt to pdflatex
 output in math_test.p.tex
 + doconce ptex2tex math_test
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in math_test.tex
 + pdflatex math_test
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
@@ -93891,9 +96415,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_colors1.tex
 + system pdflatex -shell-escape admon_colors1
@@ -94228,9 +96755,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_mdfbox.tex
 + system pdflatex -shell-escape admon_mdfbox
@@ -94712,9 +97242,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_paragraph.tex
 + system pdflatex -shell-escape admon_paragraph
@@ -95121,9 +97654,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_graybox2.tex
 + system pdflatex -shell-escape admon_graybox2
@@ -95604,9 +98140,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_yellowicon.tex
 + system pdflatex -shell-escape admon_yellowicon
@@ -95910,9 +98449,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_grayicon.tex
 + system pdflatex -shell-escape admon_grayicon
@@ -96215,9 +98757,12 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + '[' 0 -ne 0 ']'
 + doconce ptex2tex admon envir=minted
-\bpycod (!bc pycod) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bpypro (!bc pypro) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_colors2.tex
 + system pdflatex -shell-escape admon_colors2
@@ -96512,9 +99057,13 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.p.tex
 + doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 \bpycod2 (!bc pycod2) -> \begin{minted}{python}
+
 \bpypro2 (!bc pypro2) -> \begin{minted}{python}
+
 \bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in admon.tex
 + cp admon.tex admon_double_envirs.tex
 + rm -rf latex_figs
@@ -96807,11 +99356,6 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._a
 + system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 + doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 translating doconce text in test_boots.do.txt to html
-*** warning: !bc ipy used for IPython sessions, but
-    ipython is not supported for syntax highlighting!
-    install
-    sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
-cannot import name IPythonConsoleLexer
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in test_boots.html
 + '[' 0 -ne 0 ']'
@@ -96866,7 +99410,8 @@ output in movies.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex movies
 + doconce ptex2tex movies
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
@@ -98072,7 +100617,8 @@ output in movies.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex movies
 + doconce ptex2tex movies
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
@@ -98670,7 +101216,8 @@ output in movies.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex movies
 + doconce ptex2tex movies
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+
 output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
@@ -99175,7 +101722,6 @@ translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
 
 exporting publish database papers.pub to papers.bib:
-Warning: found "!bc py", but py is not a standard predefined ptex2tex environment
 *** made directory latex_figs for admon figures
 output in Springer_T2_book.p.tex
 + '[' 0 -ne 0 ']'
@@ -100873,8 +103419,8 @@ output in encoding3.p.tex
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
-(text position  526-527)
-u'ight: 125%">a = 1  # Value suggested by \xc3\x85smund \xc3\x98deg\xc3\xa5rd.\n</pre></div>\n<p>\n\n<!-'
+(text position  526)
+u'ight: 125%">a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n</pre></div>\n<p>\n\n<!-- -'
                                           ^
     remedies: fix character or try --encoding=utf-8
 Abort! (add --no_abort on the command line to avoid this abortion)
@@ -101324,10 +103870,14 @@ output in quickref.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex quickref envir=Verbatim
 + doconce ptex2tex quickref envir=Verbatim
-\bshpro (!bc shpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+
+\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+
+\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+
+\bshpro (!bc shpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
+
 output in quickref.tex
 + '[' 0 -ne 0 ']'
 + system latex -shell-escape quickref.tex
@@ -101513,11 +104063,11 @@ Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
-[3] [4]
+[3] [4] [5]
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[5]
+
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
 [6] [7]
@@ -101532,14 +104082,9 @@ Overfull \hbox (25.94336pt too wide)
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
-
+[9]
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-
-
-...rest of part of LaTeX line number...
-
-[9]
 
 
 ...rest of part of LaTeX line number...
@@ -101549,19 +104094,19 @@ Overfull \hbox (8.97565pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[11]
+[11] [12]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[12]
+[13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13] [14] [15] [16] [17] [18]
+[14] [15] [16] [17] [18]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -101909,10 +104454,10 @@ Overfull \hbox (18.62192pt too wide)
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-
+[6]
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[6] [7]
+[7] [8]
 Overfull \hbox (4.40176pt too wide) 
 \T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
 /10 reg-u-lar ex-pres-sion []
@@ -101920,14 +104465,19 @@ Overfull \hbox (4.40176pt too wide)
 Overfull \hbox (25.94336pt too wide) 
 \T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
 0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
-[8] [9]
+[9]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
 
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[10] [11] [12]
+[10]
+
+
+...rest of part of LaTeX line number...
+
+[11] [12]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
@@ -102092,6 +104642,9 @@ RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omsphv.fd    
  ***********
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
@@ -102361,19 +104914,30 @@ Overfull \hbox (113.00006pt too wide)
 /5$~s. 
 [3]
 Overfull \hbox (113.00006pt too wide) 
+\T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen 
+with  
+
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 space around in sentences---this way, or in quotes:  
+
+Overfull \hbox (95.00006pt too wide) 
+[]\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
+th. 
+
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
 anks..  
-
+[4]
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
-[4]
+[5]
 Overfull \hbox (83.00006pt too wide) 
 \T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
  
 
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
-[5]
+
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
 sume  
@@ -102383,7 +104947,7 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 \T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
-
+[6]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
 asic]  
@@ -102393,7 +104957,7 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-[6]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -102404,7 +104968,7 @@ Overfull \hbox (5.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  fromto: doconce clean@^doconce spl
 it_rst  
-
+[7]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
 lit_rst  
@@ -102419,7 +104983,7 @@ eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-[7]
+[8]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -102427,7 +104991,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-[8]
+
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
@@ -102435,7 +104999,7 @@ Overfull \hbox (29.72876pt too wide)
 
 
 
-
+ [9]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
@@ -102444,7 +105008,7 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
-[9]
+
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
 
@@ -102455,7 +105019,7 @@ oes the caption which must be on a single line. label{some:fig:label}
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
-
+[10]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
 
@@ -102470,7 +105034,7 @@ Overfull \hbox (119.00006pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[10]
+
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -102515,7 +105079,7 @@ Overfull \hbox (54.34767pt too wide)
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-
+[12]
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -102523,7 +105087,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[12]
+
 Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -102534,7 +105098,7 @@ ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
 _localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
 t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
 f gitdiff fix_bibtex4publish csv2table  
-
+[13]
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -102581,7 +105145,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-[13]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -102591,7 +105155,7 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-
+[14]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
 
@@ -102616,7 +105180,7 @@ Overfull \hbox (125.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
-[14]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
@@ -102639,7 +105203,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-
+[15]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
@@ -102674,7 +105238,7 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-[15]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
@@ -102686,7 +105250,7 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
+[16]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
@@ -102697,7 +105261,7 @@ Overfull \hbox (101.00006pt too wide)
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
-[16]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
 
@@ -102707,14 +105271,14 @@ Overfull \hbox (23.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
-
+[17]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[17]
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -102725,25 +105289,25 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-
+[18]
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-[18]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[19]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[19] (./quickref.rst.aux)
+[20] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -102757,7 +105321,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (19 pages, ).
+Output written on quickref.rst.dvi (20 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
@@ -102887,6 +105451,17 @@ Overfull \hbox (113.00006pt too wide)
 /5$~s. 
 [4]
 Overfull \hbox (113.00006pt too wide) 
+\T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen 
+with  
+
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 space around in sentences---this way, or in quotes:  
+
+Overfull \hbox (95.00006pt too wide) 
+[]\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
+th. 
+
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
 anks..  
 
@@ -102896,10 +105471,10 @@ Overfull \hbox (17.00006pt too wide)
 Overfull \hbox (83.00006pt too wide) 
 \T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
  
-
+[6]
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
-[6]
+
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
 sume  
@@ -102916,10 +105491,10 @@ asic]
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
-
+[7]
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-[7]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -102941,11 +105516,11 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (6.12766pt too wide) 
 \T1/ptm/m/n/10 to, but not in-clud-ing the line match-ing the \T1/ptm/m/it/10 r
 eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
-
+[8]
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-[8]
+[9]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -102953,7 +105528,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-[9]
+
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
@@ -102961,7 +105536,7 @@ Overfull \hbox (29.72876pt too wide)
 
 
 
-
+ [10]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
@@ -102970,7 +105545,7 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
-[10]
+
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
 
@@ -102981,7 +105556,7 @@ oes the caption which must be on a single line. label{some:fig:label}
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
-
+[11]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
 
@@ -102992,7 +105567,7 @@ ight=315] YouTube movie.
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
-[11]
+
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -103091,7 +105666,7 @@ Overfull \hbox (71.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
-
+[14]
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
@@ -103103,7 +105678,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-[14]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -103131,14 +105706,14 @@ Overfull \hbox (11.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
 > result  
-
+[15]
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
-[15]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
@@ -103188,7 +105763,7 @@ various formats
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-
+[16]
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -103196,7 +105771,7 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-[16]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
@@ -103211,7 +105786,7 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-
+[17]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -103219,7 +105794,7 @@ Overfull \hbox (101.00006pt too wide)
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
-[17]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
 

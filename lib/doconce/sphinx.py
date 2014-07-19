@@ -2,74 +2,12 @@
 
 # can reuse most of rst module:
 from rst import *
-from common import align2equations, online_python_tutor, bibliography
+from common import align2equations, online_python_tutor, bibliography, \
+     get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option
 
 video_counter = 0
 activecode_counter = 0
-
-legal_pygments_languages = [
-    'Cucumber', 'cucumber', 'Gherkin', 'gherkin',
-    'abap', 'ada', 'ada95ada2005',
-    'antlr-as', 'antlr-actionscript', 'antlr-cpp', 'antlr-csharp',
-    'antlr-c#', 'antlr-java', 'antlr-objc', 'antlr-perl',
-    'antlr-python', 'antlr-ruby', 'antlr-rb', 'antlr',
-    'apacheconf', 'aconf', 'apache', 'applescript', 'as',
-    'actionscript', 'as3', 'actionscript3', 'aspx-cs', 'aspx-vb',
-    'asy', 'asymptote', 'basemake', 'bash', 'sh', 'ksh', 'bat',
-    'bbcode', 'befunge', 'boo', 'brainfuck', 'bf', 'c-objdump',
-    'c', 'cfm', 'cfs', 'cheetah', 'spitfire', 'clojure', 'clj',
-    'cmake', 'coffee-script', 'coffeescript', 'common-lisp',
-    'cl', 'console', 'control',
-    'cpp', 'c++', 'cpp-objdump', 'c++-objdumb', 'cxx-objdump',
-    'csharp', 'c#',
-    'css+django', 'css+jinja', 'css+erb', 'css+ruby',
-    'css+genshitext', 'css+genshi', 'css+mako', 'css+myghty',
-    'css+php', 'css+smarty', 'css',
-    'cython', 'pyx', 'd-objdump', 'd', 'delphi', 'pas',
-    'pascal', 'objectpascal', 'diff', 'udiff',
-    'django', 'jinja', 'dpatch', 'dylan', 'erb',
-    'erl', 'erlang', 'evoque', 'felix', 'flx',
-    'fortran', 'gas', 'genshi', 'kid',
-    'xml+genshi', 'xml+kid', 'genshitext', 'glsl',
-    'gnuplot', 'go', 'groff', 'nroff', 'man', 'haml',
-    'HAML', 'haskell', 'hs',
-    'html+cheetah', 'html+spitfire', 'html+django', 'html+jinja',
-    'html+evoque', 'html+genshi', 'html+kid', 'html+mako',
-    'html+myghty', 'html+php', 'html+smarty', 'html',
-    'hx', 'haXe', 'ini', 'cfg', 'io', 'irc',
-    'java', 'js+cheetah', 'javascript+cheetah', 'js+spitfire',
-    'javascript+spitfire', 'js+django', 'javascript+django',
-    'js+jinja', 'javascript+jinja', 'js+erb', 'javascript+erb',
-    'js+ruby', 'javascript+ruby', 'js+genshitext', 'js+genshi',
-    'javascript+genshitext', 'javascript+genshi', 'js+mako',
-    'javascript+mako', 'js+myghty', 'javascript+myghty',
-    'js+php', 'javascript+php', 'js+smarty', 'javascript+smarty',
-    'js', 'javascript', 'jsp',
-    'lhs', 'literate-haskell', 'lighty', 'lighttpd', 'llvm',
-    'logtalk', 'lua', 'make', 'makefile', 'mf', 'bsdmake',
-    'mako', 'matlab', 'octave', 'matlabsession', 'minid',
-    'modelica', 'modula2', 'm2', 'moocode', 'mupad', 'mxml',
-    'myghty', 'mysql', 'nasm', 'newspeak', 'nginx', 'numpy',
-    'objdump', 'objective-c', 'objectivec', 'obj-c', 'objc',
-    'objective-j', 'objectivej', 'obj-j', 'objj', 'ocaml',
-    'ooc', 'perl', 'pl', 'php', 'php3', 'php4', 'php5',
-    'pot', 'po', 'pov', 'prolog', 'py3tb', 'pycon', 'pytb',
-    'python', 'py', 'python3', 'py3', 'ragel-c', 'ragel-cpp',
-    'ragel-d', 'ragel-em', 'ragel-java', 'ragel-objc',
-    'ragel-ruby', 'ragel-rb', 'ragel', 'raw', 'rb', 'ruby',
-    'rbcon', 'irb', 'rconsole', 'rout', 'rebol', 'redcode',
-    'rhtml', 'html+erb', 'html+ruby', 'rst', 'rest',
-    'restructuredtext', 'sass', 'SASS', 'scala', 'scheme',
-    'scm', 'smalltalk', 'squeak', 'smarty', 'sourceslist',
-    'sources.list', 'splus', 's', 'r', 'sql', 'sqlite3',
-    'squidconf', 'squid.conf', 'squid', 'tcl', 'tcsh',
-    'csh', 'tex', 'latex', 'text', 'trac-wiki', 'moin',
-    'vala', 'vapi', 'vb.net', 'vbnet', 'vim',
-    'xml+cheetah', 'xml+spitfire', 'xml+django', 'xml+jinja',
-    'xml+erb', 'xml+ruby', 'xml+evoque', 'xml+mako',
-    'xml+myghty', 'xml+php', 'xml+smarty', 'xml', 'xslt', 'yaml']
-
 
 def sphinx_figure(m):
     result = ''
@@ -157,7 +95,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     # inside code (or TeX) blocks.
 
     # default mappings of !bc environments and pygments languages:
-    envir2lang = dict(
+    envir2pygments = dict(
         cod='python', pro='python',
         pycod='python', cycod='cython',
         pypro='python', cypro='cython',
@@ -173,11 +111,12 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         rst='rst',
         dat='text', csv='text', txt='text',
         cc='text', ccq='text',  # not possible with extra indent for ccq
-        ipy='python',
+        ipy='ipy',
         xmlcod='xml', xmlpro='xml', xml='xml',
         htmlcod='html', htmlpro='html', html='html',
         texcod='latex', texpro='latex', tex='latex',
-        pyoptpro='python', pyscpro='python',
+        do='doconce',
+        pyshell='python', pyoptpro='python', pyscpro='python',
         )
 
     # grab line with: # Sphinx code-blocks: cod=python cpp=c++ etc
@@ -189,7 +128,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         # turn specifications into a dictionary:
         for definition in defs_line.split():
             key, value = definition.split('=')
-            envir2lang[key] = value
+            envir2pygments[key] = value
 
     # First indent all code blocks
 
@@ -199,14 +138,8 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                                                  return_tp='iframe')
         code_blocks[i] = indent_lines(code_blocks[i], format)
 
-    # Treat math labels. Drop labels in environments with multiple
-    # equations since these do not work in Sphinx. Method: keep
-    # label if there is one and only one. Otherwise use old
-    # method of removing labels. Do not use :nowrap: since this will
-    # generate other labels that we cannot refer to.
-    #
     # After transforming align environments to separate equations
-    # the problem with multiple math labels has disappeared.
+    # the problem with math labels in multiple eqs has disappeared.
     # (doconce.py applies align2equations, which takes all align
     # envirs and translates them to separate equations, but align*
     # environments are allowed.
@@ -302,16 +235,27 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'^!bc +pyshell *\n(.*?)^!ec *\n',
                      '\n\g<1>\n', filestr, re.DOTALL|re.MULTILINE)
 
+    # Check if we have custom pygments lexers
+    if 'ipy' in code_block_types:
+        if not has_custom_pygments_lexer('ipy'):
+            envir2pygments['ipy'] = 'python'
+    if 'do' in code_block_types:
+        if not has_custom_pygments_lexer('doconce'):
+            envir2pygments['do'] = 'text'
+
     # Make correct code-block:: language constructions
-    for key in envir2lang:
-        language = envir2lang[key]
-        if not language in legal_pygments_languages:
-            raise TypeError('%s is not a legal Pygments language '\
-                            '(lexer) in line with:\n  %s' % \
-                                (language, defs_line))
+    legal_pygments_languages = get_legal_pygments_lexers()
+    import sets
+    for key in sets.Set(code_block_types):
+        if key in envir2pygments:
+            if not envir2pygments[key] in legal_pygments_languages:
+                raise TypeError('%s is not a legal Pygments language '\
+                                '(lexer) in line with:\n  %s' % \
+                                (envir2pygments[key], defs_line))
         #filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-        #                 '\n.. code-block:: %s\n\n' % envir2lang[key], filestr,
+        #                 '\n.. code-block:: %s\n\n' % envir2pygments[key], filestr,
         #                 flags=re.MULTILINE)
+
         # Check that we have code installed to handle pyscpro
         if 'pyscpro' in filestr and key == 'pyscpro':
             try:
@@ -364,17 +308,29 @@ def sphinx_code(filestr, code_blocks, code_block_types,
             else:
                 print '*** error: pysccod is not supported without the --runestone flag'
                 _abort()
+
+        elif key == '':
+            # any !bc with/without argument becomes a text block:
+            filestr = re.sub(r'^!bc$', '\n.. code-block:: text\n\n', filestr,
+                             flags=re.MULTILINE)
         else:
+            # Use the standard sphinx code-block directive
+            if key in envir2pygments:
+                pygments_language = envir2pygments[key]
+            elif key in legal_pygments_languages:
+                pygments_language = key
+            else:
+                print '*** error: detected code environment "%s"' % key
+                print '    which is not registered in sphinx.py (sphinx_code)'
+                print '    or not a language registered in pygments'
+                _abort()
             filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                              '\n.. code-block:: %s\n\n' % \
-                             envir2lang[key], filestr, flags=re.MULTILINE)
+                             pygments_language, filestr, flags=re.MULTILINE)
 
     # any !bc with/without argument becomes a text block:
-    #filestr = re.sub(r'^!bc.+\n', '\n.. code-block:: text\n\n', filestr,
-    #                 flags=re.MULTILINE)
     filestr = re.sub(r'^!bc.*$', '\n.. code-block:: text\n\n', filestr,
                      flags=re.MULTILINE)
-
     filestr = re.sub(r'^!ec *\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '', filestr, flags=re.MULTILINE)

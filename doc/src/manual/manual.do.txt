@@ -782,6 +782,37 @@ works between characters, numbers, and the math dollar sign.)
 
 idx{footnotes}
 
+=== Horizontal rule ===
+
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+!bc
+---------
+!ec
+
+=== em-dash ===
+
+The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
+indicated by three hyphens: `---`. The em-dash has two applications: 1)
+as alternative to a hyphen with space around in a sentence---except that
+there are no spaces around the em-dash, and 2) origin of quotes,
+where there is no space between the end of the quote and the m-dash:
+
+!bquote
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+!equote
+The associated DocOnce source reads
+
+!bc
+|bquote
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+|equote
+!ec
+
 === Footnotes ===
 
 Typesetting of footnotes employs a common email or Extended Markdown syntax:

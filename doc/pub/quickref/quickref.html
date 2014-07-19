@@ -136,7 +136,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jul 17, 2014</h4></center> <!-- date -->
+<center><h4>Jul 19, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -351,6 +351,39 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 <pre><code>This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 </code></pre>
 <!-- end verbatim block -->
+
+<p>
+A horizontal rule for separating content vertically, like this:
+
+<p>
+<hr>
+
+<p>
+is typeset as four or more hyphens on a single line:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>---------
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+The <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code> formats support em-dash,
+indicated by three hyphens: <code>---</code>. Here is an example:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+</code></pre>
+<!-- end verbatim block -->
+This text is in the html rendered as
+
+<p>
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences&mdash;this way, or in quotes:
+*Premature optimization is the root of all evil.*&mdash; Donald Knuth.
 
 <h2>Lists  <a name="___sec5"></a></h2>
 

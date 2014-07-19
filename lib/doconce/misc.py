@@ -60,6 +60,7 @@ bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
+    ('--html_toc_depth=', 'No of levels in the table of contents in HTML output. Default: 2.'),
     ('--html_body_font=',
      """Specify HTML font for text body. =? lists available Google fonts."""),
     ('--html_heading_font=',
@@ -1295,9 +1296,9 @@ or
        doconce ptex2tex file -Dvar1=val1 ... envir=ans:nt
 
 or
-       doconce ptex2tex file sys=\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]@\end{Verbatim} envir=minted
+       doconce ptex2tex file "sys=\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]@\end{Verbatim}" envir=minted
 
-or
+(recall quotes in arguments with backslash), or
 
        doconce ptex2tex file envir=Verbatim
 
@@ -1333,6 +1334,16 @@ def ptex2tex():
         _usage_ptex2tex()
         sys.exit(1)
 
+    filename = sys.argv[1]
+    if filename.endswith('.p.tex'):
+        filename = filename[:-6]
+    if not os.path.isfile(filename + '.p.tex'):
+        print 'no file %s' % (filename + '.p.tex')
+        _abort()
+    f = open(filename + '.p.tex', 'r')
+    ptex2tex_filestr = f.read()
+    f.close()
+
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
@@ -1341,12 +1352,20 @@ def ptex2tex():
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
                'latexpro', 'latexcod', 'latex']
+    # envirs is not longer used - we just read what the user has in the file
+
+    # Accept all envirs in envir2pygments, plus all
+    # registered lexers in pygments
+    from common import get_legal_pygments_lexers
+    ptex2tex_begin_pattern = r'^\\b([a-z0-9+_]+)$'
+    user_envirs = re.findall(ptex2tex_begin_pattern, ptex2tex_filestr,
+                             flags=re.MULTILINE)
 
     # Process command-line options
 
     preprocess_options = []  # -Dvariable or -Dvariable=value
     envir_user_spec = []     # user's specified environments
-    for arg in sys.argv[1:]:
+    for arg in sys.argv[2:]:
         if arg.startswith('-D') or arg.startswith('-U'):
             preprocess_options.append(arg)
         elif '=' in arg:
@@ -1359,7 +1378,7 @@ def ptex2tex():
                 if envir == 'envir':
                     # User specifies all ptex2tex environments at once
                     # as "envir=begin@end"
-                    for e in envirs:
+                    for e in user_envirs:
                         envir_user_spec.append((e, begin, end))
                 else:
                     envir_user_spec.append((envir, begin, end))
@@ -1367,7 +1386,8 @@ def ptex2tex():
                 # Fix value=minted and value=ans*:
                 # they need the language explicitly
                 if value == 'minted':
-                    languages = dict(
+                    envir2pygments = dict(
+                        pyshell='python',
                         py='python', cy='cython', f='fortran',
                         c='c', cpp='c++', sh='bash', rst='rst',
                         m ='matlab', pl='perl', swig='c++',
@@ -1375,51 +1395,64 @@ def ptex2tex():
                         java='java',
                         xml='xml', rb='ruby', sys='console',
                         dat='text', txt='text', csv='text',
-                        pyshell='python', ipy='ipython',
+                        ipy='ipy', do='doconce',
                         # pyopt and pysc are treated in latex.py
                         )
+                    # Find substitutes for ipy and doconce if these lexers
+                    # are not installed
+                    # (third-party repos, does not come with pygments)
                     from pygments.lexers import get_lexer_by_name
                     try:
-                        get_lexer_by_name('ipython')
+                        get_lexer_by_name('ipy')
                     except:
-                        # need sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console'
-                        languages['ipy'] = 'python'
+                        envir2pygments['ipy'] = 'python'
+                    try:
+                        get_lexer_by_name('doconce')
+                    except:
+                        envir2pygments['do'] = 'text'
+
+                    legal_lexers = get_legal_pygments_lexers()
+                    for user_envir in user_envirs:
+                        if user_envir in envir2pygments:
+                            pass
+                        elif user_envir in legal_lexers:
+                            envir2pygments[user_envir] = user_envir
 
                     if envir == 'envir':
-                        for lang in languages:
-                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
+                        for lang in envir2pygments:
+                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + envir2pygments[lang] + '}'
                             end = '\\' + 'end{minted}'
-                            envir_user_spec.append((lang+'cod', begin, end))
-                            envir_user_spec.append((lang+'pro', begin, end))
+                            envir_user_spec.append((lang, begin, end))
                     else:
-                        for lang in languages:
+                        for lang in envir2pygments:
                             if envir.startswith(lang + 'cod') or \
                                envir.startswith(lang + 'pro'):
                                 begin = '\\' + 'begin{' + value + '}{' \
-                                        + languages[lang] + '}'
+                                        + envir2pygments[lang] + '}'
                                 end = '\\' + 'end{' + value + '}'
                                 envir_user_spec.append((envir, begin, end))
                 elif value.startswith('ans'):
-                    languages = dict(
+                    envir2listings = dict(
+                        pyshell='python',
                         py='python', cy='python', f='fortran',
                         cpp='c++', sh='bash', swig='swigcode',
                         ufl='uflcode', m='matlab', c='c++',
                         latex='latexcode', xml='xml',
-                        pyopt='python', pyshell='python', ipy='python')
+                        pyopt='python', ipy='python',
+                        do='text')
                     if envir == 'envir':
-                        for lang in languages:
-                            language = languages[lang]
+                        for lang in envir2listings:
+                            language = envir2listings[lang]
                             if value.endswith(':nt'):
                                 language += ':nt'
                             begin = '\\' + 'begin{' + language + '}'
                             end = '\\' + 'end{' + language + '}'
-                            envir_user_spec.append((lang+'cod', begin, end))
-                            envir_user_spec.append((lang+'pro', begin, end))
+                            envir_user_spec.append((lang, begin, end))
                     else:
-                        for lang in languages:
+                        for lang in envir2listings:
                             if envir.startswith(lang + 'cod') or \
                                envir.startswith(lang + 'pro'):
-                                lang = languages[lang]
+                                lang = envir2listings[lang]
                                 if value.endswith(':nt'):
                                     lang += ':nt'
                                 begin = '\\' + 'begin{' + lang + '}'
@@ -1440,18 +1473,10 @@ def ptex2tex():
                     begin = '\\' + 'begin{' + value + '}' + options
                     end = '\\' + 'end{' + value + '}'
                     if envir == 'envir':
-                        for e in envirs:
+                        for e in user_envirs:
                             envir_user_spec.append((e, begin, end))
                     else:
                         envir_user_spec.append((envir, begin, end))
-        else:
-            filename = arg
-
-    try:
-        filename
-    except:
-        print 'no specification of the .p.tex file'
-        _abort()
 
     # Find which environments that will be defined and which
     # latex packages that must be included.
@@ -1491,9 +1516,6 @@ def ptex2tex():
 
     #print 'packages:';  pprint.pprint(packages)
 
-    if filename.endswith('.p.tex'):
-        filename = filename[:-6]
-
     # Run preprocess
     if not preprocess_options:
         if 'minted' in packages:
@@ -1501,10 +1523,6 @@ def ptex2tex():
     if '-DMINTED' in preprocess_options and 'minted' in packages:
         packages.remove('minted')  # nicer with just one \usepackage{minted}
 
-
-    if not os.path.isfile(filename + '.p.tex'):
-        print 'no file %s' % (filename + '.p.tex')
-        _abort()
 
     output_filename = filename + '.tex'
     cmd = 'preprocess %s %s > %s' % \
@@ -1522,26 +1540,46 @@ download preprocess from http://code.google.com/p/preprocess""")
     f.close()
 
     # Replace the environments specified by the user
+    from latex import fix_latex_command_regex
     for envir, begin, end in envir_user_spec:
-        ptex2tex_begin = '\\' + 'b' + envir
-        ptex2tex_end = '\\' + 'e' + envir
-        if ptex2tex_begin in filestr:
-            filestr = filestr.replace(ptex2tex_begin, begin)
-            filestr = filestr.replace(ptex2tex_end, end)
-            print '%s (!bc %s) -> %s' % (ptex2tex_begin, envir, begin)
+        for postfix in ['cod', 'pro', '']:
+            ptex2tex_begin = '\\' + 'b' + envir + postfix
+            ptex2tex_end = '\\' + 'e' + envir + postfix
+            begin_pattern = r'^\%s$' % ptex2tex_begin
+            end_pattern = r'^\%s$' % ptex2tex_end
+            if re.search(fix_latex_command_regex(begin_pattern),
+                         filestr, flags=re.MULTILINE):
+                filestr = re.sub(
+                    begin_pattern,
+                    fix_latex_command_regex(begin, application='replacement'),
+                    filestr, flags=re.MULTILINE)
+                filestr = re.sub(
+                    end_pattern,
+                    fix_latex_command_regex(end, application='replacement'),
+                    filestr, flags=re.MULTILINE)
+                print '%s (!bc %s) -> %s\n' % (ptex2tex_begin, envir, begin)
 
-    # Replace other known ptex2tex environments by a default choice
+    # Replace other environments by a default choice
     begin = r"""\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]"""
     end = r"""\end{Verbatim}"""
     #begin = r"""\begin{quote}\begin{verbatim}"""
     #end = r"""\end{verbatim}\end{quote}"""
-    for envir in envirs:
+    for envir in user_envirs:
         ptex2tex_begin = '\\' + 'b' + envir
         ptex2tex_end = '\\' + 'e' + envir
-        if ptex2tex_begin in filestr:
-            filestr = filestr.replace(ptex2tex_begin, begin)
-            filestr = filestr.replace(ptex2tex_end, end)
-            print '%s (!bc %s) -> %s' % (ptex2tex_begin, envir, begin)
+        begin_pattern = r'^\%s$' % ptex2tex_begin
+        end_pattern = r'^\%s$' % ptex2tex_end
+        if re.search(fix_latex_command_regex(begin_pattern),
+                     filestr, flags=re.MULTILINE):
+            filestr = re.sub(
+                begin_pattern,
+                fix_latex_command_regex(begin, application='replacement'),
+                filestr, flags=re.MULTILINE)
+            filestr = re.sub(
+                end_pattern,
+                fix_latex_command_regex(end, application='replacement'),
+                filestr, flags=re.MULTILINE)
+            print '%s (!bc %s) -> %s ("%s" is unknown)\n' % (ptex2tex_begin, envir, begin, envir)
 
     # Make sure we include the necessary verbatim packages
     if packages:
@@ -2642,13 +2680,13 @@ def doconce_split_html(header, parts, footer, basename, filename):
     generated_files = []
     for pn, part in enumerate(parts):
         header_copy = header[:]
-        if vagrant:
+        if vagrant or bootstrap:
             # Highligh first section in this part in the navigation in header
-            m = re.search(r'<h(2|3)>(.+?)<', ''.join(part))
+            m = re.search(r'<h(1|2|3)>(.+?)<', ''.join(part))
             if m:
                 first_header = m.group(2).strip()
                 for k in range(len(header_copy)):
-                    if 'nav toc' in header[k] and first_header in header[k]:
+                    if 'navigation toc:' in header[k] and first_header in header[k]:
                         header_copy[k] = header[k].replace(
                             '<li>', '<li class="active">')
 
@@ -7276,7 +7314,7 @@ except ImportError:
     print 'pygments is not installed'
     _abort()
 
-class DoconceLexer(RegexLexer):
+class DocOnceLexer(RegexLexer):
     """
     Lexer for Doconce files.
     """
@@ -7348,7 +7386,7 @@ class DoconceLexer(RegexLexer):
         if text[:4] == '--- ':
             return 0.9
 
-class DoconceLexer(RegexLexer):
+class DocOnceLexer(RegexLexer):
     """
     Lexer for Doconce files.
 
@@ -7470,12 +7508,12 @@ class DoconceLexer(RegexLexer):
 # lexers in /usr/local/lib/python2.7/dist-packages/Pygments-1.6dev_20131113-py2.7.egg/pygments/lexers/text.py.
 # It seems that there is no markdown lexer on the net.
 
-class DoconceLexer(RegexLexer):
+class DocOnceLexer(RegexLexer):
     """
     Lexer for Doconce files.
     """
 
-    name = 'Doconce'
+    name = 'DocOnce'
     aliases = ['doconce']
     filenames = ['*.do.txt']
     mimetypes = ['text/x-doconce']
@@ -7514,7 +7552,12 @@ def _usage_pygmentize():
     print 'Usage: doconce pygmentize doconce-file [style]'
 
 def pygmentize():
-    """Typeset a Doconce file with pygmentize, using DoconceLexer above."""
+    """
+    Typeset a Doconce file with pygmentize, using the DocOnceLexer
+    class above.
+
+    An alternative is to register the DocOnceLexer with Pygments.
+    """
     if len(sys.argv) < 2:
         _usge_pygmentize()
         sys.exit(1)
@@ -7528,7 +7571,7 @@ def pygmentize():
         pygm_style = 'default'
 
     f = open(filename, 'r');  text = f.read();  f.close()
-    lexer = DoconceLexer()
+    lexer = DocOnceLexer()
     formatter = HtmlFormatter(noclasses=True, style=pygm_style)
     text = highlight(text, lexer, formatter)
     f = open(filename + '.html', 'w');  f.write(text);  f.close()

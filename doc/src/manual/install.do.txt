@@ -11,10 +11,17 @@ The impatient way to install what is needed is to run the
 ===== DocOnce =====
 
 DocOnce itself is pure Python code hosted at URL:
-"https://github.com/hplgit/doconce".  Its installation from the
-Git source follows the standard procedure:
+"https://github.com/hplgit/doconce".
+Installation can be done via
+
 !bc sys
-# DocOnce
+sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+# or if doconce is already installed
+sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+!ec
+Alternatively, one can run the standard procedure
+
+!bc sys
 git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
@@ -35,7 +42,7 @@ Debian GNU/Linux users can also run
 !bc sys
 sudo apt-get install doconce
 !ec
-This installs the latest release and not the most updated and bugfixed
+This installs the latest *release* and not the most updated and bugfixed
 version.
 On Ubuntu one needs to run
 !bc sys

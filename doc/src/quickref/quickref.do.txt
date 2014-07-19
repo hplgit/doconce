@@ -167,6 +167,30 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 !ec
 
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+!bc
+---------
+!ec
+
+The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
+indicated by three hyphens: `---`. Here is an example:
+
+!bc
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+!ec
+This text is in the ${FORMAT} rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
 ===== Lists =====
 
 There are three types of lists: *bullet lists*, where each item starts
