@@ -2249,7 +2249,7 @@ This list gets typeset as
 </ul>
 
 In an ordered list, each item starts with an <code>o</code> (as the first letter
-in "ordered"):
+in <em>ordered</em>):
 
 <p>
 <!-- begin verbatim block  do-->
@@ -2351,7 +2351,7 @@ Note how one can specify a single institution, multiple institutions
 (with <code>&</code> as separator between institutions),
 and no institution. In some formats (including <code>rst</code> and <code>sphinx</code>)
 only the author names appear. Some formats have
-"intelligence" in listing authors and institutions, e.g., the plain text
+&quot;intelligence&quot; in listing authors and institutions, e.g., the plain text
 format:
 <!-- begin verbatim block -->
 <pre><code>Hans Petter Langtangen [1, 2]
@@ -2411,7 +2411,7 @@ Here are some examples:
 <pre><code>__Abstract.__ The following text just attempts to exemplify
 various section headings.
 
-Appendix is supported too: just let the heading start with &quot;Appendix: &quot;
+Appendix is supported too: just let the heading start with ``Appendix: ''
 (this affects only `latex` output, where the appendix formatting
 is used - all other formats just leave the heading as it is written).
 
@@ -2461,7 +2461,7 @@ the frac specification is used for <code>latex</code> and <code>pdflatex</code> 
 the width of the image as a fraction of the text width.
 
 <p>
-The figure caption is optional. If omitted, the figure appears "inline"
+The figure caption is optional. If omitted, the figure appears &quot;inline&quot;
 in the text without any figure environment in LaTeX formats or HTML.
 The caption may contain a label for referencing the figure.
 
@@ -4749,10 +4749,10 @@ the plain text, Epytext, and StructuredText formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 <code>rst</code> and <code>sphinx</code> formats, the end effect is the same, but
-the "label" and "ref" commands are first translated to the proper
+the &quot;label&quot; and &quot;ref&quot; commands are first translated to the proper
 reST commands by <code>doconce format</code>. In the HTML and (Google
 Code) wiki formats, labels become anchors and references become links,
-and with LaTeX "label" and "ref" are just equipped with backslashes so
+and with LaTeX &quot;label&quot; and &quot;ref&quot; are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
 <p>
@@ -4927,7 +4927,7 @@ the publish file and make a substitution command
 <pre><code>doconce subst &quot;Section\s+ref{sec:eqs}&quot; &quot;...&quot; $files
 </code></pre>
 <!-- end verbatim block -->
-where "..." is the generalized reference as shown in the
+where <code>"..."</code> is the generalized reference as shown in the
 examples above.
 In other words, with <code>doconce ref_external</code> one can automatically
 generate generalized references between, for example, chapters in
@@ -4952,8 +4952,8 @@ One can from cite{some_doc} derive the expression
 <!-- end verbatim block -->
 The <code>doconce ref_external</code> tool generates an <code>external</code> text
 in case of references to equations that says
-"reference to specific <b>equations</b> (label eqs:g1 and eqs:g4)
-in external document "name": "link" is not recommended".
+``reference to specific <b>equations</b> (label eqs:g1 and eqs:g4)
+in external document "name": "link" is not recommended''.
 One can then search for this text and make a Mako if-else rewrite
 as shown above.
 </div>
@@ -5046,7 +5046,7 @@ The rendered text in the current format becomes
 
 
 <p>
-A complete "chapter" reference may look like
+A complete &quot;chapter&quot; reference may look like
 
 <p>
 <!-- begin verbatim block  do-->
@@ -5272,7 +5272,7 @@ is done one a line containing <code>BIBFILE: papers.pub</code> (you may give
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
 Before the command you will often want to have a headline with
-"References", "Bibliography", or similar.
+&quot;References&quot;, &quot;Bibliography&quot;, or similar.
 Here is an example:
 
 <p>
@@ -5289,7 +5289,7 @@ text is produced from the database.
 
 <h3>LaTeX bibliography style  <a name="___sec92"></a></h3>
 
-The bibliography style is "plain" in LaTeX output. To change this, just
+The bibliography style is &quot;plain&quot; in LaTeX output. To change this, just
 edit the <code>.p.tex</code> file. For example,
 
 <p>
@@ -5405,13 +5405,13 @@ DocOnce source file.
 
 <h2>Exercises, Problems, Projects, and Examples  <a name="___sec94"></a></h2>
 
-DocOnce has special support for four types of "exercises", named
+DocOnce has special support for four types of &quot;exercises&quot;, named
 <em>exercise</em>, <em>problem</em>, <em>project</em>, or <em>example</em>.
 These are all typeset as special kind of
 subsections. Such subsections start with a subsection
 headline surrounded 5 <code>=</code> characters, and last up to the
 next headline or the end of the file. The headline itself must
-consists of the word "Exercise", "Problem", "Project", or "Example", followed
+consists of the word <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, or <em>Example</em>, followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
 name of the result file (if the answer to the exercise is to be handed
@@ -5501,7 +5501,7 @@ Here goes a full solution of the whole exercise.
 <!-- end verbatim block -->
 
 <p>
-A recommended rule for using the different "exercise" types goes as follows:
+A recommended rule for using the different &quot;exercise&quot; types goes as follows:
 
 <ul>
   <li> Exercises are smaller problems directly related to the present chapter
@@ -5527,7 +5527,7 @@ or <code>Example:</code>. By enclosing the keyword in braces, as in
 </code></pre>
 <!-- end verbatim block -->
 the keyword is marked for being left out of the heading, resulting in
-the heading "Find a solution to a problem".
+the heading &quot;Find a solution to a problem&quot;.
 
 <p>
 The various elements of exercises are collected in a special data
@@ -5556,15 +5556,15 @@ DocOnce sections (this is the most general approach that will work for many
 formats). One must therefore refer to an exercise, problem, project, or
 example by its label, which normally will translate to the section number
 (in LaTeX, for instance) or a link to the title of the section.
-The <em>title</em> is typeset without any leading "Exercise:", "Problem:",
-or "Project:" word, so that references like
+The <em>title</em> is typeset without any leading <em>Exercise:</em>, <em>Problem:</em>,
+or <em>Project:</em> word, so that references like
 
 <p>
 <!-- begin verbatim block  do-->
 <pre><code>see Problem ref{...}
 </code></pre>
 <!-- end verbatim block -->
-works well in all formats (i.e., no double "Problem Problem" appears).
+works well in all formats (i.e., no double <code>Problem Problem</code> appears).
 
 <p>
 <b>Remark.</b>
@@ -5602,7 +5602,7 @@ command).
 <h2>Blocks of Verbatim Computer Code <a name="sec:verbatim:blocks"></a></h2>
 
 Blocks of computer code, to be typeset verbatim, must appear inside a
-"begin code" <code>!bc</code> keyword and an "end code" <code>!ec</code> keyword. Both
+&quot;begin code&quot; <code>!bc</code> keyword and an &quot;end code&quot; <code>!ec</code> keyword. Both
 keywords must be on a single line and <em>start at the beginning of the
 line</em>.  Before such a code block there must be a plain sentence
 (at least if successful transformation to reST and
@@ -5783,12 +5783,12 @@ environment (again, <code>X</code> is the filename extension, implying the
 type of file). Note that the <code>pro</code> and <code>cod</code> arguments are only used for LaTeX
 and Sphinx output, all other formats will have the code typeset within
 a plain <code>!bc</code> environment.) Two regular expressions, separated by the
-<code>@</code> sign, define the "from" and "to" lines.  The "from" line is
-included in the verbatim block, while the "to" line is not. In the
+<code>@</code> sign, define the &quot;from&quot; and &quot;to&quot; lines.  The &quot;from&quot; line is
+included in the verbatim block, while the &quot;to&quot; line is not. In the
 example above, we copy code from the line matching <code>subroutine test</code>
 (with as many blanks as desired between the two words) and the line
 matching <code>C END1</code> (C followed by 5 blanks and then the text END1). The
-final line with the "to" text is not included in the verbatim block.
+final line with the &quot;to&quot; text is not included in the verbatim block.
 
 <p>
 One can also specify the code environment explictly rather than relying
@@ -5841,9 +5841,9 @@ directive above:
 <!-- end verbatim block -->
 
 <p>
-Note that the "to" line is not copied into the DocOnce file, but the
-"from" line is. Sometimes it is convenient to also neglect the
-"from" line, a feature that is allowed by replacing <code>fromto:</code> by
+Note that the &quot;to&quot; line is not copied into the DocOnce file, but the
+&quot;from&quot; line is. Sometimes it is convenient to also neglect the
+&quot;from&quot; line, a feature that is allowed by replacing <code>fromto:</code> by
 <code>from-to</code> ("from with minus"). This allows for copying very similar
 code segments throughout a file, while still distinguishing between them.
 Copying the second set of parameters from the text
@@ -5968,7 +5968,7 @@ use with PowerPoint or OpenOffice presentations.
  <li> Make a Sphinx version of the DocOnce file.</li>
  <li> Go to the Sphinx directory and load the <code>conf.py</code> file into
     a browser.</li>
- <li> Search for "math" and comment out the
+ <li> Search for &quot;math&quot; and comment out the
     <code>'sphinx.ext.mathjax'</code> (enabled by default) and
     <code>'matplotlib.sphinxext.mathmpl'</code> (disabled by default)
     lines, and uncomment the <code>'sphinx.ext.pngmath'</code> package.
@@ -6042,7 +6042,7 @@ and gives the text block effect in LaTeX beamer.
 
 !bnotice Going deeper
 This is text meant to provide more details. The box has the
-layout of the notice box, but a custom title, here &quot;Going deeper&quot;.
+layout of the notice box, but a custom title, here *Going deeper*.
 !enotice
 
 Finally some summary:
@@ -6076,7 +6076,7 @@ A block has never any icon.
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
 This is text meant to provide more details. The box has the
-layout of the notice box, but a custom title, here "Going deeper".
+layout of the notice box, but a custom title, here <em>Going deeper</em>.
 </div>
 
 

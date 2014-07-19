@@ -103,7 +103,7 @@ required :-)
 # #endif
 
 In an ordered list, each item starts with an `o` (as the first letter
-in "ordered"):
+in *ordered*):
 
 !bc do
    o item 1
@@ -193,7 +193,7 @@ Note how one can specify a single institution, multiple institutions
 (with `&` as separator between institutions),
 and no institution. In some formats (including `rst` and `sphinx`)
 only the author names appear. Some formats have
-"intelligence" in listing authors and institutions, e.g., the plain text
+``intelligence'' in listing authors and institutions, e.g., the plain text
 format:
 !bc
 Hans Petter Langtangen [1, 2]
@@ -249,7 +249,7 @@ Here are some examples:
 __Abstract.__ The following text just attempts to exemplify
 various section headings.
 
-Appendix is supported too: just let the heading start with "Appendix: "
+Appendix is supported too: just let the heading start with ``Appendix: ''
 (this affects only `latex` output, where the appendix formatting
 is used - all other formats just leave the heading as it is written).
 
@@ -293,7 +293,7 @@ are used for output in the formats `html`, `rst`, `sphinx`, while
 the frac specification is used for `latex` and `pdflatex` to specify
 the width of the image as a fraction of the text width.
 
-The figure caption is optional. If omitted, the figure appears "inline"
+The figure caption is optional. If omitted, the figure appears ``inline''
 in the text without any figure environment in LaTeX formats or HTML.
 The caption may contain a label for referencing the figure.
 
@@ -1075,10 +1075,10 @@ the plain text, Epytext, and StructuredText formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 `rst` and `sphinx` formats, the end effect is the same, but
-the "label" and "ref" commands are first translated to the proper
+the ``label'' and ``ref'' commands are first translated to the proper
 reST commands by `doconce format`. In the HTML and (Google
 Code) wiki formats, labels become anchors and references become links,
-and with LaTeX "label" and "ref" are just equipped with backslashes so
+and with LaTeX ``label'' and ``ref'' are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
 It is, in general, recommended to use labels and references for
@@ -1221,7 +1221,7 @@ the publish file and make a substitution command
 !bc do
 doconce subst "Section\s+ref{sec:eqs}" "..." $files
 !ec
-where "..." is the generalized reference as shown in the
+where `"..."` is the generalized reference as shown in the
 examples above.
 In other words, with `doconce ref_external` one can automatically
 generate generalized references between, for example, chapters in
@@ -1243,8 +1243,8 @@ One can from cite{some_doc} derive the expression
 !ec
 The `doconce ref_external` tool generates an `external` text
 in case of references to equations that says
-"reference to specific _equations_ (label eqs:g1 and eqs:g4)
-in external document "name": "link" is not recommended".
+``reference to specific _equations_ (label eqs:g1 and eqs:g4)
+in external document "name": "link" is not recommended''.
 One can then search for this text and make a Mako if-else rewrite
 as shown above.
 !ewarning
@@ -1323,7 +1323,7 @@ the document "A Document for Testing DocOnce":
 cite{Doconce:test}], DocOnce documents may include tables.
 !equote
 
-A complete "chapter" reference may look like
+A complete ``chapter'' reference may look like
 
 !bc do
 As explained in
@@ -1525,7 +1525,7 @@ is done one a line containing `BIBFILE: papers.pub` (you may give
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
 Before the command you will often want to have a headline with
-"References", "Bibliography", or similar.
+``References'', ``Bibliography'', or similar.
 Here is an example:
 
 !bc do
@@ -1540,7 +1540,7 @@ text is produced from the database.
 
 === LaTeX bibliography style ===
 
-The bibliography style is "plain" in LaTeX output. To change this, just
+The bibliography style is ``plain'' in LaTeX output. To change this, just
 edit the `.p.tex` file. For example,
 
 !bc sys
@@ -1636,13 +1636,13 @@ DocOnce source file.
 
 ===== Exercises, Problems, Projects, and Examples =====
 
-DocOnce has special support for four types of "exercises", named
+DocOnce has special support for four types of ``exercises'', named
 *exercise*, *problem*, *project*, or *example*.
 These are all typeset as special kind of
 subsections. Such subsections start with a subsection
 headline surrounded 5 `=` characters, and last up to the
 next headline or the end of the file. The headline itself must
-consists of the word "Exercise", "Problem", "Project", or "Example", followed
+consists of the word *Exercise*, *Problem*, *Project*, or *Example*, followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
 name of the result file (if the answer to the exercise is to be handed
@@ -1725,7 +1725,7 @@ Here goes a full solution of the whole exercise.
 |ec
 !ec
 
-A recommended rule for using the different "exercise" types goes as follows:
+A recommended rule for using the different ``exercise'' types goes as follows:
 
   * Exercises are smaller problems directly related to the present chapter
     (e.g., with references to the text).
@@ -1746,7 +1746,7 @@ or `Example:`. By enclosing the keyword in braces, as in
 ===== {Problem}: Find a solution to a problem =====
 !ec
 the keyword is marked for being left out of the heading, resulting in
-the heading "Find a solution to a problem".
+the heading ``Find a solution to a problem''.
 
 
 The various elements of exercises are collected in a special data
@@ -1773,13 +1773,13 @@ DocOnce sections (this is the most general approach that will work for many
 formats). One must therefore refer to an exercise, problem, project, or
 example by its label, which normally will translate to the section number
 (in LaTeX, for instance) or a link to the title of the section.
-The *title* is typeset without any leading "Exercise:", "Problem:",
-or "Project:" word, so that references like
+The *title* is typeset without any leading *Exercise:*, *Problem:*,
+or *Project:* word, so that references like
 
 !bc do
 see Problem ref{...}
 !ec
-works well in all formats (i.e., no double "Problem Problem" appears).
+works well in all formats (i.e., no double `Problem Problem` appears).
 
 __Remark.__
 Examples are *not* typeset similarly to exercises unless one adds
@@ -1815,7 +1815,7 @@ command).
 label{sec:verbatim:blocks}
 
 Blocks of computer code, to be typeset verbatim, must appear inside a
-"begin code" `!bc` keyword and an "end code" `!ec` keyword. Both
+``begin code'' `!bc` keyword and an ``end code'' `!ec` keyword. Both
 keywords must be on a single line and *start at the beginning of the
 line*.  Before such a code block there must be a plain sentence
 (at least if successful transformation to reST and
@@ -1972,12 +1972,12 @@ environment (again, `X` is the filename extension, implying the
 type of file). Note that the `pro` and `cod` arguments are only used for LaTeX
 and Sphinx output, all other formats will have the code typeset within
 a plain `!bc` environment.) Two regular expressions, separated by the
-`@` sign, define the "from" and "to" lines.  The "from" line is
-included in the verbatim block, while the "to" line is not. In the
+`@` sign, define the ``from'' and ``to'' lines.  The ``from'' line is
+included in the verbatim block, while the ``to'' line is not. In the
 example above, we copy code from the line matching `subroutine test`
 (with as many blanks as desired between the two words) and the line
 matching `C END1` (C followed by 5 blanks and then the text END1). The
-final line with the "to" text is not included in the verbatim block.
+final line with the ``to'' text is not included in the verbatim block.
 
 One can also specify the code environment explictly rather than relying
 on the file extension:
@@ -1995,9 +1995,9 @@ directive above:
 
 @@@CODE __testcode.f fromto:subroutine\s+test@^C\s{5}END1
 
-Note that the "to" line is not copied into the DocOnce file, but the
-"from" line is. Sometimes it is convenient to also neglect the
-"from" line, a feature that is allowed by replacing `fromto:` by
+Note that the ``to'' line is not copied into the DocOnce file, but the
+``from'' line is. Sometimes it is convenient to also neglect the
+``from'' line, a feature that is allowed by replacing `fromto:` by
 `from-to` ("from with minus"). This allows for copying very similar
 code segments throughout a file, while still distinguishing between them.
 Copying the second set of parameters from the text
@@ -2119,7 +2119,7 @@ use with PowerPoint or OpenOffice presentations.
   o Make a Sphinx version of the DocOnce file.
   o Go to the Sphinx directory and load the `conf.py` file into
     a browser.
-  o Search for "math" and comment out the
+  o Search for ``math'' and comment out the
     `'sphinx.ext.mathjax'` (enabled by default) and
     `'matplotlib.sphinxext.mathmpl'` (disabled by default)
     lines, and uncomment the `'sphinx.ext.pngmath'` package.
@@ -2219,7 +2219,7 @@ and gives the text block effect in LaTeX beamer.
 
 |bnotice Going deeper
 This is text meant to provide more details. The box has the
-layout of the notice box, but a custom title, here "Going deeper".
+layout of the notice box, but a custom title, here *Going deeper*.
 |enotice
 
 Finally some summary:
@@ -2245,7 +2245,7 @@ A block has never any icon.
 
 !bnotice Going deeper
 This is text meant to provide more details. The box has the
-layout of the notice box, but a custom title, here "Going deeper".
+layout of the notice box, but a custom title, here *Going deeper*.
 !enotice
 
 Finally some summary:
@@ -2443,7 +2443,7 @@ references and index entries are not treated correctly. Instead,
 run DocOnce on the master file and invoke the script `doconce split_rst`
 to split the long, complete `.rst` into pieces. This process requires
 that each `#include "file.do.txt` line in the master file is preceded by a
-"marker line" having the syntax `#>>>>>> part: file >>>>>>`, where
+``marker line'' having the syntax `#>>>>>> part: file >>>>>>`, where
 `file` is the filename without extension. The number of greater than
 signs is not important, but it has to be a comment line and it has
 to contain the keyword `part:`.

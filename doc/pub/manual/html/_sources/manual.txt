@@ -1918,7 +1918,7 @@ This list gets typeset as
    * item 3
 
 In an ordered list, each item starts with an ``o`` (as the first letter
-in "ordered"):
+in *ordered*):
 
 .. code-block:: doconce
 
@@ -2086,7 +2086,7 @@ Here are some examples:
         __Abstract.__ The following text just attempts to exemplify
         various section headings.
         
-        Appendix is supported too: just let the heading start with "Appendix: "
+        Appendix is supported too: just let the heading start with ``Appendix: ''
         (this affects only `latex` output, where the appendix formatting
         is used - all other formats just leave the heading as it is written).
         
@@ -4555,7 +4555,7 @@ the publish file and make a substitution command
 
         doconce subst "Section\s+ref{sec:eqs}" "..." $files
 
-where "..." is the generalized reference as shown in the
+where ``"..."`` is the generalized reference as shown in the
 examples above.
 In other words, with ``doconce ref_external`` one can automatically
 generate generalized references between, for example, chapters in
@@ -4579,8 +4579,8 @@ a book that exist as stand-alone documents.
     
     The ``doconce ref_external`` tool generates an ``external`` text
     in case of references to equations that says
-    "reference to specific **equations** (label eqs:g1 and eqs:g4)
-    in external document "name": "link" is not recommended".
+    ``reference to specific **equations** (label eqs:g1 and eqs:g4)
+    in external document "name": "link" is not recommended''.
     One can then search for this text and make a Mako if-else rewrite
     as shown above.
 
@@ -5024,7 +5024,7 @@ These are all typeset as special kind of
 subsections. Such subsections start with a subsection
 headline surrounded 5 ``=`` characters, and last up to the
 next headline or the end of the file. The headline itself must
-consists of the word "Exercise", "Problem", "Project", or "Example", followed
+consists of the word *Exercise*, *Problem*, *Project*, or *Example*, followed
 by a colon and a title of the exercise, problem, or project.
 The next line(s) may contain a label and specification of the
 name of the result file (if the answer to the exercise is to be handed
@@ -5159,14 +5159,14 @@ DocOnce sections (this is the most general approach that will work for many
 formats). One must therefore refer to an exercise, problem, project, or
 example by its label, which normally will translate to the section number
 (in LaTeX, for instance) or a link to the title of the section.
-The *title* is typeset without any leading "Exercise:", "Problem:",
-or "Project:" word, so that references like
+The *title* is typeset without any leading *Exercise:*, *Problem:*,
+or *Project:* word, so that references like
 
 .. code-block:: doconce
 
         see Problem ref{...}
 
-works well in all formats (i.e., no double "Problem Problem" appears).
+works well in all formats (i.e., no double ``Problem Problem`` appears).
 
 **Remark.**
 Examples are *not* typeset similarly to exercises unless one adds
@@ -5624,7 +5624,7 @@ Here are a few examples:
         
         !bnotice Going deeper
         This is text meant to provide more details. The box has the
-        layout of the notice box, but a custom title, here "Going deeper".
+        layout of the notice box, but a custom title, here *Going deeper*.
         !enotice
         
         Finally some summary:
@@ -5663,7 +5663,7 @@ The above DocOnce code is in the present format rendered as
 .. admonition:: Going deeper
 
    This is text meant to provide more details. The box has the
-   layout of the notice box, but a custom title, here "Going deeper".
+   layout of the notice box, but a custom title, here *Going deeper*.
 
 
 
