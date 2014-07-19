@@ -115,6 +115,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         xmlcod='xml', xmlpro='xml', xml='xml',
         htmlcod='html', htmlpro='html', html='html',
         texcod='latex', texpro='latex', tex='latex',
+        latexcod='latex', latexpro='latex', latex='latex',
         do='doconce',
         pyshell='python', pyoptpro='python', pyscpro='python',
         )
