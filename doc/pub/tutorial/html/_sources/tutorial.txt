@@ -5,7 +5,7 @@ DocOnce: Document Once, Include Anywhere
 ========================================
 
 :Author: Hans Petter Langtangen
-:Date: Jun 20, 2014
+:Date: Jul 19, 2014
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -271,8 +271,8 @@ the section :ref:`my:first:sec`. References to equations such as
 :eq:`myeq1` work in the same way.
 
 **Inline comments.**
-DocOnce also allows inline comments such as (**hpl 1**: here I will make
-some remarks to the text) for allowing authors to make notes. Inline
+DocOnce also allows inline comments such as <font color="red">[<b>hpl 1</b>: <em>here I will make
+some remarks to the text</em>]</font> for allowing authors to make notes. Inline
 comments can be removed from the output by a command-line argument
 (see the section :ref:`doconce2formats` for an example). Ordinary comment
 lines start with ``#`` and are copied to comment lines in the
@@ -350,10 +350,45 @@ The result looks like this:
         
 
 Of course, such blocks only looks nice in formats with support
-for LaTeX mathematics, and here the align environment in particular
-(this includes ``latex``, ``pdflatex``, ``html``, and ``sphinx``). The raw
-LaTeX syntax appears in simpler formats, but can still be useful
-for those who can read LaTeX syntax.
+for LaTeX mathematics
+(this includes ``latex``, ``pdflatex``, ``html``, ``sphinx``, ``ipynb``, ``pandoc``,
+and ``mwiki``). Simpler
+formats have to just list the raw
+LaTeX syntax.
+
+LaTeX writers who adopt DocOnce need to pay attention to the following:
+
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
+
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``.
+
+ * MediaWiki (``mwiki``) does not support references to equations.
+
+(DocOnce performs extensions to ``sphinx`` and other formats such that
+labels in ``align`` environments work well.)
+
+
+.. admonition:: Remark
+
+   Although DocOnce allows user-defined styles in the preamble of LaTeX output,
+   HTML-based output cannot make use of such styles. If-else constructs for
+   the preprocessor can be used to allow special LaTeX environments for
+   LaTeX output and alternative typesetting for other formats, but it is
+   recommended to stay away from special environments in the text and
+   write in a simpler fashion. For example, DocOnce has no special construction
+   for algorithms, so these must be simulated by lists or verbatim blocks.
+   Other constructions that should be avoided include margin notes, special
+   tables, and
+   ``subfigure`` (combine image files to one file instead, via ``doconce combine_images``).
+
+
+
 
 You can have blocks of computer code, starting and ending with
 ``!bc`` and ``!ec`` instructions, respectively.
@@ -1740,12 +1775,19 @@ The impatient way to install what is needed is to run the
 DocOnce
 -------
 
-DocOnce itself is pure Python code hosted at `<https://github.com/hplgit/doconce>`_.  Its installation from the
-Git source follows the standard procedure:
+DocOnce itself is pure Python code hosted at `<https://github.com/hplgit/doconce>`_.
+Installation can be done via
 
 .. code-block:: text
 
-        # DocOnce
+        sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+        # or if doconce is already installed
+        sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+
+Alternatively, one can run the standard procedure
+
+.. code-block:: text
+
         git clone git@github.com:hplgit/doconce.git
         cd doconce
         sudo python setup.py install
@@ -1943,11 +1985,11 @@ All use of the minted style requires the ``-shell-escape`` command-line
 argument when running LaTeX, i.e., ``latex -shell-escape`` or ``pdflatex
 -shell-escape``.
 
-Inline comments apply the ``todonotes`` LaTeX package if the ``ptex2tex``
-or ``doconce ptex2tex`` command is run with ``-DTODONOTES``.  The
-``todonotes`` package requires several other packages: ``xcolor``,
-``ifthen``, ``xkeyval``, ``tikz``, ``calc``, ``graphicx``, and ``setspace``. The
-relevant Debian packages for installing all this are listed below.
+Inline comments apply the ``todonotes`` LaTeX package if the option
+``--latex_todonotes`` is given.  The ``todonotes`` package requires
+several other packages: ``xcolor``, ``ifthen``, ``xkeyval``, ``tikz``, ``calc``,
+``graphicx``, and ``setspace``. The relevant Debian packages for
+installing all this are listed below.
 
 LaTeX packages
 ~~~~~~~~~~~~~~

@@ -187,7 +187,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jun 20, 2014</h4></center> <!-- date -->
+<center><h4>Jul 19, 2014</h4></center> <!-- date -->
 <ul>
  <li> When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -429,8 +429,8 @@ the section <a href="#my:first:sec">A Subsection with Sample Text</a>. Reference
 <b>Inline comments.</b>
 DocOnce also allows inline comments such as 
 <!-- begin inline comment -->
-<font color="red">[<b>hpl 1</b>: <em>here I will make
-some remarks to the text</em>]</font>
+<font color="red">(<b>hpl 1</b>: <em>here I will make
+some remarks to the text</em>)</font>
 <!-- end inline comment -->
  for allowing authors to make notes. Inline
 comments can be removed from the output by a command-line argument
@@ -515,10 +515,43 @@ $$
 $$
 
 Of course, such blocks only looks nice in formats with support
-for LaTeX mathematics, and here the align environment in particular
-(this includes <code>latex</code>, <code>pdflatex</code>, <code>html</code>, and <code>sphinx</code>). The raw
-LaTeX syntax appears in simpler formats, but can still be useful
-for those who can read LaTeX syntax.
+for LaTeX mathematics
+(this includes <code>latex</code>, <code>pdflatex</code>, <code>html</code>, <code>sphinx</code>, <code>ipynb</code>, <code>pandoc</code>,
+and <code>mwiki</code>). Simpler
+formats have to just list the raw
+LaTeX syntax.
+
+<p>
+LaTeX writers who adopt DocOnce need to pay attention to the following:
+
+<ul>
+ <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
+   and <code>ipynb</code> formats.</li>
+ <li> Only five equation environments can be used: <code>\[ ... \]</code>,
+   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.</li>
+ <li> Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   <code>newcommands*.tex</code>.</li>
+ <li> MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
+</ul>
+
+(DocOnce performs extensions to <code>sphinx</code> and other formats such that
+labels in <code>align</code> environments work well.)
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Remark.</b>
+Although DocOnce allows user-defined styles in the preamble of LaTeX output,
+HTML-based output cannot make use of such styles. If-else constructs for
+the preprocessor can be used to allow special LaTeX environments for
+LaTeX output and alternative typesetting for other formats, but it is
+recommended to stay away from special environments in the text and
+write in a simpler fashion. For example, DocOnce has no special construction
+for algorithms, so these must be simulated by lists or verbatim blocks.
+Other constructions that should be avoided include margin notes, special
+tables, and
+<code>subfigure</code> (combine image files to one file instead, via <code>doconce combine_images</code>).
+</div>
+
 
 <p>
 You can have blocks of computer code, starting and ending with
@@ -1912,11 +1945,21 @@ The impatient way to install what is needed is to run the
 
 <h2>DocOnce  <a name="___sec43"></a></h2>
 
-DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.  Its installation from the
-Git source follows the standard procedure:
+DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.
+Installation can be done via
+
+<p>
 <!-- begin verbatim block  sys-->
-<pre><code># DocOnce
-git clone git@github.com:hplgit/doconce.git
+<pre><code>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+# or if doconce is already installed
+sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+</code></pre>
+<!-- end verbatim block -->
+Alternatively, one can run the standard procedure
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
@@ -2138,11 +2181,11 @@ argument when running LaTeX, i.e., <code>latex -shell-escape</code> or <code>pdf
 -shell-escape</code>.
 
 <p>
-Inline comments apply the <code>todonotes</code> LaTeX package if the <code>ptex2tex</code>
-or <code>doconce ptex2tex</code> command is run with <code>-DTODONOTES</code>.  The
-<code>todonotes</code> package requires several other packages: <code>xcolor</code>,
-<code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>calc</code>, <code>graphicx</code>, and <code>setspace</code>. The
-relevant Debian packages for installing all this are listed below.
+Inline comments apply the <code>todonotes</code> LaTeX package if the option
+<code>--latex_todonotes</code> is given.  The <code>todonotes</code> package requires
+several other packages: <code>xcolor</code>, <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>calc</code>,
+<code>graphicx</code>, and <code>setspace</code>. The relevant Debian packages for
+installing all this are listed below.
 
 <h3>LaTeX packages  <a name="___sec50"></a></h3>
 
@@ -2388,8 +2431,6 @@ sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
 cd ../../..
 </code></pre>
 <!-- end verbatim block -->
-
-<p>
 
 <!-- ------------------- end of main content --------------- -->
 

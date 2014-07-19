@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce: Document Once, Include Anywhere" href="index.html" />
-    <link rel="prev" title="DocOnce: Document Once, Include Anywhere" href="index.html" /> 
+    <link rel="prev" title="DocOnce: Document Once, Include Anywhere" href="index.html" />
+ 
   </head>
   <body>
     <div class="related">
@@ -57,7 +75,7 @@
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">Hans Petter Langtangen</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Jun 20, 2014</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Jul 19, 2014</p>
 <ul class="last simple">
 <li>When writing a note, report, manual, etc., do you find it difficult
 to choose the typesetting format? That is, to choose between plain
@@ -294,8 +312,8 @@ References to sections may use logical names as labels (e.g., a
 the section <a class="reference internal" href="#my-first-sec"><em>A Subsection with Sample Text</em></a>. References to equations such as
 <a href="#equation-myeq1">(1)</a> work in the same way.</p>
 <p><strong>Inline comments.</strong>
-DocOnce also allows inline comments such as (<strong>hpl 1</strong>: here I will make
-some remarks to the text) for allowing authors to make notes. Inline
+DocOnce also allows inline comments such as &lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;here I will make
+some remarks to the text&lt;/em&gt;]&lt;/font&gt; for allowing authors to make notes. Inline
 comments can be removed from the output by a command-line argument
 (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an example). Ordinary comment
 lines start with <tt class="docutils literal"><span class="pre">#</span></tt> and are copied to comment lines in the
@@ -378,10 +396,39 @@ if there are backslahes or other special LaTeX symbols in the LaTeX code.</p>
 <div class="math">
 \[{\partial v\over\partial t} = \nabla\cdot(q(u)\nabla v) + g\]</div>
 <p>Of course, such blocks only looks nice in formats with support
-for LaTeX mathematics, and here the align environment in particular
-(this includes <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt>). The raw
-LaTeX syntax appears in simpler formats, but can still be useful
-for those who can read LaTeX syntax.</p>
+for LaTeX mathematics
+(this includes <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">ipynb</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
+and <tt class="docutils literal"><span class="pre">mwiki</span></tt>). Simpler
+formats have to just list the raw
+LaTeX syntax.</p>
+<p>LaTeX writers who adopt DocOnce need to pay attention to the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>AMS LaTeX mathematics is supported, also for the <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
+and <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats.</li>
+<li>Only five equation environments can be used: <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></tt>,
+<tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, and <tt class="docutils literal"><span class="pre">align</span></tt>.</li>
+<li>Newcommands in mathematical formulas are allowed, but not in
+the running text. Newcommands must be defined in files with names
+<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>.</li>
+<li>MediaWiki (<tt class="docutils literal"><span class="pre">mwiki</span></tt>) does not support references to equations.</li>
+</ul>
+</div></blockquote>
+<p>(DocOnce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt> and other formats such that
+labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)</p>
+<div class="admonition-remark admonition">
+<p class="first admonition-title">Remark</p>
+<p class="last">Although DocOnce allows user-defined styles in the preamble of LaTeX output,
+HTML-based output cannot make use of such styles. If-else constructs for
+the preprocessor can be used to allow special LaTeX environments for
+LaTeX output and alternative typesetting for other formats, but it is
+recommended to stay away from special environments in the text and
+write in a simpler fashion. For example, DocOnce has no special construction
+for algorithms, so these must be simulated by lists or verbatim blocks.
+Other constructions that should be avoided include margin notes, special
+tables, and
+<tt class="docutils literal"><span class="pre">subfigure</span></tt> (combine image files to one file instead, via <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>).</p>
+</div>
 <p>You can have blocks of computer code, starting and ending with
 <tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> instructions, respectively.</p>
 <div class="highlight-text"><div class="highlight"><pre>!bc pycod
@@ -729,7 +776,7 @@ to HTML format:</p>
 <div class="last highlight-bash"><div class="highlight"><pre>cp mydoc.do.txt mydoc2.do.txt
 <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span class="nv">dir</span><span class="o">=</span><span class="s2">&quot;master/project/dir1/dir2&quot;</span>
-<span class="k">for </span>figname in fig1 fig2 fig3<span class="p">;</span> <span class="k">do</span>
+<span class="k">for </span>figname in fig1 fig2 fig3; <span class="k">do</span>
 <span class="k">  </span>doconce replace <span class="s2">&quot;[$figname,&quot;</span> <span class="s2">&quot;[$site/$dir/$figname.png,&quot;</span> <span class="se">\</span>
           mydoc2.do.txt
 <span class="k">done</span>
@@ -1534,10 +1581,15 @@ The impatient way to install what is needed is to run the
 <a class="reference external" href="install_doconce.py">install_doconce.py</a>) script.</p>
 <div class="section" id="doconce">
 <h2>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h2>
-<p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.  Its installation from the
-Git source follows the standard procedure:</p>
-<div class="highlight-text"><div class="highlight"><pre># DocOnce
-git clone git@github.com:hplgit/doconce.git
+<p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.
+Installation can be done via</p>
+<div class="highlight-text"><div class="highlight"><pre>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+# or if doconce is already installed
+sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+</pre></div>
+</div>
+<p>Alternatively, one can run the standard procedure</p>
+<div class="highlight-text"><div class="highlight"><pre>git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
@@ -1691,11 +1743,11 @@ This is not necessary if you run the alternative <tt class="docutils literal"><s
 <p>All use of the minted style requires the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> command-line
 argument when running LaTeX, i.e., <tt class="docutils literal"><span class="pre">latex</span> <span class="pre">-shell-escape</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span>
 <span class="pre">-shell-escape</span></tt>.</p>
-<p>Inline comments apply the <tt class="docutils literal"><span class="pre">todonotes</span></tt> LaTeX package if the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
-or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> command is run with <tt class="docutils literal"><span class="pre">-DTODONOTES</span></tt>.  The
-<tt class="docutils literal"><span class="pre">todonotes</span></tt> package requires several other packages: <tt class="docutils literal"><span class="pre">xcolor</span></tt>,
-<tt class="docutils literal"><span class="pre">ifthen</span></tt>, <tt class="docutils literal"><span class="pre">xkeyval</span></tt>, <tt class="docutils literal"><span class="pre">tikz</span></tt>, <tt class="docutils literal"><span class="pre">calc</span></tt>, <tt class="docutils literal"><span class="pre">graphicx</span></tt>, and <tt class="docutils literal"><span class="pre">setspace</span></tt>. The
-relevant Debian packages for installing all this are listed below.</p>
+<p>Inline comments apply the <tt class="docutils literal"><span class="pre">todonotes</span></tt> LaTeX package if the option
+<tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> is given.  The <tt class="docutils literal"><span class="pre">todonotes</span></tt> package requires
+several other packages: <tt class="docutils literal"><span class="pre">xcolor</span></tt>, <tt class="docutils literal"><span class="pre">ifthen</span></tt>, <tt class="docutils literal"><span class="pre">xkeyval</span></tt>, <tt class="docutils literal"><span class="pre">tikz</span></tt>, <tt class="docutils literal"><span class="pre">calc</span></tt>,
+<tt class="docutils literal"><span class="pre">graphicx</span></tt>, and <tt class="docutils literal"><span class="pre">setspace</span></tt>. The relevant Debian packages for
+installing all this are listed below.</p>
 </div>
 <div class="section" id="latex-packages">
 <h3>LaTeX packages<a class="headerlink" href="#latex-packages" title="Permalink to this headline">¶</a></h3>
@@ -2057,7 +2109,7 @@ cd ../../..
     </div>
     <div class="footer">
         &copy; Copyright 2014, Hans Petter Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>
