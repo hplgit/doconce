@@ -5,7 +5,7 @@ DocOnce: Document Once, Include Anywhere
 ========================================
 
 :Author: Hans Petter Langtangen
-:Date: Jul 19, 2014
+:Date: Jul 20, 2014
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -490,13 +490,13 @@ From DocOnce to Other Formats
 =============================
 
 Transformation of a DocOnce document ``mydoc.do.txt`` to various other
-formats apply the script ``doconce format``:
+formats is done with the script ``doconce format``:
 
 .. code-block:: text
 
         Terminal> doconce format formatname mydoc.do.txt
 
-or drop the extension:
+or just drop the extension:
 
 .. code-block:: text
 
@@ -1762,6 +1762,8 @@ gives a quick introduction to how DocOnce is used in a real case.
 There is another demo in the ``docs/manual`` directory which
 translates the more comprehensive documentation, ``manual.do.txt``, to
 various formats. The ``make.sh`` script runs a set of translations.
+
+.. _install:doconce:
 
 Installation of DocOnce and its Dependencies
 ============================================

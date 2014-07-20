@@ -13,7 +13,8 @@ idx{doconce!short explanation}
 
 # #include "../tutorial/_what_is.do.txt"
 
-# #include "install.do.txt"
+!split
+TOC: on
 
 #
 # Here are some comment lines that do not affect any formatting
@@ -28,7 +29,7 @@ idx{doconce!short explanation}
 # The mako tool also supports <%doc> .. </%doc>
 #
 
-
+!split
 ===== Demos =====
 
 idx{demos}
@@ -41,6 +42,18 @@ doc/manual/manual.do.txt
 file in the DocOnce source code tree. Here you can run a
 `make.sh` script to generate a lot of different
 formats: HTML, LaTeX, plain text, etc., stored in the subdirectory `demo`.
+To successfully run this script and compile all the different versions,
+you must have quite a lot of software installed, see
+the Section ref{install:doconce} for detailed information.
+However,
+the most commonly used formats of this manual are
+fortunately also accessible through the web:
+"HTML": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html",
+"Sphinx": "http://hplgit.github.io/doconce/doc/pub/manual/html/index.html",
+and
+"PDF": "http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf".
+DocOnce supports a lot of different layouts of documents, see
+the "collection of various versions of a scientific report": "http://hplgit.github.com/teamods/writing_reports/index.html".
 
 Another demo is found in
 !bc sys
@@ -48,13 +61,13 @@ doc/tutorial/tutorial.do.txt
 !ec
 In the `tutorial` directory there is also a `make.sh` file producing a
 lot of formats in the subdirectory `demo`.
+The three most common formats can be found on the web:
+"HTML": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html",
+"Sphinx": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html",
+and
+"PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf".
 
-# Example on including another DocOnce file:
-
-# #include "../tutorial/doconce2anything.do.txt"
-
-
-
+!split
 ======= The DocOnce Markup Language =======
 
 The DocOnce format introduces four constructs to markup text:
@@ -150,7 +163,7 @@ The result becomes
      if there are multiple
      lines)
 
-
+!split
 ===== Special lines =====
 
 The DocOnce markup language has a concept called *special lines*.
@@ -221,6 +234,7 @@ This line is usually placed after the `DATE:` line.
 The value `off` turns off the table of contents.
 
 
+!split
 ===== Section headings =====
 idx{headlines} idx{section headings}
 
@@ -269,6 +283,7 @@ The running text goes here.
 __A Paragraph.__ The running text goes here.
 !ec
 
+!split
 ===== Figures =====
 
 # Note: need extra blank after FIGURE and MOVIE in !bc environments
@@ -335,7 +350,7 @@ Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
 Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
 !ec
 
-
+!split
 ===== Movies =====
 
 Movies/videos are inserted using the `MOVIE:` keyword. This
@@ -543,6 +558,7 @@ doconce subst ',loop]{2}( .+: f000)' ',loop{12}\g<1>' mydoc.do.txt
 
 !enotice
 
+!split
 ===== Copying Computer Code from Source Files =====
 
 Another type of special lines starts with `@@@CODE` and enables copying
@@ -581,6 +597,7 @@ set the (terminal) prompt that prefixes the command:
  * `--os_prompt=nocmd` results in no prompt and no command, just the output.
  * `--os_prompt=Terminal>` is the default setting (as in the example above).
 
+!split
 ===== Inline Tagging =====
 label{inline:tagging}
 idx{inline tagging} idx{emphasized words} idx{boldface words} idx{verbatim text}
@@ -1024,6 +1041,7 @@ on a linear system ${\bf A}{\bf x} = {\bf b}$|$Ax=b$, where $\bf A$|$A$
 is an $n\times n$|$nxn$ matrix, and $\bf x$|$x$ and $\bf b$|$b$
 are vectors of length $n$|$n$."
 
+!split
 ===== Comments =====
 
 Comments intended to be (sometimes) visible in the output document and
@@ -1059,7 +1077,7 @@ To comment out or remove large sections, consider using the Preprocess
 preprocessor and an if-else block with a variable that is undefined
 (typically something like a test `# #ifdef EXTRA` in Preprocess).
 
-
+!split
 ===== Cross-Referencing =====
 idx{cross referencing} idx{labels} idx{references}
 
@@ -1227,6 +1245,14 @@ In other words, with `doconce ref_external` one can automatically
 generate generalized references between, for example, chapters in
 a book that exist as stand-alone documents.
 
+# Need to artificially declare the labels referred to in the
+# box below, otherwise split_html will complain that we have
+# `ref{X}`, but not corresponding `label{X}`... Also, we
+# need to typeset labels in verbatim to avoid them being
+# translated into something different.
+
+# `\label{eqs:g1}` and `\label{eqs:g4}`
+
 !bwarning
 Generalized references to equations work well in LaTeX, but
 not in other formats as one cannot resolve the equation number
@@ -1344,7 +1370,7 @@ As explained in
 cite{Doconce:test}, DocOnce documents may include tables.
 !ec
 That is, the internal reference `Chapter ...` is omitted since
-it is not meaningful to refer to an external document as "Chapter".
+it is not meaningful to refer to an external document as ``Chapter''.
 The resulting rendered text in the current format becomes
 !bquote
 As explained in
@@ -1370,6 +1396,7 @@ again since the command applies the compiled files to get information
 or Mako preprocessors.
 !enotice
 
+!split
 ===== Index =====
 idx{index} idx{citations} idx{bibliography}
 
@@ -1548,6 +1575,7 @@ doconce format latex mydoc
 doconce replace 'bibliographystyle{plain}' 'bibliographystyle{abbrev}' mydoc.p.tex
 !ec
 
+!split
 ===== Tables =====
 
 A table like
@@ -1634,6 +1662,7 @@ If this output is redirected to a file, say `mytable.do.txt`, one can
 easily include this file by `# #include "mytable.do.txt"` in the
 DocOnce source file.
 
+!split
 ===== Exercises, Problems, Projects, and Examples =====
 
 DocOnce has special support for four types of ``exercises'', named
@@ -1811,6 +1840,7 @@ use to further tailor the appearance of exercises (given that one
 edits the `.tex` file, preferably by a script after each `doconce format`
 command).
 
+!split
 ===== Blocks of Verbatim Computer Code =====
 label{sec:verbatim:blocks}
 
@@ -1998,7 +2028,7 @@ directive above:
 Note that the ``to'' line is not copied into the DocOnce file, but the
 ``from'' line is. Sometimes it is convenient to also neglect the
 ``from'' line, a feature that is allowed by replacing `fromto:` by
-`from-to` ("from with minus"). This allows for copying very similar
+`from-to` (``from with minus''). This allows for copying very similar
 code segments throughout a file, while still distinguishing between them.
 Copying the second set of parameters from the text
 
@@ -2040,7 +2070,7 @@ to edits of the source code file than the line numbers.
 Moreover, copy of code from file works in Dococe across formats
 (HTML, Sphinx, Markdown, etc.).
 
-
+!split
 ===== LaTeX Blocks of Mathematical Text =====
 label{mathtext}
 
@@ -2137,6 +2167,7 @@ use with PowerPoint or OpenOffice presentations.
     mathematical expression.
 
 
+!split
 ===== Macros (Newcommands) =====
 label{newcommands}
 
@@ -2187,6 +2218,7 @@ will then be rendered to
 in the current format.
 # #endif
 
+!split
 ===== Admonitions =====
 
 DocOnce offers strong support for admonition environments, such
@@ -2423,7 +2455,7 @@ More advanced use of mako can include Python code that may automate
 the writing of parts of the document.
 
 
-
+!split
 ===== Splitting Documents into Smaller Pieces =====
 
 Long documents are conveniently split into smaller DocOnce files.
@@ -2569,7 +2601,7 @@ stand-alone. We have introduced the convention that if `TITLE:`
 is found at the beginning of the line (i.e., the document
 has a title), the header and footer are included, otherwise not.
 
-
+!split
 ===== Missing Features =====
 
 DocOnce does not aim to support sophisticated typesetting, simply because
@@ -2616,12 +2648,15 @@ LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
 Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using `doconce combine_images`),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), code listings in figures (use just inline blocks).
+to only utilze very standard LaTeX-style writing. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance,
+
+ * more than
+   one plot per figure (combine them into one using `doconce combine_images`),
+ * floating tables with captions (tables are inlined and explained in the text),
+ * example environments (use subsection or subsubsection instead),
+ * algorithms environments (see *Typesetting of Algorithms* in this manual),
+ * code listings in figures (use just inline blocks).
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -2685,6 +2720,7 @@ the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!
 
 
+!split
 ======= Writing Slides =======
 
 It is a fast procedure to make slides from large amounts of DocOnce
@@ -2712,6 +2748,7 @@ Points to consider (just sketches...):
    to PDFs and odp format, convert odp to ppt interactively or with
    `unoconv`.
 
+!split
 ===== Overview =====
 
 Basically, DocOnce slides are ordinary DocOnce text with `!split`
@@ -2773,6 +2810,7 @@ for simple layout and
 "`shadow`": "http://hplgit.github.io/teamods/doconce/demo/demo_blue_shadow.pdf"
 for shadowed boxes and more visual structure in the slides.
 
+!split
 ======= Mako Programming =======
 
 The "Mako": "http://docs.makotemplates.org/" templating engine is used
@@ -2849,6 +2887,7 @@ comment in Mako.
 
 One can use Mako to extend the DocOnce syntax. Three examples are given next.
 
+!split
 ===== Example: Executing Python and using SymPy Objects in LaTeX =====
 
 Here is an example where we want to illustrate how to calculate a
@@ -2916,6 +2955,7 @@ creating a document while running a Python programming cover
 and also IPython notebooks.
 
 
+!split
 ===== Example: Extending Tables to Handle Figures =====
 label{manual:tables:wfigs}
 
@@ -3225,6 +3265,7 @@ can later substitute by a script is possible in all types of
 ASCII-based documents, e.g., LaTeX, Sphinx, and Markdown.
 !esummary
 
+!split
 ===== Example: Defining a Theorem Environment =====
 label{manual:theorem:envir}
 
@@ -3336,7 +3377,7 @@ computer code.
 
 
 
-
+!split
 ===== Tools for Writing DocOnce Documents =====
 
  * Emacs (with the modest DocOnce syntax highlighting), Vim, Gedit, etc.
@@ -3352,9 +3393,18 @@ series of transformations of the text. The effect of each of these
 transformation steps are dumped to a logfile, named
 `_doconce_debugging.log`, if the to `doconce format` after the filename
 is `debug`. The logfile is inteded for the developers of DocOnce, but
-may still give some idea of what is wrong.  The section "Basic Parsing
-Ideas" explains how the DocOnce text is transformed into a specific
+may still give some idea of what is wrong.  The section ``Basic Parsing
+Ideas'' explains how the DocOnce text is transformed into a specific
 format, and you need to know these steps to make use of the logfile.
+
+
+# Example on including another DocOnce file:
+
+!split
+# #include "../tutorial/doconce2anything.do.txt"
+
+!split
+# #include "install.do.txt"
 
 
 

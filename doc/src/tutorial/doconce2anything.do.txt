@@ -3,12 +3,12 @@
 label{doconce2formats}
 
 Transformation of a DocOnce document `mydoc.do.txt` to various other
-formats apply the script `doconce format`:
+formats is done with the script `doconce format`:
 
 !bc sys
 Terminal> doconce format formatname mydoc.do.txt
 !ec
-or drop the extension:
+or just drop the extension:
 
 !bc sys
 Terminal> doconce format formatname mydoc

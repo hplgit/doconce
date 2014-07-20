@@ -12,13 +12,11 @@ DATE: today
    start with some very simple text-like format that easily converts
    to the formats listed above, and then at some later stage
    eventually go with a particular format?
-
  * Do you need to write documents in varying formats but find it
    difficult to remember all the typesetting details of various
    formats like "LaTeX":"http://refcards.com/docs/silvermanj/amslatex/LaTeXRefCard.v2.0.pdf", "HTML":"http://www.htmlcodetutorial.com/", "reStructuredText":"http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html", "Sphinx":"http://sphinx.pocoo.org/contents.html", and "wiki":"http://code.google.com/p/support/wiki/WikiSyntax"? Would it be convenient
    to generate the typesetting details of a particular format from a
    very simple text-like format with minimal tagging?
-
  * Do you have the same information scattered around in different
    documents in different typesetting formats? Would it be a good idea
    to write things once, in one format, stored in one place, and
@@ -34,15 +32,15 @@ If any of these questions are of interest, you should keep on reading.
  * Same source can produce a variety of output formats.
    The following support LaTeX math and (pygmentized) code:
 
-   o "traditional LaTeX B/W documents for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf"
-   o "color LaTeX PDF documents": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf"
-   o "color LaTeX PDF documents for viewing on small phones": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
-   o "Sphinx HTML documents with 20+ different designs": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
-   o "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
-   o HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
-   o "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
-   o Markdown
-   o IPython notebook
+   * "traditional LaTeX B/W documents for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf"
+   * "color LaTeX PDF documents": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf"
+   * "color LaTeX PDF documents for viewing on small phones": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
+   * "Sphinx HTML documents with 20+ different designs": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html"
+   * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
+   * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" blog posts
+   * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
+   * Markdown
+   * IPython notebook
 
    Other formats include plain untagged text (for email),
    Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),

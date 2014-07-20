@@ -15,7 +15,7 @@ is inserted if the document is split using `doconce split_html`.  This
 construction results in a short, standard Bootstrap main page.
 
 A multiple-page document is created by inserting `!split` at desired
-places.`doconce split_html` splits the document and inserts navigation
+places. `doconce split_html` splits the document and inserts navigation
 button (previous and next page) at the bottom of each page. The
 option `--pagination` can be added to get a different navigation
 bar at the bottom where also the page number can be seen.

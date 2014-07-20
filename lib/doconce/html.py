@@ -254,21 +254,37 @@ css_bloodish = """\
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
-def toc2html(indent=3, font_size=80):
+def toc2html(font_size=80):
     # level_depth: how many levels that are represented in the toc
-    level_depth = option('html_toc_depth=', 2)
+    level_depth = int(option('html_toc_depth=', '2'))
+    indent = int(option('html_toc_indent=', '3'))
+    nested_list = indent == 0
+
     global tocinfo  # computed elsewhere
     level_min = tocinfo['highest level']
     level_max = level_min + level_depth - 1
     toc_html = ''
-    for title, level, label, href in tocinfo['sections']:
+    uls = 0  # no of active <ul> sublists
+    for i in range(len(tocinfo['sections'])):
+        title, level, label, href = tocinfo['sections'][i]
         if level > level_max:
             continue
         spaces = '&nbsp;'*(indent*(level - level_min))
+        if nested_list and i > 0 and level > tocinfo['sections'][i-1][1]:
+            toc_html += '     <ul class="nav">\n'
+            uls += 1
         btitle = title = title.strip()
         if level_depth == 2 and level == level_min:
             btitle = '<b>%s</b>' % btitle  # bold for highest level
         toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, btitle)
+        if nested_list and i < len(tocinfo['sections'])-1 and \
+               tocinfo['sections'][i+1][1] < level:
+            toc_html += '     </ul>\n'
+            uls -= 1
+    # remaining </ul>s
+    if nested_list:
+        for j in range(uls):
+            toc_html += '     </ul>\n'
     return toc_html
 
 
@@ -290,7 +306,7 @@ def html_code(filestr, code_blocks, code_block_types,
         sys='text',
         #sys='bash'
         dat='text', txt='text', csv='text',
-        cc='txt', ccq='text',
+        cc='text', ccq='text',
         pyshell='python', ipy='ipy',
         pyopt='python', pysc='python',
         do='doconce')
@@ -673,7 +689,7 @@ MathJax.Hub.Config({
                 print line
             _abort()
 
-        # template can only have slots for title, date, main
+        # template can only have slots for title, date, main, table_of_contents
         template = latin2html(template) # code non-ascii chars
         # replate % by %% in template, except for %(title), %(date), %(main),
         # etc which are the variables we can plug into the template.
@@ -702,11 +718,7 @@ MathJax.Hub.Config({
     if html_style.startswith('boots'):
         # Change chapter headings to page
         filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
-                         """
-<div class="page-header">
-  <h1>\g<1></h1>
-</div>
-""", filestr)
+                         '<h1 class="page-header">\g<1></h1> <!-- chapter heading -->', filestr)
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):

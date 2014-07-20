@@ -1,6 +1,7 @@
 
 
 ======= Installation of DocOnce and its Dependencies =======
+label{install:doconce}
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.

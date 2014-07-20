@@ -11,57 +11,11 @@ Automatically generated HTML file from Doconce source
 
 
 
-<style type="text/css">
-    /* blueish style */
-
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
-
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
-
-div { text-align: justify; text-justify: inter-word; }
-</style>
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
 </head>
 
@@ -123,8 +77,8 @@ div { text-align: justify; text-justify: inter-word; }
               (' Demos ', 2, None, '___sec41'),
               (' Installation of DocOnce and its Dependencies ',
                1,
-               None,
-               '___sec42'),
+               'install:doconce',
+               'install:doconce'),
               (' DocOnce ', 2, None, '___sec43'),
               (' Dependencies ', 2, None, '___sec44'),
               (' Preprocessors ', 3, None, '___sec45'),
@@ -166,11 +120,71 @@ MathJax.Hub.Config({
 
 
     
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="tutorial.html">DocOnce: Document Once, Include Anywhere</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "Some DocOnce Features" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Some DocOnce Features</b></a></li>
+     <!-- navigation toc: "What Does DocOnce Look Like?" --> <li><a href="#___sec1" style="font-size: 80%;"><b>What Does DocOnce Look Like?</b></a></li>
+     <!-- navigation toc: "What Can DocOnce Be Used For?" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What Can DocOnce Be Used For?</a></li>
+     <!-- navigation toc: "Basic Syntax" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basic Syntax</a></li>
+     <!-- navigation toc: "First a Section Heading" --> <li><a href="#___sec4" style="font-size: 80%;"><b>First a Section Heading</b></a></li>
+     <!-- navigation toc: "A Subsection with Sample Text" --> <li><a href="#my:first:sec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Subsection with Sample Text</a></li>
+     <!-- navigation toc: "Mathematics and Computer Code" --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics and Computer Code</a></li>
+     <!-- navigation toc: "Macros (Newcommands), Cross-References, Index, and Bibliography" --> <li><a href="#newcommands" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Macros (Newcommands), Cross-References, Index, and Bibliography</a></li>
+     <!-- navigation toc: "From DocOnce to Other Formats" --> <li><a href="#doconce2formats" style="font-size: 80%;"><b>From DocOnce to Other Formats</b></a></li>
+     <!-- navigation toc: "Generating a makefile" --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating a makefile</a></li>
+     <!-- navigation toc: "Preprocessing" --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing</a></li>
+     <!-- navigation toc: "Removal of inline comments" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Removal of inline comments</a></li>
+     <!-- navigation toc: "Notes" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notes</a></li>
+     <!-- navigation toc: "Demo of different formats" --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demo of different formats</a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "Blog Posts" --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blog Posts</a></li>
+     <!-- navigation toc: "Pandoc and Markdown" --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Pandoc and Markdown</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: "PDFLaTeX" --> <li><a href="#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;PDFLaTeX</a></li>
+     <!-- navigation toc: "XeLaTeX" --> <li><a href="#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;XeLaTeX</a></li>
+     <!-- navigation toc: "From PDF to e-book formats" --> <li><a href="#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;From PDF to e-book formats</a></li>
+     <!-- navigation toc: "Plain ASCII Text" --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plain ASCII Text</a></li>
+     <!-- navigation toc: "reStructuredText" --> <li><a href="#___sec35" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;reStructuredText</a></li>
+     <!-- navigation toc: "Sphinx" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
+     <!-- navigation toc: "Wiki Formats" --> <li><a href="#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki Formats</a></li>
+     <!-- navigation toc: "Google Docs" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Google Docs</a></li>
+     <!-- navigation toc: "Tweaking the DocOnce Output" --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tweaking the DocOnce Output</a></li>
+     <!-- navigation toc: "Demos" --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demos</a></li>
+     <!-- navigation toc: "Installation of DocOnce and its Dependencies" --> <li><a href="#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
+     <!-- navigation toc: "DocOnce" --> <li><a href="#___sec43" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
+     <!-- navigation toc: "Dependencies" --> <li><a href="#___sec44" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
+     <!-- navigation toc: "Quick Debian/Ubuntu Install" --> <li><a href="#install:debian:script" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick Debian/Ubuntu Install</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
 <!-- ------------------- main content ---------------------- -->
 
 
 <title>DocOnce: Document Once, Include Anywhere</title>
 
+<div class="jumbotron">
 <center><h1>DocOnce: Document Once, Include Anywhere</h1></center>  <!-- document title -->
 
 <p>
@@ -187,7 +201,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jul 19, 2014</h4></center> <!-- date -->
+<center><h4>Jul 20, 2014</h4></center> <!-- date -->
 <ul>
  <li> When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -208,6 +222,11 @@ MathJax.Hub.Config({
 </ul>
 
 If any of these questions are of interest, you should keep on reading.
+
+<p>
+
+
+</div> <!-- end jumbotron -->
 
 <h1>Some DocOnce Features  <a name="___sec0"></a></h1>
 
@@ -309,8 +328,9 @@ mathematics, not found in any of the mentioned formats.
 Here is an example of some simple text written in the DocOnce format:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>======= First a Section Heading =======
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">======= First a Section Heading =======
 
 Section headings have 7 equality characters before and after the heading.
 With 9 characters we have a chapter heading, 5 gives a subsection
@@ -322,7 +342,7 @@ label{my:first:sec}
 Ordinary text looks like ordinary text, and the tags used for
 _boldface_ words, *emphasized* words, and `computer` words look
 natural in plain text.  Quotations appear inside double backticks
-and double single quotes, as in ``this example''.
+and double single quotes, as in ``this example&#39;&#39;.
 
 Lists are typeset as you would do in email,
 
@@ -373,8 +393,8 @@ Tables are also written in the plain text way, e.g.,
   |--------------------------------|
 
 # lines beginning with # are comment lines
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The DocOnce text above results in the following little document:
 
 <h1>First a Section Heading  <a name="___sec4"></a></h1>
@@ -440,7 +460,7 @@ output format.
 
 <p>
 <b>Footnotes.</b>
-Adding a footnote [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>] is also possible.
+Adding a footnote <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="The syntax for footnotes is borrowed from Extended Markdown."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button> is also possible.
 
 <p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> The syntax for footnotes is borrowed from Extended Markdown.
 
@@ -449,16 +469,21 @@ Adding a footnote [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>]
 Tables are also written in the plain text way, e.g.,
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-4">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><td align="center"><b>    time    </b></td> <td align="center"><b>  velocity  </b></td> <td align="center"><b>acceleration</b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="right">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="right">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-4 -->
 
 <h2>Mathematics and Computer Code  <a name="___sec6"></a></h2>
 
@@ -471,10 +496,11 @@ backslashes. An inline formula like \( \nu = \sin(x) \) is
 typeset as
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>$\nu = \sin(x)$|$v = sin(x)$
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">$\nu = \sin(x)$|$v = sin(x)$
+</pre></div>
+<p>
 The pipe symbol acts as a delimiter between LaTeX code and the plain text
 version of the formula. If you write a lot of mathematics, only the
 output formats <code>latex</code>, <code>pdflatex</code>, <code>html</code>, <code>sphinx</code>, and <code>pandoc</code>
@@ -483,10 +509,11 @@ and all these support inline LaTeX mathematics so then you will naturally
 drop the pipe symbol and write just
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>$\nu = \sin(x)$
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">$\nu = \sin(x)$
+</pre></div>
+<p>
 However, if you want more textual formats, like plain text or reStructuredText,
 the text after the pipe symbol may help to make the math formula more readable
 if there are backslahes or other special LaTeX symbols in the LaTeX code.
@@ -496,15 +523,16 @@ Blocks of mathematics are typeset with raw LaTeX, inside
 <code>!bt</code> and <code>!et</code> (begin TeX, end TeX) instructions:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>!bt
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
 \begin{align}
 {\partial u\over\partial t} &amp;= \nabla^2 u + f, label{myeq1}\\ 
 {\partial v\over\partial t} &amp;= \nabla\cdot(q(u)\nabla v) + g
 \end{align}
 !et
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The result looks like this:
 
 $$
@@ -539,7 +567,7 @@ LaTeX writers who adopt DocOnce need to pay attention to the following:
 labels in <code>align</code> environments work well.)
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Remark.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Remark.</b>
 Although DocOnce allows user-defined styles in the preamble of LaTeX output,
 HTML-based output cannot make use of such styles. If-else constructs for
 the preprocessor can be used to allow special LaTeX environments for
@@ -558,8 +586,9 @@ You can have blocks of computer code, starting and ending with
 <code>!bc</code> and <code>!ec</code> instructions, respectively.
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>!bc pycod
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
 from math import sin, pi
 def myfunc(x):
     return sin(pi*x)
@@ -567,20 +596,21 @@ def myfunc(x):
 import integrate
 I = integrate.trapezoidal(myfunc, 0, pi, 100)
 !ec
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Such blocks are formatted as
 
 <p>
-<!-- begin verbatim block  pycod-->
-<pre><code>from math import sin, pi
-def myfunc(x):
-    return sin(pi*x)
 
-import integrate
-I = integrate.trapezoidal(myfunc, 0, pi, 100)
-</code></pre>
-<!-- end verbatim block -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">myfunc</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(pi<span style="color: #666666">*</span>x)
+
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">integrate</span>
+I <span style="color: #666666">=</span> integrate<span style="color: #666666">.</span>trapezoidal(myfunc, <span style="color: #666666">0</span>, pi, <span style="color: #666666">100</span>)
+</pre></div>
+<p>
 A code block must come after some plain sentence (at least for successful
 output to <code>sphinx</code>, <code>rst</code>, and formats close to plain text),
 not directly after a section/paragraph heading or a table.
@@ -616,8 +646,9 @@ an equation, surround the reference by parenthesis.
 Here is an example:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>===== My Section =====
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">===== My Section =====
 label{sec:mysec}
 
 idx{key equation} idx{$\u$ conservation}
@@ -646,9 +677,7 @@ FIGURE: [fig/myfile, width=600 frac=0.9] My figure. label{mysec:fig:myfig}
 ===== References =====
 
 BIBFILE: papers.pub
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 For further details on functionality and
 syntax we refer to the <code>doc/manual/manual.do.txt</code> file
@@ -657,20 +686,21 @@ in the DocOnce source and a <a href="http://hplgit.github.io/doconce/doc/pub/man
 <h1>From DocOnce to Other Formats <a name="doconce2formats"></a></h1>
 
 Transformation of a DocOnce document <code>mydoc.do.txt</code> to various other
-formats apply the script <code>doconce format</code>:
+formats is done with the script <code>doconce format</code>:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format formatname mydoc.do.txt
-</code></pre>
-<!-- end verbatim block -->
-or drop the extension:
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format formatname mydoc.do.txt
+</pre></div>
+<p>
+or just drop the extension:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format formatname mydoc
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format formatname mydoc
+</pre></div>
 
 <h2>Generating a makefile  <a name="___sec9"></a></h2>
 
@@ -686,10 +716,11 @@ carries out the commands explained below. If our DocOnce source
 is in <code>main_myproj.do.txt</code>, we run
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>doconce makefile main_myproj html pdflatex sphinx
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce makefile main_myproj html pdflatex sphinx
+</pre></div>
+<p>
 to produce the necessary output for generating HTML, pdfLaTeX, and
 Sphinx. Usually, you need to edit <code>make.py</code> to really fit your
 needs. Some examples lines are inserted as comments to show
@@ -734,12 +765,11 @@ only <code>mako</code> syntax like <code>% if MYVAR or YOURVAR:</code> to incorp
 Two examples on defining preprocessor variables are
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format sphinx mydoc -Dextra_sections -DVAR1=5
-Terminal&gt; doconce format sphinx mydoc extra_sections=True VAR1=5
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+Terminal&gt; doconce format sphinx mydoc extra_sections=True VAR1=5
+</pre></div>
 <p>
 The variable <code>FORMAT</code> is always defined as the current format when
 running <code>preprocess</code> or <code>mako</code>. That is, in the above examples, <code>FORMAT</code> is
@@ -761,16 +791,20 @@ running <code>preprocess</code> and <code>mako</code>, respectively.
 
 <p>
 Inline comments in the text are removed from the output by
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format latex mydoc --skip_inline_comments
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc --skip_inline_comments
+</pre></div>
+<p>
 One can also remove all such comments from the original DocOnce
 file by running:
-<!-- begin verbatim block -->
-<pre><code>Terminal&gt; doconce remove_inline_comments mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce remove_inline_comments mydoc
+</pre></div>
+<p>
 This action is convenient when a DocOnce document reaches its final form
 and comments by different authors should be removed.
 
@@ -799,10 +833,12 @@ in the coming sections.
 
 Making an HTML version of a DocOnce file <code>mydoc.do.txt</code>
 is performed by
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format html mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc
+</pre></div>
+<p>
 The resulting file <code>mydoc.html</code> can be loaded into any web browser for viewing.
 
 <h3>Typesetting of Code  <a name="___sec16"></a></h3>
@@ -875,10 +911,12 @@ containing the template and the CSS and JavaScript files to your
 document directory, edit the template as needed (also check that
 paths to the <code>css</code> and <code>js</code> subdirectories are correct - according
 to how you store the template files), and run
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format html mydoc --html_template=mytemplate.html
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_template=mytemplate.html
+</pre></div>
+<p>
 The template in <code>style_vagrant</code> also needs an extra option
 <code>--html_style=vagrant</code>. With this style, one has nice navigation buttons
 that are used if the document contains <code>!split</code> commands for splitting
@@ -903,8 +941,9 @@ the HTML document: <code>mydoc_bloodish.html</code>, <code>mydoc_solarized</code
 <code>mydoc_vagrant</code>.
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format html mydoc --html_style=bloodish \ 
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bloodish \ 
           --html_output=mydoc_bloodish
 Terminal&gt; doconce split_html mydoc_bloodish.html
 Terminal&gt; doconce format html mydoc --html_style=solarized \ 
@@ -914,8 +953,7 @@ Terminal&gt; doconce format html mydoc --html_style=vagrant \
           --html_output=mydoc_vagrant --pygments_html_style=default \ 
           --html_template=templates/my_adapted_vagrant_template.html
 Terminal&gt; doconce split_html mydoc_vagrant.html
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h2>Blog Posts  <a name="___sec22"></a></h2>
 
@@ -938,7 +976,7 @@ a <a href="http://doconce-report-demo.blogspot.no/" target="_self">scientific re
 for demonstrations of blog posts at <code>blogspot.no</code>.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
 The comment field after the blog post does not recognize MathJax (LaTeX)
 mathematics or code with indentation. However, using a MathJax
 bookmarklet, e.g., at <a href="http://checkmyworking.com/misc/mathjax-bookmarklet/" target="_self"><tt>http://checkmyworking.com/misc/mathjax-bookmarklet/</tt></a>, one can get the mathematics properly rendered. The comment fields are
@@ -947,7 +985,7 @@ not suitable for computer code, though, as HTML tags are not allowed.
 
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
 Figure files must be uploaded to some web site and the local filenames name must
 be replaced by the relevant URL. This is usually done by using the
 <code>--figure_prefix=http://project.github.io/...</code> option to give some URL
@@ -960,18 +998,19 @@ some editing code in the script that compiles the DocOnce document
 to HTML format:
 
 <p>
-<!-- begin verbatim block  shcod-->
-<pre><code>cp mydoc.do.txt mydoc2.do.txt
-url=&quot;https//raw.github.com/someuser/someuser.github.com&quot;
-dir=&quot;master/project/dir1/dir2&quot;
-for figname in fig1 fig2 fig3; do
-  doconce replace &quot;[$figname,&quot; &quot;[$site/$dir/$figname.png,&quot; \ 
+
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cp mydoc.do.txt mydoc2.do.txt
+<span style="color: #19177C">url</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
+<span style="color: #19177C">dir</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;master/project/dir1/dir2&quot;</span>
+<span style="color: #008000; font-weight: bold">for </span>figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
+<span style="color: #008000; font-weight: bold">  </span>doconce replace <span style="color: #BA2121">&quot;[$figname,&quot;</span> <span style="color: #BA2121">&quot;[$site/$dir/$figname.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\ </span>
           mydoc2.do.txt
-done
+<span style="color: #008000; font-weight: bold">done</span>
 doconce format html mydoc2
-# Paste mydoc2.html into a new blog post page
-</code></pre>
-<!-- end verbatim block -->
+<span style="color: #408080; font-style: italic"># Paste mydoc2.html into a new blog post page</span>
+</pre></div>
+<p>
 </div>
 
 
@@ -1004,18 +1043,20 @@ for mathematics in the text, though.
 Output in Pandoc's extended Markdown format results from
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pandoc mydoc
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mydoc
+</pre></div>
+<p>
 The name of the output file is <code>mydoc.md</code>.
 From this format one can go to numerous other formats:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
+</pre></div>
+<p>
 Pandoc supports <code>latex</code>, <code>html</code>, <code>odt</code> (OpenOffice), <code>docx</code> (Microsoft
 Word), <code>rtf</code>, <code>texinfo</code>, to mention some. The <code>-R</code> option makes
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
@@ -1030,11 +1071,12 @@ The HTML output from
 mathematics, and for this purpose one should use <code>doconce md2html</code>:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pandoc mydoc
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mydoc
 Terminal&gt; doconce m2html mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The result <code>mydoc.html</code> can be viewed in a browser.
 
 <h3>Using Pandoc to go from LaTeX to MS Word or HTML  <a name="___sec25"></a></h3>
@@ -1045,13 +1087,15 @@ document): <code>doconce format pandoc</code> and then translating using <code>d
 md2latex</code> (which runs <code>pandoc</code>), or <code>doconce format latex</code>, and then
 going from LaTeX to the desired format using <code>pandoc</code>.
 Here is an example on the latter strategy:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format latex mydoc
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc
 Terminal&gt; doconce ptex2tex mydoc
-Terminal&gt; doconce replace '\Verb!' '\verb!' mydoc.tex
+Terminal&gt; doconce replace &#39;\Verb!&#39; &#39;\verb!&#39; mydoc.tex
 Terminal&gt; pandoc -f latex -t docx -o mydoc.docx mydoc.tex
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 When we go through <code>pandoc</code>, only single equations, <code>align</code>, or <code>align*</code>
 environments are well understood for output to HTML.
 
@@ -1081,8 +1125,9 @@ response in a GitHub issue tracker
 where one first quotes the issue and then provides an answer:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>!bquote
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquote
 ===== Problems with a function =====
 
 There is a problem with the `f(x)` function
@@ -1116,15 +1161,16 @@ def f(x, a=1, b=1, c=1):
 |  `h(x)`  | Heaviside function.            | Formula ready. |
 |  `I(x)`  | Indicator function.            | Nothing done yet. |
 |---------------------------------------------------------------|
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Say this text is stored in a file <code>mycomments.do.txt</code>. Running
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pandoc mycomments --github_md
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mycomments --github_md
+</pre></div>
+<p>
 produces the Markdown file <code>mycomments.md</code>, which can be pasted into
 the Write field of
 the GitHub issue tracker. Turning on Preview shows the typesetting of
@@ -1146,19 +1192,20 @@ The option <code>--strapdown</code> outputs the relevant header and footer.
 The output file must be renamed such that it gets the extension <code>.html</code>:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pandoc mydoc --strict_markdown_output \ 
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mydoc --strict_markdown_output \ 
           --strapdown --bootstrap_bootwatch_theme=slate
 Terminal&gt; mv mydoc.md mydoc.html
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The <code>--bootstrap_bootwatch_theme=theme</code> option is used to choose
 a <a href="http://bootswatch.com/" target="_self">Bootswatch</a> theme whose names are
 found on the <a href="http://strapdownjs.com" target="_self">Strapdown page</a>.
 
 <h2>LaTeX  <a name="___sec30"></a></h2>
 
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
 XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
 of the documentation of the DocOnce to LaTeX translation.
@@ -1202,15 +1249,16 @@ either the <code>ptex2tex</code> program or DocOnce's (simplified) version of it
 <code>doconce ptex2tex</code>. Details are given below.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Information on typesetting of inline verbatim.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Information on typesetting of inline verbatim.</b>
 The <code>ptex2tex</code> and the <code>doconce ptex2tex</code> programs take inline verbatim
 code, typeset with backticks in DocOnce, and translate this to
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>\Verb!text!
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">\Verb!text!
+</pre></div>
+<p>
 Thereafter, if <code>text</code> does not contain illegal characters for the <code>\texttt</code>
 command, the latter is used instead since then LaTeX can insert
 linebreaks in the inline verbatim text and hence avoid overfull hboxes.
@@ -1226,11 +1274,11 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.
 <b>Step 1.</b>
 Filter the doconce text to the <code>ptex2tex</code> "pre-LaTeX form"
 <code>mydoc.p.tex</code>:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format latex mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc
+</pre></div>
 <p>
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files <code>newcommands.tex</code>, <code>newcommands_keep.tex</code>, or
@@ -1278,17 +1326,19 @@ look for options starting with <code>--latex</code> to get a more verbose descri
 <b>Step 2.</b>
 Run <code>ptex2tex</code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; ptex2tex mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ptex2tex mydoc
+</pre></div>
+<p>
 In case you do not have <code>ptex2tex</code>, you may run the (simplified) version
 that comes with DocOnce:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce ptex2tex mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce ptex2tex mydoc
+</pre></div>
 <p>
 The <code>ptex2tex</code> command can set two preprocessor variables:
 
@@ -1323,12 +1373,14 @@ choose from, and you can easily add new ones.
 <p>
 The <code>doconce ptex2tex</code> allows specifications
 of code environments as well. Here is an example:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce ptex2tex mydoc \ 
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce ptex2tex mydoc \ 
           &quot;sys=\begin{quote}\begin{verbatim}@\end{verbatim}\end{quote}&quot; \ 
           fpro=minted fcod=minted shcod=Verbatim envir=ans:nt
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Note that <code>@</code> must be used to separate the begin and end LaTeX
 commands, unless only the environment name is given (such as <code>minted</code>
 above, which implies <code>\begin{minted}{fortran}</code> and <code>\end{minted}</code> as
@@ -1360,21 +1412,23 @@ latter performs substitutions using regular expressions.
 You will use <code>doconce replace</code> to edit <code>section{</code> to <code>section*{</code>:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce replace 'section{' 'section*{' mydoc.tex
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.tex
+</pre></div>
+<p>
 For fixing the line break of a title, you may pick a word in the
 title, say "Using", and insert a break after than word. With
 <code>doconce subst</code> this is easy employing regular expressions with
 a group before "Using" and a group after:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce subst 'title\{(.+)Using (.+)\}' \ 
-          'title{\g&lt;1&gt; \\\\ [1.5mm] Using \g&lt;2&gt;' mydoc.tex
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce subst &#39;title\{(.+)Using (.+)\}&#39; \ 
+          &#39;title{\g&lt;1&gt; \\\\ [1.5mm] Using \g&lt;2&gt;&#39; mydoc.tex
+</pre></div>
+<p>
 A lot of tailored fixes to the LaTeX document can be done by
 an appropriate set of text replacements and regular expression
 substitutions. You are anyway encourged to make a script for
@@ -1385,15 +1439,17 @@ generating PDF from the LaTeX file so the <code>doconce subst</code> or
 <b>Step 3.</b>
 Compile <code>mydoc.tex</code>
 and create the PDF file:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; latex mydoc
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex mydoc
 Terminal&gt; latex mydoc
 Terminal&gt; makeindex mydoc   # if index
 Terminal&gt; bibitem mydoc     # if bibliography
 Terminal&gt; latex mydoc
 Terminal&gt; dvipdf mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 See the next two sections for compilation with XeLaTeX or pdfLaTeX.
 
 <p>
@@ -1404,41 +1460,46 @@ typesetting code blocks (<code>Minted_Python</code>, <code>Minted_Cpp</code>, et
 needed.  This package is automatically included by <code>doconce ptex2tex</code> if
 the minted style is used, while you have to include the
 <code>-DMINTED</code> preprocessor option when running the <code>ptex2tex</code> program:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; ptex2tex -DMINTED mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ptex2tex -DMINTED mydoc
+</pre></div>
+<p>
 If the minted style is used, <code>latex</code> (or <code>pdflatex</code> or <code>xelatex</code>)
 <em>must</em> be run with the
 <code>-shell-escape</code> option:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; latex -shell-escape mydoc
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
 Terminal&gt; bibitem mydoc     # if bibliography
 Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; dvipdf mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h2>PDFLaTeX  <a name="___sec31"></a></h2>
 
 Running <code>pdflatex</code> instead of <code>latex</code> follows almost the same steps,
 but the start is
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format latex mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc
+</pre></div>
+<p>
 Then <code>ptex2tex</code> is run as explained above, and finally
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; pdflatex -shell-escape mydoc
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pdflatex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
 Terminal&gt; bibitem mydoc     # if bibliography
 Terminal&gt; pdflatex -shell-escape mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h2>XeLaTeX  <a name="___sec32"></a></h2>
 
@@ -1446,12 +1507,12 @@ XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the <code>--xelatex</code> flag to <code>doconce format</code>:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>Terminal&gt; doconce format pdflatex mydoc --xelatex
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --xelatex
 Terminal&gt; doconce ptex2tex mydoc
 Terminal&gt; xelatex mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h2>From PDF to e-book formats  <a name="___sec33"></a></h2>
 
@@ -1466,50 +1527,55 @@ see a <a href="http://www.dedoimedo.com/computers/latex-lyx-e-books.html" target
 We can go from DocOnce "back to" plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
+</pre></div>
 
 <h2>reStructuredText  <a name="___sec35"></a></h2>
 
 Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
 reStructuredText file <code>mydoc.rst</code>:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format rst mydoc.do.txt
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format rst mydoc.do.txt
+</pre></div>
+<p>
 We may now produce various other formats:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; rst2html.py  mydoc.rst &gt; mydoc.html # html
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; rst2html.py  mydoc.rst &gt; mydoc.html # html
 Terminal&gt; rst2latex.py mydoc.rst &gt; mydoc.tex  # latex
 Terminal&gt; rst2xml.py   mydoc.rst &gt; mydoc.xml  # XML
 Terminal&gt; rst2odt.py   mydoc.rst &gt; mydoc.odt  # OpenOffice
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 The OpenOffice file <code>mydoc.odt</code> can be loaded into OpenOffice and
 saved in, among other things, the RTF format or the Microsoft Word format.
 However, it is more convenient to use the program <code>unovonv</code>
 to convert between the many formats OpenOffice supports <em>on the command line</em>.
 Run
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; unoconv --show
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; unoconv --show
+</pre></div>
+<p>
 to see all the formats that are supported.
 For example, the following commands take
 <code>mydoc.odt</code> to Microsoft Office Open XML format,
 classic MS Word format, and PDF:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; unoconv -f ooxml mydoc.odt
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; unoconv -f ooxml mydoc.odt
 Terminal&gt; unoconv -f doc mydoc.odt
 Terminal&gt; unoconv -f pdf mydoc.odt
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 <b>Remark about Mathematical Typesetting.</b>
 At the time of this writing, there is no easy way to go from DocOnce
@@ -1528,12 +1594,14 @@ Some links for going from LaTeX to Word are listed below.
 
 Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <code>doconce sphinx_dir</code> command:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce sphinx_dir author=&quot;authors' names&quot; \ 
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \ 
           title=&quot;some title&quot; version=1.0 dirname=sphinxdir \ 
           theme=mytheme mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The keywords <code>author</code>, <code>title</code>, and <code>version</code> are used in the headings
 of the Sphinx document. By default, <code>version</code> is 1.0 and the script
 will try to deduce authors and title from the doconce file <code>mydoc.do.txt</code>
@@ -1543,10 +1611,12 @@ Sphinx (the default theme is <code>'default'</code>).
 
 <p>
 One often just runs the simple command
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce sphinx_dir mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir mydoc
+</pre></div>
+<p>
 which creates the Sphinx directory <code>sphinx-rootdir</code> with
 relevant files.
 
@@ -1556,18 +1626,20 @@ The <code>doconce sphinx_dir</code> command generates a script
 document.  Run
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; python automake_sphinx.py
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python automake_sphinx.py
+</pre></div>
+<p>
 As the output also tells, you can see the Sphinx HTML version of the document
 by running
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; google-chrome sphinx-rootdir/_build/html/index.html
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; google-chrome sphinx-rootdir/_build/html/index.html
+</pre></div>
+<p>
 or loading the <code>index.html</code> file manually into your favorite web browser.
 
 <p>
@@ -1577,13 +1649,12 @@ recompile the DocOnce file if the Sphinx <code>.rst</code> version already exist
 In each edit-and-watch cycle do
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; rm mydoc.rst; python automake_sphinx.py
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; rm mydoc.rst; python automake_sphinx.py
+</pre></div>
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip.</b>
 If you are new
 to Sphinx and end up producing quite some Sphinx documents, you are encouraged
 to read the Sphinx documentation and study the <code>automake_sphinx.py</code>
@@ -1654,10 +1725,12 @@ A script
 <code>make-themes.sh</code> can make HTML documents with one or more themes.
 For example,
 to realize the themes <code>fenics</code>, <code>pyramid</code>, and <code>pylon</code> one writes
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; ./make-themes.sh fenics pyramid pylon
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ./make-themes.sh fenics pyramid pylon
+</pre></div>
+<p>
 The resulting directories with HTML documents are <code>_build/html_fenics</code>
 and <code>_build/html_pyramid</code>, respectively. Without arguments,
 <code>make-themes.sh</code> makes all available themes (!). With <code>make-themes.sh</code>
@@ -1684,38 +1757,39 @@ Alternatively, you may write a little script using <code>doconce replace</code>
 to replace a portion of text in <code>conf.py</code> by a new one:
 
 <p>
-<!-- begin verbatim block  shpro-->
-<pre><code>doconce replace &quot;elif html_theme == 'scipy_lectures':
-    html_theme_options = {
-        'nosidebar': 'true',
-        'rightsidebar': 'false',
-        'sidebarbgcolor': '#f2f2f2',
-        'sidebartextcolor': '#20435c',
-        'sidebarlinkcolor': '#20435c',
-        'footerbgcolor': '#000000',
-        'relbarbgcolor': '#000000',
-    }&quot; &quot;elif html_theme == 'scipy_lectures':
-    html_theme_options = {
-        'nosidebar': 'false',
-        'rightsidebar': 'true',
-        'sidebarbgcolor': '#f2f2f2',
-        'sidebartextcolor': '#20435c',
-        'sidebarlinkcolor': '#20435c',
-        'footerbgcolor': '#000000',
-        'relbarbgcolor': '#000000',
-    }&quot; conf.py
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace <span style="color: #BA2121">&quot;elif html_theme == &#39;scipy_lectures&#39;:</span>
+<span style="color: #BA2121">    html_theme_options = {</span>
+<span style="color: #BA2121">        &#39;nosidebar&#39;: &#39;true&#39;,</span>
+<span style="color: #BA2121">        &#39;rightsidebar&#39;: &#39;false&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarbgcolor&#39;: &#39;#f2f2f2&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebartextcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarlinkcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;footerbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">        &#39;relbarbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">    }&quot;</span> <span style="color: #BA2121">&quot;elif html_theme == &#39;scipy_lectures&#39;:</span>
+<span style="color: #BA2121">    html_theme_options = {</span>
+<span style="color: #BA2121">        &#39;nosidebar&#39;: &#39;false&#39;,</span>
+<span style="color: #BA2121">        &#39;rightsidebar&#39;: &#39;true&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarbgcolor&#39;: &#39;#f2f2f2&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebartextcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarlinkcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;footerbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">        &#39;relbarbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">    }&quot;</span> conf.py
+</pre></div>
+<p>
 Obviously, we could also have changed colors in the edit above.
 The final alternative is to save the edited <code>conf.py</code> file somewhere
 and reuse it the next time <code>doconce sphinx_dir</code> is run
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>doconce sphinx_dir theme=scipy_lectures \ 
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce sphinx_dir theme=scipy_lectures \ 
                    conf.py=../some/path/conf.py mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h3>The manual Sphinx procedure  <a name="___sec37"></a></h3>
 
@@ -1726,18 +1800,20 @@ Sphinx document from a file <code>mydoc.do.txt</code>.
 <p>
 <b>Step 1.</b>
 Translate DocOnce into the Sphinx format:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format sphinx mydoc
-</code></pre>
-<!-- end verbatim block -->
+<p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphinx mydoc
+</pre></div>
 <p>
 <b>Step 2.</b>
 Create a Sphinx root directory
 either manually or by using the interactive <code>sphinx-quickstart</code>
 program. Here is a scripted version of the steps with the latter:
-<!-- begin verbatim block  sys-->
-<pre><code>mkdir sphinx-rootdir
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir sphinx-rootdir
 sphinx-quickstart &lt;&lt;EOF
 sphinx-rootdir
 n
@@ -1761,8 +1837,8 @@ y
 y
 y
 EOF
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The autogenerated <code>conf.py</code> file
 may need some edits if you want to specific layout (Sphinx themes)
 of HTML pages. The <code>doconce sphinx_dir</code> generator makes an extended <code>conv.py</code>
@@ -1772,10 +1848,12 @@ are included.
 <p>
 <b>Step 3.</b>
 Copy the <code>mydoc.rst</code> file to the Sphinx root directory:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; cp mydoc.rst sphinx-rootdir
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cp mydoc.rst sphinx-rootdir
+</pre></div>
+<p>
 If you have figures in your document, the relative paths to those will
 be invalid when you work with <code>mydoc.rst</code> in the <code>sphinx-rootdir</code>
 directory. Either edit <code>mydoc.rst</code> so that figure file paths are correct,
@@ -1787,24 +1865,26 @@ files in the <code>_static</code> directory, see comment above.
 <b>Step 4.</b>
 Edit the generated <code>index.rst</code> file so that <code>mydoc.rst</code>
 is included, i.e., add <code>mydoc</code> to the <code>toctree</code> section so that it becomes
-<!-- begin verbatim block -->
-<pre><code>.. toctree::
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">.. toctree::
    :maxdepth: 2
 
    mydoc
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 (The spaces before <code>mydoc</code> are important!)
 
 <p>
 <b>Step 5.</b>
 Generate, for instance, an HTML version of the Sphinx source:
-<!-- begin verbatim block  sys-->
-<pre><code>make clean   # remove old versions
-make html
-</code></pre>
-<!-- end verbatim block -->
+<p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">make clean   # remove old versions
+make html
+</pre></div>
 <p>
 Sphinx can generate a range of different formats:
 standalone HTML, HTML in separate directories with <code>index.html</code> files,
@@ -1815,11 +1895,11 @@ and Texinfo files.
 <p>
 <b>Step 6.</b>
 View the result:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; firefox _build/html/index.html
-</code></pre>
-<!-- end verbatim block -->
+<p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; firefox _build/html/index.html
+</pre></div>
 <p>
 Note that verbatim code blocks can be typeset in a variety of ways
 depending the argument that follows <code>!bc</code>: <code>cod</code> gives Python
@@ -1835,13 +1915,13 @@ There are many different wiki formats, but DocOnce only supports three:
 These formats are called
 <code>gwiki</code>, <code>mwiki</code>, and <code>cwiki</code>, respectively.
 Transformation from DocOnce to these formats is done by
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format gwiki mydoc.do.txt
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format gwiki mydoc.do.txt
 Terminal&gt; doconce format mwiki mydoc.do.txt
 Terminal&gt; doconce format cwiki mydoc.do.txt
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 The produced MediaWiki can be tested in the <a href="http://en.wikibooks.org/wiki/Sandbox" target="_self">sandbox of
 wikibooks.org</a>. The format
@@ -1919,10 +1999,12 @@ constitute comprehensive examples on how such scripts can be made.
 <h2>Demos  <a name="___sec41"></a></h2>
 
 The current text is generated from a DocOnce format stored in the file
-<!-- begin verbatim block -->
-<pre><code>doc/tutorial/tutorial.do.txt
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doc/tutorial/tutorial.do.txt
+</pre></div>
+<p>
 The file <code>make.sh</code> in the <code>tutorial</code> directory of the
 DocOnce source code contains a demo of how to produce a variety of
 formats.  The source of this tutorial, <code>tutorial.do.txt</code> is the
@@ -1935,7 +2017,7 @@ There is another demo in the <code>docs/manual</code> directory which
 translates the more comprehensive documentation, <code>manual.do.txt</code>, to
 various formats. The <code>make.sh</code> script runs a set of translations.
 
-<h1>Installation of DocOnce and its Dependencies  <a name="___sec42"></a></h1>
+<h1>Installation of DocOnce and its Dependencies <a name="install:doconce"></a></h1>
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
@@ -1949,33 +2031,35 @@ DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/
 Installation can be done via
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
 # or if doconce is already installed
 sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Alternatively, one can run the standard procedure
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>git clone git@github.com:hplgit/doconce.git
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Since DocOnce is frequently updated, it is recommended to use the
 above procedure and whenever a problem occurs, make sure to
 update to the most recent version:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>cd doconce
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd doconce
 git pull origin master
 sudo python setup.py install
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h2>Dependencies  <a name="___sec44"></a></h2>
 
@@ -1999,33 +2083,34 @@ If you make use of the <a href="http://code.google.com/p/preprocess" target="_se
 preprocessor, this program must be installed:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
 cd preprocess
 cd doconce
 sudo python setup.py install
 cd ..
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 A much more advanced alternative to Preprocess is
 <a href="http://www.makotemplates.org" target="_self">Mako</a>. Its installation is most
 conveniently done by <code>pip</code>,
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>pip install Mako
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install Mako
+</pre></div>
+<p>
 This command requires <code>pip</code> to be installed. On Debian Linux systems,
 such as Ubuntu, the installation is simply done by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install python-pip
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install python-pip
+</pre></div>
+<p>
 Alternatively, one can install from the <code>pip</code> <a href="http://pypi.python.org/pypi/pip" target="_self">source code</a>.
 
 <p>
@@ -2045,11 +2130,10 @@ major platforms.  On Debian Linux (including Ubuntu) systems one can
 simply write
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install imagemagick
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install imagemagick
+</pre></div>
 <p>
 The convenience program <code>doconce combine_images</code>, for combining several
 images into one, will use <code>montage</code> and <code>convert</code> from ImageMagick and
@@ -2057,20 +2141,19 @@ the <code>pdftk</code>, <code>pdfnup</code>, and <code>pdfcrop</code> programs f
 Debian package. The latter gets installed by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install texlive-extra-utils
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive-extra-utils
+</pre></div>
 <p>
 Automatic image conversion from EPS to PDF calls up <code>epstopdf</code>, which
 can be installed by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install texlive-font-utils
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive-font-utils
+</pre></div>
 
 <h3>Spellcheck  <a name="___sec47"></a></h3>
 
@@ -2078,10 +2161,10 @@ The utility <code>doconce spellcheck</code> applies the <code>ispell</code> prog
 spellcheck. On Debian (including Ubuntu) it is installed by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install ispell
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install ispell
+</pre></div>
 
 <h3>Bibliography  <a name="___sec48"></a></h3>
 
@@ -2090,19 +2173,20 @@ in your document. On the website, click on <em>Clone</em>, copy the
 command and run it:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>hg clone https://bitbucket.org/logg/publish
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone https://bitbucket.org/logg/publish
+</pre></div>
+<p>
 Thereafter go to the <code>publish</code> directory and run the <code>setup.py</code> script
 for installing Publish:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>cd publish
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd publish
 sudo python setup.py
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
 <h3>Ptex2tex for LaTeX Output  <a name="___sec49"></a></h3>
 
@@ -2111,31 +2195,34 @@ verbatim code blocks you need <a href="http://code.google.com/p/ptex2tex" target
 which is installed by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
 cd ptex2tex
 sudo python setup.py install
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 It may happen that you need additional style files, you can run
 a script, <code>cp2texmf.sh</code>:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>cd latex
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd latex
 sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
 cd ../..
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 This script copies some special stylefiles that
 that <code>ptex2tex</code> potentially makes use of. Some more standard stylefiles
 are also needed. These are installed by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install texlive
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive
+</pre></div>
+<p>
 on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
 the necessary stylefiles (if not, they can be found by googling and installed
 manually in the <code>~/texmf/tex/latex/misc</code> directory).
@@ -2150,24 +2237,29 @@ The <em>minted</em> LaTeX style is offered by <code>ptex2tex</code> and <code>do
 and popular among many
 users. This style requires the package <a href="http://pygments.org" target="_self">Pygments</a>
 to be installed. On Debian Linux,
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install python-pygments
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install python-pygments
+</pre></div>
+<p>
 Alternatively, the package can be installed manually:
-<!-- begin verbatim block  sys-->
-<pre><code>hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
 cd pygments
 sudo python setup.py install
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 One can also do the simple
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>pip install sphinx
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sphinx
+</pre></div>
+<p>
 which also installs pygments.
 
 <p>
@@ -2207,24 +2299,26 @@ program, meaning that if you do not use <code>ptex2tex</code>, you do not need
 Relevant Debian packages that gives you all of these LaTeX packages are
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>texlive
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">texlive
 texlive-extra-utils
 texlive-latex-extra
 texlive-font-utils
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 On old Ubuntu 12.04 one has to do <code>sudo add-apt-repository ppa:texlive-backports/ppa</code> and <code>sudo apt-get update</code> first, or alternatively install these as well:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>texlive-math-extra
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">texlive-math-extra
 texlive-bibtex-extra
 texlive-xetex
 texlive-humanities
 texlive-pictures
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Alternatively, one may pull in <code>texlive-full</code> to get all available
 style files.
 
@@ -2243,30 +2337,32 @@ HTML, XML, OpenOffice, and so on, through the <a href="http://docutils.sourcefor
 most recent version can be done by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>svn checkout \ 
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn checkout \ 
   http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
 cd docutils
 sudo python setup.py install
 cd ..
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The command
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>pip install sphinx
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sphinx
+</pre></div>
+<p>
 installs Docutils along with Sphinx and Pygments.
 
 <p>
 To use the OpenOffice suite you will typically on Debian systems install
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install unovonv libreoffice libreoffice-dmaths
-</code></pre>
-<!-- end verbatim block -->
+<p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install unovonv libreoffice libreoffice-dmaths
+</pre></div>
 <p>
 There is a possibility to create PDF files from reST documents
 using ReportLab instead of LaTeX. The enabling software is
@@ -2281,21 +2377,21 @@ Output to <code>sphinx</code> requires of course the
 installed by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>hg clone https://bitbucket.org/birkenfeld/sphinx
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone https://bitbucket.org/birkenfeld/sphinx
 cd sphinx
 sudo python setup.py install
 cd ..
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 An alternative is
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>pip install sphinx
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sphinx
+</pre></div>
 <p>
 DocOnce comes with many Sphinx themes that are not part of the
 standard Sphinx source distribution. Some of these themes require
@@ -2320,24 +2416,25 @@ translated to a range of other formats. Installation of <a href="http://johnmacf
 easily done by
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>sudo apt-get install pandoc
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install pandoc
+</pre></div>
+<p>
 on Debian (Ubuntu) systems.
 
 <h3>Epydoc Output  <a name="___sec54"></a></h3>
 
 When the output format is <code>epydoc</code> one needs that program too, installed
 by
-<!-- begin verbatim block  sys-->
-<pre><code>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
 cd epydoc
 sudo make install
 cd ..
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 <b>Remark.</b>
 Several of the packages above installed from source code
@@ -2360,9 +2457,12 @@ URL, and their <code>sudo apt-get install</code> command on Debian (Ubuntu) syst
 appear in the table below.
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-4">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">                                                                 Program                                                                 </th> <th align="center">                                                                   URL                                                                   </th> <th align="center">                                                          Debian/Ubuntu install                                                          </th> </tr>
+<tr><td align="center"><b>                                                                 Program                                                                 </b></td> <td align="center"><b>                                                                   URL                                                                   </b></td> <td align="center"><b>                                                          Debian/Ubuntu install                                                          </b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   <code>pdiff</code>                                                                                                                           </td> <td align="left">   <a href="http://www.gnu.org/software/a2ps/" target="_self">a2ps</a> <a href="http://www.gnu.org/software/wdiff/" target="_self">wdiff</a>    </td> <td align="left">   <code>sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended</code>                                                   </td> </tr>
@@ -2373,7 +2473,9 @@ appear in the table below.
 <tr><td align="left">   <code>meld</code>                                                                                                                            </td> <td align="left">   <a href="http://meldmerge.org/" target="_self">meld</a>                                                                                      </td> <td align="left">   <code>sudo apt-get install meld</code>                                                                                                       </td> </tr>
 <tr><td align="left">   <code>tkdiff.tcl</code>                                                                                                                      </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/" target="_self">tkdiff</a>                                                                 </td> <td align="left">   not in Debian                                                                                                                                </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-4 -->
 
 <h2>Quick Debian/Ubuntu Install <a name="install:debian:script"></a></h2>
 
@@ -2381,8 +2483,9 @@ On Debian (including Ubuntu) systems, it is straightforward to install the
 long series of DocOnce dependencies:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code># Version control systems
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Version control systems
 sudo apt-get install -y mercurial git subversion
 
 # Python
@@ -2429,10 +2532,21 @@ sudo python setup.py install -y
 cd latex
 sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
 cd ../../..
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 
 <!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 
 
 </body>

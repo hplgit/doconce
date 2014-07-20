@@ -1,0 +1,1704 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="DocOnce Description">
+<meta name="keywords" content="doconce short explanation,demos,headlines,section headings,inline tagging,emphasized words,boldface words,verbatim text,inline comments,non-breaking space,nbsp,quotation syntax,non-breaking space,footnotes,cross referencing,labels,references,index,citations,bibliography,some index entry,main entry subentry">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' What Is DocOnce? ', 1, 'what:is:doconce', 'what:is:doconce'),
+              (' Demos ', 2, None, '___sec1'),
+              (' The DocOnce Markup Language ', 1, None, '___sec2'),
+              (' Lists ', 2, None, '___sec3'),
+              (' Special lines ', 2, None, '___sec4'),
+              (' Heading with title and author(s) ', 2, None, '___sec5'),
+              (' Table of contents ', 2, None, '___sec6'),
+              (' Section headings ', 2, None, '___sec7'),
+              (' Figures ', 2, None, '___sec8'),
+              (' Movies ', 2, None, '___sec9'),
+              (' The Basic Command ', 3, None, '___sec10'),
+              (' MP4, WebM, and Ogg Movies in HTML ', 3, None, '___sec11'),
+              (' Movie Handling in Various Formats ', 3, None, '___sec12'),
+              (' YouTube and Vimeo Movies ', 3, None, '___sec13'),
+              (' Animation Based on Filename Generators ',
+               3,
+               None,
+               '___sec14'),
+              (' Copying Computer Code from Source Files ',
+               2,
+               None,
+               '___sec15'),
+              (' Inserting the Output from Operating System Commands ',
+               2,
+               None,
+               '___sec16'),
+              (' Inline Tagging ', 2, 'inline:tagging', 'inline:tagging'),
+              (' Emphasized Words ', 3, None, '___sec18'),
+              (' Inline Verbatim Text ', 3, None, '___sec19'),
+              (' Links to Web Addresses ', 3, None, '___sec20'),
+              (' Mail Addresses ', 3, None, '___sec21'),
+              (' Links to Local Files ', 3, None, '___sec22'),
+              (' Quotes ', 3, None, '___sec23'),
+              (' Non-Breaking Space ', 3, None, '___sec24'),
+              (' Horizontal rule ', 3, None, '___sec25'),
+              (' em-dash ', 3, None, '___sec26'),
+              (' Footnotes ', 3, None, '___sec27'),
+              (' Inline Comments ', 3, None, '___sec28'),
+              (' Inline Comments for Editing ', 3, None, '___sec29'),
+              (' Forced Line Breaks ', 3, None, '___sec30'),
+              (' Inline Mathematics ', 3, None, '___sec31'),
+              (' Comments ', 2, None, '___sec32'),
+              (' Cross-Referencing ', 2, None, '___sec33'),
+              (' Generalized Cross-Referencing ',
+               2,
+               'manual:genrefs',
+               'manual:genrefs'),
+              (' A Worked Example ', 3, None, '___sec35'),
+              (' Index ', 2, None, '___sec36'),
+              (' Bibliography/References ', 2, None, '___sec37'),
+              (' Importing your data to the Publish database ',
+               3,
+               None,
+               '___sec38'),
+              (' Requirements to input data ', 3, None, '___sec39'),
+              (' Adding new references to the database ',
+               3,
+               None,
+               '___sec40'),
+              (' Exporting the database ', 3, None, '___sec41'),
+              (' Referring to publications ', 3, None, '___sec42'),
+              (' Specifying the Publish database ', 3, None, '___sec43'),
+              (' LaTeX bibliography style ', 3, None, '___sec44'),
+              (' Tables ', 2, None, '___sec45'),
+              (' Exercises, Problems, Projects, and Examples ',
+               2,
+               None,
+               '___sec46'),
+              (' List of Exercises, Problems, and Projects ',
+               3,
+               None,
+               '___sec47'),
+              (' Blocks of Verbatim Computer Code ',
+               2,
+               'sec:verbatim:blocks',
+               'sec:verbatim:blocks'),
+              (' LaTeX Blocks of Mathematical Text ',
+               2,
+               'mathtext',
+               'mathtext'),
+              (' Mathematics for PowerPoint/OpenOffice ',
+               3,
+               None,
+               '___sec50'),
+              (' Macros (Newcommands) ', 2, 'newcommands', 'newcommands'),
+              (' Admonitions ', 2, None, '___sec52'),
+              (' The Box Environment ', 3, None, '___sec53'),
+              (' Typesetting of Algorithms ', 2, None, '___sec54'),
+              (' Preprocessing Steps ', 2, None, '___sec55'),
+              (' Splitting Documents into Smaller Pieces ',
+               2,
+               None,
+               '___sec56'),
+              (' Header and Footer ', 2, None, '___sec57'),
+              (' Missing Features ', 2, None, '___sec58'),
+              (' Guidelines for LaTeX Writers ', 2, None, '___sec59'),
+              (' Emacs DocOnce Formatter ',
+               2,
+               'emacs:doconce',
+               'emacs:doconce'),
+              (' Writing Slides ', 1, None, '___sec61'),
+              (' Overview ', 2, None, '___sec62'),
+              (' HTML5 Slides ', 2, None, '___sec63'),
+              (' Potential Problems ', 3, None, '___sec64'),
+              (' LaTeX Beamer Slides ', 2, None, '___sec65'),
+              (' Themes ', 3, None, '___sec66'),
+              (' Mako Programming ', 1, None, '___sec67'),
+              (' The Basics of Mako ', 2, None, '___sec68'),
+              (' Example: Executing Python and using SymPy Objects in LaTeX ',
+               2,
+               None,
+               '___sec69'),
+              (' Example: Extending Tables to Handle Figures ',
+               2,
+               'manual:tables:wfigs',
+               'manual:tables:wfigs'),
+              (' Solution for LaTeX and HTML ', 3, None, '___sec71'),
+              (' Generating the Entire Table ', 3, None, '___sec72'),
+              (' Generating the Entire Table in a Native Format via Mako ',
+               3,
+               None,
+               '___sec73'),
+              (' Generating the Entire Table in a Native Format as a Post Process ',
+               3,
+               None,
+               '___sec74'),
+              (' Example: Defining a Theorem Environment ',
+               2,
+               'manual:theorem:envir',
+               'manual:theorem:envir'),
+              (' Tools for Writing DocOnce Documents ', 2, None, '___sec76'),
+              (' Debugging ', 2, None, '___sec77'),
+              (' From DocOnce to Other Formats ',
+               1,
+               'doconce2formats',
+               'doconce2formats'),
+              (' Generating a makefile ', 2, None, '___sec79'),
+              (' Preprocessing ', 2, None, '___sec80'),
+              (' Removal of inline comments ', 2, None, '___sec81'),
+              (' Notes ', 2, None, '___sec82'),
+              (' Demo of different formats ', 2, None, '___sec83'),
+              (' HTML ', 2, None, '___sec84'),
+              (' Basics ', 3, None, '___sec85'),
+              (' Typesetting of Code ', 3, None, '___sec86'),
+              (' Handling of Movies ', 3, None, '___sec87'),
+              (' HTML Styles ', 3, None, '___sec88'),
+              (' HTML templates ', 3, None, '___sec89'),
+              (' The HTML File Collection ', 3, None, '___sec90'),
+              (' Filenames ', 3, None, '___sec91'),
+              (' Blog Posts ', 2, None, '___sec92'),
+              (' Pandoc and Markdown ', 2, None, '___sec93'),
+              (' Markdown to HTML conversion ', 3, None, '___sec94'),
+              (' Using Pandoc to go from LaTeX to MS Word or HTML ',
+               3,
+               None,
+               '___sec95'),
+              (' Strict Markdown ', 3, None, '___sec96'),
+              (' GitHub-flavored Markdown ', 3, None, '___sec97'),
+              (' MultiMarkdown ', 3, None, '___sec98'),
+              (' Strapdown rendering of Markdown text ', 3, None, '___sec99'),
+              (' LaTeX ', 2, None, '___sec100'),
+              (' PDFLaTeX ', 2, None, '___sec101'),
+              (' XeLaTeX ', 2, None, '___sec102'),
+              (' From PDF to e-book formats ', 2, None, '___sec103'),
+              (' Plain ASCII Text ', 2, None, '___sec104'),
+              (' reStructuredText ', 2, None, '___sec105'),
+              (' Sphinx ', 2, None, '___sec106'),
+              (' The manual Sphinx procedure ', 3, None, '___sec107'),
+              (' Wiki Formats ', 2, None, '___sec108'),
+              (' Google Docs ', 2, None, '___sec109'),
+              (' Tweaking the DocOnce Output ', 2, None, '___sec110'),
+              (' Installation of DocOnce and its Dependencies ',
+               1,
+               'install:doconce',
+               'install:doconce'),
+              (' DocOnce ', 2, None, '___sec112'),
+              (' Dependencies ', 2, None, '___sec113'),
+              (' Preprocessors ', 3, None, '___sec114'),
+              (' Image file handling ', 3, None, '___sec115'),
+              (' Spellcheck ', 3, None, '___sec116'),
+              (' Bibliography ', 3, None, '___sec117'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec118'),
+              (' LaTeX packages ', 3, None, '___sec119'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec120'),
+              (' Sphinx Output ', 3, None, '___sec121'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec122'),
+              (' Epydoc Output ', 3, None, '___sec123'),
+              (' Analyzing file differences ', 3, None, '___sec124'),
+              (' Quick Debian/Ubuntu Install ',
+               2,
+               'install:debian:script',
+               'install:debian:script'),
+              (' Basic Parsing Ideas ', 1, None, '___sec126'),
+              (' Typesetting of Function Arguments, Return Values, and Variables ',
+               2,
+               None,
+               '___sec127'),
+              (' References ', 1, None, '___sec128')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\half}{\frac{1}{2}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\ep}{\thinspace . }
+\newcommand{\uvec}{\vec u}
+\newcommand{\Q}{\pmb{Q}}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="manual.html">DocOnce Description</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "What Is DocOnce?" --> <li><a href="._manual000.html#what:is:doconce" style="font-size: 80%;"><b>What Is DocOnce?</b></a></li>
+     <!-- navigation toc: "Demos" --> <li><a href="._manual002.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demos</a></li>
+     <!-- navigation toc: "The DocOnce Markup Language" --> <li><a href="._manual003.html#___sec2" style="font-size: 80%;"><b>The DocOnce Markup Language</b></a></li>
+     <!-- navigation toc: "Lists" --> <li><a href="._manual003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
+     <!-- navigation toc: "Special lines" --> <li><a href="._manual004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Special lines</a></li>
+     <!-- navigation toc: "Heading with title and author(s)" --> <li><a href="._manual004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Heading with title and author(s)</a></li>
+     <!-- navigation toc: "Table of contents" --> <li><a href="._manual004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Table of contents</a></li>
+     <!-- navigation toc: "Section headings" --> <li><a href="._manual005.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Section headings</a></li>
+     <!-- navigation toc: "Figures" --> <li><a href="._manual006.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures</a></li>
+     <!-- navigation toc: "Movies" --> <li><a href="._manual007.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Movies</a></li>
+     <!-- navigation toc: "Copying Computer Code from Source Files" --> <li><a href="._manual008.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Copying Computer Code from Source Files</a></li>
+     <!-- navigation toc: "Inserting the Output from Operating System Commands" --> <li><a href="._manual008.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inserting the Output from Operating System Commands</a></li>
+     <!-- navigation toc: "Inline Tagging" --> <li><a href="._manual009.html#inline:tagging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline Tagging</a></li>
+     <!-- navigation toc: "Comments" --> <li><a href="._manual010.html#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comments</a></li>
+     <!-- navigation toc: "Cross-Referencing" --> <li><a href="._manual011.html#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cross-Referencing</a></li>
+     <!-- navigation toc: "Generalized Cross-Referencing" --> <li><a href="._manual011.html#manual:genrefs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generalized Cross-Referencing</a></li>
+     <!-- navigation toc: "Index" --> <li><a href="._manual012.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Index</a></li>
+     <!-- navigation toc: "Bibliography/References" --> <li><a href="._manual012.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography/References</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._manual013.html#___sec45" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "Exercises, Problems, Projects, and Examples" --> <li><a href="._manual014.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercises, Problems, Projects, and Examples</a></li>
+     <!-- navigation toc: "Blocks of Verbatim Computer Code" --> <li><a href="._manual015.html#sec:verbatim:blocks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blocks of Verbatim Computer Code</a></li>
+     <!-- navigation toc: "LaTeX Blocks of Mathematical Text" --> <li><a href="._manual016.html#mathtext" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Blocks of Mathematical Text</a></li>
+     <!-- navigation toc: "Macros (Newcommands)" --> <li><a href="._manual017.html#newcommands" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Macros (Newcommands)</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._manual018.html#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Typesetting of Algorithms" --> <li><a href="._manual018.html#___sec54" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Algorithms</a></li>
+     <!-- navigation toc: "Preprocessing Steps" --> <li><a href="._manual018.html#___sec55" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing Steps</a></li>
+     <!-- navigation toc: "Splitting Documents into Smaller Pieces" --> <li><a href="._manual019.html#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Splitting Documents into Smaller Pieces</a></li>
+     <!-- navigation toc: "Header and Footer" --> <li><a href="._manual019.html#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Header and Footer</a></li>
+     <!-- navigation toc: "Missing Features" --> <li><a href="._manual020.html#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Missing Features</a></li>
+     <!-- navigation toc: "Guidelines for LaTeX Writers" --> <li><a href="._manual020.html#___sec59" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Guidelines for LaTeX Writers</a></li>
+     <!-- navigation toc: "Emacs DocOnce Formatter" --> <li><a href="._manual020.html#emacs:doconce" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Emacs DocOnce Formatter</a></li>
+     <!-- navigation toc: "Writing Slides" --> <li><a href="._manual021.html#___sec61" style="font-size: 80%;"><b>Writing Slides</b></a></li>
+     <!-- navigation toc: "Overview" --> <li><a href="._manual022.html#___sec62" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Overview</a></li>
+     <!-- navigation toc: "HTML5 Slides" --> <li><a href="._manual022.html#___sec63" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML5 Slides</a></li>
+     <!-- navigation toc: "LaTeX Beamer Slides" --> <li><a href="._manual022.html#___sec65" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Beamer Slides</a></li>
+     <!-- navigation toc: "Mako Programming" --> <li><a href="._manual023.html#___sec67" style="font-size: 80%;"><b>Mako Programming</b></a></li>
+     <!-- navigation toc: "The Basics of Mako" --> <li><a href="._manual023.html#___sec68" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Basics of Mako</a></li>
+     <!-- navigation toc: "Example: Executing Python and using SymPy Objects in LaTeX" --> <li><a href="._manual024.html#___sec69" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Executing Python and using SymPy Objects in LaTeX</a></li>
+     <!-- navigation toc: "Example: Extending Tables to Handle Figures" --> <li><a href="._manual025.html#manual:tables:wfigs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Extending Tables to Handle Figures</a></li>
+     <!-- navigation toc: "Example: Defining a Theorem Environment" --> <li><a href="._manual026.html#manual:theorem:envir" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Defining a Theorem Environment</a></li>
+     <!-- navigation toc: "Tools for Writing DocOnce Documents" --> <li><a href="._manual027.html#___sec76" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tools for Writing DocOnce Documents</a></li>
+     <!-- navigation toc: "Debugging" --> <li><a href="._manual027.html#___sec77" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging</a></li>
+     <!-- navigation toc: "From DocOnce to Other Formats" --> <li class="active"><a href="._manual028.html#doconce2formats" style="font-size: 80%;"><b>From DocOnce to Other Formats</b></a></li>
+     <!-- navigation toc: "Generating a makefile" --> <li><a href="._manual028.html#___sec79" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating a makefile</a></li>
+     <!-- navigation toc: "Preprocessing" --> <li><a href="._manual028.html#___sec80" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing</a></li>
+     <!-- navigation toc: "Removal of inline comments" --> <li><a href="._manual028.html#___sec81" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Removal of inline comments</a></li>
+     <!-- navigation toc: "Notes" --> <li><a href="._manual028.html#___sec82" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notes</a></li>
+     <!-- navigation toc: "Demo of different formats" --> <li><a href="._manual028.html#___sec83" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demo of different formats</a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._manual028.html#___sec84" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "Blog Posts" --> <li><a href="._manual028.html#___sec92" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blog Posts</a></li>
+     <!-- navigation toc: "Pandoc and Markdown" --> <li><a href="._manual028.html#___sec93" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Pandoc and Markdown</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._manual028.html#___sec100" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: "PDFLaTeX" --> <li><a href="._manual028.html#___sec101" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;PDFLaTeX</a></li>
+     <!-- navigation toc: "XeLaTeX" --> <li><a href="._manual028.html#___sec102" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;XeLaTeX</a></li>
+     <!-- navigation toc: "From PDF to e-book formats" --> <li><a href="._manual028.html#___sec103" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;From PDF to e-book formats</a></li>
+     <!-- navigation toc: "Plain ASCII Text" --> <li><a href="._manual028.html#___sec104" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plain ASCII Text</a></li>
+     <!-- navigation toc: "reStructuredText" --> <li><a href="._manual028.html#___sec105" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;reStructuredText</a></li>
+     <!-- navigation toc: "Sphinx" --> <li><a href="._manual028.html#___sec106" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
+     <!-- navigation toc: "Wiki Formats" --> <li><a href="._manual028.html#___sec108" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki Formats</a></li>
+     <!-- navigation toc: "Google Docs" --> <li><a href="._manual028.html#___sec109" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Google Docs</a></li>
+     <!-- navigation toc: "Tweaking the DocOnce Output" --> <li><a href="._manual028.html#___sec110" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tweaking the DocOnce Output</a></li>
+     <!-- navigation toc: "Installation of DocOnce and its Dependencies" --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
+     <!-- navigation toc: "DocOnce" --> <li><a href="._manual029.html#___sec112" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
+     <!-- navigation toc: "Dependencies" --> <li><a href="._manual029.html#___sec113" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
+     <!-- navigation toc: "Quick Debian/Ubuntu Install" --> <li><a href="._manual029.html#install:debian:script" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick Debian/Ubuntu Install</a></li>
+     <!-- navigation toc: "Basic Parsing Ideas" --> <li><a href="._manual029.html#___sec126" style="font-size: 80%;"><b>Basic Parsing Ideas</b></a></li>
+     <!-- navigation toc: "Typesetting of Function Arguments, Return Values, and Variables" --> <li><a href="._manual029.html#___sec127" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Function Arguments, Return Values, and Variables</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._manual029.html#___sec128" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0028"></a>
+<!-- !split -->
+
+<h1>From DocOnce to Other Formats <a name="doconce2formats"></a></h1>
+
+Transformation of a DocOnce document <code>mydoc.do.txt</code> to various other
+formats is done with the script <code>doconce format</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format formatname mydoc.do.txt
+</pre></div>
+<p>
+or just drop the extension:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format formatname mydoc
+</pre></div>
+
+<h2>Generating a makefile  <a name="___sec79"></a></h2>
+
+Producing HTML, Sphinx, and in particular LaTeX documents from
+DocOnce sources requires a few commands. Often you want to
+produce several different formats. The relevant commands should
+then be placed in a script that acts as a &quot;makefile&quot;.
+
+<p>
+The <code>doconce makefile</code> can be used to automatically generate
+such a makefile, more precisely a Python script <code>make.py</code>, which
+carries out the commands explained below. If our DocOnce source
+is in <code>main_myproj.do.txt</code>, we run
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce makefile main_myproj html pdflatex sphinx
+</pre></div>
+<p>
+to produce the necessary output for generating HTML, pdfLaTeX, and
+Sphinx. Usually, you need to edit <code>make.py</code> to really fit your
+needs. Some examples lines are inserted as comments to show
+various options that can be added to the basic commands.
+A handy feature of the generated <code>make.py</code> script is that it
+inserts checks for successful runs of the many <code>doconce</code> commands,
+and if something goes wrong, the script aborts.
+
+<h2>Preprocessing  <a name="___sec80"></a></h2>
+
+The <code>preprocess</code> and <code>mako</code> programs are used to preprocess the
+file. The DocOnce program detects whether <code>preprocess</code> and/or <code>mako</code>
+statements are present and runs the corresponding programs, first
+<code>preprocess</code> and then <code>mako</code>.
+
+<p>
+Variables to <code>preprocess</code> and/or <code>mako</code> can be added after the
+filename with the syntax <code>-DMYVAR</code>, <code>-DMYVAR=val</code> or <code>MYVAR=val</code>.
+
+<ul>
+ <li> The form <code>-DMYVAR</code> defines the variable <code>MYVAR</code> for <code>preprocess</code> (like the
+   same syntax for the C preprocessor - <code>MYVAR</code> is defined, but has
+   not specific value). When running <code>mako</code>, <code>-DMYVAR</code> means that
+   <code>MYVAR</code> has the (Python) value <code>True</code>.</li>
+ <li> The expressions <code>-DMYVAR=val</code> and <code>MYVAR=val</code> are
+   equivalent. When running <code>preprocess</code>, <code>MYVAR</code> is defined and has
+   the value <code>val</code> (<code># #ifdef MYVAR</code> and <code># #if MYVAR == "val"</code> are both
+   true tests), while for <code>mako</code>, <code>MYVAR</code> exists as
+   variable and has the value <code>val</code> (<code>% if MYVAR == "val"</code> is true).</li>
+</ul>
+
+Note that <code>MYVAR=False</code> defines <code>MYVAR</code> in <code>preprocess</code> and
+any test <code># #ifdef MYVAR</code> is always true, regardless of the value one has
+set <code>MYVAR</code> to, so a better test is
+<code># #if MYVAR == True</code>. In general, it is recommended to go with
+<code>preprocess</code> directives if the tests are very simple, as in
+<code># #ifdef MYVAR</code> or <code># #if FORMAT == "latex"</code>, otherwise use
+only <code>mako</code> syntax like <code>% if MYVAR or YOURVAR:</code> to incorporate
+<code>if</code> tests in the preprocessor phases.
+
+<p>
+Two examples on defining preprocessor variables are
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphinx mydoc -Dextra_sections -DVAR1=5
+Terminal&gt; doconce format sphinx mydoc extra_sections=True VAR1=5
+</pre></div>
+<p>
+The variable <code>FORMAT</code> is always defined as the current format when
+running <code>preprocess</code> or <code>mako</code>. That is, in the above examples, <code>FORMAT</code> is
+defined as <code>sphinx</code>. Inside the DocOnce document one can then perform
+format specific actions through tests like <code>#if FORMAT == "sphinx"</code>
+(for <code>preprocess</code>) or <code>% if FORMAT == "sphinx":</code> (for <code>mako</code>).
+
+<p>
+The result of running <code>preprocess</code> on a DocOnce file <code>mydoc.do.txt</code>
+is available in a file <code>tmp_preprocess__mydoc.do.txt</code>. Similarly,
+the result of running <code>mako</code> is available in
+<code>tmp_mako__mydoc.do.txt</code>. By examining these files one can see exactly
+what the preprocessors have done.
+
+<h2>Removal of inline comments  <a name="___sec81"></a></h2>
+
+The command-line arguments <code>--no_preprocess</code> and <code>--no_mako</code> turn off
+running <code>preprocess</code> and <code>mako</code>, respectively.
+
+<p>
+Inline comments in the text are removed from the output by
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc --skip_inline_comments
+</pre></div>
+<p>
+One can also remove all such comments from the original DocOnce
+file by running:
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce remove_inline_comments mydoc
+</pre></div>
+<p>
+This action is convenient when a DocOnce document reaches its final form
+and comments by different authors should be removed.
+
+<h2>Notes  <a name="___sec82"></a></h2>
+
+DocOnce does not have a tag for longer notes, because implementation
+of a "notes feature" is so easy using the <code>preprocess</code> or <code>mako</code>
+programs. Just introduce some variable, say <code>NOTES</code>, that you define
+through <code>-DNOTES</code> (or not) when running <code>doconce format ...</code>. Inside
+the document you place your notes between <code># #ifdef NOTES</code> and
+<code># #endif</code> preprocess tags. Alternatively you use <code>% if NOTES:</code>
+and <code>% endif</code> that <code>mako</code> will recognize. In the same way you may
+encapsulate unfinished material, extra material to be removed
+for readers but still nice to archive as part of the document for
+future revisions.
+
+<h2>Demo of different formats  <a name="___sec83"></a></h2>
+
+A simple scientific report is available in <a href="http://hplgit.github.com/teamods/writing_reports/doconce_commands.html" target="_self">a lot of different formats</a>.
+How to create the different formats is explained in more depth
+in the coming sections.
+
+<h2>HTML  <a name="___sec84"></a></h2>
+
+<h3>Basics  <a name="___sec85"></a></h3>
+
+Making an HTML version of a DocOnce file <code>mydoc.do.txt</code>
+is performed by
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc
+</pre></div>
+<p>
+The resulting file <code>mydoc.html</code> can be loaded into any web browser for viewing.
+
+<h3>Typesetting of Code  <a name="___sec86"></a></h3>
+
+If the Pygments package (including the <code>pygmentize</code> program)
+is installed, code blocks are typeset with
+aid of this package. The command-line argument <code>--no_pygments_html</code>
+turns off the use of Pygments and makes code blocks appear with
+plain (<code>pre</code>) HTML tags. The option <code>--pygments_html_linenos</code> turns
+on line numbers in Pygments-formatted code blocks. A specific
+Pygments style is set by <code>--pygments_html_style=style</code>, where <code>style</code>
+can be <code>default</code>, <code>emacs</code>, <code>perldoc</code>, and other valid names for
+Pygments styles.
+
+<h3>Handling of Movies  <a name="___sec87"></a></h3>
+
+MP4, WebM, and Ogg movies are typeset with the HTML5 <code>video</code> tag
+and the HTML code tries to load as many versions among MP4, WebM,
+and Ogg as exist (and the files are loaded in the mentioned order).
+If just the specified file is to be loaded, use the
+<code>--no_mp4_webm_ogg_alternatives</code> command-line option.
+Other movie formats, e.g., <code>.flv</code>, <code>.mpeg</code> and <code>.avi</code>, are embedded via
+the older <code>embed</code> tag.
+
+<h3>HTML Styles  <a name="___sec88"></a></h3>
+
+The HTML style can be defined either in the header of the HTML file,
+using a named built-in style;
+in an external CSS file; or in a template file.
+
+<p>
+An external CSS file <code>filename</code> used by setting the command-line
+argument <code>--css=filename</code>. There available built-in styles are
+specified as <code>--html_style=name</code>, where <code>name</code> can be
+
+<ul>
+ <li> <code>solarized</code>: the famous <a href="http://ethanschoonover.com/solarized" target="_self">solarized</a>
+   style (yellowish),</li>
+ <li> <code>blueish</code>: a simple style with blue headings (default),</li>
+ <li> <code>blueish2</code>: a variant of <em>bluish</em>,</li>
+ <li> <code>bloodish</code>: as <code>bluish</code>, but dark read as color.</li>
+</ul>
+
+Using <code>--css=filename</code> where <code>filename</code> is a non-existing file makes
+DocOnce write the built-in style to that file. Otherwise the HTML
+links to the CSS stylesheet in <code>filename</code>. Several stylesheets can
+be specified: <code>--ccs=file1.css,file2.css,file3.css</code>.
+
+<h3>HTML templates  <a name="___sec89"></a></h3>
+
+Templates are HTML files with "slots" <code>%(main)s</code> for the main body
+of text, <code>%(title)s</code> for the title, and <code>%(date)s</code> for the date.
+DocOnce comes with a few templates. The usage of templates is
+described in a "separate document": "". That document describes how you your DocOnce-generated
+HTML file can have any specified layout.
+
+<p>
+The HTML file can be embedded in a template with your own tailored
+design, see a <a href="http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl" target="_self">tutorial</a> on this topic. The template file must contain
+valid HTML code and can have three "slots": <code>%(title)s</code> for a title,
+<code>%(date)s</code> for a date, and <code>%(main)s</code> for the main body of text. The
+latter is the
+DocOnce document translated to HTML. The title becomes the first
+heading in the DocOnce document, or the title (but a title is not
+recommended when using templates). The date is extracted from the
+<code>DATE:</code> line. With the template feature one can easily embed
+the text in the look and feel of a website. DocOnce comes with
+two templates in <code>bundled/html_styles</code>. Just copy the directory
+containing the template and the CSS and JavaScript files to your
+document directory, edit the template as needed (also check that
+paths to the <code>css</code> and <code>js</code> subdirectories are correct - according
+to how you store the template files), and run
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_template=mytemplate.html
+</pre></div>
+<p>
+The template in <code>style_vagrant</code> also needs an extra option
+<code>--html_style=vagrant</code>. With this style, one has nice navigation buttons
+that are used if the document contains <code>!split</code> commands for splitting
+it into many pages.
+
+<h3>The HTML File Collection  <a name="___sec90"></a></h3>
+
+There are usually a range of files needed for an HTML document arising
+from a DocOnce source. The needed files are listed in
+<code>.basename_html_file_collection</code>, where <code>basename</code> is the filestem of
+the DocOnce file (i.e., the DocOnce source is in <code>basename.do.txt</code>).
+
+<h3>Filenames  <a name="___sec91"></a></h3>
+
+An HTML version of a DocOnce document is often made in different styles,
+calling for a need to rename the HTML output file. This is conveniently
+done by the <code>--html_output=basename</code> option, where <code>basename</code> is the
+filestem of the associated HTML files. The
+<code>.basename_html_file_collection</code> file lists all the needed files
+for the HTML document. Here is an example on making three versions of
+the HTML document: <code>mydoc_bloodish.html</code>, <code>mydoc_solarized</code>, and
+<code>mydoc_vagrant</code>.
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bloodish \
+          --html_output=mydoc_bloodish
+Terminal&gt; doconce split_html mydoc_bloodish.html
+Terminal&gt; doconce format html mydoc --html_style=solarized \
+          --html_output=mydoc_solarized \
+          --pygments_html_style=perldoc --html_admon=apricot
+Terminal&gt; doconce format html mydoc --html_style=vagrant \
+          --html_output=mydoc_vagrant --pygments_html_style=default \
+          --html_template=templates/my_adapted_vagrant_template.html
+Terminal&gt; doconce split_html mydoc_vagrant.html
+</pre></div>
+
+<h2>Blog Posts  <a name="___sec92"></a></h2>
+
+DocOnce can be used for writing blog posts provided the blog site accepts
+raw HTML code. Google's Blogger service (<code>blogger.com</code> or
+<code>blogname.blogspot.com</code>) is particularly well suited since it also
+allows extensive LaTeX mathematics via MathJax.
+
+<ol>
+<li> Write the text of the blog post as a DocOnce document without any
+   title, author, and date.</li>
+<li> Generate HTML as described above.</li>
+<li> Copy the text and paste it into the
+   text area in the blog post (just delete the HTML code that initially
+   pops up in the text area). Make sure the input format is HTML.</li>
+</ol>
+
+See a <a href="http://doconce.blogspot.no" target="_self">simple blog example</a> and
+a <a href="http://doconce-report-demo.blogspot.no/" target="_self">scientific report</a>
+for demonstrations of blog posts at <code>blogspot.no</code>.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
+The comment field after the blog post does not recognize MathJax (LaTeX)
+mathematics or code with indentation. However, using a MathJax
+bookmarklet, e.g., at <a href="http://checkmyworking.com/misc/mathjax-bookmarklet/" target="_self"><tt>http://checkmyworking.com/misc/mathjax-bookmarklet/</tt></a>, one can get the mathematics properly rendered. The comment fields are
+not suitable for computer code, though, as HTML tags are not allowed.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
+Figure files must be uploaded to some web site and the local filenames name must
+be replaced by the relevant URL. This is usually done by using the
+<code>--figure_prefix=http://project.github.io/...</code> option to give some URL
+as prefix to all figure names (a similar <code>--movie_prefix=</code> option exists as
+well).
+
+<p>
+Changing figure names in a blog post can also be done &quot;manually&quot; by
+some editing code in the script that compiles the DocOnce document
+to HTML format:
+
+<p>
+
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cp mydoc.do.txt mydoc2.do.txt
+<span style="color: #19177C">url</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
+<span style="color: #19177C">dir</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;master/project/dir1/dir2&quot;</span>
+<span style="color: #008000; font-weight: bold">for </span>figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
+<span style="color: #008000; font-weight: bold">  </span>doconce replace <span style="color: #BA2121">&quot;[$figname,&quot;</span> <span style="color: #BA2121">&quot;[$site/$dir/$figname.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
+          mydoc2.do.txt
+<span style="color: #008000; font-weight: bold">done</span>
+doconce format html mydoc2
+<span style="color: #408080; font-style: italic"># Paste mydoc2.html into a new blog post page</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+<!-- See here if MathJax stops working in HTML pages on blogger and elsewhere: -->
+<!-- <a href="http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html" target="_self"><tt>http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html</tt></a> -->
+
+<p>
+Blog posts at Google can also be published <a href="http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452" target="_self">automatically through email</a>.
+A Python program can send the contents of the HTML file
+to the blog site's email address using the packages  <code>smtplib</code> and <code>email</code>.
+
+<p>
+WordPress (<code>wordpress.com</code>) allows raw HTML code in blogs,
+but has very limited
+LaTeX support, basically only formulas. The <code>--wordpress</code> option to
+<code>doconce</code> modifies the HTML code such that all equations are typeset
+in a way that is acceptable to WordPress.
+Look at a <a href="http://doconce.wordpress.com" target="_self">simple doconce example</a>
+and a <a href="http://doconcereportdemo.wordpress.com/" target="_self">scientific report</a>
+to see blog posts with mathematics and code on WordPress.
+
+<p>
+Speaking of WordPress, the related project <a href="http://pressbooks.com" target="_self"><tt>http://pressbooks.com</tt></a> can take raw HTML code (from DocOnce, for
+instance) and produce very nice-looking books.  There is no support
+for mathematics in the text, though.
+
+<h2>Pandoc and Markdown  <a name="___sec93"></a></h2>
+
+Output in Pandoc's extended Markdown format results from
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mydoc
+</pre></div>
+<p>
+The name of the output file is <code>mydoc.md</code>.
+From this format one can go to numerous other formats:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md
+</pre></div>
+<p>
+Pandoc supports <code>latex</code>, <code>html</code>, <code>odt</code> (OpenOffice), <code>docx</code> (Microsoft
+Word), <code>rtf</code>, <code>texinfo</code>, to mention some. The <code>-R</code> option makes
+Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
+while the <code>--toc</code> option generates a table of contents.
+See the <a href="http://johnmacfarlane.net/pandoc/README.html" target="_self">Pandoc documentation</a>
+for the many features of the <code>pandoc</code> program.
+
+<h3>Markdown to HTML conversion  <a name="___sec94"></a></h3>
+
+The HTML output from
+<code>pandoc</code> needs adjustments to provide full support for MathJax LaTeX
+mathematics, and for this purpose one should use <code>doconce md2html</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mydoc
+Terminal&gt; doconce m2html mydoc
+</pre></div>
+<p>
+The result <code>mydoc.html</code> can be viewed in a browser.
+
+<h3>Using Pandoc to go from LaTeX to MS Word or HTML  <a name="___sec95"></a></h3>
+
+Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
+Word.  There are two ways (experiment to find the best one for your
+document): <code>doconce format pandoc</code> and then translating using <code>doconce
+md2latex</code> (which runs <code>pandoc</code>), or <code>doconce format latex</code>, and then
+going from LaTeX to the desired format using <code>pandoc</code>.
+Here is an example on the latter strategy:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc
+Terminal&gt; doconce ptex2tex mydoc
+Terminal&gt; doconce replace &#39;\Verb!&#39; &#39;\verb!&#39; mydoc.tex
+Terminal&gt; pandoc -f latex -t docx -o mydoc.docx mydoc.tex
+</pre></div>
+<p>
+When we go through <code>pandoc</code>, only single equations, <code>align</code>, or <code>align*</code>
+environments are well understood for output to HTML.
+
+<p>
+Note that DocOnce applies the <code>Verb</code> macro from the <code>fancyvrb</code> package
+while <code>pandoc</code> only supports the standard <code>verb</code> construction for
+inline verbatim text.  Moreover, quite some additional <code>doconce
+replace</code> and <code>doconce subst</code> edits might be needed on the <code>.mkd</code> or
+<code>.tex</code> files to successfully have mathematics that is well translated
+to MS Word.  Also when going to reStructuredText using Pandoc, it can
+be advantageous to go via LaTeX.
+
+<h3>Strict Markdown  <a name="___sec96"></a></h3>
+
+The option <code>--strict_markdown_output</code> generates plain or strict
+Markdown without the many extension that Pandoc accepts in Markdown
+syntax.
+
+<h3>GitHub-flavored Markdown  <a name="___sec97"></a></h3>
+
+Adding the command-line option <code>github-md</code> turns on the GutHub-flavored
+Markdown dialect, which is used for the issue tracker on <a href="http://github.com" target="_self">GitHub</a>. A special feature is the support of task lists:
+unnumbered lists with <code>[x]</code> (task done) or <code>[ ]</code> (task not done).
+(Tables get typeset directly as HTML and the syntax for code highlighting
+is different from Pandoc extended Markdown.) Below is a typical
+response in a GitHub issue tracker
+where one first quotes the issue and then provides an answer:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bquote
+===== Problems with a function =====
+
+There is a problem with the `f(x)` function
+
+!bc pycod
+def f(x):
+    return 1 + x
+!ec
+This function should be quadratic.
+!equote
+
+OK, this is fixed:
+
+!bc pycod
+def f(x, a=1, b=1, c=1):
+    return a*x**2 + b*x + c
+!ec
+
+===== Updated task list =====
+
+   * [x] Offer an `f(x)` function
+   * [ ] Extension to cubic functions
+   * [x] Allowing general coefficient in the quadratic function
+
+=== Remaining functionality ===
+
+|---------------------------------------------------------------|
+| function | purpose                        | state |
+|----l-----------l------------------------------l---------------|
+|  `g(x)`  | Compute the Gaussian function. | Formula ready. |
+|  `h(x)`  | Heaviside function.            | Formula ready. |
+|  `I(x)`  | Indicator function.            | Nothing done yet. |
+|---------------------------------------------------------------|
+</pre></div>
+<p>
+Say this text is stored in a file <code>mycomments.do.txt</code>. Running
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mycomments --github_md
+</pre></div>
+<p>
+produces the Markdown file <code>mycomments.md</code>, which can be pasted into
+the Write field of
+the GitHub issue tracker. Turning on Preview shows the typesetting of
+the quote, compute code, inline verbatim, headings, the task list, and
+the table.
+
+<h3>MultiMarkdown  <a name="___sec98"></a></h3>
+
+The option <code>--multimarkdown_output</code> generates the MultiMarkdown
+version of Markdown (as opposed to Pandoc-extended Markdown (default),
+strict Markdown, or GitHub-flavored Markdown).
+
+<h3>Strapdown rendering of Markdown text  <a name="___sec99"></a></h3>
+
+<a href="http://strapdownjs.com" target="_self">Strapdown</a> is a tool that can render Markdown
+text nicely in a web browser by just inserting an HTML header and
+footer in the Markdown file and load the file into a browser.
+The option <code>--strapdown</code> outputs the relevant header and footer.
+The output file must be renamed such that it gets the extension <code>.html</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pandoc mydoc --strict_markdown_output \
+          --strapdown --bootstrap_bootwatch_theme=slate
+Terminal&gt; mv mydoc.md mydoc.html
+</pre></div>
+<p>
+The <code>--bootstrap_bootwatch_theme=theme</code> option is used to choose
+a <a href="http://bootswatch.com/" target="_self">Bootswatch</a> theme whose names are
+found on the <a href="http://strapdownjs.com" target="_self">Strapdown page</a>.
+
+<h2>LaTeX  <a name="___sec100"></a></h2>
+
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
+XeLaTeX and pdfLaTeX are used very much in the same way as standard
+LaTeX. The minor differences are described in separate sections
+of the documentation of the DocOnce to LaTeX translation.
+</div>
+
+
+<p>
+Making a LaTeX file <code>mydoc.tex</code> from <code>mydoc.do.txt</code> is done in two steps:
+1) compile the DocOnce source to the <code>ptex2tex</code> format, and 2) compile
+the <code>ptex2tex</code> format to standard LaTeX.
+The <a href="http://code.google.com/p/ptex2tex" target="_self"><tt>ptex2tex</tt></a> format can be
+viewed as an extended LaTeX. For DocOnce users, the <code>ptex2tex</code> format
+essentially means that the file consists of
+
+<ol>
+<li> <code>if-else</code> statements for the <code>preprocess</code> processor such that
+   LaTeX constructions can be activated or deactivated, and</li>
+<li> all code environments can be typeset according to a <code>.ptex2tex.cfg</code>
+   configuration file.</li>
+</ol>
+
+Point 2 is only of interest if you aim to use a special computer code
+formatting that requires you to use a configuration file and
+the <code>ptex2tex</code> program.
+
+<p>
+The reason for generating <code>ptex2tex</code> and not standard LaTeX directly
+from DocOnce was that the <code>ptex2tex</code> format shows a range of possible
+LaTeX constructions for controlling the layout. It can be instructive
+for LaTeX users to look at this code before choosing specific parts
+for some desired layout. Experts may also want to edit this code
+(which should be automated by a script such that the edits can be
+repeated when the DocOnce source is modified, see Step 2b below).
+(Direct control of the LaTeX layout in the <code>doconce format</code> program
+would not spit out alternative LaTeX constructs as is now done through
+the <code>ptex2tex</code> step.)
+
+<p>
+Going from <code>ptex2tex</code> format to standard LaTeX format is enabled by
+either the <code>ptex2tex</code> program or DocOnce's (simplified) version of it:
+<code>doconce ptex2tex</code>. Details are given below.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Information on typesetting of inline verbatim.</b>
+The <code>ptex2tex</code> and the <code>doconce ptex2tex</code> programs take inline verbatim
+code, typeset with backticks in DocOnce, and translate this to
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">\Verb!text!
+</pre></div>
+<p>
+Thereafter, if <code>text</code> does not contain illegal characters for the <code>\texttt</code>
+command, the latter is used instead since then LaTeX can insert
+linebreaks in the inline verbatim text and hence avoid overfull hboxes.
+</div>
+
+
+<p>
+<!-- Note: putting code blocks inside a list is not successful in many -->
+<!-- formats - the text may be messed up. A better choice is a paragraph -->
+<!-- environment, as used here. -->
+
+<p>
+<b>Step 1.</b>
+Filter the doconce text to the <code>ptex2tex</code> "pre-LaTeX form"
+<code>mydoc.p.tex</code>:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc
+</pre></div>
+<p>
+LaTeX-specific commands ("newcommands") in math formulas and similar
+can be placed in files <code>newcommands.tex</code>, <code>newcommands_keep.tex</code>, or
+<code>newcommands_replace.tex</code> (see the section <a href="._manual017.html#newcommands">Macros (Newcommands)</a>).
+If these files are present, they are included in the LaTeX document
+so that your commands are defined.
+
+<p>
+An option <code>--device=paper</code> makes some adjustments for documents
+aimed at being printed. For example, links to web resources are
+associated with a footnote listing the complete web address (URL).
+(Very long URLs in footnotes can be shortened using services such
+as <a href="http://goo.gl/" target="_self"><tt>http://goo.gl/</tt></a>, <a href="http://tinyurl.com/" target="_self"><tt>http://tinyurl.com/</tt></a>, and
+<a href="https://bitly.com/" target="_self"><tt>https://bitly.com/</tt></a>.)
+The default, <code>--device=screen</code>, creates a PDF file for reading
+on a screen where links are just clickable.
+
+<p>
+There are many additional options (run <code>doconce format --help</code> and
+look for options starting with <code>--latex</code> to get a more verbose description):
+
+<ul>
+ <li> <code>--latex_font=helvetica,palatino</code></li>
+ <li> <code>--latex_papersize=a4,a6</code></li>
+ <li> <code>--latex_bibstyle=plain</code></li>
+ <li> <code>--latex_title_layout=titlepage,std,beamer,doconce_heading</code></li>
+ <li> <code>--latex_style=std,Springer_lncse,Springer_llncs,Springer_T2,...</code></li>
+ <li> <code>--latex_list_of_exercises=loe,toc,none</code></li>
+ <li> <code>--latex_fancy_header</code></li>
+ <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code></li>
+ <li> <code>--latex_colored_table_rows=blue,gray,no</code></li>
+ <li> <code>--latex_todonotes</code></li>
+ <li> <code>--latex_double_spacing</code></li>
+ <li> <code>--latex_preamble=filename</code></li>
+ <li> <code>--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2</code></li>
+ <li> <code>--latex_admon_color=0.34,0.02,0.8</code></li>
+ <li> <code>--latex_admon_envir_map=2</code></li>
+ <li> <code>--latex_exercise_numbering=absolute,chapter</code></li>
+ <li> <code>--latex_movie=media9,href,multimedia,movie15</code></li>
+ <li> <code>--latex_movie_controls=on</code></li>
+ <li> <code>--latex_external_movie_viewer</code> (for <code>movie15</code> package)</li>
+ <li> <code>--xelatex</code></li>
+</ul>
+
+<b>Step 2.</b>
+Run <code>ptex2tex</code> (if you have installed the
+Python ptex2tex package) to make a standard LaTeX file,
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ptex2tex mydoc
+</pre></div>
+<p>
+In case you do not have <code>ptex2tex</code>, you may run the (simplified) version
+that comes with DocOnce:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce ptex2tex mydoc
+</pre></div>
+<p>
+The <code>ptex2tex</code> command can set two preprocessor variables:
+
+<ul>
+ <li> <code>PREAMBLE</code> to turn the LaTeX preamble on or off (i.e., complete document
+   or document to be included elsewhere - and note that
+   the preamble is only included
+   if the document has a title, author, and date)</li>
+ <li> <code>MINTED</code> for inclusion of the minted package for typesetting of
+   code with the Pygments tool (which requires <code>latex</code>
+   or <code>pdflatex</code> to be run with the <code>-shell-escape</code> option); not used
+   for <code>doconce ptex2tex</code> only in the <code>ptex2tex</code> program</li>
+</ul>
+
+If you are not satisfied with the generated DocOnce preamble, you can provide
+your own preamble by adding the command-line option <code>--latex_preamble=myfile</code>.
+In case <code>myfile</code> contains a documentclass definition, DocOnce assumes
+that the file contains the <em>complete</em> preamble you want (not that all
+the packages listed in the default preamble are required and must be
+present in <code>myfile</code>). Otherwise, <code>myfile</code> is assumed to contain
+<em>additional</em> LaTeX code to be added to the DocOnce default preamble.
+
+<p>
+The <code>ptex2tex</code> tool makes it possible to easily switch between many
+different fancy formattings of computer code in LaTeX documents. After
+any <code>!bc</code> command in the DocOnce source you can insert verbatim block
+styles as defined in your <code>.ptex2tex.cfg</code> file, e.g., <code>!bc sys</code> for a
+terminal session, where <code>sys</code> is set to a certain environment in
+<code>.ptex2tex.cfg</code> (e.g., <code>CodeTerminal</code>).  There are about 40 styles to
+choose from, and you can easily add new ones.
+
+<p>
+The <code>doconce ptex2tex</code> allows specifications
+of code environments as well. Here is an example:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce ptex2tex mydoc \
+          &quot;sys=\begin{quote}\begin{verbatim}@\end{verbatim}\end{quote}&quot; \
+          fpro=minted fcod=minted shcod=Verbatim envir=ans:nt
+</pre></div>
+<p>
+Note that <code>@</code> must be used to separate the begin and end LaTeX
+commands, unless only the environment name is given (such as <code>minted</code>
+above, which implies <code>\begin{minted}{fortran}</code> and <code>\end{minted}</code> as
+begin and end for blocks inside <code>!bc fpro</code> and <code>!ec</code>).  Specifying
+<code>envir=ans:nt</code> means that all other environments are typeset with the
+<code>anslistings.sty</code> package, e.g., <code>!bc cppcod</code> will then result in
+<code>\begin{c++}</code>. A predefined shortcut as in <code>shcod=Verbatim-0.85</code>
+results in denser
+vertical spacing (baselinestretch 0.85 in LaTeX terminology), and
+<code>shcod=Verbatim-indent</code> implies indentation of the verbatim text.
+Alternatively, one can provide all desired parameters
+<code>\begin{Verbatim}</code> instruction using the syntax illustrated for
+the <code>sys</code> environments above.
+
+<p>
+If no environments like <code>sys</code>, <code>fpro</code>, or the common
+<code>envir</code> are defined on the command line, the plain <code>\begin{Verbatim}</code>
+and <code>\end{Verbatim}</code> instructions are used.
+
+<p>
+<b>Step 2b (optional).</b>
+Edit the <code>mydoc.tex</code> file to your needs.
+For example, you may want to substitute <code>section</code> by <code>section*</code> to
+avoid numbering of sections, you may want to insert linebreaks
+(and perhaps space) in the title, etc. This can be automatically
+edited with the aid of the <code>doconce replace</code> and <code>doconce subst</code>
+commands. The former works with substituting text directly, while the
+latter performs substitutions using regular expressions.
+You will use <code>doconce replace</code> to edit <code>section{</code> to <code>section*{</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce replace &#39;section{&#39; &#39;section*{&#39; mydoc.tex
+</pre></div>
+<p>
+For fixing the line break of a title, you may pick a word in the
+title, say "Using", and insert a break after than word. With
+<code>doconce subst</code> this is easy employing regular expressions with
+a group before "Using" and a group after:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce subst &#39;title\{(.+)Using (.+)\}&#39; \
+          &#39;title{\g&lt;1&gt; \\\\ [1.5mm] Using \g&lt;2&gt;&#39; mydoc.tex
+</pre></div>
+<p>
+A lot of tailored fixes to the LaTeX document can be done by
+an appropriate set of text replacements and regular expression
+substitutions. You are anyway encourged to make a script for
+generating PDF from the LaTeX file so the <code>doconce subst</code> or
+<code>doconce replace</code> commands can be put inside the script.
+
+<p>
+<b>Step 3.</b>
+Compile <code>mydoc.tex</code>
+and create the PDF file:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex mydoc
+Terminal&gt; latex mydoc
+Terminal&gt; makeindex mydoc   # if index
+Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; latex mydoc
+Terminal&gt; dvipdf mydoc
+</pre></div>
+<p>
+See the next two sections for compilation with XeLaTeX or pdfLaTeX.
+
+<p>
+If one wishes to use the minted LaTeX package for
+typesetting code blocks (<code>Minted_Python</code>, <code>Minted_Cpp</code>, etc., in
+<code>ptex2tex</code> specified through the <code>*pro</code> and <code>*cod</code> variables in
+<code>.ptex2tex.cfg</code> or <code>$HOME/.ptex2tex.cfg</code>), the minted LaTeX package is
+needed.  This package is automatically included by <code>doconce ptex2tex</code> if
+the minted style is used, while you have to include the
+<code>-DMINTED</code> preprocessor option when running the <code>ptex2tex</code> program:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ptex2tex -DMINTED mydoc
+</pre></div>
+<p>
+If the minted style is used, <code>latex</code> (or <code>pdflatex</code> or <code>xelatex</code>)
+<em>must</em> be run with the
+<code>-shell-escape</code> option:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex -shell-escape mydoc
+Terminal&gt; latex -shell-escape mydoc
+Terminal&gt; makeindex mydoc   # if index
+Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; latex -shell-escape mydoc
+Terminal&gt; dvipdf mydoc
+</pre></div>
+
+<h2>PDFLaTeX  <a name="___sec101"></a></h2>
+
+Running <code>pdflatex</code> instead of <code>latex</code> follows almost the same steps,
+but the start is
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc
+</pre></div>
+<p>
+Then <code>ptex2tex</code> is run as explained above, and finally
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pdflatex -shell-escape mydoc
+Terminal&gt; makeindex mydoc   # if index
+Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; pdflatex -shell-escape mydoc
+</pre></div>
+
+<h2>XeLaTeX  <a name="___sec102"></a></h2>
+
+XeLaTeX is an alternative to pdfLaTeX and is run in almost the
+same way, except for the <code>--xelatex</code> flag to <code>doconce format</code>:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --xelatex
+Terminal&gt; doconce ptex2tex mydoc
+Terminal&gt; xelatex mydoc
+</pre></div>
+
+<h2>From PDF to e-book formats  <a name="___sec103"></a></h2>
+
+PDF (as generated from LaTeX above) can be read on most devices today.
+However, for Kindle and other devices specialized for e-books you
+need to convert to their format. The <a href="http://calibre-ebook.com/" target="_self">Calibre</a>
+program can produce epub, mobi, and other e-book formats from PDF,
+see a <a href="http://www.dedoimedo.com/computers/latex-lyx-e-books.html" target="_self">description</a>.
+
+<h2>Plain ASCII Text  <a name="___sec104"></a></h2>
+
+We can go from DocOnce "back to" plain untagged text suitable for viewing
+in terminal windows, inclusion in email text, or for insertion in
+computer source code:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
+</pre></div>
+
+<h2>reStructuredText  <a name="___sec105"></a></h2>
+
+Going from DocOnce to reStructuredText gives a lot of possibilities to
+go to other formats. First we filter the DocOnce text to a
+reStructuredText file <code>mydoc.rst</code>:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format rst mydoc.do.txt
+</pre></div>
+<p>
+We may now produce various other formats:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; rst2html.py  mydoc.rst &gt; mydoc.html # html
+Terminal&gt; rst2latex.py mydoc.rst &gt; mydoc.tex  # latex
+Terminal&gt; rst2xml.py   mydoc.rst &gt; mydoc.xml  # XML
+Terminal&gt; rst2odt.py   mydoc.rst &gt; mydoc.odt  # OpenOffice
+</pre></div>
+<p>
+The OpenOffice file <code>mydoc.odt</code> can be loaded into OpenOffice and
+saved in, among other things, the RTF format or the Microsoft Word format.
+However, it is more convenient to use the program <code>unovonv</code>
+to convert between the many formats OpenOffice supports <em>on the command line</em>.
+Run
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; unoconv --show
+</pre></div>
+<p>
+to see all the formats that are supported.
+For example, the following commands take
+<code>mydoc.odt</code> to Microsoft Office Open XML format,
+classic MS Word format, and PDF:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; unoconv -f ooxml mydoc.odt
+Terminal&gt; unoconv -f doc mydoc.odt
+Terminal&gt; unoconv -f pdf mydoc.odt
+</pre></div>
+<p>
+<b>Remark about Mathematical Typesetting.</b>
+At the time of this writing, there is no easy way to go from DocOnce
+and LaTeX mathematics to reST and further to OpenOffice and the
+"MS Word world". Mathematics is only fully supported by <code>latex</code> as
+output and to a wide extent also supported by the <code>sphinx</code> output format.
+Some links for going from LaTeX to Word are listed below.
+
+<ul>
+ <li> <a href="http://ubuntuforums.org/showthread.php?t=1033441" target="_self"><tt>http://ubuntuforums.org/showthread.php?t=1033441</tt></a></li>
+ <li> <a href="http://tug.org/utilities/texconv/textopc.html" target="_self"><tt>http://tug.org/utilities/texconv/textopc.html</tt></a></li>
+ <li> <a href="http://nileshbansal.blogspot.com/2007/12/latex-to-openofficeword.html" target="_self"><tt>http://nileshbansal.blogspot.com/2007/12/latex-to-openofficeword.html</tt></a></li>
+</ul>
+
+<h2>Sphinx  <a name="___sec106"></a></h2>
+
+Sphinx documents demand quite some steps in their creation. We have automated
+most of the steps through the <code>doconce sphinx_dir</code> command:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
+          title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
+          theme=mytheme mydoc
+</pre></div>
+<p>
+The keywords <code>author</code>, <code>title</code>, and <code>version</code> are used in the headings
+of the Sphinx document. By default, <code>version</code> is 1.0 and the script
+will try to deduce authors and title from the doconce file <code>mydoc.do.txt</code>
+The default value of <code>dirname</code> is <code>sphinx-rootdir</code>. The <code>theme</code>
+keyword is used to set the theme for design of HTML output from
+Sphinx (the default theme is <code>'default'</code>).
+
+<p>
+One often just runs the simple command
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir mydoc
+</pre></div>
+<p>
+which creates the Sphinx directory <code>sphinx-rootdir</code> with
+relevant files.
+
+<p>
+The <code>doconce sphinx_dir</code> command generates a script
+<code>automake_sphinx.py</code> for compiling the Sphinx document into an HTML
+document.  Run
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python automake_sphinx.py
+</pre></div>
+<p>
+As the output also tells, you can see the Sphinx HTML version of the document
+by running
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; google-chrome sphinx-rootdir/_build/html/index.html
+</pre></div>
+<p>
+or loading the <code>index.html</code> file manually into your favorite web browser.
+
+<p>
+If you cycle through editing the DocOnce file and watching the
+HTML output, you should observe that <code>automake_sphinx.py</code> does not
+recompile the DocOnce file if the Sphinx <code>.rst</code> version already exists.
+In each edit-and-watch cycle do
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; rm mydoc.rst; python automake_sphinx.py
+</pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip.</b>
+If you are new
+to Sphinx and end up producing quite some Sphinx documents, you are encouraged
+to read the Sphinx documentation and study the <code>automake_sphinx.py</code>
+file. Maybe you want to do things differently.
+</div>
+
+
+<p>
+The following paragraphs describes the many possibilities for steering
+the Sphinx output.
+
+<p>
+<b>Links.</b>
+The <code>automake_sphinx.py</code> script copies directories named <code>fig*</code>
+over to the Sphinx directory so that figures are accessible
+in the Sphinx compilation.  It also examines <code>MOVIE:</code> and <code>FIGURE:</code>
+commands in the DocOnce file to find other image files and copies
+these too. I strongly recommend to put files
+to which there are local links (not <code>http:</code> or <code>file:</code> URLs) in
+a directory named <code>_static</code>. The <code>automake_sphinx.py</code> copies
+<code>_static*</code> to the Sphinx directory, which guarantees that the links
+to the local files will work in the Sphinx document.
+
+<p>
+There is a utility <code>doconce sphinxfix_localURLs</code> for checking links to
+local files and moving the files to <code>_static</code> and changing the links
+accordingly. For example, a link to <code>dir1/dir2/myfile.txt</code> is changed
+to <code>_static/myfile.txt</code> and <code>myfile.txt</code> is copied to <code>_static</code>.
+However, I recommend instead that you manually copy
+files to <code>_static</code> when you want to link to them, or let your
+script which compiles the DocOnce document do it automatically.
+
+<p>
+<b>Themes.</b>
+DocOnce comes with a rich collection of HTML themes for Sphinx documents,
+much larger than what is found in the standard Sphinx distribution.
+Additional themes include
+<code>agni</code>,
+<code>basicstrap</code>,
+<code>bootstrap</code>,
+<code>cloud</code>,
+<code>fenics</code>,
+<code>fenics_minimal</code>,
+<code>flask</code>,
+<code>haiku</code>,
+<code>impressjs</code>,
+<code>jal</code>,
+<code>pylons</code>,
+<code>redcloud</code>,
+<code>scipy_lectures</code>,
+<code>slim-agogo</code>, and
+<code>vlinux-theme</code>.
+
+<p>
+All the themes are packed out in the Sphinx directory, and the
+<code>doconce sphinx_dir</code> insert lots of extra code in the <code>conf.py</code>
+file to enable easy specification and customization of themes.
+For example, modules are loaded for the additional themes that
+come with DocOnce, code is inserted to allow customization of
+the look and feel of themes, etc. The <code>conf.py</code> file is a
+good starting point for fine-tuning your favorite team, and your
+own <code>conf.py</code> file can later be supplied and used when running
+<code>doconce sphinx_dir</code>: simply add the command-line option
+<code>conf.py=conf.py</code>.
+
+<p>
+A script
+<code>make-themes.sh</code> can make HTML documents with one or more themes.
+For example,
+to realize the themes <code>fenics</code>, <code>pyramid</code>, and <code>pylon</code> one writes
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ./make-themes.sh fenics pyramid pylon
+</pre></div>
+<p>
+The resulting directories with HTML documents are <code>_build/html_fenics</code>
+and <code>_build/html_pyramid</code>, respectively. Without arguments,
+<code>make-themes.sh</code> makes all available themes (!). With <code>make-themes.sh</code>
+it is easy to check out various themes to find the one that is most
+attractive for your document.
+
+<p>
+You may supply your own theme and avoid copying all the themes
+that come with DocOnce into the Sphinx directory. Just specify
+<code>theme_dir=path</code> on the command line, where <code>path</code> is the relative
+path to the directory containing the Sphinx theme. You must also
+specify a configure file by <code>conf.py=path</code>, where <code>path</code> is the
+relative path to your <code>conf.py</code> file.
+
+<p>
+<b>Example.</b>
+Say you like the <code>scipy_lectures</code> theme, but you want
+a table of contents to appear <em>to the right</em>, much in the same style
+as in the <code>default</code> theme (where the table of contents is to the left).
+You can then run <code>doconce sphinx_dir</code>, invoke a text editor with the
+<code>conf.py</code> file, find the line <code>html_theme == 'scipy_lectures'</code>,
+edit the following <code>nosidebar</code> to <code>false</code> and <code>rightsidebar</code> to <code>true</code>.
+Alternatively, you may write a little script using <code>doconce replace</code>
+to replace a portion of text in <code>conf.py</code> by a new one:
+
+<p>
+
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace <span style="color: #BA2121">&quot;elif html_theme == &#39;scipy_lectures&#39;:</span>
+<span style="color: #BA2121">    html_theme_options = {</span>
+<span style="color: #BA2121">        &#39;nosidebar&#39;: &#39;true&#39;,</span>
+<span style="color: #BA2121">        &#39;rightsidebar&#39;: &#39;false&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarbgcolor&#39;: &#39;#f2f2f2&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebartextcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarlinkcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;footerbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">        &#39;relbarbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">    }&quot;</span> <span style="color: #BA2121">&quot;elif html_theme == &#39;scipy_lectures&#39;:</span>
+<span style="color: #BA2121">    html_theme_options = {</span>
+<span style="color: #BA2121">        &#39;nosidebar&#39;: &#39;false&#39;,</span>
+<span style="color: #BA2121">        &#39;rightsidebar&#39;: &#39;true&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarbgcolor&#39;: &#39;#f2f2f2&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebartextcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;sidebarlinkcolor&#39;: &#39;#20435c&#39;,</span>
+<span style="color: #BA2121">        &#39;footerbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">        &#39;relbarbgcolor&#39;: &#39;#000000&#39;,</span>
+<span style="color: #BA2121">    }&quot;</span> conf.py
+</pre></div>
+<p>
+Obviously, we could also have changed colors in the edit above.
+The final alternative is to save the edited <code>conf.py</code> file somewhere
+and reuse it the next time <code>doconce sphinx_dir</code> is run
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce sphinx_dir theme=scipy_lectures \
+                   conf.py=../some/path/conf.py mydoc
+</pre></div>
+
+<h3>The manual Sphinx procedure  <a name="___sec107"></a></h3>
+
+If it is not desirable to use the autogenerated scripts explained
+above, here is the complete manual procedure of generating a
+Sphinx document from a file <code>mydoc.do.txt</code>.
+
+<p>
+<b>Step 1.</b>
+Translate DocOnce into the Sphinx format:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphinx mydoc
+</pre></div>
+<p>
+<b>Step 2.</b>
+Create a Sphinx root directory
+either manually or by using the interactive <code>sphinx-quickstart</code>
+program. Here is a scripted version of the steps with the latter:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir sphinx-rootdir
+sphinx-quickstart &lt;&lt;EOF
+sphinx-rootdir
+n
+_
+Name of My Sphinx Document
+Author
+version
+version
+.rst
+index
+n
+y
+n
+n
+n
+n
+y
+n
+n
+y
+y
+y
+EOF
+</pre></div>
+<p>
+The autogenerated <code>conf.py</code> file
+may need some edits if you want to specific layout (Sphinx themes)
+of HTML pages. The <code>doconce sphinx_dir</code> generator makes an extended <code>conv.py</code>
+file where, among other things, several useful Sphinx extensions
+are included.
+
+<p>
+<b>Step 3.</b>
+Copy the <code>mydoc.rst</code> file to the Sphinx root directory:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cp mydoc.rst sphinx-rootdir
+</pre></div>
+<p>
+If you have figures in your document, the relative paths to those will
+be invalid when you work with <code>mydoc.rst</code> in the <code>sphinx-rootdir</code>
+directory. Either edit <code>mydoc.rst</code> so that figure file paths are correct,
+or simply copy your figure directories to <code>sphinx-rootdir</code>.
+Links to local files in <code>mydoc.rst</code> must be modified to links to
+files in the <code>_static</code> directory, see comment above.
+
+<p>
+<b>Step 4.</b>
+Edit the generated <code>index.rst</code> file so that <code>mydoc.rst</code>
+is included, i.e., add <code>mydoc</code> to the <code>toctree</code> section so that it becomes
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">.. toctree::
+   :maxdepth: 2
+
+   mydoc
+</pre></div>
+<p>
+(The spaces before <code>mydoc</code> are important!)
+
+<p>
+<b>Step 5.</b>
+Generate, for instance, an HTML version of the Sphinx source:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">make clean   # remove old versions
+make html
+</pre></div>
+<p>
+Sphinx can generate a range of different formats:
+standalone HTML, HTML in separate directories with <code>index.html</code> files,
+a large single HTML file, JSON files, various help files (the qthelp, HTML,
+and Devhelp projects), epub, LaTeX, PDF (via LaTeX), pure text, man pages,
+and Texinfo files.
+
+<p>
+<b>Step 6.</b>
+View the result:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; firefox _build/html/index.html
+</pre></div>
+<p>
+Note that verbatim code blocks can be typeset in a variety of ways
+depending the argument that follows <code>!bc</code>: <code>cod</code> gives Python
+(<code>code-block:: python</code> in Sphinx syntax) and <code>cppcod</code> gives C++, but
+all such arguments can be customized both for Sphinx and LaTeX output.
+
+<h2>Wiki Formats  <a name="___sec108"></a></h2>
+
+There are many different wiki formats, but DocOnce only supports three:
+<a href="http://code.google.com/p/support/wiki/WikiSyntax" target="_self">Googlecode wiki</a>,
+<a href="http://www.mediawiki.org/wiki/Help:Formatting" target="_self">MediaWiki</a>, and
+<a href="http://www.wikicreole.org/wiki/Creole1.0" target="_self">Creole Wiki</a>.
+These formats are called
+<code>gwiki</code>, <code>mwiki</code>, and <code>cwiki</code>, respectively.
+Transformation from DocOnce to these formats is done by
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format gwiki mydoc.do.txt
+Terminal&gt; doconce format mwiki mydoc.do.txt
+Terminal&gt; doconce format cwiki mydoc.do.txt
+</pre></div>
+<p>
+The produced MediaWiki can be tested in the <a href="http://en.wikibooks.org/wiki/Sandbox" target="_self">sandbox of
+wikibooks.org</a>. The format
+works well with Wikipedia, Wikibooks, and
+<a href="http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" target="_self">ShoutWiki</a>,
+but not always well elsewhere
+(see <a href="http://doconcedemo.jumpwiki.com/wiki/First_demo" target="_self">this example</a>).
+
+<p>
+Large MediaWiki documents can be made with the
+<a href="http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=book_creator" target="_self">Book creator</a>.
+From the MediaWiki format one can go to other formats with aid
+of <a href="http://pediapress.com/code/" target="_self">mwlib</a>. This means that one can
+easily use DocOnce to write <a href="http://en.wikibooks.org" target="_self">Wikibooks</a>
+and publish these in PDF and MediaWiki format, while
+at the same time, the book can also be published as a
+standard LaTeX book, a Sphinx web document, or a collection of HTML files.
+
+<p>
+The Googlecode wiki document, <code>mydoc.gwiki</code>, is most conveniently stored
+in a directory which is a clone of the wiki part of the Googlecode project.
+This is far easier than copying and pasting the entire text into the
+wiki editor in a web browser.
+
+<p>
+When the DocOnce file contains figures, each figure filename must in
+the <code>.gwiki</code> file be replaced by a URL where the figure is
+available. There are instructions in the file for doing this. Usually,
+one performs this substitution automatically (see next section).
+
+<h2>Google Docs  <a name="___sec109"></a></h2>
+
+Google Docs are normally made online in the interactive editor. However,
+you may upload a DocOnce document to Google Docs. This requires transforming
+the DocOnce document to one of the accepted formats for Google Docs:
+
+<ul>
+ <li> OpenOffice: <code>doconce format rst</code> and then run
+   <code>rst2odt</code> (or <code>rst2odt.py</code>). Upload the <code>.odt</code> file, click
+   <em>Open...</em> in Google Drive and choose <em>Google Docs</em> as viewer.</li>
+ <li> MS Word: <code>doconce format pandoc</code> and then run <code>pandoc</code> to
+   produce a <code>.docx</code> file that can be uploaded to Google Drive
+   and opened in Google Docs.</li>
+ <li> RTF: <code>doconce format pandoc</code> and then run <code>pandoc</code> to produce
+   a <code>.rtf</code> file that can be uploaded to Google Drive and opened.
+   Another possibility is to run <code>doconce format latex</code> and
+   then <a href="http://sourceforge.net/projects/latex2rtf" target="_self">latex2rtf</a>
+   (the support of mathematics has gotten worse).</li>
+ <li> Plain text: <code>doconce format plain</code>. Upload the <code>.txt</code> file
+   to Google Drive and open in Google Docs.</li>
+ <li> HTML: <code>doconce format html</code>. Upload the <code>.html</code> file and
+   open in Google Docs. Complicated HTML files can be misinterpreted
+   by Google Docs.</li>
+</ul>
+
+This is not yet much tested. It remains to see how code becomes in
+Google Docs. Support for mathematics is probably impossible until
+Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
+in Google Docs and the <a href="http://code.google.com/p/googledoc2latex" target="_self">googledoc2latex</a> script can convert a Google document to LaTeX.
+
+<h2>Tweaking the DocOnce Output  <a name="___sec110"></a></h2>
+
+Occasionally, one would like to tweak the output in a certain format
+from DocOnce. One example is figure filenames when transforming
+DocOnce to reStructuredText. Since DocOnce does not know if the
+<code>.rst</code> file is going to be filtered to LaTeX or HTML, it cannot know
+if <code>.eps</code> or <code>.png</code> is the most appropriate image filename.
+The solution is to use a text substitution command or code with, e.g., sed,
+perl, python, or scitools subst, to automatically edit the output file
+from DocOnce. It is then wise to run DocOnce and the editing commands
+from a script to automate all steps in going from DocOnce to the final
+format(s). The <code>make.sh</code> files in <code>docs/manual</code> and <code>docs/tutorial</code>
+constitute comprehensive examples on how such scripts can be made.
+
+<p>
+<p>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="._manual027.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._manual029.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

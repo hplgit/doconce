@@ -1,7 +1,7 @@
 dir=tmp
 rm -rf $dir
 mkdir $dir
-cp bootstrap_demo.do.txt index.do.txt $dir
+cp bootstrap_demo.do.txt index.do.txt template_vagrant.html $dir
 cd $dir
 darkpygm='monokai'
 #darkpygm='fruity'  # suboptimal
@@ -21,6 +21,9 @@ doconce format html bootstrap_demo --html_style=bootswatch_$style --pygments_htm
 
 doconce format html bootstrap_demo --html_style=bootswatch_$style --pygments_html_style=default --html_admon=bootstrap_panel --html_output=$style --html_code_style=inherit
 done
+
+style=vagrant
+doconce format html bootstrap_demo --html_style=$style --html_template=template_$style.html --pygments_html_style=default --html_admon=bootstrap_panel --html_output=$style --html_code_style=inherit
 
 # Dark styles
 styles="amelia cyborg darkly slate superhero"

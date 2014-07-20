@@ -30,6 +30,7 @@ pygments_html_linenos = False
 #html_pre_style = 
 #html_template = 
 #html_toc_depth = 
+#html_toc_indent = 
 #html_body_font = 
 #html_heading_font = 
 #html_video_autoplay = 

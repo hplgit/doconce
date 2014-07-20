@@ -60,7 +60,8 @@ bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
-    ('--html_toc_depth=', 'No of levels in the table of contents in HTML output. Default: 2.'),
+    ('--html_toc_depth=', 'No of levels in the table of contents in HTML output for Bootstrap-based styles. Default: 2.'),
+    ('--html_toc_indent=', 'No of spaces for indentation of subsections in the table of contents in HTML output. Default: 3 (0 gives toc as nested list in Bootstrap-based styles).'),
     ('--html_body_font=',
      """Specify HTML font for text body. =? lists available Google fonts."""),
     ('--html_heading_font=',
@@ -1432,14 +1433,14 @@ def ptex2tex():
                                 end = '\\' + 'end{' + value + '}'
                                 envir_user_spec.append((envir, begin, end))
                 elif value.startswith('ans'):
+                    # Mapping from code envirs to valid anslistings names
                     envir2listings = dict(
                         pyshell='python',
                         py='python', cy='python', f='fortran',
                         cpp='c++', sh='bash', swig='swigcode',
                         ufl='uflcode', m='matlab', c='c++',
                         latex='latexcode', xml='xml',
-                        pyopt='python', ipy='python',
-                        do='text')
+                        pyopt='python', ipy='python')
                     if envir == 'envir':
                         for lang in envir2listings:
                             language = envir2listings[lang]
@@ -2603,11 +2604,15 @@ def doconce_split_html(header, parts, footer, basename, filename):
                     footer = text.splitlines(True)
 
     # Treat \eqref and labels: MathJax does not support references
-    # to eq. labels in other files
+    # to eq. labels in other files.
+    # Also, skip equation references to external documents.
     label_pattern = r'\label\{(.+?)\}'  # label in latex equations
     parts_label = [re.findall(label_pattern, ''.join(part)) for part in parts]
     eqref_pattern = r'\eqref\{(.+?)\}'
-    parts_eqref = [re.findall(eqref_pattern, ''.join(part)) for part in parts]
+    ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
+    parts_eqref = [re.findall(eqref_pattern,
+                              re.sub(ref_pattern, '', ''.join(part)))
+                   for part in parts]
 
     parts_label2part = {}   # map an eq. label to where it is defined
     for i in range(len(parts_label)):

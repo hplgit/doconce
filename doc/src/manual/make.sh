@@ -1,5 +1,17 @@
 #!/bin/sh -x
 set -x
+
+function system {
+# Run operating system command and if failure, report and abort
+
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 # Compile the Doconce manual, manual.do.txt, in a variety of
 # formats to exemplify how different formats may look like.
 # This is both a test of Doconce and an example.
@@ -28,21 +40,15 @@ publish import refs3.bib <<EOF
 2
 EOF
 
-d2f="doconce format"
 # doconce html format:
-$d2f html manual.do.txt --no_mako --pygments_html_style=none
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-# Need a fix: remove newcommands (and math) when displayed on googlecode
-doconce subst -s '<!\-\- newcommands.*?\$\$.*?\$\$' '' manual.html
+system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable
+system doconce split_html manual.html
 
 # Sphinx
-$d2f sphinx manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-rm -rf sphinx-rootdir
+system doconce format sphinx manual.do.txt --no_mako
 # We have several examples on AUTHOR: so to avoid multiple
 # authors we have to specify
-doconce sphinx_dir author=HPL title='Doconce Manual' theme=cbc version=0.6 intersphinx manual.do.txt
+doconce sphinx_dir author=HPL title='Doconce Manual' theme=cbc version=1.0 intersphinx manual.do.txt
 cp manual.rst manual.sphinx.rst
 python automake_sphinx.py
 # automake_sphinx.py can only copy figures in FIGURE lines, not
@@ -51,18 +57,15 @@ mkdir sphinx-rootdir/_build/html/mov
 cp -r mov/wave_frames sphinx-rootdir/_build/html/mov
 
 # rst:
-$d2f rst manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-rst2html.py manual.rst > manual.rst.html
-
-rst2xml.py manual.rst > manual.xml
+system doconce format rst manual.do.txt --no_mako
+system rst2html.py manual.rst > manual.rst.html
+system rst2xml.py manual.rst > manual.xml
 
 # The Mako generated HTML table must be removed before creating latex
 doconce remove --from '.. end sphinx-figtable-in-html' --to '.. end sphinx-figtable-in-html' manual.rst > manual.4latex.rst
-rst2latex.py manual.4latex.rst > manual.rst.tex
+system rst2latex.py manual.4latex.rst > manual.rst.tex
 
-pdflatex manual.rst.tex
+system pdflatex manual.rst.tex
 # fix figure extension: rst will use .png file for wave1D, but this is not
 # legal for latex
 # lookahead don't work: doconce subst '(?=includegraphics.+)\.png' '.eps' manual.rst.tex
@@ -71,37 +74,13 @@ latex manual.rst.tex
 latex manual.rst.tex
 dvipdf manual.rst.dvi
 
-# plain text:
-$d2f plain manual.do.txt --skip_inline_comments --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-$d2f epytext manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-#Problem with st
-#$d2f st manual.do.txt --no_mako
-#if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-
-$d2f pandoc manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-# doconce pdflatex:
-$d2f pdflatex manual.do.txt --no_mako --latex_font=helvetica
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce ptex2tex manual envir=Verbatim
-pdflatex -shell-escape manual
-bibtex manual
-makeindex manual
-pdflatex -shell-escape manual
-pdflatex -shell-escape manual
-cp manual.pdf manual_pdflatex.pdf
+system doconce format plain manual.do.txt --skip_inline_comments --no_mako
+system doconce format pandoc manual.do.txt --no_mako
+system doconce format epytext manual.do.txt --no_mako
 
 # doconce latex:
-$d2f latex manual.do.txt --no_mako --latex_font=helvetica  # produces ptex2tex: manual.p.tex
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce ptex2tex manual envir=Verbatim
+system doconce format latex manual.do.txt --no_mako --latex_font=helvetica  # produces ptex2tex: manual.p.tex
+doconce ptex2tex manual envir=ans:nt
 latex -shell-escape manual
 latex -shell-escape manual
 bibtex manual
@@ -109,38 +88,44 @@ makeindex manual
 latex -shell-escape manual
 latex -shell-escape manual
 dvipdf manual.dvi
+cp manual.pdf manual_latex.pdf
+
+# doconce pdflatex:
+system doconce format pdflatex manual.do.txt --no_mako --latex_font=helvetica
+
+doconce ptex2tex manual envir=ans:nt
+pdflatex -shell-escape manual
+bibtex manual
+makeindex manual
+pdflatex -shell-escape manual
+pdflatex -shell-escape manual
 
 # Google Code wiki:
-$d2f gwiki manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
+system doconce format gwiki manual.do.txt --no_mako
 # fix figure in wiki: (can also by done by doconce gwiki_figsubst)
 doconce subst "\(the URL of the image file fig/wave1D.png must be inserted here\)" "(https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png" manual.gwiki
 
-$d2f cwiki manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-$d2f mwiki manual.do.txt --no_mako
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format cwiki manual.do.txt --no_mako
+system doconce format mwiki manual.do.txt --no_mako
 
 rm -f *.ps
 
 rm -rf demo
 mkdir demo
-cp -r manual.do.txt manual.html fig mov manual.p.tex manual.tex manual.pdf manual_pdflatex.pdf manual.rst manual.sphinx.rst manual.xml manual.rst.html manual.rst.tex manual.rst.pdf manual.gwiki manual.cwiki manual.mwiki manual.txt manual.epytext manual.md sphinx-rootdir/_build/html demo
+cp -r manual.do.txt manual.html ._manual*.html fig mov manual.p.tex manual.tex manual.pdf manual_latex.pdf manual.rst manual.sphinx.rst manual.xml manual.rst.html manual.rst.tex manual.rst.pdf manual.gwiki manual.cwiki manual.mwiki manual.txt manual.epytext manual.md sphinx-rootdir/_build/html demo
 
 cd demo
 cat > index.html <<EOF
 <HTML><BODY>
-<TITLE>Demo of Doconce formats</TITLE>
+<TITLE>Demo of system doconce formats</TITLE>
 <H3>Doconce demo</H3>
 
 Doconce is a minimum tagged markup language. The file
 <a href="manual.do.txt">manual.do.txt</a> is the source of
-a Doconce Description, written in the Doconce format.
+a Doconce Description, written in the system doconce format.
 Running
 <pre>
-doconce format html manual.do.txt
+doconce format html manual.do.txt --no_mako --html_style=bootswatch_readings
 </pre>
 produces the HTML file <a href="manual.html">manual.html</a>.
 (Note that on <tt>code.google.com</tt> the LaTeX mathematics
@@ -183,6 +168,9 @@ EOF
 
 cd ..
 dest=../../pub/manual
-cp -r demo/html demo/manual.pdf demo/manual.html demo/fig demo/mov $dest
+cp -r demo/html demo/manual.pdf demo/manual.html demo/._manual*.html demo/fig demo/mov $dest
 dest=../../../../doconce.wiki
-cp -r demo/manual.rst $dest
+cp demo/manual.rst $dest/manual_rst.rst
+# mediawiki at github is too bad - very ugly result
+#cp demo/manual.mwiki $dest/manual_mediawiki.mediawiki
+cp demo/manual.md $dest/manual_markdown.md
