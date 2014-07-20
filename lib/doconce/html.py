@@ -673,8 +673,9 @@ MathJax.Hub.Config({
         # Load template file
         try:
             f = open(template, 'r'); template = f.read(); f.close()
-        except IOError:
+        except IOError as e:
             print '*** error: could not find template "%s"' % template
+            print e
             _abort()
 
         # Check that template does not have "main content" begin and

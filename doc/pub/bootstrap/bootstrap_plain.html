@@ -6,7 +6,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Doconce Demo of the Bootstrap style">
+<meta name="description" content="DocOnce Demo of the Bootstrap style">
 
 
 
@@ -20,7 +20,7 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+ 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
                0,
                None,
                '___sec0'),
@@ -68,27 +68,24 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="bootstrap_plain.html">Doconce Demo of the Bootstrap style</a>
+    <a class="navbar-brand" href="bootstrap_plain.html">DocOnce Demo of the Bootstrap style</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._bootstrap_plain001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
-     <!-- navigation toc: " Themes " --> <li> &nbsp;  <a href="._bootstrap_plain001.html#___sec1"> Themes </a></li>
-     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._bootstrap_plain001.html#___sec2"> Demonstrations of admons </a></li>
-     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._bootstrap_plain002.html#sec:examples"> Horizontal alignment of document elements </a></li>
-     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._bootstrap_plain002.html#___sec4"> Principles of grid structures </a></li>
-     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._bootstrap_plain002.html#___sec5"> Example on a 1x3 grid structure </a></li>
-     <!-- navigation toc: " Variation of the previous grid structure using admons " --> <li> &nbsp; &nbsp;  <a href="._bootstrap_plain002.html#___sec6"> Variation of the previous grid structure using admons </a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._bootstrap_plain001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Themes" --> <li><a href="._bootstrap_plain001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._bootstrap_plain001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._bootstrap_plain002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -98,18 +95,18 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Doconce Demo of the Bootstrap style</title>
+<title>DocOnce Demo of the Bootstrap style</title>
 
 <div class="jumbotron">
-<center><h1>Doconce Demo of the Bootstrap style</h1></center>  <!-- document title -->
+<center><h1>DocOnce Demo of the Bootstrap style</h1></center>  <!-- document title -->
 
 <p>
-Doconce supports a variety of Bootstrap styles in a simple
+DocOnce supports a variety of Bootstrap styles in a simple
 way:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 </pre></div>
 <p>
@@ -119,6 +116,13 @@ from Bootstrap.  If a <code>!split</code> command is used before the first
 section heading, a button with <code>Read...</code> and a link to the next page
 is inserted if the document is split using <code>doconce split_html</code>.  This
 construction results in a short, standard Bootstrap main page.
+
+<p>
+A multiple-page document is created by inserting <code>!split</code> at desired
+places. <code>doconce split_html</code> splits the document and inserts navigation
+button (previous and next page) at the bottom of each page. The
+option <code>--pagination</code> can be added to get a different navigation
+bar at the bottom where also the page number can be seen.
 
 <p>
 <!-- A split before the first section will enable a button in the jumbotron -->
@@ -133,12 +137,12 @@ construction results in a short, standard Bootstrap main page.
 </div> <!-- end jumbotron -->
 
 <p>
-<ul class="pager">
 
-  <li class="next">
-    <a href="._bootstrap_plain001.html">Next &rarr;</a>
-  </li>
-
+<ul class="pagination">
+  <li class="active"><a href="._bootstrap_plain000.html">1</a></li>
+  <li><a href="._bootstrap_plain001.html">2</a></li>
+  <li><a href="._bootstrap_plain002.html">3</a></li>
+  <li><a href="._bootstrap_plain001.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

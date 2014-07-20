@@ -1,29 +1,60 @@
-<!--
-Automatically generated HTML file from Doconce source
-(https://github.com/hplgit/doconce/)
--->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="DocOnce Demo of the Bootstrap style">
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
 
-
-<!-- Bootstrap style: bootswatch_slate -->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css" rel="stylesheet">
-<!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
--->
-
+<!-- Define color of headings here (last definition counts) -->
 <style type="text/css">
-/* Let inline verbatim have the same color as the surroundings */
-code { color: inherit; background-color: transparent; }
-/* Let pre tags for code blocks have the same color as the surroundings */
-pre { color: inherit; background-color: transparent; }
+h1, h2, h3, h4, h5, h6 {
+  color: #000;     /* black */
+  color: #999;     /* gray */
+  color: #005580;  /* dark blue */
+  color: #08c;     /* characteristic blue */
 </style>
-
 </head>
+<body>
+
+<title>DocOnce Demo of the Bootstrap style</title>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">Vagrant<span class="subtitle">Style</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="http://getbootstrap.com/">Bootstrap</a></li>
+     <li> <a href="http://bootswatch.com/">Bootswatch</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span4 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Themes" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+
+   </ul>
+  </div>
+ </div>
+
+  <div class="span9">
+
 
 <!-- tocinfo
 {'highest level': 0,
@@ -45,7 +76,7 @@ pre { color: inherit; background-color: transparent; }
                '___sec6')]}
 end of tocinfo -->
 
-<body>
+
 
 
 
@@ -66,44 +97,11 @@ MathJax.Hub.Config({
 
 
 
-    
-<!-- Bootstrap navigation bar -->
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="slate.html">DocOnce Demo of the Bootstrap style</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Themes" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
-
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</div> <!-- end of navigation bar -->
-
-<div class="container">
-
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
-
 <!-- ------------------- main content ---------------------- -->
 
 
 <title>DocOnce Demo of the Bootstrap style</title>
 
-<div class="jumbotron">
 <center><h1>DocOnce Demo of the Bootstrap style</h1></center>  <!-- document title -->
 
 <p>
@@ -112,8 +110,8 @@ way:
 
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 </pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
@@ -135,12 +133,9 @@ bar at the bottom where also the page number can be seen.
 <!-- for going to the first real page -->
 
 <p>
-<!-- potential-jumbotron-button -->
-</div> <!-- end jumbotron -->
-
 <!-- !split -->
 
-<h1 class="page-header">More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1> <!-- chapter heading -->
+<h1>More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1> <hr>
 
 <h1>Themes  <a name="___sec1"></a></h1>
 
@@ -246,8 +241,8 @@ Typical commands for producing Boostrap or Bootswatch layouts are
 
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
 Terminal&gt; doconce format html mydoc --html_style=booswatch
 Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
 Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
@@ -264,27 +259,27 @@ Below are some examples on admons.
 
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">In [1]: <span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-In [2]: <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">linspace(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">pi,</span> <span style="color: #ae81ff">11</span><span style="color: #f8f8f2">)</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 
-In [3]: <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">0.1</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(x)</span>
----------------------------------------------------------------------------
-<span style="color: #a6e22e">NameError</span>                                 Traceback (most recent call last)
-<span style="color: #f8f8f2">&lt;ipython-input-3-c1040545fa6c&gt;</span> in <span style="color: #f8f8f2">&lt;module&gt;</span><span style="color: #f92672">()</span>
-<span style="color: #a6e22e">----&gt; </span><span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">0.1</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(x)</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #0044DD">---------------------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>                                 Traceback (most recent call last)
+<span style="color: #0000FF; font-weight: bold">&lt;ipython-input-3-c1040545fa6c&gt;</span> in <span style="color: #999999; font-weight: bold">&lt;module&gt;</span><span style="color: #008000; font-weight: bold">()</span>
+<span style="color: #D2413A; font-weight: bold">----&gt; </span><span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
 
-<span style="color: #a6e22e">NameError</span>: name &#39;exp&#39; is not defined
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name &#39;exp&#39; is not defined
 
-In [4]: <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">0.1</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sin(x)</span>
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
 
-In [5]: <span style="color: #f8f8f2">y</span>
-Out[5]:
-array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
-        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
-         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
-        -3.06923992e-01,  -1.39418467e-16])
+<span style="color: #000080; font-weight: bold">In [5]: </span>y
+<span style="color: #000080; font-weight: bold">Out[5]:</span>
+<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
+<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
+<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
+<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
 </pre></div>
 <p>
 This is the admon for warnings or paying attention.
@@ -327,10 +322,7 @@ DocOnce supports the following elements of Bootstrap elements:
 Tables often get a fancy typesetting:
 
 <p>
-
-<div class="row">
-  <div class="col-xs-5">
-    <table class="table table-striped table-hover table-condensed">
+<table border="1">
 <thead>
 <tr><td align="left">    \( i \)     </td> <td align="right">   \( h_i \)    </td> <td align="right"> \( \bar T_i \) </td> <td align="right"><code>L_i</code></td> </tr>
 </thead>
@@ -343,9 +335,7 @@ Tables often get a fancy typesetting:
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
-    </table>
-  </div>
-</div> <!-- col-xs-5 -->
+</table>
 <p>
 <!-- !split -->
 
@@ -358,8 +348,8 @@ the following syntax in case of a 1x3 grid:
 
 <p>
 
-<!-- code=text typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"># begin-grid-area
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
 
 !bslidecell 00
 ...
@@ -398,8 +388,8 @@ be lost because it appears outside the slidecell environments:
 
 <p>
 
-<!-- code=text typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"># begin-grid-area
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
 
 !bslidecell 00
 ...
@@ -441,8 +431,10 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 
 <h2>Example on a 1x3 grid structure  <a name="___sec5"></a></h2>
 
-<div class="row"> <!-- begin cell row -->
-  <div class="col-sm-4">
+<!-- begin-grid-area -->
+
+<p>
+<!-- !bslidecell 00 -->
 <b>Mathematics.</b>
 Given a function
 
@@ -450,24 +442,28 @@ $$ f(x) = e^{-ax}\sin wx\thinspace .$$
 
 Write a program for evaluating \( f(x) \), and test the program
 for the value of \( f(0) \).
-  </div> <!-- column col-sm-4 -->
-  <div class="col-sm-4">
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 01 -->
 <b>Implementation.</b>
 The Python implementation reads
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">exp,</span> <span style="color: #f8f8f2">sin</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">f</span><span style="color: #f8f8f2">(x):</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(w</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
 </pre></div>
 <p>
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
 main program.
-  </div> <!-- column col-sm-4 -->
-  <div class="col-sm-4">
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 02 -->
 
 <p>
 <b>Computational experiment.</b>
@@ -475,32 +471,34 @@ With a main program
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">pi</span>
-<span style="color: #f8f8f2">w</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">pi</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">f(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
 </pre></div>
 <p>
 we can run the program:
 
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
 <p>
-  </div> <!-- column col-sm-4 -->
-</div> <!-- end cell row -->
+<!-- !eslidecell -->
+<!-- end-grid-area -->
 
 <h2>Variation of the previous grid structure using admons  <a name="___sec6"></a></h2>
 
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
 <p>
-<div class="row"> <!-- begin cell row -->
-  <div class="col-sm-4">
+<!-- begin-grid-area -->
+
+<p>
+<!-- !bslidecell 00 -->
 <div class="panel panel-primary">
   <div class="panel-heading">
   <h3 class="panel-title">Mathematics</h3>
@@ -515,8 +513,10 @@ for the value of \( f(0) \).
 </div>
 </div>
 
-  </div> <!-- column col-sm-4 -->
-  <div class="col-sm-4">
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 01 -->
 <div class="panel panel-primary">
   <div class="panel-heading">
   <h3 class="panel-title">Implementation</h3>
@@ -526,11 +526,11 @@ The Python implementation reads
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">exp,</span> <span style="color: #f8f8f2">sin</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">f</span><span style="color: #f8f8f2">(x):</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sin(w</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">x)</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
 </pre></div>
 <p>
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
@@ -538,8 +538,10 @@ main program.
 </div>
 </div>
 
-  </div> <!-- column col-sm-4 -->
-  <div class="col-sm-4">
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 02 -->
 <div class="panel panel-primary">
   <div class="panel-heading">
   <h3 class="panel-title">Computational experiment</h3>
@@ -549,44 +551,52 @@ With a main program
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">math</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">pi</span>
-<span style="color: #f8f8f2">w</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">pi</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">f(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
 </pre></div>
 <p>
 we can run the program:
 
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "monokai" -->
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
 <p>
 </div>
 </div>
 
-  </div> <!-- column col-sm-4 -->
-</div> <!-- end cell row -->
-
+<!-- !eslidecell -->
+<!-- end-grid-area -->
 
 <!-- ------------------- end of main content --------------- -->
 
-</div>  <!-- end container -->
-<!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-<!-- Bootstrap footer
-<footer>
-<a href="http://..."><img width="250" align=right src="http://..."></a>
-</footer>
+<!-- Navigation buttons at the bottom:
+     Doconce will automatically fill in the right URL in these
+     buttons when doconce html_split is run. Otherwise they are empty.
+<ul class="pager">
+  <li class="previous">
+    <a href="">&larr; </a>
+  </li>
+  <li class="next">
+    <a href=""> &rarr;</a>
+ </li>
+</ul>
 -->
 
+ </div>
 
+ <div class="row Footer">
+  <div class="span12">
+  Here goes a footer, if desired, maybe with a Copyright &copy;
+  </div>
+ </div>
+</div>
 </body>
 </html>
-    
 

@@ -6,7 +6,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Doconce Demo of the Bootstrap style">
+<meta name="description" content="DocOnce Demo of the Bootstrap style">
 
 
 
@@ -20,7 +20,7 @@ Automatically generated HTML file from Doconce source
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing Doconce documents with Bootstrap layout ',
+ 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
                0,
                None,
                '___sec0'),
@@ -68,27 +68,24 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="bootstrap_plain.html">Doconce Demo of the Bootstrap style</a>
+    <a class="navbar-brand" href="bootstrap_plain.html">DocOnce Demo of the Bootstrap style</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " More details on writing Doconce documents with Bootstrap layout " --> <li>  <a href="._bootstrap_plain001.html#___sec0"> More details on writing Doconce documents with Bootstrap layout </a></li>
-     <!-- navigation toc: " Themes " --> <li> &nbsp;  <a href="._bootstrap_plain001.html#___sec1"> Themes </a></li>
-     <!-- navigation toc: " Demonstrations of admons " --> <li> &nbsp;  <a href="._bootstrap_plain001.html#___sec2"> Demonstrations of admons </a></li>
-     <!-- navigation toc: " Horizontal alignment of document elements " --> <li> &nbsp;  <a href="._bootstrap_plain002.html#sec:examples"> Horizontal alignment of document elements </a></li>
-     <!-- navigation toc: " Principles of grid structures " --> <li> &nbsp; &nbsp;  <a href="._bootstrap_plain002.html#___sec4"> Principles of grid structures </a></li>
-     <!-- navigation toc: " Example on a 1x3 grid structure " --> <li> &nbsp; &nbsp;  <a href="._bootstrap_plain002.html#___sec5"> Example on a 1x3 grid structure </a></li>
-     <!-- navigation toc: " Variation of the previous grid structure using admons " --> <li> &nbsp; &nbsp;  <a href="._bootstrap_plain002.html#___sec6"> Variation of the previous grid structure using admons </a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._bootstrap_plain001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Themes" --> <li><a href="._bootstrap_plain001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._bootstrap_plain001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href="._bootstrap_plain002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -101,7 +98,6 @@ MathJax.Hub.Config({
 
 <h2>Principles of grid structures  <a name="___sec4"></a></h2>
 
-<p>
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
 
@@ -190,13 +186,11 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 
 <h2>Example on a 1x3 grid structure  <a name="___sec5"></a></h2>
 
-<p>
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
 <b>Mathematics.</b>
 Given a function
 
-<p>
 $$ f(x) = e^{-ax}\sin wx\thinspace .$$
 
 Write a program for evaluating \( f(x) \), and test the program
@@ -208,7 +202,7 @@ The Python implementation reads
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
@@ -226,7 +220,7 @@ With a main program
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
@@ -237,7 +231,7 @@ we can run the program:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
@@ -247,7 +241,6 @@ we can run the program:
 
 <h2>Variation of the previous grid structure using admons  <a name="___sec6"></a></h2>
 
-<p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
 <p>
@@ -260,7 +253,6 @@ we can run the program:
 <div class="panel-body">
 Given a function
 
-<p>
 $$ f(x) = e^{-ax}\sin wx\thinspace .$$
 
 Write a program for evaluating \( f(x) \), and test the program
@@ -279,7 +271,7 @@ The Python implementation reads
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
@@ -302,7 +294,7 @@ With a main program
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 w <span style="color: #666666">=</span> pi
@@ -313,7 +305,7 @@ we can run the program:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
 </pre></div>
@@ -327,13 +319,11 @@ we can run the program:
 
 <p>
 
-<p>
-<ul class="pager">
-  <li class="previous">
-    <a href="._bootstrap_plain001.html">&larr; Prev</a>
-  </li>
-
-
+<ul class="pagination">
+<li><a href="._bootstrap_plain001.html">&laquo;</a></li>
+  <li><a href="._bootstrap_plain000.html">1</a></li>
+  <li><a href="._bootstrap_plain001.html">2</a></li>
+  <li class="active"><a href="._bootstrap_plain002.html">3</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
