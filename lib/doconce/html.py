@@ -719,7 +719,8 @@ MathJax.Hub.Config({
     if html_style.startswith('boots'):
         # Change chapter headings to page
         filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
-                         '<h1 class="page-header">\g<1></h1> <!-- chapter heading -->', filestr)
+                         '<h1 class="page-header">\g<1></h1>', filestr)
+        #filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3>', filestr) # for highlighted toc in bootstrap_wtoc template, but did not work,
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
