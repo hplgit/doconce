@@ -1295,11 +1295,11 @@ the LaTeX output also has a hyperlink:
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{Doconce:test}][a "section":
+cite{DocOnce:test}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
 the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], DocOnce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !ec
 With `latex` or `pdflatex` as output, this translates to
 
@@ -1314,7 +1314,7 @@ otherwise
 As explained in
 Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{Doconce:test}, DocOnce documents may include tables.
+cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
 The latter DocOnce code is translated to the following
 LaTeX code:
@@ -1323,7 +1323,7 @@ LaTeX code:
 As explained in
 Section~\ref{subsec:ex} in
 \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-\cite{Doconce:test}, DocOnce documents may include tables.
+\cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
 In a format different from `latex` and `pdflatex`, the effective DocOnce
 text becomes
@@ -1334,7 +1334,7 @@ a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
 the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}, DocOnce documents may include tables.
+cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
 The rendered text in the current format becomes
 
@@ -1342,11 +1342,11 @@ The rendered text in the current format becomes
 As explained in
 ref[Section ref{subsec:ex}][in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-cite{Doconce:test}][a "section":
+cite{DocOnce:test}][a "section":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
 the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], DocOnce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !equote
 
 A complete ``chapter'' reference may look like
@@ -1355,10 +1355,10 @@ A complete ``chapter'' reference may look like
 As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}][the document
+cite{DocOnce:test}][the document
 "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], DocOnce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !ec
 The output now, if `ch:testdoc` is not a label in the document,
 becomes in the `latex` and `pdflatex` case
@@ -1367,7 +1367,7 @@ becomes in the `latex` and `pdflatex` case
 As explained in
 "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}, DocOnce documents may include tables.
+cite{DocOnce:test}, DocOnce documents may include tables.
 !ec
 That is, the internal reference `Chapter ...` is omitted since
 it is not meaningful to refer to an external document as ``Chapter''.
@@ -1376,10 +1376,10 @@ The resulting rendered text in the current format becomes
 As explained in
 refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}][the document
+cite{DocOnce:test}][the document
 "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-cite{Doconce:test}], DocOnce documents may include tables.
+cite{DocOnce:test}], DocOnce documents may include tables.
 !equote
 
 Note that LaTeX cannot

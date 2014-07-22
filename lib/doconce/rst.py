@@ -4,6 +4,30 @@ from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     cite_with_multiple_args2multiple_cites, _abort
 from html import html_movie, html_quiz
 from doconce import _abort
+from misc import option
+
+def rst_abstract(m):
+    # r'\n*\g<type>.* \g<text>\n\g<rest>'
+    name = m.group('type').strip()
+    text = m.group('text').strip()
+    rest = m.group('rest').strip()
+
+    if option('rst_uio'):
+        s = """
+
+.. uio-introduction::
+%s
+
+.. contents::
+
+.. section-numbering::
+
+
+%s
+""" % (indent_lines(text, 'rst'), rest)
+        return s
+    else:
+        return '\n*%(name)s.* %(text)s\n%(rest)s' % vars()
 
 # replacement patterns for substitutions of inline tags
 def rst_figure(m):
@@ -91,7 +115,6 @@ def rst_code(filestr, code_blocks, code_block_types,
     # followed by [\n:.?!,] see the bc_regex_pattern global variable above
     # (problems with substituting !bc and !bt may be caused by
     # missing characters in these two families)
-    #c = re.compile(bc_regex_pattern, re.DOTALL)
     filestr = re.sub(bc_regex_pattern, r'\g<1>::\n\n', filestr, flags=re.MULTILINE|re.DOTALL)
     # Need a fix for :: appended to special comment lines (---:: -> ---\nCode::)
     filestr = re.sub(r' ---::\n\n', ' ---\nCode::\n\n', filestr)
@@ -103,9 +126,16 @@ def rst_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'^!bt\n', '.. latex-math::\n\n', filestr, re.MULTILINE)
     #filestr = re.sub(r'^!bt\n', '.. latex::\n\n', filestr, re.MULTILINE)
 
-    # just use the same substitution for tex blocks as for code blocks:
-    filestr = re.sub(bt_regex_pattern, r'\g<1>::\n', filestr,
-                     flags=re.MULTILINE)
+    if option('rst_mathjax'):
+        from html import mathjax_header
+        latex = indent_lines(mathjax_header(), 'rst')
+        filestr = '\n.. raw:: html\n\n' + latex + '\n\n' + filestr
+        filestr = re.sub(bt_regex_pattern, r'\g<1>\n.. raw:: html\n\n', filestr,
+                         flags=re.MULTILINE)
+    else:
+        # just use the same substitution for tex blocks as for code blocks:
+        filestr = re.sub(bt_regex_pattern, r'\g<1>::\n', filestr,
+                         flags=re.MULTILINE)
     #filestr = re.sub(r'^!et *\n', '\n\n', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
 
@@ -154,6 +184,21 @@ that %s is not preceded by text which can be extended with :: (required).
 
     # Remove too much vertical space
     filestr = re.sub(r'\n\n\n+', '\n\n', filestr)
+
+    # UiO meta data
+    responsible = 'Hans Petter Langtangen'
+    email = 'hpl@ifi.uio.no'
+
+    if option('rst_uio'):
+        filestr = """
+
+.. uio-meta::
+
+   :responsible-name: %s
+
+   :responsible-email: %s
+
+""" % (responsible, email) + filestr
 
     return filestr
 
@@ -502,7 +547,7 @@ def define(FILENAME_EXTENSION,
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst').decode('latin-1'))),
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
         'paragraph':     r'**\g<subst>**\n',  # extra newline
-        'abstract':      r'\n*\g<type>.* \g<text>\n\g<rest>',
+        'abstract':      rst_abstract,
         #'title':         r'======= \g<subst> =======\n',  # doconce top section, must be the highest section level (but no higher than others, need more code)
         'title':         None, # taken care of in ref_and_label_commoncode
         'date':          r':Date: \g<subst>\n',

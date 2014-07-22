@@ -47,7 +47,9 @@ such that the verbatim environments become like
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=', """Name of theme for HTML style:
-plain, blueish, blueish2, bloodish, solarized, vagrant, bootstrap, bootswatch,
+plain, blueish, blueish2, bloodish,
+solarized, solarized2_light, solarized2_dark,
+vagrant, bootstrap, bootswatch,
 bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
 bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
@@ -283,6 +285,8 @@ The choice prefix can also be set in square brackets for each individual choice.
 ("Cr: [] Two" results in no prefix/title before the the answer "Two".
 """),
     ('--quiz_horizontal_rule=', 'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
+    ('--rst_uio', 'Univ. of Oslo version of rst files for their Vortex system.'),
+    ('--rst_mathjax', 'Use raw HTML with MathJax for LaTeX mathematics in rst files.'),
     ]
 
 _legal_command_line_options = \
@@ -7191,6 +7195,7 @@ def _html2doconce(filestr):
     # Various tags
     filestr = re.sub(r'<em>(.+?)</em>', '*\g<1>*', filestr, flags=re.DOTALL)
     filestr = re.sub(r'<b>(.+?)</b>', '_\g<1>_', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'<tt>(.+?)</tt>', '`\g<1>`', filestr, flags=re.DOTALL)
     filestr = re.sub(r'^\s*<title>(.+?)</title>', 'TITLE: \g<1>', filestr,
                      flags=re.MULTILINE)
     filestr = re.sub(r'<!--(.+?)-->', '#\g<1>', filestr, flags=re.DOTALL)
@@ -7199,6 +7204,11 @@ def _html2doconce(filestr):
     filestr = re.sub(r'<img.*? src="(.+?)".*?>',
                      '\nFIGURE: [\g<1>, width=600 frac=1]\n', filestr,
                      flags=re.DOTALL)
+    filestr = re.sub(r'\s*^<pre>\s*', '\n\n!bc cod\n', filestr,
+                     flags=re.MULTILINE)
+    filestr = re.sub(r'</pre>\s*', '!ec\n', filestr,
+                     flags=re.MULTILINE)
+    # <code>?
     filestr = re.sub(r'<ul>', '\n', filestr)
     filestr = re.sub(r'</ul>', '\n', filestr)
     # All lists become bullet lists, read line by line and use a stack

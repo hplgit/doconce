@@ -1433,6 +1433,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* solarized style */
     body {
@@ -25470,6 +25471,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* blueish style */
 
@@ -26434,6 +26436,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* solarized style */
     body {
@@ -26757,6 +26760,7 @@ Automatically generated HTML file from Doconce source
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
+
 
 
 
@@ -27959,6 +27963,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* solarized style */
     body {
@@ -28827,6 +28832,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* solarized style */
     body {
@@ -29234,6 +29240,7 @@ Automatically generated HTML file from Doconce source
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
+
 
 
 
@@ -30936,6 +30943,7 @@ Automatically generated HTML file from Doconce source
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
+
 
 
 
@@ -35297,8 +35305,8 @@ system doconce format st testdoc.do.txt $ex
 system doconce format sphinx testdoc.do.txt $ex
 mv -f testdoc.rst testdoc.sphinx.rst
 
-doconce format sphinx testdoc $ex
-doconce split_rst testdoc
+system doconce format sphinx testdoc $ex
+system doconce split_rst testdoc
 system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
@@ -36056,6 +36064,7 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="How various formats can deal with LaTeX math">
+
 
 
 
@@ -37066,7 +37075,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -37101,9 +37110,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
      <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
   <div class="span9">
 
@@ -37364,8 +37373,6 @@ While the <div class="deep-blue">rest of the</div> getting started
 </div>
 </body>
 </html>
-
-
 
 
 ************** File: ._testdoc_vagrant000.html *****************
@@ -37452,7 +37459,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -37487,9 +37494,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
      <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
   <div class="span9">
 
@@ -37752,8 +37759,6 @@ While the <div class="deep-blue">rest of the</div> getting started
 </html>
 
 
-
-
 ************** File: ._testdoc_vagrant001.html *****************
 <html>
 <head>
@@ -37838,7 +37843,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li class="active"><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Section 1" --> <li class="active"><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -37873,9 +37878,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
      <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
   <div class="span9">
 
@@ -38865,8 +38870,6 @@ While the <div class="deep-blue">rest of the</div> getting started
 </html>
 
 
-
-
 ************** File: ._testdoc_vagrant002.html *****************
 <html>
 <head>
@@ -38951,7 +38954,7 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
      <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
      <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
      <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
@@ -38986,9 +38989,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
      <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
   <div class="span9">
 
@@ -39877,8 +39880,6 @@ While the <div class="deep-blue">rest of the</div> getting started
 </div>
 </body>
 </html>
-
-
 
 
 ************** File: ._testdoc000.rst *****************
@@ -46996,6 +46997,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* blueish style */
 
@@ -47511,6 +47513,7 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
+
 
 
 
@@ -48041,6 +48044,7 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
+
 
 
 
@@ -48993,6 +48997,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* blueish2 style */
 
@@ -49598,6 +49603,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* blueish2 style */
 
@@ -50141,6 +50147,7 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
+
 
 
 
@@ -50760,16 +50767,16 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
      <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
      <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
      <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
   <div class="span9">
 
@@ -51263,8 +51270,6 @@ While the <div class="deep-blue">rest of the</div> getting started
 </div>
 </body>
 </html>
-
-
 
 
 ************** File: admon_bootstrap_alert.html *****************
@@ -53770,6 +53775,7 @@ title (Warning) since no title is specified.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
+
 
 
 
@@ -59274,6 +59280,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* blueish style */
 
@@ -59547,6 +59554,7 @@ title (Warning) since no title is specified.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
+
 
 
 
@@ -61634,6 +61642,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test slide features">
 <meta name="keywords" content="key word1,key word2">
+
 
 
 
@@ -65125,6 +65134,7 @@ qualitatively correct results.
 
 
 
+
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -66587,6 +66597,7 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
     /* blueish style */
 
@@ -67326,6 +67337,7 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="This is a demo of movies in DocOnce">
+
 
 
 
@@ -74718,8 +74730,8 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li class="active"><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li class="active"><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
@@ -74736,10 +74748,7 @@ $$
 <a name="part0001"></a>
 <!-- !split -->
 
-
-<div class="page-header">
-  <h1>More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
-</div>
+<h1 class="page-header">More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
 
 <h1>Demonstrations of admons  <a name="___sec1"></a></h1>
 
@@ -75218,7 +75227,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Jul 19 16:10:21 2014.
+# sphinx-quickstart on Tue Jul 22 08:50:08 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -77460,6 +77469,7 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Quick Reference">
+
 
 
 
@@ -95092,6 +95102,7 @@ figure file ../doc/src/manual/fig/wave1D:
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + mv -f testdoc.rst testdoc.sphinx.rst
++ system doconce format sphinx testdoc --examples_as_exercises
 + doconce format sphinx testdoc --examples_as_exercises
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
@@ -95151,9 +95162,12 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
 output in testdoc.rst
++ '[' 0 -ne 0 ']'
++ system doconce split_rst testdoc
 + doconce split_rst testdoc
 testdoc split into
 ._testdoc000.rst ._testdoc001.rst ._testdoc002.rst
++ '[' 0 -ne 0 ']'
 + system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc

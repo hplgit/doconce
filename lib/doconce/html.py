@@ -173,6 +173,29 @@ css_solarized = """\
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
+css_solarized_dark = """\
+    /* solarized dark style */
+body {
+  background-color: #002b36;
+  color: #839496;
+  font-family: Menlo;
+}
+pre {
+  border-style:solid;
+  border-width:1px;
+  border-color:#839496;
+}
+pre, code {
+  background-color: #073642;
+  color: #93a1a1;
+}
+a { color: #859900; }
+"""
+
+css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
+css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
+css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'
+
 css_blueish = """\
     /* blueish style */
 
@@ -287,6 +310,42 @@ def toc2html(font_size=80):
             toc_html += '     </ul>\n'
     return toc_html
 
+
+def mathjax_header():
+    newcommands_files = list(
+        sorted([name
+                for name in glob.glob('newcommands*.tex')
+                if not name.endswith('.p.tex')]))
+    newcommands = ''
+    for filename in newcommands_files:
+        f = open(filename, 'r')
+        text = ''
+        for line in f.readlines():
+            if not line.startswith('%'):
+                text += line
+        text = text.strip()
+        if text:
+            newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
+                           + '\n$$\n\n'
+    mathjax_script_tag = """
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+"""
+    latex = '\n\n' + mathjax_script_tag + newcommands + '\n\n'
+    return latex
 
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
@@ -504,39 +563,7 @@ def html_code(filestr, code_blocks, code_block_types,
 
     # Add MathJax script if math is present (math is defined right above)
     if math and MATH_TYPESETTING == 'MathJax':
-        newcommands_files = list(
-            sorted([name
-                    for name in glob.glob('newcommands*.tex')
-                    if not name.endswith('.p.tex')]))
-        newcommands = ''
-        for filename in newcommands_files:
-            f = open(filename, 'r')
-            text = ''
-            for line in f.readlines():
-                if not line.startswith('%'):
-                    text += line
-            text = text.strip()
-            if text:
-                newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
-                               + '\n$$\n\n'
-        mathjax = """
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-"""
-        latex = '\n\n' + mathjax + newcommands + '\n\n'
+        latex = mathjax_header()
         if '<body>' in filestr:
             # Add MathJax stuff after <body> tag
             filestr = filestr.replace('<body>\n', '<body>' + latex)
@@ -1760,10 +1787,24 @@ def define(FILENAME_EXTENSION,
     TOC['html'] = html_toc
     QUIZ['html'] = html_quiz
 
-    # Embedded style sheets
+    # Embedded style sheets and links to styles
+    css_links = ''
+    css = ''
     html_style = option('html_style=', '')
     if  html_style == 'solarized':
         css = css_solarized
+    elif  html_style == 'solarized_dark':
+        css = css_solarized_dark
+    elif html_style == 'solarized2_light':
+        css = css_solarized_thomasf
+        css_links = css_link_solarized_thomasf_light
+    elif html_style == 'solarized2_dark':
+        css = css_solarized_thomasf
+        css_links = css_link_solarized_thomasf_dark
+    elif html_style == 'solarized3_light':
+        css_links = css_link_solarized_thomasf_light
+    elif html_style == 'solarized3_dark':
+        css_links = css_link_solarized_thomasf_dark
     elif html_style == 'blueish':
         css = css_blueish
     elif html_style == 'blueish2':
@@ -1776,7 +1817,7 @@ def define(FILENAME_EXTENSION,
         css = css_blueish # default
 
     if option('pygments_html_style=', None) not in ('no', 'none', 'off') \
-        and option('html_style=', 'blueish') != 'solarized':
+        and not option('html_style=', 'blueish').startswith('solarized'):
         # Remove pre style as it destroys the background for pygments
         css = re.sub(r'pre .*?\{.+?\}', '', css, flags=re.DOTALL)
 
@@ -1876,11 +1917,12 @@ def define(FILENAME_EXTENSION,
             break
 
     style = """
+%s
 <style type="text/css">
 %s
 div { text-align: justify; text-justify: inter-word; }
 </style>
-""" % css
+""" % (css_links, css)
     css_filename = option('css=')
     if css_filename:
         style = ''

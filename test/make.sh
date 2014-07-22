@@ -110,8 +110,8 @@ system doconce format st testdoc.do.txt $ex
 system doconce format sphinx testdoc.do.txt $ex
 mv -f testdoc.rst testdoc.sphinx.rst
 
-doconce format sphinx testdoc $ex
-doconce split_rst testdoc
+system doconce format sphinx testdoc $ex
+system doconce split_rst testdoc
 system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py

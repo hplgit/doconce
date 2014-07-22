@@ -3615,7 +3615,13 @@ python-mako package (sudo apt-get install python-mako).
         #temp = Template(filename=resultfile2, lookup=lookup,
         #                strict_undefined=strict_undefined)
         if encoding:
-            filestr = unicode(filestr, encoding)
+            try:
+                filestr = unicode(filestr, encoding)
+            except UnicodeDecodeError as e:
+                if "codec can't decode" in str(e):
+                    index = int(str(e).split('in position')[1].split(':')[0])
+                    print filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50]
+                raise e
         try:
             temp = Template(text=filestr, lookup=lookup,
                             strict_undefined=strict_undefined)
