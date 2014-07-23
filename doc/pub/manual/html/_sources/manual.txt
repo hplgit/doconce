@@ -7,8 +7,8 @@
 DocOnce Description
 ===================
 
-:Author: Hans Petter Langtangen
-:Date: Jul 20, 2014
+:Authors: Hans Petter Langtangen
+:Date: Jul 23, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -84,9 +84,9 @@ Here are some DocOnce features:
 The DocOnce development started in 2006 at a time when
 most popular markup languages used quite some tagging (LaTeX,
 reStructuredText, HTML).  Later, almost untagged markup languages,
-especially `Markdown <http://daringfireball.net/projects/markdown/>`_
-and its sisters `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`_ and `Pandoc-extended
-Markdown <http://johnmacfarlane.net/pandoc/>`_, became popular. DocOnce
+especially `Markdown <http://daringfireball.net/projects/markdown/>`__
+and its sisters `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`__ and `Pandoc-extended
+Markdown <http://johnmacfarlane.net/pandoc/>`__, became popular. DocOnce
 looks much like Markdown and is in particular close to the
 functionality and nature of MultiMarkdown. The advantage of DocOnce,
 however, is a series of features for supporting both small and large
@@ -150,12 +150,12 @@ the the section :ref:`install:doconce` for detailed information.
 However,
 the most commonly used formats of this manual are
 fortunately also accessible through the web:
-`HTML <http://hplgit.github.io/doconce/doc/pub/manual/manual.html>`_,
-`Sphinx <http://hplgit.github.io/doconce/doc/pub/manual/html/index.html>`_,
+`HTML <http://hplgit.github.io/doconce/doc/pub/manual/manual.html>`__,
+`Sphinx <http://hplgit.github.io/doconce/doc/pub/manual/html/index.html>`__,
 and
-`PDF <http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf>`_.
+`PDF <http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf>`__.
 DocOnce supports a lot of different layouts of documents, see
-the `collection of various versions of a scientific report <http://hplgit.github.com/teamods/writing_reports/index.html>`_.
+the `collection of various versions of a scientific report <http://hplgit.github.com/teamods/writing_reports/index.html>`__.
 
 Another demo is found in
 
@@ -166,10 +166,10 @@ Another demo is found in
 In the ``tutorial`` directory there is also a ``make.sh`` file producing a
 lot of formats in the subdirectory ``demo``.
 The three most common formats can be found on the web:
-`HTML <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html>`_,
-`Sphinx <http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html>`_,
+`HTML <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html>`__,
+`Sphinx <http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html>`__,
 and
-`PDF <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`_.
+`PDF <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`__.
 
 .. !split
 
@@ -2158,7 +2158,7 @@ DocOnce supports tags for *emphasized phrases*, **boldface phrases**,
 and ``verbatim text`` (also called type writer text, for inline code),
 <font color="blue">colored words</font>,
 plus LaTeX/TeX inline mathematics, such as :math:`\nu = \sin(x)`.
-Links are easy to define, either with a `text <http://google.com>`_ or
+Links are easy to define, either with a `text <http://google.com>`__ or
 just a plain `<http://google.com>`_.
 Also non-breaking space (to avoid linebreak) can be specified.
 
@@ -2221,7 +2221,7 @@ Web addresses with links are typeset as
 
         some URL like "Search Google": "http://google.com".
 
-which appears as some URL like `Search Google <http://google.com>`_.
+which appears as some URL like `Search Google <http://google.com>`__.
 The space after colon is optional, but it is important to enclose the
 link and the URL in double quotes.
 
@@ -2251,8 +2251,8 @@ ordinary URLs, typically as
         # Alternative:
         to "`hpl@simula.no`": "mailto:hpl@simula.no".
 
-which appears as Send `mail <mailto:hpl@simula.no>`_ to
-`hpl@simula.no <mailto:hpl@simula.no>`_.
+which appears as Send `mail <mailto:hpl@simula.no>`__ to
+`hpl@simula.no <mailto:hpl@simula.no>`__.
 
 Links to Local Files
 ~~~~~~~~~~~~~~~~~~~~
@@ -2266,7 +2266,7 @@ setup:
 
         see the "DocOnce Manual": "manual.do.txt".
 
-which appears as see the `DocOnce Manual <manual.do.txt>`_.
+which appears as see the `DocOnce Manual <manual.do.txt>`__.
 However, linking to local files like this needs caution:
 
   * In the ``html`` format the links work well if the files are
@@ -2390,7 +2390,7 @@ This is rendered as
 ..
 
     Here comes a long line with a specification of a number with unit at the end,
-    which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_: 7.4 |nbsp| km is traveled
+    which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`__: 7.4 |nbsp| km is traveled
     in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s. (Computer code, where the tilde has a
     meaning, as in ``y = ~x``, is not affected. The non-breaking character only
     works between characters, numbers, and the math dollar sign.)
@@ -2940,11 +2940,11 @@ the LaTeX output also has a hyperlink:
         As explained in
         ref[Section ref{subsec:ex}][in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{Doconce:test}][a "section":
+        cite{DocOnce:test}][a "section":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
         the document "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{Doconce:test}], DocOnce documents may include tables.
+        cite{DocOnce:test}], DocOnce documents may include tables.
 
 With ``latex`` or ``pdflatex`` as output, this translates to
 
@@ -2961,7 +2961,7 @@ otherwise
         As explained in
         Section ref{subsec:ex} in "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
-        cite{Doconce:test}, DocOnce documents may include tables.
+        cite{DocOnce:test}, DocOnce documents may include tables.
 
 The latter DocOnce code is translated to the following
 LaTeX code:
@@ -2971,7 +2971,7 @@ LaTeX code:
         As explained in
         Section~\ref{subsec:ex} in
         \href{{http://hplgit.github.io/doconce/...}}{Langtangen, 2012}
-        \cite{Doconce:test}, DocOnce documents may include tables.
+        \cite{DocOnce:test}, DocOnce documents may include tables.
 
 In a format different from ``latex`` and ``pdflatex``, the effective DocOnce
 text becomes
@@ -2983,7 +2983,7 @@ text becomes
         "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex" in
         the document "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{Doconce:test}, DocOnce documents may include tables.
+        cite{DocOnce:test}, DocOnce documents may include tables.
 
 The rendered text in the current format becomes
 
@@ -2991,8 +2991,8 @@ The rendered text in the current format becomes
 ..
 
     As explained in
-    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
-    the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`__ in
+    the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
     [Ref3]_, DocOnce documents may include tables.
 
 
@@ -3004,10 +3004,10 @@ A complete "chapter" reference may look like
         As explained in
         refch[Chapter ref{ch:testdoc}]["Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{Doconce:test}][the document
+        cite{DocOnce:test}][the document
         "A Document for Testing DocOnce":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{Doconce:test}], DocOnce documents may include tables.
+        cite{DocOnce:test}], DocOnce documents may include tables.
 
 The output now, if ``ch:testdoc`` is not a label in the document,
 becomes in the ``latex`` and ``pdflatex`` case
@@ -3017,7 +3017,7 @@ becomes in the ``latex`` and ``pdflatex`` case
         As explained in
         "Langtangen, 2012":
         "http://hplgit.github.io/doconce/test/demo_testdoc.html"
-        cite{Doconce:test}, DocOnce documents may include tables.
+        cite{DocOnce:test}, DocOnce documents may include tables.
 
 That is, the internal reference ``Chapter ...`` is omitted since
 it is not meaningful to refer to an external document as "Chapter".
@@ -3027,7 +3027,7 @@ The resulting rendered text in the current format becomes
 
     As explained in
     the document
-    `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
     [Ref3]_, DocOnce documents may include tables.
 
 
@@ -3095,7 +3095,7 @@ tag in ``html`` output such that search engines can make use of the them.
 Bibliography/References
 -----------------------
 
-DocOnce applies the software tool `Publish <https://bitbucket.org/logg/publish>`_ to handle the bibliography in a
+DocOnce applies the software tool `Publish <https://bitbucket.org/logg/publish>`__ to handle the bibliography in a
 document. With Publish it is easy to import BibTeX data and maintain a
 database in a clean, self-explanatory textual format. From the Publish
 format it is easy to go BibTeX and reST or straightforward DocOnce
@@ -3103,7 +3103,7 @@ typesetting (and from there to HTML, plain text, wiki formats, and so
 on).
 
 Installing Publish is straightforward: just checkout the code on
-`bitbucket.org <https://bitbucket.org/logg/publish>`_, move to the
+`bitbucket.org <https://bitbucket.org/logg/publish>`__, move to the
 ``publish`` directory and run ``sudo python setup.py install``.
 
 Importing your data to the Publish database
@@ -4436,10 +4436,10 @@ labels in ``align`` environments work well.)
 Emacs DocOnce Formatter
 -----------------------
 
-The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_ in the DocOnce source distribution
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__ in the DocOnce source distribution
 gives a "DocOnce Editing Mode" in Emacs.
 
-Here is how to get the DocOnce Editing Mode in Emacs: Download `.doconce-mode.el <https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el>`_ and save it in your home directory, then add these lines to ``~/.emacs``:
+Here is how to get the DocOnce Editing Mode in Emacs: Download `.doconce-mode.el <https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el>`__ and save it in your home directory, then add these lines to ``~/.emacs``:
 
 .. code-block:: doconce
 
@@ -4579,9 +4579,9 @@ Themes
 ~~~~~~
 
 Four themes come with DocOnce: ``X_Y``, where ``X`` is ``blue`` or ``red``
-(the main color of the slides) and ``Y`` is `plain <http://hplgit.github.io/teamods/doconce/demo/demo_red_plain.pdf>`_
+(the main color of the slides) and ``Y`` is `plain <http://hplgit.github.io/teamods/doconce/demo/demo_red_plain.pdf>`__
 for simple layout and
-`shadow <http://hplgit.github.io/teamods/doconce/demo/demo_blue_shadow.pdf>`_
+`shadow <http://hplgit.github.io/teamods/doconce/demo/demo_blue_shadow.pdf>`__
 for shadowed boxes and more visual structure in the slides.
 
 .. !split
@@ -4589,8 +4589,8 @@ for shadowed boxes and more visual structure in the slides.
 Mako Programming
 ================
 
-The `Mako <http://docs.makotemplates.org/>`_ templating engine is used
-as preprocessor for DocOnce documents, but the `Preprocess <http://code.google.com/p/preprocess>`_ is run prior to Mako and is recommended for
+The `Mako <http://docs.makotemplates.org/>`__ templating engine is used
+as preprocessor for DocOnce documents, but the `Preprocess <http://code.google.com/p/preprocess>`__ is run prior to Mako and is recommended for
 including other files via ``# #include "filename"``. Preprocess is also
 sufficient for if-else tests to steer which parts of the text that
 are to be compiled. For more demanding tasks, use Mako, which resembles
@@ -4665,6 +4665,79 @@ Just a preliminary sketch of some Mako code (next example is better!):
         comment in Mako.
         <%doc/>
 
+.. _mako:py:debugging:
+
+Debugging Python code in Mako
+-----------------------------
+
+Although it is easy to put in Python code inside ``<%`` and ``%>`` directives,
+it may quickly become a nightmare to debug the Python code. If Mako
+reports a syntax error in the Python code, it is recommended to debug
+the Python code outside of Mako. That is, copy all Python code to a
+separate file and run it as standard Python code. This will give much
+more precise (and familiar) error messages.
+
+A setup that is easy for developing and maintaining the Python code
+used in Mako goes as follows. Different pieces of Python code in Mako
+is placed in separate files and included via the Preprocess preprocessor
+in the DocOnce document. For instance,
+
+.. code-block:: text
+
+        ## Define Mako variables and basic functions
+        <%
+        # #include "variables.py"
+        # #include "basic_functions.py"
+        %>
+        
+        Some DocOnce text ....
+        
+        ## Define more functions
+        <%
+        # #include "more_functions.py"
+        %>
+
+Here, we have separated the Python code in Mako into three files:
+``variables.py``, ``basic_functions.py``, and ``more_functions.py``.
+With the ``# #include`` statements, Mako sees the ``.py`` files inserted
+as text inside the ``<%`` and ``%>`` directives (check the file
+``tmp_preprocess__mydoc.do.txt`` for the result of running Preprocess and
+the complete DocOnce file that Mako sees).
+
+To debug the ``.py`` files, collect all their text in one single ``.py``
+file and run it. The recommended way is to use Preprocess to copy
+all the text in the ``.py`` files into a single file, named (say) ``all_code.p.py``:
+
+.. code-block:: python
+
+        # Encoding info cannot be in mako code,
+        # but required here in Python code
+        # --*-- coding: utf-8 -*-
+        
+        # #include "variables.py"
+        # #include "basic_functions.py"
+        # #include "more_functions.py"
+        
+        # Test the code included above
+        print some_func(1, 'arg')
+
+Note that after including the ``.py`` files one can insert calls to functions,
+print variables, etc., as desired to debug and experiment.
+
+Run Preprocess on ``all_code.p.py`` to produce an ordinary Python file
+``all_code.py`` and run that code to test and debug. A little shell script
+``all_code.sh`` doing both these things is convenient:
+
+.. code-block:: bash
+
+        #!/bin/sh
+        preprocess all_code.p.py > all_code.py
+        python all_code.py
+
+Especially when the Python code in Mako grows and becomes non-trivial,
+this setup for having the code external to the DocOnce document is
+very effective.
+
 One can use Mako to extend the DocOnce syntax. Three examples are given next.
 
 .. !split
@@ -4730,12 +4803,12 @@ Mako's Python code environment.
 Executing Python code inside the DocOnce document is
 closely related to *literate programming*. Tools supporting
 creating a document while running a Python programming cover
-`Pweave <http://mpastell.com/pweave/>`_,
-`Python literate <https://github.com/stdbrouw/python-literate>`_,
-`PyWebTool <http://pywebtool.sourceforge.net/>`_,
-`Antiweb <http://pythonhosted.org/antiweb/index.html>`_,
-`Literate Programming in Python <http://en.literateprograms.org/Literate_Programming_(Python)>`_,
-`Pyreport <http://gael-varoquaux.info/computers/pyreport/>`_,
+`Pweave <http://mpastell.com/pweave/>`__,
+`Python literate <https://github.com/stdbrouw/python-literate>`__,
+`PyWebTool <http://pywebtool.sourceforge.net/>`__,
+`Antiweb <http://pythonhosted.org/antiweb/index.html>`__,
+`Literate Programming in Python <http://en.literateprograms.org/Literate_Programming_(Python)>`__,
+`Pyreport <http://gael-varoquaux.info/computers/pyreport/>`__,
 and also IPython notebooks.
 
 .. !split
@@ -4826,13 +4899,13 @@ The resulting table is displayed below.
 
 .. them here.
 
-=======================================  =======================================  =======================================  
-                                                                                                                           
-=======================================  =======================================  =======================================  
-`080 <mov/wave_frames/frame_0080.png>`_  `085 <mov/wave_frames/frame_0085.png>`_  `090 <mov/wave_frames/frame_0090.png>`_  
-`095 <mov/wave_frames/frame_0095.png>`_  `100 <mov/wave_frames/frame_0100.png>`_  `105 <mov/wave_frames/frame_0105.png>`_  
-`110 <mov/wave_frames/frame_0110.png>`_  `115 <mov/wave_frames/frame_0115.png>`_  `120 <mov/wave_frames/frame_0120.png>`_  
-=======================================  =======================================  =======================================  
+========================================  ========================================  ========================================  
+                                                                                                                              
+========================================  ========================================  ========================================  
+`080 <mov/wave_frames/frame_0080.png>`__  `085 <mov/wave_frames/frame_0085.png>`__  `090 <mov/wave_frames/frame_0090.png>`__  
+`095 <mov/wave_frames/frame_0095.png>`__  `100 <mov/wave_frames/frame_0100.png>`__  `105 <mov/wave_frames/frame_0105.png>`__  
+`110 <mov/wave_frames/frame_0110.png>`__  `115 <mov/wave_frames/frame_0115.png>`__  `120 <mov/wave_frames/frame_0120.png>`__  
+========================================  ========================================  ========================================  
 
 Generating the Entire Table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5178,7 +5251,7 @@ Tools for Writing DocOnce Documents
 
  * Emacs (with the modest DocOnce syntax highlighting), Vim, Gedit, etc.
 
- * `TeXMaker <http://www.xm1math.net/texmaker/>`_ and `Kile <http://kile.sourceforge.net/>`_ can in theory be adapted to handle DocOnce compilation and maybe even DocOnce constructs.
+ * `TeXMaker <http://www.xm1math.net/texmaker/>`__ and `Kile <http://kile.sourceforge.net/>`__ can in theory be adapted to handle DocOnce compilation and maybe even DocOnce constructs.
 
 Debugging
 ---------
@@ -5329,7 +5402,7 @@ future revisions.
 Demo of different formats
 -------------------------
 
-A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/doconce_commands.html>`_.
+A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/doconce_commands.html>`__.
 How to create the different formats is explained in more depth
 in the coming sections.
 
@@ -5383,7 +5456,7 @@ An external CSS file ``filename`` used by setting the command-line
 argument ``--css=filename``. There available built-in styles are
 specified as ``--html_style=name``, where ``name`` can be
 
- * ``solarized``: the famous `solarized <http://ethanschoonover.com/solarized>`_
+ * ``solarized``: the famous `solarized <http://ethanschoonover.com/solarized>`__
    style (yellowish),
 
  * ``blueish``: a simple style with blue headings (default),
@@ -5407,7 +5480,7 @@ described in a "separate document": "". That document describes how you your Doc
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored
-design, see a `tutorial <http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl>`_ on this topic. The template file must contain
+design, see a `tutorial <http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl>`__ on this topic. The template file must contain
 valid HTML code and can have three "slots": ``%(title)s`` for a title,
 ``%(date)s`` for a date, and ``%(main)s`` for the main body of text. The
 latter is the
@@ -5481,8 +5554,8 @@ allows extensive LaTeX mathematics via MathJax.
    text area in the blog post (just delete the HTML code that initially
    pops up in the text area). Make sure the input format is HTML.
 
-See a `simple blog example <http://doconce.blogspot.no>`_ and
-a `scientific report <http://doconce-report-demo.blogspot.no/>`_
+See a `simple blog example <http://doconce.blogspot.no>`__ and
+a `scientific report <http://doconce-report-demo.blogspot.no/>`__
 for demonstrations of blog posts at ``blogspot.no``.
 
 
@@ -5526,7 +5599,7 @@ for demonstrations of blog posts at ``blogspot.no``.
 
 .. `<http://weiqigao.blogspot.no/2013/03/enabling-mathjax-in-blogger.html>`_
 
-Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`_.
+Blog posts at Google can also be published `automatically through email <http://support.google.com/blogger/bin/answer.py?hl=en&answer=41452>`__.
 A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  ``smtplib`` and ``email``.
 
@@ -5535,8 +5608,8 @@ but has very limited
 LaTeX support, basically only formulas. The ``--wordpress`` option to
 ``doconce`` modifies the HTML code such that all equations are typeset
 in a way that is acceptable to WordPress.
-Look at a `simple doconce example <http://doconce.wordpress.com>`_
-and a `scientific report <http://doconcereportdemo.wordpress.com/>`_
+Look at a `simple doconce example <http://doconce.wordpress.com>`__
+and a `scientific report <http://doconcereportdemo.wordpress.com/>`__
 to see blog posts with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project `<http://pressbooks.com>`_ can take raw HTML code (from DocOnce, for
@@ -5563,7 +5636,7 @@ Pandoc supports ``latex``, ``html``, ``odt`` (OpenOffice), ``docx`` (Microsoft
 Word), ``rtf``, ``texinfo``, to mention some. The ``-R`` option makes
 Pandoc pass raw HTML or LaTeX to the output format instead of ignoring it,
 while the ``--toc`` option generates a table of contents.
-See the `Pandoc documentation <http://johnmacfarlane.net/pandoc/README.html>`_
+See the `Pandoc documentation <http://johnmacfarlane.net/pandoc/README.html>`__
 for the many features of the ``pandoc`` program.
 
 Markdown to HTML conversion
@@ -5619,7 +5692,7 @@ GitHub-flavored Markdown
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Adding the command-line option ``github-md`` turns on the GutHub-flavored
-Markdown dialect, which is used for the issue tracker on `GitHub <http://github.com>`_. A special feature is the support of task lists:
+Markdown dialect, which is used for the issue tracker on `GitHub <http://github.com>`__. A special feature is the support of task lists:
 unnumbered lists with ``[x]`` (task done) or ``[ ]`` (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
 is different from Pandoc extended Markdown.) Below is a typical
@@ -5685,7 +5758,7 @@ strict Markdown, or GitHub-flavored Markdown).
 Strapdown rendering of Markdown text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Strapdown <http://strapdownjs.com>`_ is a tool that can render Markdown
+`Strapdown <http://strapdownjs.com>`__ is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
 footer in the Markdown file and load the file into a browser.
 The option ``--strapdown`` outputs the relevant header and footer.
@@ -5698,8 +5771,8 @@ The output file must be renamed such that it gets the extension ``.html``:
         Terminal> mv mydoc.md mydoc.html
 
 The ``--bootstrap_bootwatch_theme=theme`` option is used to choose
-a `Bootswatch <http://bootswatch.com/>`_ theme whose names are
-found on the `Strapdown page <http://strapdownjs.com>`_.
+a `Bootswatch <http://bootswatch.com/>`__ theme whose names are
+found on the `Strapdown page <http://strapdownjs.com>`__.
 
 LaTeX
 -----
@@ -5716,7 +5789,7 @@ LaTeX
 Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` is done in two steps:
 1) compile the DocOnce source to the ``ptex2tex`` format, and 2) compile
 the ``ptex2tex`` format to standard LaTeX.
-The `ptex2tex <http://code.google.com/p/ptex2tex>`_ format can be
+The `ptex2tex <http://code.google.com/p/ptex2tex>`__ format can be
 viewed as an extended LaTeX. For DocOnce users, the ``ptex2tex`` format
 essentially means that the file consists of
 
@@ -6010,9 +6083,9 @@ From PDF to e-book formats
 
 PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
-need to convert to their format. The `Calibre <http://calibre-ebook.com/>`_
+need to convert to their format. The `Calibre <http://calibre-ebook.com/>`__
 program can produce epub, mobi, and other e-book formats from PDF,
-see a `description <http://www.dedoimedo.com/computers/latex-lyx-e-books.html>`_.
+see a `description <http://www.dedoimedo.com/computers/latex-lyx-e-books.html>`__.
 
 Plain ASCII Text
 ----------------
@@ -6369,9 +6442,9 @@ Wiki Formats
 ------------
 
 There are many different wiki formats, but DocOnce only supports three:
-`Googlecode wiki <http://code.google.com/p/support/wiki/WikiSyntax>`_,
-`MediaWiki <http://www.mediawiki.org/wiki/Help:Formatting>`_, and
-`Creole Wiki <http://www.wikicreole.org/wiki/Creole1.0>`_.
+`Googlecode wiki <http://code.google.com/p/support/wiki/WikiSyntax>`__,
+`MediaWiki <http://www.mediawiki.org/wiki/Help:Formatting>`__, and
+`Creole Wiki <http://www.wikicreole.org/wiki/Creole1.0>`__.
 These formats are called
 ``gwiki``, ``mwiki``, and ``cwiki``, respectively.
 Transformation from DocOnce to these formats is done by
@@ -6383,17 +6456,17 @@ Transformation from DocOnce to these formats is done by
         Terminal> doconce format cwiki mydoc.do.txt
 
 The produced MediaWiki can be tested in the `sandbox of
-wikibooks.org <http://en.wikibooks.org/wiki/Sandbox>`_. The format
+wikibooks.org <http://en.wikibooks.org/wiki/Sandbox>`__. The format
 works well with Wikipedia, Wikibooks, and
-`ShoutWiki <http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page>`_,
+`ShoutWiki <http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page>`__,
 but not always well elsewhere
-(see `this example <http://doconcedemo.jumpwiki.com/wiki/First_demo>`_).
+(see `this example <http://doconcedemo.jumpwiki.com/wiki/First_demo>`__).
 
 Large MediaWiki documents can be made with the
-`Book creator <http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=book_creator>`_.
+`Book creator <http://en.wikipedia.org/w/index.php?title=Special:Book&bookcmd=book_creator>`__.
 From the MediaWiki format one can go to other formats with aid
-of `mwlib <http://pediapress.com/code/>`_. This means that one can
-easily use DocOnce to write `Wikibooks <http://en.wikibooks.org>`_
+of `mwlib <http://pediapress.com/code/>`__. This means that one can
+easily use DocOnce to write `Wikibooks <http://en.wikibooks.org>`__
 and publish these in PDF and MediaWiki format, while
 at the same time, the book can also be published as a
 standard LaTeX book, a Sphinx web document, or a collection of HTML files.
@@ -6426,7 +6499,7 @@ the DocOnce document to one of the accepted formats for Google Docs:
  * RTF: ``doconce format pandoc`` and then run ``pandoc`` to produce
    a ``.rtf`` file that can be uploaded to Google Drive and opened.
    Another possibility is to run ``doconce format latex`` and
-   then `latex2rtf <http://sourceforge.net/projects/latex2rtf>`_
+   then `latex2rtf <http://sourceforge.net/projects/latex2rtf>`__
    (the support of mathematics has gotten worse).
 
  * Plain text: ``doconce format plain``. Upload the ``.txt`` file
@@ -6439,7 +6512,7 @@ the DocOnce document to one of the accepted formats for Google Docs:
 This is not yet much tested. It remains to see how code becomes in
 Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
-in Google Docs and the `googledoc2latex <http://code.google.com/p/googledoc2latex>`_ script can convert a Google document to LaTeX.
+in Google Docs and the `googledoc2latex <http://code.google.com/p/googledoc2latex>`__ script can convert a Google document to LaTeX.
 
 Tweaking the DocOnce Output
 ---------------------------
@@ -6466,8 +6539,8 @@ Installation of DocOnce and its Dependencies
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install what is needed is to run the
-`install_doconce.sh <install_doconce.sh>`_ (or
-`install_doconce.py <install_doconce.py>`_) script.
+`install_doconce.sh <install_doconce.sh>`__ (or
+`install_doconce.py <install_doconce.py>`__) script.
 
 DocOnce
 -------
@@ -6518,7 +6591,7 @@ Ubuntu, you can jump to the script in the section :ref:`install:debian:script`.
 Preprocessors
 ~~~~~~~~~~~~~
 
-If you make use of the `Preprocess <http://code.google.com/p/preprocess>`_
+If you make use of the `Preprocess <http://code.google.com/p/preprocess>`__
 preprocessor, this program must be installed:
 
 .. code-block:: text
@@ -6530,7 +6603,7 @@ preprocessor, this program must be installed:
         cd ..
 
 A much more advanced alternative to Preprocess is
-`Mako <http://www.makotemplates.org>`_. Its installation is most
+`Mako <http://www.makotemplates.org>`__. Its installation is most
 conveniently done by ``pip``,
 
 .. code-block:: text
@@ -6544,10 +6617,10 @@ such as Ubuntu, the installation is simply done by
 
         sudo apt-get install python-pip
 
-Alternatively, one can install from the ``pip`` `source code <http://pypi.python.org/pypi/pip>`_.
+Alternatively, one can install from the ``pip`` `source code <http://pypi.python.org/pypi/pip>`__.
 
 Mako can also be installed directly from
-`source <http://www.makotemplates.org/download.html>`_: download the
+`source <http://www.makotemplates.org/download.html>`__: download the
 tarball, pack it out, go to the directory and run
 the usual ``sudo python setup.py install``.
 
@@ -6558,7 +6631,7 @@ Different output formats require different formats of image files.
 For example, PostScript or Encapuslated PostScript is required for
 ``latex`` output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
 calls up programs from the ImageMagick suite for converting image
-files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`_ can be installed on all
+files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`__ can be installed on all
 major platforms.  On Debian Linux (including Ubuntu) systems one can
 simply write
 
@@ -6595,7 +6668,7 @@ spellcheck. On Debian (including Ubuntu) it is installed by
 Bibliography
 ~~~~~~~~~~~~
 
-The Python package `Publish <https://bitbucket.org/logg/publish>`_ is needed if you use a bibliography
+The Python package `Publish <https://bitbucket.org/logg/publish>`__ is needed if you use a bibliography
 in your document. On the website, click on *Clone*, copy the
 command and run it:
 
@@ -6615,7 +6688,7 @@ Ptex2tex for LaTeX Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To make LaTeX documents with very flexible choice of typesetting of
-verbatim code blocks you need `ptex2tex <http://code.google.com/p/ptex2tex>`_,
+verbatim code blocks you need `ptex2tex <http://code.google.com/p/ptex2tex>`__,
 which is installed by
 
 .. code-block:: text
@@ -6651,7 +6724,7 @@ program.
 
 The *minted* LaTeX style is offered by ``ptex2tex`` and ``doconce ptext2tex``
 and popular among many
-users. This style requires the package `Pygments <http://pygments.org>`_
+users. This style requires the package `Pygments <http://pygments.org>`__
 to be installed. On Debian Linux,
 
 .. code-block:: text
@@ -6696,7 +6769,7 @@ preprocessor variables given to ``ptex2tex`` or ``doconce ptex2tex``.  The
 standard packages always included are ``relsize``, ``epsfig``, ``makeidx``,
 ``setspace``, ``color``, ``amsmath``, ``amsfonts``, ``xcolor``, ``bm``,
 ``microtype``, ``titlesec``, and ``hyperref``.  The ``ptex2tex`` package (from
-`ptex2tex <http://code.google.com/p/ptex2tex>`_) is also included, but
+`ptex2tex <http://code.google.com/p/ptex2tex>`__) is also included, but
 removed again if ``doconce ptex2tex`` is run instead of the ``ptex2tex``
 program, meaning that if you do not use ``ptex2tex``, you do not need
 ``ptex2tex.sty``. Optional packages that might be included are ``minted``,
@@ -6731,14 +6804,14 @@ If you want to use the *anslistings* code environment with ``ptex2tex``
 (``.ptex2tex.cfg`` styles ``Python_ANS``, ``Python_ANSt``, ``Cpp_ANS``, etc.) or
 ``doconce ptex2tex`` (``envir=ans`` or ``envir=ans:nt``), you need the
 ``anslistings.sty`` file. It can be obtained from
-the `ptex2tex source <https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty>`_. It should get installed
+the `ptex2tex source <https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty>`__. It should get installed
 by the ``cp2texmf.sh`` script executed above.
 
 reStructuredText (reST) Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``rst`` output from DocOnce allows further transformation to LaTeX,
-HTML, XML, OpenOffice, and so on, through the `docutils <http://docutils.sourceforge.net>`_ package.  The installation of the
+HTML, XML, OpenOffice, and so on, through the `docutils <http://docutils.sourceforge.net>`__ package.  The installation of the
 most recent version can be done by
 
 .. code-block:: text
@@ -6765,7 +6838,7 @@ To use the OpenOffice suite you will typically on Debian systems install
 
 There is a possibility to create PDF files from reST documents
 using ReportLab instead of LaTeX. The enabling software is
-`rst2pdf <http://code.google.com/p/rst2pdf>`_. Either download the tarball
+`rst2pdf <http://code.google.com/p/rst2pdf>`__. Either download the tarball
 or clone the svn repository, go to the ``rst2pdf`` directory and
 run the usual ``sudo python setup.py install``.
 
@@ -6773,7 +6846,7 @@ Sphinx Output
 ~~~~~~~~~~~~~
 
 Output to ``sphinx`` requires of course the
-`Sphinx software <http://sphinx.pocoo.org>`_,
+`Sphinx software <http://sphinx.pocoo.org>`__,
 installed by
 
 .. code-block:: text
@@ -6811,7 +6884,7 @@ Markdown and Pandoc Output
 
 The DocOnce format ``pandoc`` outputs the document in the Pandoc
 extended Markdown format, which via the ``pandoc`` program can be
-translated to a range of other formats. Installation of `Pandoc <http://johnmacfarlane.net/pandoc/>`_, written in Haskell, is most
+translated to a range of other formats. Installation of `Pandoc <http://johnmacfarlane.net/pandoc/>`__, written in Haskell, is most
 easily done by
 
 .. code-block:: text
@@ -6854,17 +6927,17 @@ should be available on all Unix/Linux systems. Other choices, their
 URL, and their ``sudo apt-get install`` command on Debian (Ubuntu) systems
 appear in the table below.
 
-=========================================================================================  =========================================================================================  =========================================================================================  
-                                         Program                                                                                      URL                                                                               Debian/Ubuntu install                                    
-=========================================================================================  =========================================================================================  =========================================================================================  
-``pdiff``                                                                                  `a2ps <http://www.gnu.org/software/a2ps/>`_ `wdiff <http://www.gnu.org/software/wdiff/>`_  ``sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended``          
-``latexdiff``                                                                              `latexdiff <http://www.ctan.org/pkg/latexdiff>`_                                           ``sudo apt-get install latexdiff``                                                         
-``kdiff3``                                                                                 `kdiff3 <http://kdiff3.sourceforge.net/>`_                                                 ``sudo apt-get install kdiff3``                                                            
-``diffuse``                                                                                `diffuse <http://diffuse.sourceforge.net/>`_                                               ``sudo apt-get install diffuse``                                                           
-``xxdiff``                                                                                 `xxdiff <http://xxdiff.sourceforge.net/local/>`_                                           ``sudo apt-get install xxdiff``                                                            
-``meld``                                                                                   `meld <http://meldmerge.org/>`_                                                            ``sudo apt-get install meld``                                                              
-``tkdiff.tcl``                                                                             `tkdiff <https://sourceforge.net/projects/tkdiff/>`_                                       not in Debian                                                                              
-=========================================================================================  =========================================================================================  =========================================================================================  
+===========================================================================================  ===========================================================================================  ===========================================================================================  
+                                          Program                                                                                        URL                                                                                 Debian/Ubuntu install                                     
+===========================================================================================  ===========================================================================================  ===========================================================================================  
+``pdiff``                                                                                    `a2ps <http://www.gnu.org/software/a2ps/>`__ `wdiff <http://www.gnu.org/software/wdiff/>`__  ``sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended``            
+``latexdiff``                                                                                `latexdiff <http://www.ctan.org/pkg/latexdiff>`__                                            ``sudo apt-get install latexdiff``                                                           
+``kdiff3``                                                                                   `kdiff3 <http://kdiff3.sourceforge.net/>`__                                                  ``sudo apt-get install kdiff3``                                                              
+``diffuse``                                                                                  `diffuse <http://diffuse.sourceforge.net/>`__                                                ``sudo apt-get install diffuse``                                                             
+``xxdiff``                                                                                   `xxdiff <http://xxdiff.sourceforge.net/local/>`__                                            ``sudo apt-get install xxdiff``                                                              
+``meld``                                                                                     `meld <http://meldmerge.org/>`__                                                             ``sudo apt-get install meld``                                                                
+``tkdiff.tcl``                                                                               `tkdiff <https://sourceforge.net/projects/tkdiff/>`__                                        not in Debian                                                                                
+===========================================================================================  ===========================================================================================  ===========================================================================================  
 
 .. _install:debian:script:
 
@@ -7067,7 +7140,7 @@ References
 
 .. [Ref3]
    [Ref3]. **H. P. Langtangen**,
-   A Document for Testing Doconce,
+   A Document for Testing DocOnce,
    `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
 
 .. [Ref4]

@@ -340,10 +340,10 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 """
+    #<meta tag is valid only in html head anyway, so this was removed:
+    #<!-- Fix slow MathJax rendering in IE8 -->
+    #<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
     latex = '\n\n' + mathjax_script_tag + newcommands + '\n\n'
     return latex
 
@@ -867,7 +867,7 @@ def html_figure(m):
                           for opt, value in info if opt not in ['frac']])
 
     if caption:
-       # Caption above figure and a horizontal rule (fine for anchoring):
+       # Caption above figure and a horizontalrule (fine for anchoring):
        return """
 <center> <!-- figure -->
 <hr class="figure">

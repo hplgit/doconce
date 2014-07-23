@@ -73,6 +73,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 !bc
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo

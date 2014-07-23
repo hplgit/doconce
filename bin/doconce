@@ -196,6 +196,7 @@ def sphinx_dir():
                 if line.startswith('TITLE:'):
                     title = line[6:].strip()
                     print 'Using title "%s" from' % title, filename
+                    break # use the first TITLE spec
     if title is None:
         print '\nNo TITLE: line found in %s.do.txt' % filename
         print 'and no title="..." given on the command line'

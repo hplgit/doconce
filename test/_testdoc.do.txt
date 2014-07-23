@@ -1380,6 +1380,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among [hpl: laptops and mobile units -> computers, tablets,
 and phones].
 
+# Test horizontal rule
+
+------
+
+# Coments for editing
+
 First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
 $Q>0$, because [del: a] negative [edit: quantity is -> quantities
 are] [del: just] negative. [add: This comes as no surprise.]

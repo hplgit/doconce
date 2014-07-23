@@ -1396,6 +1396,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among [hpl: laptops and mobile units -> computers, tablets,
 and phones].
 
+# Test horizontal rule
+
+------
+
+# Coments for editing
+
 First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
 $Q>0$, because [del: a] negative [edit: quantity is -> quantities
 are] [del: just] negative. [add: This comes as no surprise.]
@@ -1611,9 +1617,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -3687,6 +3690,12 @@ $\partial u/\partial t$, are easily communicated between machines. }{ Simply go 
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
+
+% Test horizontal rule
+
+------
+
+% Coments for editing
 
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
@@ -5794,6 +5803,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
+% Test horizontal rule
+
+------
+
+% Coments for editing
+
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
 are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
@@ -7872,6 +7887,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
+% Test horizontal rule
+
+------
+
+% Coments for editing
+
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
 are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
@@ -7904,6 +7925,44 @@ in a separate document: \Verb!admon.do.txt!.
 
 
 ************** File: testdoc.rst *****************
+
+.. raw:: html
+
+        <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: {
+             equationNumbers: {  autoNumber: "AMS"  },
+             extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+          }
+        });
+        </script>
+        <script type="text/javascript"
+         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+        
+        <!-- newcommands_bfmath.tex -->
+        $$
+        \renewcommand{\u}{\pmb{u}}
+        
+        \newcommand{\xbm}{\bm{x}}
+        \newcommand{\normalvecbm}{\bm{n}}
+        \newcommand{\ubm}{\bm{u}}
+        $$
+        
+        
+        <!-- newcommands_replace.tex -->
+        $$
+        \newcommand{\x}{\pmb{x}}
+        \newcommand{\normalvec}{\pmb{n}}
+        \newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+        \newcommand{\halfi}{1/2}
+        \newcommand{\half}{\frac{1}{2}}
+        \newcommand{\report}{test report}
+        $$
+        
+        
+        
+
 .. Automatically generated reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
@@ -7911,9 +7970,9 @@ in a separate document: \Verb!admon.do.txt!.
    :trim:
 
 A Document for Testing DocOnce
-==============================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
+:Authors: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 .. contents:: Table of Contents
@@ -8259,11 +8318,11 @@ They are used in different flavors, now in
 
  * list items
 
- * even with math \nabla^2u [#math1]_
+ * even with math \\( \nabla^2u \\) [#math1]_
 
  * and code ``h[i] += 1`` [#code]_,
 
- * and `links <http://google.com>`_ [#google-search]_
+ * and `links <http://google.com>`__ [#google-search]_
 
 which gives flexibility in writing.
 This is the third [#example-of-the-third-footnote]_ example.
@@ -8289,9 +8348,9 @@ used above.
 
 .. admonition:: Non-breaking space character
 
-   This paragraph aims to test `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_, and a typical
+   This paragraph aims to test `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`__, and a typical
    example where this is needed is in physical units: 7.4 |nbsp| km is traveled
-   in |nbsp| 7.4/5.5\approx 1.345 |nbsp| s.  Also check that a |nbsp| `link <http://google.com>`_ |nbsp| is
+   in |nbsp| \\( 7.4/5.5\approx 1.345 \\) |nbsp| s.  Also check that a |nbsp| `link <http://google.com>`__ |nbsp| is
    not broken across lines (drag the browser window to test this).
    (On the other hand, the tilde is used in
    computer code, e.g., as in ``[~x for x in y]`` or in ``y=~x``, and should
@@ -8348,31 +8407,38 @@ Movies are tested in separate file ``movies.do.txt``.
 
 .. _decay:sec:theta:
 
-The \theta parameter (not \nabla?)
-----------------------------------
+The \\( \theta \\) parameter (not \\( \nabla \\)?)
+--------------------------------------------------
 
 Functions do not always need to be advanced, here is one
-involving \theta::
+involving \\( \theta \\)::
 
         def f(theta):
             return theta**2
 
-**More on \theta.**
+**More on \\( \theta \\).**
 Here is more text following headline with math.
 
 Newcommands must also be tested in this test report:
-\frac{1}{2}, {1/2}, \pmb{x}, \frac{Du}{dt},
-both inline and in block::
+\\( \frac{1}{2} \\), \\( {1/2} \\), \\( \pmb{x} \\), \\( \frac{Du}{dt} \\),
+both inline and in block
 
+.. raw:: html
+
+        $$
         \begin{align*}
         \frac{Du}{dt} &= 0
         \\ 
         \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
+        $$
 
-Or with align with label and numbers::
+Or with align with label and numbers
 
+.. raw:: html
+
+        $$
         \begin{align}
         \frac{Du}{dt} &= 0
         label{aligneq1}\\ 
@@ -8380,6 +8446,7 @@ Or with align with label and numbers::
         \frac{1}{2}\pmb{x} &= \pmb{n}
         label{aligneq2}
         \end{align}
+        $$
 
 Custom Environments
 -------------------
@@ -8392,15 +8459,15 @@ Should look nice in most formats!
 .. begin theorem
 
 **Theorem 5.**
-Let a=1 and b=2. Then c=3.
+Let \\( a=1 \\) and \\( b=2 \\). Then \\( c=3 \\).
 
 .. end theorem
 
 .. begin proof
 
 **Proof.**
-Since c=a+b, the result follows from straightforward addition.
-END
+Since \\( c=a+b \\), the result follows from straightforward addition.
+\\( \Diamond \\)
 .. end proof
 
 As we see, the proof of Theorem 5 is a modest
@@ -8448,30 +8515,30 @@ And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-========  ========  ========  ========  
-   i        h_i     \bar T_i  ``L_i``   
-========  ========  ========  ========  
-0                0       288   -0.0065  
-1           11,000       216       0.0  
-2           20,000       216     0.001  
-3           32,000       228    0.0028  
-4           47,000       270       0.0  
-5           51,000       270   -0.0028  
-6           71,000       214   ``NaN``  
-========  ========  ========  ========  
+================  ================  ================  ================  
+   \\( i \\)        \\( h_i \\)     \\( \bar T_i \\)      ``L_i``       
+================  ================  ================  ================  
+0                                0               288           -0.0065  
+1                           11,000               216               0.0  
+2                           20,000               216             0.001  
+3                           32,000               228            0.0028  
+4                           47,000               270               0.0  
+5                           51,000               270           -0.0028  
+6                           71,000               214           ``NaN``  
+================  ================  ================  ================  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=============  =============  =============  =============  
-    exact         ``v_1``     a_i + ``v_2``   ``verb_3_``   
-=============  =============  =============  =============  
-            9           9.62           5.57           8.98  
-          -20         -23.39          -7.65         -19.93  
-           10          17.74          -4.50           9.96  
-            0          -9.19           4.13          -0.26  
-=============  =============  =============  =============  
+=====================  =====================  =====================  =====================  
+        exact                 ``v_1``         \\( a_i \\) + ``v_2``       ``verb_3_``       
+=====================  =====================  =====================  =====================  
+                    9                   9.62                   5.57                   8.98  
+                  -20                 -23.39                  -7.65                 -19.93  
+                   10                  17.74                  -4.50                   9.96  
+                    0                  -9.19                   4.13                  -0.26  
+=====================  =====================  =====================  =====================  
 
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
@@ -8482,18 +8549,18 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-=========================================================  =========================================================  =========================================================  
-                                                                                                                                                                                 
-=========================================================  =========================================================  =========================================================  
-                      \mathcal{L}=0                        `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
-                           a=b                             `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
-                   \nabla\cdot\bm{u} =0                    `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
-=========================================================  =========================================================  =========================================================  
+==========================================================  ==========================================================  ==========================================================  
+                                                                                                                                                                                    
+==========================================================  ==========================================================  ==========================================================  
+                  \\( \mathcal{L}=0 \\)                     `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+                       \\( a=b \\)                          `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+              \\( \nabla\cdot\bm{u} =0  \\)                 `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+==========================================================  ==========================================================  ==========================================================  
 
-A test of verbatim words in heading with subscript a_i: ``my_file_v1`` and ``my_file_v2``
------------------------------------------------------------------------------------------
+A test of verbatim words in heading with subscript \\( a_i \\): ``my_file_v1`` and ``my_file_v2``
+-------------------------------------------------------------------------------------------------
 
-**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math a_{i-1}.**
+**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math \\( a_{i-1} \\).**
 Here is
 some text.
 
@@ -8572,23 +8639,23 @@ maybe over multiple doconce input lines.
 URLs
 ----
 
-Testing of URLs: hpl's home page `hpl <http://folk.uio.no/hpl>`_, or
+Testing of URLs: hpl's home page `hpl <http://folk.uio.no/hpl>`__, or
 the entire URL if desired, `<http://folk.uio.no/hpl>`_.  Here is a
 plain file link `<testdoc.do.txt>`_, or `<testdoc.do.txt>`_, or
 `<testdoc.do.txt>`_ or `<testdoc.do.txt>`_ or `a link with
-newline <testdoc.do.txt>`_. Can test spaces with the link with word
-too: `hpl <http://folk.uio.no/hpl>`_ or `hpl <http://folk.uio.no/hpl>`_. Also ``file:///`` works: `link to a
-file <file:///home/hpl/vc/doconce/doc/demos/manual/manual.html>`_ is
+newline <testdoc.do.txt>`__. Can test spaces with the link with word
+too: `hpl <http://folk.uio.no/hpl>`__ or `hpl <http://folk.uio.no/hpl>`__. Also ``file:///`` works: `link to a
+file <file:///home/hpl/vc/doconce/doc/demos/manual/manual.html>`__ is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in `<http://folk.uio.no/hpl>`_, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
-Mail addresses can also be used: `hpl@simula.no <mailto:hpl@simula.no>`_, or just a `mail link <mailto:hpl@simula.no>`_, or a raw `<mailto:hpl@simula.no>`_.
+Mail addresses can also be used: `hpl@simula.no <mailto:hpl@simula.no>`__, or just a `mail link <mailto:hpl@simula.no>`__, or a raw `<mailto:hpl@simula.no>`_.
 
 Here are some tough tests of URLs, especially for the ``latex`` format:
-`Newton-Cotes <http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`_ formulas
-and a `good book <http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1>`_. Need to test
+`Newton-Cotes <http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`__ formulas
+and a `good book <http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1>`__. Need to test
 Newton-Cotes with percentage in URL too:
 `<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`_
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
@@ -8596,8 +8663,8 @@ and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formul
 For the ``--device=paper`` option it is important to test that URLs with
 monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
 is used), as in this reference to
-`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
-and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
+`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`__, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`__,
+and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`__.
 
 .. Comments should be inserted outside paragraphs (because in the rst
 
@@ -8611,8 +8678,8 @@ and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
 More tough tests: repeated URLs whose footnotes when using the
 ``--device=paper`` option must be correct. We have
-`google <http://google.com>`_, `google <http://google.com>`_, and
-`google <http://google.com>`_, which should result in exactly three
+`google <http://google.com>`__, `google <http://google.com>`__, and
+`google <http://google.com>`__, which should result in exactly three
 footnotes.
 
 .. !split and check if these extra words are included properly in the comment
@@ -8620,24 +8687,34 @@ footnotes.
 LaTeX Mathematics
 =================
 
-Here is an equation without label using backslash-bracket environment::
+Here is an equation without label using backslash-bracket environment
 
+.. raw:: html
+
+        $$
         \[ a = b + c \]
+        $$
+or with number and label, as in Equation (my:eq1), using the equation environment
 
-or with number and label, as in Equation (my:eq1), using the equation environment::
+.. raw:: html
 
+        $$
         \begin{equation}
         {\partial u\over\partial t} = \nabla^2 u label{my:eq1}
         \end{equation}
-
+        $$
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment::
+Here is a system without equation numbers, using the align-astrisk environment
 
+.. raw:: html
+
+        $$
         \begin{align*}
         \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
+        $$
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
@@ -8658,7 +8735,7 @@ Problem 2: Flip a Coin
 
 .. Torture tests
 
-Make a program that simulates flipping a coin N times.
+Make a program that simulates flipping a coin \\( N \\) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
@@ -8682,7 +8759,7 @@ Use ``r = random.random()`` and define head as ``r <= 0.5``.
 .. --- begin hint in exercise ---
 
 **Hint 2.**
-Draw an integer among \{1,2\} with
+Draw an integer among \\( \{1,2\} \\) with
 ``r = random.randint(1,2)`` and define head when ``r`` is 1.
 
 .. --- end hint in exercise ---
@@ -8690,8 +8767,8 @@ Draw an integer among \{1,2\} with
 .. --- begin answer of exercise ---
 
 **Answer.**
-If the ``random.random()`` function returns a number <1/2, let it be
-head, otherwise tail. Repeat this N number of times.
+If the ``random.random()`` function returns a number \\( <1/2 \\), let it be
+head, otherwise tail. Repeat this \\( N \\) number of times.
 
 .. --- end answer of exercise ---
 
@@ -8732,7 +8809,7 @@ Project 3: Compute a Probability
 .. Minimalistic exercise
 
 What is the probability of getting a number between 0.5 and 0.6 when
-drawing uniformly distributed random numbers from the interval [0,1)?
+drawing uniformly distributed random numbers from the interval \\( [0,1) \\)?
 
 At the end we have a list because that caused problems in LaTeX
 in previous DocOnce versions:
@@ -8745,9 +8822,9 @@ in previous DocOnce versions:
 
 **Hint.**
 To answer this question empirically, let a program
-draw N such random numbers using Python's standard ``random`` module,
-count how many of them, M, that fall in the interval (0.5,0.6), and
-compute the probability as M/N.
+draw \\( N \\) such random numbers using Python's standard ``random`` module,
+count how many of them, \\( M \\), that fall in the interval \\( (0.5,0.6) \\), and
+compute the probability as \\( M/N \\).
 
 .. --- end hint in exercise ---
 
@@ -8760,16 +8837,19 @@ compute the probability as M/N.
 Project 4: Explore Distributions of Random Circles
 --------------------------------------------------
 
-The formula for a circle is given by::
+The formula for a circle is given by
 
+.. raw:: html
+
+        $$
         \begin{align}
         x &= x_0 + R\cos 2\pi t,\\ 
         y &= y_0 + R\sin 2\pi t,
         \end{align}
-
-where R is the radius of the circle, (x_0,y_0) is the
-center point, and t is a parameter in the unit interval [0,1].
-For any t, (x,y) is a point on the circle.
+        $$
+where \\( R \\) is the radius of the circle, \\( (x_0,y_0) \\) is the
+center point, and \\( t \\) is a parameter in the unit interval \\( [0,1] \\).
+For any \\( t \\), \\( (x,y) \\) is a point on the circle.
 The formula can be used to generate ``n`` points on a circle::
 
         import numpy as np
@@ -8786,18 +8866,18 @@ The formula can be used to generate ``n`` points on a circle::
 
 .. which we normally want to keep where they are.
 
-The goal of this project is to draw N circles with random
+The goal of this project is to draw \\( N \\) circles with random
 center and radius. Plot each circle using the ``circle`` function
 above.
 
 **a)**
-Let R be normally distributed and (x_0,y_0) uniformly distributed.
+Let \\( R \\) be normally distributed and \\( (x_0,y_0) \\) uniformly distributed.
 
 .. --- begin hint in exercise ---
 
 **Hint.**
 Use the ``numpy.random`` module to draw the
-x_0, y_0, and R quantities.
+\\( x_0 \\), \\( y_0 \\), and \\( R \\) quantities.
 
 .. --- end hint in exercise ---
 
@@ -8816,11 +8896,11 @@ Here goes a full solution to part a).
 .. --- end solution of exercise ---
 
 **b)**
-Let R be uniformly distributed and (x_0,y_0) normally distributed.
+Let \\( R \\) be uniformly distributed and \\( (x_0,y_0) \\) normally distributed.
 Filename: ``norm.py``.
 
 **c)**
-Let R and (x_0,y_0) be normally distributed.
+Let \\( R \\) and \\( (x_0,y_0) \\) be normally distributed.
 
 Filename: ``circles.pdf``.
 
@@ -8858,10 +8938,13 @@ Test list in exercise:
 
 **Solution.**
 Here goes a full solution of the whole exercise.
-With some math a=b in this solution::
+With some math \\( a=b \\) in this solution
 
+.. raw:: html
+
+        $$
         \[ \hbox{math in solution: } a = b \]
-
+        $$
 And code ``a=b`` in this solution::
 
         a = b  # code in solution
@@ -8877,11 +8960,14 @@ Subexercises are numbered a), b), etc.
 
 **Hint 1.**
 First hint to subexercise a).
-With math a=b in hint::
+With math \\( a=b \\) in hint
 
+.. raw:: html
+
+        $$
         \[ a=b. \]
-
-And with code (in plain verbatim) returning x+1 in hint::
+        $$
+And with code (in plain verbatim) returning \\( x+1 \\) in hint::
 
         def func(x):
             return x + 1  # with code in hint
@@ -8907,16 +8993,20 @@ Filename: ``subexer_a.pdf``.
 
 **Answer.**
 Short answer to subexercise a).
-With math in answer: a=b.
+With math in answer: \\( a=b \\).
 
 .. --- end answer of exercise ---
 
 **b)**
 Here goes the text for subexercise b).
 
-Some math \cos^2 x + \sin^2 x = 1 written one a single line::
+Some math \\( \cos^2 x + \sin^2 x = 1 \\) written one a single line
 
+.. raw:: html
+
+        $$
         \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
+        $$
 
 .. --- begin hint in exercise ---
 
@@ -8952,10 +9042,14 @@ Some exercise without the "Exercise:" prefix
 
 .. Another minimalistic exercise
 
-Just some text. And some math saying that e^0=1 on a single line,
-to test that math block insertion is correct::
+Just some text. And some math saying that \\( e^0=1 \\) on a single line,
+to test that math block insertion is correct
 
+.. raw:: html
+
+        $$
         \[ \exp{(0)} = 1 \]
+        $$
 
 And a test that the code ``lambda x: x+2`` is correctly placed here::
 
@@ -8976,18 +9070,21 @@ Exercise 7: Solution of differential equation
 
 .. raw:: html
     <!-- begin quiz -->
-    Given::
+    Given
     
+    .. raw:: html
+    
+            $$
             \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
-    
+            $$
     What is the solution of this equation?</p>
     
     <p><div title="Right!"><b>Choice 1:</b>
-    y=e^{-y}
+    \\( y=e^{-y} \\)
     </div></p>
     
     <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
-    y=e^{y}
+    \\( y=e^{y} \\)
     </div></p>
     
     <p><div title="Wrong!"><b>Choice 3:</b>
@@ -9004,7 +9101,7 @@ Exercise 7: Solution of differential equation
     
     <p><div title="Wrong!"><b>Choice 5:</b>
     The equation is meaningless: an equation must be an equation
-    for x or y, not a function y(x).
+    for \\( x \\) or \\( y \\), not a function \\( y(x) \\).
     </div></p>
     <hr>
     <!-- end quiz -->
@@ -9122,7 +9219,7 @@ References
    **M. Mortensen, H. P. Langtangen and G. N. Wells**. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
    *Advances in Water Resources*,
    34(9),
-   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`_,
+   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`__,
    2011.
 
 .. [Ref08]
@@ -9141,7 +9238,7 @@ References
 .. [Ref10]
    **J. B. Haga, H. Osnes and H. P. Langtangen**. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
    *International Journal of Analytical and Numerical Methods in Geomechanics*,
-   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`_,
+   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`__,
    2011,
    `http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>`_.
 
@@ -9291,7 +9388,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`_ provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`__ provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 
@@ -9317,7 +9414,7 @@ cloud" and updated through communication with that site. I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
-The simplest services for hosting project files are `Dropbox <http://dropbox.com>`_ and `Google Drive <http://drive.google.com>`_.
+The simplest services for hosting project files are `Dropbox <http://dropbox.com>`__ and `Google Drive <http://drive.google.com>`__.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -9373,13 +9470,19 @@ files.
 
 The simplest services for hosting project files is Dropbox. <font color="red">(**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
-\partial u/\partial t, are easily communicated between machines.</font>) It
+\\( \partial u/\partial t \\), are easily communicated between machines.</font>) It
 is very easy to get started with Dropbox, and it allows you to share
 files among <font color="red">(**hpl 3**: laptops and mobile units -> computers, tablets,
 and phones</font>).
 
-Firstcolor{red}{(**add 4**: ,}) consider a quantity Q. <font color="red">(**edit 5**: To this end, -> We note that</font>)
-Q>0, because <font color="red">(**del 6**: a</font>) negative <font color="red">(**edit 7**: quantity is -> quantities
+.. Test horizontal rule
+
+---------
+
+.. Coments for editing
+
+Firstcolor{red}{(**add 4**: ,}) consider a quantity \\( Q \\). <font color="red">(**edit 5**: To this end, -> We note that</font>)
+\\( Q>0 \\), because <font color="red">(**del 6**: a</font>) negative <font color="red">(**edit 7**: quantity is -> quantities
 are</font>) <font color="red">(**del 8**: just</font>) negative. <font color="red">(**add 9**: This comes as no surprise.</font>)
 
 Appendix: Testing headings ending with ``verbatim inline``
@@ -9413,9 +9516,9 @@ in a separate document: ``admon.do.txt``.
    :trim:
 
 A Document for Testing DocOnce
-==============================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
+:Authors: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 .. !split
@@ -9808,7 +9911,7 @@ They are used in different flavors, now in
 
  * and code ``h[i] += 1`` [#code]_,
 
- * and `links <http://google.com>`_ [#google-search]_
+ * and `links <http://google.com>`__ [#google-search]_
 
 which gives flexibility in writing.
 This is the third [#example-of-the-third-footnote]_ example.
@@ -9834,9 +9937,9 @@ used above.
 
 .. admonition:: Non-breaking space character
 
-   This paragraph aims to test `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_, and a typical
+   This paragraph aims to test `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`__, and a typical
    example where this is needed is in physical units: 7.4 |nbsp| km is traveled
-   in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s.  Also check that a |nbsp| `link <http://google.com>`_ |nbsp| is
+   in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s.  Also check that a |nbsp| `link <http://google.com>`__ |nbsp| is
    not broken across lines (drag the browser window to test this).
    (On the other hand, the tilde is used in
    computer code, e.g., as in ``[~x for x in y]`` or in ``y=~x``, and should
@@ -10065,13 +10168,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-=========================================================  =========================================================  =========================================================  
-                                                                                                                                                                                 
-=========================================================  =========================================================  =========================================================  
-                  :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
-                       :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
-           :math:`\nabla\cdot\boldsymbol{u} =0`            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
-=========================================================  =========================================================  =========================================================  
+==========================================================  ==========================================================  ==========================================================  
+                                                                                                                                                                                    
+==========================================================  ==========================================================  ==========================================================  
+                  :math:`\mathcal{L}=0`                     `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+                       :math:`a=b`                          `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+           :math:`\nabla\cdot\boldsymbol{u} =0`             `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+==========================================================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -10155,23 +10258,23 @@ maybe over multiple doconce input lines.
 URLs
 ----
 
-Testing of URLs: hpl's home page `hpl <http://folk.uio.no/hpl>`_, or
+Testing of URLs: hpl's home page `hpl <http://folk.uio.no/hpl>`__, or
 the entire URL if desired, `<http://folk.uio.no/hpl>`_.  Here is a
 plain file link `<testdoc.do.txt>`_, or `<testdoc.do.txt>`_, or
 `<testdoc.do.txt>`_ or `<testdoc.do.txt>`_ or `a link with
-newline <testdoc.do.txt>`_. Can test spaces with the link with word
-too: `hpl <http://folk.uio.no/hpl>`_ or `hpl <http://folk.uio.no/hpl>`_. Also ``file:///`` works: `link to a
-file <file:///home/hpl/vc/doconce/doc/demos/manual/manual.html>`_ is
+newline <testdoc.do.txt>`__. Can test spaces with the link with word
+too: `hpl <http://folk.uio.no/hpl>`__ or `hpl <http://folk.uio.no/hpl>`__. Also ``file:///`` works: `link to a
+file <file:///home/hpl/vc/doconce/doc/demos/manual/manual.html>`__ is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in `<http://folk.uio.no/hpl>`_, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
-Mail addresses can also be used: `hpl@simula.no <mailto:hpl@simula.no>`_, or just a `mail link <mailto:hpl@simula.no>`_, or a raw `<mailto:hpl@simula.no>`_.
+Mail addresses can also be used: `hpl@simula.no <mailto:hpl@simula.no>`__, or just a `mail link <mailto:hpl@simula.no>`__, or a raw `<mailto:hpl@simula.no>`_.
 
 Here are some tough tests of URLs, especially for the ``latex`` format:
-`Newton-Cotes <http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`_ formulas
-and a `good book <http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1>`_. Need to test
+`Newton-Cotes <http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`__ formulas
+and a `good book <http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1>`__. Need to test
 Newton-Cotes with percentage in URL too:
 `<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`_
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
@@ -10179,8 +10282,8 @@ and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formul
 For the ``--device=paper`` option it is important to test that URLs with
 monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
 is used), as in this reference to
-`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
-and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
+`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`__, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`__,
+and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`__.
 
 .. Comments should be inserted outside paragraphs (because in the rst
 
@@ -10194,8 +10297,8 @@ and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
 More tough tests: repeated URLs whose footnotes when using the
 ``--device=paper`` option must be correct. We have
-`google <http://google.com>`_, `google <http://google.com>`_, and
-`google <http://google.com>`_, which should result in exactly three
+`google <http://google.com>`__, `google <http://google.com>`__, and
+`google <http://google.com>`__, which should result in exactly three
 footnotes.
 
 .. !split and check if these extra words are included properly in the comment
@@ -10747,7 +10850,7 @@ References
    **M. Mortensen, H. P. Langtangen and G. N. Wells**. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
    *Advances in Water Resources*,
    34(9),
-   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`_,
+   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`__,
    2011.
 
 .. [Ref08]
@@ -10766,7 +10869,7 @@ References
 .. [Ref10]
    **J. B. Haga, H. Osnes and H. P. Langtangen**. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
    *International Journal of Analytical and Numerical Methods in Geomechanics*,
-   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`_,
+   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`__,
    2011,
    `http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>`_.
 
@@ -10916,7 +11019,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`_ provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`__ provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 
@@ -10942,7 +11045,7 @@ cloud" and updated through communication with that site. I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
-The simplest services for hosting project files are `Dropbox <http://dropbox.com>`_ and `Google Drive <http://drive.google.com>`_.
+The simplest services for hosting project files are `Dropbox <http://dropbox.com>`__ and `Google Drive <http://drive.google.com>`__.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -11002,6 +11105,12 @@ how files, like ``myfile.py``, perhaps containing much math, like
 is very easy to get started with Dropbox, and it allows you to share
 files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
 and phones</font>.
+
+.. Test horizontal rule
+
+---------
+
+.. Coments for editing
 
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
 :math:`Q>0`, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
@@ -12403,6 +12512,12 @@ files.
 The simplest services for hosting project files is Dropbox.  It
 is very easy to get started with Dropbox, and it allows you to share
 files among .
+
+<wiki:comment> Test horizontal rule </wiki:comment>
+
+------
+
+<wiki:comment> Coments for editing </wiki:comment>
 
 First consider a quantity `Q`. 
 `Q>0`, because  negative   negative. 
@@ -13901,6 +14016,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
+<!-- Test horizontal rule -->
+
+------
+
+<!-- Coments for editing -->
+
 First[add 4: ,] consider a quantity <math>Q</math>. [edit 5: To this end, -> We note that]
 <math>Q>0</math>, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
@@ -15266,6 +15387,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
 
+<wiki:comment> Test horizontal rule </wiki:comment>
+
+------
+
+<wiki:comment> Coments for editing </wiki:comment>
+
 First[add 4: ,] consider a quantity {{{Q}}}. [edit 5: To this end, -> We note that]
 {{{Q>0}}}, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
@@ -16464,6 +16591,8 @@ how files, like 'myfile.py', perhaps containing much math, like
 is very easy to get started with Dropbox, and it allows you to share
 files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
+
+------
 
 First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
 Q>0, because [del 6: a] negative [edit 7: quantity is -> quantities
@@ -17665,6 +17794,8 @@ M{\partial u/\partial t}, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
 files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
+
+------
 
 First[add 4: ,] consider a quantity M{Q}. [edit 5: To this end, -> We note that]
 M{Q>0}, because [del 6: a] negative [edit 7: quantity is -> quantities
@@ -19007,6 +19138,8 @@ how files, like myfile.py, perhaps containing much math, like
 is very easy to get started with Dropbox, and it allows you to share
 files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
+
+------
 
 First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
 Q>0, because [del 6: a] negative [edit 7: quantity is -> quantities
@@ -20507,6 +20640,12 @@ $\partial u/\partial t$, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
 files among [hpl 3: laptops and mobile units -> computers, tablets,
 and phones].
+
+<!-- Test horizontal rule -->
+
+------
+
+<!-- Coments for editing -->
 
 First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
 $Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities
@@ -22606,6 +22745,12 @@ is at the end with only one newline.
       "files among [hpl 3: laptops and mobile units -> computers, tablets,\n",
       "and phones].\n",
       "\n",
+      "<!-- Test horizontal rule -->\n",
+      "\n",
+      "------\n",
+      "\n",
+      "<!-- Coments for editing -->\n",
+      "\n",
       "First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]\n",
       "$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities\n",
       "are] [del 8: just] negative. [add 9: This comes as no surprise.]\n",
@@ -23553,6 +23698,7 @@ def f(x):
 <h2 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h2>
 <p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span><strong>hpl’s semi opinion 1</strong></span>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
 <p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among .</p>
+<p>——</p>
 <p>First consider a quantity <span class="math">\(Q\)</span>. <span class="math">\(Q&gt;0\)</span>, because (<strong>edit 6</strong>:) negative (<strong>edit 8</strong>:) negative. )</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
@@ -24126,393 +24272,1030 @@ Python.</code></pre>
 
 
 
-<hr />
-<pre><code>                 $\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
-                      $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
-         $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  </code></pre>
-<h3 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my_file_v1</code> and <code>my_file_v2</code></h3>
-<p><em>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</em> Here is some text.</p>
-<p>Let us also add a test of quotes such as &quot;double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats. Here is another sentence that &quot;caused&quot; a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
-<h3 id="bibliography-test">Bibliography test</h3>
-<p>Here is an example: <span class="citation">@Langtangen_Pedersen_2002</span> discussed propagation of large destructive water waves, <span class="citation">@Langtangen_et_al_2002</span> gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in <span class="citation">@Langtangen_1994a</span>. The book chapter <span class="citation">@Mardal_et_al_2003a</span> contains information on C++ software tools for programming multigrid methods. A real retro reference is <span class="citation">@Langtangen_1988d</span> about a big FORTRAN package. Multiple references are also possible, e.g., see <span class="citation">@Langtangen_Pedersen_2002</span>;<span class="citation">@Mardal_et_al_2003a</span>.</p>
-<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: <span class="citation">@Langtangen_1992c</span>;<span class="citation">@Langtangen_1994a</span>;<span class="citation">@Mortensen_et_al_2011</span>;<span class="citation">@Langtangen_Pedersen_2002</span> and <span class="citation">@Langtangen_et_al_2002</span>;<span class="citation">@Glimsdal_et_al_20006</span>;<span class="citation">@Rahman_et_al_2006b</span>;<span class="citation">@Haga_et_al_2011a</span>;<span class="citation">@Langtangen_2003a</span>;<span class="citation">@Langtangen_2008a</span>;<span class="citation">@Langtangen:95</span> and all the work of <span class="citation">@Langtangen_2012</span>;<span class="citation">@Mardal_et_al_2003a</span>;<span class="citation">@Jeberg_et_al_2004</span> as well as old work <span class="citation">@Langtangen_1988d</span> and <span class="citation">@Langtangen_1989e</span>, and the talk <span class="citation">@Langtangen_talk_2007a</span>. Langtangen also had two thesis <span class="citation">@Langtangen:85</span>;<span class="citation">@Langtangen_1989e</span>. More retro citations are the old ME-IN323 book <span class="citation">@Langtangen:91</span> and the <span class="citation">@Langtangen:94b</span> OONSKI '94 paper.</p>
-<!-- --- begin exercise --- -->
-
-<h3 id="example-1-examples-can-be-typeset-as-exercises">Example 1: Examples can be typeset as exercises</h3>
-<p>Examples can start with a subsection heading starting with <code>Example:</code> and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.</p>
-<p><em>a)</em> State some problem.</p>
-<p><em>Solution.</em> The answer to this subproblem can be written here.</p>
-<p><em>b)</em> State some other problem.</p>
-<p><em>Hint 1.</em> A hint can be given.</p>
-<p><em>Hint 2.</em> Maybe even another hint?</p>
-<p><em>Solution.</em> The answer to this other subproblem goes here, maybe over multiple doconce input lines.</p>
-<!-- --- end exercise --- -->
-
-
-<h3 id="urls">URLs</h3>
-<p>Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl">hpl</a>, or the entire URL if desired, <a href="http://folk.uio.no/hpl">http://folk.uio.no/hpl</a>. Here is a plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or <testdoc.do.txt> or <testdoc.do.txt> or <a href="testdoc.do.txt">a link with newline</a>. Can test spaces with the link with word too: <a href="http://folk.uio.no/hpl">hpl</a> or <a href="http://folk.uio.no/hpl">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html">link to a file</a> is fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just the plain URL as in <a href="http://folk.uio.no/hpl">http://folk.uio.no/hpl</a>, if followed by space, comma, colon, semi-colon, question mark, exclamation mark, but not a period (which gets confused with the periods inside the URL).</p>
-<p>Mail addresses can also be used: <script type="text/javascript">
-<!--
-h='&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;';a='&#64;';n='&#104;&#112;&#108;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'<code>hpl@simula.no</code>'+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#60;&#x63;&#x6f;&#100;&#x65;&#62;&#104;&#112;&#108;&#64;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;&#60;&#x2f;&#x63;&#x6f;&#100;&#x65;&#62;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>, or just a <script type="text/javascript">
+<table>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math">\(\mathcal{L}=0\)</span> <span class="math">\(a=b\)</span> <span class="math">\(\nabla\cdot\boldsymbol{u} =0 \)</span></td>
+<td align="left"><a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><code>080</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><code>090</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><code>100</code></a></td>
+<td align="left"><a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><code>085</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><code>095</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><code>105</code></a></td>
+</tr>
+<tr class="even">
+<td align="center">### A test of verbatim words in heading with subscript $a_i</td>
+<td align="left">$: <code>my_file_v1</code> and <code>my_file_v2</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">*Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math some text.</td>
+<td align="left"><span class="math">\(a_{i-1}\)</span>.* Here is</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Let us also add a test of quotes such as &quot;double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaT Here is another sentence that &quot;caused&quot; a bug in the past because double backtick quotes could imply verbatim text up a verbatim word starting with period, like <code>.txt</code>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Bibliography test</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Here is an example: <span class="citation">@Langtangen_Pedersen_2002</span> discussed pro large destructive water waves, <span class="citation">@Langtangen_et_al_2002</span> gave an overview of numerical methods for solving the Navier-Sto while the use of Backward Kolmogorov equations for analyzin random vibrations was investigated in <span class="citation">@Langtangen_1994a</span>. The book chapter <span class="citation">@Mardal_et_al_2003a</span> contains information o C++ software tools for programming multigrid methods. A rea reference is <span class="citation">@Langtangen_1988d</span> about a big FORTRAN package. Multiple references are also possible, e.g., see <span class="citation">@Langtangen_Pedersen_2002</span>;<span class="citation">@Mardal_et_al_2003a</span>.</td>
+<td align="left">pagation of</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">We need to cite more than 10 papers to reproduce an old for problem with blanks in the keys in reST format: <span class="citation">@Langtangen_1992c</span>;<span class="citation">@Langtangen_1994a</span>;<span class="citation">@Mortensen_et_al_2011</span>;@ and <span class="citation">@Langtangen_et_al_2002</span>;<span class="citation">@Glimsdal_et_al_20006</span>;<span class="citation">@Rahman_et_al</span>_ and all the work of <span class="citation">@Langtangen_2012</span>;<span class="citation">@Mardal_et_al_2003a</span>;<span class="citation">@Jeberg_et_al_2004</span> as old work <span class="citation">@Langtangen_1988d</span> and <span class="citation">@Langtangen_1989e</span>, and the talk <span class="citation">@Langtangen_talk_2007a</span>. Langtangen also had two thesis <span class="citation">@Langtangen:85</span>;<span class="citation">@Langtangen_1</span> More retro citations are the old ME-IN323 book <span class="citation">@Langtangen:91</span> and the <span class="citation">@Langtangen:94b</span> OONSKI '94 paper.</td>
+<td align="left">matting</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Example 1: Examples can be typeset as exercises</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Examples can start with a subsection heading starting with and then, with the command-line option `--examples_as_exerc typeset as exercises. This is useful if one has solution environments as part of the example.</td>
+<td align="left"><code>Example:</code> ises` be</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>a)</em> State some problem.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Solution.</em> The answer to this subproblem can be written here.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>b)</em> State some other problem.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Hint 1.</em> A hint can be given.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Hint 2.</em> Maybe even another hint?</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Solution.</em> The answer to this other subproblem goes here, maybe over multiple doconce input lines.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### URLs</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Testing of URLs: hpl's home page [hpl](http://folk.uio.no/h the entire URL if desired, <a href="http://folk.uio.no/hpl">http://folk.uio.no/hpl</a>. Here plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or <testdoc.do.txt> or <testdoc.do.txt> or <a href="testdoc.do.txt">a link with newline</a>. Can test spaces with the link wit too: <a href="http://folk.uio.no/hpl">hpl</a> or [hpl](http://folk.uio file](file:///home/hpl/vc/doconce/doc/demos/manual/manual.h fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, the plain URL as in <a href="http://folk.uio.no/hpl">http://folk.uio.no/hpl</a>, if followed b colon, semi-colon, question mark, exclamation mark, but not (which gets confused with the periods inside the URL).</td>
+<td align="left">pl), or is a</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Mail addresses can also be used: [<code>hpl@simula.no</code>](mailto:h</td>
+<td align="left">pl@simula.no), or just a <script type="text/javascript">
 <!--
 h='&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;';a='&#64;';n='&#104;&#112;&#108;';e=n+a+h;
 document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mail link'+'<\/'+'a'+'>');
 // -->
-</script><noscript>&#x6d;&#x61;&#x69;&#108;&#32;&#108;&#x69;&#110;&#x6b;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>, or a raw <script type="text/javascript">
+</script><noscript>&#x6d;&#x61;&#x69;&#108;&#32;&#108;&#x69;&#110;&#x6b;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>,</td>
+<td align="left">or a raw <script type="text/javascript">
 <!--
 h='&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;';a='&#64;';n='&#104;&#112;&#108;';e=n+a+h;
 document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mailto:hpl@simula.no'+'<\/'+'a'+'>');
 // -->
-</script><noscript>&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#104;&#112;&#108;&#64;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>.</p>
-<p>Here are some tough tests of URLs, especially for the <code>latex</code> format: <a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">Newton-Cotes</a> formulas and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1">good book</a>. Need to test Newton-Cotes with percentage in URL too: <a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas">http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</a> and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae">http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</a> which has a shebang.</p>
-<p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><code>decay_mod</code></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py"><code>ball1.py</code></a>, and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py"><code>ball2.py</code></a>.</p>
-<!-- Comments should be inserted outside paragraphs (because in the rst -->
-<!-- format extra blanks make a paragraph break). -->
-
-<!-- Note that when there is no http: or file:, it can be a file link -->
-<!-- if the link name is URL, url, "URL", or "url". Such files should, -->
-<!-- if rst output is desired, but placed in a `_static*` folder. -->
-
-<p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="http://google.com">google</a>, <a href="http://google.com">google</a>, and <a href="http://google.com">google</a>, which should result in exactly three footnotes.</p>
-<!-- !split and check if these extra words are included properly in the comment -->
-
-<h2 id="latex-mathematics">LaTeX Mathematics</h2>
-<p>Here is an equation without label using backslash-bracket environment: <span class="math">\[
- a = b + c 
-\]</span> or with number and label, as in , using the equation environment: <span class="math">\[
+</script><noscript>&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#104;&#112;&#108;&#64;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>.</td>
+</tr>
+<tr class="odd">
+<td align="center">Here are some tough tests of URLs, especially for the `late [Newton-Cotes](http://en.wikipedia.org/wiki/Newton%E2%80%93 and a [good book](http://www.springer.com/mathematics/compu Newton-Cotes with percentage in URL too: &lt;http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas and &lt;http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.</td>
+<td align="left">x` format: Cotes_formulas) formulas tational+science+%26+engineering/book/978-3-642-23098-1). N</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">For the <code>--device=paper</code> option it is important to test tha monofont link text get a footnote (unless the <code>--latex_no_p is used), as in this reference to [</code>decay_mod<code>](https://github.com/hplgit/INF5620/tree/gh-pag and [</code>ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.</td>
+<td align="left">t URLs with rogram_footnotelink`</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- Comments should be inserted outside paragraphs (becaus
+<!-- format extra blanks make a paragraph break). --></td>
+<td align="left">e in the rst --&gt;</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">&lt;!-- Note that when there is no http: or file:, it can be a &lt;!-- if the link name is URL, url, &quot;URL&quot;, or &quot;url&quot;. Such fi &lt;!-- if rst output is desired, but placed in a <code>_static*</code> f</td>
+<td align="left">file link --&gt; les should, --&gt; older. --&gt;</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">More tough tests: repeated URLs whose footnotes when using <code>--device=paper</code> option must be correct. We have <a href="http://google.com">google</a>, <a href="http://google.com">google</a>, a <a href="http://google.com">google</a>, which should result in exactly footnotes.</td>
+<td align="left">the</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">&lt;!-- !split and check if these extra words are included pro</td>
+<td align="left">perly in the comment --&gt;</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">## LaTeX Mathematics</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Here is an equation without label using backslash-bracket e <span class="math">\[
+a = b + c
+\]</span> or with number and label, as in , using the e <span class="math">\[
 \begin{equation}
 {\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
 \end{equation}
-\]</span> We can refer to this equation by .</p>
-<p>Here is a system without equation numbers, using the align-astrisk environment: $$</p>
-<p> = </p>
-<p>$$</p>
-<p>$$</p>
-<p>b = ^2 u + ^4 v</p>
-<p>$$</p>
-<p>And here is a system of equations with labels in an align environment: <span class="math">\[
+\]</span> We can refer to this equation by .</td>
+<td align="left">nvironment:</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Here is a system without equation numbers, using the align- $$</td>
+<td align="left">astrisk environment:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"> = </td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">$$</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">$$</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">b = ^2 u + ^4 v</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">$$</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">And here is a system of equations with labels in an align e <span class="math">\[
 \begin{equation}
-a = q + 4 + 5+ 6 \label{eq1} 
+a = q + 4 + 5+ 6 \label{eq1}
 \end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation}  
+\]</span></td>
+<td align="left">nvironment:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\[
+\begin{equation}
 b = \nabla^2 u + \nabla^4 x \label{eq2}
 \end{equation}
-\]</span> We can refer to -. They are a bit simpler than the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>. Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</p>
-<p>More mathematical typesetting is demonstrated in the coming exercises.</p>
-<p>Below, we have <a href="#n">Problem 2: Flip a Coin</a> and <a href="#y">Project 3: Compute a Probability</a>, as well as <a href="#s">Project 4: Explore Distributions of Random Circles</a> and <a href="#c">Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc</a>, and in between there we have <a href="#s">Exercise 9: Make references to projects and problems</a>.</p>
-<h2 id="exercises">Exercises</h2>
-<!-- --- begin exercise --- -->
-
-<h3 id="problem-2-flip-a-coin">Problem 2: Flip a Coin</h3>
-<!-- keywords = random numbers; Monte Carlo simulation -->
-
-<!-- Torture tests -->
-
-<p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</p>
-<h4 id="remarks">Remarks</h4>
-<p>Remarks with such a subsubsection heading would previously mark the beginning of a new exercise and cause trouble. Maybe a list</p>
-<ol style="list-style-type: decimal">
-<li>Mark 1.</li>
-<li>Mark 2.</li>
-</ol>
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</p>
-<!-- --- end hint in exercise --- -->
-
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint 2.</em> Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.</p>
-<!-- --- end hint in exercise --- -->
-
-
-<!-- --- begin answer of exercise --- -->
-<p><em>Answer.</em> If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, let it be head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</p>
-<!-- --- end answer of exercise --- -->
-
-
-<!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em></p>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="ch">import</span> sys, random
-N = <span class="dt">int</span>(sys.argv[<span class="dv">1</span>])
-heads = <span class="dv">0</span>
-<span class="kw">for</span> i in <span class="dt">range</span>(N):
-    r = random.random()
-    <span class="kw">if</span> r &lt;= <span class="fl">0.5</span>:
-        heads += <span class="dv">1</span>
-<span class="dt">print</span> <span class="st">&#39;Flipping a coin </span><span class="ot">%d</span><span class="st"> times gave </span><span class="ot">%d</span><span class="st"> heads&#39;</span> % (N, heads)</code></pre>
-<!-- --- end solution of exercise --- -->
-<p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>. <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file --></p>
-<!-- --- end exercise --- -->
-
-
-<h3 id="not-an-exercise">Not an exercise</h3>
-<p>Should be possible to stick a normal section in the middle of many exercises.</p>
-<!-- --- begin exercise --- -->
-
-<h3 id="project-3-compute-a-probability">Project 3: Compute a Probability</h3>
-<!-- Minimalistic exercise -->
-
-
-<p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
-<p>At the end we have a list because that caused problems in LaTeX in previous DocOnce versions:</p>
-<ol style="list-style-type: decimal">
-<li>item1</li>
-<li>item2</li>
-</ol>
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
-<!-- --- end hint in exercise --- -->
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-<h3 id="project-4-explore-distributions-of-random-circles">Project 4: Explore Distributions of Random Circles</h3>
-<p>The formula for a circle is given by</p>
-<p><span class="math">\[
+\]</span> We can refer to -. They are a bit sim the Navier-Stokes equations. And test LaTeX hyphen in `CG-2 Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">More mathematical typesetting is demonstrated in the coming</td>
+<td align="left">exercises.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Below, we have <a href="#n">Problem 2: Flip a Coin</a> and [Project as well as [Project 4: Explore Distributions of Random Cir between there we have [Exercise 9: Make references to proj</td>
+<td align="left">3: Compute a Probability](#y), cles](#s) and <a href="#s">Project 10: References to Project ref{demo:e ects and problems</a>.</td>
+<td align="left">x:2} in a heading works for pandoc](#c), and in</td>
+</tr>
+<tr class="odd">
+<td align="center">## Exercises</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Problem 2: Flip a Coin</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- keywords = random numbers; Monte Carlo simulation --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- Torture tests --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">#### Remarks</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Remarks with such a subsubsection heading would previously the beginning of a new exercise and cause trouble. Maybe a</td>
+<td align="left">mark list</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">1. Mark 1. 2. Mark 2.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Hint 2.</em> Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end answer of exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><del>{.P import sys, random N = int(sys.argv[1]) heads = 0 for i in range(N): r = random.random() if r &lt;= 0.5: heads += 1 print 'Flipping a coin %d times gave %d heads' % (N, heads)</del></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~</sub></td>
+<td align="left">ython}</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end solution of exercise --- --> Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>. &lt;!-- solution files: mysol.txt, mysol_flip_coin.py, yet_ano</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Not an exercise</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Should be possible to stick a normal section in the middle exercises.</td>
+<td align="left">of many</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Project 3: Compute a Probability</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- Minimalistic exercise --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">What is the probability of getting a number between 0.5 and drawing uniformly distributed random numbers from the inter</td>
+<td align="left">0.6 when val <span class="math">\([0,1)\)</span>?</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">At the end we have a list because that caused problems in L in previous DocOnce versions:</td>
+<td align="left">aTeX</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">1. item1 2. item2</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard `rando count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0. compute the probability as \)</span>M/N$.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Project 4: Explore Distributions of Random Circles</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">The formula for a circle is given by</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math">\[
 \begin{equation}
 x = x_0 + R\cos 2\pi t,
 \end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation}  
+\]</span></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\[
+\begin{equation}
 y = y_0 + R\sin 2\pi t,
 \end{equation}
-\]</span> where <span class="math">\(R\)</span> is the radius of the circle, <span class="math">\((x_0,y_0)\)</span> is the center point, and <span class="math">\(t\)</span> is a parameter in the unit interval <span class="math">\([0,1]\)</span>. For any <span class="math">\(t\)</span>, <span class="math">\((x,y)\)</span> is a point on the circle. The formula can be used to generate <code>n</code> points on a circle:</p>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="ch">import</span> numpy <span class="ch">as</span> np
+\]</span> where <span class="math">\(R\)</span> is the radius of the circle, <span class="math">\((x_0,y_0)\)</span> is the center point, and <span class="math">\(t\)</span> is a parameter in the unit interval $ For any <span class="math">\(t\)</span>, <span class="math">\((x,y)\)</span> is a point on the circle. The formula can be used to generate <code>n</code> points on a circle:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub><sub><sub>~</sub></sub></sub>{.P import numpy as np</td>
+<td align="left">ython}</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">def circle(R, x0, y0, n=501): t = np.linspace(0, 1, n) x = x0 + R<em>np.cos(2</em>np.pi<em>t) y = y0 + R</em>np.sin(2<em>np.pi</em>t) return x, y</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">x, y = circle(2.0, 0, 0) <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
+<td align="left">~<sub>~</sub></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- Often in an exercise we have some comments about the s
+<!-- which we normally want to keep where they are. --></td>
+<td align="left">olution --&gt;</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> func above.</td>
+<td align="left">tion</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>a)</em> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly d</td>
+<td align="left">istributed.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Hint.</em> Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> Here goes the short answer to part a).</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end answer of exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes a full solution to part a).</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end solution of exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>b)</em> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally d Filename: <code>norm.py</code>.</td>
+<td align="left">istributed.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>c)</em> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Filename: <code>circles.pdf</code>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- Closing remarks for this Project --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">#### Remarks</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">At the very end of the exercise it may be appropriate to su and give some perspectives.</td>
+<td align="left">mmarize</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Exercise 5: Determine some Distance</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Intro to this exercise. Questions are in subexercises below</td>
+<td align="left">.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- No meaning in this weired test example: --> The text here belongs to the main (intro) part of the exerc closing remarks to have text after subexercises.</td>
+<td align="left">ise. Need</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Test list in exercise:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">1. item1 2. item2</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[
+\hbox{math in solution: } a = b
+\]</span> And code <code>a=b</code> in this solution:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> a = b # code in solution <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
+<td align="left">~<sub>~</sub></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">End of solution is here.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end solution of exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>a)</em> Subexercises are numbered a), b), etc.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Hint 1.</em> First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\[
+a=b.
+\]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> def func(x): return x + 1 # with code in hint <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
+<td align="left">~<sub>~</sub></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Hint 2.</em> Second hint to subexercise a).</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Test list in hint:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">1. item1 2. item2</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end hint in exercise --- --> Filename: <code>subexer_a.pdf</code>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end answer of exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>b)</em> Here goes the text for subexercise b).</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single li</td>
+<td align="left">ne:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\[
+\cos^2 x + \sin^2 x = 1 \thinspace .
+\]</span></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin hint in exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Hint.</em> A hint for this subexercise.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end hint in exercise --- --> Filename: <code>subexer_b.pdf</code>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes the solution of this subexercise.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end solution of exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- Closing remarks for this Exercise --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">#### Remarks</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Some final closing remarks, e.g., summarizing the main find and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.</td>
+<td align="left">ings</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Some exercise without the &quot;Exercise:&quot; prefix</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- Another minimalistic exercise --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Just some text. And some math saying that <span class="math">\(e^0=1\)</span> on a sing to test that math block insertion is correct:</td>
+<td align="left">le line,</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\[
+\exp{(0)} = 1
+\]</span></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">And a test that the code <code>lambda x: x+2</code> is correctly place</td>
+<td align="left">d here:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> lambda x: x+2 <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
+<td align="left">~<sub>~</sub></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- the Filename: ... is written correctly. --> &lt;!-- Have some comments at the end of the exercise to see t</td>
+<td align="left">hat --&gt;</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Exercise 7: Solution of differential equation</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Cannot typeset quiz</em>: &quot;Given</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\[
+\frac{dy}{dx} = -y(x),\quad y(0)=1
+\]</span> What is the solution of this equation?&quot; <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Example 8: Just an example</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- This example needs the --examples_as_exercises option,
+<!-- it is just typeset as it is written. --></td>
+<td align="left">otherwise --&gt;</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>a)</em> What is the capital of Norway?</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Answer.</em> Oslo.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">## Here goes another section</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">With some text, before we continue with exercises.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">## More Exercises</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Exercise 9: Make references to projects and problems</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- Test comments not at the end only --> Pick a statement from [Project 4: Explore Distributions of and verify it.</td>
+<td align="left">Random Circles](#s) or <a href="#n">Problem 2: Flip a Coin</a></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Test list at the end of an exercise without other elements hint, etc.):</td>
+<td align="left">(like subexercise,</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">1. item1 2. item2</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Filename: <code>verify_formula.py</code>.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- --- begin exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Project 10: References to [Project 3: Compute a Probab</td>
+<td align="left">ility](#y) in a heading works for pandoc</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Refer to the previous exercise as [Exercise 9: Make refere the two before that as [Project 3: Compute a Probability]( and this one as [Project 10: References to Project ref{dem Filename: <code>selc_composed.pdf</code>.</td>
+<td align="left">nces to projects and problems](#s), #y) and <a href="#c">Project 4: Explore Distributions of Random Circles o:ex:2} in a heading works for pandoc</a>.</td>
+<td align="left">](#s),</td>
+</tr>
+<tr class="even">
+<td align="center"><!-- --- end exercise --- --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">## References</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">1.  _H. P. Langtangen and Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Enginee 7(1), pp. 187-204, 2002. 2.  <em>H. P. Langtangen, K.-A. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002. 3.  </em>H. P. Langtangen_. Numerical Solution of First Passage Problems in Random </em>SIAM Journal of Scientific and Statistical Computing*, 15, pp. 997-996, 1994. 4.  _K.-A. Mardal, G. W. Zumbusc Software Tools for Multigrid Methods, <em>Advanced Topics in Computational Partial Differential edited by <em>H. P. Langtangen and A. Tveito</em>, Springer, 2003. 5.  <em>H. P. Langtangen</em>. The FEMDEQS Program System, </em>Department of Mathematics, University of Oslo<em>, 1989. 6.  <em>H. P. Langtangen</em>. Stochastic Breakthrough Time Analysis of an Enhanced Oi </em>SIAM Journal on Scientific Computing<em>, 13, pp. 1394-1417, 1992. 7.  <em>M. Mortensen, H. P. Langt A FEniCS-Based Programming Framework for Modeling Turbu <em>Advances in Water Resources</em>, 34(9), [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.or 2011. 8.  </em>S. Glimsdal, G. Pedersen, Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: </em>International Journal of Fluid Mechanics Research*, 33(1), pp. 15-43, 2006. 9.  <em>S. Rahman, J. Gorman, C. H. Numerical Investigation of a Piezoelectric Surface Acou <em>Physical Review B: Condensed Matter and Materials Phys 74, 2006. 10.  <em>J. B. Haga, H. Osnes and H. P On the Causes of Pressure Oscillations in Low-Permeable <em>International Journal of Analytical and Numerical Meth [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1 2011, &lt;http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/ab 11.  <em>H. P. Langtangen</em>. </em>Computational Partial Differential Equations - Numeric Springer, 2003. 12.  </em>H. P. Langtangen_. </em>Python Scripting for Computational Science<em>, Springer, 2008. 13.  <em>H. P. Langtangen and G. Pedersen Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by </em>J. Grue, B. Gjevik and J. E. Weber_, Kluwer Academic Publishers, pp. pp. 117-126, 1995, &lt;http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrody 14.  <em>H. P. Langtangen</em>. </em>A Primer on Scientific Programming With Python<em>, Springer, 2012. 15.  <em>P. V. Jeberg, H. P. Langtang Optimization With Diffpack: Practical Example From Weld <em>Simula Research Laboratory</em>, 2004. 16.  </em>H. P. Langtangen_. Computational Methods for Two-Phase Flow in Oil Reservo Ph.D. Thesis, Mechanics Division, Department of Mathematics, Universi 1989. 17.  <em>H. P. Langtangen</em>. Computational Modeling of Huge Tsunamis From Asteroid I Invited keynote lecture at the confe 2007. 18.  <em>H. P. Langtangen</em>. Solution of the Navier-Stokes Equations With the Finite M.Sc. Thesis, Mechanics Division, Department of Mathematics, Universi 1985. 19.  <em>H. P. Langtangen and A. Tveito</em>. Numerical Methods in Continuum Mechanics, </em>Center for Industrial Research<em>, 1991. 20.  <em>H. P. Langtangen</em>. Diffpack: Software for Partial Differential Equations, </em>Proceedings of the Second Annual Object-Oriented Numer edited by </em>A. Vermeulen_, 1994.</td>
+<td align="left">G. Pedersen_.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">## Appendix: Just for testing; part I</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">This is the first appendix.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### A subsection within an appendix</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Some text.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">## Appendix: Just for testing; part II</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">This is more stuff for an appendix.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Appendix: Testing identical titles</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Without label.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Appendix: Testing identical titles</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">With label.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">### Appendix: Testing identical titles</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">What about inserting a quiz?</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><em>Cannot typeset quiz</em>: &quot;What is the capital of Norway?&quot;</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Appendix: Testing identical titles</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Without label.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Tip.</em><space> Here is a tip or hint box, typeset as a notice box.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Need a lot of text to surround the summary box. Version control systems allow you to record the history of and share files among several computers and collaborators i professional way. File changes on one computer are updated merged with changes on another computer. Especially when wo with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the proje have the latest updates of the files. Greg Wilson' excellent [Script for Introduction to Version from using version control systems.</td>
+<td align="left">files n a or rking</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center"><em>Summary.</em><space> <em>Bold remark:</em> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">Projects that you want to share among several computers or workers are today most conveniently stored at some web site cloud&quot; and updated through communication with that site. I recommend you to use such sites for all serious programming scientific writing work - and all other important files.</td>
+<td align="left">project &quot;in the strongly and</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">The simplest services for hosting project files are [Dropbo It is very easy to get started with these systems, and they to share files among laptops and mobile units with as many you want. The systems offer a kind of version control in th files are stored frequently (several times per minute), and back to previous versions for the last 30 days. However, it challenging to find the right version from the past when t so many of them.</td>
+<td align="left">x](http://dropbox.com) and [Google Drive](http://drive.goog allow you users as at the you can go is here are</td>
+<td align="left">le.com).</td>
+</tr>
+<tr class="odd">
+<td align="center">More seriously, when several people may edit files simultan can be difficult detect who did what when, roll back to pre versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Google Drive: project hosting services with true version co systems. The following text aims at providing you with the information to started with such systems. Numerous other tu contain more comprehensive material and in-depth explanatio concepts and tools.</td>
+<td align="left">eously, it vious</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">The idea with project hosting services is that you have the associated with a project in the cloud. Many people may sha files. Every time you want to work on the project you expl update your version of the files, edit the files as you lik synchronize the files with the &quot;master version&quot; at the site project is hosted. If you at some point need to go back to version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various</td>
+<td align="left">files re these icitly e, and where the a</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">All these services are very similar. Below we describe how started with Bitbucket, GitHub, and Googlecode. Launchpad w similarly to the latter three. All the project hosting serv excellent introductions available at their web sites, but t below are much shorter and aim at getting you started as qu possible by concentrating on the most important need-to-kno The Git tutorials we refer to later in this document contai detailed information and constitute of course very valuable when you use version control systems every day. The point n to get started.</td>
+<td align="left">you get orks very ices have he recipes ickly as w steps. n more readings ow is</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">### Appendix: Testing inline comments</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center"><!-- Names can be [ A-Za-z0-9_'+-]+ --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">Projects that you want to share among several computers or workers are today most conveniently stored at some web site cloud&quot; and updated through communication with that site. [hpl's semi opinion 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all se programming and scientific writing work - and all other imp files.</td>
+<td align="left">project &quot;in the</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="center">The simplest services for hosting project files is Dropbox. how files, like <code>myfile.py</code>, perhaps containing much math, <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between ma is very easy to get started with Dropbox, and it allows you files among [hpl 3: laptops and mobile units -&gt; computers, and phones].</td>
+<td align="left">[mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the vid like chines.] It to share tablets,</td>
+<td align="left">eo. It explains</td>
+</tr>
+<tr class="even">
+<td align="center"><!-- Test horizontal rule --></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<!-- Coments for editing -->
 
-<span class="kw">def</span> circle(R, x0, y0, n=<span class="dv">501</span>):
-    t = np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, n)
-    x = x0 + R*np.cos(<span class="dv">2</span>*np.pi*t)
-    y = y0 + R*np.sin(<span class="dv">2</span>*np.pi*t)
-    <span class="kw">return</span> x, y
-
-x, y = circle(<span class="fl">2.0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</code></pre>
-<!-- Often in an exercise we have some comments about the solution -->
-<!-- which we normally want to keep where they are. -->
-
-<p>The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> function above.</p>
-<p><em>a)</em> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint.</em> Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</p>
-<!-- --- end hint in exercise --- -->
-
-
-<!-- --- begin answer of exercise --- -->
-<p><em>Answer.</em> Here goes the short answer to part a).</p>
-<!-- --- end answer of exercise --- -->
-
-
-<!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em> Here goes a full solution to part a).</p>
-<!-- --- end solution of exercise --- -->
-
-<p><em>b)</em> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
-<p><em>c)</em> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
-<p>Filename: <code>circles.pdf</code>.</p>
-<!-- Closing remarks for this Project -->
-
-<h4 id="remarks-1">Remarks</h4>
-<p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-<h3 id="exercise-5-determine-some-distance">Exercise 5: Determine some Distance</h3>
-<p>Intro to this exercise. Questions are in subexercises below.</p>
-<!-- No meaning in this weired test example: -->
-<p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
-<p>Test list in exercise:</p>
-<ol style="list-style-type: decimal">
-<li>item1</li>
-<li>item2</li>
-</ol>
-<!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em> Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[
- \hbox{math in solution: } a = b 
-\]</span> And code <code>a=b</code> in this solution:</p>
-<pre><code>a = b  # code in solution</code></pre>
-<p>End of solution is here.</p>
-<!-- --- end solution of exercise --- -->
-
-
-<p><em>a)</em> Subexercises are numbered a), b), etc.</p>
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint 1.</em> First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</p>
-<p><span class="math">\[
- a=b. 
-\]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</p>
-<pre><code>def func(x):
-    return x + 1  # with code in hint</code></pre>
-<!-- --- end hint in exercise --- -->
-
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint 2.</em> Second hint to subexercise a).</p>
-<p>Test list in hint:</p>
-<ol style="list-style-type: decimal">
-<li>item1</li>
-<li>item2</li>
-</ol>
-<!-- --- end hint in exercise --- -->
-<p>Filename: <code>subexer_a.pdf</code>.</p>
-<!-- --- begin answer of exercise --- -->
-<p><em>Answer.</em> Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
-<!-- --- end answer of exercise --- -->
-
-<p><em>b)</em> Here goes the text for subexercise b).</p>
-<p>Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single line:</p>
-<p><span class="math">\[
- \cos^2 x + \sin^2 x = 1 \thinspace .
-\]</span></p>
-<!-- --- begin hint in exercise --- -->
-
-<p><em>Hint.</em> A hint for this subexercise.</p>
-<!-- --- end hint in exercise --- -->
-<p>Filename: <code>subexer_b.pdf</code>.</p>
-<!-- --- begin solution of exercise --- -->
-<p><em>Solution.</em> Here goes the solution of this subexercise.</p>
-<!-- --- end solution of exercise --- -->
-
-<!-- Closing remarks for this Exercise -->
-
-<h4 id="remarks-2">Remarks</h4>
-<p>Some final closing remarks, e.g., summarizing the main findings and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.</p>
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-<h3 id="some-exercise-without-the-exercise-prefix">Some exercise without the &quot;Exercise:&quot; prefix</h3>
-<!-- Another minimalistic exercise -->
-
-<p>Just some text. And some math saying that <span class="math">\(e^0=1\)</span> on a single line, to test that math block insertion is correct:</p>
-<p><span class="math">\[
- \exp{(0)} = 1 
-\]</span></p>
-<p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
-<pre><code>lambda x: x+2</code></pre>
-<!-- the Filename: ... is written correctly. -->
-<!-- Have some comments at the end of the exercise to see that -->
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-<h3 id="exercise-7-solution-of-differential-equation">Exercise 7: Solution of differential equation</h3>
-<p><em>Cannot typeset quiz</em>: &quot;Given</p>
-<p><span class="math">\[
- \frac{dy}{dx} = -y(x),\quad y(0)=1 
-\]</span> What is the solution of this equation?&quot; <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></p>
-<!-- --- begin exercise --- -->
-
-<h3 id="example-8-just-an-example">Example 8: Just an example</h3>
-<!-- This example needs the --examples_as_exercises option, otherwise -->
-<!-- it is just typeset as it is written. -->
-
-
-<p><em>a)</em> What is the capital of Norway?</p>
-<p><em>Answer.</em> Oslo.</p>
-<!-- --- end exercise --- -->
-
-
-<h2 id="here-goes-another-section">Here goes another section</h2>
-<p>With some text, before we continue with exercises.</p>
-<h2 id="more-exercises">More Exercises</h2>
-<!-- --- begin exercise --- -->
-
-<h3 id="exercise-9-make-references-to-projects-and-problems">Exercise 9: Make references to projects and problems</h3>
-<!-- Test comments not at the end only -->
-<p>Pick a statement from <a href="#s">Project 4: Explore Distributions of Random Circles</a> or <a href="#n">Problem 2: Flip a Coin</a> and verify it.</p>
-<p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
-<ol style="list-style-type: decimal">
-<li>item1</li>
-<li>item2</li>
-</ol>
-<p>Filename: <code>verify_formula.py</code>.</p>
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-<h3 id="project-10-references-to-project-3-compute-a-probability-in-a-heading-works-for-pandoc">Project 10: References to <a href="#y">Project 3: Compute a Probability</a> in a heading works for pandoc</h3>
-<p>Refer to the previous exercise as <a href="#s">Exercise 9: Make references to projects and problems</a>, the two before that as <a href="#y">Project 3: Compute a Probability</a> and <a href="#s">Project 4: Explore Distributions of Random Circles</a>, and this one as <a href="#c">Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc</a>. Filename: <code>selc_composed.pdf</code>.</p>
-<!-- --- end exercise --- -->
-
-
-<h2 id="references">References</h2>
-<ol style="list-style-type: decimal">
-<li> <em>H. P. Langtangen and G. Pedersen</em>. Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Engineering</em>, 7(1), pp. 187-204, 2002.</li>
-<li> <em>H. P. Langtangen, K.-A. Mardal and R. Winther</em>. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002.</li>
-<li> <em>H. P. Langtangen</em>. Numerical Solution of First Passage Problems in Random Vibrations, <em>SIAM Journal of Scientific and Statistical Computing</em>, 15, pp. 997-996, 1994.</li>
-<li> <em>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</em>. Software Tools for Multigrid Methods, <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>, edited by <em>H. P. Langtangen and A. Tveito</em>, Springer, 2003.</li>
-<li> <em>H. P. Langtangen</em>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989.</li>
-<li> <em>H. P. Langtangen</em>. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process, <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992.</li>
-<li> <em>M. Mortensen, H. P. Langtangen and G. N. Wells</em>. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations, <em>Advances in Water Resources</em>, 34(9), <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013">doi: 10.1016/j.advwatres.2011.02.013</a>, 2011.</li>
-<li> <em>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L</em>. Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics, <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006.</li>
-<li> <em>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</em>. Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel, <em>Physical Review B: Condensed Matter and Materials Physics</em>, 74, 2006.</li>
-<li> <em>J. B. Haga, H. Osnes and H. P. Langtangen</em>. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media, <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>, <a href="http://dx.doi.org/10.1002/nag.1062">doi: 10.1002/nag.1062</a>, 2011, <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract">http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</a>.</li>
-<li> <em>H. P. Langtangen</em>. <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>, Springer, 2003.</li>
-<li> <em>H. P. Langtangen</em>. <em>Python Scripting for Computational Science</em>, Springer, 2008.</li>
-<li> <em>H. P. Langtangen and G. Pedersen</em>. Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by <em>J. Grue, B. Gjevik and J. E. Weber</em>, Kluwer Academic Publishers, pp. pp. 117-126, 1995, <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310">http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</a>.</li>
-<li> <em>H. P. Langtangen</em>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</li>
-<li> <em>P. V. Jeberg, H. P. Langtangen and C. B. Terp</em>. Optimization With Diffpack: Practical Example From Welding, <em>Simula Research Laboratory</em>, 2004.</li>
-<li> <em>H. P. Langtangen</em>. Computational Methods for Two-Phase Flow in Oil Reservoirs, Ph.D. Thesis, Mechanics Division, Department of Mathematics, University of Oslo, 1989.</li>
-<li> <em>H. P. Langtangen</em>. Computational Modeling of Huge Tsunamis From Asteroid Impacts, Invited keynote lecture at the conference on Computational Science 2007 (ICCS'07), Beijing, China, 2007.</li>
-<li> <em>H. P. Langtangen</em>. Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions, M.Sc. Thesis, Mechanics Division, Department of Mathematics, University of Oslo, 1985.</li>
-<li> <em>H. P. Langtangen and A. Tveito</em>. Numerical Methods in Continuum Mechanics, <em>Center for Industrial Research</em>, 1991.</li>
-<li> <em>H. P. Langtangen</em>. Diffpack: Software for Partial Differential Equations, <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>, edited by <em>A. Vermeulen</em>, 1994.</li>
-</ol>
-<h2 id="appendix-just-for-testing-part-i">Appendix: Just for testing; part I</h2>
-<p>This is the first appendix.</p>
-<h3 id="a-subsection-within-an-appendix">A subsection within an appendix</h3>
-<p>Some text.</p>
-<h2 id="appendix-just-for-testing-part-ii">Appendix: Just for testing; part II</h2>
-<p>This is more stuff for an appendix.</p>
-<h3 id="appendix-testing-identical-titles">Appendix: Testing identical titles</h3>
-<p>Without label.</p>
-<h3 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h3>
-<p>With label.</p>
-<h3 id="appendix-testing-identical-titles-2">Appendix: Testing identical titles</h3>
-<p>What about inserting a quiz?</p>
-<p><em>Cannot typeset quiz</em>: &quot;What is the capital of Norway?&quot;</p>
-<h3 id="appendix-testing-identical-titles-3">Appendix: Testing identical titles</h3>
-<p>Without label.</p>
-<p><em>Tip.</em><space> Here is a tip or hint box, typeset as a notice box.</p>
-<p>Need a lot of text to surround the summary box. Version control systems allow you to record the history of files and share files among several computers and collaborators in a professional way. File changes on one computer are updated or merged with changes on another computer. Especially when working with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the project have the latest updates of the files. Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly from using version control systems.</p>
-<p><em>Summary.</em><space> <em>Bold remark:</em> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</p>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>. It is very easy to get started with these systems, and they allow you to share files among laptops and mobile units with as many users as you want. The systems offer a kind of version control in that the files are stored frequently (several times per minute), and you can go back to previous versions for the last 30 days. However, it is challenging to find the right version from the past when there are so many of them.</p>
-<p>More seriously, when several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox or Google Drive: project hosting services with true version control systems. The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.</p>
-<p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the &quot;master version&quot; at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
-<p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
-<h3 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h3>
-<!-- Names can be [ A-Za-z0-9_'+-]+ -->
-
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site &quot;in the cloud&quot; and updated through communication with that site. [hpl's semi opinion 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines.] It is very easy to get started with Dropbox, and it allows you to share files among [hpl 3: laptops and mobile units -&gt; computers, tablets, and phones].</p>
 <p>First[add 4: ,] consider a quantity <span class="math">\(Q\)</span>. [edit 5: To this end, -&gt; We note that] <span class="math">\(Q&gt;0\)</span>, because [del 6: a] negative [edit 7: quantity is -&gt; quantities are] [del 8: just] negative. [add 9: This comes as no surprise.]</p>
 <h3 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h3>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
@@ -25521,9 +26304,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -26095,7 +26875,7 @@ Inline math, $a=b$, is the only math in this document.
 Test of one author at one institution
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Author: John Doe (doe at cyberspace.net)
+:Authors: John Doe (doe at cyberspace.net)
 :Date: Jan 32, 2100
 
 .. Externaldocument: testdoc
@@ -26191,8 +26971,8 @@ The rendered text in the current format ``sphinx`` becomes
 ..
 
     As explained in
-    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`_ in
-    the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`__ in
+    the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
     [Ref1]_, DocOnce documents may include tables.
 
 
@@ -26230,7 +27010,7 @@ The resulting rendered text in the current format ``sphinx`` becomes
 
     As explained in
     the document
-    `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_
+    `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
     [Ref1]_, DocOnce documents may include tables.
 
 
@@ -26614,9 +27394,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -26941,9 +27718,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -28141,9 +28915,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -29010,9 +29781,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -29189,6 +29957,15 @@ how files, like <code>myfile.py</code>, perhaps containing much math, like
 is very easy to get started with Dropbox, and it allows you to share
 files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
 and phones</font>.
+
+<p>
+<!-- Test horizontal rule -->
+
+<p>
+<hr>
+
+<p>
+<!-- Coments for editing -->
 
 <p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
@@ -30897,6 +31674,9 @@ files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile uni
 and phones</font>.
 
 <p>
+<hr>
+
+<p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
 $latex Q>0$, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
 are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
@@ -31107,9 +31887,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -32796,6 +33573,15 @@ how files, like <code>myfile.py</code>, perhaps containing much math, like
 is very easy to get started with Dropbox, and it allows you to share
 files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
 and phones</font>.
+
+<p>
+<!-- Test horizontal rule -->
+
+<p>
+<hr>
+
+<p>
+<!-- Coments for editing -->
 
 <p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
@@ -34715,6 +35501,12 @@ is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
 and phones}.
 
+% Test horizontal rule
+
+------
+
+% Coments for editing
+
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
 are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
@@ -35311,7 +36103,7 @@ system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 
-system doconce format rst testdoc.do.txt $ex
+system doconce format rst testdoc.do.txt $ex --rst_mathjax
 
 system doconce format epytext testdoc.do.txt $ex
 system doconce format pandoc testdoc.do.txt $ex
@@ -36115,9 +36907,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -36784,7 +37573,7 @@ and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 How various formats can deal with LaTeX math
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:Author: HPL
+:Authors: HPL
 :Date: Jan 32, 2100
 
 This document is translated to the format **sphinx**. The purpose is to
@@ -37223,9 +38012,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -37607,9 +38393,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -37991,9 +38774,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -39102,9 +39882,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -39890,9 +40667,9 @@ While the <div class="deep-blue">rest of the</div> getting started
    :trim:
 
 A Document for Testing DocOnce
-==============================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Author: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
+:Authors: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
 
 
@@ -40292,7 +41069,7 @@ They are used in different flavors, now in
 
  * and code ``h[i] += 1`` [#code]_,
 
- * and `links <http://google.com>`_ [#google-search]_
+ * and `links <http://google.com>`__ [#google-search]_
 
 which gives flexibility in writing.
 This is the third [#example-of-the-third-footnote]_ example.
@@ -40318,9 +41095,9 @@ used above.
 
 .. admonition:: Non-breaking space character
 
-   This paragraph aims to test `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`_, and a typical
+   This paragraph aims to test `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`__, and a typical
    example where this is needed is in physical units: 7.4 |nbsp| km is traveled
-   in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s.  Also check that a |nbsp| `link <http://google.com>`_ |nbsp| is
+   in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s.  Also check that a |nbsp| `link <http://google.com>`__ |nbsp| is
    not broken across lines (drag the browser window to test this).
    (On the other hand, the tilde is used in
    computer code, e.g., as in ``[~x for x in y]`` or in ``y=~x``, and should
@@ -40553,13 +41330,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-=========================================================  =========================================================  =========================================================  
-                                                                                                                                                                                 
-=========================================================  =========================================================  =========================================================  
-                  :math:`\mathcal{L}=0`                    `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`_  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`_  
-                       :math:`a=b`                         `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`_  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`_  
-           :math:`\nabla\cdot\boldsymbol{u} =0`            `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`_  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`_  
-=========================================================  =========================================================  =========================================================  
+==========================================================  ==========================================================  ==========================================================  
+                                                                                                                                                                                    
+==========================================================  ==========================================================  ==========================================================  
+                  :math:`\mathcal{L}=0`                     `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+                       :math:`a=b`                          `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+           :math:`\nabla\cdot\boldsymbol{u} =0`             `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+==========================================================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -40643,23 +41420,23 @@ maybe over multiple doconce input lines.
 URLs
 ----
 
-Testing of URLs: hpl's home page `hpl <http://folk.uio.no/hpl>`_, or
+Testing of URLs: hpl's home page `hpl <http://folk.uio.no/hpl>`__, or
 the entire URL if desired, `<http://folk.uio.no/hpl>`_.  Here is a
 plain file link `<testdoc.do.txt>`_, or `<testdoc.do.txt>`_, or
 `<testdoc.do.txt>`_ or `<testdoc.do.txt>`_ or `a link with
-newline <testdoc.do.txt>`_. Can test spaces with the link with word
-too: `hpl <http://folk.uio.no/hpl>`_ or `hpl <http://folk.uio.no/hpl>`_. Also ``file:///`` works: `link to a
-file <file:///home/hpl/vc/doconce/doc/demos/manual/manual.html>`_ is
+newline <testdoc.do.txt>`__. Can test spaces with the link with word
+too: `hpl <http://folk.uio.no/hpl>`__ or `hpl <http://folk.uio.no/hpl>`__. Also ``file:///`` works: `link to a
+file <file:///home/hpl/vc/doconce/doc/demos/manual/manual.html>`__ is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in `<http://folk.uio.no/hpl>`_, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
-Mail addresses can also be used: `hpl@simula.no <mailto:hpl@simula.no>`_, or just a `mail link <mailto:hpl@simula.no>`_, or a raw `<mailto:hpl@simula.no>`_.
+Mail addresses can also be used: `hpl@simula.no <mailto:hpl@simula.no>`__, or just a `mail link <mailto:hpl@simula.no>`__, or a raw `<mailto:hpl@simula.no>`_.
 
 Here are some tough tests of URLs, especially for the ``latex`` format:
-`Newton-Cotes <http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`_ formulas
-and a `good book <http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1>`_. Need to test
+`Newton-Cotes <http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`__ formulas
+and a `good book <http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1>`__. Need to test
 Newton-Cotes with percentage in URL too:
 `<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>`_
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
@@ -40667,8 +41444,8 @@ and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formul
 For the ``--device=paper`` option it is important to test that URLs with
 monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
 is used), as in this reference to
-`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`_, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`_,
-and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
+`decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`__, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`__,
+and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`__.
 
 .. Comments should be inserted outside paragraphs (because in the rst
 
@@ -40682,8 +41459,8 @@ and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`_.
 
 More tough tests: repeated URLs whose footnotes when using the
 ``--device=paper`` option must be correct. We have
-`google <http://google.com>`_, `google <http://google.com>`_, and
-`google <http://google.com>`_, which should result in exactly three
+`google <http://google.com>`__, `google <http://google.com>`__, and
+`google <http://google.com>`__, which should result in exactly three
 footnotes.
 
 
@@ -41248,7 +42025,7 @@ References
    **M. Mortensen, H. P. Langtangen and G. N. Wells**. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
    *Advances in Water Resources*,
    34(9),
-   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`_,
+   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`__,
    2011.
 
 .. [Ref08]
@@ -41267,7 +42044,7 @@ References
 .. [Ref10]
    **J. B. Haga, H. Osnes and H. P. Langtangen**. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
    *International Journal of Analytical and Numerical Methods in Geomechanics*,
-   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`_,
+   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`__,
    2011,
    `http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>`_.
 
@@ -41417,7 +42194,7 @@ with programs or technical reports it is essential
 to have changes documented and to
 ensure that every computer and person involved in the project
 have the latest updates of the files.
-Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`_ provides a more detailed motivation why you will benefit greatly
+Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`__ provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
 
@@ -41443,7 +42220,7 @@ cloud" and updated through communication with that site. I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work - and all other important files.
 
-The simplest services for hosting project files are `Dropbox <http://dropbox.com>`_ and `Google Drive <http://drive.google.com>`_.
+The simplest services for hosting project files are `Dropbox <http://dropbox.com>`__ and `Google Drive <http://drive.google.com>`__.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
 you want. The systems offer a kind of version control in that the
@@ -41503,6 +42280,12 @@ how files, like ``myfile.py``, perhaps containing much math, like
 is very easy to get started with Dropbox, and it allows you to share
 files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
 and phones</font>.
+
+.. Test horizontal rule
+
+---------
+
+.. Coments for editing
 
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
 :math:`Q>0`, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
@@ -47067,9 +47850,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -47598,9 +48378,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -48127,9 +48904,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -48646,21 +49420,20 @@ exercises (and problems and projects too).
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">hpl</td>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">hpl</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 32, 2100</td>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>First some ordinary text to compare font sizes in admonitions
 and the surrounding text.</p>
 <p>Note that <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> fixes the HTML file generated by Sphinx
 so that all styles for admonitions have a colored background.</p>
 <div class="section" id="code">
-<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
 <p>Need some code outside admons for color and font comparisons:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
@@ -48673,7 +49446,7 @@ x=1.1 y=0.3 z=0.1
 </div>
 </div>
 <div class="section" id="quotes-and-boxes">
-<h2>Quotes and boxes<a class="headerlink" href="#quotes-and-boxes" title="Permalink to this headline">¶</a></h2>
+<h3>Quotes and boxes<a class="headerlink" href="#quotes-and-boxes" title="Permalink to this headline">¶</a></h3>
 <p>Here is a plain quote environment.</p>
 <blockquote>
 <div><p>Sayre&#8217;s law states that
@@ -48720,7 +49493,7 @@ box, it is not a new paragraph):</p>
 </div>
 </div>
 <div class="section" id="admonitions">
-<h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
+<h3>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h3>
 <p>Let us start with a plain warning environment.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -48831,7 +49604,7 @@ applies the generic title &#8220;Notice:&#8221;</p>
 </div>
 </div>
 <div class="section" id="going-deeper-environments">
-<h2>Going deeper environments<a class="headerlink" href="#going-deeper-environments" title="Permalink to this headline">¶</a></h2>
+<h3>Going deeper environments<a class="headerlink" href="#going-deeper-environments" title="Permalink to this headline">¶</a></h3>
 <p>Here is a long notice environment with a custom title and much
 text, math and code.</p>
 <div class="admonition-going-deeper admonition">
@@ -48906,7 +49679,7 @@ Longer computer code requires vertical space:</p>
 </div>
 </div>
 <div class="section" id="the-end">
-<h2>The end<a class="headerlink" href="#the-end" title="Permalink to this headline">¶</a></h2>
+<h3>The end<a class="headerlink" href="#the-end" title="Permalink to this headline">¶</a></h3>
 <p>A bit of text before the summary, which we now call &#8220;Concluding remarks,
 for the novice&#8221;,
 just because we can.</p>
@@ -48921,6 +49694,7 @@ The <tt class="docutils literal"><span class="pre">remarks</span></tt> and <tt c
 exercises (and problems and projects too).</p>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -48930,13 +49704,15 @@ exercises (and problems and projects too).</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Testing admons</a></li>
+<li><a class="reference internal" href="#">Testing admons</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a><ul>
 <li><a class="reference internal" href="#code">Code</a></li>
 <li><a class="reference internal" href="#quotes-and-boxes">Quotes and boxes</a></li>
 <li><a class="reference internal" href="#admonitions">Admonitions</a></li>
 <li><a class="reference internal" href="#going-deeper-environments">Going deeper environments</a></li>
 <li><a class="reference internal" href="#the-end">The end</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -49056,9 +49832,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -49662,9 +50435,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -50247,9 +51017,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -50806,9 +51573,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -51318,9 +52082,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -51480,9 +52241,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -52069,9 +52827,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -52942,9 +53697,9 @@ exercises (and problems and projects too).
    (https://github.com/hplgit/doconce/)
 
 Testing admons
-==============
+%%%%%%%%%%%%%%
 
-:Author: hpl
+:Authors: hpl
 :Date: Jan 32, 2100
 
 .. !split
@@ -52988,7 +53743,7 @@ Here is a plain quote environment.
     
     | By way of corollary, it adds: 
     | "That is why academic politics are so bitter." 
-    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
+    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`__
 
 
 
@@ -53882,9 +54637,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -59361,9 +60113,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -59710,9 +60459,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -61749,9 +62495,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -65234,9 +65977,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -70838,9 +71578,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -71342,9 +72079,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -71411,9 +72145,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -71480,9 +72211,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -74510,9 +75238,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -74687,9 +75412,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -74976,9 +75698,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -75227,7 +75946,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Jul 22 08:50:08 2014.
+# sphinx-quickstart on Wed Jul 23 15:13:29 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76582,6 +77301,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 !bc
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -77571,9 +78291,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -77704,6 +78421,8 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
+<p>
 <!-- begin verbatim block -->
 <pre><code>TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory &amp; Dept. of Informatics, Univ. of Oslo
@@ -79307,6 +80026,7 @@ Ctrl+c help                                      & print this table             
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 \bccq
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -80447,9 +81167,9 @@ examine the DocOnce source and the \code{doc/src/make.sh} script).
    :trim:
 
 DocOnce Quick Reference
------------------------
+=======================
 
-:Author: Hans Petter Langtangen
+:Authors: Hans Petter Langtangen
 :Date: Jan 32, 2100
 
 .. contents:: Table of Contents
@@ -80503,7 +81223,7 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
@@ -80628,6 +81348,8 @@ Non-breaking space is inserted using the tilde character as in LaTeX::
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
 A horizontal rule for separating content vertically, like this:
+
+---------
 
 is typeset as four or more hyphens on a single line::
 
@@ -81187,7 +81909,7 @@ by comma::
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
-`Publish <https://bitbucket.org/logg/publish>`_ format.
+`Publish <https://bitbucket.org/logg/publish>`__ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
@@ -81585,7 +82307,7 @@ constructions::
         # #endif
 
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
-An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
+An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
 examine the DocOnce source and the ``doc/src/make.sh`` script).
 
@@ -81602,9 +82324,9 @@ Resources
    :trim:
 
 DocOnce Quick Reference
------------------------
+=======================
 
-:Author: Hans Petter Langtangen
+:Authors: Hans Petter Langtangen
 :Date: Jan 32, 2100
 
 **WARNING: This quick reference is very incomplete!**
@@ -81655,7 +82377,7 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
@@ -81792,6 +82514,8 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
 A horizontal rule for separating content vertically, like this:
+
+---------
 
 is typeset as four or more hyphens on a single line:
 
@@ -82407,7 +83131,7 @@ by comma:
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
-`Publish <https://bitbucket.org/logg/publish>`_ format.
+`Publish <https://bitbucket.org/logg/publish>`__ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
@@ -82819,7 +83543,7 @@ constructions:
         # #endif
 
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
-An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
+An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
 examine the DocOnce source and the ``doc/src/make.sh`` script).
 
@@ -82907,6 +83631,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 {{{
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -84001,6 +84726,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 <syntaxhighlight lang="text">
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -85161,6 +85887,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 {{{
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -86331,6 +87058,8 @@ Non-breaking space is inserted using the tilde character as in LaTeX::
 
 A horizontal rule for separating content vertically, like this:
 
+-----
+
 is typeset as four or more hyphens on a single line::
 
         ---------
@@ -87380,6 +88109,8 @@ Non-breaking space is inserted using the tilde character as in LaTeX::
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
 A horizontal rule for separating content vertically, like this:
+
+-----
 
 is typeset as four or more hyphens on a single line::
 
@@ -88465,6 +89196,8 @@ Non-breaking space is inserted using the tilde character as in LaTeX::
 
 A horizontal rule for separating content vertically, like this:
 
+-----
+
 is typeset as four or more hyphens on a single line::
 
         ---------
@@ -89491,6 +90224,7 @@ Ctrl+c help                             print this table
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TITLE: On an Ultimate Markup Language
@@ -95282,8 +96016,8 @@ Fix generated files: search.html index.html genindex.html ._testdoc002.html ._te
 google-chrome sphinx-testdoc/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
-+ system doconce format rst testdoc.do.txt --examples_as_exercises
-+ doconce format rst testdoc.do.txt --examples_as_exercises
++ system doconce format rst testdoc.do.txt --examples_as_exercises --rst_mathjax
++ doconce format rst testdoc.do.txt --examples_as_exercises --rst_mathjax
 running preprocess -DFORMAT=rst -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to rst
@@ -104733,8 +105467,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in quickref.do.txt
 Using title "DocOnce Quick Reference" from quickref
-Using title "On an Ultimate Markup Language" from quickref
-title: On an Ultimate Markup Language
+title: DocOnce Quick Reference
 author: HPL
 theme: default
 These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
@@ -104822,6 +105555,7 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
 
 
@@ -104852,28 +105586,33 @@ No file quickref.rst.aux.
 Package hyperref Warning: Rerun to get /PageLabels entry.
 
 
+
+
+
+
+
 Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
 
 Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 155--163
+ [1]
+Overfull \hbox (4.50082pt too wide) in alignment at lines 170--178
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 163--171
+Overfull \hbox (4.50082pt too wide) in alignment at lines 178--186
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 171--173
+Overfull \hbox (4.50082pt too wide) in alignment at lines 186--188
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 173--174
+Overfull \hbox (4.50082pt too wide) in alignment at lines 188--189
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 174--271
+Overfull \hbox (4.50082pt too wide) in alignment at lines 189--286
  [] [] 
-[1]
+
 Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
 imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
@@ -104884,17 +105623,17 @@ rspace Inc.
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 321--329
+[2]
+Overfull \hbox (4.50082pt too wide) in alignment at lines 336--344
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 329--337
+Overfull \hbox (4.50082pt too wide) in alignment at lines 344--352
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 337--339
+Overfull \hbox (4.50082pt too wide) in alignment at lines 352--354
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 339--340
+Overfull \hbox (4.50082pt too wide) in alignment at lines 354--355
  [] [] 
 
 Underfull \hbox (badness 10000) 
@@ -104912,9 +105651,9 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 340--401
+Overfull \hbox (4.50082pt too wide) in alignment at lines 355--416
  [] [] 
-[2]
+
 Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
 m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
@@ -104922,11 +105661,11 @@ m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
 Overfull \hbox (27.20697pt too wide) 
 \T1/ptm/m/it/10 sized words\T1/ptm/m/n/10 . Sim-i-larly, an un-der-score sur-ro
 unds words that ap-pear in bold-face: \T1/pcr/m/n/10 _boldface_
-
+[3]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 This distance corresponds to 7.5~km, which is traveled in $7.5
 /5$~s. 
-[3]
+
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen 
 with  
@@ -104951,7 +105690,7 @@ Overfull \hbox (83.00006pt too wide)
 
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
-
+[6]
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
 sume  
@@ -104961,7 +105700,7 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 \T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
-[6]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
 asic]  
@@ -104975,14 +105714,14 @@ Overfull \hbox (5.00006pt too wide)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
-
+[7]
 Overfull \hbox (5.00006pt too wide) 
 []    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z) 
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  fromto: doconce clean@^doconce spl
 it_rst  
-[7]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
 lit_rst  
@@ -105009,11 +105748,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-
-
-
-
- [9]
+[9]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
@@ -105365,6 +106100,7 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
 
 
@@ -105390,25 +106126,30 @@ Package hyperref Message: Driver (default): hdvips.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(./quickref.rst.out) (./quickref.rst.out) (./quickref.rst.toc
+(./quickref.rst.out) (./quickref.rst.out)
+
+
+
+
+ (./quickref.rst.toc
 
 Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
-[1] 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 155--163
+
+Overfull \hbox (4.50082pt too wide) in alignment at lines 170--178
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 163--171
+Overfull \hbox (4.50082pt too wide) in alignment at lines 178--186
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 171--173
+Overfull \hbox (4.50082pt too wide) in alignment at lines 186--188
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 173--174
+Overfull \hbox (4.50082pt too wide) in alignment at lines 188--189
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 174--271
+Overfull \hbox (4.50082pt too wide) in alignment at lines 189--286
  [] [] 
 [2]
 Overfull \hbox (455.00006pt too wide) 
@@ -105422,16 +106163,16 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 321--329
+Overfull \hbox (4.50082pt too wide) in alignment at lines 336--344
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 329--337
+Overfull \hbox (4.50082pt too wide) in alignment at lines 344--352
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 337--339
+Overfull \hbox (4.50082pt too wide) in alignment at lines 352--354
  [] [] 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 339--340
+Overfull \hbox (4.50082pt too wide) in alignment at lines 354--355
  [] [] 
 
 Underfull \hbox (badness 10000) 
@@ -105449,7 +106190,7 @@ Underfull \hbox (badness 10000)
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 340--401
+Overfull \hbox (4.50082pt too wide) in alignment at lines 355--416
  [] [] 
 [3]
 Overfull \hbox (15.61775pt too wide) 
@@ -105478,14 +106219,14 @@ th.
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
 anks..  
-
+[5]
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
-[5]
+[6]
 Overfull \hbox (83.00006pt too wide) 
 \T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
  
-[6]
+
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
 
@@ -105498,14 +106239,14 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 \T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
-
+[7]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
 asic]  
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
-[7]
+
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
 
@@ -105519,7 +106260,7 @@ Overfull \hbox (5.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  fromto: doconce clean@^doconce spl
 it_rst  
-
+[8]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
 lit_rst  
@@ -105530,7 +106271,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (6.12766pt too wide) 
 \T1/ptm/m/n/10 to, but not in-clud-ing the line match-ing the \T1/ptm/m/it/10 r
 eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
-[8]
+
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
@@ -105546,11 +106287,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-
-
-
-
- [10]
+[10]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
@@ -105626,7 +106363,7 @@ Overfull \hbox (54.34767pt too wide)
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-
+[13]
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -105634,7 +106371,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[13]
+
 Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -105645,7 +106382,7 @@ ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
 _localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
 t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
 f gitdiff fix_bibtex4publish csv2table  
-
+[14]
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -105680,7 +106417,7 @@ Overfull \hbox (71.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
-[14]
+
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
@@ -105702,7 +106439,7 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-
+[15]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
 
@@ -105720,7 +106457,7 @@ Overfull \hbox (11.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
 > result  
-[15]
+
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
@@ -105750,7 +106487,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-
+[16]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
@@ -105777,7 +106514,7 @@ various formats
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-[16]
+
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -105797,10 +106534,10 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
+[17]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[17]
+
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -105818,14 +106555,14 @@ Overfull \hbox (23.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
-
+[18]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[18]
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -105836,31 +106573,31 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-
+[19]
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-[19]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[20]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[20] (./quickref.rst.aux)
+[21] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (20 pages, ).
+Output written on quickref.rst.dvi (21 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
 + system doconce format plain quickref --no_preprocess

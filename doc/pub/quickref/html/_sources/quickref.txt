@@ -5,10 +5,10 @@
    :trim:
 
 DocOnce Quick Reference
------------------------
+=======================
 
-:Author: Hans Petter Langtangen
-:Date: Jul 22, 2014
+:Authors: Hans Petter Langtangen
+:Date: Jul 23, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -58,7 +58,7 @@ Google and Wordpress.
 Emacs syntax support
 --------------------
 
-The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
@@ -195,6 +195,8 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
 A horizontal rule for separating content vertically, like this:
+
+---------
 
 is typeset as four or more hyphens on a single line:
 
@@ -810,7 +812,7 @@ by comma:
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
-`Publish <https://bitbucket.org/logg/publish>`_ format.
+`Publish <https://bitbucket.org/logg/publish>`__ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
@@ -1222,7 +1224,7 @@ constructions:
         # #endif
 
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
-An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
+An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
 examine the DocOnce source and the ``doc/src/make.sh`` script).
 

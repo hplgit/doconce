@@ -2885,6 +2885,50 @@ comment in Mako.
 <%doc/>
 !ec
 
+===== Debugging Python code in Mako =====
+label{mako:py:debugging}
+
+Although it is easy to put in Python code inside `<%` and `%>` directives,
+it may quickly become a nightmare to debug the Python code. If Mako
+reports a syntax error in the Python code, it is recommended to debug
+the Python code outside of Mako. That is, copy all Python code to a
+separate file and run it as standard Python code. This will give much
+more precise (and familiar) error messages.
+
+A setup that is easy for developing and maintaining the Python code
+used in Mako goes as follows. Different pieces of Python code in Mako
+is placed in separate files and included via the Preprocess preprocessor
+in the DocOnce document. For instance,
+
+@@@CODE _mako_python.do.txt
+Here, we have separated the Python code in Mako into three files:
+`variables.py`, `basic_functions.py`, and `more_functions.py`.
+With the `# #include` statements, Mako sees the `.py` files inserted
+as text inside the `<%` and `%>` directives (check the file
+`tmp_preprocess__mydoc.do.txt` for the result of running Preprocess and
+the complete DocOnce file that Mako sees).
+
+To debug the `.py` files, collect all their text in one single `.py`
+file and run it. The recommended way is to use Preprocess to copy
+all the text in the `.py` files into a single file, named (say) `all_code.p.py`:
+
+@@@CODE _all_code.p.py
+Note that after including the `.py` files one can insert calls to functions,
+print variables, etc., as desired to debug and experiment.
+
+Run Preprocess on `all_code.p.py` to produce an ordinary Python file
+`all_code.py` and run that code to test and debug. A little shell script
+`all_code.sh` doing both these things is convenient:
+
+!bc shpro
+#!/bin/sh
+preprocess all_code.p.py > all_code.py
+python all_code.py
+!ec
+Especially when the Python code in Mako grows and becomes non-trivial,
+this setup for having the code external to the DocOnce document is
+very effective.
+
 One can use Mako to extend the DocOnce syntax. Three examples are given next.
 
 !split

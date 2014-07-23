@@ -230,6 +230,13 @@ because it thinks these lines are Mako statements. DocOnce detects
 this problem and avoids running Mako.  Examine the output from
 DocOnce: warnings are issued if Mako is not run.
 
+===== The Mako preprocessor gives syntax error in Python code =====
+
+The information with respect to syntax errors in Python code is
+sparse. It is recommended to move the Python code to separate files
+and test it with the ordinary Python interpreter. See the
+section *Debugging Python code in Mako* in the DocOnce manual.
+
 ===== The Mako preprocessor gives strange error messages =====
 
 If you to a little syntax error in Mako, the consequences can be

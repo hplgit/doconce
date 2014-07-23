@@ -3619,9 +3619,10 @@ python-mako package (sudo apt-get install python-mako).
                 filestr = unicode(filestr, encoding)
             except UnicodeDecodeError as e:
                 if "codec can't decode" in str(e):
+                    print e
                     index = int(str(e).split('in position')[1].split(':')[0])
                     print filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50]
-                raise e
+                _abort()
         try:
             temp = Template(text=filestr, lookup=lookup,
                             strict_undefined=strict_undefined)
@@ -3642,7 +3643,7 @@ python-mako package (sudo apt-get install python-mako).
 
         try:
             filestr = temp.render(**mako_kwargs)
-        except TypeError, e:
+        except TypeError as e:
             if "'Undefined' object is not callable" in str(e):
                 calls = '\n'.join(re.findall(r'(\$\{[A-Za-z0-9_ ]+?\()[^}]+?\}', filestr))
                 print '*** mako error: ${func(...)} calls undefined function "func",\ncheck all ${...} calls in the file(s) for possible typos and lack of includes!\n%s' % calls
@@ -3653,7 +3654,7 @@ python-mako package (sudo apt-get install python-mako).
                 filestr = temp.render(**mako_kwargs)
 
 
-        except NameError, e:
+        except NameError as e:
             if "Undefined" in str(e):
                 print '*** mako error: NameError Undefined variable,'
                 print '    one or more ${var} variables are undefined.\n'
@@ -3666,6 +3667,17 @@ python-mako package (sudo apt-get install python-mako).
                 # Just dump everything mako has
                 print '*** mako error:'
                 filestr = temp.render(**mako_kwargs)
+
+        except UnicodeDecodeError as e:
+            if "can't decode byte" in str(e):
+                print '*** error when running mako: UnicodeDecodeError'
+                print e
+                index = int(str(e).split('position')[1].split(':')[0])
+                # index==0 is often a misleading info
+                if index > 0:
+                    print filestr[index-50:index], ' -- problematic char -- ', filestr[index+1:index+50]
+                    print 'ord(problematic char)=%d' % ord(filestr[0])
+                _abort()
 
         if encoding:
             f = codecs.open(resultfile2, 'w', encoding)

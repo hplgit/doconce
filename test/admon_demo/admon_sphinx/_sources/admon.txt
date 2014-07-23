@@ -2,10 +2,10 @@
    (https://github.com/hplgit/doconce/)
 
 Testing admons
-==============
+%%%%%%%%%%%%%%
 
-:Author: hpl
-:Date: Jul 22, 2014
+:Authors: hpl
+:Date: Jul 23, 2014
 
 .. !split
 
@@ -48,7 +48,7 @@ Here is a plain quote environment.
     
     | By way of corollary, it adds: 
     | "That is why academic politics are so bitter." 
-    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`_
+    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`__
 
 
 

@@ -116,7 +116,7 @@ system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 
-system doconce format rst testdoc.do.txt $ex
+system doconce format rst testdoc.do.txt $ex --rst_mathjax
 
 system doconce format epytext testdoc.do.txt $ex
 system doconce format pandoc testdoc.do.txt $ex
