@@ -130,11 +130,10 @@ a:hover { color: #268bd2; }
 #main {
     font: 80%  helvetica-neue, helvetica, arial, verdana, san-serif, 'droid sans';
 	  background: #fdf6e3;
-    width: 100%;
     margin: 0 auto;
     max-width: 850px;
     box-shadow: 5px 5px 2.5px #93a1a1;
-    background-image: url(/img/grid.png);
+    background-image: url(https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/grid.png);
     position: relative;
     background-position: 0.5% 0;
     background-repeat: repeat-x;
