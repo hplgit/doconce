@@ -277,7 +277,7 @@ css_bloodish = """\
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
-def toc2html(font_size=80):
+def toc2html(font_size=80, bootstrap=True):
     # level_depth: how many levels that are represented in the toc
     level_depth = int(option('html_toc_depth=', '2'))
     indent = int(option('html_toc_indent=', '3'))
@@ -286,6 +286,8 @@ def toc2html(font_size=80):
     global tocinfo  # computed elsewhere
     level_min = tocinfo['highest level']
     level_max = level_min + level_depth - 1
+
+    ul_class = ' class="nav"' if bootstrap else ''
     toc_html = ''
     uls = 0  # no of active <ul> sublists
     for i in range(len(tocinfo['sections'])):
@@ -294,7 +296,7 @@ def toc2html(font_size=80):
             continue
         spaces = '&nbsp;'*(indent*(level - level_min))
         if nested_list and i > 0 and level > tocinfo['sections'][i-1][1]:
-            toc_html += '     <ul class="nav">\n'
+            toc_html += '     <ul%s>\n' % ul_class
             uls += 1
         btitle = title = title.strip()
         if level_depth == 2 and level == level_min:
@@ -689,6 +691,8 @@ def html_code(filestr, code_blocks, code_block_types,
         toc_html = ''
         if html_style in ('vagrant', 'bootstrap'):
             toc_html = toc2html()
+        elif html_style in ('solarized',):
+            toc_html = toc2html(bootstrap=False)
         # toc_html lacks formatting, run some basic formatting here
         tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
         # drop URLs in headings?
