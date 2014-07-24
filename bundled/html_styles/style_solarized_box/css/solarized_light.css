@@ -26,7 +26,7 @@ body {
 #list-nav li{
     float:left;
     position:relative;
-    text-align:center;
+    text-align:left;
     width:16.66%;
     font: 125%   helvetica-neue, helvetica, arial, san-serif, verdana, 'droid sans';
     box-shadow: 2px 2px 2px 0px #93a1a1;
@@ -51,14 +51,14 @@ body {
   background:#eee8d5;
     list-style:none;
     position:absolute;
-    left:-9999px; 
+    left:-9999px;
     text-decoration:none;
     margin:0;
     width:100%;
 }
 
 #list-nav ul li{
-    padding:0px; 
+    padding:0px;
     float:center;
     width:100%;
     font: 100%   helvetica-neue, helvetica, arial, san-serif, verdana, 'droid sans';
@@ -72,7 +72,7 @@ body {
     margin:0;
 }
 
-#list-nav li:hover a{ 
+#list-nav li:hover a{
     padding: 5px;
     text-decoration:none;
     background:#268bd2;
@@ -80,20 +80,20 @@ body {
 }
 
 #list-nav li:hover ul{
-    left:0; 
+    left:0;
     padding-left: 0;
     padding-top: 0px;
     text-decoration:none;
 }
 
-#list-nav li:hover ul a{ 
+#list-nav li:hover ul a{
     text-decoration:none;
     padding: 5px;
   background:#eee8d5;
   color:#859900;
 }
 
-#list-nav li:hover ul li a:hover{ 
+#list-nav li:hover ul li a:hover{
   background:#268bd2;
     color:#fdf6e3;
     padding: 5px;
@@ -117,7 +117,7 @@ h1 {
 
 a {
   	color: #859900;
-  	text-decoration: underline; 
+  	text-decoration: underline;
 }
 
 a:hover, a:active {
@@ -157,14 +157,14 @@ header {
 }
 
 img {
-  width: 100%; 
+  width: 100%;
   height: 100%;
   max-width: 1000px;
   box-shadow: 2px 2px 2px 0px #93a1a1;
 }
 
 .foot-img {
-  width: 6.5%; 
+  width: 6.5%;
   height: 2.0%;
   vertical-align: middle;
   *float: right;
@@ -223,7 +223,7 @@ form {
   font-size: 25%;
   float: right;
   color: #93a1a1;
-  font-weight: normal;  
+  font-weight: normal;
   margin-right: 3.5%;
 }
 
