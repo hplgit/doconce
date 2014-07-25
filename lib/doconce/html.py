@@ -84,93 +84,93 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
 # Style sheets
 
 admon_styles_text = """\
-    .alert-text-small   { font-size: 80%%;  }
-    .alert-text-large   { font-size: 130%%; }
-    .alert-text-normal  { font-size: 90%%;  }
+.alert-text-small   { font-size: 80%%;  }
+.alert-text-large   { font-size: 130%%; }
+.alert-text-normal  { font-size: 90%%;  }
 """
 
 admon_styles1 = admon_styles_text + """\
-    .notice, .summary, .warning, .question, .block {
-       border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
-       background-repeat: no-repeat; background-position: 10px center;
-    }
-    .notice   { color: #00529B; background-color: %(background_notice)s;
-                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
-    .summary  { color: #4F8A10; background-color: %(background_summary)s;
-                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
-    .warning  { color: #9F6000; background-color: %(background_warning)s;
-                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
-    .question { color: #4F8A10; background-color: %(background_question)s;
-                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
-    .block    { color: #00529B; background-color: %(background_notice)s; }
+.notice, .summary, .warning, .question, .block {
+  border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
+  background-repeat: no-repeat; background-position: 10px center;
+}
+.notice   { color: #00529B; background-color: %(background_notice)s;
+            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+.summary  { color: #4F8A10; background-color: %(background_summary)s;
+            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+.warning  { color: #9F6000; background-color: %(background_warning)s;
+            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+.question { color: #4F8A10; background-color: %(background_question)s;
+            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
+.block    { color: #00529B; background-color: %(background_notice)s; }
 """
 
 admon_styles2 = admon_styles_text + """\
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid %(boundary)s;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: %(background)s;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid %(boundary)s;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: %(color)s;
+  background-color: %(background)s;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
 """
 # alt: background-image: url(data:image/png;base64,iVBORw0KGgoAAAAN...);
 
 css_solarized = """\
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #657b83; text-decoration:underline; }
+a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+pre {
+  background: #fdf6e3;
+  -webkit-box-shadow: inset 0 0 2px #000000;
+  -moz-box-shadow: inset 0 0 2px #000000;
+  box-shadow: inset 0 0 2px #000000;
+  color: #586e75;
+  margin-left: 0px;
+  font-family: 'Droid Sans Mono', monospace;
+  padding: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+tt, code { font-family: "Courier New", Courier; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 css_solarized_dark = """\
@@ -197,81 +197,81 @@ css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarize
 css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'
 
 css_blueish = """\
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre { background: #ededed; color: #000; padding: 15px;}
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 css_blueish2 = """\
-    /* blueish2 style */
+/* blueish2 style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre {
-    background-color: #fefbf3;
-    vpadding: 9px;
-    border: 1px solid rgba(0,0,0,.2);
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-            box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    }
-    pre, code { font-size: 90%; line-height: 1.6em; }
-    pre > code { background-color: #fefbf3; border: none }
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre {
+background-color: #fefbf3;
+vpadding: 9px;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+pre, code { font-size: 90%; line-height: 1.6em; }
+pre > code { background-color: #fefbf3; border: none }
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 css_bloodish = """\
-    /* bloodish style */
+/* bloodish style */
 
-    body {
-      font-family: Helvetica, Verdana, Arial, Sans-serif;
-      color: #404040;
-      background: #ffffff;
-    }
-    h1 { font-size: 1.8em;  color: #8A0808; }
-    h2 { font-size: 1.6em;  color: #8A0808; }
-    h3 { font-size: 1.4em;  color: #8A0808; }
-    h4 { color: #8A0808; }
-    a { color: #8A0808; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre { background: #ededed; color: #000; padding: 15px;}
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
@@ -1554,10 +1554,14 @@ global html_admon_style      # set below
 html_admon_style = option('html_admon=', None)
 if html_admon_style is None:
     # Set sensible default value
-    if option('html_style=') == 'solarized':
-        html_admon_style = 'apricot'
+    if re.search(r'solarized\d?_dark', option('html_style=', '')):
+        html_admon_style = 'solarized_dark'
+    elif option('html_style=', '').startswith('solarized'):
+        html_admon_style = 'solarized_light'
     elif option('html_style=') == 'blueish2':
         html_admon_style = 'yellow'
+    elif option('html_style=', '')[:5] in ('vagra', 'boots'):
+        html_admon_style = 'bootstrap_alert'
     else:
         html_admon_style = 'gray'
 
@@ -1628,7 +1632,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return janko
 
-    elif html_admon_style in ('gray', 'yellow', 'apricot'):
+    elif html_admon_style in ('gray', 'yellow', 'apricot', 'solarized_light', 'solarized_dark'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
@@ -1862,7 +1866,8 @@ def define(FILENAME_EXTENSION,
 
     global admon_css_vars
     admon_styles = ['gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph',
-                    'bootstrap_alert', 'bootstrap_panel']
+                    'bootstrap_alert', 'bootstrap_panel',
+                    'solarized_light', 'solarized_dark']
     admon_css_vars = {style: {} for style in admon_styles}
     admon_css_vars['yellow']  = dict(boundary='#fbeed5', background='#fcf8e3')
     admon_css_vars['apricot'] = dict(boundary='#FFBF00', background='#fbeed5')
@@ -1870,6 +1875,11 @@ def define(FILENAME_EXTENSION,
     admon_css_vars['gray']    = dict(boundary='#bababa', background='#f8f8f8') # same color as in pygments light gray background
     admon_css_vars['bootstrap_alert']  = dict(background='#ffffff')
     admon_css_vars['bootstrap_panel']  = dict(background='#ffffff')
+    admon_css_vars['solarized_light'] = dict(boundary='#93a1a1', background='#eee8d5')
+    admon_css_vars['solarized_dark'] = dict(boundary='#93a1a1', background='#073642')
+    for style in admon_styles:
+        admon_css_vars[style]['color'] = '#555'
+    admon_css_vars['solarized_dark']['color'] = '#93a1a1'
     # Override with user's values
     html_admon_bg_color = option('html_admon_bg_color=', None)
     html_admon_bd_color = option('html_admon_bd_color=', None)
@@ -1885,10 +1895,14 @@ def define(FILENAME_EXTENSION,
             admon_css_vars['yellow']['icon_' + a]  = 'small_yellow_%s.png' % a
             admon_css_vars['apricot']['icon_' + a] = 'small_yellow_%s.png' % a
             admon_css_vars['gray']['icon_' + a]    = 'small_gray_%s.png' % a
+            admon_css_vars['solarized_light']['icon_' + a] = 'small_yellow_%s.png' % a
+            admon_css_vars['solarized_dark']['icon_' + a] = 'small_gray_%s.png' % a
         else:
             admon_css_vars['yellow']['icon_' + a]  = ''
             admon_css_vars['apricot']['icon_' + a] = ''
             admon_css_vars['gray']['icon_' + a]    = ''
+            admon_css_vars['solarized_light']['icon_' + a] = ''
+            admon_css_vars['solarized_dark']['icon_' + a] = ''
     admon_css_vars['colors'] = dict(
         background_notice='#BDE5F8',
         background_block='#BDE5F8',
@@ -1910,11 +1924,13 @@ def define(FILENAME_EXTENSION,
             admon_styles2)
 
     # Need to add admon_styles? (html_admon_style is global)
+    print 'XXX', admon_css_vars[html_admon_style]
     for admon in admons:
         if '!b'+admon in filestr and '!e'+admon in filestr:
             if html_admon_style == 'colors':
                 css += (admon_styles1 % admon_css_vars[html_admon_style])
-            elif html_admon_style in ('gray', 'yellow', 'apricot'):
+            elif html_admon_style in ('gray', 'yellow', 'apricot',
+                                      'solarized_light', 'solarized_dark'):
                 css += (admon_styles2 % admon_css_vars[html_admon_style])
             elif html_admon_style in ('lyx', 'paragraph'):
                 css += admon_styles_text
