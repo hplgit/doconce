@@ -170,7 +170,11 @@ specified as `--html_style=name`, where `name` can be
    style (yellowish),
  * `blueish`: a simple style with blue headings (default),
  * `blueish2`: a variant of *bluish*,
- * `bloodish`: as `bluish`, but dark read as color.
+ * `bloodish`: as `bluish`, but dark read as color,
+ * `bootstrap*` or `bootswatch*` in a lot of variants, see
+   `doconce format --help` for a list of all styles.
+
+There is a "comprehensive demonstration": "http://hplgit.github.io/teamods/writing_reports/index.html" of almost all available styles!
 
 Using `--css=filename` where `filename` is a non-existing file makes
 DocOnce write the built-in style to that file. Otherwise the HTML
@@ -200,13 +204,12 @@ containing the template and the CSS and JavaScript files to your
 document directory, edit the template as needed (also check that
 paths to the `css` and `js` subdirectories are correct - according
 to how you store the template files), and run
+
 !bc sys
 Terminal> doconce format html mydoc --html_template=mytemplate.html
 !ec
 The template in `style_vagrant` also needs an extra option
-`--html_style=vagrant`. With this style, one has nice navigation buttons
-that are used if the document contains `!split` commands for splitting
-it into many pages.
+`--html_style=vagrant`.
 
 === The HTML File Collection ===
 

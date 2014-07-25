@@ -1440,71 +1440,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -26256,27 +26246,27 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -27217,71 +27207,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -27541,71 +27521,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -27850,7 +27820,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
 
-<!-- code=fortran (!bc fcod) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -27863,25 +27833,25 @@ Let's do some copying from files too. First from subroutine up to the very end,
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #AA22FF; font-weight: bold">subroutine </span><span style="color: #B8860B">test</span>()
-      <span style="color: #00BB00; font-weight: bold">integer </span><span style="color: #B8860B">i</span>
-      <span style="color: #00BB00; font-weight: bold">real</span><span style="color: #666666">*8</span> <span style="color: #B8860B">r</span>
-      <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #AA22FF; font-weight: bold">do </span><span style="color: #B8860B">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #B8860B">i</span>
-         <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #B8860B">r</span> <span style="color: #666666">+</span> <span style="color: #B8860B">i</span>
-      <span style="color: #AA22FF; font-weight: bold">end do</span>
-<span style="color: #AA22FF; font-weight: bold">      return</span>
-<span style="color: #B8860B">C</span>     <span style="color: #B8860B">END1</span>
+13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
+      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
+         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+      <span style="color: #8B008B; font-weight: bold">end do</span>
+<span style="color: #8B008B; font-weight: bold">      return</span>
+<span style="color: #00688B">C</span>     <span style="color: #00688B">END1</span>
 
-      <span style="color: #AA22FF; font-weight: bold">program </span><span style="color: #B8860B">testme</span>
-      <span style="color: #AA22FF; font-weight: bold">call </span><span style="color: #B8860B">test</span>()
-      <span style="color: #AA22FF; font-weight: bold">return</span>
+      <span style="color: #8B008B; font-weight: bold">program </span><span style="color: #00688B">testme</span>
+      <span style="color: #8B008B; font-weight: bold">call </span><span style="color: #00688B">test</span>()
+      <span style="color: #8B008B; font-weight: bold">return</span>
 </pre></div>
 </td></tr></table><p>
 and then just the subroutine,
 <p>
 
-<!-- code=fortran (!bc fcod) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -27889,20 +27859,20 @@ and then just the subroutine,
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #AA22FF; font-weight: bold">subroutine </span><span style="color: #B8860B">test</span>()
-      <span style="color: #00BB00; font-weight: bold">integer </span><span style="color: #B8860B">i</span>
-      <span style="color: #00BB00; font-weight: bold">real</span><span style="color: #666666">*8</span> <span style="color: #B8860B">r</span>
-      <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #AA22FF; font-weight: bold">do </span><span style="color: #B8860B">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #B8860B">i</span>
-         <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #B8860B">r</span> <span style="color: #666666">+</span> <span style="color: #B8860B">i</span>
-      <span style="color: #AA22FF; font-weight: bold">end do</span>
-<span style="color: #AA22FF; font-weight: bold">      return</span>
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
+      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
+         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+      <span style="color: #8B008B; font-weight: bold">end do</span>
+<span style="color: #8B008B; font-weight: bold">      return</span>
 </pre></div>
 </td></tr></table><p>
 and finally the complete file:
 <p>
 
-<!-- code=fortran (!bc fpro) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fpro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -27917,32 +27887,32 @@ and finally the complete file:
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">C</span>     <span style="color: #B8860B">a</span> <span style="color: #B8860B">comment</span>
+15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #00688B">C</span>     <span style="color: #00688B">a</span> <span style="color: #00688B">comment</span>
 
-      <span style="color: #AA22FF; font-weight: bold">subroutine </span><span style="color: #B8860B">test</span>()
-      <span style="color: #00BB00; font-weight: bold">integer </span><span style="color: #B8860B">i</span>
-      <span style="color: #00BB00; font-weight: bold">real</span><span style="color: #666666">*8</span> <span style="color: #B8860B">r</span>
-      <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #AA22FF; font-weight: bold">do </span><span style="color: #B8860B">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #B8860B">i</span>
-         <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #B8860B">r</span> <span style="color: #666666">+</span> <span style="color: #B8860B">i</span>
-      <span style="color: #AA22FF; font-weight: bold">end do</span>
-<span style="color: #AA22FF; font-weight: bold">      return</span>
-<span style="color: #B8860B">C</span>     <span style="color: #B8860B">END1</span>
+      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
+      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
+         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+      <span style="color: #8B008B; font-weight: bold">end do</span>
+<span style="color: #8B008B; font-weight: bold">      return</span>
+<span style="color: #00688B">C</span>     <span style="color: #00688B">END1</span>
 
-      <span style="color: #AA22FF; font-weight: bold">program </span><span style="color: #B8860B">testme</span>
-      <span style="color: #AA22FF; font-weight: bold">call </span><span style="color: #B8860B">test</span>()
-      <span style="color: #AA22FF; font-weight: bold">return</span>
+      <span style="color: #8B008B; font-weight: bold">program </span><span style="color: #00688B">testme</span>
+      <span style="color: #8B008B; font-weight: bold">call </span><span style="color: #00688B">test</span>()
+      <span style="color: #8B008B; font-weight: bold">return</span>
 </pre></div>
 </td></tr></table><p>
 Testing other code environments. First Python:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
+4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc pycod
 def f(x):
     return x+1
 !ec
@@ -27952,10 +27922,10 @@ which gets rendered as
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
-    <span style="color: #AA22FF; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
 Test paragraph and subsubsection headings before code.
@@ -27965,18 +27935,18 @@ Test paragraph and subsubsection headings before code.
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">g</span>(y):
-    <span style="color: #AA22FF; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(y):
+    <span style="color: #8B008B; font-weight: bold">return</span> y+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">h</span>(z):
-    <span style="color: #AA22FF; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">h</span>(z):
+    <span style="color: #8B008B; font-weight: bold">return</span> z+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
 Now a complete program to be shown via Python Online Tutorial:
@@ -27992,7 +27962,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (!bc pyscpro) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyscpro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -28004,58 +27974,58 @@ such cells are not supported by this format).
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
-<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
+12</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = <span style="color: #B452CD">2</span>
+b = <span style="color: #B452CD">3</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;a+b:&#39;</span>, a + b
 
-<span style="color: #008800; font-style: italic"># In a sage cell we can also plot</span>
-<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
+<span style="color: #228B22"># In a sage cell we can also plot</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">4</span>*pi, <span style="color: #B452CD">101</span>)
+y = exp(-<span style="color: #B452CD">0.1</span>*x)*cos(x)
 plot(x, y)
-xlabel(<span style="color: #BB4444">&#39;x&#39;</span>); ylabel(<span style="color: #BB4444">&#39;y&#39;</span>)
+xlabel(<span style="color: #CD5555">&#39;x&#39;</span>); ylabel(<span style="color: #CD5555">&#39;y&#39;</span>)
 show()
 </pre></div>
 </td></tr></table><p>
 Then Cython:
 <p>
 
-<!-- code=cython (!bc cycod) typeset with pygments style "emacs" -->
+<!-- code=cython (!bc cycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">cpdef</span> <span style="color: #00A000">f</span>(double x):
-    <span style="color: #AA22FF; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">cpdef</span> <span style="color: #008b45">f</span>(double x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x + <span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
 Standard Python shell sessions:
 
 <p>
 
-<!-- code=python (!bc pyshell) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008800; font-style: italic"># Some comment</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+&gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
+&gt;&gt;&gt; x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
+Value: <span style="color: #B452CD">0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 IPython sessions:
 
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #555555">In [3]: </span>x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
 <span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
@@ -28063,19 +28033,19 @@ IPython sessions:
 C++:
 <p>
 
-<!-- code=c++ (!bc cpppro) typeset with pygments style "emacs" -->
+<!-- code=c++ (!bc cpppro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800">#include &lt;iostream&gt;</span>
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #1e889b">#include &lt;iostream&gt;</span>
 
-<span style="color: #00BB00; font-weight: bold">int</span> <span style="color: #00A000">main</span>()
+<span style="color: #a7a7a7; font-weight: bold">int</span> <span style="color: #008b45">main</span>()
 {
-   std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BB4444">&quot;Sample output&quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-   <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #666666">0</span>
+   std::cout &lt;&lt; <span style="color: #CD5555">&quot;Sample output&quot;</span> &lt;&lt; std::endl;
+   <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">0</span>
 }
 </pre></div>
 </td></tr></table><p>
@@ -28084,7 +28054,7 @@ And a little bit of Fortran:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -28092,7 +28062,7 @@ And a little bit of Fortran:
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc cod
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc cod
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -28106,13 +28076,13 @@ which then is typeset as
 
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "emacs" -->
+<!-- code=text (!bc cod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
+6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
       length = b - a
@@ -28124,27 +28094,27 @@ HTML:
 
 <p>
 
-<!-- code=html (!bc htmlcod) typeset with pygments style "emacs" -->
+<!-- code=html (!bc htmlcod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;table&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
-<span style="color: #008800; font-style: italic">&lt;!-- comment --&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">&lt;table&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
+<span style="color: #228B22">&lt;!-- comment --&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 </td></tr></table><p>
 System call:
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "emacs" -->
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir test
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; mkdir test
 Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
@@ -28155,14 +28125,14 @@ Any valid pygments lexer/language name can appear to, e.g.,
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc restructuredtext
 =======
 Heading
 =======
@@ -28175,12 +28145,12 @@ results in
 
 <p>
 
-<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "emacs" -->
+<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
 <span style="color: #000080; font-weight: bold">Heading</span>
 <span style="color: #000080; font-weight: bold">=======</span>
 
@@ -28191,7 +28161,7 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <p>
 
-<!-- code=doconce (!bc do) typeset with pygments style "emacs" -->
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -28225,7 +28195,7 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 31
 32
 33
-34</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+34</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
 
 <span style="color: #000080; font-weight: bold">===== Computer code =====</span>
 
@@ -28248,10 +28218,10 @@ Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
 as equations:
 
 !bt
-<span style="color: #AA22FF">\begin{align*}</span>
+<span style="color: #658b00">\begin{align*}</span>
 \nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
-<span style="color: #AA22FF">\end{align*}</span>
+<span style="color: #658b00">\end{align*}</span>
 !et
 
 <span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
@@ -28283,12 +28253,12 @@ the previous blocks with line breaks.
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
-<!-- code=text (!bc sys) typeset with pygments style "emacs" -->
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
 output
 from
@@ -28405,9 +28375,9 @@ Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def f(theta):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">def f(theta):
     return theta**2
 </pre></div>
 </td></tr></table><p>
@@ -28491,7 +28461,7 @@ Let us take this table from the manual:
 The DocOnce source code reads
 <p>
 
-<!-- code=text (!bc ccq) typeset with pygments style "emacs" -->
+<!-- code=text (!bc ccq) typeset with pygments style "perldoc" -->
 <blockquote>
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
@@ -28499,7 +28469,7 @@ The DocOnce source code reads
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
   | 0.0  | 1.4186   | -5.01        |
@@ -28738,71 +28708,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -29117,7 +29077,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
 
-<!-- code=python (!bc pypro) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -29126,15 +29086,15 @@ The formula can be used to generate <code>n</code> points on a circle:
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+9</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">circle</span>(R, x0, y0, n<span style="color: #666666">=501</span>):
-    t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
-    x <span style="color: #666666">=</span> x0 <span style="color: #666666">+</span> R<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>t)
-    y <span style="color: #666666">=</span> y0 <span style="color: #666666">+</span> R<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>t)
-    <span style="color: #AA22FF; font-weight: bold">return</span> x, y
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">circle</span>(R, x0, y0, n=<span style="color: #B452CD">501</span>):
+    t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, n)
+    x = x0 + R*np.cos(<span style="color: #B452CD">2</span>*np.pi*t)
+    y = y0 + R*np.sin(<span style="color: #B452CD">2</span>*np.pi*t)
+    <span style="color: #8B008B; font-weight: bold">return</span> x, y
 
-x, y <span style="color: #666666">=</span> circle(<span style="color: #666666">2.0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>)
+x, y = circle(<span style="color: #B452CD">2.0</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>)
 </pre></div>
 </td></tr></table><p>
 <!-- Often in an exercise we have some comments about the solution -->
@@ -29232,9 +29192,9 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def func(x):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">def func(x):
     return x + 1  # with code in hint
 </pre></div>
 </td></tr></table><p>
@@ -29321,8 +29281,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
+<!-- code=text typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
 <!-- the Filename: ... is written correctly. -->
@@ -29354,12 +29314,12 @@ What is the solution of this equation?</p>
 <p><div title="Wrong!"><b>Choice 3:</b>
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
-3</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #AA22FF; font-weight: bold">import</span> exp
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
-    <span style="color: #AA22FF; font-weight: bold">return</span> exp(x)
+3</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> exp
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> exp(x)
 </pre></div>
 </td></tr></table><p>
 </div></p>
@@ -29604,71 +29564,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -30022,53 +29972,53 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -31728,53 +31678,53 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -36861,27 +36811,27 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -47782,43 +47732,43 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .notice, .summary, .warning, .question, .block {
-       border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
-       background-repeat: no-repeat; background-position: 10px center;
-    }
-    .notice   { color: #00529B; background-color: #BDE5F8;
-                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Info.png); }
-    .summary  { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Valid_Green.png); }
-    .warning  { color: #9F6000; background-color: #FEEFB3;
-                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Attention.png); }
-    .question { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Forward.png); }
-    .block    { color: #00529B; background-color: #BDE5F8; }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.notice, .summary, .warning, .question, .block {
+  border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
+  background-repeat: no-repeat; background-position: 10px center;
+}
+.notice   { color: #00529B; background-color: #BDE5F8;
+            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Info.png); }
+.summary  { color: #4F8A10; background-color: #DFF2BF;
+            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Valid_Green.png); }
+.warning  { color: #9F6000; background-color: #FEEFB3;
+            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Attention.png); }
+.question { color: #4F8A10; background-color: #DFF2BF;
+            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/Knob_Forward.png); }
+.block    { color: #00529B; background-color: #BDE5F8; }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -48298,55 +48248,55 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish2 style */
+/* blueish2 style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    pre, code { font-size: 90%; line-height: 1.6em; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px; box-shadow: 8px 8px 5px #888888;
-             -webkit-border-radius: 4px; -webkit-box-shadow: 8px 8px 5px #888888;
-             -moz-border-radius: 4px; -moz-box-shadow: 8px 8px 5px #888888;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+pre, code { font-size: 90%; line-height: 1.6em; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px; box-shadow: 8px 8px 5px #888888;
+  -webkit-border-radius: 4px; -webkit-box-shadow: 8px 8px 5px #888888;
+  -moz-border-radius: 4px; -moz-box-shadow: 8px 8px 5px #888888;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -48826,53 +48776,53 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #fbeed5;
-             border-radius: 4px; box-shadow: 8px 8px 5px #888888;
-             -webkit-border-radius: 4px; -webkit-box-shadow: 8px 8px 5px #888888;
-             -moz-border-radius: 4px; -moz-box-shadow: 8px 8px 5px #888888;
-             color: #555;
-             background-color: #fcf8e3;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #fbeed5;
+  border-radius: 4px; box-shadow: 8px 8px 5px #888888;
+  -webkit-border-radius: 4px; -webkit-box-shadow: 8px 8px 5px #888888;
+  -moz-border-radius: 4px; -moz-box-shadow: 8px 8px 5px #888888;
+  color: #555;
+  background-color: #fcf8e3;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -49775,32 +49725,32 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish2 style */
+/* blueish2 style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    pre, code { font-size: 90%; line-height: 1.6em; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%%;  }
-    .alert-text-large   { font-size: 130%%; }
-    .alert-text-normal  { font-size: 90%%;  }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+pre, code { font-size: 90%; line-height: 1.6em; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%%;  }
+.alert-text-large   { font-size: 130%%; }
+.alert-text-normal  { font-size: 90%%;  }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -50378,32 +50328,32 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish2 style */
+/* blueish2 style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    pre, code { font-size: 90%; line-height: 1.6em; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%%;  }
-    .alert-text-large   { font-size: 130%%; }
-    .alert-text-normal  { font-size: 90%%;  }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+pre, code { font-size: 90%; line-height: 1.6em; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%%;  }
+.alert-text-large   { font-size: 130%%; }
+.alert-text-normal  { font-size: 90%%;  }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -50921,71 +50871,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #FFBF00;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #fbeed5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -51073,20 +51013,21 @@ and the surrounding text.
 Need some code outside admons for color and font comparisons:
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def some_code(x):
+    return sin(x)*exp(1-x)
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
-    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
-</pre></div>
 <p>
 And some plain text verbatim:
 
 <p>
-
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+<!-- begin verbatim block -->
+<pre><code>x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-</pre></div>
+</code></pre>
+<!-- end verbatim block -->
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
@@ -51155,13 +51096,11 @@ Let's begin a new paragraph and show a box with code only:
 
 <!-- begin box -->
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
-    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
-</pre></div>
-<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def some_code(x):
+    return sin(x)*exp(1-x)
+</code></pre>
+<!-- end verbatim block -->
 </div>
 <!-- end box -->
 
@@ -51202,20 +51141,18 @@ And here comes some text with bad news in larger font.
 Also some code:
 
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
-    <span style="color: #8B008B; font-weight: bold">return</span> x
-</pre></div>
-<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def f(x):
+    return x
+</code></pre>
+<!-- end verbatim block -->
 And a complete program
 
 <p>
-
-<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello, World!&quot;</span>
-</pre></div>
-<p>
+<!-- begin verbatim block  pypro-->
+<pre><code>print &quot;Hello, World!&quot;
+</code></pre>
+<!-- end verbatim block -->
 </div>
 
 
@@ -51309,14 +51246,13 @@ It is of outmost important to
 Because here the thing is to do
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import urllib
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">urllib</span>
-
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">grab</span>(url, filename):
+def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-</pre></div>
-<p>
+</code></pre>
+<!-- end verbatim block -->
 </div>
 
 
@@ -51360,62 +51296,60 @@ The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Dudt</span>(u):
+<!-- begin verbatim block  pycod-->
+<pre><code>def Dudt(u):
     r = diff(u, t) + u*grad(u)
-    <span style="color: #8B008B; font-weight: bold">return</span> r
+    return r
 
-half = <span style="color: #B452CD">0.5</span>
-x = <span style="color: #B452CD">2</span>*n
-</pre></div>
-<p>
+half = 0.5
+x = 2*n
+</code></pre>
+<!-- end verbatim block -->
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Diff</span>:
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
-        <span style="color: #658b00">self</span>.f = f
-        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+class Forward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward1</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+class Backward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x) - f(x-h))/h
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Backward1</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (f(x) - f(x-h))/h
+class Central2(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x-h))/(2*h)
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central2</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x-h))/(<span style="color: #B452CD">2</span>*h)
+class Central4(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+               (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central4</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
-               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h)
+class Central6(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
+               (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
+               (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central6</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">3.</span>/<span style="color: #B452CD">2</span>) *(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
-               (<span style="color: #B452CD">3.</span>/<span style="color: #B452CD">5</span>) *(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h) + \
-               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">10</span>)*(f(x+<span style="color: #B452CD">3</span>*h) - f(x-<span style="color: #B452CD">3</span>*h))/(<span style="color: #B452CD">6</span>*h)
-
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward3</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (-(<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">6</span>)*f(x+<span style="color: #B452CD">2</span>*h) + f(x+h) - <span style="color: #B452CD">0.5</span>*f(x) - \
-                (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*f(x-h))/h
-</pre></div>
-<p>
+class Forward3(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
+                (1./3)*f(x-h))/h
+</code></pre>
+<!-- end verbatim block -->
 And then we add a figure too.
 
 <p>
@@ -51757,7 +51691,7 @@ Also some code:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
 <p>
@@ -51766,7 +51700,7 @@ And a complete program
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p>
 </div>
@@ -51864,7 +51798,7 @@ Because here the thing is to do
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
@@ -51915,7 +51849,7 @@ code is task that this "Going deeper" environment targets.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
 
@@ -51929,7 +51863,7 @@ Longer computer code requires vertical space:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
         <span style="color: #008000">self</span><span style="color: #666666">.</span>h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(h)
@@ -60034,53 +59968,53 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -67339,27 +67273,27 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -68082,27 +68016,27 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -75946,7 +75880,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Jul 23 15:13:29 2014.
+# sphinx-quickstart on Fri Jul 25 08:04:43 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78194,53 +78128,53 @@ Automatically generated HTML file from Doconce source
 
 
 <style type="text/css">
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre { background: #ededed; color: #000; padding: 15px;}
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -91637,6 +91571,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91661,6 +91596,16 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+
+...doconce translation: handled insertion of verbatim and latex blocks 30.7 s
+
+...doconce translation: handled !benvir/!eenvir constructions 30.7 s
+
+...doconce translation: handled handled second reformatting of quizzes 30.7 s
+
+
+...doconce format used 30.7 s to translate the document (1704 lines)
+
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -91683,6 +91628,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91703,7 +91649,17 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+
+...doconce translation: handled insertion of verbatim and latex blocks 19.8 s
+
+...doconce translation: handled !benvir/!eenvir constructions 19.8 s
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+...doconce translation: handled handled second reformatting of quizzes 19.9 s
+
+
+...doconce format used 19.9 s to translate the document (1905 lines)
+
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
@@ -91750,6 +91706,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91797,6 +91754,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'color': '#555', 'background': '#ffffff'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91851,6 +91809,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#eee8d5', 'boundary': '#93a1a1', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91871,6 +91830,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: --pygm_style=emacs is not recommended when --html_style=solarized
+    automatically changed to --html_style=perldoc
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -91904,6 +91865,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#eee8d5', 'boundary': '#93a1a1', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91924,6 +91886,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: --pygm_style=emacs is not recommended when --html_style=solarized
+    automatically changed to --html_style=perldoc
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -91968,6 +91932,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -92031,6 +91996,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95724,6 +95690,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95757,6 +95724,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95813,6 +95781,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95875,6 +95844,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96034,6 +96004,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96071,6 +96042,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96106,6 +96078,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96146,6 +96119,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96204,6 +96178,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96246,6 +96221,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96287,6 +96263,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96372,6 +96349,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96460,6 +96438,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96489,6 +96468,7 @@ output in testdoc.md
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96505,6 +96485,7 @@ slides written to slides1.html
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96519,6 +96500,7 @@ slides written to slides1.html
 + system doconce format pdflatex slides1 --latex_title_layout=beamer
 + doconce format pdflatex slides1 --latex_title_layout=beamer
 translating doconce text in slides1.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in slides1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides1
@@ -96538,6 +96520,7 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 slides1.pdf
 + doconce format html slides2 --pygments_html_style=emacs
 running preprocess -DFORMAT=html -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
 found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
@@ -96593,6 +96576,7 @@ slides written to slides2.html
 + doconce format pdflatex slides2 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
 found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
@@ -96635,6 +96619,7 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="reveal" -DSLIDE_T
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'reveal', 'SLIDE_THEME': 'beigesmall', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__slides3.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copying from regex "def solver" until "def verify_three"
      file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
@@ -96661,6 +96646,7 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen -DSLIDE_TYPE="beamer" -DSLI
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'beamer', 'SLIDE_THEME': 'red3', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__slides3.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copying from regex "def solver" until "def verify_three"
      file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
@@ -96687,6 +96673,7 @@ slides written to slides3.tex
 + system doconce format html slides1 --pygments_html_style=emacs
 + doconce format html slides1 --pygments_html_style=emacs
 translating doconce text in slides1.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96704,18 +96691,21 @@ to generate the slides
 + system doconce format html html_template --html_template=template1.html --pygments_html_style=none
 + doconce format html html_template --html_template=template1.html --pygments_html_style=none
 translating doconce text in html_template.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in html_template.html
 + '[' 0 -ne 0 ']'
 + cp html_template.html html_template1.html
 + system doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs
 + doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs
 translating doconce text in html_template.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in html_template.html
 + '[' 0 -ne 0 ']'
 + system doconce format html author1
 + doconce format html author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in author1.html
 + '[' 0 -ne 0 ']'
@@ -96745,6 +96735,7 @@ Total:                              21
 Exported 21 paper(s) to papers.bib.
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to latex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 
 exporting publish database papers.pub to papers.bib:
 output in author1.p.tex
@@ -96753,12 +96744,14 @@ output in author1.p.tex
 + doconce format sphinx author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to sphinx
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in author1.rst
 + '[' 0 -ne 0 ']'
 + system doconce format plain author1
 + doconce format plain author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to plain
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in author1.txt
 + '[' 0 -ne 0 ']'
 + rm -f '*.aux'
@@ -96767,6 +96760,7 @@ output in author1.txt
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in math_test.p.tex
 + doconce ptex2tex math_test
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
@@ -96997,6 +96991,7 @@ Transcript written on math_test.log.
 running preprocess -DFORMAT=html -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.html
 + '[' 0 -ne 0 ']'
@@ -97010,6 +97005,7 @@ translating doconce text in tmp_mako__math_test.do.txt to sphinx
 Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {eqnarray*}
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 
 *** warning: detected non-align math environment with multiple labels
     (Sphinx cannot handle this equation system - labels will be removed
@@ -97126,6 +97122,7 @@ google-chrome sphinx-rootdir-math/_build/html/index.html
 running preprocess -DFORMAT=pandoc -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to pandoc
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** warning: latex envir \begin{eqnarray*} does not work well.
 
 *** warning: latex envir \begin{eqnarray} does not work well.
@@ -97139,6 +97136,7 @@ output in math_test.html
 running preprocess -DFORMAT=pandoc -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to pandoc
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** warning: latex envir \begin{eqnarray*} does not work well.
 
 *** warning: latex envir \begin{eqnarray} does not work well.
@@ -97156,6 +97154,7 @@ output in math_test.tex
 + doconce format pdflatex admon --latex_admon=colors1
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -97495,6 +97494,7 @@ warning.pdf
 + doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=gray!6'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -97983,6 +97983,7 @@ warning.pdf
 + doconce format pdflatex admon --latex_admon=paragraph
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -98395,6 +98396,7 @@ no latex_figs directory for this admon type
 + doconce format pdflatex admon --latex_admon=graybox2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -98880,6 +98882,7 @@ no latex_figs directory for this admon type
 + doconce format pdflatex admon --latex_admon=yellowicon
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99189,6 +99192,7 @@ small_yellow_warning.pdf
 + doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99497,6 +99501,7 @@ small_gray_warning.pdf
 + doconce format pdflatex admon --latex_admon=colors2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99797,6 +99802,7 @@ warning.pdf
 + doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99819,6 +99825,7 @@ output in admon.tex
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'color': '#555'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99832,6 +99839,7 @@ output in admon.html
 + doconce format html admon --html_admon=paragraph --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'color': '#555'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99845,6 +99853,7 @@ output in admon.html
 + doconce format html admon --html_admon=colors
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'background_question': '#DFF2BF', 'background_warning': '#FEEFB3', 'icon_notice': 'Knob_Info.png', 'icon_warning': 'Knob_Attention.png', 'icon_block': '', 'background_block': '#BDE5F8', 'background_notice': '#BDE5F8', 'background_summary': '#DFF2BF', 'icon_question': 'Knob_Forward.png', 'icon_summary': 'Knob_Valid_Green.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99858,6 +99867,7 @@ output in admon.html
 + doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99871,6 +99881,7 @@ output in admon.html
 + doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#fcf8e3', 'boundary': '#fbeed5', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99884,6 +99895,7 @@ output in admon.html
 + doconce format html admon --html_admon=apricot --html_style=solarized
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#fbeed5', 'boundary': '#FFBF00', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99897,6 +99909,7 @@ output in admon.html
 + doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99915,6 +99928,7 @@ output in admon.html
 + doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99931,6 +99945,7 @@ admon_bootstrap_alert.html now links to the generated files
 + doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
+XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -100015,6 +100030,7 @@ or just run it by
 + python automake_sphinx.py
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to sphinx
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
@@ -100066,6 +100082,7 @@ google-chrome tmp_admon/_build/html/index.html
 + doconce format mwiki admon
 running preprocess -DFORMAT=mwiki -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to mwiki
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format mwiki
  ...checking if wave1D.png is stored at en.wikipedia.org/w/api.php...
@@ -100081,6 +100098,7 @@ output in admon.mwiki
 + doconce format plain admon
 running preprocess -DFORMAT=plain -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to plain
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 output in admon.txt
@@ -100104,6 +100122,7 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._a
 + system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 + doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 translating doconce text in test_boots.do.txt to html
+XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in test_boots.html
 + '[' 0 -ne 0 ']'
@@ -100113,10 +100132,12 @@ test_boots.html now links to the generated files
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in github_md.md
 + '[' 0 -ne 0 ']'
 + doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
 translating doconce text in markdown_input.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in markdown_input.html
 + name=movies
@@ -100124,6 +100145,7 @@ output in markdown_input.html
 + doconce format html movies --html_output=movies_3choices
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
@@ -100137,6 +100159,7 @@ output in movies_3choices.html
 + doconce format html movies --no_mp4_webm_ogg_alternatives
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
@@ -100151,6 +100174,7 @@ output in movies.html
 + doconce format pdflatex movies --latex_movie=media9
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
@@ -101358,6 +101382,7 @@ Transcript written on movies.log.
 + doconce format pdflatex movies --latex_movie=media9 --latex_external_movie_viewer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
@@ -101957,6 +101982,7 @@ Transcript written on movies.log.
 + doconce format pdflatex movies
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
@@ -102394,6 +102420,7 @@ Transcript written on movies.log.
 + doconce format plain movies
 running preprocess -DFORMAT=plain -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to plain
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     ../doc/src/manual/mov/wave.webm
@@ -102468,6 +102495,7 @@ running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Spring
 mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book'}
 translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 
 exporting publish database papers.pub to papers.bib:
 *** made directory latex_figs for admon figures
@@ -104149,23 +104177,27 @@ Transcript written on Springer_T2_book.log.
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii
 + doconce format html encoding3 --pygments_html_style=off --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.html
 + cp encoding3.html encoding3.html-ascii
 + cat _doconce_debugging.log
 + doconce format latex encoding3 -DPREPROCESS
 running preprocess -DFORMAT=latex -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii-verb
 + doconce format html encoding3 -DPREPROCESS
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** error: problem with character when writing to file:
 (text position  526)
 u'ight: 125%">a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n</pre></div>\n<p>\n\n<!-- -'
@@ -104177,6 +104209,7 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 open file with encoding utf-8
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.html
 + cp encoding3.html encoding3.html-ascii-verb
 + cat _doconce_debugging.log
@@ -104195,6 +104228,7 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
 mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'latex'}
 translating doconce text in tmp_mako__encoding3.do.txt to latex
 open file with encoding utf-8
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-utf8
 + doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug
@@ -104204,6 +104238,7 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
 mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'html'}
 translating doconce text in tmp_mako__encoding3.do.txt to html
 open file with encoding utf-8
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in encoding3.html
 + cp encoding3.html encoding3.html-utf8
@@ -104212,17 +104247,20 @@ output in encoding3.html
 + doconce format html mako_test1 --pygments_html_style=off
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
 translating doconce text in tmp_mako__mako_test1.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test1.html
 + '[' 0 -ne 0 ']'
 + system doconce format html mako_test2 --pygments_html_style=off
 + doconce format html mako_test2 --pygments_html_style=off
 translating doconce text in mako_test2.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test2.html
 + '[' 0 -ne 0 ']'
 + system doconce format html mako_test3 --pygments_html_style=off
 + doconce format html mako_test3 --pygments_html_style=off
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + cp mako_test3.html mako_test3b.html
@@ -104230,12 +104268,14 @@ output in mako_test3.html
 + doconce format html mako_test3 --pygments_html_style=none
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + system doconce format html mako_test4 --pygments_html_style=no
 + doconce format html mako_test4 --pygments_html_style=no
 running mako on mako_test4.do.txt to make tmp_mako__mako_test4.do.txt
 translating doconce text in tmp_mako__mako_test4.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test4.html
 + '[' 0 -ne 0 ']'
 + system doconce csv2table testtable.csv
@@ -104382,6 +104422,7 @@ translating doconce text in tmp2.do.txt to sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** error: figure file "../doc/manual/fig/wave1D" does not exist!
@@ -104395,6 +104436,7 @@ translating doconce text in tmp2.do.txt to sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ...
@@ -104414,6 +104456,7 @@ replacing ../lib/doconce/doconce.py by _static/doconce.py in tmp2.do.txt
 replacing two_media99 by two_media in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104443,6 +104486,7 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104477,6 +104521,7 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 replacing 99x9.ogg by .ogg in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104511,6 +104556,7 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 ^!bsol.+?!esol replaced by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104535,6 +104581,7 @@ output in tmp2.rst
 ^!bhint.+?!ehint replaced by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104557,6 +104604,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 output in tmp2.rst
 + doconce format pdflatex tmp2 --device=paper
 translating doconce text in tmp2.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
@@ -104579,6 +104627,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format pdflatex tmp2
 translating doconce text in tmp2.do.txt to pdflatex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
@@ -104606,6 +104655,7 @@ Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce format html quickref --pygments_html_style=none --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.html
 + '[' 0 -ne 0 ']'
@@ -104613,6 +104663,7 @@ output in quickref.html
 + doconce format latex quickref --no_preprocess --latex_font=helvetica
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.p.tex
 + '[' 0 -ne 0 ']'
@@ -105406,6 +105457,7 @@ Transcript written on quickref.log.
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
@@ -105520,6 +105572,7 @@ google-chrome sphinx-rootdir/_build/html/index.html
 + doconce format rst quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to rst
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
@@ -106604,6 +106657,7 @@ Transcript written on quickref.rst.log.
 + doconce format plain quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to plain
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106614,6 +106668,7 @@ output in quickref.txt
 + doconce format gwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106624,6 +106679,7 @@ output in quickref.gwiki
 + doconce format mwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106634,6 +106690,7 @@ output in quickref.mwiki
 + doconce format cwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106644,6 +106701,7 @@ output in quickref.cwiki
 + doconce format st quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106654,6 +106712,7 @@ output in quickref.st
 + doconce format epytext quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106664,6 +106723,7 @@ output in quickref.epytext
 + doconce format pandoc quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to pandoc
+XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.md
 + '[' 0 -ne 0 ']'

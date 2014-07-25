@@ -12,71 +12,61 @@ Automatically generated HTML file from Doconce source
 
 
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:underline; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -256,7 +246,7 @@ $$
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jul 23, 2014</h4></center> <!-- date -->
+<center><h4>Jul 25, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -395,7 +385,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
 
-<!-- code=fortran (!bc fcod) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -408,25 +398,25 @@ Let's do some copying from files too. First from subroutine up to the very end,
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #AA22FF; font-weight: bold">subroutine </span><span style="color: #B8860B">test</span>()
-      <span style="color: #00BB00; font-weight: bold">integer </span><span style="color: #B8860B">i</span>
-      <span style="color: #00BB00; font-weight: bold">real</span><span style="color: #666666">*8</span> <span style="color: #B8860B">r</span>
-      <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #AA22FF; font-weight: bold">do </span><span style="color: #B8860B">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #B8860B">i</span>
-         <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #B8860B">r</span> <span style="color: #666666">+</span> <span style="color: #B8860B">i</span>
-      <span style="color: #AA22FF; font-weight: bold">end do</span>
-<span style="color: #AA22FF; font-weight: bold">      return</span>
-<span style="color: #B8860B">C</span>     <span style="color: #B8860B">END1</span>
+13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
+      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
+         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+      <span style="color: #8B008B; font-weight: bold">end do</span>
+<span style="color: #8B008B; font-weight: bold">      return</span>
+<span style="color: #00688B">C</span>     <span style="color: #00688B">END1</span>
 
-      <span style="color: #AA22FF; font-weight: bold">program </span><span style="color: #B8860B">testme</span>
-      <span style="color: #AA22FF; font-weight: bold">call </span><span style="color: #B8860B">test</span>()
-      <span style="color: #AA22FF; font-weight: bold">return</span>
+      <span style="color: #8B008B; font-weight: bold">program </span><span style="color: #00688B">testme</span>
+      <span style="color: #8B008B; font-weight: bold">call </span><span style="color: #00688B">test</span>()
+      <span style="color: #8B008B; font-weight: bold">return</span>
 </pre></div>
 </td></tr></table><p>
 and then just the subroutine,
 <p>
 
-<!-- code=fortran (!bc fcod) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fcod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -434,20 +424,20 @@ and then just the subroutine,
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #AA22FF; font-weight: bold">subroutine </span><span style="color: #B8860B">test</span>()
-      <span style="color: #00BB00; font-weight: bold">integer </span><span style="color: #B8860B">i</span>
-      <span style="color: #00BB00; font-weight: bold">real</span><span style="color: #666666">*8</span> <span style="color: #B8860B">r</span>
-      <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #AA22FF; font-weight: bold">do </span><span style="color: #B8860B">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #B8860B">i</span>
-         <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #B8860B">r</span> <span style="color: #666666">+</span> <span style="color: #B8860B">i</span>
-      <span style="color: #AA22FF; font-weight: bold">end do</span>
-<span style="color: #AA22FF; font-weight: bold">      return</span>
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
+      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
+         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+      <span style="color: #8B008B; font-weight: bold">end do</span>
+<span style="color: #8B008B; font-weight: bold">      return</span>
 </pre></div>
 </td></tr></table><p>
 and finally the complete file:
 <p>
 
-<!-- code=fortran (!bc fpro) typeset with pygments style "emacs" -->
+<!-- code=fortran (!bc fpro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -462,32 +452,32 @@ and finally the complete file:
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">C</span>     <span style="color: #B8860B">a</span> <span style="color: #B8860B">comment</span>
+15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #00688B">C</span>     <span style="color: #00688B">a</span> <span style="color: #00688B">comment</span>
 
-      <span style="color: #AA22FF; font-weight: bold">subroutine </span><span style="color: #B8860B">test</span>()
-      <span style="color: #00BB00; font-weight: bold">integer </span><span style="color: #B8860B">i</span>
-      <span style="color: #00BB00; font-weight: bold">real</span><span style="color: #666666">*8</span> <span style="color: #B8860B">r</span>
-      <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #AA22FF; font-weight: bold">do </span><span style="color: #B8860B">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #B8860B">i</span>
-         <span style="color: #B8860B">r</span> <span style="color: #666666">=</span> <span style="color: #B8860B">r</span> <span style="color: #666666">+</span> <span style="color: #B8860B">i</span>
-      <span style="color: #AA22FF; font-weight: bold">end do</span>
-<span style="color: #AA22FF; font-weight: bold">      return</span>
-<span style="color: #B8860B">C</span>     <span style="color: #B8860B">END1</span>
+      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
+      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
+         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+      <span style="color: #8B008B; font-weight: bold">end do</span>
+<span style="color: #8B008B; font-weight: bold">      return</span>
+<span style="color: #00688B">C</span>     <span style="color: #00688B">END1</span>
 
-      <span style="color: #AA22FF; font-weight: bold">program </span><span style="color: #B8860B">testme</span>
-      <span style="color: #AA22FF; font-weight: bold">call </span><span style="color: #B8860B">test</span>()
-      <span style="color: #AA22FF; font-weight: bold">return</span>
+      <span style="color: #8B008B; font-weight: bold">program </span><span style="color: #00688B">testme</span>
+      <span style="color: #8B008B; font-weight: bold">call </span><span style="color: #00688B">test</span>()
+      <span style="color: #8B008B; font-weight: bold">return</span>
 </pre></div>
 </td></tr></table><p>
 Testing other code environments. First Python:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
+4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc pycod
 def f(x):
     return x+1
 !ec
@@ -497,10 +487,10 @@ which gets rendered as
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
-    <span style="color: #AA22FF; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
 Test paragraph and subsubsection headings before code.
@@ -510,18 +500,18 @@ Test paragraph and subsubsection headings before code.
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">g</span>(y):
-    <span style="color: #AA22FF; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(y):
+    <span style="color: #8B008B; font-weight: bold">return</span> y+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">h</span>(z):
-    <span style="color: #AA22FF; font-weight: bold">return</span> z<span style="color: #666666">+1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">h</span>(z):
+    <span style="color: #8B008B; font-weight: bold">return</span> z+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
 Now a complete program to be shown via Python Online Tutorial:
@@ -537,7 +527,7 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (!bc pyscpro) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyscpro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -549,58 +539,58 @@ such cells are not supported by this format).
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
-<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
+12</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = <span style="color: #B452CD">2</span>
+b = <span style="color: #B452CD">3</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;a+b:&#39;</span>, a + b
 
-<span style="color: #008800; font-style: italic"># In a sage cell we can also plot</span>
-<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
+<span style="color: #228B22"># In a sage cell we can also plot</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">4</span>*pi, <span style="color: #B452CD">101</span>)
+y = exp(-<span style="color: #B452CD">0.1</span>*x)*cos(x)
 plot(x, y)
-xlabel(<span style="color: #BB4444">&#39;x&#39;</span>); ylabel(<span style="color: #BB4444">&#39;y&#39;</span>)
+xlabel(<span style="color: #CD5555">&#39;x&#39;</span>); ylabel(<span style="color: #CD5555">&#39;y&#39;</span>)
 show()
 </pre></div>
 </td></tr></table><p>
 Then Cython:
 <p>
 
-<!-- code=cython (!bc cycod) typeset with pygments style "emacs" -->
+<!-- code=cython (!bc cycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">cpdef</span> <span style="color: #00A000">f</span>(double x):
-    <span style="color: #AA22FF; font-weight: bold">return</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">cpdef</span> <span style="color: #008b45">f</span>(double x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x + <span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
 Standard Python shell sessions:
 
 <p>
 
-<!-- code=python (!bc pyshell) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008800; font-style: italic"># Some comment</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+&gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
+&gt;&gt;&gt; x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
+Value: <span style="color: #B452CD">0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 IPython sessions:
 
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "emacs" -->
+<!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
 
-<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008800; font-style: italic"># Some comment</span>
+<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Value:&#39;</span>, x
+<span style="color: #555555">In [3]: </span>x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
 <span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
@@ -608,19 +598,19 @@ IPython sessions:
 C++:
 <p>
 
-<!-- code=c++ (!bc cpppro) typeset with pygments style "emacs" -->
+<!-- code=c++ (!bc cpppro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800">#include &lt;iostream&gt;</span>
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #1e889b">#include &lt;iostream&gt;</span>
 
-<span style="color: #00BB00; font-weight: bold">int</span> <span style="color: #00A000">main</span>()
+<span style="color: #a7a7a7; font-weight: bold">int</span> <span style="color: #008b45">main</span>()
 {
-   std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BB4444">&quot;Sample output&quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-   <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #666666">0</span>
+   std::cout &lt;&lt; <span style="color: #CD5555">&quot;Sample output&quot;</span> &lt;&lt; std::endl;
+   <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">0</span>
 }
 </pre></div>
 </td></tr></table><p>
@@ -629,7 +619,7 @@ And a little bit of Fortran:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -637,7 +627,7 @@ And a little bit of Fortran:
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc cod
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc cod
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -651,13 +641,13 @@ which then is typeset as
 
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "emacs" -->
+<!-- code=text (!bc cod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
+6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
       length = b - a
@@ -669,27 +659,27 @@ HTML:
 
 <p>
 
-<!-- code=html (!bc htmlcod) typeset with pygments style "emacs" -->
+<!-- code=html (!bc htmlcod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;table&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #008000; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
-<span style="color: #008800; font-style: italic">&lt;!-- comment --&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">&lt;table&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
+<span style="color: #228B22">&lt;!-- comment --&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 </td></tr></table><p>
 System call:
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "emacs" -->
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir test
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; mkdir test
 Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
@@ -700,14 +690,14 @@ Any valid pygments lexer/language name can appear to, e.g.,
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc restructuredtext
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc restructuredtext
 =======
 Heading
 =======
@@ -720,12 +710,12 @@ results in
 
 <p>
 
-<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "emacs" -->
+<!-- code=restructuredtext (!bc restructuredtext) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
 <span style="color: #000080; font-weight: bold">Heading</span>
 <span style="color: #000080; font-weight: bold">=======</span>
 
@@ -736,7 +726,7 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <p>
 
-<!-- code=doconce (!bc do) typeset with pygments style "emacs" -->
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -770,7 +760,7 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 31
 32
 33
-34</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+34</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
 
 <span style="color: #000080; font-weight: bold">===== Computer code =====</span>
 
@@ -793,10 +783,10 @@ Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
 as equations:
 
 !bt
-<span style="color: #AA22FF">\begin{align*}</span>
+<span style="color: #658b00">\begin{align*}</span>
 \nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
-<span style="color: #AA22FF">\end{align*}</span>
+<span style="color: #658b00">\end{align*}</span>
 !et
 
 <span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
@@ -828,12 +818,12 @@ the previous blocks with line breaks.
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
 
-<!-- code=text (!bc sys) typeset with pygments style "emacs" -->
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
 output
 from
@@ -948,9 +938,9 @@ Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def f(theta):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">def f(theta):
     return theta**2
 </pre></div>
 </td></tr></table><p>
@@ -1034,7 +1024,7 @@ Let us take this table from the manual:
 The DocOnce source code reads
 <p>
 
-<!-- code=text (!bc ccq) typeset with pygments style "emacs" -->
+<!-- code=text (!bc ccq) typeset with pygments style "perldoc" -->
 <blockquote>
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
@@ -1042,7 +1032,7 @@ The DocOnce source code reads
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  |--------------------------------|
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
   | 0.0  | 1.4186   | -5.01        |
@@ -1359,7 +1349,7 @@ head, otherwise tail. Repeat this \( N \) number of times.
 <b>Solution.</b>
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -1367,14 +1357,14 @@ head, otherwise tail. Repeat this \( N \) number of times.
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">random</span>
-N <span style="color: #666666">=</span> <span style="color: #AA22FF">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
-heads <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-<span style="color: #AA22FF; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #AA22FF">range</span>(N):
-    r <span style="color: #666666">=</span> random<span style="color: #666666">.</span>random()
-    <span style="color: #AA22FF; font-weight: bold">if</span> r <span style="color: #666666">&lt;=</span> <span style="color: #666666">0.5</span>:
-        heads <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
-<span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;Flipping a coin </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BB4444"> times gave </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BB4444"> heads&#39;</span> <span style="color: #666666">%</span> (N, heads)
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>, <span style="color: #008b45; text-decoration: underline">random</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])
+heads = <span style="color: #B452CD">0</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
+    r = random.random()
+    <span style="color: #8B008B; font-weight: bold">if</span> r &lt;= <span style="color: #B452CD">0.5</span>:
+        heads += <span style="color: #B452CD">1</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Flipping a coin %d times gave %d heads&#39;</span> % (N, heads)
 </pre></div>
 </td></tr></table><p>
 <!-- --- end solution of exercise --- -->
@@ -1445,7 +1435,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
 
-<!-- code=python (!bc pypro) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -1454,15 +1444,15 @@ The formula can be used to generate <code>n</code> points on a circle:
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+9</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">circle</span>(R, x0, y0, n<span style="color: #666666">=501</span>):
-    t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n)
-    x <span style="color: #666666">=</span> x0 <span style="color: #666666">+</span> R<span style="color: #666666">*</span>np<span style="color: #666666">.</span>cos(<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>t)
-    y <span style="color: #666666">=</span> y0 <span style="color: #666666">+</span> R<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(<span style="color: #666666">2*</span>np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>t)
-    <span style="color: #AA22FF; font-weight: bold">return</span> x, y
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">circle</span>(R, x0, y0, n=<span style="color: #B452CD">501</span>):
+    t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, n)
+    x = x0 + R*np.cos(<span style="color: #B452CD">2</span>*np.pi*t)
+    y = y0 + R*np.sin(<span style="color: #B452CD">2</span>*np.pi*t)
+    <span style="color: #8B008B; font-weight: bold">return</span> x, y
 
-x, y <span style="color: #666666">=</span> circle(<span style="color: #666666">2.0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>)
+x, y = circle(<span style="color: #B452CD">2.0</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>)
 </pre></div>
 </td></tr></table><p>
 <!-- Often in an exercise we have some comments about the solution -->
@@ -1556,8 +1546,8 @@ $$ \hbox{math in solution: } a = b $$
 And code <code>a=b</code> in this solution:
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = b  # code in solution
+<!-- code=text typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = b  # code in solution
 </pre></div>
 </td></tr></table><p>
 End of solution is here.
@@ -1583,9 +1573,9 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
+<!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def func(x):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">def func(x):
     return x + 1  # with code in hint
 </pre></div>
 </td></tr></table><p>
@@ -1678,8 +1668,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
+<!-- code=text typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
 <!-- the Filename: ... is written correctly. -->
@@ -1711,12 +1701,12 @@ What is the solution of this equation?</p>
 <p><div title="Wrong!"><b>Choice 3:</b>
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
-3</pre></div></td><td class="code"><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #AA22FF; font-weight: bold">import</span> exp
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
-    <span style="color: #AA22FF; font-weight: bold">return</span> exp(x)
+3</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> exp
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> exp(x)
 </pre></div>
 </td></tr></table><p>
 </div></p>

@@ -2313,7 +2313,6 @@ for the `apricot`, `yellow`, and `gray` styles.
 
 Some recommended combinations for admonitions in HTML are
 
- * `--html_style=solarized`, `--html_admon=apricot`, `--pygments_html_style=perldoc`
  * `--html_style=blueish2`, `--html_admon=yellow`, `--no_pygments_html`
  * `--html_style=blueish2`, `--html_admon=yellow`, `--pygments_html_style=default`
  * `--html_style=bloodish`, `--html_admon=gray`, `--no_pygments_html`

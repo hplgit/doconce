@@ -146,27 +146,13 @@ body {
   line-height: 1.3em;
   color: #657b83;
 }
-a { color: #657b83; text-decoration:underline; }
-a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
-pre {
-  background: #fdf6e3;
-  -webkit-box-shadow: inset 0 0 2px #000000;
-  -moz-box-shadow: inset 0 0 2px #000000;
-  box-shadow: inset 0 0 2px #000000;
-  color: #586e75;
-  margin-left: 0px;
-  font-family: 'Droid Sans Mono', monospace;
-  padding: 2px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-tt, code { font-family: "Courier New", Courier; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -180,21 +166,24 @@ body {
   color: #839496;
   font-family: Menlo;
 }
-pre {
-  border-style:solid;
-  border-width:1px;
-  border-color:#839496;
-}
-pre, code {
-  background-color: #073642;
-  color: #93a1a1;
-}
-a { color: #859900; }
+code { background-color: #073642; color: #93a1a1; box-shadow: none; }
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #b58900; }
+a:hover { color: #2aa198; }
 """
+
+def css_link_solarized_highlight(style='light'):
+    return """
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_%(style)s_code.css" rel="stylesheet" type="text/css" title="%(style)s"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+""" % vars()
 
 css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
 css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
 css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'
+
 
 css_blueish = """\
 /* blueish style */
@@ -392,10 +381,23 @@ def html_code(filestr, code_blocks, code_block_types,
 
         if pygm_style is None:
             # Set sensible default values
-            if option('html_style=') == 'solarized':
-                pygm_style = 'perldoc'
+            if option('html_style=', '').startswith('solarized'):
+                pygm_style = 'none'
             else:
                 pygm_style = 'default'
+        else:
+            # Fix style for solarized
+            if option('html_style=') == 'solarized':
+                if pygm_style != 'perldoc':
+                    print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized' % pygm_style
+                    print '    automatically changed to --html_style=perldoc'
+                    pygm_style = 'perldoc'
+            elif option('html_style=') == 'solarized_dark':
+                if pygm_style != 'friendly':
+                    print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized_dark' % pygm_style
+                    print '    automatically changed to --html_style=friendly'
+                    print '    (even better not to specify --pygm_style for solarized_dark)'
+                    pygm_style = 'friendly'
 
         legal_lexers = get_legal_pygments_lexers()
         legal_styles = list(get_all_styles())
@@ -1801,8 +1803,10 @@ def define(FILENAME_EXTENSION,
     html_style = option('html_style=', '')
     if  html_style == 'solarized':
         css = css_solarized
+        css_links = css_link_solarized_highlight('light')
     elif  html_style == 'solarized_dark':
         css = css_solarized_dark
+        css_links = css_link_solarized_highlight('dark')
     elif html_style == 'solarized2_light':
         css = css_solarized_thomasf
         css_links = css_link_solarized_thomasf_light
@@ -1924,7 +1928,6 @@ def define(FILENAME_EXTENSION,
             admon_styles2)
 
     # Need to add admon_styles? (html_admon_style is global)
-    print 'XXX', admon_css_vars[html_admon_style]
     for admon in admons:
         if '!b'+admon in filestr and '!e'+admon in filestr:
             if html_admon_style == 'colors':

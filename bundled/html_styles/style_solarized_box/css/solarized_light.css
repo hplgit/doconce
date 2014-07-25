@@ -108,7 +108,7 @@ ul {
 }
 
 h1 {
-	color: #268bd2;
+  color: #268bd2;
   margin: 0.9%;
   margin-left: 0.9%;
   width: 100%;
@@ -116,12 +116,12 @@ h1 {
 }
 
 a {
-  	color: #859900;
-  	text-decoration: underline;
+  color: #859900;
+  text-decoration: underline;
 }
 
 a:hover, a:active {
-  	outline:none
+  outline:none
 }
 
 a, a:active, a:visited { color: #859900; }
