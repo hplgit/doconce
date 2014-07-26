@@ -2764,7 +2764,7 @@ def inline_tag_subst(filestr, format):
     # Treat tags that have format-dependent typesetting
 
     ordered_tags = (
-        'horizontal-rule',  # must be done before sections (they can give ---)
+        'horizontal-rule',  # must be done before sections (they can give ---- in some formats)
         'title',
         'date',
         'movie',
@@ -2772,8 +2772,6 @@ def inline_tag_subst(filestr, format):
         'inlinecomment',
         'abstract',  # must become before sections since it tests on ===
         'emphasize', 'math2', 'math',
-        # important to do section, subsection, etc. before paragraph and bold:
-        'chapter', 'section', 'subsection', 'subsubsection',
         'bold',
         'colortext',
         'verbatim',
@@ -2784,6 +2782,7 @@ def inline_tag_subst(filestr, format):
         'linkURL2',
         'linkURL3',
         'linkURL',
+        'chapter', 'section', 'subsection', 'subsubsection',
         'linebreak',
         'non-breaking-space',  # must become after math, colortext, links, etc
         )

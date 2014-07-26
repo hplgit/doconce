@@ -70854,22 +70854,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
-*************** Working with tag "chapter"
-
-
-
-*************** Working with tag "section"
-
-
-
-*************** Working with tag "subsection"
-
-
-
-*************** Working with tag "subsubsection"
-
-
-
 *************** Working with tag "bold"
 
 
@@ -70907,6 +70891,22 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 *************** Working with tag "linkURL"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
 
 
 
@@ -71250,22 +71250,6 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 
-*************** Working with tag "chapter"
-
-
-
-*************** Working with tag "section"
-
-
-
-*************** Working with tag "subsection"
-
-
-
-*************** Working with tag "subsubsection"
-
-
-
 *************** Working with tag "bold"
 
 
@@ -71303,6 +71287,22 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *************** Working with tag "linkURL"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
 
 
 
@@ -71799,22 +71799,6 @@ through the various stages of the text transformation process.
 
 
 
-*************** Working with tag "chapter"
-
-
-
-*************** Working with tag "section"
-
-
-
-*************** Working with tag "subsection"
-
-
-
-*************** Working with tag "subsubsection"
-
-
-
 *************** Working with tag "bold"
 
 
@@ -71884,6 +71868,22 @@ through the various stages of the text transformation process.
 
 
 *************** Working with tag "linkURL"
+
+
+
+*************** Working with tag "chapter"
+
+
+
+*************** Working with tag "section"
+
+
+
+*************** Working with tag "subsection"
+
+
+
+*************** Working with tag "subsubsection"
 
 
 
@@ -75880,7 +75880,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Jul 25 08:04:43 2014.
+# sphinx-quickstart on Sat Jul 26 10:47:13 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -91571,7 +91571,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91596,16 +91595,6 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-
-...doconce translation: handled insertion of verbatim and latex blocks 30.7 s
-
-...doconce translation: handled !benvir/!eenvir constructions 30.7 s
-
-...doconce translation: handled handled second reformatting of quizzes 30.7 s
-
-
-...doconce format used 30.7 s to translate the document (1704 lines)
-
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -91628,7 +91617,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91649,17 +91637,7 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-
-...doconce translation: handled insertion of verbatim and latex blocks 19.8 s
-
-...doconce translation: handled !benvir/!eenvir constructions 19.8 s
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-
-...doconce translation: handled handled second reformatting of quizzes 19.9 s
-
-
-...doconce format used 19.9 s to translate the document (1905 lines)
-
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
@@ -91706,7 +91684,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91754,7 +91731,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'color': '#555', 'background': '#ffffff'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91809,7 +91785,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#eee8d5', 'boundary': '#93a1a1', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91865,7 +91840,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#eee8d5', 'boundary': '#93a1a1', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91932,7 +91906,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -91996,7 +91969,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95690,7 +95662,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95724,7 +95695,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95781,7 +95751,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -95844,7 +95813,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96004,7 +95972,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96042,7 +96009,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96078,7 +96044,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96119,7 +96084,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96178,7 +96142,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96221,7 +96184,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96263,7 +96225,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96349,7 +96310,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96438,7 +96398,6 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 *** warning: the total of 1 fixes above should be manually edited in the file!!
     (also note: some fixes may not be what you want)
 
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
 Testing
@@ -96468,7 +96427,6 @@ output in testdoc.md
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96485,7 +96443,6 @@ slides written to slides1.html
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96500,7 +96457,6 @@ slides written to slides1.html
 + system doconce format pdflatex slides1 --latex_title_layout=beamer
 + doconce format pdflatex slides1 --latex_title_layout=beamer
 translating doconce text in slides1.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in slides1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides1
@@ -96520,7 +96476,6 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 slides1.pdf
 + doconce format html slides2 --pygments_html_style=emacs
 running preprocess -DFORMAT=html -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
 found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
@@ -96576,7 +96531,6 @@ slides written to slides2.html
 + doconce format pdflatex slides2 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
 found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
@@ -96619,7 +96573,6 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="reveal" -DSLIDE_T
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'reveal', 'SLIDE_THEME': 'beigesmall', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__slides3.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copying from regex "def solver" until "def verify_three"
      file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
@@ -96646,7 +96599,6 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen -DSLIDE_TYPE="beamer" -DSLI
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'beamer', 'SLIDE_THEME': 'red3', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__slides3.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copying from regex "def solver" until "def verify_three"
      file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
@@ -96673,7 +96625,6 @@ slides written to slides3.tex
 + system doconce format html slides1 --pygments_html_style=emacs
 + doconce format html slides1 --pygments_html_style=emacs
 translating doconce text in slides1.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96691,21 +96642,18 @@ to generate the slides
 + system doconce format html html_template --html_template=template1.html --pygments_html_style=none
 + doconce format html html_template --html_template=template1.html --pygments_html_style=none
 translating doconce text in html_template.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in html_template.html
 + '[' 0 -ne 0 ']'
 + cp html_template.html html_template1.html
 + system doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs
 + doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs
 translating doconce text in html_template.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in html_template.html
 + '[' 0 -ne 0 ']'
 + system doconce format html author1
 + doconce format html author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in author1.html
 + '[' 0 -ne 0 ']'
@@ -96735,7 +96683,6 @@ Total:                              21
 Exported 21 paper(s) to papers.bib.
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to latex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 
 exporting publish database papers.pub to papers.bib:
 output in author1.p.tex
@@ -96744,14 +96691,12 @@ output in author1.p.tex
 + doconce format sphinx author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to sphinx
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in author1.rst
 + '[' 0 -ne 0 ']'
 + system doconce format plain author1
 + doconce format plain author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to plain
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in author1.txt
 + '[' 0 -ne 0 ']'
 + rm -f '*.aux'
@@ -96760,7 +96705,6 @@ output in author1.txt
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in math_test.p.tex
 + doconce ptex2tex math_test
 \bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
@@ -96991,7 +96935,6 @@ Transcript written on math_test.log.
 running preprocess -DFORMAT=html -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.html
 + '[' 0 -ne 0 ']'
@@ -97005,7 +96948,6 @@ translating doconce text in tmp_mako__math_test.do.txt to sphinx
 Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {eqnarray*}
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 
 *** warning: detected non-align math environment with multiple labels
     (Sphinx cannot handle this equation system - labels will be removed
@@ -97122,7 +97064,6 @@ google-chrome sphinx-rootdir-math/_build/html/index.html
 running preprocess -DFORMAT=pandoc -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to pandoc
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** warning: latex envir \begin{eqnarray*} does not work well.
 
 *** warning: latex envir \begin{eqnarray} does not work well.
@@ -97136,7 +97077,6 @@ output in math_test.html
 running preprocess -DFORMAT=pandoc -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to pandoc
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** warning: latex envir \begin{eqnarray*} does not work well.
 
 *** warning: latex envir \begin{eqnarray} does not work well.
@@ -97154,7 +97094,6 @@ output in math_test.tex
 + doconce format pdflatex admon --latex_admon=colors1
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -97494,7 +97433,6 @@ warning.pdf
 + doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=gray!6'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -97983,7 +97921,6 @@ warning.pdf
 + doconce format pdflatex admon --latex_admon=paragraph
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -98396,7 +98333,6 @@ no latex_figs directory for this admon type
 + doconce format pdflatex admon --latex_admon=graybox2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -98882,7 +98818,6 @@ no latex_figs directory for this admon type
 + doconce format pdflatex admon --latex_admon=yellowicon
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99192,7 +99127,6 @@ small_yellow_warning.pdf
 + doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20'
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99501,7 +99435,6 @@ small_gray_warning.pdf
 + doconce format pdflatex admon --latex_admon=colors2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99802,7 +99735,6 @@ warning.pdf
 + doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
@@ -99825,7 +99757,6 @@ output in admon.tex
 + doconce format html admon --html_admon=lyx --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'color': '#555'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99839,7 +99770,6 @@ output in admon.html
 + doconce format html admon --html_admon=paragraph --html_style=blueish2
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'color': '#555'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99853,7 +99783,6 @@ output in admon.html
 + doconce format html admon --html_admon=colors
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'background_question': '#DFF2BF', 'background_warning': '#FEEFB3', 'icon_notice': 'Knob_Info.png', 'icon_warning': 'Knob_Attention.png', 'icon_block': '', 'background_block': '#BDE5F8', 'background_notice': '#BDE5F8', 'background_summary': '#DFF2BF', 'icon_question': 'Knob_Forward.png', 'icon_summary': 'Knob_Valid_Green.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99867,7 +99796,6 @@ output in admon.html
 + doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99881,7 +99809,6 @@ output in admon.html
 + doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#fcf8e3', 'boundary': '#fbeed5', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99895,7 +99822,6 @@ output in admon.html
 + doconce format html admon --html_admon=apricot --html_style=solarized
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'icon_notice': 'small_yellow_notice.png', 'color': '#555', 'icon_warning': 'small_yellow_warning.png', 'icon_block': '', 'background': '#fbeed5', 'boundary': '#FFBF00', 'icon_question': 'small_yellow_question.png', 'icon_summary': 'small_yellow_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99909,7 +99835,6 @@ output in admon.html
 + doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99928,7 +99853,6 @@ output in admon.html
 + doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -99945,7 +99869,6 @@ admon_bootstrap_alert.html now links to the generated files
 + doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
-XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -100030,7 +99953,6 @@ or just run it by
 + python automake_sphinx.py
 running preprocess -DFORMAT=sphinx -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to sphinx
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
@@ -100082,7 +100004,6 @@ google-chrome tmp_admon/_build/html/index.html
 + doconce format mwiki admon
 running preprocess -DFORMAT=mwiki -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to mwiki
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format mwiki
  ...checking if wave1D.png is stored at en.wikipedia.org/w/api.php...
@@ -100098,7 +100019,6 @@ output in admon.mwiki
 + doconce format plain admon
 running preprocess -DFORMAT=plain -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to plain
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 output in admon.txt
@@ -100122,7 +100042,6 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._a
 + system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 + doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 translating doconce text in test_boots.do.txt to html
-XXX {'color': '#555', 'background': '#ffffff'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in test_boots.html
 + '[' 0 -ne 0 ']'
@@ -100132,12 +100051,10 @@ test_boots.html now links to the generated files
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in github_md.md
 + '[' 0 -ne 0 ']'
 + doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
 translating doconce text in markdown_input.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in markdown_input.html
 + name=movies
@@ -100145,7 +100062,6 @@ output in markdown_input.html
 + doconce format html movies --html_output=movies_3choices
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
@@ -100159,7 +100075,6 @@ output in movies_3choices.html
 + doconce format html movies --no_mp4_webm_ogg_alternatives
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.webm ...
@@ -100174,7 +100089,6 @@ output in movies.html
 + doconce format pdflatex movies --latex_movie=media9
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
@@ -101382,7 +101296,6 @@ Transcript written on movies.log.
 + doconce format pdflatex movies --latex_movie=media9 --latex_external_movie_viewer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
@@ -101982,7 +101895,6 @@ Transcript written on movies.log.
 + doconce format pdflatex movies
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
@@ -102420,7 +102332,6 @@ Transcript written on movies.log.
 + doconce format plain movies
 running preprocess -DFORMAT=plain -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to plain
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     ../doc/src/manual/mov/wave.webm
@@ -102495,7 +102406,6 @@ running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Spring
 mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book'}
 translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 
 exporting publish database papers.pub to papers.bib:
 *** made directory latex_figs for admon figures
@@ -104177,27 +104087,23 @@ Transcript written on Springer_T2_book.log.
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii
 + doconce format html encoding3 --pygments_html_style=off --debug
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.html
 + cp encoding3.html encoding3.html-ascii
 + cat _doconce_debugging.log
 + doconce format latex encoding3 -DPREPROCESS
 running preprocess -DFORMAT=latex -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii-verb
 + doconce format html encoding3 -DPREPROCESS
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** error: problem with character when writing to file:
 (text position  526)
 u'ight: 125%">a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n</pre></div>\n<p>\n\n<!-- -'
@@ -104209,7 +104115,6 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 open file with encoding utf-8
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.html
 + cp encoding3.html encoding3.html-ascii-verb
 + cat _doconce_debugging.log
@@ -104228,7 +104133,6 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
 mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'latex'}
 translating doconce text in tmp_mako__encoding3.do.txt to latex
 open file with encoding utf-8
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-utf8
 + doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug
@@ -104238,7 +104142,6 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
 mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'html'}
 translating doconce text in tmp_mako__encoding3.do.txt to html
 open file with encoding utf-8
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in encoding3.html
 + cp encoding3.html encoding3.html-utf8
@@ -104247,20 +104150,17 @@ output in encoding3.html
 + doconce format html mako_test1 --pygments_html_style=off
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
 translating doconce text in tmp_mako__mako_test1.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test1.html
 + '[' 0 -ne 0 ']'
 + system doconce format html mako_test2 --pygments_html_style=off
 + doconce format html mako_test2 --pygments_html_style=off
 translating doconce text in mako_test2.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test2.html
 + '[' 0 -ne 0 ']'
 + system doconce format html mako_test3 --pygments_html_style=off
 + doconce format html mako_test3 --pygments_html_style=off
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + cp mako_test3.html mako_test3b.html
@@ -104268,14 +104168,12 @@ output in mako_test3.html
 + doconce format html mako_test3 --pygments_html_style=none
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + system doconce format html mako_test4 --pygments_html_style=no
 + doconce format html mako_test4 --pygments_html_style=no
 running mako on mako_test4.do.txt to make tmp_mako__mako_test4.do.txt
 translating doconce text in tmp_mako__mako_test4.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 output in mako_test4.html
 + '[' 0 -ne 0 ']'
 + system doconce csv2table testtable.csv
@@ -104422,7 +104320,6 @@ translating doconce text in tmp2.do.txt to sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 *** error: figure file "../doc/manual/fig/wave1D" does not exist!
@@ -104436,7 +104333,6 @@ translating doconce text in tmp2.do.txt to sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ...
@@ -104456,7 +104352,6 @@ replacing ../lib/doconce/doconce.py by _static/doconce.py in tmp2.do.txt
 replacing two_media99 by two_media in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104486,7 +104381,6 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104521,7 +104415,6 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 replacing 99x9.ogg by .ogg in tmp2.do.txt
 + doconce format html tmp2
 translating doconce text in tmp2.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104556,7 +104449,6 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 ^!bsol.+?!esol replaced by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104581,7 +104473,6 @@ output in tmp2.rst
 ^!bhint.+?!ehint replaced by  in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
@@ -104604,7 +104495,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 output in tmp2.rst
 + doconce format pdflatex tmp2 --device=paper
 translating doconce text in tmp2.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
@@ -104627,7 +104517,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format pdflatex tmp2
 translating doconce text in tmp2.do.txt to pdflatex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
@@ -104655,7 +104544,6 @@ Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce format html quickref --pygments_html_style=none --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.html
 + '[' 0 -ne 0 ']'
@@ -104663,7 +104551,6 @@ output in quickref.html
 + doconce format latex quickref --no_preprocess --latex_font=helvetica
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to latex
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.p.tex
 + '[' 0 -ne 0 ']'
@@ -105457,7 +105344,6 @@ Transcript written on quickref.log.
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
@@ -105572,7 +105458,6 @@ google-chrome sphinx-rootdir/_build/html/index.html
 + doconce format rst quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to rst
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
@@ -106657,7 +106542,6 @@ Transcript written on quickref.rst.log.
 + doconce format plain quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to plain
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106668,7 +106552,6 @@ output in quickref.txt
 + doconce format gwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106679,7 +106562,6 @@ output in quickref.gwiki
 + doconce format mwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106690,7 +106572,6 @@ output in quickref.mwiki
 + doconce format cwiki quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106701,7 +106582,6 @@ output in quickref.cwiki
 + doconce format st quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106712,7 +106592,6 @@ output in quickref.st
 + doconce format epytext quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
@@ -106723,7 +106602,6 @@ output in quickref.epytext
 + doconce format pandoc quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to pandoc
-XXX {'icon_notice': 'small_gray_notice.png', 'color': '#555', 'icon_warning': 'small_gray_warning.png', 'icon_block': '', 'background': '#f8f8f8', 'boundary': '#bababa', 'icon_question': 'small_gray_question.png', 'icon_summary': 'small_gray_summary.png'}
 copy complete file doconce_program.sh  (format: shpro)
 output in quickref.md
 + '[' 0 -ne 0 ']'

@@ -855,44 +855,27 @@ INLINE_TAGS = {
     # __Abstract.__ Any text up to a headline === or toc-like keywords
     # (TOC is already processed)
     'abstract':  # needs re.DOTALL | re.MULTILINE
-    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|\s*[_=]{3,9})""",
-    #r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>\s*[_=]{3,9})""",
+    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|\s*={3,9})""",
 
     # ======= Seven Equality Signs for Headline =======
     # (the old underscores instead of = are still allowed)
     'section':
-    #r'^_{7}(?P<subst>[^ ].*)_{7}\s*$',
-    # previous: r'^\s*_{7}(?P<subst>[^ ].*?)_+\s*$',
-    #r'^\s*[_=]{7}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
-    #r'^\s*[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    #r'^ *[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]{7} *$',
     r'^={7}\s*(?P<subst>[^ =-].+?)\s*={7} *$',
 
     'chapter':
-    #r'^\s*[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    #r'^ *[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]{9} *$',
     r'^={9}\s*(?P<subst>[^ =-].+?)\s*={9} *$',
 
     'subsection':
-    #r'^\s*_{5}(?P<subst>[^ ].*?)_+\s*$',
-    #r'^\s*[_=]{5}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
-    #r'^\s*[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    #r'^ *[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]{5} *$',
     r'^={5}\s*(?P<subst>[^ =-].+?)\s*={5} *$',
 
     'subsubsection':
-    #r'^\s*_{3}(?P<subst>[^ ].*?)_+\s*$',
-    #r'^\s*[_=]{3}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
-    #r'^\s*[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
     # final \s is needed for latex to make \paragraph attached to text
     # with no blank line
-    #r'^ *[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]{3}\s*$',
     r'^={3}\s*(?P<subst>[^ =-].+?)\s*={3}\s*$',
 
     # __Two underscores for Inline Paragraph Title.__
     'paragraph':
     r'(?P<begin>^)__(?P<subst>.+?)__(?P<space>(\n| +))',
-    #r'(?P<begin>^)[_=]{2}\s*(?P<subst>[^ =-].+?)[_=]{2}\s+',
 
     # TITLE: My Document Title
     'title':

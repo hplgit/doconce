@@ -4810,7 +4810,7 @@ def list_labels():
         # Identify heading and print out
         heading = ''
         if dofile:
-            m = re.search(r'[_=]{3,7}\s*(.+?)\s*[_=]{3,7}', line)
+            m = re.search(r'={3,7}\s*(.+?)\s*={3,7}', line)
             if m:
                 heading = m.group(1).strip()
         else:
