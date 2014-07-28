@@ -1116,3 +1116,17 @@ from DocOnce. It is then wise to run DocOnce and the editing commands
 from a script to automate all steps in going from DocOnce to the final
 format(s). The `make.sh` files in `docs/manual` and `docs/tutorial`
 constitute comprehensive examples on how such scripts can be made.
+
+======= Options for the `doconce` commands =======
+
+===== `doconce format` command-line options =====
+
+idx{doconce format options}
+idx{command-line options!doconce format}
+
+The transformation of a DocOnce source to various format is done with
+the `doconce format` command, which has *a lot* of command-line options.
+These are printed out by `doconce format --help`. The output is listed
+here for convenience.
+
+@@@OSCMD doconce format --help

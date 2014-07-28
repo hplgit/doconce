@@ -184,6 +184,7 @@ def define(FILENAME_EXTENSION,
         'linebreak':     r'\g<text>',
         'footnote':      None,
         'non-breaking-space': ' ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     from rst import rst_code

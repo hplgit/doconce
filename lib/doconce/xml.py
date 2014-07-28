@@ -551,13 +551,12 @@ def define(FILENAME_EXTENSION,
 
     # all arguments are dicts and accept in-place modifications (extensions)
 
-    FILENAME_EXTENSION['html'] = '.html'  # output file extension
-    BLANKLINE['html'] = '\n<p>\n'         # blank input line => new paragraph
+    FILENAME_EXTENSION['xml'] = '.html'  # output file extension
+    BLANKLINE['xml'] = '\n<blankline>\n' # blank input line => new paragraph
 
-    INLINE_TAGS_SUBST['html'] = {         # from inline tags to HTML tags
+    INLINE_TAGS_SUBST['xml'] = {         # from inline tags to HTML tags
         # keep math as is:
         'math':          r'\g<begin>\( \g<subst> \)\g<end>',
-        #'math2':         r'\g<begin>\g<puretext>\g<end>',
         'math2':         r'\g<begin>\( \g<latexmath> \)\g<end>',
         'emphasize':     r'\g<begin><em>\g<subst></em>\g<end>',
         'bold':          r'\g<begin><b>\g<subst></b>\g<end>',
@@ -575,23 +574,25 @@ def define(FILENAME_EXTENSION,
         'subsection':    r'\n<h3>\g<subst></h3>',
         'subsubsection': r'\n<h4>\g<subst></h4>\n',
         'paragraph':     r'<b>\g<subst></b>\g<space>',
-        'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
-        'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
-        'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->',
+        'abstract':      r'<abstract type="\g<type>">\n\g<text>\n</abstract>\n\g<rest>',
+        'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>',
+        'date':          r'<date>\n\g<subst>\n</date>',
         'author':        html_author,
         'figure':        html_figure,
         'movie':         html_movie,
-        'comment':       '<!-- %s -->',
+        'comment':       '<comment>%s</comment>',
         'linebreak':     r'\g<text><br />',
+        'ampersand2':    r' \g<1><ampersand>\g<2>',
+        'ampersand1':    r'\g<1> <ampersand> \g<2>',
         }
 
     if option('wordpress'):
-        INLINE_TAGS_SUBST['html'].update({
+        INLINE_TAGS_SUBST['xml'].update({
             'math':          r'\g<begin>$latex \g<subst>$\g<end>',
             'math2':         r'\g<begin>$latex \g<latexmath>$\g<end>'
             })
 
-    ENVIRS['html'] = {
+    ENVIRS['xml'] = {
         'quote':         html_quote,
         'warning':       html_warning,
         'question':      html_question,
@@ -601,10 +602,10 @@ def define(FILENAME_EXTENSION,
         'box':           html_box,
     }
 
-    CODE['html'] = html_code
+    CODE['xml'] = html_code
 
     # how to typeset lists and their items in html:
-    LIST['html'] = {
+    LIST['xml'] = {
         'itemize':
         {'begin': '\n<ul>\n', 'item': '<li>', 'end': '</ul>\n\n'},
 
@@ -619,7 +620,7 @@ def define(FILENAME_EXTENSION,
 
     # how to typeset description lists for function arguments, return
     # values, and module/class variables:
-    ARGLIST['html'] = {
+    ARGLIST['xml'] = {
         'parameter': '<b>argument</b>',
         'keyword': '<b>keyword argument</b>',
         'return': '<b>return value(s)</b>',
@@ -628,13 +629,13 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg')
-    CROSS_REFS['html'] = html_ref_and_label
-    TABLE['html'] = html_table
-    INDEX_BIB['html'] = html_index_bib
-    EXERCISE['html'] = plain_exercise
-    TOC['html'] = html_toc
-    QUIZ['html'] = html_quiz
+    FIGURE_EXT['xml'] = ('.png', '.gif', '.jpg', '.jpeg')
+    CROSS_REFS['xml'] = html_ref_and_label
+    TABLE['xml'] = html_table
+    INDEX_BIB['xml'] = html_index_bib
+    EXERCISE['xml'] = plain_exercise
+    TOC['xml'] = html_toc
+    QUIZ['xml'] = html_quiz
 
     # Embedded style sheets
     style = option('html_style=')
@@ -787,7 +788,7 @@ def define(FILENAME_EXTENSION,
         meta_tags += '<meta name="keywords" content="%s">\n' % keywords
 
 
-    INTRO['html'] = """\
+    INTRO['xml'] = """\
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
@@ -804,7 +805,7 @@ Automatically generated HTML file from Doconce source
     """ % (meta_tags, style)
 
     # document ending:
-    OUTRO['html'] = """
+    OUTRO['xml'] = """
 
 </body>
 </html>

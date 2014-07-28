@@ -847,6 +847,7 @@ def insert_code_from_file(filestr, format):
         if line.startswith('@@@CODE '):
             num_files += 1
             debugpr('found verbatim copy (line %d):\n%s\n' % (i+1, line))
+            code_envir = None
             words = line.split()
             try:
                 filename = words[1]
@@ -886,6 +887,7 @@ def insert_code_from_file(filestr, format):
                 # Determine code environment from filename extension
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
+                # Adjustments to some names
                 if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':
                     filetype = 'cpp'
@@ -897,29 +899,16 @@ def insert_code_from_file(filestr, format):
                     filetype = 'py'
                 elif filetype == 'htm':
                     filetype = 'html'
+                elif filetype == 'tex':
+                    filetype = 'latex'
                 elif filetype == 'text':
                     filetype = 'txt'
                 elif filetype == 'data':
                     filetype = 'dat'
                 elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                     filetype = 'sh'
-
-                if filetype in ('py', 'f', 'c', 'cpp', 'sh',
-                                'm', 'pl', 'cy', 'rst',
-                                'pyopt',  # Online Python Tutor
-                                'pysc',   # Sage cell
-                                'rb', 'html', 'xml', 'js',
-                                'txt', 'csv', 'dat'):
-                    code_envir = filetype
-                elif filetype == 'tex':
-                    code_envir = 'latex'
-                else:
-                    code_envir = ''
-
-            if code_envir in ('cc', 'ccq', 'txt', 'csv', 'dat', ''):
-                code_envir_tp = 'filedata'
-            else:
-                code_envir_tp = 'program'
+                if '.do.txt' in filename:
+                    filetype = 'do'
 
             m = re.search(r'from-?to:', line)
             if m:
@@ -1023,24 +1012,23 @@ def insert_code_from_file(filestr, format):
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
             # Insert a cod or pro directive for ptex2tex and sphinx.
-            if code_envir_tp == 'program':
-                if code_envir.endswith('pro') or code_envir.endswith('cod'):
-                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %s)' % code_envir
-                elif complete_file:
-                    code = "!bc %spro\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %spro)' % code_envir
-                else:
-                    code = "!bc %scod\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %scod)' % code_envir
+            if code_envir is not None:
+                code = "!bc %s\n%s\n!ec" % (code_envir, code)
+                print ' (format: %s)' % code_envir
             else:
-                # filedata (.txt, .csv, .dat, etc, or cc, ccq code_envir)
-                if code_envir:
-                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %s)' % code_envir
+                if filetype == 'unknown':
+                    code = "!bc\n%s\n!ec" % (code)
+                    print ' (format: !bc)'
+                elif filetype in ('txt', 'do'):
+                    # No cod or pro, just text files
+                    code = "!bc %s\n%s\n!ec" % (filetype, code)
+                    print ' (format: !bc)'
+                elif complete_file:
+                    code = "!bc %spro\n%s\n!ec" % (filetype, code)
+                    print ' (format: %spro)' % filetype
                 else:
-                    code = "!bc\n%s\n!ec" % code
-                    print ' (format: plain !bc, not special type)'
+                    code = "!bc %scod\n%s\n!ec" % (filetype, code)
+                    print ' (format: %scod)' % filetype
             lines[i] = code
 
     filestr = '\n'.join(lines)
@@ -2735,10 +2723,6 @@ def typeset_quizzes2(filestr, format):
 
 def inline_tag_subst(filestr, format):
     """Deal with all inline tags by substitution."""
-    # Note that all tags are *substituted* so that the sequence of
-    # operations are not important for the contents of the document - we
-    # choose a sequence that is appropriate from a substitution point
-    # of view
 
     filestr = typeset_authors(filestr, format)
 
@@ -2749,6 +2733,21 @@ def inline_tag_subst(filestr, format):
         w = time.asctime().split()
         date = w[1] + ' ' + w[2] + ', ' + w[4]
         filestr = filestr.replace(origstr, 'DATE: ' + date)
+
+    # Hack for not typesetting ampersands inside inline verbatim text
+    groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
+    verbatims = ['`' + subst + '`'
+                 for begin, dummy1, subst, end, dummy2 in groups]
+    # Protect & inside `...` by transforming it to some marker text.
+    # This change will be substituted back after ampersands1 and ampersands2
+    # are substituted.
+    marker_text = 'zzYYYampYYYzz?'
+    verbatims_to_be_fixed = []
+    for verbatim in verbatims:
+        if '&' in verbatim:
+            from_ = verbatim
+            to_ = verbatim.replace('&', marker_text)
+            filestr = filestr.replace(from_, to_)
 
     debugpr('\n*** Inline tags substitution phase ***')
 
@@ -2773,6 +2772,8 @@ def inline_tag_subst(filestr, format):
         'abstract',  # must become before sections since it tests on ===
         'emphasize', 'math2', 'math',
         'bold',
+        'ampersand2',  # must come before ampersand1 (otherwise ampersand1 recognizes ampersand2 regex)
+        'ampersand1',
         'colortext',
         'verbatim',
         'paragraph',  # after bold and emphasize
@@ -2844,8 +2845,13 @@ def inline_tag_subst(filestr, format):
 
         else:
             raise ValueError, 'replacement is of type %s' % type(replacement)
+
         if occurences > 0:
             debugpr('\n**** The file after %d "%s" substitutions ***\n%s\n%s\n\n' % (occurences, tag, filestr, '-'*80))
+
+    # Hack: substitute marker text for ampersand back
+    filestr = filestr.replace(marker_text, '&')
+
     return filestr
 
 def subst_away_inline_comments(filestr):

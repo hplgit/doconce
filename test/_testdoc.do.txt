@@ -97,8 +97,9 @@ Let's do some copying from files too. First from subroutine up to the very end,
 @@@CODE ../doc/src/manual/__testcode.f fromto: subroutine@
 and then just the subroutine,
 @@@CODE ../doc/src/manual/__testcode.f from-to:a comment@^C\s+END1
-and finally the complete file:
-@@@CODE ../doc/src/manual/__testcode.f
+and finally the complete file with a plain text verbatim environment
+(`envir=ccq`):
+@@@CODE ../doc/src/manual/__testcode.f envir=ccq
 
 Testing other code environments. First Python:
 
@@ -634,14 +635,38 @@ def tfig(fileno):
 __Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
 some text.
 
-Let us also add a test of quotes such as ``double
-quotes, with numbers like 3.14 and
-newline/comma and hyphen (as in double-quote)'';
-written in the standard LaTeX-style that gives correct
-LaTeX formatting and ordinary double quotes for all non-LaTeX formats.
-Here is another sentence that ``caused'' a bug in the past
-because double backtick quotes could imply verbatim text up to
-a verbatim word starting with period, like `.txt`.
+# Test various types of headlines
+% for heading in ('_Just bold_', '*Just emphasize*', '`Just verbatim`', '_Bold_ beginning', '*Emphasize* beginning', '`Verbatim` beginning', 'Maybe _bold end_', 'Maybe *emphasize end*', 'Maybe `verbatim end`', 'The middle has _bold_ word', 'The middle has *emphasize* word', 'The middle has `verbatim` word'):
+===== ${heading} =====
+
+Some text.
+
+% endfor
+% for heading in ('*Just emphasize*', '`Just verbatim`', '*Emphasize* beginning', '`Verbatim beginning`', 'Maybe *emphasize end*', 'Maybe `verbatim end`', 'The middle has *emphasize* word', 'The middle has `verbatim` word'):
+
+__${heading}.__ Some text.
+
+% endfor
+
+__Ampersand.__
+We can test Hennes & Mauritz, often abbreviated H & M, but written
+as `Hennes & Mauritz` and `H & M`.
+A sole `&` must also work.
+# Note: substitutions must not occur inside verbatim, just in ordinary text.
+
+!bc
+# Just to check that ampersand works in code blocks:
+c = a & b
+!ec
+
+__Quotes.__
+Let us also add a test of quotes such as ``double quotes, with numbers
+like 3.14 and newline/comma and hyphen (as in double-quote)''; written
+in the standard LaTeX-style that gives correct LaTeX formatting and
+ordinary double quotes for all non-LaTeX formats.  Here is another
+sentence that ``caused'' a bug in the past because double backtick
+quotes could imply verbatim text up to a verbatim word starting with
+period, like `.txt`.
 
 
 ===== Bibliography test =====

@@ -229,6 +229,7 @@ def define(FILENAME_EXTENSION,
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>',  # Not sure how this is supported; Markdown applies <br> but that cannot be used for latex output with ipynb...
         'non-breaking-space': ' ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['ipynb'] = ipynb_code

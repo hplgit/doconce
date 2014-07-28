@@ -1744,6 +1744,8 @@ def define(FILENAME_EXTENSION,
         'footnote':      html_footnotes,
         'non-breaking-space': '&nbsp;',
         'horizontal-rule': '<hr>',
+        'ampersand1':    r'\g<1> &amp; \g<2>',
+        'ampersand2':    r' \g<1>&amp;\g<2>',
         }
 
     if option('wordpress'):

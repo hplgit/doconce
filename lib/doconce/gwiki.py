@@ -237,6 +237,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text>' + '\n',
         'non-breaking-space': ' ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['gwiki'] = gwiki_code

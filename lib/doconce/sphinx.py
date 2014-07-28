@@ -250,9 +250,14 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     for key in sets.Set(code_block_types):
         if key in envir2pygments:
             if not envir2pygments[key] in legal_pygments_languages:
-                raise TypeError('%s is not a legal Pygments language '\
-                                '(lexer) in line with:\n  %s' % \
-                                (envir2pygments[key], defs_line))
+                print """*** warning: %s is not a legal Pygments language (lexer)
+found in line:
+  %s
+
+    The 'text' lexer will be used instead.
+""" % (envir2pygments[key], defs_line)
+                envir2pygments[key] = 'text'
+
         #filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
         #                 '\n.. code-block:: %s\n\n' % envir2pygments[key], filestr,
         #                 flags=re.MULTILINE)

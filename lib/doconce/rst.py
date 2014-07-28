@@ -573,6 +573,7 @@ def define(FILENAME_EXTENSION,
         'footnote':      rst_footnotes,
         'non-breaking-space': ' |nbsp| ',
         'horizontal-rule': '---------',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
     if option('rst_mathjax'):
         # rst2html conversion requires four backslashes here for one of them

@@ -843,6 +843,16 @@ The associated DocOnce source reads
 |equote
 !ec
 
+=== Ampersand ===
+
+An ampersand, as in Guns & Roses or Texas A & M, is written as a
+plain `&` *with space(s) on both sides*. Single upper case letters on each
+side of `&`, as in `Texas A & M`, remove the spaces and result in
+Texas A & M, while words on both sides of `&`, as in `Guns & Roses`,
+preserve the spaces: Guns & Roses. Failing to have spaces before and
+after `&` will result in wrong typesetting of the ampersand in the `html`,
+`latex`, and `pdflatex` formats.
+
 === Footnotes ===
 
 Typesetting of footnotes employs a common email or Extended Markdown syntax:
@@ -2015,6 +2025,12 @@ on the file extension:
 !bc do
 @@@CODE somefile.py envir=X fromto: def myfunc@def yourfunc
 !ec
+This is the same as writing `!bc X` and copying parts of the `somefile.py`
+text into the DocOnce source file, followed by `!ec`.
+For example, if the lines between the `myfunc` and `yourfunc` functions
+actually work as a complete Python program, one could specify `envir=pypro`
+to indicate that it is a complete program and not a snippet (i.e.,
+`pycod` would be the default without `envir=pypro` in this case).
 
 Let us copy a whole file (the first line above):
 
@@ -2610,7 +2626,7 @@ by DocOnce, it is recommended to hardcode that feature for a particular
 format and use the if-else construction of the preprocessor. For example,
 if a sophisticated table is desired in LaTeX output, do something like
 
-@@@CODE _format_specific2.do.txt envir=cc
+@@@CODE _format_specific2.do.txt envir=ccq
 
 Similarly, if certain adjustments are needed, like
 pagebreaks in LaTeX, hardcode that in the DocOnce format (and recall

@@ -1,0 +1,7 @@
+This HTML template builds on a particular solarized style developed by
+Prof. Peter Hascke, see http://www.peterhaschke.com, but the style has
+been extended and modified for use with DocOnce.
+
+The style from http://www.peterhaschke.com is released under the
+license http://creativecommons.org/licenses/by-sa/3.0/ (see
+http://www.peterhaschke.com/About).

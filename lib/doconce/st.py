@@ -50,6 +50,7 @@ def define(FILENAME_EXTENSION,
         'movie':         default_movie,
         'linebreak':     r'\g<text>',
         'non-breaking-space': ' ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     from rst import rst_code, rst_table

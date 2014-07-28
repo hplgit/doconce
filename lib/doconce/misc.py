@@ -8,15 +8,14 @@ _registered_command_line_options = [
     ('--help',
      'Print all options to the doconce program.'),
     ('--debug',
-     'Write a debugging file _doconce_debugging.log with lots if intermediate results'),
+     """Write a debugging file _doconce_debugging.log with lots
+of intermediate results"""),
     ('--no_abort',
      'Do not abort the execution if syntax errors are found.'),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
     ('--encoding=',
      'Specify encoding (e.g., latin1 or utf-8).'),
-    ('--oneline_paragraphs',
-     'Combine paragraphs to one line (does not work well).'),
     ('--no_mako',
      'Do not run the Mako preprocessor program.'),
     ('--no_preprocess',
@@ -25,25 +24,28 @@ _registered_command_line_options = [
      'Make Mako report on undefined variables.'),
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
-    ('--runestone', 'Make RunestoneInteractive version of a Sphinx docoment'),
+    ('--runestone',
+     'Make a RunestoneInteractive version of a Sphinx document.'),
     ('--max_bc_linelength=',
-     'Strip lines in !bc environments that are longer than specified (to prevent too long lines). Default: None (no restriction on length).'),
+     """Strip lines in !bc environments that are longer than specified
+(to prevent too long lines). Default: None (no length restriction)."""),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
      'Specify the minted style to be used for typesetting code in LaTeX.'),
     ('--pygments_html_style=',
-     """Specify the minted/pygments style to be used for typesetting code in HTML.
-Default: default (other values: monokai, manni, rrt, perldoc, borland,
-colorful, murphy, trac, tango, fruity, autumn, emacs, vim, pastie, friendly,
-native).
+     """Specify the minted/pygments style to be used for typesetting code
+in HTML.
+Default: default (other values: monokai, manni, rrt, perldoc,
+borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
+vim, pastie, friendly, native).
 none, no, off: turn off pygments to typeset computer code in HTML,
 use plain <pre> tags."""),
     ('--pygments_html_linenos',
      """Turn on line numbers in pygmentized computer code in HTML.
-(In LaTeX line numbers can be added via doconce subst or replace
-such that the verbatim environments become like
-\begin{minted}[...,linenos=true,...].)"""),
+(In LaTeX line numbers can be added via doconce subst or
+doconce replace such that the verbatim environments get
+the linenos=true parameter.)"""),
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=', """Name of theme for HTML style:
@@ -56,25 +58,36 @@ bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 (dark:) amelia, cyborg, darkly, slate, spruce,
                 superhero (demo: bootswatch.com"""),
     ('--html_code_style=',
-     'off, inherit, transparent: enable normal inline verbatim font where foreground and background color is inherited from the surroundnings (e.g., to avoid the red Boostrap color). Default: on.'),
+     """off, inherit, transparent: enable normal inline verbatim font
+where foreground and background color is inherited from the
+surroundnings (e.g., to avoid the red Boostrap color).
+Default: on."""),
     ('--html_pre_style=',
-     'off, inherit, transparent: let code blocks inside <pre> tags have foreground and background color inherited from the surroundnings. Default: on.'),
+     """off, inherit, transparent: let code blocks inside <pre> tags have
+foreground and background color inherited from the surroundnings.
+Default: on."""),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
-    ('--html_toc_depth=', 'No of levels in the table of contents in HTML output for Bootstrap-based styles. Default: 2.'),
-    ('--html_toc_indent=', 'No of spaces for indentation of subsections in the table of contents in HTML output. Default: 3 (0 gives toc as nested list in Bootstrap-based styles).'),
+    ('--html_toc_depth=',
+     """No of levels in the table of contents in HTML output for
+Bootstrap-based styles. Default: 2."""),
+    ('--html_toc_indent=',
+     """No of spaces for indentation of subsections in the table of
+contents in HTML output. Default: 3 (0 gives toc as nested list
+in Bootstrap-based styles)."""),
     ('--html_body_font=',
-     """Specify HTML font for text body. =? lists available Google fonts."""),
+     """Specify HTML font for text body. =? lists available fonts."""),
     ('--html_heading_font=',
-     """Specify HTML font for headings. =? lists available Google fonts."""),
+     """Specify HTML font for headings. =? lists available fonts."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
     ('--html_admon=',
      """\
-Type of admonition and color: colors, gray, yellow, apricot, lyx, paragraph.
-For html_style=vagrant,bootstrap,bootswatch,bootswatch_*, the two legal
-values are boostrap_panel, bootstrap_alert."""),
+Type of admonition and color:
+colors, gray, yellow, apricot, lyx, paragraph.
+For html_style=vagrant,bootstrap,bootswatch,bootswatch_*,
+the two legal values are boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--html_admon_bg_color=',
@@ -82,11 +95,18 @@ values are boostrap_panel, bootstrap_alert."""),
     ('--html_admon_bd_color=',
      'Boundary color of admon in HTML.'),
     ('--css=',
-     """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
+     """Specify a .css style file for HTML output.
+If the file does not exist, the default or specified style
+(--html_style=) is written to it."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
-     """Option for doconce slides_html: specify a theme for the present slide type. Examples from reveal.js: darkgray, beige, solarized, default; from deck.js: sandstone.default, swiss, web-2.0. (The HTML file contains a comment with the various stylesheets for the various available themes.)"""),
+     """Option for doconce slides_html: specify a theme for the
+present slide type.
+Examples from reveal.js: darkgray, beige, solarized, default;
+from deck.js: sandstone.default, swiss, web-2.0.
+(The HTML file contains a comment with the various stylesheets
+for the various available themes.)"""),
     ('--html_footer_logo=',
      """Specify a filename or a style name for a logo in the slide footer."""),
     ('--beamer_slide_theme=',
@@ -100,11 +120,15 @@ inserted to the right in exercises - "default" and "none" are allowed
     ('--html_links_in_new_window',
      """Open HTML links in a new window."""),
     ('--html_quiz_button_text=',
-     'Text on buttons for collapsing/expanding answers and explanations\nin quizzes (with bootstrap styles). Default: Empty (just pencil glyphion).'),
+     """Text on buttons for collapsing/expanding answers and
+explanations\nin quizzes (with bootstrap styles).
+Default: Empty (just pencil glyphion)."""),
     ('--html_bootstrap_navbar=',
      'Turns the Bootstrap navigation bar on/off. Default: on.'),
     ('--html_bootstrap_jumbotron=',
-     'Turns the Bootstrap jumbotron intro on/off and governs the size of the heading. Default: on. Other values: h2, off (h2 gives h2 heading instead of h1, off gives no jumbotron).'),
+     """Turns the Bootstrap jumbotron intro on/off and governs the
+size of the heading. Default: on. Other values: h2, off
+(h2 gives h2 heading instead of h1, off gives no jumbotron)."""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',
@@ -185,17 +209,29 @@ to the doconce-generated preamble."""),
 computer programs."""),
     ('--latex_admon=',
      """Type of admonition in LaTeX:
-colors1:   (inspired by the NumPy User Guide) applies different colors for
-            the different admons with an embedded icon,
-colors2:    like `colors1` but the text is wrapped around the icon,
-mdfbox:     rounded gray boxes with a potential title and no icon (default),
-graybox2:   box with square corners, gray background, and narrower
-            than mdfbox, if code it reduces to something like mdfbox
-            (mdframed based); the summary admon is in case of A4 format
-            only half of the text width with text wrapped around
-            (effective for proposals and articles),
-grayicon:   box with gray icons and a default light gray background,
-yellowicon: box yellow icons and a default light yellow background,
+colors1:
+(inspired by the NumPy User Guide) applies different colors
+for the different admons with an embedded icon,
+
+colors2:
+like `colors1` but the text is wrapped around the icon,
+
+mdfbox:
+rounded gray boxes with a optional title and no icon (default),
+
+graybox2:
+box with square corners, gray background, and narrower
+than mdfbox, if code it reduces to something like mdfbox
+(mdframed based); the summary admon is in case of A4 format
+only half of the text width with text wrapped around
+(effective for proposals and articles),
+
+grayicon:
+box with gray icons and a default light gray background,
+
+yellowicon:
+box yellow icons and a default light yellow background,
+
 paragraph:  plain paragraph with boldface heading.
 """),
     ('--latex_admon_color=',
@@ -206,11 +242,13 @@ Either rgb tuple or saturated color a la yellow!5:
 (note the quotes, needed for bash, in the latter example)
 """),
     ('--latex_admon_title_no_period',
-     'Do not add a period at the end of admon titles in LaTeX if it is missing.'),
+     """Do not add a period at the end of admon titles in LaTeX if
+it is missing."""),
     ('--latex_admon_envir_map=',
-     """Mapping of code envirs to new envir names inside admons (e.g., to get
-a different code typesetting inside admons. If a number, say 2, as in
---latex_admon_envir_map=2, an envir like pycod gets the number appended:
+     """Mapping of code envirs to new envir names inside admons
+(e.g., to get a different code typesetting inside admons).
+If a number, say 2, as in --latex_admon_envir_map=2,
+an envir like pycod gets the number appended:
 pycod2. Otherwise it must be a mapping for each envir:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax)."""),
@@ -219,7 +257,8 @@ pycod2. Otherwise it must be a mapping for each envir:
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
          with a chapter prefix."""),
     ('--latex_subex_header_postfix=',
-     'Default: ). Gives headers a), b), etc. Can be set to period, colon, etc.'),
+     """Default: ).
+Gives headers a), b), etc. Can be set to period, colon, etc."""),
     ('--xelatex', 'Use xelatex instead of latex/pdflatex.'),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
@@ -227,7 +266,8 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--verbose',
      'Write out all OS commands run by doconce.'),
     ('--examples_as_exercises',
-     'Treat examples of the form "==== Example: ..." like exercise environments.'),
+     """Treat examples of the form "==== Example: ..."
+as in exercise environments."""),
     ('--without_solutions',
      'Leave out solution environments from exercises.'),
     ('--without_answers',
@@ -237,13 +277,19 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--wordpress',
      'Make HTML output for wordpress.com pages.'),
     ('--tables2csv',
-     'Write each table to a CSV file table_X.csv, where X is the table number.'),
+     """Write each table to a CSV file table_X.csv,
+where X is the table number (autonumbered in according to
+appearance in the DocOnce source file)."""),
     ('--sections_up',
-     'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
+     """Upgrade all sections: sections to chapters, subsections
+to sections, etc."""),
     ('--sections_down',
-     'Downgrade all sections: chapters to sections, sections to subsections, etc.'),
+     """Downgrade all sections: chapters to sections, sections
+to subsections, etc."""),
     ('--os_prompt=',
-     'Terminal prompt in output from running OS commands (@@@OSCMD). None or empty: no prompt, just the command; nocmd: no command, just the output. Default is "Terminal>".'),
+     """Terminal prompt in output from running OS commands (the
+@@@OSCMD instruction). None or empty: no prompt, just the command;
+nocmd: no command, just the output. Default is "Terminal>"."""),
     ('--code_prefix=',
      'Prefix all @@@CODE imports with some path.'),
     ('--figure_prefix=',
@@ -251,7 +297,9 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--movie_prefix=',
      'Prefix all movie filenames with, e.g., an URL.'),
     ('--no_mp4_webm_ogg_alternatives',
-     'Use just the specified (.mp4, .webm, .ogg) movie file; do not allow alternatives in HTML5 video tag. Used if the just the specified movie format should be played.'),
+     """Use just the specified (.mp4, .webm, .ogg) movie file;
+do not allow alternatives in HTML5 video tag.
+Used if the just the specified movie format should be played."""),
     ('--handout',
      'Makes slides output suited for printing.'),
     ('--urlcheck',
@@ -261,32 +309,49 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--markdown',
      'Allow Markdown (and some Extended Markdown) syntax as input.'),
     ('--md2do_output=',
-     'Dump to file the Doconce code arising from converting from Markdown. Default value is None (no dump). Any filename can be specified: --md2do_output=myfile.do.txt'),
+     """Dump to file the Doconce code arising from converting from
+Markdown. Default value is None (no dump).
+Any filename can be specified: --md2do_output=myfile.do.txt"""),
     ('--github_md',
      'Turn on github-flavored-markdown dialect of the pandoc translator'),
     ('--strapdown',
-     'Wrap Markdown output in HTML header/footer such that the output file (renamed as .html) can automatically be rendered as an HTML via strapdownjs.com technology. Combine with --github_md for richer output. Styles are set with --bootwatch_theme=cyborg (for instance).'),
+     """Wrap Markdown output in HTML header/footer such that the
+output file (renamed as .html) can automatically be rendered as
+an HTML via strapdownjs.com technology. Combine with --github_md
+for richer output. Styles are set with --bootwatch_theme=cyborg
+(for instance)."""),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ('--quiz_question_prefix=', """\
-Prefix/title before question in quizzes. Default: "Question:". Can also be
-set in square brackets for each individual question.
-("Q: [] What is 1+1?" results in no prefix/title before the "What is 1+1?"."""),
+Prefix/title before question in quizzes. Default: "Question:".
+Can also be set in square brackets for each individual question.
+("Q: [] What is 1+1?"
+results in no prefix/title before the "What is 1+1?"."""),
     ('--quiz_choice_prefix=', """\
-Prefix/title before choices in quizzes. Default for HTML: "Choice", resulting in
-numbered choices "Choice 1:", "Choice 2:", etc. A value with colon, period,
-or question mark (e.g., "Answer:") leaves out the numbering.
-Default for latex/pdflatex: letter or letter+checkbox. Other values:
-number, number+checkbox, number+circle, letter+circle, letter.
+Prefix/title before choices in quizzes.
+Default for HTML: "Choice", resulting in numbered choices
+"Choice 1:", "Choice 2:", etc.
+A value with colon, period, or question mark (e.g., "Answer:")
+leaves out the numbering.
+Default for latex/pdflatex: letter or letter+checkbox.
+Other values: number, number+checkbox, number+circle, letter+circle,
+letter.
 The checkbox or circle is always omitted if answers or solutions are
-included (i.e., if none of the --without_answers and --without_solutions
-is set).
-The choice prefix can also be set in square brackets for each individual choice.
-("Cr: [] Two" results in no prefix/title before the the answer "Two".
+included (i.e., if none of the --without_answers and
+--without_solutions is set).
+The choice prefix can also be set in square brackets for each
+individual choice.
+("Cr: [] Two"
+results in no prefix/title before the the answer "Two".
 """),
-    ('--quiz_horizontal_rule=', 'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
-    ('--rst_uio', 'Univ. of Oslo version of rst files for their Vortex system.'),
-    ('--rst_mathjax', 'Use raw HTML with MathJax for LaTeX mathematics in rst files.'),
+    ('--quiz_horizontal_rule=',
+     'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
+    ('--rst_uio',
+     'Univ. of Oslo version of rst files for their Vortex system.'),
+    ('--rst_mathjax',
+     'Use raw HTML with MathJax for LaTeX mathematics in rst files.'),
+    ('--oneline_paragraphs',
+     'Combine paragraphs to one line (does not work well).'),
     ]
 
 _legal_command_line_options = \
@@ -297,11 +362,17 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
-    print 'doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile'
+    print """
+doconce format X doconcefile
+
+where X can be any of the formats
+html, latex, pdflatex, rst, sphinx, plain, gwiki, mwiki, cwiki,
+pandoc, epytext.
+"""
     for opt, help in _registered_command_line_options:
         if opt.endswith('='):
             opt += '...'
-        print '%s\n    %s\n' % (opt, help)
+        print '\n%s\n\n%s\n' % (opt, help)
 
 # Import options from config file instead of the command line
 try:
@@ -644,7 +715,7 @@ def wildcard_notation(files):
 def subst():
     if len(sys.argv) < 3:
         _usage_subst()
-        sys.exit(1)
+        sys.exit(0)
 
     from getopt import getopt
     optlist, args = getopt(sys.argv[1:], 'smx', ['restore'])
@@ -687,7 +758,7 @@ def _usage_replace():
 def replace():
     if len(sys.argv) < 4:
         _usage_replace()
-        sys.exit(1)
+        sys.exit(0)
 
     from_text = sys.argv[1]
     to_text = sys.argv[2]
@@ -729,7 +800,7 @@ def replace_from_file():
     """
     if len(sys.argv) < 3:
         _usage_replace_from_file()
-        sys.exit(1)
+        sys.exit(0)
 
     fromto_file = sys.argv[1]
     f = open(fromto_file, 'r')
@@ -770,7 +841,7 @@ def _usage_expand_mako():
 def expand_mako():
     if len(sys.argv) < 4:
         _usage_expand_mako()
-        sys.exit(1)
+        sys.exit(0)
 
     mako_filename = sys.argv[1]
     funcname = sys.argv[2]
@@ -844,7 +915,7 @@ def _usage_linkchecker():
 def linkchecker():
     if len(sys.argv) <= 1:
         _usage_linkchecker()
-        sys.exit(1)
+        sys.exit(0)
     from common import is_file_or_url
     prefix = '(file:///|https?://|ftp://)'
     pattern_html = r'href="(%s.+?)"' % prefix
@@ -958,7 +1029,7 @@ rather than relying on the fixes in this script...
 def sphinxfix_localURLs():
     if len(sys.argv) < 2:
         _usage_sphinxfix_localURLs()
-        sys.exit(1)
+        sys.exit(0)
 
     # Find addresses to exclude
     idx = -1  # index in sys.argv for the -not option
@@ -994,7 +1065,7 @@ a title.
 def latex_exercise_toc():
     if len(sys.argv) < 2:
         _usage_latex_exercise_toc()
-        sys.exit(1)
+        sys.exit(0)
     dofile = sys.argv[1]
     if dofile.endswith('.do.txt'):
         dofile = dofile[:-7]
@@ -1103,7 +1174,7 @@ def combine_images():
 
     if len(sys.argv) < 3:
         _usage_combine_images()
-        sys.exit(1)
+        sys.exit(0)
 
     if sys.argv[1] in ('pdf', 'png', 'jpg', 'eps', 'ps', 'jpeg', 'tif', 'tiff'):
         extension = sys.argv[1]
@@ -1191,7 +1262,7 @@ _regex_subst = []
 def expand_commands():
     if len(sys.argv) < 2:
         _usage_expand_commands()
-        sys.exit(1)
+        sys.exit(0)
 
     # Default set of str.replace and re.sub substitutions
     _replace = [
@@ -1337,7 +1408,7 @@ other environments will apply the latex construct from anslistings.sty.
 def ptex2tex():
     if len(sys.argv) <= 1:
         _usage_ptex2tex()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if filename.endswith('.p.tex'):
@@ -1660,9 +1731,9 @@ download preprocess from http://code.google.com/p/preprocess""")
     '''
     # \Verb!...! does not cause linebreak in latex, shift to \texttt{}
     # where possible since this will reduce overfull hboxes
-    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%\\]+?)!\}',
+    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
-    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%\\]+?)!\}',
+    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
 
     f = open(output_filename, 'w')
@@ -1687,7 +1758,7 @@ def grab():
     """
     if len(sys.argv) < 4:
         _usage_grab()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[-1]
     if not sys.argv[1].startswith('--from'):
@@ -1780,7 +1851,7 @@ def remove():
     """
     if len(sys.argv) < 4:
         _usage_remove()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[-1]
     f = open(filename, 'r')
@@ -1826,7 +1897,7 @@ def _usage_remove_exercise_answers():
 def remove_exercise_answers():
     if len(sys.argv) < 2:
         _usage_remove_exercise_answers()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     f = open(filename, 'r')
@@ -1936,7 +2007,7 @@ def _encoding_guesser(filename, verbose=False):
 def guess_encoding():
     if len(sys.argv) != 2:
         _usage_guess_encoding()
-        sys.exit(1)
+        sys.exit(0)
     filename = sys.argv[1]
     print _encoding_guesser(filename, verbose=False)
 
@@ -1973,7 +2044,7 @@ def _change_encoding_python(filename, from_enc, to_enc):
 def change_encoding():
     if len(sys.argv) < 4:
         _usage_change_encoding()
-        sys.exit(1)
+        sys.exit(0)
 
     from_encoding = sys.argv[1]
     to_encoding = sys.argv[2]
@@ -1996,7 +2067,7 @@ def bbl2rst():
     """
     if len(sys.argv) <= 1:
         _usage_bbl2rst()
-        sys.exit(1)
+        sys.exit(0)
 
     bblfile = sys.argv[1]
     text = open(bblfile, 'r').read()
@@ -2096,7 +2167,7 @@ def html_colorbullets():
     """
     if len(sys.argv) <= 1:
         _usage_html_collorbullets()
-        sys.exit(1)
+        sys.exit(0)
 
     red_bullet = 'bullet_red2.png'
     green_bullet = 'bullet_green2.png'
@@ -2162,7 +2233,7 @@ def split_html():
     """
     if len(sys.argv) <= 1:
         _usage_split_html()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.html'):
@@ -2246,7 +2317,7 @@ def slides_html():
 
     if len(sys.argv) <= 2:
         _usage_slides_html()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.html'):
@@ -4310,7 +4381,7 @@ def slides_beamer():
 
     if len(sys.argv) <= 1:
         _usage_slides_beamer()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.tex'):
@@ -4627,7 +4698,7 @@ def split_rst0():
 
     if len(sys.argv) <= 1:
         _usage_split_rst0()
-        sys.exit(1)
+        sys.exit(0)
 
     complete_file = sys.argv[1]
     f = open(complete_file, 'r')
@@ -4675,7 +4746,7 @@ def split_rst():
     """
     if len(sys.argv) <= 1:
         _usage_split_rst()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.rst'):
@@ -4799,7 +4870,7 @@ def list_labels():
     """
     if len(sys.argv) <= 1:
         _usage_list_labels()
-        sys.exit(1)
+        sys.exit(0)
     filename = sys.argv[1]
 
     # doconce or latex file
@@ -4839,7 +4910,7 @@ def _usage_teamod():
 def teamod():
     if len(sys.argv) < 2:
         _usage_teamod()
-        sys.exit(1)
+        sys.exit(0)
 
     name = sys.argv[1]
     if os.path.isdir(name):
@@ -4920,7 +4991,7 @@ def assemble():
     # description above first.
     if len(sys.argv) < 2:
         _usage_assemble()
-        sys.exit(1)
+        sys.exit(0)
 
     master = sys.argv[2]
 
@@ -4978,8 +5049,8 @@ def analyzer():
     # input, include), starting point is a .tex file with includes/inputs
 
     if len(sys.argv) <= 1:
-        _usage_bbl2rst()
-        sys.exit(1)
+        _usage_analyzer()
+        sys.exit(0)
 
     # Must have this in a function since we need to do this recursively
     filename = sys.argv[1]
@@ -5648,7 +5719,7 @@ execfile is applied to .strip to execute the definition of the lists.
 def spellcheck():
     if len(sys.argv) == 1:
         _usage_spellcheck()
-        sys.exit(1)
+        sys.exit(0)
     if sys.argv[1] == '-d':
         dictionary = [sys.argv[2]]
         del sys.argv[1:3]
@@ -5659,7 +5730,7 @@ def spellcheck():
             dictionary = []
     if len(sys.argv) < 2:
         _usage_spellcheck()
-        sys.exit(1)
+        sys.exit(0)
 
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary,)
@@ -5678,7 +5749,7 @@ def ref_external():
     """
     if len(sys.argv) < 2:
         _usage_ref_external()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if filename.endswith('.do.txt'):
@@ -5953,7 +6024,7 @@ The lower limit for overfull hboxes can be specified as an integer.
 def latex_problems():
     if len(sys.argv) < 2:
         _usage_latex_problems()
-        sys.exit(1)
+        sys.exit(0)
 
     try:
         overfull_hbox_limit = float(sys.argv[2])
@@ -6033,7 +6104,7 @@ def _usage_grep():
 def grep():
     if len(sys.argv) < 3:
         _usage_grep()
-        sys.exit(1)
+        sys.exit(0)
 
     file_tp = sys.argv[1]
     filenames = []
@@ -6080,7 +6151,7 @@ def capitalize():
 
     if len(sys.argv) < 2:
         _usage_capitalize()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
 
@@ -6272,7 +6343,7 @@ def md2html():
     """
     if len(sys.argv) < 2:
         _usage_md2html()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.md'):
@@ -6331,7 +6402,7 @@ def md2latex():
     """
     if len(sys.argv) < 2:
         _usage_md2latex()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.md'):
@@ -7610,7 +7681,7 @@ def makefile():
     """Generate a generic (Python) makefile for compiling doconce files."""
     if len(sys.argv) < 3:
         _usage_makefile()
-        sys.exit(1)
+        sys.exit(0)
 
     dofile = sys.argv[1]
     if dofile.endswith('.do.txt'):
@@ -8073,8 +8144,8 @@ and publish can import the data.
 def fix_bibtex4publish():
     """Edit BibTeX files so that publish can import them."""
     if len(sys.argv) < 1:
-        _usage_makefile()
-        sys.exit(1)
+        _usage_fix_bibtex4publish()
+        sys.exit(0)
 
     bibfiles = sys.argv[1:]
     for bibfile in bibfiles:
@@ -8161,7 +8232,7 @@ def csv2table():
     """Convert a csv file to a Doconce table."""
     if len(sys.argv) < 2:
         _usage_csv2table()
-        sys.exit(1)
+        sys.exit(0)
 
     delimiter = ','
     for arg in sys.argv[1:]:
@@ -8262,7 +8333,7 @@ def diff():
     """Find differences between two files."""
     if len(sys.argv) < 3:
         _usage_diff()
-        sys.exit(1)
+        sys.exit(0)
     system('rm -f _diff.*')
 
     file1 = sys.argv[1]
@@ -8432,7 +8503,7 @@ def gitdiff():
     """Make diff of newest and previous version of files (under Git)."""
     if len(sys.argv) < 2:
         _usage_diffgit()
-        sys.exit(1)
+        sys.exit(0)
 
     #diffprog = sys.argv[1]
     filenames = sys.argv[1:]

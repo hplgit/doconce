@@ -378,6 +378,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text><br />',
         'non-breaking-space': '&nbsp;',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['mwiki'] = mwiki_code

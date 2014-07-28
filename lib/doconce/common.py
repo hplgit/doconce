@@ -778,7 +778,7 @@ QUIZ = {}
 
 
 # regular expressions for inline tags:
-inline_tag_begin = r"""(?P<begin>(^|[(\s~]))"""
+inline_tag_begin = r"""(?P<begin>(^|[(\s~]|^__))"""
 # ' is included as apostrophe in end tag
 inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s~\[-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
@@ -909,7 +909,8 @@ INLINE_TAGS = {
     # (i.e., after substitutions of $...$, color, etc.)
     'non-breaking-space': r'(?<=[})>$A-Za-z0-9_`.])~(?=[{(\\<$A-Za-z0-9`:])',
     'horizontal-rule': r'^----+$',
-
+    'ampersand1': r'(?P<pre>[A-Za-z0-9]) +& +(?P<post>[A-Za-z0-9])',  # \1 & \2
+    'ampersand2': r' (?P<pre>[A-Z]) +& +(?P<post>[A-Z](?=\n|[ .,;-?:`]))',
     }
 
 INLINE_TAGS_SUBST = {}

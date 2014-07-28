@@ -354,6 +354,7 @@ def define(FILENAME_EXTENSION,
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>\\n',
         'non-breaking-space': '\\ ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['pandoc'] = pandoc_code

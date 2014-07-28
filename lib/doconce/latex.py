@@ -1808,6 +1808,8 @@ def define(FILENAME_EXTENSION,
         'linebreak':     r'\g<text>\\\\',
         'footnote':      latex_footnotes,
         'non-breaking-space': None,
+        'ampersand1':    r'\g<1> {\&} \g<2>',
+        'ampersand2':    r' \g<1>{\&}\g<2>',
         }
 
     ENVIRS['latex'] = {

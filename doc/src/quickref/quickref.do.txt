@@ -192,6 +192,14 @@ The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences---this way, or in quotes:
 *Premature optimization is the root of all evil.*--- Donald Knuth.
 
+An ampersand, as in Guns & Roses or Texas A & M, is written as a
+plain `&` *with space(s) on both sides*. Single upper case letters on each
+side of `&`, as in `Texas A & M`, remove the spaces and result in
+Texas A & M, while words on both sides of `&`, as in `Guns & Roses`,
+preserve the spaces: Guns & Roses. Failing to have spaces before and
+after `&` will result in wrong typesetting of the ampersand in the `html`,
+`latex`, and `pdflatex` formats.
+
 ===== Lists =====
 
 There are three types of lists: *bullet lists*, where each item starts

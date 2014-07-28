@@ -1085,12 +1085,12 @@ doconce latex_exercise_toc myfile
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == 'format' and option('help'):
         help_format()
-        sys.exit(1)
+        sys.exit(0)
     if len(sys.argv) == 1 or option('help'):
         print 'Usage: doconce command [optional arguments]'
         print 'commands: %s' % (' '.join(commands))
         help()
-        sys.exit(1)
+        sys.exit(0)
 
     command = sys.argv[1]
     del sys.argv[1]
