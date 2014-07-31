@@ -609,7 +609,18 @@ color{blue}{colored words},
 plus LaTeX/TeX inline mathematics, such as $\nu = \sin(x)$|$v = sin(x)$.
 Links are easy to define, either with a "text": "http://google.com" or
 just a plain URL: "http://google.com".
-Also non-breaking space (to avoid linebreak) can be specified.
+Also a non-breaking space (to avoid linebreak), linebreak,<linebreak>
+m-dash (as in m---dash), and horizontal rule can be specified (below).
+
+-------
+
+!bwarning Limitation of inline tagging
+Since DocOnce applies regular expressions to recognize inline tagging,
+there might be cases where the tags are not correctly interpreted
+and translated. Fortunately, such pitfalls are easily circumvented.
+The "troubleshooting document": "http://hplgit.github.io/doconce/doc/pub/trouble/trouble/trouble.html#trouble:pitfalls" shows some
+examples.
+!ewarning
 
 === Emphasized Words ===
 
@@ -627,6 +638,8 @@ _several words in boldface_ followed by *ephasized text*.
 !ec
 The line above gets typeset as
 _several words in boldface_ followed by *ephasized text*.
+One should only have pure text (no mathematical formulas) between the boldface
+or emphasize markers.
 
 === Inline Verbatim Text ===
 
@@ -642,8 +655,8 @@ The typesetting result looks like this:
 while `void myfunc(double *a, double *b)` must be C.
 
 It is recommended to have inline verbatim text on the same line in
-the DocOnce file, because some formats (LaTeX and `ptex2tex`) will have
-problems with inline verbatim text that is split over two lines.
+the DocOnce file, because some formats (LaTeX and the `ptex2tex` program)
+will have problems with inline verbatim text that is split over two lines.
 
 !bnotice
 Watch out for mixing back-ticks and asterisk (i.e., verbatim and

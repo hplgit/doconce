@@ -2,14 +2,17 @@ TITLE: DocOnce Troubleshooting
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
-__Disclaimer.__
+!bwarning Disclaimer
 DocOnce has some support for syntax checking.  If you encounter Python
 errors while running `doconce format`, the reason for the error is
 most likely a syntax problem in your DocOnce source file. You have to
 track down this syntax problem yourself. However, DocOnce applies
 regular expressions to a large extent for transforming text, and
-regular expressions may sometimes fail. Therefore, there is a chance that legal
-DocOnce syntax is not treated properly.
+regular expressions may sometimes lead to undesired results.
+Therefore, there is a chance that legal DocOnce syntax is not
+treated properly. Section ref{trouble:pitfalls} gives some examples of what
+can go wrong.
+!ewarning
 
 
 ======= General Problems =======
@@ -218,6 +221,73 @@ math, admons, code copied from file).
 Not all of Extended Markdown is interpreted by DocOnce, and DocOnce
 transforms to Panddoc-extended Markdown, not the Extended Markdown
 used by these sites.
+
+
+===== Examples on seemingly legal syntax that fails =====
+label{trouble:pitfalls}
+
+Since DocOnce applies regular expressions to a large extent to translate
+the input source to the output format, limitations of regular expressions
+may lead to unexpected results. Here are some examples on what can go
+wrong.
+
+Trying to typeset a mixture of text and mathematics or code in boldface or
+emphasized font fails:
+
+!bc do
+_It is important that $u_1=2$!_
+*It is important that `a*b=b*a` in any computer language*.
+!ec
+The reason is that boldface or emphasize text cannot contain the
+special characters dollar sign and backtick. However, if these
+were allowed, the above examples would fail because the underscore
+in `$u_1=2$` would mark the end of the boldface text. Similarly,
+the `*` in `a*b` would mark the end of the emphasized text.
+Such problems are avoided by *only using plain text inside
+emphasize or boldface tags*:
+
+!bc do
+_It is important that_ $u_1=2$!
+*It is important that* `a*b=b*a` *in any computer language*.
+!ec
+
+Another similar example is the mix of `color{col}{text}` syntax
+with braces inside the text. For example,
+
+!bc do
+color{blue}{However, here a blue color specification
+fails: $\frac{1}{2}\omega^2$.}
+!ec
+The text part is interpreted as string with `However` and lasting up
+to the first right brace, which is in `\frac{1}`. A remedy is, as above,
+to only use plain text inside the text part of the color specification
+and use a `\textcolor` command inside the mathematics:
+
+!bc do
+color{blue}{However, here a blue color specification
+fails:} $\textcolor{red}{\frac{1}{2}\omega^2}$.}
+!ec
+
+Mathematics and code in blocks are invisible when inline tagging is
+interpreted and translated. Therefore, a specification as follows
+works well:
+
+!bc do
+color{red}{This equation,
+
+|bt
+\begin{equation}
+a = b
+label{eq1}
+\end{equation}
+|et
+is meant to be in red and it works.}
+!ec
+
+The rules are that `*text*`, `_text_`, and `color{color}{text}`
+employs a simple rule: `text` lasts up to the first end-tag
+character (`*`, `_`, and `}` above), but code and math blocks
+do not count.
 
 
 ======= Preprocess/Mako problems =======

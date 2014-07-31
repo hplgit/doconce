@@ -753,7 +753,9 @@ def html_code(filestr, code_blocks, code_block_types,
         # Change chapter headings to page
         filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
                          '<h1 class="page-header">\g<1></h1>', filestr)
-        #filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3>', filestr) # for highlighted toc in bootstrap_wtoc template, but did not work,
+        # Some fancy functionality (e.g., in the bootstrap_wtoc template)
+        # requires use of id tag in headings rather than the primitve <a name..
+        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"</a>', filestr) # for highlighted toc in , but did not work,
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):

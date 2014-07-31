@@ -1471,7 +1471,8 @@ def space_in_tables(filestr):
     horizontal_rule = r'^\s*\|[-lrc]+\|\s*$'
     for line in table_lines:
         if not re.search(horizontal_rule, line, flags=re.MULTILINE) \
-           and re.search(r'[^ ]|[^ ]', line) and line.count('|') > 2:
+           and (re.search(r'[$`]\|', line) or re.search(r'\|[$`]', line)) \
+           and line.count('|') > 2:
             line_wspaces = ' | '.join(line.split('|'))
             filestr = filestr.replace(line, line_wspaces)
     return filestr
@@ -1542,18 +1543,21 @@ def typeset_tables(filestr, format):
             if not inside_table:
                 inside_table = True
                 table_counter += 1
-            # Check if | is used in math in this line
-            math_exprs = re.findall(r'\$(.+?)\$', line)
-            for math_expr in math_exprs:
-                if '|' in math_expr:
-                    print '*** error: use of | in math formulas in tables confuses'
-                    print '    the interpretation of the table. Rewrite and remove |.'
-                    print line
-                    _abort()
+            # Check if | is used in math or code in this line.
+            # If so, replace | by a marker text and substitute back
+            marker_text = 'zzYYYpipeYYYzz?'
+            math_code_exprs = re.findall(r'[`$>{].+?[`$<}]', line)
+            for math_code_expr in math_code_exprs:
+                if '|' in math_code_expr:
+                    marked_math_code_expr = math_code_expr.replace(
+                        '|', marker_text)
+                    line = line.replace(math_code_expr, marked_math_code_expr)
 
             # Extract columns, but drop first and last since these
             # are always empty after .split('|')
             columns = line.strip().split('|')[1:-1]  # does not work with math2 syntax
+            # Restore any |
+            columns = [c.replace(marker_text, '|') for c in columns]
             # remove empty columns and extra white space:
             #columns = [c.strip() for c in columns if c]
             #columns = [c.strip() for c in columns if c.strip()]
@@ -2724,6 +2728,9 @@ def typeset_quizzes2(filestr, format):
 def inline_tag_subst(filestr, format):
     """Deal with all inline tags by substitution."""
 
+    # Author syntax contains ampersands so all this must be processed
+    # before ampersand1 and ampersand2 substitutions (and the pre/post hack
+    # for ampersands in inline verbatim expressions)
     filestr = typeset_authors(filestr, format)
 
     # deal with DATE: today (i.e., find today's date)
@@ -2748,6 +2755,7 @@ def inline_tag_subst(filestr, format):
             from_ = verbatim
             to_ = verbatim.replace('&', marker_text)
             filestr = filestr.replace(from_, to_)
+    # Assumption: no ampersands in inline math (of ampersand1/2 type)
 
     debugpr('\n*** Inline tags substitution phase ***')
 

@@ -2544,11 +2544,13 @@ def doconce_split_html(header, parts, footer, basename, filename):
     # different navigation etc.
     header_str = '\n'.join(header)
     vagrant = 'builds on the Twitter Bootstrap style' in header_str
-    bootstrap = '<!-- Bootstrap style: boots' in header_str
+    bootstrap = '<!-- Bootstrap style: ' in header_str or \
+                re.search(r'<link href=.+?boots(trap|watch)', header_str)
 
     if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        # This text is found in vagrant style and will be replaced later
+        # This text is found in templates (vagrant, for instance)
+        # and will be replaced later
         bootstrap_navigation_vagrant = """\
 <!-- Navigation buttons at the bottom:
      Doconce will automatically fill in the right URL in these
@@ -2564,9 +2566,10 @@ def doconce_split_html(header, parts, footer, basename, filename):
 -->
 """
         def bootstrap_navigation(pn, prev_part_filename, next_part_filename):
+            text = '<!-- navigation buttons at the bottom of the page -->'
             if '--pagination' in sys.argv and len(parts) < 19:
                 # Use Bootstrap pagination
-                text = '\n<ul class="pagination">\n'
+                text += '\n<ul class="pagination">\n'
                 if pn > 0:
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
                 for i in range(len(parts)):
@@ -2580,7 +2583,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
             else:
                 # Use plain next and prev buttons with arrows, but
                 # Bootstrap style
-                text = '\n<ul class="pager">\n'
+                text += '\n<ul class="pager">\n'
                 if pn > 0:
                     text += """\
   <li class="previous">
@@ -2660,7 +2663,8 @@ def doconce_split_html(header, parts, footer, basename, filename):
                 _abort()
                 continue  # go to next if abort is turned off
             if n != i:
-                # Reference to label in another file
+                # Reference to label in another part, except the header
+                # and footer (which is included in all parts)
                 name_def_filename = _part_filename % (basename, n) + '.html'
                 if i < len(parts):
                     part = parts[i]
@@ -2671,6 +2675,9 @@ def doconce_split_html(header, parts, footer, basename, filename):
                 text = ''.join(part).replace(
                     '<a href="#%s"' % name,
                     '<a href="%s#%s"' % (name_def_filename, name))
+                # Side effect: will substitute in header and footer
+                # when it should not. This is fixed when the whole
+                # file is constructed.
                 if i < len(parts):
                     parts[i] = text.splitlines(True)
                 elif i == len(parts):
@@ -2859,12 +2866,18 @@ def doconce_split_html(header, parts, footer, basename, filename):
 <a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end bottom navigation -->\n\n')
-            lines += footer
+            line
 
         html.add_to_file_collection(part_filename, filename, 'a')
 
+        part_text = ''.join(lines)
+        # Remove references with this file as prefix in href
+        # (some Bootstrap functionality does not work without this fix,
+        # and in general we should strip local references anyway)
+        part_text = part_text.replace('<a href="%s#' % part_filename,
+                                      '<a href=#')
         f = open(part_filename, 'w')
-        f.write(''.join(lines))
+        f.write(part_text)
         f.close()
         # Make sure main html file equals the first part
         if pn == 0:

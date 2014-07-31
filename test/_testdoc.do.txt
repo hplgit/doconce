@@ -600,6 +600,16 @@ and `|` right before and after verbatim word (with no space):
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+|-----------------------------|
+| $S$         | command       |
+|-----l---------------r-------|
+| $||a_0||$   | `norm|length` |
+| $x\cap y$   | `x|y`         |
+|-----------------------------|
+
 Finally, a table with math
 # #if FORMAT in ("rst", "html", "sphinx", "pandoc")
 (`bm` that expands to `boldsymbol`, was tricky, but
