@@ -556,9 +556,9 @@ MathJax.Hub.Config({
         # Set template_vagrant.html as template
         if not template:
             print """
-*** error: --html_style=vagrant requires
-    cp -r path/to/doconce-source-root/bundled/html_styles/style_vagrant/* .
-    # edit template_vargrant.html to template_mystyle.html
+*** error: --html_style=vagrant requires a template; copy a template
+    cp path/to/doconce-source-root/bundled/html_styles/style_vagrant/template_vagrant.html .
+    and edit as you like, then rerun with
     --html_template=template_mystyle.html
 """
             _abort()
@@ -583,9 +583,8 @@ MathJax.Hub.Config({
             m = re.search(pattern, filestr)
             if m:
                 title = m.group(1).strip()
-                filestr = re.sub(pattern, r'<h1>\g<1></h1>', filestr)
-        authors = '<!-- author(s):' in filestr
 
+        authors = '<!-- author(s):' in filestr
         if authors:
             print """\
 *** warning: AUTHOR may look strange with a template -
@@ -683,6 +682,9 @@ MathJax.Hub.Config({
 """, filestr)
         # Fix tables
         filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
+        # Insert toc
+        if '%(table_of_contents)s' in filestr:
+            filestr = filestr % {'table_of_contents': toc2html()}
 
 
     if MATH_TYPESETTING == 'WordPress':
@@ -1515,13 +1517,15 @@ def define(FILENAME_EXTENSION,
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
                 add_to_file_collection(filename)
     if html_style.startswith('boots'):
-        if html_style == 'bootswatch' or html_style == 'bootstrap'::
+        if html_style == 'bootswatch' or html_style == 'bootstrap':
             bootswatch_style = 'cosmo'  # default
         else:
             bootswatch_style = html_style.split('_')[1]
 
         style = """
 <!-- Style: Bootstrap Bootswatch theme %s -->
+<!-- Note that if you load this file as a local file (file:///...)
+you must add http below: link href=":http://netdna... -->
 <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
 """% (bootswatch_style.capitalize(), bootswatch_style)
         bootstrap_title_bar = ''

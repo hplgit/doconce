@@ -3203,8 +3203,14 @@ away from the beginning of the line.
             print """\
 %s makes use of mako directives and therefore requires mako
 to be installed (www.makotemplates.org).
-On Debian systems, mako can easily be installed through the
-python-mako package (sudo apt-get install python-mako).
+
+If you have pip installed, do
+
+   sudo pip install mako
+
+On Debian (incl. Ubuntu) systems, you can alternatively do
+
+   sudo apt-get install python-mako
 """ % filename
             _abort()
 
