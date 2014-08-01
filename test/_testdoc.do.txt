@@ -609,6 +609,12 @@ but not anymore:
 | $||a_0||$   | `norm|length` |
 | $x\cap y$   | `x|y`         |
 |-----------------------------|
+# #if FORMAT == 'plain'
+
+NOTE: The above table is not correctly handled in the plain text format
+because in this format inline verbatim text look like normal text,
+and the first line in the table then looks like three columns.
+# #endif
 
 Finally, a table with math
 # #if FORMAT in ("rst", "html", "sphinx", "pandoc")

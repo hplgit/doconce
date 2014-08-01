@@ -616,6 +616,22 @@ and `|` right before and after verbatim word (with no space):
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+|-----------------------------|
+| $S$         | command       |
+|-----l---------------r-------|
+| $||a_0||$   | `norm|length` |
+| $x\cap y$   | `x|y`         |
+|-----------------------------|
+
+# #if FORMAT == 'plain'
+NOTE: The above table is not correctly handled in the plain text format
+because in this format inline verbatim text look like normal text,
+and the first line in the table then looks like three columns.
+# #endif
+
 Finally, a table with math
 # #if FORMAT in ("rst", "html", "sphinx", "pandoc")
 (`bm` that expands to `boldsymbol`, was tricky, but
@@ -1455,7 +1471,9 @@ is at the end with only one newline.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -2770,6 +2788,23 @@ and \code{|} right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \code{norm|length} \\
+$x\cap y$          & \code{x|y}         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
 Finally, a table with math
 and URLs.
 
@@ -4957,6 +4992,23 @@ and \texttt{|} right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \texttt{norm|length} \\
+$x\cap y$          & \texttt{x|y}         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
 Finally, a table with math
 and URLs.
 
@@ -7144,6 +7196,23 @@ and \Verb!|! right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \Verb!norm|length! \\
+$x\cap y$          & \Verb!x|y!         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
 Finally, a table with math
 and URLs.
 
@@ -8863,6 +8932,16 @@ and ``|`` right before and after verbatim word (with no space):
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===============  ===============  
+   \\( S \\)         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+\\( x\cap y \\)          ``x|y``  
+===============  ===============  
+
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
 cleanly handled now)
@@ -10579,6 +10658,16 @@ and ``|`` right before and after verbatim word (with no space):
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===============  ===============  
+   :math:`S`         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+:math:`x\cap y`          ``x|y``  
+===============  ===============  
+
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
 cleanly handled now)
@@ -12293,6 +12382,16 @@ and `|` right before and after verbatim word (with no space):
  ||  0                 ||  -9.19             ||  4.13              ||  -0.26             ||
 
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+ ||       _`S`_        ||     _command_      ||
+ ||  $ ||a_0|| $       ||  `norm|length`     ||
+ ||  `x\cap y`         ||  `x|y`             ||
+
+
+
 Finally, a table with math
 and URLs.
 
@@ -13773,6 +13872,19 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   0                                      </td> <td align="right">   -9.19                                  </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                                  </td> </tr>
 </tbody>
 </table>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<table border="1">
+<thead>
+<tr><th align="center">     <math>S</math>     </th> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   <math>x\cap y</math>        </td> <td align="right">   <code>x|y</code>            </td> </tr>
+</tbody>
+</table>
+
 Finally, a table with math
 and URLs.
 
@@ -15331,6 +15443,16 @@ and {{{|}}} right before and after verbatim word (with no space):
  |  0                         |  -9.19                     |  4.13                      |  -0.26                     |
 
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+ | ={{{S}}}               | =command               |
+ |  $ ||a_0|| $           |  {{{norm|length}}}     |
+ |  {{{x\cap y}}}         |  {{{x|y}}}             |
+
+
+
 Finally, a table with math
 and URLs.
 
@@ -16672,6 +16794,16 @@ and '|' right before and after verbatim word (with no space):
           0        -9.19         4.13        -0.26  
 ===========  ===========  ===========  ===========  
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===========  ===========  ===========  
+     S         command    
+===========  ===========  ===========  
+$ ||a_0|| $        'norm  
+x\cap y               'x  
+===========  ===========  ===========  
+
 Finally, a table with math
 and URLs.
 
@@ -17920,6 +18052,16 @@ and C{|} right before and after verbatim word (with no space):
              10            17.74            -4.50             9.96  
               0            -9.19             4.13            -0.26  
 ===============  ===============  ===============  ===============  
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+==============  ==============  
+     M{S}          command      
+==============  ==============  
+$ ||a_0|| $     C{norm|length}  
+M{x\cap y}              C{x|y}  
+==============  ==============  
 
 Finally, a table with math
 and URLs.
@@ -19330,6 +19472,20 @@ and | right before and after verbatim word (with no space):
        10      17.74      -4.50       9.96  
         0      -9.19       4.13      -0.26  
 =========  =========  =========  =========  
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===========  ===========  ===========  
+     S         command    
+===========  ===========  ===========  
+$ ||a_0|| $         norm  
+x\cap y                x  
+===========  ===========  ===========  
+
+NOTE: The above table is not correctly handled in the plain text format
+because in this format inline verbatim text look like normal text,
+and the first line in the table then looks like three columns.
 
 Finally, a table with math
 and URLs.
@@ -20823,6 +20979,17 @@ and `|` right before and after verbatim word (with no space):
           -20         -23.39          -7.65         -19.93  
            10          17.74          -4.50           9.96  
             0          -9.19           4.13          -0.26  
+
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+     $S$          command     
+-------------  -------------  
+$ ||a_0|| $    `norm|length`  
+$x\cap y$              `x|y`  
+
 
 
 Finally, a table with math
@@ -22728,6 +22895,17 @@ is at the end with only one newline.
       "          -20         -23.39          -7.65         -19.93  \n",
       "           10          17.74          -4.50           9.96  \n",
       "            0          -9.19           4.13          -0.26  \n",
+      "\n",
+      "\n",
+      "Pipe symbols in verbatim and math text in tables used to pose difficulties,\n",
+      "but not anymore:\n",
+      "\n",
+      "\n",
+      "     $S$          command     \n",
+      "-------------  -------------  \n",
+      "$ ||a_0|| $    `norm|length`  \n",
+      "$x\\cap y$              `x|y`  \n",
+      "\n",
       "\n",
       "\n",
       "Finally, a table with math\n",
@@ -24665,6 +24843,21 @@ Python.</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:</p>
+</blockquote>
+<blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">$ ||a_0|| $</td>
+<td align="right"><code>norm|length</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math">\(x\cap y\)</span></td>
+<td align="right"><code>x|y</code></td>
+</tr>
+</tbody>
+</table>
 <p>Finally, a table with math and URLs.</p>
 </blockquote>
 <blockquote>
@@ -25531,6 +25724,25 @@ Python.</code></pre>
 <td align="center">-9.19</td>
 <td align="left">4.13</td>
 <td align="center">-0.26</td>
+</tr>
+</tbody>
+</table>
+<p>Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math">\(S\)</span></th>
+<th align="center">command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">$ ||a_0|| $</td>
+<td align="center"><code>norm|length</code></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\(x\cap y\)</span></td>
+<td align="center"><code>x|y</code></td>
 </tr>
 </tbody>
 </table>
@@ -26812,7 +27024,9 @@ where *main* will become the DocOnce file (the main body of text),
 <! -- test template -->
 
 <?xml version="1.0" encoding="utf-8" ?>
+
 <html>
+
 <head>
 
 <style type="text/css">
@@ -26923,6 +27137,7 @@ where <em>main</em> will become the DocOnce file (the main body of text),
 <!-- Template for INF1100 web pages with University of Oslo web design -->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html lang="no" xml:lang="no" xmlns="http://www.w3.org/1999/xhtml">
   <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27685,7 +27900,9 @@ MathJax.Hub.Config({
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -28646,7 +28863,9 @@ Inline math, a=b, is the only math in this document.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -28984,7 +29203,9 @@ $$
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -29806,6 +30027,7 @@ there is a flow.
 
 <p>
 <center> <!-- figure -->
+
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of a wave. <a name="fig:impact"></a> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
@@ -29826,6 +30048,7 @@ and an extra space before the FIGURE keyword.
 
 <p>
 <center> <!-- figure -->
+
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
@@ -30014,6 +30237,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
+</table>
+<p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -30282,7 +30519,9 @@ footnotes.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -31150,7 +31389,9 @@ What about inserting a quiz?
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -31519,7 +31760,6 @@ and phones</font>.
 <p>
 <!-- Test horizontal rule -->
 
-<p>
 <hr>
 
 <p>
@@ -31569,7 +31809,9 @@ is at the end with only one newline.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -32185,7 +32427,8 @@ Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in
 there is a flow.
 
 <p>
-<center> 
+<center>
+
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of a wave. <a name="fig:impact"></a> </p></center>
 <p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
@@ -32202,7 +32445,8 @@ Here is figure <a href="#myfig">2</a> with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 <p>
-<center> 
+<center>
+
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in $latex t_{i+1}$. <a name="myfig"></a> </p></center>
 <p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
@@ -32381,6 +32625,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   -20                               </td> <td align="right">   -23.39                            </td> <td align="right">   -7.65                             </td> <td align="right">   -19.93                            </td> </tr>
 <tr><td align="right">   10                                </td> <td align="right">   17.74                             </td> <td align="right">   -4.50                             </td> <td align="right">   9.96                              </td> </tr>
 <tr><td align="right">   0                                 </td> <td align="right">   -9.19                             </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                             </td> </tr>
+</tbody>
+</table>
+<p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">       $latex S$        </th> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   $latex x\cap y$             </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -33338,7 +33596,6 @@ is very easy to get started with Dropbox, and it allows you to share
 files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
 and phones</font>.
 
-<p>
 <hr>
 
 <p>
@@ -33382,7 +33639,9 @@ is at the end with only one newline.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -34154,6 +34413,7 @@ there is a flow.
 
 <p>
 <center> <!-- figure -->
+
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of a wave. <a name="fig:impact"></a> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
@@ -34174,6 +34434,7 @@ and an extra space before the FIGURE keyword.
 
 <p>
 <center> <!-- figure -->
+
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
@@ -34355,6 +34616,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
+</table>
+<p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -35364,7 +35639,6 @@ and phones</font>.
 <p>
 <!-- Test horizontal rule -->
 
-<p>
 <hr>
 
 <p>
@@ -36430,6 +36704,23 @@ and \code{|} right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \code{norm|length} \\
+$x\cap y$          & \code{x|y}         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
 Finally, a table with math
 and URLs.
 
@@ -38720,7 +39011,9 @@ to `\boldsymbol`.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -39651,6 +39944,7 @@ to ``\boldsymbol``.
 
 ************** File: testdoc_vagrant.html *****************
 <html>
+
 <head>
 <!--
 This style is adopted from the (now old) vagrant 1.0 web
@@ -39670,10 +39964,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40047,7 +40338,7 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="next">
     <a href="._testdoc_vagrant001.html">Next &rarr;</a>
@@ -40058,7 +40349,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -40068,6 +40359,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 ************** File: ._testdoc_vagrant000.html *****************
 <html>
+
 <head>
 <!--
 This style is adopted from the (now old) vagrant 1.0 web
@@ -40087,10 +40379,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40464,7 +40753,7 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="next">
     <a href="._testdoc_vagrant001.html">Next &rarr;</a>
@@ -40475,7 +40764,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -40485,6 +40774,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 ************** File: ._testdoc_vagrant001.html *****************
 <html>
+
 <head>
 <!--
 This style is adopted from the (now old) vagrant 1.0 web
@@ -40504,10 +40794,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40567,28 +40854,28 @@ h1, h2, h3, h4, h5, h6 {
      <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
      -->
      <!-- Doconce automatically fills in the table of contents -->
-     <!-- navigation toc: "Section 1" --> <li class="active"><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "Section 1" --> <li class="active"><a href=#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href=#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href=#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href=#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href=#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href=#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href=#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "_Just bold_" --> <li><a href=#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Just bold_</a></li>
+     <!-- navigation toc: "*Just emphasize*" --> <li><a href=#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Just emphasize*</a></li>
+     <!-- navigation toc: "`Just verbatim`" --> <li><a href=#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Just verbatim`</a></li>
+     <!-- navigation toc: "_Bold_ beginning" --> <li><a href=#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Bold_ beginning</a></li>
+     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href=#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Emphasize* beginning</a></li>
+     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href=#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Verbatim` beginning</a></li>
+     <!-- navigation toc: "Maybe _bold end_" --> <li><a href=#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe _bold end_</a></li>
+     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href=#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe *emphasize end*</a></li>
+     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href=#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe `verbatim end`</a></li>
+     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href=#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href=#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href=#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href=#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href=#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href=#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
      <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
      <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
      <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
@@ -41224,6 +41511,7 @@ there is a flow.
 
 <p>
 <center> <!-- figure -->
+
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of a wave. <a name="fig:impact"></a> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
@@ -41244,6 +41532,7 @@ and an extra space before the FIGURE keyword.
 
 <p>
 <center> <!-- figure -->
+
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
@@ -41425,6 +41714,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
+</table>
+<p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -41691,7 +41994,7 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._testdoc_vagrant000.html">&larr; Prev</a>
@@ -41705,7 +42008,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -41715,6 +42018,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
 ************** File: ._testdoc_vagrant002.html *****************
 <html>
+
 <head>
 <!--
 This style is adopted from the (now old) vagrant 1.0 web
@@ -41734,10 +42038,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41819,27 +42120,27 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
      <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li class="active"><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li class="active"><a href=#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href=#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href=#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href=#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href=#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href=#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href=#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href=#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href=#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href=#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <!-- navigation toc: "Here goes another section" --> <li><a href=#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href=#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href=#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href=#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: "References" --> <li><a href=#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href=#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href=#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href=#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
      <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
      <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
@@ -42724,7 +43025,7 @@ bla-bla.
 While the <div class="deep-blue">rest of the</div> getting started
 -->
 
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._testdoc_vagrant001.html">&larr; Prev</a>
@@ -42738,7 +43039,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -43408,6 +43709,16 @@ and ``|`` right before and after verbatim word (with no space):
                    10                  17.74                  -4.50                   9.96  
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===============  ===============  
+   :math:`S`         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+:math:`x\cap y`          ``x|y``  
+===============  ===============  
 
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
@@ -49958,7 +50269,9 @@ exercises (and problems and projects too).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -50474,7 +50787,9 @@ exercises (and problems and projects too).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -51002,7 +51317,9 @@ exercises (and problems and projects too).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -51951,7 +52268,9 @@ exercises (and problems and projects too).</p>
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -52554,7 +52873,9 @@ exercises (and problems and projects too).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -53098,7 +53419,9 @@ exercises (and problems and projects too).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -53622,6 +53945,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_vagrant.html *****************
 <html>
+
 <head>
 <!--
 This style is adopted from the (now old) vagrant 1.0 web
@@ -53641,10 +53965,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -54198,7 +54519,7 @@ While the <div class="deep-blue">rest of the</div> getting started
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -54211,7 +54532,9 @@ While the <div class="deep-blue">rest of the</div> getting started
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -54340,7 +54663,7 @@ $$
 </div> <!-- end jumbotron -->
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
   <li class="active"><a href="._admon_bootstrap_alert000.html">1</a></li>
   <li><a href="._admon_bootstrap_alert001.html">2</a></li>
@@ -54370,7 +54693,9 @@ $$
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -54495,11 +54820,11 @@ $$
 
 <!-- !split -->
 
-<h1>Introduction  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Introduction <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h2>Code  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
 Need some code outside admons for color and font comparisons:
 
@@ -54519,7 +54844,7 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h2>Quotes and boxes  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
 Here is a plain quote environment.
 
@@ -54597,7 +54922,7 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h2>Admonitions  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
 Let us start with a plain warning environment.
 
@@ -54809,7 +55134,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h2>Going deeper environments  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
 Here is a long notice environment with a custom title and much
 text, math and code.
@@ -54908,7 +55233,7 @@ And then we add a figure too.
 </div>
 
 
-<h2>The end  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
@@ -54956,7 +55281,9 @@ exercises (and problems and projects too).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -55037,12 +55364,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li class="active"><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: "Introduction" --> <li class="active"><a href=#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Code" --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href=#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href=#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href=#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href=#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -55058,11 +55385,11 @@ $$
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1>Introduction  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Introduction <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h2>Code  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
 Need some code outside admons for color and font comparisons:
 
@@ -55082,7 +55409,7 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h2>Quotes and boxes  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
 Here is a plain quote environment.
 
@@ -55160,7 +55487,7 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h2>Admonitions  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
 Let us start with a plain warning environment.
 
@@ -55323,7 +55650,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h2>Going deeper environments  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
 Here is a long notice environment with a custom title and much
 text, math and code.
@@ -55417,7 +55744,7 @@ And then we add a figure too.
 </div>
 
 
-<h2>The end  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
@@ -55437,7 +55764,7 @@ The <code>remarks</code> and <code>hint</code> environments are not allowed outs
 exercises (and problems and projects too).
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
 <li><a href="._admon_bootstrap_alert000.html">&laquo;</a></li>
   <li><a href="._admon_bootstrap_alert000.html">1</a></li>
@@ -62194,7 +62521,9 @@ echo "Here are the slide shows:"
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -69499,7 +69828,9 @@ Finally, let us demonstrate referencing the movie ref{mov:wave}.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -70242,7 +70573,9 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -73038,14 +73371,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 <p>
 
 
-************************************************************
-unicode>>> The file after adding space around | in tables:
-
-Text with a name like &#197;smund &#216;deg&#229;rd works in general.
-
-<p>
-
-
 *** Dealing with authors and institutions ***
 
 
@@ -73426,19 +73751,6 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 ************************************************************
 unicode>>> The file after typesetting of lists:
-
-Text with a name like Åsmund Ødegård works in general.
-Verbatim blocks with non-ASCII text does not work for HTML, but it works
-for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
-
-<p>
-0 <<<!!CODE_BLOCK 
-
-<p>
-
-
-************************************************************
-unicode>>> The file after adding space around | in tables:
 
 Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
@@ -73942,23 +74254,6 @@ $b = 1$ is a value suggested by Åsmund Ødegård.
 
 ************************************************************
 unicode>>> The file after typesetting of lists:
-
-Text with a name like Åsmund Ødegård works in general.
-
-<p>
-This block (in format html)
-triggers use of `mako`. For all formats, `mako` has
-problem with non-ASCII characters anywhere in the text. The remedy
-for all formats is to read the file with UTF-8 encoding. With --debug
-one can see the internal str/unicode representation of the text
-through the various stages of the text transformation process.
-
-<p>
-$b = 1$ is a value suggested by Åsmund Ødegård.
-
-
-************************************************************
-unicode>>> The file after adding space around | in tables:
 
 Text with a name like Åsmund Ødegård works in general.
 
@@ -77377,7 +77672,9 @@ Terminal> python prog.py
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -77521,7 +77818,7 @@ Here goes optional text.
 </div> <!-- end jumbotron -->
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="next">
     <a href="._test_boots001.html">Next &rarr;</a>
@@ -77551,7 +77848,9 @@ Here goes optional text.
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -77646,8 +77945,8 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li class="active"><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li class="active"><a href=#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
@@ -77664,9 +77963,9 @@ $$
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1 class="page-header">More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+<h1 class="page-header" id="___sec0">More details on writing DocOnce documents with Bootstrap layout <a name="___sec0"></a></h1>
 
-<h1>Demonstrations of admons  <a name="___sec1"></a></h1>
+<h1 id="___sec1">Demonstrations of admons <a name="___sec1"></a></h1>
 
 The Bootstrap/Bootswatch styles support two kinds of admons:
 
@@ -77804,7 +78103,7 @@ And then with plain words:
 </div> <!-- col-xs-5 -->
 <p>
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._test_boots000.html">&larr; Prev</a>
@@ -77837,7 +78136,9 @@ And then with plain words:
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -77934,7 +78235,7 @@ $$
         <ul class="dropdown-menu">
      <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href=#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -77950,9 +78251,9 @@ $$
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1>Horizontal alignment of document elements <a name="sec:examples"></a></h1>
+<h1 id="sec:examples">Horizontal alignment of document elements<a name="sec:examples"></a></h1>
 
-<h2>Principles of grid structures  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Principles of grid structures <a name="___sec3"></a></h2>
 
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
@@ -77977,7 +78278,7 @@ the following syntax in case of a 1x3 grid:
 # end-grid-area
 </pre></div>
 
-<h2>Example on a 1x3 grid structure  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Example on a 1x3 grid structure <a name="___sec4"></a></h2>
 
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
@@ -78032,7 +78333,7 @@ we can run the program:
   </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2>Variation of the previous grid structure using panels  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Variation of the previous grid structure using panels <a name="___sec5"></a></h2>
 
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
@@ -78111,7 +78412,7 @@ we can run the program:
 
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._test_boots001.html">&larr; Prev</a>
@@ -78140,7 +78441,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jul 28 13:32:00 2014.
+# sphinx-quickstart on Fri Aug  1 12:24:03 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80386,7 +80687,9 @@ examine the DocOnce source and the `doc/src/make.sh` script).
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
 -->
+
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
@@ -80739,7 +81042,6 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 <p>
 A horizontal rule for separating content vertically, like this:
 
-<p>
 <hr>
 
 <p>
@@ -94733,7 +95035,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1229.
+t line 1246.
 
 
 
@@ -94753,7 +95055,7 @@ t line 1229.
 
 
 
-t line 1238.
+t line 1255.
 
 
 
@@ -94773,7 +95075,7 @@ t line 1238.
 
 
 
-t line 1242.
+t line 1259.
 
 
 
@@ -94874,13 +95176,13 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
 [17]
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -94950,18 +95252,19 @@ No file testdoc.bbl.
 [23]
 Underfull \hbox (badness 10000) 
 
-
-
-...rest of part of LaTeX line number...
-
 [24]
 
 
 ...rest of part of LaTeX line number...
 
 [25]
+
+
+...rest of part of LaTeX line number...
+
+[26]
 No file testdoc.ind.
-[26] (./testdoc.aux)
+[27] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -95201,7 +95504,7 @@ f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (26 pages, ).
+Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -95516,7 +95819,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1229.
+t line 1246.
 
 
 
@@ -95536,7 +95839,7 @@ t line 1229.
 
 
 
-t line 1238.
+t line 1255.
 
 
 
@@ -95556,7 +95859,7 @@ t line 1238.
 
 
 
-t line 1242.
+t line 1259.
 
 
 
@@ -95645,9 +95948,9 @@ No file testdoc.bbl.
 [24]
 Underfull \hbox (badness 10000) 
 
-[25] [26]
+[25] [26] [27]
 No file testdoc.ind.
-[27] (./testdoc.aux)
+[28] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -95885,7 +96188,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (27 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -96217,7 +96520,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1229.
+t line 1246.
 
 
 
@@ -96237,7 +96540,7 @@ t line 1229.
 
 
 
-t line 1238.
+t line 1255.
 
 
 
@@ -96257,7 +96560,7 @@ t line 1238.
 
 
 
-t line 1242.
+t line 1259.
 
 
 
@@ -97492,19 +97795,19 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=319, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=326, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=327, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=328, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=329, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=324, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [13]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=330, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -97548,7 +97851,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 [15]
 
 
-t line 1180.
+t line 1197.
 
 
 
@@ -97568,7 +97871,7 @@ t line 1180.
 
 
 
-t line 1189.
+t line 1206.
 
 
 
@@ -97588,7 +97891,7 @@ t line 1189.
 
 
 
-t line 1193.
+t line 1210.
 
 
 
@@ -98059,6 +98362,9 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 found info about 10 exercises
+*** warning: table headline with entries
+    | S | command |
+   has 2 columns while further down there are 3 columns
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -98094,6 +98400,9 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 found info about 10 exercises
 *** warning: footnotes are not supported for format st
     footnotes will be left in the doconce syntax
+*** warning: table headline with entries
+    | S | command |
+   has 2 columns while further down there are 3 columns
 output in testdoc.st
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx testdoc.do.txt --examples_as_exercises
@@ -106747,17 +107056,22 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
-*** error: syntax error in table!
-    missing three horizontal rules and heading
-|---------------------| (horizontal rule)
-| heading1 | heading2 |
-NOTE: do not use pipes in horizontal rule of this type:
-(write instead |--l-------l---|)
-| --l--- | ---l--- |
-| <code>%s</code> | <code>%e</code> |
-| \( a=b \) | \( \mbox{math} \) |
-|---------------------| (horizontal rule)
-(or maybe not a table, just an opening pipe symbol at the beginning of the line?)
+*** error: could not translate environment: !bsol
+    This is an environment in an exercise. Check if the
+    heading is correct so the subsection was recognized
+    as Exercise, Problem, or Project (Exercise: title).
+    context:
+
+Normal text.
+
+<p>
+Just a loner subexercise begin.
+!bsol
+Here is a solution.
+!esol
+Normal text.
+
+<h2>Links
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
 replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt

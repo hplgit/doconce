@@ -755,7 +755,7 @@ def html_code(filestr, code_blocks, code_block_types,
                          '<h1 class="page-header">\g<1></h1>', filestr)
         # Some fancy functionality (e.g., in the bootstrap_wtoc template)
         # requires use of id tag in headings rather than the primitve <a name..
-        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"</a>', filestr) # for highlighted toc in , but did not work,
+        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"></a>', filestr) # for highlighted toc in , but did not work,
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
@@ -815,16 +815,16 @@ def html_code(filestr, code_blocks, code_block_types,
     # Reduce redunant newlines and <p> (easy with lookahead pattern)
     # Eliminate any <p> that goes with blanks up to <p> or a section
     # heading
-    pattern = r'<p>\s+(?=<p>|<[hH]\d>)'
+    pattern = r'<p>\s+(?=<p>|<[hH]\d[^>]*>)'
     filestr = re.sub(pattern, '', filestr)
     # Extra blank before section heading
-    pattern = r'\s+(?=^<[hH]\d>)'
+    pattern = r'\s+(?=^<[hH]\d[^>]*>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
     # Elimate <p> before equations $$ and before lists
     filestr = re.sub(r'<p>\s+(\$\$|<ul>|<ol>)', r'\g<1>', filestr)
     filestr = re.sub(r'<p>\s+<title>', '<title>', filestr)
     # Eliminate <p> after </h1>, </h2>, etc.
-    filestr = re.sub(r'(</h\d>)\s+<p>', '\g<1>\n', filestr)
+    filestr = re.sub(r'(</[hH]\d[^>]*>)\s+<p>', '\g<1>\n', filestr)
 
     return filestr
 

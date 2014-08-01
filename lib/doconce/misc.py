@@ -2543,6 +2543,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
     # Check if we use a vagrant template, because that leads to
     # different navigation etc.
     header_str = '\n'.join(header)
+
     vagrant = 'builds on the Twitter Bootstrap style' in header_str
     bootstrap = '<!-- Bootstrap style: ' in header_str or \
                 re.search(r'<link href=.+?boots(trap|watch)', header_str)
@@ -2647,6 +2648,17 @@ def doconce_split_html(header, parts, footer, basename, filename):
     parts_href.append(re.findall(href_pattern, ''.join(header)))
     parts_href.append(re.findall(href_pattern, ''.join(footer)))
 
+    # id="..." can also define anchors (e.g., in bootstrap styles)
+    id_pattern = r' id="([^"]+?)"'
+    all_ids = [re.findall(id_pattern, ''.join(part)) for part in parts] + \
+              [re.findall(id_pattern, ''.join(header)),
+               re.findall(id_pattern, ''.join(footer))]
+    # Flatten
+    ids = []
+    for sublist in all_ids:
+        for id in sublist:
+            ids.append(id)
+
     parts_name2part = {}   # map a name to where it is defined
     for i in range(len(parts_name)):
         for name in parts_name[i]:
@@ -2657,12 +2669,12 @@ def doconce_split_html(header, parts, footer, basename, filename):
     for i in range(len(parts_href)):
         for name in parts_href[i]:
             n = parts_name2part.get(name, None) #part where this name is defined
-            if n is None:
-                print '*** error: <a href="#%s" has no corresponding anchor (<a name=)' % name
+            if n is None and name not in ids:
+                print '*** error: <a href="#%s" has no corresponding anchor (<a name= or some id=)' % name
                 print '    This is probably a bug in Doconce.'
                 _abort()
                 continue  # go to next if abort is turned off
-            if n != i:
+            if n is not None and n != i:
                 # Reference to label in another part, except the header
                 # and footer (which is included in all parts)
                 name_def_filename = _part_filename % (basename, n) + '.html'
@@ -2769,13 +2781,19 @@ def doconce_split_html(header, parts, footer, basename, filename):
         header_copy = header[:]
         if vagrant or bootstrap:
             # Highligh first section in this part in the navigation in header
-            m = re.search(r'<h(1|2|3)>(.+?)<', ''.join(part))
+            m = re.search(r'<h(1|2|3).*?>(.+?)<', ''.join(part))
             if m:
                 first_header = m.group(2).strip()
                 for k in range(len(header_copy)):
-                    if 'navigation toc:' in header[k] and first_header in header[k]:
-                        header_copy[k] = header[k].replace(
-                            '<li>', '<li class="active">')
+                    if 'navigation toc:' in header[k]:
+                        m2 = re.search(r'navigation toc: "(.+?)"', header[k])
+                        if m2:
+                           if m2.group(1) == first_header:
+                               header_copy[k] = header[k].replace(
+                                   '<li>', '<li class="active">')
+                        else:
+                            print '*** error: doconce bug: wrong syntax in navigation toc for bootstrap styles'
+                            _abort()
 
         lines = header_copy[:]
         lines.append('<a name="part%04d"></a>\n' % pn)
@@ -2866,7 +2884,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
 <a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end bottom navigation -->\n\n')
-            line
+            lines += footer
 
         html.add_to_file_collection(part_filename, filename, 'a')
 

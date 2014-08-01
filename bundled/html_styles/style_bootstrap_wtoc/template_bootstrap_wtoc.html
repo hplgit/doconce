@@ -6,10 +6,48 @@
 
 <title>%(title)s</title>
 
-<!-- Bootstrap style: http://getbootstrap.com/getting-started/ -->
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/
+
+What to change in this template:
+
+URL to the document (edit http://some.website.net/some/path)
+
+LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
+
+A subtitle or short description in the optional purple header field
+(edit SHORT EXPLANATION)
+
+Footnote with author(s) and copyright (remove or edit)
+-->
+
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
-<!-- Documentation extras -->
+<!-- Various settings from the bootstrap documentation style -->
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Can add other themes (then skip bs-docs-header, which has unsuitable
+color, and adjust colors in the navigation sidebar -->
+<!--
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+-->
+
+<!-- Potential adjustment of styles -->
+<style type="text/css">
+/* Colors in the navigation sidebar */
+.bs-docs-sidebar .nav > li > a {
+  color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #999;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  color: #563d7c;
+}
+/* Don't know how to adjust color in bs-docs-header...but the
+header can just be removed */
+</style>
 </head>
 
 <body>
@@ -25,7 +63,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="http://getbootstrap.com/" class="navbar-brand">%(title)s</a>
+    <a href="http://some.website.net/some/path" class="navbar-brand">%(title)s</a>
   </div>
   <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
     <ul class="nav navbar-nav navbar-right">
@@ -38,12 +76,25 @@
 
 
 <!-- Docs page layout -->
+
+<!-- A purple header field with the title is optional -->
+<div class="bs-docs-header" id="content">
+ <div class="container">
+  <h1>%(title)s</h1>
+  <p>SHORT EXPLANATION</p>
+ </div>
+</div>
+
 <div class="container bs-docs-container">
 
  <div class="row">
+
+  <!-- main content -->
   <div class="col-md-9" role="main">
 %(main)s
   </div>
+
+  <!-- sidebar with navigation -->
   <div class="col-md-3">
    <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
     <ul class="nav bs-docs-sidenav">
@@ -53,13 +104,14 @@
    </div>
   </div>
  </div>
+
 </div>
 
 <!-- Footer
 ================================================== -->
 <footer class="bs-docs-footer" role="contentinfo">
  <div class="container">
-  <!-- here goes the footer -->
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
  </div>
 </footer>
 

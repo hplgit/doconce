@@ -1466,16 +1466,20 @@ def space_in_tables(filestr):
     Add spaces around | in tables such that substitutions $...$ and
     `...` get right.
     """
-    pattern = r'^\s*\|.+\| *$'
+    pattern = r'^\s*\|.+\| *$'  # table lines
     table_lines = re.findall(pattern, filestr, re.MULTILINE)
     horizontal_rule = r'^\s*\|[-lrc]+\|\s*$'
+    inserted_space_around_pipe = False
     for line in table_lines:
         if not re.search(horizontal_rule, line, flags=re.MULTILINE) \
            and (re.search(r'[$`]\|', line) or re.search(r'\|[$`]', line)) \
            and line.count('|') > 2:
-            line_wspaces = ' | '.join(line.split('|'))
+            # Found $|, |$, `|, or |` in table line, insert space
+            line_wspaces = re.sub(r'([$`])\|', r'\g<1> |', line)
+            line_wspaces = re.sub(r'\|([$`])', r'| \g<1>', line_wspaces)
             filestr = filestr.replace(line, line_wspaces)
-    return filestr
+            inserted_space_around_pipe = True
+    return filestr, inserted_space_around_pipe
 
 def typeset_tables(filestr, format):
     """
@@ -1545,17 +1549,32 @@ def typeset_tables(filestr, format):
                 table_counter += 1
             # Check if | is used in math or code in this line.
             # If so, replace | by a marker text and substitute back
+            # (this does not work with the plain text format because
+            # we cannot at this stage recognize inline verbatim)
             marker_text = 'zzYYYpipeYYYzz?'
-            math_code_exprs = re.findall(r'[`$>{].+?[`$<}]', line)
+            # Note that inline substitutions are done before interpreting tables
+            patterns = [r'\$.+?\$',  # math
+                        r'\{.+?\}',  # latex verbatim (\code{})
+                        r'<code>.+?</code>',  # html verbatim
+                        r'``.+?``',  # rst verbatim
+                        r'[^`]`.+?`[^`]',  # markdown verbatim
+                        ]
+            math_code_exprs = [re.findall(pattern, line)
+                               for pattern in patterns]
             for math_code_expr in math_code_exprs:
-                if '|' in math_code_expr:
-                    marked_math_code_expr = math_code_expr.replace(
-                        '|', marker_text)
-                    line = line.replace(math_code_expr, marked_math_code_expr)
+                for expr in math_code_expr:
+                    if '|' in expr:
+                        marked_expr = expr.replace('|', marker_text)
+                        line = line.replace(expr, marked_expr)
+                    # (Caveat: split wrt | does not work with math2 syntax.
+                    # Any $a=1$|$b=2$ syntax for two columns is already
+                    # transformed to $a=1$ | $b=2$ in space_in_tables
+                    # prior to inline substitutions.)
 
-            # Extract columns, but drop first and last since these
-            # are always empty after .split('|')
-            columns = line.strip().split('|')[1:-1]  # does not work with math2 syntax
+            # Extract columns by splitting wrt | (safe now since | in
+            # math and code is taken care of). Drop first and last
+            # since these are always empty after .split('|').
+            columns = line.strip().split('|')[1:-1]
             # Restore any |
             columns = [c.replace(marker_text, '|') for c in columns]
             # remove empty columns and extra white space:
@@ -3231,8 +3250,9 @@ def doconce2format(filestr, format):
     report_progress('handled lists')
 
     # Next step: add space around | in tables for substitutions to get right
-    filestr = space_in_tables(filestr)
-    debugpr('The file after adding space around | in tables:', filestr)
+    filestr, inserted_space_around_pipe = space_in_tables(filestr)
+    if inserted_space_around_pipe:
+        debugpr('The file after adding space around | in tables:', filestr)
 
     # Next step: do substitutions
     filestr = inline_tag_subst(filestr, format)
