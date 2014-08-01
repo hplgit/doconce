@@ -10,22 +10,36 @@ import re, sys, urllib, os
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
 _MATH_BLOCK = '<<<!!MATH_BLOCK'
 
+# Chapter regex
+chapter_pattern = r'^=========\s*[A-Za-z0-9].+?========='
+
+# Functions for creating and reading comment tags
+def begin_end_comment_tags(tag):
+    return '--- begin ' + tag + ' ---', '--- end ' + tag + ' ---'
+
+def comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % tag
+
+def begin_comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % (begin_end_comment_tags(tag)[0])
+
+def end_comment_tag(tag, comment_pattern='# %s'):
+    return comment_pattern % (begin_end_comment_tags(tag)[1])
+
 # Comment lines used to identify parts that can later be removed.
 # The lines below are wrapped as comments.
 # Defined here once so different modules can utilize the same syntax.
 envir_delimiter_lines = {
     'sol':
-    ('--- begin solution of exercise ---',
-     '--- end solution of exercise ---'),
+    begin_end_comment_tags('solution of exercise'),
     'ans':
-    ('--- begin answer of exercise ---',
-     '--- end answer of exercise ---'),
+    begin_end_comment_tags('answer of exercise'),
     'hint':
-    ('--- begin hint in exercise ---',
-     '--- end hint in exercise ---'),
+    begin_end_comment_tags('hint in exercise'),
     'exercise':
-    ('--- begin exercise ---',
-     '--- end exercise ---'),
+    begin_end_comment_tags('exercise'),
+    'subex':
+    begin_end_comment_tags('subexercise'),
 }
 
 _counter_for_html_movie_player = 0
@@ -39,14 +53,14 @@ def _abort():
 
 def internet_access():
     """Return True if internet is on, else False."""
-    import urllib2
+    import urllib2, socket
     try:
         # Check google.com with numerical IP-address (which avoids
         # DNS loopup) and set timeout to 1 sec so this does not
         # take much time (google.com should respond quickly)
-       response=urllib2.urlopen('http://74.125.228.100', timeout=1)
+       response = urllib2.urlopen('http://74.125.228.100', timeout=1)
        return True
-    except urllib2.URLError as err:
+    except (urllib2.URLError, socket.timeout) as err:
         pass
     return False
 
@@ -128,13 +142,13 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             else:
                 # Seemingly successful opening of a file, but check if
                 # this is a special GitHub error message file
-                special_hosts = ('github.', 'www.uio.no')
+                special_hosts = ('github.', 'www.uio.no', 'openclipart.org')
                 special_host = False
                 for host in special_hosts:
                     if host in filename:
                         special_host = True
                         break
-                if special_host and '>404' in text:
+                if special_host and '>404' in text: # <title>404 ...?
                     # HTML file with an error message: file not found
                     if msg or debug:
                         print '    not found (%s, 404 error)' % filename
@@ -281,7 +295,8 @@ def align2equations(filestr, format):
 
 def ref2equations(filestr):
     """
-    Replace references to equations:
+    Replace references to equations. Unless "Equation(s)" already
+    precedes the reference, the following transformations are done:
 
     (ref{my:label}) -> Equation (my:label)
     (ref{my:label1})-(ref{my:label2}) -> Equations (my:label1)-(my:label2)
@@ -289,6 +304,10 @@ def ref2equations(filestr):
     (ref{my:label1}), (ref{my:label2}) and (ref{my:label3}) -> Equations (my:label1), (my:label2) and (ref{my:label2})
 
     """
+    # "Store away" references that are prefixed by Equation/Eq.
+    filestr = re.sub(r'(Equations?|Eqs?\.)([ ~]) *(\(ref\{)',
+                     r'XXX___\g<1>\g<2>___XXX',  # coding of the prefix
+                     filestr)
     filestr = re.sub(r'\(ref\{(.+?)\}\)-\(ref\{(.+?)\}\)',
                      r'Equations (\g<1>)-(\g<2>)', filestr)
     filestr = re.sub(r'\(ref\{(.+?)\}\)\s+and\s+\(ref\{(.+?)\}\)',
@@ -298,13 +317,8 @@ def ref2equations(filestr):
     filestr = re.sub(r'\(ref\{(.+?)\}\)',
                      r'Equation (\g<1>)', filestr)
 
-    # Note that we insert "Equation(s)" here, assuming that this word
-    # is *not* used in running text prior to a reference. Sometimes
-    # sentences are started with "Equation ref{...}" and this double
-    # occurence of Equation must be fixed.
-
-    filestr = re.sub('Equation\s+Equation', 'Equation', filestr)
-    filestr = re.sub('Equations\s+Equations', 'Equations', filestr)
+    # Restore Equation/Eq. prefix
+    filestr = re.sub(r'XXX___(.+?)___XXX', r'\g<1>(ref{', filestr)
     return filestr
 
 def default_movie(m):
@@ -348,8 +362,8 @@ def begin_end_consistency_checks(filestr, envirs):
         begin = '!b' + envir
         end = '!e' + envir
 
-        nb = len(re.compile(r'^%s' % begin, re.MULTILINE).findall(filestr))
-        ne = len(re.compile(r'^%s' % end, re.MULTILINE).findall(filestr))
+        nb = len(re.findall(r'^%s' % begin, filestr, flags=re.MULTILINE))
+        ne = len(re.findall(r'^%s' % end, filestr, flags=re.MULTILINE))
 
         lines = []
         if nb != ne:
@@ -453,6 +467,22 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
      smaller and smaller parts of each file)"""
         _abort()
 
+    from misc import option
+    max_linelength = option('max_bc_linelength=', None)
+    if max_linelength is not None:
+        max_linelength = int(max_linelength)
+
+        for i in range(len(code_blocks)):
+            lines = code_blocks[i].splitlines()
+            truncated = False
+            for j in range(len(lines)):
+                if len(lines[j]) > max_linelength:
+                    lines[j] = lines[j][:max_linelength] + '...'
+                    truncated = True
+            if truncated:
+                code_blocks[i] = '\n'.join(lines) + '\n'
+
+
     lines = filestr.splitlines()
 
     # Note: re.sub cannot be used because newlines, \nabla, etc
@@ -478,8 +508,8 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
 
 def doconce_exercise_output(exer,
                             solution_header = '__Solution.__',
-                            answer_header = '__Answer.__ ',
-                            hint_header = '__Hint.__ ',
+                            answer_header = '__Answer.__',
+                            hint_header = '__Hint.__',
                             include_numbering=True,
                             include_type=True):
     """
@@ -543,7 +573,7 @@ def doconce_exercise_output(exer,
                 hint_header_ = hint_header.replace('Hint.', 'Hint %d.' % (i+1))
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
-            s += '\n' + hint_header_ + hint + '\n'
+            s += '\n' + hint_header_ + '\n' + hint + '\n'
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
@@ -565,8 +595,9 @@ def doconce_exercise_output(exer,
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
         s += solution_header + '\n'
-        # Make sure we have a sentence after the heading
-        if re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
+        # Make sure we have a sentence after the heading if real heading
+        if solution_header.endswith('===') and \
+           re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
             print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
             s += 'Code:\n'
         s += exer['solution'] + '\n'
@@ -578,10 +609,10 @@ def doconce_exercise_output(exer,
         import string
         for i, subex in enumerate(exer['subex']):
             letter = string.ascii_lowercase[i]
-            s += '\n__%s)__ ' % letter
+            s += '\n__%s)__\n' % letter
 
             if subex['text']:
-                s += '\n' + subex['text'] + '\n'
+                s += subex['text'] + '\n'
 
                 for i, hint in enumerate(subex['hints']):
                     if len(subex['hints']) == 1 and i == 0:
@@ -591,7 +622,7 @@ def doconce_exercise_output(exer,
                             'Hint.', 'Hint %d.' % (i+1))
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['hint'][0] + '\n'
-                    s += '\n' + hint_header_ + hint + '\n'
+                    s += '\n' + hint_header_ + '\n' + hint + '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
 
@@ -616,7 +647,8 @@ def doconce_exercise_output(exer,
                         s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
                     s += solution_header + '\n'
                     # Make sure we have a sentence after the heading
-                    if re.search(r'^\d+ %s' % _CODE_BLOCK,
+                    if solution_header.endswith('===') and \
+                       re.search(r'^\d+ %s' % _CODE_BLOCK,
                                  subex['solution'].lstrip()):
                         print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
                         s += 'Code:\n'
@@ -686,6 +718,39 @@ def bibliography(pubdata, citations, format='doconce'):
     text += '\n\n'
     return text
 
+def get_legal_pygments_lexers():
+    from pygments.lexers import get_all_lexers
+    lexers = []
+    for classname, names, dummy, dymmy in list(get_all_lexers()):
+        for name in names:
+            lexers.append(name)
+    return lexers
+
+def has_custom_pygments_lexer(name):
+    from pygments.lexers import get_lexer_by_name
+    if name == 'ipy':
+        try:
+            get_lexer_by_name('ipy')
+        except Exception as e:
+            print '*** warning: !bc ipy used for IPython sessions, but'
+            print '    ipython is not supported for syntax highlighting!'
+            print '    install:'
+            print '    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install'
+            print e
+            return False
+    if name == 'doconce':
+        try:
+            get_lexer_by_name(name)
+        except Exception as e:
+            print '*** warning: !bc doconce used for DocOnce code, but'
+            print '    doconce is not supported for syntax highlighting!'
+            print '    install:'
+            print '    git clone https://github.com/hplgit/pygments-doconce.git; cd pygments-doconce; sudo python setup.py install'
+            print e
+            return False
+    return True
+
+
 BLANKLINE = {}
 FILENAME_EXTENSION = {}
 LIST = {}
@@ -709,10 +774,11 @@ OUTRO = {}
 EXERCISE = {}
 TOC = {}
 ENVIRS = {}
+QUIZ = {}
 
 
 # regular expressions for inline tags:
-inline_tag_begin = r"""(?P<begin>(^|[(\s~]))"""
+inline_tag_begin = r"""(?P<begin>(^|[(\s~]|^__))"""
 # ' is included as apostrophe in end tag
 inline_tag_end = r"""(?P<end>($|[.,?!;:)}'\s~\[-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
@@ -783,44 +849,33 @@ INLINE_TAGS = {
     #r'"?(URL|url)"? ?: ?"(?P<url>.+?)"',
     r'("URL"|"url"|URL|url) ?:\s*"(?P<url>.+?)"',
 
-    'inlinecomment':  # needs re.DOTALL|re.MULTILINE
-    r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<comment>.*?)\]''',
+    'inlinecomment':  # needs re.DOTALL
+    r'''\[(?P<name>[A-Za-z0-9 '+-]+?):(?P<space>\s+)(?P<comment>.*?)\]''',
 
     # __Abstract.__ Any text up to a headline === or toc-like keywords
     # (TOC is already processed)
     'abstract':  # needs re.DOTALL | re.MULTILINE
-    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|\s*[_=]{3,9})""",
-    #r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>\s*[_=]{3,9})""",
+    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|\s*={3,9})""",
 
     # ======= Seven Equality Signs for Headline =======
     # (the old underscores instead of = are still allowed)
     'section':
-    #r'^_{7}(?P<subst>[^ ].*)_{7}\s*$',
-    # previous: r'^\s*_{7}(?P<subst>[^ ].*?)_+\s*$',
-    #r'^\s*[_=]{7}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
-    #r'^\s*[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{7}\s*(?P<subst>[^ =-].+?)\s*[_=]{7} *$',
+    r'^={7}\s*(?P<subst>[^ =-].+?)\s*={7} *$',
 
     'chapter':
-    #r'^\s*[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{9}\s*(?P<subst>[^ =-].+?)\s*[_=]{9} *$',
+    r'^={9}\s*(?P<subst>[^ =-].+?)\s*={9} *$',
 
     'subsection':
-    #r'^\s*_{5}(?P<subst>[^ ].*?)_+\s*$',
-    #r'^\s*[_=]{5}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
-    #r'^\s*[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{5}\s*(?P<subst>[^ =-].+?)\s*[_=]{5} *$',
+    r'^={5}\s*(?P<subst>[^ =-].+?)\s*={5} *$',
 
     'subsubsection':
-    #r'^\s*_{3}(?P<subst>[^ ].*?)_+\s*$',
-    #r'^\s*[_=]{3}\s*(?P<subst>[^ ].*?)\s*[_=]+\s*$',
-    #r'^\s*[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]+\s*$',
-    r'^ *[_=]{3}\s*(?P<subst>[^ =-].+?)\s*[_=]{3}\s*$',  # final \s for latex
+    # final \s is needed for latex to make \paragraph attached to text
+    # with no blank line
+    r'^={3}\s*(?P<subst>[^ =-].+?)\s*={3}\s*$',
 
     # __Two underscores for Inline Paragraph Title.__
     'paragraph':
-    r'(?P<begin>^)__(?P<subst>.+?)__\s+',
-    #r'(?P<begin>^)[_=]{2}\s*(?P<subst>[^ =-].+?)[_=]{2}\s+',
+    r'(?P<begin>^)__(?P<subst>.+?)__(?P<space>(\n| +))',
 
     # TITLE: My Document Title
     'title':
@@ -852,8 +907,10 @@ INLINE_TAGS = {
     #'non-breaking-space': r'(?<=[$A-Za-z0-9])~(?=[$A-Za-z0-9])',
     # This one allows HTML MathJax formulas and HTML tags to surround the ~
     # (i.e., after substitutions of $...$, color, etc.)
-    'non-breaking-space': r'(?<=[})>$A-Za-z0-9])~(?=[{\\<$A-Za-z0-9])'
-
+    'non-breaking-space': r'(?<=[})>$A-Za-z0-9_`.])~(?=[{(\\<$A-Za-z0-9`:])',
+    'horizontal-rule': r'^----+$',
+    'ampersand1': r'(?P<pre>[A-Za-z0-9]) +& +(?P<post>[A-Za-z0-9])',  # \1 & \2
+    'ampersand2': r' (?P<pre>[A-Z]) +& +(?P<post>[A-Z](?=\n|[ .,;-?:`]))',
     }
 
 INLINE_TAGS_SUBST = {}

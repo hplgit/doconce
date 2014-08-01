@@ -1,9 +1,33 @@
 import re, os, sys
 from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
-    cite_with_multiple_args2multiple_cites
-from html import html_movie
+    cite_with_multiple_args2multiple_cites, _abort
+from html import html_movie, html_quiz
 from doconce import _abort
+from misc import option
+
+def rst_abstract(m):
+    # r'\n*\g<type>.* \g<text>\n\g<rest>'
+    name = m.group('type').strip()
+    text = m.group('text').strip()
+    rest = m.group('rest').strip()
+
+    if option('rst_uio'):
+        s = """
+
+.. uio-introduction::
+%s
+
+.. contents::
+
+.. section-numbering::
+
+
+%s
+""" % (indent_lines(text, 'rst'), rest)
+        return s
+    else:
+        return '\n*%(name)s.* %(text)s\n%(rest)s' % vars()
 
 # replacement patterns for substitutions of inline tags
 def rst_figure(m):
@@ -62,10 +86,15 @@ def rst_movie(m):
     html_text = html_movie(m)
     html_text = indent_lines(html_text, 'sphinx')
     rst_text = '.. raw:: html\n' + html_text + '\n'
+
+    filename = m.group('filename')
+    if not filename.startswith('http') and not filename.startswith('mov'):
+        print '*** warning: movie file %s' % filename
+        print '    is not in mov* subdirectory - this will give problems with sphinx'
     return rst_text
 
 # these global patterns are used in st, epytext, plaintext as well:
-bc_regex_pattern = r'''([a-zA-Z0-9)'"`.*_\[\]{}#@=-^~+])[\n:.?!, ]\s*?^!bc.*?$'''
+bc_regex_pattern = r'''([a-zA-Z0-9)'"`.*_\[\]{}#@=-^~+-])[\n:.?!, ]\s*?^!bc.*?$'''
 bt_regex_pattern = r'''([a-zA-Z0-9)'"`.*_}=-^~])[\n:.?!, ]\s*?^!bt.*?$'''
 
 def rst_code(filestr, code_blocks, code_block_types,
@@ -82,12 +111,13 @@ def rst_code(filestr, code_blocks, code_block_types,
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
 
     # substitute !bc and !ec appropriately:
-    # the line before the !bc block must end in [a-zA-z0-9)"]
+    # the line before the !bc block must end in [a-zA-z0-9)"...]
     # followed by [\n:.?!,] see the bc_regex_pattern global variable above
     # (problems with substituting !bc and !bt may be caused by
     # missing characters in these two families)
-    #c = re.compile(bc_regex_pattern, re.DOTALL)
     filestr = re.sub(bc_regex_pattern, r'\g<1>::\n\n', filestr, flags=re.MULTILINE|re.DOTALL)
+    # Need a fix for :: appended to special comment lines (---:: -> ---\nCode::)
+    filestr = re.sub(r' ---::\n\n', ' ---\nCode::\n\n', filestr)
     filestr = re.sub(r'^!ec\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '', filestr, flags=re.MULTILINE)
 
@@ -96,11 +126,19 @@ def rst_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'^!bt\n', '.. latex-math::\n\n', filestr, re.MULTILINE)
     #filestr = re.sub(r'^!bt\n', '.. latex::\n\n', filestr, re.MULTILINE)
 
-    # just use the same substitution as for code blocks:
-    filestr = re.sub(bt_regex_pattern, r'\g<1>::\n', filestr,
-                     flags=re.MULTILINE)
-    #filestr = re.sub(r'^!et *\n', '\n\n', filestr, flags=re.MULTILINE)
-    filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
+    if option('rst_mathjax') and (re.search(r'^!bt', filestr, flags=re.MULTILINE) or re.search(r'\\\( .+ \\\)', filestr)):
+        from html import mathjax_header
+        latex = indent_lines(mathjax_header().lstrip(), 'rst')
+        filestr = '\n.. raw:: html\n\n' + latex + '\n\n' + filestr
+        filestr = re.sub(bt_regex_pattern, r'\g<1>\n\n.. raw:: html\n\n        $$', filestr,
+                         flags=re.MULTILINE)
+        filestr = re.sub(r'^!et *\n', '        $$\n', filestr, flags=re.MULTILINE)
+    else:
+        # just use the same substitution for tex blocks as for code blocks:
+        filestr = re.sub(bt_regex_pattern, r'\g<1>::\n', filestr,
+                         flags=re.MULTILINE)
+        #filestr = re.sub(r'^!et *\n', '\n\n', filestr, flags=re.MULTILINE)
+        filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
 
     # Fix: if there are !bc-!ec or other environments after each
     # other without text in between, there is a difficulty with the
@@ -145,6 +183,9 @@ that %s is not preceded by text which can be extended with :: (required).
             lines[i] = '| ' + lines[i] + '\n'
     filestr = '\n'.join(lines)
 
+    # Remove too much vertical space
+    filestr = re.sub(r'\n\n\n+', '\n\n', filestr)
+
     return filestr
 
 def fix_underlines_in_headings(filestr):
@@ -156,7 +197,10 @@ def fix_underlines_in_headings(filestr):
     for i in range(1, len(lines)-1):
         section_markers = '===', '---', '~~~'
         for section_marker in section_markers:
-            if lines[i+1].startswith(section_marker) and ' ' not in lines[i+1]:
+            if lines[i+1].startswith(section_marker) and \
+                   ' ' not in lines[i+1] and lines[i].strip():
+                # (lines[i] must not be empty, because then ----- may
+                # be a horizontal rule)
                 if len(lines[i+1]) != len(lines[i]):
                     lines[i+1] = section_marker[0]*len(lines[i])
     filestr = '\n'.join(lines)
@@ -215,16 +259,33 @@ def rst_table(table):
 
 def rst_author(authors_and_institutions, auth2index,
                inst2index, index2inst, auth2email):
-    authors = []
-    for author, i, email in authors_and_institutions:
-        if email:
-            email = email.replace('@', ' at ')
-            authors.append(author + ' (%s)' % email)
+    if option('rst_uio'):
+        if authors_and_institutions:
+            # Use first author and email
+            responsible = authors_and_institutions[0][0]
+            email = authors_and_institutions[0][2]
+            text = """
+.. uio-meta::
+   :responsible-name: %s
+""" % responsible
+            if email:
+                text += '   :responsible-email: %s\n\n' % email
         else:
-            authors.append(author)
+            print '*** error: with --rst_uio there must be an AUTHOR:'
+            print '    field with (at least) one author w/email who will be'
+            print '    listed as the resposible under uio-meta::'
+            _abort()
+    else:
+        authors = []
+        for author, i, email in authors_and_institutions:
+            if email:
+                email = email.replace('@', ' at ')
+                authors.append(author + ' (%s)' % email)
+            else:
+                authors.append(author)
 
-    text = ':Author: ' + ', '.join(authors)  # (text is r-stripped in typeset_authors)
-    # we skip institutions in rst
+        text = ':Authors: ' + ', '.join(authors)  # (text is already r-stripped in typeset_authors)
+        # we skip institutions in rst
     return text
 
 def ref_and_label_commoncode(section_label2title, format, filestr):
@@ -251,11 +312,11 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
     # Deal with the problem of identical titles, which makes problem
     # with non-unique links in reST: add a counter to the title
     debugtext = ''
-    section_pattern = r'^\s*(_{3,9}|={3,9})(.+?)(_{3,9}|={3,9})(\s*label\{(.+?)\})?'
+    section_pattern = r'^\s*(={3,9})(.+?)(={3,9})(\s*label\{(.+?)\})?'
     all_sections = re.findall(section_pattern, filestr, flags=re.MULTILINE)
     # First count the no of titles with the same wording
     titles = {}
-    max_heading = 3  # track the top heading level for correct TITLE typesetting
+    max_heading = 1  # track the top heading level for correct TITLE typesetting
     for heading, title, dummy2, dummy3, label in all_sections:
         entry = None if label == '' else label
         if title in titles:
@@ -264,7 +325,9 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
             titles[title] = [entry]
         max_heading = max(max_heading, len(heading))
 
-    # Typeset TITLE so that it gets the highest (but no higher) section sevel
+    # Typeset TITLE so that it gets the highest+1 (but no higher) section sevel
+    max_heading += 2  # one level up
+    max_heading = min(max_heading, 9)
     filestr = re.sub(r'^TITLE:\s*(.+)$', '%s \g<1> %s\n' %
                      ('='*max_heading, '='*max_heading),
                      filestr, flags=re.MULTILINE)
@@ -372,7 +435,6 @@ def rst_box(block, format, text_size='normal'):
     return """
 .. The below box could be typeset as .. admonition: Attention
    but we have decided not to do so (the box formatting is just ignored)
-..
 
 %s
 """ % block
@@ -437,6 +499,10 @@ def rst_notice(block, format, title='Notice', text_size='normal'):
     else:
         return rst_admon(block, format, title, text_size)
 
+def rst_quiz(quiz):
+    text = html_quiz(quiz)
+    text = '.. raw:: html\n' + indent_lines(text, format, ' '*4) + '\n'
+    return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -451,6 +517,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -462,6 +529,7 @@ def define(FILENAME_EXTENSION,
     INLINE_TAGS_SUBST['rst'] = {
         'math':      r'\g<begin>\g<subst>\g<end>',
         'math2':     r'\g<begin>\g<puretext>\g<end>',
+        # math and math2 are redefined below if --rst_mathjax
         #'math':      r'\g<begin>:math:`\g<subst>`\g<end>',  # sphinx
         #'math2':     r'\g<begin>:math:`\g<latexmath>`\g<end>',
         'emphasize': None,  # => just use doconce markup (*emphasized words*)
@@ -471,14 +539,16 @@ def define(FILENAME_EXTENSION,
         'reference': r'\g<subst>',
         #colortext works for HTML only. Can see here: http://stackoverflow.com/questions/4669689/how-to-use-color-in-text-with-restructured-text-rst2html-py-or-how-to-insert-h (but probably color is most relevant for HTML anyway)
         'colortext': r'<font color="\g<color>">\g<text></font>',
-        #'linkURL':   r'\g<begin>`\g<link> <\g<url>>`_\g<end>',
-        #'linkURL':   r'\g<begin>`\g<link>`_\g<end>' + '\n\n.. ' + r'_\g<link>: \g<url>' + '\n\n',  # better (?): make function instead that stacks up the URLs and dumps them at the end; can be used for citations as well
-        'linkURL2':  r'`\g<link> <\g<url>>`_',
-        'linkURL3':  r'`\g<link> <\g<url>>`_',
-        'linkURL2v': r'`\g<link> <\g<url>>`_', # no verbatim, does not work well
-        'linkURL3v': r'`\g<link> <\g<url>>`_', # same
+        # Use anonymous hyperlink references to avoid warnings if the link
+        # name appears twice
+        #'linkURL':   r'\g<begin>`\g<link> <\g<url>>`__\g<end>',
+        #'linkURL':   r'\g<begin>`\g<link>`_\g<end>' + '\n\n.. ' + r'__\g<link>: \g<url>' + '\n\n',  # better (?): make function instead that stacks up the URLs and dumps them at the end; can be used for citations as well
+        'linkURL2':  r'`\g<link> <\g<url>>`__',
+        'linkURL3':  r'`\g<link> <\g<url>>`__',
+        'linkURL2v': r'`\g<link> <\g<url>>`__', # no verbatim, does not work well
+        'linkURL3v': r'`\g<link> <\g<url>>`__', # same
         'plainURL':  r'`<\g<url>>`_',
-        'inlinecomment': r'(**\g<name>**: \g<comment>)',
+        'inlinecomment': r'color{red}{(**\g<name>**: \g<comment>})',
         # the replacement string differs, depending on the match object m:
         # (note len(m.group('subst')) gives wrong length for non-ascii strings,
         # better with m.group('subst').decode('utf-8')) or latin-1
@@ -488,7 +558,7 @@ def define(FILENAME_EXTENSION,
         'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst').decode('latin-1'))),
         'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
         'paragraph':     r'**\g<subst>**\n',  # extra newline
-        'abstract':      r'\n*\g<type>.* \g<text>\n\g<rest>',
+        'abstract':      rst_abstract,
         #'title':         r'======= \g<subst> =======\n',  # doconce top section, must be the highest section level (but no higher than others, need more code)
         'title':         None, # taken care of in ref_and_label_commoncode
         'date':          r':Date: \g<subst>\n',
@@ -502,7 +572,14 @@ def define(FILENAME_EXTENSION,
         'linebreak':     r'<linebreakpipe> \g<text>',  # fixed in rst_code/sphinx_code as a hack
         'footnote':      rst_footnotes,
         'non-breaking-space': ' |nbsp| ',
+        'horizontal-rule': '---------',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
+    if option('rst_mathjax'):
+        # rst2html conversion requires four backslashes here for one of them
+        # to survive
+        INLINE_TAGS_SUBST['rst']['math'] = r'\g<begin>\\\\( \g<subst> \\\\)\g<end>'
+        INLINE_TAGS_SUBST['rst']['math2'] = r'\g<begin>\\\\( \g<latexmath> \\\\)\g<end>'
 
     ENVIRS['rst'] = {
         'quote':         rst_quote,
@@ -538,8 +615,9 @@ def define(FILENAME_EXTENSION,
     TABLE['rst'] = rst_table
     EXERCISE['rst'] = plain_exercise
     TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
+    QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
-.. Automatically generated reST file from Doconce source
+.. Automatically generated reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
 
 """
@@ -558,4 +636,3 @@ def define(FILENAME_EXTENSION,
             _abort()
         else:
             INTRO['rst'] += nbsp
-

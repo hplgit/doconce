@@ -1,0 +1,946 @@
+TITLE: A Software Tool for Typesetting Quizzes
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+
+__Summary.__ This note describes a system for writing quizzes
+(multiple-choice questions) in a compact text format with support
+for mathematics, computer code, and flexible formatting. The text
+format can be automatically translated to HTML and to a Python
+data structure. The HTML can be rendered directly in web pages,
+and the data structure can (in the future) be fed to online quiz/survey
+services a la Kahoot, JotForm, and Google forms.
+#"Kahoot": "http://getkahoot.com",
+
+!split
+======= A pure text quiz =======
+
+===== Question and choices =====
+
+Here is a typical quiz with a question and four alternative answers:
+
+!bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+!equiz
+# #if FORMAT == "html"
+Click on the pencil symbol to the left of _Choice_ to see whether the choice is
+correct or not.
+# #endif
+
+The above quiz can be specified by the compact text
+
+!bc
+|bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+|equiz
+!ec
+
+!bnotice Syntax:
+
+ * Each individual quiz (question with multiple-choice answers)
+   is specified between `!bquiz` (``begin quiz'') and `!equiz`
+   (``end quiz'') tags.
+ * The question starts right after `Q:` (``question'').
+ * Wrong choices are specified with `Cw:`, and right choices with `Cr:`.
+ * The instructions `!bquiz`, `!equiz`, `Q:`, `Cw:`, and `Cr:` must appear
+   at the beginning of a line.
+ * The text of (e.g.) a wrong answer (`Cr:`) lasts up to the next
+   instruction (like `Cw:`, `Cr:`, `!equiz`).
+ * One can have as many wrong and right
+   choices as desired.
+
+!enotice
+
+Multiple correct choices are possible. Here is an example with three
+right choices:
+
+!bc
+|bquiz
+Q: Which of the following cities are capitals?
+Cw: Sidney
+Cr: Kigali
+Cw: Bonn
+Cr: Bern
+Cr: Ottawa
+Cw: New York
+|equiz
+!ec
+
+!bquiz
+Q: Which of the following cities are capitals?
+Cw: Sidney
+Cr: Kigali
+Cw: Bonn
+Cr: Bern
+Cr: Ottawa
+Cw: New York
+!equiz
+
+
+===== Explanations of choices =====
+
+Sometimes it is desireable to give some explanation why certain choices
+are wrong (or right).
+If you click on the symbols in the quiz below, explanations
+will be shown for Choices 1 and 2.
+
+!bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+The quiz syntax applies `E: ...` after the choice to
+give an explanation of that choice.
+
+!bc
+|bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+|equiz
+!ec
+This time we also added some whitespace for enhanced reading of the text.
+
+===== Typesetting =====
+
+It is easy to use *emphasize font*, _boldface_, color{red}{color},
+"hyperlinks": "http://google.com", etc.,
+since the text in the specification of questions, choices,
+and explanations are rendered according to the
+"DocOnce": "https://github.com/hplgit/doconce" markup language.
+For simple typesetting (emphasize, boldface, links) DocOnce also
+accepts Markdown syntax.
+Here is an example:
+
+!bquiz
+Q: This is a very famous quote:
+
+!bquote
+*Premature optimization is the root of all evil.*
+!equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to "Wikiquote": "http://en.wikiquote.org/wiki/Donald_Knuth",
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+!equiz
+
+The corresponding specification reads
+
+!bc
+|bquiz
+Q: Here is a famous quote:
+
+|bquote
+*Premature optimization is the root of all evil.*
+|equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to "Wikiquote": "http://en.wikiquote.org/wiki/Donald_Knuth",
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+|equiz
+!ec
+
+
+# #ifdef DOCONCE
+===== Quiz inside admonitions in DocOnce =====
+
+Question admonitions may well feature quizzes. A plain question
+admonition is
+
+!bquestion
+What is the capital of Norway?
+!equestion
+specified by the DocOnce syntax
+
+!bc
+|bquestion
+What is the capital of Norway?
+|equestion
+!ec
+The quiz version is
+
+!bquestion
+!bquiz
+Q: [] What is the capital of Norway?
+
+Cw: [Answer:] Stockholm
+E: Stockholm is the capital of Sweden, Norway's neighboring country.
+
+Cw: Bergen
+E: Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+!equestion
+specified as
+
+!bc
+|bquestion
+|bquiz
+Q: [] What is the capital of Norway?
+
+Cw: [Answer:] Stockholm
+E: Stockholm is the capital of Sweden, Norway's neighboring country.
+
+Cw: Bergen
+E: Some people from Bergen may claim so... It is just the second
+largest city in Norway.
+
+Cr: Oslo
+
+Cw: Denmark
+|equiz
+|equestion
+!ec
+
+!bnotice Choice and question prefix
+In the above example, we demonstrate the possibility to control
+the word preceding the question and the choices.
+# #if FORMAT in ("html",)
+For the current HTML format, questions are by default preceded by
+`Question:` and choices by `Choice X:`, where `X` is the
+number of the choice.
+# #endif
+The prefix appears inside square brackets. Empty brackets, as those
+in the question, leads to no prefix. The choice `Stockholm` has
+a prefix `[Answer:]`, and exactly the text inside the square brackets
+precedes the text of this choice in the output.
+!enotice
+
+# #endif
+
+!split
+======= Typesetting of mathematics and computer code =======
+
+===== Mathematics =====
+label{sec:math}
+
+Mathematical typesetting follows a restricted LaTeX syntax. Inline
+formulas appear inside dollar signs, while separate equations
+appear inside `!bt` (``begin TeX'') and `!et` (``end TeX'') tags.
+
+=== Simple example ===
+
+!bquiz
+Q: Compute the result of $a+b$ in the case $a=2$ and $b=2$.
+
+Cw: 5.
+
+E: Good attempt, especially when referring to the following story.
+
+!bquote
+An anthropologist was asking a primitive tribesman about arithmetic.
+When the anthropologist asked, *What does two and two make?* the
+tribesman replied, *Five.* Asked to explain, the tribesman said, *If I
+have a rope with two knots, and another rope with two knots, and I
+join the ropes together, then I have five knots.*
+!equote
+
+Cr: 4.
+E: Seems trivial, but once upon a time...
+
+FIGURE: [fig/1p1, width=140 frac=0.2]
+
+Cw: The computation does not make sense when $a$ and $b$ are given without
+units.
+
+E: It is indeed possible to add pure numbers without any units.
+!equiz
+
+The source code for defining the above quiz reads
+
+!bc
+|bquiz
+Q: Compute the result of $a+b$ in the case $a=2$ and $b=2$.
+
+Cw: 5.
+
+E: Good attempt, especially when referring to the following story.
+
+|bquote
+An anthropologist was asking a primitive tribesman about arithmetic.
+When the anthropologist asked, *What does two and two make?* the
+tribesman replied, *Five.* Asked to explain, the tribesman said, *If I
+have a rope with two knots, and another rope with two knots, and I
+join the ropes together, then I have five knots.*
+|equote
+
+Cr: 4.
+E: Seems trivial, but once upon a time...
+
+FIGURE: [fig/1p1, width=180 frac=0.3]
+
+Cw: The computation does not make sense when $a$ and $b$ are given without
+units.
+
+E: It is indeed possible to add pure numbers without any units.
+|equiz
+!ec
+
+!bwarning Only a subset of LaTeX equation environment is supported!
+To make sure blocks with equations come out correctly in different
+output formats (LaTeX, HTML, Sphinx, Markdown), only four types
+of standard LaTeX equation environments should be used:
+
+ o Single equation without number: `\[ ... \]` or `equation*` environment
+ o Single equation with number: `equation` environment
+ o Multiple, aligned equations without numbers: `align*` environment
+ o Multiple, aligned equations with numbers: `align` environment
+
+This means that one has to stay away from `eqnarray`, `alignat`,
+and other common LaTeX equation environments. However, inside an equation,
+standard LaTeX math typesetting works (like `\alpha`, `\mbox{...}`, etc.).
+!ewarning
+
+=== A more complicated example ===
+
+!bquiz
+Q: The equation
+
+!bt
+\begin{equation}
+\nabla\cdot\bm{u} = 0
+label{cont:eq}
+\end{equation}
+!et
+is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
+L: div:assert
+
+Cw: The equation tells that the net outflow of something with
+velocity $\bm{u}$ in region is zero.
+E: This is right: integrating (ref{cont:eq}) over an arbitrary domain
+$\Omega$ and using Gauss' divergence theorem, we get the surface integral
+
+!bt
+\[ \int_{\partial\Omega}\bm{u}\cdot\bm{n}dS=0,\]
+!et
+where $\bm{n}$ is an outward unit normal on the boundary $\partial\Omega$.
+The quantity $\bm{u}\cdot\bm{n}dS$ is the outflow of volume per
+time unit if $\bm{u}$ is velocity.
+
+Cw: The equation tells that the vector field $\bm{u}$ is divergence free.
+E: Yes, *divergence free* is often used as synonym for *zero divergence*,
+and $\nabla\cdot\bm{u}$ is the divergence of a vector field $\bm{u}$.
+
+Cw: The equation implies that there exists a vector potential $\bm{A}$
+such that $\bm{u}=\nabla\times\bm{A}$.
+E: Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+
+Cr: The equation implies $\nabla\times\bm{u}=0$.
+E: No, only if $\bm{u}=\nabla\phi$, for some scalar potential $\phi$,
+we have $\nabla\times\bm{u}=0$.
+
+Cr: The equation implies that $\bm{u}$ must be a constant vector field.
+E: No, it is the *sum* of derivatives of different components of $\bm{u}$
+that is zero. Only in one dimension, where $\bm{u}=u_x\bm{i}$
+and consequently $\nabla\cdot\bm{u}=du/dx$, the vector field must be constant.
+!equiz
+
+The corresponding code needed to define this quiz is listed below.
+Note two new features:
+
+ * The `K: gradient; divergence; ...`
+   construction allows specification of a set of keywords separated
+   by semi-colon. The feature is handy when automatically selecting
+   quizzes from a large database. There is no output of the keywords
+   in typeset quizzes.
+ * `L: div:assert` defines a label for the quiz. This can be used
+   as a logical name in the same way as labels are used in LaTeX.
+   For example, a collection of labels can be specified for selecting
+   a collection quizzes. The label is invisible in a typeset quiz.
+
+Keywords and label should appear before or right after the question
+and they cannot span more than one line.
+
+!bc
+|bquiz
+Q: The equation
+
+|bt
+\begin{equation}
+\nabla\cdot\bm{u} = 0
+label{cont:eq}
+\end{equation}
+|et
+is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
+L: div:assert
+
+Cw: The equation tells that the net outflow of something with
+velocity $\bm{u}$ in region is zero.
+E: This is right: integrating (ref{cont:eq}) over an arbitrary domain
+$\Omega$ and using Gauss' divergence theorem, we get the surface integral
+
+|bt
+\[ \int_{\partial\Omega}\bm{u}\cdot\bm{n}dS=0,\]
+|et
+where $\bm{n}$ is an outward unit normal on the boundary $\partial\Omega$.
+The quantity $\bm{u}\cdot\bm{n}dS$ is the outflow of volume per
+time unit if $\bm{u}$ is velocity.
+
+Cw: The equation tells that the vector field $\bm{u}$ is divergence free.
+E: Yes, *divergence free* is often used as synonym for *zero divergence*,
+and $\nabla\cdot\bm{u}$ is the divergence of a vector field $\bm{u}$.
+
+Cw: The equation implies that there exists a vector potential $\bm{A}$
+such that $\bm{u}=\nabla\times\bm{A}$.
+E: Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+
+Cr: The equation implies $\nabla\times\bm{u}=0$.
+E: No, only if $\bm{u}=\nabla\phi$, for some scalar potential $\phi$,
+we have $\nabla\times\bm{u}=0$.
+
+Cr: The equation implies that $\bm{u}$ must be a constant vector field.
+E: No, it is the *sum* of derivatives of different components of $\bm{u}$
+that is zero. Only in one dimension, where $\bm{u}=u_x\bm{i}$
+and consequently $\nabla\cdot\bm{u}=du/dx$, the vector field must be constant.
+|equiz
+!ec
+
+===== Computer code =====
+
+Inline computer code (variables, expressions, statements) are
+normally typeset with a monospace font, and this is enabled by
+enclosing the code in backticks. Blocks of computer code are typeset
+with `!bc` (``begin code'') and `!ec` (``end code'') tags.
+One can specify the computer language as part of the `!bc` tag:
+`!bc LX`, where `L` is the language (`py` for Python, `m` for Matlab,
+`cpp` for C++, for instance) and `X` can be `pro` for a complete
+executable program or `cod` for a code snippet (cannot be executed without
+additional statements) [^hide-code]. The quizzes below demonstrate the syntax.
+
+[^hide-code]: `X` can also be `hide` for code that is not supposed to be
+shown, but possibly required to execute other snippets in an
+interactive document (that allows code to be edited and executed
+by the reader). This is currently being implemented in DocOnce's
+support for Runestone Interactive books (using the Sphinx format).
+
+!bquiz
+Q: We want to create a Python list object of length `n` where each
+element is `0`. Is the following code then what we need?
+
+!bc pycod
+import numpy
+mylist = numpy.zeros(n)
+!ec
+
+K: list, array
+
+Cw: Yes.
+
+E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
+
+Cw: Yes, provided we write `np` instead of `numpy`:
+
+!bc pycod
+import numpy as np
+mylist = np.zeros(n)
+!ec
+
+E: No, this is fully equivalent to the original code, so `mylist` becomes
+an array, not a list.
+
+Cr: No.
+E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
+!equiz
+
+!bc
+|bquiz
+Q: We want to create a Python list object of length `n` where each
+element is `0`. Is the following code then what we need?
+
+|bc pycod
+import numpy
+mylist = numpy.zeros(n)
+|ec
+
+K: list, array
+
+Cw: Yes.
+
+E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
+
+Cw: Yes, provided we write `np` instead of `numpy`:
+
+|bc pycod
+import numpy as np
+mylist = np.zeros(n)
+|ec
+
+E: No, this is fully equivalent to the original code, so `mylist` becomes
+an array, not a list.
+
+Cr: No.
+E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
+|equiz
+!ec
+
+!bnotice Summary of quiz syntax:
+
+ * Each quiz is enclosed in `!bquiz` and `!equiz`
+ * `Q`: question
+ * `Q [prefix]`: question with prefix (defaults to *Question*)
+ * `Cr`: right (correct) choice
+ * `Cw`: wrong (incorrect) choice
+ * `Cr [prefix]`: right (correct) choice with prefix (defaults to *Choice X*,
+   where *X* is the choice number in HTML, and to an upper case letter in
+   LaTeX)
+ * `Cw [prefix]`: wrong (incorrect) choice with prefix
+ * `E`: explanation of last choice
+ * `K`: keywords
+ * `L`: label (logical name)
+ * `NP`: heading for new page
+ * `H`: quiz heading
+
+!enotice
+
+===== Example: Putting it all together =====
+
+!bquiz
+Q:
+
+!bc pypro
+from math import sin
+
+def D(u, t, dt=1E-5):
+    return (u(t + dt) - u(t - dt))/(2*dt)
+
+def u(t):
+    "A quadratic function."
+    return t^2
+
+print D(u, t=4),
+print D(lambda x: return 2*x, 2)
+!ec
+The purpose of this program is to differentiate the two mathematical
+functions
+
+!bt
+\begin{align*}
+u(t) &= t^2,\\
+f(x) &= 2x.
+\end{align*}
+!et
+Determine which of the following assertions that is _wrong_.
+
+K: Python programming; debugging; lambda functions; finding errors
+
+Cw: In Python, the syntax for $t^2$ is `t**2`, not `t^2`, so the
+`u` function contains an error.
+E: True. However, `t^2` will work for integer `t` in Python,
+but the computation is nonsense in this case since $u(t)$ is
+supposed to be $t^2$.
+
+Cw: The string in the `u` function is a valid doc string.
+E: Yes, a doc string can be any string after the function heading. It can
+have single quotes `'...'`, double quotes `"..."`,
+triple single quotes `'''...'''`, or triple double quotes `"""..."""`.
+The latter is the most popular for doc strings. Recall that triple quotes
+allow the string to span multiple lines.
+
+Cw: The output from the program is on a single line, despite two `print`
+statements.
+E: Yes, because of the comma after the first `print` statement: it suppresses
+the newline character that is normally appended to `print` statements in
+Python.
+
+Cr: One cannot use `u` both inside the `D` function and in the
+outer calling code (the main program).
+E: Yes, you can, because the `u` argument in the `D` function (holding
+a function) is a *local* variable inside the `D` function. The `u` in
+the calling code is *global* variable, holding a function object.
+Inside `D`, `u` refers to the local variable, while in the main
+program, `u` refers to the global variable, and the local variable `u`
+in `D` no longer exists, because it was deleted when returning from
+the function.  Inside `D`, we can actually access the global `u` by
+`globals()['u']`, but that almost never comes to use and is also bad
+coding.
+
+Cw: The call `D(lambda x: return 2*x, 2)` is equivalent to defining
+
+!bc pycod
+def f(x):
+    return 2*x
+
+!ec
+and then calling `D(f, 2)`.
+
+E: `f(x)` is defined as a lambda function, which is a short-hand for
+defining functions as an expression, in a function call as here, or
+in the right-hand side of an assignment, e.g.,
+
+!bc pycod
+f = lambda x: return 2*x
+!ec
+
+Cw: There is danger of integer division in the `D` function.
+
+E: True, here is an example: `D(lambda t: t, dt=1)`. We get
+`(t+1 - t-1)/(2*1)`, which for any integer `t` gives `int/int`
+and hence integer division.
+
+Cw: The `D` function computes an approximate derivative of the
+function `u(t)`.
+
+E: Yes, `D` applies a widely used finite difference approximation
+formula to the derivative.
+
+Cw: Both calls to `D` results in the exact derivative, provided we
+replace `t^2` by `t**2`.
+
+E: Yes, the finite difference approximation used in `D` is exact
+for quadratic polynomials!
+!equiz
+
+
+!split
+===== Specification in HTML =====
+
+Instead of using the compact text specification with DocOnce
+formatting, one can use a more verbose syntax and specify everything
+in HTML. The second example in Section ref{sec:math} then reads
+
+## Note that the HTML text is indented such that it is not interpreted
+## as a quiz by DocOnce.
+
+!bc htmlcod
+ <!-- --- begin quiz --- -->
+ <!-- --- begin quiz question --- -->
+ The equation
+
+ $$
+ \begin{equation}
+ \nabla\cdot\boldsymbol{u} = 0
+ \label{cont:eq}
+ \end{equation}
+ $$
+
+ is famous in physics. Select the wrong assertion(s):
+ <!-- --- end quiz question --- -->
+ <!-- --- keywords:['gradient', 'divergence', 'curl', 'vector calculus'] -->
+ <!-- --- label:div:assert -->
+
+ <!-- --- begin quiz choice 1 (wrong) --- -->
+ The equation tells that the net outflow of something with
+ velocity \( \boldsymbol{u} \) in region is zero.
+ <!-- --- end quiz choice 1 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 1 --- -->
+ This is right: integrating \eqref{cont:eq} over an arbitrary
+ domain \( \Omega \) and using Gauss' divergence theorem, we
+ get the surface integral
+
+ $$ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,$$
+
+ where \( \boldsymbol{n} \) is an outward unit normal on the
+ boundary \( \partial\Omega \).
+ The quantity \( \boldsymbol{u}\cdot\boldsymbol{n}dS \) is the
+ outflow of volume per time unit if \( \boldsymbol{u} \) is
+ velocity.
+ <!-- --- end explanation of choice 1 --- -->
+
+ <!-- --- begin quiz choice 2 (wrong) --- -->
+ The equation tells that the vector field \( \boldsymbol{u} \)
+ is divergence free.
+ <!-- --- end quiz choice 2 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 2 --- -->
+ Yes, <em>divergence free</em> is often used as synonym for
+ <em>zero divergence</em>, and \( \nabla\cdot\boldsymbol{u} \)
+ is the divergence of a vector field \( \boldsymbol{u} \).
+ <!-- --- end explanation of choice 2 --- -->
+
+ <!-- --- begin quiz choice 3 (wrong) --- -->
+ The equation implies that there exists a vector potential
+ \( \boldsymbol{A} \) such that
+ \( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
+ <!-- --- end quiz choice 3 (wrong) --- -->
+
+ <!-- --- begin explanation of choice 3 --- -->
+ Yes, this is an important result in vector calculus that is much
+ used in electromagnetics.
+ <!-- --- end explanation of choice 3 --- -->
+
+ <!-- --- begin quiz choice 4 (right) --- -->
+ The equation implies \( \nabla\times\boldsymbol{u}=0 \).
+ <!-- --- end quiz choice 4 (right) --- -->
+
+ <!-- --- begin explanation of choice 4 --- -->
+ No, only if \( \boldsymbol{u}=\nabla\phi \), for some scalar
+ potential \( \phi \), we have \( \nabla\times\boldsymbol{u}=0 \).
+ <!-- --- end explanation of choice 4 --- -->
+
+ <!-- --- begin quiz choice 5 (right) --- -->
+ The equation implies that \( \boldsymbol{u} \)
+ must be a constant vector field.
+ <!-- --- end quiz choice 5 (right) --- -->
+
+ <!-- --- begin explanation of choice 5 --- -->
+ No, it is the <em>sum</em> of derivatives of different components
+ of \( \boldsymbol{u} \) that is zero. Only in one dimension,
+ where \( \boldsymbol{u}=u_x\boldsymbol{i} \) and consequently
+ \( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
+ constant.
+ <!-- --- end explanation of choice 5 --- -->
+ <!-- --- end quiz --- -->
+!ec
+This syntax applies begin-end comments to mark the start and end
+of the question, the choices, and the explanations.
+
+!bwarning
+The HTML specification of a quiz is not a meaningful HTML code for
+displaying the quiz in a browser, it is just an application of the
+HTML language to specify information and have full control of
+the typesetting details. Some program must interpret the
+HTML above and typset questions, choices, and explanations adequately.
+# #if FORMAT in ("sphinx", "html")
+(As done elsewhere in this document.)
+# #endif
+!ewarning
+
+
+!split
+======= The Python data structure for quizzes =======
+
+When a DocOnce file `mydoc.do.txt` containing quizzes (and other types
+of text, like this document) is translated to some format by the
+`doconce format` command, a Python list of all the quizzes is created
+and written to `.mydoc.quiz`. Each list element represents one quiz as
+a dictionary. The list corresponding to the quizzes in the current
+document starts with
+
+!bc pycod
+[{'choices': [[u'wrong', u'Helsinki'],
+              [u'wrong', u'Drammen'],
+              [u'right', u'Oslo'],
+              [u'wrong', u'Denmark']],
+  'no': 1,
+  'question': u'What is the capital of Norway?'},
+!ec
+
+A more complicated quiz with specification of prefix for the question and
+one choice (see example above in the question admonition) has explanations
+in the list for each choice, as well as two more
+keys (`choice prefix` and `question prefix`):
+
+!bc pycod
+ {'choice prefix': [u'Answer:', None, None, None],
+  'choices': [
+    [u'wrong',
+     u'Stockholm',
+     u"Stockholm is the capital of Sweden, Norway's neighboring country."],
+    [u'wrong',
+     u'Bergen',
+     u'Some people from Bergen may claim so... It is just the second\nlargest city in Norway.'],
+    [u'right', u'Oslo'],
+    [u'wrong', u'Denmark']],
+  'no': 5,
+  'question': u'What is the capital of Norway?',
+  'question prefix': u''},
+!ec
+
+The text in the Python list-dictionary data structure is ready-made for
+being displayed in HTML. Here is an example involving mathematics
+(MathJax syntax):
+
+!bc pycod
+ {'choices': [
+   [u'wrong',
+    u'5.',
+    u'Good attempt, especially when referring to the following story.
+\n\n<p>\n<blockquote>\n    An anthropologist was asking a primitive tribesman ab
+out arithmetic.\n    When the anthropologist asked, <em>What does two and two ma
+ke?</em> the\n    tribesman replied, <em>Five.</em> Asked to explain, the tribes
+man said, <em>If I\n    have a rope with two knots, and another rope with two kn
+ots, and I\n    join the ropes together, then I have five knots.</em>\n</blockqu
+ote>'],
+   [u'right',
+    u'4.',
+    u'Seems trivial, but once upon a time...\n\n<p>\n<center><p><img src="fig/1p1.gif" align="bottom" width=180></p></center>'],
+   [u'wrong',
+    u'The computation does not make sense when \\( a \\) and \\( b \\) are given without\nunits.',
+    u'It is indeed possible to add pure numbers without any units.']],
+  'no': 6,
+  'question': u'Compute the result of \\( a+b \\) in the case \\( a=2 \\) and \\( b=2 \\).'},
+!ec
+
+Computer code gets typeset by nice colors by default (using the Pygments
+package):
+
+!bc pycod
+{'choices':
+   [[u'wrong',
+     u'Yes.',
+     u'Not exactly: <code>numpy.zeros</code> creates an array of zeros
+, not a list.'],
+    [u'wrong',
+     u'Yes, provided we write <code>np</code> instead of <code>numpy</code>:\n\n<p>\n\n<!-- code=python (!bc pycod) typeset with pygments style "default" -->\n<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>\nmylist <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)\n</pre></div>\n<p>',
+     u'No, this is fully equivalent to the original code, so <code>mylist</code> becomes\nan array, not a list.'],
+    [u'right',
+     u'No.',
+     u'One would need to do <code>mylist = [0]*n</code> or <code>numpy.zeros(n).tolist()</code>.']],
+  'no': 8,
+  'question': u'We want to create a Python list object of length <code>n</code> where each\nelement is <code>0</code>. Is the following code then what we need?\n\n<p>\n\n<!-- code=python (!bc pycod) typeset with pygments style "default" -->\n<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>\nmylist <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros(n)\n</pre></div>\n<p>'}
+!ec
+
+# There is no embedding key in the quiz dictionary representation since
+# this document has !bquiz outside quiz environments (the method to
+# extract the previous section header does not work in that case.)
+
+The keys in the dictionaries in this data structure are
+
+ * `question`: the text of the question. This key is always present.
+ * `no`: the number of the quiz (starts at 1). This key is always present.
+ * `keywords`: an optional list of keywords for the quiz.
+ * `label`: an optional logical name for this quiz.
+ * `choices`: list of all the choices as 2- or 3-lists. First element
+   is `right` or `wrong`, second is the text of the choice, the optional
+   third element is the explanation (if it was specified). This key
+   is always present.
+ * `choice prefix`: optional list of the prefix specified for each choice.
+   `None` implies the default prefix (depends on the format,
+   see the documentation
+   of the `--quiz_choice_prefix=` option by typing `doconce format --help`).
+   This key is absent if there are no specifications of such a prefix.
+ * `question prefix`: The optional prefix specified for the question,
+   if different from the default value `Question:`.
+ * `new page`: Optional headline for a new page of quizzes. Also
+   indicates that a new page is to be made.
+
+!split
+======= Translating the quiz format to HTML or PDF =======
+
+The program `doconce` must be run to interpret the quiz format, translate
+it to LaTeX, HTML, or other formats, and produce the Python representation
+of the collection of quizzes in a document. Let the name of the
+document with quiz specifications and optional text be `myquiz.do.txt`.
+Documents to play around with are "`pure_quiz.do.txt`": "https://github.com/hplgit/doconce/tree/master/doc/src/quiz/pure_quiz.do.txt" or
+"the present document": "https://github.com/hplgit/doconce/tree/master/doc/src/quiz/quiz.do.txt".
+
+===== HTML =====
+
+=== Plain HTML ===
+
+A simple HTML rendering of quizzes is done by
+
+!bc sys
+Terminal> doconce format html myquiz
+!ec
+The result `myquiz.html` can be loaded into a browser.
+
+=== Bootstrap HTML ===
+
+A more sophisticated rendering is offered if a Bootstrap HTML style
+is adopted,
+
+!bc sys
+Terminal> doconce format html myquiz --html_style=bootstrap
+!ec
+Other variations of this class of styles are `bootswatch`, and
+`bootswatch_X`, where `X` is the name of a Bootswatch style, e.g.,
+`journal`.
+
+The Bootstrap-based styles have a striking red color for inline computer
+code, which can be avoided by giving the option `html_code_style=inherit`.
+See the documentation of "DocOnce and Bootstrap": "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" for details and examples.
+
+By default, there is a horizontal rule enclosing each quiz in the HTML format.
+This can be turned off by the option `--quiz_horizontal_rule=off`.
+
+=== Multiple page HTML document ===
+
+By inserting `!split` before headings in a DocOnce document, one can run
+
+!bc sys
+Terminal> doconce split_html myquiz.html
+!ec
+to create a multi-page document with navigation arrows. Bootstrap styles
+will also have a *Contents* pull-down menu to the right in the top bar.
+Without the `split_html` command (and `!split` instructions in the document),
+all the text will be in one HTML page.
+
+=== Setting the question and choice prefix ===
+
+The prefix before a question is `Question:` and before a choice is `Choice X`,
+where `X` is a number. To set a different prefix, see the
+`--quiz_question_prefix` and `--quiz_choice_prefix` commands
+when running `doconce format --help`.
+
+===== LaTeX =====
+
+The standard command to produce a LaTeX document is
+
+!bc sys
+Terminal> doconce format pdflatex myquiz \
+          --without_answers --without_solutions
+!ec
+If desired, the correct answer to each quiz can be included by omitting
+`--without_answers`. Omitting `--without_solutions` will print
+the right answers and the available explanations below the quiz.
+
+The next steps are
+
+!bc sys
+Terminal> doconce ptex2tex myquiz envir=minted
+Terminal> pdflatex -shell-escape myquiz
+!ec
+to produce a PDF `myquiz.pdf`. The `doconce ptex2tex` step enables a lot
+of different typesetting of blocks of computer code.
+Here, we use the `minted` style, which applies the Pygments package.
+The default (no `envir` specification) is a plain LaTeX verbatim environment.
+Even more possibilities for typesetting computer code exist if
+one runs the `ptex2tex` program (and not `doconce ptex2tex`).

@@ -20,6 +20,9 @@ when encountering a new heading.
 With a doconce to XML translator it is possible to use XML
 tools to translate to any desired output since all constructs
 are wrapped in tags.
+
+Drop begin-end of paragraphs, just mark newlines (<newline/>) and
+let paragraphs be running text inside the parent element.
 """
 
 import re, os, glob, sys, glob
@@ -89,11 +92,16 @@ def html_code(filestr, code_blocks, code_block_types,
     # Reduce redunant newlines and <p> (easy with lookahead pattern)
     # Eliminate any <p> that goes with blanks up to <p> or a section
     # heading
-    pattern = r'<p>\s+(?=<p>|<[hH]\d>)'
+    pattern = r'<newline/>\s+(?=<newline/>|<[hH]\d>)'
     filestr = re.sub(pattern, '', filestr)
     # Extra blank before section heading
     pattern = r'\s+(?=^<[hH]\d>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
+    # Elimate <newline/> before equations and before lists
+    filestr = re.sub(r'<newline/>\s+(<math|<ul>|<ol>)', r'\g<1>', filestr)
+    filestr = re.sub(r'<newline/>\s+<title>', '<title>', filestr)
+    # Eliminate <newline/> after </h1>, </h2>, etc.
+    filestr = re.sub(r'(</h\d>)\s+<newline/>', '\g<1>\n', filestr)
 
     return filestr
 
@@ -116,6 +124,7 @@ def html_figure(m):
     return text
 
 def html_table(table):
+    # COPY NEW from html.py
     column_width = table_analysis(table['rows'])
     ncolumns = len(column_width)
     column_spec = table.get('columns_align', 'c'*ncolumns).replace('|', '')
@@ -519,6 +528,9 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 ''' % vars()
     exec(_text)
 
+def html_quiz(quiz):
+    return ''
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -532,19 +544,19 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
 
     # all arguments are dicts and accept in-place modifications (extensions)
 
-    FILENAME_EXTENSION['html'] = '.html'  # output file extension
-    BLANKLINE['html'] = '\n<p>\n'         # blank input line => new paragraph
+    FILENAME_EXTENSION['xml'] = '.html'  # output file extension
+    BLANKLINE['xml'] = '\n<blankline>\n' # blank input line => new paragraph
 
-    INLINE_TAGS_SUBST['html'] = {         # from inline tags to HTML tags
+    INLINE_TAGS_SUBST['xml'] = {         # from inline tags to HTML tags
         # keep math as is:
         'math':          r'\g<begin>\( \g<subst> \)\g<end>',
-        #'math2':         r'\g<begin>\g<puretext>\g<end>',
         'math2':         r'\g<begin>\( \g<latexmath> \)\g<end>',
         'emphasize':     r'\g<begin><em>\g<subst></em>\g<end>',
         'bold':          r'\g<begin><b>\g<subst></b>\g<end>',
@@ -561,24 +573,26 @@ def define(FILENAME_EXTENSION,
         'section':       r'\n<h2>\g<subst></h2>',
         'subsection':    r'\n<h3>\g<subst></h3>',
         'subsubsection': r'\n<h4>\g<subst></h4>\n',
-        'paragraph':     r'<b>\g<subst></b>\n',
-        'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
-        'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
-        'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->',
+        'paragraph':     r'<b>\g<subst></b>\g<space>',
+        'abstract':      r'<abstract type="\g<type>">\n\g<text>\n</abstract>\n\g<rest>',
+        'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>',
+        'date':          r'<date>\n\g<subst>\n</date>',
         'author':        html_author,
         'figure':        html_figure,
         'movie':         html_movie,
-        'comment':       '<!-- %s -->',
+        'comment':       '<comment>%s</comment>',
         'linebreak':     r'\g<text><br />',
+        'ampersand2':    r' \g<1><ampersand>\g<2>',
+        'ampersand1':    r'\g<1> <ampersand> \g<2>',
         }
 
     if option('wordpress'):
-        INLINE_TAGS_SUBST['html'].update({
+        INLINE_TAGS_SUBST['xml'].update({
             'math':          r'\g<begin>$latex \g<subst>$\g<end>',
             'math2':         r'\g<begin>$latex \g<latexmath>$\g<end>'
             })
 
-    ENVIRS['html'] = {
+    ENVIRS['xml'] = {
         'quote':         html_quote,
         'warning':       html_warning,
         'question':      html_question,
@@ -588,10 +602,10 @@ def define(FILENAME_EXTENSION,
         'box':           html_box,
     }
 
-    CODE['html'] = html_code
+    CODE['xml'] = html_code
 
     # how to typeset lists and their items in html:
-    LIST['html'] = {
+    LIST['xml'] = {
         'itemize':
         {'begin': '\n<ul>\n', 'item': '<li>', 'end': '</ul>\n\n'},
 
@@ -601,12 +615,12 @@ def define(FILENAME_EXTENSION,
         'description':
         {'begin': '\n<dl>\n', 'item': '<dt>%s<dd>', 'end': '</dl>\n\n'},
 
-        'separator': '',  # no need for blank lines between items and before/after
+        'separator': '<newline/>',
         }
 
     # how to typeset description lists for function arguments, return
     # values, and module/class variables:
-    ARGLIST['html'] = {
+    ARGLIST['xml'] = {
         'parameter': '<b>argument</b>',
         'keyword': '<b>keyword argument</b>',
         'return': '<b>return value(s)</b>',
@@ -615,12 +629,13 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg')
-    CROSS_REFS['html'] = html_ref_and_label
-    TABLE['html'] = html_table
-    INDEX_BIB['html'] = html_index_bib
-    EXERCISE['html'] = plain_exercise
-    TOC['html'] = html_toc
+    FIGURE_EXT['xml'] = ('.png', '.gif', '.jpg', '.jpeg')
+    CROSS_REFS['xml'] = html_ref_and_label
+    TABLE['xml'] = html_table
+    INDEX_BIB['xml'] = html_index_bib
+    EXERCISE['xml'] = plain_exercise
+    TOC['xml'] = html_toc
+    QUIZ['xml'] = html_quiz
 
     # Embedded style sheets
     style = option('html_style=')
@@ -773,7 +788,7 @@ def define(FILENAME_EXTENSION,
         meta_tags += '<meta name="keywords" content="%s">\n' % keywords
 
 
-    INTRO['html'] = """\
+    INTRO['xml'] = """\
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
@@ -790,7 +805,7 @@ Automatically generated HTML file from Doconce source
     """ % (meta_tags, style)
 
     # document ending:
-    OUTRO['html'] = """
+    OUTRO['xml'] = """
 
 </body>
 </html>

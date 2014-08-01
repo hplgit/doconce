@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+global dofile_basename
+
 import re, os, sys, shutil, commands, pprint, time, glob, codecs
 try:
     from collections import OrderedDict   # v2.7 and v3.1
@@ -40,6 +42,7 @@ def doconce_envirs():                     # begin-end environments
             'hint', 'remarks',            # exercises
             'quote', 'box',
             'notice', 'summary', 'warning', 'question', 'block', # admon
+            'quiz', # must be last
             ]
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
@@ -64,15 +67,22 @@ def markdown2doconce(filestr, format):
     """
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
+
+    # Still missing: figures and videos
+
     quote_envir = 'notice'
     quote_title = ' None'
     quote_title = ''
     quote_envir = 'quote'
     quote_envir = 'block'
     from common import inline_tag_begin, inline_tag_end
+    extended_markdown_language2dolang = dict(
+        Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
+        Perl='pl', Bash='sh', HTML='html')
+
     regex = [
         # Computer code with language specification
-        (r"\n+```([a-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
+        (r"\n+```([A-Za-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
         # Computer code without (or the same) language specification
         (r"\n+```\n(.+?)\n```\n", "\n\n!bc\n\g<1>\n!ec\n", re.DOTALL),
         # Paragraph heading written in boldface
@@ -82,23 +92,18 @@ def markdown2doconce(filestr, format):
          r"\g<begin>_\g<subst>_\g<end>"),
         # Link with link text
         (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
-        # H1
-        (r'^ *# +([^#]+?)$', r"======= \g<1> =======", re.MULTILINE),
-        # H2
-        (r'^ *## +([^#]+?)$', r"===== \g<1> =====", re.MULTILINE),
-        # H3
-        (r'^ *### +([^#]+?)$', r"=== \g<1> ===", re.MULTILINE),
         # Equation
         (r"\n\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
         # TOC
         (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
         # Smart StackEdit comments (must appear before normal comments)
         # First treat Doconce-inspired syntax with [name: comment]
-        (r"<!--- ([A-Za-z]+?): (.+)-->", r'[\g<1>: \g<2>]', re.DOTALL),
+        (r"<!--- ([A-Za-z]+?): (.+?)-->", r'[\g<1>: \g<2>]', re.DOTALL),
         # Second treat any such comment as inline Doconce comment
-        (r"<!---(.+)-->", r'[comment: \g<1>]', re.DOTALL),
-        # Plain comments starting on the beginning of a line
-        (r"^<!--(.+)-->", lambda m: '# ' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
+        (r"<!---(.+?)-->", r'[comment: \g<1>]', re.DOTALL),
+        # Plain comments starting on the beginning of a line, avoid blank
+        # to not confuse with headings
+        (r"^<!--(.+?)-->", lambda m: '#' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
         # Plain comments inside the text must be inline comments in Doconce
         # or dropped...
         (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
@@ -111,8 +116,6 @@ def markdown2doconce(filestr, format):
         # enumerated lists should be o
         (r"^( +)\d+\.( +)", r"\g<1>o\g<2>", re.MULTILINE),
         (r"<br>", r" <linebreak>"), # before next line which inserts <br>
-        # horizontal rules go to comment
-        (r"^--+\n", r"# HORIZONTAL RULE <br>\n", re.MULTILINE),
     ]
     for r in regex:
         if len(r) == 2:
@@ -129,9 +132,41 @@ def markdown2doconce(filestr, format):
     * Headlines with underline instead of #
     * labels (?) a la {#label}
     """
+    lines = filestr.splitlines()
+    # Headings: must have # at the beginning of the line and blank before
+    # and after
+    inside_code = False
+    for i in range(len(lines)):
+        if lines[i].startswith('```') and inside_code:
+            inside_code = False
+            continue
+        if lines[i].startswith('```') and not inside_code:
+            inside_code = True
+            continue
+        if not inside_code:
+            if re.search(r'^#{1,3} ', lines[i]):
+                # Potential heading
+                heading = False
+                if i > 0 and lines[i-1].strip() == '' and \
+                   i < len(lines)-1  and lines[i+1].strip() == '':
+                    # Blank line before and after
+                    heading = True
+                elif i == 0 and i < len(lines)-1  and lines[i+1].strip() == '':
+                    heading = True
+                if heading:
+                    # H1: can be confused with comments,
+                    # write comments as #Comment without initial blank after #
+                    lines[i] = re.sub(
+                        r'^# +([^#]+?)$', r"======= \g<1> =======", lines[i])
+                    # H2
+                    lines[i] = re.sub(
+                        r'^## +([^#]+?)$', r"===== \g<1> =====", lines[i])
+                    # H3
+                    lines[i] = re.sub(
+                        r'^### +([^#]+?)$', r"=== \g<1> ===", lines[i])
+
     # tables:
     inside_table = False
-    lines = filestr.splitlines()
     # line starting and ending with pipe symbol is the start of a table
     pattern = r'^ *\| .+ \| *$'
     for i in range(len(lines)):
@@ -163,7 +198,7 @@ def markdown2doconce(filestr, format):
     lines = filestr.splitlines()
     newlines = []
     for line in lines:
-        pattern = r'^ *\[([^\^]+)\]:(.+)$'
+        pattern = r'^ *\[([^\^]+?)\]:(.+)$'
         m = re.search(pattern, line, flags=re.MULTILINE)
         if m:
             links[m.group(1).strip()] = m.group(2).strip()
@@ -172,7 +207,7 @@ def markdown2doconce(filestr, format):
             newlines.append(line)
     filestr = '\n'.join(newlines)
     for link in links:
-        filestr = re.sub(r'\[(.+?)\][%s]' % link, '"\g<1>": "%s"' % links[link], filestr)
+        filestr = re.sub(r'\[(.+?)\]\[%s\]' % link, '"\g<1>": "%s"' % links[link], filestr)
     # Fix quote blocks with opening > in lines
     pattern = '^!b%(quote_envir)s%(quote_title)s\n(.+?)^!e%(quote_envir)s' % vars()
     quotes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
@@ -276,16 +311,20 @@ def syntax_check(filestr, format):
         _abort()
 
     for envir in doconce_envirs():
-        # Check that are environments !bc, !ec, !bans, !eans, etc.
+        # Check that environments !bc, !ec, !bans, !eans, etc.
         # appear at the very beginning of the line
         # (allow e.g. `!benvir argument` and comment lines)
-        pattern = re.compile(r'^([^#\n].+?[^`\n]| +)(![eb]%s)' % envir, re.MULTILINE)
+        pattern = re.compile(r'^([^#\n].+?[^`(\n]| +)(![eb]%s)' % envir, re.MULTILINE)
         m = pattern.search(filestr)
         if m:
             print '\n*** error: %s is not at the beginning of a line' % \
                   (m.group(2))
             print '    surrounding text:'
-            print filestr[m.start()-100:m.start()+100]
+            print filestr[m.start()-100:m.end()+100], '\n'
+            if m.group(1).strip() == '':
+                print 'set %s at the beginning of the line' % m.group(2)
+            else:
+                print 'did you mean to write `%s` in some sentence?' % m.group(2)
             _abort()
 
         # Check that envirs have b and e before their name
@@ -298,6 +337,16 @@ def syntax_check(filestr, format):
             print '    surrounding text:'
             print filestr[m.start()-100:m.start()+len(m.group())+100]
             _abort()
+
+    # Footnotes cannot be at the beginning of the line
+    pattern = r'^\[\^[A-Za-z].+?\][^:]'
+    m = re.search(pattern, filestr, flags=re.MULTILINE)
+    if m:
+        print '*** error: footnote cannot appear at the beginning of a line:'
+        print filestr[m.start()-50:m.start()+60]
+        _abort()
+
+    # [[[
 
     pattern = r'^[A-Za-z0_9`"].+\n *- +.+\n^[A-Za-z0_9`"]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
@@ -314,7 +363,9 @@ def syntax_check(filestr, format):
         links  = re.findall(INLINE_TAGS['linkURL2'], filestr)
         links += re.findall(INLINE_TAGS['linkURL3'], filestr)
         for link, url1, url2 in links:
-            if '`' in link[1:-1]:
+            if '``' in link[1:-1]:
+                pass # quotes are ok
+            elif '`' in link[1:-1]:
                 print '\n*** error: verbatim code in part of link is not allowed in format', format
                 print '   ', '"%s": "%s"' % (link, url1)
                 print '    use either link as verbatim code only, %s,' % '"`%s`"' % link.replace('`', '')
@@ -343,8 +394,9 @@ def syntax_check(filestr, format):
                              re.MULTILINE)
         m = pattern.search(filestr2)
         if m and format in ('rst', 'plain', 'epytext', 'st'):
-            print '\n*** error: must have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:'
+            print '\n*** error: must in format "%s" have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:\n\n---------------------------------' % format
             print filestr2[m.start()-40:m.start()+80]
+            print '---------------------------------'
             _abort()
 
     # Syntax error `try`-`except`, should be `try-except`,
@@ -366,6 +418,7 @@ def syntax_check(filestr, format):
         print filestr[m.start()-50:m.start()+50]
         _abort()
 
+    begin_end_consistency_checks(filestr, doconce_envirs())
 
     # Double quotes and not double single quotes in *plain text*:
     inside_code = False
@@ -470,8 +523,6 @@ def syntax_check(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr)
 
-    begin_end_consistency_checks(filestr, doconce_envirs())
-
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
         if line.strip().startswith('==='):
@@ -487,7 +538,7 @@ def syntax_check(filestr, format):
     refs_labels = re.findall(pattern, filestr)
     for tp, label in refs_labels:
         if ' ' in label:
-            print '*** error: space in label - missing }'
+            print '*** error: space in label is not allowed!'
             print '    %s{%s}\n' % (tp, label)
             _abort()
 
@@ -515,7 +566,7 @@ def syntax_check(filestr, format):
             print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
-    # right before them
+    # right before them in rst/sphinx
     constructions = {'comment': r'^\s*#.*?$',
                      'table': r'-\|\s*$',
                      'figure': r'^\s*FIGURE:.+$',
@@ -593,7 +644,7 @@ def syntax_check(filestr, format):
         print '\n'.join(matches)
         _abort()
 
-    pattern = re.compile(r'^__.+?[^.:?]__', re.MULTILINE)
+    pattern = re.compile(r'^__[^_]+?[^.:?]__', re.MULTILINE)
     matches = pattern.findall(filestr)
     if matches:
         print '*** warning: missing ., : or ? after paragraph heading:'
@@ -615,12 +666,20 @@ def syntax_check(filestr, format):
         _abort()
 
     # Movie without comma between filename and options? Or initial spaces?
-    pattern = r'^MOVIE:\s*\[[^,\]]+ +[^\]]*\]'
+    pattern = r'^MOVIE: *\[[^,\]]+ +[^\]]*\]'
     cpattern = re.compile(pattern, re.MULTILINE)
     matches = cpattern.findall(filestr)
     if matches:
         print '\n*** error: missing comma after filename, before options in MOVIE'
         print '\n'.join(matches)
+        _abort()
+
+    # Movie or figure with initial space in filename:
+    pattern = r'^((MOVIE|FIGURE): *\[ +[A-Za-z_0-9/.]+)'
+    matches = re.findall(pattern, filestr, flags=re.MULTILINE)
+    if matches:
+        print '\n*** error: wrong initial space in filename'
+        print '\n'.join([match for match, tp in matches])
         _abort()
 
     # Keywords at the beginning of the lines:
@@ -765,7 +824,7 @@ def insert_code_from_file(filestr, format):
     # Create dummy file if specified file not found?
     CREATE_DUMMY_FILE = False
 
-    # Filename prefix
+    # Get filename prefix to be added to the found path
     path_prefix = option('code_prefix=', '')
     if '~' in path_prefix:
         path_prefix = os.path.expanduser(path_prefix)
@@ -788,6 +847,7 @@ def insert_code_from_file(filestr, format):
         if line.startswith('@@@CODE '):
             num_files += 1
             debugpr('found verbatim copy (line %d):\n%s\n' % (i+1, line))
+            code_envir = None
             words = line.split()
             try:
                 filename = words[1]
@@ -827,6 +887,7 @@ def insert_code_from_file(filestr, format):
                 # Determine code environment from filename extension
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
+                # Adjustments to some names
                 if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':
                     filetype = 'cpp'
@@ -838,29 +899,16 @@ def insert_code_from_file(filestr, format):
                     filetype = 'py'
                 elif filetype == 'htm':
                     filetype = 'html'
+                elif filetype == 'tex':
+                    filetype = 'latex'
                 elif filetype == 'text':
                     filetype = 'txt'
                 elif filetype == 'data':
                     filetype = 'dat'
                 elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                     filetype = 'sh'
-
-                if filetype in ('py', 'f', 'c', 'cpp', 'sh',
-                                'm', 'pl', 'cy', 'rst',
-                                'pyopt',  # Online Python Tutor
-                                'pysc',   # Sage cell
-                                'rb', 'html', 'xml', 'js',
-                                'txt', 'csv', 'dat'):
-                    code_envir = filetype
-                elif filetype == 'tex':
-                    code_envir = 'latex'
-                else:
-                    code_envir = ''
-
-            if code_envir in ('cc', 'ccq', 'txt', 'csv', 'dat', ''):
-                code_envir_tp = 'filedata'
-            else:
-                code_envir_tp = 'program'
+                if '.do.txt' in filename:
+                    filetype = 'do'
 
             m = re.search(r'from-?to:', line)
             if m:
@@ -964,24 +1012,23 @@ def insert_code_from_file(filestr, format):
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
             # Insert a cod or pro directive for ptex2tex and sphinx.
-            if code_envir_tp == 'program':
-                if code_envir.endswith('pro') or code_envir.endswith('cod'):
-                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %s)' % code_envir
-                elif complete_file:
-                    code = "!bc %spro\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %spro)' % code_envir
-                else:
-                    code = "!bc %scod\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %scod)' % code_envir
+            if code_envir is not None:
+                code = "!bc %s\n%s\n!ec" % (code_envir, code)
+                print ' (format: %s)' % code_envir
             else:
-                # filedata (.txt, .csv, .dat, etc, or cc, ccq code_envir)
-                if code_envir:
-                    code = "!bc %s\n%s\n!ec" % (code_envir, code)
-                    print ' (format: %s)' % code_envir
+                if filetype == 'unknown':
+                    code = "!bc\n%s\n!ec" % (code)
+                    print ' (format: !bc)'
+                elif filetype in ('txt', 'do'):
+                    # No cod or pro, just text files
+                    code = "!bc %s\n%s\n!ec" % (filetype, code)
+                    print ' (format: !bc)'
+                elif complete_file:
+                    code = "!bc %spro\n%s\n!ec" % (filetype, code)
+                    print ' (format: %spro)' % filetype
                 else:
-                    code = "!bc\n%s\n!ec" % code
-                    print ' (format: plain !bc, not special type)'
+                    code = "!bc %scod\n%s\n!ec" % (filetype, code)
+                    print ' (format: %scod)' % filetype
             lines[i] = code
 
     filestr = '\n'.join(lines)
@@ -1198,69 +1245,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             else:
                 instruction_line = False
 
-            # [[[
-            # Read the suggestions below. Multiple choice must be
-            # a separate functionality so we can insert !bmchoice also
-            # outside exercises. Just read the text into a data structure
-            # and let formats have a new SURVEY[format] function to typeset
-            # the questions. One can generate plain HTML or create full
-            # surveys, see TODO/quiz.do.txt.
-
-            # Start interpreting exercises with interpret_mchoice, which
-            # grabs all !bmchoice envirs, generates the corresponding
-            # doconce and format code, and js code. Best if we have one
-            # js code for all multiple-choce questions. What if we
-            # have !split? Then the js code should only display the
-            # relevant code. Best if forms are plain HTML and that
-            # the js code is only used for answer feedback (then it can be
-            # common to all pages and inserted in all pages).
-            # Make this for HTML first. Just replace renderQuiz with
-            # the plain HTML code in INF1100 quiz. Need a Check my answer
-            # button, Try again, and My score under each question
-            # such that the user can get feedback on the score so far
-
-            # Regarding syntax: must allow the question to be arbitrarily
-            # doconce-complex, i.e., have movies, lists, whatever.
-            # Each choice and explanation can also be complex or quick.
-            # Maybe have two types of syntax: one begin-end for complex
-            # stuff, and one compact and simple as suggested below.
-            # No, think Q:.+ up to next ^(E|Q|Cf|Cr): notation at the
-            # beginning of the line is sufficient, as explained below.
-
-            # syntax:
-            # T: title (or give it as part of header !bmchoice title)
-            # Q: can be multiline whatever (up to C(f|r):)
-            # A: answer-type: default (none) means choices; text, radio, check
-            # Cr: right choice
-            # C: just a choice (for survey), check or radio according to A:
-            # E: corresponding explanation to last C/Cr/Cw
-            # Cw: another but wrong answer, can be multiline
-            # regex (inside all the bmchoice text): (Cw|Cr):.+?^(E|Cw|Cr|ENDMARKER), re.DOTALL, problem: if not E:, re.findall will not pick out all because the match goes up to and including the next Cw/Cr. Maybe look ahead at ^(E|Cw|Cr|ENDMARKER) can solve this? Try out first! (Must add ENDMARKER to the end of the text)
-            # Could add a remarks section for lessons learned, etc.?
-            #
-
-            # Example code: intro-programming quiz, that is basic js
-            # Really simple, read this first about HTML and jquery!!: http://www.hungrypiranha.org/make-a-website/html-quiz (seems more straightforward than any other solution)
-            # Some js theory for pop-up surveys: http://www.jensbits.com/2010/01/29/pop-up-survey-with-jquery-ui-dialog/
-            # Simple js: https://www.inkling.com/read/javascript-jquery-david-sawyer-mcfarland-2nd/chapter-3/tutorial-a-simple-quiz
-            # are jQuery.Survey: http://flesler.webs.com/jQuery.Survey/ (see source for use), see also https://github.com/jdarling/jQuery.Survey
-
-            # syntax: Cw/Cr: ..., required E: ... for explanation (can be empty)
-            # Cw is a false choice, Cr is a right choice (or False:/True:)
-            # Easy to use a regex to pick out the structure of the multiple
-            # choice text (False|True):(.+?)(E|Explanation|$): (with $ explanations are optional - NO!!)
-            # Better: do a split on True: and then a split on False,
-            # for each True/False, extract E: if it exists (split?)
-            # (E|Explanation):(.+?)($|False|True)
-            # HTML can generate JavaScript a la INF1100 quiz (put all
-            # js in the html file), latex can use fancy constructions,
-            # others can use a plain list. --with_sol determines if
-            # the solution is published (as for the answer/solution).
-            # Should have possibility to have textarea as answer to
-            # question for future smart regex checks of the answer, maybe
-            # also upload files.
-            # Should also have the possibility to include sound files
-            # for applause etc. from Dropbox/collected../ideas/doconce/sound
             if inside_subex and not instruction_line:
                 if inside_answer:
                     subex['answer'].append(lines[line_no])
@@ -1358,7 +1342,12 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                 if key == 'subex':
                     for es in range(len(all_exer[e][key])):
                        for keys in all_exer[e][key][es]:
-                           all_exer[e][key][es][keys] = \
+                           if isinstance(all_exer[e][key][es][keys], (list,tuple)):
+                               for i in range(len(all_exer[e][key][es][keys])):
+                                   all_exer[e][key][es][keys][i] = \
+                               replace_code_math(all_exer[e][key][es][keys][i])
+                           else: # str
+                               all_exer[e][key][es][keys] = \
                                replace_code_math(all_exer[e][key][es][keys])
                 else:
                      all_exer[e][key] = \
@@ -1382,8 +1371,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 """ % (filename, exer_filename))
         f.write(all_exer_str)
         f.close()
-        print 'found info about %d exercises, written to %s' % \
-              (len(all_exer), exer_filename)
+        print 'found info about %d exercises' % (len(all_exer))
         debugpr('The file after interpreting exercises:', filestr)
     else:
         debugpr('No exercises found.')
@@ -1542,7 +1530,7 @@ def typeset_tables(filestr, format):
                     if char not in ('|', 'r', 'l', 'c'):
                         print 'illegal alignment character in table:', char
                         _abort()
-                if len(table['rows']) == 0:
+                if len(table['rows']) <= 1:
                     # first horizontal rule, align spec concern headings
                     table['headings_align'] = align
                 else:
@@ -1621,8 +1609,9 @@ def typeset_tables(filestr, format):
 
 def typeset_envirs(filestr, format):
     # Note: exercises are done (and translated to doconce syntax)
-    # before this function is called
-    envirs = doconce_envirs()[8:]
+    # before this function is called. bt/bc are taken elsewhere.
+    # quiz is taken later.
+    envirs = doconce_envirs()[8:-1]
 
     for envir in envirs:
         if not '!b' + envir in filestr:
@@ -1710,10 +1699,12 @@ def typeset_lists(filestr, format, debug_info=[]):
     lastline = lines[0]
     # for debugging only:
     _code_block_no = 0; _tex_block_no = 0
-    exercise_comment_line = r'--- (begin|end) .*?exercise ---'
+    special_comment = r'--- (begin|end) [A-Za-z0-9,();\- ]*? ---'
+    #exercise_comment_line = r'--- (begin|end) .*?exercise ---'
 
     for i, line in enumerate(lines):
-        debugpr('\n------------------------\nsource line=[%s]' % line)
+        db_line = '[%s]' % line
+        #debugpr('\n------------------------\nsource line=[%s]' % line)
         # do a syntax check:
         for tag in INLINE_TAGS_BUGS:
             bug = INLINE_TAGS_BUGS[tag]
@@ -1731,7 +1722,8 @@ def typeset_lists(filestr, format, debug_info=[]):
             if not lists:
                 result.write(BLANKLINE[format])
             # else: drop writing out blank line inside lists
-                debugpr('  > This is a blank line')
+                db_line_tp = 'blank line'
+                #debugpr('  > This is a blank line')
             lastline = line
             continue
 
@@ -1740,17 +1732,18 @@ def typeset_lists(filestr, format, debug_info=[]):
             # first do some debug output:
             if line.startswith('#!!CODE') and len(debug_info) >= 1:
                 result.write(line + '\n')
-                debugpr('  > Here is a code block:\n%s\n--------' % \
-                      debug_info[0][_code_block_no])
+                db_line_tp = 'code block:\n%s\n-----------' % debug_info[0][_code_block_no]
+                #debugpr('  > Here is a code block:\n%s\n--------' % debug_info[0][_code_block_no])
                 _code_block_no += 1
             elif line.startswith('#!!TEX') and len(debug_info) >= 2:
                 result.write(line + '\n')
-                debugpr('  > Here is a latex block:\n%s\n--------' % \
-                      debug_info[1][_tex_block_no])
+                db_line_tp = 'latex block:\n%s\n-----------' % debug_info[0][_code_block_no]
+                #debugpr('  > Here is a latex block:\n%s\n--------' % debug_info[1][_tex_block_no])
                 _tex_block_no += 1
 
             else:
-                debugpr('  > This is just a comment line')
+                #debugpr('  > This is just a comment line')
+                db_line= 'comment line'
                 # the comment can be propagated to some formats
                 # (rst, latex, html):
                 if 'comment' in INLINE_TAGS_SUBST[format]:
@@ -1762,16 +1755,18 @@ def typeset_lists(filestr, format, debug_info=[]):
 
                     # Exercises has comment lines that make end of lists,
                     # let these be treated as ordinary new, nonindented
-                    # lines
-                    if not re.search(exercise_comment_line, line):
+                    # lines, same for special comments in quiz
+                    if not re.search(special_comment, line):
                         # Ordinary comment
                         result.write(new_comment + '\n')
+                        db_line_tp = 'comment'
                     else:
-                        # Special exercise comment (ordinary line)
+                        # Special comment (keep it as ordinary line)
                         line = new_comment  # will be printed later
+                        db_line_tp = 'special comment'
 
             lastline = line
-            if not re.search(exercise_comment_line, line):
+            if not re.search(special_comment, line):
                 # Ordinary comment
                 continue
             # else: just proceed and use zero indent as indicator
@@ -1791,7 +1786,8 @@ def typeset_lists(filestr, format, debug_info=[]):
             listtype = LIST_SYMBOL[listtype]
         keyword = m.group('keyword')
         text = m.group('text')
-        debugpr('  > indent=%d (previous indent=%d), keyword=[%s], text=[%s]' % (indent, lastindent, keyword, text))
+        db_indent = '  > indent=%d (from %d)' % (indent, lastindent)
+        #debugpr('  > indent=%d (previous indent=%d), keyword=[%s], text=[%s]' % (indent, lastindent, keyword, text))
 
         # new (sub)section makes end of any indent (we could demand
         # (sub)sections to start in column 1, but we have later relaxed
@@ -1802,7 +1798,8 @@ def typeset_lists(filestr, format, debug_info=[]):
 
 
         if indent > lastindent and listtype:
-            debugpr('  > This is a new list of type "%s"' % listtype)
+            #debugpr('  > This is a new list of type "%s"' % listtype)
+            db_line_tp = 'new list %s' % listtype
             # begin a new list or sublist:
             lists.append({'listtype': listtype, 'indent': indent})
             result.write(LIST[format][listtype]['begin'])
@@ -1822,15 +1819,15 @@ def typeset_lists(filestr, format, debug_info=[]):
             # end a list or sublist, nest back all list
             # environments on the lists stack:
             while lists and lists[-1]['indent'] > indent:
-                 debugpr('  > This is the end of a %s list' % \
-                       lists[-1]['listtype'])
-                 result.write(LIST[format][lists[-1]['listtype']]['end'])
-                 del lists[-1]
+                #debugpr('  > This is the end of a %s list' % lists[-1]['listtype'])
+                db_line_tp = 'end of a %s list' % lists[-1]['listtype']
+                result.write(LIST[format][lists[-1]['listtype']]['end'])
+                del lists[-1]
             lastindent = indent
 
-        if indent == lastindent:
-            debugpr('  > This line belongs to the previous block since it has '\
-                  'the same indent (%d blanks)' % indent)
+        #if indent == lastindent:
+        #    debugpr('  > This line belongs to the previous block since it has '\
+        #          'the same indent (%d blanks)' % indent)
 
         if listtype:
             # (a separator (blank line) is written above because we need
@@ -1843,7 +1840,8 @@ def typeset_lists(filestr, format, debug_info=[]):
                 itemformat = itemformat*len(lists)  # *, **, #, ## etc. for sublists
             item = itemformat
             if listtype == 'enumerate':
-                debugpr('  > This is an item in an enumerate list')
+                #debugpr('  > This is an item in an enumerate list')
+                db_line_tp = 'item enumerate list'
                 enumerate_counter += 1
                 if '%d' in itemformat:
                     item = itemformat % enumerate_counter
@@ -1862,8 +1860,8 @@ def typeset_lists(filestr, format, debug_info=[]):
                     if keyword:
                         keyword = parse_keyword(keyword, format) + ':'
                         item = itemformat % keyword + ' '
-                        debugpr('  > This is an item in a description list '\
-                              'with parsed keyword=[%s]' % keyword)
+                        #debugpr('  > This is an item in a description list with parsed keyword=[%s]' % keyword)
+                        db_line_tp = 'description list'
                         keyword = '' # to avoid adding keyword up in
                         # below (ugly hack, but easy linescan parsing...)
                     else:
@@ -1880,12 +1878,14 @@ def typeset_lists(filestr, format, debug_info=[]):
                     else:
                         result.write('\n' + ' '*(indent))
             else:
-                debugpr('  > This is an item in a bullet list')
+                #debugpr('  > This is an item in a bullet list')
+                db_line_tp = 'bullet list'
                 result.write(' '*(indent-2))  # indent here counts with '* '
                 result.write(item + ' ')
 
         else:
-            debugpr('  > This line is some ordinary line, no special list syntax involved')
+            #debugpr('  > This line is some ordinary line, no special list syntax involved')
+            db_line_tp = 'ordinary line'
             # should check emph, verbatim, etc., syntax check and common errors
             result.write(' '*indent)      # ordinary line
 
@@ -1894,7 +1894,8 @@ def typeset_lists(filestr, format, debug_info=[]):
         # line if a : present in an ordinary line
         if keyword:
             text = keyword + text
-        debugpr('text=[%s]' % text)
+        #debugpr('text=[%s]' % text)
+        db_result = '[%s]' % text
 
         # hack to make wiki have all text in an item on a single line:
         newline = '' if lists and format in ('gwiki', 'cwiki') else '\n'
@@ -1902,10 +1903,15 @@ def typeset_lists(filestr, format, debug_info=[]):
         result.write(text + newline)
         lastindent = indent
         lastline = line
+        if db_line_tp != 'ordinary line':
+            debugpr('%s (%s)\n--> %s' % (db_line, db_line_tp, db_result.rstrip()))
+        else:
+            pass
+            #debugpr('%s (%s)' % (db_line, db_line_tp))
 
     # end lists if any are left:
     while lists:
-        debugpr('  > This is the end of a %s list' % lists[-1]['listtype'])
+        debugpr('closing list: end of a %s list' % lists[-1]['listtype'])
         result.write(LIST[format][lists[-1]['listtype']]['end'])
         del lists[-1]
 
@@ -1970,7 +1976,7 @@ def handle_figures(filestr, format):
             basepath, ext = os.path.splitext(figfile)
             # Avoid ext = '.05' etc from numbers in the filename
             if not ext.lower() in ['.eps', '.pdf', '.png', '.jpg', 'jpeg',
-                                   '.gif', '.tif', '.tiff']:
+                                   '.gif', '.tif', '.tiff', '.svg']:
                 ext = ''
             if ext:
                 if is_file_or_url(figfile) != 'url':
@@ -2059,7 +2065,7 @@ def handle_figures(filestr, format):
                                 print """\
 *** warning: need to convert from %s to %s
 using ImageMagick's convert program, but the result will
-be loss of quality. Generate a proper %s file.""" % \
+be loss of quality. Generate a proper %s file (if possible).""" % \
                                 (figfile, converted_file, converted_file)
                         failure = os.system(cmd)
                         if not failure:
@@ -2169,7 +2175,12 @@ def handle_index_and_bib(filestr, format, has_title):
     pattern_def = '^ *\[\^(?P<name>.+?)\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
     #footnotes = {name: footnote for name, footnote, lookahead in
     #             re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
-    pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=[^:]))'
+    #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
+    # Footnote pattern has a word prior to the footnote [^name]
+    # or math, inline code, link
+    pattern_footnote = r'(?<=(\w|[$`")]))(?P<footnote> *\[\^(?P<name>.+?)\])'
+    # (Note: cannot have footnote at beginning of line, because look behind
+    # does not tolerate ^ in (\w|[$`")]|^)
     # Keep footnotes for pandoc, plain text
     # Make a simple transformation for rst, sphinx
     # Transform for latex: remove definition, insert \footnote{...}
@@ -2383,13 +2394,335 @@ def typeset_authors(filestr, format):
     filestr = filestr.replace('XXXAUTHOR', author_block)
     return filestr
 
+def typeset_section_numbering(filestr, format):
+    chapter = section = subsection = subsubsection = 0
+    # Do we have chapters?
+    from common import chapter_pattern
+    if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
+        has_chapters = True
+    else:
+        has_chapters = False
+
+    def counter(*args):
+        # Make 1.3.2 type of section number
+        # args: chapter, section, subsection,
+        if has_chapters:
+            return '.'.join([str(s) for s in args])
+        else:
+            return '.'.join([str(s) for s in args[1:]])
+
+    lines = filestr.splitlines()
+    for i in range(len(lines)):
+        if lines[i].startswith('========= '):
+            chapter += 1
+            section = subsection = subsubsection = 0
+            lines[i] = re.sub(r'^========= ', '========= %s: ' %
+                              counter(chapter), lines[i])
+        elif lines[i].startswith('======= '):
+            section += 1
+            subsection = subsubsection = 0
+            lines[i] = re.sub(r'^======= ', '======= %s: ' %
+                              counter(chapter, section), lines[i])
+        elif lines[i].startswith('===== '):
+            subsection += 1
+            subsubsection = 0
+            lines[i] = re.sub(r'^===== ', '===== %s: ' %
+                              counter(chapter, section, subsection),
+                              lines[i])
+        elif lines[i].startswith('=== '):
+            subsubsection += 1
+            lines[i] = re.sub(r'^=== ', '=== %s: ' %
+                              counter(chapter, section, subsection, subsubsection),
+                              lines[i])
+    return '\n'.join(lines)
+
+def typeset_quizzes1(filestr, insert_missing_quiz_header=True):
+    """
+    Find all multiple choice questions in the string (file) filestr.
+    Return filestr with comment indications for various parts of
+    the quizzes.
+
+    Method: extract all quizzes, replace each quiz by a new format
+    consisting of digested text between begin-end comments, run
+    doconce text transformations, interpret the begin-end comments
+    and store quiz info in a data structure, send data structure
+    to a format-specific function for final rendering (the text is
+    already in the right format).
+    """
+    # Should have possibility to have textarea as answer to
+    # question for future smart regex checks of the answer, maybe
+    # also upload files.
+    # Should also have the possibility to include sound files
+    # for applause etc. from Dropbox/collected../ideas/doconce/sound
+
+    pattern = '^!bquiz.+?^!equiz'
+    quiztexts = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    headings = [('', None)]*(len(quiztexts))
+    # Find the heading before each quiz (can be compared with H: ...)
+    pieces = filestr.split('!bquiz')
+    # Can only do this when there are no extra inline !bquiz words
+    # inside the text (because of the above split), just !bquiz in quiz envirs
+    if len(pieces) == len(quiztexts) + 1:
+        for i, piece in enumerate(pieces[:-1]):
+            for line in reversed(piece.splitlines()):
+                if line.startswith('===== '):
+                    if re.search(r'=====\s+\{?(Exercise|Project|Problem|Example)', line):
+                        headings[i] = line, 'exercise'
+                    else:
+                        headings[i] = line, 'subsection'
+                    break
+                elif line.startswith('======='):
+                    headings[i] = line, 'section'
+                    break
+                """
+                elif line.startswith('!bquestion') or line.startswith('!bnotice') or line.startswith('!bsummary'):
+                    # Can have quiz in admons too
+                    words = line.split()
+                    if len(words) > 1:
+                        headings[i] = (' '.join(words[1:]), words[2:] + '-admon')
+                        break
+                """
+    quizzes = []
+    for text, heading in zip(quiztexts, headings):
+        new_text = interpret_quiz_text(text, insert_missing_quiz_header,
+                                       heading[0], heading[1])
+        quizzes.append(new_text)
+        filestr = filestr.replace(text, new_text)
+    return filestr, len(quiztexts)
+
+def interpret_quiz_text(text, insert_missing_heading= False,
+                        previous_heading=None, previous_heading_tp=None):
+    """
+    Replace quiz (in string text) with begin-end groups typeset as
+    comments. The optional new page and heading lines are replaced
+    by one-line comments.
+    The function extract_quizzes can recognize the output of the
+    present function, and create data structure with the quiz
+    content (after full rendering of the text).
+    """
+    ct = comment_tag
+    bct = begin_comment_tag
+    ect = end_comment_tag
+
+    data = {}
+    # New page? NP
+    pattern = r'^NP:(.+)'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        header = m.group(1).strip()
+        text = re.sub(pattern, ct('--- new quiz page: ' + header), text,
+                      flags=re.MULTILINE)
+    # Heading?
+    pattern = r'^H:(.+)'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        heading = m.group(1).strip()
+        if insert_missing_heading and isinstance(previous_heading, str):
+            if heading.lower() not in previous_heading.lower():
+                # Quiz heading is missing and wanted
+                text = '===== Exercise: %s =====\n\n' % heading + text
+                # no label, file=, solution= are needed for quizes
+                previous_heading_tp = 'exercise'
+        heading_comment = ct('--- quiz heading: ' + heading) + '\n' + ct('--- previous heading type: ' + str(previous_heading_tp))
+        text = re.sub(pattern, heading_comment, text, flags=re.MULTILINE)
+    else:
+        # Give info about previous heading type
+        if previous_heading_tp is not None:
+            text = ct('--- previous heading type: ' + str(previous_heading_tp)) + '\n' + text
+
+
+    def begin_end_tags(tag, content):
+        return """
+%s
+%s
+%s
+""" % (bct(tag), content, ect(tag))
+
+    # Question
+    pattern = r'(^Q:(.+?))(?=^(C[rw]|K|L):)'
+    m = re.search(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    if m:
+        question = m.group(2).strip()
+        text = text.replace(m.group(1), begin_end_tags('quiz question', question))
+    else:
+        print '*** error: found quiz without question!'
+        print text
+        _abort()
+
+    # Keywords
+    pattern = r'^(K:(.+))$'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        keywords = [s.strip() for s in m.group(2).split(';')]
+        text = text.replace(m.group(1), ct('--- keywords: ' + str(keywords)))
+
+    # Label
+    pattern = r'^(L:(.+))$'
+    m = re.search(pattern, text, flags=re.MULTILINE)
+    if m:
+        text = text.replace(m.group(1), ct('--- label: ' + str(m.group(2).strip())))
+
+    # Choices: grab choices + optional explanations first,
+    # then extract explanations.
+    # Need end-of-string marker, cannot use $ since we want ^ and
+    # re.MULTILINE ($ is then end of line)
+    text += '_EOS_'
+    pattern = r'^(C[rw]:(.+?))(?=(^C[rw]:|L:|K:|_EOS_|^!equiz))'
+    choices = re.findall(pattern, text, flags=re.MULTILINE|re.DOTALL)
+    text = text[:-5]  # remove _EOS_ marker
+    counter = 1
+    if choices:
+        for choice_text, choice, _lookahead in choices:
+            if re.search(r'^[KL]:', choice, flags=re.MULTILINE):
+                print '*** error: keyword or label cannot appear between a'
+                print '    choice and explanation in a quiz:'
+                print choice
+                _abort()
+            right = choice_text.startswith('Cr')  # right or wrong choice?
+            explanation = ''
+            if re.search(r'^E:', choice, flags=re.MULTILINE):
+                choice, explanation = re.split(r'^E:\s*',
+                                               choice, flags=re.MULTILINE)
+                text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()) + begin_end_tags('explanation of choice %d' % counter, explanation.strip()))
+            else:
+                text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()))
+            counter += 1
+    else:
+        print '*** error: found quiz without choices!'
+        print text
+        _abort()
+    text = re.sub('^!bquiz', bct('quiz'), text,
+                  flags=re.MULTILINE)
+    text = re.sub('^!equiz', ect('quiz'), text,
+                  flags=re.MULTILINE)
+    return text
+
+_QUIZ_BLOCK = '<<<!!QUIZ_BLOCK'
+
+def extract_quizzes(filestr, format):
+    """
+    Replace quizzes, formatted as output from function interpret_quiz_text,
+    by a Python data structure and a special instruction where formatting
+    of this data structure is to be inserted.
+    """
+    from collections import OrderedDict
+    ct = comment_tag
+    bct = begin_comment_tag
+    ect = end_comment_tag
+    cp = INLINE_TAGS_SUBST[format].get('comment', '# %s') # comment pattern
+    if format in ("rst", "sphinx"):
+        cp = '.. %s\n'
+    if not isinstance(cp, str):
+        raise TypeError
+    pattern = '^' + bct('quiz', cp) + '.+?' + ect('quiz', cp)
+    quizzes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    data = []
+    for i, quiz in enumerate(quizzes):
+        data.append(OrderedDict())
+        data[-1]['no'] = i+1
+        filestr = filestr.replace(quiz, '%d %s' % (i, _QUIZ_BLOCK))
+        # Extract data in quiz
+        pattern = '^' + ct('--- new quiz page: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['new page'] = m.group(1).strip()
+        pattern = '^' + ct('--- quiz heading: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['heading'] = m.group(1).strip()
+        pattern = '^' + ct('--- previous heading type: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['embedding'] = m.group(1).strip()
+
+        pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        if m:
+            question = m.group(1).strip()
+            # Check if question prefix is specified
+            # Q: [] Here goes the question...
+            prefix_pattern = r'^\[(.*?)\]'
+            m = re.search(prefix_pattern, question)
+            if m:
+                prefix = m.group(1)
+                question = re.sub(prefix_pattern, '', question).strip()
+                data[-1]['question prefix'] = prefix
+            data[-1]['question'] = question
+
+        pattern = '^' + ct('--- keywords: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            try:
+                keywords = eval(m.group(1))  # should have list format
+            except Exception as e:
+                print '*** keywords in quiz have wrong syntax (should be semi-colon separated list):'
+                print m.group(1)
+                print '    Quiz question:', question
+                _abort()
+            data[-1]['keywords'] = keywords
+
+        pattern = '^' + ct('--- label: (.+)', cp)
+        m = re.search(pattern, quiz, flags=re.MULTILINE)
+        if m:
+            data[-1]['label'] = m.group(1).strip()
+
+        pattern = '^' + bct('quiz choice (\d+) \((right|wrong)\)', cp) + '(.+?)' + ect('quiz choice .+?', cp)
+        choices = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        data[-1]['choices'] = []
+        data[-1]['choice prefix'] = [None]*len(choices)
+        for i, right, choice in choices:
+            choice = choice.strip()
+            # choice can be of the form [Solution:] Here goes the text...
+            m = re.search(prefix_pattern, choice)
+            if m:
+                prefix = m.group(1).strip()
+                choice = re.sub(prefix_pattern, '', choice).strip()
+                data[-1]['choice prefix'][int(i)-1] = prefix
+            data[-1]['choices'].append([right, choice])
+        # Include choice prefix only if it is needed
+        if data[-1]['choice prefix'] == [None]*len(choices):
+            del data[-1]['choice prefix']
+        pattern = '^' + bct('explanation of choice (\d+)', cp) + '(.+?)' + ect('explanation of choice \d+', cp)
+        explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
+        for i_str, explanation in explanations:
+            i = int(i_str)
+            try:
+                data[-1]['choices'][i-1].append(explanation.strip())
+            except IndexError:
+                print """
+*** error: quiz question
+"%s"
+has choices
+%s
+Something is wrong with the matching of choices and explanations
+(compare the list above with the source code of the quiz).
+This is a bug or wrong quiz syntax.
+
+The raw code of this quiz at this stage of processing reads
+
+%s
+""" % (data[-1]['question'], data[-1]['choices'], i, quiz)
+                _abort()
+
+    return data, quizzes, filestr
+
+def typeset_quizzes2(filestr, format):
+    quizzes, html_quizzes, filestr = extract_quizzes(filestr, format)
+    for i, quiz in enumerate(quizzes):
+        text = QUIZ[format](quiz)
+        filestr = filestr.replace('%d ' % i + _QUIZ_BLOCK, text)
+    import pprint
+    f = open('.%s.quiz' % dofile_basename, 'w')
+    f.write(pprint.pformat([dict(quiz) for quiz in quizzes]))
+    f.close()
+    f = open('.%s.quiz.html' % dofile_basename, 'w')
+    for quiz in html_quizzes:
+        f.write(quiz + '\n\n')
+    f.close()
+    return filestr
 
 def inline_tag_subst(filestr, format):
     """Deal with all inline tags by substitution."""
-    # Note that all tags are *substituted* so that the sequence of
-    # operations are not important for the contents of the document - we
-    # choose a sequence that is appropriate from a substitution point
-    # of view
 
     filestr = typeset_authors(filestr, format)
 
@@ -2401,28 +2734,46 @@ def inline_tag_subst(filestr, format):
         date = w[1] + ' ' + w[2] + ', ' + w[4]
         filestr = filestr.replace(origstr, 'DATE: ' + date)
 
+    # Hack for not typesetting ampersands inside inline verbatim text
+    groups = re.findall(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
+    verbatims = ['`' + subst + '`'
+                 for begin, dummy1, subst, end, dummy2 in groups]
+    # Protect & inside `...` by transforming it to some marker text.
+    # This change will be substituted back after ampersands1 and ampersands2
+    # are substituted.
+    marker_text = 'zzYYYampYYYzz?'
+    verbatims_to_be_fixed = []
+    for verbatim in verbatims:
+        if '&' in verbatim:
+            from_ = verbatim
+            to_ = verbatim.replace('&', marker_text)
+            filestr = filestr.replace(from_, to_)
+
     debugpr('\n*** Inline tags substitution phase ***')
 
     # Do tags that require almost format-independent treatment such
     # that everything is conveniently defined here
     # 1. Quotes around normal text in LaTeX style:
     pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
-    if format not in ('pdflatex', 'latex'):
+    if format in ('html',):
+        filestr = re.sub(pattern, '&quot;\g<1>&quot;', filestr)
+    elif format not in ('pdflatex', 'latex'):
         filestr = re.sub(pattern, '"\g<1>"', filestr)
 
     # Treat tags that have format-dependent typesetting
 
     ordered_tags = (
+        'horizontal-rule',  # must be done before sections (they can give ---- in some formats)
         'title',
         'date',
         'movie',
         #'figure',  # done separately
+        'inlinecomment',
         'abstract',  # must become before sections since it tests on ===
         'emphasize', 'math2', 'math',
-        # important to do section, subsection, etc. before paragraph and bold:
-        'chapter', 'section', 'subsection', 'subsubsection',
         'bold',
-        'inlinecomment',
+        'ampersand2',  # must come before ampersand1 (otherwise ampersand1 recognizes ampersand2 regex)
+        'ampersand1',
         'colortext',
         'verbatim',
         'paragraph',  # after bold and emphasize
@@ -2432,6 +2783,7 @@ def inline_tag_subst(filestr, format):
         'linkURL2',
         'linkURL3',
         'linkURL',
+        'chapter', 'section', 'subsection', 'subsubsection',
         'linebreak',
         'non-breaking-space',  # must become after math, colortext, links, etc
         )
@@ -2439,8 +2791,10 @@ def inline_tag_subst(filestr, format):
         debugpr('\n*************** Working with tag "%s"' % tag)
         tag_pattern = INLINE_TAGS[tag]
         #print 'working with tag "%s" = "%s"' % (tag, tag_pattern)
-        if tag in ('abstract', 'inlinecomment'):
+        if tag in ('abstract',):
             c = re.compile(tag_pattern, re.MULTILINE|re.DOTALL)
+        elif tag in ('inlinecomment',):
+            c = re.compile(tag_pattern, re.DOTALL)
         else:
             c = re.compile(tag_pattern, re.MULTILINE)
         try:
@@ -2491,14 +2845,19 @@ def inline_tag_subst(filestr, format):
 
         else:
             raise ValueError, 'replacement is of type %s' % type(replacement)
+
         if occurences > 0:
             debugpr('\n**** The file after %d "%s" substitutions ***\n%s\n%s\n\n' % (occurences, tag, filestr, '-'*80))
+
+    # Hack: substitute marker text for ampersand back
+    filestr = filestr.replace(marker_text, '&')
+
     return filestr
 
 def subst_away_inline_comments(filestr):
     # inline comments: [hpl: this is a comment]
-    pattern = r'\[(?P<name>[A-Za-z0-9_ ,.@]+?): +(?P<comment>[^\]]*?)\]\s*'
-    filestr = re.sub(pattern, '', filestr)
+    pattern = INLINE_TAGS['inlinecomment']
+    filestr = re.sub(pattern, '', filestr, flags=re.DOTALL|re.MULTILINE)
     return filestr
 
 def subst_class_func_mod(filestr, format):
@@ -2693,6 +3052,7 @@ def doconce2format(filestr, format):
             INDEX_BIB,
             TOC,
             ENVIRS,
+            QUIZ,
             INTRO,
             OUTRO,
             filestr)
@@ -2713,6 +3073,13 @@ def doconce2format(filestr, format):
         if fname is not None:
             f = open(fname, 'w')
             f.write(filestr)
+
+    # Next step: first reformatting of quizzes
+    filestr, num_quizzes = typeset_quizzes1(
+        filestr, insert_missing_quiz_header=False)
+    if num_quizzes:
+        debugpr('The file after first reformatting of quizzes:', filestr)
+        report_progress('handled first reformatting of quizzes')
 
     # Next step: run operating system commands and insert output
     filestr, num_commands = insert_os_commands(filestr, format)
@@ -2796,6 +3163,11 @@ def doconce2format(filestr, format):
             filestr = re.sub(r'^ *%s +(\{?(Exercise|Problem|Project|Example)\}?):\s*(.+?) +%s' % ('='*s, '='*s), '===== \g<1>: \g<3> =====', filestr, flags=re.MULTILINE)
         debugpr('The file after changing the level of section headings:', filestr)
 
+    # Next step: section numbering?
+    if format not in ('latex', 'pdflatex'):
+        if option('section_numbering=', 'off') == 'on':
+            filestr = typeset_section_numbering(filestr, format)
+
     # Remove linebreaks within paragraphs
     if option('oneline_paragraphs'):  # (does not yet work well)
         filestr = make_one_line_paragraphs(filestr, format)
@@ -2806,7 +3178,7 @@ def doconce2format(filestr, format):
     else:
         # Number inline comments
         inline_comments = re.findall(INLINE_TAGS['inlinecomment'], filestr,
-                                     flags=re.DOTALL|re.MULTILINE)
+                                     flags=re.DOTALL)
         counter = 1
         for name, space, comment in inline_comments:
             filestr = filestr.replace(
@@ -2818,6 +3190,7 @@ def doconce2format(filestr, format):
     # Remove comments starting with ##
     pattern = r'^##.+$\n'
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE)
+    # (This is already done by Mako, if the document has Mako markup)
 
     # Fix stand-alone http(s) URLs (after verbatim blocks are removed,
     # but before figure handling and inline_tag_subst)
@@ -2938,6 +3311,52 @@ def doconce2format(filestr, format):
 
     debugpr('The file after typesetting of admons and the rest of the !b/!e environments:', filestr)
 
+    # Check if we have wrong-spelled environments
+    if not option('examples_as_exercises'):
+        pattern = r'^(![be].+)'
+        m = re.search(pattern, filestr, flags=re.MULTILINE)
+        if m:
+            # Found, but can be inside code block (should have |[be].+ then)
+            # and hence not necessarily an error
+            envir = m.group(1)
+            print '*** error: could not translate environment: %s' % envir
+            if m.group(1)[2:] in ('sol', 'ans', 'hint', 'subex'):
+                print '    This is an environment in an exercise. Check if the'
+                print '    heading is correct so the subsection was recognized'
+                print '    as Exercise, Problem, or Project (Exercise: title).'
+            else:
+                print '    possible reasons:'
+                print '     * syntax error in environment name'
+                print '     * environment inside code: use | instead of !'
+                print '     * or bug in doconce'
+
+            print '    context:\n'
+            print filestr[m.start()-50:m.end()+50]
+            _abort()
+
+
+    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
+    # (must be done before math blocks are removed and again after
+    # newcommands files are inserted)
+    filestr = bm2boldsymbol(filestr, format)
+
+    # Next step: replace environments starting with | (instead of !)
+    # by ! (for illustration of doconce syntax inside !bc/!ec directives).
+    # Enough to consider |bc, |ec, |bt, and |et since all other environments
+    # are processed when code and tex blocks are removed from the document.
+    if '|b' in filestr or '|e' in filestr:
+        for envir in doconce_envirs():
+            filestr = filestr.replace('|b' + envir, '!b' + envir)
+            filestr = filestr.replace('|e' + envir, '!e' + envir)
+
+        debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
+
+    # Second reformatting of quizzes
+    if num_quizzes:
+        filestr = typeset_quizzes2(filestr, format)
+        debugpr('The file after second reformatting of quizzes:', filestr)
+        report_progress('handled second reformatting of quizzes')
+
     # Next step: remove exercise solution/answers, notes, etc
     # (Note: must be done after code and tex blocks are inserted!
     # Otherwise there is a mismatch between all original blocks
@@ -2955,39 +3374,7 @@ def doconce2format(filestr, format):
             filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
 
 
-    debugpr('The file after removal of solutions, answers, notes, hints, etc.:', filestr)
-
-    # Check if we have wrong-spelled environments
-    if not option('examples_as_exercises'):
-        pattern = r'^(![be].+)'
-        m = re.search(pattern, filestr, flags=re.MULTILINE)
-        if m:
-            # Found, but can be inside code block (should have |[be].+ then)
-            # and hence not necessarily an error
-            print '*** error: could not translate environment: %s' % m.group(1)
-            print '    context:\n'
-            print filestr[m.start()-50:m.end()+50]
-            print '    possible reasons:'
-            print '     * syntax error in environment name'
-            print '     * environment inside code: use | instead of !'
-            print '     * or bug in doconce'
-            _abort()
-
-
-    # Next step: change \bm{} to \boldsymbol{} for all MathJax-based formats
-    # (must be done before math blocks are removed and again after
-    # newcommands files are inserted)
-    filestr = bm2boldsymbol(filestr, format)
-
-    # Final step: replace environments starting with | (instead of !)
-    # by ! (for illustration of doconce syntax inside !bc/!ec directives).
-    # Enough to consider |bc, |ec, |bt, and |et since all other environments
-    # are processed when code and tex blocks are removed from the document.
-    for envir in doconce_envirs():
-        filestr = filestr.replace('|b' + envir, '!b' + envir)
-        filestr = filestr.replace('|e' + envir, '!e' + envir)
-
-    debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
+    debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
 
     cpu = time.time() - t0
     if cpu > 15:
@@ -3183,12 +3570,17 @@ away from the beginning of the line.
             if formula[0] == '{':
                 if formula[1] == '}':
                     suggestion = 'as $\,{}...$'
-                if formula[1:7] == r'\cal O}':
+                elif formula[1:7] == r'\cal O}':
                     suggestion = r'as \newcommand{\Oof}[1]{{\cal O}{#1}}'
+                elif re.search(r'^\{[A-Za-z0-9_]+\}', formula):  # Mako variable?
+                    break
+                elif re.search(r'^\{[A-Za-z0-9_]+\(', formula):  # Mako func?
+                    break
                 else:
                     suggestion = 'or make a newcommand'
                 print """\
-*** error: potential problem with formula $%s$'
+*** error: potential problem with the math formula
+           $%s$
     since ${ can confuse Mako - rewrite %s""" % (formula, suggestion)
                 _abort()
 
@@ -3234,7 +3626,14 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
         #temp = Template(filename=resultfile2, lookup=lookup,
         #                strict_undefined=strict_undefined)
         if encoding:
-            filestr = unicode(filestr, encoding)
+            try:
+                filestr = unicode(filestr, encoding)
+            except UnicodeDecodeError as e:
+                if "codec can't decode" in str(e):
+                    print e
+                    index = int(str(e).split('in position')[1].split(':')[0])
+                    print filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50]
+                _abort()
         try:
             temp = Template(text=filestr, lookup=lookup,
                             strict_undefined=strict_undefined)
@@ -3255,7 +3654,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
 
         try:
             filestr = temp.render(**mako_kwargs)
-        except TypeError, e:
+        except TypeError as e:
             if "'Undefined' object is not callable" in str(e):
                 calls = '\n'.join(re.findall(r'(\$\{[A-Za-z0-9_ ]+?\()[^}]+?\}', filestr))
                 print '*** mako error: ${func(...)} calls undefined function "func",\ncheck all ${...} calls in the file(s) for possible typos and lack of includes!\n%s' % calls
@@ -3266,7 +3665,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 filestr = temp.render(**mako_kwargs)
 
 
-        except NameError, e:
+        except NameError as e:
             if "Undefined" in str(e):
                 print '*** mako error: NameError Undefined variable,'
                 print '    one or more ${var} variables are undefined.\n'
@@ -3279,6 +3678,17 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 # Just dump everything mako has
                 print '*** mako error:'
                 filestr = temp.render(**mako_kwargs)
+
+        except UnicodeDecodeError as e:
+            if "can't decode byte" in str(e):
+                print '*** error when running mako: UnicodeDecodeError'
+                print e
+                index = int(str(e).split('position')[1].split(':')[0])
+                # index==0 is often a misleading info
+                if index > 0:
+                    print filestr[index-50:index], ' -- problematic char -- ', filestr[index+1:index+50]
+                    print 'ord(problematic char)=%d' % ord(filestr[0])
+                _abort()
 
         if encoding:
             f = codecs.open(resultfile2, 'w', encoding)

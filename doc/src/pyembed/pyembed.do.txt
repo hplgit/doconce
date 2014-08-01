@@ -1,0 +1,48 @@
+TITLE: Demo of embedded symbolic math
+AUTHOR: HPL
+DATE: today
+
+## Mako in a nutshell:
+## <% ... %> contains arbitrary Python code.
+## ${name(...)}$ calls a Python function name with the given arguments.
+## In this way, we can define Python code that is run when Mako is run
+## and insert values of variables or function calls around in the text
+## with the ${...}$ syntax.
+
+# #ifdef INTERNAL
+<%
+import sympy as sm
+x, y, a = sm.symbols('x y a')
+f = a*x + sm.sin(y)
+step1 = sm.Integral(f, x, y)
+step2 = sm.Integral(sm.Integralf, x).doit(), y)
+step3 = step2.doit()
+%>
+# #else
+<%
+# #include "src/ex1.py"
+%>
+# #endif
+
+!bt
+\begin{align*}
+${sm.latex(step1)} &= ${sm.latex(step2)}\\
+&= ${sm.latex(step3)}
+\end{align*}
+!et
+
+<%
+import sympy as sm
+x, y, a = sm.symbols('x y a')
+b, c = sm.symbols('b c')
+eq = a*x**2 + b*x + c
+s = sm.solve(eq, x)
+%>
+
+The solution of $${sm.latex(sm.Eq(eq))}$ is
+
+!bt
+\[ x = ${sm.latex(s)} \]
+!et
+
+

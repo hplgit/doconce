@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -11,34 +10,36 @@ Automatically generated HTML file from Doconce source
 
 
 
+
 <style type="text/css">
-    /* blueish2 style */
+/* blueish2 style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    pre, code { font-size: 90%; line-height: 1.6em; }
-    
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%%;  }
-    .alert-text-large   { font-size: 130%%; }
-    .alert-text-normal  { font-size: 90%%;  }
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
 
+pre, code { font-size: 90%; line-height: 1.6em; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%%;  }
+.alert-text-large   { font-size: 130%%; }
+.alert-text-normal  { font-size: 90%%;  }
+
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -68,9 +69,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -114,20 +112,21 @@ $$
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Apr 3, 2014</h4></center> <!-- date -->
+<center><h4>Jul 28, 2014</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
-<h2>Introduction  <a name="___sec0"></a></h2>
+<h1>Introduction  <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h3>Code  <a name="___sec1"></a></h3>
+<h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -141,9 +140,8 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+<h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -175,12 +173,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -214,7 +209,7 @@ Let's begin a new paragraph and show a box with code only:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">some_code</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> sin(x)<span style="color: #666666">*</span>exp(<span style="color: #666666">1-</span>x)
 </pre></div>
@@ -223,9 +218,8 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h3>Admonitions  <a name="___sec3"></a></h3>
+<h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -240,8 +234,6 @@ Let us start with a plain warning environment.
 <div class="alert-text-normal">And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -278,7 +270,7 @@ Also some code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x
 </pre></div>
@@ -287,7 +279,7 @@ And a complete program
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
 <p></div>
@@ -365,7 +357,6 @@ code is present).
 <div class="alert-text-illegal-size">Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -402,7 +393,7 @@ $$</div>
 <th align="left" valign="middle"><b>Question.</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
-<div class="alert-text-normal">So, how many admonition environments does Doconce support?</div>
+<div class="alert-text-normal">So, how many admonition environments does DocOnce support?</div>
 </p></td></tr>
 </table>
 
@@ -418,7 +409,7 @@ $$</div>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
 <div class="alert-text-normal">
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol></div>
 </p></td></tr>
 </table>
@@ -435,8 +426,6 @@ $$</div>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
 <div class="alert-text-normal">It is of outmost important to
 
-<p>
-
 <ol>
 <li> stay cool</li>
 <li> read hints and tips carefully</li>
@@ -446,7 +435,7 @@ Because here the thing is to do
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
@@ -474,9 +463,8 @@ Next is a warning without a title ("none" implies no title).
 </table>
 
 
-<h3>Going deeper environments  <a name="___sec4"></a></h3>
+<h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -498,7 +486,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -515,7 +502,7 @@ code is task that this "Going deeper" environment targets.
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Dudt</span>(u):
     r <span style="color: #666666">=</span> diff(u, t) <span style="color: #666666">+</span> u<span style="color: #666666">*</span>grad(u)
     <span style="color: #008000; font-weight: bold">return</span> r
@@ -529,7 +516,7 @@ Longer computer code requires vertical space:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Diff</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, h<span style="color: #666666">=1E-5</span>):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
@@ -573,14 +560,13 @@ Longer computer code requires vertical space:
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center></div>
+<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center></div>
 </p></td></tr>
 </table>
 
 
-<h3>The end  <a name="___sec5"></a></h3>
+<h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.

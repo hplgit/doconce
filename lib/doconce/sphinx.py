@@ -2,71 +2,12 @@
 
 # can reuse most of rst module:
 from rst import *
-from common import align2equations, online_python_tutor, bibliography
+from common import align2equations, online_python_tutor, bibliography, \
+     get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option
 
-legal_pygments_languages = [
-    'Cucumber', 'cucumber', 'Gherkin', 'gherkin',
-    'abap', 'ada', 'ada95ada2005',
-    'antlr-as', 'antlr-actionscript', 'antlr-cpp', 'antlr-csharp',
-    'antlr-c#', 'antlr-java', 'antlr-objc', 'antlr-perl',
-    'antlr-python', 'antlr-ruby', 'antlr-rb', 'antlr',
-    'apacheconf', 'aconf', 'apache', 'applescript', 'as',
-    'actionscript', 'as3', 'actionscript3', 'aspx-cs', 'aspx-vb',
-    'asy', 'asymptote', 'basemake', 'bash', 'sh', 'ksh', 'bat',
-    'bbcode', 'befunge', 'boo', 'brainfuck', 'bf', 'c-objdump',
-    'c', 'cfm', 'cfs', 'cheetah', 'spitfire', 'clojure', 'clj',
-    'cmake', 'coffee-script', 'coffeescript', 'common-lisp',
-    'cl', 'console', 'control',
-    'cpp', 'c++', 'cpp-objdump', 'c++-objdumb', 'cxx-objdump',
-    'csharp', 'c#',
-    'css+django', 'css+jinja', 'css+erb', 'css+ruby',
-    'css+genshitext', 'css+genshi', 'css+mako', 'css+myghty',
-    'css+php', 'css+smarty', 'css',
-    'cython', 'pyx', 'd-objdump', 'd', 'delphi', 'pas',
-    'pascal', 'objectpascal', 'diff', 'udiff',
-    'django', 'jinja', 'dpatch', 'dylan', 'erb',
-    'erl', 'erlang', 'evoque', 'felix', 'flx',
-    'fortran', 'gas', 'genshi', 'kid',
-    'xml+genshi', 'xml+kid', 'genshitext', 'glsl',
-    'gnuplot', 'go', 'groff', 'nroff', 'man', 'haml',
-    'HAML', 'haskell', 'hs',
-    'html+cheetah', 'html+spitfire', 'html+django', 'html+jinja',
-    'html+evoque', 'html+genshi', 'html+kid', 'html+mako',
-    'html+myghty', 'html+php', 'html+smarty', 'html',
-    'hx', 'haXe', 'ini', 'cfg', 'io', 'irc',
-    'java', 'js+cheetah', 'javascript+cheetah', 'js+spitfire',
-    'javascript+spitfire', 'js+django', 'javascript+django',
-    'js+jinja', 'javascript+jinja', 'js+erb', 'javascript+erb',
-    'js+ruby', 'javascript+ruby', 'js+genshitext', 'js+genshi',
-    'javascript+genshitext', 'javascript+genshi', 'js+mako',
-    'javascript+mako', 'js+myghty', 'javascript+myghty',
-    'js+php', 'javascript+php', 'js+smarty', 'javascript+smarty',
-    'js', 'javascript', 'jsp',
-    'lhs', 'literate-haskell', 'lighty', 'lighttpd', 'llvm',
-    'logtalk', 'lua', 'make', 'makefile', 'mf', 'bsdmake',
-    'mako', 'matlab', 'octave', 'matlabsession', 'minid',
-    'modelica', 'modula2', 'm2', 'moocode', 'mupad', 'mxml',
-    'myghty', 'mysql', 'nasm', 'newspeak', 'nginx', 'numpy',
-    'objdump', 'objective-c', 'objectivec', 'obj-c', 'objc',
-    'objective-j', 'objectivej', 'obj-j', 'objj', 'ocaml',
-    'ooc', 'perl', 'pl', 'php', 'php3', 'php4', 'php5',
-    'pot', 'po', 'pov', 'prolog', 'py3tb', 'pycon', 'pytb',
-    'python', 'py', 'python3', 'py3', 'ragel-c', 'ragel-cpp',
-    'ragel-d', 'ragel-em', 'ragel-java', 'ragel-objc',
-    'ragel-ruby', 'ragel-rb', 'ragel', 'raw', 'rb', 'ruby',
-    'rbcon', 'irb', 'rconsole', 'rout', 'rebol', 'redcode',
-    'rhtml', 'html+erb', 'html+ruby', 'rst', 'rest',
-    'restructuredtext', 'sass', 'SASS', 'scala', 'scheme',
-    'scm', 'smalltalk', 'squeak', 'smarty', 'sourceslist',
-    'sources.list', 'splus', 's', 'r', 'sql', 'sqlite3',
-    'squidconf', 'squid.conf', 'squid', 'tcl', 'tcsh',
-    'csh', 'tex', 'latex', 'text', 'trac-wiki', 'moin',
-    'vala', 'vapi', 'vb.net', 'vbnet', 'vim',
-    'xml+cheetah', 'xml+spitfire', 'xml+django', 'xml+jinja',
-    'xml+erb', 'xml+ruby', 'xml+evoque', 'xml+mako',
-    'xml+myghty', 'xml+php', 'xml+smarty', 'xml', 'xslt', 'yaml']
-
+video_counter = 0
+activecode_counter = 0
 
 def sphinx_figure(m):
     result = ''
@@ -126,6 +67,25 @@ def sphinx_figure(m):
     #print 'sphinx figure: caption=\n', caption, '\nresult:\n', result
     return result
 
+def sphinx_movie(m):
+    filename = m.group('filename')
+    special_movie = '*' in filename or '->' in filename or 'youtu.be' in filename or 'youtube.com' in filename or 'vimeo.com' in filename
+    if option('runestone') and not special_movie:
+        # Use RunestoneInteractive video environment
+        global video_counter
+        video_counter += 1
+        text = """
+.. video:: video_%d
+   :controls:
+
+   %s
+""" % (video_counter, filename)
+        return text
+    else:
+        # Use plain html code
+        return rst_movie(m)
+
+
 from latex import fix_latex_command_regex as fix_latex
 
 def sphinx_code(filestr, code_blocks, code_block_types,
@@ -135,7 +95,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     # inside code (or TeX) blocks.
 
     # default mappings of !bc environments and pygments languages:
-    envir2lang = dict(
+    envir2pygments = dict(
         cod='python', pro='python',
         pycod='python', cycod='cython',
         pypro='python', cypro='cython',
@@ -146,15 +106,18 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         plcod='perl', plpro='perl',
         shcod='bash', shpro='bash',
         rbcod='ruby', rbpro='ruby',
-        sys='console',
+        #sys='console',
+        sys='text',
         rst='rst',
         dat='text', csv='text', txt='text',
         cc='text', ccq='text',  # not possible with extra indent for ccq
-        ipy='python',
+        ipy='ipy',
         xmlcod='xml', xmlpro='xml', xml='xml',
         htmlcod='html', htmlpro='html', html='html',
         texcod='latex', texpro='latex', tex='latex',
-        pyoptpro='python', pyscpro='python',
+        latexcod='latex', latexpro='latex', latex='latex',
+        do='doconce',
+        pyshell='python', pyoptpro='python', pyscpro='python',
         )
 
     # grab line with: # Sphinx code-blocks: cod=python cpp=c++ etc
@@ -166,7 +129,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         # turn specifications into a dictionary:
         for definition in defs_line.split():
             key, value = definition.split('=')
-            envir2lang[key] = value
+            envir2pygments[key] = value
 
     # First indent all code blocks
 
@@ -176,14 +139,8 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                                                  return_tp='iframe')
         code_blocks[i] = indent_lines(code_blocks[i], format)
 
-    # Treat math labels. Drop labels in environments with multiple
-    # equations since these do not work in Sphinx. Method: keep
-    # label if there is one and only one. Otherwise use old
-    # method of removing labels. Do not use :nowrap: since this will
-    # generate other labels that we cannot refer to.
-    #
     # After transforming align environments to separate equations
-    # the problem with multiple math labels has disappeared.
+    # the problem with math labels in multiple eqs has disappeared.
     # (doconce.py applies align2equations, which takes all align
     # envirs and translates them to separate equations, but align*
     # environments are allowed.
@@ -279,16 +236,32 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'^!bc +pyshell *\n(.*?)^!ec *\n',
                      '\n\g<1>\n', filestr, re.DOTALL|re.MULTILINE)
 
+    # Check if we have custom pygments lexers
+    if 'ipy' in code_block_types:
+        if not has_custom_pygments_lexer('ipy'):
+            envir2pygments['ipy'] = 'python'
+    if 'do' in code_block_types:
+        if not has_custom_pygments_lexer('doconce'):
+            envir2pygments['do'] = 'text'
+
     # Make correct code-block:: language constructions
-    for key in envir2lang:
-        language = envir2lang[key]
-        if not language in legal_pygments_languages:
-            raise TypeError('%s is not a legal Pygments language '\
-                            '(lexer) in line with:\n  %s' % \
-                                (language, defs_line))
+    legal_pygments_languages = get_legal_pygments_lexers()
+    import sets
+    for key in sets.Set(code_block_types):
+        if key in envir2pygments:
+            if not envir2pygments[key] in legal_pygments_languages:
+                print """*** warning: %s is not a legal Pygments language (lexer)
+found in line:
+  %s
+
+    The 'text' lexer will be used instead.
+""" % (envir2pygments[key], defs_line)
+                envir2pygments[key] = 'text'
+
         #filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-        #                 '\n.. code-block:: %s\n\n' % envir2lang[key], filestr,
+        #                 '\n.. code-block:: %s\n\n' % envir2pygments[key], filestr,
         #                 flags=re.MULTILINE)
+
         # Check that we have code installed to handle pyscpro
         if 'pyscpro' in filestr and key == 'pyscpro':
             try:
@@ -301,24 +274,69 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                 key = 'pypro'
 
         if key == 'pyoptpro':
-            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-                             '\n.. raw:: html\n\n',
-                             filestr, flags=re.MULTILINE)
+            if option('runestone'):
+                global codelens_counter
+                codelens_counter += 1
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 '\n.. codelens:: codelens_%d\n   :showoutput:\n\n' % codelens_counter,
+                                 filestr, flags=re.MULTILINE)
+            else:
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 '\n.. raw:: html\n\n',
+                                 filestr, flags=re.MULTILINE)
         elif key == 'pyscpro':
-            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-                             '\n.. sagecellserver::\n\n',
-                             filestr, flags=re.MULTILINE)
+            if option('runestone'):
+                global activecode_counter
+                activecode_counter += 1
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 """
+.. activecode:: activecode_%d
+   :language: python
+
+""" % (activecode_counter), filestr, flags=re.MULTILINE)
+            else:
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 '\n.. sagecellserver::\n\n',
+                                 filestr, flags=re.MULTILINE)
+        elif key == 'pysccod':
+            if option('runestone'):
+                global activecode_counter
+                activecode_counter += 1
+                # Include (i.e., run) all previous code segments...
+                # NOTE: this is most likely not what we want
+                include = ', '.join([i for i in range(1, activecode_counter)])
+                filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+                                 """
+.. activecode:: activecode_%d
+   :language: python
+   "include: %s
+""" % (activecode_counter, include), filestr, flags=re.MULTILINE)
+            else:
+                print '*** error: pysccod is not supported without the --runestone flag'
+                _abort()
+
+        elif key == '':
+            # any !bc with/without argument becomes a text block:
+            filestr = re.sub(r'^!bc$', '\n.. code-block:: text\n\n', filestr,
+                             flags=re.MULTILINE)
         else:
+            # Use the standard sphinx code-block directive
+            if key in envir2pygments:
+                pygments_language = envir2pygments[key]
+            elif key in legal_pygments_languages:
+                pygments_language = key
+            else:
+                print '*** error: detected code environment "%s"' % key
+                print '    which is not registered in sphinx.py (sphinx_code)'
+                print '    or not a language registered in pygments'
+                _abort()
             filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                              '\n.. code-block:: %s\n\n' % \
-                             envir2lang[key], filestr, flags=re.MULTILINE)
+                             pygments_language, filestr, flags=re.MULTILINE)
 
     # any !bc with/without argument becomes a text block:
-    #filestr = re.sub(r'^!bc.+\n', '\n.. code-block:: text\n\n', filestr,
-    #                 flags=re.MULTILINE)
     filestr = re.sub(r'^!bc.*$', '\n.. code-block:: text\n\n', filestr,
                      flags=re.MULTILINE)
-
     filestr = re.sub(r'^!ec *\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '\n', filestr, flags=re.MULTILINE)
     #filestr = re.sub(r'^!ec\n', '', filestr, flags=re.MULTILINE)
@@ -350,7 +368,12 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     filestr = '\n'.join(lines)
 
     if option('html_links_in_new_window'):
-        filestr = '\n\n.. Open external links in new windows.\n\n' + filestr
+        # Insert a comment to be recognized by automake_sphinx.py such that it
+        # can replace the default links by proper modified target= option.
+        filestr = '\n\n.. NOTE: Open external links in new windows.\n\n' + filestr
+
+    # Remove too much vertical space
+    filestr = re.sub(r'\n{3,}', '\n\n', filestr)
 
     return filestr
 
@@ -402,6 +425,35 @@ def sphinx_index_bib(filestr, index, citations, pubfile, pubdata):
             #    '\n.. index::\n   pair: ' + word3 + '\n')
     return filestr
 
+def sphinx_inline_comment(m):
+    # Use explicit HTML typesetting
+    name = m.group('name').strip()
+    comment = m.group('comment').strip()
+    chars = {',': 'comma', ';': 'semicolon', '.': 'period'}
+    if name[:4] == 'del ':
+        for char in chars:
+            if comment == char:
+                return r' <font color="red"> (<b>edit %s</b>: delete %s)</font>' % (name[4:], chars[char])
+        return r'<font color="red">(<b>edit %s</b>:)</font> <del>%s</del>' % (name[4:], comment)
+    elif name[:4] == 'add ':
+        for char in chars:
+            if comment == char:
+                return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
+        return r' <font color="red">(<b>edit %s</b>: add) %s</font>' % (name[4:], comment)
+    else:
+        # Ordinary name
+        if ' -> ' in comment:
+            # Replacement
+            if comment.count(' -> ') != 1:
+                print '*** wrong syntax in inline comment:'
+                print comment
+                print '(more than two ->)'
+                _abort()
+            orig, new = comment.split(' -> ')
+            return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
+        else:
+            # Ordinary comment
+            return r'<font color="red">[<b>%s</b>: <em>%s</em>]</font>' % (name, comment)
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -416,6 +468,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -443,8 +496,10 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['sphinx'] = sphinx_index_bib
     TABLE['sphinx'] = TABLE['rst']
     EXERCISE['sphinx'] = EXERCISE['rst']
-    INTRO['sphinx'] = INTRO['rst']
     ENVIRS['sphinx'] = ENVIRS['rst']
+    INTRO['sphinx'] = INTRO['rst'].replace(
+        '.. Automatically generated reStructuredText',
+        '.. Automatically generated Sphinx-extended reStructuredText')
 
     # make true copy of INLINE_TAGS_SUBST:
     INLINE_TAGS_SUBST['sphinx'] = {}
@@ -452,9 +507,14 @@ def define(FILENAME_EXTENSION,
         INLINE_TAGS_SUBST['sphinx'][tag] = INLINE_TAGS_SUBST['rst'][tag]
 
     # modify some tags:
-    INLINE_TAGS_SUBST['sphinx']['math'] = r'\g<begin>:math:`\g<subst>`\g<end>'
-    INLINE_TAGS_SUBST['sphinx']['math2'] = r'\g<begin>:math:`\g<latexmath>`\g<end>'
+    #INLINE_TAGS_SUBST['sphinx']['math'] = r'\g<begin>:math:`\g<subst>`\g<end>'
+    # Important to strip the math expression
+    INLINE_TAGS_SUBST['sphinx']['math'] = lambda m: r'%s:math:`%s`%s' % (m.group('begin'), m.group('subst').strip(), m.group('end'))
+    #INLINE_TAGS_SUBST['sphinx']['math2'] = r'\g<begin>:math:`\g<latexmath>`\g<end>'
+    INLINE_TAGS_SUBST['sphinx']['math2'] = lambda m: r'%s:math:`%s`%s' % (m.group('begin'), m.group('latexmath').strip(), m.group('end'))
     INLINE_TAGS_SUBST['sphinx']['figure'] = sphinx_figure
+    INLINE_TAGS_SUBST['sphinx']['movie'] = sphinx_movie
+    INLINE_TAGS_SUBST['sphinx']['inlinecomment'] = sphinx_inline_comment
     CODE['sphinx'] = sphinx_code  # function for typesetting code
 
     ARGLIST['sphinx'] = {
@@ -467,6 +527,7 @@ def define(FILENAME_EXTENSION,
         }
 
     TOC['sphinx'] = lambda s: ''  # Sphinx automatically generates a toc
+    QUIZ['sphinx'] = QUIZ['rst']
 
 
 
@@ -684,5 +745,3 @@ def sphinx_code_newmathlabels(filestr, format):
     filestr = re.sub(r'!et *\n', '\n\n', filestr)
 
     return filestr
-
-

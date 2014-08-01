@@ -104,7 +104,8 @@ def mwiki_code(filestr, code_blocks, code_block_types,
                       htmlpro='html5', xmlpro='xml',
                       html='html5', xml='xml',
                       sys='bash', dat='text', csv='text', txt='text',
-                      pyoptpro='python', pyscpro='python')
+                      pyoptpro='python', pyscpro='python',
+                      ipy='python', pyshell='python')
 
     for key in envir2lang:
         language = envir2lang[key]
@@ -339,6 +340,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -376,6 +378,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text><br />',
         'non-breaking-space': '&nbsp;',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['mwiki'] = mwiki_code
@@ -427,8 +430,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['mwiki'] = plain_exercise
     INDEX_BIB['mwiki'] = plain_index_bib
     TOC['mwiki'] = lambda s: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
+    QUIZ['mwiki'] = lambda quiz: 'Cannot typeset quiz: "%s"' % quiz.get('question', '')
 
     # document start:
     INTRO['mwiki'] = ''
-
-

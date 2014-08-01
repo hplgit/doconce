@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Doconce Quick Reference</title>
+    <title>DocOnce Quick Reference</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,6 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -42,11 +43,11 @@
         </style>
 
     
-    <link rel="top" title="On an Ultimate Markup Language" href="index.html" />
-    <link rel="prev" title="On an Ultimate Markup Language" href="index.html" />
+    <link rel="top" title="DocOnce Quick Reference" href="index.html" />
+    <link rel="prev" title="DocOnce Quick Reference" href="index.html" />
  
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -62,9 +63,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="index.html" title="On an Ultimate Markup Language"
+          <a href="index.html" title="DocOnce Quick Reference"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">On an Ultimate Markup Language</a> &raquo;</li> 
+        <li><a href="index.html">DocOnce Quick Reference</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -74,14 +75,14 @@
           <div class="body">
             
   <div class="section" id="doconce-quick-reference">
-<h1>Doconce Quick Reference<a class="headerlink" href="#doconce-quick-reference" title="Permalink to this headline">¶</a></h1>
+<h1>DocOnce Quick Reference<a class="headerlink" href="#doconce-quick-reference" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 3, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 28, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -94,10 +95,9 @@ professionally looking web versions with Sphinx or HTML. Other outlets
 include Google&#8217;s <tt class="docutils literal"><span class="pre">blogger.com</span></tt>, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.</p>
-</div>
 <div class="section" id="supported-formats">
-<h1>Supported Formats<a class="headerlink" href="#supported-formats" title="Permalink to this headline">¶</a></h1>
-<p>Doconce currently translates files to the following formats:</p>
+<h2>Supported Formats<a class="headerlink" href="#supported-formats" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce currently translates files to the following formats:</p>
 <blockquote>
 <div><ul class="simple">
 <li>LaTeX (format <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>)</li>
@@ -120,12 +120,12 @@ less extent <tt class="docutils literal"><span class="pre">mwiki</span></tt> and
 Google and Wordpress.</p>
 </div>
 <div class="section" id="emacs-syntax-support">
-<h1>Emacs syntax support<a class="headerlink" href="#emacs-syntax-support" title="Permalink to this headline">¶</a></h1>
+<h2>Emacs syntax support<a class="headerlink" href="#emacs-syntax-support" title="Permalink to this headline">¶</a></h2>
 <p>The file <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a>
-in the Doconce source distribution gives a &#8220;Doconce Editing Mode&#8221; in
+in the DocOnce source distribution gives a &#8220;DocOnce Editing Mode&#8221; in
 Emacs. Store the raw version of the file in the home directory and add
 <tt class="docutils literal"><span class="pre">(load-file</span> <span class="pre">&quot;~/.doconce-mode.el&quot;)</span></tt> to the <tt class="docutils literal"><span class="pre">.emacs</span></tt> file.</p>
-<p>Besides syntax highlighting of Doconce documents, this Emacs mode
+<p>Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -190,7 +190,7 @@ provides a lot of shortcuts for setting up many elements in a document:</p>
 </table>
 </div>
 <div class="section" id="title-authors-and-date">
-<h1>Title, Authors, and Date<a class="headerlink" href="#title-authors-and-date" title="Permalink to this headline">¶</a></h1>
+<h2>Title, Authors, and Date<a class="headerlink" href="#title-authors-and-date" title="Permalink to this headline">¶</a></h2>
 <p>A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads</p>
@@ -220,7 +220,7 @@ current date is wanted, e.g., <tt class="docutils literal"><span class="pre">Feb
 <p>The table of contents is removed by writing <tt class="docutils literal"><span class="pre">TOC:</span> <span class="pre">off</span></tt>.</p>
 </div>
 <div class="section" id="section-types">
-<span id="quick-sections"></span><h1>Section Types<a class="headerlink" href="#section-types" title="Permalink to this headline">¶</a></h1>
+<span id="quick-sections"></span><h2>Section Types<a class="headerlink" href="#section-types" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
@@ -273,7 +273,7 @@ a problem can stand on its own, and a project is a comprehensive
 problem.</p>
 </div>
 <div class="section" id="inline-formatting">
-<h1>Inline Formatting<a class="headerlink" href="#inline-formatting" title="Permalink to this headline">¶</a></h1>
+<h2>Inline Formatting<a class="headerlink" href="#inline-formatting" title="Permalink to this headline">¶</a></h2>
 <p>Words surrounded by <tt class="docutils literal"><span class="pre">*</span></tt> are emphasized: <tt class="docutils literal"><span class="pre">*emphasized</span> <span class="pre">words*</span></tt> becomes
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <tt class="docutils literal"><span class="pre">_boldface_</span></tt> becomes <strong>boldface</strong>. Colored words
@@ -303,9 +303,33 @@ Here comes a new paragraph...
 <div class="highlight-text"><div class="highlight"><pre>This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 </pre></div>
 </div>
+<p>A horizontal rule for separating content vertically, like this:</p>
+<hr class="docutils" />
+<p>is typeset as four or more hyphens on a single line:</p>
+<div class="highlight-text"><div class="highlight"><pre>---------
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, and <tt class="docutils literal"><span class="pre">html</span></tt> formats support em-dash,
+indicated by three hyphens: <tt class="docutils literal"><span class="pre">---</span></tt>. Here is an example:</p>
+<div class="highlight-text"><div class="highlight"><pre>The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+</pre></div>
+</div>
+<p>This text is in the sphinx rendered as</p>
+<p>The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences&#8212;this way, or in quotes:
+<em>Premature optimization is the root of all evil.</em>&#8212; Donald Knuth.</p>
+<p>An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
+plain <tt class="docutils literal"><span class="pre">&amp;</span></tt> <em>with space(s) on both sides</em>. Single upper case letters on each
+side of <tt class="docutils literal"><span class="pre">&amp;</span></tt>, as in <tt class="docutils literal"><span class="pre">Texas</span> <span class="pre">A</span> <span class="pre">&amp;</span> <span class="pre">M</span></tt>, remove the spaces and result in
+Texas A&amp;M, while words on both sides of <tt class="docutils literal"><span class="pre">&amp;</span></tt>, as in <tt class="docutils literal"><span class="pre">Guns</span> <span class="pre">&amp;</span> <span class="pre">Roses</span></tt>,
+preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
+after <tt class="docutils literal"><span class="pre">&amp;</span></tt> will result in wrong typesetting of the ampersand in the <tt class="docutils literal"><span class="pre">html</span></tt>,
+<tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> formats.</p>
 </div>
 <div class="section" id="lists">
-<h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
 <p>There are three types of lists: <em>bullet lists</em>, where each item starts
 with <tt class="docutils literal"><span class="pre">*</span></tt>, <em>enumeration lists</em>, where each item starts with <tt class="docutils literal"><span class="pre">o</span></tt> and gets
 consqutive numbers,
@@ -391,7 +415,7 @@ lines</dd>
 </div></blockquote>
 </div>
 <div class="section" id="comment-lines">
-<h1>Comment lines<a class="headerlink" href="#comment-lines" title="Permalink to this headline">¶</a></h1>
+<h2>Comment lines<a class="headerlink" href="#comment-lines" title="Permalink to this headline">¶</a></h2>
 <p>Lines starting with <tt class="docutils literal"><span class="pre">#</span></tt> are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before LaTeX math
@@ -399,16 +423,16 @@ blocks, verbatim code blocks, or lists if the formats <tt class="docutils litera
 <tt class="docutils literal"><span class="pre">sphinx</span></tt> are desired.</p>
 <p>Comment lines starting with <tt class="docutils literal"><span class="pre">##</span></tt> are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.</p>
+the DocOnce file.</p>
 <p>Large portions of text can be left out using Preprocess. Just place
 <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">EXTRA</span></tt> and <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></tt> around the text. The command line
 option <tt class="docutils literal"><span class="pre">-DEXTRA</span></tt> will bring the text alive again.</p>
 <p>When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.</p>
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.</p>
 </div>
 <div class="section" id="inline-comments">
-<h1>Inline comments<a class="headerlink" href="#inline-comments" title="Permalink to this headline">¶</a></h1>
+<h2>Inline comments<a class="headerlink" href="#inline-comments" title="Permalink to this headline">¶</a></h2>
 <p>Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax</p>
@@ -416,28 +440,75 @@ are enabled by the syntax</p>
 </pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">name</span></tt> is the name or ID of an author or reader making the comment,
-and <tt class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></tt> is the comment. Here goes an example.
-(<strong>hpl 1</strong>: There must be a space after the colon,
-but the running text can occupy multiple lines.)
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the <tt class="docutils literal"><span class="pre">-DTOTONOTES</span></tt> option to <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>,
-colorful margin or inline boxes (using the <tt class="docutils literal"><span class="pre">todonotes</span></tt> package)
-make it very easy to spot the comments.</p>
+and <tt class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></tt> is the comment. The name can contain upper and lower
+case characters, digits, single quote, <tt class="docutils literal"><span class="pre">+</span></tt> and <tt class="docutils literal"><span class="pre">-</span></tt>, as well
+as space. Here goes an example.</p>
+<div class="highlight-text"><div class="highlight"><pre>Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+</pre></div>
+</div>
+<p>which is rendered as</p>
+<blockquote>
+<div>Some running text. &lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;There must be a space after the colon,
+but the running text can occupy multiple lines.&lt;/em&gt;]&lt;/font&gt;</div></blockquote>
+<p>The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt>
+option to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>, colorful margin or inline boxes (using the
+<tt class="docutils literal"><span class="pre">todonotes</span></tt> package) make it very easy to spot the comments.</p>
 <p>Running</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce format html mydoc.do.txt --skip_inline_comments</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce format html mydoc.do.txt --skip_inline_comments
 </pre></div>
 </div>
 <p>removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.</p>
 <p>All inline comments to readers can also be physically
-removed from the Doconce source by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce remove_inline_comments mydoc.do.txt</span>
+removed from the DocOnce source by</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce remove_inline_comments mydoc.do.txt
+</pre></div>
+</div>
+<p>Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:</p>
+<div class="highlight-text"><div class="highlight"><pre>[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+[name: some text -&gt; some replacement for text]
+</pre></div>
+</div>
+<p>For example, the text</p>
+<div class="highlight-text"><div class="highlight"><pre>First consider a quantity $Q$. Without loss of generality, we assume
+$Q&gt;0$. There are three, fundamental, basic property of $Q$.
+</pre></div>
+</div>
+<p>can be edited as</p>
+<div class="highlight-text"><div class="highlight"><pre>First[add: ,] consider [edit: a quantity -&gt; the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q&gt;0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -&gt; properties] of $Q$. [add: These are not
+important for the following discussion.]
+</pre></div>
+</div>
+<p>which in the sphinx output format results in</p>
+<blockquote>
+<div>First&lt;font color=&#8221;red&#8221;&gt;, (&lt;b&gt;edit 2&lt;/b&gt;: add comma)&lt;/font&gt; consider &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 3&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;a quantity&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;the flux&lt;/font&gt;
+&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 4&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;$Q$. Without loss of generality,
+we assume&lt;/del&gt; <span class="math">\(Q&gt;0\)</span>. There are three &lt;font color=&#8221;red&#8221;&gt; (&lt;b&gt;edit 5&lt;/b&gt;: delete comma)&lt;/font&gt; fundamental&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 6&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;, basic&lt;/del&gt;
+&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 7&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;property&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;properties&lt;/font&gt; of <span class="math">\(Q\)</span>.  &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 8&lt;/b&gt;: add) These are not
+important for the following discussion.&lt;/font&gt;</div></blockquote>
+<p>To implement these edits, run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </pre></div>
 </div>
 </div>
 <div class="section" id="verbatim-computer-code">
-<h1>Verbatim/Computer Code<a class="headerlink" href="#verbatim-computer-code" title="Permalink to this headline">¶</a></h1>
+<h2>Verbatim/Computer Code<a class="headerlink" href="#verbatim-computer-code" title="Permalink to this headline">¶</a></h2>
 <p>Inline verbatim code is typeset within back-ticks, as in</p>
 <div class="highlight-text"><div class="highlight"><pre>Some sentence with `words in verbatim style`.
 </pre></div>
@@ -511,14 +582,14 @@ paragraphs with headings.</li>
 </div></blockquote>
 </div>
 <div class="section" id="latex-mathematics">
-<h1>LaTeX Mathematics<a class="headerlink" href="#latex-mathematics" title="Permalink to this headline">¶</a></h1>
-<p>Doconce supports inline mathematics and blocks of mathematics, using
+<h2>LaTeX Mathematics<a class="headerlink" href="#latex-mathematics" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">latex</span></tt>,
 pdflatex`, <tt class="docutils literal"><span class="pre">pandoc</span></tt>, and <tt class="docutils literal"><span class="pre">mwiki</span></tt> work with this syntax while all other
 formats will just display the raw LaTeX code.</p>
 <p>Inline expressions are written in the standard
 LaTeX way with the mathematics surrounded by dollar signs, as in
-<span class="math">Ax=b</span>. To help increase readability in other formats than <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
+<span class="math">\(Ax=b\)</span>. To help increase readability in other formats than <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
 <tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, inline mathematics may have a more human
 readable companion expression. The syntax is like</p>
 <div class="highlight-text"><div class="highlight"><pre>$\sin(\norm{\bf u})$|$sin(||u||)$
@@ -541,9 +612,9 @@ and
 </div>
 <p>This LaTeX code gets rendered as</p>
 <div class="math">
-<p><span class="math">\nabla\cdot \pmb{u} &amp;= 0,\\
-\nabla\times \pmb{u} &amp;= 0.</span></p>
-</div><p>Here is a single equation:</p>
+\[\begin{split}\nabla\cdot \pmb{u} &amp;= 0,\\
+\nabla\times \pmb{u} &amp;= 0.\end{split}\]</div>
+<p>Here is a single equation:</p>
 <div class="highlight-text"><div class="highlight"><pre>!bt
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 !et
@@ -551,31 +622,43 @@ and
 </div>
 <p>which results in</p>
 <div class="math">
-<p><span class="math">\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.</span></p>
-</div><p>Any LaTeX syntax is accepted, but if output in the <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
+\[\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]</div>
+<p>Any LaTeX syntax is accepted, but if output in the <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
 <tt class="docutils literal"><span class="pre">mwiki</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, or <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats
 is also important, one should follow these rules:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Use only the equation environments <tt class="docutils literal"><span class="pre">\[</span></tt>, <tt class="docutils literal"><span class="pre">\]</span></tt>,
-<tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt>, and <tt class="docutils literal"><span class="pre">align*</span></tt>.</li>
+<li>AMS LaTeX mathematics is supported, also for the <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
+and <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats.</li>
+<li>Only five equation environments can be used: <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></tt>,
+<tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, and <tt class="docutils literal"><span class="pre">align</span></tt>.</li>
+<li>Newcommands in mathematical formulas are allowed, but not in
+the running text. Newcommands must be defined in files with names
+<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>.</li>
 <li>MediaWiki (<tt class="docutils literal"><span class="pre">mwiki</span></tt>) does not support references to equations.</li>
 </ul>
 </div></blockquote>
-<p>(Doconce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt> and other formats such that
+<p>(DocOnce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt> and other formats such that
 labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt>, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically <tt class="docutils literal"><span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
+<p>LaTeX supports lots of fancy formatting, for example, multiple
+plots in the same figure (<tt class="docutils literal"><span class="pre">subfigure</span></tt> package), margin notes, multi-page
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt> and <tt class="docutils literal"><span class="pre">html</span></tt>, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure (combine them into one using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
+manual), code listings in figures (use just inline blocks).</p>
+<p class="last">However, one can use preprocessor if-tests on
+the format (typically <tt class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
 include special code for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.</p>
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+<tt class="docutils literal"><span class="pre">.tex</span></tt> produced by DocOnce.</p>
 </div>
 <p><strong>LaTeX Newcommands.</strong>
 The author can define <tt class="docutils literal"><span class="pre">newcommand</span></tt> statements in files with names
@@ -590,7 +673,7 @@ without LaTeX support. For <tt class="docutils literal"><span class="pre">html</
 rendered nicely anyway.</p>
 </div>
 <div class="section" id="hyperlinks">
-<h1>Hyperlinks<a class="headerlink" href="#hyperlinks" title="Permalink to this headline">¶</a></h1>
+<h2>Hyperlinks<a class="headerlink" href="#hyperlinks" title="Permalink to this headline">¶</a></h2>
 <p>Links use either a link text or the raw URL:</p>
 <div class="highlight-text"><div class="highlight"><pre>Here is some &quot;some link text&quot;: &quot;http://some.net/address&quot;
 (as in &quot;search google&quot;: &quot;http://google.com&quot;)
@@ -606,7 +689,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 </div>
 </div>
 <div class="section" id="figures-and-movies">
-<h1>Figures and Movies<a class="headerlink" href="#figures-and-movies" title="Permalink to this headline">¶</a></h1>
+<h2>Figures and Movies<a class="headerlink" href="#figures-and-movies" title="Permalink to this headline">¶</a></h2>
 <p>Figures and movies have almost equal syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
 
@@ -623,9 +706,9 @@ around the <tt class="docutils literal"><span class="pre">=</span></tt> characte
 <li>there must be a blank line after the command.</li>
 </ol>
 </div></blockquote>
-<p>The figure file can be listed without extension. Doconce will then find
+<p>The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.</p>
 <p>The caption is optional. If omitted, the figure will be inlined (meaning
 no use of any figure environment in HTML or LaTeX formats). The <tt class="docutils literal"><span class="pre">width</span></tt>
@@ -636,7 +719,7 @@ width in the <tt class="docutils literal"><span class="pre">latex</span></tt> an
 series of frames. In the latter case, a simple device in an HTML page
 will display the individual frame files as a movie.</p>
 <p>Combining several image files into one can be done by the</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">doconce combine_images image1 image2 ... output_image</span>
+<div class="highlight-text"><div class="highlight"><pre>doconce combine_images image1 image2 ... output_image
 </pre></div>
 </div>
 <p>This command applies <tt class="docutils literal"><span class="pre">montage</span></tt> or PDF-based tools to combine the images
@@ -653,7 +736,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 
 <em>Vimeo movie.</em></div>
 <div class="section" id="tables">
-<h1>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h1>
+<h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
 <p>The table in the section <a class="reference internal" href="#quick-sections"><em>Section Types</em></a> was written with this
 syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>|----------------c--------|------------------c--------------------|
@@ -687,12 +770,12 @@ have no effect.</li>
 </ul>
 </div></blockquote>
 <p>The command-line option <tt class="docutils literal"><span class="pre">--tables2csv</span></tt> (to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>)
-makes Doconce dump each table to CSV format in a file <tt class="docutils literal"><span class="pre">table_X.csv</span></tt>,
+makes DocOnce dump each table to CSV format in a file <tt class="docutils literal"><span class="pre">table_X.csv</span></tt>,
 where <tt class="docutils literal"><span class="pre">X</span></tt> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.</p>
 </div>
 <div class="section" id="labels-and-references">
-<h1>Labels and References<a class="headerlink" href="#labels-and-references" title="Permalink to this headline">¶</a></h1>
+<h2>Labels and References<a class="headerlink" href="#labels-and-references" title="Permalink to this headline">¶</a></h2>
 <p>The notion of labels and references (as well as bibliography and index)
 is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
@@ -715,7 +798,7 @@ by &#8220;Section&#8221; or &#8220;Chapter&#8221;, or in case of an equation, su
 reference by parenthesis.</p>
 </div>
 <div class="section" id="citations-and-bibliography">
-<h1>Citations and Bibliography<a class="headerlink" href="#citations-and-bibliography" title="Permalink to this headline">¶</a></h1>
+<h2>Citations and Bibliography<a class="headerlink" href="#citations-and-bibliography" title="Permalink to this headline">¶</a></h2>
 <p>Single citations are written as</p>
 <div class="highlight-text"><div class="highlight"><pre>cite{name}
 </pre></div>
@@ -734,12 +817,12 @@ by comma:</p>
 where <tt class="docutils literal"><span class="pre">papers.pub</span></tt> is a publication database in the
 <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> format.
 BibTeX <tt class="docutils literal"><span class="pre">.bib</span></tt> files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).</p>
 </div>
 <div class="section" id="generalized-citations">
-<h1>Generalized Citations<a class="headerlink" href="#generalized-citations" title="Permalink to this headline">¶</a></h1>
-<p>There is a <em>generalized referencing</em> feature in Doconce that allows
+<h2>Generalized Citations<a class="headerlink" href="#generalized-citations" title="Permalink to this headline">¶</a></h2>
+<p>There is a <em>generalized referencing</em> feature in DocOnce that allows
 a reference with <tt class="docutils literal"><span class="pre">ref</span></tt> to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -752,8 +835,8 @@ The syntax of a generalized reference is</p>
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
 &quot;testdoc.html#___sec2&quot; in the document
-&quot;A Document for Testing Doconce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
-Doconce documents may include movies.
+&quot;A Document for Testing DocOnce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
+DocOnce documents may include movies.
 </pre></div>
 </div>
 <p>The output from a generalized reference is the text <tt class="docutils literal"><span class="pre">internal</span></tt> if all
@@ -768,8 +851,8 @@ documents.  If none of the two situations above applies, the
 <tt class="docutils literal"><span class="pre">external</span></tt> text will be the output.</p>
 </div>
 <div class="section" id="index-of-keywords">
-<h1>Index of Keywords<a class="headerlink" href="#index-of-keywords" title="Permalink to this headline">¶</a></h1>
-<p>Doconce supports creating an index of keywords. A certain keyword
+<h2>Index of Keywords<a class="headerlink" href="#index-of-keywords" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)</p>
 <div class="highlight-text"><div class="highlight"><pre>index{name}
@@ -783,12 +866,12 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats.</p>
 </div>
 <div class="section" id="capabilities-of-the-program-doconce">
-<h1>Capabilities of The Program <tt class="docutils literal"><span class="pre">doconce</span></tt><a class="headerlink" href="#capabilities-of-the-program-doconce" title="Permalink to this headline">¶</a></h1>
+<h2>Capabilities of The Program <tt class="docutils literal"><span class="pre">doconce</span></tt><a class="headerlink" href="#capabilities-of-the-program-doconce" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span></tt> program can be used for a number of purposes besides
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
-commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 <span class="c"># transform doconce file to another format</span>
@@ -813,9 +896,12 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 <span class="c"># remove all inline comments in a doconce file</span>
 doconce remove_inline_comments dofile
 
+<span class="c"># apply all edits specified through inline comments</span>
+apply_inline_edits
+
 <span class="c"># create a directory for the sphinx format</span>
 doconce sphinx_dir <span class="nv">author</span><span class="o">=</span><span class="s1">&#39;John Doe&#39;</span> <span class="nv">title</span><span class="o">=</span><span class="s1">&#39;Long title&#39;</span> <span class="se">\</span>
-    <span class="nv">short_title</span><span class="o">=</span><span class="s2">&quot;Short title&quot;</span> <span class="nv">version</span><span class="o">=</span>0.1 <span class="se">\</span>
+    <span class="nv">short_title</span><span class="o">=</span><span class="s2">&quot;Short title&quot;</span> <span class="nv">version</span><span class="o">=</span>0.1 intersphinx <span class="se">\</span>
     <span class="nv">dirname</span><span class="o">=</span>sphinx-rootdir <span class="nv">theme</span><span class="o">=</span>default <span class="nv">logo</span><span class="o">=</span>mylogo.png <span class="se">\</span>
     do_file <span class="o">[</span>do_file2 do_file3 ...<span class="o">]</span>
 <span class="o">(</span>requires sphinx version &gt;<span class="o">=</span> 1.1<span class="o">)</span>
@@ -941,8 +1027,8 @@ doconce latex_exercise_toc myfile
 </div>
 </div>
 <div class="section" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
-<p>Doconce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain <em>elements</em>:</p>
@@ -1046,8 +1132,8 @@ turn off output of answers and solutions, respectively, except for
 examples.</p>
 </div>
 <div class="section" id="environments">
-<h1>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h1>
-<p>Doconce environments start with <tt class="docutils literal"><span class="pre">!benvirname</span></tt> and end with <tt class="docutils literal"><span class="pre">!eenvirname</span></tt>,
+<h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce environments start with <tt class="docutils literal"><span class="pre">!benvirname</span></tt> and end with <tt class="docutils literal"><span class="pre">!eenvirname</span></tt>,
 where <tt class="docutils literal"><span class="pre">envirname</span></tt> is the name of the environment. Here is a listing of
 the environments:</p>
 <blockquote>
@@ -1079,8 +1165,8 @@ slide</p>
 </div></blockquote>
 </div>
 <div class="section" id="preprocessing">
-<h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h1>
-<p>Doconce documents may utilize a preprocessor, either <tt class="docutils literal"><span class="pre">preprocess</span></tt> and/or
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce documents may utilize a preprocessor, either <tt class="docutils literal"><span class="pre">preprocess</span></tt> and/or
 <tt class="docutils literal"><span class="pre">mako</span></tt>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor is much more advanced - it is actually a full
@@ -1122,15 +1208,16 @@ constructions:</p>
 <p>With the <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor the if-else tests have slightly different syntax.
 An <a class="reference external" href="http://hplgit.github.com/bioinf-py/">example document</a> contains
 some illustrations on how to utilize <tt class="docutils literal"><span class="pre">mako</span></tt> (clone the GitHub project and
-examine the Doconce source and the <tt class="docutils literal"><span class="pre">doc/src/make.sh</span></tt> script).</p>
+examine the DocOnce source and the <tt class="docutils literal"><span class="pre">doc/src/make.sh</span></tt> script).</p>
 </div>
 <div class="section" id="resources">
-<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Excellent &#8220;Sphinx Tutorial&#8221; by C. Reller: &#8220;<a class="reference external" href="http://people.ee.ethz.ch/~creller/web/tricks/reST.html">http://people.ee.ethz.ch/~creller/web/tricks/reST.html</a>&#8220;</li>
 </ul>
 </div></blockquote>
+</div>
 </div>
 
 
@@ -1141,7 +1228,7 @@ examine the Doconce source and the <tt class="docutils literal"><span class="pre
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Doconce Quick Reference</a></li>
+<li><a class="reference internal" href="#">DocOnce Quick Reference</a><ul>
 <li><a class="reference internal" href="#supported-formats">Supported Formats</a></li>
 <li><a class="reference internal" href="#emacs-syntax-support">Emacs syntax support</a></li>
 <li><a class="reference internal" href="#title-authors-and-date">Title, Authors, and Date</a></li>
@@ -1165,10 +1252,12 @@ examine the Doconce source and the <tt class="docutils literal"><span class="pre
 <li><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
+</li>
+</ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">On an Ultimate Markup Language</a></p>
+                        title="previous chapter">DocOnce Quick Reference</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/quickref.txt"
@@ -1198,9 +1287,9 @@ examine the Doconce source and the <tt class="docutils literal"><span class="pre
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="index.html" title="On an Ultimate Markup Language"
+          <a href="index.html" title="DocOnce Quick Reference"
              >previous</a> |</li>
-        <li><a href="index.html">On an Ultimate Markup Language</a> &raquo;</li> 
+        <li><a href="index.html">DocOnce Quick Reference</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

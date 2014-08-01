@@ -1,0 +1,22 @@
+DocOnce documents could be filtered to "Pweave":
+"http://mpastell.com/pweave/docs.html".
+
+A first approach is a Python program with comments *written in DocOnce
+syntax*. A command `doconce pweave myprog.py` could transform the
+comment lines to Pweave.
+
+Another approach is to take a DocOnce document an spit out Pweave code.
+This is more difficult since a lot of DocOnce syntax, figures and
+movies for example, does not have a Pweave/Python counterpart, but one
+could just support `!bc runcod` type of blocks (`runcod`, `runpro`,
+`runshell`) and make `.py` file.
+
+A third (and best?) approach is to extend Pweave to output
+DocOnce. See the `Pweave` command. It should be easy, see "code":
+"https://github.com/mpastell/Pweave/blob/master/pweave/formatters.py",
+it is basically to mimic class `PwebTexFormatter` and
+`PubSphinxFormatter`. Fork the project.
+
+For syntax of Pweave, see "files related
+to a real Pweave example":
+"https://github.com/aaren/Pweave/tree/master/examples".

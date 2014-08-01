@@ -46,20 +46,21 @@ cp testdoc.html testdoc_wordpress.html
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
 cp testdoc.html testdoc_no_solutions.html
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
 system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=template_vagrant.html
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
-doconce split_html testdoc_vagrant.html
+doconce split_html testdoc_vagrant.html --method=split
 
+system doconce apply_inline_edits testdoc.do.txt
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html
+system doconce split_html testdoc.html --nav_button=gray2
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
 
@@ -97,22 +98,25 @@ pdflatex -shell-escape testdoc
 cp testdoc.tex testdoc.tex_ptex2tex
 # testdoc.tex_ptex2tex corresponds to testdoc.pdf
 
-system doconce ptex2tex testdoc sys=\begin{quote}\begin{Verbatim}@\end{Verbatim}\end{quote} pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
+system doconce ptex2tex testdoc "sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}" pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex
 cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
+# Test that latex can treat this file
+rm -f *.aux
+system pdflatex -shell-escape testdoc
 
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
 system doconce format sphinx testdoc.do.txt $ex
 mv -f testdoc.rst testdoc.sphinx.rst
 
-doconce format sphinx testdoc $ex
-doconce split_rst testdoc
+system doconce format sphinx testdoc $ex
+system doconce split_rst testdoc
 system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 
-system doconce format rst testdoc.do.txt $ex
+system doconce format rst testdoc.do.txt $ex --rst_mathjax
 
 system doconce format epytext testdoc.do.txt $ex
 system doconce format pandoc testdoc.do.txt $ex
@@ -163,7 +167,7 @@ cp slides1.html slides1_deck.html
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1
-system doconce slides_beamer slides1
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
@@ -193,7 +197,7 @@ doconce grab --from 'Compute a Probability' --to- 'drawing uniformly' _testdoc.d
 doconce grab --from- '\*\s+\$.+normally' _testdoc.do.txt >> testdoc.tmp
 
 # Test html templates
-system doconce format html html_template --html_template=template1.html --no_pygments_html
+system doconce format html html_template --html_template=template1.html --pygments_html_style=none
 cp html_template.html html_template1.html
 
 system doconce format html html_template --html_template=template_inf1100.html  --pygments_html_style=emacs
@@ -224,6 +228,8 @@ doconce format pandoc $name
 doconce md2latex $name
 
 # Test admonitions
+
+# LaTeX admon styles
 admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 if [ $admon_tp = 'mdfbox' ]; then
@@ -251,7 +257,9 @@ done
 doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
+rm -rf latex_figs
 
+# Test HTML admon styles
 system doconce format html admon --html_admon=lyx --html_style=blueish2
 cp admon.html admon_lyx.html
 
@@ -270,8 +278,15 @@ cp admon.html admon_yellow.html
 system doconce format html admon --html_admon=apricot --html_style=solarized
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
+system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
+
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+cp admon.html admon_bootstrap_alert.html
+doconce split_html admon_bootstrap_alert.html --pagination
+
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
 system python automake_sphinx.py
@@ -284,7 +299,12 @@ cp admon.mwiki admon_mwiki.mwiki
 system doconce format plain admon
 cp admon.txt admon_paragraph.txt
 
-cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt admon_sphinx admon_demo/
+cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt ._admon_*.html admon_sphinx admon_demo/
+cd admon_demo
+doconce replace '../doc/src/manual/fig/wave1D' '../../doc/src/manual/fig/wave1D' *.html .*.html
+rm -rf *~
+cd ..
+
 
 #google-chrome admon_*.html
 #for pdf in admon_*.pdf; do evince $pdf; done
@@ -293,7 +313,15 @@ if [ -d latex_figs ]; then
     echo "BUG: latex_figs was made by some non-latex format..."
 fi
 
+# Test Bootstrap HTML styles
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
+doconce split_html test_boots.html
+
+# Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
+
+# Test Markdown input
+doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
 
 # Test movie handling
 name=movies
@@ -303,25 +331,20 @@ system doconce format html $name --no_mp4_webm_ogg_alternatives
 cp movies.html movie_demo
 
 rm -f $name.aux
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9
+system doconce format pdflatex $name --latex_movie=media9
+system doconce ptex2tex $name
 system pdflatex $name
 pdflatex $name
 cp $name.pdf movie_demo/${name}_media9.pdf
 cp $name.tex ${name}_media9.tex
 
-system doconce format pdflatex $name
-system doconce ptex2tex $name -DMOVIE=media9 -DEXTERNAL_MOVIE_VIEWER
+system doconce format pdflatex $name --latex_movie=media9 --latex_external_movie_viewer
+system doconce ptex2tex $name
 system pdflatex $name
 cp $name.pdf movie_demo/${name}_media9_extviewer.pdf
 
 # multimedia (beamer \movie command) does not work well
 #rm $name.aux
-#system doconce format pdflatex $name
-#system doconce ptex2tex $name -DMOVIE=multimedia
-#system pdflatex $name
-#cp $name.pdf movie_demo/${name}_multimedia.pdf
-#cp $name.tex ${name}_multimedia.tex
 
 rm -f $name.aux
 system doconce format pdflatex $name
@@ -355,7 +378,7 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 doconce format latex encoding3 --debug
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --no_pygments_html --debug
+doconce format html encoding3 --pygments_html_style=off --debug
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
@@ -364,7 +387,7 @@ doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
 doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --no_pygments_html --debug # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
@@ -372,17 +395,17 @@ doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
 # Unicode with Norwegian chars in plain text and verbatim blocks
 doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO  --encoding=utf-8  --no_pygments_html --debug
+doconce format html encoding3 -DMAKO  --encoding=utf-8  --pygments_html_style=off --debug
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --no_pygments_html  # mako variable only, no % lines
-system doconce format html mako_test2 --no_pygments_html  # % lines inside code, but need for mako
-system doconce format html mako_test3 --no_pygments_html  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --no_pygments_html # no problem message
-system doconce format html mako_test4 --no_pygments_html  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
@@ -430,4 +453,3 @@ doconce format pdflatex tmp2
 echo
 echo "When we reach this point in the script,"
 echo "it is clearly a successful run of all tests!"
-

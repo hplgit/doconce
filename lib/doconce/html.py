@@ -1,8 +1,14 @@
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
-     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
+     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url, \
+     get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option
+
+# fold/unfold: use !bblock Title unfold
+# to indicate and use bootstrap choice unfolding for quiz as technique
+# Can with bootstrap typeset all answers and solutions in exercises
+# using folding
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
@@ -78,202 +84,282 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
 # Style sheets
 
 admon_styles_text = """\
-    .alert-text-small   { font-size: 80%%;  }
-    .alert-text-large   { font-size: 130%%; }
-    .alert-text-normal  { font-size: 90%%;  }
+.alert-text-small   { font-size: 80%%;  }
+.alert-text-large   { font-size: 130%%; }
+.alert-text-normal  { font-size: 90%%;  }
 """
 
 admon_styles1 = admon_styles_text + """\
-    .notice, .summary, .warning, .question, .block {
-       border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
-       background-repeat: no-repeat; background-position: 10px center;
-    }
-    .notice   { color: #00529B; background-color: %(background_notice)s;
-                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
-    .summary  { color: #4F8A10; background-color: %(background_summary)s;
-                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
-    .warning  { color: #9F6000; background-color: %(background_warning)s;
-                background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
-    .question { color: #4F8A10; background-color: %(background_question)s;
-                background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
-    .block    { color: #00529B; background-color: %(background_notice)s; }
+.notice, .summary, .warning, .question, .block {
+  border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
+  background-repeat: no-repeat; background-position: 10px center;
+}
+.notice   { color: #00529B; background-color: %(background_notice)s;
+            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+.summary  { color: #4F8A10; background-color: %(background_summary)s;
+            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+.warning  { color: #9F6000; background-color: %(background_warning)s;
+            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+.question { color: #4F8A10; background-color: %(background_question)s;
+            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
+.block    { color: #00529B; background-color: %(background_notice)s; }
 """
 
 admon_styles2 = admon_styles_text + """\
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid %(boundary)s;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: %(background)s;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid %(boundary)s;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: %(color)s;
+  background-color: %(background)s;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
 """
 # alt: background-image: url(data:image/png;base64,iVBORw0KGgoAAAAN...);
 
 css_solarized = """\
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:none; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
+css_solarized_dark = """\
+    /* solarized dark style */
+body {
+  background-color: #002b36;
+  color: #839496;
+  font-family: Menlo;
+}
+code { background-color: #073642; color: #93a1a1; box-shadow: none; }
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #b58900; }
+a:hover { color: #2aa198; }
+"""
+
+def css_link_solarized_highlight(style='light'):
+    return """
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_%(style)s_code.css" rel="stylesheet" type="text/css" title="%(style)s"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+""" % vars()
+
+css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
+css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
+css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'
+
+
 css_blueish = """\
-    /* blueish style */
+/* blueish style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre { background: #ededed; color: #000; padding: 15px;}
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 css_blueish2 = """\
-    /* blueish2 style */
+/* blueish2 style */
 
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
 
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre {
-    background-color: #fefbf3;
-    vpadding: 9px;
-    border: 1px solid rgba(0,0,0,.2);
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-            box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    }
-    pre, code { font-size: 90%; line-height: 1.6em; }
-    pre > code { background-color: #fefbf3; border: none }
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre {
+background-color: #fefbf3;
+vpadding: 9px;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+pre, code { font-size: 90%; line-height: 1.6em; }
+pre > code { background-color: #fefbf3; border: none }
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 css_bloodish = """\
-    /* bloodish style */
+/* bloodish style */
 
-    body {
-      font-family: Helvetica, Verdana, Arial, Sans-serif;
-      color: #404040;
-      background: #ffffff;
-    }
-    h1 { font-size: 1.8em;  color: #8A0808; }
-    h2 { font-size: 1.6em;  color: #8A0808; }
-    h3 { font-size: 1.4em;  color: #8A0808; }
-    h4 { color: #8A0808; }
-    a { color: #8A0808; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+pre { background: #ededed; color: #000; padding: 15px;}
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
-def toc2html():
+def toc2html(font_size=80, bootstrap=True):
+    # level_depth: how many levels that are represented in the toc
+    level_depth = int(option('html_toc_depth=', '2'))
+    indent = int(option('html_toc_indent=', '3'))
+    nested_list = indent == 0
+
     global tocinfo  # computed elsewhere
     level_min = tocinfo['highest level']
+    level_max = level_min + level_depth - 1
+
+    ul_class = ' class="nav"' if bootstrap else ''
     toc_html = ''
-    for title, level, label, href in tocinfo['sections']:
-        nspaces = 1
-        indent = '&nbsp; '*(nspaces*(level - level_min))
-        toc_html += '     <!-- navigation toc: "%s" --> <li> %s <a href="#%s">%s</a>\n' % (title, indent, href, title)
+    uls = 0  # no of active <ul> sublists
+    for i in range(len(tocinfo['sections'])):
+        title, level, label, href = tocinfo['sections'][i]
+        if level > level_max:
+            continue
+        spaces = '&nbsp;'*(indent*(level - level_min))
+        if nested_list and i > 0 and level > tocinfo['sections'][i-1][1]:
+            toc_html += '     <ul%s>\n' % ul_class
+            uls += 1
+        btitle = title = title.strip()
+        if level_depth == 2 and level == level_min:
+            btitle = '<b>%s</b>' % btitle  # bold for highest level
+        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, btitle)
+        if nested_list and i < len(tocinfo['sections'])-1 and \
+               tocinfo['sections'][i+1][1] < level:
+            toc_html += '     </ul>\n'
+            uls -= 1
+    # remaining </ul>s
+    if nested_list:
+        for j in range(uls):
+            toc_html += '     </ul>\n'
     return toc_html
 
+
+def mathjax_header():
+    newcommands_files = list(
+        sorted([name
+                for name in glob.glob('newcommands*.tex')
+                if not name.endswith('.p.tex')]))
+    newcommands = ''
+    for filename in newcommands_files:
+        f = open(filename, 'r')
+        text = ''
+        for line in f.readlines():
+            if not line.startswith('%'):
+                text += line
+        text = text.strip()
+        if text:
+            newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
+                           + '\n$$\n\n'
+    mathjax_script_tag = """
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+"""
+    #<meta tag is valid only in html head anyway, so this was removed:
+    #<!-- Fix slow MathJax rendering in IE8 -->
+    #<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    latex = '\n\n' + mathjax_script_tag + newcommands + '\n\n'
+    return latex
 
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
+    html_style = option('html_style=', '')
+    pygm_style = option('pygments_html_style=', default=None)
 
     # Mapping from envir (+cod/pro if present) to pygment style
-    types2languages = dict(py='python', cy='cython', f='fortran',
-                           c='c', cpp='c++', sh='bash', rst='rst',
-                           m ='matlab', pl='perl', rb='ruby',
-                           swig='c++', latex='latex', tex='latex',
-                           html='html', xml='xml',
-                           js='js',
-                           sys='console', # sys='text', sys='bash'
-                           dat='text', txt='text', csv='text',
-                           cc='txt', ccq='text',
-                           pyopt='python', pysc='python')
+    envir2pygments = dict(
+        py='python', cy='cython', f='fortran',
+        c='c', cpp='c++', sh='bash', rst='rst',
+        m='matlab', pl='perl', rb='ruby',
+        swig='c++', latex='latex', tex='latex',
+        html='html', xml='xml',
+        js='js', java='java',
+        #sys='console',
+        sys='text',
+        #sys='bash'
+        dat='text', txt='text', csv='text',
+        cc='text', ccq='text',
+        pyshell='python', ipy='ipy',
+        pyopt='python', pysc='python',
+        do='doconce')
     try:
         import pygments as pygm
         from pygments.lexers import guess_lexer, get_lexer_by_name
@@ -283,25 +369,45 @@ def html_code(filestr, code_blocks, code_block_types,
     except ImportError:
         pygm = None
     # Can turn off pygments on the cmd line
-    if option('no_pygments_html'):
+    if pygm_style in ('no', 'none', 'off'):
         pygm = None
     if pygm is not None:
-        pygm_style = option('pygments_html_style=', default=None)
+        if 'ipy' in code_block_types:
+            if not has_custom_pygments_lexer('ipy'):
+                envir2pygments['ipy'] = 'python'
+        if 'do' in code_block_types:
+            if not has_custom_pygments_lexer('doconce'):
+                envir2pygments['do'] = 'text'
+
         if pygm_style is None:
             # Set sensible default values
-            if option('html_style=') == 'solarized':
-                pygm_style = 'perldoc'
+            if option('html_style=', '').startswith('solarized'):
+                pygm_style = 'none'
             else:
                 pygm_style = 'default'
+        else:
+            # Fix style for solarized
+            if option('html_style=') == 'solarized':
+                if pygm_style != 'perldoc':
+                    print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized' % pygm_style
+                    print '    automatically changed to --html_style=perldoc'
+                    pygm_style = 'perldoc'
+            elif option('html_style=') == 'solarized_dark':
+                if pygm_style != 'friendly':
+                    print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized_dark' % pygm_style
+                    print '    automatically changed to --html_style=friendly'
+                    print '    (even better not to specify --pygm_style for solarized_dark)'
+                    pygm_style = 'friendly'
 
+        legal_lexers = get_legal_pygments_lexers()
         legal_styles = list(get_all_styles())
-        legal_styles += ['no', 'none']
+        legal_styles += ['no', 'none', 'off']
         if pygm_style not in legal_styles:
             print 'pygments style "%s" is not legal, must be among\n%s' % (pygm_style, ', '.join(legal_styles))
             #_abort()
-            print 'using the default style...'
+            print 'using the "default" style...'
             pygm_style = 'default'
-        if pygm_style in ['no', 'none']:
+        if pygm_style in ['no', 'none', 'off']:
             pygm = None
 
         linenos = option('pygments_html_linenos')
@@ -323,8 +429,10 @@ def html_code(filestr, code_blocks, code_block_types,
                 type_ = code_block_types[i][:-3]
             else:
                 type_ = code_block_types[i]
-            if type_ in types2languages:
-                language = types2languages[type_]
+            if type_ in envir2pygments:
+                language = envir2pygments[type_]
+            elif type_ in legal_lexers:
+                language = type_
             else:
                 language = 'text'
             lexer = get_lexer_by_name(language)
@@ -335,7 +443,7 @@ def html_code(filestr, code_blocks, code_block_types,
             if code_block_types[i] == 'ccq':
                 result = '<blockquote>\n%s</blockquote>' % result
 
-            result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (from !bc %s)' % code_block_types[i], pygm_style) + result
+            result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (!bc %s)' % code_block_types[i], pygm_style) + result
             # Fix ugly error boxes
             result = re.sub(r'<span style="border: 1px .*?">(.+?)</span>',
                             '\g<1>', result)
@@ -389,7 +497,6 @@ def html_code(filestr, code_blocks, code_block_types,
             pattern = r'^label\{'
             cpattern = re.compile(pattern, re.MULTILINE)
             tex_blocks[i] = cpattern.sub('\\label{', tex_blocks[i])
-
 
     from doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)
@@ -460,39 +567,7 @@ def html_code(filestr, code_blocks, code_block_types,
 
     # Add MathJax script if math is present (math is defined right above)
     if math and MATH_TYPESETTING == 'MathJax':
-        newcommands_files = list(
-            sorted([name
-                    for name in glob.glob('newcommands*.tex')
-                    if not name.endswith('.p.tex')]))
-        newcommands = ''
-        for filename in newcommands_files:
-            f = open(filename, 'r')
-            text = ''
-            for line in f.readlines():
-                if not line.startswith('%'):
-                    text += line
-            text = text.strip()
-            if text:
-                newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
-                               + '\n$$\n\n'
-        mathjax = """
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
-"""
-        latex = '\n\n' + mathjax + newcommands + '\n\n'
+        latex = mathjax_header()
         if '<body>' in filestr:
             # Add MathJax stuff after <body> tag
             filestr = filestr.replace('<body>\n', '<body>' + latex)
@@ -552,7 +627,7 @@ MathJax.Hub.Config({
 
     # Add header from external template
     template = option('html_template=', default='')
-    if option('html_style=') == 'vagrant':
+    if html_style == 'vagrant':
         # Set template_vagrant.html as template
         if not template:
             print """
@@ -563,7 +638,7 @@ MathJax.Hub.Config({
 """
             _abort()
     if 'template_vagrant.html' in template \
-       and not option('html_style=') == 'vagrant':
+       and not html_style == 'vagrant':
         print """
 *** error: --html_template= with a template based on
     template_vagrant.html requires --html_style=vagrant
@@ -589,7 +664,7 @@ MathJax.Hub.Config({
             print """\
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Better to hardcode authors in a footer in the template."""
+             Usually better to hardcode authors in a footer in the template."""
 
         # Extract title
         if title == '':
@@ -616,8 +691,10 @@ MathJax.Hub.Config({
 
         # Make toc for navigation
         toc_html = ''
-        if option('html_style=') in ('vagrant', 'bootstrap'):
+        if html_style in ('vagrant', 'bootstrap'):
             toc_html = toc2html()
+        elif html_style in ('solarized',):
+            toc_html = toc2html(bootstrap=False)
         # toc_html lacks formatting, run some basic formatting here
         tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
         # drop URLs in headings?
@@ -629,8 +706,9 @@ MathJax.Hub.Config({
         # Load template file
         try:
             f = open(template, 'r'); template = f.read(); f.close()
-        except IOError:
+        except IOError as e:
             print '*** error: could not find template "%s"' % template
+            print e
             _abort()
 
         # Check that template does not have "main content" begin and
@@ -645,7 +723,7 @@ MathJax.Hub.Config({
                 print line
             _abort()
 
-        # template can only have slots for title, date, main
+        # template can only have slots for title, date, main, table_of_contents
         template = latin2html(template) # code non-ascii chars
         # replate % by %% in template, except for %(title), %(date), %(main),
         # etc which are the variables we can plug into the template.
@@ -671,20 +749,43 @@ MathJax.Hub.Config({
             print '    but no date is specified in the document'
         filestr = template % variables
 
-    html_style = option('html_style=', '')
     if html_style.startswith('boots'):
         # Change chapter headings to page
         filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
-                         """
-<div class="page-header">
-  <h1>\g<1></h1>
-</div>
-""", filestr)
-        # Fix tables
-        filestr = re.sub(r'<table.+?>', '<table class="table table-striped table-hover ">', filestr)
+                         '<h1 class="page-header">\g<1></h1>', filestr)
+        # Some fancy functionality (e.g., in the bootstrap_wtoc template)
+        # requires use of id tag in headings rather than the primitve <a name..
+        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"</a>', filestr) # for highlighted toc in , but did not work,
+    else:
+        filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
+    if html_style.startswith('boots'):
         # Insert toc
-        if '%(table_of_contents)s' in filestr:
-            filestr = filestr % {'table_of_contents': toc2html()}
+        if '***TABLE_OF_CONTENTS***' in filestr:
+            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
+        jumbotron = option('html_bootstrap_jumbotron=', 'on')
+        if jumbotron != 'off':
+            # Fix jumbotron for title, author, date, toc, abstract, intro
+            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
+            # Exclude lists (not a good idea if they are part of the intro...)
+            #pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
+            m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+            if m:
+                # If the user has a !split in the beginning, insert a button
+                # to click (typically bootstrap design).
+                # Also make the title h2 instead of h1 since h1 is REALLY
+                # big in the jumbotron.
+                core = m.group(1)
+                rest = m.group(2)
+                if jumbotron == 'h2':
+                    core = core.replace('h1>', 'h2>')
+                button = '<!-- potential-jumbotron-button -->' \
+                         if '!split' in m.group(2) else ''
+                text = '<div class="jumbotron">\n' + core + \
+                       button + '\n</div> <!-- end jumbotron -->\n\n' + rest
+                filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+        # Fix slidecells? Just a start...this is hard...
+        if '<!-- !bslidecell' in filestr:
+            filestr = process_grid_areas(filestr)
 
 
     if MATH_TYPESETTING == 'WordPress':
@@ -719,7 +820,45 @@ MathJax.Hub.Config({
     # Extra blank before section heading
     pattern = r'\s+(?=^<[hH]\d>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
+    # Elimate <p> before equations $$ and before lists
+    filestr = re.sub(r'<p>\s+(\$\$|<ul>|<ol>)', r'\g<1>', filestr)
+    filestr = re.sub(r'<p>\s+<title>', '<title>', filestr)
+    # Eliminate <p> after </h1>, </h2>, etc.
+    filestr = re.sub(r'(</h\d>)\s+<p>', '\g<1>\n', filestr)
 
+    return filestr
+
+def process_grid_areas(filestr):
+    # Extract all cell areas
+    pattern = r'(^<!-- +begin-grid-area +-->(.+?)^<!-- +end-grid-area +-->)'
+    cell_areas = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
+    # Work with each cell area
+    for full_text, internal in cell_areas:
+        cell_pos = [(int(p[0]), int(p[1])) for p in
+                    re.findall(r'<!-- !bslidecell +(\d\d)', internal)]
+        if cell_pos:
+            # Find the table size
+            num_rows    = max([p[0] for p in cell_pos]) + 1
+            num_columns = max([p[1] for p in cell_pos]) + 1
+            table = [[None]*(num_columns) for j in range(num_rows+1)]
+            # Grab the content of each cell
+            cell_pattern = r'(<!-- !bslidecell +(\d\d) *[.0-9 ]*?-->(.+?)<!-- !eslidecell -->)'
+            cells = re.findall(cell_pattern, internal,
+                               flags=re.DOTALL|re.MULTILINE)
+            # Insert individual cells in table
+            for cell_envir, pos, cell_text in cells:
+                table[int(pos[0])][int(pos[1])] = cell_text
+            # Construct new HTML text by looping over the table
+            # (note that the input might have the cells in arbitrary
+            # order while the output is traversed in correct cell order)
+            new_text = '<div class="row"> <!-- begin cell row -->\n'
+            for c in range(num_columns):
+                new_text += '  <div class="col-sm-4">'
+                for r in range(num_rows):
+                    new_text += table[r][c]
+                new_text += '  </div> <!-- column col-sm-4 -->\n'
+            new_text += '</div> <!-- end cell row -->\n'
+            filestr = filestr.replace(full_text, new_text)
     return filestr
 
 def html_figure(m):
@@ -736,7 +875,7 @@ def html_figure(m):
                           for opt, value in info if opt not in ['frac']])
 
     if caption:
-       # Caption above figure and a horizontal rule (fine for anchoring):
+       # Caption above figure and a horizontalrule (fine for anchoring):
        return """
 <center> <!-- figure -->
 <hr class="figure">
@@ -756,6 +895,8 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
 
     footnotes = re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)
     names = [name for name, footnote, dummy in footnotes]
+    footnotes = {name: text for name, text, dummy in footnotes}
+
     name2index = {names[i]: i+1 for i in range(len(names))}
 
     def subst_def(m):
@@ -769,9 +910,42 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                      flags=re.MULTILINE|re.DOTALL)
 
     def subst_footnote(m):
-        i = name2index[m.group('name')]
         name = m.group('name').strip()
-        return r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (name2index[name], name2index[name], i)
+        if name in name2index:
+            i = name2index[m.group('name')]
+        else:
+            print '*** error: found footnote with name "%s", but this one is not defined' % name
+            _abort()
+        if option('html_style=', '')[:5] in ('boots', 'vagra'):
+            # Use a tooltip construction so the footnote appears when hovering over
+            text = ' '.join(footnotes[name].strip().splitlines())
+            # Note: formatting does not work well with a tooltip
+            # could issue a warning of we find * (emphasis) or ` or "..": ".." link
+            if '*' in text:
+                newtext, n = re.subn(r'\*(.+?)\*', r'\g<1>', text)
+                if n > 0:
+                    print '*** warning: found emphasis tag *...* in footnote, which was removed'
+                    print '    since it does not work with bootstrap tooltips'
+                    print text
+                text = newtext
+            if '`' in text:
+                newtext, n = re.subn(r'`(.+?)`', r'\g<1>', text)
+                if n > 0:
+                    print '*** warning: found inline code tag `...` in footnote, which was removed'
+                    print '    since it does not work with bootstrap tooltips'
+                    print text
+                text = newtext
+            if '"' in text:
+                newtext, n = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
+                if n > 0:
+                    print '*** warning: found link tag "...": "..." in footnote, which was removed'
+                    print '    since it does not work with bootstrap tooltips'
+                    print text
+                text = newtext
+            html = ' <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
+        else:
+            html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
+        return html
 
     filestr = re.sub(pattern_footnote, subst_footnote, filestr)
     return filestr
@@ -782,8 +956,17 @@ def html_table(table):
     column_spec = table.get('columns_align', 'c'*ncolumns).replace('|', '')
     heading_spec = table.get('headings_align', 'c'*ncolumns).replace('|', '')
     a2html = {'r': 'right', 'l': 'left', 'c': 'center'}
+    bootstrap = option('html_style=', '').startswith('boots')
 
-    s = '<table border="1">\n'
+    if bootstrap:
+        span = ncolumns+1
+        s = """
+<div class="row">
+  <div class="col-xs-%d">
+    <table class="table table-striped table-hover table-condensed">
+""" % span
+    else:
+        s = '<table border="1">\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
             continue
@@ -804,8 +987,21 @@ def html_table(table):
                 zip(row, column_width, heading_spec, column_spec):
             if headline:
                 if not skip_headline:
-                    s += '<th align="%s">%s</th> ' % \
-                         (a2html[ha], column.center(w))
+                    # Use td tag if math or code or bootstrap
+                    if r'\(' in column or '<code>' in column or bootstrap:
+                        tag = 'td'
+                        if bootstrap:
+                            if r'\(' in column or '<code>' in column:
+                                bold = '', ''
+                            else:
+                                bold = '<b>', '</b>'
+                        else:
+                            bold = '', ''
+                    else:
+                        tag = 'th'
+                        bold = '', ''
+                    s += '<%s align="%s">%s%s%s</%s> ' % \
+                    (tag, a2html[ha], bold[0], column.center(w), bold[1], tag)
             else:
                 s += '<td align="%s">   %s    </td> ' % \
                      (a2html[ca], column.ljust(w))
@@ -814,7 +1010,11 @@ def html_table(table):
             if not skip_headline:
                 s += '</thead>\n'
             s += '<tbody>\n'
-    s += '</tbody>\n</table>\n'
+    s += '</tbody>\n'
+    if bootstrap:
+        s += '    </table>\n  </div>\n</div> <!-- col-xs-%d -->\n' % span
+    else:
+        s += '</table>\n'
     return s
 
 def html_movie(m):
@@ -850,8 +1050,12 @@ def html_movie(m):
         # frame_%04d.png:0->120
         # http://some.net/files/frame_%04d.png:0->120
         import DocWriter
-        header, jscode, form, footer, frames = \
-                DocWriter.html_movie(filename, **kwargs)
+        try:
+            header, jscode, form, footer, frames = \
+                    DocWriter.html_movie(filename, **kwargs)
+        except ValueError as e:
+            print '*** error: %s' % str(e)
+            _abort()
         text = jscode + form
         if caption:
             text += '\n<br><em>' + caption + '</em><br>\n\n'
@@ -869,7 +1073,7 @@ def html_movie(m):
 <iframe width="%s" height="%s" src="%s" frameborder="0" allowfullscreen></iframe>
 """ % (width, height, filename)
         if caption:
-            text += """\n<em>%s</em>\n\n""" % caption
+            text += """\n<p><em>%s</em></p>\n\n""" % caption
     elif 'vimeo.com' in filename:
         if not 'player.vimeo.com/video/' in filename:
             if not filename.startswith('http://'):
@@ -992,6 +1196,10 @@ def html_author(authors_and_institutions, auth2index,
 
 
 def html_ref_and_label(section_label2title, format, filestr):
+    # This is the first format-specific function to be called.
+    # We therefore do some HTML-specific fixes first.
+
+    # Section references:
     # .... see section ref{my:sec} is replaced by
     # see the section "...section heading..."
     pattern = r'[Ss]ection(s?)\s+ref\{'
@@ -1000,14 +1208,20 @@ def html_ref_and_label(section_label2title, format, filestr):
     pattern = r'[Cc]hapter(s?)\s+ref\{'
     replacement = r'the chapter\g<1> ref{'
     filestr = re.sub(pattern, replacement, filestr)
+    # Do not use "the appendix" since the headings in appendices
+    # have "Appendix: title"
     pattern = r'[Aa]ppendix\s+ref\{'
-    replacement = r'the appendix ref{'
+    #replacement = r'the appendix ref{'
+    replacement = r' ref{'
     filestr = re.sub(pattern, replacement, filestr)
     pattern = r'[Aa]ppendices\s+ref\{'
-    replacement = r'the appendices ref{'
+    #replacement = r'the appendices ref{'
+    replacement = r' ref{'
     filestr = re.sub(pattern, replacement, filestr)
     # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!]\s+|^)the (sections?|chapters?|appendix|appendices)\s+ref'
+    # Check: end of previous sentence (?.!) or start of new paragraph.
+    #pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?|appendix|appendices)\s+ref'
+    pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?)\s+ref'
     replacement = r'\g<1>The \g<2> ref'
     filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
 
@@ -1019,6 +1233,12 @@ def html_ref_and_label(section_label2title, format, filestr):
 
     # Fix side effect from the above that one gets constructions 'the The'
     filestr = re.sub(r'the\s+The', 'the', filestr)
+
+    # Recognize mdash ---
+    # Must be attached to text or to a quote (ending in ., quotes, or
+    # emphasis *)
+    pattern = r'''([A-Za-z0-9.'"*])---([A-Za-z ])'''
+    filestr = re.sub(pattern, '\g<1>&mdash;\g<2>', filestr)
 
     # extract the labels in the text (filestr is now without
     # mathematics and those labels)
@@ -1150,20 +1370,167 @@ def html_toc(sections):
     extended_sections = []  # extended list for toc in HTML file
     #hr = '<hr>'
     hr = ''
-    s = '<h2>Table of contents</h2>\n\n%s\n' % hr
+    s = '<h2>Table of contents</h2>\n\n%s\n<p>\n' % hr
     for i in range(len(sections)):
         title, level, label = sections[i]
         href = label if label is not None else '___sec%d' % i
         indent = '&nbsp; '*(3*(level - level_min))
         s += indent + '<a href="#%s">%s</a>' % (href, title ) + '<br>\n'
         extended_sections.append((title, level, label, href))
-    s += '%s\n<p>\n' % hr
+    s += '</p>%s\n<p>\n' % hr
 
     # Store for later use in navgation panels etc.
     global tocinfo
     tocinfo = {'sections': extended_sections, 'highest level': level_min}
 
     return s
+
+def bootstrap_collapse(visible_text, collapsed_text,
+                       id, button_text='', icon='pencil'):
+    """Generate HTML Bootstrap code for a collapsing/unfolding text."""
+    text = """
+<p>
+<a class="glyphicon glyphicon-%(icon)s showdetails" data-toggle="collapse"
+ data-target="#%(id)s" style="font-size: 80%%;">%(button_text)s</a>
+%(visible_text)s
+<div class="collapse-group">
+<p><div class="collapse" id="%(id)s">
+%(collapsed_text)s
+</div></p>
+</div>
+</p>
+""" % vars()
+    return text
+
+def html_inline_comment(m):
+    # See latex.py for explanation
+    name = m.group('name').strip()
+    comment = m.group('comment').strip()
+    chars = {',': 'comma', ';': 'semicolon', '.': 'period'}
+    if name[:4] == 'del ':
+        for char in chars:
+            if comment == char:
+                return r' <font color="red"> (<b>edit %s</b>: delete %s)</font>' % (name[4:], chars[char])
+        return r'<font color="red">(<b>edit %s</b>:)</font> <del>%s</del>' % (name[4:], comment)
+    elif name[:4] == 'add ':
+        for char in chars:
+            if comment == char:
+                return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
+        return r' <font color="red">(<b>edit %s</b>: add) %s</font>' % (name[4:], comment)
+    else:
+        # Ordinary name
+        if ' -> ' in comment:
+            # Replacement
+            if comment.count(' -> ') != 1:
+                print '*** wrong syntax in inline comment:'
+                print comment
+                print '(more than two ->)'
+                _abort()
+            orig, new = comment.split(' -> ')
+            return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
+        else:
+            # Ordinary comment
+            return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: <em>%s</em>)</font>\n<!-- end inline comment -->\n' % (name, comment)
+
+def html_quiz(quiz):
+    bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
+    button_text = option('html_quiz_button_text=', '')
+    question_prefix = quiz.get('question prefix',
+                               option('quiz_question_prefix=', 'Question:'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
+    hr = '<hr>' if option('quiz_horizontal_rule=', 'on') == 'on' else ''
+
+    text = ''
+    if 'new page' in quiz:
+        text += '<!-- !split -->\n<h2>%s</h2>\n\n' % quiz['new page']
+
+    text += '<!-- begin quiz -->\n'
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
+        pass
+    else:
+        text += '%s\n<p>\n<b>%s</b> ' % (hr, question_prefix)
+
+    text += quiz['question'] + '</p>\n'
+
+    # List choices as paragraphs
+    for i, choice in enumerate(quiz['choices']):
+        choice_no = i+1
+        answer = choice[0].capitalize() + '!'
+        choice_prefix = common_choice_prefix
+        if 'choice prefix' in quiz:
+            if isinstance(quiz['choice prefix'][i], basestring):
+                choice_prefix = quiz['choice prefix'][i]
+        if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
+            pass  # don't add choice number
+        else:
+            choice_prefix += ' %d:' % choice_no
+        if not bootstrap:  # plain html: show tooltip when hovering over choices
+            tooltip = answer
+            if len(choice) == 3:
+                expl = choice[2]
+                formatted_code = False
+                for c in '\\$<>{}':
+                    if c in expl:
+                        # formatted code in explanation, don't show
+                        expl = ''
+            else:
+                expl = ''
+            if expl:
+                tooltip += ' ' + ' '.join(expl.splitlines())
+            tooltip = ' title="%s"' % tooltip
+            text += '\n<p><div%s><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
+        else:
+            id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
+            if len(choice) == 3:
+                expl = choice[2]
+            else:
+                if choice[0] == 'right':
+                    expl = 'Correct!'
+                else:
+                    expl = 'Wrong!'
+            # Use collapse functionality, see http://jsfiddle.net/8cYFj/
+            '''
+            text += """
+<p><b>%s</b>
+%s
+<div class="collapse-group">
+<p><div class="collapse" id="%s">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
+%s
+</div></p>
+<a class="btn btn-default btn-xs showdetails" data-toggle="collapse"
+ data-target="#%s" style="font-size: 80%%;">%s</a>
+</div>
+</p>
+""" % (choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
+            '''
+            '''
+            text += """
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#%s" style="font-size: 80%%;">%s</a>
+&nbsp;<b>%s</b>
+%s
+<div class="collapse-group">
+<p><div class="collapse" id="%s">
+<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
+%s
+</div></p>
+</div>
+</p>
+""" % (id, button_text, choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
+            '''
+            visible_text = '&nbsp;<b>%s</b>\n%s' % (choice_prefix, choice[1])
+            collapsed_text = '<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">\n%s' % ('correct' if choice[0] == 'right' else 'incorrect', expl)
+            text += bootstrap_collapse(
+               visible_text, collapsed_text,
+               id, button_text, icon='pencil')
+
+    if not bootstrap and hr:
+        text += '%s\n' % hr
+    text += '<!-- end quiz -->\n'
+    return text
 
 def html_box(block, format, text_size='normal'):
     """Add a HTML box with text, code, equations inside. Can have shadow."""
@@ -1191,10 +1558,14 @@ global html_admon_style      # set below
 html_admon_style = option('html_admon=', None)
 if html_admon_style is None:
     # Set sensible default value
-    if option('html_style=') == 'solarized':
-        html_admon_style = 'apricot'
+    if re.search(r'solarized\d?_dark', option('html_style=', '')):
+        html_admon_style = 'solarized_dark'
+    elif option('html_style=', '').startswith('solarized'):
+        html_admon_style = 'solarized_light'
     elif option('html_style=') == 'blueish2':
         html_admon_style = 'yellow'
+    elif option('html_style=', '')[:5] in ('vagra', 'boots'):
+        html_admon_style = 'bootstrap_alert'
     else:
         html_admon_style = 'gray'
 
@@ -1211,7 +1582,8 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     if title == 'Block':  # block admon has no default title
         title = ''
 
-    if title and title[-1] not in ('.', ':', '!', '?'):
+    if title and (title[-1] not in ('.', ':', '!', '?')) and \
+       html_admon_style != 'bootstrap_panel':
         # Make sure the title ends with puncuation
         title += '.'
 
@@ -1220,7 +1592,41 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     pygments_pattern = r'"background: .+?">'
 
     # html_admon_style is global variable
-    if html_admon_style == 'colors':
+    if option('html_style=', '')[:5] in ('vagra', 'boots'):
+        # Bootstrap/Bootswatch html style
+
+        if html_admon_style == 'bootstrap_panel':
+            alert_map = {'warning': 'warning', 'notice': 'primary',
+                         'summary': 'danger', 'question': 'success',
+                         'block': 'default'}
+            text = '<div class="panel panel-%%s">' %% alert_map['%(_admon)s']
+            if '%(_admon)s' != 'block':  # heading?
+                text += """
+  <div class="panel-heading">
+  <h3 class="panel-title">%%s</h3>
+  </div>""" %% title
+            text += """
+<div class="panel-body">
+%%s
+</div>
+</div>
+""" %% block
+        else: # bootstrap_alert
+            alert_map = {'warning': 'danger', 'notice': 'success',
+                         'summary': 'warning', 'question': 'info',
+                         'block': 'success'}
+
+            if not keep_pygm_bg:
+                # 2DO: fix background color!
+                block = re.sub(pygments_pattern, r'"background: %%s">' %%
+                               admon_css_vars[html_admon_style]['background'], block)
+            text = """<div class="alert alert-block alert-%%s alert-text-%%s"><b>%%s</b>
+%%s
+</div>
+""" %% (alert_map['%(_admon)s'], text_size, title, block)
+        return text
+
+    elif html_admon_style == 'colors':
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars['colors']['background_%(_admon)s'], block)
@@ -1230,15 +1636,14 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return janko
 
-    elif html_admon_style in ('gray', 'yellow', 'apricot') or option('html_style=', '')[:8] in ('vagrant', 'botswat'):
+    elif html_admon_style in ('gray', 'yellow', 'apricot', 'solarized_light', 'solarized_dark'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
-        bootstrap_alert = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
+        return """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
 %%s
 </div>
 """ %% (text_size, title, block)
-        return bootstrap_alert
 
     elif html_admon_style == 'lyx':
         block = '<div class="alert-text-%%s">%%s</div>' %% (text_size, block)
@@ -1267,7 +1672,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (title, block)
         return lyx
 
-    else:
+    elif html_admon_style == 'paragraph':
         # Plain paragraph
         paragraph = """
 
@@ -1277,6 +1682,12 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 </div>
 """ %% (text_size, title, block)
         return paragraph
+    else:
+        print '*** error: illegal --html_admon=%%s' %% html_admon_style
+        print '    legal values are colors, gray, yellow, apricot, lyx,'
+        print '    paragraph; and bootstrap_alert or bootstrap_panel for'
+        print '    --html_style=vagrant,bootstrap*,or bootswatch*'
+        _abort()
 ''' % vars()
     exec(_text)
 
@@ -1293,6 +1704,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -1317,11 +1729,11 @@ def define(FILENAME_EXTENSION,
         'linkURL2v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
-        'inlinecomment': r'\n<!-- begin inline comment -->\n<font color="red">[<b>\g<name></b>: <em>\g<comment></em>]</font>\n<!-- end inline comment -->\n',
+        'inlinecomment': html_inline_comment,
         'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
-        'section':       r'\n<h2>\g<subst></h2>',
-        'subsection':    r'\n<h3>\g<subst></h3>',
-        'subsubsection': r'\n<h4>\g<subst></h4>\n',
+        'section':       r'\n<h1>\g<subst></h1>',
+        'subsection':    r'\n<h2>\g<subst></h2>',
+        'subsubsection': r'\n<h3>\g<subst></h3>\n',
         'paragraph':     r'<b>\g<subst></b>\n',
         'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
         'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
@@ -1333,6 +1745,9 @@ def define(FILENAME_EXTENSION,
         'linebreak':     r'\g<text><br />',
         'footnote':      html_footnotes,
         'non-breaking-space': '&nbsp;',
+        'horizontal-rule': '<hr>',
+        'ampersand1':    r'\g<1> &amp; \g<2>',
+        'ampersand2':    r' \g<1>&amp;\g<2>',
         }
 
     if option('wordpress'):
@@ -1378,28 +1793,47 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg')
+    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg', '.svg')
     CROSS_REFS['html'] = html_ref_and_label
     TABLE['html'] = html_table
     INDEX_BIB['html'] = html_index_bib
     EXERCISE['html'] = plain_exercise
     TOC['html'] = html_toc
+    QUIZ['html'] = html_quiz
 
-    # Embedded style sheets
+    # Embedded style sheets and links to styles
+    css_links = ''
+    css = ''
     html_style = option('html_style=', '')
     if  html_style == 'solarized':
         css = css_solarized
+        css_links = css_link_solarized_highlight('light')
+    elif  html_style == 'solarized_dark':
+        css = css_solarized_dark
+        css_links = css_link_solarized_highlight('dark')
+    elif html_style == 'solarized2_light':
+        css = css_solarized_thomasf
+        css_links = css_link_solarized_thomasf_light
+    elif html_style == 'solarized2_dark':
+        css = css_solarized_thomasf
+        css_links = css_link_solarized_thomasf_dark
+    elif html_style == 'solarized3_light':
+        css_links = css_link_solarized_thomasf_light
+    elif html_style == 'solarized3_dark':
+        css_links = css_link_solarized_thomasf_dark
     elif html_style == 'blueish':
         css = css_blueish
     elif html_style == 'blueish2':
         css = css_blueish2
     elif html_style == 'bloodish':
         css = css_bloodish
+    elif html_style == 'plain':
+        css = ''
     else:
         css = css_blueish # default
 
-    if not option('no_pygments_html') and \
-           option('html_style=', 'blueish') != 'solarized':
+    if option('pygments_html_style=', None) not in ('no', 'none', 'off') \
+        and not option('html_style=', 'blueish').startswith('solarized'):
         # Remove pre style as it destroys the background for pygments
         css = re.sub(r'pre .*?\{.+?\}', '', css, flags=re.DOTALL)
 
@@ -1439,12 +1873,21 @@ def define(FILENAME_EXTENSION,
         css += "\n    h1, h2, h3 { font-family: '%s'; }\n" % heading_font_family.replace('+', ' ')
 
     global admon_css_vars
-    admon_styles = 'gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph'
+    admon_styles = ['gray', 'yellow', 'apricot', 'colors', 'lyx', 'paragraph',
+                    'bootstrap_alert', 'bootstrap_panel',
+                    'solarized_light', 'solarized_dark']
     admon_css_vars = {style: {} for style in admon_styles}
     admon_css_vars['yellow']  = dict(boundary='#fbeed5', background='#fcf8e3')
     admon_css_vars['apricot'] = dict(boundary='#FFBF00', background='#fbeed5')
     #admon_css_vars['gray']    = dict(boundary='#bababa', background='whiteSmoke')
     admon_css_vars['gray']    = dict(boundary='#bababa', background='#f8f8f8') # same color as in pygments light gray background
+    admon_css_vars['bootstrap_alert']  = dict(background='#ffffff')
+    admon_css_vars['bootstrap_panel']  = dict(background='#ffffff')
+    admon_css_vars['solarized_light'] = dict(boundary='#93a1a1', background='#eee8d5')
+    admon_css_vars['solarized_dark'] = dict(boundary='#93a1a1', background='#073642')
+    for style in admon_styles:
+        admon_css_vars[style]['color'] = '#555'
+    admon_css_vars['solarized_dark']['color'] = '#93a1a1'
     # Override with user's values
     html_admon_bg_color = option('html_admon_bg_color=', None)
     html_admon_bd_color = option('html_admon_bd_color=', None)
@@ -1460,10 +1903,14 @@ def define(FILENAME_EXTENSION,
             admon_css_vars['yellow']['icon_' + a]  = 'small_yellow_%s.png' % a
             admon_css_vars['apricot']['icon_' + a] = 'small_yellow_%s.png' % a
             admon_css_vars['gray']['icon_' + a]    = 'small_gray_%s.png' % a
+            admon_css_vars['solarized_light']['icon_' + a] = 'small_yellow_%s.png' % a
+            admon_css_vars['solarized_dark']['icon_' + a] = 'small_gray_%s.png' % a
         else:
             admon_css_vars['yellow']['icon_' + a]  = ''
             admon_css_vars['apricot']['icon_' + a] = ''
             admon_css_vars['gray']['icon_' + a]    = ''
+            admon_css_vars['solarized_light']['icon_' + a] = ''
+            admon_css_vars['solarized_dark']['icon_' + a] = ''
     admon_css_vars['colors'] = dict(
         background_notice='#BDE5F8',
         background_block='#BDE5F8',
@@ -1489,17 +1936,20 @@ def define(FILENAME_EXTENSION,
         if '!b'+admon in filestr and '!e'+admon in filestr:
             if html_admon_style == 'colors':
                 css += (admon_styles1 % admon_css_vars[html_admon_style])
-            elif html_admon_style in ('gray', 'yellow', 'apricot'):
+            elif html_admon_style in ('gray', 'yellow', 'apricot',
+                                      'solarized_light', 'solarized_dark'):
                 css += (admon_styles2 % admon_css_vars[html_admon_style])
             elif html_admon_style in ('lyx', 'paragraph'):
                 css += admon_styles_text
             break
 
     style = """
+%s
 <style type="text/css">
 %s
+div { text-align: justify; text-justify: inter-word; }
 </style>
-""" % css
+""" % (css_links, css)
     css_filename = option('css=')
     if css_filename:
         style = ''
@@ -1516,57 +1966,120 @@ def define(FILENAME_EXTENSION,
                     f.close()
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
                 add_to_file_collection(filename)
+
+
     if html_style.startswith('boots'):
-        if html_style == 'bootswatch' or html_style == 'bootstrap':
-            bootswatch_style = 'cosmo'  # default
-        else:
-            bootswatch_style = html_style.split('_')[1]
+        boots_version = '3.1.1'
+        if html_style == 'bootstrap':
+            boots_style = 'boostrap'
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version]
+        elif html_style == 'bootstrap_bootflat':
+            boots_style = 'bootflat'
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+                    'https://raw.githubusercontent.com/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
+        elif html_style.startswith('bootstrap_'):
+            # Local Doconce stored or modified bootstrap themes
+            boots_style = html_style.split('_')[1]
+            urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
+                    'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
+        elif html_style.startswith('bootswatch'):
+            default = 'cosmo'
+            boots_style = default if 'bootswatch_' not in html_style else \
+                          html_style.split('_')[1]
+            urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
+            # Dark styles need some recommended options
+            dark_styles = 'amelia cyborg darkly slate superhero'.split()
+            if boots_style in dark_styles:
+                if not option('keep_pygments_html_bg') or option('pygments_html_style=', None) is None or option('html_code_style=', None) is None or option('html_pre_style=', None) is None:
+                    print """\
+*** warning: bootswatch style "%s" is dark and some
+    options to doconce format html are recommended:
+    --pygments_html_style=monokai     # dark background
+    --keep_pygments_html_bg           # keep code background in admons
+    --html_code_style=inherit         # use <code> style in surroundings (no red)
+    --html_pre_style=inherit          # use <pre> style in surroundings
+    """
 
         style = """
-<!-- Style: Bootstrap Bootswatch theme %s -->
-<!-- Note that if you load this file as a local file (file:///...)
-you must add http below: link href=":http://netdna... -->
-<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/%s/bootstrap.min.css" rel="stylesheet">
-"""% (bootswatch_style.capitalize(), bootswatch_style)
-        bootstrap_title_bar = ''
+<!-- Bootstrap style: %s -->
+%s
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+"""% (html_style, '\n'.join(['<link href="%s" rel="stylesheet">' % url
+                   for url in urls]))
+
+    style_changes = ''
+    if option('html_code_style=', 'on') in ('off', 'transparent', 'inherit'):
+        style_changes += """\
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+"""
+    if option('html_pre_style=', 'on') in ('off', 'transparent', 'inherit'):
+        style_changes += """\
+/* Let pre tags for code blocks have the same color as the surroundings */
+pre { color: inherit; background-color: transparent; }
+"""
+    if html_style.startswith('boots') and '!bquiz' in filestr:
+        # Style for buttons for collapsing paragraphs
+        style_changes += """
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+"""
+    if style_changes:
+        style += """
+<style type="text/css">
+%s</style>
+""" % style_changes
 
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 """
+    bootstrap_title_bar = ''
     m = re.search(r'^TITLE: *(.+)$', filestr, flags=re.MULTILINE)
     if m:
         title = m.group(1).strip()
         meta_tags += '<meta name="description" content="%s">\n' % title
 
         if html_style.startswith('boots'):
-            bootstrap_title_bar += """
+
+            # Make link back to the main HTML file
+            outfilename = option('html_output=', None)
+            if outfilename is None:
+                from doconce import dofile_basename
+                outfilename = dofile_basename + '.html'
+            else:
+                if not outfilename.endswith('html'):
+                    outfilename += '.html'
+
+            if option('html_bootstrap_navbar=', 'on') != 'off':
+                bootstrap_title_bar = """
+<!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      %s
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-""" % title
-            if re.search('^TOC: +on', filestr, flags=re.MULTILINE):
-                bootstrap_title_bar += """"\
-    <div class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="toc">Table of Contents<span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="themes">
-%(table_of_contents)s
-          </ul>
-        </li>
-      </ul>
-    </div>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="%s">%s</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+***TABLE_OF_CONTENTS***
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>
-"""
+</div> <!-- end of navigation bar -->
+""" % (outfilename, title)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)
@@ -1580,8 +2093,9 @@ you must add http below: link href=":http://netdna... -->
         meta_tags += '<meta name="keywords" content="%s">\n' % keywords
 
 
+    # Had to take DOCTYPE out from 1st line to load css files from github...
+    # <!DOCTYPE html>
     INTRO['html'] = """\
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -1601,9 +2115,20 @@ Automatically generated HTML file from Doconce source
         INTRO['html'] += bootstrap_title_bar
         INTRO['html'] += """
 <div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 """
         OUTRO['html'] += """
 </div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 """
     OUTRO['html'] += """
 

@@ -35,16 +35,16 @@ with layouts.
 
 ========= Solution =========
 
-===== Step 1: Use Doconce to generate text =====
+===== Step 1: Use DocOnce to generate text =====
 
-We shall in this document use "Doconce": "https://github.com/hplgit/doconce"
-for writing the core text. Doconce looks like plain text, with just a
+We shall in this document use "DocOnce": "https://github.com/hplgit/doconce"
+for writing the core text. DocOnce looks like plain text, with just a
 few tags for enabling full LaTeX mathematics and nicely typeset
-computer code. From Doconce you can go to plain LaTeX, pdfLaTeX,
+computer code. From DocOnce you can go to plain LaTeX, pdfLaTeX,
 Sphinx, HTML, Markdown, and MediaWiki, to mention some good formats
 that support LaTeX mathematics and nice computer code. (If you do not
 have code and math, it is easy to go to MS Word, XML, DocBook, and
-numerous other formats too.) From a Doconce text it is also trivial
+numerous other formats too.) From a DocOnce text it is also trivial
 to generate slides.
 
 ===== Step 2: Write the core text =====
@@ -124,7 +124,7 @@ Perform experiments and determine empirically the convergence
 rate for $\theta=0,1/2,1$.
 !ec
 
-When the title in a Doconce document (`TITLE: ...`) is missing or
+When the title in a DocOnce document (`TITLE: ...`) is missing or
 commented out (`#TITLE:`), no HTML header and footer are generated,
 which is important when embedding the HTML code in a template file
 later.
@@ -132,7 +132,7 @@ later.
 ===== Step 3: Inspect the HTML page =====
 
 Check the default layout of your HTML page by translating the
-Doconce file to HTML:
+DocOnce file to HTML:
 
 !bc sys
 doconce format html mydoc
@@ -241,7 +241,7 @@ application we customize the template:
 
 ===== Step 5: Embed your HTML document in the template =====
 
-We can now use Doconce to insert our document `mydoc.html`,
+We can now use DocOnce to insert our document `mydoc.html`,
 generated from `mydoc.do.txt` into an HTML template.
 The template shown above, stored in the file `template_minimal.html`
 is used as example. We run
@@ -325,7 +325,7 @@ templates for web documents anywhere else.
 
 ======= Using the Vagrant template =======
 
-Besides the GitHub "minimal" theme, Doconce comes with a template
+Besides the GitHub "minimal" theme, DocOnce comes with a template
 "`template_vagrant.html`":
 "../../bundled/html_styles/vagrant/template_vagrant.html" adopted from
 the style in the documentation of the "Vagrant":
@@ -335,17 +335,17 @@ tool.
 FIGURE: [fig/vagrant_web, width=900]
 
 This template, found in `bundled/html_styles/vagrant` in the
-Doconce source code tree, is easy to adopt to a particular set of web
+DocOnce source code tree, is easy to adopt to a particular set of web
 pages. It looks as
 
 FIGURE: [fig/template_vagrant, width=900]
 
 There are several elements in the template:
 
- o Navigation bar to the left, which is automatically created by Doconce.
+ o Navigation bar to the left, which is automatically created by DocOnce.
  o A main part (`%(main)s`) and a title as usual.
  o Navigation buttons on the button, which are automatically filled in
-   by Doconce if the document is split into several parts.
+   by DocOnce if the document is split into several parts.
  o A logo consisting of a *LogoWord* in black and a *withSubWord* in
    gray. This should be *manually edited* to some short name for the web pages
    you want to embed with the Vagrant style.
@@ -359,12 +359,12 @@ top right to point to Wikipedia and WolframAlpha, and insert a
 copyright 2013 notice in the footer.
 
 The Vagrant style depends on two CSS files. We copy these from
-the `bundled/html_styles/style_vagrant/css` directory in the Doconce source
+the `bundled/html_styles/style_vagrant/css` directory in the DocOnce source
 to the current directory so that the links to the stylesheets in
 the template are correct. Otherwise, you have to replace `href="css/`
 in the template to `href="style_vagrant/css/`.
 
-Translation of the original Doconce writings in `mydoc.do.txt` is
+Translation of the original DocOnce writings in `mydoc.do.txt` is
 done by
 
 !bc sys
@@ -384,7 +384,7 @@ These pages can easily be embedded in various fancy HTML styles by
 simply grabbing a web page with the desired style and editing it as
 explained.
 
-However, embedding Doconce documents in fancy web pages is just possibility
+However, embedding DocOnce documents in fancy web pages is just possibility
 for publishing the content. One can equally well make a traditional
 LaTeX file and include the document in a book, or make a special adapted
 version of the PDF for viewing on phones, or one can generate Sphinx

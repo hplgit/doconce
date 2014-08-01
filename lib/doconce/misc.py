@@ -8,15 +8,14 @@ _registered_command_line_options = [
     ('--help',
      'Print all options to the doconce program.'),
     ('--debug',
-     'Write a debugging file _doconce_debugging.log with lots if intermediate results'),
+     """Write a debugging file _doconce_debugging.log with lots
+of intermediate results"""),
     ('--no_abort',
      'Do not abort the execution if syntax errors are found.'),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
     ('--encoding=',
      'Specify encoding (e.g., latin1 or utf-8).'),
-    ('--oneline_paragraphs',
-     'Combine paragraphs to one line (does not work well).'),
     ('--no_mako',
      'Do not run the Mako preprocessor program.'),
     ('--no_preprocess',
@@ -25,35 +24,70 @@ _registered_command_line_options = [
      'Make Mako report on undefined variables.'),
     ('--no_header_footer',
      'Do not include header and footer in (LaTeX and HTML) documents.'),
-    ('--no_pygments_html',
-     """Do not use pygments to typeset computer code in HTML,
-use plain <pre> tags."""),
+    ('--runestone',
+     'Make a RunestoneInteractive version of a Sphinx document.'),
+    ('--max_bc_linelength=',
+     """Strip lines in !bc environments that are longer than specified
+(to prevent too long lines). Default: None (no length restriction)."""),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
      'Specify the minted style to be used for typesetting code in LaTeX.'),
     ('--pygments_html_style=',
-     'Specify the minted style to be used for typesetting code in HTML.'),
+     """Specify the minted/pygments style to be used for typesetting code
+in HTML.
+Default: default (other values: monokai, manni, rrt, perldoc,
+borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
+vim, pastie, friendly, native).
+none, no, off: turn off pygments to typeset computer code in HTML,
+use plain <pre> tags."""),
     ('--pygments_html_linenos',
      """Turn on line numbers in pygmentized computer code in HTML.
-(In LaTeX line numbers can be added via doconce subst or replace
-such that the verbatim environments become like
-\begin{minted}[...,linenos=true,...].)"""),
+(In LaTeX line numbers can be added via doconce subst or
+doconce replace such that the verbatim environments get
+the linenos=true parameter.)"""),
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
-    ('--html_style=',
-     'Name of theme for HTML style (solarized, vagrant, bloodish, ...).'),
+    ('--html_style=', """Name of theme for HTML style:
+plain, blueish, blueish2, bloodish,
+solarized, solarized2_light, solarized2_dark,
+vagrant, bootstrap, bootswatch,
+bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
+bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
+                simplex, spacelab, united, yeti
+                (dark:) amelia, cyborg, darkly, slate, spruce,
+                superhero (demo: bootswatch.com"""),
+    ('--html_code_style=',
+     """off, inherit, transparent: enable normal inline verbatim font
+where foreground and background color is inherited from the
+surroundnings (e.g., to avoid the red Boostrap color).
+Default: on."""),
+    ('--html_pre_style=',
+     """off, inherit, transparent: let code blocks inside <pre> tags have
+foreground and background color inherited from the surroundnings.
+Default: on."""),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded."""),
+    ('--html_toc_depth=',
+     """No of levels in the table of contents in HTML output for
+Bootstrap-based styles. Default: 2."""),
+    ('--html_toc_indent=',
+     """No of spaces for indentation of subsections in the table of
+contents in HTML output. Default: 3 (0 gives toc as nested list
+in Bootstrap-based styles)."""),
     ('--html_body_font=',
-     """Specify HTML font for text body. =? lists available Google fonts."""),
+     """Specify HTML font for text body. =? lists available fonts."""),
     ('--html_heading_font=',
-     """Specify HTML font for headings. =? lists available Google fonts."""),
+     """Specify HTML font for headings. =? lists available fonts."""),
     ('--html_video_autoplay=',
      """True for autoplay when HTML is loaded, otherwise False (default)."""),
     ('--html_admon=',
-     "Type of admonition and color: white, colors, gray, yellow."),
+     """\
+Type of admonition and color:
+colors, gray, yellow, apricot, lyx, paragraph.
+For html_style=vagrant,bootstrap,bootswatch,bootswatch_*,
+the two legal values are boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
     ('--html_admon_bg_color=',
@@ -61,16 +95,22 @@ document is embedded."""),
     ('--html_admon_bd_color=',
      'Boundary color of admon in HTML.'),
     ('--css=',
-     """Specify a .css style file for HTML output. If the file does not exist, the default or specified style (--html_style=) is written to it."""),
+     """Specify a .css style file for HTML output.
+If the file does not exist, the default or specified style
+(--html_style=) is written to it."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
     ('--html_slide_theme=',
-     """Specify a theme for the present slide type.
-(See the HTML header for a list of theme files and their names."""),
+     """Option for doconce slides_html: specify a theme for the
+present slide type.
+Examples from reveal.js: darkgray, beige, solarized, default;
+from deck.js: sandstone.default, swiss, web-2.0.
+(The HTML file contains a comment with the various stylesheets
+for the various available themes.)"""),
     ('--html_footer_logo=',
      """Specify a filename or a style name for a logo in the slide footer."""),
     ('--beamer_slide_theme=',
-     """Specify a theme for beamer slides."""),
+     """Specify a theme for beamer slides. Examples:"""),
     ('--html_exercise_icon=',
      """Specify a question icon in bundled/html_images for being
 inserted to the right in exercises - "default" and "none" are allowed
@@ -79,6 +119,16 @@ inserted to the right in exercises - "default" and "none" are allowed
      """Width of the icon image specified as --html_exercise_icon."""),
     ('--html_links_in_new_window',
      """Open HTML links in a new window."""),
+    ('--html_quiz_button_text=',
+     """Text on buttons for collapsing/expanding answers and
+explanations\nin quizzes (with bootstrap styles).
+Default: Empty (just pencil glyphion)."""),
+    ('--html_bootstrap_navbar=',
+     'Turns the Bootstrap navigation bar on/off. Default: on.'),
+    ('--html_bootstrap_jumbotron=',
+     """Turns the Bootstrap jumbotron intro on/off and governs the
+size of the heading. Default: on. Other values: h2, off
+(h2 gives h2 heading instead of h1, off gives no jumbotron)."""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',
@@ -91,12 +141,13 @@ Springer_T2: Springer's T2 book style,
 Springer_collection: Springer's style for chapters in LNCSE proceedings,
 Korma_Script: Korma Script style,
 siamltex: SIAM's standard LaTeX style for papers,
-siamltexmm: SIAM's extended (blue) multimedia style for papers.
-"""),
+siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
     ('--latex_font=',
      """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
+    ('--section_numbering=',
+     'Turn section numbering on/off. Default: off for all formats except latex and pdflatex (on for those).'),
     ('--latex_table_align=',
      'Default: quote. Other values: left, center.'),
     ('--latex_title_layout=',
@@ -112,6 +163,14 @@ beamer: layout for beamer slides."""),
 loe: special, separate list of exercises,
 toc: exercises included as part of the table of contents,
 none (default): no list of exercises."""),
+    ('--latex_movie=',
+     """Specify package for handling movie/video content.
+Default: href (hyperlink to movie file).
+Other options: media9, movie15, multimedia (Beamer's \\movie command)."""),
+    ('--latex_movie_controls=',
+     'Specify control panel for movies. Default: on. Other options: off.'),
+    ('--latex_external_movie_viewer',
+     'Allow external movie viewer for movie15 package.'),
     ('--latex_fancy_header',
      """Typesetting of headers on each page:
 If article: section name to the left and page number to the right
@@ -125,8 +184,7 @@ std (default): standard LaTeX,
 blue: gray blue color,
 strongblue: stronger blue color,
 gray: white text on gray background, fit to heading width,
-gray-wide: white text on gray background, wide as the textwidth
-"""),
+gray-wide: white text on gray background, wide as the textwidth."""),
     ('--latex_colored_table_rows=',
      """Colors on every two line in tables: no (default), gray, blue."""),
     ('--latex_line_numbers',
@@ -151,17 +209,29 @@ to the doconce-generated preamble."""),
 computer programs."""),
     ('--latex_admon=',
      """Type of admonition in LaTeX:
-colors1:   (inspired by the NumPy User Guide) applies different colors for
-            the different admons with an embedded icon,
-colors2:    like `colors1` but the text is wrapped around the icon,
-mdfbox:     rounded gray boxes with a potential title and no icon (default),
-graybox2:   box with square corners, gray background, and narrower
-            than mdfbox, if code it reduces to something like mdfbox
-            (mdframed based); the summary admon is in case of A4 format
-            only half of the text width with text wrapped around
-            (effective for proposals and articles),
-grayicon:   box with gray icons and a default light gray background,
-yellowicon: box yellow icons and a default light yellow background,
+colors1:
+(inspired by the NumPy User Guide) applies different colors
+for the different admons with an embedded icon,
+
+colors2:
+like `colors1` but the text is wrapped around the icon,
+
+mdfbox:
+rounded gray boxes with a optional title and no icon (default),
+
+graybox2:
+box with square corners, gray background, and narrower
+than mdfbox, if code it reduces to something like mdfbox
+(mdframed based); the summary admon is in case of A4 format
+only half of the text width with text wrapped around
+(effective for proposals and articles),
+
+grayicon:
+box with gray icons and a default light gray background,
+
+yellowicon:
+box yellow icons and a default light yellow background,
+
 paragraph:  plain paragraph with boldface heading.
 """),
     ('--latex_admon_color=',
@@ -172,11 +242,13 @@ Either rgb tuple or saturated color a la yellow!5:
 (note the quotes, needed for bash, in the latter example)
 """),
     ('--latex_admon_title_no_period',
-     'Do not add a period at the end of admon titles in LaTeX.'),
+     """Do not add a period at the end of admon titles in LaTeX if
+it is missing."""),
     ('--latex_admon_envir_map=',
-     """Mapping of code envirs to new envir names inside admons (e.g., to get
-a different code typesetting inside admons. If a number, say 2, as in
---latex_admon_envir_map=2, an envir like pycod gets the number appended:
+     """Mapping of code envirs to new envir names inside admons
+(e.g., to get a different code typesetting inside admons).
+If a number, say 2, as in --latex_admon_envir_map=2,
+an envir like pycod gets the number appended:
 pycod2. Otherwise it must be a mapping for each envir:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax)."""),
@@ -185,14 +257,17 @@ pycod2. Otherwise it must be a mapping for each envir:
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
          with a chapter prefix."""),
     ('--latex_subex_header_postfix=',
-     'Default: ). Gives headers a), b), etc. Can be set to period, colon, etc.'),
+     """Default: ).
+Gives headers a), b), etc. Can be set to period, colon, etc."""),
+    ('--xelatex', 'Use xelatex instead of latex/pdflatex.'),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--verbose',
      'Write out all OS commands run by doconce.'),
     ('--examples_as_exercises',
-     'Treat examples of the form "==== Example: ..." like exercise environments.'),
+     """Treat examples of the form "==== Example: ..."
+as in exercise environments."""),
     ('--without_solutions',
      'Leave out solution environments from exercises.'),
     ('--without_answers',
@@ -202,13 +277,19 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--wordpress',
      'Make HTML output for wordpress.com pages.'),
     ('--tables2csv',
-     'Write each table to a CSV file table_X.csv, where X is the table number.'),
+     """Write each table to a CSV file table_X.csv,
+where X is the table number (autonumbered in according to
+appearance in the DocOnce source file)."""),
     ('--sections_up',
-     'Upgrade all sections: sections to chapters, subsections to sections, etc.'),
+     """Upgrade all sections: sections to chapters, subsections
+to sections, etc."""),
     ('--sections_down',
-     'Downgrade all sections: chapters to sections, sections to subsections, etc.'),
+     """Downgrade all sections: chapters to sections, sections
+to subsections, etc."""),
     ('--os_prompt=',
-     'Terminal prompt in output from running OS commands (@@@OSCMD). None or empty: no prompt, just the command; nocmd: no command, just the output. Default is "Terminal>".'),
+     """Terminal prompt in output from running OS commands (the
+@@@OSCMD instruction). None or empty: no prompt, just the command;
+nocmd: no command, just the output. Default is "Terminal>"."""),
     ('--code_prefix=',
      'Prefix all @@@CODE imports with some path.'),
     ('--figure_prefix=',
@@ -216,7 +297,9 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--movie_prefix=',
      'Prefix all movie filenames with, e.g., an URL.'),
     ('--no_mp4_webm_ogg_alternatives',
-     'Use just the specified (.mp4, .webm, .ogg) movie file; do not allow alternatives in HTML5 video tag. Used if the just the specified movie format should be played.'),
+     """Use just the specified (.mp4, .webm, .ogg) movie file;
+do not allow alternatives in HTML5 video tag.
+Used if the just the specified movie format should be played."""),
     ('--handout',
      'Makes slides output suited for printing.'),
     ('--urlcheck',
@@ -226,14 +309,49 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--markdown',
      'Allow Markdown (and some Extended Markdown) syntax as input.'),
     ('--md2do_output=',
-     'Dump to file the Doconce code arising from converting from Markdown. Default value is None (no dump). Any filename can be specified: --md2do_output=myfile.do.txt'),
+     """Dump to file the Doconce code arising from converting from
+Markdown. Default value is None (no dump).
+Any filename can be specified: --md2do_output=myfile.do.txt"""),
     ('--github_md',
      'Turn on github-flavored-markdown dialect of the pandoc translator'),
     ('--strapdown',
-     'Wrap Markdown output in HTML header/footer such that the output file (renamed as .html) can automatically be rendered as an HTML via strapdownjs.com technology. Combine with --github_md for richer output. Styles are set with --bootwatch_theme=cyborg (for instance).'),
-    ('--bootwatch_theme=', 'Boostrap themes from bootwatch.com. See http://strapdownjs.com/ for names. Default: spacelab.'),
+     """Wrap Markdown output in HTML header/footer such that the
+output file (renamed as .html) can automatically be rendered as
+an HTML via strapdownjs.com technology. Combine with --github_md
+for richer output. Styles are set with --bootwatch_theme=cyborg
+(for instance)."""),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
+    ('--quiz_question_prefix=', """\
+Prefix/title before question in quizzes. Default: "Question:".
+Can also be set in square brackets for each individual question.
+("Q: [] What is 1+1?"
+results in no prefix/title before the "What is 1+1?"."""),
+    ('--quiz_choice_prefix=', """\
+Prefix/title before choices in quizzes.
+Default for HTML: "Choice", resulting in numbered choices
+"Choice 1:", "Choice 2:", etc.
+A value with colon, period, or question mark (e.g., "Answer:")
+leaves out the numbering.
+Default for latex/pdflatex: letter or letter+checkbox.
+Other values: number, number+checkbox, number+circle, letter+circle,
+letter.
+The checkbox or circle is always omitted if answers or solutions are
+included (i.e., if none of the --without_answers and
+--without_solutions is set).
+The choice prefix can also be set in square brackets for each
+individual choice.
+("Cr: [] Two"
+results in no prefix/title before the the answer "Two".
+"""),
+    ('--quiz_horizontal_rule=',
+     'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
+    ('--rst_uio',
+     'Univ. of Oslo version of rst files for their Vortex system.'),
+    ('--rst_mathjax',
+     'Use raw HTML with MathJax for LaTeX mathematics in rst files.'),
+    ('--oneline_paragraphs',
+     'Combine paragraphs to one line (does not work well).'),
     ]
 
 _legal_command_line_options = \
@@ -244,11 +362,17 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
-    print 'doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile'
+    print """
+doconce format X doconcefile
+
+where X can be any of the formats
+html, latex, pdflatex, rst, sphinx, plain, gwiki, mwiki, cwiki,
+pandoc, epytext.
+"""
     for opt, help in _registered_command_line_options:
         if opt.endswith('='):
             opt += '...'
-        print '%s\n    %s\n' % (opt, help)
+        print '\n%s\n\n%s\n' % (opt, help)
 
 # Import options from config file instead of the command line
 try:
@@ -371,6 +495,7 @@ def recommended_html_styles_and_pygments_styles():
         'simple': ['autumn', 'default', 'perldoc'],
         'blood': ['monokai', 'native'],
         'sky': ['default'],
+        'moon': ['fruity', 'native'],
         'night': ['fruity', 'native'],
         'moon': ['fruity', 'native'],
         'darkgray': ['native', 'monokai'],
@@ -408,7 +533,39 @@ def remove_inline_comments():
     filestr = f.read()
     f.close()
     import doconce
-    filestr = doconce.doconce.subst_away_inline_comments(filestr)
+    filestr = doconce.subst_away_inline_comments(filestr)
+    f = open(filename, 'w')
+    f.write(filestr)
+    f.close()
+    print 'inline comments removed in', filename
+
+def apply_inline_edits():
+    try:
+        filename = sys.argv[1]
+    except IndexError:
+        print 'Usage: doconce apply_inline_comments_edits myfile.do.txt'
+        _abort()
+
+    if not os.path.isfile(filename):
+        print '*** error: file %s does not exist!' % filename
+        sys.exit(1)
+
+    shutil.copy(filename, filename + '.old~~')
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    # pattern is taken as INLINE_TAGS['inlinecomment'] but with
+    # modified names and comments patterns.
+    # 1. Replacements
+    pattern = r'''\[(?P<name>[A-Za-z0-9 '+-]+?):(?P<space>\s+)(?P<subst>[^\]]+?) -> (?P<replacement>.+?)\]'''
+    filestr = re.sub(pattern, r'\g<replacement>', filestr, flags=re.DOTALL)
+    # 2. Deletes
+    pattern = r'''\[del:\s+(.*?)\]'''
+    filestr = re.sub(pattern, '', filestr, flags=re.DOTALL)
+    # 3. Adds
+    pattern = r'''\[add:\s+(.*?)\]'''
+    filestr = re.sub(pattern, r'\g<1>', filestr, flags=re.DOTALL)
+
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
@@ -558,7 +715,7 @@ def wildcard_notation(files):
 def subst():
     if len(sys.argv) < 3:
         _usage_subst()
-        sys.exit(1)
+        sys.exit(0)
 
     from getopt import getopt
     optlist, args = getopt(sys.argv[1:], 'smx', ['restore'])
@@ -601,7 +758,7 @@ def _usage_replace():
 def replace():
     if len(sys.argv) < 4:
         _usage_replace()
-        sys.exit(1)
+        sys.exit(0)
 
     from_text = sys.argv[1]
     to_text = sys.argv[2]
@@ -643,7 +800,7 @@ def replace_from_file():
     """
     if len(sys.argv) < 3:
         _usage_replace_from_file()
-        sys.exit(1)
+        sys.exit(0)
 
     fromto_file = sys.argv[1]
     f = open(fromto_file, 'r')
@@ -684,7 +841,7 @@ def _usage_expand_mako():
 def expand_mako():
     if len(sys.argv) < 4:
         _usage_expand_mako()
-        sys.exit(1)
+        sys.exit(0)
 
     mako_filename = sys.argv[1]
     funcname = sys.argv[2]
@@ -758,7 +915,7 @@ def _usage_linkchecker():
 def linkchecker():
     if len(sys.argv) <= 1:
         _usage_linkchecker()
-        sys.exit(1)
+        sys.exit(0)
     from common import is_file_or_url
     prefix = '(file:///|https?://|ftp://)'
     pattern_html = r'href="(%s.+?)"' % prefix
@@ -872,7 +1029,7 @@ rather than relying on the fixes in this script...
 def sphinxfix_localURLs():
     if len(sys.argv) < 2:
         _usage_sphinxfix_localURLs()
-        sys.exit(1)
+        sys.exit(0)
 
     # Find addresses to exclude
     idx = -1  # index in sys.argv for the -not option
@@ -908,7 +1065,7 @@ a title.
 def latex_exercise_toc():
     if len(sys.argv) < 2:
         _usage_latex_exercise_toc()
-        sys.exit(1)
+        sys.exit(0)
     dofile = sys.argv[1]
     if dofile.endswith('.do.txt'):
         dofile = dofile[:-7]
@@ -1003,17 +1160,27 @@ def latex_exercise_toc():
 
 
 def _usage_combine_images():
-    print 'Usage: doconce combine_images [-4] image1 image2 ... output_file'
-    print 'Applies montage if not PDF or EPS images, else use'
-    print 'pdftk, pdfnup and pdfcrop.'
-    print 'Images are combined with two each row, by default, but'
-    print 'doconce combine_images -3 ... gives 3 images in each row.'
+    print """\
+Usage: doconce combine_images [pdf|png] [-4] image1 image2 ... output_file
+Applies montage if not PDF or EPS images, else
+pdftk, pdfnup and pdfcrop.
+Images are combined with two each row, by default, but
+doconce combine_images -3 ... gives 3 images in each row.
+The first command-line argument can be a file extension and
+the filenames can then be given without extension.
+"""
 
 def combine_images():
 
     if len(sys.argv) < 3:
         _usage_combine_images()
-        sys.exit(1)
+        sys.exit(0)
+
+    if sys.argv[1] in ('pdf', 'png', 'jpg', 'eps', 'ps', 'jpeg', 'tif', 'tiff'):
+        extension = sys.argv[1]
+        del sys.argv[1]
+    else:
+        extension = None
 
     if sys.argv[1].startswith('-'):
         num_columns = int(sys.argv[1][1:])
@@ -1021,13 +1188,27 @@ def combine_images():
     else:
         num_columns = 2
 
+    bitmap_formats = '.png', '.tif.', '.tiff', '.gif', '.jpeg', 'jpg'
     imagefiles = sys.argv[1:-1]
+    # See if files have extension
+    for i in range(len(imagefiles)):
+        basename, ext = os.path.splitext(imagefiles[i])
+        if not ext and extension is not None:
+            imagefiles[i] = imagefiles[i] + '.' + extension
+
+    for name in imagefiles:
+        if not os.path.isfile(name):
+            print '*** error: file "%s" is non-existing' % name
+            _abort()
     output_file = sys.argv[-1]
+    basename, ext = os.path.splitext(output_file)
+    if not ext and extension is not None:
+        output_file += '.' + extension
+
     ext = [os.path.splitext(f)[1] for f in imagefiles]
-    formats = '.png', '.tif.', '.tiff', '.gif', '.jpeg', 'jpg'
     montage = False
     # If one of the formats in formats: montage = True
-    for format in formats:
+    for format in bitmap_formats:
         if format in ext:
             montage = True
 
@@ -1081,7 +1262,7 @@ _regex_subst = []
 def expand_commands():
     if len(sys.argv) < 2:
         _usage_expand_commands()
-        sys.exit(1)
+        sys.exit(0)
 
     # Default set of str.replace and re.sub substitutions
     _replace = [
@@ -1191,9 +1372,9 @@ or
        doconce ptex2tex file -Dvar1=val1 ... envir=ans:nt
 
 or
-       doconce ptex2tex file sys=\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]@\end{Verbatim} envir=minted
+       doconce ptex2tex file "sys=\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]@\end{Verbatim}" envir=minted
 
-or
+(recall quotes in arguments with backslash), or
 
        doconce ptex2tex file envir=Verbatim
 
@@ -1227,22 +1408,40 @@ other environments will apply the latex construct from anslistings.sty.
 def ptex2tex():
     if len(sys.argv) <= 1:
         _usage_ptex2tex()
-        sys.exit(1)
+        sys.exit(0)
+
+    filename = sys.argv[1]
+    if filename.endswith('.p.tex'):
+        filename = filename[:-6]
+    if not os.path.isfile(filename + '.p.tex'):
+        print 'no file %s' % (filename + '.p.tex')
+        _abort()
+    f = open(filename + '.p.tex', 'r')
+    ptex2tex_filestr = f.read()
+    f.close()
 
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt'.split()
     envirs += ['htmlcod', 'htmlpro', 'html',
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
                'latexpro', 'latexcod', 'latex']
+    # envirs is not longer used - we just read what the user has in the file
+
+    # Accept all envirs in envir2pygments, plus all
+    # registered lexers in pygments
+    from common import get_legal_pygments_lexers
+    ptex2tex_begin_pattern = r'^\\b([a-z0-9+_]+)$'
+    user_envirs = re.findall(ptex2tex_begin_pattern, ptex2tex_filestr,
+                             flags=re.MULTILINE)
 
     # Process command-line options
 
     preprocess_options = []  # -Dvariable or -Dvariable=value
     envir_user_spec = []     # user's specified environments
-    for arg in sys.argv[1:]:
+    for arg in sys.argv[2:]:
         if arg.startswith('-D') or arg.startswith('-U'):
             preprocess_options.append(arg)
         elif '=' in arg:
@@ -1255,7 +1454,7 @@ def ptex2tex():
                 if envir == 'envir':
                     # User specifies all ptex2tex environments at once
                     # as "envir=begin@end"
-                    for e in envirs:
+                    for e in user_envirs:
                         envir_user_spec.append((e, begin, end))
                 else:
                     envir_user_spec.append((envir, begin, end))
@@ -1263,44 +1462,73 @@ def ptex2tex():
                 # Fix value=minted and value=ans*:
                 # they need the language explicitly
                 if value == 'minted':
-                    languages = dict(py='python', cy='cython', f='fortran',
-                                     c='c', cpp='c++', sh='bash', rst='rst',
-                                     m ='matlab', pl='perl', swig='c++',
-                                     latex='latex', html='html', js='js',
-                                     xml='xml', rb='ruby')
+                    envir2pygments = dict(
+                        pyshell='python',
+                        py='python', cy='cython', f='fortran',
+                        c='c', cpp='c++', sh='bash', rst='rst',
+                        m ='matlab', pl='perl', swig='c++',
+                        latex='latex', html='html', js='js',
+                        java='java',
+                        xml='xml', rb='ruby', sys='console',
+                        dat='text', txt='text', csv='text',
+                        ipy='ipy', do='doconce',
+                        # pyopt and pysc are treated in latex.py
+                        )
+                    # Find substitutes for ipy and doconce if these lexers
+                    # are not installed
+                    # (third-party repos, does not come with pygments)
+                    from pygments.lexers import get_lexer_by_name
+                    try:
+                        get_lexer_by_name('ipy')
+                    except:
+                        envir2pygments['ipy'] = 'python'
+                    try:
+                        get_lexer_by_name('doconce')
+                    except:
+                        envir2pygments['do'] = 'text'
+
+                    legal_lexers = get_legal_pygments_lexers()
+                    for user_envir in user_envirs:
+                        if user_envir in envir2pygments:
+                            pass
+                        elif user_envir in legal_lexers:
+                            envir2pygments[user_envir] = user_envir
+
                     if envir == 'envir':
-                        for lang in languages:
-                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + languages[lang] + '}'
+                        for lang in envir2pygments:
+                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + envir2pygments[lang] + '}'
                             end = '\\' + 'end{minted}'
-                            envir_user_spec.append((lang+'cod', begin, end))
-                            envir_user_spec.append((lang+'pro', begin, end))
+                            envir_user_spec.append((lang, begin, end))
                     else:
-                        for lang in languages:
+                        for lang in envir2pygments:
                             if envir.startswith(lang + 'cod') or \
                                envir.startswith(lang + 'pro'):
                                 begin = '\\' + 'begin{' + value + '}{' \
-                                        + languages[lang] + '}'
+                                        + envir2pygments[lang] + '}'
                                 end = '\\' + 'end{' + value + '}'
                                 envir_user_spec.append((envir, begin, end))
                 elif value.startswith('ans'):
-                    languages = dict(py='python', cy='python', f='fortran',
-                                     cpp='c++', sh='bash', swig='swigcode',
-                                     ufl='uflcode', m='matlab', c='c++',
-                                     latex='latexcode', xml='xml')
+                    # Mapping from code envirs to valid anslistings names
+                    envir2listings = dict(
+                        pyshell='python',
+                        py='python', cy='python', f='fortran',
+                        cpp='c++', sh='bash', swig='swigcode',
+                        ufl='uflcode', m='matlab', c='c++',
+                        latex='latexcode', xml='xml',
+                        pyopt='python', ipy='python')
                     if envir == 'envir':
-                        for lang in languages:
-                            language = languages[lang]
+                        for lang in envir2listings:
+                            language = envir2listings[lang]
                             if value.endswith(':nt'):
                                 language += ':nt'
                             begin = '\\' + 'begin{' + language + '}'
                             end = '\\' + 'end{' + language + '}'
-                            envir_user_spec.append((lang+'cod', begin, end))
-                            envir_user_spec.append((lang+'pro', begin, end))
+                            envir_user_spec.append((lang, begin, end))
                     else:
-                        for lang in languages:
+                        for lang in envir2listings:
                             if envir.startswith(lang + 'cod') or \
                                envir.startswith(lang + 'pro'):
-                                lang = languages[lang]
+                                lang = envir2listings[lang]
                                 if value.endswith(':nt'):
                                     lang += ':nt'
                                 begin = '\\' + 'begin{' + lang + '}'
@@ -1321,18 +1549,10 @@ def ptex2tex():
                     begin = '\\' + 'begin{' + value + '}' + options
                     end = '\\' + 'end{' + value + '}'
                     if envir == 'envir':
-                        for e in envirs:
+                        for e in user_envirs:
                             envir_user_spec.append((e, begin, end))
                     else:
                         envir_user_spec.append((envir, begin, end))
-        else:
-            filename = arg
-
-    try:
-        filename
-    except:
-        print 'no specification of the .p.tex file'
-        _abort()
 
     # Find which environments that will be defined and which
     # latex packages that must be included.
@@ -1372,9 +1592,6 @@ def ptex2tex():
 
     #print 'packages:';  pprint.pprint(packages)
 
-    if filename.endswith('.p.tex'):
-        filename = filename[:-6]
-
     # Run preprocess
     if not preprocess_options:
         if 'minted' in packages:
@@ -1382,10 +1599,6 @@ def ptex2tex():
     if '-DMINTED' in preprocess_options and 'minted' in packages:
         packages.remove('minted')  # nicer with just one \usepackage{minted}
 
-
-    if not os.path.isfile(filename + '.p.tex'):
-        print 'no file %s' % (filename + '.p.tex')
-        _abort()
 
     output_filename = filename + '.tex'
     cmd = 'preprocess %s %s > %s' % \
@@ -1403,26 +1616,46 @@ download preprocess from http://code.google.com/p/preprocess""")
     f.close()
 
     # Replace the environments specified by the user
+    from latex import fix_latex_command_regex
     for envir, begin, end in envir_user_spec:
-        ptex2tex_begin = '\\' + 'b' + envir
-        ptex2tex_end = '\\' + 'e' + envir
-        if ptex2tex_begin in filestr:
-            filestr = filestr.replace(ptex2tex_begin, begin)
-            filestr = filestr.replace(ptex2tex_end, end)
-            print '%s (!bc %s) -> %s' % (ptex2tex_begin, envir, begin)
+        for postfix in ['cod', 'pro', '']:
+            ptex2tex_begin = '\\' + 'b' + envir + postfix
+            ptex2tex_end = '\\' + 'e' + envir + postfix
+            begin_pattern = r'^\%s$' % ptex2tex_begin
+            end_pattern = r'^\%s$' % ptex2tex_end
+            if re.search(fix_latex_command_regex(begin_pattern),
+                         filestr, flags=re.MULTILINE):
+                filestr = re.sub(
+                    begin_pattern,
+                    fix_latex_command_regex(begin, application='replacement'),
+                    filestr, flags=re.MULTILINE)
+                filestr = re.sub(
+                    end_pattern,
+                    fix_latex_command_regex(end, application='replacement'),
+                    filestr, flags=re.MULTILINE)
+                print '%s (!bc %s) -> %s\n' % (ptex2tex_begin, envir, begin)
 
-    # Replace other known ptex2tex environments by a default choice
+    # Replace other environments by a default choice
     begin = r"""\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]"""
     end = r"""\end{Verbatim}"""
     #begin = r"""\begin{quote}\begin{verbatim}"""
     #end = r"""\end{verbatim}\end{quote}"""
-    for envir in envirs:
+    for envir in user_envirs:
         ptex2tex_begin = '\\' + 'b' + envir
         ptex2tex_end = '\\' + 'e' + envir
-        if ptex2tex_begin in filestr:
-            filestr = filestr.replace(ptex2tex_begin, begin)
-            filestr = filestr.replace(ptex2tex_end, end)
-            print '%s (!bc %s) -> %s' % (ptex2tex_begin, envir, begin)
+        begin_pattern = r'^\%s$' % ptex2tex_begin
+        end_pattern = r'^\%s$' % ptex2tex_end
+        if re.search(fix_latex_command_regex(begin_pattern),
+                     filestr, flags=re.MULTILINE):
+            filestr = re.sub(
+                begin_pattern,
+                fix_latex_command_regex(begin, application='replacement'),
+                filestr, flags=re.MULTILINE)
+            filestr = re.sub(
+                end_pattern,
+                fix_latex_command_regex(end, application='replacement'),
+                filestr, flags=re.MULTILINE)
+            print '%s (!bc %s) -> %s ("%s" is unknown)\n' % (ptex2tex_begin, envir, begin, envir)
 
     # Make sure we include the necessary verbatim packages
     if packages:
@@ -1462,7 +1695,7 @@ download preprocess from http://code.google.com/p/preprocess""")
     verb_command = 'Verb'  # requires fancyvrb package, otherwise use std 'verb'
 
     verb_delimiter = '!'
-    alt_verb_delimiter = '~'  # can't use '%' in latex
+    alt_verb_delimiter = '?'  # can't use ~,%,#,$,^,&,* in latex headings, alternative is @
     cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'-])""", re.DOTALL)
     # Check if the verbatim text contains verb_delimiter and make
     # special solutions for these first
@@ -1498,9 +1731,9 @@ download preprocess from http://code.google.com/p/preprocess""")
     '''
     # \Verb!...! does not cause linebreak in latex, shift to \texttt{}
     # where possible since this will reduce overfull hboxes
-    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%\\]+?)!\}',
+    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
-    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%\\]+?)!\}',
+    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
 
     f = open(output_filename, 'w')
@@ -1525,7 +1758,7 @@ def grab():
     """
     if len(sys.argv) < 4:
         _usage_grab()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[-1]
     if not sys.argv[1].startswith('--from'):
@@ -1618,7 +1851,7 @@ def remove():
     """
     if len(sys.argv) < 4:
         _usage_remove()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[-1]
     f = open(filename, 'r')
@@ -1664,7 +1897,7 @@ def _usage_remove_exercise_answers():
 def remove_exercise_answers():
     if len(sys.argv) < 2:
         _usage_remove_exercise_answers()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     f = open(filename, 'r')
@@ -1723,12 +1956,14 @@ def clean():
                 generated_files.remove(filename)
         for f in generated_files:
             removed.append(f)
-    removed.extend(glob.glob('*~') + glob.glob('tmp*') +
+    removed.extend(glob.glob('*~') + glob.glob('.*~') + glob.glob('tmp*') +
                    glob.glob(_part_filename_wildcard + '.html') +
                    glob.glob(_part_filename_wildcard + '.rst') +
                    glob.glob('.*.exerinfo') +
+                   glob.glob('.*.quiz*') +
                    glob.glob('.*_html_file_collection'))
-    directories = ['sphinx-rootdir', 'html_images']
+    directories = ['html_images', 'latex_figs'] + glob.glob('sphinx-*') + \
+                  glob.glob('sphinx_*')
     for d in directories:
         if os.path.isdir(d):
             removed.append(d)
@@ -1772,7 +2007,7 @@ def _encoding_guesser(filename, verbose=False):
 def guess_encoding():
     if len(sys.argv) != 2:
         _usage_guess_encoding()
-        sys.exit(1)
+        sys.exit(0)
     filename = sys.argv[1]
     print _encoding_guesser(filename, verbose=False)
 
@@ -1809,7 +2044,7 @@ def _change_encoding_python(filename, from_enc, to_enc):
 def change_encoding():
     if len(sys.argv) < 4:
         _usage_change_encoding()
-        sys.exit(1)
+        sys.exit(0)
 
     from_encoding = sys.argv[1]
     to_encoding = sys.argv[2]
@@ -1832,7 +2067,7 @@ def bbl2rst():
     """
     if len(sys.argv) <= 1:
         _usage_bbl2rst()
-        sys.exit(1)
+        sys.exit(0)
 
     bblfile = sys.argv[1]
     text = open(bblfile, 'r').read()
@@ -1932,7 +2167,7 @@ def html_colorbullets():
     """
     if len(sys.argv) <= 1:
         _usage_html_collorbullets()
-        sys.exit(1)
+        sys.exit(0)
 
     red_bullet = 'bullet_red2.png'
     green_bullet = 'bullet_green2.png'
@@ -1953,7 +2188,7 @@ def html_colorbullets():
             linel = line.lower()
             if '<ul>' in linel:
                 level += 1
-                line = '<table border="0">\n'
+                line = '<p><table border="0">\n'
             if '</ul>' in linel:
                 line = '</td></tr></table>\n'
                 level -= 1
@@ -1970,7 +2205,26 @@ def html_colorbullets():
         f.close()
 
 def _usage_split_html():
-    print 'Usage: doconce split_html mydoc.html'
+    print """\
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination'
+where name can be gray1, gray2, bigblue, blue, green, text
+(name of navigation buttons, or just pure text for navigation).
+
+--method=split|space8|hrule|colorline specifies physical
+split (split) or just N blank lines (spaceN) or a horizontal
+rule (hrule) with blank lines above and below, or a colored rule
+instead of <hr> rule. Default is split.
+
+--nav_button=name sets the type of navigation button (next, previous):
+text, gray1 (default), gray2, bigblue, blue, green.
+See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
+for examples on these types (from left to right).
+--nav_button is ignored if the "doconce format html" command used
+bootstrap styles: --html_theme=vagrant, bootstrap*, or bootswatch.
+
+--pagination means that one can click on pages at the button
+if a bootstrap theme is used in the document.
+"""
 
 def split_html():
     """
@@ -1979,7 +2233,7 @@ def split_html():
     """
     if len(sys.argv) <= 1:
         _usage_split_html()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.html'):
@@ -1988,10 +2242,43 @@ def split_html():
     else:
         basename = filename[:-5]
 
-    header, parts, footer = get_header_parts_footer(filename, "html")
-    files = doconce_html_split(header, parts, footer, basename, filename)
-    print '%s now links to the generated files' % filename
-    print ', '.join(files)
+    method = 'split'
+    if len(sys.argv) > 2:
+        if sys.argv[2].startswith('--method='):
+            method = sys.argv[2].split('=')[1]
+    if method != 'split':
+        # Load text
+        f = open(filename, 'r')
+        filestr = f.read()
+        f.close()
+
+    if method.startswith('space'):
+        if len(method) > len('space'):
+            num_lines = int(method[5:])
+        else:
+            num_lines = 8
+        filestr = filestr.replace(
+            '<!-- !split -->',
+            '<!-- !split -->' + '<br>'*num_lines)
+    elif method in ('hr', 'hrule'):
+        filestr = filestr.replace(
+            '<!-- !split -->',
+            '<!-- !split -->' + '<br><br><br><hr><br><br><br>')
+    elif method in ('colorline',):
+        filestr = filestr.replace(
+            '<!-- !split -->',
+            '<!-- !split -->' + '<br><br><br><img src="%s"><br><br><br>'
+            % 'http://hplgit.github.io/doconce/bundled/html_images/colorline.png')
+    else:
+        header, parts, footer = get_header_parts_footer(filename, "html")
+        files = doconce_split_html(header, parts, footer, basename, filename)
+        print '%s now links to the generated files' % filename
+        print ', '.join(files)
+
+    if method != 'split':
+        f = open(filename, 'w')
+        f.write(filestr)
+        f.close()
 
 
 def _usage_slides_html():
@@ -2030,7 +2317,7 @@ def slides_html():
 
     if len(sys.argv) <= 2:
         _usage_slides_html()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.html'):
@@ -2069,7 +2356,7 @@ def slides_html():
 
     filestr = None
     if slide_type == 'doconce':
-        doconce_html_split(header, parts, footer, basename, filename)
+        doconce_split_html(header, parts, footer, basename, filename)
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
@@ -2250,18 +2537,19 @@ def get_header_parts_footer(filename, format='html'):
     return header, parts, footer
 
 
-def doconce_html_split(header, parts, footer, basename, filename):
+def doconce_split_html(header, parts, footer, basename, filename):
     """Native doconce style splitting of HTML file into parts."""
     import html
     # Check if we use a vagrant template, because that leads to
     # different navigation etc.
     header_str = '\n'.join(header)
     vagrant = 'builds on the Twitter Bootstrap style' in header_str
-    bootstrap = '<!-- Boostrap Bootswatch' in header_str
+    bootstrap = '<!-- Bootstrap style: boots' in header_str
 
     if vagrant or bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        bootstrap_navigation_passive = """\
+        # This text is found in vagrant style and will be replaced later
+        bootstrap_navigation_vagrant = """\
 <!-- Navigation buttons at the bottom:
      Doconce will automatically fill in the right URL in these
      buttons when doconce html_split is run. Otherwise they are empty.
@@ -2275,42 +2563,80 @@ def doconce_html_split(header, parts, footer, basename, filename):
 </ul>
 -->
 """
-        bootstrap_navigation_active = """\
-<ul class="pager">
-%s
-%s
-</ul>
-"""
-        bootstrap_navigation_prev = """\
+        def bootstrap_navigation(pn, prev_part_filename, next_part_filename):
+            if '--pagination' in sys.argv and len(parts) < 19:
+                # Use Bootstrap pagination
+                text = '\n<ul class="pagination">\n'
+                if pn > 0:
+                    text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
+                for i in range(len(parts)):
+                    if i == pn:
+                       text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                    else:
+                       text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                if pn < len(parts)-1:
+                    text += '  <li><a href="%s">&raquo;</a></li>\n' % next_part_filename
+                text += '</ul>\n'
+            else:
+                # Use plain next and prev buttons with arrows, but
+                # Bootstrap style
+                text = '\n<ul class="pager">\n'
+                if pn > 0:
+                    text += """\
   <li class="previous">
-    <a href="%s">&larr; %s</a>
+    <a href="%s">&larr; Prev</a>
   </li>
-"""
-        bootstrap_navigation_next = """\
+""" % prev_part_filename
+                if pn < len(parts)-1:
+                    text += """\
   <li class="next">
-    <a href="%s">%s &rarr;</a>
+    <a href="%s">Next &rarr;</a>
   </li>
-"""
+""" % next_part_filename
+                text += '</ul>\n'
+            return text
     else:
         local_navigation_pics = False    # avoid copying images to subdir...
 
-    prev_part = 'prev1'  # "Knob_Left"
-    next_part = 'next1'  # "Knob_Forward"
+    nav_button = 'gray1'
+    for arg in sys.argv:
+        if arg.startswith('--nav_button='):
+            nav_button = arg.split('=')[1]
+            break
+    # Map nav_button name to actual image file in bundled/html_images
+    if nav_button == 'gray1':
+        prev_button = 'prev1'
+        next_button = 'next1'
+    elif nav_button == 'gray2':
+        prev_button = 'prev2'
+        next_button = 'next2'
+    elif nav_button == 'bigblue':
+        prev_button = 'prev3'
+        next_button = 'next3'
+    elif nav_button == 'blue':
+        prev_button = 'prev4'
+        next_button = 'next4'
+    elif nav_button == 'green':
+        prev_button = 'Knob_Left'
+        next_button = 'Knob_Forward'
+    elif nav_button == 'text':
+        pass
+
     header_part_line = ''  # 'colorline'
     if local_navigation_pics:
         copy_datafiles(html_images)  # copy html_images subdir if needed
-        button_prev_filename = html_imagefile(prev_part)
-        button_next_filename = html_imagefile(next_part)
+        button_prev_filename = html_imagefile(prev_button)
+        button_next_filename = html_imagefile(next_button)
         html.add_to_file_collection(button_prev_filename, filename, 'a')
         html.add_to_file_collection(button_next_filename, filename, 'a')
     else:
-        button_prev_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_part
-        button_next_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_part
+        button_prev_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_button
+        button_next_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_button
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r'<a name="(.+?)">'
-    href_pattern = r'<a href="#(.+?)">'
+    name_pattern = r'<a name="([^"]+?)"'
+    href_pattern = r'<a href="#([^"]+?)"'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
@@ -2343,8 +2669,8 @@ def doconce_html_split(header, parts, footer, basename, filename):
                 elif i == len(parts)+1:
                     part = footer
                 text = ''.join(part).replace(
-                    '<a href="#%s">' % name,
-                    '<a href="%s#%s">' % (name_def_filename, name))
+                    '<a href="#%s"' % name,
+                    '<a href="%s#%s"' % (name_def_filename, name))
                 if i < len(parts):
                     parts[i] = text.splitlines(True)
                 elif i == len(parts):
@@ -2353,11 +2679,15 @@ def doconce_html_split(header, parts, footer, basename, filename):
                     footer = text.splitlines(True)
 
     # Treat \eqref and labels: MathJax does not support references
-    # to eq. labels in other files
+    # to eq. labels in other files.
+    # Also, skip equation references to external documents.
     label_pattern = r'\label\{(.+?)\}'  # label in latex equations
     parts_label = [re.findall(label_pattern, ''.join(part)) for part in parts]
     eqref_pattern = r'\eqref\{(.+?)\}'
-    parts_eqref = [re.findall(eqref_pattern, ''.join(part)) for part in parts]
+    ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
+    parts_eqref = [re.findall(eqref_pattern,
+                              re.sub(ref_pattern, '', ''.join(part)))
+                   for part in parts]
 
     parts_label2part = {}   # map an eq. label to where it is defined
     for i in range(len(parts_label)):
@@ -2430,13 +2760,13 @@ def doconce_html_split(header, parts, footer, basename, filename):
     generated_files = []
     for pn, part in enumerate(parts):
         header_copy = header[:]
-        if vagrant:
+        if vagrant or bootstrap:
             # Highligh first section in this part in the navigation in header
-            m = re.search(r'<h(2|3)>(.+?)<', ''.join(part))
+            m = re.search(r'<h(1|2|3)>(.+?)<', ''.join(part))
             if m:
                 first_header = m.group(2).strip()
                 for k in range(len(header_copy)):
-                    if 'nav toc' in header[k] and first_header in header[k]:
+                    if 'navigation toc:' in header[k] and first_header in header[k]:
                         header_copy[k] = header[k].replace(
                             '<li>', '<li class="active">')
 
@@ -2461,21 +2791,37 @@ def doconce_html_split(header, parts, footer, basename, filename):
         if vagrant or bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
-            if pn > 0:
-               prev_ = bootstrap_navigation_prev % (prev_part_filename, "Prev")
-            if pn < len(parts)-1:
-               next_ = bootstrap_navigation_next % (next_part_filename, "Next")
-            buttons = bootstrap_navigation_active % (prev_, next_)
+            # Add jumbotron button reference on first page
+            if pn == 0:
+                for i in range(len(part)):
+                    if part[i].startswith('<!-- potential-jumbotron-button -->'):
+                        part[i] = part[i].replace(
+                              '<!-- potential-jumbotron-button -->',
+                              '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &raquo;</a></p>\n\n' % next_part_filename)
+                        break
+
+
+            buttons = bootstrap_navigation(pn, prev_part_filename, next_part_filename)
         else:
             # Simple navigation buttons at the top and bottom of the page
             lines.append('<!-- begin top navigation -->') # for easy removal
             if pn > 0:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="previous"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">&laquo; Previous</a>
+""" % (prev_part_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
 """ % (prev_part_filename, button_prev_filename))
             if pn < len(parts)-1:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="next"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">Next &raquo;</a>
+""" % (next_part_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end top navigation -->\n\n')
             lines.append('<p>\n')
@@ -2486,19 +2832,31 @@ def doconce_html_split(header, parts, footer, basename, filename):
 
         # Navigation in the bottom of the page
         lines.append('<p>\n')
-        if vagrant or bootstrap:
+        if vagrant:
             footer_text = ''.join(footer).replace(
-                bootstrap_navigation_passive, buttons)
+                bootstrap_navigation_vagrant, buttons)
             lines += footer_text.splitlines(True)
+        elif bootstrap:
+            lines += buttons.splitlines(True) + footer
         else:
             lines.append('<!-- begin bottom navigation -->')
             if pn > 0:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="previous"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">&laquo; Previous</a>
+""" % (prev_part_filename, button_prev_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
 """ % (prev_part_filename, button_prev_filename))
             if pn < len(parts)-1:
-                lines.append("""
-<a href="%s"><img src="%s" border=0 alt="next"></a>
+                if nav_button == 'text':
+                    lines.append("""
+<a href="%s">Next &raquo;></a>
+""" % (next_part_filename))
+                else:
+                    lines.append("""
+<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
 """ % (next_part_filename, button_next_filename))
             lines.append('<!-- end bottom navigation -->\n\n')
             lines += footer
@@ -4013,7 +4371,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename'
+    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename [--handout]'
 
 def slides_beamer():
     """
@@ -4023,7 +4381,7 @@ def slides_beamer():
 
     if len(sys.argv) <= 1:
         _usage_slides_beamer()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.tex'):
@@ -4153,10 +4511,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     admons = 'notice', 'summary', 'warning', 'question', 'block'
     for admon in admons:
         Admon = admon[0].upper() + admon[1:]
-        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon':
+        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon', 'mdfbox':
             slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
-    for envir in 'paragraph', 'mdfbox', 'graybox2':
+    for envir in 'paragraph', 'graybox2':
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
@@ -4267,7 +4625,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             if m:
                 titlepage_figure = m.group(1)
                 # Move titlepage figure to \date{}
-                part = part.replace('% <titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
+                part = part.replace('% <optional titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
                 # Remove original titlepage figure
                 part = re.sub(r'\\begin\{center\} +% inline figure.+?\\end\{center\}', '', part, flags=re.DOTALL)
             slides += r"""
@@ -4289,6 +4647,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \end{document}
 """
     slides = re.sub(r'% !split\s+', '', slides)
+    if handout:
+        print 'handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf'
     return slides
 
 def _usage_split_rst0():
@@ -4338,7 +4698,7 @@ def split_rst0():
 
     if len(sys.argv) <= 1:
         _usage_split_rst0()
-        sys.exit(1)
+        sys.exit(0)
 
     complete_file = sys.argv[1]
     f = open(complete_file, 'r')
@@ -4386,7 +4746,7 @@ def split_rst():
     """
     if len(sys.argv) <= 1:
         _usage_split_rst()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.rst'):
@@ -4421,10 +4781,15 @@ def doconce_rst_split(parts, basename, filename):
             label2tag[label] = '%d.%d' % (pn+1, local_eq_no)
             local_eq_no += 1
 
+    # The definition of |nbsp| must be repeated in each part, except the first.
+    # The definition is inserted in the beginning of the document, i.e.,
+    # in parts[0].
+    nbsp = '.. |nbsp| unicode:: 0xA0' in ''.join(parts[0])
 
     generated_files = []
     for pn, part in enumerate(parts):
         text = ''.join(part)
+
         # Check if headings are consistent: the first heading must be
         # the highest one
         m = re.search(r'^(%%+|==+|--+|~~+)$', text, flags=re.MULTILINE)
@@ -4454,6 +4819,14 @@ def doconce_rst_split(parts, basename, filename):
 
         part_filename = _part_filename % (basename, pn) + '.rst'
         generated_files.append(part_filename)
+
+        if nbsp and pn > 0:
+            text = """
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
+""" + text
 
         for label in parts_label[pn]:
             # All math labels get an anchor above for equation refs
@@ -4497,7 +4870,7 @@ def list_labels():
     """
     if len(sys.argv) <= 1:
         _usage_list_labels()
-        sys.exit(1)
+        sys.exit(0)
     filename = sys.argv[1]
 
     # doconce or latex file
@@ -4508,7 +4881,7 @@ def list_labels():
         # Identify heading and print out
         heading = ''
         if dofile:
-            m = re.search(r'[_=]{3,7}\s*(.+?)\s*[_=]{3,7}', line)
+            m = re.search(r'={3,7}\s*(.+?)\s*={3,7}', line)
             if m:
                 heading = m.group(1).strip()
         else:
@@ -4537,7 +4910,7 @@ def _usage_teamod():
 def teamod():
     if len(sys.argv) < 2:
         _usage_teamod()
-        sys.exit(1)
+        sys.exit(0)
 
     name = sys.argv[1]
     if os.path.isdir(name):
@@ -4618,7 +4991,7 @@ def assemble():
     # description above first.
     if len(sys.argv) < 2:
         _usage_assemble()
-        sys.exit(1)
+        sys.exit(0)
 
     master = sys.argv[2]
 
@@ -4676,8 +5049,8 @@ def analyzer():
     # input, include), starting point is a .tex file with includes/inputs
 
     if len(sys.argv) <= 1:
-        _usage_bbl2rst()
-        sys.exit(1)
+        _usage_analyzer()
+        sys.exit(0)
 
     # Must have this in a function since we need to do this recursively
     filename = sys.argv[1]
@@ -4872,6 +5245,7 @@ _replacements = [
     (r'![be]pop', ''),
     (r'![be]warning', ''),
     (r'![be]summary', ''),
+    (r'![be]question', ''),
     (r'![be]notice', ''),
     (r'![be]quote', ''),
     (r'![be]box', ''),
@@ -5345,7 +5719,7 @@ execfile is applied to .strip to execute the definition of the lists.
 def spellcheck():
     if len(sys.argv) == 1:
         _usage_spellcheck()
-        sys.exit(1)
+        sys.exit(0)
     if sys.argv[1] == '-d':
         dictionary = [sys.argv[2]]
         del sys.argv[1:3]
@@ -5356,7 +5730,7 @@ def spellcheck():
             dictionary = []
     if len(sys.argv) < 2:
         _usage_spellcheck()
-        sys.exit(1)
+        sys.exit(0)
 
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
                     dictionaries=dictionary,)
@@ -5375,7 +5749,7 @@ def ref_external():
     """
     if len(sys.argv) < 2:
         _usage_ref_external()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if filename.endswith('.do.txt'):
@@ -5650,7 +6024,7 @@ The lower limit for overfull hboxes can be specified as an integer.
 def latex_problems():
     if len(sys.argv) < 2:
         _usage_latex_problems()
-        sys.exit(1)
+        sys.exit(0)
 
     try:
         overfull_hbox_limit = float(sys.argv[2])
@@ -5730,7 +6104,7 @@ def _usage_grep():
 def grep():
     if len(sys.argv) < 3:
         _usage_grep()
-        sys.exit(1)
+        sys.exit(0)
 
     file_tp = sys.argv[1]
     filenames = []
@@ -5777,7 +6151,7 @@ def capitalize():
 
     if len(sys.argv) < 2:
         _usage_capitalize()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
 
@@ -5969,7 +6343,7 @@ def md2html():
     """
     if len(sys.argv) < 2:
         _usage_md2html()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.md'):
@@ -6028,7 +6402,7 @@ def md2latex():
     """
     if len(sys.argv) < 2:
         _usage_md2latex()
-        sys.exit(1)
+        sys.exit(0)
 
     filename = sys.argv[1]
     if not filename.endswith('.md'):
@@ -6459,7 +6833,7 @@ def _latex2doconce(filestr):
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
                    'dsni', 'sni', 'slin', 'ipy', 'rpy',
                    'pyshell', 'plin', 'ver', 'warn', 'rule', 'summ',
-                   'dat', ] # sequence important for replace!
+                   'dat', 'txt'] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':
             code_envirs.append(language + tp)
@@ -6856,6 +7230,73 @@ def latex2doconce():
     print filestr  # final output
 
 
+def html2doconce():
+    """
+    Apply transformations to an html file to help translate the
+    document into Doconce format.
+    """
+    print '# #ifdef LATEX2DOCONCE'
+    print 'This is the result of the doconce htmldoconce program.'
+    print 'The translation from HTML is just a helper. The text must'
+    print 'be carefully examined! (Be prepared that some text might also'
+    print 'be lost in the translation - in seldom cases.)\n'
+
+    filename = sys.argv[1]
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    filestr = _html2doconce(filestr)
+
+    print '# #endif'   # end of intro with warnings etc.
+
+    print filestr  # final output to stdout
+
+
+def _html2doconce(filestr):
+    # All headings
+    headings = {1: 7, 2: 5, 3: 3}
+    def subst(m):
+        border = '='*headings[int(m.group(1))]
+        return border + ' ' + m.group(2) + ' ' + border + '\n'
+
+    filestr = re.sub(r'<h(\d)>(.+?)</h\d>', subst, filestr)
+
+    # Paragraphs
+    filestr = re.sub(r'<p>\s*', '\n', filestr)
+    # Various tags
+    filestr = re.sub(r'<em>(.+?)</em>', '*\g<1>*', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'<b>(.+?)</b>', '_\g<1>_', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'<tt>(.+?)</tt>', '`\g<1>`', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'^\s*<title>(.+?)</title>', 'TITLE: \g<1>', filestr,
+                     flags=re.MULTILINE)
+    filestr = re.sub(r'<!--(.+?)-->', '#\g<1>', filestr, flags=re.DOTALL)
+    filestr = re.sub(r'<a href="(.+?)">(.+?)</a>', '"\g<2>": "\g<1>"', filestr,
+                     flags=re.DOTALL)
+    filestr = re.sub(r'<img.*? src="(.+?)".*?>',
+                     '\nFIGURE: [\g<1>, width=600 frac=1]\n', filestr,
+                     flags=re.DOTALL)
+    filestr = re.sub(r'\s*^<pre>\s*', '\n\n!bc cod\n', filestr,
+                     flags=re.MULTILINE)
+    filestr = re.sub(r'</pre>\s*', '!ec\n', filestr,
+                     flags=re.MULTILINE)
+    # <code>?
+    filestr = re.sub(r'<ul>', '\n', filestr)
+    filestr = re.sub(r'</ul>', '\n', filestr)
+    # All lists become bullet lists, read line by line and use a stack
+    # to improve this
+    if '<ol>' in filestr:
+        print '*** warning: enumerated lists become bullet lists'
+    filestr = re.sub(r'<ol>', '\n', filestr)
+    filestr = re.sub(r'</ol>', '\n', filestr)
+    filestr = re.sub(r'<li>', '  * ', filestr)
+
+    if '<table' in filestr:
+        print '*** warning: html2doconce cannot handle tables.'
+        print '    Recommendation: edit manually to CSV format and run'
+        print '    doconce csv2table command to create table.'
+
+    return filestr
+
 def latex_dislikes():
     """
     Report constructions in latex that will not translate to doconce
@@ -6959,7 +7400,7 @@ except ImportError:
     print 'pygments is not installed'
     _abort()
 
-class DoconceLexer(RegexLexer):
+class DocOnceLexer(RegexLexer):
     """
     Lexer for Doconce files.
     """
@@ -7031,7 +7472,7 @@ class DoconceLexer(RegexLexer):
         if text[:4] == '--- ':
             return 0.9
 
-class DoconceLexer(RegexLexer):
+class DocOnceLexer(RegexLexer):
     """
     Lexer for Doconce files.
 
@@ -7145,38 +7586,47 @@ class DoconceLexer(RegexLexer):
     def analyse_text(text):
         return True
 
-# This is the best one so far (still far from complete, it was
-# made from a text lexer: DiffLexer, IniLexer, ... need to
-# understand such lexers to make progress)
+# The version below is the best one so far (still far from complete, not
+# everything works as intended, so much experimentation is needed to
+# extend it, but the result with doconce pygmentize mydoc perldoc looks
+# fine). Need to understand more of how the lexers work to make
+# further progress: look at DiffLexer, TexLexer, RstLexer, and other text
+# lexers in /usr/local/lib/python2.7/dist-packages/Pygments-1.6dev_20131113-py2.7.egg/pygments/lexers/text.py.
+# It seems that there is no markdown lexer on the net.
 
-class DoconceLexer(RegexLexer):
+class DocOnceLexer(RegexLexer):
     """
     Lexer for Doconce files.
     """
 
-    name = 'Doconce'
+    name = 'DocOnce'
     aliases = ['doconce']
     filenames = ['*.do.txt']
     mimetypes = ['text/x-doconce']
+    #flags = re.MULTILINE | re.DOTALL  # did not work
 
     tokens = {
         'root': [
             (r' .*\n', Text),
             (r'\#.*\n', Comment),
-            (r'label\{.+?\}', Name.Builtin),
-            (r'TITLE:', Generic.Heading),
+            (r'(label|ref|idx)\{.+?\}', Name.Builtin),
+            (r'\\(begin|end)\{.+?\}', Name.Builtin),
+            #(r'\$.+?\$', String),  # works only occasionally
+            #(r'label\{.+?\}', Name.Builtin),
+            #('idx', Keyword),
+            (r'TITLE:.+\n', Generic.Heading),
             (r'AUTHOR:', Generic.Heading),
             (r'DATE:', Generic.Heading),
             (r'TOC:', Generic.Heading),
             (r'FIGURE:.*\n', Name.Builtin),
             (r'MOVIE:.*\n', Name.Builtin),
-            (r'!.+\n', Name.Builtin),
+            (r'![a-z]+', Keyword),
             (r'@@@CODE .*\n', Generic.Subheading),
             (r'__.+?__', Generic.Subheading),
-            (r'`(?s).*?`', String.Backtick),
-            (r'"(?s).*?"', String),
-            #(r'".+?"', String),  # does not work
-            (r'={5,9} .* ={5,9}\n', Generic.Heading),
+            (r'\|.+\|\n', String),  # tables
+            (r'`.+?`', String.Backtick),  # does not work
+            (r'".+?"', String),  # does not work
+            (r'={3,9} .* ={3,9}\n', Generic.Heading),
             (r'.*\n', Text),
         ],
     }
@@ -7188,7 +7638,12 @@ def _usage_pygmentize():
     print 'Usage: doconce pygmentize doconce-file [style]'
 
 def pygmentize():
-    """Typeset a Doconce file with pygmentize, using DoconceLexer above."""
+    """
+    Typeset a Doconce file with pygmentize, using the DocOnceLexer
+    class above.
+
+    An alternative is to register the DocOnceLexer with Pygments.
+    """
     if len(sys.argv) < 2:
         _usge_pygmentize()
         sys.exit(1)
@@ -7202,7 +7657,7 @@ def pygmentize():
         pygm_style = 'default'
 
     f = open(filename, 'r');  text = f.read();  f.close()
-    lexer = DoconceLexer()
+    lexer = DocOnceLexer()
     formatter = HtmlFormatter(noclasses=True, style=pygm_style)
     text = highlight(text, lexer, formatter)
     f = open(filename + '.html', 'w');  f.write(text);  f.close()
@@ -7226,7 +7681,7 @@ def makefile():
     """Generate a generic (Python) makefile for compiling doconce files."""
     if len(sys.argv) < 3:
         _usage_makefile()
-        sys.exit(1)
+        sys.exit(0)
 
     dofile = sys.argv[1]
     if dofile.endswith('.do.txt'):
@@ -7689,8 +8144,8 @@ and publish can import the data.
 def fix_bibtex4publish():
     """Edit BibTeX files so that publish can import them."""
     if len(sys.argv) < 1:
-        _usage_makefile()
-        sys.exit(1)
+        _usage_fix_bibtex4publish()
+        sys.exit(0)
 
     bibfiles = sys.argv[1:]
     for bibfile in bibfiles:
@@ -7771,18 +8226,24 @@ def fix_bibtex4publish():
         f.close()
 
 def _usage_cvs2table():
-    print 'Usage: doconce csv2table somefile.csv'
+    print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;]'
 
 def csv2table():
     """Convert a csv file to a Doconce table."""
     if len(sys.argv) < 2:
         _usage_csv2table()
-        sys.exit(1)
+        sys.exit(0)
+
+    delimiter = ','
+    for arg in sys.argv[1:]:
+        if arg.startswith('--delimiter='):
+            delimiter = arg.split('=')[1]
+
     import csv
     filename = sys.argv[1]
     csvfile = open(filename, 'r')
     table = []
-    for row in csv.reader(csvfile):
+    for row in csv.reader(csvfile, delimiter=delimiter):
         if row:
             table.append(row)
     csvfile.close()
@@ -7801,6 +8262,21 @@ def csv2table():
     # Add empty cells
     for i in range(len(table)):
         table[i] = table[i] + ['']*(num_columns-len(table[i]))
+
+    align_headings = align_columns = 'c'*num_columns
+    for arg in sys.argv[1:]:
+        if arg.startswith('--headings='):
+            align_headings = list(arg.split('=')[1])
+            if len(align_headings) != num_columns:
+                print '*** error: %s has wrong no of columns (should be %d)' % \
+                      (arg, num_columns)
+        if arg.startswith('--columns='):
+            align_columns = list(arg.split('=')[1])
+            if len(align_columns) != num_columns:
+                print '*** error: %s has wrong no of columns (should be %d)' % \
+                      (arg, num_columns)
+
+
     # Construct doconce table
     width = (max_column_width+2)*num_columns + num_columns+1
     separator0 = '|' + '-'*(width-2) + '|'
@@ -7809,11 +8285,12 @@ def csv2table():
 
     s = list(separator1)
     for j in range(num_columns):
-        s[max_column_width/2 + 1 + j*(max_column_width+3)] = 'c'
+        s[max_column_width/2 + 1 + j*(max_column_width+3)] = align_headings[j]
     separator1 = ''.join(s)
+
     s = list(separator2)
     for j in range(num_columns):
-        s[max_column_width/2 + 1 + j*(max_column_width+3)] = 'c'
+        s[max_column_width/2 + 1 + j*(max_column_width+3)] = align_columns[j]
     separator2 = ''.join(s)
 
     column_format = ' %%-%ds ' % max_column_width
@@ -7856,7 +8333,7 @@ def diff():
     """Find differences between two files."""
     if len(sys.argv) < 3:
         _usage_diff()
-        sys.exit(1)
+        sys.exit(0)
     system('rm -f _diff.*')
 
     file1 = sys.argv[1]
@@ -8026,7 +8503,7 @@ def gitdiff():
     """Make diff of newest and previous version of files (under Git)."""
     if len(sys.argv) < 2:
         _usage_diffgit()
-        sys.exit(1)
+        sys.exit(0)
 
     #diffprog = sys.argv[1]
     filenames = sys.argv[1:]

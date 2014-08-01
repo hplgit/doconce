@@ -10,6 +10,7 @@ from doconce.misc import (
     gwiki_figsubst,
     latin2html,
     remove_inline_comments,
+    apply_inline_edits,
     sphinxfix_localURLs,
     old2new_format,
     latex_header,
@@ -45,6 +46,7 @@ from doconce.misc import (
     makefile,
     latex2doconce,
     latex_dislikes,
+    html2doconce,
     fix_bibtex4publish,
     diff,
     gitdiff,
@@ -93,19 +95,23 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print 'Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir  doconcefile'
+    print 'Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]'
     print """
+The sphinx_dir command creates a directory for compiling a sphinx version
+of a doconce document. The option --runestone makes a directory for
+RunestoneInteractive documents (slightly different from a standard
+sphinx directory).
 
-The steps for copying files to sphinx-rootdir and compiling the document
+The steps for copying files to the sphinx directory and compiling the document
 is done by an automatically generated script:
 
-  python automake_sphinx.py [doconce options]
+  python automake_sphinx.py [doconce format options]
 
-The master file can be split into parts. Here is the typical code
-after running doconce sphinx_dir:
+The master file can be split into parts. Here is the typical code:
 
-  doconce format sphinx master
+  doconce format sphinx master.do.txt
   doconce split_rst master
+  doconce sphinx_dir master  # or with a lot of options...
   python automake_sphinx.py
 """
 
@@ -126,6 +132,8 @@ def sphinx_dir():
     conf_py = None
     theme_dir = None
     logo = None
+    intersphinx = False
+    runestone = False
     for arg in sys.argv[1:]:
         if arg.startswith('title='):
             title = arg.split('=')[1]
@@ -145,6 +153,10 @@ def sphinx_dir():
             theme_dir = arg.split('=')[1]
         elif arg.startswith('logo='):
             logo = arg.split('=')[1]
+        elif arg.startswith('intersphinx'):
+            intersphinx = True
+        elif arg == '--runestone':
+            runestone = True
         else:
             doconce_files.append(arg)
 
@@ -184,6 +196,7 @@ def sphinx_dir():
                 if line.startswith('TITLE:'):
                     title = line[6:].strip()
                     print 'Using title "%s" from' % title, filename
+                    break # use the first TITLE spec
     if title is None:
         print '\nNo TITLE: line found in %s.do.txt' % filename
         print 'and no title="..." given on the command line'
@@ -226,8 +239,16 @@ def sphinx_dir():
     print
     time.sleep(1.5)
 
-    f = open('tmp_sphinx_gen.sh', 'w')
-    f.write("""\
+    if runestone:
+        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git %(sphinx-rootdir)s' % vars())
+        os.chdir(sphinx_rootdir)
+        if conf_py is None:
+            shutil.copy('conf.py.prototype', 'conf.py')
+            make_conf_py_runestone(themes, theme, title, short_title,
+                                   author, logo, intersphinx)
+    else:
+        f = open('tmp_sphinx_gen.sh', 'w')
+        f.write("""\
 #!/bin/bash
 rm -rf %(sphinx_rootdir)s
 echo Making %(sphinx_rootdir)s
@@ -257,36 +278,37 @@ y
 y
 EOF
 """ % vars())
-    f.close()
-    system('sh tmp_sphinx_gen.sh', failure_info='to generate sphinx directory')
-    os.remove('tmp_sphinx_gen.sh')
-    os.chdir(sphinx_rootdir)
+        f.close()
+        system('sh tmp_sphinx_gen.sh', failure_info='to generate sphinx directory')
+        os.remove('tmp_sphinx_gen.sh')
+        os.chdir(sphinx_rootdir)
 
-    if theme_dir is None:
-        # Copy themes
-        import doconce.common
-        install_dir = doconce.common.where()
-        shutil.copy(os.path.join(install_dir, 'sphinx_themes.zip'), os.curdir)
-        system('unzip sphinx_themes.zip > /dev/null')
-        os.remove('sphinx_themes.zip')
-        os.rename('sphinx_themes', '_themes')
-        files = sorted(glob.glob(os.path.join('_themes', '*')))
-        themes = [name[8:] for name in files
-                  if os.path.isdir(name)] + ['default']
-        print 'These Sphinx themes were found:', ', '.join(themes)
+        if theme_dir is None:
+            # Copy themes
+            import doconce.common
+            install_dir = doconce.common.where()
+            shutil.copy(os.path.join(install_dir, 'sphinx_themes.zip'), os.curdir)
+            system('unzip sphinx_themes.zip > /dev/null')
+            os.remove('sphinx_themes.zip')
+            os.rename('sphinx_themes', '_themes')
+            files = sorted(glob.glob(os.path.join('_themes', '*')))
+            themes = [name[8:] for name in files
+                      if os.path.isdir(name)] + ['default']
+            print 'These Sphinx themes were found:', ', '.join(themes)
 
-        if conf_py is None:
-            make_conf_py(themes, theme, title, short_title, author, logo)
-    else:
-        # Copy theme_dir
-        os.mkdir('_themes')
-        shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
+            if conf_py is None:
+                make_conf_py(themes, theme, title, short_title,
+                             author, logo, intersphinx)
+        else:
+            # Copy theme_dir
+            os.mkdir('_themes')
+            shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
-    if conf_py is not None:
-        shutil.copy(os.path.join(os.pardir, conf_py), os.basename(conf.py))
+        if conf_py is not None:
+            shutil.copy(os.path.join(os.pardir, conf_py), os.basename(conf.py))
 
-    f = open('make_themes.sh', 'w')
-    f.write("""#!/bin/sh
+        f = open('make_themes.sh', 'w')
+        f.write("""#!/bin/sh
 # Make all themes given on the command line (or if no themes are
 # given, make all themes in _themes/)
 
@@ -309,9 +331,11 @@ ls -d sphinx-*
 echo "for i in sphinx-*; do google-chrome $i/index.html; done"
 
 """ % (' '.join(themes)))
-    f.close()
-    os.chmod('make_themes.sh', 0755)
+        f.close()
+        os.chmod('make_themes.sh', 0755)
 
+    if runestone:
+        os.chdir('_sources')
     f = open('index.rst', 'w')
     if parts:
         files = parts
@@ -341,6 +365,8 @@ Indices and tables
 * :ref:`search`
 """ % vars())
     f.close()
+    if runestone:
+        os.chdir(os.pardir)
     os.chdir(os.pardir)
     f = open('automake_sphinx.py', 'w')
     f.write('''\
@@ -359,7 +385,12 @@ import glob, sys, os, commands, shutil
 command_line_options = ' '.join(['"%%s"' %% arg for arg in sys.argv[1:]])
 
 sphinx_rootdir = '%(sphinx_rootdir)s'
-
+''' % vars())
+    if runestone:
+        f.write("source_dir = os.path.join(sphinx_rootdir, '_sources')\n")
+    else:
+        f.write("source_dir = sphinx_rootdir")
+    f.write('''
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
@@ -378,7 +409,7 @@ def system(cmd, capture_output=False, echo=True):
 # Compile the doconce file if a sphinx version of it is not found
 filename = '%(filename)s'
 if not os.path.isfile(filename + '.rst'):
-    # Filter doconce format to sphinx format and copy to sphinx directory
+    # Transform doconce format to sphinx format and copy to sphinx directory
     cmd = 'doconce format sphinx %%s %%s' %% (filename, command_line_options)
     print cmd
     system(cmd)
@@ -390,51 +421,57 @@ if not os.path.isfile(filename + '.rst'):
         # sphinx does not like non-English characters in iso-8859-1
         system('doconce change_encoding iso-8859-1 utf-8 %%s.rst' %% filename)
 
-# Copy generated sphinx file to sphinx root directory
-shutil.copy('%%s.rst' %% filename, sphinx_rootdir)
+# Copy generated sphinx file to sphinx directory
+shutil.copy('%%s.rst' %% filename, source_dir)
 ''' % vars())
     else:
-        # user has run doconce split_rst so all parts must be copied
+        # user has run doconce split_rst so doconce format is already
+        # run and all parts must be copied
         parts_names = str(parts)
         f.write('''
 # Copy generated sphinx files to sphinx root directory
 filename = '%(filename)s'
 # Not used: shutil.copy('%%s.rst' %% filename, sphinx_rootdir)
 for part in %(parts_names)s:
-    shutil.copy('%%s.rst' %% part, sphinx_rootdir)
+    shutil.copy('%%s.rst' %% part, source_dir)
 ''' % vars())
 
     f.write('''
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
-    destdir = os.path.join(sphinx_rootdir, figdir)
+    if figdir.startswith('fig'):
+        # Figures can be anywhere (copied by sphinx to _images)
+        destdir = os.path.join(source_dir, figdir)
+    elif figdir.startswith('mov'):
+        # Movies must be in _static
+        destdir = os.path.join(source_dir, '_static', figdir)
     if os.path.isdir(figdir) and not os.path.isdir(destdir):
-        print 'copying', figdir, 'to', sphinx_rootdir
         shutil.copytree(figdir, destdir)
+        print 'copying', figdir, 'to', destdir
 
-# Copy needed media files in current dir (not in fig* and mov*)
-for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \\
-               glob.glob(os.path.join(sphinx_rootdir, '.*.rst')):
+# Copy needed figure files in current dir (not in fig*)
+for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + \
+               glob.glob(os.path.join(source_dir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
     import re
-    media_files = [name.strip() for name in
-                   re.findall('.. figure:: (.+)', text)]
-    local_media_files = [name for name in media_files if not os.sep in name]
+    figfiles = [name.strip() for name in
+                re.findall('.. figure:: (.+)', text)]
+    local_figfiles = [name for name in figfiles if not os.sep in name]
 
-    for name in media_files:
+    for name in figfiles:
         basename = os.path.basename(name)
         if name.startswith('http') or name.startswith('ftp'):
             pass
         else:
-            if not os.path.isfile(os.path.join(sphinx_rootdir, basename)):
-                print 'copying', name, 'to', sphinx_rootdir
-                shutil.copy(name, sphinx_rootdir)
-            if name not in local_media_files:
+            if not os.path.isfile(os.path.join(source_dir, basename)):
+                print 'copying', name, 'to', source_dir
+                shutil.copy(name, source_dir)
+            if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
-                # since it is copied to sphinx_rootdir
+                # since it is copied to source_dir
                 text = text.replace('.. figure:: %%s' %% name,
                                     '.. figure:: %%s' %% basename)
     if text != text_orig:
@@ -442,25 +479,45 @@ for rstfile in glob.glob(os.path.join(sphinx_rootdir, '*.rst')) + \\
         f.write(text)
         f.close()
 
-# Copy linked local files, placed in _static*, to %(sphinx_rootdir)s/_static
+# Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %%s/* %(sphinx_rootdir)s/_static/' %% staticdir)
-    # (Note: must do cp -r since shutil.copy/copytree cannot copy a la cp -r)
+    system('cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars())
+''' % vars())
+    # (Note: must do cp -r above since shutil.copy/copytree cannot copy a la cp -r)
+    if runestone:
+        # Fix paver script
+        system("""doconce replace "project_name = 'template'" "project_name = '%s'" pavement.py""" % title)
+        f.write('''
+# Compile RunestoneInteractive document
+os.chdir(sphinx_rootdir)
+print os.getcwd()
+paver build
 
+''' % vars())
+    else:
+        f.write('''
 # Compile web version of the sphinx document
 os.chdir(sphinx_rootdir)
 print os.getcwd()
 system('make clean')
 system('make html')
 
-print 'Fix generated files:'
+print 'Fix generated files:',
 os.chdir('_build/html')
 for filename in glob.glob('*.html') + glob.glob('.*.html'):
+    print filename,
+    f = open(filename, 'r'); text = f.read(); f.close()
     # Fix double title in <title> tags
-    system('doconce subst "<title>(.+?) &mdash;.+?</title>" "<title>\g<1></title>" %%s' %% filename, echo=False)
+    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+    # Fix untranslated math (e.g. in figure captions and raw html)
+    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+    # Fix links to movies
+    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+    # Fix movie frames in javascript player
+    text = text.replace(r'.src = "mov', '.src = "_static/mov')
     # Fix admonition style
-    system("""doconce replace "</head>" "
+    text = text.replace('</head>', """
    <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
@@ -468,16 +525,17 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
      }
    </style>
   </head>
-" %%s""" %% filename, echo=False)
+""")
+
     if os.path.isfile(filename + '.old~~'):
         os.remove(filename + '.old~~')
     # Check if external links should pop up in separate windows
-    f = open(filename, 'r');  text = f.read();  f.close()
-    if '.. Open external links in new windows.' in text:
+    if '.. NOTE: Open external links in new windows.' in text:
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
-        f = open(filename, 'w');  f.write(text);  f.close()
+    f = open(filename, 'w'); f.write(text); f.close()
 print """
+
 google-chrome %(sphinx_rootdir)s/_build/html/index.html
 """
 ''' % vars())
@@ -491,7 +549,8 @@ or just run it by
   python automake_sphinx.py
 """
 
-def make_conf_py(themes, theme, title, short_title, author, logo):
+def make_conf_py(themes, theme, title, short_title,
+                 author, logo, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in themes]
@@ -534,22 +593,16 @@ extensions = [
           'sphinx.ext.doctest',
           'sphinx.ext.viewcode',
           'sphinx.ext.intersphinx',
-          'sphinx.ext.inheritance_diagram']
+          'sphinx.ext.inheritance_diagram',
+          'IPython.sphinxext.ipython_console_highlighting']
 
 #pngmath_dvipng_args = ['-D 200', '-bg Transparent', '-gamma 1.5']  # large math fonts (200)
 
-#intersphinx_mapping = {}
-# Example configuration for intersphinx: refer to the Python standard library.
-# (Domos in http://scipy-lectures.github.com/)
-'''
-intersphinx_mapping = {
-    _python_doc_base: None,
-    'http://docs.scipy.org/doc/numpy': None,
-    'http://docs.scipy.org/doc/scipy/reference': None,
-    'http://matplotlib.org/': None,
-}
-'''
-
+# Make sphinx aware of the DocOnce lexer
+def setup(app):
+    from sphinx.highlighting import lexers
+    from doconce.misc import DocOnceLexer
+    lexers['doconce'] = DocOnceLexer()
 
 # Check which additional themes that are installed
 additional_themes_installed = []
@@ -605,12 +658,29 @@ except ImportError:
     pass
 
 """
+    # Intersphinx mapping: the look up of URLs can take quite
+    # some time, so this is not enabled by default
+    if intersphinx:
+        extensions +="""
+
+#intersphinx_mapping = {}
+# Example configuration for intersphinx for references to the
+# the Sphinx documents for Python, NumPy, SciPy, Matplotlib.
+# (Domos in http://scipy-lectures.github.com, typically :mod:`scipy.io`
+# or :class:`numpy.ndarray` or :func:`math.asin`)
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/2.7', None),
+    'numpy': ('http://docs.scipy.org/doc/numpy', None),
+    'scipy': ('http://docs.scipy.org/doc/scipy/reference', None),
+    'mpl': ('http://matplotlib.org/', None),
+}
+"""
 
     #'matplotlib.sphinxext.ipython_directive',
     #'matplotlib.sphinxext.ipython_console_highlighting',
     # are now in IPython, but not installed as Python modules
 
-    text = re.sub(r'extensions = .*\]', extensions, text)
+    text = re.sub(r'extensions = .*?\]', extensions, text, flags=re.DOTALL)
     text = text.replace('#html_theme_options = {}', """\
 
 # See http://sphinx.pocoo.org/theming.html for options
@@ -725,7 +795,9 @@ elif html_theme == 'scipy_lectures':
 
 elif html_theme == 'cbc':
     pygments_style = "friendly"
-    html_logo = "cbc_logo.png"
+elif html_theme == 'uio':
+    pygments_style = "tango"
+
 
 
 
@@ -781,6 +853,18 @@ if html_theme == 'impressjs':
         pass
 
 
+def make_conf_py_runestone(themes, theme, title, short_title,
+                           author, logo, intersphinx):
+    f = open('conf.py', 'r');  text = f.read();  f.close()
+    text = re.sub(r"^project = u'<ENTER.+", "project = '%s'" % title,
+                  flags=re.MULTILINE)
+    text = re.sub(r"^copyright = u'<ENTER.+", "copyright = '%s'" % author,
+                  flags=re.MULTILINE)
+    text = re.sub(r"'navbar_title':.+", "'navbar_title': '%s'" % title)
+    f = open('conf.py', 'w');  f.write(text);  f.close()
+
+
+
 
 # -----------------------------------------------------------------------
 
@@ -804,6 +888,7 @@ gwiki_figsubst
 md2html
 md2latex
 remove_inline_comments
+apply_inline_edits
 grab
 remove
 remove_exercise_answers
@@ -829,6 +914,7 @@ old2new_format
 linkchecker
 latex2doconce
 latex_dislikes
+html2doconce
 pygmentize
 makefile
 diff
@@ -864,9 +950,12 @@ doconce expand_mako mako_code_file funcname file1 file2 ...
 # remove all inline comments in a doconce file
 doconce remove_inline_comments dofile
 
+# apply all edits specified through inline comments
+apply_inline_edits
+
 # create a directory for the sphinx format
 doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 \
+    short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
 (requires sphinx version >= 1.1)
@@ -996,12 +1085,12 @@ doconce latex_exercise_toc myfile
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == 'format' and option('help'):
         help_format()
-        sys.exit(1)
+        sys.exit(0)
     if len(sys.argv) == 1 or option('help'):
         print 'Usage: doconce command [optional arguments]'
         print 'commands: %s' % (' '.join(commands))
         help()
-        sys.exit(1)
+        sys.exit(0)
 
     command = sys.argv[1]
     del sys.argv[1]
@@ -1031,4 +1120,3 @@ def main():
             print ', '.join(commands)
 
 main()
-

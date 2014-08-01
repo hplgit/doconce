@@ -1,15 +1,15 @@
-TITLE: Doconce Troubleshooting
+TITLE: DocOnce Troubleshooting
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 __Disclaimer.__
-Doconce has some support for syntax checking.  If you encounter Python
+DocOnce has some support for syntax checking.  If you encounter Python
 errors while running `doconce format`, the reason for the error is
-most likely a syntax problem in your Doconce source file. You have to
-track down this syntax problem yourself. However, Doconce applies
+most likely a syntax problem in your DocOnce source file. You have to
+track down this syntax problem yourself. However, DocOnce applies
 regular expressions to a large extent for transforming text, and
 regular expressions may sometimes fail. Therefore, there is a chance that legal
-Doconce syntax is not treated properly.
+DocOnce syntax is not treated properly.
 
 
 ======= General Problems =======
@@ -27,7 +27,7 @@ that there are math expressions in the stripped file that should not
 be there. (Because of wrong begin and end signs around math expressions
 ordinary text has instead been stripped away. This way, a missing dollar
 sign can lead to hundreds of misspellings.)
-Find the problem in the corresponding Doconce file and correct it.
+Find the problem in the corresponding DocOnce file and correct it.
 A similar error can be caused by wrong matching
 of equation environments between `!bt` and `!et`.
 
@@ -37,24 +37,24 @@ If you insert text between a `!esubex` and the next `!bsubex`, this
 text is moved before all the subexercises. This is a feature, not a
 bug (exercises have certain elements: main text, subexercises, hints,
 etc. that are typeset in a specific order, which may be different from
-what appears in the Doconce source file). If you need a comment
+what appears in the DocOnce source file). If you need a comment
 between two subexercises, just place the comment at the end of the
 previous subexercise.
 
-===== Doconce aborts because of a syntax error that is not an error =====
+===== DocOnce aborts because of a syntax error that is not an error =====
 
-Doconce searches for typical syntax errors and usually aborts the
+DocOnce searches for typical syntax errors and usually aborts the
 execution if errors are found. However, it may happen,
-especially in verbatim blocks, that Doconce reports syntax errors
+especially in verbatim blocks, that DocOnce reports syntax errors
 that are not errors. To continue execution, simply add the
 `--no_abort` option on the command line. You may send an email
-to the Doconce author at `hpl@simula.no` and report the problem.
+to the DocOnce author at `hpl@simula.no` and report the problem.
 
 ===== Figure captions are incomplete =====
 
-If only the first part of a figure caption in the Doconce file is seen
+If only the first part of a figure caption in the DocOnce file is seen
 in the target output format, the reason is usually that the caption
-occupies multiple lines in the Doconce file. The figure caption must
+occupies multiple lines in the DocOnce file. The figure caption must
 be written as *one line*, at the same line as the FIGURE keyword.
 
 ===== Problems with boldface and emphasize =====
@@ -103,8 +103,8 @@ Make sure there is whitespace surrounding the text in back-ticks.
 
 ===== Strange non-English characters =====
 
-The former reason for this problem is that Doconce could only work with latin1
-(ISO-8859) encoding and not UTF-8. After May 2013, Doconce applies
+The former reason for this problem is that DocOnce could only work with latin1
+(ISO-8859) encoding and not UTF-8. After May 2013, DocOnce applies
 UTF-8 both for HTML and LaTeX.
 
 Check the encoding of the `.do.txt` file with the Unix `file` command
@@ -122,10 +122,10 @@ Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 
 ===== Wrong Norwegian charcters =====
 
-When Doconce documents have characters not in the standard ASCII set,
+When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
 the section "Strange non-English characters" above for how to
-run `doconce change_encoding` to change the encoding of the Doconce file.
+run `doconce change_encoding` to change the encoding of the DocOnce file.
 
 ===== Too short underlining of reST headlines =====
 
@@ -133,7 +133,7 @@ This may happen if there is a paragraph heading without
 proceeding text before some section heading.
 
 
-===== Found !bt but no tex blocks extracted (BUG) =====
+===== Found `!bt` but no tex blocks extracted (BUG) =====
 
 This message points to a bug, but has been resolved by removing blank lines
 between the text and the first `!bt` (inserting the blanks again did not
@@ -151,15 +151,30 @@ as is unless this option is included.
 
 Sometimes the Doonce editing mode (see Section ref{emacs:doconce}) in Emacs
 leads to an error message ending with "overflow in regexp matcher".
-This error is due to some regular expression used in the Doconce editing
+This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
 the pieces using the `preprocess` directive `#include "piece.do.txt"`.
-The error message comes with the Doconce file contains too much text
+The error message comes with the DocOnce file contains too much text
 for Emacs to handle.
+
+===== My machine hangs if I have many movies =====
+
+DocOnce has no limits on the amount of movies. When the output is
+in HTML, one big HTML file may contain too many movies (local movie
+files or embedded YouTube movies) for the browser to handle.
+The remedy is to split the document into smaller pieces by inserting
+
+!bc
+!split
+!ec
+for every new page. After `doconce format html mydoc`, run
+`doconce split_html mydoc.html` to get the document split into
+a main document `mydoc.html` and pieces `._mydocXXX.html`, where
+`XXX` stands for three digits (`000`, `001`, `002`, and so forth).
 
 ===== How can I use quotes in a link? =====
 
-Links are typeset inside double quotes, but Doconce applies double backticks
+Links are typeset inside double quotes, but DocOnce applies double backticks
 and double single quotes to typeset quotes, so the right form is
 
 !bc
@@ -171,9 +186,9 @@ It appears as
 "This is a ``link text'' to google": "http://google.com".
 !equote
 
-===== Conversion from Doconce to Google Docs =====
+===== Conversion from DocOnce to Google Docs =====
 
- * Transform the Doconce document to HTML, upload to Google Drive,
+ * Transform the DocOnce document to HTML, upload to Google Drive,
    right-click the file and open as Google Docs.
  * It might be necessary to adjust formatting, e.g., insert an extra
    line between paragraphs.
@@ -181,11 +196,11 @@ It appears as
    and appears verbatim.
  * Pygmentized computer code and admons look fine.
 
-===== Convesion from Google Docs to Doconce =====
+===== Convesion from Google Docs to DocOnce =====
 
  * Save as HTML file and use Pandoc to convert to Markdown.
    Use the `--markdown` and `--md2do_output=` options to
-   `doconce format to convert to Doconce.
+   `doconce format to convert to DocOnce.
  * Lists in Markdown must be intended.
  * Notes in Google Docs become (potentially many) footnotes.
    Some tailored editing is necessary.
@@ -193,14 +208,14 @@ It appears as
 This solution is not much explored and more text transformations from
 Pandoc-generated Markdown is certainly needed.
 
-===== Are there any tools for shared online writing of Doconce documents? =====
+===== Are there any tools for shared online writing of DocOnce documents? =====
 
 In theory, URL: "http://draftin.com" and URL: "https://stackedit.io"
 can be used to share Markdown documents and these can be transform
-to and from Doconce documents. Tested to a little degree, but may
+to and from DocOnce documents. Tested to a little degree, but may
 work for very simple documents (sections, lists, code - no labels, refs,
 math, admons, code copied from file).
-Not all of Extended Markdown is interpreted by Doconce, and Doconce
+Not all of Extended Markdown is interpreted by DocOnce, and DocOnce
 transforms to Panddoc-extended Markdown, not the Extended Markdown
 used by these sites.
 
@@ -211,9 +226,16 @@ used by these sites.
 
 If you have lines starting with `%` inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
-because it thinks these lines are Mako statements. Doconce detects
+because it thinks these lines are Mako statements. DocOnce detects
 this problem and avoids running Mako.  Examine the output from
-Doconce: warnings are issued if Mako is not run.
+DocOnce: warnings are issued if Mako is not run.
+
+===== The Mako preprocessor gives syntax error in Python code =====
+
+The information with respect to syntax errors in Python code is
+sparse. It is recommended to move the Python code to separate files
+and test it with the ordinary Python interpreter. See the
+section *Debugging Python code in Mako* in the DocOnce manual.
 
 ===== The Mako preprocessor gives strange error messages =====
 
@@ -222,9 +244,9 @@ quite unpredictable. Especially, if you forget curly braces around
 variables or function calls, the forthcoming text is processed as
 part of the Mako command. Pay attention to the line number reported
 by Mako: this is the line number after Preprocess has processed
-the Doconce document, so you need to load `tmp_preprocess__mydoc.do.txt`
+the DocOnce document, so you need to load `tmp_preprocess__mydoc.do.txt`
 and go to the right line in that file to see the Mako problem
-(here the Doconce document is named `mydoc.do.txt`).
+(here the DocOnce document is named `mydoc.do.txt`).
 
 Look through the specific Mako problems
 reported below, and if they do not bring you to a solution of
@@ -237,7 +259,7 @@ the complete document to a separate file and run `doconce format`.
 In this way you can easier see which parts of the document that
 work and where the error suddenly appears.
 
-!bnotice Tip: Compile your Doconce document frequently
+!bnotice Tip: Compile your DocOnce document frequently
 The best means against Mako problems is to run `doconce format`
 often. Combined Git, you can take
 a `git diff` to see what you have recently changed and get an idea
@@ -245,7 +267,7 @@ what can be wrong.
 !enotice
 
 
-===== The Mako preprocessor is fooled by Doconce text =====
+===== The Mako preprocessor is fooled by DocOnce text =====
 
 Here are possible problems for Mako:
 
@@ -285,18 +307,18 @@ for large books.
 ===== Something goes wrong in the preprocessing step =====
 
 You can examine `tmp_preprocess__filename` and `tmp_mako__filename`,
-where `filename` is the complete name of the Doconce file, to see
+where `filename` is the complete name of the DocOnce file, to see
 what the preprocessors actually to and if something is wrong in these
-files before Doconce starts translating the text.
+files before DocOnce starts translating the text.
 One or both of those files may be missing, but examine the beginning
-of the output from Doconce to see exactly which preprocessors are run
+of the output from DocOnce to see exactly which preprocessors are run
 and on which files.
 
 ===== Preprocessor directives do not work =====
 
 Make sure the preprocessor instructions, in Preprocess or Mako, have
 correct syntax. Also make sure that you do not mix Preprocess and Mako
-instructions. Doconce will then only run Preprocess.
+instructions. DocOnce will then only run Preprocess.
 
 ======= Problems with code or Tex Blocks =======
 
@@ -311,7 +333,7 @@ error messages are issued.
 
 Sometimes reST reports an "Unexpected indentation" at the beginning of
 a code block. If you see a `!bc`, which should have been removed when
-running `doconce format sphinx`, it is usually an error in the Doconce
+running `doconce format sphinx`, it is usually an error in the DocOnce
 source, or a problem with the rst/sphinx translator.  Check if the
 line before the code block ends in one colon (not two!), a question
 mark, an exclamation mark, a comma, a period, or just a newline/space
@@ -411,7 +433,7 @@ Suppose you have a URL reference like
 !ec
 LaTeX will stop with a message about a missing dollar sign. The reason
 is that underscores in link texts need to be preceded by a backslash.
-However, this is incovenient to do in the Doconce source since the
+However, this is incovenient to do in the DocOnce source since the
 underscore is misleading in other formats.
 The remedy is to format the link text with inline verbatim tags (backticks):
 !bc
@@ -445,7 +467,7 @@ When this package is included, `latex` or `pdflatex` runs the
 
 ===== Why are the LaTeX section headings smaller than normal? =====
 
-Doconce inserts a special command to make the headings
+DocOnce inserts a special command to make the headings
 more compact:
 
 !bc
@@ -467,7 +489,7 @@ for `titlesec`.
 
 When using colored boxes for code in LaTeX, a code snippet is needed
 in the ordinary running text *before* code snippets inside exercises, problems,
-or projects. This is a kind of bug in Doconce that is challenging to fix.
+or projects. This is a kind of bug in DocOnce that is challenging to fix.
 It is usually only a problem when writing documents mainly containing
 exercises, problems, or projects.
 
@@ -487,7 +509,7 @@ Terminal> doconce subst '(\\includegraphics\[.+\}\})' \
 ===== How can I use my fancy LaTeX environments? =====
 
 See Section ref{manual:theorem:envir} for how to make a custom
-theorem environment also in Doconce, without using implementations
+theorem environment also in DocOnce, without using implementations
 restricted to LaTeX.
 
 
@@ -498,7 +520,7 @@ If the problem is undefined control sequence involving
 \code{...}
 !ec
 the cause is usually a verbatim inline text (in back-ticks in the
-Doconce file) spans more than one line. Make sure, in the Doconce source,
+DocOnce file) spans more than one line. Make sure, in the DocOnce source,
 that all inline verbatim text appears on the same line.
 
 ===== The LaTeX Beamer file does not compile =====
@@ -530,19 +552,19 @@ Such errors typically arise from unbalanced curly braces, or dollar signs
 around math, and similar LaTeX syntax errors.
 
 (Note that verbatim font is likely to cause trouble inside figure captions,
-but Doconce will automatically replace verbatim text in back-ticks by
+but DocOnce will automatically replace verbatim text in back-ticks by
 a proper `texttt` command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
 ===== Chapters are ignored =====
 
-The default LaTeX style is "article". If you chapters in the Doconce file,
+The default LaTeX style is "article". If you chapters in the DocOnce file,
 you need to run `ptex2tex` with the option `-DBOOK` to set the LaTeX
 documentstyle to "book".
 
 ===== I want to tune the top (preamble) of the LaTeX file =====
 
-The default preamble generated by Doconce has several `preprocess`
+The default preamble generated by DocOnce has several `preprocess`
 options to set the font, type of titlepage, etc., when running
 `ptex2tex` or `doconce ptex2tex`. However, it is easy to provide
 a customized preamble text:
@@ -553,7 +575,7 @@ Terminal> doconce format latex mydoc --latex_preamble=mytop.tex
 If `mytop.tex` starts with a `documentclass` specification, the whole
 file becomes the complete preamble in `mydoc.p.tex`, otherwise
 `mytop.tex` is added at the end of the preamble generated by
-Doconce.
+DocOnce.
 
 Note also that `doconce replace` and `doconce subst` can be used
 after `doconce formt` to tune the LaTeX code in the preamble.
@@ -566,16 +588,16 @@ used to replace the whole preamble by something more suitable.
 
 ===== Strange nested lists in gwiki =====
 
-Doconce cannot handle nested lists correctly in the gwiki format.
+DocOnce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the `.gwiki` file directly.
 
 ===== Lists in gwiki look ugly in the gwiki source =====
 
 Because the Google Code wiki format requires all text of a list item to
-be on one line, Doconce simply concatenates lines in that format,
-and because of the indentation in the original Doconce text, the gwiki
+be on one line, DocOnce simply concatenates lines in that format,
+and because of the indentation in the original DocOnce text, the gwiki
 output looks somewhat ugly. The good thing is that this gwiki source
-is seldom to be looked at - it is the Doconce source that one edits
+is seldom to be looked at - it is the DocOnce source that one edits
 further.
 
 ======= Problems with HTML Output =======
@@ -592,7 +614,7 @@ Here are some common problems:
 
 The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
-Doconce document to HTML. The edits should therefore be automated
+DocOnce document to HTML. The edits should therefore be automated
 using `doconce subst` (for regular expression editing) or `doconce replace`
 (for plain text substitution editing) commands in the file where
 you run `doconce format html mydoc`. For example, say you want narrower
@@ -611,10 +633,10 @@ file as part of the compilation using the `--css=mystyle.css`
 flag.
 
 The standard of way of completely controlling the HTML format is to
-use an HTML template. The Doconce source is then the body of text
+use an HTML template. The DocOnce source is then the body of text
 (leave out `TITLE:` to get HTML without a header and footer). The
 `--html_template=filename` command-line option will then embed the
-Doconce text in the specified template file, where you can use style
+DocOnce text in the specified template file, where you can use style
 sheets and desired constructs in the header and footer.  The template
 can have "slots" for a title (`%(title)s`), a date (`%(date)s`), and
 the main body of text (`%(main)s`).  For typesetting code, `pygments`
@@ -628,7 +650,7 @@ use the `sphinx` format and one its many themes.
 
 ===== Why do figures look ugly when using HTML templates? =====
 
-The HTML header that Doconce generates contain special styles for
+The HTML header that DocOnce generates contain special styles for
 figure captions and the horizontal rule above figures. When using
 templates these styles are not defined, resulting in a rule that
 spans the width and a centered caption. Changing the appearance
@@ -659,4 +681,3 @@ Usually the HTML5 slides work best in Firefox.
 
 Seems to be a problem with reveal slides. The *Forward* button is not
 clickable.
-

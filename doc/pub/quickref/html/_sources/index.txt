@@ -1,8 +1,8 @@
 
 .. Master file automatically created by doconce sphinx_dir
 
-On an Ultimate Markup Language
-==============================
+DocOnce Quick Reference
+=======================
 
 Contents:
 

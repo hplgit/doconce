@@ -1,4 +1,4 @@
-TITLE: This is a demo of movies in Doconce
+TITLE: This is a demo of movies in DocOnce
 AUTHOR: HPL
 DATE: today
 

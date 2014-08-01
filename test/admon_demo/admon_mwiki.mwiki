@@ -1,8 +1,9 @@
 #TITLE (actually governed by the filename): Testing admons
 
 By '''hpl'''
-==== Apr 3, 2014 ====
+==== Jul 28, 2014 ====
 
+<!-- !split -->
 == Introduction ==
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
@@ -231,7 +232,7 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 {{mbox
 | type = Question.
 | textstyle = font-size: 90%;
-| text = '''Question.''' So, how many admonition environments does Doconce support?
+| text = '''Question.''' So, how many admonition environments does DocOnce support?
 }}
 
 
@@ -242,7 +243,7 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 | textstyle = font-size: 90%;
 | text = '''Question.''' 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?
+ <li> Once more, how many admonition environments does DocOnce support?
 </ol>
 }}
 

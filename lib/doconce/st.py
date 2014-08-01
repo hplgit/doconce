@@ -15,6 +15,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -41,7 +42,7 @@ def define(FILENAME_EXTENSION,
         'section':       r'\g<subst>',
         'subsection':    r'\g<subst>',
         'subsubsection': r'\g<subst>\n',
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'*\g<subst>*\g<space>',  # extra blank
         'abstract':      r'*\g<type>.* \g<text>\n\g<rest>',
         'title':         r'TITLE: \g<subst>',
         'date':          r'DATE: \g<subst>',
@@ -49,6 +50,7 @@ def define(FILENAME_EXTENSION,
         'movie':         default_movie,
         'linebreak':     r'\g<text>',
         'non-breaking-space': ' ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     from rst import rst_code, rst_table
@@ -73,4 +75,5 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['st'] = plain_index_bib
     EXERCISE['st'] = plain_exercise
     TOC['st'] = lambda s: ''  # drop
-
+    from plaintext import plain_quiz
+    QUIZ['st'] = plain_quiz

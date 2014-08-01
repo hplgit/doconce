@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -11,72 +10,64 @@ Automatically generated HTML file from Doconce source
 
 
 
-<style type="text/css">
-    /* solarized style */
-    body {
-      margin:5;
-      padding:0;
-      border:0;	/* Remove the border around the viewport in old versions of IE */
-      width:100%;
-      background: #fdf6e3;
-      min-width:600px;	/* Minimum width of layout - remove if not required */
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-size: 1.0em;
-      line-height: 1.3em;
-      color: #657b83;
-    }
-    a { color: #657b83; text-decoration:none; }
-    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
-    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
-    h2 { font-variant: small-caps; }
-    pre {
-      background: #fdf6e3;
-      -webkit-box-shadow: inset 0 0 2px #000000;
-      -moz-box-shadow: inset 0 0 2px #000000;
-      box-shadow: inset 0 0 2px #000000;
-      color: #586e75;
-      margin-left: 0px;
-      font-family: 'Droid Sans Mono', monospace;
-      padding: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -moz-background-clip: padding;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-    }
-    tt, code { font-family: "Courier New", Courier; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p { text-indent: 0px; }
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+/* solarized style */
+body {
+  margin:5;
+  padding:0;
+  border:0; /* Remove the border around the viewport in old versions of IE */
+  width:100%;
+  background: #fdf6e3;
+  min-width:600px;	/* Minimum width of layout - remove if not required */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
+  line-height: 1.3em;
+  color: #657b83;
+}
+a { color: #859900; text-decoration: underline; }
+a:hover, a:active { outline:none }
+a, a:active, a:visited { color: #859900; }
+a:hover { color: #268bd2; }
+h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+h2 { font-variant: small-caps; }
+tt, code { font-family: monospace, sans-serif; box-shadow: none; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p { text-indent: 0px; }
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #FFBF00;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #fbeed5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -106,9 +97,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_bfmath.tex -->
 $$
@@ -152,36 +140,37 @@ $$
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Apr 3, 2014</h4></center> <!-- date -->
+<center><h4>Jul 28, 2014</h4></center> <!-- date -->
+<p>
+<!-- !split -->
 
-<h2>Introduction  <a name="___sec0"></a></h2>
+<h1>Introduction  <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h3>Code  <a name="___sec1"></a></h3>
+<h2>Code  <a name="___sec1"></a></h2>
 
-<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def some_code(x):
+    return sin(x)*exp(1-x)
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
-    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
-</pre></div>
 <p>
 And some plain text verbatim:
 
 <p>
-
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x=1.0 y=0.9 z=0.4
+<!-- begin verbatim block -->
+<pre><code>x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-</pre></div>
+</code></pre>
+<!-- end verbatim block -->
 
-<h3>Quotes and boxes  <a name="___sec2"></a></h3>
+<h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
-<p>
 Here is a plain quote environment.
 
 <p>
@@ -213,12 +202,9 @@ First a simple block with text, an equation, and a list:
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 A generic equation
 
-<p>
 $$ f(x) = 0 $$
 
 must be solved by a numerical method, such as
-
-<p>
 
 <ul>
  <li> Newton's method</li>
@@ -250,20 +236,17 @@ Let's begin a new paragraph and show a box with code only:
 
 <!-- begin box -->
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
-<p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">some_code</span>(x):
-    <span style="color: #8B008B; font-weight: bold">return</span> sin(x)*exp(<span style="color: #B452CD">1</span>-x)
-</pre></div>
-<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def some_code(x):
+    return sin(x)*exp(1-x)
+</code></pre>
+<!-- end verbatim block -->
 </div>
 <!-- end box -->
 
 
-<h3>Admonitions  <a name="___sec3"></a></h3>
+<h2>Admonitions  <a name="___sec3"></a></h2>
 
-<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -271,8 +254,6 @@ Let us start with a plain warning environment.
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
-
-<p>
 
 <ul>
   <li> and a list</li>
@@ -300,20 +281,18 @@ And here comes some text with bad news in larger font.
 Also some code:
 
 <p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
-    <span style="color: #8B008B; font-weight: bold">return</span> x
-</pre></div>
-<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def f(x):
+    return x
+</code></pre>
+<!-- end verbatim block -->
 And a complete program
 
 <p>
-
-<!-- code=python (from !bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello, World!&quot;</span>
-</pre></div>
-<p>
+<!-- begin verbatim block  pypro-->
+<pre><code>print &quot;Hello, World!&quot;
+</code></pre>
+<!-- end verbatim block -->
 </div>
 
 
@@ -362,7 +341,6 @@ code is present).
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
-<p>
 $$
 \begin{align*}
 \theta &= q^2,\\
@@ -383,7 +361,7 @@ Ah, we are soon close to the end.
 
 <p>
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
-So, how many admonition environments does Doconce support?
+So, how many admonition environments does DocOnce support?
 </div>
 
 
@@ -391,7 +369,7 @@ So, how many admonition environments does Doconce support?
 <div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
 
 <ol>
- <li> Once more, how many admonition environments does Doconce support?</li>
+ <li> Once more, how many admonition environments does DocOnce support?</li>
 </ol>
 </div>
 
@@ -399,8 +377,6 @@ So, how many admonition environments does Doconce support?
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
 It is of outmost important to
-
-<p>
 
 <ol>
 <li> stay cool</li>
@@ -410,14 +386,13 @@ It is of outmost important to
 Because here the thing is to do
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import urllib
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">urllib</span>
-
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">grab</span>(url, filename):
+def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-</pre></div>
-<p>
+</code></pre>
+<!-- end verbatim block -->
 </div>
 
 
@@ -430,9 +405,8 @@ And here comes some text with bad news.
 </div>
 
 
-<h3>Going deeper environments  <a name="___sec4"></a></h3>
+<h2>Going deeper environments  <a name="___sec4"></a></h2>
 
-<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -447,7 +421,6 @@ which the LaTeX environment should handle with ease.
 <p>
 Let us start with some equations:
 
-<p>
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
@@ -463,72 +436,69 @@ The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
 <p>
-
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Dudt</span>(u):
+<!-- begin verbatim block  pycod-->
+<pre><code>def Dudt(u):
     r = diff(u, t) + u*grad(u)
-    <span style="color: #8B008B; font-weight: bold">return</span> r
+    return r
 
-half = <span style="color: #B452CD">0.5</span>
-x = <span style="color: #B452CD">2</span>*n
-</pre></div>
-<p>
+half = 0.5
+x = 2*n
+</code></pre>
+<!-- end verbatim block -->
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Diff</span>:
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
-        <span style="color: #658b00">self</span>.f = f
-        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+class Forward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward1</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+class Backward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x) - f(x-h))/h
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Backward1</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (f(x) - f(x-h))/h
+class Central2(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x-h))/(2*h)
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central2</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x-h))/(<span style="color: #B452CD">2</span>*h)
+class Central4(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+               (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central4</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
-               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h)
+class Central6(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
+               (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
+               (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
 
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central6</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">3.</span>/<span style="color: #B452CD">2</span>) *(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
-               (<span style="color: #B452CD">3.</span>/<span style="color: #B452CD">5</span>) *(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h) + \
-               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">10</span>)*(f(x+<span style="color: #B452CD">3</span>*h) - f(x-<span style="color: #B452CD">3</span>*h))/(<span style="color: #B452CD">6</span>*h)
-
-<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward3</span>(Diff):
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
-        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
-        <span style="color: #8B008B; font-weight: bold">return</span> (-(<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">6</span>)*f(x+<span style="color: #B452CD">2</span>*h) + f(x+h) - <span style="color: #B452CD">0.5</span>*f(x) - \
-                (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*f(x-h))/h
-</pre></div>
-<p>
+class Forward3(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
+                (1./3)*f(x-h))/h
+</code></pre>
+<!-- end verbatim block -->
 And then we add a figure too.
 
 <p>
-<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+<center><p><img src="../../doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
 </div>
 
 
-<h3>The end  <a name="___sec5"></a></h3>
+<h2>The end  <a name="___sec5"></a></h2>
 
-<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.

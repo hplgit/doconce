@@ -2,10 +2,15 @@
 See http://johnmacfarlane.net/pandoc/README.html
 for syntax.
 """
+# Remaining key issue: github_md dialect hardcodes all the newlines so
+# lines in paragraphs should be joined if the resulting Markdown text
+# is published as an issue on github.com. (Difficult to solve. Current
+# solution seems to be manual editing, which is doable for small
+# documents and issues.)
 
 import re, sys
 from common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, bibliography
+     insert_code_and_tex, bibliography, indent_lines
 from html import html_movie, html_table
 from misc import option
 
@@ -66,7 +71,8 @@ def pandoc_code(filestr, code_blocks, code_block_types,
         m = re.search(r'\\begin\{(.+?)\}', tex_blocks[i])
         if m:
             envir = m.group(1)
-            if envir not in ('equation', 'equation*', 'align*', 'align'):
+            if envir not in ('equation', 'equation*', 'align*', 'align',
+                             'array'):
                 print """\
 *** warning: latex envir \\begin{%s} does not work well.
 """ % envir
@@ -82,22 +88,24 @@ def pandoc_code(filestr, code_blocks, code_block_types,
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
+    github_md = option('github_md')
+
     if not option('strict_markdown_output'):
         # Mapping of envirs to correct Pandoc verbatim environment
-        defs = dict(cod='Python', pycod='Python', cppcod='Cpp',
-                    fcod='Fortran', ccod='C',
-                    pro='Python', pypro='Python', cpppro='Cpp',
-                    fpro='Fortran', cpro='C',
+        defs = dict(cod='Python', pycod='Python',
+                    cppcod='Cpp', fcod='Fortran', ccod='C',
+                    pro='Python', pypro='Python',
+                    cpppro='Cpp', fpro='Fortran', cpro='C',
                     rbcod='Ruby', rbpro='Ruby',
                     plcod='Perl', plpro='Perl',
+                    htmlcod='HTML', htmlpro='HTML',
                     # sys, dat, csv, txt: no support for pure text,
                     # just use a plain text block
                     #sys='Bash',
-                    pyoptpro='Python', pyscpro='Python')
-            # (the "python" typesetting is neutral if the text
+                    pyoptpro='Python', pyscpro='Python',
+                    ipy='Python', pyshell='Python')
+            # (the "Python" typesetting is neutral if the text
             # does not parse as python)
-
-        github_md = option('github_md')
 
         # Code blocks apply the ~~~~~ delimiter, with blank lines before
         # and after
@@ -120,10 +128,14 @@ def pandoc_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(r'^!bc.*$', replacement, filestr, flags=re.MULTILINE)
 
         if github_md:
-            replacement = '\n```\n'
+            replacement = '```\n'
         else:
             replacement = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n'
         filestr = re.sub(r'^!ec\s*$', replacement, filestr, flags=re.MULTILINE)
+    else:
+        # Strict Markdown: just indented blocks
+        filestr = re.sub(r'^!bc.*$', '', filestr, flags=re.MULTILINE)
+        filestr = re.sub(r'^!ec\s*$', '', filestr, flags=re.MULTILINE)
 
     filestr = re.sub(r'^!bt *\n', '', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '', filestr, flags=re.MULTILINE)
@@ -288,6 +300,9 @@ def pandoc_quote(block, format, text_size='normal'):
         lines.append('> ' + line)
     return '\n'.join(lines) + '\n\n'
 
+def pandoc_quiz(quiz):
+    return '*Cannot typeset quiz*: "%s"' % quiz.get('question', '')
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -301,6 +316,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -333,11 +349,12 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),
         'subsubsection': lambda m: '#### ' + m.group('subst') + '\n',
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'*\g<subst>*\g<space>',
         'abstract':      r'*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>\\n',
         'non-breaking-space': '\\ ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['pandoc'] = pandoc_code
@@ -357,7 +374,8 @@ def define(FILENAME_EXTENSION,
         'description':
         {'begin': '', 'item': '%s\n  :   ', 'end': '\n'},
 
-        'separator': '\n',
+        #'separator': '\n',
+        'separator': '',
         }
     CROSS_REFS['pandoc'] = pandoc_ref_and_label
 
@@ -365,6 +383,7 @@ def define(FILENAME_EXTENSION,
     INDEX_BIB['pandoc'] = pandoc_index_bib
     EXERCISE['pandoc'] = plain_exercise
     TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
+    QUIZ['pandoc'] = pandoc_quiz
     FIGURE_EXT['pandoc'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
 
     # Wrap markdown output in strapdown HTML code for quick auto rendering
@@ -392,4 +411,3 @@ def define(FILENAME_EXTENSION,
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
 """
-

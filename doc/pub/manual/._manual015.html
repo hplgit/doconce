@@ -1,0 +1,706 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="DocOnce Description">
+<meta name="keywords" content="doconce short explanation,demos,headlines,section headings,inline tagging,emphasized words,boldface words,verbatim text,inline comments,non-breaking space,nbsp,quotation syntax,non-breaking space,footnotes,cross referencing,labels,references,index,citations,bibliography,some index entry,main entry subentry,doconce format options,command-line options doconce format">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' What Is DocOnce? ', 1, 'what:is:doconce', 'what:is:doconce'),
+              (' Demos ', 2, None, '___sec1'),
+              (' The DocOnce Markup Language ', 1, None, '___sec2'),
+              (' Lists ', 2, None, '___sec3'),
+              (' Special lines ', 2, None, '___sec4'),
+              (' Heading with title and author(s) ', 2, None, '___sec5'),
+              (' Table of contents ', 2, None, '___sec6'),
+              (' Section headings ', 2, None, '___sec7'),
+              (' Figures ', 2, None, '___sec8'),
+              (' Movies ', 2, None, '___sec9'),
+              (' The Basic Command ', 3, None, '___sec10'),
+              (' MP4, WebM, and Ogg Movies in HTML ', 3, None, '___sec11'),
+              (' Movie Handling in Various Formats ', 3, None, '___sec12'),
+              (' YouTube and Vimeo Movies ', 3, None, '___sec13'),
+              (' Animation Based on Filename Generators ',
+               3,
+               None,
+               '___sec14'),
+              (' Copying Computer Code from Source Files ',
+               2,
+               None,
+               '___sec15'),
+              (' Inserting the Output from Operating System Commands ',
+               2,
+               None,
+               '___sec16'),
+              (' Inline Tagging ', 2, 'inline:tagging', 'inline:tagging'),
+              (' Emphasized Words ', 3, None, '___sec18'),
+              (' Inline Verbatim Text ', 3, None, '___sec19'),
+              (' Links to Web Addresses ', 3, None, '___sec20'),
+              (' Mail Addresses ', 3, None, '___sec21'),
+              (' Links to Local Files ', 3, None, '___sec22'),
+              (' Quotes ', 3, None, '___sec23'),
+              (' Non-Breaking Space ', 3, None, '___sec24'),
+              (' Horizontal rule ', 3, None, '___sec25'),
+              (' em-dash ', 3, None, '___sec26'),
+              (' Ampersand ', 3, None, '___sec27'),
+              (' Footnotes ', 3, None, '___sec28'),
+              (' Inline Comments ', 3, None, '___sec29'),
+              (' Inline Comments for Editing ', 3, None, '___sec30'),
+              (' Forced Line Breaks ', 3, None, '___sec31'),
+              (' Inline Mathematics ', 3, None, '___sec32'),
+              (' Comments ', 2, None, '___sec33'),
+              (' Cross-Referencing ', 2, None, '___sec34'),
+              (' Generalized Cross-Referencing ',
+               2,
+               'manual:genrefs',
+               'manual:genrefs'),
+              (' A Worked Example ', 3, None, '___sec36'),
+              (' Index ', 2, None, '___sec37'),
+              (' Bibliography/References ', 2, None, '___sec38'),
+              (' Importing your data to the Publish database ',
+               3,
+               None,
+               '___sec39'),
+              (' Requirements to input data ', 3, None, '___sec40'),
+              (' Adding new references to the database ',
+               3,
+               None,
+               '___sec41'),
+              (' Exporting the database ', 3, None, '___sec42'),
+              (' Referring to publications ', 3, None, '___sec43'),
+              (' Specifying the Publish database ', 3, None, '___sec44'),
+              (' LaTeX bibliography style ', 3, None, '___sec45'),
+              (' Tables ', 2, None, '___sec46'),
+              (' Exercises, Problems, Projects, and Examples ',
+               2,
+               None,
+               '___sec47'),
+              (' List of Exercises, Problems, and Projects ',
+               3,
+               None,
+               '___sec48'),
+              (' Blocks of Verbatim Computer Code ',
+               2,
+               'sec:verbatim:blocks',
+               'sec:verbatim:blocks'),
+              (' LaTeX Blocks of Mathematical Text ',
+               2,
+               'mathtext',
+               'mathtext'),
+              (' Mathematics for PowerPoint/OpenOffice ',
+               3,
+               None,
+               '___sec51'),
+              (' Macros (Newcommands) ', 2, 'newcommands', 'newcommands'),
+              (' Admonitions ', 2, None, '___sec53'),
+              (' The Box Environment ', 3, None, '___sec54'),
+              (' Typesetting of Algorithms ', 2, None, '___sec55'),
+              (' Preprocessing Steps ', 2, None, '___sec56'),
+              (' Splitting Documents into Smaller Pieces ',
+               2,
+               None,
+               '___sec57'),
+              (' Header and Footer ', 2, None, '___sec58'),
+              (' Missing Features ', 2, None, '___sec59'),
+              (' Guidelines for LaTeX Writers ', 2, None, '___sec60'),
+              (' Emacs DocOnce Formatter ',
+               2,
+               'emacs:doconce',
+               'emacs:doconce'),
+              (' Writing Slides ', 1, None, '___sec62'),
+              (' Overview ', 2, None, '___sec63'),
+              (' HTML5 Slides ', 2, None, '___sec64'),
+              (' Potential Problems ', 3, None, '___sec65'),
+              (' LaTeX Beamer Slides ', 2, None, '___sec66'),
+              (' Themes ', 3, None, '___sec67'),
+              (' Mako Programming ', 1, None, '___sec68'),
+              (' The Basics of Mako ', 2, None, '___sec69'),
+              (' Debugging Python code in Mako ',
+               2,
+               'mako:py:debugging',
+               'mako:py:debugging'),
+              (' Example: Executing Python and using SymPy Objects in LaTeX ',
+               2,
+               None,
+               '___sec71'),
+              (' Example: Extending Tables to Handle Figures ',
+               2,
+               'manual:tables:wfigs',
+               'manual:tables:wfigs'),
+              (' Solution for LaTeX and HTML ', 3, None, '___sec73'),
+              (' Generating the Entire Table ', 3, None, '___sec74'),
+              (' Generating the Entire Table in a Native Format via Mako ',
+               3,
+               None,
+               '___sec75'),
+              (' Generating the Entire Table in a Native Format as a Post Process ',
+               3,
+               None,
+               '___sec76'),
+              (' Example: Defining a Theorem Environment ',
+               2,
+               'manual:theorem:envir',
+               'manual:theorem:envir'),
+              (' Tools for Writing DocOnce Documents ', 2, None, '___sec78'),
+              (' Debugging ', 2, None, '___sec79'),
+              (' From DocOnce to Other Formats ',
+               1,
+               'doconce2formats',
+               'doconce2formats'),
+              (' Generating a makefile ', 2, None, '___sec81'),
+              (' Preprocessing ', 2, None, '___sec82'),
+              (' Removal of inline comments ', 2, None, '___sec83'),
+              (' Notes ', 2, None, '___sec84'),
+              (' Demo of different formats ', 2, None, '___sec85'),
+              (' HTML ', 2, None, '___sec86'),
+              (' Basics ', 3, None, '___sec87'),
+              (' Typesetting of Code ', 3, None, '___sec88'),
+              (' Handling of Movies ', 3, None, '___sec89'),
+              (' HTML Styles ', 3, None, '___sec90'),
+              (' HTML templates ', 3, None, '___sec91'),
+              (' The HTML File Collection ', 3, None, '___sec92'),
+              (' Filenames ', 3, None, '___sec93'),
+              (' Blog Posts ', 2, None, '___sec94'),
+              (' Pandoc and Markdown ', 2, None, '___sec95'),
+              (' Markdown to HTML conversion ', 3, None, '___sec96'),
+              (' Using Pandoc to go from LaTeX to MS Word or HTML ',
+               3,
+               None,
+               '___sec97'),
+              (' Strict Markdown ', 3, None, '___sec98'),
+              (' GitHub-flavored Markdown ', 3, None, '___sec99'),
+              (' MultiMarkdown ', 3, None, '___sec100'),
+              (' Strapdown rendering of Markdown text ',
+               3,
+               None,
+               '___sec101'),
+              (' LaTeX ', 2, None, '___sec102'),
+              (' PDFLaTeX ', 2, None, '___sec103'),
+              (' XeLaTeX ', 2, None, '___sec104'),
+              (' From PDF to e-book formats ', 2, None, '___sec105'),
+              (' Plain ASCII Text ', 2, None, '___sec106'),
+              (' reStructuredText ', 2, None, '___sec107'),
+              (' Sphinx ', 2, None, '___sec108'),
+              (' The manual Sphinx procedure ', 3, None, '___sec109'),
+              (' Wiki Formats ', 2, None, '___sec110'),
+              (' Google Docs ', 2, None, '___sec111'),
+              (' Tweaking the DocOnce Output ', 2, None, '___sec112'),
+              (' Options for the `doconce` commands ', 1, None, '___sec113'),
+              (' `doconce format` command-line options ',
+               2,
+               None,
+               '___sec114'),
+              (' Installation of DocOnce and its Dependencies ',
+               1,
+               'install:doconce',
+               'install:doconce'),
+              (' DocOnce ', 2, None, '___sec116'),
+              (' Dependencies ', 2, None, '___sec117'),
+              (' Preprocessors ', 3, None, '___sec118'),
+              (' Image file handling ', 3, None, '___sec119'),
+              (' Spellcheck ', 3, None, '___sec120'),
+              (' Bibliography ', 3, None, '___sec121'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec122'),
+              (' LaTeX packages ', 3, None, '___sec123'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec124'),
+              (' Sphinx Output ', 3, None, '___sec125'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec126'),
+              (' Epydoc Output ', 3, None, '___sec127'),
+              (' Analyzing file differences ', 3, None, '___sec128'),
+              (' Quick Debian/Ubuntu Install ',
+               2,
+               'install:debian:script',
+               'install:debian:script'),
+              (' Basic Parsing Ideas ', 1, None, '___sec130'),
+              (' Typesetting of Function Arguments, Return Values, and Variables ',
+               2,
+               None,
+               '___sec131'),
+              (' References ', 1, None, '___sec132')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\half}{\frac{1}{2}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\ep}{\thinspace . }
+\newcommand{\uvec}{\vec u}
+\newcommand{\Q}{\pmb{Q}}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="manual.html">DocOnce Description</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "What Is DocOnce?" --> <li><a href="._manual000.html#what:is:doconce" style="font-size: 80%;"><b>What Is DocOnce?</b></a></li>
+     <!-- navigation toc: "Demos" --> <li><a href="._manual002.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demos</a></li>
+     <!-- navigation toc: "The DocOnce Markup Language" --> <li><a href="._manual003.html#___sec2" style="font-size: 80%;"><b>The DocOnce Markup Language</b></a></li>
+     <!-- navigation toc: "Lists" --> <li><a href="._manual003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
+     <!-- navigation toc: "Special lines" --> <li><a href="._manual004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Special lines</a></li>
+     <!-- navigation toc: "Heading with title and author(s)" --> <li><a href="._manual004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Heading with title and author(s)</a></li>
+     <!-- navigation toc: "Table of contents" --> <li><a href="._manual004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Table of contents</a></li>
+     <!-- navigation toc: "Section headings" --> <li><a href="._manual005.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Section headings</a></li>
+     <!-- navigation toc: "Figures" --> <li><a href="._manual006.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures</a></li>
+     <!-- navigation toc: "Movies" --> <li><a href="._manual007.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Movies</a></li>
+     <!-- navigation toc: "Copying Computer Code from Source Files" --> <li><a href="._manual008.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Copying Computer Code from Source Files</a></li>
+     <!-- navigation toc: "Inserting the Output from Operating System Commands" --> <li><a href="._manual008.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inserting the Output from Operating System Commands</a></li>
+     <!-- navigation toc: "Inline Tagging" --> <li><a href="._manual009.html#inline:tagging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline Tagging</a></li>
+     <!-- navigation toc: "Comments" --> <li><a href="._manual010.html#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comments</a></li>
+     <!-- navigation toc: "Cross-Referencing" --> <li><a href="._manual011.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cross-Referencing</a></li>
+     <!-- navigation toc: "Generalized Cross-Referencing" --> <li><a href="._manual011.html#manual:genrefs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generalized Cross-Referencing</a></li>
+     <!-- navigation toc: "Index" --> <li><a href="._manual012.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Index</a></li>
+     <!-- navigation toc: "Bibliography/References" --> <li><a href="._manual012.html#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography/References</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._manual013.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "Exercises, Problems, Projects, and Examples" --> <li><a href="._manual014.html#___sec47" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercises, Problems, Projects, and Examples</a></li>
+     <!-- navigation toc: "Blocks of Verbatim Computer Code" --> <li class="active"><a href="._manual015.html#sec:verbatim:blocks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blocks of Verbatim Computer Code</a></li>
+     <!-- navigation toc: "LaTeX Blocks of Mathematical Text" --> <li><a href="._manual016.html#mathtext" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Blocks of Mathematical Text</a></li>
+     <!-- navigation toc: "Macros (Newcommands)" --> <li><a href="._manual017.html#newcommands" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Macros (Newcommands)</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._manual018.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Typesetting of Algorithms" --> <li><a href="._manual018.html#___sec55" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Algorithms</a></li>
+     <!-- navigation toc: "Preprocessing Steps" --> <li><a href="._manual018.html#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing Steps</a></li>
+     <!-- navigation toc: "Splitting Documents into Smaller Pieces" --> <li><a href="._manual019.html#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Splitting Documents into Smaller Pieces</a></li>
+     <!-- navigation toc: "Header and Footer" --> <li><a href="._manual019.html#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Header and Footer</a></li>
+     <!-- navigation toc: "Missing Features" --> <li><a href="._manual020.html#___sec59" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Missing Features</a></li>
+     <!-- navigation toc: "Guidelines for LaTeX Writers" --> <li><a href="._manual020.html#___sec60" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Guidelines for LaTeX Writers</a></li>
+     <!-- navigation toc: "Emacs DocOnce Formatter" --> <li><a href="._manual020.html#emacs:doconce" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Emacs DocOnce Formatter</a></li>
+     <!-- navigation toc: "Writing Slides" --> <li><a href="._manual021.html#___sec62" style="font-size: 80%;"><b>Writing Slides</b></a></li>
+     <!-- navigation toc: "Overview" --> <li><a href="._manual022.html#___sec63" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Overview</a></li>
+     <!-- navigation toc: "HTML5 Slides" --> <li><a href="._manual022.html#___sec64" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML5 Slides</a></li>
+     <!-- navigation toc: "LaTeX Beamer Slides" --> <li><a href="._manual022.html#___sec66" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Beamer Slides</a></li>
+     <!-- navigation toc: "Mako Programming" --> <li><a href="._manual023.html#___sec68" style="font-size: 80%;"><b>Mako Programming</b></a></li>
+     <!-- navigation toc: "The Basics of Mako" --> <li><a href="._manual023.html#___sec69" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Basics of Mako</a></li>
+     <!-- navigation toc: "Debugging Python code in Mako" --> <li><a href="._manual023.html#mako:py:debugging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging Python code in Mako</a></li>
+     <!-- navigation toc: "Example: Executing Python and using SymPy Objects in LaTeX" --> <li><a href="._manual024.html#___sec71" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Executing Python and using SymPy Objects in LaTeX</a></li>
+     <!-- navigation toc: "Example: Extending Tables to Handle Figures" --> <li><a href="._manual025.html#manual:tables:wfigs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Extending Tables to Handle Figures</a></li>
+     <!-- navigation toc: "Example: Defining a Theorem Environment" --> <li><a href="._manual026.html#manual:theorem:envir" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Defining a Theorem Environment</a></li>
+     <!-- navigation toc: "Tools for Writing DocOnce Documents" --> <li><a href="._manual027.html#___sec78" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tools for Writing DocOnce Documents</a></li>
+     <!-- navigation toc: "Debugging" --> <li><a href="._manual027.html#___sec79" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging</a></li>
+     <!-- navigation toc: "From DocOnce to Other Formats" --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;"><b>From DocOnce to Other Formats</b></a></li>
+     <!-- navigation toc: "Generating a makefile" --> <li><a href="._manual028.html#___sec81" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating a makefile</a></li>
+     <!-- navigation toc: "Preprocessing" --> <li><a href="._manual028.html#___sec82" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing</a></li>
+     <!-- navigation toc: "Removal of inline comments" --> <li><a href="._manual028.html#___sec83" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Removal of inline comments</a></li>
+     <!-- navigation toc: "Notes" --> <li><a href="._manual028.html#___sec84" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notes</a></li>
+     <!-- navigation toc: "Demo of different formats" --> <li><a href="._manual028.html#___sec85" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demo of different formats</a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._manual028.html#___sec86" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "Blog Posts" --> <li><a href="._manual028.html#___sec94" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blog Posts</a></li>
+     <!-- navigation toc: "Pandoc and Markdown" --> <li><a href="._manual028.html#___sec95" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Pandoc and Markdown</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._manual028.html#___sec102" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: "PDFLaTeX" --> <li><a href="._manual028.html#___sec103" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;PDFLaTeX</a></li>
+     <!-- navigation toc: "XeLaTeX" --> <li><a href="._manual028.html#___sec104" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;XeLaTeX</a></li>
+     <!-- navigation toc: "From PDF to e-book formats" --> <li><a href="._manual028.html#___sec105" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;From PDF to e-book formats</a></li>
+     <!-- navigation toc: "Plain ASCII Text" --> <li><a href="._manual028.html#___sec106" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plain ASCII Text</a></li>
+     <!-- navigation toc: "reStructuredText" --> <li><a href="._manual028.html#___sec107" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;reStructuredText</a></li>
+     <!-- navigation toc: "Sphinx" --> <li><a href="._manual028.html#___sec108" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
+     <!-- navigation toc: "Wiki Formats" --> <li><a href="._manual028.html#___sec110" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki Formats</a></li>
+     <!-- navigation toc: "Google Docs" --> <li><a href="._manual028.html#___sec111" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Google Docs</a></li>
+     <!-- navigation toc: "Tweaking the DocOnce Output" --> <li><a href="._manual028.html#___sec112" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tweaking the DocOnce Output</a></li>
+     <!-- navigation toc: "Options for the `doconce` commands" --> <li><a href="._manual028.html#___sec113" style="font-size: 80%;"><b>Options for the `doconce` commands</b></a></li>
+     <!-- navigation toc: "`doconce format` command-line options" --> <li><a href="._manual028.html#___sec114" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`doconce format` command-line options</a></li>
+     <!-- navigation toc: "Installation of DocOnce and its Dependencies" --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
+     <!-- navigation toc: "DocOnce" --> <li><a href="._manual029.html#___sec116" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
+     <!-- navigation toc: "Dependencies" --> <li><a href="._manual029.html#___sec117" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
+     <!-- navigation toc: "Quick Debian/Ubuntu Install" --> <li><a href="._manual029.html#install:debian:script" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick Debian/Ubuntu Install</a></li>
+     <!-- navigation toc: "Basic Parsing Ideas" --> <li><a href="._manual029.html#___sec130" style="font-size: 80%;"><b>Basic Parsing Ideas</b></a></li>
+     <!-- navigation toc: "Typesetting of Function Arguments, Return Values, and Variables" --> <li><a href="._manual029.html#___sec131" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Function Arguments, Return Values, and Variables</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._manual029.html#___sec132" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0015"></a>
+<!-- !split -->
+
+<h2>Blocks of Verbatim Computer Code <a name="sec:verbatim:blocks"></a></h2>
+
+Blocks of computer code, to be typeset verbatim, must appear inside a
+&quot;begin code&quot; <code>!bc</code> keyword and an &quot;end code&quot; <code>!ec</code> keyword. Both
+keywords must be on a single line and <em>start at the beginning of the
+line</em>.  Before such a code block there must be a plain sentence
+(at least if successful transformation to reST and
+ASCII-type formats is desired). For example, a code block cannot come
+directly after a section/paragraph heading or a table.
+
+<p>
+Here is a plain code block:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc
+% Could be a comment line in some file
+% And some data
+1.003 1.025
+2.204 1.730
+3.001 1.198
+!ec
+</pre></div>
+<p>
+which gets rendered as
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">% Could be a comment line in some file
+% And some data
+1.003 1.025
+2.204 1.730
+3.001 1.198
+</pre></div>
+<p>
+There may be an argument after the <code>!bc</code> tag to specify a certain
+environment (for <code>ptex2tex</code>, <code>doconce ptex2tex</code>, or Sphinx) for
+typesetting the verbatim code. For instance, <code>!bc dat</code> corresponds to
+the data file environment and <code>!bc cod</code> is typically used for a code
+snippet. There are some predefined environments explained below. If
+there is no argument specifying the environment, one assumes some
+plain verbatim typesetting (for <code>ptex2tex</code> this means the <code>ccq</code>
+environment, which is defined in the config file <code>.ptex2tex.cfg</code>,
+while for Sphinx it defaults to the <code>python</code> environment).
+
+<p>
+By default, <code>pro</code> is used for complete programs in Python, <code>cod</code> is
+for a code snippet in Python, while <code>xcod</code> and <code>xpro</code> implies computer
+language specific typesetting where <code>x</code> can be <code>f</code> for Fortran, <code>c</code>
+for C, <code>cpp</code> for C++, <code>sh</code> for Unix shells, <code>pl</code> for Perl, <code>m</code> for
+Matlab, <code>cy</code> for Cython, <code>r</code> for Ruby, and <code>py</code> for Python.  The
+argument <code>sys</code> means by default <code>console</code> for Sphinx and
+<code>CodeTerminal</code> (ptex2tex environent) for LaTeX. Other specifications
+are <code>dat</code> for a data file or print out, <code>latex</code> for LaTeX`, <code>js</code> for
+JavaScript, <code>html</code> for HTML, <code>pyshell</code> for plain interactive Python
+shell sessions, and <code>ipy</code> for interactive IPython sessions (the latter
+does not introduce any environment in <code>sphinx</code> output, as interactive
+sessions are automatically recognized and handled in that format).
+(All these definitions of the arguments after <code>!bc</code> can be redefined
+in the <code>.ptex2tex.cfg</code> configuration file for ptex2tex/LaTeX and in
+the <code>sphinx code-blocks</code> comments for Sphinx, see below.)
+
+<p>
+Since the config file for <code>ptex2tex</code> and command-line arguments for
+the alternative <code>doconce ptex2tex</code> program can define what some environments
+map onto with respect to typesetting, a similar possibility is
+supported for Sphinx as well.  The argument after <code>!bc</code> is in case of
+Sphinx output mapped onto a valid Pygments language for typesetting of
+the verbatim block by Pygments. This mapping takes place in an
+optional comment to be inserted in the DocOnce source file, e.g.,
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console</span>
+</pre></div>
+<p>
+Here, three arguments are defined: <code>!bc pycod</code> maps on to the
+Pygments style <code>python</code> for Python code,
+<code>!bc cod</code> maps on to the Pygments style <code>fortran</code> for Fortran
+code, <code>!bc cppcod</code>  maps on to the Pygments style <code>c++</code> for C++ code,
+and <code>!bc sys</code> maps on to the Pygments <code>console</code> style for
+terminal sessions. The same arguments would be defined
+in <code>.ptex2tex.cfg</code> or on the command line for <code>doconce ptex2tex</code>
+for how to typeset the blocks in LaTeX using
+various verbatim styles (Pygments can also be used in a LaTeX
+context).
+
+<p>
+<!-- (Any sphinx code-block comment, whether inside verbatim code -->
+<!-- blocks or outside, yields a mapping between bc arguments -->
+<!-- and computer languages. In case of muliple definitions, the -->
+<!-- first one is used.) -->
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Tip.</b>
+The enclosing <code>!ec</code> tag of verbatim computer code blocks must
+be followed by a newline.  A common error in list environments is to
+forget to indent the plain text surrounding the code blocks. In
+general, we recommend to use paragraph headings instead of list items
+in combination with code blocks (it usually looks better, and some
+common errors are naturally avoided).
+</div>
+
+
+<p>
+Here is a verbatim code block with Python code (<code>pycod</code> style):
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
+def f(x, y):
+    return x + y
+
+<span style="color: #408080; font-style: italic"># Main program</span>
+from math import pi
+print &#39;Testing f:&#39;, f(pi, 0)
+!ec
+</pre></div>
+<p>
+The typeset result of this block becomes
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x, y):
+    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> y
+
+<span style="color: #408080; font-style: italic"># Main program</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Testing f:&#39;</span>, f(pi, <span style="color: #666666">0</span>)
+</pre></div>
+<p>
+And here is a C++ code snippet (<code>cppcod</code> style):
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc cppcod
+void myfunc(double* x, const double&amp; myarr) {
+    for (int i = 1; i &lt; myarr.size(); i++) {
+        myarr[i] = myarr[i] - x[i]*myarr[i-1]
+    }
+}
+!ec
+</pre></div>
+<p>
+with the rendered result
+
+<p>
+
+<!-- code=c++ (!bc cppcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B00040">void</span> <span style="color: #0000FF">myfunc</span>(<span style="color: #B00040">double</span><span style="color: #666666">*</span> x, <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">double</span><span style="color: #666666">&amp;</span> myarr) {
+    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">int</span> i <span style="color: #666666">=</span> <span style="color: #666666">1</span>; i <span style="color: #666666">&lt;</span> myarr.size(); i<span style="color: #666666">++</span>) {
+        myarr[i] <span style="color: #666666">=</span> myarr[i] <span style="color: #666666">-</span> x[i]<span style="color: #666666">*</span>myarr[i<span style="color: #666666">-1</span>]
+    }
+}
+</pre></div>
+<p>
+<!-- When showing copy from file in !bc envir, intent a character - otherwise -->
+<!-- ptex2tex is confused and starts copying. However, here (in make.sh) we use -->
+<!-- doconce ptex2tex which does not have this problem. -->
+Computer code can be copied directly from a file, if desired. The syntax
+is then
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #800080; font-weight: bold">@@@CODE myfile.f</span>
+<span style="color: #800080; font-weight: bold">@@@CODE myfile.f fromto: subroutine\s+test@^C\s{5}END1</span>
+</pre></div>
+<p>
+The first line implies that all lines in the file <code>myfile.f</code> are
+copied into a verbatim block, typset in a <code>!bc Xpro</code> environment, where
+<code>X</code> is the extension of the filename, here <code>f</code> (i.e., the environment
+becomes <code>!bc fpro</code> and will typically lead to some Fortran-style
+formatting).  The
+second line has a <code>fromto:</code> directive, which implies copying code
+between two lines in the code, typset within a !`bc Xcod`
+environment (again, <code>X</code> is the filename extension, implying the
+type of file). Note that the <code>pro</code> and <code>cod</code> arguments are only used for LaTeX
+and Sphinx output, all other formats will have the code typeset within
+a plain <code>!bc</code> environment.) Two regular expressions, separated by the
+<code>@</code> sign, define the &quot;from&quot; and &quot;to&quot; lines.  The &quot;from&quot; line is
+included in the verbatim block, while the &quot;to&quot; line is not. In the
+example above, we copy code from the line matching <code>subroutine test</code>
+(with as many blanks as desired between the two words) and the line
+matching <code>C END1</code> (C followed by 5 blanks and then the text END1). The
+final line with the &quot;to&quot; text is not included in the verbatim block.
+
+<p>
+One can also specify the code environment explictly rather than relying
+on the file extension:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #800080; font-weight: bold">@@@CODE somefile.py envir=X fromto: def myfunc@def yourfunc</span>
+</pre></div>
+<p>
+This is the same as writing <code>!bc X</code> and copying parts of the <code>somefile.py</code>
+text into the DocOnce source file, followed by <code>!ec</code>.
+For example, if the lines between the <code>myfunc</code> and <code>yourfunc</code> functions
+actually work as a complete Python program, one could specify <code>envir=pypro</code>
+to indicate that it is a complete program and not a snippet (i.e.,
+<code>pycod</code> would be the default without <code>envir=pypro</code> in this case).
+
+<p>
+Let us copy a whole file (the first line above):
+
+<p>
+
+<!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
+
+      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
+      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
+      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
+         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+      <span style="color: #008000; font-weight: bold">end do</span>
+<span style="color: #008000; font-weight: bold">      return</span>
+<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+
+      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
+      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">return</span>
+</pre></div>
+<p>
+Let us then copy just a piece in the middle as indicated by the <code>fromto:</code>
+directive above:
+
+<p>
+
+<!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
+      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
+      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
+         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+      <span style="color: #008000; font-weight: bold">end do</span>
+<span style="color: #008000; font-weight: bold">      return</span>
+</pre></div>
+<p>
+Note that the &quot;to&quot; line is not copied into the DocOnce file, but the
+&quot;from&quot; line is. Sometimes it is convenient to also neglect the
+&quot;from&quot; line, a feature that is allowed by replacing <code>fromto:</code> by
+<code>from-to</code> (&quot;from with minus&quot;). This allows for copying very similar
+code segments throughout a file, while still distinguishing between them.
+Copying the second set of parameters from the text
+
+<p>
+
+<!-- code=text (!bc cod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># --- Start Example 1 ---
+c = -1
+A = 2
+p0 = 4
+simulate_and_plot(c, A, p0)
+# --- End Example 1 ---
+
+# --- Start Example 2 ---
+c = -1
+A = 1
+p0 = 0
+simulate_and_plot(c, A, p0)
+# --- End Example 2 ---
+</pre></div>
+<p>
+is easy with
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">from-to: Start Example 2@End Example 2
+</pre></div>
+<p>
+With only <code>fromto:</code> this would be impossible.
+
+<p>
+Remark for those familiar with <code>ptex2tex</code>: The from-to
+syntax is slightly different from that used in <code>ptex2tex</code>. When
+transforming DocOnce to LaTeX, one first transforms the document to a
+<code>.p.tex</code> file to be treated by <code>ptex2tex</code>. However, the <code>@@@CODE</code> line
+is interpreted by DocOnce and replaced by the mentioned
+pro or cod environment which are defined in the <code>ptex2tex</code> configuration
+file.
+
+<p>
+Remark for those familiar with the <code>listings</code> package in LaTeX: the
+<code>listing</code> package can copy code from files, but snippets must be
+specified through exact line numbers. The <code>@@@CODE</code> directive
+above works with regular expressions which are much less sensitive
+to edits of the source code file than the line numbers.
+Moreover, copy of code from file works in Dococe across formats
+(HTML, Sphinx, Markdown, etc.).
+
+<p>
+<p>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="._manual014.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._manual016.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

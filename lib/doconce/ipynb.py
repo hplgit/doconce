@@ -192,6 +192,7 @@ def define(FILENAME_EXTENSION,
            INDEX_BIB,
            TOC,
            ENVIRS,
+           QUIZ,
            INTRO,
            OUTRO,
            filestr):
@@ -223,11 +224,12 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),
         'subsubsection': lambda m: '#### ' + m.group('subst') + '\n',
-        'paragraph':     r'*\g<subst>* ',  # extra blank
+        'paragraph':     r'*\g<subst>*\g<space>',
         'abstract':      r'\n*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>',  # Not sure how this is supported; Markdown applies <br> but that cannot be used for latex output with ipynb...
         'non-breaking-space': ' ',
+        'ampersand2':    r' \g<1>&\g<2>',
         }
 
     CODE['ipynb'] = ipynb_code
@@ -256,4 +258,4 @@ def define(FILENAME_EXTENSION,
     EXERCISE['ipynb'] = plain_exercise
     TOC['ipynb'] = lambda s: ''
     FIGURE_EXT['ipynb'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
-
+    QUIZ['ipynb'] = lambda quiz: '**Cannot typeset quiz**: "%s"' % quiz.get('heading', '')

@@ -178,7 +178,8 @@ def doconce_format_misc(paper):
     "Return string for misc in Doconce format"
     values = []
     values.append(_doconce_get_key_string(paper))
-    values.append(_doconce_get_authors_string(paper["author"]))
+    if "author" in paper:
+        values.append(_doconce_get_authors_string(paper["author"]))
     values.append(_doconce_format_title(paper))
     if "howpublished" in paper:
         howpublished = paper["howpublished"]
@@ -261,6 +262,7 @@ def _doconce_join(values):
     entry = values[1] + ". \n    " + ",\n    ".join(values[2:]) + "." + "\n"
     entry = entry.replace("{", "")
     entry = entry.replace("}", "")
+    entry = entry.replace("\\&", "&")
     entry = "  o " + values[0] + " " + entry
     return entry
 

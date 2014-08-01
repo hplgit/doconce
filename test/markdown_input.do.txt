@@ -1,0 +1,142 @@
+
+# Test of Markdown input syntax in DocOnce
+
+DocOnce can recognize basic Markdown as input in the `.do.txt` file
+and transform such text to native DocOnce.
+
+# DocOnce comments also start with #, and can be confused with
+# Markdown headings. The confusion is avoided by not having blanks
+# after the # character in single-line comments. Multi-line
+# comments work well and are never confused with Markdown headings.
+
+<!-- Markdown applies standard HTML
+comments -->
+
+<!--- hpl: This is a special comment on text that
+is rendered by extended Markdown versions. -->
+
+<!--- This is another version of the special comment on text;
+this one without any author name and colon in the beginning.
+-->
+
+##Table of contents
+[TOC]
+
+## Test of inline formatting
+
+Markdown has **boldface** and *emphasize* typesetting, as well
+as `inline verbatim computer code`.
+
+**Paragraph headings.** These are written using standard Markdown
+boldface syntax.
+
+### Subsubsection heading
+
+The Markdown headings can only be of three types: section, subsection,
+and subsubsection.
+
+# Typesetting of computer code
+
+Here is a plain code snippet without language specification:
+
+```
+file=$1
+if [ -f $file ]; then
+  cp $file $file.cop
+fi
+# This is Bash - what happens to this comment?
+```
+
+The same snippet typeset explicitly as Bash:
+
+```Bash
+file=$1
+if [ -f $file ]; then
+  cp $file $file.cop
+fi
+# This is Bash - what happens to this comment?
+```
+
+And here is Python:
+
+```Python
+from math import sin
+
+def f(x):
+    return x*sin(x)
+
+x = 1.4
+print f(x)
+```
+
+And HTML:
+
+```HTML
+<h1>Some heading</h1>
+<!-- And a comment -->
+```
+
+
+# Test of quoted sections
+
+> Markdown also features quoted
+paragraphs that start with a greater
+than sign, either just in the beginning
+or at every line.
+
+If a quoted paragraph with blank lines is desired, you
+must use `>` on the beginning of every line.
+
+> **NOTE**:
+>
+> This quoted paragragraph is a simulation of a primitive
+> admon in Markdown.
+
+# Test of lists
+
+Markdown applies the dash in itemized lists:
+
+ - This is item 1
+ - This is item 2
+ - This is item 3
+
+Let us test this in a quoted environment too:
+
+> **List**:
+> - This is item 1
+> - This is item 2, which cannot be split between lines
+> - This is item 3
+
+Enumerated lists go as follows.
+
+ 1. Item 1
+ 2. Item 2
+ 3. Item 3
+
+# Test of tables
+
+**Markdown Extra** has a special syntax for tables:
+
+
+| Item      |    Value | Qty  |
+| :-------- | --------:| :--: |
+| Computer  | 1600 USD |  5   |
+| Phone     |   12 USD |  12  |
+| Pipe      |    1 USD | 234  |
+
+#Horizontal marker/rule
+
+-------------------------
+
+# Test of mathematics
+
+You can render *LaTeX* mathematical expressions using **MathJax**, as on [math.stackexchange.com][1]:
+
+The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall
+n\in\mathbb N$ is via the Euler integral
+
+$$
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+$$
+
+  [1]: http://math.stackexchange.com/

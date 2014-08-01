@@ -1,4 +1,4 @@
-TITLE: Doconce Quick Reference
+TITLE: DocOnce Quick Reference
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 TOC: on
@@ -15,7 +15,7 @@ mathematics and code.
 
 ===== Supported Formats =====
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format `latex` and `pdflatex`)
  * HTML (format `html`)
@@ -40,11 +40,11 @@ Google and Wordpress.
 
 The file ".doconce-mode.el":
 "https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el"
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 `(load-file "~/.doconce-mode.el")` to the `.emacs` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 |--------------------------------------------------------|
@@ -73,6 +73,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
+
 !bc
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -167,6 +168,38 @@ Non-breaking space is inserted using the tilde character as in LaTeX:
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 !ec
 
+A horizontal rule for separating content vertically, like this:
+
+-----
+
+is typeset as four or more hyphens on a single line:
+
+!bc
+---------
+!ec
+
+The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
+indicated by three hyphens: `---`. Here is an example:
+
+!bc
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+!ec
+This text is in the ${FORMAT} rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
+An ampersand, as in Guns & Roses or Texas A & M, is written as a
+plain `&` *with space(s) on both sides*. Single upper case letters on each
+side of `&`, as in `Texas A & M`, remove the spaces and result in
+Texas A & M, while words on both sides of `&`, as in `Guns & Roses`,
+preserve the spaces: Guns & Roses. Failing to have spaces before and
+after `&` will result in wrong typesetting of the ampersand in the `html`,
+`latex`, and `pdflatex` formats.
+
 ===== Lists =====
 
 There are three types of lists: *bullet lists*, where each item starts
@@ -246,15 +279,15 @@ blocks, verbatim code blocks, or lists if the formats `rst` and
 
 Comment lines starting with `##` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 `# #ifdef EXTRA` and `# #endif` around the text. The command line
 option `-DEXTRA` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 
 ===== Inline comments =====
@@ -266,14 +299,26 @@ are enabled by the syntax
 [name: running text]
 !ec
 where `name` is the name or ID of an author or reader making the comment,
-and `running text` is the comment. Here goes an example.
-[hpl: There must be a space after the colon,
+and `running text` is the comment. The name can contain upper and lower
+case characters, digits, single quote, `+` and `-`, as well
+as space. Here goes an example.
+
+!bc
+Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the `-DTOTONOTES` option to `ptex2tex` or `doconce ptex2tex`,
-colorful margin or inline boxes (using the `todonotes` package)
-make it very easy to spot the comments.
+!ec
+which is rendered as
+
+!bquote
+Some running text. [hpl: There must be a space after the colon,
+but the running text can occupy multiple lines.]
+!equote
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the `--latex_todonotes`
+option to `doconce format`, colorful margin or inline boxes (using the
+`todonotes` package) make it very easy to spot the comments.
 
 Running
 !bc sys
@@ -283,9 +328,57 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 !bc sys
 doconce remove_inline_comments mydoc.do.txt
+!ec
+
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+!bc
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+[name: some text -> some replacement for text]
+!ec
+
+For example, the text
+
+!bc
+First consider a quantity $Q$. Without loss of generality, we assume
+$Q>0$. There are three, fundamental, basic property of $Q$.
+!ec
+can be edited as
+
+!bc
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+!ec
+which in the ${FORMAT} output format results in
+
+!bquote
+First[add: ,] consider [edit: a quantity -> the flux]
+[del: $Q$. Without loss of generality,
+we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+[edit: property -> properties] of $Q$. [add: These are not
+important for the following discussion.]
+!equote
+
+To implement these edits, run
+
+!bc sys
+Terminal> doconce apply_edit_comments mydoc.do.txt
 !ec
 
 ===== Verbatim/Computer Code =====
@@ -370,7 +463,7 @@ Important warnings:
 
 ===== LaTeX Mathematics =====
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats `html`, `sphinx`, `latex`,
 pdflatex`, `pandoc`, and `mwiki` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -429,24 +522,37 @@ Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
 `mwiki`, `html`, or `ipynb` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments `\[`, `\]`,
-    `equation`, `equation*`, `align`, and `align*`.
-  * MediaWiki (`mwiki`) does not support references to equations.
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
 
-(Doconce performs extensions to `sphinx` and other formats such that
+(DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
 !bnotice
 LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure, footnotes, margin notes, etc.
-Allowing other output formats, such as `sphinx`, makes it necessary
-to only utilze very standard LaTeX and avoid, for instance, more than
-one plot per figure. However, one can use preprocessor if-tests on
-the format (typically `if FORMAT in ("latex", "pdflatex")`) to
+plots in the same figure (`subfigure` package), margin notes, multi-page
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
+to only utilze very standard LaTeX. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance, more than
+one plot per figure (combine them into one using `doconce combine_images`),
+example environments (use subsection or subsubsection instead),
+algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+manual), code listings in figures (use just inline blocks).
+
+However, one can use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
 include special code for `latex` and `pdflatex` output and more
 straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of resulting
-PDF document.
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+`.tex` produced by DocOnce.
 !enotice
 
 __LaTeX Newcommands.__
@@ -496,9 +602,9 @@ Note three important syntax details:
   o all of the command must appear on a single line,
   o there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -566,7 +672,7 @@ Note that
    have no effect.
 
 The command-line option `--tables2csv` (to `doconce format`)
-makes Doconce dump each table to CSV format in a file `table_X.csv`,
+makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -617,12 +723,12 @@ The bibliography is specified by a line `BIBFILE: papers.pub`,
 where `papers.pub` is a publication database in the
 "Publish": "https://bitbucket.org/logg/publish" format.
 BibTeX `.bib` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 ===== Generalized Citations =====
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -636,8 +742,8 @@ ref[internal][cite][external]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
-"A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-Doconce documents may include movies.
+"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+DocOnce documents may include movies.
 !ec
 The output from a generalized reference is the text `internal` if all
 `ref{label}` references in `internal` are references to labels in the
@@ -652,7 +758,7 @@ documents.  If none of the two situations above applies, the
 
 ===== Index of Keywords =====
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 !bc
@@ -675,7 +781,7 @@ list of capabilities:
 
 ===== Exercises =====
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -783,7 +889,7 @@ examples.
 
 ===== Environments =====
 
-Doconce environments start with `!benvirname` and end with `!eenvirname`,
+DocOnce environments start with `!benvirname` and end with `!eenvirname`,
 where `envirname` is the name of the environment. Here is a listing of
 the environments:
 
@@ -802,7 +908,7 @@ the environments:
 
 ===== Preprocessing =====
 
-Doconce documents may utilize a preprocessor, either `preprocess` and/or
+DocOnce documents may utilize a preprocessor, either `preprocess` and/or
 `mako`. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The `mako` preprocessor is much more advanced - it is actually a full
@@ -847,9 +953,8 @@ constructions:
 With the `mako` preprocessor the if-else tests have slightly different syntax.
 An "example document": "http://hplgit.github.com/bioinf-py/" contains
 some illustrations on how to utilize `mako` (clone the GitHub project and
-examine the Doconce source and the `doc/src/make.sh` script).
+examine the DocOnce source and the `doc/src/make.sh` script).
 
 ===== Resources =====
 
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
-

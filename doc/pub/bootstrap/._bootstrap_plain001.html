@@ -1,0 +1,330 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="DocOnce Demo of the Bootstrap style">
+
+
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
+               0,
+               None,
+               '___sec0'),
+              (' Themes ', 1, None, '___sec1'),
+              (' Demonstrations of admons ', 1, None, '___sec2'),
+              (' Horizontal alignment of document elements ',
+               1,
+               'sec:examples',
+               'sec:examples'),
+              (' Principles of grid structures ', 2, None, '___sec4'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec5'),
+              (' Variation of the previous grid structure using admons ',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bootstrap_plain.html">DocOnce Demo of the Bootstrap style</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._bootstrap_plain001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Themes" --> <li class="active"><a href="._bootstrap_plain001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._bootstrap_plain001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._bootstrap_plain002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h1 class="page-header">More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+
+<h1>Themes  <a name="___sec1"></a></h1>
+
+DocOnce supports the following themes from the Bootstrap family:
+
+<ul>
+ <li> <code>bootstrap</code> (the original <a href="http://getbootstrap.com/examples/theme/" target="_self">Bootstrap theme</a>)</li>
+ <li> <code>bootswatch</code>, defaults to the Bootswatch Cosmo theme</li>
+ <li> <code>bootswatch_THEME</code>, where <code>THEME</code> can be among
+   (see <a href="http://www.bootstrapcdn.com/?theme=5#bootswatch_tab" target="_self">demos</a>)</li>
+
+<ul>
+   <li> Bootswatch themes with white background:</li>
+
+<ul>
+     <li> <code>cerulean</code></li>
+     <li> <code>cosmo</code></li>
+     <li> <code>flatly</code></li>
+     <li> <code>journal</code></li>
+     <li> <code>lumen</code></li>
+     <li> <code>readable</code></li>
+     <li> <code>simplex</code></li>
+     <li> <code>spacelab</code></li>
+     <li> <code>united</code></li>
+     <li> <code>yeti</code></li>
+</ul>
+
+   <li> Bootswatch themes with dark background:</li>
+
+<ul>
+     <li> <code>amelia</code></li>
+     <li> <code>cyborg</code></li>
+     <li> <code>darkly</code></li>
+     <li> <code>slate</code></li>
+     <li> <code>superhero</code></li>
+</ul>
+
+</ul>
+
+ <li> Variations of the Bootstrap theme, named <code>bootstrap_THEME</code>, where
+   <code>THEME</code> can be</li>
+
+<ul>
+   <li> <code>FlatUI</code> for the <a href="http://designmodo.github.io/Flat-UI/" target="_self">Flat UI</a> theme</li>
+   <li> <code>bootflat</code> for the <a href="http://bootflat.github.io/" target="_self">Bootflat</a> theme</li>
+   <li> <code>blue</code>, <code>red</code>, <code>brown</code>, <code>bluegray</code>, and <code>bloodish</code> color variations
+     of the original Bootstrap theme</li>
+</ul>
+
+</ul>
+
+You write Boostrap HTML files as normal DocOnce documents, but there
+are some additional features:
+
+<ul>
+ <li> Highlighted intro with big title, optionally author(s), date,
+   intro/abstract, and an optional button for reading more (on the
+   next page.</li>
+ <li> Possibility to define a local grid of elements in the document to
+   align admons, figures, code, or other elements horisontally.</li>
+ <li> Other layouts of admons <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="&quot;Admon&quot; is a short form for admonition: a box that highlights some text, e.g., as extra material or as particularly important material. DocOnce supports different types of admonitions: notice, question, summary, and warning. These can have an optional title, and some admonition styles will also include an icon image. In addition, there is a block admonition without any icon, but with an optional title."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>.</li>
+ <li> Footnotes feature a tooltip functionality such that hovering the mouse
+   over the footnote brings up a little window with the footnote
+   (try it on the footnote after <em>admon</em> right above!).</li>
+</ul>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Quick generation of websites</h3>
+  </div>
+<div class="panel-body">
+To make a typical website with Bootstrap layout and different type of
+pages for different things, just
+
+<ul>
+ <li> write a main document in DocOnce, insert a <code>!split</code> before the first section</li>
+ <li> write other documents and store their HTML versions in subdirectory <code>static_*</code></li>
+ <li> link the documents (locally) to each other (link directly to the HTML
+   version in <code>static_*</code>)</li>
+</ul>
+</div>
+</div>
+
+
+<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> &quot;Admon&quot; is a short form for admonition: a
+box that highlights some text, e.g., as extra material or as
+particularly important material. DocOnce supports different types
+of admonitions: notice, question, summary, and warning. These
+can have an optional title, and some admonition styles will also
+include an icon image. In addition, there is a block admonition
+without any icon, but with an optional title.
+
+<h1>Demonstrations of admons  <a name="___sec2"></a></h1>
+
+The Bootstrap/Bootswatch styles support two kinds of admons:
+
+<ul>
+ <li> alert admons (<code>bootstrap_alert</code>) with colored background (default)</li>
+ <li> panel admon (<code>bootstrap_panel</code>) where only the title has colored background</li>
+</ul>
+
+Typical commands for producing Boostrap or Bootswatch layouts are
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
+Terminal&gt; doconce format html mydoc --html_style=booswatch
+Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
+Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
+</pre></div>
+<p>
+Below are some examples on admons.
+
+<p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+  <h3 class="panel-title">Warning: recall to prefix module functions</h3>
+  </div>
+<div class="panel-body">
+
+<p>
+
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #0044DD">---------------------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>                                 Traceback (most recent call last)
+<span style="color: #0000FF; font-weight: bold">&lt;ipython-input-3-c1040545fa6c&gt;</span> in <span style="color: #999999; font-weight: bold">&lt;module&gt;</span><span style="color: #008000; font-weight: bold">()</span>
+<span style="color: #D2413A; font-weight: bold">----&gt; </span><span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name &#39;exp&#39; is not defined
+
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
+
+<span style="color: #000080; font-weight: bold">In [5]: </span>y
+<span style="color: #000080; font-weight: bold">Out[5]:</span>
+<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
+<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
+<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
+<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
+</pre></div>
+<p>
+This is the admon for warnings or paying attention.
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+  <h3 class="panel-title">Question</h3>
+  </div>
+<div class="panel-body">
+How many admon styles are supported by the DocOnce Boostrap and Bootswatch
+styles?
+</div>
+</div>
+
+
+<p>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+  <h3 class="panel-title">Summary</h3>
+  </div>
+<div class="panel-body">
+DocOnce supports the following elements of Bootstrap elements:
+
+<ul>
+ <li> Admons</li>
+ <li> Panels (via admons)</li>
+ <li> Jumbotron for title and intro</li>
+ <li> Columns of content (grid structure via the <code>slidecell</code> environment)</li>
+ <li> Tooltips via footnotes</li>
+</ul>
+</div>
+</div>
+
+
+<p>
+Tables often get a fancy typesetting:
+
+<p>
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="left">    \( i \)     </td> <td align="right">   \( h_i \)    </td> <td align="right"> \( \bar T_i \) </td> <td align="right"><code>L_i</code></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
+<p>
+<p>
+
+<ul class="pagination">
+<li><a href="._bootstrap_plain000.html">&laquo;</a></li>
+  <li><a href="._bootstrap_plain000.html">1</a></li>
+  <li class="active"><a href="._bootstrap_plain001.html">2</a></li>
+  <li><a href="._bootstrap_plain002.html">3</a></li>
+  <li><a href="._bootstrap_plain002.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

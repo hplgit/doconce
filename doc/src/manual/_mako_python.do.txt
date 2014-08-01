@@ -1,0 +1,12 @@
+## Define Mako variables and basic functions
+<%
+# #include "variables.py"
+# #include "basic_functions.py"
+%>
+
+Some DocOnce text ....
+
+## Define more functions
+<%
+# #include "more_functions.py"
+%>

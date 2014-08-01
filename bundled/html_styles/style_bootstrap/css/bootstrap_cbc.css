@@ -1,0 +1,349 @@
+/*
+How to autoedit the HTML file to get the complete CBC banner style:
+
+doconce replace ' navbar-fixed-top' '' mydoc.html
+
+doconce subst '<!-- Bootstrap navigation bar -->' '<div class="masthead">\n<div class="container">\n<img src="http://cbc.simula.no/styles/stylefigs/CBClogoweb334x72.gif">\n</div>\n</div>\n' mydoc.html
+
+doconce subst -s '<!-- Bootstrap footer.+?-->' '<footer><a href="http://simula.no"><img width="250" align=right src="http://cbc.simula.no/pub/figs/simula_logo_pos.png"></a></footer>' mydoc.html
+
+*/
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #404040;
+  background-color: #ffffff;
+}
+
+a {
+  color: #8a0808;
+}
+
+p {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #8a0808;
+}
+
+.page-header {
+  border-bottom: 1pxpx solid #eeeeee;
+}
+
+hr {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #ffffff;
+  padding: 4px 4px 4px 4px;
+  font-size: 13px;
+  color: #404040;
+  border: 1px solid #ccc;
+}
+
+.well {
+  background-color: #f5f5f5;
+}
+
+.btn {
+  color: #333333;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'ffffff, endColorstr='#'e6e6e6, GradientType=0);
+}
+
+.btn:hover,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+}
+
+.btn-primary {
+  background-color: #006dcc;
+  color: #ffffff;
+  background-image: -moz-linear-gradient(top, #8a0808, #4f1613);
+  background-image: -ms-linear-gradient(top, #8a0808, #4f1613);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8a0808), to(#4f1613));
+  background-image: -webkit-linear-gradient(top, #8a0808, #4f1613);
+  background-image: -o-linear-gradient(top, #8a0808, #4f1613);
+  background-image: linear-gradient(top, #8a0808, #4f1613);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'8a0808, endColorstr='#'4f1613, GradientType=0);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  background-color: #4f1613;
+}
+
+.btn-warning {
+  color: #ffffff;
+  background-image: -moz-linear-gradient(top, #3d0101, #8a0808);
+  background-image: -ms-linear-gradient(top, #3d0101, #8a0808);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3d0101), to(#8a0808));
+  background-image: -webkit-linear-gradient(top, #3d0101, #8a0808);
+  background-image: -o-linear-gradient(top, #3d0101, #8a0808);
+  background-image: linear-gradient(top, #3d0101, #8a0808);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'3d0101, endColorstr='#'8a0808, GradientType=0);
+}
+
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning.active,
+.btn-warning.disabled,
+.btn-warning[disabled] {
+  background-color: #8a0808;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background-image: -moz-linear-gradient(top, #404040, #7f7e7e);
+  background-image: -ms-linear-gradient(top, #404040, #7f7e7e);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#404040), to(#7f7e7e));
+  background-image: -webkit-linear-gradient(top, #404040, #7f7e7e);
+  background-image: -o-linear-gradient(top, #404040, #7f7e7e);
+  background-image: linear-gradient(top, #404040, #7f7e7e);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'404040, endColorstr='#'7f7e7e, GradientType=0);
+}
+
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger.active,
+.btn-danger.disabled,
+.btn-danger[disabled] {
+  background-color: #7f7e7e}
+
+.btn-success {
+  color: #ffffff;
+  background-image: -moz-linear-gradient(top, #aaa7a7, #404040);
+  background-image: -ms-linear-gradient(top, #aaa7a7, #404040);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aaa7a7), to(#404040));
+  background-image: -webkit-linear-gradient(top, #aaa7a7, #404040);
+  background-image: -o-linear-gradient(top, #aaa7a7, #404040);
+  background-image: linear-gradient(top, #aaa7a7, #404040);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'aaa7a7, endColorstr='#'404040, GradientType=0);
+}
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #404040;
+}
+
+.btn-info {
+  color: #ffffff;
+  background-image: -moz-linear-gradient(top, #a31515, #5e3131);
+  background-image: -ms-linear-gradient(top, #a31515, #5e3131);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#a31515), to(#5e3131));
+  background-image: -webkit-linear-gradient(top, #a31515, #5e3131);
+  background-image: -o-linear-gradient(top, #a31515, #5e3131);
+  background-image: linear-gradient(top, #a31515, #5e3131);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'a31515, endColorstr='#'5e3131, GradientType=0);
+}
+.btn-info:hover,
+.btn-info:active,
+.btn-info.active,
+.btn-info.disabled,
+.btn-info[disabled] {
+  background-color: #5e3131;
+}
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  background-color: #8a0808;
+  border: 3px solid #720808;
+}
+
+.alert-success {
+  background-color: #8a0808;
+  border-color: #720808;
+}
+.alert-success, .alert-success .alert-heading {
+  color: #ffffff;
+}
+.alert-danger, .alert-error {
+  background-color: #404040;
+  border-color: #191919;
+}
+.alert-danger,
+.alert-error,
+.alert-danger .alert-heading,
+.alert-error .alert-heading {
+  color: #ffffff;
+}
+.alert-info {
+  background-color: #ffffff;
+  border-color: #8a0808;
+}
+.alert-info, .alert-info .alert-heading {
+  color: #404040;
+}
+
+.masthead {
+    color:#FFFFFF;
+    background-image:url("http://cbc.simula.no/styles/stylefigs/cbctoprod.gif");
+    background-repeat:no-repeat;
+    height:72px;
+    background-position: top right;
+}
+
+
+.navbar {
+  background-color: #404040;
+  color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+  padding: 12px 20px 12px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.navbar .nav > li > a {
+  padding: 10px 10px 11px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+
+.label,
+.badge {
+  padding: 1px 3px 2px;
+  font-size: 9.75px;
+  color: #ffffff;
+  background-color: #999999;
+}
+
+.label-important,
+.badge-important {
+  background-color: #5e3737;
+}
+
+.label-warning,
+.badge-warning {
+  background-color: #8a0808;
+}
+
+.label-success,
+.badge-success {
+  background-color: #3d0101;
+}
+
+.label-info,
+.badge-info {
+   background-color: #560a0a;
+}
+
+.panel {
+  border: 1px solid #404040;
+}
+.panel-default > .panel-heading {
+  background-color: #8a0808;
+  color:#ffffff;
+  border-color: #720808;
+}
+.panel-default > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:#720808;
+}
+.panel-default > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:#720808;
+}
+.panel-primary {
+  border-color:#8a0808;
+}
+.panel-primary > .panel-heading {
+  color:#ffffff;
+  background-color:#8a0808;
+  border-color:#8a0808;
+}
+.panel-success {
+  border-color: #720808;
+}
+.panel-success > .panel-heading {
+  color: #ffffff;
+  background-color: #8a0808;
+}
+.panel-success > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-success > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+}
+.panel-info {
+  border-color:transparent;
+}
+.panel-info > .panel-heading {
+  background-color: #ffffff;
+  border-color: #8a0808;
+  border-color:transparent;
+}
+.panel-info > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-info > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+}
+.panel-warning {
+}
+.panel-warning > .panel-heading {
+  color:#ffffff;
+  background-color:#404040;
+  border-color:#000000;
+}
+.panel-warning > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-warning > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+}
+.panel-danger {
+  border-color: #191919;
+}
+.panel-danger > .panel-heading {
+  color: #ffffff;
+  background-color: #404040;
+  border-color: #191919;
+}
+.panel-danger > .panel-heading+.panel-collapse .panel-body {
+  border-top-color:transparent;
+}
+.panel-danger > .panel-footer+.panel-collapse .panel-body {
+  border-bottom-color:transparent;
+};
+
+

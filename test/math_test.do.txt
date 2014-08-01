@@ -93,7 +93,7 @@ We can refer to the last equations as the system (ref{eq2b})-(ref{eq3b}).
 # #if FORMAT == "sphinx"
 Actually, *Sphinx does not support the align environment with labels*,
 such as we write above,
-but Doconce splits in this case the equations into separate, single equations
+but DocOnce splits in this case the equations into separate, single equations
 with labels. Hence the user can write one code with align and labels
 and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
 in the present case is
@@ -119,7 +119,7 @@ does not work with labels and multiple equations. `doconce md2html`
 fixes the trouble by adding full support for MathJax and avoiding
 that eqref references become empty.
 
-One can write with align and labels in the Doconce document and get excellent
+One can write with align and labels in the DocOnce document and get excellent
 output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without
 `doconce md2html` one must accept that labeles have very limited support
 compared to more advanced MathJax.
@@ -170,7 +170,7 @@ v(t) - 1 &=& \frac{du}{dt} label{eq3c}
 Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})?
 # #if FORMAT == "sphinx"
 No, unfortunately not.
-Note: Doconce takes the eqnarray with labels and replaces it automatically
+Note: DocOnce takes the eqnarray with labels and replaces it automatically
 by the Sphinx code
 
 !bc rst
@@ -204,7 +204,7 @@ with plain old pmb. Here are the same formulas using `\bm`:
 and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 
 # #if FORMAT in ("html", "sphinx", "pandoc", "ipynb")
-Note: for the ${FORMAT} format, `\bm` was substituted by Doconce
+Note: for the ${FORMAT} format, `\bm` was substituted by DocOnce
 to `\boldsymbol`.
 # #endif
 

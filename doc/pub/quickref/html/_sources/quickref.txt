@@ -1,15 +1,14 @@
-.. Automatically generated reST file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
    (https://github.com/hplgit/doconce/)
-
 
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-Doconce Quick Reference
------------------------
+DocOnce Quick Reference
+=======================
 
-:Author: Hans Petter Langtangen
-:Date: Apr 3, 2014
+:Authors: Hans Petter Langtangen
+:Date: Jul 28, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -25,7 +24,7 @@ mathematics and code.
 Supported Formats
 -----------------
 
-Doconce currently translates files to the following formats:
+DocOnce currently translates files to the following formats:
 
  * LaTeX (format ``latex`` and ``pdflatex``)
 
@@ -56,16 +55,15 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
-
 Emacs syntax support
 --------------------
 
-The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`_
-in the Doconce source distribution gives a "Doconce Editing Mode" in
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__
+in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
 ``(load-file "~/.doconce-mode.el")`` to the ``.emacs`` file.
 
-Besides syntax highlighting of Doconce documents, this Emacs mode
+Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 ==========================================  ==========================================  
@@ -98,7 +96,6 @@ reads
 
 .. code-block:: text
 
-
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
         AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -110,7 +107,6 @@ The entire title must appear on a single line.
 The author syntax is
 
 .. code-block:: text
-
 
         name Email: somename@adr.net at institution1 & institution2
 
@@ -127,7 +123,6 @@ The date can be set as any text different from ``today`` if not the
 current date is wanted, e.g., ``Feb 22, 2016``.
 
 The table of contents is removed by writing ``TOC: off``.
-
 
 .. _quick:sections:
 
@@ -166,21 +161,16 @@ Words surrounded by ``*`` are emphasized: ``*emphasized words*`` becomes
 appear in boldface: ``_boldface_`` becomes **boldface**. Colored words
 are also possible: the text
 
-
 .. code-block:: text
-
 
         `color{red}{two red words}`
 
 becomes <font color="red">two red words</font>.
 Quotations appear inside double backticks and double single quotes:
 
-
 .. code-block:: text
 
-
         This is a sentence with ``words to be quoted''.
-
 
 A forced linebreak is specified by ``<linebreak>`` at the point where the
 linebreak in the output is wanted.
@@ -188,9 +178,7 @@ linebreak in the output is wanted.
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:
 
-
 .. code-block:: text
-
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
@@ -200,15 +188,44 @@ preferably after the paragraph where the footnote appears:
         
         Here comes a new paragraph...
 
-
 Non-breaking space is inserted using the tilde character as in LaTeX:
-
 
 .. code-block:: text
 
-
         This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
+A horizontal rule for separating content vertically, like this:
+
+---------
+
+is typeset as four or more hyphens on a single line:
+
+.. code-block:: text
+
+        ---------
+
+The ``latex``, ``pdflatex``, ``sphinx``, and ``html`` formats support em-dash,
+indicated by three hyphens: ``---``. Here is an example:
+
+.. code-block:: text
+
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+This text is in the sphinx rendered as
+
+The em-dash is used - without spaces - as alternative to hyphen with
+space around in sentences---this way, or in quotes:
+*Premature optimization is the root of all evil.*--- Donald Knuth.
+
+An ampersand, as in Guns & Roses or Texas A&M, is written as a
+plain ``&`` *with space(s) on both sides*. Single upper case letters on each
+side of ``&``, as in ``Texas A & M``, remove the spaces and result in
+Texas A&M, while words on both sides of ``&``, as in ``Guns & Roses``,
+preserve the spaces: Guns & Roses. Failing to have spaces before and
+after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
+``latex``, and ``pdflatex`` formats.
 
 Lists
 -----
@@ -220,7 +237,6 @@ and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon.
 
 .. code-block:: text
-
 
         Here is a bullet list:
         
@@ -263,7 +279,6 @@ Here is a bullet list:
 
   * subitem2 of item2
 
-
  * item3
 
 Note that sublists are indented.
@@ -278,7 +293,6 @@ Here is an enumeration list:
  1. subitem1 of item2
 
  2. subitem2 of item2
-
 
 3. item3
 
@@ -307,16 +321,15 @@ blocks, verbatim code blocks, or lists if the formats ``rst`` and
 
 Comment lines starting with ``##`` are not propagated to the output
 document and can be used for comments that are only of interest in
-the Doconce file.
+the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 ``# #ifdef EXTRA`` and ``# #endif`` around the text. The command line
 option ``-DEXTRA`` will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
-the Doconce source file that will be removed by Mako before
-Doconce starts processing the file.
-
+the DocOnce source file that will be removed by Mako before
+DocOnce starts processing the file.
 
 Inline comments
 ---------------
@@ -327,22 +340,37 @@ are enabled by the syntax
 
 .. code-block:: text
 
-
         [name: running text]
 
 where ``name`` is the name or ID of an author or reader making the comment,
-and ``running text`` is the comment. Here goes an example.
-(**hpl 1**: There must be a space after the colon,
-but the running text can occupy multiple lines.)
-The inline comments have simple typesetting in most formats, typically boldface
-name and everything surrounded by parenthesis, but with LaTeX
-output and the ``-DTOTONOTES`` option to ``ptex2tex`` or ``doconce ptex2tex``,
-colorful margin or inline boxes (using the ``todonotes`` package)
-make it very easy to spot the comments.
+and ``running text`` is the comment. The name can contain upper and lower
+case characters, digits, single quote, ``+`` and ``-``, as well
+as space. Here goes an example.
+
+.. code-block:: text
+
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
+
+which is rendered as
+
+
+..
+
+    Some running text. <font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
+    but the running text can occupy multiple lines.</em>]</font>
+
+
+
+The inline comments have simple typesetting in most formats, typically
+boldface name, a comment number, with everything surrounded by
+parenthesis.  However, with LaTeX output and the ``--latex_todonotes``
+option to ``doconce format``, colorful margin or inline boxes (using the
+``todonotes`` package) make it very easy to spot the comments.
 
 Running
 
-.. code-block:: console
+.. code-block:: text
 
         doconce format html mydoc.do.txt --skip_inline_comments
 
@@ -350,12 +378,64 @@ removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
-removed from the Doconce source by
+removed from the DocOnce source by
 
-.. code-block:: console
+.. code-block:: text
 
         doconce remove_inline_comments mydoc.do.txt
 
+Inline comments can also be used to markup edits. There are add, delete, and
+replacement comments for editing:
+
+.. code-block:: text
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+For example, the text
+
+.. code-block:: text
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+can be edited as
+
+.. code-block:: text
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+which in the sphinx output format results in
+
+
+..
+
+    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
+    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
+    we assume</del> :math:`Q>0`. There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
+    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of :math:`Q`.  <font color="red">(<b>edit 8</b>: add) These are not
+    important for the following discussion.</font>
+
+
+
+To implement these edits, run
+
+.. code-block:: text
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 Verbatim/Computer Code
 ----------------------
@@ -363,7 +443,6 @@ Verbatim/Computer Code
 Inline verbatim code is typeset within back-ticks, as in
 
 .. code-block:: text
-
 
         Some sentence with `words in verbatim style`.
 
@@ -386,7 +465,6 @@ defined verbatim environment in the ``ptex2tex`` configuration file
 
 .. code-block:: text
 
-
         # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (``xxx``) onto valid language types for
@@ -399,14 +477,12 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax):
 
-
 .. code-block:: python
 
         from numpy import sin, cos, exp, pi
         
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
-
 
 .. When showing copy from file in !bc envir, indent a character - otherwise
 
@@ -415,7 +491,6 @@ for exact syntax):
 Computer code can also be copied from a file:
 
 .. code-block:: text
-
 
          @@@CODE doconce_program.sh
          @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
@@ -455,7 +530,7 @@ Important warnings:
 LaTeX Mathematics
 -----------------
 
-Doconce supports inline mathematics and blocks of mathematics, using
+DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats ``html``, ``sphinx``, ``latex``,
 pdflatex`, ``pandoc``, and ``mwiki`` work with this syntax while all other
 formats will just display the raw LaTeX code.
@@ -468,7 +543,6 @@ readable companion expression. The syntax is like
 
 .. code-block:: text
 
-
         $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
@@ -480,9 +554,7 @@ Blocks of LaTeX mathematics are written within
 and
 ``!et`` (begin/end TeX) directives starting on the beginning of a line:
 
-
 .. code-block:: text
-
 
         !bt
         \begin{align*}
@@ -491,9 +563,7 @@ and
         \end{align*}
         !et
 
-
 This LaTeX code gets rendered as
-
 
 .. math::
         
@@ -503,9 +573,7 @@ This LaTeX code gets rendered as
 
 Here is a single equation:
 
-
 .. code-block:: text
-
 
         !bt
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
@@ -513,35 +581,48 @@ Here is a single equation:
 
 which results in
 
-
 .. math::
          \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
-
 
 Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
 ``mwiki``, ``html``, or ``ipynb`` formats
 is also important, one should follow these rules:
 
-  * Use only the equation environments ``\[``, ``\]``,
-    ``equation``, ``equation*``, ``align``, and ``align*``.
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
 
-  * MediaWiki (``mwiki``) does not support references to equations.
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
 
-(Doconce performs extensions to ``sphinx`` and other formats such that
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``.
+
+ * MediaWiki (``mwiki``) does not support references to equations.
+
+(DocOnce performs extensions to ``sphinx`` and other formats such that
 labels in ``align`` environments work well.)
 
 
 .. note::
    LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure, footnotes, margin notes, etc.
-   Allowing other output formats, such as ``sphinx``, makes it necessary
-   to only utilze very standard LaTeX and avoid, for instance, more than
-   one plot per figure. However, one can use preprocessor if-tests on
-   the format (typically ``if FORMAT in ("latex", "pdflatex")``) to
+   plots in the same figure (``subfigure`` package), margin notes, multi-page
+   tables, example and algorithm environments, code listings in figures, etc.
+   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
+   to only utilze very standard LaTeX. Correspondingly, the writer
+   must stick to simple constructs and avoid, for instance, more than
+   one plot per figure (combine them into one using ``doconce combine_images``),
+   example environments (use subsection or subsubsection instead),
+   algorithms environments (see *Typesetting of Algorithms* in the DocOnce
+   manual), code listings in figures (use just inline blocks).
+   
+   However, one can use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
    include special code for ``latex`` and ``pdflatex`` output and more
    straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of resulting
-   PDF document.
+   also allow advanced LaTeX features and fine tuning of the resulting
+   PDF document. More tuning can be done by automatic editing of the
+   ``.tex`` produced by DocOnce.
 
 
 
@@ -558,15 +639,12 @@ without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
 rendered nicely anyway.
 
-
 Hyperlinks
 ----------
 
 Links use either a link text or the raw URL:
 
-
 .. code-block:: text
-
 
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
@@ -579,14 +657,12 @@ Links use either a link text or the raw URL:
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
 
-
 Figures and Movies
 ------------------
 
 Figures and movies have almost equal syntax:
 
 .. code-block:: text
-
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
         
@@ -604,9 +680,9 @@ Note three important syntax details:
 
  4. there must be a blank line after the command.
 
-The figure file can be listed without extension. Doconce will then find
+The figure file can be listed without extension. DocOnce will then find
 the version of the file with the most appropriate extension for the chosen
-output format. If not suitable version is found, Doconce will convert
+output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
@@ -621,7 +697,7 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the
 
-.. code-block:: console
+.. code-block:: text
 
         doconce combine_images image1 image2 ... output_image
 
@@ -631,9 +707,7 @@ to get the highest quality.
 YouTube and Vimeo movies will be embedded in ``html`` and ``sphinx`` documents
 and otherwise be represented by a link. The syntax is
 
-
 .. code-block:: text
-
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
         
@@ -649,9 +723,6 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
-
-
-
 Tables
 ------
 
@@ -659,7 +730,6 @@ The table in the section :ref:`quick:sections` was written with this
 syntax:
 
 .. code-block:: text
-
 
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
@@ -670,7 +740,6 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
 
 Note that
 
@@ -694,7 +763,7 @@ Note that
    have no effect.
 
 The command-line option ``--tables2csv`` (to ``doconce format``)
-makes Doconce dump each table to CSV format in a file ``table_X.csv``,
+makes DocOnce dump each table to CSV format in a file ``table_X.csv``,
 where ``X`` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
@@ -708,7 +777,6 @@ inserted anywhere, using the syntax
 
 .. code-block:: text
 
-
         label{name}
 
 with no backslash
@@ -721,7 +789,6 @@ A reference to the label ``name`` is written as
 
 .. code-block:: text
 
-
         ref{name}
 
 again with no backslash before ``ref``.
@@ -730,14 +797,12 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-
 Citations and Bibliography
 --------------------------
 
 Single citations are written as
 
 .. code-block:: text
-
 
         cite{name}
 
@@ -751,21 +816,19 @@ by comma:
 
 .. code-block:: text
 
-
         cite{name1,name2,name3}
-
 
 The bibliography is specified by a line ``BIBFILE: papers.pub``,
 where ``papers.pub`` is a publication database in the
-`Publish <https://bitbucket.org/logg/publish>`_ format.
+`Publish <https://bitbucket.org/logg/publish>`__ format.
 BibTeX ``.bib`` files can easily be combined to a Publish database
-(which Doconce needs to create bibliographies in other formats
+(which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
 Generalized Citations
 ---------------------
 
-There is a *generalized referencing* feature in Doconce that allows
+There is a *generalized referencing* feature in DocOnce that allows
 a reference with ``ref`` to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
@@ -775,15 +838,14 @@ The syntax of a generalized reference is
 
 .. code-block:: text
 
-
         ref[internal][cite][external]
         
         # Example:
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
-        "A Document for Testing Doconce": "testdoc.html" cite{testdoc:12}],
-        Doconce documents may include movies.
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
 `:ref:`label`` references in ``internal`` are references to labels in the
@@ -799,12 +861,11 @@ documents.  If none of the two situations above applies, the
 Index of Keywords
 -----------------
 
-Doconce supports creating an index of keywords. A certain keyword
+DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 
 .. code-block:: text
-
 
         index{name}
 
@@ -822,11 +883,10 @@ The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities:
 
-
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -851,9 +911,12 @@ list of capabilities:
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
         
+        # apply all edits specified through inline comments
+        apply_inline_edits
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
-            short_title="Short title" version=0.1 \
+            short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
@@ -976,11 +1039,10 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-
 Exercises
 ---------
 
-Doconce supports *Exercise*, *Problem*, *Project*, and *Example*.
+DocOnce supports *Exercise*, *Problem*, *Project*, and *Example*.
 These are typeset
 as ordinary sections and referred to by their section labels.
 Exercise, problem, project, or example sections contains certain *elements*:
@@ -1011,7 +1073,6 @@ A typical sketch of a a problem without subexercises goes as follows:
 
 .. code-block:: text
 
-
         ===== Problem: Derive the Formula for the Area of an Ellipse =====
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
@@ -1034,9 +1095,7 @@ If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads
 
-
 .. code-block:: text
-
 
         ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
@@ -1045,9 +1104,7 @@ the title becomes just "Derive the ...".
 An exercise with subproblems, answers and full solutions has this
 setup-up:
 
-
 .. code-block:: text
-
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
@@ -1102,11 +1159,10 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
-
 Environments
 ------------
 
-Doconce environments start with ``!benvirname`` and end with ``!eenvirname``,
+DocOnce environments start with ``!benvirname`` and end with ``!eenvirname``,
 where ``envirname`` is the name of the environment. Here is a listing of
 the environments:
 
@@ -1133,7 +1189,7 @@ the environments:
 Preprocessing
 -------------
 
-Doconce documents may utilize a preprocessor, either ``preprocess`` and/or
+DocOnce documents may utilize a preprocessor, either ``preprocess`` and/or
 ``mako``. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
 The ``mako`` preprocessor is much more advanced - it is actually a full
@@ -1144,9 +1200,7 @@ Here is a typical example on utilizing ``preprocess`` to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions:
 
-
 .. code-block:: text
-
 
         # #include "myotherdoc.do.txt"
         
@@ -1177,11 +1231,10 @@ constructions:
         ....large portions of text...
         # #endif
 
-
 With the ``mako`` preprocessor the if-else tests have slightly different syntax.
-An `example document <http://hplgit.github.com/bioinf-py/>`_ contains
+An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
-examine the Doconce source and the ``doc/src/make.sh`` script).
+examine the DocOnce source and the ``doc/src/make.sh`` script).
 
 Resources
 ---------

@@ -2,23 +2,31 @@
 set -x
 sh -x ./clean.sh
 
+function system {
+# Run operating system command and if failure, report and abort
+
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 # html
-doconce format html tutorial  --no_pygments_html
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format html tutorial  --html_style=bootswatch_readable
 
 # latex
-doconce format latex tutorial --latex_font=helvetica
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format latex tutorial --latex_font=helvetica
 ptex2tex -DMINTED tutorial
 latex -shell-escape tutorial.tex
 latex -shell-escape tutorial.tex
 dvipdf tutorial.dvi
 
 # Sphinx
-doconce format sphinx tutorial
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format sphinx tutorial
 rm -rf sphinx-rootdir
-doconce sphinx_dir tutorial
+system doconce sphinx_dir tutorial
 cp tutorial.rst tutorial.sphinx.rst
 mv tutorial.rst sphinx-rootdir
 cd sphinx-rootdir
@@ -28,13 +36,12 @@ make latex
 cd _build/latex
 make clean
 make all-pdf
-cp DoconceDocumentOnceIncludeAnywhere.pdf ../../../tutorial.sphinx.pdf
+cp DocOnceDocumentOnceIncludeAnywhere.pdf ../../../tutorial.sphinx.pdf
 cd ../../..
 #firefox sphinx-rootdir/_build/html/index.html
 
 # reStructuredText:
-doconce format rst tutorial
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format rst tutorial
 rst2xml.py tutorial.rst > tutorial.xml
 rst2odt.py tutorial.rst > tutorial.odt
 rst2html.py tutorial.rst > tutorial.rst.html
@@ -43,26 +50,13 @@ latex tutorial.rst.tex
 dvipdf tutorial.rst.dvi
 
 # Other formats:
-doconce format plain tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce format gwiki tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce format cwiki tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce format mwiki tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce format st tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce format epytext tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-
-doconce format pandoc tutorial.do.txt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format plain tutorial.do.txt
+system doconce format gwiki tutorial.do.txt
+system doconce format cwiki tutorial.do.txt
+system doconce format mwiki tutorial.do.txt
+system doconce format st tutorial.do.txt
+system doconce format epytext tutorial.do.txt
+system doconce format pandoc tutorial.do.txt
 
 # Make PDF of most of the above:
 #a2ps_plain='a2ps --left_title='\'''\'' --right_title='\'''\'' --left_footer='\'''\'' --right_footer='\'''\'' --footer='\'''\'''
@@ -97,12 +91,12 @@ cp -r tutorial.do.txt tutorial.html tutorial.p.tex tutorial.tex tutorial.pdf tut
 cd demo
 cat > index.html <<EOF
 <HTML><BODY>
-<TITLE>Demo of Doconce formats</TITLE>
+<TITLE>Demo of doconce formats</TITLE>
 <H3>Doconce demo</H3>
 
 Doconce is a minimum tagged markup language. The file
 <a href="tutorial.do.txt">tutorial.do.txt</a> is the source of the
-Doconce tutorial, written in the Doconce format.
+Doconce tutorial, written in the doconce format.
 Running
 <pre>
 doconce format html tutorial.do.txt
@@ -150,6 +144,7 @@ cd ..
 dest=../../pub/tutorial
 cp -r demo/html demo/tutorial.pdf demo/tutorial.html $dest
 dest=../../../../doconce.wiki
-cp -r demo/tutorial.rst $dest
-
-
+cp demo/tutorial.rst $dest/tutorial_rst.rst
+# mediawiki at github is too bad - very ugly result
+#cp demo/tutorial.mwiki $dest/tutorial_mediawiki.mediawiki
+cp demo/tutorial.md $dest/tutorial_markdown.md

@@ -1,0 +1,1102 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="DocOnce Description">
+<meta name="keywords" content="doconce short explanation,demos,headlines,section headings,inline tagging,emphasized words,boldface words,verbatim text,inline comments,non-breaking space,nbsp,quotation syntax,non-breaking space,footnotes,cross referencing,labels,references,index,citations,bibliography,some index entry,main entry subentry,doconce format options,command-line options doconce format">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' What Is DocOnce? ', 1, 'what:is:doconce', 'what:is:doconce'),
+              (' Demos ', 2, None, '___sec1'),
+              (' The DocOnce Markup Language ', 1, None, '___sec2'),
+              (' Lists ', 2, None, '___sec3'),
+              (' Special lines ', 2, None, '___sec4'),
+              (' Heading with title and author(s) ', 2, None, '___sec5'),
+              (' Table of contents ', 2, None, '___sec6'),
+              (' Section headings ', 2, None, '___sec7'),
+              (' Figures ', 2, None, '___sec8'),
+              (' Movies ', 2, None, '___sec9'),
+              (' The Basic Command ', 3, None, '___sec10'),
+              (' MP4, WebM, and Ogg Movies in HTML ', 3, None, '___sec11'),
+              (' Movie Handling in Various Formats ', 3, None, '___sec12'),
+              (' YouTube and Vimeo Movies ', 3, None, '___sec13'),
+              (' Animation Based on Filename Generators ',
+               3,
+               None,
+               '___sec14'),
+              (' Copying Computer Code from Source Files ',
+               2,
+               None,
+               '___sec15'),
+              (' Inserting the Output from Operating System Commands ',
+               2,
+               None,
+               '___sec16'),
+              (' Inline Tagging ', 2, 'inline:tagging', 'inline:tagging'),
+              (' Emphasized Words ', 3, None, '___sec18'),
+              (' Inline Verbatim Text ', 3, None, '___sec19'),
+              (' Links to Web Addresses ', 3, None, '___sec20'),
+              (' Mail Addresses ', 3, None, '___sec21'),
+              (' Links to Local Files ', 3, None, '___sec22'),
+              (' Quotes ', 3, None, '___sec23'),
+              (' Non-Breaking Space ', 3, None, '___sec24'),
+              (' Horizontal rule ', 3, None, '___sec25'),
+              (' em-dash ', 3, None, '___sec26'),
+              (' Ampersand ', 3, None, '___sec27'),
+              (' Footnotes ', 3, None, '___sec28'),
+              (' Inline Comments ', 3, None, '___sec29'),
+              (' Inline Comments for Editing ', 3, None, '___sec30'),
+              (' Forced Line Breaks ', 3, None, '___sec31'),
+              (' Inline Mathematics ', 3, None, '___sec32'),
+              (' Comments ', 2, None, '___sec33'),
+              (' Cross-Referencing ', 2, None, '___sec34'),
+              (' Generalized Cross-Referencing ',
+               2,
+               'manual:genrefs',
+               'manual:genrefs'),
+              (' A Worked Example ', 3, None, '___sec36'),
+              (' Index ', 2, None, '___sec37'),
+              (' Bibliography/References ', 2, None, '___sec38'),
+              (' Importing your data to the Publish database ',
+               3,
+               None,
+               '___sec39'),
+              (' Requirements to input data ', 3, None, '___sec40'),
+              (' Adding new references to the database ',
+               3,
+               None,
+               '___sec41'),
+              (' Exporting the database ', 3, None, '___sec42'),
+              (' Referring to publications ', 3, None, '___sec43'),
+              (' Specifying the Publish database ', 3, None, '___sec44'),
+              (' LaTeX bibliography style ', 3, None, '___sec45'),
+              (' Tables ', 2, None, '___sec46'),
+              (' Exercises, Problems, Projects, and Examples ',
+               2,
+               None,
+               '___sec47'),
+              (' List of Exercises, Problems, and Projects ',
+               3,
+               None,
+               '___sec48'),
+              (' Blocks of Verbatim Computer Code ',
+               2,
+               'sec:verbatim:blocks',
+               'sec:verbatim:blocks'),
+              (' LaTeX Blocks of Mathematical Text ',
+               2,
+               'mathtext',
+               'mathtext'),
+              (' Mathematics for PowerPoint/OpenOffice ',
+               3,
+               None,
+               '___sec51'),
+              (' Macros (Newcommands) ', 2, 'newcommands', 'newcommands'),
+              (' Admonitions ', 2, None, '___sec53'),
+              (' The Box Environment ', 3, None, '___sec54'),
+              (' Typesetting of Algorithms ', 2, None, '___sec55'),
+              (' Preprocessing Steps ', 2, None, '___sec56'),
+              (' Splitting Documents into Smaller Pieces ',
+               2,
+               None,
+               '___sec57'),
+              (' Header and Footer ', 2, None, '___sec58'),
+              (' Missing Features ', 2, None, '___sec59'),
+              (' Guidelines for LaTeX Writers ', 2, None, '___sec60'),
+              (' Emacs DocOnce Formatter ',
+               2,
+               'emacs:doconce',
+               'emacs:doconce'),
+              (' Writing Slides ', 1, None, '___sec62'),
+              (' Overview ', 2, None, '___sec63'),
+              (' HTML5 Slides ', 2, None, '___sec64'),
+              (' Potential Problems ', 3, None, '___sec65'),
+              (' LaTeX Beamer Slides ', 2, None, '___sec66'),
+              (' Themes ', 3, None, '___sec67'),
+              (' Mako Programming ', 1, None, '___sec68'),
+              (' The Basics of Mako ', 2, None, '___sec69'),
+              (' Debugging Python code in Mako ',
+               2,
+               'mako:py:debugging',
+               'mako:py:debugging'),
+              (' Example: Executing Python and using SymPy Objects in LaTeX ',
+               2,
+               None,
+               '___sec71'),
+              (' Example: Extending Tables to Handle Figures ',
+               2,
+               'manual:tables:wfigs',
+               'manual:tables:wfigs'),
+              (' Solution for LaTeX and HTML ', 3, None, '___sec73'),
+              (' Generating the Entire Table ', 3, None, '___sec74'),
+              (' Generating the Entire Table in a Native Format via Mako ',
+               3,
+               None,
+               '___sec75'),
+              (' Generating the Entire Table in a Native Format as a Post Process ',
+               3,
+               None,
+               '___sec76'),
+              (' Example: Defining a Theorem Environment ',
+               2,
+               'manual:theorem:envir',
+               'manual:theorem:envir'),
+              (' Tools for Writing DocOnce Documents ', 2, None, '___sec78'),
+              (' Debugging ', 2, None, '___sec79'),
+              (' From DocOnce to Other Formats ',
+               1,
+               'doconce2formats',
+               'doconce2formats'),
+              (' Generating a makefile ', 2, None, '___sec81'),
+              (' Preprocessing ', 2, None, '___sec82'),
+              (' Removal of inline comments ', 2, None, '___sec83'),
+              (' Notes ', 2, None, '___sec84'),
+              (' Demo of different formats ', 2, None, '___sec85'),
+              (' HTML ', 2, None, '___sec86'),
+              (' Basics ', 3, None, '___sec87'),
+              (' Typesetting of Code ', 3, None, '___sec88'),
+              (' Handling of Movies ', 3, None, '___sec89'),
+              (' HTML Styles ', 3, None, '___sec90'),
+              (' HTML templates ', 3, None, '___sec91'),
+              (' The HTML File Collection ', 3, None, '___sec92'),
+              (' Filenames ', 3, None, '___sec93'),
+              (' Blog Posts ', 2, None, '___sec94'),
+              (' Pandoc and Markdown ', 2, None, '___sec95'),
+              (' Markdown to HTML conversion ', 3, None, '___sec96'),
+              (' Using Pandoc to go from LaTeX to MS Word or HTML ',
+               3,
+               None,
+               '___sec97'),
+              (' Strict Markdown ', 3, None, '___sec98'),
+              (' GitHub-flavored Markdown ', 3, None, '___sec99'),
+              (' MultiMarkdown ', 3, None, '___sec100'),
+              (' Strapdown rendering of Markdown text ',
+               3,
+               None,
+               '___sec101'),
+              (' LaTeX ', 2, None, '___sec102'),
+              (' PDFLaTeX ', 2, None, '___sec103'),
+              (' XeLaTeX ', 2, None, '___sec104'),
+              (' From PDF to e-book formats ', 2, None, '___sec105'),
+              (' Plain ASCII Text ', 2, None, '___sec106'),
+              (' reStructuredText ', 2, None, '___sec107'),
+              (' Sphinx ', 2, None, '___sec108'),
+              (' The manual Sphinx procedure ', 3, None, '___sec109'),
+              (' Wiki Formats ', 2, None, '___sec110'),
+              (' Google Docs ', 2, None, '___sec111'),
+              (' Tweaking the DocOnce Output ', 2, None, '___sec112'),
+              (' Options for the `doconce` commands ', 1, None, '___sec113'),
+              (' `doconce format` command-line options ',
+               2,
+               None,
+               '___sec114'),
+              (' Installation of DocOnce and its Dependencies ',
+               1,
+               'install:doconce',
+               'install:doconce'),
+              (' DocOnce ', 2, None, '___sec116'),
+              (' Dependencies ', 2, None, '___sec117'),
+              (' Preprocessors ', 3, None, '___sec118'),
+              (' Image file handling ', 3, None, '___sec119'),
+              (' Spellcheck ', 3, None, '___sec120'),
+              (' Bibliography ', 3, None, '___sec121'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec122'),
+              (' LaTeX packages ', 3, None, '___sec123'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec124'),
+              (' Sphinx Output ', 3, None, '___sec125'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec126'),
+              (' Epydoc Output ', 3, None, '___sec127'),
+              (' Analyzing file differences ', 3, None, '___sec128'),
+              (' Quick Debian/Ubuntu Install ',
+               2,
+               'install:debian:script',
+               'install:debian:script'),
+              (' Basic Parsing Ideas ', 1, None, '___sec130'),
+              (' Typesetting of Function Arguments, Return Values, and Variables ',
+               2,
+               None,
+               '___sec131'),
+              (' References ', 1, None, '___sec132')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\half}{\frac{1}{2}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\ep}{\thinspace . }
+\newcommand{\uvec}{\vec u}
+\newcommand{\Q}{\pmb{Q}}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="manual.html">DocOnce Description</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "What Is DocOnce?" --> <li><a href="._manual000.html#what:is:doconce" style="font-size: 80%;"><b>What Is DocOnce?</b></a></li>
+     <!-- navigation toc: "Demos" --> <li><a href="._manual002.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demos</a></li>
+     <!-- navigation toc: "The DocOnce Markup Language" --> <li><a href="._manual003.html#___sec2" style="font-size: 80%;"><b>The DocOnce Markup Language</b></a></li>
+     <!-- navigation toc: "Lists" --> <li><a href="._manual003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
+     <!-- navigation toc: "Special lines" --> <li><a href="._manual004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Special lines</a></li>
+     <!-- navigation toc: "Heading with title and author(s)" --> <li><a href="._manual004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Heading with title and author(s)</a></li>
+     <!-- navigation toc: "Table of contents" --> <li><a href="._manual004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Table of contents</a></li>
+     <!-- navigation toc: "Section headings" --> <li><a href="._manual005.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Section headings</a></li>
+     <!-- navigation toc: "Figures" --> <li><a href="._manual006.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures</a></li>
+     <!-- navigation toc: "Movies" --> <li><a href="._manual007.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Movies</a></li>
+     <!-- navigation toc: "Copying Computer Code from Source Files" --> <li><a href="._manual008.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Copying Computer Code from Source Files</a></li>
+     <!-- navigation toc: "Inserting the Output from Operating System Commands" --> <li><a href="._manual008.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inserting the Output from Operating System Commands</a></li>
+     <!-- navigation toc: "Inline Tagging" --> <li><a href="._manual009.html#inline:tagging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline Tagging</a></li>
+     <!-- navigation toc: "Comments" --> <li><a href="._manual010.html#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comments</a></li>
+     <!-- navigation toc: "Cross-Referencing" --> <li><a href="._manual011.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cross-Referencing</a></li>
+     <!-- navigation toc: "Generalized Cross-Referencing" --> <li><a href="._manual011.html#manual:genrefs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generalized Cross-Referencing</a></li>
+     <!-- navigation toc: "Index" --> <li><a href="._manual012.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Index</a></li>
+     <!-- navigation toc: "Bibliography/References" --> <li><a href="._manual012.html#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography/References</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._manual013.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
+     <!-- navigation toc: "Exercises, Problems, Projects, and Examples" --> <li><a href="._manual014.html#___sec47" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercises, Problems, Projects, and Examples</a></li>
+     <!-- navigation toc: "Blocks of Verbatim Computer Code" --> <li><a href="._manual015.html#sec:verbatim:blocks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blocks of Verbatim Computer Code</a></li>
+     <!-- navigation toc: "LaTeX Blocks of Mathematical Text" --> <li><a href="._manual016.html#mathtext" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Blocks of Mathematical Text</a></li>
+     <!-- navigation toc: "Macros (Newcommands)" --> <li><a href="._manual017.html#newcommands" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Macros (Newcommands)</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href="._manual018.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Typesetting of Algorithms" --> <li><a href="._manual018.html#___sec55" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Algorithms</a></li>
+     <!-- navigation toc: "Preprocessing Steps" --> <li><a href="._manual018.html#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing Steps</a></li>
+     <!-- navigation toc: "Splitting Documents into Smaller Pieces" --> <li><a href="._manual019.html#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Splitting Documents into Smaller Pieces</a></li>
+     <!-- navigation toc: "Header and Footer" --> <li><a href="._manual019.html#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Header and Footer</a></li>
+     <!-- navigation toc: "Missing Features" --> <li><a href="._manual020.html#___sec59" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Missing Features</a></li>
+     <!-- navigation toc: "Guidelines for LaTeX Writers" --> <li><a href="._manual020.html#___sec60" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Guidelines for LaTeX Writers</a></li>
+     <!-- navigation toc: "Emacs DocOnce Formatter" --> <li><a href="._manual020.html#emacs:doconce" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Emacs DocOnce Formatter</a></li>
+     <!-- navigation toc: "Writing Slides" --> <li><a href="._manual021.html#___sec62" style="font-size: 80%;"><b>Writing Slides</b></a></li>
+     <!-- navigation toc: "Overview" --> <li><a href="._manual022.html#___sec63" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Overview</a></li>
+     <!-- navigation toc: "HTML5 Slides" --> <li><a href="._manual022.html#___sec64" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML5 Slides</a></li>
+     <!-- navigation toc: "LaTeX Beamer Slides" --> <li><a href="._manual022.html#___sec66" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Beamer Slides</a></li>
+     <!-- navigation toc: "Mako Programming" --> <li><a href="._manual023.html#___sec68" style="font-size: 80%;"><b>Mako Programming</b></a></li>
+     <!-- navigation toc: "The Basics of Mako" --> <li><a href="._manual023.html#___sec69" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Basics of Mako</a></li>
+     <!-- navigation toc: "Debugging Python code in Mako" --> <li><a href="._manual023.html#mako:py:debugging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging Python code in Mako</a></li>
+     <!-- navigation toc: "Example: Executing Python and using SymPy Objects in LaTeX" --> <li><a href="._manual024.html#___sec71" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Executing Python and using SymPy Objects in LaTeX</a></li>
+     <!-- navigation toc: "Example: Extending Tables to Handle Figures" --> <li><a href="._manual025.html#manual:tables:wfigs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Extending Tables to Handle Figures</a></li>
+     <!-- navigation toc: "Example: Defining a Theorem Environment" --> <li><a href="._manual026.html#manual:theorem:envir" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Defining a Theorem Environment</a></li>
+     <!-- navigation toc: "Tools for Writing DocOnce Documents" --> <li><a href="._manual027.html#___sec78" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tools for Writing DocOnce Documents</a></li>
+     <!-- navigation toc: "Debugging" --> <li><a href="._manual027.html#___sec79" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging</a></li>
+     <!-- navigation toc: "From DocOnce to Other Formats" --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;"><b>From DocOnce to Other Formats</b></a></li>
+     <!-- navigation toc: "Generating a makefile" --> <li><a href="._manual028.html#___sec81" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating a makefile</a></li>
+     <!-- navigation toc: "Preprocessing" --> <li><a href="._manual028.html#___sec82" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing</a></li>
+     <!-- navigation toc: "Removal of inline comments" --> <li><a href="._manual028.html#___sec83" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Removal of inline comments</a></li>
+     <!-- navigation toc: "Notes" --> <li><a href="._manual028.html#___sec84" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notes</a></li>
+     <!-- navigation toc: "Demo of different formats" --> <li><a href="._manual028.html#___sec85" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demo of different formats</a></li>
+     <!-- navigation toc: "HTML" --> <li><a href="._manual028.html#___sec86" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: "Blog Posts" --> <li><a href="._manual028.html#___sec94" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blog Posts</a></li>
+     <!-- navigation toc: "Pandoc and Markdown" --> <li><a href="._manual028.html#___sec95" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Pandoc and Markdown</a></li>
+     <!-- navigation toc: "LaTeX" --> <li><a href="._manual028.html#___sec102" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: "PDFLaTeX" --> <li><a href="._manual028.html#___sec103" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;PDFLaTeX</a></li>
+     <!-- navigation toc: "XeLaTeX" --> <li><a href="._manual028.html#___sec104" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;XeLaTeX</a></li>
+     <!-- navigation toc: "From PDF to e-book formats" --> <li><a href="._manual028.html#___sec105" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;From PDF to e-book formats</a></li>
+     <!-- navigation toc: "Plain ASCII Text" --> <li><a href="._manual028.html#___sec106" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plain ASCII Text</a></li>
+     <!-- navigation toc: "reStructuredText" --> <li><a href="._manual028.html#___sec107" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;reStructuredText</a></li>
+     <!-- navigation toc: "Sphinx" --> <li><a href="._manual028.html#___sec108" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
+     <!-- navigation toc: "Wiki Formats" --> <li><a href="._manual028.html#___sec110" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki Formats</a></li>
+     <!-- navigation toc: "Google Docs" --> <li><a href="._manual028.html#___sec111" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Google Docs</a></li>
+     <!-- navigation toc: "Tweaking the DocOnce Output" --> <li><a href="._manual028.html#___sec112" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tweaking the DocOnce Output</a></li>
+     <!-- navigation toc: "Options for the `doconce` commands" --> <li><a href="._manual028.html#___sec113" style="font-size: 80%;"><b>Options for the `doconce` commands</b></a></li>
+     <!-- navigation toc: "`doconce format` command-line options" --> <li><a href="._manual028.html#___sec114" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`doconce format` command-line options</a></li>
+     <!-- navigation toc: "Installation of DocOnce and its Dependencies" --> <li class="active"><a href="._manual029.html#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
+     <!-- navigation toc: "DocOnce" --> <li><a href="._manual029.html#___sec116" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
+     <!-- navigation toc: "Dependencies" --> <li><a href="._manual029.html#___sec117" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
+     <!-- navigation toc: "Quick Debian/Ubuntu Install" --> <li><a href="._manual029.html#install:debian:script" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick Debian/Ubuntu Install</a></li>
+     <!-- navigation toc: "Basic Parsing Ideas" --> <li><a href="._manual029.html#___sec130" style="font-size: 80%;"><b>Basic Parsing Ideas</b></a></li>
+     <!-- navigation toc: "Typesetting of Function Arguments, Return Values, and Variables" --> <li><a href="._manual029.html#___sec131" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Function Arguments, Return Values, and Variables</a></li>
+     <!-- navigation toc: "References" --> <li><a href="._manual029.html#___sec132" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0029"></a>
+<!-- !split -->
+
+<h1>Installation of DocOnce and its Dependencies <a name="install:doconce"></a></h1>
+
+Below, we explain the manual installation of all software that may be
+needed when working with DocOnce documents.
+The impatient way to install what is needed is to run the
+<a href="install_doconce.sh" target="_self"><tt>install_doconce.sh</tt></a> (or
+<a href="install_doconce.py" target="_self"><tt>install_doconce.py</tt></a>) script.
+
+<h2>DocOnce  <a name="___sec116"></a></h2>
+
+DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.
+Installation can be done via
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
+# or if doconce is already installed
+sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
+</pre></div>
+<p>
+Alternatively, one can run the standard procedure
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@github.com:hplgit/doconce.git
+cd doconce
+sudo python setup.py install
+cd ..
+</pre></div>
+<p>
+Since DocOnce is frequently updated, it is recommended to use the
+above procedure and whenever a problem occurs, make sure to
+update to the most recent version:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd doconce
+git pull origin master
+sudo python setup.py install
+</pre></div>
+
+<h2>Dependencies  <a name="___sec117"></a></h2>
+
+Producing HTML documents, plain text, pandoc-extended Markdown,
+and wikis can be done without installing any other
+software. However, if you want other formats as output
+(LaTeX, Sphinx, reStructuredText) and assisting utilities such
+as preprocesors, spellcheck, file differences, bibliographies,
+and so on, the software below must be installed.
+
+<p>
+To install all needed packages on a GNU/Linux Debian system, such as
+Ubuntu, you can jump to the script in the section <a href="#install:debian:script">Quick Debian/Ubuntu Install</a>.
+
+<p>
+<!-- Make a debpkg_doconce.txt file with everything that is needed on Debian -->
+
+<h3>Preprocessors  <a name="___sec118"></a></h3>
+
+If you make use of the <a href="http://code.google.com/p/preprocess" target="_self">Preprocess</a>
+preprocessor, this program must be installed:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
+cd preprocess
+cd doconce
+sudo python setup.py install
+cd ..
+</pre></div>
+<p>
+A much more advanced alternative to Preprocess is
+<a href="http://www.makotemplates.org" target="_self">Mako</a>. Its installation is most
+conveniently done by <code>pip</code>,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install Mako
+</pre></div>
+<p>
+This command requires <code>pip</code> to be installed. On Debian Linux systems,
+such as Ubuntu, the installation is simply done by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install python-pip
+</pre></div>
+<p>
+Alternatively, one can install from the <code>pip</code> <a href="http://pypi.python.org/pypi/pip" target="_self">source code</a>.
+
+<p>
+Mako can also be installed directly from
+<a href="http://www.makotemplates.org/download.html" target="_self">source</a>: download the
+tarball, pack it out, go to the directory and run
+the usual <code>sudo python setup.py install</code>.
+
+<h3>Image file handling  <a name="___sec119"></a></h3>
+
+Different output formats require different formats of image files.
+For example, PostScript or Encapuslated PostScript is required for
+<code>latex</code> output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
+calls up programs from the ImageMagick suite for converting image
+files to a proper format if needed. The <a href="http://www.imagemagick.org/script/index.php" target="_self">ImageMagick suite</a> can be installed on all
+major platforms.  On Debian Linux (including Ubuntu) systems one can
+simply write
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install imagemagick
+</pre></div>
+<p>
+The convenience program <code>doconce combine_images</code>, for combining several
+images into one, will use <code>montage</code> and <code>convert</code> from ImageMagick and
+the <code>pdftk</code>, <code>pdfnup</code>, and <code>pdfcrop</code> programs from the <code>texlive-extra-utils</code>
+Debian package. The latter gets installed by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive-extra-utils
+</pre></div>
+<p>
+Automatic image conversion from EPS to PDF calls up <code>epstopdf</code>, which
+can be installed by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive-font-utils
+</pre></div>
+
+<h3>Spellcheck  <a name="___sec120"></a></h3>
+
+The utility <code>doconce spellcheck</code> applies the <code>ispell</code> program for
+spellcheck. On Debian (including Ubuntu) it is installed by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install ispell
+</pre></div>
+
+<h3>Bibliography  <a name="___sec121"></a></h3>
+
+The Python package <a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> is needed if you use a bibliography
+in your document. On the website, click on <em>Clone</em>, copy the
+command and run it:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone https://bitbucket.org/logg/publish
+</pre></div>
+<p>
+Thereafter go to the <code>publish</code> directory and run the <code>setup.py</code> script
+for installing Publish:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd publish
+sudo python setup.py
+</pre></div>
+
+<h3>Ptex2tex for LaTeX Output  <a name="___sec122"></a></h3>
+
+To make LaTeX documents with very flexible choice of typesetting of
+verbatim code blocks you need <a href="http://code.google.com/p/ptex2tex" target="_self">ptex2tex</a>,
+which is installed by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install
+</pre></div>
+<p>
+It may happen that you need additional style files, you can run
+a script, <code>cp2texmf.sh</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd latex
+sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
+cd ../..
+</pre></div>
+<p>
+This script copies some special stylefiles that
+that <code>ptex2tex</code> potentially makes use of. Some more standard stylefiles
+are also needed. These are installed by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive
+</pre></div>
+<p>
+on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
+the necessary stylefiles (if not, they can be found by googling and installed
+manually in the <code>~/texmf/tex/latex/misc</code> directory).
+
+<p>
+Note that the <code>doconce ptex2tex</code> command, which needs no installation
+beyond DocOnce itself, can be used as a simpler alternative to the <code>ptex2tex</code>
+program.
+
+<p>
+The <em>minted</em> LaTeX style is offered by <code>ptex2tex</code> and <code>doconce ptext2tex</code>
+and popular among many
+users. This style requires the package <a href="http://pygments.org" target="_self">Pygments</a>
+to be installed. On Debian Linux,
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install python-pygments
+</pre></div>
+<p>
+Alternatively, the package can be installed manually:
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
+cd pygments
+sudo python setup.py install
+</pre></div>
+<p>
+One can also do the simple
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sphinx
+</pre></div>
+<p>
+which also installs pygments.
+
+<p>
+If you use the minted style together with <code>ptex2tex</code>, you have to
+enable it by the <code>-DMINTED</code> command-line argument to <code>ptex2tex</code>.
+This is not necessary if you run the alternative <code>doconce ptex2tex</code> program.
+
+<p>
+All use of the minted style requires the <code>-shell-escape</code> command-line
+argument when running LaTeX, i.e., <code>latex -shell-escape</code> or <code>pdflatex
+-shell-escape</code>.
+
+<p>
+Inline comments apply the <code>todonotes</code> LaTeX package if the option
+<code>--latex_todonotes</code> is given.  The <code>todonotes</code> package requires
+several other packages: <code>xcolor</code>, <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>calc</code>,
+<code>graphicx</code>, and <code>setspace</code>. The relevant Debian packages for
+installing all this are listed below.
+
+<h3>LaTeX packages  <a name="___sec123"></a></h3>
+
+Many LaTeX packages are potentially needed (depending on various
+preprocessor variables given to <code>ptex2tex</code> or <code>doconce ptex2tex</code>.  The
+standard packages always included are <code>relsize</code>, <code>epsfig</code>, <code>makeidx</code>,
+<code>setspace</code>, <code>color</code>, <code>amsmath</code>, <code>amsfonts</code>, <code>xcolor</code>, <code>bm</code>,
+<code>microtype</code>, <code>titlesec</code>, and <code>hyperref</code>.  The <code>ptex2tex</code> package (from
+<a href="http://code.google.com/p/ptex2tex" target="_self">ptex2tex</a>) is also included, but
+removed again if <code>doconce ptex2tex</code> is run instead of the <code>ptex2tex</code>
+program, meaning that if you do not use <code>ptex2tex</code>, you do not need
+<code>ptex2tex.sty</code>. Optional packages that might be included are <code>minted</code>,
+<code>fontspec</code>, <code>xunicode</code>, <code>inputenc</code>, <code>helvet</code>, <code>mathpazo</code>, <code>wrapfig</code>,
+<code>calc</code>, <code>ifthen</code>, <code>xkeyval</code>, <code>tikz</code>, <code>graphicx</code>, <code>setspace</code>, <code>shadow</code>,
+<code>disable</code>, <code>todonotes</code>, <code>lineno</code>, <code>xr</code>, <code>framed</code>, <code>mdframe</code>,
+<code>movie15</code>, <code>a4paper</code>, and <code>a6paper</code>.
+
+<p>
+Relevant Debian packages that gives you all of these LaTeX packages are
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">texlive
+texlive-extra-utils
+texlive-latex-extra
+texlive-font-utils
+</pre></div>
+<p>
+On old Ubuntu 12.04 one has to do <code>sudo add-apt-repository ppa:texlive-backports/ppa</code> and <code>sudo apt-get update</code> first, or alternatively install these as well:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">texlive-math-extra
+texlive-bibtex-extra
+texlive-xetex
+texlive-humanities
+texlive-pictures
+</pre></div>
+<p>
+Alternatively, one may pull in <code>texlive-full</code> to get all available
+style files.
+
+<p>
+If you want to use the <em>anslistings</em> code environment with <code>ptex2tex</code>
+(<code>.ptex2tex.cfg</code> styles <code>Python_ANS</code>, <code>Python_ANSt</code>, <code>Cpp_ANS</code>, etc.) or
+<code>doconce ptex2tex</code> (<code>envir=ans</code> or <code>envir=ans:nt</code>), you need the
+<code>anslistings.sty</code> file. It can be obtained from
+the <a href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty" target="_self">ptex2tex source</a>. It should get installed
+by the <code>cp2texmf.sh</code> script executed above.
+
+<h3>reStructuredText (reST) Output  <a name="___sec124"></a></h3>
+
+The <code>rst</code> output from DocOnce allows further transformation to LaTeX,
+HTML, XML, OpenOffice, and so on, through the <a href="http://docutils.sourceforge.net" target="_self">docutils</a> package.  The installation of the
+most recent version can be done by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn checkout \
+  http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
+cd docutils
+sudo python setup.py install
+cd ..
+</pre></div>
+<p>
+The command
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sphinx
+</pre></div>
+<p>
+installs Docutils along with Sphinx and Pygments.
+
+<p>
+To use the OpenOffice suite you will typically on Debian systems install
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install unovonv libreoffice libreoffice-dmaths
+</pre></div>
+<p>
+There is a possibility to create PDF files from reST documents
+using ReportLab instead of LaTeX. The enabling software is
+<a href="http://code.google.com/p/rst2pdf" target="_self">rst2pdf</a>. Either download the tarball
+or clone the svn repository, go to the <code>rst2pdf</code> directory and
+run the usual <code>sudo python setup.py install</code>.
+
+<h3>Sphinx Output  <a name="___sec125"></a></h3>
+
+Output to <code>sphinx</code> requires of course the
+<a href="http://sphinx.pocoo.org" target="_self">Sphinx software</a>,
+installed by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone https://bitbucket.org/birkenfeld/sphinx
+cd sphinx
+sudo python setup.py install
+cd ..
+</pre></div>
+<p>
+An alternative is
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install sphinx
+</pre></div>
+<p>
+DocOnce comes with many Sphinx themes that are not part of the
+standard Sphinx source distribution. Some of these themes require
+additional Python/Sphinx modules to be installed:
+
+<ul>
+ <li> cloud and redcloud: <a href="https://bitbucket.org/ecollins/cloud_sptheme" target="_self"><tt>https://bitbucket.org/ecollins/cloud_sptheme</tt></a></li>
+ <li> bootstrap: <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme" target="_self"><tt>https://github.com/ryan-roemer/sphinx-bootstrap-theme</tt></a></li>
+ <li> solarized: <a href="https://bitbucket.org/miiton/sphinxjp.themes.solarized" target="_self"><tt>https://bitbucket.org/miiton/sphinxjp.themes.solarized</tt></a></li>
+ <li> impressjs: <a href="https://github.com/shkumagai/sphinxjp.themes.impressjs" target="_self"><tt>https://github.com/shkumagai/sphinxjp.themes.impressjs</tt></a></li>
+ <li> sagecellserver: <a href="https://github.com/kriskda/sphinx-sagecell" target="_self"><tt>https://github.com/kriskda/sphinx-sagecell</tt></a></li>
+</ul>
+
+These must be downloaded or cloned, and <code>setup.py</code> must be run as shown
+above.
+
+<h3>Markdown and Pandoc Output  <a name="___sec126"></a></h3>
+
+The DocOnce format <code>pandoc</code> outputs the document in the Pandoc
+extended Markdown format, which via the <code>pandoc</code> program can be
+translated to a range of other formats. Installation of <a href="http://johnmacfarlane.net/pandoc/" target="_self">Pandoc</a>, written in Haskell, is most
+easily done by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install pandoc
+</pre></div>
+<p>
+on Debian (Ubuntu) systems.
+
+<h3>Epydoc Output  <a name="___sec127"></a></h3>
+
+When the output format is <code>epydoc</code> one needs that program too, installed
+by
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
+cd epydoc
+sudo make install
+cd ..
+</pre></div>
+<p>
+<b>Remark.</b>
+Several of the packages above installed from source code
+are also available in Debian-based system through the
+<code>apt-get install</code> command. However, we recommend installation directly
+from the version control system repository as there might be important
+updates and bug fixes. For <code>svn</code> directories, go to the directory,
+run <code>svn update</code>, and then <code>sudo python setup.py install</code>. For
+Mercurial (<code>hg</code>) directories, go to the directory, run
+<code>hg pull; hg update</code>, and then <code>sudo python setup.py install</code>.
+
+<h3>Analyzing file differences  <a name="___sec128"></a></h3>
+
+The <code>doconce diff file1 file prog</code> command for illustrating differences between
+two files <code>file1</code> and <code>file2</code> using the program <code>prog</code> requires <code>prog</code>
+to be installed. By default, <code>prog</code> is <code>difflib</code> which comes with Python
+and is always present if you have DocOnce installed. Another choice, <code>diff</code>,
+should be available on all Unix/Linux systems. Other choices, their
+URL, and their <code>sudo apt-get install</code> command on Debian (Ubuntu) systems
+appear in the table below.
+
+<p>
+
+<div class="row">
+  <div class="col-xs-4">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center"><b>                                                                 Program                                                                 </b></td> <td align="center"><b>                                                                   URL                                                                   </b></td> <td align="center"><b>                                                          Debian/Ubuntu install                                                          </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>pdiff</code>                                                                                                                           </td> <td align="left">   <a href="http://www.gnu.org/software/a2ps/" target="_self">a2ps</a> <a href="http://www.gnu.org/software/wdiff/" target="_self">wdiff</a>    </td> <td align="left">   <code>sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended</code>                                                   </td> </tr>
+<tr><td align="left">   <code>latexdiff</code>                                                                                                                       </td> <td align="left">   <a href="http://www.ctan.org/pkg/latexdiff" target="_self">latexdiff</a>                                                                     </td> <td align="left">   <code>sudo apt-get install latexdiff</code>                                                                                                  </td> </tr>
+<tr><td align="left">   <code>kdiff3</code>                                                                                                                          </td> <td align="left">   <a href="http://kdiff3.sourceforge.net/" target="_self">kdiff3</a>                                                                           </td> <td align="left">   <code>sudo apt-get install kdiff3</code>                                                                                                     </td> </tr>
+<tr><td align="left">   <code>diffuse</code>                                                                                                                         </td> <td align="left">   <a href="http://diffuse.sourceforge.net/" target="_self">diffuse</a>                                                                         </td> <td align="left">   <code>sudo apt-get install diffuse</code>                                                                                                    </td> </tr>
+<tr><td align="left">   <code>xxdiff</code>                                                                                                                          </td> <td align="left">   <a href="http://xxdiff.sourceforge.net/local/" target="_self">xxdiff</a>                                                                     </td> <td align="left">   <code>sudo apt-get install xxdiff</code>                                                                                                     </td> </tr>
+<tr><td align="left">   <code>meld</code>                                                                                                                            </td> <td align="left">   <a href="http://meldmerge.org/" target="_self">meld</a>                                                                                      </td> <td align="left">   <code>sudo apt-get install meld</code>                                                                                                       </td> </tr>
+<tr><td align="left">   <code>tkdiff.tcl</code>                                                                                                                      </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/" target="_self">tkdiff</a>                                                                 </td> <td align="left">   not in Debian                                                                                                                                </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-4 -->
+
+<h2>Quick Debian/Ubuntu Install <a name="install:debian:script"></a></h2>
+
+On Debian (including Ubuntu) systems, it is straightforward to install the
+long series of DocOnce dependencies:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Version control systems
+sudo apt-get install -y mercurial git subversion
+
+# Python
+sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
+
+# LaTeX
+sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
+# or sudo apt-get install -y texlive-full  # get everything
+sudo apt-get install -y latexdiff auctex
+
+# Image and movie tools
+sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
+
+# Misc
+sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
+
+# More Python software
+sudo pip install sphinx  # install pygments and docutils too
+sudo pip install mako
+sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+
+sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+
+# DocOnce itself
+rm -rf srclib   # put downloaded software in srclib
+mkdir srclib
+cd srclib
+git clone git@github.com:hplgit/doconce.git
+cd doconce
+sudo python setup.py install -y
+cd ../..
+
+# Ptex2tex
+cd srclib
+svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
+cd ptex2tex
+sudo python setup.py install -y
+cd latex
+sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
+cd ../../..
+</pre></div>
+
+<h1>Basic Parsing Ideas  <a name="___sec130"></a></h1>
+
+<!-- avoid list here since we have code in between (never a good idea) -->
+
+<p>
+The (parts of) files with computer code to be directly included in
+the document are first copied into verbatim blocks.
+
+<p>
+All verbatim and TeX blocks are removed and stored elsewhere
+to ensure that no formatting rules are not applied to these blocks.
+
+<p>
+The text is examined line by line for typesetting of lists, as well as
+handling of blank lines and comment lines.  List parsing needs some
+awareness of the context.  Each line is interpreted by a regular
+expression
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">(?P&lt;indent&gt; *(?P&lt;listtype&gt;[*o-] )? *)(?P&lt;keyword&gt;[^:]+?:)?(?P&lt;text&gt;.*)\s?
+</pre></div>
+<p>
+That is, a possible indent (which we measure), an optional list
+item identifier, optional space, optional words ended by colon,
+and optional text. All lines are of this form. However, some
+ordinary (non-list) lines may contain a colon, and then the keyword
+and text group must be added to get the line contents. Otherwise,
+the text group will be the line.
+
+<p>
+When lists are typeset, the text is examined for sections, paragraphs,
+title, author, date, plus all the inline tags for emphasized, boldface,
+and verbatim text. Plain subsitutions based on regular expressions
+are used for this purpose.
+
+<p>
+The final step is to insert the code and TeX blocks again (these should
+be untouched and are therefore left out of the previous parsing).
+
+<p>
+It is important to keep the DocOnce format and parsing simple.  When a
+new format is needed and this format is not obtained by a simple edit
+of the definition of existing formats, it might be better to convert
+the document to reST and then to XML, parse the XML and
+write out in the new format.  When the DocOnce format is not
+sufficient to getting the layout you want, it is suggested to filter
+the document to another, more complex format, say reST or
+LaTeX, and work further on the document in this format.
+
+<h2>Typesetting of Function Arguments, Return Values, and Variables  <a name="___sec131"></a></h2>
+
+<div class="alert alert-block alert-success alert-text-normal"><b>Note.</b>
+This text is somewhat outdated.
+Now DocOnce supports NumPy-style docstrings. DocOnce can also do
+automatic references to Python documentation, say the `math`
+module, but the link only works in case of Sphinx output.
+Typical syntax is
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">With :mod:`numpy` and the :func:`scipy.io.loadmat` function in
+the :mod:`scipy.io` module, we can ...
+</pre></div>
+<p>
+In case of ambiguous names, say a local <code>math</code> module, one can
+use <code>python</code>, <code>numpy</code>, <code>scipy</code>, and <code>mpl</code> (matplotlib) as prefix
+(as defined in <code>conf.py</code>, generated by the <code>doconce sphinx_dir</code>):
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">With :func:`python:math.sin` instead of :func:`math.sin` ...
+</pre></div>
+<p>
+(More info in the Sphinx API doc by the author - under development.)
+
+<p>
+A Mako function can provide greater flexibility such that
+other formats than Sphinx can take advantage of such references
+(full URL can be built into the function, depending on the format).
+</div>
+
+
+<p>
+<blockquote>
+    As part of comments (or doc strings) in computer code one often wishes
+    to explain what a function takes of arguments and what the return
+    values are. Similarly, it is desired to document class, instance, and
+    module variables.  Such arguments/variables can be typeset as
+    description lists of the form listed below and <em>placed at the end of
+    the doc string</em>. Note that <code>argument</code>, <code>keyword argument</code>, <code>return</code>,
+    <code>instance variable</code>, <code>class variable</code>, and <code>module variable</code> are the
+    only legal keywords (descriptions) for the description list in this
+    context.  If the output format is Epytext (Epydoc) or Sphinx, such lists of
+    arguments and variables are nicely formatted.
+    
+    <p>
+    
+    <!-- code=text typeset with pygments style "default" -->
+    <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    - argument x: x value (float),
+          which must be a positive number.
+        - keyword argument tolerance: tolerance (float) for stopping
+          the iterations.
+        - return: the root of the equation (float), if found, otherwise None.
+        - instance variable eta: surface elevation (array).
+        - class variable items: the total number of MyClass objects (int).
+        - module variable debug: True: debug mode is on; False: no debugging
+          (bool variable).
+    </pre></div>
+    <p>
+    The result depends on the output format: all formats except Epytext
+    and Sphinx just typeset the list as a list with keywords.
+    
+    <p>
+    
+    <dl>
+        <dt><b>module variable</b> x:<dd> 
+          x value (float),
+          which must be a positive number.
+        <dt><b>module variable</b> tolerance:<dd> 
+          tolerance (float) for stopping
+          the iterations.
+    </dl>
+</blockquote>
+
+
+<h1>References  <a name="___sec132"></a></h1>
+
+<div class="alert alert-block alert-danger alert-text-normal"><b>Note.</b>
+The references below are just for illustrating and testing citation
+syntax and not references for explaining parts of the text.
+</div>
+
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="Knuth85"></a> <b>D. E. Knuth</b>. 
+    Theory and Practice,
+    <em>EATCS Bulletin</em>,
+    27,
+    pp. 14-21,
+    1985.</li>
+ <li> <a name="eqs_doc_2008"></a> <b>T. H. E. Author</b>. 
+    Some Equations,
+    2008.</li>
+ <li> <a name="DocOnce:test"></a> <b>H. P. Langtangen</b>. 
+    A Document for Testing DocOnce,
+    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self"><tt>http://hplgit.github.io/doconce/test/demo_testdoc.html</tt></a>.</li>
+ <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
+    Propagation of Large Destructive Waves,
+    <em>International Journal of Applied Mechanics and Engineering</em>,
+    7(1),
+    pp. 187-204,
+    2002.</li>
+ <li> <a name="Langtangen_et_al_2002"></a> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
+    Numerical Methods for Incompressible Viscous Flow,
+    <em>Advances in Water Resources</em>,
+    25,
+    pp. 1125-1146,
+    2002.</li>
+ <li> <a name="Langtangen_1994a"></a> <b>H. P. Langtangen</b>. 
+    Numerical Solution of First Passage Problems in Random Vibrations,
+    <em>SIAM Journal of Scientific and Statistical Computing</em>,
+    15,
+    pp. 997-996,
+    1994.</li>
+ <li> <a name="Mardal_et_al_2003a"></a> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
+    Software Tools for Multigrid Methods,
+    <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
+    edited by <b>H. P. Langtangen and A. Tveito</b>,
+    Springer,
+    2003.</li>
+ <li> <a name="Langtangen_1988d"></a> <b>H. P. Langtangen</b>. 
+    The FEMDEQS Program System,
+    <em>Department of Mathematics, University of Oslo</em>,
+    1989.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<p>
+
+<ul class="pager">
+  <li class="previous">
+    <a href="._manual028.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
