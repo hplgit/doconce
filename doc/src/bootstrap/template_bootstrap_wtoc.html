@@ -1,0 +1,104 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>%(title)s</title>
+
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/ -->
+
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
+<!-- Various settings from the bootstrap documentation style -->
+<link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Potential adjustment of styles -->
+<style type="text/css">
+/* Colors in the navigation sidebar */
+.bs-docs-sidebar .nav > li > a {
+  color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #999;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  color: #563d7c;
+}
+</style>
+</head>
+
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<div class="container">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://some.website.net/some/path" class="navbar-brand">%(title)s</a>
+  </div>
+  <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <ul class="nav navbar-nav navbar-right">
+     <li> <a href="http://getbootstrap.com/">Bootstrap</a></li>
+     <li> <a href="http://bootswatch.com/">Bootswatch</a></li>
+    </ul>
+  </nav>
+</div>
+</header>
+
+
+<!-- Docs page layout -->
+
+<!-- A purple header field with the title is optional -->
+<div class="bs-docs-header" id="content">
+ <div class="container">
+  <h1>%(title)s</h1>
+  <p>A purple style with navigation bar on the right</p>
+ </div>
+</div>
+
+<div class="container bs-docs-container">
+
+ <div class="row">
+
+  <!-- main content -->
+  <div class="col-md-9" role="main">
+%(main)s
+  </div>
+
+  <!-- sidebar with navigation -->
+  <div class="col-md-3">
+   <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+    <ul class="nav bs-docs-sidenav">
+%(table_of_contents)s
+    </ul>
+    <a class="back-to-top" href="#top">Back to top</a>
+   </div>
+  </div>
+ </div>
+
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+ <div class="container">
+  Hans Petter Langtangen, 2014 &copy;
+ </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
+</html>

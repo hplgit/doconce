@@ -2543,7 +2543,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
     header_str = '\n'.join(header)
 
     bootstrap = '<!-- Bootstrap style: ' in header_str or \
-                re.search(r'<link href=.+?boots(trap|watch)', header_str)
+                bool(re.search(r'<link .*href=.+?boots(trap|watch).*\.css', header_str))
 
     if bootstrap:
         local_navigation_pics = False    # navigation is in the template

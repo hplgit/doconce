@@ -5,6 +5,7 @@ from rst import *
 from common import align2equations, online_python_tutor, bibliography, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option
+from doconce import _abort
 
 video_counter = 0
 activecode_counter = 0
@@ -109,6 +110,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         #sys='console',
         sys='text',
         rst='rst',
+        css='css', csspro='css', csscod='css',
         dat='text', csv='text', txt='text',
         cc='text', ccq='text',  # not possible with extra indent for ccq
         ipy='ipy',
