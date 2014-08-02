@@ -29,7 +29,7 @@ doconce replace '<a href="">GO TO 1</a>' '<a href="http://wikipedia.org">Wikiped
 doconce replace '<a href="">GO TO 2</a>' '<a href="http://wolframalpha.com">WolframAlpha</a>' template_vagrant.html
 doconce replace 'Here goes a footer, if desired, maybe with a Copyright &copy;' '&copy; 2013' template_vagrant.html
 
-doconce format html mydoc.do.txt --html_style=vagrant --html_template=template_vagrant.html
+doconce format html mydoc.do.txt --html_style=bootstrap --html_template=template_vagrant.html
 pygmentize -f html -O full,style=emacs -o mydoc_vagrant_pygmentized.html -l html mydoc.html
 cp mydoc.html $pub/mydoc_vagrant.html
 cp -r style_vagrant mydoc_vagrant_pygmentized.html $pub/

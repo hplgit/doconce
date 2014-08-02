@@ -334,9 +334,11 @@ tool.
 
 FIGURE: [fig/vagrant_web, width=900]
 
-This template, found in `bundled/html_styles/vagrant` in the
-DocOnce source code tree, is easy to adopt to a particular set of web
-pages. It looks as
+This template, found in
+"`bundled/html_styles/style_vagrant/template_vagrant.html`":
+"http://hplgit.github.io/doconce/bundled/html_styles/style_vagrant/template_vagrant.html"
+in the DocOnce source code tree, is easy to adopt to a particular set
+of web pages. It looks as
 
 FIGURE: [fig/template_vagrant, width=900]
 
@@ -358,18 +360,12 @@ Here we edit the logo to *DiffEq101*, edit the navigation links at the
 top right to point to Wikipedia and WolframAlpha, and insert a
 copyright 2013 notice in the footer.
 
-The Vagrant style depends on two CSS files. We copy these from
-the `bundled/html_styles/style_vagrant/css` directory in the DocOnce source
-to the current directory so that the links to the stylesheets in
-the template are correct. Otherwise, you have to replace `href="css/`
-in the template to `href="style_vagrant/css/`.
-
 Translation of the original DocOnce writings in `mydoc.do.txt` is
 done by
 
 !bc sys
-doconce format html mydoc.do.txt --html_style=vagrant \
-        --html_template=style_vagrant/template_vagrant.html
+doconce format html mydoc.do.txt --html_style=bootstrap \
+        --html_template=template_vagrant.html
 !ec
 The resulting "HTML file": "mydoc_vagrant_pygmentized.html" has
 a "nice look": "mydoc_vagrant.html":
