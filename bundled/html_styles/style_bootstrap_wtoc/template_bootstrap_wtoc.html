@@ -22,7 +22,12 @@ Footer with author(s) and copyright (remove or edit)
 
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
 <!-- Various settings from the bootstrap documentation style -->
+<link href="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css" rel="stylesheet">
+<!-- The standard
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+leads to strange colors in mathjax expressions. We use docs.css from
+github instead.
+-->
 
 <!-- Can add other themes (then skip bs-docs-header, which has unsuitable
 color, and adjust colors in the navigation sidebar -->
@@ -48,6 +53,12 @@ color, and adjust colors in the navigation sidebar -->
 /* Don't know how to adjust color in bs-docs-header...but the
 header can just be removed */
 </style>
+
+<!-- use highlight.js and styles for code (use --pygments_html_style=off) -->
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
 
 <body>
