@@ -51,7 +51,7 @@ the linenos=true parameter.)"""),
     ('--html_style=', """Name of theme for HTML style:
 plain, blueish, blueish2, bloodish,
 solarized, solarized2_light, solarized2_dark,
-vagrant, bootstrap, bootswatch,
+bootstrap, bootswatch,
 bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
 bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
@@ -86,7 +86,7 @@ in Bootstrap-based styles)."""),
      """\
 Type of admonition and color:
 colors, gray, yellow, apricot, lyx, paragraph.
-For html_style=vagrant,bootstrap,bootswatch,bootswatch_*,
+For html_style=bootstrap*,bootswatch*,
 the two legal values are boostrap_panel, bootstrap_alert."""),
     ('--html_admon_shadow',
      'Add a shadow effect to HTML admon boxes (gray, yellow, apricot).'),
@@ -2220,7 +2220,7 @@ text, gray1 (default), gray2, bigblue, blue, green.
 See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
 for examples on these types (from left to right).
 --nav_button is ignored if the "doconce format html" command used
-bootstrap styles: --html_theme=vagrant, bootstrap*, or bootswatch.
+bootstrap styles: --html_style=bootstrap*|bootswatch*.
 
 --pagination means that one can click on pages at the button
 if a bootstrap theme is used in the document.
@@ -2540,32 +2540,14 @@ def get_header_parts_footer(filename, format='html'):
 def doconce_split_html(header, parts, footer, basename, filename):
     """Native doconce style splitting of HTML file into parts."""
     import html
-    # Check if we use a vagrant template, because that leads to
-    # different navigation etc.
     header_str = '\n'.join(header)
 
-    vagrant = 'builds on the Twitter Bootstrap style' in header_str
     bootstrap = '<!-- Bootstrap style: ' in header_str or \
                 re.search(r'<link href=.+?boots(trap|watch)', header_str)
 
-    if vagrant or bootstrap:
+    if bootstrap:
         local_navigation_pics = False    # navigation is in the template
-        # This text is found in templates (vagrant, for instance)
-        # and will be replaced later
-        bootstrap_navigation_vagrant = """\
-<!-- Navigation buttons at the bottom:
-     Doconce will automatically fill in the right URL in these
-     buttons when doconce html_split is run. Otherwise they are empty.
-<ul class="pager">
-  <li class="previous">
-    <a href="">&larr; </a>
-  </li>
-  <li class="next">
-    <a href=""> &rarr;</a>
- </li>
-</ul>
--->
-"""
+
         def bootstrap_navigation(pn, prev_part_filename, next_part_filename):
             text = '<!-- navigation buttons at the bottom of the page -->'
             if '--pagination' in sys.argv and len(parts) < 19:
@@ -2779,7 +2761,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
     generated_files = []
     for pn, part in enumerate(parts):
         header_copy = header[:]
-        if vagrant or bootstrap:
+        if bootstrap:
             # Highligh first section in this part in the navigation in header
             m = re.search(r'<h(1|2|3).*?>(.+?)<', ''.join(part))
             if m:
@@ -2799,7 +2781,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
         lines.append('<a name="part%04d"></a>\n' % pn)
 
         # Decoration line?
-        if header_part_line and not (vagrant or bootstrap):
+        if header_part_line and not bootstrap:
             if local_navigation_pics:
                 header_part_line_filename = html_imagefile(header_part_line)
             else:
@@ -2813,7 +2795,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
         next_part_filename = _part_filename % (basename, pn+1) + '.html'
         generated_files.append(part_filename)
 
-        if vagrant or bootstrap:
+        if bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
             # Add jumbotron button reference on first page
@@ -2857,11 +2839,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
 
         # Navigation in the bottom of the page
         lines.append('<p>\n')
-        if vagrant:
-            footer_text = ''.join(footer).replace(
-                bootstrap_navigation_vagrant, buttons)
-            lines += footer_text.splitlines(True)
-        elif bootstrap:
+        if bootstrap:
             lines += buttons.splitlines(True) + footer
         else:
             lines.append('<!-- begin bottom navigation -->')

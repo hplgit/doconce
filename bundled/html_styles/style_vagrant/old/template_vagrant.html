@@ -1,11 +1,12 @@
 <html>
 <head>
-<!-- Bootstrap style: vagrant 1.0 web pages -->
-
 <!--
-This style is adopted from the (now old) vagrant 1.0 web pages.
+This style is adopted from the (now old) vagrant 1.0 web
+pages. The style builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
 
-This style file should be copied and the following elements edited:
+This style file should be copied and the following
+elements edited:
 
 Logo heading:
 
@@ -70,18 +71,53 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li class="active"> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
 %(table_of_contents)s
    </ul>
   </div>
  </div>
 
- <div class="span9">
+  <div class="span9">
+
 %(main)s
+
+<!--
+Preliminary examples/discussion on vagrant style syntax
+
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+bla-bla.
+</div>
+
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
+
+<!-- Navigation buttons at the bottom:
+     Doconce will automatically fill in the right URL in these
+     buttons when doconce html_split is run. Otherwise they are empty.
+<ul class="pager">
+  <li class="previous">
+    <a href="">&larr; </a>
+  </li>
+  <li class="next">
+    <a href=""> &rarr;</a>
+ </li>
+</ul>
+-->
+
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
+  Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
