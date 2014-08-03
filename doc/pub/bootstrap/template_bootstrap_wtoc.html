@@ -8,37 +8,12 @@
 
 <title>%(title)s</title>
 
-<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/
-
-What to change in this template:
-
-URL to the document (edit http://some.website.net/some/path)
-
-LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
-
-A subtitle or short description in the optional purple header field
-(edit SHORT EXPLANATION)
-
-Footer with author(s) and copyright (remove or edit)
--->
-
-<!--
-Caveat: MathJax formulas get a strange orange color with the
-docs.min.css style file, but this file is required to get the
-fixed toc on the right with highlighted sections as one scrolls
-down the file.
--->
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/ -->
 
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
 <!-- Various settings from the bootstrap documentation style -->
 <!--<link href="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css" rel="stylesheet">-->
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
-
-<!-- Can add other themes (then skip bs-docs-header, which has unsuitable
-color, and adjust colors in the navigation sidebar -->
-<!--
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
--->
 
 <!-- Potential adjustment of styles -->
 <style type="text/css">
@@ -55,14 +30,7 @@ color, and adjust colors in the navigation sidebar -->
 .bs-docs-sidebar .nav > .active:focus > a {
   color: #563d7c;
 }
-/* Don't know how to adjust color in bs-docs-header...but the
-header can just be removed */
 </style>
-
-<!-- use highlight.js and styles for code (use --pygments_html_style=off) -->
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -83,8 +51,8 @@ header can just be removed */
   </div>
   <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="">LINK1</a></li>
-      <li><a href="">LINK2</a></li>
+     <li> <a href="http://getbootstrap.com/">Bootstrap</a></li>
+     <li> <a href="http://bootswatch.com/">Bootswatch</a></li>
     </ul>
   </nav>
 </div>
@@ -96,8 +64,10 @@ header can just be removed */
 <!-- A purple header field with the title is optional -->
 <div class="bs-docs-header" id="content">
  <div class="container">
-  <h1>%(title)s</h1>
-  <p>SHORT EXPLANATION</p>
+  <h1>A Bootstrap-based style</h1>
+  <p>A purple style with navigation bar on the right and a header before
+the optional jumbotron (gray area below). The style is generated from
+a template based on the style in the <a href="http://getbootstrap.com/getting-started/">Bootstrap documentation</a>.</p>
  </div>
 </div>
 
@@ -127,7 +97,7 @@ header can just be removed */
 ================================================== -->
 <footer class="bs-docs-footer" role="contentinfo">
  <div class="container">
-  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
+  Hans Petter Langtangen, 2014 &copy;
  </div>
 </footer>
 

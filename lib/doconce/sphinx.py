@@ -5,6 +5,7 @@ from rst import *
 from common import align2equations, online_python_tutor, bibliography, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option
+from doconce import _abort
 
 video_counter = 0
 activecode_counter = 0
@@ -109,6 +110,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         #sys='console',
         sys='text',
         rst='rst',
+        css='css', csspro='css', csscod='css',
         dat='text', csv='text', txt='text',
         cc='text', ccq='text',  # not possible with extra indent for ccq
         ipy='ipy',
@@ -439,9 +441,10 @@ def sphinx_inline_comment(m):
         for char in chars:
             if comment == char:
                 return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
-        return r' <font color="red">(<b>edit %s</b>: add) %s</font>' % (name[4:], comment)
+        return r' <font color="red">(<b>edit %s</b>:) %s</font>' % (name[4:], comment)
     else:
         # Ordinary name
+        comment = ' '.join(comment.splitlines()) # '\s->\s' -> ' -> '
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
@@ -453,7 +456,7 @@ def sphinx_inline_comment(m):
             return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
         else:
             # Ordinary comment
-            return r'<font color="red">[<b>%s</b>: <em>%s</em>]</font>' % (name, comment)
+            return r'<font color="red">[<b>%s</b>: %s]</font>' % (name, comment)
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

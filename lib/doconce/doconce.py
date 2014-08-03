@@ -275,6 +275,13 @@ def fix(filestr, format, verbose=0):
                 if verbose > 0:
                     print '\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
 
+    # edit markup: add space after add: and del: for .,;?
+    pattern = r'\[(add|del):([.,;])\]'
+    filestr, n = re.subn(pattern, r'[\g<1>: \g<2>]', filestr)
+    num_fixes += n
+    if n > 0:
+        print '*** warning: found %d [add:...] or [del:...] edits without space after colon' % n
+
     """
     Drop this and report error instead:
     # Space before commands that should begin in 1st column at a line?
@@ -295,7 +302,7 @@ def fix(filestr, format, verbose=0):
     """
 
     if verbose and num_fixes:
-        print '\n*** warning: the total of %d fixes above should be manually edited in the file!!\n    (also note: some fixes may not be what you want)\n' % num_fixes
+        print '\n*** warning: the total of %d fixes above should be manually edited in the file!\n    (also note: some of these automatic fixes may not be what you want)\n' % num_fixes
     return filestr
 
 
@@ -346,7 +353,18 @@ def syntax_check(filestr, format):
         print filestr[m.start()-50:m.start()+60]
         _abort()
 
-    # [[[
+    # edit markup
+    section_pattern = r'^={3,9}(.+?)={3,9}'
+    headings = re.findall(section_pattern, filestr, flags=re.MULTILINE)
+    edit_patterns = r'\[(add|del):.+?\]', r' -> '
+    for heading in headings:
+        for pattern in edit_patterns:
+            m = re.search(pattern, heading)
+            if m:
+                print '*** error: cannot use edit markup %s in section heading' % m.group()
+                print '   ', heading
+                print '    use inline comment below the heading instead where you explain the problem'
+                _abort()
 
     pattern = r'^[A-Za-z0_9`"].+\n *- +.+\n^[A-Za-z0_9`"]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
@@ -1466,15 +1484,20 @@ def space_in_tables(filestr):
     Add spaces around | in tables such that substitutions $...$ and
     `...` get right.
     """
-    pattern = r'^\s*\|.+\| *$'
+    pattern = r'^\s*\|.+\| *$'  # table lines
     table_lines = re.findall(pattern, filestr, re.MULTILINE)
     horizontal_rule = r'^\s*\|[-lrc]+\|\s*$'
+    inserted_space_around_pipe = False
     for line in table_lines:
         if not re.search(horizontal_rule, line, flags=re.MULTILINE) \
-           and re.search(r'[^ ]|[^ ]', line) and line.count('|') > 2:
-            line_wspaces = ' | '.join(line.split('|'))
+           and (re.search(r'[$`]\|', line) or re.search(r'\|[$`]', line)) \
+           and line.count('|') > 2:
+            # Found $|, |$, `|, or |` in table line, insert space
+            line_wspaces = re.sub(r'([$`])\|', r'\g<1> |', line)
+            line_wspaces = re.sub(r'\|([$`])', r'| \g<1>', line_wspaces)
             filestr = filestr.replace(line, line_wspaces)
-    return filestr
+            inserted_space_around_pipe = True
+    return filestr, inserted_space_around_pipe
 
 def typeset_tables(filestr, format):
     """
@@ -1542,18 +1565,36 @@ def typeset_tables(filestr, format):
             if not inside_table:
                 inside_table = True
                 table_counter += 1
-            # Check if | is used in math in this line
-            math_exprs = re.findall(r'\$(.+?)\$', line)
-            for math_expr in math_exprs:
-                if '|' in math_expr:
-                    print '*** error: use of | in math formulas in tables confuses'
-                    print '    the interpretation of the table. Rewrite and remove |.'
-                    print line
-                    _abort()
+            # Check if | is used in math or code in this line.
+            # If so, replace | by a marker text and substitute back
+            # (this does not work with the plain text format because
+            # we cannot at this stage recognize inline verbatim)
+            marker_text = 'zzYYYpipeYYYzz?'
+            # Note that inline substitutions are done before interpreting tables
+            patterns = [r'\$.+?\$',  # math
+                        r'\{.+?\}',  # latex verbatim (\code{})
+                        r'<code>.+?</code>',  # html verbatim
+                        r'``.+?``',  # rst verbatim
+                        r'[^`]`.+?`[^`]',  # markdown verbatim
+                        ]
+            math_code_exprs = [re.findall(pattern, line)
+                               for pattern in patterns]
+            for math_code_expr in math_code_exprs:
+                for expr in math_code_expr:
+                    if '|' in expr:
+                        marked_expr = expr.replace('|', marker_text)
+                        line = line.replace(expr, marked_expr)
+                    # (Caveat: split wrt | does not work with math2 syntax.
+                    # Any $a=1$|$b=2$ syntax for two columns is already
+                    # transformed to $a=1$ | $b=2$ in space_in_tables
+                    # prior to inline substitutions.)
 
-            # Extract columns, but drop first and last since these
-            # are always empty after .split('|')
-            columns = line.strip().split('|')[1:-1]  # does not work with math2 syntax
+            # Extract columns by splitting wrt | (safe now since | in
+            # math and code is taken care of). Drop first and last
+            # since these are always empty after .split('|').
+            columns = line.strip().split('|')[1:-1]
+            # Restore any |
+            columns = [c.replace(marker_text, '|') for c in columns]
             # remove empty columns and extra white space:
             #columns = [c.strip() for c in columns if c]
             #columns = [c.strip() for c in columns if c.strip()]
@@ -2094,8 +2135,7 @@ be loss of quality. Generate a proper %s file (if possible).""" % \
 
 def handle_cross_referencing(filestr, format):
     # 1. find all section/chapter titles and corresponding labels
-    #section_pattern = r'(_+|=+)([A-Za-z !.,;0-9]+)(_+|=+)\s*label\{(.+?)\}'
-    section_pattern = r'^\s*(_{3,9}|={3,9})(.+?)(_{3,9}|={3,9})\s*label\{(.+?)\}'
+    section_pattern = r'^\s*(={3,9})(.+?)(={3,9})\s*label\{(.+?)\}'
     m = re.findall(section_pattern, filestr, flags=re.MULTILINE)
     #pprint.pprint(m)
     # Make sure sections appear in the right order
@@ -2724,6 +2764,9 @@ def typeset_quizzes2(filestr, format):
 def inline_tag_subst(filestr, format):
     """Deal with all inline tags by substitution."""
 
+    # Author syntax contains ampersands so all this must be processed
+    # before ampersand1 and ampersand2 substitutions (and the pre/post hack
+    # for ampersands in inline verbatim expressions)
     filestr = typeset_authors(filestr, format)
 
     # deal with DATE: today (i.e., find today's date)
@@ -2748,6 +2791,7 @@ def inline_tag_subst(filestr, format):
             from_ = verbatim
             to_ = verbatim.replace('&', marker_text)
             filestr = filestr.replace(from_, to_)
+    # Assumption: no ampersands in inline math (of ampersand1/2 type)
 
     debugpr('\n*** Inline tags substitution phase ***')
 
@@ -3223,8 +3267,9 @@ def doconce2format(filestr, format):
     report_progress('handled lists')
 
     # Next step: add space around | in tables for substitutions to get right
-    filestr = space_in_tables(filestr)
-    debugpr('The file after adding space around | in tables:', filestr)
+    filestr, inserted_space_around_pipe = space_in_tables(filestr)
+    if inserted_space_around_pipe:
+        debugpr('The file after adding space around | in tables:', filestr)
 
     # Next step: do substitutions
     filestr = inline_tag_subst(filestr, format)

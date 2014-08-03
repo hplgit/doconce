@@ -11,7 +11,7 @@ doconce format html admon --html_admon=gray
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 cp admon.html admon_gray.html
 
-doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html
+doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=style_vagrant/template_vagrant.html --html_toc_depth=2 --html_toc_indent=0
 if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 cp admon.html admon_yellow.html
 

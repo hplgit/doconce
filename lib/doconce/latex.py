@@ -1607,9 +1607,10 @@ def latex_inline_comment(m):
         for char in chars:
             if comment == char:
                 return r'\textcolor{red}{%s (\textbf{edit %s}: add %s)}' % (comment, name[4:], chars[char])
-        return r' \textcolor{red}{ (\textbf{edit %s}: add) %s})' % (name[4:], comment)
+        return r' \textcolor{red}{ (\textbf{edit %s}:) %s}' % (name[4:], comment)
     else:
         # Ordinary name
+        comment = ' '.join(comment.splitlines()) # '\s->\s' -> ' -> '
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
@@ -2242,8 +2243,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newcommand{\longinlinecomment}[3]{}"""
             else:
                 INTRO['latex'] += r"""
-\newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
-\newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}"""
+\newcommand{\shortinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+\newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}"""
             INTRO['latex'] += r"""
 """
         if option('latex_line_numbers'):

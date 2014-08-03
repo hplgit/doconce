@@ -616,6 +616,22 @@ and `|` right before and after verbatim word (with no space):
 |0      | -9.19   | 4.13      | -0.26     |
 |-----------------------------------------|
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+|-----------------------------|
+| $S$         | command       |
+|-----l---------------r-------|
+| $||a_0||$   | `norm|length` |
+| $x\cap y$   | `x|y`         |
+|-----------------------------|
+# #if FORMAT == 'plain'
+
+NOTE: The above table is not correctly handled in the plain text format
+because in this format inline verbatim text look like normal text,
+and the first line in the table then looks like three columns.
+# #endif
+
 Finally, a table with math
 # #if FORMAT in ("rst", "html", "sphinx", "pandoc")
 (`bm` that expands to `boldsymbol`, was tricky, but
@@ -2765,6 +2781,22 @@ and \code{|} right before and after verbatim word (with no space):
 -20                & -23.39             & -7.65              & -19.93             \\
 10                 & 17.74              & -4.50              & 9.96               \\
 0                  & -9.19              & 4.13               & -0.26              \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \code{norm|length} \\
+$x\cap y$          & \code{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -4957,6 +4989,22 @@ and \texttt{|} right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \texttt{norm|length} \\
+$x\cap y$          & \texttt{x|y}         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
 Finally, a table with math
 and URLs.
 
@@ -7144,6 +7192,22 @@ and \Verb!|! right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \Verb!norm|length! \\
+$x\cap y$          & \Verb!x|y!         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
 Finally, a table with math
 and URLs.
 
@@ -8863,6 +8927,16 @@ and ``|`` right before and after verbatim word (with no space):
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===============  ===============  
+   \\( S \\)         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+\\( x\cap y \\)          ``x|y``  
+===============  ===============  
+
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
 cleanly handled now)
@@ -10579,6 +10653,16 @@ and ``|`` right before and after verbatim word (with no space):
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===============  ===============  
+   :math:`S`         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+:math:`x\cap y`          ``x|y``  
+===============  ===============  
+
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
 cleanly handled now)
@@ -12293,6 +12377,15 @@ and `|` right before and after verbatim word (with no space):
  ||  0                 ||  -9.19             ||  4.13              ||  -0.26             ||
 
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+ ||       _`S`_        ||     _command_      ||
+ ||  $ ||a_0|| $       ||  `norm|length`     ||
+ ||  `x\cap y`         ||  `x|y`             ||
+
+
 Finally, a table with math
 and URLs.
 
@@ -13771,6 +13864,18 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   -20                                    </td> <td align="right">   -23.39                                 </td> <td align="right">   -7.65                                  </td> <td align="right">   -19.93                                 </td> </tr>
 <tr><td align="right">   10                                     </td> <td align="right">   17.74                                  </td> <td align="right">   -4.50                                  </td> <td align="right">   9.96                                   </td> </tr>
 <tr><td align="right">   0                                      </td> <td align="right">   -9.19                                  </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                                  </td> </tr>
+</tbody>
+</table>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<table border="1">
+<thead>
+<tr><th align="center">     <math>S</math>     </th> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   <math>x\cap y</math>        </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 Finally, a table with math
@@ -15331,6 +15436,15 @@ and {{{|}}} right before and after verbatim word (with no space):
  |  0                         |  -9.19                     |  4.13                      |  -0.26                     |
 
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+ | ={{{S}}}               | =command               |
+ |  $ ||a_0|| $           |  {{{norm|length}}}     |
+ |  {{{x\cap y}}}         |  {{{x|y}}}             |
+
+
 Finally, a table with math
 and URLs.
 
@@ -16672,6 +16786,16 @@ and '|' right before and after verbatim word (with no space):
           0        -9.19         4.13        -0.26  
 ===========  ===========  ===========  ===========  
 
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===========  ===========  ===========  
+     S         command    
+===========  ===========  ===========  
+$ ||a_0|| $        'norm  
+x\cap y               'x  
+===========  ===========  ===========  
+
 Finally, a table with math
 and URLs.
 
@@ -17920,6 +18044,16 @@ and C{|} right before and after verbatim word (with no space):
              10            17.74            -4.50             9.96  
               0            -9.19             4.13            -0.26  
 ===============  ===============  ===============  ===============  
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+==============  ==============  
+     M{S}          command      
+==============  ==============  
+$ ||a_0|| $     C{norm|length}  
+M{x\cap y}              C{x|y}  
+==============  ==============  
 
 Finally, a table with math
 and URLs.
@@ -19330,6 +19464,20 @@ and | right before and after verbatim word (with no space):
        10      17.74      -4.50       9.96  
         0      -9.19       4.13      -0.26  
 =========  =========  =========  =========  
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===========  ===========  ===========  
+     S         command    
+===========  ===========  ===========  
+$ ||a_0|| $         norm  
+x\cap y                x  
+===========  ===========  ===========  
+
+NOTE: The above table is not correctly handled in the plain text format
+because in this format inline verbatim text look like normal text,
+and the first line in the table then looks like three columns.
 
 Finally, a table with math
 and URLs.
@@ -20823,6 +20971,16 @@ and `|` right before and after verbatim word (with no space):
           -20         -23.39          -7.65         -19.93  
            10          17.74          -4.50           9.96  
             0          -9.19           4.13          -0.26  
+
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+     $S$          command     
+-------------  -------------  
+$ ||a_0|| $    `norm|length`  
+$x\cap y$              `x|y`  
 
 
 Finally, a table with math
@@ -22728,6 +22886,16 @@ is at the end with only one newline.
       "          -20         -23.39          -7.65         -19.93  \n",
       "           10          17.74          -4.50           9.96  \n",
       "            0          -9.19           4.13          -0.26  \n",
+      "\n",
+      "\n",
+      "Pipe symbols in verbatim and math text in tables used to pose difficulties,\n",
+      "but not anymore:\n",
+      "\n",
+      "\n",
+      "     $S$          command     \n",
+      "-------------  -------------  \n",
+      "$ ||a_0|| $    `norm|length`  \n",
+      "$x\\cap y$              `x|y`  \n",
       "\n",
       "\n",
       "Finally, a table with math\n",
@@ -24665,6 +24833,21 @@ Python.</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:</p>
+</blockquote>
+<blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">$ ||a_0|| $</td>
+<td align="right"><code>norm|length</code></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math">\(x\cap y\)</span></td>
+<td align="right"><code>x|y</code></td>
+</tr>
+</tbody>
+</table>
 <p>Finally, a table with math and URLs.</p>
 </blockquote>
 <blockquote>
@@ -25531,6 +25714,25 @@ Python.</code></pre>
 <td align="center">-9.19</td>
 <td align="left">4.13</td>
 <td align="center">-0.26</td>
+</tr>
+</tbody>
+</table>
+<p>Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math">\(S\)</span></th>
+<th align="center">command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">$ ||a_0|| $</td>
+<td align="center"><code>norm|length</code></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math">\(x\cap y\)</span></td>
+<td align="center"><code>x|y</code></td>
 </tr>
 </tbody>
 </table>
@@ -30017,6 +30219,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 </tbody>
 </table>
 <p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
+</tbody>
+</table>
+<p>
 Finally, a table with math
 (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
 cleanly handled now)
@@ -32384,6 +32600,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 </tbody>
 </table>
 <p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">       $latex S$        </th> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   $latex x\cap y$             </td> <td align="right">   <code>x|y</code>            </td> </tr>
+</tbody>
+</table>
+<p>
 Finally, a table with math
 (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
 cleanly handled now)
@@ -34355,6 +34585,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+</tbody>
+</table>
+<p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -36430,6 +36674,22 @@ and \code{|} right before and after verbatim word (with no space):
 \end{quote}
 
 \noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $        & \code{norm|length} \\
+$x\cap y$          & \code{x|y}         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
 Finally, a table with math
 and URLs.
 
@@ -37906,7 +38166,7 @@ system doconce format latex testdoc --without_answers --without_solutions $ex -D
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
-system doconce format html testdoc.do.txt $ex --html_style=vagrant --html_template=template_vagrant.html
+system doconce format html testdoc.do.txt $ex --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html --method=split
@@ -38134,7 +38394,7 @@ cp admon.html admon_yellow.html
 system doconce format html admon --html_admon=apricot --html_style=solarized
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
 cp admon.html admon_vagrant.html
 
 system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
@@ -39652,13 +39912,12 @@ to ``\boldsymbol``.
 ************** File: testdoc_vagrant.html *****************
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -39670,10 +39929,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39726,66 +39982,66 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
      <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
+     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
+     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
+     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     </ul>
      <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
      <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     </ul>
      <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
      <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     </ul>
      <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
      <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     </ul>
      <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
 
    </ul>
   </div>
  </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -39935,6 +40191,7 @@ $$
 
 <title>A Document for Testing DocOnce</title>
 
+<div class="jumbotron">
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
@@ -39982,7 +40239,8 @@ $$
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( 	heta \) parameter (not \( 
+abla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
@@ -40030,35 +40288,27 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
-<p>
-<!-- ------------------- end of main content --------------- -->
 
 
-<!--
-Preliminary examples/discussion on vagrant style syntax
+<p><a href="._testdoc_vagrant001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
 
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
 
-bla-bla.
-</div>
+</div> <!-- end jumbotron -->
 
 <p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="next">
     <a href="._testdoc_vagrant001.html">Next &rarr;</a>
   </li>
 </ul>
+<!-- ------------------- end of main content --------------- -->
 
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -40069,13 +40319,12 @@ While the <div class="deep-blue">rest of the</div> getting started
 ************** File: ._testdoc_vagrant000.html *****************
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -40087,10 +40336,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40143,66 +40389,66 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
      <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
+     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
+     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
+     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     </ul>
      <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
      <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     </ul>
      <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
      <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     </ul>
      <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
      <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     </ul>
      <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
 
    </ul>
   </div>
  </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -40352,6 +40598,7 @@ $$
 
 <title>A Document for Testing DocOnce</title>
 
+<div class="jumbotron">
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
 <p>
@@ -40399,7 +40646,8 @@ $$
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( 	heta \) parameter (not \( 
+abla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
@@ -40447,35 +40695,27 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
-<p>
-<!-- ------------------- end of main content --------------- -->
 
 
-<!--
-Preliminary examples/discussion on vagrant style syntax
+<p><a href="._testdoc_vagrant001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
 
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
 
-bla-bla.
-</div>
+</div> <!-- end jumbotron -->
 
 <p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="next">
     <a href="._testdoc_vagrant001.html">Next &rarr;</a>
   </li>
 </ul>
+<!-- ------------------- end of main content --------------- -->
 
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -40486,13 +40726,12 @@ While the <div class="deep-blue">rest of the</div> getting started
 ************** File: ._testdoc_vagrant001.html *****************
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -40504,10 +40743,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40560,66 +40796,66 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
-     <!-- navigation toc: "Section 1" --> <li class="active"><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
+     <!-- navigation toc: "Section 1" --> <li class="active"><a href=#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href=#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href=#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href=#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href=#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href=#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href=#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "_Just bold_" --> <li><a href=#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: "*Just emphasize*" --> <li><a href=#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: "`Just verbatim`" --> <li><a href=#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: "_Bold_ beginning" --> <li><a href=#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href=#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href=#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: "Maybe _bold end_" --> <li><a href=#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
+     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href=#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
+     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href=#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
+     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href=#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href=#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href=#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href=#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href=#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href=#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     </ul>
      <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
      <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     </ul>
      <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
      <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     </ul>
      <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
      <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     </ul>
      <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
 
    </ul>
   </div>
  </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -40783,7 +41019,7 @@ is part of the abstract.
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
 <!-- is mutually exclusive in LaTeX -->
 
-<h1>Section 1 <a name="sec1"></a></h1>
+<h1 id="sec1">Section 1<a name="sec1"></a></h1>
 
 Here is a nested list:
 
@@ -40816,7 +41052,7 @@ Here is a nested list:
   <li> item2</li>
 </ul>
 
-<h3>Here is a list with subsubsection heading  <a name="___sec1"></a></h3>
+<h3 id="___sec1">Here is a list with subsubsection heading <a name="___sec1"></a></h3>
 
 <ul>
   <li> item1</li>
@@ -40834,7 +41070,7 @@ Here are two references. Equation&nbsp;<a href="._testdoc_vagrant002.html#mjx-eq
 Even Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> without the tilde.
 This equation appears in another part if this document is split.
 
-<h2>Subsection 1 <a name="subsec1"></a></h2>
+<h2 id="subsec1">Subsection 1<a name="subsec1"></a></h2>
 
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
@@ -40849,7 +41085,7 @@ encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec3"></a></h3>
+<h3 id="___sec3">Computer code <a name="___sec3"></a></h3>
 
 Let's do some copying from files too. First from subroutine up to the very end,
 
@@ -40940,7 +41176,7 @@ Test paragraph and subsubsection headings before code.
     <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
 </pre></div>
 
-<h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+<h3 id="___sec4">Subsubsection heading before code <a name="___sec4"></a></h3>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -41160,7 +41396,7 @@ this correctly when HTML is the output format. <br />
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec5"></a></h3>
+<h3 id="___sec5">Running OS commands <a name="___sec5"></a></h3>
 
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -41171,7 +41407,7 @@ from
 Python.
 </pre></div>
 
-<h3>Footnotes  <a name="___sec6"></a></h3>
+<h3 id="___sec6">Footnotes <a name="___sec6"></a></h3>
 
 Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors, now in
@@ -41217,7 +41453,7 @@ of course remain a tilde in those contexts.)
 </div>
 
 
-<h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
+<h2 id="subsec:ex">Subsection 2: Testing figures<a name="subsec:ex"></a></h2>
 
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
@@ -41274,7 +41510,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 <p>
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
-<h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
+<h2 id="decay:sec:theta">The \( \theta \) parameter (not \( \nabla \)?)<a name="decay:sec:theta"></a></h2>
 
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
@@ -41316,7 +41552,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Custom Environments <a name="___sec9"></a></h2>
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
@@ -41343,7 +41579,7 @@ Since \( c=a+b \), the result follows from straightforward addition.
 As we see, the proof of Theorem 5 is a modest
 achievement.
 
-<h2>Tables <a name="subsec:table"></a></h2>
+<h2 id="subsec:table">Tables<a name="subsec:table"></a></h2>
 
 <!-- index with comma could fool sphinx -->
 
@@ -41351,16 +41587,21 @@ achievement.
 Let us take this table from the manual:
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-4">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><td align="center"><b>    time    </b></td> <td align="center"><b>  velocity  </b></td> <td align="center"><b>acceleration</b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
 <tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
 <tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-4 -->
 <p>
 The DocOnce source code reads
 <p>
@@ -41380,23 +41621,31 @@ Here is yet another table to test that we can handle more than
 one table:
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-4">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
+<tr><td align="left"><b>    time    </b></td> <td align="left"><b>  velocity  </b></td> <td align="left"><b>acceleration</b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
 <tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
 <tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-4 -->
 <p>
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
 <tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
@@ -41409,16 +41658,21 @@ symbol:
 <tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
 <tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
 <p>
 And add one with verbatim headings (with underscores),
 and rows starting with <code>|-</code> because of a negative number,
 and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
+<tr><td align="center"><b>           exact            </b></td> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
 </thead>
 <tbody>
 <tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
@@ -41426,7 +41680,28 @@ and <code>|</code> right before and after verbatim word (with no space):
 <tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
 <tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
+<p>
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+<p>
+
+<div class="row">
+  <div class="col-xs-3">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center">        \( S \)         </td> <td align="center"><b>        command         </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-3 -->
 <p>
 Finally, a table with math
 (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
@@ -41438,16 +41713,21 @@ and URLs.
 <!-- (These types of tables did not work before Jan 2014) -->
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-4">
+    <table class="table table-striped table-hover table-condensed">
 <tr></tr>
 <tbody>
 <tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
 <tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-4 -->
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
+<h2 id="___sec11">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> <a name="___sec11"></a></h2>
 
 <b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is
@@ -41456,51 +41736,51 @@ some text.
 <p>
 <!-- Test various types of headlines -->
 
-<h2><b>Just bold</b>  <a name="___sec12"></a></h2>
+<h2 id="___sec12"><b>Just bold</b> <a name="___sec12"></a></h2>
 
 Some text.
 
-<h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
+<h2 id="___sec13"><em>Just emphasize</em> <a name="___sec13"></a></h2>
 
 Some text.
 
-<h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
+<h2 id="___sec14"><code>Just verbatim</code> <a name="___sec14"></a></h2>
 
 Some text.
 
-<h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
+<h2 id="___sec15"><b>Bold</b> beginning <a name="___sec15"></a></h2>
 
 Some text.
 
-<h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
+<h2 id="___sec16"><em>Emphasize</em> beginning <a name="___sec16"></a></h2>
 
 Some text.
 
-<h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
+<h2 id="___sec17"><code>Verbatim</code> beginning <a name="___sec17"></a></h2>
 
 Some text.
 
-<h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Maybe <b>bold end</b> <a name="___sec18"></a></h2>
 
 Some text.
 
-<h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Maybe <em>emphasize end</em> <a name="___sec19"></a></h2>
 
 Some text.
 
-<h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Maybe <code>verbatim end</code> <a name="___sec20"></a></h2>
 
 Some text.
 
-<h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
+<h2 id="___sec21">The middle has <b>bold</b> word <a name="___sec21"></a></h2>
 
 Some text.
 
-<h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
+<h2 id="___sec22">The middle has <em>emphasize</em> word <a name="___sec22"></a></h2>
 
 Some text.
 
-<h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
+<h2 id="___sec23">The middle has <code>verbatim</code> word <a name="___sec23"></a></h2>
 
 Some text.
 
@@ -41559,7 +41839,7 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Bibliography test <a name="___sec24"></a></h2>
 
 Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> gave
@@ -41590,7 +41870,7 @@ the old ME-IN323 book <a href="._testdoc_vagrant002.html#Langtangen:91">[19]</a>
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
+<h2 id="Example">Example 1: Examples can be typeset as exercises<a name="Example"></a></h2>
 
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
@@ -41625,7 +41905,7 @@ maybe over multiple doconce input lines.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>URLs <a name="subsubsec:ex"></a></h2>
+<h2 id="subsubsec:ex">URLs<a name="subsubsec:ex"></a></h2>
 
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
@@ -41675,23 +41955,7 @@ footnotes.
 
 <p>
 <p>
-<!-- ------------------- end of main content --------------- -->
-
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._testdoc_vagrant000.html">&larr; Prev</a>
@@ -41700,12 +41964,13 @@ While the <div class="deep-blue">rest of the</div> getting started
     <a href="._testdoc_vagrant002.html">Next &rarr;</a>
   </li>
 </ul>
+<!-- ------------------- end of main content --------------- -->
 
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -41716,13 +41981,12 @@ While the <div class="deep-blue">rest of the</div> getting started
 ************** File: ._testdoc_vagrant002.html *****************
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -41734,10 +41998,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41790,66 +42051,66 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
      <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;URLs</a></li>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li class="active"><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example 8: Just an example</a></li>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project 10: References in a headings do not work well in html</a></li>
-     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A subsection within an appendix</a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
+     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
+     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
+     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
+     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     </ul>
+     <!-- navigation toc: "LaTeX Mathematics" --> <li class="active"><a href=#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: "Exercises" --> <li><a href=#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href=#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: "Not an exercise" --> <li><a href=#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href=#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href=#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href=#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href=#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href=#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: "Example 8: Just an example" --> <li><a href=#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     </ul>
+     <!-- navigation toc: "Here goes another section" --> <li><a href=#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: "More Exercises" --> <li><a href=#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href=#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href=#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     </ul>
+     <!-- navigation toc: "References" --> <li><a href=#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href=#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <ul class="nav">
+     <!-- navigation toc: "A subsection within an appendix" --> <li><a href=#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     </ul>
+     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href=#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <ul class="nav">
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
 
    </ul>
   </div>
  </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -41996,7 +42257,7 @@ $$
 <a name="part0002"></a>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
+<h1 id="___sec27">LaTeX Mathematics <a name="___sec27"></a></h1>
 
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
@@ -42041,11 +42302,11 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec28"></a></h1>
+<h1 id="___sec28">Exercises <a name="___sec28"></a></h1>
 
 <!-- --- begin exercise --- -->
 
-<h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
+<h2 id="demo:ex:1">Problem 2: Flip a Coin<a name="demo:ex:1"></a></h2>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <p>
@@ -42056,7 +42317,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec30"></a></h3>
+<h3 id="___sec30">Remarks <a name="___sec30"></a></h3>
 
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
@@ -42118,7 +42379,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Not an exercise <a name="___sec31"></a></h2>
 
 Should be possible to stick a normal section in the middle of many
 exercises.
@@ -42126,7 +42387,7 @@ exercises.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
+<h2 id="demo:ex:2">Project 3: Compute a Probability<a name="demo:ex:2"></a></h2>
 
 <!-- Minimalistic exercise -->
 
@@ -42161,7 +42422,7 @@ compute the probability as \( M/N \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
+<h2 id="proj:circle1">Project 4: Explore Distributions of Random Circles<a name="proj:circle1"></a></h2>
 
 The formula for a circle is given by
 
@@ -42245,7 +42506,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec34"></a></h3>
+<h3 id="___sec34">Remarks <a name="___sec34"></a></h3>
 
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
@@ -42256,7 +42517,7 @@ and give some perspectives.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
+<h2 id="exer:dist">Exercise 5: Determine some Distance<a name="exer:dist"></a></h2>
 
 Intro to this exercise. Questions are in subexercises below.
 
@@ -42375,7 +42636,7 @@ Here goes the solution of this subexercise.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3>Remarks  <a name="___sec36"></a></h3>
+<h3 id="___sec36">Remarks <a name="___sec36"></a></h3>
 
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -42387,7 +42648,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
+<h2 id="___sec37">Some exercise without the "Exercise:" prefix <a name="___sec37"></a></h2>
 
 <!-- Another minimalistic exercise -->
 
@@ -42416,7 +42677,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+<h2 id="sec:this:exer:de">Exercise 7: Solution of differential equation<a name="sec:this:exer:de"></a></h2>
 
 <!-- begin quiz -->
 Given
@@ -42512,7 +42773,7 @@ Wrong!
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec39"></a></h2>
+<h2 id="___sec39">Example 8: Just an example <a name="___sec39"></a></h2>
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -42528,15 +42789,15 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec40"></a></h1>
+<h1 id="___sec40">Here goes another section <a name="___sec40"></a></h1>
 
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec41"></a></h1>
+<h1 id="___sec41">More Exercises <a name="___sec41"></a></h1>
 
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2 id="exer:some:formula">Exercise 9: Make references to projects and problems<a name="exer:some:formula"></a></h2>
 
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
@@ -42559,7 +42820,7 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2 id="exer:you">Project 10: References in a headings do not work well in html<a name="exer:you"></a></h2>
 
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
@@ -42569,7 +42830,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec44"></a></h1>
+<h1 id="___sec44">References <a name="___sec44"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -42682,49 +42943,33 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
+<h1 id="app1">Appendix: Just for testing; part I<a name="app1"></a></h1>
 
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec46"></a></h2>
+<h2 id="___sec46">A subsection within an appendix <a name="___sec46"></a></h2>
 
 Some text.
 
-<h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
+<h1 id="app2">Appendix: Just for testing; part II<a name="app2"></a></h1>
 
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
+<h2 id="___sec48">Appendix: Testing identical titles <a name="___sec48"></a></h2>
 
 Without label.
 
-<h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
+<h2 id="test:title:id1">Appendix: Testing identical titles<a name="test:title:id1"></a></h2>
 
 With label.
 
-<h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
+<h2 id="test:title:id2">Appendix: Testing identical titles<a name="test:title:id2"></a></h2>
 
 What about inserting a quiz?
 
 <p>
 <p>
-<!-- ------------------- end of main content --------------- -->
-
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._testdoc_vagrant001.html">&larr; Prev</a>
@@ -42733,12 +42978,13 @@ While the <div class="deep-blue">rest of the</div> getting started
     <a href="._testdoc_vagrant003.html">Next &rarr;</a>
   </li>
 </ul>
+<!-- ------------------- end of main content --------------- -->
 
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -43408,6 +43654,16 @@ and ``|`` right before and after verbatim word (with no space):
                    10                  17.74                  -4.50                   9.96  
                     0                  -9.19                   4.13                  -0.26  
 =====================  =====================  =====================  =====================  
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+===============  ===============  
+   :math:`S`         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+:math:`x\cap y`          ``x|y``  
+===============  ===============  
 
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
@@ -53623,13 +53879,12 @@ exercises (and problems and projects too).
 ************** File: admon_vagrant.html *****************
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -53641,10 +53896,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- Here goes a footer, if desired, maybe with a Copyright &copy;
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53697,13 +53949,6 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
      <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
      <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
      <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
@@ -53715,8 +53960,7 @@ h1, h2, h3, h4, h5, h6 {
   </div>
  </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -53772,6 +54016,7 @@ $$
 
 <title>Testing admons</title>
 
+<div class="jumbotron">
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
 <p>
@@ -53785,13 +54030,16 @@ $$
 <p>
 <!-- institution(s) -->
 <p>
+<!-- potential-jumbotron-button -->
+</div> <!-- end jumbotron -->
+
 <!-- !split -->
 
-<h1>Introduction  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Introduction <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h2>Code  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
 Need some code outside admons for color and font comparisons:
 
@@ -53811,7 +54059,7 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h2>Quotes and boxes  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
 Here is a plain quote environment.
 
@@ -53889,7 +54137,7 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h2>Admonitions  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
 Let us start with a plain warning environment.
 
@@ -54052,7 +54300,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h2>Going deeper environments  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
 Here is a long notice environment with a custom title and much
 text, math and code.
@@ -54146,7 +54394,7 @@ And then we add a figure too.
 </div>
 
 
-<h2>The end  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
@@ -54167,38 +54415,11 @@ exercises (and problems and projects too).
 
 <!-- ------------------- end of main content --------------- -->
 
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-<!-- Navigation buttons at the bottom:
-     Doconce will automatically fill in the right URL in these
-     buttons when doconce html_split is run. Otherwise they are empty.
-<ul class="pager">
-  <li class="previous">
-    <a href="">&larr; </a>
-  </li>
-  <li class="next">
-    <a href=""> &rarr;</a>
- </li>
-</ul>
--->
-
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  Here goes a footer, if desired, maybe with a Copyright &copy;
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
@@ -54340,7 +54561,7 @@ $$
 </div> <!-- end jumbotron -->
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
   <li class="active"><a href="._admon_bootstrap_alert000.html">1</a></li>
   <li><a href="._admon_bootstrap_alert001.html">2</a></li>
@@ -54495,11 +54716,11 @@ $$
 
 <!-- !split -->
 
-<h1>Introduction  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Introduction <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h2>Code  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
 Need some code outside admons for color and font comparisons:
 
@@ -54519,7 +54740,7 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h2>Quotes and boxes  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
 Here is a plain quote environment.
 
@@ -54597,7 +54818,7 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h2>Admonitions  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
 Let us start with a plain warning environment.
 
@@ -54809,7 +55030,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h2>Going deeper environments  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
 Here is a long notice environment with a custom title and much
 text, math and code.
@@ -54908,7 +55129,7 @@ And then we add a figure too.
 </div>
 
 
-<h2>The end  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
@@ -55037,12 +55258,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li class="active"><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: "Introduction" --> <li class="active"><a href=#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: "Code" --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: "Quotes and boxes" --> <li><a href=#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: "Admonitions" --> <li><a href=#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: "Going deeper environments" --> <li><a href=#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: "The end" --> <li><a href=#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -55058,11 +55279,11 @@ $$
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1>Introduction  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Introduction <a name="___sec0"></a></h1>
 First some ordinary text to compare font sizes in admonitions
 and the surrounding text.
 
-<h2>Code  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
 Need some code outside admons for color and font comparisons:
 
@@ -55082,7 +55303,7 @@ And some plain text verbatim:
 x=1.1 y=0.3 z=0.1
 </pre></div>
 
-<h2>Quotes and boxes  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
 Here is a plain quote environment.
 
@@ -55160,7 +55381,7 @@ Let's begin a new paragraph and show a box with code only:
 <!-- end box -->
 
 
-<h2>Admonitions  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
 Let us start with a plain warning environment.
 
@@ -55323,7 +55544,7 @@ And here comes some text with bad news.
 </div>
 
 
-<h2>Going deeper environments  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
 Here is a long notice environment with a custom title and much
 text, math and code.
@@ -55417,7 +55638,7 @@ And then we add a figure too.
 </div>
 
 
-<h2>The end  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
@@ -55437,7 +55658,7 @@ The <code>remarks</code> and <code>hint</code> environments are not allowed outs
 exercises (and problems and projects too).
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
 <li><a href="._admon_bootstrap_alert000.html">&laquo;</a></li>
   <li><a href="._admon_bootstrap_alert000.html">1</a></li>
@@ -73038,14 +73259,6 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 <p>
 
 
-************************************************************
-unicode>>> The file after adding space around | in tables:
-
-Text with a name like &#197;smund &#216;deg&#229;rd works in general.
-
-<p>
-
-
 *** Dealing with authors and institutions ***
 
 
@@ -73426,19 +73639,6 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 ************************************************************
 unicode>>> The file after typesetting of lists:
-
-Text with a name like Åsmund Ødegård works in general.
-Verbatim blocks with non-ASCII text does not work for HTML, but it works
-for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
-
-<p>
-0 <<<!!CODE_BLOCK 
-
-<p>
-
-
-************************************************************
-unicode>>> The file after adding space around | in tables:
 
 Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
@@ -73942,23 +74142,6 @@ $b = 1$ is a value suggested by Åsmund Ødegård.
 
 ************************************************************
 unicode>>> The file after typesetting of lists:
-
-Text with a name like Åsmund Ødegård works in general.
-
-<p>
-This block (in format html)
-triggers use of `mako`. For all formats, `mako` has
-problem with non-ASCII characters anywhere in the text. The remedy
-for all formats is to read the file with UTF-8 encoding. With --debug
-one can see the internal str/unicode representation of the text
-through the various stages of the text transformation process.
-
-<p>
-$b = 1$ is a value suggested by Åsmund Ødegård.
-
-
-************************************************************
-unicode>>> The file after adding space around | in tables:
 
 Text with a name like Åsmund Ødegård works in general.
 
@@ -77521,7 +77704,7 @@ Here goes optional text.
 </div> <!-- end jumbotron -->
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="next">
     <a href="._test_boots001.html">Next &rarr;</a>
@@ -77646,8 +77829,8 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li class="active"><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li class="active"><a href=#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: "Demonstrations of admons" --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
@@ -77664,9 +77847,9 @@ $$
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1 class="page-header">More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+<h1 class="page-header" id="___sec0">More details on writing DocOnce documents with Bootstrap layout <a name="___sec0"></a></h1>
 
-<h1>Demonstrations of admons  <a name="___sec1"></a></h1>
+<h1 id="___sec1">Demonstrations of admons <a name="___sec1"></a></h1>
 
 The Bootstrap/Bootswatch styles support two kinds of admons:
 
@@ -77804,7 +77987,7 @@ And then with plain words:
 </div> <!-- col-xs-5 -->
 <p>
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._test_boots000.html">&larr; Prev</a>
@@ -77934,7 +78117,7 @@ $$
         <ul class="dropdown-menu">
      <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href=#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -77950,9 +78133,9 @@ $$
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1>Horizontal alignment of document elements <a name="sec:examples"></a></h1>
+<h1 id="sec:examples">Horizontal alignment of document elements<a name="sec:examples"></a></h1>
 
-<h2>Principles of grid structures  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Principles of grid structures <a name="___sec3"></a></h2>
 
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
@@ -77977,7 +78160,7 @@ the following syntax in case of a 1x3 grid:
 # end-grid-area
 </pre></div>
 
-<h2>Example on a 1x3 grid structure  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Example on a 1x3 grid structure <a name="___sec4"></a></h2>
 
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
@@ -78032,7 +78215,7 @@ we can run the program:
   </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2>Variation of the previous grid structure using panels  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Variation of the previous grid structure using panels <a name="___sec5"></a></h2>
 
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
@@ -78111,7 +78294,7 @@ we can run the program:
 
 
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._test_boots001.html">&larr; Prev</a>
@@ -78140,7 +78323,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jul 28 13:32:00 2014.
+# sphinx-quickstart on Sat Aug  2 16:27:44 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -93952,6 +94135,22 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+
+...doconce translation: handled figures 15.7 s
+
+...doconce translation: handled handled lists 15.8 s
+
+...doconce translation: handled inline substitutions 15.9 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 16.4 s
+
+...doconce translation: handled !benvir/!eenvir constructions 16.4 s
+
+...doconce translation: handled handled second reformatting of quizzes 16.4 s
+
+
+...doconce format used 16.4 s to translate the document (1825 lines)
+
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -94065,13 +94264,25 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
+
+...doconce translation: handled inline substitutions 15.1 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 15.4 s
 *** made directory latex_figs for admon figures
+
+...doconce translation: handled !benvir/!eenvir constructions 15.4 s
+
+...doconce translation: handled handled second reformatting of quizzes 15.4 s
+
+
+...doconce format used 15.4 s to translate the document (2016 lines)
+
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
 + cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
-+ system doconce format html testdoc.do.txt --examples_as_exercises --html_style=vagrant --html_template=template_vagrant.html
-+ doconce format html testdoc.do.txt --examples_as_exercises --html_style=vagrant --html_template=template_vagrant.html
++ system doconce format html testdoc.do.txt --examples_as_exercises --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
++ doconce format html testdoc.do.txt --examples_as_exercises --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -94346,9 +94557,25 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
+...doconce translation: handled figures 15.1 s
+
 exporting publish database papers.pub to papers.bib:
+
+...doconce translation: handled handled lists 15.2 s
+
+...doconce translation: handled inline substitutions 15.3 s
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
+
+...doconce translation: handled insertion of verbatim and latex blocks 15.7 s
+
+...doconce translation: handled !benvir/!eenvir constructions 15.7 s
+
+...doconce translation: handled handled second reformatting of quizzes 15.7 s
+
+
+...doconce format used 15.7 s to translate the document (2193 lines)
+
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
@@ -94733,7 +94960,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1229.
+t line 1245.
 
 
 
@@ -94753,7 +94980,7 @@ t line 1229.
 
 
 
-t line 1238.
+t line 1254.
 
 
 
@@ -94773,7 +95000,7 @@ t line 1238.
 
 
 
-t line 1242.
+t line 1258.
 
 
 
@@ -94874,13 +95101,13 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
 [17]
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -94950,18 +95177,19 @@ No file testdoc.bbl.
 [23]
 Underfull \hbox (badness 10000) 
 
-
-
-...rest of part of LaTeX line number...
-
 [24]
 
 
 ...rest of part of LaTeX line number...
 
 [25]
+
+
+...rest of part of LaTeX line number...
+
+[26]
 No file testdoc.ind.
-[26] (./testdoc.aux)
+[27] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -95201,7 +95429,7 @@ f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (26 pages, ).
+Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -95516,7 +95744,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1229.
+t line 1245.
 
 
 
@@ -95536,7 +95764,7 @@ t line 1229.
 
 
 
-t line 1238.
+t line 1254.
 
 
 
@@ -95556,7 +95784,7 @@ t line 1238.
 
 
 
-t line 1242.
+t line 1258.
 
 
 
@@ -95645,9 +95873,9 @@ No file testdoc.bbl.
 [24]
 Underfull \hbox (badness 10000) 
 
-[25] [26]
+[25] [26] [27]
 No file testdoc.ind.
-[27] (./testdoc.aux)
+[28] (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -95885,7 +96113,7 @@ hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb>
-Output written on testdoc.pdf (27 pages, ).
+Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
@@ -96217,7 +96445,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1229.
+t line 1245.
 
 
 
@@ -96237,7 +96465,7 @@ t line 1229.
 
 
 
-t line 1238.
+t line 1254.
 
 
 
@@ -96257,7 +96485,7 @@ t line 1238.
 
 
 
-t line 1242.
+t line 1258.
 
 
 
@@ -97492,19 +97720,19 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=319, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=326, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=327, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=328, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=329, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=324, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> [13]
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=330, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -97548,7 +97776,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 [15]
 
 
-t line 1180.
+t line 1196.
 
 
 
@@ -97568,7 +97796,7 @@ t line 1180.
 
 
 
-t line 1189.
+t line 1205.
 
 
 
@@ -97588,7 +97816,7 @@ t line 1189.
 
 
 
-t line 1193.
+t line 1209.
 
 
 
@@ -98059,6 +98287,9 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 found info about 10 exercises
+*** warning: table headline with entries
+    | S | command |
+   has 2 columns while further down there are 3 columns
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -98094,6 +98325,9 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 found info about 10 exercises
 *** warning: footnotes are not supported for format st
     footnotes will be left in the doconce syntax
+*** warning: table headline with entries
+    | S | command |
+   has 2 columns while further down there are 3 columns
 output in testdoc.st
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx testdoc.do.txt --examples_as_exercises
@@ -98714,7 +98948,23 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
+...doconce translation: handled figures 16.4 s
+
 exporting publish database papers.pub to papers.bib:
+
+...doconce translation: handled handled lists 16.6 s
+
+...doconce translation: handled inline substitutions 16.7 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 17.1 s
+
+...doconce translation: handled !benvir/!eenvir constructions 17.2 s
+
+...doconce translation: handled handled second reformatting of quizzes 17.2 s
+
+
+...doconce format used 17.2 s to translate the document (2089 lines)
+
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
@@ -102213,8 +102463,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_apricot.html
-+ system doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
-+ doconce format html admon --html_style=vagrant --pygments_html_style=default --html_template=template_vagrant.html
++ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
++ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -102450,6 +102700,16 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 26.2 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 26.7 s
+
+...doconce translation: handled !benvir/!eenvir constructions 26.7 s
+
+
+...doconce format used 26.7 s to translate the document (741 lines)
+
 output in movies_3choices.html
 + '[' 0 -ne 0 ']'
 + cp movies_3choices.html movie_demo
@@ -102463,6 +102723,16 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 22.4 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 22.8 s
+
+...doconce translation: handled !benvir/!eenvir constructions 22.8 s
+
+
+...doconce format used 22.8 s to translate the document (741 lines)
+
 output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
@@ -106747,17 +107017,28 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
-*** error: syntax error in table!
-    missing three horizontal rules and heading
-|---------------------| (horizontal rule)
-| heading1 | heading2 |
-NOTE: do not use pipes in horizontal rule of this type:
-(write instead |--l-------l---|)
-| --l--- | ---l--- |
-| <code>%s</code> | <code>%e</code> |
-| \( a=b \) | \( \mbox{math} \) |
-|---------------------| (horizontal rule)
-(or maybe not a table, just an opening pipe symbol at the beginning of the line?)
+
+...doconce translation: handled inline substitutions 24.2 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 24.6 s
+
+...doconce translation: handled !benvir/!eenvir constructions 24.6 s
+*** error: could not translate environment: !bsol
+    This is an environment in an exercise. Check if the
+    heading is correct so the subsection was recognized
+    as Exercise, Problem, or Project (Exercise: title).
+    context:
+
+Normal text.
+
+<p>
+Just a loner subexercise begin.
+!bsol
+Here is a solution.
+!esol
+Normal text.
+
+<h2>Links
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
 replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt
@@ -106810,6 +107091,12 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 15.5 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 15.8 s
+
+...doconce translation: handled !benvir/!eenvir constructions 15.8 s
 *** error: could not translate environment: !bsol
     This is an environment in an exercise. Check if the
     heading is correct so the subsection was recognized

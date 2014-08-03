@@ -1,47 +1,82 @@
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<!-- Based on http://jsfiddle.net/jdwire/eytMx/ -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>DocOnce Demo of the Bootstrap style</title>
 
-<!-- Bootstrap core CSS -->
-<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/ -->
 
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
+<!-- Various settings from the bootstrap documentation style -->
+<!--<link href="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css" rel="stylesheet">-->
+<link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
 
-<!-- Documentation extras -->
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap_wtoc/css/bootstrap_wtoc.css" rel="stylesheet">
-  <body data-twttr-rendered="true" gram_dict="true">
+<!-- Potential adjustment of styles -->
+<style type="text/css">
+/* Colors in the navigation sidebar */
+.bs-docs-sidebar .nav > li > a {
+  color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #999;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  color: #563d7c;
+}
+</style>
 
-    <!-- Docs master nav -->
-    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="http://getbootstrap.com/" class="navbar-brand">DocOnce Demo of the Bootstrap style</a>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="">LINK1</a></li>
-        <li><a href="">LINK2</a></li>
-      </ul>
-    </nav>
+</head>
+
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<div class="container">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://some.website.net/some/path" class="navbar-brand">DocOnce Demo of the Bootstrap style</a>
   </div>
+  <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <ul class="nav navbar-nav navbar-right">
+     <li> <a href="http://getbootstrap.com/">Bootstrap</a></li>
+     <li> <a href="http://bootswatch.com/">Bootswatch</a></li>
+    </ul>
+  </nav>
+</div>
 </header>
 
 
-    <!-- Docs page layout -->
-    <div class="container bs-docs-container">
+<!-- Docs page layout -->
 
-      <div class="row">
-        <div class="col-md-9" role="main">
+<!-- A purple header field with the title is optional -->
+<div class="bs-docs-header" id="content">
+ <div class="container">
+  <h1>A Bootstrap-based style</h1>
+A purple style with navigation bar on the right and a header before
+the optional jumbotron (gray area below). The style is generated from
+a template based on the style in the <a href="http://getbootstrap.com/getting-started/">Bootstrap documentation</a>.</p>
+ </div>
+</div>
+
+<div class="container bs-docs-container">
+
+ <div class="row">
+
+  <!-- main content -->
+  <div class="col-md-9" role="main">
 
 <!-- tocinfo
 {'highest level': 0,
@@ -78,9 +113,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -97,10 +129,11 @@ DocOnce supports a variety of Bootstrap styles in a simple
 way:
 
 <p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+</code></pre>
+<!-- end verbatim block -->
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
-</pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
@@ -126,9 +159,9 @@ bar at the bottom where also the page number can be seen.
 
 <!-- !split -->
 
-<h1 class="page-header">More details on writing DocOnce documents with Bootstrap layout  <a name="___sec0"></a></h1>
+<h1 class="page-header" id="___sec0">More details on writing DocOnce documents with Bootstrap layout <a name="___sec0"></a></h1>
 
-<h1>Themes  <a name="___sec1"></a></h1>
+<h1 id="___sec1">Themes <a name="___sec1"></a></h1>
 
 DocOnce supports the following themes from the Bootstrap family:
 
@@ -219,7 +252,7 @@ can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
 without any icon, but with an optional title.
 
-<h1>Demonstrations of admons  <a name="___sec2"></a></h1>
+<h1 id="___sec2">Demonstrations of admons <a name="___sec2"></a></h1>
 
 The Bootstrap/Bootswatch styles support two kinds of admons:
 
@@ -231,13 +264,14 @@ The Bootstrap/Bootswatch styles support two kinds of admons:
 Typical commands for producing Boostrap or Bootswatch layouts are
 
 <p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce format html mydoc --html_style=boostrap
 Terminal&gt; doconce format html mydoc --html_style=booswatch
 Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
 Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
-</pre></div>
+</code></pre>
+<!-- end verbatim block -->
+
 <p>
 Below are some examples on admons.
 
@@ -249,29 +283,31 @@ Below are some examples on admons.
 <div class="panel-body">
 
 <p>
+<!-- begin verbatim block  ipy-->
+<pre><code>
+In [1]: import numpy as np
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+In [2]: x = np.linspace(0, 4*np.pi, 11)
 
-<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
+In [3]: y = exp(-0.1*x)*sin(x)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+&lt;ipython-input-3-c1040545fa6c&gt; in &lt;module&gt;()
+----&gt; 1 y = exp(-0.1*x)*sin(x)
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
-<span style="color: #0044DD">---------------------------------------------------------------------------</span>
-<span style="color: #D2413A; font-weight: bold">NameError</span>                                 Traceback (most recent call last)
-<span style="color: #0000FF; font-weight: bold">&lt;ipython-input-3-c1040545fa6c&gt;</span> in <span style="color: #999999; font-weight: bold">&lt;module&gt;</span><span style="color: #008000; font-weight: bold">()</span>
-<span style="color: #D2413A; font-weight: bold">----&gt; </span><span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+NameError: name 'exp' is not defined
 
-<span style="color: #D2413A; font-weight: bold">NameError</span>: name &#39;exp&#39; is not defined
+In [4]: y = np.exp(-0.1*x)*np.sin(x)
 
-<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
+In [5]: y
+Out[5]:
+array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
+        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
+         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
+        -3.06923992e-01,  -1.39418467e-16])
+</code></pre>
+<!-- end verbatim block -->
 
-<span style="color: #000080; font-weight: bold">In [5]: </span>y
-<span style="color: #000080; font-weight: bold">Out[5]:</span>
-<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
-<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
-<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
-<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
-</pre></div>
 <p>
 This is the admon for warnings or paying attention.
 </div>
@@ -335,17 +371,16 @@ Tables often get a fancy typesetting:
 <p>
 <!-- !split -->
 
-<h1>Horizontal alignment of document elements <a name="sec:examples"></a></h1>
+<h1 id="sec:examples">Horizontal alignment of document elements<a name="sec:examples"></a></h1>
 
-<h2>Principles of grid structures  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Principles of grid structures <a name="___sec4"></a></h2>
 
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
 
 <p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+<!-- begin verbatim block -->
+<pre><code># begin-grid-area
 
 !bslidecell 00
 ...
@@ -360,7 +395,9 @@ the following syntax in case of a 1x3 grid:
 !eslidecell
 
 # end-grid-area
-</pre></div>
+</code></pre>
+<!-- end verbatim block -->
+
 <p>
 <div class="panel panel-warning">
   <div class="panel-heading">
@@ -383,9 +420,8 @@ For example, the mathematics in the following 2x2 grid structure will
 be lost because it appears outside the slidecell environments:
 
 <p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
+<!-- begin verbatim block -->
+<pre><code># begin-grid-area
 
 !bslidecell 00
 ...
@@ -410,7 +446,9 @@ We consider
 !eslidecell
 
 # end-grid-area
-</pre></div>
+</code></pre>
+<!-- end verbatim block -->
+
 <p>
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -425,7 +463,7 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 </div>
 
 
-<h2>Example on a 1x3 grid structure  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Example on a 1x3 grid structure <a name="___sec5"></a></h2>
 
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
@@ -442,14 +480,13 @@ for the value of \( f(0) \).
 The Python implementation reads
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from math import exp, sin
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
-</pre></div>
-<p>
+def f(x):
+    return exp(-a*x)*sin(w*x)
+</code></pre>
+<!-- end verbatim block -->
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
 main program.
   </div> <!-- column col-sm-4 -->
@@ -460,27 +497,25 @@ main program.
 With a main program
 
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
-w <span style="color: #666666">=</span> pi
-<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
-</pre></div>
-<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>a = 1
+from math import pi
+w = pi
+print f(0)
+</code></pre>
+<!-- end verbatim block -->
 we can run the program:
 
 <p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; python prog.py
 0
-</pre></div>
-<p>
+</code></pre>
+<!-- end verbatim block -->
   </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2>Variation of the previous grid structure using admons  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Variation of the previous grid structure using admons <a name="___sec6"></a></h2>
 
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
@@ -511,14 +546,13 @@ for the value of \( f(0) \).
 The Python implementation reads
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from math import exp, sin
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
-</pre></div>
-<p>
+def f(x):
+    return exp(-a*x)*sin(w*x)
+</code></pre>
+<!-- end verbatim block -->
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
 main program.
 </div>
@@ -534,23 +568,21 @@ main program.
 With a main program
 
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
-w <span style="color: #666666">=</span> pi
-<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
-</pre></div>
-<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>a = 1
+from math import pi
+w = pi
+print f(0)
+</code></pre>
+<!-- end verbatim block -->
 we can run the program:
 
 <p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; python prog.py
 0
-</pre></div>
-<p>
+</code></pre>
+<!-- end verbatim block -->
 </div>
 </div>
 
@@ -560,10 +592,12 @@ we can run the program:
 
 <!-- ------------------- end of main content --------------- -->
 
-        </div>
-        <div class="col-md-3">
-          <div class="bs-sidebar hidden-print" role="complementary">
-            <ul class="nav bs-sidenav">
+  </div>
+
+  <!-- sidebar with navigation -->
+  <div class="col-md-3">
+   <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+    <ul class="nav bs-docs-sidenav">
      <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
      <!-- navigation toc: "Themes" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
      <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
@@ -572,94 +606,27 @@ we can run the program:
      <!-- navigation toc: "Example on a 1x3 grid structure" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
      <!-- navigation toc: "Variation of the previous grid structure using admons" --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
 
-            </ul>
-            <a class="back-to-top" href="#top">
-              Back to top
-            </a>
+    </ul>
+    <a class="back-to-top" href="#top">Back to top</a>
+   </div>
+  </div>
+ </div>
 
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
 
-    <!-- Footer
+<!-- Footer
 ================================================== -->
 <footer class="bs-docs-footer" role="contentinfo">
-  <div class="container">
-  <!-- here goes the footer -->
-  </div>
+ <div class="container">
+  Hans Petter Langtangen, 2014 &copy;
+ </div>
 </footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script>
-    !function ($) {
-
-  $(function(){
-
-    var $window = $(window)
-    var $body   = $(document.body)
-
-    var navHeight = $('.navbar').outerHeight(true) + 10
-
-    $body.scrollspy({
-      target: '.bs-sidebar',
-      offset: navHeight
-    })
-
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    })
-
-    $('.bs-docs-container [href=#]').click(function (e) {
-      e.preventDefault()
-    })
-
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $('.bs-sidebar')
-
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.bs-docs-nav').height()
-
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          }
-        , bottom: function () {
-            return (this.bottom = $('.bs-footer').outerHeight(true))
-          }
-        }
-      })
-    }, 100)
-
-    setTimeout(function () {
-      $('.bs-top').affix()
-    }, 100)
-
-    // tooltip demo
-    $('.tooltip-demo').tooltip({
-      selector: "[data-toggle=tooltip]",
-      container: "body"
-    })
-
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
-
-    $('.bs-docs-navbar').tooltip({
-      selector: "a[data-toggle=tooltip]",
-      container: ".bs-docs-navbar .nav"
-    })
-})
-
-}(window.jQuery)
-
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
 </html>
 

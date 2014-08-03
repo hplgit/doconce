@@ -628,22 +628,10 @@ def html_code(filestr, code_blocks, code_block_types,
     # Add header from external template
     template = option('html_template=', default='')
     if html_style == 'vagrant':
-        # Set template_vagrant.html as template
-        if not template:
-            print """
-*** error: --html_style=vagrant requires a template; copy a template
-    cp path/to/doconce-source-root/bundled/html_styles/style_vagrant/template_vagrant.html .
-    and edit as you like, then rerun with
-    --html_template=template_mystyle.html
-"""
-            _abort()
-    if 'template_vagrant.html' in template \
-       and not html_style == 'vagrant':
-        print """
-*** error: --html_template= with a template based on
-    template_vagrant.html requires --html_style=vagrant
-"""
-        _abort()
+        print '*** warning: --html_style=vagrant is deprecated,'
+        print '    just use bootstrap as style and combine with'
+        print '    template from bundled/html_styles/style_vagrant'
+        html_style == 'bootstrap'
 
     if template:
         title = ''
@@ -691,8 +679,8 @@ def html_code(filestr, code_blocks, code_block_types,
 
         # Make toc for navigation
         toc_html = ''
-        if html_style in ('vagrant', 'bootstrap'):
-            toc_html = toc2html()
+        if html_style == 'bootstrap':
+            toc_html = toc2html(bootstrap=True)
         elif html_style in ('solarized',):
             toc_html = toc2html(bootstrap=False)
         # toc_html lacks formatting, run some basic formatting here
@@ -755,7 +743,7 @@ def html_code(filestr, code_blocks, code_block_types,
                          '<h1 class="page-header">\g<1></h1>', filestr)
         # Some fancy functionality (e.g., in the bootstrap_wtoc template)
         # requires use of id tag in headings rather than the primitve <a name..
-        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"</a>', filestr) # for highlighted toc in , but did not work,
+        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"></a>', filestr) # for highlighted toc in , but did not work,
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
@@ -815,16 +803,16 @@ def html_code(filestr, code_blocks, code_block_types,
     # Reduce redunant newlines and <p> (easy with lookahead pattern)
     # Eliminate any <p> that goes with blanks up to <p> or a section
     # heading
-    pattern = r'<p>\s+(?=<p>|<[hH]\d>)'
+    pattern = r'<p>\s+(?=<p>|<[hH]\d[^>]*>)'
     filestr = re.sub(pattern, '', filestr)
     # Extra blank before section heading
-    pattern = r'\s+(?=^<[hH]\d>)'
+    pattern = r'\s+(?=^<[hH]\d[^>]*>)'
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
     # Elimate <p> before equations $$ and before lists
     filestr = re.sub(r'<p>\s+(\$\$|<ul>|<ol>)', r'\g<1>', filestr)
     filestr = re.sub(r'<p>\s+<title>', '<title>', filestr)
     # Eliminate <p> after </h1>, </h2>, etc.
-    filestr = re.sub(r'(</h\d>)\s+<p>', '\g<1>\n', filestr)
+    filestr = re.sub(r'(</[hH]\d[^>]*>)\s+<p>', '\g<1>\n', filestr)
 
     return filestr
 
@@ -916,7 +904,7 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
         else:
             print '*** error: found footnote with name "%s", but this one is not defined' % name
             _abort()
-        if option('html_style=', '')[:5] in ('boots', 'vagra'):
+        if option('html_style=', '').startswith('boots'):
             # Use a tooltip construction so the footnote appears when hovering over
             text = ' '.join(footnotes[name].strip().splitlines())
             # Note: formatting does not work well with a tooltip
@@ -1416,9 +1404,10 @@ def html_inline_comment(m):
         for char in chars:
             if comment == char:
                 return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
-        return r' <font color="red">(<b>edit %s</b>: add) %s</font>' % (name[4:], comment)
+        return r' <font color="red">(<b>edit %s</b>:) %s</font>' % (name[4:], comment)
     else:
         # Ordinary name
+        comment = ' '.join(comment.splitlines()) # '\s->\s' -> ' -> '
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
@@ -1430,10 +1419,10 @@ def html_inline_comment(m):
             return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
         else:
             # Ordinary comment
-            return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: <em>%s</em>)</font>\n<!-- end inline comment -->\n' % (name, comment)
+            return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: %s)</font>\n<!-- end inline comment -->\n' % (name, comment)
 
 def html_quiz(quiz):
-    bootstrap = option('html_style=', '')[:5] in ('boots', 'vagra')
+    bootstrap = option('html_style=', '').startswith('boots')
     button_text = option('html_quiz_button_text=', '')
     question_prefix = quiz.get('question prefix',
                                option('quiz_question_prefix=', 'Question:'))
@@ -1564,7 +1553,7 @@ if html_admon_style is None:
         html_admon_style = 'solarized_light'
     elif option('html_style=') == 'blueish2':
         html_admon_style = 'yellow'
-    elif option('html_style=', '')[:5] in ('vagra', 'boots'):
+    elif option('html_style=', '').startswith('boots'):
         html_admon_style = 'bootstrap_alert'
     else:
         html_admon_style = 'gray'
@@ -1592,7 +1581,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     pygments_pattern = r'"background: .+?">'
 
     # html_admon_style is global variable
-    if option('html_style=', '')[:5] in ('vagra', 'boots'):
+    if option('html_style=', '')[:5].startswith('boots'):
         # Bootstrap/Bootswatch html style
 
         if html_admon_style == 'bootstrap_panel':
@@ -1686,7 +1675,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
         print '*** error: illegal --html_admon=%%s' %% html_admon_style
         print '    legal values are colors, gray, yellow, apricot, lyx,'
         print '    paragraph; and bootstrap_alert or bootstrap_panel for'
-        print '    --html_style=vagrant,bootstrap*,or bootswatch*'
+        print '    --html_style=bootstrap*|bootswatch*'
         _abort()
 ''' % vars()
     exec(_text)
