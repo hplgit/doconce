@@ -1404,9 +1404,10 @@ def html_inline_comment(m):
         for char in chars:
             if comment == char:
                 return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
-        return r' <font color="red">(<b>edit %s</b>: add) %s</font>' % (name[4:], comment)
+        return r' <font color="red">(<b>edit %s</b>:) %s</font>' % (name[4:], comment)
     else:
         # Ordinary name
+        comment = ' '.join(comment.splitlines()) # '\s->\s' -> ' -> '
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
@@ -1418,7 +1419,7 @@ def html_inline_comment(m):
             return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
         else:
             # Ordinary comment
-            return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: <em>%s</em>)</font>\n<!-- end inline comment -->\n' % (name, comment)
+            return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: %s)</font>\n<!-- end inline comment -->\n' % (name, comment)
 
 def html_quiz(quiz):
     bootstrap = option('html_style=', '').startswith('boots')

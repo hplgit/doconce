@@ -437,7 +437,19 @@ def remove_code_and_tex(filestr):
             math_block_counter += 1
     filestr = safe_join(lines, '\n')
 
-    # Give error if blocks contain !bt
+    # Give error if blocks contain !bt (not impl)
+
+    # Check that math blocks do not contain edit markup or comments
+    for block in tex_blocks:
+        m = re.search(INLINE_TAGS['inlinecomment'], block, flags=re.DOTALL)
+        if m:
+            print '*** error: tex block with mathematics cannot contain'
+            print '    inline comment or edit markup!'
+            if m.group('name') in ('del', 'add') or '->' in m.group('comment'):
+                # edit markup
+                print '    Place info about editing after the block.'
+            print block
+            _abort()
 
     return filestr, code_blocks, code_block_types, tex_blocks
 

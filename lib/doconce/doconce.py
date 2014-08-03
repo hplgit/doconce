@@ -275,6 +275,13 @@ def fix(filestr, format, verbose=0):
                 if verbose > 0:
                     print '\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
 
+    # edit markup: add space after add: and del: for .,;?
+    pattern = r'\[(add|del):([.,;])\]'
+    filestr, n = re.subn(pattern, r'[\g<1>: \g<2>]', filestr)
+    num_fixes += n
+    if n > 0:
+        print '*** warning: found %d [add:...] or [del:...] edits without space after colon' % n
+
     """
     Drop this and report error instead:
     # Space before commands that should begin in 1st column at a line?
@@ -295,7 +302,7 @@ def fix(filestr, format, verbose=0):
     """
 
     if verbose and num_fixes:
-        print '\n*** warning: the total of %d fixes above should be manually edited in the file!!\n    (also note: some fixes may not be what you want)\n' % num_fixes
+        print '\n*** warning: the total of %d fixes above should be manually edited in the file!\n    (also note: some of these automatic fixes may not be what you want)\n' % num_fixes
     return filestr
 
 
@@ -346,7 +353,18 @@ def syntax_check(filestr, format):
         print filestr[m.start()-50:m.start()+60]
         _abort()
 
-    # [[[
+    # edit markup
+    section_pattern = r'^={3,9}(.+?)={3,9}'
+    headings = re.findall(section_pattern, filestr, flags=re.MULTILINE)
+    edit_patterns = r'\[(add|del):.+?\]', r' -> '
+    for heading in headings:
+        for pattern in edit_patterns:
+            m = re.search(pattern, heading)
+            if m:
+                print '*** error: cannot use edit markup %s in section heading' % m.group()
+                print '   ', heading
+                print '    use inline comment below the heading instead where you explain the problem'
+                _abort()
 
     pattern = r'^[A-Za-z0_9`"].+\n *- +.+\n^[A-Za-z0_9`"]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
@@ -2117,8 +2135,7 @@ be loss of quality. Generate a proper %s file (if possible).""" % \
 
 def handle_cross_referencing(filestr, format):
     # 1. find all section/chapter titles and corresponding labels
-    #section_pattern = r'(_+|=+)([A-Za-z !.,;0-9]+)(_+|=+)\s*label\{(.+?)\}'
-    section_pattern = r'^\s*(_{3,9}|={3,9})(.+?)(_{3,9}|={3,9})\s*label\{(.+?)\}'
+    section_pattern = r'^\s*(={3,9})(.+?)(={3,9})\s*label\{(.+?)\}'
     m = re.findall(section_pattern, filestr, flags=re.MULTILINE)
     #pprint.pprint(m)
     # Make sure sections appear in the right order

@@ -1,0 +1,111 @@
+TITLE: Test of editing markup
+AUTHOR: HPL
+DATE: today
+
+__Summary.__ In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.
+
+======= A math story =======
+
+Given $f(x)$. We seek the roots of $f$ i.e. the $x$ values for which
+$f(x)=0$. The most famous method is Newton's method:
+
+!bt
+\[ x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots \]
+!et
+It needs $x_0$. In theory this method has quadratic convergence,
+however it requires $x_0$ to be close to a root.
+
+!bwarning Problems with the text above
+Readers will normally find problems with the text above and a desire
+to edit. DocOnce features a syntax for editing running text.
+This syntax is demonstrated below. Edit markup is not allowed
+in math blocks, code blocks, or section headings.
+!ewarning
+
+The text above is typeset as
+
+!bc do
+__Summary.__ In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.
+
+======= A math story =======
+
+Given $f(x)$. We seek the roots of $f$ i.e. the $x$ values for which
+$f(x)=0$. The most famous method is Newton's method:
+
+|bt
+\[ x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots \]
+|et
+It needs $x_0$. In theory this method has quadratic convergence,
+however it requires $x_0$ to be close to a root.
+!ec
+
+-------
+
+We now want to annotate this text with edit markup. Such markup
+has the syntax of *inline comments*, which are comments inside
+square brackets with an identifier and the comment text:
+
+!bc
+[identifier: some text]
+!ec
+The identifier can be a name (to recognize the reader who provided
+the comment), but in edit markup it is usually either `add`, `del`,
+or `edit`. The edit markup consists of
+
+!bc
+[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -> some replacement for text]
+!ec
+In addition, one may provide an ordinary inline comment a la
+
+!bc
+[edit: change the title to *Root finding*.]
+!ec
+
+Below is the text with edit markup, followed by the rendering of
+this markup.
+
+------
+
+__Summary.__ In this [del: mini] article[add: ,] we demonstrate
+the editing markup in DocOnce[edit: . This -> which] allows
+highlighting of corrections [add: via colors] in a text.
+
+======= A math story =======
+
+[edit: change heading to *Root finding*]
+
+Given [add: a function] $f(x)$. We seek the roots of $f$[add:,]
+i.e.[add:,] the $x$ values for which $f(x)=0$. [edit: The most ->
+A] famous [add: iterative solution] method is Newton's method:
+
+!bt
+\[ x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots \]
+!et
+[edit: error in right-hand side, the fraction $\frac{f'(x_k)}{f(x_k)}$
+must be $\frac{f(x_k)}{f'(x_k)}$.]
+[edit: It needs $x_0$ -> A start value $x_0$ is required].
+In theory[add:,] this method has quadratic
+convergence[del:,][add:.] [edit: h -> H]owever[add:,]
+[edit: it -> the result] requires $x_0$ to be close to a root.
+
+------
+
+To remove the edit markup and implement their implications, run
+
+!bc sys
+Terminal> doconce apply_edit_comments mydoc.do.txt
+!ec
+if the name of the DocOnce source file is `mydoc.do.txt`.
