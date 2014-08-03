@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Test of editing markup</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Test of editing markup" href="index.html" />
+    <link rel="prev" title="Test of editing markup" href="index.html" />
+ 
+  
+   <style type="text/css">
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Test of editing markup"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Test of editing markup</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="test-of-editing-markup">
+<h1>Test of editing markup<a class="headerlink" href="#test-of-editing-markup" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">HPL</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 3, 2014</td>
+</tr>
+</tbody>
+</table>
+<p><em>Summary.</em> In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.</p>
+<div class="section" id="a-math-story-1">
+<h2>A math story  (1)<a class="headerlink" href="#a-math-story-1" title="Permalink to this headline">¶</a></h2>
+<p>Given <span class="math">\(f(x)\)</span>. We seek the roots of <span class="math">\(f\)</span> i.e. the <span class="math">\(x\)</span> values for which
+<span class="math">\(f(x)=0\)</span>. The most famous method is Newton&#8217;s method:</p>
+<div class="math">
+\[x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots\]</div>
+<p>It needs <span class="math">\(x_0\)</span>. In theory this method has quadratic convergence,
+however it requires <span class="math">\(x_0\)</span> to be close to a root.</p>
+<div class="admonition-problems-with-the-text-above admonition">
+<p class="first admonition-title">Problems with the text above</p>
+<p class="last">Readers will normally find problems with the text above and a desire
+to edit. DocOnce features a syntax for editing running text.
+This syntax is demonstrated below. Edit markup is not allowed
+in math blocks, code blocks, or section headings.</p>
+</div>
+<p>The text above is typeset as</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gu">__Summary.__</span> In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.
+
+<span class="gh">======= A math story =======</span>
+
+Given $f(x)$. We seek the roots of $f$ i.e. the $x$ values for which
+$f(x)=0$. The most famous method is Newton&#39;s method:
+
+<span class="k">!bt</span>
+\[ x_{k+1} = x_k - \frac{f&#39;(x_k)}{f(x_k)},\quad k=0,1,\ldots \]
+<span class="k">!et</span>
+It needs $x_0$. In theory this method has quadratic convergence,
+however it requires $x_0$ to be close to a root.
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>We now want to annotate this text with edit markup. Such markup
+has the syntax of <em>inline comments</em>, which are comments inside
+square brackets with an identifier and the comment text:</p>
+<div class="highlight-text"><div class="highlight"><pre>[identifier: some text]
+</pre></div>
+</div>
+<p>The identifier can be a name (to recognize the reader who provided
+the comment), but in edit markup it is usually either <tt class="docutils literal"><span class="pre">add</span></tt>, <tt class="docutils literal"><span class="pre">del</span></tt>,
+or <tt class="docutils literal"><span class="pre">edit</span></tt>. The edit markup consists of</p>
+<div class="highlight-text"><div class="highlight"><pre>[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+</pre></div>
+</div>
+<p>In addition, one may provide an ordinary inline comment a la</p>
+<div class="highlight-text"><div class="highlight"><pre>[edit: change the title to *Root finding*.]
+</pre></div>
+</div>
+<p>Below is the text with edit markup, followed by the rendering of
+this markup.</p>
+<hr class="docutils" />
+<p><em>Summary.</em> In this (<strong>edit 1</strong>: <strong>delete</strong> mini) article, (<strong>edit 2: add comma</strong>) we demonstrate
+the editing markup in DocOnce(<strong>edit 3: remove</strong> . This) (<strong>insert:</strong>)which (<strong>end insert</strong>) allows
+highlighting of corrections  (<strong>edit 4: add</strong>) via colors (<strong>end add</strong>) in a text.</p>
+</div>
+<div class="section" id="a-math-story-2">
+<h2>A math story  (2)<a class="headerlink" href="#a-math-story-2" title="Permalink to this headline">¶</a></h2>
+<p>[<strong>edit 5</strong>: change heading to <em>Root finding</em>]</p>
+<p>Given  (<strong>edit 6: add</strong>) a function (<strong>end add</strong>) <span class="math">\(f(x)\)</span>. We seek the roots of <span class="math">\(f\)</span>, (<strong>edit 2: add comma</strong>)
+i.e., (<strong>edit 2: add comma</strong>) the <span class="math">\(x\)</span> values for which <span class="math">\(f(x)=0\)</span>. (<strong>edit 9: remove</strong> The most) (<strong>insert:</strong>)A (<strong>end insert</strong>) famous  (<strong>edit 10: add</strong>) iterative solution (<strong>end add</strong>) method is Newton&#8217;s method:</p>
+<div class="math">
+\[x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots\]</div>
+<p>[<strong>edit 11</strong>: error in right-hand side, the fraction <span class="math">\(\frac{f'(x_k)}{f(x_k)}\)</span> must be <span class="math">\(\frac{f(x_k)}{f'(x_k)}\)</span>.]
+(<strong>edit 12: remove</strong> It needs <span class="math">\(x_0\)</span>) (<strong>insert:</strong>)A start value <span class="math">\(x_0\)</span> is required (<strong>end insert</strong>).
+In theory, (<strong>edit 2: add comma</strong>) this method has quadratic
+convergence (<strong>edit 14</strong>: delete comma). (<strong>edit 15: add period</strong>) (<strong>edit 16: remove</strong> h) (<strong>insert:</strong>)H (<strong>end insert</strong>)owever, (<strong>edit 2: add comma</strong>)
+(<strong>edit 18: remove</strong> it) (<strong>insert:</strong>)the result (<strong>end insert</strong>) requires <span class="math">\(x_0\)</span> to be close to a root.</p>
+<hr class="docutils" />
+<p>To remove the edit markup and implement their implications, run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
+</pre></div>
+</div>
+<p>if the name of the DocOnce source file is <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Test of editing markup</a><ul>
+<li><a class="reference internal" href="#a-math-story-1">A math story  (1)</a></li>
+<li><a class="reference internal" href="#a-math-story-2">A math story  (2)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Test of editing markup</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/editex.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Test of editing markup"
+             >previous</a> |</li>
+        <li><a href="index.html">Test of editing markup</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

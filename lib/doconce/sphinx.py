@@ -9,6 +9,7 @@ from doconce import _abort
 
 video_counter = 0
 activecode_counter = 0
+edit_markup_warning = False
 
 def sphinx_figure(m):
     result = ''
@@ -428,20 +429,31 @@ def sphinx_index_bib(filestr, index, citations, pubfile, pubdata):
     return filestr
 
 def sphinx_inline_comment(m):
-    # Use explicit HTML typesetting
+    # Explicit HTML typesetting does not work, we just use bold
     name = m.group('name').strip()
     comment = m.group('comment').strip()
+
+    global edit_markup_warning
+    if (not edit_markup_warning) and \
+           (name[:3] in ('add', 'del', 'edi') or '->' in comment):
+        print '*** warning: sphinx/rst is a suboptimal format for'
+        print '    typesetting edit markup such as'
+        print '   ', m.group()
+        print '    Use HTML or LaTeX output instead, implement the'
+        print '    edits (doconce apply_edit_comments) and then use sphinx.'
+        edit_markup_warning = True
+
     chars = {',': 'comma', ';': 'semicolon', '.': 'period'}
     if name[:4] == 'del ':
         for char in chars:
             if comment == char:
-                return r' <font color="red"> (<b>edit %s</b>: delete %s)</font>' % (name[4:], chars[char])
-        return r'<font color="red">(<b>edit %s</b>:)</font> <del>%s</del>' % (name[4:], comment)
+                return r' (**edit %s**: delete %s)' % (name[4:], chars[char])
+        return r'(**edit %s**: **delete** %s)' % (name[4:], comment)
     elif name[:4] == 'add ':
         for char in chars:
             if comment == char:
-                return r'<font color="red">%s (<b>edit %s</b>: add %s)</font>' % (comment, name[4:], chars[char])
-        return r' <font color="red">(<b>edit %s</b>:) %s</font>' % (name[4:], comment)
+                return r'%s (**edit %s: add %s**)' % (comment, name[4:], chars[char])
+        return r' (**edit %s: add**) %s (**end add**)' % (name[4:], comment)
     else:
         # Ordinary name
         comment = ' '.join(comment.splitlines()) # '\s->\s' -> ' -> '
@@ -453,10 +465,10 @@ def sphinx_inline_comment(m):
                 print '(more than two ->)'
                 _abort()
             orig, new = comment.split(' -> ')
-            return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
+            return r'(**%s: remove** %s) (**insert:**)%s (**end insert**)' % (name, orig, new)
         else:
             # Ordinary comment
-            return r'<font color="red">[<b>%s</b>: %s]</font>' % (name, comment)
+            return r'[**%s**: %s]' % (name, comment)
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

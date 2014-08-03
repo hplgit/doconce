@@ -1,0 +1,253 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Test of editing markup">
+
+
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' A math story ', 1, None, '___sec0'),
+              (' A math story ', 1, None, '___sec1')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Test of editing markup</title>
+
+<center><h1>Test of editing markup</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): HPL -->
+
+<center>
+<b>HPL</b> 
+</center>
+
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>Aug 3, 2014</h4></center> <!-- date -->
+<p>
+<b>Summary.</b> In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.
+
+<h1>A math story  <a name="___sec0"></a></h1>
+
+Given \( f(x) \). We seek the roots of \( f \) i.e. the \( x \) values for which
+\( f(x)=0 \). The most famous method is Newton's method:
+
+$$ x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots $$
+
+It needs \( x_0 \). In theory this method has quadratic convergence,
+however it requires \( x_0 \) to be close to a root.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Problems with the text above.</b>
+Readers will normally find problems with the text above and a desire
+to edit. DocOnce features a syntax for editing running text.
+This syntax is demonstrated below. Markup for editing is not allowed
+in math blocks, code blocks, or section headings.
+</div>
+
+
+<p>
+The text above is typeset as
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #800080; font-weight: bold">__Summary.__</span> In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.
+
+<span style="color: #000080; font-weight: bold">======= A math story =======</span>
+
+Given $f(x)$. We seek the roots of $f$ i.e. the $x$ values for which
+$f(x)=0$. The most famous method is Newton&#39;s method:
+
+!bt
+\[ x_{k+1} = x_k - \frac{f&#39;(x_k)}{f(x_k)},\quad k=0,1,\ldots \]
+!et
+It needs $x_0$. In theory this method has quadratic convergence,
+however it requires $x_0$ to be close to a root.
+</pre></div>
+<p>
+<hr>
+
+<p>
+We now want to annotate this text with markup for our edits.
+Such markup has the syntax of <em>inline comments</em>, which are
+comments inside square brackets with an identifier and the comment text:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[identifier: some text]
+</pre></div>
+<p>
+The identifier can be a name (to recognize the reader who provided
+the comment), but in edit markup it is usually either <code>add</code>, <code>del</code>,
+or <code>edit</code>. The markup for editing consists of
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[add: ,]
+[add: .]
+[add: ;]
+[del: ,]
+[del: ,]
+[del: .]
+[del: ;]
+[add: some text]
+[del: some text]
+[edit: some text -&gt; some replacement for text]
+</pre></div>
+<p>
+In addition, one may provide an ordinary inline comment a la
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[edit: change the title to *Root finding*.]
+</pre></div>
+<p>
+Below is the text with edits, followed by the rendering of
+how such edits look like in the present format (html).
+
+<p>
+<hr>
+
+<p>
+<b>Summary.</b> In this <font color="red">(<b>edit 1</b>:)</font> <del>mini</del> article<font color="red">, (<b>edit 2</b>: add comma)</font> we demonstrate
+the editing markup in DocOnce<font color="red">(<b>edit 3</b>:)</font> <del>. This</del> <font color="red">which</font> allows
+highlighting of corrections  <font color="red">(<b>edit 4</b>:) via colors</font> in a text.
+
+<h1>A math story  <a name="___sec1"></a></h1>
+
+
+<!-- begin inline comment -->
+<font color="red">(<b>edit 5</b>: change heading to <em>Root finding</em>)</font>
+<!-- end inline comment -->
+
+
+<p>
+Given  <font color="red">(<b>edit 6</b>:) a function</font> \( f(x) \). We seek the roots of $f$<font color="red">, (<b>edit 2</b>: add comma)</font>
+i.e.<font color="red">, (<b>edit 2</b>: add comma)</font> the \( x \) values for which \( f(x)=0 \). <font color="red">(<b>edit 9</b>:)</font> <del>The most</del> <font color="red">A</font> famous  <font color="red">(<b>edit 10</b>:) iterative solution</font> method is Newton's method:
+
+$$ x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots $$
+
+
+<!-- begin inline comment -->
+<font color="red">(<b>edit 11</b>: error in right-hand side, the fraction \( \frac{f'(x_k)}{f(x_k)} \) must be \( \frac{f(x_k)}{f'(x_k)} \).)</font>
+<!-- end inline comment -->
+
+<font color="red">(<b>edit 12</b>:)</font> <del>It needs $x_0$</del> <font color="red">A start value \( x_0 \) is required</font>.
+In theory<font color="red">, (<b>edit 2</b>: add comma)</font> this method has quadratic
+convergence <font color="red"> (<b>edit 14</b>: delete comma)</font><font color="red">. (<b>edit 15</b>: add period)</font> <font color="red">(<b>edit 16</b>:)</font> <del>h</del> <font color="red">H</font>owever<font color="red">, (<b>edit 2</b>: add comma)</font>
+<font color="red">(<b>edit 18</b>:)</font> <del>it</del> <font color="red">the result</font> requires \( x_0 \) to be close to a root.
+
+<p>
+<hr>
+
+<p>
+To remove the edit markup and implement their implications, run
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce apply_edit_comments mydoc.do.txt
+</pre></div>
+<p>
+if the name of the DocOnce source file is <code>mydoc.do.txt</code>.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

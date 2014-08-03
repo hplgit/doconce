@@ -1,0 +1,123 @@
+.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+   (https://github.com/hplgit/doconce/)
+
+Test of editing markup
+%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: HPL
+:Date: Aug 3, 2014
+
+*Summary.* In this mini article we demonstrate the editing
+markup in DocOnce. This allows highlighting of corrections in
+a text.
+
+A math story  (1)
+=================
+
+Given :math:`f(x)`. We seek the roots of :math:`f` i.e. the :math:`x` values for which
+:math:`f(x)=0`. The most famous method is Newton's method:
+
+.. math::
+         x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots 
+
+It needs :math:`x_0`. In theory this method has quadratic convergence,
+however it requires :math:`x_0` to be close to a root.
+
+
+.. admonition:: Problems with the text above
+
+   Readers will normally find problems with the text above and a desire
+   to edit. DocOnce features a syntax for editing running text.
+   This syntax is demonstrated below. Edit markup is not allowed
+   in math blocks, code blocks, or section headings.
+
+
+
+
+The text above is typeset as
+
+.. code-block:: doconce
+
+        __Summary.__ In this mini article we demonstrate the editing
+        markup in DocOnce. This allows highlighting of corrections in
+        a text.
+        
+        ======= A math story =======
+        
+        Given $f(x)$. We seek the roots of $f$ i.e. the $x$ values for which
+        $f(x)=0$. The most famous method is Newton's method:
+        
+        !bt
+        \[ x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots \]
+        !et
+        It needs $x_0$. In theory this method has quadratic convergence,
+        however it requires $x_0$ to be close to a root.
+
+---------
+
+We now want to annotate this text with edit markup. Such markup
+has the syntax of *inline comments*, which are comments inside
+square brackets with an identifier and the comment text:
+
+.. code-block:: text
+
+        [identifier: some text]
+
+The identifier can be a name (to recognize the reader who provided
+the comment), but in edit markup it is usually either ``add``, ``del``,
+or ``edit``. The edit markup consists of
+
+.. code-block:: text
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+
+In addition, one may provide an ordinary inline comment a la
+
+.. code-block:: text
+
+        [edit: change the title to *Root finding*.]
+
+Below is the text with edit markup, followed by the rendering of
+this markup.
+
+---------
+
+*Summary.* In this (**edit 1**: **delete** mini) article, (**edit 2: add comma**) we demonstrate
+the editing markup in DocOnce(**edit 3: remove** . This) (**insert:**)which (**end insert**) allows
+highlighting of corrections  (**edit 4: add**) via colors (**end add**) in a text.
+
+A math story  (2)
+=================
+
+[**edit 5**: change heading to *Root finding*]
+
+Given  (**edit 6: add**) a function (**end add**) :math:`f(x)`. We seek the roots of :math:`f`, (**edit 2: add comma**)
+i.e., (**edit 2: add comma**) the :math:`x` values for which :math:`f(x)=0`. (**edit 9: remove** The most) (**insert:**)A (**end insert**) famous  (**edit 10: add**) iterative solution (**end add**) method is Newton's method:
+
+.. math::
+         x_{k+1} = x_k - \frac{f'(x_k)}{f(x_k)},\quad k=0,1,\ldots 
+
+[**edit 11**: error in right-hand side, the fraction :math:`\frac{f'(x_k)}{f(x_k)}` must be :math:`\frac{f(x_k)}{f'(x_k)}`.]
+(**edit 12: remove** It needs :math:`x_0`) (**insert:**)A start value :math:`x_0` is required (**end insert**).
+In theory, (**edit 2: add comma**) this method has quadratic
+convergence (**edit 14**: delete comma). (**edit 15: add period**) (**edit 16: remove** h) (**insert:**)H (**end insert**)owever, (**edit 2: add comma**)
+(**edit 18: remove** it) (**insert:**)the result (**end insert**) requires :math:`x_0` to be close to a root.
+
+---------
+
+To remove the edit markup and implement their implications, run
+
+.. code-block:: text
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
+
+if the name of the DocOnce source file is ``mydoc.do.txt``.

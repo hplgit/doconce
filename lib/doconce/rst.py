@@ -27,7 +27,7 @@ def rst_abstract(m):
 """ % (indent_lines(text, 'rst'), rest)
         return s
     else:
-        return '\n*%(name)s.* %(text)s\n%(rest)s' % vars()
+        return '\n*%(name)s.* %(text)s\n\n%(rest)s' % vars()
 
 # replacement patterns for substitutions of inline tags
 def rst_figure(m):
@@ -537,8 +537,9 @@ def define(FILENAME_EXTENSION,
         'verbatim':  r'\g<begin>``\g<subst>``\g<end>',
         'label':     r'\g<subst>',  # should be improved, rst has cross ref
         'reference': r'\g<subst>',
-        #colortext works for HTML only. Can see here: http://stackoverflow.com/questions/4669689/how-to-use-color-in-text-with-restructured-text-rst2html-py-or-how-to-insert-h (but probably color is most relevant for HTML anyway)
-        'colortext': r'<font color="\g<color>">\g<text></font>',
+        #colortext cannot employ pure HTML code. Recipe: http://stackoverflow.com/questions/4669689/how-to-use-color-in-text-with-restructured-text-rst2html-py-or-how-to-insert-h (this is too comprehensive). Use bold instead.
+        #'colortext': r'<font color="\g<color>">\g<text></font>',
+        'colortext': r'**\g<text>**',
         # Use anonymous hyperlink references to avoid warnings if the link
         # name appears twice
         #'linkURL':   r'\g<begin>`\g<link> <\g<url>>`__\g<end>',
