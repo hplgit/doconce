@@ -605,7 +605,9 @@ idx{inline comments}idx{non-breaking space}idx{nbsp}
 
 DocOnce supports tags for *emphasized phrases*, _boldface phrases_,
 and `verbatim text` (also called type writer text, for inline code),
+# #if FORMAT in ("latex", "pdflatex", "html")
 color{blue}{colored words},
+# #endif
 plus LaTeX/TeX inline mathematics, such as $\nu = \sin(x)$|$v = sin(x)$.
 Links are easy to define, either with a "text": "http://google.com" or
 just a plain URL: "http://google.com".
@@ -640,6 +642,15 @@ The line above gets typeset as
 _several words in boldface_ followed by *ephasized text*.
 One should only have pure text (no mathematical formulas) between the boldface
 or emphasize markers.
+
+Colored text is formatted as
+
+!bc do
+some text color{red}{more text in red}
+!ec
+# #if FORMAT not in ("latex", "pdflatex", "html")
+The current output format does not support colors, however.
+# #endif
 
 === Inline Verbatim Text ===
 

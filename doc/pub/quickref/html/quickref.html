@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 2, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 6, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -281,8 +281,9 @@ are also possible: the text</p>
 <div class="highlight-text"><div class="highlight"><pre>`color{red}{two red words}`
 </pre></div>
 </div>
-<p>becomes &lt;font color=&#8221;red&#8221;&gt;two red words&lt;/font&gt;.
-Quotations appear inside double backticks and double single quotes:</p>
+<p>becomes <strong>two red words</strong>.
+(But colors do not work in format sphinx).</p>
+<p>Quotations appear inside double backticks and double single quotes:</p>
 <div class="highlight-text"><div class="highlight"><pre>This is a sentence with ``words to be quoted&#39;&#39;.
 </pre></div>
 </div>
@@ -449,8 +450,7 @@ but the running text can occupy multiple lines.]
 </div>
 <p>which is rendered as</p>
 <blockquote>
-<div>Some running text. &lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;There must be a space after the colon,
-but the running text can occupy multiple lines.&lt;/em&gt;]&lt;/font&gt;</div></blockquote>
+<div>Some running text. [<strong>hpl 1</strong>: There must be a space after the colon, but the running text can occupy multiple lines.]</div></blockquote>
 <p>The inline comments have simple typesetting in most formats, typically
 boldface name, a comment number, with everything surrounded by
 parenthesis.  However, with LaTeX output and the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt>
@@ -497,11 +497,11 @@ important for the following discussion.]
 </div>
 <p>which in the sphinx output format results in</p>
 <blockquote>
-<div>First&lt;font color=&#8221;red&#8221;&gt;, (&lt;b&gt;edit 2&lt;/b&gt;: add comma)&lt;/font&gt; consider &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 3&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;a quantity&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;the flux&lt;/font&gt;
-&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 4&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;$Q$. Without loss of generality,
-we assume&lt;/del&gt; <span class="math">\(Q&gt;0\)</span>. There are three &lt;font color=&#8221;red&#8221;&gt; (&lt;b&gt;edit 5&lt;/b&gt;: delete comma)&lt;/font&gt; fundamental&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 6&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;, basic&lt;/del&gt;
-&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 7&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;property&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;properties&lt;/font&gt; of <span class="math">\(Q\)</span>.  &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 8&lt;/b&gt;: add) These are not
-important for the following discussion.&lt;/font&gt;</div></blockquote>
+<div>First, (<strong>edit 2: add comma</strong>) consider (<strong>edit 3: remove</strong> a quantity) (<strong>insert:</strong>)the flux (<strong>end insert</strong>)
+(<strong>edit 4</strong>: <strong>delete</strong> <span class="math">\(Q\)</span>. Without loss of generality,
+we assume) <span class="math">\(Q&gt;0\)</span>. There are three (<strong>edit 5</strong>: delete comma) fundamental(<strong>edit 6</strong>: <strong>delete</strong> , basic)
+(<strong>edit 7: remove</strong> property) (<strong>insert:</strong>)properties (<strong>end insert</strong>) of <span class="math">\(Q\)</span>.  (<strong>edit 8: add</strong>) These are not
+important for the following discussion. (<strong>end add</strong>)</div></blockquote>
 <p>To implement these edits, run</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </pre></div>

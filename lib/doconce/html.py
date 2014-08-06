@@ -182,7 +182,7 @@ def css_link_solarized_highlight(style='light'):
 
 css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
 css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
-css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'
+css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'  # gray colors
 
 
 css_blueish = """\
@@ -290,7 +290,7 @@ def toc2html(font_size=80, bootstrap=True):
         btitle = title = title.strip()
         if level_depth == 2 and level == level_min:
             btitle = '<b>%s</b>' % btitle  # bold for highest level
-        toc_html += '     <!-- navigation toc: "%s" --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (title, href, font_size, spaces, btitle)
+        toc_html += '     <!-- navigation toc: --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (href, font_size, spaces, btitle)
         if nested_list and i < len(tocinfo['sections'])-1 and \
                tocinfo['sections'][i+1][1] < level:
             toc_html += '     </ul>\n'
@@ -1399,7 +1399,7 @@ def html_inline_comment(m):
         for char in chars:
             if comment == char:
                 return r' <font color="red"> (<b>edit %s</b>: delete %s)</font>' % (name[4:], chars[char])
-        return r'<font color="red">(<b>edit %s</b>:)</font> <del>%s</del>' % (name[4:], comment)
+        return r' <font color="red">(<b>edit %s</b>:)</font> <del> %s </del>' % (name[4:], comment)
     elif name[:4] == 'add ':
         for char in chars:
             if comment == char:
@@ -1416,7 +1416,7 @@ def html_inline_comment(m):
                 print '(more than two ->)'
                 _abort()
             orig, new = comment.split(' -> ')
-            return r'<font color="red">(<b>%s</b>:)</font> <del>%s</del> <font color="red">%s</font>' % (name, orig, new)
+            return r' <font color="red">(<b>%s</b>:)</font> <del> %s </del> <font color="red">%s</font>' % (name, orig, new)
         else:
             # Ordinary comment
             return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: %s)</font>\n<!-- end inline comment -->\n' % (name, comment)
@@ -1802,14 +1802,18 @@ def define(FILENAME_EXTENSION,
         css_links = css_link_solarized_highlight('dark')
     elif html_style == 'solarized2_light':
         css = css_solarized_thomasf
-        css_links = css_link_solarized_thomasf_light
+        css_links = css_link_solarized_highlight('light') + '\n' + \
+                    css_link_solarized_thomasf_light
     elif html_style == 'solarized2_dark':
         css = css_solarized_thomasf
-        css_links = css_link_solarized_thomasf_dark
+        css_links = css_link_solarized_highlight('dark') + '\n' + \
+                    css_link_solarized_thomasf_dark
     elif html_style == 'solarized3_light':
-        css_links = css_link_solarized_thomasf_light
+        css_links = css_link_solarized_highlight('light') + '\n' + \
+                    css_link_solarized_thomasf_light
     elif html_style == 'solarized3_dark':
-        css_links = css_link_solarized_thomasf_dark
+        css_links = css_link_solarized_highlight('dark') + '\n' + \
+                    css_link_solarized_thomasf_dark
     elif html_style == 'blueish':
         css = css_blueish
     elif html_style == 'blueish2':

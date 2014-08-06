@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">HPL</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 3, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 4, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -101,7 +101,7 @@ however it requires <span class="math">\(x_0\)</span> to be close to a root.</p>
 <p class="first admonition-title">Problems with the text above</p>
 <p class="last">Readers will normally find problems with the text above and a desire
 to edit. DocOnce features a syntax for editing running text.
-This syntax is demonstrated below. Edit markup is not allowed
+This syntax is demonstrated below. Markup for editing is not allowed
 in math blocks, code blocks, or section headings.</p>
 </div>
 <p>The text above is typeset as</p>
@@ -122,15 +122,15 @@ however it requires $x_0$ to be close to a root.
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>We now want to annotate this text with edit markup. Such markup
-has the syntax of <em>inline comments</em>, which are comments inside
-square brackets with an identifier and the comment text:</p>
+<p>We now want to annotate this text with markup for our edits.
+Such markup has the syntax of <em>inline comments</em>, which are
+comments inside square brackets with an identifier and the comment text:</p>
 <div class="highlight-text"><div class="highlight"><pre>[identifier: some text]
 </pre></div>
 </div>
 <p>The identifier can be a name (to recognize the reader who provided
 the comment), but in edit markup it is usually either <tt class="docutils literal"><span class="pre">add</span></tt>, <tt class="docutils literal"><span class="pre">del</span></tt>,
-or <tt class="docutils literal"><span class="pre">edit</span></tt>. The edit markup consists of</p>
+or <tt class="docutils literal"><span class="pre">edit</span></tt>. The markup for editing consists of</p>
 <div class="highlight-text"><div class="highlight"><pre>[add: ,]
 [add: .]
 [add: ;]
@@ -147,8 +147,8 @@ or <tt class="docutils literal"><span class="pre">edit</span></tt>. The edit mar
 <div class="highlight-text"><div class="highlight"><pre>[edit: change the title to *Root finding*.]
 </pre></div>
 </div>
-<p>Below is the text with edit markup, followed by the rendering of
-this markup.</p>
+<p>Below is the text with edits, followed by the rendering of
+how such edits look like in the present format (sphinx).</p>
 <hr class="docutils" />
 <p><em>Summary.</em> In this (<strong>edit 1</strong>: <strong>delete</strong> mini) article, (<strong>edit 2: add comma</strong>) we demonstrate
 the editing markup in DocOnce(<strong>edit 3: remove</strong> . This) (<strong>insert:</strong>)which (<strong>end insert</strong>) allows

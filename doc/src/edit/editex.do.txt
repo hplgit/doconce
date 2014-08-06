@@ -87,8 +87,8 @@ highlighting of corrections [add: via colors] in a text.
 
 [edit: change heading to *Root finding*]
 
-Given [add: a function] $f(x)$. We seek the roots of $f$[add:,]
-i.e.[add:,] the $x$ values for which $f(x)=0$. [edit: The most ->
+Given [add: a function] $f(x)$. We seek the roots of $f$[add: ,]
+i.e.[add: ,] the $x$ values for which $f(x)=0$. [edit: The most ->
 A] famous [add: iterative solution] method is Newton's method:
 
 !bt
@@ -97,8 +97,8 @@ A] famous [add: iterative solution] method is Newton's method:
 [edit: error in right-hand side, the fraction $\frac{f'(x_k)}{f(x_k)}$
 must be $\frac{f(x_k)}{f'(x_k)}$.]
 [edit: It needs $x_0$ -> A start value $x_0$ is required].
-In theory[add:,] this method has quadratic
-convergence[del:,][add:.] [edit: h -> H]owever[add:,]
+In theory[add: ,] this method has quadratic
+convergence[del: ,][add: .] [edit: h -> H]owever[add: ,]
 [edit: it -> the result] requires $x_0$ to be close to a root.
 
 ------

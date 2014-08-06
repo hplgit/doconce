@@ -332,6 +332,10 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
 and a DocOnce directive a la `!bc`.
 
+# #if FORMAT not in ("latex", "pdflatex", "html")
+The following attempt to exemplify colored text does not work in
+format ${FORMAT}.
+# #endif
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
 And one more.} Some formats will only display <linebreak>

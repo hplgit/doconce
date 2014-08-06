@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 2, 2014
+:Date: Aug 6, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -165,7 +165,9 @@ are also possible: the text
 
         `color{red}{two red words}`
 
-becomes <font color="red">two red words</font>.
+becomes **two red words**.
+(But colors do not work in format sphinx).
+
 Quotations appear inside double backticks and double single quotes:
 
 .. code-block:: text
@@ -357,8 +359,7 @@ which is rendered as
 
 ..
 
-    Some running text. <font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
-    but the running text can occupy multiple lines.</em>]</font>
+    Some running text. [**hpl 1**: There must be a space after the colon, but the running text can occupy multiple lines.]
 
 
 
@@ -423,11 +424,11 @@ which in the sphinx output format results in
 
 ..
 
-    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
-    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
-    we assume</del> :math:`Q>0`. There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
-    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of :math:`Q`.  <font color="red">(<b>edit 8</b>: add) These are not
-    important for the following discussion.</font>
+    First, (**edit 2: add comma**) consider (**edit 3: remove** a quantity) (**insert:**)the flux (**end insert**)
+    (**edit 4**: **delete** :math:`Q`. Without loss of generality,
+    we assume) :math:`Q>0`. There are three (**edit 5**: delete comma) fundamental(**edit 6**: **delete** , basic)
+    (**edit 7: remove** property) (**insert:**)properties (**end insert**) of :math:`Q`.  (**edit 8: add**) These are not
+    important for the following discussion. (**end add**)
 
 
 

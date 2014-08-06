@@ -140,6 +140,10 @@ are also possible: the text
 `color{red}{two red words}`
 !ec
 becomes color{red}{two red words}.
+% if FORMAT not in ("latex", "pdflatex", "html"):
+(But colors do not work in format ${FORMAT}).
+% endif
+
 Quotations appear inside double backticks and double single quotes:
 
 !bc

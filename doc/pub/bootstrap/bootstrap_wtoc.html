@@ -8,12 +8,28 @@
 
 <title>DocOnce Demo of the Bootstrap style</title>
 
-<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/ -->
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/
+
+What to change in this template:
+
+URL to the document (edit http://some.website.net/some/path)
+
+LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
+
+Footer with author(s) and copyright (remove or edit)
+-->
 
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
-<!-- Various settings from the bootstrap documentation style -->
-<!--<link href="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css" rel="stylesheet">-->
+
+<!-- Can include various settings from the bootstrap documentation style, but it
+leads to orange color in mathjax...
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+-->
+
+<!-- Can add other themes and adjust colors in the navigation sidebar -->
+<!--
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+-->
 
 <!-- Potential adjustment of styles -->
 <style type="text/css">
@@ -31,6 +47,11 @@
   color: #563d7c;
 }
 </style>
+
+<!-- use highlight.js and styles for code (use --pygments_html_style=off) -->
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -60,16 +81,6 @@
 
 
 <!-- Docs page layout -->
-
-<!-- A purple header field with the title is optional -->
-<div class="bs-docs-header" id="content">
- <div class="container">
-  <h1>A Bootstrap-based style</h1>
-A purple style with navigation bar on the right and a header before
-the optional jumbotron (gray area below). The style is generated from
-a template based on the style in the <a href="http://getbootstrap.com/getting-started/">Bootstrap documentation</a>.</p>
- </div>
-</div>
 
 <div class="container bs-docs-container">
 
@@ -129,11 +140,10 @@ DocOnce supports a variety of Bootstrap styles in a simple
 way:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+</pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
@@ -264,14 +274,13 @@ The Bootstrap/Bootswatch styles support two kinds of admons:
 Typical commands for producing Boostrap or Bootswatch layouts are
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format html mydoc --html_style=boostrap
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=boostrap
 Terminal&gt; doconce format html mydoc --html_style=booswatch
 Terminal&gt; doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
 Terminal&gt; doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 Below are some examples on admons.
 
@@ -283,31 +292,29 @@ Below are some examples on admons.
 <div class="panel-body">
 
 <p>
-<!-- begin verbatim block  ipy-->
-<pre><code>
-In [1]: import numpy as np
 
-In [2]: x = np.linspace(0, 4*np.pi, 11)
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-In [3]: y = exp(-0.1*x)*sin(x)
----------------------------------------------------------------------------
-NameError                                 Traceback (most recent call last)
-&lt;ipython-input-3-c1040545fa6c&gt; in &lt;module&gt;()
-----&gt; 1 y = exp(-0.1*x)*sin(x)
+<span style="color: #000080; font-weight: bold">In [2]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">11</span>)
 
-NameError: name 'exp' is not defined
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
+<span style="color: #0044DD">---------------------------------------------------------------------------</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>                                 Traceback (most recent call last)
+<span style="color: #0000FF; font-weight: bold">&lt;ipython-input-3-c1040545fa6c&gt;</span> in <span style="color: #999999; font-weight: bold">&lt;module&gt;</span><span style="color: #008000; font-weight: bold">()</span>
+<span style="color: #D2413A; font-weight: bold">----&gt; </span><span style="color: #666666">1</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>sin(x)
 
-In [4]: y = np.exp(-0.1*x)*np.sin(x)
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name &#39;exp&#39; is not defined
 
-In [5]: y
-Out[5]:
-array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,
-        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,
-         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,
-        -3.06923992e-01,  -1.39418467e-16])
-</code></pre>
-<!-- end verbatim block -->
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(x)
 
+<span style="color: #000080; font-weight: bold">In [5]: </span>y
+<span style="color: #000080; font-weight: bold">Out[5]:</span>
+<span style="color: #888888">array([  0.00000000e+00,   8.38747563e-01,   4.57160372e-01,</span>
+<span style="color: #888888">        -4.03174933e-01,  -5.75315545e-01,  -1.30666897e-16,</span>
+<span style="color: #888888">         4.47461836e-01,   2.43889614e-01,  -2.15089026e-01,</span>
+<span style="color: #888888">        -3.06923992e-01,  -1.39418467e-16])</span>
+</pre></div>
 <p>
 This is the admon for warnings or paying attention.
 </div>
@@ -379,8 +386,9 @@ The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code># begin-grid-area
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
 
 !bslidecell 00
 ...
@@ -395,9 +403,7 @@ the following syntax in case of a 1x3 grid:
 !eslidecell
 
 # end-grid-area
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 <div class="panel panel-warning">
   <div class="panel-heading">
@@ -420,8 +426,9 @@ For example, the mathematics in the following 2x2 grid structure will
 be lost because it appears outside the slidecell environments:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code># begin-grid-area
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># begin-grid-area
 
 !bslidecell 00
 ...
@@ -446,9 +453,7 @@ We consider
 !eslidecell
 
 # end-grid-area
-</code></pre>
-<!-- end verbatim block -->
-
+</pre></div>
 <p>
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -480,13 +485,14 @@ for the value of \( f(0) \).
 The Python implementation reads
 
 <p>
-<!-- begin verbatim block  pycod-->
-<pre><code>from math import exp, sin
 
-def f(x):
-    return exp(-a*x)*sin(w*x)
-</code></pre>
-<!-- end verbatim block -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+</pre></div>
+<p>
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
 main program.
   </div> <!-- column col-sm-4 -->
@@ -497,21 +503,23 @@ main program.
 With a main program
 
 <p>
-<!-- begin verbatim block  pycod-->
-<pre><code>a = 1
-from math import pi
-w = pi
-print f(0)
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
+</pre></div>
+<p>
 we can run the program:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; python prog.py
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
   </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
@@ -546,13 +554,14 @@ for the value of \( f(0) \).
 The Python implementation reads
 
 <p>
-<!-- begin verbatim block  pycod-->
-<pre><code>from math import exp, sin
 
-def f(x):
-    return exp(-a*x)*sin(w*x)
-</code></pre>
-<!-- end verbatim block -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+</pre></div>
+<p>
 where <code>a</code> and <code>w</code> must be <em>global variables</em>, initialized in the
 main program.
 </div>
@@ -568,21 +577,23 @@ main program.
 With a main program
 
 <p>
-<!-- begin verbatim block  pycod-->
-<pre><code>a = 1
-from math import pi
-w = pi
-print f(0)
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+w <span style="color: #666666">=</span> pi
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">0</span>)
+</pre></div>
+<p>
 we can run the program:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; python prog.py
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python prog.py
 0
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 </div>
 </div>
 
@@ -598,13 +609,13 @@ we can run the program:
   <div class="col-md-3">
    <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
     <ul class="nav bs-docs-sidenav">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
-     <!-- navigation toc: "Themes" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
-     <!-- navigation toc: "Principles of grid structures" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
-     <!-- navigation toc: "Example on a 1x3 grid structure" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
-     <!-- navigation toc: "Variation of the previous grid structure using admons" --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
 
     </ul>
     <a class="back-to-top" href="#top">Back to top</a>
@@ -612,19 +623,16 @@ we can run the program:
   </div>
  </div>
 
+ <div class="row Footer">
+  <div class="span12">
+   <center>
+   Hans Petter Langtangen, 2014 &copy;
+   </center>
+  </div>
+ </div>
 </div>
 
-<!-- Footer
-================================================== -->
-<footer class="bs-docs-footer" role="contentinfo">
- <div class="container">
-  Hans Petter Langtangen, 2014 &copy;
- </div>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<!-- JavaScript placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>

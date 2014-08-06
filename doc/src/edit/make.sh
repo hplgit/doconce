@@ -15,4 +15,5 @@ doconce format html index
 
 dest=../../pub/edit
 mv -f index.html editex.html editex.pdf $dest
-mv -f sphinx-rootdir/_build/html $dest
+cp -r sphinx-rootdir/_build/html $dest
+doconce clean

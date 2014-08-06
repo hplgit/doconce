@@ -26,7 +26,7 @@ style=vagrant
 doconce format html bootstrap_demo --html_style=bootstrap --html_template=template_$style.html --pygments_html_style=default --html_admon=bootstrap_panel --html_output=$style --html_code_style=inherit --html_toc_indent=0
 
 style=bootstrap_wtoc
-doconce format html bootstrap_demo --html_style=bootstrap --html_template=template_$style.html --html_toc_depth=8 --html_admon=bootstrap_panel --html_output=$style --html_code_style=inherit --pygments_html_style=off
+doconce format html bootstrap_demo --html_style=bootstrap --html_template=template_$style.html --html_toc_depth=8 --html_admon=bootstrap_panel --html_output=$style --html_code_style=inherit --pygments_html_style=default
 
 # Dark styles
 styles="amelia cyborg darkly slate superhero"

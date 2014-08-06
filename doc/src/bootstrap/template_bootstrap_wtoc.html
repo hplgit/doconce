@@ -8,12 +8,28 @@
 
 <title>%(title)s</title>
 
-<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/ -->
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/
+
+What to change in this template:
+
+URL to the document (edit http://some.website.net/some/path)
+
+LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
+
+Footer with author(s) and copyright (remove or edit)
+-->
 
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
-<!-- Various settings from the bootstrap documentation style -->
-<!--<link href="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css" rel="stylesheet">-->
+
+<!-- Can include various settings from the bootstrap documentation style, but it
+leads to orange color in mathjax...
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+-->
+
+<!-- Can add other themes and adjust colors in the navigation sidebar -->
+<!--
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+-->
 
 <!-- Potential adjustment of styles -->
 <style type="text/css">
@@ -61,16 +77,6 @@
 
 <!-- Docs page layout -->
 
-<!-- A purple header field with the title is optional -->
-<div class="bs-docs-header" id="content">
- <div class="container">
-  <h1>A Bootstrap-based style</h1>
-  <p>A purple style with navigation bar on the right and a header before
-the optional jumbotron (gray area below). The style is generated from
-a template based on the style in the <a href="http://getbootstrap.com/getting-started/">Bootstrap documentation</a>.</p>
- </div>
-</div>
-
 <div class="container bs-docs-container">
 
  <div class="row">
@@ -91,19 +97,16 @@ a template based on the style in the <a href="http://getbootstrap.com/getting-st
   </div>
  </div>
 
+ <div class="row Footer">
+  <div class="span12">
+   <center>
+   Hans Petter Langtangen, 2014 &copy;
+   </center>
+  </div>
+ </div>
 </div>
 
-<!-- Footer
-================================================== -->
-<footer class="bs-docs-footer" role="contentinfo">
- <div class="container">
-  Hans Petter Langtangen, 2014 &copy;
- </div>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<!-- JavaScript placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>

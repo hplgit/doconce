@@ -348,6 +348,10 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
 and a DocOnce directive a la `!bc`.
 
+# #if FORMAT not in ("latex", "pdflatex", "html")
+The following attempt to exemplify colored text does not work in
+format ${FORMAT}.
+# #endif
 Here is some color{red}{red} color and an attempt to write color{green}{with
 green color containing a linebreak. <linebreak>
 And one more.} Some formats will only display <linebreak>
@@ -1902,8 +1906,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\usepackage{float}\restylefloat{figure}
 
 % newcommands for typesetting inline (doconce) comments
-\newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
-\newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+\newcommand{\shortinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+\newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -3843,18 +3847,13 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
-understood by
-all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
-how files, like \code{myfile.py}, perhaps containing much math, like
-$\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \code{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
-and phones}.
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
 % Test horizontal rule
 
@@ -3863,8 +3862,7 @@ and phones}.
 % Coments for editing
 
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
-are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
 \subsection{Appendix: Testing headings ending with \protect\code{verbatim inline} }
 
@@ -6068,18 +6066,13 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
-understood by
-all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
-how files, like \texttt{myfile.py}, perhaps containing much math, like
-$\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
-and phones}.
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
 % Test horizontal rule
 
@@ -6088,8 +6081,7 @@ and phones}.
 % Coments for editing
 
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
-are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
@@ -8260,18 +8252,13 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
-understood by
-all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
-how files, like \Verb!myfile.py!, perhaps containing much math, like
-$\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
-and phones}.
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
 % Test horizontal rule
 
@@ -8280,8 +8267,7 @@ and phones}.
 % Coments for editing
 
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
-are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
 \subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
 
@@ -8679,10 +8665,12 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in ``a != b``,
 and a DocOnce directive a la ``!bc``.
 
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
+The following attempt to exemplify colored text does not work in
+format rst.
+Here is some **red** color and an attempt to write **with
 green color containing a linebreak. 
 
-| And one more.</font> Some formats will only display 
+| And one more.** Some formats will only display 
 | this correctly when HTML is the output format. 
 | But here some more running text is added which is not part of
 
@@ -9955,18 +9943,18 @@ Appendix: Testing inline comments
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. <font color="red">(**hpl's semi opinion 1**: not sure if in the cloud is
+site. **(**hpl's semi opinion 1**: not sure if in the cloud is
 understood by
-all.</font>) I strongly recommend you to use such sites for all serious
+all.**) I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. <font color="red">(**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
+The simplest services for hosting project files is Dropbox. **(**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains
 how files, like ``myfile.py``, perhaps containing much math, like
-\\( \partial u/\partial t \\), are easily communicated between machines.</font>) It
+\\( \partial u/\partial t \\), are easily communicated between machines.**) It
 is very easy to get started with Dropbox, and it allows you to share
-files among <font color="red">(**hpl 3**: laptops and mobile units -> computers, tablets,
-and phones</font>).
+files among **(**hpl 3**: laptops and mobile units -> computers, tablets,
+and phones**).
 
 .. Test horizontal rule
 
@@ -9974,9 +9962,9 @@ and phones</font>).
 
 .. Coments for editing
 
-Firstcolor{red}{(**add 4**: ,}) consider a quantity \\( Q \\). <font color="red">(**edit 5**: To this end, -> We note that</font>)
-\\( Q>0 \\), because <font color="red">(**del 6**: a</font>) negative <font color="red">(**edit 7**: quantity is -> quantities
-are</font>) <font color="red">(**del 8**: just</font>) negative. <font color="red">(**add 9**: This comes as no surprise.</font>)
+Firstcolor{red}{(**add 4**: ,}) consider a quantity \\( Q \\). **(**edit 5**: To this end, -> We note that**)
+\\( Q>0 \\), because **(**del 6**: a**) negative **(**edit 7**: quantity is -> quantities
+are**) **(**del 8**: just**) negative. **(**add 9**: This comes as no surprise.**)
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -10373,10 +10361,12 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in ``a != b``,
 and a DocOnce directive a la ``!bc``.
 
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
+The following attempt to exemplify colored text does not work in
+format sphinx.
+Here is some **red** color and an attempt to write **with
 green color containing a linebreak. 
 
-| And one more.</font> Some formats will only display 
+| And one more.** Some formats will only display 
 | this correctly when HTML is the output format. 
 | But here some more running text is added which is not part of
 
@@ -11695,18 +11685,13 @@ Appendix: Testing inline comments
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. <font color="red">[<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
-understood by
-all.</em>]</font> I strongly recommend you to use such sites for all serious
+site. [**hpl's semi opinion 1**: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. <font color="red">[<b>mp 2</b>: <em>Simply go to `<http://dropbox.com>`_ and watch the video. It explains
-how files, like ``myfile.py``, perhaps containing much math, like
-:math:`\partial u/\partial t`, are easily communicated between machines.</em>]</font> It
+The simplest services for hosting project files is Dropbox. [**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains how files, like ``myfile.py``, perhaps containing much math, like :math:`\partial u/\partial t`, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
-and phones</font>.
+files among (**hpl 3: remove** laptops and mobile units) (**insert:**)computers, tablets, and phones (**end insert**).
 
 .. Test horizontal rule
 
@@ -11714,9 +11699,8 @@ and phones</font>.
 
 .. Coments for editing
 
-First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-:math:`Q>0`, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
-are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
+First, (**edit 4: add comma**) consider a quantity :math:`Q`. (**edit 5: remove** To this end,) (**insert:**)We note that (**end insert**)
+:math:`Q>0`, because (**edit 6**: **delete** a) negative (**edit 7: remove** quantity is) (**insert:**)quantities are (**end insert**) (**edit 8**: **delete** just) negative.  (**edit 9: add**) This comes as no surprise. (**end add**)
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -12096,6 +12080,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
 and a DocOnce directive a la `!bc`.
 
+The following attempt to exemplify colored text does not work in
+format gwiki.
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. 
 
@@ -13608,6 +13594,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
 and a DocOnce directive a la <code>!bc</code>.
 
+The following attempt to exemplify colored text does not work in
+format mwiki.
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. <br />
 And one more.</font> Some formats will only display <br />
@@ -15210,6 +15198,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in {{{a != b}}},
 and a DocOnce directive a la {{{!bc}}}.
 
+The following attempt to exemplify colored text does not work in
+format cwiki.
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. <br />
 And one more.</font> Some formats will only display <br />
@@ -16598,6 +16588,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in 'a != b',
 and a DocOnce directive a la '!bc'.
 
+The following attempt to exemplify colored text does not work in
+format st.
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
 And one more. Some formats will only display 
@@ -17854,6 +17846,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in C{a != b},
 and a DocOnce directive a la C{!bc}.
 
+The following attempt to exemplify colored text does not work in
+format epytext.
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
 And one more. Some formats will only display 
@@ -19266,6 +19260,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in a != b,
 and a DocOnce directive a la !bc.
 
+The following attempt to exemplify colored text does not work in
+format plain.
 Here is some red color and an attempt to write with
 green color containing a linebreak. 
 And one more. Some formats will only display 
@@ -20726,6 +20722,8 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in `a != b`,
 and a DocOnce directive a la `!bc`.
 
+The following attempt to exemplify colored text does not work in
+format pandoc.
 Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
 green color containing a linebreak. \n
 And one more.</font> Some formats will only display \n
@@ -22572,6 +22570,8 @@ is at the end with only one newline.
       "in LaTeX inline verbatim, we need to test it, as in `a != b`,\n",
       "and a DocOnce directive a la `!bc`.\n",
       "\n",
+      "The following attempt to exemplify colored text does not work in\n",
+      "format ipynb.\n",
       "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
       "green color containing a linebreak. \n",
       "And one more.</font> Some formats will only display \n",
@@ -25148,10 +25148,10 @@ def f(x):
 <p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the “master version” at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
 <p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
 <h2 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h2>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span><strong>hpl’s semi opinion 1</strong></span>: * not sure if in the cloud is understood by all. * I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. <span><strong>mp 2</strong></span>: * Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. * It is very easy to get started with Dropbox, and it allows you to share files among .</p>
+<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span>: not sure if in the cloud is understood by all. </span> I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
+<p>The simplest services for hosting project files is Dropbox. <span>: Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. </span> It is very easy to get started with Dropbox, and it allows you to share files among .</p>
 <p>——</p>
-<p>First consider a quantity <span class="math">\(Q\)</span>. <span class="math">\(Q&gt;0\)</span>, because (<strong>edit 6</strong>:) negative (<strong>edit 8</strong>:) negative. )</p>
+<p>First consider a quantity <span class="math">\(Q\)</span>. <span class="math">\(Q&gt;0\)</span>, because (<strong>edit 6</strong>:) negative (<strong>edit 8</strong>:) negative.</p>
 <h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
 <p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
 <p>We also test mdash—used as alternative to hyphen without spaces around, or in quotes:</p>
@@ -25474,7 +25474,7 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 
 __Paragraph heading.__ Paragraphs may have headings.</code></pre>
 <p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>, and a DocOnce directive a la <code>!bc</code>.</p>
-<p>Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
+<p>The following attempt to exemplify colored text does not work in format pandoc. Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
 <h4 id="running-os-commands">Running OS commands</h4>
 <pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
@@ -31712,9 +31712,7 @@ workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
 site. 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
-understood by
-all.</em>)</font>
+<font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 <!-- end inline comment -->
  I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
@@ -31723,14 +31721,11 @@ files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
-how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>)</font>
+<font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like \( \partial u/\partial t \), are easily communicated between machines.)</font>
 <!-- end inline comment -->
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
-and phones</font>.
+files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile units </del> <font color="red">computers, tablets, and phones</font>.
 
 <p>
 <!-- Test horizontal rule -->
@@ -31742,9 +31737,8 @@ and phones</font>.
 <!-- Coments for editing -->
 
 <p>
-First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-\( Q>0 \), because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
-are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
+\( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
 
@@ -33548,9 +33542,7 @@ workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
 site. 
 
-<font color="red">(<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
-understood by
-all.</em>)</font>
+<font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 
  I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
@@ -33559,22 +33551,18 @@ files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 
-<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains
-how files, like <code>myfile.py</code>, perhaps containing much math, like
-$latex \partial u/\partial t$, are easily communicated between machines.</em>)</font>
+<font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like $latex \partial u/\partial t$, are easily communicated between machines.)</font>
 
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
-and phones</font>.
+files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile units </del> <font color="red">computers, tablets, and phones</font>.
 
 <p>
 <hr>
 
 <p>
-First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-$latex Q>0$, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
-are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$.  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
+$latex Q>0$, because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
 
@@ -35585,9 +35573,7 @@ workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
 site. 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
-understood by
-all.</em>)</font>
+<font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 <!-- end inline comment -->
  I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
@@ -35596,14 +35582,11 @@ files.
 <p>
 The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
-<font color="red">(<b>mp 2</b>: <em>Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains
-how files, like <code>myfile.py</code>, perhaps containing much math, like
-\( \partial u/\partial t \), are easily communicated between machines.</em>)</font>
+<font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like \( \partial u/\partial t \), are easily communicated between machines.)</font>
 <!-- end inline comment -->
  It
 is very easy to get started with Dropbox, and it allows you to share
-files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
-and phones</font>.
+files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile units </del> <font color="red">computers, tablets, and phones</font>.
 
 <p>
 <!-- Test horizontal rule -->
@@ -35615,9 +35598,8 @@ and phones</font>.
 <!-- Coments for editing -->
 
 <p>
-First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \). <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-\( Q>0 \), because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
-are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
+First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
+\( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
 
@@ -35748,8 +35730,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\usepackage{float}\restylefloat{figure}
 
 % newcommands for typesetting inline (doconce) comments
-\newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
-\newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+\newcommand{\shortinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+\newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -37617,18 +37599,13 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is
-understood by
-all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains
-how files, like \code{myfile.py}, perhaps containing much math, like
-$\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \code{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
-files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets,
-and phones}.
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
 % Test horizontal rule
 
@@ -37637,8 +37614,7 @@ and phones}.
 % Coments for editing
 
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
-$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities
-are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}: add) This comes as no surprise.})
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
 \paragraph{Appendix: Testing headings ending with \protect\code{verbatim inline}.}
 The point here is to test 1) \code{verbatim} code in headings, and 2)
@@ -39982,60 +39958,60 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
      </ul>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
      </ul>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
      </ul>
-     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
      </ul>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
 
    </ul>
   </div>
@@ -40389,60 +40365,60 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
      </ul>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
      </ul>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
      </ul>
-     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
      </ul>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
 
    </ul>
   </div>
@@ -40796,60 +40772,60 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: "Section 1" --> <li class="active"><a href=#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href=#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href=#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href=#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href=#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href=#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href=#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href=#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href=#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href=#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href=#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href=#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href=#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href=#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href=#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href=#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href=#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href=#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href=#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href=#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href=#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href=#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     <!-- navigation toc: --> <li><a href=#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: --> <li><a href=#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: --> <li><a href=#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: --> <li><a href=#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: --> <li><a href=#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: --> <li><a href=#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: --> <li><a href=#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
      </ul>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
      </ul>
-     <!-- navigation toc: "Here goes another section" --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
      </ul>
-     <!-- navigation toc: "References" --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
      </ul>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
 
    </ul>
   </div>
@@ -42051,60 +42027,60 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: "Section 1" --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: "Subsection 1" --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: "Subsection 2: Testing figures" --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: "The \( \theta \) parameter (not \( \nabla \)?)" --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: "Custom Environments" --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: "Tables" --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: "A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`" --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and `my_file_v2`</a></li>
-     <!-- navigation toc: "_Just bold_" --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: "*Just emphasize*" --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: "`Just verbatim`" --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: "_Bold_ beginning" --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: "*Emphasize* beginning" --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: "`Verbatim` beginning" --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
-     <!-- navigation toc: "Maybe _bold end_" --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe _bold end_</a></li>
-     <!-- navigation toc: "Maybe *emphasize end*" --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe *emphasize end*</a></li>
-     <!-- navigation toc: "Maybe `verbatim end`" --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe `verbatim end`</a></li>
-     <!-- navigation toc: "The middle has <b>bold</b> word" --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: "The middle has <em>emphasize</em> word" --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: "The middle has <code>verbatim</code> word" --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: "Bibliography test" --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: "Example 1: Examples can be typeset as exercises" --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: "URLs" --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
      </ul>
-     <!-- navigation toc: "LaTeX Mathematics" --> <li class="active"><a href=#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: "Exercises" --> <li><a href=#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Problem 2: Flip a Coin" --> <li><a href=#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: "Not an exercise" --> <li><a href=#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: "Project 3: Compute a Probability" --> <li><a href=#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: "Project 4: Explore Distributions of Random Circles" --> <li><a href=#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: "Exercise 5: Determine some Distance" --> <li><a href=#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: "Some exercise without the "Exercise:" prefix" --> <li><a href=#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: "Exercise 7: Solution of differential equation" --> <li><a href=#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: "Example 8: Just an example" --> <li><a href=#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     <!-- navigation toc: --> <li><a href=#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: --> <li><a href=#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: --> <li><a href=#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: --> <li><a href=#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: --> <li><a href=#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
      </ul>
-     <!-- navigation toc: "Here goes another section" --> <li><a href=#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: "More Exercises" --> <li><a href=#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Exercise 9: Make references to projects and problems" --> <li><a href=#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: "Project 10: References in a headings do not work well in html" --> <li><a href=#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: --> <li><a href=#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: --> <li><a href=#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
      </ul>
-     <!-- navigation toc: "References" --> <li><a href=#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: "Appendix: Just for testing; part I" --> <li><a href=#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href=#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "A subsection within an appendix" --> <li><a href=#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
      </ul>
-     <!-- navigation toc: "Appendix: Just for testing; part II" --> <li><a href=#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: --> <li><a href=#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href=#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing identical titles" --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: "Appendix: Testing inline comments" --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: "Appendix: Testing headings ending with `verbatim inline`" --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with `verbatim inline`</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href=#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href=#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
 
    </ul>
   </div>
@@ -43371,10 +43347,12 @@ verbatim text. Since the exclamation mark is used as delimiter
 in LaTeX inline verbatim, we need to test it, as in ``a != b``,
 and a DocOnce directive a la ``!bc``.
 
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
+The following attempt to exemplify colored text does not work in
+format sphinx.
+Here is some **red** color and an attempt to write **with
 green color containing a linebreak. 
 
-| And one more.</font> Some formats will only display 
+| And one more.** Some formats will only display 
 | this correctly when HTML is the output format. 
 | But here some more running text is added which is not part of
 
@@ -44710,18 +44688,13 @@ Appendix: Testing inline comments
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site. <font color="red">[<b>hpl's semi opinion 1</b>: <em>not sure if in the cloud is
-understood by
-all.</em>]</font> I strongly recommend you to use such sites for all serious
+site. [**hpl's semi opinion 1**: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. <font color="red">[<b>mp 2</b>: <em>Simply go to `<http://dropbox.com>`_ and watch the video. It explains
-how files, like ``myfile.py``, perhaps containing much math, like
-:math:`\partial u/\partial t`, are easily communicated between machines.</em>]</font> It
+The simplest services for hosting project files is Dropbox. [**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains how files, like ``myfile.py``, perhaps containing much math, like :math:`\partial u/\partial t`, are easily communicated between machines.] It
 is very easy to get started with Dropbox, and it allows you to share
-files among <font color="red">(<b>hpl 3</b>:)</font> <del>laptops and mobile units</del> <font color="red">computers, tablets,
-and phones</font>.
+files among (**hpl 3: remove** laptops and mobile units) (**insert:**)computers, tablets, and phones (**end insert**).
 
 .. Test horizontal rule
 
@@ -44729,9 +44702,8 @@ and phones</font>.
 
 .. Coments for editing
 
-First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity :math:`Q`. <font color="red">(<b>edit 5</b>:)</font> <del>To this end,</del> <font color="red">We note that</font>
-:math:`Q>0`, because <font color="red">(<b>edit 6</b>:)</font> <del>a</del> negative <font color="red">(<b>edit 7</b>:)</font> <del>quantity is</del> <font color="red">quantities
-are</font> <font color="red">(<b>edit 8</b>:)</font> <del>just</del> negative.  <font color="red">(<b>edit 9</b>: add) This comes as no surprise.</font>
+First, (**edit 4: add comma**) consider a quantity :math:`Q`. (**edit 5: remove** To this end,) (**insert:**)We note that (**end insert**)
+:math:`Q>0`, because (**edit 6**: **delete** a) negative (**edit 7: remove** quantity is) (**insert:**)quantities are (**end insert**) (**edit 8**: **delete** just) negative.  (**edit 9: add**) This comes as no surprise. (**end add**)
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -53949,12 +53921,12 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
    </ul>
   </div>
@@ -54513,12 +54485,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -54672,12 +54644,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -55258,12 +55230,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Introduction" --> <li class="active"><a href=#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: "Code" --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: "Quotes and boxes" --> <li><a href=#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: "Admonitions" --> <li><a href=#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: "Going deeper environments" --> <li><a href=#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: "The end" --> <li><a href=#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -57133,8 +57105,7 @@ And a line more
 <p>
 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
-in the slide environment.</em>)</font>
+<font color="red">(<b>hpl 1</b>: Here are some notes that can go to notes typesetting in the slide environment.)</font>
 <!-- end inline comment -->
 
 
@@ -62585,8 +62556,7 @@ And a line more
 <p>
 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: <em>Here are some notes that can go to notes typesetting
-in the slide environment.</em>)</font>
+<font color="red">(<b>hpl 1</b>: Here are some notes that can go to notes typesetting in the slide environment.)</font>
 <!-- end inline comment -->
 
 
@@ -62951,8 +62921,7 @@ And a line more
 <p>
 
 <!-- begin inline comment -->
-<font color="red">(<b style="font-weight: bold">hpl 1</b>: <em>Here are some notes that can go to notes typesetting
-in the slide environment.</em>)</font>
+<font color="red">(<b style="font-weight: bold">hpl 1</b>: Here are some notes that can go to notes typesetting in the slide environment.)</font>
 <!-- end inline comment -->
 
 
@@ -63543,8 +63512,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\usepackage{float}\restylefloat{figure}
 
 % newcommands for typesetting inline (doconce) comments
-\newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
-\newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+\newcommand{\shortinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+\newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -63766,8 +63735,7 @@ Here we have a paragraph to pop up in red.
 And a line more
 % !epop
 
-\shortinlinecomment{hpl 1}{ Here are some notes that can go to notes typesetting
-in the slide environment. }{ Here are some notes }
+\shortinlinecomment{hpl 1}{ Here are some notes that can go to notes typesetting in the slide environment. }{ Here are some notes }
 
 % !bnotes
 One can also have ordinary notes.
@@ -64073,8 +64041,7 @@ And a line more
 \end{block}
 
 
-\shortinlinecomment{hpl 1}{ Here are some notes that can go to notes typesetting
-in the slide environment. }{ Here are some notes }
+\shortinlinecomment{hpl 1}{ Here are some notes that can go to notes typesetting in the slide environment. }{ Here are some notes }
 
 \note{
 One can also have ordinary notes.
@@ -77655,9 +77622,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -77829,9 +77796,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li class="active"><a href=#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href=#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -78115,9 +78082,9 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "More details on writing DocOnce documents with Bootstrap layout" --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: "Demonstrations of admons" --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: "Horizontal alignment of document elements" --> <li class="active"><a href=#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href=#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -78323,7 +78290,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Aug  2 16:27:44 2014.
+# sphinx-quickstart on Mon Aug  4 17:41:43 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79745,6 +79712,10 @@ are also possible: the text
 `color{red}{two red words}`
 !ec
 becomes color{red}{two red words}.
+% if FORMAT not in ("latex", "pdflatex", "html"):
+(But colors do not work in format ${FORMAT}).
+% endif
+
 Quotations appear inside double backticks and double single quotes:
 
 !bc
@@ -80882,6 +80853,8 @@ are also possible: the text
 </code></pre>
 <!-- end verbatim block -->
 becomes <font color="red">two red words</font>.
+
+<p>
 Quotations appear inside double backticks and double single quotes:
 
 <p>
@@ -81098,8 +81071,7 @@ which is rendered as
 <blockquote>
     Some running text. 
     <!-- begin inline comment -->
-    <font color="red">(<b>hpl 1</b>: <em>There must be a space after the colon,
-    but the running text can occupy multiple lines.</em>)</font>
+    <font color="red">(<b>hpl 1</b>: There must be a space after the colon, but the running text can occupy multiple lines.)</font>
     <!-- end inline comment -->
 </blockquote>
 
@@ -81172,10 +81144,10 @@ which in the html output format results in
 
 <p>
 <blockquote>
-    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
-    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
-    we assume</del> \( Q>0 \). There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
-    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of \( Q \).  <font color="red">(<b>edit 8</b>: add) These are not
+    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider  <font color="red">(<b>edit 3</b>:)</font> <del> a quantity </del> <font color="red">the flux</font>
+     <font color="red">(<b>edit 4</b>:)</font> <del> \( Q \). Without loss of generality,
+    we assume </del> \( Q>0 \). There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental <font color="red">(<b>edit 6</b>:)</font> <del> , basic </del>
+     <font color="red">(<b>edit 7</b>:)</font> <del> property </del> <font color="red">properties</font> of \( Q \).  <font color="red">(<b>edit 8</b>:) These are not
     important for the following discussion.</font>
 </blockquote>
 
@@ -82101,8 +82073,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\usepackage{float}\restylefloat{figure}
 
 % newcommands for typesetting inline (doconce) comments
-\newcommand{\shortinlinecomment}[3]{{\bf #1}: \emph{#2}}
-\newcommand{\longinlinecomment}[3]{{\bf #1}: \emph{#2}}
+\newcommand{\shortinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+\newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -82493,6 +82465,7 @@ are also possible: the text
 `color{red}{two red words}`
 \eccq
 becomes \textcolor{red}{two red words}.
+
 Quotations appear inside double backticks and double single quotes:
 
 \bccq
@@ -82692,8 +82665,7 @@ which is rendered as
 
 
 \begin{quote}
-Some running text. \shortinlinecomment{hpl 1}{ There must be a space after the colon,
-but the running text can occupy multiple lines. }{ There must be a }
+Some running text. \shortinlinecomment{hpl 1}{ There must be a space after the colon, but the running text can occupy multiple lines. }{ There must be a }
 \end{quote}
 
 
@@ -82755,8 +82727,8 @@ which in the latex output format results in
 First\textcolor{red}{, (\textbf{edit 2}: add comma)} consider \textcolor{red}{(edit 3:)} \replace{a quantity}{the flux}
 (\textbf{edit 4}:) \remove{$Q$. Without loss of generality,
 we assume} $Q>0$. There are three \textcolor{red}{ (\textbf{edit 5}: delete comma)} fundamental(\textbf{edit 6}:) \remove{, basic}
-\textcolor{red}{(edit 7:)} \replace{property}{properties} of $Q$.  \textcolor{red}{ (\textbf{edit 8}: add) These are not
-important for the following discussion.})
+\textcolor{red}{(edit 7:)} \replace{property}{properties} of $Q$.  \textcolor{red}{ (\textbf{edit 8}:) These are not
+important for the following discussion.}
 \end{quote}
 
 
@@ -83726,7 +83698,9 @@ are also possible: the text::
 
         `color{red}{two red words}`
 
-becomes <font color="red">two red words</font>.
+becomes **two red words**.
+(But colors do not work in format rst).
+
 Quotations appear inside double backticks and double single quotes::
 
         This is a sentence with ``words to be quoted''.
@@ -83902,8 +83876,8 @@ which is rendered as
 
 ..
 
-    Some running text. <font color="red">(**hpl 1**: There must be a space after the colon,
-    but the running text can occupy multiple lines.</font>)
+    Some running text. **(**hpl 1**: There must be a space after the colon,
+    but the running text can occupy multiple lines.**)
 
 
 
@@ -83958,11 +83932,11 @@ which in the rst output format results in
 
 ..
 
-    Firstcolor{red}{(**add 2**: ,}) consider <font color="red">(**edit 3**: a quantity -> the flux</font>)
-    <font color="red">(**del 4**: Q. Without loss of generality,
-    we assume</font>) Q>0. There are threecolor{red}{(**del 5**: ,}) fundamentalcolor{red}{(**del 6**: , basic})
-    <font color="red">(**edit 7**: property -> properties</font>) of Q. <font color="red">(**add 8**: These are not
-    important for the following discussion.</font>)
+    Firstcolor{red}{(**add 2**: ,}) consider **(**edit 3**: a quantity -> the flux**)
+    **(**del 4**: Q. Without loss of generality,
+    we assume**) Q>0. There are threecolor{red}{(**del 5**: ,}) fundamentalcolor{red}{(**del 6**: , basic})
+    **(**edit 7**: property -> properties**) of Q. **(**add 8**: These are not
+    important for the following discussion.**)
 
 
 
@@ -84894,7 +84868,9 @@ are also possible: the text
 
         `color{red}{two red words}`
 
-becomes <font color="red">two red words</font>.
+becomes **two red words**.
+(But colors do not work in format sphinx).
+
 Quotations appear inside double backticks and double single quotes:
 
 .. code-block:: text
@@ -85086,8 +85062,7 @@ which is rendered as
 
 ..
 
-    Some running text. <font color="red">[<b>hpl 1</b>: <em>There must be a space after the colon,
-    but the running text can occupy multiple lines.</em>]</font>
+    Some running text. [**hpl 1**: There must be a space after the colon, but the running text can occupy multiple lines.]
 
 
 
@@ -85152,11 +85127,11 @@ which in the sphinx output format results in
 
 ..
 
-    First<font color="red">, (<b>edit 2</b>: add comma)</font> consider <font color="red">(<b>edit 3</b>:)</font> <del>a quantity</del> <font color="red">the flux</font>
-    <font color="red">(<b>edit 4</b>:)</font> <del>$Q$. Without loss of generality,
-    we assume</del> :math:`Q>0`. There are three <font color="red"> (<b>edit 5</b>: delete comma)</font> fundamental<font color="red">(<b>edit 6</b>:)</font> <del>, basic</del>
-    <font color="red">(<b>edit 7</b>:)</font> <del>property</del> <font color="red">properties</font> of :math:`Q`.  <font color="red">(<b>edit 8</b>: add) These are not
-    important for the following discussion.</font>
+    First, (**edit 2: add comma**) consider (**edit 3: remove** a quantity) (**insert:**)the flux (**end insert**)
+    (**edit 4**: **delete** :math:`Q`. Without loss of generality,
+    we assume) :math:`Q>0`. There are three (**edit 5**: delete comma) fundamental(**edit 6**: **delete** , basic)
+    (**edit 7: remove** property) (**insert:**)properties (**end insert**) of :math:`Q`.  (**edit 8: add**) These are not
+    important for the following discussion. (**end add**)
 
 
 
@@ -86114,6 +86089,8 @@ are also possible: the text
 `color{red}{two red words}`
 }}}
 becomes <font color="red">two red words</font>.
+(But colors do not work in format gwiki).
+
 Quotations appear inside double backticks and double single quotes:
 
 {{{
@@ -87220,6 +87197,8 @@ are also possible: the text
 `color{red}{two red words}`
 </syntaxhighlight>
 becomes <font color="red">two red words</font>.
+(But colors do not work in format mwiki).
+
 Quotations appear inside double backticks and double single quotes:
 
 <syntaxhighlight lang="text">
@@ -88387,6 +88366,8 @@ are also possible: the text
 `color{red}{two red words}`
 }}}
 becomes <font color="red">two red words</font>.
+(But colors do not work in format cwiki).
+
 Quotations appear inside double backticks and double single quotes:
 
 {{{
@@ -89476,6 +89457,8 @@ are also possible: the text::
         `color{red}{two red words}`
 
 becomes two red words.
+(But colors do not work in format st).
+
 Quotations appear inside double backticks and double single quotes::
 
         This is a sentence with ``words to be quoted''.
@@ -90541,6 +90524,8 @@ are also possible: the text::
         `color{red}{two red words}`
 
 becomes two red words.
+(But colors do not work in format epytext).
+
 Quotations appear inside double backticks and double single quotes::
 
         This is a sentence with ``words to be quoted''.
@@ -91630,6 +91615,8 @@ are also possible: the text::
         `color{red}{two red words}`
 
 becomes two red words.
+(But colors do not work in format plain).
+
 Quotations appear inside double backticks and double single quotes::
 
         This is a sentence with ``words to be quoted''.
@@ -92762,6 +92749,8 @@ are also possible: the text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 becomes <font color="red">two red words</font>.
+(But colors do not work in format pandoc).
+
 Quotations appear inside double backticks and double single quotes:
 
 
@@ -94108,8 +94097,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94135,22 +94124,6 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-
-...doconce translation: handled figures 15.7 s
-
-...doconce translation: handled handled lists 15.8 s
-
-...doconce translation: handled inline substitutions 15.9 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 16.4 s
-
-...doconce translation: handled !benvir/!eenvir constructions 16.4 s
-
-...doconce translation: handled handled second reformatting of quizzes 16.4 s
-
-
-...doconce format used 16.4 s to translate the document (1825 lines)
-
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -94170,8 +94143,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94237,8 +94210,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94264,19 +94237,7 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 
 exporting publish database papers.pub to papers.bib:
-
-...doconce translation: handled inline substitutions 15.1 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 15.4 s
 *** made directory latex_figs for admon figures
-
-...doconce translation: handled !benvir/!eenvir constructions 15.4 s
-
-...doconce translation: handled handled second reformatting of quizzes 15.4 s
-
-
-...doconce format used 15.4 s to translate the document (2016 lines)
-
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
@@ -94296,8 +94257,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94350,8 +94311,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94405,8 +94366,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94471,8 +94432,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94534,8 +94495,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -94557,25 +94518,9 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
-...doconce translation: handled figures 15.1 s
-
 exporting publish database papers.pub to papers.bib:
-
-...doconce translation: handled handled lists 15.2 s
-
-...doconce translation: handled inline substitutions 15.3 s
 *** warning: --latex_double_hyphen may lead to unwanted edits.
              search for all -- in the .p.tex file and check.
-
-...doconce translation: handled insertion of verbatim and latex blocks 15.7 s
-
-...doconce translation: handled !benvir/!eenvir constructions 15.7 s
-
-...doconce translation: handled handled second reformatting of quizzes 15.7 s
-
-
-...doconce format used 15.7 s to translate the document (2193 lines)
-
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
@@ -98271,8 +98216,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98307,8 +98252,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98345,8 +98290,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
     recommended to be _static/frame_0085.png for sphinx
@@ -98389,6 +98334,12 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: sphinx/rst is a suboptimal format for
+    typesetting edit markup such as
+    [hpl 3: laptops and mobile units -> computers, tablets,
+and phones]
+    Use HTML or LaTeX output instead, implement the
+    edits (doconce apply_edit_comments) and then use sphinx.
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + mv -f testdoc.rst testdoc.sphinx.rst
@@ -98407,8 +98358,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
     recommended to be _static/frame_0085.png for sphinx
@@ -98451,6 +98402,12 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: sphinx/rst is a suboptimal format for
+    typesetting edit markup such as
+    [hpl 3: laptops and mobile units -> computers, tablets,
+and phones]
+    Use HTML or LaTeX output instead, implement the
+    edits (doconce apply_edit_comments) and then use sphinx.
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + system doconce split_rst testdoc
@@ -98540,8 +98497,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:399: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:399: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:365: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:401: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:401: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -98559,7 +98517,7 @@ copying images... [100%] wave1D.png
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded, 5 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying movie_demo to sphinx-testdoc/_static/movie_demo
@@ -98587,8 +98545,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98624,8 +98582,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98659,8 +98617,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98699,8 +98657,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98757,8 +98715,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98799,8 +98757,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98840,8 +98798,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98925,8 +98883,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -98948,23 +98906,7 @@ figure file ../doc/src/manual/fig/wave1D:
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 
-...doconce translation: handled figures 16.4 s
-
 exporting publish database papers.pub to papers.bib:
-
-...doconce translation: handled handled lists 16.6 s
-
-...doconce translation: handled inline substitutions 16.7 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 17.1 s
-
-...doconce translation: handled !benvir/!eenvir constructions 17.2 s
-
-...doconce translation: handled handled second reformatting of quizzes 17.2 s
-
-
-...doconce format used 17.2 s to translate the document (2089 lines)
-
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
@@ -99027,8 +98969,8 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
     fix: collected this text to one single line (right?)
 
-*** warning: the total of 1 fixes above should be manually edited in the file!!
-    (also note: some fixes may not be what you want)
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
 
 *** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
 -------- terminal output ----------
@@ -102700,16 +102642,6 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 26.2 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 26.7 s
-
-...doconce translation: handled !benvir/!eenvir constructions 26.7 s
-
-
-...doconce format used 26.7 s to translate the document (741 lines)
-
 output in movies_3choices.html
 + '[' 0 -ne 0 ']'
 + cp movies_3choices.html movie_demo
@@ -102723,16 +102655,6 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
     found!
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 22.4 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 22.8 s
-
-...doconce translation: handled !benvir/!eenvir constructions 22.8 s
-
-
-...doconce format used 22.8 s to translate the document (741 lines)
-
 output in movies.html
 + '[' 0 -ne 0 ']'
 + cp movies.html movie_demo
@@ -107017,12 +106939,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
     not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
-
-...doconce translation: handled inline substitutions 24.2 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 24.6 s
-
-...doconce translation: handled !benvir/!eenvir constructions 24.6 s
 *** error: could not translate environment: !bsol
     This is an environment in an exercise. Check if the
     heading is correct so the subsection was recognized
@@ -107091,12 +107007,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 15.5 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 15.8 s
-
-...doconce translation: handled !benvir/!eenvir constructions 15.8 s
 *** error: could not translate environment: !bsol
     This is an environment in an exercise. Check if the
     heading is correct so the subsection was recognized
@@ -108014,6 +107924,11 @@ Transcript written on quickref.log.
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: sphinx/rst is a suboptimal format for
+    typesetting edit markup such as
+    [add 2: ,]
+    Use HTML or LaTeX output instead, implement the
+    edits (doconce apply_edit_comments) and then use sphinx.
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
@@ -108314,6 +108229,11 @@ asic]
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
+
+Overfull \hbox (4.66663pt too wide) 
+\T1/ptm/m/n/10 three-color{red}{(\T1/ptm/b/n/10 del 5\T1/ptm/m/n/10 : ,}) fun-d
+a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
+/n/10 (**edit
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
@@ -108854,6 +108774,11 @@ asic]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
 
+Overfull \hbox (4.66663pt too wide) 
+\T1/ptm/m/n/10 three-color{red}{(\T1/ptm/b/n/10 del 5\T1/ptm/m/n/10 : ,}) fun-d
+a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
+/n/10 (**edit
+
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
 
@@ -108867,11 +108792,11 @@ Overfull \hbox (5.00006pt too wide)
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  fromto: doconce clean@^doconce spl
 it_rst  
-[8]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
 lit_rst  
-
+[8]
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
 

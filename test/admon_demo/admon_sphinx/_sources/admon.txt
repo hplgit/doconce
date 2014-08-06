@@ -5,7 +5,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: hpl
-:Date: Aug 2, 2014
+:Date: Aug 6, 2014
 
 .. !split
 

@@ -16,26 +16,12 @@ URL to the document (edit http://some.website.net/some/path)
 
 LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
 
-A subtitle or short description in the optional purple header field
-(edit SHORT EXPLANATION)
-
 Footer with author(s) and copyright (remove or edit)
 -->
 
-<!--
-Caveat: MathJax formulas get a strange orange color with the
-docs.min.css style file, but this file is required to get the
-fixed toc on the right with highlighted sections as one scrolls
-down the file.
--->
-
 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
-<!-- Various settings from the bootstrap documentation style -->
-<!--<link href="https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css" rel="stylesheet">-->
-<link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
 
-<!-- Can add other themes (then skip bs-docs-header, which has unsuitable
-color, and adjust colors in the navigation sidebar -->
+<!-- Can add other themes and adjust colors in the navigation sidebar -->
 <!--
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
 -->
@@ -55,14 +41,7 @@ color, and adjust colors in the navigation sidebar -->
 .bs-docs-sidebar .nav > .active:focus > a {
   color: #563d7c;
 }
-/* Don't know how to adjust color in bs-docs-header...but the
-header can just be removed */
 </style>
-
-<!-- use highlight.js and styles for code (use --pygments_html_style=off) -->
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -93,13 +72,15 @@ header can just be removed */
 
 <!-- Docs page layout -->
 
-<!-- A purple header field with the title is optional -->
+<!-- A purple header field with the title is optional, but it requires
+the docs.min.css style, which makes orange math...
 <div class="bs-docs-header" id="content">
  <div class="container">
   <h1>%(title)s</h1>
   <p>SHORT EXPLANATION</p>
  </div>
 </div>
+-->
 
 <div class="container bs-docs-container">
 
@@ -121,19 +102,16 @@ header can just be removed */
   </div>
  </div>
 
+ <div class="row Footer">
+  <div class="span12">
+   <center>
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
+   </center>
+  </div>
+ </div>
 </div>
 
-<!-- Footer
-================================================== -->
-<footer class="bs-docs-footer" role="contentinfo">
- <div class="container">
-  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
- </div>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<!-- JavaScript placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>

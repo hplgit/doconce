@@ -2768,7 +2768,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
                 first_header = m.group(2).strip()
                 for k in range(len(header_copy)):
                     if 'navigation toc:' in header[k]:
-                        m2 = re.search(r'navigation toc: "(.+?)"', header[k])
+                        m2 = re.search(r'<li><a href="(.+?)">', header[k])
                         if m2:
                            if m2.group(1) == first_header:
                                header_copy[k] = header[k].replace(
@@ -2871,7 +2871,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
         # (some Bootstrap functionality does not work without this fix,
         # and in general we should strip local references anyway)
         part_text = part_text.replace('<a href="%s#' % part_filename,
-                                      '<a href=#')
+                                      '<a href="#')
         f = open(part_filename, 'w')
         f.write(part_text)
         f.close()
@@ -8445,6 +8445,7 @@ def latexdiff(files1, files2):
 
     for fromfile, tofile in zip(files1, files2):
 
+        # Must convert to latex if doconce files
         if fromfile.endswith('.do.txt'):
             basename = fromfile[:-7]
             failure1 = os.system('doconce format pdflatex %s' % basename)
@@ -8457,7 +8458,7 @@ def latexdiff(files1, files2):
             failure2 = os.system('doconce ptex2tex %s' % basename)
             tofile = basename + '.tex'
 
-        diff_file = 'tmp_diff_%s.tex' % tofile
+        diff_file = 'tmp_diff_%s.tex' % os.path.basename(tofile)
         failure = os.system('latexdiff %s %s > %s' %
                             (fromfile, tofile, diff_file))
         failure = os.system('pdflatex %s' % diff_file)
@@ -8488,11 +8489,11 @@ def diff_files(files1, files2, program='diff'):
             else:
                 _missing_diff_program(program)
         elif program == 'diff':
-            diff_file = 'tmp_diff_%s.txt' % tofile
+            diff_file = 'tmp_diff_%s.txt' % os.path.basename(tofile)
             system(cmd + ' > ' + diff_file, verbose=True)
             check_diff(diff_file)
         elif program == 'pdiff':
-            diff_file = 'tmp_diff_%s' % tofile
+            diff_file = 'tmp_diff_%s' % os.path.basename(tofile)
             if which('pdiff'):
                 system(cmd + ' -- -1 -o %s.ps' % diff_file)
                 system('ps2pdf -sPAPERSIZE=a4 %s.ps; rm -f %s.ps' %

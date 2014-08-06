@@ -5,7 +5,7 @@ Test of editing markup
 %%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: HPL
-:Date: Aug 3, 2014
+:Date: Aug 4, 2014
 
 *Summary.* In this mini article we demonstrate the editing
 markup in DocOnce. This allows highlighting of corrections in
@@ -28,7 +28,7 @@ however it requires :math:`x_0` to be close to a root.
 
    Readers will normally find problems with the text above and a desire
    to edit. DocOnce features a syntax for editing running text.
-   This syntax is demonstrated below. Edit markup is not allowed
+   This syntax is demonstrated below. Markup for editing is not allowed
    in math blocks, code blocks, or section headings.
 
 
@@ -55,9 +55,9 @@ The text above is typeset as
 
 ---------
 
-We now want to annotate this text with edit markup. Such markup
-has the syntax of *inline comments*, which are comments inside
-square brackets with an identifier and the comment text:
+We now want to annotate this text with markup for our edits.
+Such markup has the syntax of *inline comments*, which are
+comments inside square brackets with an identifier and the comment text:
 
 .. code-block:: text
 
@@ -65,7 +65,7 @@ square brackets with an identifier and the comment text:
 
 The identifier can be a name (to recognize the reader who provided
 the comment), but in edit markup it is usually either ``add``, ``del``,
-or ``edit``. The edit markup consists of
+or ``edit``. The markup for editing consists of
 
 .. code-block:: text
 
@@ -86,8 +86,8 @@ In addition, one may provide an ordinary inline comment a la
 
         [edit: change the title to *Root finding*.]
 
-Below is the text with edit markup, followed by the rendering of
-this markup.
+Below is the text with edits, followed by the rendering of
+how such edits look like in the present format (sphinx).
 
 ---------
 
