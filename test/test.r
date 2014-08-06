@@ -39965,12 +39965,12 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
@@ -40372,12 +40372,12 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
@@ -40772,28 +40772,28 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href=#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: --> <li><a href=#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: --> <li><a href=#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: --> <li><a href=#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: --> <li><a href=#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: --> <li><a href=#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: --> <li><a href=#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
+     <!-- navigation toc: --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
+     <!-- navigation toc: --> <li><a href="#subsec1" style="font-size: 80%;">Subsection 1</a></li>
+     <!-- navigation toc: --> <li><a href="#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
+     <!-- navigation toc: --> <li><a href="#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">Custom Environments</a></li>
+     <!-- navigation toc: --> <li><a href="#subsec:table" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">Bibliography test</a></li>
+     <!-- navigation toc: --> <li><a href="#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
      </ul>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
@@ -42034,12 +42034,12 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;">_Just bold_</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;">*Just emphasize*</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;">`Just verbatim`</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;">_Bold_ beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;">*Emphasize* beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;">`Verbatim` beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
@@ -42050,34 +42050,34 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
      </ul>
-     <!-- navigation toc: --> <li><a href=#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: --> <li><a href=#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: --> <li><a href=#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: --> <li><a href=#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: --> <li><a href=#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: --> <li><a href=#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
+     <!-- navigation toc: --> <li><a href="#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;">Not an exercise</a></li>
+     <!-- navigation toc: --> <li><a href="#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
+     <!-- navigation toc: --> <li><a href="#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
+     <!-- navigation toc: --> <li><a href="#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
      </ul>
-     <!-- navigation toc: --> <li><a href=#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: --> <li><a href=#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: --> <li><a href=#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
+     <!-- navigation toc: --> <li><a href="#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
+     <!-- navigation toc: --> <li><a href="#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
      </ul>
-     <!-- navigation toc: --> <li><a href=#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: --> <li><a href=#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: --> <li><a href=#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
      </ul>
-     <!-- navigation toc: --> <li><a href=#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
+     <!-- navigation toc: --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
      <ul class="nav">
-     <!-- navigation toc: --> <li><a href=#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href=#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href=#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
+     <!-- navigation toc: --> <li><a href="#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
@@ -55230,12 +55230,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href=#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: --> <li><a href=#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -77796,8 +77796,8 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href=#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: --> <li><a href=#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
@@ -78084,7 +78084,7 @@ $$
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
      <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: --> <li><a href=#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
 
         </ul>
       </li>
@@ -78290,7 +78290,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Aug  4 17:41:43 2014.
+# sphinx-quickstart on Wed Aug  6 14:18:28 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
