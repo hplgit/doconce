@@ -33,6 +33,8 @@ html=${name}-reveal
 system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
 system doconce slides_html $html reveal --html_slide_theme=darkgray
 editfix $html.html
+# Crank up the font:
+#doconce replace 'pre style="' 'pre style="font-size: 120%; ' $html.html
 
 html=${name}-reveal-beige
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
@@ -51,11 +53,11 @@ editfix $html.html
 
 # Plain HTML documents
 html=${name}-solarized
-system doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_admon=apricot --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_links_in_new_window --html_output=$html
 editfix $html.html
 
 html=${name}-plain
-system doconce format html $name --pygments_html_style=default --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html
 editfix $html.html
 system doconce split_html $html.html
 # Remove top navigation in all parts
@@ -65,8 +67,9 @@ doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}
 html=${name}-1
 system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html
 editfix $html.html
-# Add space:
-doconce replace '<!-- !split -->' '<!-- !split --><br><br><br><br><br><br><br><br>' $html.html
+# Add space between splits
+system doconce split_html $name --method=space8
+#doconce replace '<!-- !split -->' '<!-- !split --><br><br><br><br><br><br><br><br>' $html.html
 
 # LaTeX Beamer slides
 beamertheme=red_shadow
