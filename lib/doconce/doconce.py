@@ -2688,6 +2688,11 @@ def extract_quizzes(filestr, format):
                 question = re.sub(prefix_pattern, '', question).strip()
                 data[-1]['question prefix'] = prefix
             data[-1]['question'] = question
+        else:
+            print '*** error: malformed quiz, no question'
+            print quiz
+            print '\n     Examine the corresponding doconce source code for syntax errors.'
+            _abort()
 
         pattern = '^' + ct('--- keywords: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
