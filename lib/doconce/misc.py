@@ -2246,6 +2246,10 @@ def split_html():
     if len(sys.argv) > 2:
         if sys.argv[2].startswith('--method='):
             method = sys.argv[2].split('=')[1]
+
+    # Note: can only do tablify and support slidecell specifications
+    # if --method=split (tablify requires the file split into parts)
+
     if method != 'split':
         # Load text
         f = open(filename, 'r')
@@ -2271,6 +2275,8 @@ def split_html():
             % 'http://hplgit.github.io/doconce/bundled/html_images/colorline.png')
     else:
         header, parts, footer = get_header_parts_footer(filename, "html")
+        parts = tablify(parts, "html")
+
         files = doconce_split_html(header, parts, footer, basename, filename)
         print '%s now links to the generated files' % filename
         print ', '.join(files)
