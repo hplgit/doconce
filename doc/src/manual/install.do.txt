@@ -5,9 +5,10 @@ label{install:doconce}
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install what is needed is to run the
-"`install_doconce.sh`": "install_doconce.sh" (or
-"`install_doconce.py`": "install_doconce.py") script.
+The impatient way to install what is needed on a Debian-based Linux
+computer (running, e.g., Ubuntu) is to run the
+"`install_doconce.sh`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" (or
+"`install_doconce.py`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py") script.
 
 ===== DocOnce =====
 

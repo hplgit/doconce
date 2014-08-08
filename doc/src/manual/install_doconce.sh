@@ -57,6 +57,8 @@ pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sph
 pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
 
+pip_install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+
 cd srclib
 svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
 cd ptex2tex
@@ -111,14 +113,10 @@ apt_install diffuse
 #tcl8.5-dev tk8.5-dev blt-dev
 #https://sourceforge.net/projects/tkdiff/
 
-# example on installing mdframed.sty (in texlive) manually
-# curl -O http://ctan.uib.no/macros/latex/contrib/mdframed/mdframed.dtx
-# alternative: git clone https://github.com/marcodaniel/mdframed
-# texdir=~/texmf/tex/latex/misc
-# if [ ! -d $texdir ]; then mkdir -p $texdir; fi
-# cp mdframed.sty $texdir/
-# cd $texdir/../../..
-# mktexlsr .
-# cd -
-# rm -f md-frame-* mdframed.*
+# example on installing mdframed.sty manually (it exists in texlive,
+# but sometimes needs to be in its newest version)
+git clone https://github.com/marcodaniel/mdframed
+make localinstall
+cd ..
+echo "remove the mdframe directory (if successful install of mdframed.sty): rm -rf mdframed"
 echo "Everything is successfully installed!"

@@ -61,6 +61,8 @@ system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.sola
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
 
+system('sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console')
+
 
 cmd = """
 cd srclib
@@ -119,14 +121,6 @@ system('sudo apt-get -y install diffuse')
 #tcl8.5-dev tk8.5-dev blt-dev
 #https://sourceforge.net/projects/tkdiff/
 
-# example on installing mdframed.sty (in texlive) manually
-# curl -O http://ctan.uib.no/macros/latex/contrib/mdframed/mdframed.dtx
-# alternative: git clone https://github.com/marcodaniel/mdframed
-# texdir=~/texmf/tex/latex/misc
-# if [ ! -d $texdir ]; then mkdir -p $texdir; fi
-# cp mdframed.sty $texdir/
-# cd $texdir/../../..
-# mktexlsr .
-# cd -
-# rm -f md-frame-* mdframed.*
+# example on installing mdframed.sty manually (it exists in texlive,
+# but sometimes needs to be in its newest version)
 print 'Everything is successfully installed!'
