@@ -317,6 +317,9 @@ def syntax_check(filestr, format):
         print '   ', '\n'.join(m)
         _abort()
 
+    # Initial spaces in verbatim, bold, emphasize cannot be tested
+    # (one may get matches between last ` and next beginning `, for instance).
+
     for envir in doconce_envirs():
         # Check that environments !bc, !ec, !bans, !eans, etc.
         # appear at the very beginning of the line
@@ -1746,18 +1749,6 @@ def typeset_lists(filestr, format, debug_info=[]):
     for i, line in enumerate(lines):
         db_line = '[%s]' % line
         #debugpr('\n------------------------\nsource line=[%s]' % line)
-        # do a syntax check:
-        for tag in INLINE_TAGS_BUGS:
-            bug = INLINE_TAGS_BUGS[tag]
-            if bug:
-                m = re.search(bug[0], line)
-                if m:
-                    print '*** syntax error: "%s" (arising from bug check "%s"\n    %s' % (m.group(0), tag, bug[1])
-                    print '    in line no. %d\n[%s]' % (i, line)
-                    print '    surrounding text is\n'
-                    for l in lines[i-8:i+9]:
-                        print l
-                    _abort()
 
         if not line or line.isspace():  # blank line?
             if not lists:

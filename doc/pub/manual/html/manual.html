@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 28, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 8, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -2020,11 +2020,22 @@ set the (terminal) prompt that prefixes the command:</p>
 <span id="id2"></span><h3>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><p id="index-14">DocOnce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
 and <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">text</span></tt> (also called type writer text, for inline code),
-&lt;font color=&#8221;blue&#8221;&gt;colored words&lt;/font&gt;,
 plus LaTeX/TeX inline mathematics, such as <span class="math">\(\nu = \sin(x)\)</span>.
 Links are easy to define, either with a <a class="reference external" href="http://google.com">text</a> or
 just a plain <a class="reference external" href="http://google.com">http://google.com</a>.
-Also non-breaking space (to avoid linebreak) can be specified.</p>
+Also a non-breaking space (to avoid linebreak), linebreak,</p>
+<div class="line-block">
+<div class="line">m-dash (as in m&#8212;dash), and horizontal rule can be specified (below).</div>
+</div>
+<hr class="docutils" />
+<div class="admonition-limitation-of-inline-tagging admonition">
+<p class="first admonition-title">Limitation of inline tagging</p>
+<p class="last">Since DocOnce applies regular expressions to recognize inline tagging,
+there might be cases where the tags are not correctly interpreted
+and translated. Fortunately, such pitfalls are easily circumvented.
+The <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/trouble/trouble/trouble.html#trouble:pitfalls">troubleshooting document</a> shows some
+examples.</p>
+</div>
 <div class="section" id="emphasized-words">
 <h4>Emphasized Words<a class="headerlink" href="#emphasized-words" title="Permalink to this headline">¶</a></h4>
 <p>Emphasized text is typeset inside a pair of asterisk, and there should
@@ -2037,30 +2048,40 @@ be no spaces between an asterisk and the emphasized text, as in</p>
 </pre></div>
 </div>
 <p>The line above gets typeset as
-<strong>several words in boldface</strong> followed by <em>ephasized text</em>.</p>
+<strong>several words in boldface</strong> followed by <em>ephasized text</em>.
+One should only have pure text (no mathematical formulas) between the boldface
+or emphasize markers, and no leading or trailing blanks (with such blanks,
+the text will not be recognized as boldface or emphasize).</p>
+<p>Colored text is formatted as</p>
+<div class="highlight-doconce"><div class="highlight"><pre>some text color{red}{more text in red}
+</pre></div>
+</div>
+<p>The current output format does not support colors, however.</p>
 </div>
 <div class="section" id="inline-verbatim-text">
 <h4>Inline Verbatim Text<a class="headerlink" href="#inline-verbatim-text" title="Permalink to this headline">¶</a></h4>
 <p>Verbatim text, typically used for short inline code,
-is typeset between back-ticks:</p>
+is typeset between backticks:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="sb">`call myroutine(a, b)`</span> looks like a Fortran call
 while `void myfunc(double *a, double *b)` must be C.
 </pre></div>
 </div>
 <p>The typesetting result looks like this:
 <tt class="docutils literal"><span class="pre">call</span> <span class="pre">myroutine(a,</span> <span class="pre">b)</span></tt> looks like a Fortran call
-while <tt class="docutils literal"><span class="pre">void</span> <span class="pre">myfunc(double</span> <span class="pre">*a,</span> <span class="pre">double</span> <span class="pre">*b)</span></tt> must be C.</p>
+while <tt class="docutils literal"><span class="pre">void</span> <span class="pre">myfunc(double</span> <span class="pre">*a,</span> <span class="pre">double</span> <span class="pre">*b)</span></tt> must be C.
+Note that there must be no leading or trailing spaces inside the backticks.</p>
 <p>It is recommended to have inline verbatim text on the same line in
-the DocOnce file, because some formats (LaTeX and <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>) will have
-problems with inline verbatim text that is split over two lines.</p>
+the DocOnce file, because some formats (LaTeX in combination with
+the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program (but not <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">pretex</span></tt>))
+will have problems with inline verbatim text that is split over two lines.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Watch out for mixing back-ticks and asterisk (i.e., verbatim and
-emphasized code): the DocOnce interpreter is not very smart so inline
-computer code can soon lead to problems in the final format. Go back to the
-DocOnce source and modify it so the format to which you want to go
-becomes correct (sometimes a trial and error process - sticking to
-very simple formatting usually avoids such problems).</p>
+<p class="last">Watch out for mixing backticks and asterisk (i.e., verbatim and
+emphasized code): the DocOnce interpreter is not very smart in
+detecting such errors. A missing backtick will also quickly create
+strange output. If you suspect inline code to be the
+source of problems in the final format, examine the
+DocOnce source and the output.</p>
 </div>
 </div>
 <div class="section" id="links-to-web-addresses">
@@ -2287,10 +2308,7 @@ plain text text. Note that <em>there must be a space after the colon</em>,
 otherwise the comment is not recognized. The name can contain upper and lower
 case characters, digits, single quote, <tt class="docutils literal"><span class="pre">+</span></tt> and <tt class="docutils literal"><span class="pre">-</span></tt>, as well
 as space. Next is an example.
-&lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl&#8217;s comment 1&lt;/b&gt;: &lt;em&gt;Inline comments
-can span
-several lines,
-if desired.&lt;/em&gt;]&lt;/font&gt;</p>
+[<strong>hpl&#8217;s comment 1</strong>: Inline comments can span several lines, if desired.]</p>
 <p>The name and comment are visible in the output unless <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
 is run with a command-line argument <tt class="docutils literal"><span class="pre">--skip_inline_comments</span></tt>
 (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an example). Inline comments
@@ -2343,11 +2361,11 @@ important for the following discussion.]
 </div>
 <p>The text gets rendered as</p>
 <blockquote>
-<div>First&lt;font color=&#8221;red&#8221;&gt;, (&lt;b&gt;edit 2&lt;/b&gt;: add comma)&lt;/font&gt; consider &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 3&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;a quantity&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;the flux&lt;/font&gt;
-&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 4&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;$Q$. Without loss of generality,
-we assume&lt;/del&gt; <span class="math">\(Q&gt;0\)</span>. There are three &lt;font color=&#8221;red&#8221;&gt; (&lt;b&gt;edit 5&lt;/b&gt;: delete comma)&lt;/font&gt; fundamental&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 6&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;, basic&lt;/del&gt;
-&lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 7&lt;/b&gt;:)&lt;/font&gt; &lt;del&gt;property&lt;/del&gt; &lt;font color=&#8221;red&#8221;&gt;properties&lt;/font&gt; of <span class="math">\(Q\)</span>.  &lt;font color=&#8221;red&#8221;&gt;(&lt;b&gt;edit 8&lt;/b&gt;: add) These are not
-important for the following discussion.&lt;/font&gt;</div></blockquote>
+<div>First, (<strong>edit 2: add comma</strong>) consider (<strong>edit 3: remove</strong> a quantity) (<strong>insert:</strong>)the flux (<strong>end insert</strong>)
+(<strong>edit 4</strong>: <strong>delete</strong> <span class="math">\(Q\)</span>. Without loss of generality,
+we assume) <span class="math">\(Q&gt;0\)</span>. There are three (<strong>edit 5</strong>: delete comma) fundamental(<strong>edit 6</strong>: <strong>delete</strong> , basic)
+(<strong>edit 7: remove</strong> property) (<strong>insert:</strong>)properties (<strong>end insert</strong>) of <span class="math">\(Q\)</span>.  (<strong>edit 8: add</strong>) These are not
+important for the following discussion. (<strong>end add</strong>)</div></blockquote>
 <p>Such inline comments with edits are only given special typesetting in
 the output formats <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt>.
 Otherwise, just the DocOnce syntax is shown (but that is also quite
@@ -3548,18 +3566,14 @@ for the <tt class="docutils literal"><span class="pre">apricot</span></tt>, <tt 
 <p>Some recommended combinations for admonitions in HTML are</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">--html_style=blueish2</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=yellow</span></tt>, <tt class="docutils literal"><span class="pre">--no_pygments_html</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--html_style=blueish2</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=yellow</span></tt>, <tt class="docutils literal"><span class="pre">--pygments_html_style=default</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--html_style=bloodish</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=gray</span></tt>, <tt class="docutils literal"><span class="pre">--no_pygments_html</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--html_style=bloodish</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=gray</span></tt>, <tt class="docutils literal"><span class="pre">--pygments_html_style=default</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--html_style=vagrant</span></tt>, <tt class="docutils literal"><span class="pre">--pygments_html_style=default</span></tt>, <tt class="docutils literal"><span class="pre">--html_template=...</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--html_style=blueish2</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=yellow</span></tt>, <tt class="docutils literal"><span class="pre">--pygments_html_style=none</span></tt> or <tt class="docutils literal"><span class="pre">--pygments_html_style=default</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--html_style=bloodish</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=gray</span></tt>, <tt class="docutils literal"><span class="pre">--pygments_html_style=none</span></tt> or
+<tt class="docutils literal"><span class="pre">--pygments_html_style=default</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--html_style=boots*</span></tt>, <tt class="docutils literal"><span class="pre">--html_admon=bootstrap_alert</span></tt> or <tt class="docutils literal"><span class="pre">--html_admon=bootstrap_panel</span></tt></li>
 </ul>
 </div></blockquote>
-<p>The <tt class="docutils literal"><span class="pre">vagrant</span></tt> HTML style has CSS files that override the definition
-how the admons are typset. The <tt class="docutils literal"><span class="pre">notice</span></tt> environment is gray with an
-icon (defined in <tt class="docutils literal"><span class="pre">vagrant.css</span></tt>), while the others are yellow (defined
-in <tt class="docutils literal"><span class="pre">twitter_bootstrap.css</span></tt>). The <tt class="docutils literal"><span class="pre">--html_admon</span></tt> color has no effect
-for the <tt class="docutils literal"><span class="pre">vagrant</span></tt> style.</p>
+<p>The <tt class="docutils literal"><span class="pre">--html_admon</span></tt> style has no effect for the vagrant style template
+in <tt class="docutils literal"><span class="pre">bundled/html_styles/style_vagrant</span></tt>.</p>
 <p>In <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the type of admonition style is set by
 the command-line option <tt class="docutils literal"><span class="pre">--latex_admon=</span></tt>.
 Several values are available:</p>
@@ -3757,7 +3771,7 @@ shown here, respectively (from left to right):</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/nav_buttons.png"><img alt="_images/nav_buttons.png" src="_images/nav_buttons.png" style="width: 300px;" /></a>
 </div>
-<p>However, if <tt class="docutils literal"><span class="pre">--html_theme=</span></tt> is set to <tt class="docutils literal"><span class="pre">vagrant</span></tt> or any theme starting
+<p>However, if <tt class="docutils literal"><span class="pre">--html_theme=</span></tt> is set any theme starting
 with <tt class="docutils literal"><span class="pre">bootstrap</span></tt> or <tt class="docutils literal"><span class="pre">bootswatch</span></tt>, the navigation buttons are ignored,
 and Bootstrap-style buttons are used.</p>
 <p><strong>reStructuredText and Sphinx.</strong>
@@ -4298,17 +4312,17 @@ includes Sphinx is provided later.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="mov/wave_frames/frame_0080.png">080</a></td>
-<td><a class="reference external" href="mov/wave_frames/frame_0085.png">085</a></td>
+<tr class="row-even"><td><a class="reference external" href="mov/wave_frames/frame_0085.png">085</a></td>
 <td><a class="reference external" href="mov/wave_frames/frame_0090.png">090</a></td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="mov/wave_frames/frame_0095.png">095</a></td>
-<td><a class="reference external" href="mov/wave_frames/frame_0100.png">100</a></td>
+<tr class="row-odd"><td><a class="reference external" href="mov/wave_frames/frame_0100.png">100</a></td>
 <td><a class="reference external" href="mov/wave_frames/frame_0105.png">105</a></td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="mov/wave_frames/frame_0110.png">110</a></td>
-<td><a class="reference external" href="mov/wave_frames/frame_0115.png">115</a></td>
+<tr class="row-even"><td><a class="reference external" href="mov/wave_frames/frame_0115.png">115</a></td>
 <td><a class="reference external" href="mov/wave_frames/frame_0120.png">120</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -5778,7 +5792,7 @@ Alternative basename of files associated with the HTML format.
 Name of theme for HTML style:
 plain, blueish, blueish2, bloodish,
 solarized, solarized2_light, solarized2_dark,
-vagrant, bootstrap, bootswatch,
+bootstrap, bootswatch,
 bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
 bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
@@ -5839,7 +5853,7 @@ True for autoplay when HTML is loaded, otherwise False (default).
 
 Type of admonition and color:
 colors, gray, yellow, apricot, lyx, paragraph.
-For html_style=vagrant,bootstrap,bootswatch,bootswatch_*,
+For html_style=bootstrap*,bootswatch*,
 the two legal values are boostrap_panel, bootstrap_alert.
 
 
@@ -6336,9 +6350,10 @@ Combine paragraphs to one line (does not work well).
 <span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install what is needed is to run the
-<a class="reference external" href="install_doconce.sh">install_doconce.sh</a> (or
-<a class="reference external" href="install_doconce.py">install_doconce.py</a>) script.</p>
+The impatient way to install what is needed on a Debian-based Linux
+computer (running, e.g., Ubuntu) is to run the
+<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh">install_doconce.sh</a> (or
+<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py">install_doconce.py</a>) script.</p>
 <div class="section" id="doconce">
 <h3>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.

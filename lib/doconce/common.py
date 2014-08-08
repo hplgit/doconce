@@ -927,24 +927,4 @@ INLINE_TAGS = {
 
 INLINE_TAGS_SUBST = {}
 
-# frequent syntax errors that we can test for: (not yet used)
-heading_error = (r'(^ [=]+[^=]*|^[=]+[^ =]*$)',
-                 'Initial spaces before heading or missing = at the end')
-INLINE_TAGS_BUGS = {
-    # look for space after first special character ($ ` _ etc)
-    'math': (r'%s(?P<subst>\$ [^$]*\$)%s' % (inline_tag_begin, inline_tag_end),
-             'Space after first $ in inline math expressions'),
-    'emphasize': None, # *item with *emph* word is legal (no error)
-    'verbatim': (r'%s(?P<subst>` [^`]*`)%s' % \
-                 (inline_tag_begin, inline_tag_end),
-                 'Space after first ` in inline verbatim expressions'),
-    'bold': (r'%s(?P<subst>_ [^_]*_)%s' % \
-             (inline_tag_begin, inline_tag_end),
-             'Space after first _ in inline boldface expressions'),
-    'section': heading_error,
-    'subsection': heading_error,
-    'subsubsection': heading_error,
-    'paragraph': heading_error,
-    }
-
 LIST_SYMBOL = {'*': 'itemize', 'o': 'enumerate', '-': 'description'}

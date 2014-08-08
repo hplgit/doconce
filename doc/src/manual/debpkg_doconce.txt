@@ -67,13 +67,9 @@ meld xxdiff diffpdf kdiff3 diffuse
 #tcl8.5-dev tk8.5-dev blt-dev
 #https://sourceforge.net/projects/tkdiff/
 
-# example on installing mdframed.sty (in texlive) manually
-# curl -O http://ctan.uib.no/macros/latex/contrib/mdframed/mdframed.dtx
-# alternative: git clone https://github.com/marcodaniel/mdframed
-# texdir=~/texmf/tex/latex/misc
-# if [ ! -d $texdir ]; then mkdir -p $texdir; fi
-# cp mdframed.sty $texdir/
-# cd $texdir/../../..
-# mktexlsr .
-# cd -
-# rm -f md-frame-* mdframed.*
+# example on installing mdframed.sty manually (it exists in texlive,
+# but sometimes needs to be in its newest version)
+$ git clone https://github.com/marcodaniel/mdframed
+$ make localinstall
+$ cd ..
+$ echo "remove the mdframe directory (if successful install of mdframed.sty): rm -rf mdframed"
