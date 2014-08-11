@@ -2865,7 +2865,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
             if pn < len(parts)-1:
                 if nav_button == 'text':
                     lines.append("""
-<div style="text-align: right;"><a href="%s">Next &raquo;></a></div>
+<div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
                 else:
                     lines.append("""
