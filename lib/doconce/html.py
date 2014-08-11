@@ -1794,13 +1794,13 @@ def define(FILENAME_EXTENSION,
     css_links = ''
     css = ''
     html_style = option('html_style=', '')
-    if  html_style == 'solarized':
+    if  html_style in ('solarized', 'solarized_light'):
         css = css_solarized
         css_links = css_link_solarized_highlight('light')
     elif  html_style == 'solarized_dark':
         css = css_solarized_dark
         css_links = css_link_solarized_highlight('dark')
-    elif html_style == 'solarized2_light':
+    elif html_style in ('solarized2_light', 'solarized2'):
         css = css_solarized_thomasf
         css_links = css_link_solarized_highlight('light') + '\n' + \
                     css_link_solarized_thomasf_light
@@ -1808,7 +1808,7 @@ def define(FILENAME_EXTENSION,
         css = css_solarized_thomasf
         css_links = css_link_solarized_highlight('dark') + '\n' + \
                     css_link_solarized_thomasf_dark
-    elif html_style == 'solarized3_light':
+    elif html_style in ('solarized3_light', 'solarized3'):
         css_links = css_link_solarized_highlight('light') + '\n' + \
                     css_link_solarized_thomasf_light
     elif html_style == 'solarized3_dark':
