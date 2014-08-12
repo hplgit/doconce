@@ -304,7 +304,7 @@ def define(FILENAME_EXTENSION,
         'math':      None,  # indicates no substitution, leave as is
         'math2':     r'\g<begin>$\g<latexmath>$\g<end>',
         'emphasize': None,
-        'bold':      r'\g<begin>**\g<subst>**\g<end>',,
+        'bold':      r'\g<begin>**\g<subst>**\g<end>',
         'figure':    ipynb_figure,
         #'movie':     default_movie,
         'movie':     html_movie,
