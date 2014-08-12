@@ -1741,10 +1741,10 @@ def typeset_lists(filestr, format, debug_info=[]):
     inside_description_environment = False
     lines = filestr.splitlines()
     lastline = lines[0]
-    # for debugging only:
-    _code_block_no = 0; _tex_block_no = 0
     special_comment = r'--- (begin|end) [A-Za-z0-9,();\- ]*? ---'
     #exercise_comment_line = r'--- (begin|end) .*?exercise ---'
+    # for debugging only:
+    _code_block_no = 0; _tex_block_no = 0
 
     for i, line in enumerate(lines):
         db_line = '[%s]' % line
@@ -1775,7 +1775,7 @@ def typeset_lists(filestr, format, debug_info=[]):
 
             else:
                 #debugpr('  > This is just a comment line')
-                db_line= 'comment line'
+                db_line= 'comment: %s' % line[1:]
                 # the comment can be propagated to some formats
                 # (rst, latex, html):
                 if 'comment' in INLINE_TAGS_SUBST[format]:
@@ -1806,7 +1806,7 @@ def typeset_lists(filestr, format, debug_info=[]):
 
         # structure of a line:
         linescan = re.compile(
-            r"(?P<indent> *(?P<listtype>[*o-] )? *)" +
+            r"\n*(?P<indent> *(?P<listtype>[*o-] )? *)" +
             r"(?P<keyword>.+?:\s+)?(?P<text>.*)\s?")
             #r"(?P<keyword>[^:]+?:)?(?P<text>.*)\s?")
 
@@ -1821,11 +1821,8 @@ def typeset_lists(filestr, format, debug_info=[]):
         db_indent = '  > indent=%d (from %d)' % (indent, lastindent)
         #debugpr('  > indent=%d (previous indent=%d), keyword=[%s], text=[%s]' % (indent, lastindent, keyword, text))
 
-        # new (sub)section makes end of any indent (we could demand
-        # (sub)sections to start in column 1, but we have later relaxed
-        # such a requirement; it is easier to just test for ___ or === and
-        # set indent=0 here):
-        if line.lstrip().startswith('___') or line.lstrip().startswith('==='):
+        # new (sub)section makes end of any indent
+        if line.startswith('==='):
             indent = 0
 
 
@@ -1938,8 +1935,7 @@ def typeset_lists(filestr, format, debug_info=[]):
         if db_line_tp != 'ordinary line':
             debugpr('%s (%s)\n--> %s' % (db_line, db_line_tp, db_result.rstrip()))
         else:
-            pass
-            #debugpr('%s (%s)' % (db_line, db_line_tp))
+            debugpr('%s (%s)' % (db_line, db_line_tp))
 
     # end lists if any are left:
     while lists:

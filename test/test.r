@@ -1690,9 +1690,11 @@ $$
 
     
 <a name="part0000"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- ------------------- main content ---------------------- -->
@@ -1799,8 +1801,9 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -8816,10 +8819,10 @@ Or with align with label and numbers
         $$
         \begin{align}
         \frac{Du}{dt} &= 0
-        label{aligneq1}\\ 
+        \label{aligneq1}\\ 
         \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
-        label{aligneq2}
+        \label{aligneq2}
         \end{align}
         $$
 
@@ -8843,6 +8846,7 @@ Let \\( a=1 \\) and \\( b=2 \\). Then \\( c=3 \\).
 **Proof.**
 Since \\( c=a+b \\), the result follows from straightforward addition.
 \\( \Diamond \\)
+
 .. end proof
 
 As we see, the proof of Theorem 5 is a modest
@@ -9172,18 +9176,18 @@ Here is an equation without label using backslash-bracket environment
 
 .. raw:: html
 
-        $$
-        \[ a = b + c \]
-        $$
+        $$ a = b + c $$
+
 or with number and label, as in Equation (my:eq1), using the equation environment
 
 .. raw:: html
 
         $$
         \begin{equation}
-        {\partial u\over\partial t} = \nabla^2 u label{my:eq1}
+        {\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
         \end{equation}
         $$
+
 We can refer to this equation by Equation (my:eq1).
 
 Here is a system without equation numbers, using the align-astrisk environment
@@ -9212,6 +9216,7 @@ Exercises
 
 Problem 2: Flip a Coin
 ----------------------
+
 .. keywords = random numbers; Monte Carlo simulation
 
 .. Torture tests
@@ -9328,6 +9333,7 @@ The formula for a circle is given by
         y &= y_0 + R\sin 2\pi t,
         \end{align}
         $$
+
 where \\( R \\) is the radius of the circle, \\( (x_0,y_0) \\) is the
 center point, and \\( t \\) is a parameter in the unit interval \\( [0,1] \\).
 For any \\( t \\), \\( (x,y) \\) is a point on the circle.
@@ -9423,9 +9429,8 @@ With some math \\( a=b \\) in this solution
 
 .. raw:: html
 
-        $$
-        \[ \hbox{math in solution: } a = b \]
-        $$
+        $$ \hbox{math in solution: } a = b $$
+
 And code ``a=b`` in this solution::
 
         a = b  # code in solution
@@ -9445,9 +9450,8 @@ With math \\( a=b \\) in hint
 
 .. raw:: html
 
-        $$
-        \[ a=b. \]
-        $$
+        $$ a=b. $$
+
 And with code (in plain verbatim) returning \\( x+1 \\) in hint::
 
         def func(x):
@@ -9485,9 +9489,7 @@ Some math \\( \cos^2 x + \sin^2 x = 1 \\) written one a single line
 
 .. raw:: html
 
-        $$
-        \[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
-        $$
+        $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
 .. --- begin hint in exercise ---
 
@@ -9528,9 +9530,7 @@ to test that math block insertion is correct
 
 .. raw:: html
 
-        $$
-        \[ \exp{(0)} = 1 \]
-        $$
+        $$ \exp{(0)} = 1 $$
 
 And a test that the code ``lambda x: x+2`` is correctly placed here::
 
@@ -9555,9 +9555,8 @@ Exercise 7: Solution of differential equation
     
     .. raw:: html
     
-            $$
-            \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
-            $$
+            $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
+    
     What is the solution of this equation?</p>
     
     <p><div title="Right!"><b>Choice 1:</b>
@@ -10559,6 +10558,7 @@ Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 **Proof.**
 Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
+
 .. end proof
 
 As we see, the proof of Theorem 5 is a modest
@@ -10954,6 +10954,7 @@ Exercises
 
 Problem 2: Flip a Coin
 ----------------------
+
 .. keywords = random numbers; Monte Carlo simulation
 
 .. Torture tests
@@ -21005,7 +21006,7 @@ and URLs.
 some text.
 
 <!-- Test various types of headlines -->
-### _Just bold_
+### **Just bold**
 
 Some text.
 
@@ -21017,7 +21018,7 @@ Some text.
 
 Some text.
 
-### _Bold_ beginning
+### **Bold** beginning
 
 Some text.
 
@@ -21029,7 +21030,7 @@ Some text.
 
 Some text.
 
-### Maybe _bold end_
+### Maybe **bold end**
 
 Some text.
 
@@ -21041,7 +21042,7 @@ Some text.
 
 Some text.
 
-### The middle has _bold_ word
+### The middle has **bold** word
 
 Some text.
 
@@ -21686,109 +21687,109 @@ Filename: `selc_composed.pdf`.
 
 ## References
 
- 1. \label{Langtangen_Pedersen_2002} _H. P. Langtangen and G. Pedersen_. 
+ 1. \label{Langtangen_Pedersen_2002} **H. P. Langtangen and G. Pedersen**. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
- 2. \label{Langtangen_et_al_2002} _H. P. Langtangen, K.-A. Mardal and R. Winther_. 
+ 2. \label{Langtangen_et_al_2002} **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
- 3. \label{Langtangen_1994a} _H. P. Langtangen_. 
+ 3. \label{Langtangen_1994a} **H. P. Langtangen**. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
- 4. \label{Mardal_et_al_2003a} _K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen_. 
+ 4. \label{Mardal_et_al_2003a} **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
-    edited by _H. P. Langtangen and A. Tveito_,
+    edited by **H. P. Langtangen and A. Tveito**,
     Springer,
     2003.
- 5. \label{Langtangen_1988d} _H. P. Langtangen_. 
+ 5. \label{Langtangen_1988d} **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     1989.
- 6. \label{Langtangen_1992c} _H. P. Langtangen_. 
+ 6. \label{Langtangen_1992c} **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
- 7. \label{Mortensen_et_al_2011} _M. Mortensen, H. P. Langtangen and G. N. Wells_. 
+ 7. \label{Mortensen_et_al_2011} **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
- 8. \label{Glimsdal_et_al_20006} _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt_. 
+ 8. \label{Glimsdal_et_al_20006} **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
     Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
- 9. \label{Rahman_et_al_2006b} _S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen_. 
+ 9. \label{Rahman_et_al_2006b} **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-10. \label{Haga_et_al_2011a} _J. B. Haga, H. Osnes and H. P. Langtangen_. 
+10. \label{Haga_et_al_2011a} **J. B. Haga, H. Osnes and H. P. Langtangen**. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
     2011,
     <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
-11. \label{Langtangen_2003a} _H. P. Langtangen_. 
+11. \label{Langtangen_2003a} **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     Springer,
     2003.
-12. \label{Langtangen_2008a} _H. P. Langtangen_. 
+12. \label{Langtangen_2008a} **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
     Springer,
     2008.
-13. \label{Langtangen:95} _H. P. Langtangen and G. Pedersen_. 
+13. \label{Langtangen:95} **H. P. Langtangen and G. Pedersen**. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
-    edited by _J. Grue, B. Gjevik and J. E. Weber_,
+    edited by **J. Grue, B. Gjevik and J. E. Weber**,
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
     <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
-14. \label{Langtangen_2012} _H. P. Langtangen_. 
+14. \label{Langtangen_2012} **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     Springer,
     2012.
-15. \label{Jeberg_et_al_2004} _P. V. Jeberg, H. P. Langtangen and C. B. Terp_. 
+15. \label{Jeberg_et_al_2004} **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     2004.
-16. \label{Langtangen_1989e} _H. P. Langtangen_. 
+16. \label{Langtangen_1989e} **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. \label{Langtangen_talk_2007a} _H. P. Langtangen_. 
+17. \label{Langtangen_talk_2007a} **H. P. Langtangen**. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. \label{Langtangen:85} _H. P. Langtangen_. 
+18. \label{Langtangen:85} **H. P. Langtangen**. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. \label{Langtangen:91} _H. P. Langtangen and A. Tveito_. 
+19. \label{Langtangen:91} **H. P. Langtangen and A. Tveito**. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-20. \label{Langtangen:94b} _H. P. Langtangen_. 
+20. \label{Langtangen:94b} **H. P. Langtangen**. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
-    edited by _A. Vermeulen_,
+    edited by **A. Vermeulen**,
     1994.
 
 ## Appendix: Just for testing; part I
@@ -21843,7 +21844,7 @@ Greg Wilson' excellent [Script for Introduction to Version Control](http://softw
 from using version control systems.
 
 *Summary.*\g<space>
-_Bold remark:_ Make some text with this summary.
+**Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -25764,7 +25765,7 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center"><!-- Test various types of headlines --> ### <em>Just bold</em></td>
+<td align="center"><!-- Test various types of headlines --> ### <strong>Just bold</strong></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -25794,7 +25795,7 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center">### <em>Bold</em> beginning</td>
+<td align="center">### <strong>Bold</strong> beginning</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -25824,7 +25825,7 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center">### Maybe <em>bold end</em></td>
+<td align="center">### Maybe <strong>bold end</strong></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -25854,7 +25855,7 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center">### The middle has <em>bold</em> word</td>
+<td align="center">### The middle has <strong>bold</strong> word</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -26789,8 +26790,8 @@ a=b.
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center">1.  _H. P. Langtangen and Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Enginee 7(1), pp. 187-204, 2002. 2.  <em>H. P. Langtangen, K.-A. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002. 3.  </em>H. P. Langtangen_. Numerical Solution of First Passage Problems in Random </em>SIAM Journal of Scientific and Statistical Computing*, 15, pp. 997-996, 1994. 4.  _K.-A. Mardal, G. W. Zumbusc Software Tools for Multigrid Methods, <em>Advanced Topics in Computational Partial Differential edited by <em>H. P. Langtangen and A. Tveito</em>, Springer, 2003. 5.  <em>H. P. Langtangen</em>. The FEMDEQS Program System, </em>Department of Mathematics, University of Oslo<em>, 1989. 6.  <em>H. P. Langtangen</em>. Stochastic Breakthrough Time Analysis of an Enhanced Oi </em>SIAM Journal on Scientific Computing<em>, 13, pp. 1394-1417, 1992. 7.  <em>M. Mortensen, H. P. Langt A FEniCS-Based Programming Framework for Modeling Turbu <em>Advances in Water Resources</em>, 34(9), [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.or 2011. 8.  </em>S. Glimsdal, G. Pedersen, Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: </em>International Journal of Fluid Mechanics Research*, 33(1), pp. 15-43, 2006. 9.  <em>S. Rahman, J. Gorman, C. H. Numerical Investigation of a Piezoelectric Surface Acou <em>Physical Review B: Condensed Matter and Materials Phys 74, 2006. 10.  <em>J. B. Haga, H. Osnes and H. P On the Causes of Pressure Oscillations in Low-Permeable <em>International Journal of Analytical and Numerical Meth [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1 2011, &lt;http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/ab 11.  <em>H. P. Langtangen</em>. </em>Computational Partial Differential Equations - Numeric Springer, 2003. 12.  </em>H. P. Langtangen_. </em>Python Scripting for Computational Science<em>, Springer, 2008. 13.  <em>H. P. Langtangen and G. Pedersen Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by </em>J. Grue, B. Gjevik and J. E. Weber_, Kluwer Academic Publishers, pp. pp. 117-126, 1995, &lt;http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrody 14.  <em>H. P. Langtangen</em>. </em>A Primer on Scientific Programming With Python<em>, Springer, 2012. 15.  <em>P. V. Jeberg, H. P. Langtang Optimization With Diffpack: Practical Example From Weld <em>Simula Research Laboratory</em>, 2004. 16.  </em>H. P. Langtangen_. Computational Methods for Two-Phase Flow in Oil Reservo Ph.D. Thesis, Mechanics Division, Department of Mathematics, Universi 1989. 17.  <em>H. P. Langtangen</em>. Computational Modeling of Huge Tsunamis From Asteroid I Invited keynote lecture at the confe 2007. 18.  <em>H. P. Langtangen</em>. Solution of the Navier-Stokes Equations With the Finite M.Sc. Thesis, Mechanics Division, Department of Mathematics, Universi 1985. 19.  <em>H. P. Langtangen and A. Tveito</em>. Numerical Methods in Continuum Mechanics, </em>Center for Industrial Research<em>, 1991. 20.  <em>H. P. Langtangen</em>. Diffpack: Software for Partial Differential Equations, </em>Proceedings of the Second Annual Object-Oriented Numer edited by </em>A. Vermeulen_, 1994.</td>
-<td align="left">G. Pedersen_.</td>
+<td align="center">1.  <strong>H. P. Langtangen and Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Enginee 7(1), pp. 187-204, 2002. 2.  <strong>H. P. Langtangen, K.-A. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002. 3.  </strong>H. P. Langtangen<strong>. Numerical Solution of First Passage Problems in Random <em>SIAM Journal of Scientific and Statistical Computing</em>, 15, pp. 997-996, 1994. 4.  </strong>K.-A. Mardal, G. W. Zumbus Software Tools for Multigrid Methods, </em>Advanced Topics in Computational Partial Differential edited by </strong>H. P. Langtangen and A. Tveito<strong>, Springer, 2003. 5.  </strong>H. P. Langtangen<strong>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989. 6.  </strong>H. P. Langtangen<strong>. Stochastic Breakthrough Time Analysis of an Enhanced Oi <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992. 7.  </strong>M. Mortensen, H. P. Lang A FEniCS-Based Programming Framework for Modeling Turbu <em>Advances in Water Resources</em>, 34(9), [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.or 2011. 8.  <strong>S. Glimsdal, G. Pedersen Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006. 9.  </strong>S. Rahman, J. Gorman, C. H Numerical Investigation of a Piezoelectric Surface Acou <em>Physical Review B: Condensed Matter and Materials Phys 74, 2006. 10.  <strong>J. B. Haga, H. Osnes and H. On the Causes of Pressure Oscillations in Low-Permeable <em>International Journal of Analytical and Numerical Meth [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1 2011, &lt;http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/ab 11.  <strong>H. P. Langtangen</strong>. </em>Computational Partial Differential Equations - Numeric Springer, 2003. 12.  </strong>H. P. Langtangen<strong>. <em>Python Scripting for Computational Science</em>, Springer, 2008. 13.  </strong>H. P. Langtangen and G. Pederse Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by <strong>J. Grue, B. Gjevik and J. E. Weber</strong>, Kluwer Academic Publishers, pp. pp. 117-126, 1995, &lt;http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrody 14.  <strong>H. P. Langtangen</strong>. </em>A Primer on Scientific Programming With Python<em>, Springer, 2012. 15.  <strong>P. V. Jeberg, H. P. Langtan Optimization With Diffpack: Practical Example From Weld <em>Simula Research Laboratory</em>, 2004. 16.  </strong>H. P. Langtangen<strong>. Computational Methods for Two-Phase Flow in Oil Reservo Ph.D. Thesis, Mechanics Division, Department of Mathematics, Universi 1989. 17.  </strong>H. P. Langtangen<strong>. Computational Modeling of Huge Tsunamis From Asteroid I Invited keynote lecture at the confe 2007. 18.  </strong>H. P. Langtangen<strong>. Solution of the Navier-Stokes Equations With the Finite M.Sc. Thesis, Mechanics Division, Department of Mathematics, Universi 1985. 19.  </strong>H. P. Langtangen and A. Tveito</em> Numerical Methods in Continuum Mechanics, <em>Center for Industrial Research</em>, 1991. 20.  <strong>H. P. Langtangen</strong>. Diffpack: Software for Partial Differential Equations, *Proceedings of the Second Annual Object-Oriented Numer edited by <strong>A. Vermeulen</strong>, 1994.</td>
+<td align="left">G. Pedersen**.</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
@@ -26879,7 +26880,7 @@ a=b.
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center"><em>Summary.</em><space> <em>Bold remark:</em> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</td>
+<td align="center"><em>Summary.</em><space> <strong>Bold remark:</strong> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -29063,9 +29064,11 @@ $$
 
     
 <a name="part0000"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- ------------------- main content ---------------------- -->
@@ -29172,8 +29175,9 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -29401,11 +29405,13 @@ $$
 
     
 <a name="part0001"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
+<div style="text-align: left;"><a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
 
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split -->
@@ -30482,10 +30488,11 @@ footnotes.
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
+<div style="text-align: left;"><a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
 
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -30713,11 +30720,13 @@ $$
 
     
 <a name="part0002"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
+<div style="text-align: left;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
 
-<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
@@ -31350,10 +31359,11 @@ What about inserting a quiz?
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
+<div style="text-align: left;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
 
-<a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a>
+<div style="text-align: right;"><a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -31581,9 +31591,11 @@ $$
 
     
 <a name="part0003"></a>
+<p>
 <!-- begin top navigation -->
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
+<div style="text-align: left;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
 <!-- end top navigation -->
+</p>
 
 <p>
 <!-- !split -->
@@ -31765,8 +31777,9 @@ is at the end with only one newline.
 
 <p>
 <!-- begin bottom navigation -->
-<a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a>
+<div style="text-align: left;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
 <!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -38764,7 +38777,7 @@ to `\boldsymbol`.
 % **HPL**
 % Jan 32, 2100
 
-This document is translated to the format _pandoc_. The purpose is to
+This document is translated to the format **pandoc**. The purpose is to
 test math and doconce and various output formats.
 
 *Test 1: Inline math.* Here is a sentence contains the equation $u(t)=e^{-at}$.
@@ -39281,7 +39294,7 @@ MathJax.Hub.Config({
 <h2 class="author"><strong>HPL</strong></h2>
 <h3 class="date">Jan 32, 2100</h3>
 </div>
-<p>This document is translated to the format <em>pandoc</em>. The purpose is to test math and doconce and various output formats.</p>
+<p>This document is translated to the format <strong>pandoc</strong>. The purpose is to test math and doconce and various output formats.</p>
 <p><em>Test 1: Inline math.</em> Here is a sentence contains the equation <span class="math">\(u(t)=e^{-at}\)</span>.</p>
 <p><em>Test 2: A single equation without label.</em> Here it is</p>
 <p><span class="math">\[
@@ -39958,60 +39971,14 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
    </ul>
   </div>
@@ -40365,60 +40332,14 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
    </ul>
   </div>
@@ -40772,60 +40693,14 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href="#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: --> <li><a href="#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: --> <li><a href="#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: --> <li><a href="#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: --> <li><a href="#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: --> <li><a href="#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: --> <li><a href="#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
+     <!-- navigation toc: --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
    </ul>
   </div>
@@ -42027,60 +41902,14 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;"><b>Section 1</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec1" style="font-size: 80%;">Subsection 1</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:ex" style="font-size: 80%;">Subsection 2: Testing figures</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#decay:sec:theta" style="font-size: 80%;">The \( \theta \) parameter (not \( \nabla \)?)</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec9" style="font-size: 80%;">Custom Environments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsec:table" style="font-size: 80%;">Tables</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec11" style="font-size: 80%;">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec12" style="font-size: 80%;"><b>Just bold</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec13" style="font-size: 80%;"><em>Just emphasize</em></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec14" style="font-size: 80%;"><code>Just verbatim</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec15" style="font-size: 80%;"><b>Bold</b> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec16" style="font-size: 80%;"><em>Emphasize</em> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec17" style="font-size: 80%;"><code>Verbatim</code> beginning</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec18" style="font-size: 80%;">Maybe <b>bold end</b></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec19" style="font-size: 80%;">Maybe <em>emphasize end</em></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec20" style="font-size: 80%;">Maybe <code>verbatim end</code></a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec21" style="font-size: 80%;">The middle has <b>bold</b> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec22" style="font-size: 80%;">The middle has <em>emphasize</em> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec23" style="font-size: 80%;">The middle has <code>verbatim</code> word</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#___sec24" style="font-size: 80%;">Bibliography test</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#Example" style="font-size: 80%;">Example 1: Examples can be typeset as exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#subsubsec:ex" style="font-size: 80%;">URLs</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;"><b>LaTeX Mathematics</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;"><b>Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="#demo:ex:1" style="font-size: 80%;">Problem 2: Flip a Coin</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;">Not an exercise</a></li>
-     <!-- navigation toc: --> <li><a href="#demo:ex:2" style="font-size: 80%;">Project 3: Compute a Probability</a></li>
-     <!-- navigation toc: --> <li><a href="#proj:circle1" style="font-size: 80%;">Project 4: Explore Distributions of Random Circles</a></li>
-     <!-- navigation toc: --> <li><a href="#exer:dist" style="font-size: 80%;">Exercise 5: Determine some Distance</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;">Some exercise without the "Exercise:" prefix</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:this:exer:de" style="font-size: 80%;">Exercise 7: Solution of differential equation</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec39" style="font-size: 80%;">Example 8: Just an example</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;"><b>Here goes another section</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;"><b>More Exercises</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="#exer:some:formula" style="font-size: 80%;">Exercise 9: Make references to projects and problems</a></li>
-     <!-- navigation toc: --> <li><a href="#exer:you" style="font-size: 80%;">Project 10: References in a headings do not work well in html</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;"><b>References</b></a></li>
-     <!-- navigation toc: --> <li><a href="#app1" style="font-size: 80%;"><b>Appendix: Just for testing; part I</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="#___sec46" style="font-size: 80%;">A subsection within an appendix</a></li>
-     </ul>
-     <!-- navigation toc: --> <li><a href="#app2" style="font-size: 80%;"><b>Appendix: Just for testing; part II</b></a></li>
-     <ul class="nav">
-     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="#test:title:id1" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="#test:title:id2" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec51" style="font-size: 80%;">Appendix: Testing identical titles</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec52" style="font-size: 80%;">Appendix: Testing inline comments</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant003.html#___sec53" style="font-size: 80%;">Appendix: Testing headings ending with <code>verbatim inline</code></a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
+     <!-- navigation toc: --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
    </ul>
   </div>
@@ -43549,6 +43378,7 @@ Let :math:`a=1` and :math:`b=2`. Then :math:`c=3`.
 **Proof.**
 Since :math:`c=a+b`, the result follows from straightforward addition.
 :math:`\Diamond`
+
 .. end proof
 
 As we see, the proof of Theorem 5 is a modest
@@ -43957,6 +43787,7 @@ Exercises
 
 Problem 2: Flip a Coin
 ----------------------
+
 .. keywords = random numbers; Monte Carlo simulation
 
 .. Torture tests
@@ -53921,12 +53752,7 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
 
    </ul>
   </div>
@@ -54485,12 +54311,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;">Introduction</a></li>
 
         </ul>
       </li>
@@ -54644,12 +54465,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
 
         </ul>
       </li>
@@ -55230,12 +55046,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
 
         </ul>
       </li>
@@ -73217,6 +73028,9 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 *** List typesetting phase + comments and blank lines ***
 
 
+[Text with a name like &#197;smund &#216;deg&#229;rd works in general.] (ordinary line)
+
+
 
 ************************************************************
 unicode>>> The file after typesetting of lists:
@@ -73601,6 +73415,18 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *** List typesetting phase + comments and blank lines ***
+
+
+[Text with a name like Åsmund Ødegård works in general.] (ordinary line)
+
+
+[Verbatim blocks with non-ASCII text does not work for HTML, but it works] (ordinary line)
+
+
+[for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.] (ordinary line)
+
+
+[0 <<<!!CODE_BLOCK ] (ordinary line)
 
 
 
@@ -74104,6 +73930,30 @@ through the various stages of the text transformation process.
 $b = 1$ is a value suggested by Åsmund Ødegård.
 
 *** List typesetting phase + comments and blank lines ***
+
+
+[Text with a name like Åsmund Ødegård works in general.] (ordinary line)
+
+
+[This block (in format html)] (ordinary line)
+
+
+[triggers use of `mako`. For all formats, `mako` has] (ordinary line)
+
+
+[problem with non-ASCII characters anywhere in the text. The remedy] (ordinary line)
+
+
+[for all formats is to read the file with UTF-8 encoding. With --debug] (ordinary line)
+
+
+[one can see the internal str/unicode representation of the text] (ordinary line)
+
+
+[through the various stages of the text transformation process.] (ordinary line)
+
+
+[$b = 1$ is a value suggested by Åsmund Ødegård.] (ordinary line)
 
 
 
@@ -77622,9 +77472,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
 
         </ul>
       </li>
@@ -77796,9 +77644,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
 
         </ul>
       </li>
@@ -78082,9 +77928,7 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
 
         </ul>
       </li>
@@ -78290,7 +78134,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Aug  6 14:18:28 2014.
+# sphinx-quickstart on Tue Aug 12 15:57:24 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -92608,7 +92452,7 @@ Resources
 
 
 
-_WARNING: This quick reference is very incomplete!_
+**WARNING: This quick reference is very incomplete!**
 
 *Mission.* Enable writing documentation with much mathematics and
 computer code *once, in one place* and include it in traditional LaTeX
@@ -92740,7 +92584,7 @@ problem.
 
 Words surrounded by `*` are emphasized: `*emphasized words*` becomes
 *emphasized words*. Similarly, an underscore surrounds words that
-appear in boldface: `_boldface_` becomes _boldface_. Colored words
+appear in boldface: `_boldface_` becomes **boldface**. Colored words
 are also possible: the text
 
 
