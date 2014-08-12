@@ -352,7 +352,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    %(filenames)s
 

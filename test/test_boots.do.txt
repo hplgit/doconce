@@ -1,7 +1,6 @@
 TITLE: Test of the Bootstrap style
 
-DocOnce can work with Bootstrap HTML styles:
-way:
+DocOnce can work with Bootstrap HTML styles this way:
 
 !bc sys
 Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel

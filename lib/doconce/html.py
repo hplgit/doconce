@@ -274,19 +274,22 @@ def toc2html(font_size=80, bootstrap=True):
         if bootstrap:
             # We can have max 17 lines, so analyze the toc
             level2no = {}
-            for item in tocinfo:
+            for item in tocinfo['sections']:
                 level = item[1]
                 if level in level2no:
                     level2no[level] += 1
                 else:
                     level2no[level] = 1
-            level_depth = 1
-            if 2 in level2no:
-                if level2no[1] + level2no[2] <= 17:
-                    level_depth = 2
-            if 3 in level2no:
-                if level2no[1] + level2no[2] + level2no[3] <= 17:
-                    level_depth = 3
+            max_headings = 17  # max no of headings in pull down menu
+            level_depth = 0
+            num_headings = 0  # total no of headings in n levels
+            for n in 0, 1, 2, 3:
+                if n in level2no:
+                    num_headings += level2no[n]
+                    if num_headings <= max_headings:
+                        level_depth += 1
+                    else:
+                        break
         else:
             level_depth = 2  # default in a normal toc
 
@@ -308,7 +311,7 @@ def toc2html(font_size=80, bootstrap=True):
             toc_html += '     <ul%s>\n' % ul_class
             uls += 1
         btitle = title = title.strip()
-        if level_depth == 2 and level == level_min:
+        if level_depth >= 2 and level == level_min:
             btitle = '<b>%s</b>' % btitle  # bold for highest level
         toc_html += '     <!-- navigation toc: --> <li><a href="#%s" style="font-size: %d%%;">%s%s</a></li>\n' % (href, font_size, spaces, btitle)
         if nested_list and i < len(tocinfo['sections'])-1 and \
@@ -514,9 +517,8 @@ def html_code(filestr, code_blocks, code_block_types,
         if 'label' in tex_blocks[i]:
             # Fix label -> \label in tex_blocks
             tex_blocks[i] = tex_blocks[i].replace(' label{', ' \\label{')
-            pattern = r'^label\{'
-            cpattern = re.compile(pattern, re.MULTILINE)
-            tex_blocks[i] = cpattern.sub('\\label{', tex_blocks[i])
+            tex_blocks[i] = re.sub(r'^label\{', '\\label{', tex_blocks[i],
+                                   flags=re.MULTILINE)
 
     from doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)

@@ -108,6 +108,11 @@ def rst_code(filestr, code_blocks, code_block_types,
     for i in range(len(tex_blocks)):
         tex_blocks[i] = indent_lines(tex_blocks[i], format)
 
+    # Fix labels
+    if option('rst_mathjax'):
+        for i in range(len(tex_blocks)):
+            tex_blocks[i] = tex_blocks[i].replace(' label{', ' \\label{')
+
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
 
     # substitute !bc and !ec appropriately:
@@ -127,12 +132,21 @@ def rst_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'^!bt\n', '.. latex::\n\n', filestr, re.MULTILINE)
 
     if option('rst_mathjax') and (re.search(r'^!bt', filestr, flags=re.MULTILINE) or re.search(r'\\\( .+ \\\)', filestr)):
+        # First add MathJax script in the very beginning of the file
         from html import mathjax_header
         latex = indent_lines(mathjax_header().lstrip(), 'rst')
         filestr = '\n.. raw:: html\n\n' + latex + '\n\n' + filestr
+        # Replace all the !bt parts by raw html directive (make sure
+        # the coming block is sufficiently indented, we used 8 chars above)[[[
         filestr = re.sub(bt_regex_pattern, r'\g<1>\n\n.. raw:: html\n\n        $$', filestr,
                          flags=re.MULTILINE)
-        filestr = re.sub(r'^!et *\n', '        $$\n', filestr, flags=re.MULTILINE)
+        filestr = re.sub(r'^!et *\n', '        $$\n\n', filestr, flags=re.MULTILINE)
+        # Remove inner \[..\] from equations $$ \[ ... \] $$
+        filestr = re.sub(r'\$\$\s*\\\[', '$$', filestr)
+        filestr = re.sub(r'\\\]\s*\$\$', '$$', filestr)
+        # Equation references (ref{...}) must be \eqref{...} in MathJax
+        # (note: this affects also (ref{...}) syntax in verbatim blocks...)
+        filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
     else:
         # just use the same substitution for tex blocks as for code blocks:
         filestr = re.sub(bt_regex_pattern, r'\g<1>::\n', filestr,
@@ -431,20 +445,6 @@ def rst_index_bib(filestr, index, citations, pubfile, pubdata):
 
     return filestr
 
-def _find_breaking_command(text, envir):
-    """
-    Inside admonitions or any environment indicated by .. on the beginning
-    of the line, we cannot have a comment, an index or other constructions
-    that also start with ..
-    """
-    m = re.search(r'^\.\. (.*)$', text, flags=re.MULTILINE)
-    if m:
-        print '*** error: found an illegal instruction inside %s environment' % (envir)
-        print '   ', m.group()
-        print '\n    complete environment text:'
-        print text
-        _abort()
-
 def rst_box(block, format, text_size='normal'):
     return """
 .. The below box could be typeset as .. admonition: Attention
@@ -459,7 +459,6 @@ def rst_box(block, format, text_size='normal'):
 #""" % (indent_lines(block, format, ' '*4))
 
 def rst_quote(block, format, text_size='normal'):
-    _find_breaking_command(block, 'quote')
     # Insert empty comment to distinguish from possibly
     # previous list, code, etc.
     return """
@@ -477,7 +476,6 @@ def rst_admon(block, format, title='Admonition', text_size='normal'):
     if title[-1] in ('!', ':', '?', ';', '.'):
         # : is always added to the title - remove other punctuation
         title = title[:-1]
-    _find_breaking_command(block, 'admonition')
     return """
 .. admonition:: %s
 
@@ -493,7 +491,6 @@ def rst_block(block, format, title='', text_size='normal'):
 
 def rst_warning(block, format, title='Warning', text_size='normal'):
     if title.startswith('Warning'):
-        _find_breaking_command(block, 'warning')
         # Use pre-defined admonition that coincides with our needs
         return """
 .. warning::
@@ -508,7 +505,6 @@ def rst_question(block, format, title='Question', text_size='normal'):
 
 def rst_notice(block, format, title='Notice', text_size='normal'):
     if title.startswith('Notice'):
-        _find_breaking_command(block, 'notice')
         return """
 .. note::
 %s
