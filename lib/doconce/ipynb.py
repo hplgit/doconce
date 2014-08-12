@@ -1,12 +1,20 @@
-# NOTE: very experimental start
-
 import re, sys
 from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex
 from html import html_movie
 from pandoc import pandoc_table, pandoc_ref_and_label, \
      pandoc_index_bib, pandoc_quote, pandoc_figure
+from misc import option
 
+"""
+TODO:
+
+1. Only pycod, pypro and later other languages should go to code tp,
+otherwise use plain markdown verbatim block and mark cell as "markdown"
+        for i in range(len(code_blocks)):
+            code_blocks[i] = indent_lines(code_blocks[i], format)
+
+"""
 
 def ipynb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
@@ -33,36 +41,127 @@ def ipynb_figure(m):
 
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
-    # Parse document into markdown text, code blocks, and tex blocks
+    # newcommands (code taken from html.py)
+    import glob
+    newcommands_files = list(
+        sorted([name
+                for name in glob.glob('newcommands*.tex')
+                if not name.endswith('.p.tex')]))
+    newcommands = ''
+    for filename in newcommands_files:
+        f = open(filename, 'r')
+        text = ''
+        for line in f.readlines():
+            if not line.startswith('%'):
+                text += line
+        text = text.strip()
+        if text:
+            newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
+                           + '\n$$\n\n'
+    if newcommands:
+        filestr = newcommands + filestr
+
+    # filestr becomes json list after this function so we must typeset
+    # envirs here. All envirs are typeset as pandoc_quote.
     from common import _CODE_BLOCK, _MATH_BLOCK
+    envir_format = option('ipynb_admon=', 'quote')
+    from doconce import doconce_envirs
+    envirs = doconce_envirs()[8:-1]
+    for envir in envirs:
+        pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
+        if envir_format in ('quote', 'paragraph'):
+            def subst(m):
+                title = m.group(1).strip()
+                # Text size specified in parenthesis?
+                m2 = re.search('^\s*\((.+?)\)', title)
+
+                if title == '' and envir not in ('block', 'quote'):
+                    title = envir.capitalize() + '.'
+                elif title.lower() == 'none':
+                    title == ''
+                elif m2:
+                    text_size = m2.group(1).lower()
+                    title = title.replace('(%s)' % text_size, '').strip()
+                elif title and title[-1] not in ('.', ':', '!', '?'):
+                    # Make sure the title ends with puncuation
+                    title += '.'
+                # Recall that this formatting is called very late
+                # so native format must be used
+                if title:
+                    title = '**' + title + '**\n'
+                    # Could also consider subsubsection formatting
+                block = m.group(2)
+                if envir_format == 'quote':
+                    # Make Markdown quote of the block: lines start with >
+                    lines = []
+                    for line in block.splitlines():
+                        # Just quote plain text
+                        if not (_MATH_BLOCK in line or
+                                _CODE_BLOCK in line or
+                                line.startswith('FIGURE:') or
+                                line.startswith('MOVIE:') or
+                                line.startswith('|')):
+                            lines.append('> ' + line)
+                        else:
+                            lines.append('\n' + line + '\n')
+                    block = '\n'.join(lines) + '\n\n'
+
+                if title:
+                    title = '> ' + title
+                text = title + block + '\n\n'
+                return text
+
+        filestr = re.sub(pattern, subst, filestr,
+                         flags=re.DOTALL | re.MULTILINE)
+
+    # Fix pyshell and ipy interactive sessions: remove prompt and output
+    for i in range(len(code_blocks)):
+        tp = code_block_types[i]
+        if tp in ('pyshell', 'ipy'):
+            lines = code_blocks[i].splitlines()
+            for j in range(len(lines)):
+                if lines[j].startswith('>>> ') or lines[j].startswith('... '):
+                    lines[j] = lines[j][4:]
+                elif lines[j].startswith('In['):
+                    lines[j] = ':'.join(lines[j].split(':')[1:])
+                else:
+                    # output
+                    lines[j] = ''
+
+            for j in range(lines.count('')):
+                lines.remove('')
+            code_blocks[i] = '\n'.join(lines)
+
+    # Parse document into markdown text, code blocks, and tex blocks.
+    # Store in nested list notebook_blocks.
+    notebook_blocks = [[]]
     authors = ''
-    blocks = [[]]
     for line in filestr.splitlines():
         if line.startswith('authors = [new_author(name='):
-            authors = line
+            authors = line[10:]
         elif _CODE_BLOCK in line:
-            blocks[-1] = '\n'.join(blocks[-1]).strip()
-            blocks.append(line)
+            notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
+            notebook_blocks.append(line)
         elif _MATH_BLOCK in line:
-            blocks[-1] = '\n'.join(blocks[-1]).strip()
-            blocks.append(line)
+            notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
+            notebook_blocks.append(line)
         else:
-            if not isinstance(blocks[-1], list):
-                blocks.append([])
-            blocks[-1].append(line)
-    if isinstance(blocks[-1], list):
-        blocks[-1] = '\n'.join(blocks[-1]).strip()
+            if not isinstance(notebook_blocks[-1], list):
+                notebook_blocks.append([])
+            notebook_blocks[-1].append(line)
+    if isinstance(notebook_blocks[-1], list):
+        notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
 
 
     # Add block type info
     pattern = r'(\d+) +%s'
-    for i in range(len(blocks)):
-        if re.match(pattern % _CODE_BLOCK, blocks[i]):
-            blocks[i] = ['code', blocks[i]]
-        elif re.match(pattern % _MATH_BLOCK, blocks[i]):
-            blocks[i] = ['math', blocks[i]]
+    for i in range(len(notebook_blocks)):
+        if re.match(pattern % _CODE_BLOCK, notebook_blocks[i]):
+            notebook_blocks[i] = ['code', notebook_blocks[i]]
+        elif re.match(pattern % _MATH_BLOCK, notebook_blocks[i]):
+            notebook_blocks[i] = ['math', notebook_blocks[i]]
         else:
-            blocks[i] = ['text', blocks[i]]
+            notebook_blocks[i] = ['text', notebook_blocks[i]]
 
     # Go through tex_blocks and wrap in $$
     # (doconce.py runs align2equations so there are no align/align*
@@ -97,15 +196,15 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # blocks is now a list of text chunks in markdown and math/code line
     # instructions. Insert code and tex blocks
-    for i in range(len(blocks)):
-        if _CODE_BLOCK in blocks[i][1] or _MATH_BLOCK in blocks[i][1]:
-            words = blocks[i][1].split()
-            # start of blocks[i]: number block-indicator code-type
+    for i in range(len(notebook_blocks)):
+        if _CODE_BLOCK in notebook_blocks[i][1] or _MATH_BLOCK in notebook_blocks[i][1]:
+            words = notebook_blocks[i][1].split()
+            # start of notebook_blocks[i]: number block-indicator code-type
             n = int(words[0])
-            if _CODE_BLOCK in blocks[i][1]:
-                blocks[i][1] = code_blocks[n]
-            if _MATH_BLOCK in blocks[i][1]:
-                blocks[i][1] = tex_blocks[n]
+            if _CODE_BLOCK in notebook_blocks[i][1]:
+                notebook_blocks[i][1] = code_blocks[n]
+            if _MATH_BLOCK in notebook_blocks[i][1]:
+                notebook_blocks[i][1] = tex_blocks[n]
 
     # Make IPython structures
     from IPython.nbformat.v3 import (
@@ -115,7 +214,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     import IPython.nbformat.v3.nbjson
     ws = new_worksheet()
     prompt_number = 1
-    for block_tp, block in blocks:
+    for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
             ws.cells.append(new_text_cell(u'markdown', source=block))
         elif block_tp == 'code' and block != '':
@@ -126,7 +225,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
     title = m.group(1).strip() if m else ''
     if authors:
-        exec(authors)
+        authors = eval(authors)
         md = new_metadata(name=title, authors=authors)
     else:
         md = new_metadata(name=title)
@@ -205,7 +304,7 @@ def define(FILENAME_EXTENSION,
         'math':      None,  # indicates no substitution, leave as is
         'math2':     r'\g<begin>$\g<latexmath>$\g<end>',
         'emphasize': None,
-        'bold':      None,
+        'bold':      r'\g<begin>**\g<subst>**\g<end>',,
         'figure':    ipynb_figure,
         #'movie':     default_movie,
         'movie':     html_movie,
@@ -233,9 +332,10 @@ def define(FILENAME_EXTENSION,
         }
 
     CODE['ipynb'] = ipynb_code
-    ENVIRS['ipynb'] = {
-        'quote':        pandoc_quote,
-        }
+    # Envirs are in doconce.py treated after code is inserted, which
+    # means that the ipynb format is json. Therefore, we need special
+    # treatment of envirs in ipynb_code and ENVIRS can be empty.
+    ENVIRS['ipynb'] = {}
 
     from common import DEFAULT_ARGLIST
     ARGLIST['ipynb'] = DEFAULT_ARGLIST
