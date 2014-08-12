@@ -68,7 +68,8 @@ foreground and background color inherited from the surroundnings.
 Default: on."""),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
-document is embedded."""),
+document is embedded. (Often preferred to run with --no_title)"""),
+    ('--no_title', 'Comment out TITLE, AUTHOR, DATE.\nOften used with HTML templates.'),
     ('--html_toc_depth=',
      """No of levels in the table of contents in HTML output for
 Bootstrap-based styles. Default: 2."""),

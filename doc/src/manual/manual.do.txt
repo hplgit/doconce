@@ -1453,7 +1453,8 @@ surround verbatim text, which is correctly transformed in a LaTeX setting to
 !ec
 Everything related to the index simply becomes invisible in plain
 text, Epytext, StructuredText, HTML, and wiki formats.  Note: `idx`
-commands should be inserted outside paragraphs, not in between the
+commands should be inserted outside paragraphs and admonitions,
+not in between the
 text as this may cause some strange behaviour of reST and
 Sphinx formatting.  As a recommended rule, index items are naturally
 placed right after section headings, before the text begins, while
