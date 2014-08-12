@@ -2601,6 +2601,7 @@ def doconce_split_html(header, parts, footer, basename, filename):
             nav_button = arg.split('=')[1]
             break
     # Map nav_button name to actual image file in bundled/html_images
+    prev_button = next_button = ''
     if nav_button == 'gray1':
         prev_button = 'prev1'
         next_button = 'next1'
@@ -2622,13 +2623,15 @@ def doconce_split_html(header, parts, footer, basename, filename):
     header_part_line = ''  # 'colorline'
     if local_navigation_pics:
         copy_datafiles(html_images)  # copy html_images subdir if needed
-        button_prev_filename = html_imagefile(prev_button)
-        button_next_filename = html_imagefile(next_button)
-        html.add_to_file_collection(button_prev_filename, filename, 'a')
-        html.add_to_file_collection(button_next_filename, filename, 'a')
+        if prev_button:
+            prev_button_filename = html_imagefile(prev_button)
+            next_button_filename = html_imagefile(next_button)
+            html.add_to_file_collection(prev_button_filename, filename, 'a')
+            html.add_to_file_collection(next_button_filename, filename, 'a')
     else:
-        button_prev_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_button
-        button_next_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_button
+        if prev_button:
+            prev_button_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % prev_button
+            next_button_filename = 'http://hplgit.github.io/doconce/bundled/html_images/%s.png' % next_button
 
 
     # Fix internal links to point to the right splitted file
@@ -2822,27 +2825,28 @@ def doconce_split_html(header, parts, footer, basename, filename):
             buttons = bootstrap_navigation(pn, prev_part_filename, next_part_filename)
         else:
             # Simple navigation buttons at the top and bottom of the page
-            lines.append('<!-- begin top navigation -->') # for easy removal
+            lines.append('<p>\n<!-- begin top navigation -->') # for easy removal
             if pn > 0:
                 if nav_button == 'text':
                     lines.append("""
-<a href="%s">&laquo; Previous</a>
+<div style="text-align: left;"><a href="%s">&laquo; Previous</a></div>
 """ % (prev_part_filename))
                 else:
                     lines.append("""
-<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
-""" % (prev_part_filename, button_prev_filename))
+<div style="text-align: left;"><a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a></div>
+""" % (prev_part_filename, prev_button_filename))
             if pn < len(parts)-1:
                 if nav_button == 'text':
                     lines.append("""
-<a href="%s">Next &raquo;</a>
+<div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
                 else:
                     lines.append("""
-<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
-""" % (next_part_filename, button_next_filename))
-            lines.append('<!-- end top navigation -->\n\n')
+<div style="text-align: right;"><a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a></div>
+""" % (next_part_filename, next_button_filename))
+            lines.append('<!-- end top navigation -->\n</p>\n\n')
             lines.append('<p>\n')
+
 
 
         # Main body of text
@@ -2857,22 +2861,22 @@ def doconce_split_html(header, parts, footer, basename, filename):
             if pn > 0:
                 if nav_button == 'text':
                     lines.append("""
-<a href="%s">&laquo; Previous</a>
-""" % (prev_part_filename, button_prev_filename))
+<div style="text-align: left;"><a href="%s">&laquo; Previous</a></div>
+""" % (prev_part_filename))
                 else:
                     lines.append("""
-<a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a>
-""" % (prev_part_filename, button_prev_filename))
+<div style="text-align: left;"><a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a></div>
+""" % (prev_part_filename, prev_button_filename))
             if pn < len(parts)-1:
                 if nav_button == 'text':
                     lines.append("""
-<a href="%s">Next &raquo;></a>
+<div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
                 else:
                     lines.append("""
-<a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a>
-""" % (next_part_filename, button_next_filename))
-            lines.append('<!-- end bottom navigation -->\n\n')
+<div style="text-align: right;"><a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a></div>
+""" % (next_part_filename, next_button_filename))
+            lines.append('<!-- end bottom navigation -->\n</p>\n\n')
             lines += footer
 
         html.add_to_file_collection(part_filename, filename, 'a')

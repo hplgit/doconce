@@ -79,17 +79,16 @@ however, is a series of features for supporting both small and large
 documents (books in particular) with much mathematics and computer
 code. DocOnce can also output Sphinx (not supported by Pandoc or
 MultiMarkdown), a format that is very attractive for presenting
-scientific material on the web.  A recent dialect of DocOnce allows
-Markdown syntax, extended with DocOnce syntax as you like, as valid
-input to the DocOnce translator.
+scientific material and software documentation on the web.
+(DocOnce allows basic Markdown syntax as input, extended with DocOnce
+syntax as you like.)
 
 __Disclaimer.__ DocOnce applies *text transformations*, mostly via
 regular expressions. This is not a fool-proof method of translation
 compared to real parsing. The possibility for tweaking the layout in
-the DocOnce document is obviously limited (compared to LaTeX and HTML
-in particular) since the text can go to all sorts of sophisticated
+the DocOnce document is obviously limited (at least compared to LaTeX and HTML) since the text can go to all sorts of
 markup languages. This can be compensated, however, by clever use of
-the programmable preprocessors and by automatic editing of the output
-(via regular expressions).
+the programmable Mako preprocessor used by DocOnce and by automatic
+editing of the generated output (e.g., via regular expressions).
 
 
