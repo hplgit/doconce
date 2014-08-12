@@ -267,12 +267,32 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 
 def toc2html(font_size=80, bootstrap=True):
+    global tocinfo  # computed elsewhere
     # level_depth: how many levels that are represented in the toc
-    level_depth = int(option('html_toc_depth=', '2'))
+    level_depth = int(option('html_toc_depth=', '-1'))
+    if level_depth == -1:
+        if bootstrap:
+            # We can have max 17 lines, so analyze the toc
+            level2no = {}
+            for item in tocinfo:
+                level = item[1]
+                if level in level2no:
+                    level2no[level] += 1
+                else:
+                    level2no[level] = 1
+            level_depth = 1
+            if 2 in level2no:
+                if level2no[1] + level2no[2] <= 17:
+                    level_depth = 2
+            if 3 in level2no:
+                if level2no[1] + level2no[2] + level2no[3] <= 17:
+                    level_depth = 3
+        else:
+            level_depth = 2  # default in a normal toc
+
     indent = int(option('html_toc_indent=', '3'))
     nested_list = indent == 0
 
-    global tocinfo  # computed elsewhere
     level_min = tocinfo['highest level']
     level_max = level_min + level_depth - 1
 

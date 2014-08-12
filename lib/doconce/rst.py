@@ -431,6 +431,20 @@ def rst_index_bib(filestr, index, citations, pubfile, pubdata):
 
     return filestr
 
+def _find_breaking_command(text, envir):
+    """
+    Inside admonitions or any environment indicated by .. on the beginning
+    of the line, we cannot have a comment, an index or other constructions
+    that also start with ..
+    """
+    m = re.search(r'^\.\. (.*)$', text, flags=re.MULTILINE)
+    if m:
+        print '*** error: found an illegal instruction inside %s environment' % (envir)
+        print '   ', m.group()
+        print '\n    complete environment text:'
+        print text
+        _abort()
+
 def rst_box(block, format, text_size='normal'):
     return """
 .. The below box could be typeset as .. admonition: Attention
@@ -445,6 +459,7 @@ def rst_box(block, format, text_size='normal'):
 #""" % (indent_lines(block, format, ' '*4))
 
 def rst_quote(block, format, text_size='normal'):
+    _find_breaking_command(block, 'quote')
     # Insert empty comment to distinguish from possibly
     # previous list, code, etc.
     return """
@@ -462,6 +477,7 @@ def rst_admon(block, format, title='Admonition', text_size='normal'):
     if title[-1] in ('!', ':', '?', ';', '.'):
         # : is always added to the title - remove other punctuation
         title = title[:-1]
+    _find_breaking_command(block, 'admonition')
     return """
 .. admonition:: %s
 
@@ -477,6 +493,7 @@ def rst_block(block, format, title='', text_size='normal'):
 
 def rst_warning(block, format, title='Warning', text_size='normal'):
     if title.startswith('Warning'):
+        _find_breaking_command(block, 'warning')
         # Use pre-defined admonition that coincides with our needs
         return """
 .. warning::
@@ -491,6 +508,7 @@ def rst_question(block, format, title='Question', text_size='normal'):
 
 def rst_notice(block, format, title='Notice', text_size='normal'):
     if title.startswith('Notice'):
+        _find_breaking_command(block, 'notice')
         return """
 .. note::
 %s
@@ -568,7 +586,8 @@ def define(FILENAME_EXTENSION,
         'movie':         rst_movie,
         #'comment':       '.. %s',  # rst does not like empty comment lines:
         # so therefore we introduce a function to remove empty comment lines
-        'comment':       lambda c: '' if c.isspace() or c == '' else '.. %s\n' % c,
+        # (we insert an extra blank first to be safe)
+        'comment':       lambda c: '' if c.isspace() or c == '' else '\n.. %s\n' % c,
         #'linebreak':     r'| \g<text>',  # does not work: interfers with tables and requires a final blank line after block
         'linebreak':     r'<linebreakpipe> \g<text>',  # fixed in rst_code/sphinx_code as a hack
         'footnote':      rst_footnotes,
