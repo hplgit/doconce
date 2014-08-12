@@ -3099,13 +3099,6 @@ def doconce2format(filestr, format):
 
     # -----------------------------------------------------------------
 
-    # Step: check if ^?TITLE: is present, and if so, header and footer
-    # are to be included (later below):
-    if re.search(r'^TITLE:', filestr, re.MULTILINE):
-        has_title = True
-    else:
-        has_title = False
-
     # Translate from Markdown syntax if that is requested
     if option('markdown'):
         filestr = markdown2doconce(filestr, format)
@@ -3173,6 +3166,19 @@ def doconce2format(filestr, format):
     # Check URLs to see if they are valid
     if option('urlcheck'):
         urlcheck(filestr)
+
+    # Comment out title, author, date?
+    if option('no_title'):
+        for tag in 'TITLE', 'AUTHOR', 'DATE':
+            filestr = re.sub(r'^%s:' % tag, '#%s:' % tag,
+                             filestr, flags=re.MULTILINE)
+
+    # Check if ^?TITLE: is present, and if so, header and footer
+    # are to be included (later below):
+    if re.search(r'^TITLE:', filestr, re.MULTILINE):
+        has_title = True
+    else:
+        has_title = False
 
     # Lift sections up or down?
     s2name = {9: 'chapter', 7: 'section',

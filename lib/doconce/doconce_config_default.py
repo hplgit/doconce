@@ -28,6 +28,7 @@ pygments_html_linenos = False
 #html_code_style = 
 #html_pre_style = 
 #html_template = 
+no_title = False
 #html_toc_depth = 
 #html_toc_indent = 
 #html_body_font = 
