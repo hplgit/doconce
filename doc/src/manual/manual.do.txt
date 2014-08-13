@@ -2968,6 +2968,18 @@ Especially when the Python code in Mako grows and becomes non-trivial,
 this setup for having the code external to the DocOnce document is
 very effective.
 
+!bsummary Things to remember when programming Mako
+
+ * Do not use continuation character (backslash) in Python code.
+ * When a Mako error refers to a line in the text, invoke the
+   file that Mako sees: `tmp_preprocess__mydoc.do.txt` if
+   the DocOnce file has name `mydoc.do.txt`.
+ * Use double `##` (Mako comment) to comment out Mako calls
+   of the form `${name...}`.
+
+And to be repeated: keep the Python code in separate files!
+!esummary
+
 One can use Mako to extend the DocOnce syntax. Three examples are given next.
 
 !split

@@ -157,6 +157,7 @@ def define(FILENAME_EXTENSION,
     FILENAME_EXTENSION['plain'] = '.txt'
     BLANKLINE['plain'] = '\n'
     # replacement patterns for substitutions of inline tags
+    encoding = 'utf-8'
     INLINE_TAGS_SUBST['plain'] = {
         'math':      r'\g<begin>\g<subst>\g<end>',  # drop $ signs
         'math2':     r'\g<begin>\g<puretext>\g<end>',
@@ -175,10 +176,10 @@ def define(FILENAME_EXTENSION,
         'title':     r'======= \g<subst> =======\n',  # doconce top section, to be substituted later
         'author':    plain_author,
         'date':      r'\nDate: \g<subst>\n',
-        'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst').decode('latin-1'))),
-        'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst').decode('latin-1'))),
-        'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst').decode('latin-1'))),
-        'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
+        'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst'))),
+        'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst'))),
+        'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst'))),
+        'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst'))),
         'paragraph':     r'*\g<subst>*\g<space>',  # extra blank
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text>',
