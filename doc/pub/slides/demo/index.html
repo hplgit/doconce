@@ -30,7 +30,7 @@ doconce slides_html demo reveal --html_slide_theme=solarized
 </pre>
 <p><li><a target="_blank" href="demo_reveal_solarized_plainpre.html">reveal, solarized theme with plain pre, no pygments</a>
 <pre>
-doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME=solarized
+doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
 doconce slides_html demo reveal --html_slide_theme=solarized
 </pre>
 <li><a target="_blank" href="demo_reveal_darkgray.html">reveal, darkgray theme</a>
@@ -85,7 +85,7 @@ doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio
 </pre>
 <li><a target="_blank" href="demo_reveal_uio_simula.html">reveal, combined uio+simula theme</a>
 <pre>
-doconce format html demo --no_pygments_html SLIDE_TYPE=reveal SLIDE_THEME="uio+simula"
+doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME="uio+simula"
 doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_simula_symbol
 </pre>
 <li><a target="_blank" href="demo_reveal_sky.html">reveal, sky theme</a>
@@ -171,10 +171,10 @@ of the original rainbow background)
 doconce format html demo --pygments_html_style=monokai --keep_pygments_html_bg SLIDE_TYPE=csss SLIDE_THEME=csss_default
 doconce slides_html demo csss --html_slide_theme=csss_default
 </pre>
-<li>LaTeX Beamer PDF:  <a href="demo_blue_plain.pdf">blue_plain</a> <a href="demo_blue_shadow.pdf">blue_shadow</a> <a href="demo_red_plain.pdf">red_plain</a> <a href="demo_red_shadow.pdf">red_shadow</a> <a href="demo_cbc.pdf">cbc</a> <a href="demo_simula.pdf">simula</a>
+<li>LaTeX Beamer PDF:  <a href="demo_blue_plain.pdf">blue_plain</a> <a href="demo_blue_shadow.pdf">blue_shadow</a> <a href="demo_red_plain.pdf">red_plain</a> <a href="demo_red_shadow.pdf">red_shadow</a> <a href="demo_dark_gradient.pdf">dark_gradient</a> <a href="demo_vintage.pdf">vintage</a> <a href="demo_cbc.pdf">cbc</a> <a href="demo_simula.pdf">simula</a>
 <pre>
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow"
-doconce ptex2tex demo -DLATEX_HEADING=beamer envir=minted
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer
+doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 cp demo.pdf demo_red_shadow.pdf

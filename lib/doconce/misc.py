@@ -4536,6 +4536,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  %% for subexercises: a), b), etc
+
 """ % vars()
 
     # Check if we need minted or anslistings:

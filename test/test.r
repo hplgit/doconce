@@ -63806,6 +63806,10 @@ title (Warning) since no title is specified.
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
+
 \newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
@@ -67069,6 +67073,10 @@ Last page gets rendered to
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
+
 \newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
@@ -69161,6 +69169,10 @@ qualitatively correct results.
 
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
+
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
 \newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
 \newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
@@ -78222,7 +78234,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Aug 14 19:28:46 2014.
+# sphinx-quickstart on Thu Aug 14 20:08:06 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

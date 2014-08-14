@@ -53,22 +53,21 @@ editfix $html.html
 
 # Plain HTML documents
 html=${name}-solarized
-system doconce format html $name --pygments_html_style=perldoc --html_style=solarized --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html
 editfix $html.html
+system doconce split_html $html.html
 
 html=${name}-plain
 system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html
 editfix $html.html
 system doconce split_html $html.html
-# Remove top navigation in all parts
-doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}-plain.html ._${name}*.html
 
 # One big HTML file with space between the slides
 html=${name}-1
 system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html
 editfix $html.html
 # Add space between splits
-system doconce split_html $name --method=space8
+system doconce split_html $html --method=space8
 #doconce replace '<!-- !split -->' '<!-- !split --><br><br><br><br><br><br><br><br>' $html.html
 
 # LaTeX Beamer slides
@@ -85,16 +84,18 @@ system doconce format pdflatex $name --minted_latex_style=trac
 editfix ${name}.p.tex
 system doconce ptex2tex $name envir=minted
 doconce replace 'section{' 'section*{' $name.tex
+# Hack: suddenly \subex{} didn't work in this document
+doconce subst -m '^\\subex\{' '\paragraph{' $name.tex
 system pdflatex -shell-escape $name
 mv -f $name.pdf ${name}-minted.pdf
 cp $name.tex ${name}-minted.tex
 
 system doconce format pdflatex $name
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix ${name}.p.tex
 doconce replace 'section{' 'section*{' ${name}.p.tex
 system doconce ptex2tex $name envir=ans:nt
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+# Hack: suddenly \subex{} didn't work in this document
+doconce subst -m '^\\subex\{' '\paragraph{' $name.tex
 system pdflatex $name
 mv -f $name.pdf ${name}-anslistings.pdf
 cp $name.tex ${name}-anslistings.tex
@@ -102,15 +103,12 @@ cp $name.tex ${name}-anslistings.tex
 # sphinx doesn't handle math inside code well, we drop it since
 # other formats demonstrate doconce writing this way
 system doconce format sphinx $name
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 editfix ${name}.rst
 system doconce sphinx_dir author="H. P. Langtangen" theme=pyramid $name
 system python automake_sphinx.py
 
 system doconce format pandoc $name  # Markdown (pandoc extended)
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 system doconce format gwiki  $name  # Googlecode wiki
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # These don't like slides with code after heading:
 #doconce format rst    $name  # reStructuredText
@@ -132,7 +130,6 @@ cp sw_index.html $dest/index.html
 # --------- short demo talk ------------
 
 system doconce format html demo SLIDE_TYPE=dummy SLIDE_THEME=dummy # test
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
 
 # Make all the styles for the short demo talk
 system doconce slides_html demo all  # generates tmp_slides_html_all.sh
@@ -177,7 +174,7 @@ doconce slides_html demo reveal --html_slide_theme=solarized
 cp demo.html demo_reveal_solarized_plainpre.html
 
 # LaTeX Beamer slides
-themes="blue_plain blue_shadow red_plain red_shadow dark dark_gradient vintage cbc simula"
+themes="blue_plain blue_shadow red_plain red_shadow dark_gradient vintage cbc simula"
 beamer_pdfs=""
 for theme in $themes; do
 doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
@@ -189,10 +186,8 @@ beamer_pdfs="$beamer_pdfs <a href=\"demo_$theme.pdf\">$theme</a>"
 done
 
 # LaTeX document
-doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
-doconce ptex2tex demo envir=minted
-if [ $? -ne 0 ]; then echo "make.sh: abort"; exit 1; fi
+system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
+system doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 
 cp -r demo*.pdf demo_*.html reveal.js deck.js csss fig $dest/demo/

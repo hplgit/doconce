@@ -14,7 +14,7 @@ FIGURE: [fig/CN_logo, width=300 frac=0.4]
 ======= Goal =======
 
 The primary goal of this demo talk is to demonstrate how to write
-talks with &quot;Doconce&quot;: &quot;https://github.com/hplgit/doconce&quot;
+talks with &quot;DocOnce&quot;: &quot;https://github.com/hplgit/doconce&quot;
 and get them rendered in numerous HTML formats.
 # #if FORMAT in (&quot;html&quot;, &quot;pdflatex&quot;, &quot;latex&quot;)
 !bnotice Layout
@@ -34,7 +34,8 @@ utilizes ${SLIDE_TYPE} slides with the theme `${SLIDE_THEME}`.
 !bnotice
 Speaker notes show up by
 % if SLIDE_TYPE == &#39;reveal&#39;:
-pressing &quot;s&quot;.
+pressing &quot;s&quot; (but you must run reveal locally and
+some packages installed, see &quot;this description&quot;: &quot;https://github.com/hakimel/reveal.js/#installation&quot;).
 % elif SLIDE_TYPE == &#39;deck&#39;:
 pressing &quot;n&quot;.
 % elif SLIDE_TYPE == &#39;csss&#39;:

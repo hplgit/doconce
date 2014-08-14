@@ -51,7 +51,7 @@ def pack_local_dirs():
     # minted.sty and anslistings.sty are not copied from some
     # repo every time, so get the latest versions from ptex2tex manually.
     os.chdir('latex_styles')
-    system('zip latex_styles.zip *.sty *.pdf *.pdf *.eps')
+    system('zip latex_styles.zip *')
     system('mv -f latex_styles.zip ..')
     os.chdir(os.pardir)
 

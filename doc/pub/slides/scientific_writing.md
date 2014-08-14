@@ -1,8 +1,8 @@
-<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-<!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
+<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way -->
+<!-- TITLE: Scientific Writing Anno 2013: The DocOnce Way -->
 % Scientific Writing and Publishing Anno 2013
-% Hans Petter Langtangen
-% Jan 8, 2014
+% **Hans Petter Langtangen**
+% Aug 14, 2014
 
 ![](fig/doconce1b.png)
 
@@ -14,10 +14,8 @@
 ## Scientific writing = LaTeX
 
  * Pre 1980: Handwriting + publisher (paper or book)
-
- * Post 1984: scientists write TeX and LaTeX
-
- * Post 1995: publish LaTeX on the web or in journals and books
+ * Post 1985: scientists write LaTeX
+ * Post 1995: publish LaTeX on the web and in journals and books
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,7 +37,10 @@ print 'Hello, World!'
 \end{Verbatim}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Big late 1990s question: Will MS Word replace LaTeX? It never did!
+*Big late 1990s question:*\g<space>
+Will MS Word replace LaTeX? It never did!
+
+
 
 <!-- !split -->
 ## Scientific publishing needs to address new media
@@ -80,7 +81,6 @@ Big late 1990s question: Will MS Word replace LaTeX? It never did!
 ## Scope of this presentation
 
   * Focus: documents with <font color="red">much</font> *math* and *computer code*
-
   * Key question: What tools should I use for scientific writing?
 
 The default answer is LaTeX, but there are many
@@ -121,19 +121,12 @@ Sphinx, Markdown, MediaWiki, IPython notebook.
 
 <!-- !bslidecell 00 0.4 -->
  * BW paper
-
  * Color paper
-
  * Slides
-
  * Web w/design
-
  * Wiki
-
  * Blog
-
  * Notebook
-
  * ...
 
 <!-- !eslidecell -->
@@ -149,15 +142,10 @@ Sphinx, Markdown, MediaWiki, IPython notebook.
 When I write some scientific material,
 
  * a LaTeX document,
-
  * a blog post (HTML),
-
  * some web pages (HTML),
-
  * a Sphinx document,
-
  * an IPython notebook,
-
  * some Markdown files,
 
 and later want to collect the pieces into a larger document, maybe
@@ -172,39 +160,26 @@ Probably not, but I have a solution :-)
 ## Popular tools anno 2013 and their math support
 
 <!-- !bpop -->
- * _LaTeX_: de facto standard for math-instensive documents
-
- * _pdfLaTeX_, _XeLaTeX_, _LuaLaTeX_: takes over (figures in png, pdf) - use these!
-
- * _MS Word_: too clicky math support and ugly fonts, but much used
-
- * _HTML with MathJax_: "full" LaTeX *math*, but much tagging
-
- * _Sphinx_:
+ * **LaTeX**: de facto standard for math-instensive documents
+ * **pdfLaTeX**, **XeLaTeX**, **LuaLaTeX**: takes over (figures in png, pdf) - use these!
+ * **MS Word**: too clicky math support and ugly fonts, but much used
+ * **HTML with MathJax**: "full" LaTeX *math*, but much tagging
+ * **Sphinx**:
    somewhat limited LaTeX math support, but great support for web design,
    and less tagged than HTML
-
- * _reStructuredText_: similar to Sphinx, but no math support, transforms to
+ * **reStructuredText**: similar to Sphinx, but no math support, transforms to
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
-
- * _Markdown_: somewhat limited LaTeX math support, but minor tagging,
+ * **Markdown**: somewhat limited LaTeX math support, but minor tagging,
    transforms to lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
-
- * _IPython notebooks_: Markdown code/math,
+ * **IPython notebooks**: Markdown code/math,
    combines Python code, interactivity, and
    visualization, but requires all code snippets to sync together
-
- * _MediaWiki_: quite good LaTeX math support (cf. Wikipedia/Wikibooks)
-
- * Other _wiki_ formats: no math support, great for collaborative editing
-
- * _Wordpress_: supports LaTeX *formulas* only, but good blog post support
-
- * _Google blogger_: supports full HTML with MathJax
-
- * _Epydoc_: old tool for Python code documentation
-
- * _Plain text for email_: no math, just raw LaTeX, and no tagging
+ * **MediaWiki**: quite good LaTeX math support (cf. Wikipedia/Wikibooks)
+ * Other **wiki** formats: no math support, great for collaborative editing
+ * **Wordpress**: supports LaTeX *formulas* only, but good blog post support
+ * **Google blogger**: supports full HTML with MathJax
+ * **Epydoc**: old tool for Python code documentation
+ * **Plain text for email**: no math, just raw LaTeX, and no tagging
 
 <!-- !epop -->
 
@@ -213,19 +188,13 @@ Probably not, but I have a solution :-)
 ## LaTeX is very rich; other tools support much less
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
-
  * LaTeX equation math:
-
-    * _LaTeX_: `equation*`, `equation`, `align*`, `align` +
+    * **LaTeX**: `equation*`, `equation`, `align*`, `align` +
       `eqnarray`, `split`, `alignat`, ... (numerous!)
-
-    * _MathJax_: `equation*`, `equation`, `align*`, `align`
-
-    * _MediaWiki_: `equation*`, `equation`, `align*`, `align`
-
-    * _Sphinx_: `equation*`, `equation`, `align*`
-
-    * _Markdown_: `equation*`, `equation`, `eqnarray*`, `align*` (but no labels)
+    * **MathJax**: `equation*`, `equation`, `align*`, `align`
+    * **MediaWiki**: `equation*`, `equation`, `align*`, `align`
+    * **Sphinx**: `equation*`, `equation`, `align*`
+    * **Markdown**: `equation*`, `equation`, `eqnarray*`, `align*` (but no labels)
 
 
 <!-- !split -->
@@ -233,27 +202,16 @@ Probably not, but I have a solution :-)
 
 <!-- !bpop -->
  * Figures: all
-
  * Subfigures: LaTeX (`subfigure`)
-
  * Movies: LaTeX, raw HTML
-
  * Floating computer code: LaTeX; fixed computer code: all
-
  * Interactive programs: Sphinx, IPython notebook, raw HTML
-
  * Floating tables: LaTeX; fixed tables: all
-
  * Algorithms: LaTeX
-
  * Margin notes: LaTeX, HTML with tailored css code
-
  * Page references: LaTeX
-
  * Footnotes: LaTeX, Sphinx, reStructuredText, MediaWiki
-
  * Bibliography: LaTeX, Sphinx, reStructuredText, MediaWiki
-
  * Hyperlinks: all (but not on paper!)
 
 <!-- !epop -->
@@ -269,18 +227,13 @@ based on HTML and vice versa.
 <!-- !bpop -->
  * Sphinx refers to figures by the caption (has to be short!) and
    strips away any math notation (avoid that!).
-
  * Sphinx refers to sections by the title, but removes math in the
    reference, so avoid math in headlines.
-
  * Tables cannot be referred to by numbers and have to appear at
    fixed positions in the text.
-
  * Computer code has to appear at fixed positions in the text.
-
  * Algorithms must be written up using basic elements like lists or
    paragraphs with headings.
-
  * Recipes are often typeset as enumerated lists. For recipes with
    code or math blocks: drop the list (gives problems in some formats)
    and use paragraph (or subsubsection) headings with "Step 1.",
@@ -294,17 +247,13 @@ based on HTML and vice versa.
 <!-- !bpop -->
  * Footnotes must appear as part of the running text (e.g., sentences
    surrounded by parenthesis), since only a few formats support footnotes.
-
  * Sphinx does not handle code blocks where the first line is indented.
-
  * Multiple plots in the same figure: mount the plots to one image
    file and include this (`montage` for png, gif, jpeg; `pdftk`, `pdfnup`,
    and `pdfcrop` for PDF).
-
  * If you need several equations *numbered* in an `align` environment,
    recall that Sphinx, Markdown, and MediaWiki cannot handle this,
    although they have LaTeX math support.
-
  * Markdown tolerates labels in equations but cannot refer to them.
 
 <!-- !epop -->
@@ -319,13 +268,10 @@ based on HTML and vice versa.
 <!-- !bpop -->
  * Index words can appear anywhere in LaTeX, but should be outside
    paragraphs in other tools.
-
  * References to tables, program code and algorithms can only be
    made in LaTeX.
-
  * Figures are floating in LaTeX, but fixed in other tools, so place
    figures exactly where they are needed the first time.
-
  * Curve plots with color lines do not work well in black-and-white
    printing. Make sure plots makes sense in color and BW (e.g., by
    using colors *and* markers).
@@ -337,93 +283,74 @@ based on HTML and vice versa.
 
  * Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,
    man pages, Gnome devhelp files, Qt help files, texinfo, JSON
-
  * Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,
    reStructuredText, epub, DocBook, ... but not Sphinx
-
  * IPython notebook: can do LaTeX, reStructuredText, HTML, PDF,
    Python script
-
  * Sphinx and Markdown has some limited math support
 
 <!-- !split -->
-## Solution II: Use Doconce
+## Solution II: Use DocOnce
 
-[Doconce](http://hplgit.github.io/doconce/doc/web/index.html)
+[DocOnce](http://hplgit.github.io/doconce/doc/web/index.html)
 offers minimalistic typing, great flexibility wrt format,
 especially for scientific writing with *much math and code*.
 
  * Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
    Creole wiki, reST, plain text
-
  * Made for large science books *and* small notes
-
  * Targets paper and screen
-
  * Many special features (code snippets from files, embedded movies,
    admonitions, modern LaTeX layouts, ...)
-
  * Very effective for generating slides from ordinary text
-
- * Applies Mako: Doconce text is a program (!)
-
+ * Applies Mako: DocOnce text is a program (!)
  * Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 <!-- latex interprets 9 = as chapter and then needs book style... -->
 
 <!-- !split -->
-# Doconce
+# DocOnce
 
 <!-- !split -->
-## Doconce demos
+## DocOnce demos
 
 <http://hplgit.github.com/teamods/writing_reports/>
 
  * LaTeX-based PDF [for screen](http://hplgit.github.com/teamods/writing_reports/_static/report.pdf), [for printing](http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf), [for phone](http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf)
-
  * [Plain HTML](http://hplgit.github.com/teamods/writing_reports/_static/report_do.html) or with a [template](http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html) or [another template](http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html) or [solarized](http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html)
-
  * Sphinx: [agni](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html), [pyramid](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html), [classy](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html), [fenics](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html), [redcloud](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html)
-
  * HTML for [Google](http://doconce-report-demo.blogspot.no/) or [Wordpress](http://doconcereportdemo.wordpress.com/) for blog posts
-
- * [MediaWiki](http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page) (Wikipedia, Wikibooks, etc)
-
- * Doconce [source code](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and [tutorial](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html)
+ * [MediaWiki](http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page) (Wikipedia, Wikibooks, etc)
+ * DocOnce [source code](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and [tutorial](http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html)
 
 <!-- !split -->
-## Doconce disclaimer
+## DocOnce disclaimer
 
  * Based on text transformations (reg.exp.) so valid syntax may
    occasionally give problems
 <!-- * Actively developed and maintained, but one-man show -->
 
-*Doconce divorce.* 
-At any time one can divorce from Doconce and marry one of the output
+*DocOnce divorce.*\g<space>
+At any time one can divorce from DocOnce and marry one of the output
 formats, such as LaTeX or Sphinx. The generated code is clean.
 
 
 
 <!-- !split -->
-## Doconce experience: code generation is a great thing
+## DocOnce experience: code generation is a great thing
 
 
 Regardless of what format you write in, introduce a step where
 you can generate (parts of) the syntax.
 
  * Use a preprocessor a la Mako
-
  * Write your own read-and-generate code
-
- * or both (like Doconce)
+ * or both (like DocOnce)
 
 Advantages:
 
  * Less writing
-
  * Repository of syntax for nice constructions
-
  * Implements structure/rules across documents
-
  * Easier to change layout/structure
 
 
@@ -432,26 +359,19 @@ Advantages:
 ### Example: generate reveal.js or deck.js slides from HTML
 
  * Write the content of each slide in plain HTML(5)
-
  * Use e.g. `#slide` as delimiter between slides
-
  * Read file, splitting wrt `#slide` yields a list of
    slides (HTML code)
-
  * For a specific format (reveal.js, deck.js, csss, ...):
-
     * write header
-
     * for slide in slides:
-
       * embed slide in correct HTML code
-
 
     * write footer
 
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.HTML}
 <h2>Scope of this presentation</h2>
 <ul>
   <li>Focus: documents with much <em>math</em> and
@@ -465,7 +385,7 @@ The default answer is LaTeX.
 
 <!-- !split -->
 
-# A tour of Doconce
+# A tour of DocOnce
 
 <!-- !split -->
 ## Title, authors, date, toc
@@ -481,7 +401,7 @@ DATE: today
 TOC: on
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Notice.* 
+*Notice.*\g<space>
 Title and authors must have all information *on a single line*!
 
 
@@ -529,7 +449,10 @@ Result:
 
 #### This is an H4/paragraph heading
 
-*This is a paragraph heading.* !split
+*This is a paragraph heading.*
+
+
+<!-- !split -->
 ## Markup and lists
 
 
@@ -548,17 +471,11 @@ This gets rendered as
 
  * Bullet lists start with `*`
    and may span several lines
-
  * *Emphasized words* are possible
-
- * _Boldface words_ are also possible
-
+ * **Boldface words** are also possible
  * <font color="red">colored words</font> too
-
  * `inline verbatim code` is featured
-
   1. and sublists with enumerated items starting with `o`
-
   2. items are just indented as you would do in email
 
 
@@ -592,7 +509,7 @@ URL: "https://github.com/hplgit/doconce"
 <!-- !split -->
 ## Figures and movies
 
-*Important:* 
+*Important:*\g<space>
 Figures with HTML and LaTeX size info, and caption: *everything on one line*
 
 
@@ -681,10 +598,9 @@ Limit math environments to
 \end{align}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Doconce fix of shortcomings.* 
+*DocOnce fix of shortcomings.*\g<space>
  * Sphinx, Markdown, and MediaWiki cannot have
    `align` with labels
-
  * MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot
    handle equation references across web pages
 
@@ -750,21 +666,13 @@ start and end regular expressions:
 ## Typesetting of code is implied by the file extension
 
  * `.py`: `pypro` if complete file, `pycod` if snippet
-
  * `.pyopt`: visualized execution via the [Online Python Tutor](http://pythontutor.com)
-
  * `.f`, `.f90`, `f.95`: `fpro` and `fcod`
-
  * `.cpp`, `.cxx`: `cpppro` and `cppcod`
-
  * `.c`: `cpro` and `ccod`
-
  * `.*sh`: `shpro` and `shcod`
-
  * `.m`: `mpro` and `mcod`
-
  * `ptex2tex`: between 40+ code styles in LaTeX
-
  * `pygments` is used for code in HTML (ca 10 styles)
 
 <!-- !split -->
@@ -814,7 +722,7 @@ xlabel('x'); ylabel('y')
 show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Warning.* 
+*Warning.*\g<space>
 Works only in Sphinx documents (but HTML support is possible).
 
 
@@ -822,7 +730,7 @@ Works only in Sphinx documents (but HTML support is possible).
 <!-- !split -->
 ## Demonstrating code execution; IPython notebook
 
-Can take a [Doconce source](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and transform to an [IPython notebook](http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb) with [source](http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html)
+Can take a [DocOnce source](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and transform to an [IPython notebook](http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb) with [source](http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html)
 
 <!-- !split -->
 ## Tables
@@ -853,9 +761,7 @@ Gets rendered as
 ## Newcommands for math
 
  * `newcommands*.tex` files contain newcommands
-
  * Used directly in LaTeX
-
  * Substitution made for many other formats
 
 <!-- !split -->
@@ -899,7 +805,7 @@ format (easy to make from BibTeX).
 <!-- !split -->
 ## Exercises
 
-Doconce offers a special format for *exercises*, *problems*, *projects*,
+DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
 
 
@@ -939,19 +845,23 @@ Compute the probability of getting heads.
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 
-*a)* Make a program that simulates flipping a coin $N$ times.
+*a)*
+Make a program that simulates flipping a coin $N$ times.
 
 <!-- --- begin hint in exercise --- -->
 
-*Hint.* Use `r = random.random()` and define head as `r <= 0.5`.
+*Hint.*
+Use `r = random.random()` and define head as `r <= 0.5`.
 
 <!-- --- end hint in exercise --- -->
 
-*b)* Compute the probability of getting heads.
+*b)*
+Compute the probability of getting heads.
 
 
 <!-- --- begin answer of exercise --- -->
-*Answer.* 0.5.
+*Answer.*
+0.5.
 
 <!-- --- end answer of exercise --- -->
 
@@ -990,40 +900,33 @@ processing (e.g., making a book of problems).
 ## Use of preprocessors
 
  * Simple if-else tests a la the C/C++ preprocessor
-
  * `FORMAT` variable can be used to test on format, e.g.,
-
     * if latex/pdflatex do one sort of code (raw LaTeX)
-
     * if html, do another type of code (raw HTML)
 
-
  * Easy to comment out large portions of text
-
  * Easy to make different versions of the document
-
  * The mako preprocessor is really powerful - gives a
    complete programming language inside the document!
 
 <!-- !split -->
-## Doconce admonitions
+## DocOnce admonitions
 
-*Use with caution!* 
+*Use with caution!*\g<space>
 Such environments may light up the document, but can be disturbing too.
 Some admon styles have icons.
 
 
 
-*Going deeper.* 
+*Going deeper.*\g<space>
 More details can be separated from the rest.
 
 
 
-*Time for review!* 
+*Time for review!*\g<space>
 Tasks:
 
   * Maybe ask a question?
-
   * Or two?
 
 
@@ -1040,21 +943,14 @@ Conclusion:
 
 Very effective way to generate slides from running text:
 
- * Take a copy of your Doconce prose
-
+ * Take a copy of your DocOnce prose
  * Strip off as much text as possible
-
  * Emphasize key points in bullet items
-
  * Focus on key equations, figures, movies, key code snippets
-
  * Insert `!split` wherever you want a new slide to begin
-
  * Insert `!bpop` and `!epop` around elements to pop up
    in sequence
-
  * Use 7 `=` or 5 `=` in headings (H2 or H3)
-
  * Supported slide types: Beamer, HTML,
    HTML5 (reveal.js, deck.js, csss, dzslides)
 
@@ -1096,7 +992,6 @@ Last page gets rendered to
 ## Headline
 
  * Key point 1
-
  * Key point 2
 
 ![](fig/teacher1.gif)
@@ -1156,9 +1051,7 @@ Last page gets rendered to
 <!-- !bslidecell 00 -->
 <!-- !bpop -->
  * Key point 1
-
  * Key point 2
-
  * Key point 3
 
 <!-- !epop -->
@@ -1180,11 +1073,8 @@ $$
 ## Classic slide types
 
  * LaTeX Beamer
-
  * Plain HTML w/various styles
-
    * separate slides w/navigation
-
    * one big slide
 
 
@@ -1193,43 +1083,31 @@ $$
 
 <!-- !bpop -->
  * Supported HTML5 packages:
-
    * [reveal.js](http://lab.hakim.se/reveal-js/)
-
    * [deck.js](http://imakewebthings.com/deck.js/)
-
    * [dzslides](http://paulrouget.com/dzslides/)
-
    * [csss](http://leaverou.github.com/csss/#intro)
 
+ * **Problem**: each package has its own syntax (though similar)
+   * **Solution**: slide code is autogenerated from DocOnce
 
- * _Problem_: each package has its own syntax (though similar)
+ * **Problem**: reveal and deck have numerous styles
+   * **Solution**: easy [to autogenerate all styles](http://hplgit.github.com/teamods/doconce/demo/index.html) for a talk
 
-   * _Solution_: slide code is autogenerated from Doconce
+ * **Problem**: HTML5 slides need many style files
+   * **Solution**: autocopy all files to talk directory
 
-
- * _Problem_: reveal and deck have numerous styles
-
-   * _Solution_: easy [to autogenerate all styles](http://hplgit.github.com/teamods/doconce/demo/index.html) for a talk
-
-
- * _Problem_: HTML5 slides need many style files
-
-   * _Solution_: autocopy all files to talk directory
-
-
- * _Problem_: original versions of the styles have too large fonts,
+ * **Problem**: original versions of the styles have too large fonts,
    centering, and other features not so suitable for lectures
    with much math and code
-
-   * _Solution_: Doconce contains adjusted css files
+   * **Solution**: DocOnce contains adjusted css files
 
 
 <!-- !epop -->
 
 
 <!-- !split -->
-## Doconce to HTML
+## DocOnce to HTML
 
 Run in terminal window:
 
@@ -1256,9 +1134,8 @@ Two formats of blog posts are supported:
 
  * Google's [blogspot.com](http://doconce-report-demo.blogspot.no/):
    just paste the raw HTML (full support of math and code)
-
  * [Wordpress](http://doconcereportdemo.wordpress.com/):
-   despite limited math, Doconce manipulates the math
+   despite limited math, DocOnce manipulates the math
    such that even `equation` and `align` work in Wordpress :-)
 
 For wordpress, add `--wordpress`:
@@ -1272,7 +1149,7 @@ and paste the code into the text area.
 
 
 <!-- !split -->
-## Doconce to pdfLaTeX
+## DocOnce to pdfLaTeX
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1297,7 +1174,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-## Doconce to Sphinx
+## DocOnce to Sphinx
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1326,18 +1203,17 @@ doconce format mwiki doconcefile
 
 Recommended site:
 
- * [ShoutWiki](http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page)
+ * [ShoutWiki](http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page)
    for standard wikis
 
 Publishing of "official" documents:
 
  * [Wikibooks](http://en.wikibooks.org/wiki/Wikibooks:WIW)
    (can test code in the [sandbox](http://en.wikibooks.org/wiki/Wikibooks:Sandbox))
-
  * Wikipedia
 
 <!-- !split -->
-## Doconce to other formats
+## DocOnce to other formats
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1352,92 +1228,70 @@ doconce format plain  doconcefile  # plain, untagged text for email
 ## Installation
 
  * Ubuntu: `sudo apt-get install python-doconce` (old!)
-
  * Source at [GitHub](https://github.com/hplgit/doconce) (recommended!)
-
    * `hg clone` + `sudo python setyp.py install`
 
-
  * Many [dependencies...](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies)
-
    * Must have `preprocess` and `mako`
-
    * Need `latex`, `sphinx`, `pandoc`, etc. (see the [Installation](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies) description)
-
    * Easy for slides: only `preprocess` is needed :-)
 
 
 <!-- !split -->
-## Writing tips for LaTeX writers who want to convert to Doconce
+## Writing tips for LaTeX writers who want to convert to DocOnce
 
  * `doconce latex2doconce` helps the translation
-
  * Use `\[ \]`, `equation`, `equation*`, `align`, `align*` and nothing more for
    equations
-
  * Figures: avoid subfigures (combine image files instead), use `\includegraphics`, have captions after graphics, use short figure captions, position exactly where needed
-
  * Tables: have them inline (not floating), with no caption
-
  * Computer codes: have them inline (not floating)
-
  * Avoid footnotes, `pageref`
-
  * Do not use *algorithm* environments, use simple list formatting instead
-
  * Avoid math in section headings
-
  * Use `pdflatex` or `xetex`
-
- * Use BibTeX (can easily be converted to [publish](https://bitbucket.org/logg/publish) used by Doconce)
-
+ * Use BibTeX (can easily be converted to [publish](https://bitbucket.org/logg/publish) used by DocOnce)
  * Use `\href` for links (and insert links frequently)
-
  * Use the `bm` package for boldface $\boldsymbol{u}$
-
  * Place all newcommands in a separate file, with one definition per line
-   (multiline definitions goes to a separate LaTeX preamble file in Doconce)
-
+   (multiline definitions goes to a separate LaTeX preamble file in DocOnce)
  * Avoid all fancy LaTeX constructs - more backslashes than needed in math
    and sections is a bad thing...
 
 <!-- !split -->
-## Doconce writing tips
+## DocOnce writing tips
 
 <!-- * See the previous *Typesetting concerns I, II and III* slides for issues when writing -->
-<!-- for multiple formats. However: Doconce makes a fix so that Sphinx and -->
+<!-- for multiple formats. However: DocOnce makes a fix so that Sphinx and -->
 <!-- other formats works with labels in align environments :-) -->
 
-Figures:
+Figures and movies:
 
  * Prepare figures in the right format: EPS for `latex`, PDF for `pdflatex`,
    PNG, GIF or JPEG for HTML formats (`html`, and HTML output from
    `sphinx`, `rst`, `pandoc`). One can omit the figure file extension and
    `doconce` will pick the most appropriate file for the given output format.
-
  * Let plotting programs produce both PDF/EPS and PNG files.
    (Recall that PDF and EPS are vector graphics formats that can scale to
    any size with much higher quality than PNG or other bitmap formats.)
-
  * Use `doconce combine_images` to combine several images into one.
+ * Store all figures in a directory (tree) with name `fig` or `fig-X`,
+   where `X` is some short logical name for the current document.
+ * Store all movies in a directory (tree) with name `mov` or `mov-X`.
+ * Favor the movie formats MP4, WebM, and Ogg (best suited for modern browsers).
 
 <!-- !split -->
-## Doconce writing tips
+## DocOnce writing tips
 
  * `\boldsymbol{u}` gives nicer boldface typesetting of math symbols than
    the alternatives `\boldsymbol{u}` and `\pmb{u}`.
-
  * For HTML-based formats using MathJax, `\boldsymbol{u}` is not supported
-   and therefore automatically replaced by `\boldsymbol{u}` by Doconce.
-
+   and therefore automatically replaced by `\boldsymbol{u}` by DocOnce.
  * Use `\<font color="blue">formula</font>` in math expressions to color a part.
-
  * Not all LaTeX math is supported by MathJax. Some legal LaTeX math
    might give MathJax problems - then one has to rewrite the expression
    to find a syntax that works both with LaTeX and MathJax.
-
  * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.
-
  * Avoid page references and footnotes.
 
 <!-- !split -->
@@ -1446,25 +1300,18 @@ Figures:
 For output formats different from `latex`, `pdflatex`, and `html`:
 
  * Use labels only right after section headings and in equations.
-
  * Be careful with labels in `align` math environments: `pandoc`
    and `mwiki` cannot refer to them.
-
  * `sphinx` output requires
-
    * no math in section headings or figure captions
      (gets removed in references).
-
    * running text to start in column 1.
-
    * progressive section headings: after chapter (9 `=`) comes
      section (7 `=`), then subsection (5 `=`), then paragraph
      (3 `=`). Do not make jumps in this progression.
-
    * index entries (``) before the paragraph where they
      are introduced and place them *before* subsubsection
      headings (`=== ... ===`) and after subsection and section headings.
-
    * a line of text and no comment or math before code or list.
 
 
