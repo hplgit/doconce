@@ -1657,7 +1657,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -1692,7 +1692,10 @@ $$
 <a name="part0000"></a>
 <p>
 <!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
 <div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
 </p>
 
@@ -1801,7 +1804,10 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
 <div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
 </p>
 
@@ -8307,7 +8313,7 @@ in a separate document: \Verb!admon.do.txt!.
         MathJax.Hub.Config({
           TeX: {
              equationNumbers: {  autoNumber: "AMS"  },
-             extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+             extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
           }
         });
         </script>
@@ -21966,8 +21972,28 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- newcommands_bfmath.tex -->\n",
+      "$$\n",
+      "\\renewcommand{\\u}{\\pmb{u}}\n",
+      "\n",
+      "\\newcommand{\\xbm}{\\boldsymbol{x}}\n",
+      "\\newcommand{\\normalvecbm}{\\boldsymbol{n}}\n",
+      "\\newcommand{\\ubm}{\\boldsymbol{u}}\n",
+      "$$\n",
+      "\n",
+      "\n",
+      "<!-- newcommands_replace.tex -->\n",
+      "$$\n",
+      "\\newcommand{\\x}{\\pmb{x}}\n",
+      "\\newcommand{\\normalvec}{\\pmb{n}}\n",
+      "\\newcommand{\\Ddt}[1]{\\frac{D#1}{dt}}\n",
+      "\\newcommand{\\halfi}{1/2}\n",
+      "\\newcommand{\\half}{\\frac{1}{2}}\n",
+      "\\newcommand{\\report}{test report}\n",
+      "$$\n",
+      "\n",
       "# A Document for Testing DocOnce\n",
-      "_Jan 32, 2100_\n",
+      "**Jan 32, 2100**\n",
       "\n",
       "<!-- !split -->\n",
       "\n",
@@ -22027,10 +22053,12 @@ is at the end with only one newline.
       "\n",
       "  * item2\n",
       "\n",
-      "!bquote\n",
-      "Here are two lines that make up\n",
-      "a block quote.\n",
-      "!equote\n",
+      "> Here are two lines that make up\n",
+      "> a block quote.\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
       "\n",
       "Here are two references. Equation Eq (my:eq1) is fine. Eq. Eq (my:eq1) too.\n",
       "Even Equation Eq (my:eq1) without the tilde.\n",
@@ -22308,10 +22336,9 @@ is at the end with only one newline.
      "cell_type": "code",
      "collapsed": false,
      "input": [
-      ">>> from numpy import sin\n",
-      ">>> # Some comment\n",
-      ">>> x = sin(1.2); print 'Value:', x\n",
-      "Value: 0.932039085967\n"
+      "from numpy import sin\n",
+      "# Some comment\n",
+      "x = sin(1.2); print 'Value:', x"
      ],
      "language": "python",
      "metadata": {},
@@ -22329,12 +22356,9 @@ is at the end with only one newline.
      "cell_type": "code",
      "collapsed": false,
      "input": [
-      "In [1]: from numpy import sin\n",
-      "\n",
-      "In [2]: # Some comment\n",
-      "\n",
-      "In [3]: x = sin(1.2); print 'Value:', x\n",
-      "Value: 0.932039085967\n"
+      "from numpy import sin\n",
+      "# Some comment\n",
+      "x = sin(1.2); print 'Value:', x"
      ],
      "language": "python",
      "metadata": {},
@@ -22634,15 +22658,18 @@ is at the end with only one newline.
       "Here is some more text before a new definition of a footnote that was used\n",
       "used above.\n",
       "\n",
-      "!bnotice Non-breaking space character\n",
-      "This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical\n",
-      "example where this is needed is in physical units: 7.4 km is traveled\n",
-      "in $7.4/5.5\\approx 1.345$ s.  Also check that a~[link](http://google.com) is\n",
-      "not broken across lines (drag the browser window to test this).\n",
-      "(On the other hand, the tilde is used in\n",
-      "computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should\n",
-      "of course remain a tilde in those contexts.)\n",
-      "!enotice\n",
+      "> **Non-breaking space character.**\n",
+      "> This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical\n",
+      "> example where this is needed is in physical units: 7.4 km is traveled\n",
+      "> in $7.4/5.5\\approx 1.345$ s.  Also check that a~[link](http://google.com) is\n",
+      "> not broken across lines (drag the browser window to test this).\n",
+      "> (On the other hand, the tilde is used in\n",
+      "> computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should\n",
+      "> of course remain a tilde in those contexts.)\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
       "\n",
       "### Subsection 2: Testing figures\n",
       "\n",
@@ -22921,7 +22948,7 @@ is at the end with only one newline.
       "some text.\n",
       "\n",
       "<!-- Test various types of headlines -->\n",
-      "### _Just bold_\n",
+      "### **Just bold**\n",
       "\n",
       "Some text.\n",
       "\n",
@@ -22933,7 +22960,7 @@ is at the end with only one newline.
       "\n",
       "Some text.\n",
       "\n",
-      "### _Bold_ beginning\n",
+      "### **Bold** beginning\n",
       "\n",
       "Some text.\n",
       "\n",
@@ -22945,7 +22972,7 @@ is at the end with only one newline.
       "\n",
       "Some text.\n",
       "\n",
-      "### Maybe _bold end_\n",
+      "### Maybe **bold end**\n",
       "\n",
       "Some text.\n",
       "\n",
@@ -22957,7 +22984,7 @@ is at the end with only one newline.
       "\n",
       "Some text.\n",
       "\n",
-      "### The middle has _bold_ word\n",
+      "### The middle has **bold** word\n",
       "\n",
       "Some text.\n",
       "\n",
@@ -23850,128 +23877,128 @@ is at the end with only one newline.
       "\n",
       "## References\n",
       "\n",
-      " 1. \\label{Langtangen_Pedersen_2002} _H. P. Langtangen and G. Pedersen_. \n",
+      " 1. \\label{Langtangen_Pedersen_2002} **H. P. Langtangen and G. Pedersen**. \n",
       "    Propagation of Large Destructive Waves,\n",
       "    *International Journal of Applied Mechanics and Engineering*,\n",
       "    7(1),\n",
       "    pp. 187-204,\n",
       "    2002.\n",
       "\n",
-      " 2. \\label{Langtangen_et_al_2002} _H. P. Langtangen, K.-A. Mardal and R. Winther_. \n",
+      " 2. \\label{Langtangen_et_al_2002} **H. P. Langtangen, K.-A. Mardal and R. Winther**. \n",
       "    Numerical Methods for Incompressible Viscous Flow,\n",
       "    *Advances in Water Resources*,\n",
       "    25,\n",
       "    pp. 1125-1146,\n",
       "    2002.\n",
       "\n",
-      " 3. \\label{Langtangen_1994a} _H. P. Langtangen_. \n",
+      " 3. \\label{Langtangen_1994a} **H. P. Langtangen**. \n",
       "    Numerical Solution of First Passage Problems in Random Vibrations,\n",
       "    *SIAM Journal of Scientific and Statistical Computing*,\n",
       "    15,\n",
       "    pp. 997-996,\n",
       "    1994.\n",
       "\n",
-      " 4. \\label{Mardal_et_al_2003a} _K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen_. \n",
+      " 4. \\label{Mardal_et_al_2003a} **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. \n",
       "    Software Tools for Multigrid Methods,\n",
       "    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,\n",
-      "    edited by _H. P. Langtangen and A. Tveito_,\n",
+      "    edited by **H. P. Langtangen and A. Tveito**,\n",
       "    Springer,\n",
       "    2003.\n",
       "\n",
-      " 5. \\label{Langtangen_1988d} _H. P. Langtangen_. \n",
+      " 5. \\label{Langtangen_1988d} **H. P. Langtangen**. \n",
       "    The FEMDEQS Program System,\n",
       "    *Department of Mathematics, University of Oslo*,\n",
       "    1989.\n",
       "\n",
-      " 6. \\label{Langtangen_1992c} _H. P. Langtangen_. \n",
+      " 6. \\label{Langtangen_1992c} **H. P. Langtangen**. \n",
       "    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,\n",
       "    *SIAM Journal on Scientific Computing*,\n",
       "    13,\n",
       "    pp. 1394-1417,\n",
       "    1992.\n",
       "\n",
-      " 7. \\label{Mortensen_et_al_2011} _M. Mortensen, H. P. Langtangen and G. N. Wells_. \n",
+      " 7. \\label{Mortensen_et_al_2011} **M. Mortensen, H. P. Langtangen and G. N. Wells**. \n",
       "    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,\n",
       "    *Advances in Water Resources*,\n",
       "    34(9),\n",
       "    [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),\n",
       "    2011.\n",
       "\n",
-      " 8. \\label{Glimsdal_et_al_20006} _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt_. \n",
+      " 8. \\label{Glimsdal_et_al_20006} **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt**. \n",
       "    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,\n",
       "    *International Journal of Fluid Mechanics Research*,\n",
       "    33(1),\n",
       "    pp. 15-43,\n",
       "    2006.\n",
       "\n",
-      " 9. \\label{Rahman_et_al_2006b} _S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen_. \n",
+      " 9. \\label{Rahman_et_al_2006b} **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. \n",
       "    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,\n",
       "    *Physical Review B: Condensed Matter and Materials Physics*,\n",
       "    74,\n",
       "    2006.\n",
       "\n",
-      "10. \\label{Haga_et_al_2011a} _J. B. Haga, H. Osnes and H. P. Langtangen_. \n",
+      "10. \\label{Haga_et_al_2011a} **J. B. Haga, H. Osnes and H. P. Langtangen**. \n",
       "    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,\n",
       "    *International Journal of Analytical and Numerical Methods in Geomechanics*,\n",
       "    [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),\n",
       "    2011,\n",
       "    <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.\n",
       "\n",
-      "11. \\label{Langtangen_2003a} _H. P. Langtangen_. \n",
+      "11. \\label{Langtangen_2003a} **H. P. Langtangen**. \n",
       "    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,\n",
       "    Springer,\n",
       "    2003.\n",
       "\n",
-      "12. \\label{Langtangen_2008a} _H. P. Langtangen_. \n",
+      "12. \\label{Langtangen_2008a} **H. P. Langtangen**. \n",
       "    *Python Scripting for Computational Science*,\n",
       "    Springer,\n",
       "    2008.\n",
       "\n",
-      "13. \\label{Langtangen:95} _H. P. Langtangen and G. Pedersen_. \n",
+      "13. \\label{Langtangen:95} **H. P. Langtangen and G. Pedersen**. \n",
       "    Finite Elements for the Boussinesq Wave Equations,\n",
       "    Waves and Non-linear Processes in Hydrodynamics,\n",
-      "    edited by _J. Grue, B. Gjevik and J. E. Weber_,\n",
+      "    edited by **J. Grue, B. Gjevik and J. E. Weber**,\n",
       "    Kluwer Academic Publishers,\n",
       "    pp. pp. 117-126,\n",
       "    1995,\n",
       "    <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.\n",
       "\n",
-      "14. \\label{Langtangen_2012} _H. P. Langtangen_. \n",
+      "14. \\label{Langtangen_2012} **H. P. Langtangen**. \n",
       "    *A Primer on Scientific Programming With Python*,\n",
       "    Springer,\n",
       "    2012.\n",
       "\n",
-      "15. \\label{Jeberg_et_al_2004} _P. V. Jeberg, H. P. Langtangen and C. B. Terp_. \n",
+      "15. \\label{Jeberg_et_al_2004} **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. \n",
       "    Optimization With Diffpack: Practical Example From Welding,\n",
       "    *Simula Research Laboratory*,\n",
       "    2004.\n",
       "\n",
-      "16. \\label{Langtangen_1989e} _H. P. Langtangen_. \n",
+      "16. \\label{Langtangen_1989e} **H. P. Langtangen**. \n",
       "    Computational Methods for Two-Phase Flow in Oil Reservoirs,\n",
       "    Ph.D. Thesis,\n",
       "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
       "    1989.\n",
       "\n",
-      "17. \\label{Langtangen_talk_2007a} _H. P. Langtangen_. \n",
+      "17. \\label{Langtangen_talk_2007a} **H. P. Langtangen**. \n",
       "    Computational Modeling of Huge Tsunamis From Asteroid Impacts,\n",
       "    Invited keynote lecture at the \\emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,\n",
       "    2007.\n",
       "\n",
-      "18. \\label{Langtangen:85} _H. P. Langtangen_. \n",
+      "18. \\label{Langtangen:85} **H. P. Langtangen**. \n",
       "    Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,\n",
       "    M.Sc. Thesis,\n",
       "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
       "    1985.\n",
       "\n",
-      "19. \\label{Langtangen:91} _H. P. Langtangen and A. Tveito_. \n",
+      "19. \\label{Langtangen:91} **H. P. Langtangen and A. Tveito**. \n",
       "    Numerical Methods in Continuum Mechanics,\n",
       "    *Center for Industrial Research*,\n",
       "    1991.\n",
       "\n",
-      "20. \\label{Langtangen:94b} _H. P. Langtangen_. \n",
+      "20. \\label{Langtangen:94b} **H. P. Langtangen**. \n",
       "    Diffpack: Software for Partial Differential Equations,\n",
       "    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,\n",
-      "    edited by _A. Vermeulen_,\n",
+      "    edited by **A. Vermeulen**,\n",
       "    1994.\n",
       "\n",
       "## Appendix: Just for testing; part I\n",
@@ -24040,9 +24067,12 @@ is at the end with only one newline.
       "\n",
       "Without label.\n",
       "\n",
-      "!bnotice Tip\n",
-      "Here is a tip or hint box, typeset as a notice box.\n",
-      "!enotice\n",
+      "> **Tip.**\n",
+      "> Here is a tip or hint box, typeset as a notice box.\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
       "\n",
       "\n",
       "\n",
@@ -24058,18 +24088,21 @@ is at the end with only one newline.
       "Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly\n",
       "from using version control systems.\n",
       "\n",
-      "!bsummary\n",
-      "_Bold remark:_ Make some text with this summary.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "!esummary\n",
+      "> **Summary.**\n",
+      "> **Bold remark:** Make some text with this summary.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "> Much testing in this document, otherwise stupid content.\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
       "\n",
       "Projects that you want to share among several computers or project\n",
       "workers are today most conveniently stored at some web site \"in the\n",
@@ -24157,9 +24190,11 @@ is at the end with only one newline.
       "We also test mdash---used as alternative to hyphen without spaces around,\n",
       "or in quotes:\n",
       "\n",
-      "!bquote\n",
-      "*Fun is fun.*--- Unknown.\n",
-      "!equote\n",
+      "> *Fun is fun.*--- Unknown.\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
       "\n",
       "And finally, what about admons, quotes, and boxes? They are tested\n",
       "in a separate document: `admon.do.txt`.\n",
@@ -27939,7 +27974,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -29031,7 +29066,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -29066,7 +29101,10 @@ $$
 <a name="part0000"></a>
 <p>
 <!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
 <div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
 </p>
 
@@ -29175,7 +29213,10 @@ $$
 <p>
 <p>
 <!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
 <div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
 </p>
 
@@ -29372,7 +29413,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -29407,9 +29448,11 @@ $$
 <a name="part0001"></a>
 <p>
 <!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-
+</td><td>
 <div style="text-align: right;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
 </p>
 
@@ -30488,9 +30531,11 @@ footnotes.
 <p>
 <p>
 <!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-
+</td><td>
 <div style="text-align: right;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
 </p>
 
@@ -30687,7 +30732,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -30722,9 +30767,11 @@ $$
 <a name="part0002"></a>
 <p>
 <!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-
+</td><td>
 <div style="text-align: right;"><a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
 </p>
 
@@ -31359,9 +31406,11 @@ What about inserting a quiz?
 <p>
 <p>
 <!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-
+</td><td>
 <div style="text-align: right;"><a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
 </p>
 
@@ -31558,7 +31607,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -31593,7 +31642,10 @@ $$
 <a name="part0003"></a>
 <p>
 <!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+</td></tr></table>
 <!-- end top navigation -->
 </p>
 
@@ -31777,7 +31829,10 @@ is at the end with only one newline.
 
 <p>
 <!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+</td></tr></table>
 <!-- end bottom navigation -->
 </p>
 
@@ -33788,7 +33843,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -39018,7 +39073,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -39282,7 +39337,7 @@ to <code>\boldsymbol</code>.
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -40097,7 +40152,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -40458,7 +40513,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -40819,7 +40874,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -42028,7 +42083,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -50088,7 +50143,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -50616,7 +50671,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -51142,7 +51197,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -52070,7 +52125,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -52673,7 +52728,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -53245,7 +53300,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -53752,7 +53807,12 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
    </ul>
   </div>
@@ -53778,7 +53838,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -54264,7 +54324,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -54311,7 +54371,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="._admon_bootstrap_alert001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -54418,7 +54483,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -54465,7 +54530,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -54999,7 +55069,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -55046,7 +55116,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quotes and boxes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Going deeper environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The end</a></li>
 
         </ul>
       </li>
@@ -56804,7 +56879,7 @@ td.padding {
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -56978,7 +57053,7 @@ Python implementation:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
     <span style="color: #AA22FF; font-weight: bold">return</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">*</span>t)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>y)
@@ -62279,7 +62354,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -62624,7 +62699,7 @@ td.padding {
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -64657,7 +64732,7 @@ td.padding {
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -65077,7 +65152,7 @@ based on HTML and vice versa.
 
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">TITLE: Some Title
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">TITLE: Some Title
 AUTHOR: name1 at institution1, with more info &amp; institution2
 AUTHOR: name2 email:name2@web.com at institution
 DATE: today
@@ -65102,7 +65177,7 @@ Title and authors must have all information <em>on a single line</em>!
 
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">__Abstract.__
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">__Abstract.__
 Here goes the abstract...
 </pre></div>
 <p>
@@ -65110,7 +65185,7 @@ Or:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">__Summary.__
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">__Summary.__
 Here goes the summary...
 </pre></div>
 <p>
@@ -65126,7 +65201,7 @@ Headings are surrounded by <code>=</code> signs:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">========= This is an H1/chapter heading =========
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">========= This is an H1/chapter heading =========
 
 ======= This is an H2/section heading =======
 
@@ -65160,7 +65235,7 @@ Result:
 
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> * Bullet list items start with `*`
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"> * Bullet list items start with `*`
    and may span several lines
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
@@ -65199,7 +65274,7 @@ This gets rendered as
 
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Insert index items in the source
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"># Insert index items in the source
 idx{key word1} idx{key word2}
 
 # Label
@@ -65237,7 +65312,7 @@ Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
 
 # This figure will be 300 pixels wide in HTML and span 1.2 times
 # the linewidth in LaTeX.
@@ -65248,7 +65323,7 @@ Movies are also supported:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 </pre></div>
 <p>
 and rendered as
@@ -65272,7 +65347,7 @@ Inline math as in LaTeX:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">...where $a=\int_{\Omega}fdx$ is an integral.
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">...where $a=\int_{\Omega}fdx$ is an integral.
 </pre></div>
 <p>
 gets rendered as ...where \( a=\int_{\Omega}fdx \) is an integral.
@@ -65284,7 +65359,7 @@ the rest is plain LaTeX:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">!bt
 \begin{align}
 \frac{\partial u}{\partial t} &amp;= \nabla^2 u,
 label{a:eq}\\
@@ -65322,7 +65397,7 @@ Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">!bc pycod
 def solver(I, a, T, dt, theta):
     &quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
     dt = float(dt)           # avoid integer division
@@ -65343,7 +65418,7 @@ This gets rendered as
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
     <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(dt)           <span style="color: #008800; font-style: italic"># avoid integer division</span>
     N <span style="color: #666666">=</span> <span style="color: #AA22FF">int</span>(<span style="color: #AA22FF">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #008800; font-style: italic"># no of time intervals</span>
@@ -65398,7 +65473,7 @@ and <em>examples</em>:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">===== Problem: Flip a Coin =====
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">===== Problem: Flip a Coin =====
 label{demo:ex:1}
 
 files = flip_coin.py, flip_coin.pdf
@@ -65507,7 +65582,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!split
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">!split
 ======= Headline =======
 
  * Key point 1
@@ -65580,7 +65655,7 @@ a figure to the right (two cells, numbered 00 and 01).
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!split
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">!split
 ======= Headline =======
 
 !bslidecell 00
@@ -68139,7 +68214,7 @@ td.padding {
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -68343,7 +68418,7 @@ The numerical method is implemented in a Python function:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
     <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(dt)           <span style="color: #008800; font-style: italic"># avoid integer division</span>
     N <span style="color: #666666">=</span> <span style="color: #AA22FF">int</span>(<span style="color: #AA22FF">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #008800; font-style: italic"># no of time intervals</span>
@@ -73750,7 +73825,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -74266,7 +74341,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -74332,7 +74407,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -74398,7 +74473,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -77136,8 +77211,7 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 ************** File: test_boots.do.txt *****************
 TITLE: Test of the Bootstrap style
 
-DocOnce can work with Bootstrap HTML styles:
-way:
+DocOnce can work with Bootstrap HTML styles this way:
 
 !bc sys
 Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
@@ -77425,7 +77499,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -77472,7 +77546,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using panels</a></li>
 
         </ul>
       </li>
@@ -77495,8 +77574,7 @@ $$
 <center><h1>Test of the Bootstrap style</h1></center>  <!-- document title -->
 
 <p>
-DocOnce can work with Bootstrap HTML styles:
-way:
+DocOnce can work with Bootstrap HTML styles this way:
 
 <p>
 
@@ -77597,7 +77675,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -77644,7 +77722,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots002.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using panels</a></li>
 
         </ul>
       </li>
@@ -77881,7 +77964,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -77928,7 +78011,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;">More details on writing DocOnce documents with Bootstrap layout</a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
+     <!-- navigation toc: --> <li><a href="._test_boots001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using panels</a></li>
 
         </ul>
       </li>
@@ -78134,7 +78222,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Aug 12 15:57:24 2014.
+# sphinx-quickstart on Thu Aug 14 19:28:46 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80484,7 +80572,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -98624,6 +98712,7 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format ipynb
 *** warning: footnotes are not supported for format ipynb
     footnotes will be left in the doconce syntax
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.ipynb
 + '[' 0 -ne 0 ']'
 + system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 'MYVAR2=a string' --examples_as_exercises
