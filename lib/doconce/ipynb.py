@@ -14,6 +14,7 @@ otherwise use plain markdown verbatim block and mark cell as "markdown"
         for i in range(len(code_blocks)):
             code_blocks[i] = indent_lines(code_blocks[i], format)
 
+sys with running a .py program, find full path, run "fullpath"
 """
 
 def ipynb_author(authors_and_institutions, auth2index,
@@ -122,8 +123,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             for j in range(len(lines)):
                 if lines[j].startswith('>>> ') or lines[j].startswith('... '):
                     lines[j] = lines[j][4:]
-                elif lines[j].startswith('In['):
-                    lines[j] = ':'.join(lines[j].split(':')[1:])
+                elif lines[j].startswith('In ['):
+                    lines[j] = ':'.join(lines[j].split(':')[1:]).strip()
                 else:
                     # output
                     lines[j] = ''

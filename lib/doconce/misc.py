@@ -2368,7 +2368,7 @@ def slides_html():
 
     filestr = None
     if slide_type == 'doconce':
-        doconce_split_html(header, parts, footer, basename, filename)
+        doconce_split_html(header, parts, footer, basename, filename, slides=True)
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
@@ -2549,7 +2549,7 @@ def get_header_parts_footer(filename, format='html'):
     return header, parts, footer
 
 
-def doconce_split_html(header, parts, footer, basename, filename):
+def doconce_split_html(header, parts, footer, basename, filename, slides=False):
     """Native doconce style splitting of HTML file into parts."""
     import html
     header_str = '\n'.join(header)
@@ -2826,27 +2826,34 @@ def doconce_split_html(header, parts, footer, basename, filename):
             buttons = bootstrap_navigation(pn, prev_part_filename, next_part_filename)
         else:
             # Simple navigation buttons at the top and bottom of the page
-            lines.append('<p>\n<!-- begin top navigation -->') # for easy removal
-            if pn > 0:
-                if nav_button == 'text':
-                    lines.append("""
+            # (only at bottom if slides is True)
+            if not slides:
+                lines.append('<p>\n<!-- begin top navigation -->\n') # for easy removal
+                # Need a table for navigation pics, otherwise they cannot
+                # be on the same line
+                lines.append('<table style="width: 100%"><tr><td>\n')
+                if pn > 0:
+                    if nav_button == 'text':
+                        lines.append("""\
 <div style="text-align: left;"><a href="%s">&laquo; Previous</a></div>
 """ % (prev_part_filename))
-                else:
-                    lines.append("""
+                    else:
+                        lines.append("""\
 <div style="text-align: left;"><a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a></div>
 """ % (prev_part_filename, prev_button_filename))
-            if pn < len(parts)-1:
-                if nav_button == 'text':
-                    lines.append("""
+                lines.append('</td><td>\n')
+                if pn < len(parts)-1:
+                    if nav_button == 'text':
+                        lines.append("""\
 <div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
-                else:
-                    lines.append("""
+                    else:
+                        lines.append("""\
 <div style="text-align: right;"><a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a></div>
 """ % (next_part_filename, next_button_filename))
-            lines.append('<!-- end top navigation -->\n</p>\n\n')
-            lines.append('<p>\n')
+                lines.append('</td></tr></table>\n')
+                lines.append('<!-- end top navigation -->\n</p>\n\n')
+                lines.append('<p>\n')
 
 
 
@@ -2858,25 +2865,28 @@ def doconce_split_html(header, parts, footer, basename, filename):
         if bootstrap:
             lines += buttons.splitlines(True) + footer
         else:
-            lines.append('<!-- begin bottom navigation -->')
+            lines.append('<!-- begin bottom navigation -->\n')
+            lines.append('<table style="width: 100%"><tr><td>\n')
             if pn > 0:
                 if nav_button == 'text':
-                    lines.append("""
+                    lines.append("""\
 <div style="text-align: left;"><a href="%s">&laquo; Previous</a></div>
 """ % (prev_part_filename))
                 else:
-                    lines.append("""
+                    lines.append("""\
 <div style="text-align: left;"><a href="%s"><img src="%s" border=0 alt="&laquo; Previous"></a></div>
 """ % (prev_part_filename, prev_button_filename))
+            lines.append('</td><td>\n')
             if pn < len(parts)-1:
                 if nav_button == 'text':
-                    lines.append("""
+                    lines.append("""\
 <div style="text-align: right;"><a href="%s">Next &raquo;</a></div>
 """ % (next_part_filename))
                 else:
-                    lines.append("""
+                    lines.append("""\
 <div style="text-align: right;"><a href="%s"><img src="%s" border=0 alt="Next &raquo;"></a></div>
 """ % (next_part_filename, next_button_filename))
+            lines.append('</td></tr></table>\n')
             lines.append('<!-- end bottom navigation -->\n</p>\n\n')
             lines += footer
 
@@ -4391,6 +4401,10 @@ td.padding {
                                 '<a href="#mjx-eqn-%s">(%s)</a>' %
                                 (eq_no, eq_no))
         eq_no += 1
+
+    if slide_tp == 'reveal':
+        # Adjust font size in code
+        slides = slides.replace('<pre style="', '<pre style="font-size: 80%; ')
 
     return slides
 
