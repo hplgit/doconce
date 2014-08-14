@@ -79,6 +79,7 @@ latex_admon_title_no_period = False
 #latex_subex_header_postfix = 
 xelatex = False
 latex_double_hyphen = False
+#ipynb_admon = 
 verbose = False
 examples_as_exercises = False
 without_solutions = False

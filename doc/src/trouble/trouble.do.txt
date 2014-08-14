@@ -292,6 +292,19 @@ do not count.
 
 ======= Preprocess/Mako problems =======
 
+===== List important things to remember when programming Mako =====
+
+ * Keep Python code more than a few lines *outside* of the DocOnce
+   file, and use `# #include` to include the code. See
+   the *Debugging Python code in Mako* section in the manual for
+   how to do it.
+ * Do not use continuation character (backslash) in Python code.
+ * When a Mako error refers to a line in the text, invoke the
+   file that Mako sees: `tmp_preprocess__mydoc.do.txt` if
+   the DocOnce file has name `mydoc.do.txt`.
+ * Use double `##` (Mako comment) to comment out Mako calls
+   of the form `${name...}`.
+
 ===== The Mako preprocessor is seemingly not run =====
 
 If you have lines starting with `%` inside code segments (for example,

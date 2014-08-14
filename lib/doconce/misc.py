@@ -264,6 +264,11 @@ Gives headers a), b), etc. Can be set to period, colon, etc."""),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
+    ('--ipynb_admon=',
+     """\
+Typesetting of admonitions and quotes.
+quote: as Markdown quote (default) with gray line on the left.
+paragraph: just the content with the title as paragraph heading."""),
     ('--verbose',
      'Write out all OS commands run by doconce.'),
     ('--examples_as_exercises',
@@ -6395,7 +6400,7 @@ def md2html():
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>

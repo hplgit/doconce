@@ -1,3 +1,5 @@
-=== Test ===
+# Important to test both heading (for rst and plain) and running text
+
+=== Test of æ, ø, å ===
 
 Name with Norwegian characters: Åsmund Ødegård.

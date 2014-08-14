@@ -540,6 +540,8 @@ def define(FILENAME_EXTENSION,
     FILENAME_EXTENSION['rst'] = '.rst'
     BLANKLINE['rst'] = '\n'
 
+    encoding = 'utf-8'  # 'latin-1'
+
     INLINE_TAGS_SUBST['rst'] = {
         'math':      r'\g<begin>\g<subst>\g<end>',
         'math2':     r'\g<begin>\g<puretext>\g<end>',
@@ -565,13 +567,14 @@ def define(FILENAME_EXTENSION,
         'plainURL':  r'`<\g<url>>`_',
         'inlinecomment': r'color{red}{(**\g<name>**: \g<comment>})',
         # the replacement string differs, depending on the match object m:
-        # (note len(m.group('subst')) gives wrong length for non-ascii strings,
-        # better with m.group('subst').decode('utf-8')) or latin-1
-        'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst').decode('latin-1'))),
-        'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst').decode('latin-1'))),
-        #'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst').decode('latin-1'))),
-        'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst').decode('latin-1'))),
-        'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst').decode('latin-1'))),
+        # (note len(m.group('subst')) gives wrong length for latin-1 strings,
+        # seems to work for utf-8, if problems: replace lambda function
+        # with an ordinary function where you can debug and test!
+        #'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst').decode(encoding))),
+        'chapter':       lambda m: '%s\n%s' % (m.group('subst'), '%'*len(m.group('subst'))),
+        'section':       lambda m: '%s\n%s' % (m.group('subst'), '='*len(m.group('subst'))),
+        'subsection':    lambda m: '%s\n%s' % (m.group('subst'), '-'*len(m.group('subst'))),
+        'subsubsection': lambda m: '%s\n%s\n' % (m.group('subst'), '~'*len(m.group('subst'))),
         'paragraph':     r'**\g<subst>**\n',  # extra newline
         'abstract':      rst_abstract,
         #'title':         r'======= \g<subst> =======\n',  # doconce top section, must be the highest section level (but no higher than others, need more code)
