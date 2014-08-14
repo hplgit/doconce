@@ -10,6 +10,7 @@
 
 
 
+
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -102,16 +103,13 @@ td.padding {
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -141,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Jan 8, 2014</h4></center> <!-- date -->
+<center><h4>Aug 14, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -152,11 +150,10 @@ MathJax.Hub.Config({
 
 <section>
 
-<h2>Goal  <a name="___sec0"></a></h2>
+<h1>Goal  <a name="___sec0"></a></h1>
 
-<p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
 This version
@@ -167,7 +164,8 @@ utilizes reveal slides with the theme <code>beigesmall</code>.
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Speaker notes show up by
-pressing "s".
+pressing "s" (but you must run reveal locally and
+some packages installed, see <a href="https://github.com/hakimel/reveal.js/#installation" target="_self">this description</a>).
 </div>
 
 
@@ -190,14 +188,12 @@ demonstrated.
 
 <section>
 
-<h2>Mathematical problem  <a name="___sec1"></a></h2>
+<h1>Mathematical problem  <a name="___sec1"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align}
@@ -209,8 +205,6 @@ u(0)  &= I,
 $$
 <p>&nbsp;<br>
 
-
-<p>
 
 <ul>
  <p><li> \( t\in (0,T] \)</li>
@@ -237,9 +231,8 @@ $$
 
 <section>
 
-<h2>Numerical solution method  <a name="___sec2"></a></h2>
+<h1>Numerical solution method  <a name="___sec2"></a></h1>
 
-<p>
 
 
 <ul>
@@ -274,9 +267,8 @@ $$
 
 <section>
 
-<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+<h2>Forward Euler explained  <a name="___sec3"></a></h2>
 
-<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -288,15 +280,14 @@ $$
 
 <section>
 
-<h2>Implementation  <a name="___sec4"></a></h2>
+<h1>Implementation  <a name="___sec4"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, a, T, dt, theta):
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, a, T, dt, theta):
     <span style="color: #CD5555">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span style="color: #658b00">float</span>(dt)           <span style="color: #228B22"># avoid integer division</span>
     N = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</span>(T/dt))     <span style="color: #228B22"># no of time intervals</span>
@@ -316,9 +307,8 @@ The numerical method is implemented in a Python function:
 
 <section>
 
-<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -328,14 +318,12 @@ The numerical method is implemented in a Python function:
 
 <section>
 
-<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
 
-<p>
 
 <p class="fragment">
 
 Exact solution of the scheme:
-
 
 &nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$

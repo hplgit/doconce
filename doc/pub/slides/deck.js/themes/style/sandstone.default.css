@@ -29,10 +29,10 @@
   border-bottom-color: #ccc;
 }
 .deck-container .slide img, .deck-container .slide iframe {
-  width: 100%;
+  /* width: 100%; gives strange size of images */
 }
 .deck-container .slide iframe {
-  height: 480px;
+  /* height: 480px; */
 }
 .deck-container .slide pre {
   border-color: #ccc;

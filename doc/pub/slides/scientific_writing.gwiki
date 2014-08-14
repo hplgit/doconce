@@ -1,10 +1,10 @@
 
-<wiki:comment> TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way </wiki:comment>
-<wiki:comment> TITLE: Scientific Writing Anno 2013: The Doconce Way </wiki:comment>
+<wiki:comment> TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way </wiki:comment>
+<wiki:comment> TITLE: Scientific Writing Anno 2013: The DocOnce Way </wiki:comment>
 #summary Scientific Writing and Publishing Anno 2013
 
 By *Hans Petter Langtangen*
-==== Jan 8, 2014 ====
+==== Aug 14, 2014 ====
 
 ---------------------------------------------------------------
 
@@ -29,8 +29,8 @@ googlecode repository) and substitute the line above with the URL.
 
 
  * Pre 1980: Handwriting + publisher (paper or book)
- * Post 1984: scientists write TeX and LaTeX
- * Post 1995: publish LaTeX on the web or in journals and books
+ * Post 1985: scientists write LaTeX
+ * Post 1995: publish LaTeX on the web and in journals and books
 
 {{{
 \providecommand{\shadedskip}{}
@@ -51,7 +51,10 @@ print 'Hello, World!'
 \end{Verbatim}
 }}}
 
-Big late 1990s question: Will MS Word replace LaTeX? It never did!
+*Big late 1990s question:*\g<space>
+Will MS Word replace LaTeX? It never did!
+
+
 
 <wiki:comment> !split </wiki:comment>
 == Scientific publishing needs to address new media ==
@@ -468,9 +471,9 @@ based on HTML and vice versa.
  * Sphinx and Markdown has some limited math support
 
 <wiki:comment> !split </wiki:comment>
-== Solution II: Use Doconce ==
+== Solution II: Use DocOnce ==
 
-[http://hplgit.github.io/doconce/doc/web/index.html Doconce]
+[http://hplgit.github.io/doconce/doc/web/index.html DocOnce]
 offers minimalistic typing, great flexibility wrt format,
 especially for scientific writing with *much math and code*.
 
@@ -480,15 +483,15 @@ especially for scientific writing with *much math and code*.
  * Targets paper and screen
  * Many special features (code snippets from files, embedded movies,   admonitions, modern LaTeX layouts, ...)
  * Very effective for generating slides from ordinary text
- * Applies Mako: Doconce text is a program (!)
+ * Applies Mako: DocOnce text is a program (!)
  * Much like Markdown, less tagged than LaTeX, HTML, Sphinx<wiki:comment> latex interprets 9 = as chapter and then needs book style... </wiki:comment>
 
 
 <wiki:comment> !split </wiki:comment>
-= Doconce =
+= DocOnce =
 
 <wiki:comment> !split </wiki:comment>
-== Doconce demos ==
+== DocOnce demos ==
 
 http://hplgit.github.com/teamods/writing_reports/
 
@@ -497,24 +500,24 @@ http://hplgit.github.com/teamods/writing_reports/
  * [http://hplgit.github.com/teamods/writing_reports/_static/report_do.html Plain HTML] or with a [http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html template] or [http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html another template] or [http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html solarized]
  * Sphinx: [http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html agni], [http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html pyramid], [http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html classy], [http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html fenics], [http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html redcloud]
  * HTML for [http://doconce-report-demo.blogspot.no/ Google] or [http://doconcereportdemo.wordpress.com/ Wordpress] for blog posts
- * [http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page MediaWiki] (Wikipedia, Wikibooks, etc)
- * Doconce [http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html source code] and [http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html tutorial]
+ * [http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page MediaWiki] (Wikipedia, Wikibooks, etc)
+ * DocOnce [http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html source code] and [http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html tutorial]
 
 <wiki:comment> !split </wiki:comment>
-== Doconce disclaimer ==
+== DocOnce disclaimer ==
 
 
  * Based on text transformations (reg.exp.) so valid syntax may   occasionally give problems<wiki:comment> * Actively developed and maintained, but one-man show </wiki:comment>
 
 
-*Doconce divorce.* 
-At any time one can divorce from Doconce and marry one of the output
+*DocOnce divorce.*\g<space>
+At any time one can divorce from DocOnce and marry one of the output
 formats, such as LaTeX or Sphinx. The generated code is clean.
 
 
 
 <wiki:comment> !split </wiki:comment>
-== Doconce experience: code generation is a great thing ==
+== DocOnce experience: code generation is a great thing ==
 
 
 Regardless of what format you write in, introduce a step where
@@ -523,7 +526,7 @@ you can generate (parts of) the syntax.
 
  * Use a preprocessor a la Mako
  * Write your own read-and-generate code
- * or both (like Doconce)
+ * or both (like DocOnce)
 
 Advantages:
 
@@ -567,7 +570,7 @@ The default answer is LaTeX.
 
 <wiki:comment> !split </wiki:comment>
 
-= A tour of Doconce =
+= A tour of DocOnce =
 
 <wiki:comment> !split </wiki:comment>
 == Title, authors, date, toc ==
@@ -582,7 +585,7 @@ DATE: today
 TOC: on
 }}}
 
-*Notice.* 
+*Notice.*\g<space>
 Title and authors must have all information *on a single line*!
 
 
@@ -628,7 +631,10 @@ Result:
 
 ==== This is an H4/paragraph heading ====
 
-*This is a paragraph heading.* !split
+*This is a paragraph heading.*
+
+
+<wiki:comment> !split </wiki:comment>
 == Markup and lists ==
 
 {{{
@@ -685,7 +691,7 @@ URL: "https://github.com/hplgit/doconce"
 <wiki:comment> !split </wiki:comment>
 == Figures and movies ==
 
-*Important:* 
+*Important:*\g<space>
 Figures with HTML and LaTeX size info, and caption: *everything on one line*
 
 
@@ -759,7 +765,7 @@ Limit math environments to
 \end{align}
 }}}
 
-*Doconce fix of shortcomings.* 
+*DocOnce fix of shortcomings.*\g<space>
 
  * Sphinx, Markdown, and MediaWiki cannot have   `align` with labels
  * MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot   handle equation references across web pages
@@ -879,7 +885,7 @@ xlabel('x'); ylabel('y')
 show()
 }}}
 
-*Warning.* 
+*Warning.*\g<space>
 Works only in Sphinx documents (but HTML support is possible).
 
 
@@ -888,7 +894,7 @@ Works only in Sphinx documents (but HTML support is possible).
 == Demonstrating code execution; IPython notebook ==
 
 
-Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html Doconce source] and transform to an [http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb IPython notebook] with [http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html source]
+Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html DocOnce source] and transform to an [http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb IPython notebook] with [http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html source]
 
 <wiki:comment> !split </wiki:comment>
 == Tables ==
@@ -959,7 +965,7 @@ format (easy to make from BibTeX).
 <wiki:comment> !split </wiki:comment>
 == Exercises ==
 
-Doconce offers a special format for *exercises*, *problems*, *projects*,
+DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
 
 {{{
@@ -999,19 +1005,23 @@ Compute the probability of getting heads.
 <wiki:comment> keywords = random numbers; Monte Carlo simulation </wiki:comment>
 
 
-*a)* Make a program that simulates flipping a coin `N` times.
+*a)*
+Make a program that simulates flipping a coin `N` times.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
-*Hint.* Use `r = random.random()` and define head as `r <= 0.5`.
+*Hint.*
+Use `r = random.random()` and define head as `r <= 0.5`.
 
 <wiki:comment> --- end hint in exercise --- </wiki:comment>
 
-*b)* Compute the probability of getting heads.
+*b)*
+Compute the probability of getting heads.
 
 
 <wiki:comment> --- begin answer of exercise --- </wiki:comment>
-*Answer.* 0.5.
+*Answer.*
+0.5.
 
 <wiki:comment> --- end answer of exercise --- </wiki:comment>
 
@@ -1061,20 +1071,20 @@ processing (e.g., making a book of problems).
  * The mako preprocessor is really powerful - gives a   complete programming language inside the document!
 
 <wiki:comment> !split </wiki:comment>
-== Doconce admonitions ==
+== DocOnce admonitions ==
 
-*Use with caution!* 
+*Use with caution!*\g<space>
 Such environments may light up the document, but can be disturbing too.
 Some admon styles have icons.
 
 
 
-*Going deeper.* 
+*Going deeper.*\g<space>
 More details can be separated from the rest.
 
 
 
-*Time for review!* 
+*Time for review!*\g<space>
 Tasks:
 
 
@@ -1096,7 +1106,7 @@ Conclusion:
 Very effective way to generate slides from running text:
 
 
- * Take a copy of your Doconce prose
+ * Take a copy of your DocOnce prose
  * Strip off as much text as possible
  * Emphasize key points in bullet items
  * Focus on key equations, figures, movies, key code snippets
@@ -1273,7 +1283,7 @@ googlecode repository) and substitute the line above with the URL.
 
  * *Problem*: each package has its own syntax (though similar)
 
-   * *Solution*: slide code is autogenerated from Doconce
+   * *Solution*: slide code is autogenerated from DocOnce
 
 
  * *Problem*: reveal and deck have numerous styles
@@ -1288,7 +1298,7 @@ googlecode repository) and substitute the line above with the URL.
 
  * *Problem*: original versions of the styles have too large fonts,   centering, and other features not so suitable for lectures   with much math and code
 
-   * *Solution*: Doconce contains adjusted css files
+   * *Solution*: DocOnce contains adjusted css files
 
 
 
@@ -1296,7 +1306,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-== Doconce to HTML ==
+== DocOnce to HTML ==
 
 Run in terminal window:
 {{{
@@ -1322,7 +1332,7 @@ Two formats of blog posts are supported:
 
 
  * Google's [http://doconce-report-demo.blogspot.no/ blogspot.com]:   just paste the raw HTML (full support of math and code)
- * [http://doconcereportdemo.wordpress.com/ Wordpress]:   despite limited math, Doconce manipulates the math   such that even `equation` and `align` work in Wordpress :-)
+ * [http://doconcereportdemo.wordpress.com/ Wordpress]:   despite limited math, DocOnce manipulates the math   such that even `equation` and `align` work in Wordpress :-)
 
 For wordpress, add `--wordpress`:
 {{{
@@ -1333,7 +1343,7 @@ and paste the code into the text area.
 
 
 <wiki:comment> !split </wiki:comment>
-== Doconce to pdfLaTeX ==
+== DocOnce to pdfLaTeX ==
 
 {{{
 doconce format pdflatex doconcefile
@@ -1357,7 +1367,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Doconce to Sphinx ==
+== DocOnce to Sphinx ==
 
 {{{
 doconce format sphinx doconcefile
@@ -1386,7 +1396,7 @@ doconce format mwiki doconcefile
 Recommended site:
 
 
- * [http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page ShoutWiki]   for standard wikis
+ * [http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page ShoutWiki]   for standard wikis
 
 Publishing of "official" documents:
 
@@ -1395,7 +1405,7 @@ Publishing of "official" documents:
  * Wikipedia
 
 <wiki:comment> !split </wiki:comment>
-== Doconce to other formats ==
+== DocOnce to other formats ==
 
 {{{
 doconce format pandoc doconcefile  # (Pandoc extended) Markdown
@@ -1424,7 +1434,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 
 <wiki:comment> !split </wiki:comment>
-== Writing tips for LaTeX writers who want to convert to Doconce ==
+== Writing tips for LaTeX writers who want to convert to DocOnce ==
 
 
  * `doconce latex2doconce` helps the translation
@@ -1436,32 +1446,35 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Do not use *algorithm* environments, use simple list formatting instead
  * Avoid math in section headings
  * Use `pdflatex` or `xetex`
- * Use BibTeX (can easily be converted to [https://bitbucket.org/logg/publish publish] used by Doconce)
+ * Use BibTeX (can easily be converted to [https://bitbucket.org/logg/publish publish] used by DocOnce)
  * Use `\href` for links (and insert links frequently)
  * Use the `bm` package for boldface `\bm{u}`
- * Place all newcommands in a separate file, with one definition per line   (multiline definitions goes to a separate LaTeX preamble file in Doconce)
+ * Place all newcommands in a separate file, with one definition per line   (multiline definitions goes to a separate LaTeX preamble file in DocOnce)
  * Avoid all fancy LaTeX constructs - more backslashes than needed in math   and sections is a bad thing...
 
 <wiki:comment> !split </wiki:comment>
-== Doconce writing tips ==
+== DocOnce writing tips ==
 
 <wiki:comment> * See the previous *Typesetting concerns I, II and III* slides for issues when writing </wiki:comment>
-<wiki:comment> for multiple formats. However: Doconce makes a fix so that Sphinx and </wiki:comment>
+<wiki:comment> for multiple formats. However: DocOnce makes a fix so that Sphinx and </wiki:comment>
 <wiki:comment> other formats works with labels in align environments :-) </wiki:comment>
 
-Figures:
+Figures and movies:
 
 
  * Prepare figures in the right format: EPS for `latex`, PDF for `pdflatex`,   PNG, GIF or JPEG for HTML formats (`html`, and HTML output from   `sphinx`, `rst`, `pandoc`). One can omit the figure file extension and   `doconce` will pick the most appropriate file for the given output format.
  * Let plotting programs produce both PDF/EPS and PNG files.   (Recall that PDF and EPS are vector graphics formats that can scale to   any size with much higher quality than PNG or other bitmap formats.)
  * Use `doconce combine_images` to combine several images into one.
+ * Store all figures in a directory (tree) with name `fig` or `fig-X`,   where `X` is some short logical name for the current document.
+ * Store all movies in a directory (tree) with name `mov` or `mov-X`.
+ * Favor the movie formats MP4, WebM, and Ogg (best suited for modern browsers).
 
 <wiki:comment> !split </wiki:comment>
-== Doconce writing tips ==
+== DocOnce writing tips ==
 
 
  * `\bm{u}` gives nicer boldface typesetting of math symbols than   the alternatives `\boldsymbol{u}` and `\pmb{u}`.
- * For HTML-based formats using MathJax, `\bm{u}` is not supported   and therefore automatically replaced by `\boldsymbol{u}` by Doconce.
+ * For HTML-based formats using MathJax, `\bm{u}` is not supported   and therefore automatically replaced by `\boldsymbol{u}` by DocOnce.
  * Use `\<font color="blue">formula</font>` in math expressions to color a part.
  * Not all LaTeX math is supported by MathJax. Some legal LaTeX math   might give MathJax problems - then one has to rewrite the expression   to find a syntax that works both with LaTeX and MathJax.
  * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.

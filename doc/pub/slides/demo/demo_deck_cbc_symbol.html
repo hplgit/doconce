@@ -10,6 +10,7 @@
 
 
 
+
 <!-- deck.js: https://github.com/imakewebthings/deck.js -->
 
 <meta charset="utf-8">
@@ -151,16 +152,13 @@ td.padding {
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -190,7 +188,7 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 8, 2014</h4></center> <!-- date -->
+<center><h4>Aug 14, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -201,11 +199,10 @@ MathJax.Hub.Config({
 
 <section class="slide">
 
-<h2>Goal  <a name="___sec0"></a></h2>
+<h1>Goal  <a name="___sec0"></a></h1>
 
-<p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Layout.</b>
 This version
@@ -239,14 +236,12 @@ demonstrated.
 
 <section class="slide">
 
-<h2>Mathematical problem  <a name="___sec1"></a></h2>
+<h1>Mathematical problem  <a name="___sec1"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align}
@@ -258,8 +253,6 @@ u(0)  &= I,
 $$
 <p>&nbsp;<br>
 
-
-<p>
 
 <ul>
  <p><li> \( t\in (0,T] \)</li>
@@ -286,9 +279,8 @@ $$
 
 <section class="slide">
 
-<h2>Numerical solution method  <a name="___sec2"></a></h2>
+<h1>Numerical solution method  <a name="___sec2"></a></h1>
 
-<p>
 
 
 <ul>
@@ -323,9 +315,8 @@ $$
 
 <section class="slide">
 
-<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+<h2>Forward Euler explained  <a name="___sec3"></a></h2>
 
-<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -337,14 +328,13 @@ $$
 
 <section class="slide">
 
-<h2>Implementation  <a name="___sec4"></a></h2>
+<h1>Implementation  <a name="___sec4"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
@@ -365,9 +355,8 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -377,14 +366,12 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
 
-<p>
 
 <p class="slide">
 
 Exact solution of the scheme:
-
 
 &nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
