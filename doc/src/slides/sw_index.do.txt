@@ -7,7 +7,7 @@ DocOnce motivation and introduction talk *Scientific Writing and Publishing Anno
  * "HTML5 Slides": "scientific_writing-reveal-beige.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" beige theme
  * "HTML5 Slides": "scientific_writing-reveal-white.html" using "reveal.js": "http://lab.hakim.se/reveal-js/" simple theme
  * "HTML5 Slides": "scientific_writing-deck.html" using "deck.js": "https://github.com/imakewebthings/deck.js/" sandstone.default theme
- * "LaTeX Beamer": "scientific_writing-beamer-red_shadow.pdf"
+ * "LaTeX Beamer": "scientific_writing-beamer.pdf"
  * "Plain HTML slides": "scientific_writing-plain.html"
  * "One big plain HTML file": "scientific_writing-1.html"
  * "One big HTML file with solarized colors": "scientific_writing-solarized.html"
