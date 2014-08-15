@@ -1235,10 +1235,9 @@ def combine_images():
         # Combine PDF images
         num_rows = int(round(len(imagefiles)/float(num_columns)))
         cmds.append('pdftk %s output tmp.pdf' % ' '.join(imagefiles))
-        cmds.append('pdfnup --nup %dx%d tmp.pdf' % (num_columns, num_rows))
-        cmds.append('pdfcrop tmp-nup.pdf')
-        cmds.append('cp tmp-nup-crop.pdf %s' % output_file)
-        cmds.append('rm -f tmp.pdf tmp-nup.pdf tmp-nup-crop.pdf')
+        cmds.append('pdfnup --nup %dx%d --outfile tmp.pdf tmp.pdf' % (num_columns, num_rows))
+        cmds.append('pdfcrop tmp.pdf %s' % output_file)
+        cmds.append('rm -f tmp.pdf')
     print
     for cmd in cmds:
         system(cmd, verbose=True)
@@ -4443,7 +4442,7 @@ def slides_beamer():
         f.close()
         print 'slides written to', filename
         if option('handout'):
-            print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 %s.pdf' % filestem
+            print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile %s.pdf %s.pdf' % (filestem, filestem)
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):
@@ -4690,8 +4689,6 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \end{document}
 """
     slides = re.sub(r'% !split\s+', '', slides)
-    if handout:
-        print 'handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf'
     return slides
 
 def _usage_split_rst0():
@@ -7848,10 +7845,8 @@ def latex(name,
 
     if version in ('2up', 'A4-2up'):
         # Use pdfnup to make two pages per sheet
-        cmd = 'pdfnup --frame true --outfile tmp.pdf %(name)s.pdf' % vars()
+        cmd = 'pdfnup --frame true --outfile %(name)s.pdf %(name)s.pdf' % vars()
         system(cmd)
-        shutil.copy('tmp.pdf', name + '.pdf')
-        os.remove('tmp.pdf')
     if postfix:
         shutil.copy(name + '.pdf', name + '-' + postfix + '.pdf')
 
