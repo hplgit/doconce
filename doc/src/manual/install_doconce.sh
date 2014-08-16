@@ -72,6 +72,7 @@ apt_install texinfo
 apt_install texlive
 apt_install texlive-extra-utils
 apt_install texlive-latex-extra
+apt_install texlive-latex-recommended
 apt_install texlive-math-extra
 apt_install texlive-font-utils
 apt_install texlive-humanities
