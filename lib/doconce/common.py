@@ -515,8 +515,23 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
                 lines[i] = '!bt\n' + math + '!et'
 
     filestr = safe_join(lines, '\n')
+
+    # All formats except sphinx and ipynb must remove !bc *hid blocks
+    # (maybe html will get the possibility to run hidden blocks)
+    if format not in ('sphinx', 'ipynb'):
+        filestr = remove_hidden_code_blocks(filestr, format)
+
     return filestr
 
+def remove_hidden_code_blocks(filestr, format):
+    """
+    Remove text encolsed in !bc *hid and !ec tags.
+    Some formats need this for executable code blocks to work,
+    but they should be invisible in the text.
+    """
+    pattern = r'^!bc +[a-z]*hid\n.+?^!ec'
+    filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE|re.DOTALL)
+    return filestr
 
 def doconce_exercise_output(exer,
                             solution_header = '__Solution.__',

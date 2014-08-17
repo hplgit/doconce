@@ -2057,10 +2057,13 @@ This is the same as writing `!bc X` and copying parts of the `somefile.py`
 text into the DocOnce source file, followed by `!ec`.
 For example, if the lines between the `myfunc` and `yourfunc` functions
 actually work as a complete Python program, one could specify `envir=pypro`
-to indicate that it is a complete program and not a snippet (i.e.,
-`pycod` would be the default without `envir=pypro` in this case).
+to indicate that it is a complete program that can be run as is.
+By default, copying a part of a `.py` file will lead to
+`!bc pycod`, which indicates a code snippet that normally needs
+additional code to be run.
 
-Let us copy a whole file (the first line above):
+Let us demonstrate the result of copying a whole file, as
+specified in the first line above:
 
 @@@CODE __testcode.f
 

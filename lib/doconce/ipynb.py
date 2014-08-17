@@ -180,6 +180,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 code_blocks[i] = '\n'.join(lines)
                 code_blocks[i] = indent_lines(code_blocks[i], format)
                 ipynb_code_tp[i] = 'markdown'
+        elif tp.endswith('hid'):
+            ipynb_code_tp[i] = 'cell_hidden'
         elif tp.startswith('py'):
             ipynb_code_tp[i] = 'cell'
         else:
@@ -201,8 +203,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         if line.startswith('authors = [new_author(name='):
             authors = line[10:]
         elif _CODE_BLOCK in line:
-            notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
-            notebook_blocks.append(line)
+            code_block_tp = line.split()[-1]
+            if code_block_tp in ('pyhid',) or not code_block_tp.endswith('hid'):
+                notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
+                notebook_blocks.append(line)
+            # else: hidden block to be dropped (may include more languages
+            # with time in the above tuple)
         elif _MATH_BLOCK in line:
             notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
             notebook_blocks.append(line)
@@ -222,6 +228,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             idx = int(m.group(1))
             if ipynb_code_tp[idx] == 'cell':
                 notebook_blocks[i] = ['cell', notebook_blocks[i]]
+            elif ipynb_code_tp[idx] == 'cell_hidden':
+                notebook_blocks[i] = ['cell_hidden', notebook_blocks[i]]
             else:
                 notebook_blocks[i] = ['text', notebook_blocks[i]]
         elif re.match(pattern % _MATH_BLOCK, notebook_blocks[i]):
@@ -287,6 +295,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             ws.cells.append(new_code_cell(input=block,
                                           prompt_number=prompt_number,
                                           collapsed=False))
+        elif block_tp == 'cell_hidden' and block != '':
+            ws.cells.append(new_code_cell(input=block,
+                                          prompt_number=prompt_number,
+                                          collapsed=True))
     # Catch the title as the first heading
     m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
     title = m.group(1).strip() if m else ''

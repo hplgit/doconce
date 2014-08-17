@@ -144,7 +144,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         has_custom_pygments_lexer('doconce')
     envirs += get_legal_pygments_lexers()
     for envir in code_block_types:
-        if envir:
+        if envir and not envir.endswith('hid'):
             if envir[-1].isdigit():
                 # strip off digit that can occur inside admons if the
                 # option --latex_admon_envir_map=X is used
