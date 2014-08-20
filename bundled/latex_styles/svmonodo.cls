@@ -24,7 +24,7 @@
 %%   Right brace   \}     Tilde         \~}
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{svmono}[2007/06/25 v5.4
+\ProvidesClass{svmonodo}[2007/06/25 v5.4
 ^^JSpringer Verlag global LaTeX document class for monographs]
 %
 % Options
@@ -139,7 +139,7 @@
 %\DeclareOption{sectrefs}{\let\secbibl=Y}
 %
 % footinfo option (provides an informatory line on every page)
-\def\SpringerMacroPackageNameA{svmono.cls}
+\def\SpringerMacroPackageNameA{svmonodo.cls}
 % \thetime, \thedate and \timstamp are macros to include
 % time, date (or both) of the TeX run in the document
 \def\maketimestamp{\count255=\time
