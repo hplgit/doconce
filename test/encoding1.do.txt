@@ -1,5 +1,8 @@
 # Important to test both heading (for rst and plain) and running text
 
-=== Test of æ, ø, å ===
+=== Test of æ, ø, å in headline ===
 
 Name with Norwegian characters: Åsmund Ødegård.
+Test inline tagging too: ``Ødegård'', *Ødegård*, _Ødegård_.
+[Åsmund: non-English chars in names in inline
+comments are not accepted.]

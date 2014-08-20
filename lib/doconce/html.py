@@ -793,6 +793,9 @@ def html_code(filestr, code_blocks, code_block_types,
                 text = '<div class="jumbotron">\n' + core + \
                        button + '\n</div> <!-- end jumbotron -->\n\n' + rest
                 filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+                # Last line may give trouble if there is no !split
+                # before first section and the document is long...
+
         # Fix slidecells? Just a start...this is hard...
         if '<!-- !bslidecell' in filestr:
             filestr = process_grid_areas(filestr)

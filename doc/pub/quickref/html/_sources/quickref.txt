@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 14, 2014
+:Date: Aug 20, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -615,7 +615,9 @@ labels in ``align`` environments work well.)
    one plot per figure (combine them into one using ``doconce combine_images``),
    example environments (use subsection or subsubsection instead),
    algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-   manual), code listings in figures (use just inline blocks).
+   manual), newcommands outside mathematics (use Mako variables or functions
+   instead), code listings in figures (use just inline blocks), to mention
+   some.
    
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
@@ -638,7 +640,9 @@ those in ``newcommands_replace.tex`` will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 Hyperlinks
 ----------

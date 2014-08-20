@@ -134,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 14, 2014</h4></center> <!-- date -->
+<center><h4>Aug 20, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -808,7 +808,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using <code>doconce combine_images</code>),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 <p>
 However, one can use preprocessor if-tests on
@@ -832,7 +834,9 @@ those in <code>newcommands_replace.tex</code> will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For <code>html</code>, <code>sphinx</code>, <code>latex</code>, <code>pdflatex</code>,
 <code>mwiki</code>, <code>ipynb</code>, and <code>pandoc</code>, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire <code>newcommand</code> outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 <h2>Hyperlinks  <a name="___sec10"></a></h2>
 
