@@ -229,7 +229,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
             print '    label{%s}' % label
         print
 
-    filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
+    filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'sphinx')
 
     # Remove all !bc ipy and !bc pyshell since interactive sessions
     # are automatically handled by sphinx without indentation
@@ -322,6 +322,33 @@ found in line:
             # any !bc with/without argument becomes a text block:
             filestr = re.sub(r'^!bc$', '\n.. code-block:: text\n\n', filestr,
                              flags=re.MULTILINE)
+        elif key.endswith('hid'):
+            if key in ('pyhid', 'jshid', 'htmlhid') and option('runestone'):
+                # Allow runestone books to run hidden code blocks
+                # (replace pyhid by pycod, then remove all !bc *hid)
+                for i in range(len(code_block_types)):
+                    if code_block_types[i] == key:
+                        code_block_types[i] = key.replace('hid', 'cod')
+
+                global activecode_counter
+                activecode_counter += 1
+                key2language = dict(py='python', js='javascript', html='html')
+                language = key2language[key.replace('hid', '')]
+                include = ', '.join([i for i in range(1, activecode_counter)])
+                filestr = re.sub(r'^!bc +%s\s*\n' % key,
+                                 """
+.. activecode:: activecode_%d
+   :language: %s
+   :include: %s
+   :hidecode:
+
+""" % (activecode_counter, language, include), filestr, flags=re.MULTILINE)
+            else:
+                # Remove hidden code block
+                print 'XXX4 remove block'
+                pattern = r'^!bc +%s\n.+?^!ec' % key
+                filestr = re.sub(pattern, '', filestr,
+                                 flags=re.MULTILINE|re.DOTALL)
         else:
             # Use the standard sphinx code-block directive
             if key in envir2pygments:
@@ -333,7 +360,7 @@ found in line:
                 print '    which is not registered in sphinx.py (sphinx_code)'
                 print '    or not a language registered in pygments'
                 _abort()
-            filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
+            filestr = re.sub(r'^!bc +%s\s*\n' % key,
                              '\n.. code-block:: %s\n\n' % \
                              pygments_language, filestr, flags=re.MULTILINE)
 

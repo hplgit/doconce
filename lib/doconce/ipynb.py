@@ -1,6 +1,6 @@
-import re, sys
+import re, sys, shutil, os
 from common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex
+     insert_code_and_tex, indent_lines
 from html import html_movie
 from pandoc import pandoc_table, pandoc_ref_and_label, \
      pandoc_index_bib, pandoc_quote, pandoc_figure
@@ -65,7 +65,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     # filestr becomes json list after this function so we must typeset
     # envirs here. All envirs are typeset as pandoc_quote.
     from common import _CODE_BLOCK, _MATH_BLOCK
-    envir_format = option('ipynb_admon=', 'quote')
+    envir_format = option('ipynb_admon=', 'paragraph')
+    # Remove all !bpop-!epop environments (they cause only problens and
+    # have no use)
+    for envir in 'pop', 'slidecell', 'notes':
+        filestr = re.sub('^!b%s.*\n' % envir, '', filestr, flags=re.MULTILINE)
+        filestr = re.sub('^!e%s\s+' % envir, '', filestr, flags=re.MULTILINE)
     from doconce import doconce_envirs
     envirs = doconce_envirs()[8:-1]
     for envir in envirs:
@@ -107,18 +112,34 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                             lines.append('\n' + line + '\n')
                     block = '\n'.join(lines) + '\n\n'
 
-                if title:
-                    title = '> ' + title
+                    # Add quote and a blank line after title
+                    if title:
+                        title = '> ' + title + '>\n'
+                else:
+                    # Add a blank line after title
+                    if title:
+                        title += '\n'
+
                 text = title + block + '\n\n'
                 return text
-
+        else:
+            print '*** error: --ipynb_admon=%s is not supported'  % envir_format
         filestr = re.sub(pattern, subst, filestr,
                          flags=re.DOTALL | re.MULTILINE)
 
-    # Fix pyshell and ipy interactive sessions: remove prompt and output
+    # Fix pyshell and ipy interactive sessions: remove prompt and output.
+    # Fix sys and use run prog.py.
+    # Only typeset Python code as blocks, otherwise plain indented Markdown.
+    from doconce import dofile_basename
+    from sets import Set
+    ipynb_tarfile = 'ipynb-%s-src.tar.gz' % dofile_basename
+    src_dirs = Set()
+
+    ipynb_code_tp = [None]*len(code_blocks)
     for i in range(len(code_blocks)):
         tp = code_block_types[i]
         if tp in ('pyshell', 'ipy'):
+            # Remove prompt and output lines; leave code executable in cell
             lines = code_blocks[i].splitlines()
             for j in range(len(lines)):
                 if lines[j].startswith('>>> ') or lines[j].startswith('... '):
@@ -132,6 +153,47 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             for j in range(lines.count('')):
                 lines.remove('')
             code_blocks[i] = '\n'.join(lines)
+            ipynb_code_tp[i] = 'cell'
+        elif tp == 'sys':
+            # Do we find execution of python file? If so, copy the file
+            # to separate subdir and make a run file command in a cell.
+            # Otherwise, it is just a plain verbatim Markdown block.
+            found_unix_lines = False
+            lines = code_blocks[i].splitlines()
+            for j in range(len(lines)):
+                m = re.search(r'(.+?>|\$) *python +([A-Za-z_0-9]+?\.py)',
+                              lines[j])
+                if m:
+                    name = m.group(2).strip()
+                    if os.path.isfile(name):
+                        src_dirs.add(os.path.dirname(name))
+                        lines[j] = '%%run "%s"' % fullpath
+                else:
+                    found_unix_lines = True
+            src_dirs = list(src_dirs)
+            if src_dirs and not found_unix_lines:
+                # This is a sys block with run commands only
+                code_blocks[i] = '\n'.join(lines)
+                ipynb_code_tp[i] = 'cell'
+            else:
+                # Standard Markdown code
+                code_blocks[i] = '\n'.join(lines)
+                code_blocks[i] = indent_lines(code_blocks[i], format)
+                ipynb_code_tp[i] = 'markdown'
+        elif tp.endswith('hid'):
+            ipynb_code_tp[i] = 'cell_hidden'
+        elif tp.startswith('py'):
+            ipynb_code_tp[i] = 'cell'
+        else:
+            # Should support other languages as well, but not for now
+            code_blocks[i] = indent_lines(code_blocks[i], format)
+            ipynb_code_tp[i] = 'markdown'
+    if src_dirs:
+        # Make tar file with all the source dirs with files
+        # that need to be executed
+        os.system('tar cfz %s %s' % (ipynb_tarfile, ' '.join(src_dirs)))
+        print 'collected all required .py files in', ipynb_tarfile, 'which must be distributed with the notebook'
+
 
     # Parse document into markdown text, code blocks, and tex blocks.
     # Store in nested list notebook_blocks.
@@ -141,8 +203,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         if line.startswith('authors = [new_author(name='):
             authors = line[10:]
         elif _CODE_BLOCK in line:
-            notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
-            notebook_blocks.append(line)
+            code_block_tp = line.split()[-1]
+            if code_block_tp in ('pyhid',) or not code_block_tp.endswith('hid'):
+                notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
+                notebook_blocks.append(line)
+            # else: hidden block to be dropped (may include more languages
+            # with time in the above tuple)
         elif _MATH_BLOCK in line:
             notebook_blocks[-1] = '\n'.join(notebook_blocks[-1]).strip()
             notebook_blocks.append(line)
@@ -158,7 +224,14 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     pattern = r'(\d+) +%s'
     for i in range(len(notebook_blocks)):
         if re.match(pattern % _CODE_BLOCK, notebook_blocks[i]):
-            notebook_blocks[i] = ['code', notebook_blocks[i]]
+            m = re.match(pattern % _CODE_BLOCK, notebook_blocks[i])
+            idx = int(m.group(1))
+            if ipynb_code_tp[idx] == 'cell':
+                notebook_blocks[i] = ['cell', notebook_blocks[i]]
+            elif ipynb_code_tp[idx] == 'cell_hidden':
+                notebook_blocks[i] = ['cell_hidden', notebook_blocks[i]]
+            else:
+                notebook_blocks[i] = ['text', notebook_blocks[i]]
         elif re.match(pattern % _MATH_BLOCK, notebook_blocks[i]):
             notebook_blocks[i] = ['math', notebook_blocks[i]]
         else:
@@ -218,10 +291,14 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
             ws.cells.append(new_text_cell(u'markdown', source=block))
-        elif block_tp == 'code' and block != '':
+        elif block_tp == 'cell' and block != '':
             ws.cells.append(new_code_cell(input=block,
                                           prompt_number=prompt_number,
                                           collapsed=False))
+        elif block_tp == 'cell_hidden' and block != '':
+            ws.cells.append(new_code_cell(input=block,
+                                          prompt_number=prompt_number,
+                                          collapsed=True))
     # Catch the title as the first heading
     m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
     title = m.group(1).strip() if m else ''

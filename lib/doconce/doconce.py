@@ -3298,12 +3298,13 @@ def doconce2format(filestr, format):
     from expand_newcommands import expand_newcommands
     if format not in ('latex', 'pdflatex'):  # replace for 'pandoc', 'html'
         newcommand_files = glob.glob('newcommands*_replace.tex')
-        if format == 'sphinx':  # replace all newcommands in sphinx
+        if format in ('sphinx', 'pandoc', 'ipunb'):
+            # replace all newcommands
             newcommand_files = [name for name in glob.glob('newcommands*.tex')
                                 if not name.endswith('.p.tex')]
-            # note: could use substitutions (|newcommand|) in rst/sphinx,
+            # (note: could use substitutions (|newcommand|) in rst/sphinx,
             # but they don't allow arguments so expansion of \newcommand
-            # is probably a better solution
+            # is probably a better solution)
         filestr = expand_newcommands(newcommand_files, filestr)
         for i in range(len(tex_blocks)):
             tex_blocks[i] = expand_newcommands(newcommand_files, tex_blocks[i])

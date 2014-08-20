@@ -136,7 +136,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
     from common import has_custom_pygments_lexer, get_legal_pygments_lexers
     if 'ipy' in code_block_types:
         has_custom_pygments_lexer('ipy')
@@ -144,7 +144,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         has_custom_pygments_lexer('doconce')
     envirs += get_legal_pygments_lexers()
     for envir in code_block_types:
-        if envir:
+        if envir and not envir.endswith('hid'):
             if envir[-1].isdigit():
                 # strip off digit that can occur inside admons if the
                 # option --latex_admon_envir_map=X is used
@@ -155,6 +155,11 @@ def latex_code(filestr, code_blocks, code_block_types,
     # --- Final fixes for latex format ---
 
     chapters = True if re.search(r'\\chapter\{', filestr) is not None else False
+
+    # \texttt{>>>} gives very strange typesetting in the Springer book,
+    # but not in ordinary latex, so we need to fix that with hack back
+    # to to \code{>>>}
+    filestr = filestr.replace(r'\texttt{>>>}', r'\code{>>>}')
 
     # Remove "Appendix: " from headings in appendices
     appendix_pattern = r'\\(chapter|section\*?)\{Appendix:\s+'
