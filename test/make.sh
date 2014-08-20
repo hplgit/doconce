@@ -362,6 +362,7 @@ cd ..
 # in latex, media9 is unreliable
 
 # Test encoding: guess and change
+doconce format html encoding1
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
