@@ -302,6 +302,27 @@ def f(x):
 print f(0)
 |ec
 
+# Here goes hidden code.
+# Python can be treated by some formats, Fortran is always out.
+
+!bc pyhid
+def f(x):
+    """Secret, hidden function to be defined."""
+    return 42
+!ec
+
+!bc fhid
+       subroutine helper1(x)
+       real*8 x
+       x = 42
+       return
+
+       subroutine helper2(x)
+       real*8 x
+       x = 43
+       return
+!ec
+
 ===== Mathematics =====
 
 Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset

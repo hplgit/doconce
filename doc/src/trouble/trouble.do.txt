@@ -749,6 +749,13 @@ doconce replace '<hr class="figure">' \
 
 ======= Problems with reveal/deck HTML5 slides =======
 
+===== Reveal slides are stacked on top of each other =====
+
+This problem can be caused by having a `!bblock` environment crossing two
+slides because of a forgotten `!eblock` on the first slide.
+To locate the problematic slides, copy chunks of slides to a new file,
+compile, and inspect. This will reveal the problematic chunk.
+
 ===== Reveal slides are moving steadily to the left =====
 
 This seems to be a problem when one has used the mouse to scroll down
