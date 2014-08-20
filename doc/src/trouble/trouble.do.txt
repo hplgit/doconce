@@ -228,8 +228,26 @@ label{trouble:pitfalls}
 
 Since DocOnce applies regular expressions to a large extent to translate
 the input source to the output format, limitations of regular expressions
-may lead to unexpected results. Here are some examples on what can go
-wrong.
+may lead to unexpected results. Here are some examples on what can go wrong.
+
+=== Double bold/italic ===
+
+Two strings with bold or emphasize after each other will not work:
+
+!bc do
+# Not properly interpreted:
+Here is a _bold_ _word_.
+# This is how to do it:
+Here is a _bold word_.
+
+# Same with emphasize/italic:
+Cannot write *two emphasized* *words*,
+but must write *two emphasized words*.
+!ec
+The wrong syntax implies that one of the texts inside
+bold/italic tags will appear with DocOnce syntax in the output.
+
+=== Mix of bold/italic and math ===
 
 Trying to typeset a mixture of text and mathematics or code in boldface or
 emphasized font fails:

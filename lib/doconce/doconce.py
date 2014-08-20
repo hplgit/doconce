@@ -3673,7 +3673,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
             try:
                 filestr = unicode(filestr, encoding)
             except UnicodeDecodeError as e:
-                if "codec can't decode" in str(e):
+                if "unicode codec can't decode" in str(e):
                     print e
                     index = int(str(e).split('in position')[1].split(':')[0])
                     print filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50]
