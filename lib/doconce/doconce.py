@@ -2790,7 +2790,7 @@ def inline_tag_subst(filestr, format):
     # Do tags that require almost format-independent treatment such
     # that everything is conveniently defined here
     # 1. Quotes around normal text in LaTeX style:
-    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
+    pattern = "``([^']+?)''"  # here we had [A-Za-z][lots of chars]*?, but ^' is much smarter and mathces locale chars too
     if format in ('html',):
         filestr = re.sub(pattern, '&quot;\g<1>&quot;', filestr)
     elif format not in ('pdflatex', 'latex'):

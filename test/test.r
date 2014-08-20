@@ -38522,6 +38522,7 @@ cd ..
 # in latex, media9 is unreliable
 
 # Test encoding: guess and change
+doconce format html encoding1
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -78234,7 +78235,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Aug 14 20:08:06 2014.
+# sphinx-quickstart on Wed Aug 20 07:29:15 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78926,6 +78927,31 @@ n\in\mathbb N$ is via the Euler integral
   'no': 2,
   'question': 'What is the capital of Norway?',
   'question prefix': 'Fundamental test:'}]
+************** File: encoding1.html *****************
+
+<!-- tocinfo
+{'highest level': 3,
+ 'sections': [(' Test of \xc3\xa6, \xc3\xb8, \xc3\xa5 in headline ',
+               3,
+               None,
+               '___sec0')]}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<!-- Important to test both heading (for rst and plain) and running text -->
+
+<h3>Test of &#230;, &#248;, &#229; in headline  <a name="___sec0"></a></h3>
+
+Name with Norwegian characters: &#197;smund &#216;deg&#229;rd.
+Test inline tagging too: &quot;&#216;deg&#229;rd&quot;, <em>&#216;deg&#229;rd</em>, <b>&#216;deg&#229;rd</b>.
+[&#197;smund: non-English chars in names in inline
+comments are not accepted.]
+
+<!-- ------------------- end of main content --------------- -->
+
+
 ************** File: tmp_Doconce.do.txt *****************
 
 TITLE: My Test of Class Doconce
@@ -80064,7 +80090,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using `doconce combine_images`),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -80085,7 +80113,9 @@ those in `newcommands_replace.tex` will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For `html`, `sphinx`, `latex`, `pdflatex`,
 `mwiki`, `ipynb`, and `pandoc`, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire `newcommand` outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 
 ===== Hyperlinks =====
@@ -81290,7 +81320,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using <code>doconce combine_images</code>),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 <p>
 However, one can use preprocessor if-tests on
@@ -81314,7 +81346,9 @@ those in <code>newcommands_replace.tex</code> will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For <code>html</code>, <code>sphinx</code>, <code>latex</code>, <code>pdflatex</code>,
 <code>mwiki</code>, <code>ipynb</code>, and <code>pandoc</code>, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire <code>newcommand</code> outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 <h2>Hyperlinks  <a name="___sec10"></a></h2>
 
@@ -82849,7 +82883,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using \code{doconce combine_images}),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see \emph{Typesetting of Algorithms} in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically \code{#if FORMAT in ("latex", "pdflatex")}) to
@@ -82872,7 +82908,9 @@ those in \code{newcommands_replace.tex} will be replaced by their full
 {\LaTeX} code. This conventions helps make readable documents in formats
 without {\LaTeX} support. For \code{html}, \code{sphinx}, \code{latex}, \code{pdflatex},
 \code{mwiki}, \code{ipynb}, and \code{pandoc}, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire \code{newcommand} outside {\LaTeX}
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 
 \subsection{Hyperlinks}
@@ -84049,7 +84087,9 @@ labels in ``align`` environments work well.)
    one plot per figure (combine them into one using ``doconce combine_images``),
    example environments (use subsection or subsubsection instead),
    algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-   manual), code listings in figures (use just inline blocks).
+   manual), newcommands outside mathematics (use Mako variables or functions
+   instead), code listings in figures (use just inline blocks), to mention
+   some.
    
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
@@ -84072,7 +84112,9 @@ those in ``newcommands_replace.tex`` will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 Hyperlinks
 ----------
@@ -85262,7 +85304,9 @@ labels in ``align`` environments work well.)
    one plot per figure (combine them into one using ``doconce combine_images``),
    example environments (use subsection or subsubsection instead),
    algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-   manual), code listings in figures (use just inline blocks).
+   manual), newcommands outside mathematics (use Mako variables or functions
+   instead), code listings in figures (use just inline blocks), to mention
+   some.
    
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
@@ -85285,7 +85329,9 @@ those in ``newcommands_replace.tex`` will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 ``mwiki``, ``ipynb``, and ``pandoc``, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 Hyperlinks
 ----------
@@ -86429,7 +86475,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using `doconce combine_images`),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -86451,7 +86499,9 @@ those in `newcommands_replace.tex` will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For `html`, `sphinx`, `latex`, `pdflatex`,
 `mwiki`, `ipynb`, and `pandoc`, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire `newcommand` outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 
 ==== Hyperlinks ====
@@ -87579,7 +87629,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using <code>doconce combine_images</code>),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see ''Typesetting of Algorithms'' in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
@@ -87602,7 +87654,9 @@ those in <code>newcommands_replace.tex</code> will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For <code>html</code>, <code>sphinx</code>, <code>latex</code>, <code>pdflatex</code>,
 <code>mwiki</code>, <code>ipynb</code>, and <code>pandoc</code>, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire <code>newcommand</code> outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 
 ==== Hyperlinks ====
@@ -88706,7 +88760,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using {{{doconce combine_images}}}),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see //Typesetting of Algorithms// in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically {{{#if FORMAT in ("latex", "pdflatex")}}}) to
@@ -88728,7 +88784,9 @@ those in {{{newcommands_replace.tex}}} will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For {{{html}}}, {{{sphinx}}}, {{{latex}}}, {{{pdflatex}}},
 {{{mwiki}}}, {{{ipynb}}}, and {{{pandoc}}}, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire {{{newcommand}}} outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 
 == Hyperlinks ==
@@ -89774,7 +89832,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using 'doconce combine_images'),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically '#if FORMAT in ("latex", "pdflatex")') to
@@ -89796,7 +89856,9 @@ those in 'newcommands_replace.tex' will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For 'html', 'sphinx', 'latex', 'pdflatex',
 'mwiki', 'ipynb', and 'pandoc', the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire 'newcommand' outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 Hyperlinks
 
@@ -90836,7 +90898,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using C{doconce combine_images}),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see I{Typesetting of Algorithms} in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically C{#if FORMAT in ("latex", "pdflatex")}) to
@@ -90858,7 +90922,9 @@ those in C{newcommands_replace.tex} will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For C{html}, C{sphinx}, C{latex}, C{pdflatex},
 C{mwiki}, C{ipynb}, and C{pandoc}, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire C{newcommand} outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 Hyperlinks
 ----------
@@ -91954,7 +92020,9 @@ Notice ------------------------------------------------------------------------|
 | one plot per figure (combine them into one using doconce combine_images),    |
 | example environments (use subsection or subsubsection instead),              |
 | algorithms environments (see *Typesetting of Algorithms* in the DocOnce      |
-| manual), code listings in figures (use just inline blocks).                  |
+| manual), newcommands outside mathematics (use Mako variables or functions    |
+| instead), code listings in figures (use just inline blocks), to mention      |
+| some.                                                                        |
 |                                                                              |
 | However, one can use preprocessor if-tests on                                |
 | the format (typically #if FORMAT in ("latex", "pdflatex")) to                |
@@ -91976,7 +92044,9 @@ those in newcommands_replace.tex will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For html, sphinx, latex, pdflatex,
 mwiki, ipynb, and pandoc, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire newcommand outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 Hyperlinks
 ----------
@@ -93135,7 +93205,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using `doconce combine_images`),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), code listings in figures (use just inline blocks).
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.
 
 However, one can use preprocessor if-tests on
 the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
@@ -93157,7 +93229,9 @@ those in `newcommands_replace.tex` will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For `html`, `sphinx`, `latex`, `pdflatex`,
 `mwiki`, `ipynb`, and `pandoc`, the mathematics in newcommands is
-rendered nicely anyway.
+rendered nicely anyway. If you desire `newcommand` outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).
 
 
 ### Hyperlinks
@@ -98986,10 +99060,9 @@ output in slides1.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 + doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
-handouts: pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 myslides.pdf
 slides written to slides1.tex
 printing for handout:
-pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 slides1.pdf
+pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile slides1.pdf slides1.pdf
 + '[' 0 -ne 0 ']'
 + system doconce format html slides2 --pygments_html_style=emacs
 + doconce format html slides2 --pygments_html_style=emacs
@@ -106578,6 +106651,9 @@ Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + cd ..
++ doconce format html encoding1
+translating doconce text in encoding1.do.txt to html
+output in encoding1.html
 + system doconce guess_encoding encoding1.do.txt
 + doconce guess_encoding encoding1.do.txt
 + '[' 0 -ne 0 ']'
@@ -107299,12 +107375,12 @@ Overfull \hbox (8.97565pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[10]
+[10] [11]
 
 
 ...rest of part of LaTeX line number...
 
-[11] [12]
+[12]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
@@ -107316,7 +107392,7 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14] [15] [16] [17] [18]
+[14] [15] [16] [17] [18] [19]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -107324,7 +107400,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[19] (./quickref.aux)
+[20] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -107481,7 +107557,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.dvi (19 pages, ).
+Output written on quickref.dvi (20 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + latex -shell-escape quickref.tex
@@ -107691,15 +107767,15 @@ Overfull \hbox (8.97565pt too wide)
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-
+[13]
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[13]
+[14]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14] [15] [16] [17] [18] [19]
+[15] [16] [17] [18] [19]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -108780,11 +108856,11 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
-
+[11]
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
-[11]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
 

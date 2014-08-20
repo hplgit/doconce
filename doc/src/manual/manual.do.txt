@@ -2147,7 +2147,7 @@ Here is the result:
 
 The support of LaTeX mathematics varies among the formats:
 
- * Output in LaTeX (`latex` and `pdflatex` formats) has of course full
+ * Output in LaTeX (`latex` and `pdflatex` formats) has full
    support of all LaTeX mathematics, of course.
  * The `html` format supports single equations and multiple equations
    via the align environment, also with labels.
@@ -2219,7 +2219,10 @@ use with PowerPoint or OpenOffice presentations.
 label{newcommands}
 
 DocOnce supports a type of macros via a LaTeX-style *newcommand*
-construction.  The newcommands defined in a file with name
+construction, but only inside mathematical expressions (inline
+LaTeX math or LaTeX math blocks, otherwise use Mako functions).
+
+The newcommands must be defined in a file with name
 `newcommand_replace.tex` are expanded when DocOnce is filtered to
 other formats, except for LaTeX (since LaTeX performs the expansion
 itself).  Newcommands in files with names `newcommands.tex` and
@@ -2236,6 +2239,12 @@ elsewhere throughout the text will usually be placed in
 newcommands in the `newcommands*.tex` files *must* appear on a single
 line (multi-line newcommands are too hard to parse with regular
 expressions).
+
+!bnotice
+If you desire a newcommand for the running text, using a Mako function
+(written in plain Python) is much more flexible. See
+Section ref{manual:mako}.
+!enotice
 
 # #ifdef EXTRA
 __Example.__ Suppose we have the following commands in
@@ -2264,6 +2273,60 @@ will then be rendered to
 !et
 in the current format.
 # #endif
+
+===== Guidelines for LaTeX Writers =====
+
+Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
+`mwiki`, `html`, or `ipynb` formats
+is also important, one should follow these rules:
+
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`.
+ * MediaWiki (`mwiki`) does not support references to equations.
+
+(DocOnce performs extensions to `sphinx` and other formats such that
+labels in `align` environments work well.)
+
+!bnotice
+LaTeX supports lots of fancy formatting, for example, multiple
+plots in the same figure (`subfigure` package), margin notes, multi-page
+tables, example and algorithm environments, code listings in figures, etc.
+Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
+to only utilze very standard LaTeX-style writing. Correspondingly, the writer
+must stick to simple constructs and avoid, for instance,
+
+ * newcommands outside inline math or LaTeX blocks[^Mako-func]
+ * more than
+   one plot per figure (combine them into one using `doconce combine_images`),
+ * floating tables with captions (tables are inlined and explained in the text),
+ * example environments (use subsection or subsubsection instead),
+ * algorithms environments (see *Typesetting of Algorithms* in this manual),
+ * code listings in figures (use just inline blocks).
+
+However, one can use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
+include special code for `latex` and `pdflatex` output and more
+straightforward typesetting for other formats. In this way, one can
+also allow advanced LaTeX features and fine tuning of the resulting
+PDF document. More tuning can be done by automatic editing of the
+`.tex` produced by DocOnce.
+
+One can also use the Mako preprocessor to extend DocOnce functionality
+and implement, e.g., theorem or example environments (see Section
+ref{manual:theorem:envir}) or tables with figures (see Section
+ref{manual:tables:wfigs}). Many other extensions are also possible.
+!enotice
+
+
+[^Mako-func]: Mako functions written in plain Python or simple Mako
+variables constitute a much more flexible tool than the LaTeX
+newcommand construction. Such functions can be used both for the
+running text and math environments.
 
 !split
 ===== Admonitions =====
@@ -2667,53 +2730,6 @@ a DocOnce document to a ready docoment in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.
 
 
-===== Guidelines for LaTeX Writers =====
-
-Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
-`mwiki`, `html`, or `ipynb` formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
-   and `ipynb` formats.
- * Only five equation environments can be used: `\[ ... \]`,
-   `equation*`, `equation`, `align*`, and `align`.
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   `newcommands*.tex`.
- * MediaWiki (`mwiki`) does not support references to equations.
-
-(DocOnce performs extensions to `sphinx` and other formats such that
-labels in `align` environments work well.)
-
-!bnotice
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
-to only utilze very standard LaTeX-style writing. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance,
-
- * more than
-   one plot per figure (combine them into one using `doconce combine_images`),
- * floating tables with captions (tables are inlined and explained in the text),
- * example environments (use subsection or subsubsection instead),
- * algorithms environments (see *Typesetting of Algorithms* in this manual),
- * code listings in figures (use just inline blocks).
-
-However, one can use preprocessor if-tests on
-the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
-include special code for `latex` and `pdflatex` output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-`.tex` produced by DocOnce.
-
-One can also use the Mako preprocessor to extend DocOnce functionality
-and implement, e.g., theorem or example environments (see Section
-ref{manual:theorem:envir}) or tables with figures (see Section
-ref{manual:tables:wfigs}). Many other extensions are also possible.
-!enotice
-
 
 ===== Emacs DocOnce Formatter =====
 label{emacs:doconce}
@@ -2854,6 +2870,7 @@ for shadowed boxes and more visual structure in the slides.
 
 !split
 ======= Mako Programming =======
+label{manual:mako}
 
 The "Mako": "http://docs.makotemplates.org/" templating engine is used
 as preprocessor for DocOnce documents, but the "Preprocess": "http://code.google.com/p/preprocess" is run prior to Mako and is recommended for

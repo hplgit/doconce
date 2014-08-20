@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 14, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 20, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -651,7 +651,9 @@ must stick to simple constructs and avoid, for instance, more than
 one plot per figure (combine them into one using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
-manual), code listings in figures (use just inline blocks).</p>
+manual), newcommands outside mathematics (use Mako variables or functions
+instead), code listings in figures (use just inline blocks), to mention
+some.</p>
 <p class="last">However, one can use preprocessor if-tests on
 the format (typically <tt class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
 include special code for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output and more
@@ -670,7 +672,9 @@ those in <tt class="docutils literal"><span class="pre">newcommands_replace.tex<
 LaTeX code. This conventions helps make readable documents in formats
 without LaTeX support. For <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
 <tt class="docutils literal"><span class="pre">mwiki</span></tt>, <tt class="docutils literal"><span class="pre">ipynb</span></tt>, and <tt class="docutils literal"><span class="pre">pandoc</span></tt>, the mathematics in newcommands is
-rendered nicely anyway.</p>
+rendered nicely anyway. If you desire <tt class="docutils literal"><span class="pre">newcommand</span></tt> outside LaTeX
+mathematics, simply use a Mako variable or a Mako function (which
+will be much more flexible and powerful).</p>
 </div>
 <div class="section" id="hyperlinks">
 <h2>Hyperlinks<a class="headerlink" href="#hyperlinks" title="Permalink to this headline">¶</a></h2>

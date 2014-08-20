@@ -878,6 +878,9 @@ INLINE_TAGS = {
 
     'inlinecomment':  # needs re.DOTALL
     r'''\[(?P<name>[A-Za-z0-9 '+-]+?):(?P<space>\s+)(?P<comment>.*?)\]''',
+    # looks more robust for names with non-English characters,
+    # but caused problems (should not match \[ a:\quad ...\] and not footnotes)
+    #r'''(?<=[^\\])\[(?P<name>[^:\^]+?):(?P<space>\s+)(?P<comment>.*?)\]''',
 
     # __Abstract.__ Any text up to a headline === or toc-like keywords
     # (TOC is already processed)
