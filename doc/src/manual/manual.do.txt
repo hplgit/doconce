@@ -619,7 +619,7 @@ m-dash (as in m---dash), and horizontal rule can be specified (below).
 !bwarning Limitation of inline tagging
 Since DocOnce applies regular expressions to recognize inline tagging,
 there might be cases where the tags are not correctly interpreted
-and translated. Fortunately, such pitfalls are easily circumvented.
+and translated. Fortunately, most such pitfalls are easily circumvented.
 The "troubleshooting document": "http://hplgit.github.io/doconce/doc/pub/trouble/trouble/trouble.html#trouble:pitfalls" shows some
 examples.
 !ewarning

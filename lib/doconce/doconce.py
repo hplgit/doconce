@@ -924,10 +924,12 @@ def insert_code_from_file(filestr, format):
                     filetype = 'latex'
                 elif filetype == 'text':
                     filetype = 'txt'
-                elif filetype == 'data':
+                elif filetype in ('data', 'cvs'):
                     filetype = 'dat'
                 elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                     filetype = 'sh'
+                else:
+                    filetype = 'txt'
                 if '.do.txt' in filename:
                     filetype = 'do'
 
@@ -1040,7 +1042,7 @@ def insert_code_from_file(filestr, format):
                 if filetype == 'unknown':
                     code = "!bc\n%s\n!ec" % (code)
                     print ' (format: !bc)'
-                elif filetype in ('txt', 'do'):
+                elif filetype in ('txt', 'do', 'dat'):
                     # No cod or pro, just text files
                     code = "!bc %s\n%s\n!ec" % (filetype, code)
                     print ' (format: !bc)'
@@ -3673,7 +3675,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
             try:
                 filestr = unicode(filestr, encoding)
             except UnicodeDecodeError as e:
-                if "codec can't decode" in str(e):
+                if "unicode codec can't decode" in str(e):
                     print e
                     index = int(str(e).split('in position')[1].split(':')[0])
                     print filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50]
