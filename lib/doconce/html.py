@@ -938,8 +938,9 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                 newtext, n = re.subn(r'\*(.+?)\*', r'\g<1>', text)
                 if n > 0:
                     print '*** warning: found emphasis tag *...* in footnote, which was removed'
-                    print '    since it does not work with bootstrap tooltips'
-                    print text
+                    print '    in tooltip (since it does not work with bootstrap tooltips)'
+                    print '    but not in the footnote itself.'
+                    print text, '\n'
                 text = newtext
             if '`' in text:
                 newtext, n = re.subn(r'`(.+?)`', r'\g<1>', text)
