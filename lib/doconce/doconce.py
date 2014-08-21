@@ -1040,7 +1040,7 @@ def insert_code_from_file(filestr, format):
                 if filetype == 'unknown':
                     code = "!bc\n%s\n!ec" % (code)
                     print ' (format: !bc)'
-                elif filetype in ('txt', 'do'):
+                elif filetype in ('txt', 'do', 'dat'):
                     # No cod or pro, just text files
                     code = "!bc %s\n%s\n!ec" % (filetype, code)
                     print ' (format: !bc)'
