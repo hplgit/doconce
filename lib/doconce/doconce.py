@@ -924,10 +924,12 @@ def insert_code_from_file(filestr, format):
                     filetype = 'latex'
                 elif filetype == 'text':
                     filetype = 'txt'
-                elif filetype == 'data':
+                elif filetype in ('data', 'cvs'):
                     filetype = 'dat'
                 elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                     filetype = 'sh'
+                else:
+                    filetype = 'txt'
                 if '.do.txt' in filename:
                     filetype = 'do'
 
