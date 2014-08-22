@@ -113,6 +113,8 @@ The master file can be split into parts. Here is the typical code:
   doconce split_rst master
   doconce sphinx_dir master  # or with a lot of options...
   python automake_sphinx.py
+
+Note that split_rst must be run prior to sphinx_dir.
 """
 
 import time, shutil, glob, re  # used in sphinx_dir
@@ -978,7 +980,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 

@@ -909,7 +909,7 @@ def insert_code_from_file(filestr, format):
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
                 # Adjustments to some names
-                if filetype in ('f', 'c', 'cpp', 'py', 'pyopt', 'cy', 'sh', 'html', 'txt', 'dat'):
+                if filetype in ('f', 'c', 'cpp', 'py', 'pyopt', 'cy', 'm', 'sh', 'html', 'txt', 'dat'):
                     pass # standard filetypes
                 elif filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':
@@ -1026,9 +1026,9 @@ def insert_code_from_file(filestr, format):
                 code = code.rstrip() # remove trailing whitespace
                 if code == '' or code.isspace():
                     if not from_found:
-                        print 'but could not find regex "%s"!' % from_,
+                        print 'error: could not find regex "%s"!' % from_,
                     if not to_found and to_ != '':
-                        print 'but could not find regex "%s"!' % to_,
+                        print 'error: could not find regex "%s"!' % to_,
                     if from_found and to_found:
                         print '"From" and "to" regex match at the same line - empty text.',
                     print
