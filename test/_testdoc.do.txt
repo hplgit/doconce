@@ -282,26 +282,6 @@ Heading
 Some text.
 !ec
 
-Finally, `!bc do` supports highlighting of DocOnce source:
-
-!bc do
-======= DocOnce test file =======
-
-===== Computer code =====
-
-Inline verbatim code, as in `import numpy as np`, is allowed, as well as
-code blocks:
-
-|bc pycod
-from math import sin
-
-def f(x):
-    """Example on a function."""
-    return sin(x) + 1
-
-print f(0)
-|ec
-
 # Here goes hidden code.
 # Python can be treated by some formats, Fortran is always out.
 
@@ -322,6 +302,27 @@ def f(x):
        x = 43
        return
 !ec
+
+Finally, `!bc do` supports highlighting of DocOnce source:
+
+!bc do
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+|bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+|ec
+
 
 ===== Mathematics =====
 

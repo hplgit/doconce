@@ -54,6 +54,11 @@ def pandoc_author(authors_and_institutions, auth2index,
 
 def pandoc_code(filestr, code_blocks, code_block_types,
                 tex_blocks, format):
+    from html import embed_newcommands
+    newcommands = embed_newcommands()
+    if newcommands:
+        filestr = newcommands + filestr
+
     # Note: the tex code require the MathJax fix of doconce md2html
     # to insert right MathJax extensions to interpret align and labels
     # correctly.

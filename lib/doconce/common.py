@@ -529,7 +529,7 @@ def remove_hidden_code_blocks(filestr, format):
     Some formats need this for executable code blocks to work,
     but they should be invisible in the text.
     """
-    pattern = r'^!bc +[a-z]*hid\n.+?^!ec'
+    pattern = r'^!bc +[a-z]*hid\n.+?!ec'
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE|re.DOTALL)
     return filestr
 

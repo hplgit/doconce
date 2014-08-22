@@ -909,7 +909,9 @@ def insert_code_from_file(filestr, format):
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
                 # Adjustments to some names
-                if filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
+                if filetype in ('f', 'c', 'cpp', 'py', 'pyopt', 'cy', 'sh', 'html', 'txt', 'dat'):
+                    pass # standard filetypes
+                elif filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':
                     filetype = 'cpp'
                 elif filetype in ('f90', 'f95'):
@@ -920,7 +922,7 @@ def insert_code_from_file(filestr, format):
                     filetype = 'py'
                 elif filetype == 'htm':
                     filetype = 'html'
-                elif filetype == 'tex':
+                elif filetype == 'tex':  # TeX/LaTeX files are called latex
                     filetype = 'latex'
                 elif filetype == 'text':
                     filetype = 'txt'
@@ -929,6 +931,7 @@ def insert_code_from_file(filestr, format):
                 elif filetype in ('csh', 'ksh', 'zsh', 'tcsh'):
                     filetype = 'sh'
                 else:
+                    # Not a registered, supported filetype, use plain text
                     filetype = 'txt'
                 if '.do.txt' in filename:
                     filetype = 'do'
@@ -3300,7 +3303,7 @@ def doconce2format(filestr, format):
     from expand_newcommands import expand_newcommands
     if format not in ('latex', 'pdflatex'):  # replace for 'pandoc', 'html'
         newcommand_files = glob.glob('newcommands*_replace.tex')
-        if format in ('sphinx', 'pandoc', 'ipunb'):
+        if format in ('sphinx',):
             # replace all newcommands
             newcommand_files = [name for name in glob.glob('newcommands*.tex')
                                 if not name.endswith('.p.tex')]

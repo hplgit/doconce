@@ -134,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 20, 2014</h4></center> <!-- date -->
+<center><h4>Aug 22, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -684,13 +684,13 @@ Computer code can also be copied from a file:
 </code></pre>
 <!-- end verbatim block -->
 The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
-The first specification copies the complete file <code>doconce_program.sh</code>.
-The second specification copies from the first line matching the <em>regular
-expression</em> <code>doconce clean</code> up to, but not including the line
+The first line copies the complete file <code>doconce_program.sh</code>.
+The second line copies from the first line matching the <em>regular
+expression</em> <code>doconce clean</code> up to, but not including, the line
 matching the <em>regular expression</em> <code>^doconce split_rst</code>.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 <p>
 The copied lines from file are in this example put inside <code>!bc shpro</code>
@@ -698,11 +698,13 @@ and <code>!ec</code> directives, if a complete file is copied, while the
 directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
 from file. In general, for a filename extension <code>.X</code>, the environment
 becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
-respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
-for <code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes <code>shpro</code> even if we copy a part
-of the file (here from <code>name=</code> until the end of the file).
+respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active for
+<code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.  The fourth line
+above specifies the code environment explicitly (<code>envir=shpro</code>) such
+that it indicates a complete shell program (<code>shpro</code>) even if we copy a
+part of the file (here from <code>name=</code> until the end of the file).
+Copying a part will by default lead to <code>!bc shcod</code>, which indicates a
+code snippet that normally needs more code to run properly.
 
 <p>
 Important warnings:

@@ -345,7 +345,6 @@ found in line:
 """ % (activecode_counter, language, include), filestr, flags=re.MULTILINE)
             else:
                 # Remove hidden code block
-                print 'XXX4 remove block'
                 pattern = r'^!bc +%s\n.+?^!ec' % key
                 filestr = re.sub(pattern, '', filestr,
                                  flags=re.MULTILINE|re.DOTALL)

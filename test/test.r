@@ -298,6 +298,27 @@ Heading
 Some text.
 !ec
 
+# Here goes hidden code.
+# Python can be treated by some formats, Fortran is always out.
+
+!bc pyhid
+def f(x):
+    """Secret, hidden function to be defined."""
+    return 42
+!ec
+
+!bc fhid
+       subroutine helper1(x)
+       real*8 x
+       x = 42
+       return
+
+       subroutine helper2(x)
+       real*8 x
+       x = 43
+       return
+!ec
+
 Finally, `!bc do` supports highlighting of DocOnce source:
 
 !bc do
@@ -317,6 +338,7 @@ def f(x):
 
 print f(0)
 |ec
+
 
 ===== Mathematics =====
 
@@ -2464,6 +2486,13 @@ Heading
 Some text.
 \erestructuredtext
 
+% Here goes hidden code.
+% Python can be treated by some formats, Fortran is always out.
+
+
+
+
+
 Finally, \code{!bc do} supports highlighting of DocOnce source:
 
 \bdo
@@ -2483,6 +2512,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -4655,6 +4685,13 @@ Some text.
 \end{Verbatim}
 \noindent
 
+% Here goes hidden code.
+% Python can be treated by some formats, Fortran is always out.
+
+
+
+
+
 Finally, {\Verb~!bc do~} supports highlighting of DocOnce source:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
@@ -4674,6 +4711,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -6859,6 +6897,13 @@ Heading
 Some text.
 \end{minted}
 
+% Here goes hidden code.
+% Python can be treated by some formats, Fortran is always out.
+
+
+
+
+
 Finally, \Verb?!bc do? supports highlighting of DocOnce source:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{doconce}
@@ -6878,6 +6923,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -8626,6 +8672,10 @@ results in::
         
         Some text.
 
+.. Here goes hidden code.
+
+.. Python can be treated by some formats, Fortran is always out.
+
 Finally, ``!bc do`` supports highlighting of DocOnce source::
 
         ======= DocOnce test file =======
@@ -8644,6 +8694,7 @@ Finally, ``!bc do`` supports highlighting of DocOnce source::
         
         print f(0)
         !ec
+        
         
         ===== Mathematics =====
         
@@ -10316,6 +10367,10 @@ results in
         
         Some text.
 
+.. Here goes hidden code.
+
+.. Python can be treated by some formats, Fortran is always out.
+
 Finally, ``!bc do`` supports highlighting of DocOnce source:
 
 .. code-block:: doconce
@@ -10336,6 +10391,7 @@ Finally, ``!bc do`` supports highlighting of DocOnce source:
         
         print f(0)
         !ec
+        
         
         ===== Mathematics =====
         
@@ -12037,6 +12093,13 @@ Heading
 Some text.
 }}}
 
+<wiki:comment> Here goes hidden code. </wiki:comment>
+<wiki:comment> Python can be treated by some formats, Fortran is always out. </wiki:comment>
+
+
+
+
+
 Finally, `!bc do` supports highlighting of DocOnce source:
 
 {{{
@@ -12056,6 +12119,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -13551,6 +13615,13 @@ Heading
 Some text.
 </syntaxhighlight>
 
+<!-- Here goes hidden code. -->
+<!-- Python can be treated by some formats, Fortran is always out. -->
+
+
+
+
+
 Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <syntaxhighlight lang="text">
@@ -13570,6 +13641,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -15155,6 +15227,13 @@ Heading
 Some text.
 }}}
 
+<wiki:comment> Here goes hidden code. </wiki:comment>
+<wiki:comment> Python can be treated by some formats, Fortran is always out. </wiki:comment>
+
+
+
+
+
 Finally, {{{!bc do}}} supports highlighting of DocOnce source:
 
 {{{
@@ -15174,6 +15253,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -16565,6 +16645,7 @@ Finally, '!bc do' supports highlighting of DocOnce source::
         
         print f(0)
         !ec
+        
         
         ===== Mathematics =====
         
@@ -19238,6 +19319,7 @@ Finally, !bc do supports highlighting of DocOnce source::
         print f(0)
         !ec
         
+        
         ===== Mathematics =====
         
         Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
@@ -20355,6 +20437,26 @@ in a separate document: admon.do.txt.
 is at the end with only one newline.
 
 ************** File: testdoc.md *****************
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
 % A Document for Testing DocOnce
 % **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
 % Jan 32, 2100
@@ -20678,6 +20780,13 @@ Heading
 Some text.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+<!-- Here goes hidden code. -->
+<!-- Python can be treated by some formats, Fortran is always out. -->
+
+
+
+
+
 Finally, `!bc do` supports highlighting of DocOnce source:
 
 
@@ -20698,6 +20807,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -22085,27 +22195,23 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "      subroutine test()\n",
-      "      integer i\n",
-      "      real*8 r\n",
-      "      r = 0\n",
-      "      do i = 1, i\n",
-      "         r = r + i\n",
-      "      end do\n",
-      "      return\n",
-      "C     END1\n",
-      "\n",
-      "      program testme\n",
-      "      call test()\n",
-      "      return\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "              subroutine test()\n",
+      "              integer i\n",
+      "              real*8 r\n",
+      "              r = 0\n",
+      "              do i = 1, i\n",
+      "                 r = r + i\n",
+      "              end do\n",
+      "              return\n",
+      "        C     END1\n",
+      "        \n",
+      "              program testme\n",
+      "              call test()\n",
+      "              return\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22115,23 +22221,19 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "\n",
-      "      subroutine test()\n",
-      "      integer i\n",
-      "      real*8 r\n",
-      "      r = 0\n",
-      "      do i = 1, i\n",
-      "         r = r + i\n",
-      "      end do\n",
-      "      return\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        \n",
+      "              subroutine test()\n",
+      "              integer i\n",
+      "              real*8 r\n",
+      "              r = 0\n",
+      "              do i = 1, i\n",
+      "                 r = r + i\n",
+      "              end do\n",
+      "              return\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22142,29 +22244,25 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "C     a comment\n",
-      "\n",
-      "      subroutine test()\n",
-      "      integer i\n",
-      "      real*8 r\n",
-      "      r = 0\n",
-      "      do i = 1, i\n",
-      "         r = r + i\n",
-      "      end do\n",
-      "      return\n",
-      "C     END1\n",
-      "\n",
-      "      program testme\n",
-      "      call test()\n",
-      "      return\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        C     a comment\n",
+      "        \n",
+      "              subroutine test()\n",
+      "              integer i\n",
+      "              real*8 r\n",
+      "              r = 0\n",
+      "              do i = 1, i\n",
+      "                 r = r + i\n",
+      "              end do\n",
+      "              return\n",
+      "        C     END1\n",
+      "        \n",
+      "              program testme\n",
+      "              call test()\n",
+      "              return\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22174,18 +22272,14 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "!bc pycod\n",
-      "def f(x):\n",
-      "    return x+1\n",
-      "!ec\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        !bc pycod\n",
+      "        def f(x):\n",
+      "            return x+1\n",
+      "        !ec\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22314,16 +22408,12 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "cpdef f(double x):\n",
-      "    return x + 1\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        cpdef f(double x):\n",
+      "            return x + 1\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22374,21 +22464,17 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "#include <iostream>\n",
-      "\n",
-      "int main()\n",
-      "{\n",
-      "   std::cout << \"Sample output\" << std::endl;\n",
-      "   return 0\n",
-      "}\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        #include <iostream>\n",
+      "        \n",
+      "        int main()\n",
+      "        {\n",
+      "           std::cout << \"Sample output\" << std::endl;\n",
+      "           return 0\n",
+      "        }\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22399,22 +22485,18 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "!bc cod\n",
-      "      subroutine midpt(x, length, a, b)\n",
-      "      real*8 a, b, x\n",
-      "      x = (a + b)/2\n",
-      "      length = b - a\n",
-      "      return\n",
-      "      end\n",
-      "!ec\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        !bc cod\n",
+      "              subroutine midpt(x, length, a, b)\n",
+      "              real*8 a, b, x\n",
+      "              x = (a + b)/2\n",
+      "              length = b - a\n",
+      "              return\n",
+      "              end\n",
+      "        !ec\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22424,20 +22506,16 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "      subroutine midpt(x, length, a, b)\n",
-      "      real*8 a, b, x\n",
-      "      x = (a + b)/2\n",
-      "      length = b - a\n",
-      "      return\n",
-      "      end\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "              subroutine midpt(x, length, a, b)\n",
+      "              real*8 a, b, x\n",
+      "              x = (a + b)/2\n",
+      "              length = b - a\n",
+      "              return\n",
+      "              end\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22447,19 +22525,15 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "<table>\n",
-      "<tr><td>Column 1</td><td>Column 2</td></tr>\n",
-      "<tr><td>0.67526 </td><td>0.92871 </td></tr>\n",
-      "<!-- comment -->\n",
-      "</table>\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        <table>\n",
+      "        <tr><td>Column 1</td><td>Column 2</td></tr>\n",
+      "        <tr><td>0.67526 </td><td>0.92871 </td></tr>\n",
+      "        <!-- comment -->\n",
+      "        </table>\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22469,19 +22543,15 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "Terminal> mkdir test\n",
-      "Terminal> cd test\n",
-      "Terminal> myprog -f\n",
-      "output1\n",
-      "output2\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        Terminal> mkdir test\n",
+      "        Terminal> cd test\n",
+      "        Terminal> myprog -f\n",
+      "        output1\n",
+      "        output2\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22491,21 +22561,17 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "!bc restructuredtext\n",
-      "=======\n",
-      "Heading\n",
-      "=======\n",
-      "\n",
-      "Some text.\n",
-      "!ec\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        !bc restructuredtext\n",
+      "        =======\n",
+      "        Heading\n",
+      "        =======\n",
+      "        \n",
+      "        Some text.\n",
+      "        !ec\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22515,14 +22581,31 @@ is at the end with only one newline.
      ]
     },
     {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "        =======\n",
+      "        Heading\n",
+      "        =======\n",
+      "        \n",
+      "        Some text.\n"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "<!-- Here goes hidden code. -->\n",
+      "<!-- Python can be treated by some formats, Fortran is always out. -->"
+     ]
+    },
+    {
      "cell_type": "code",
-     "collapsed": false,
+     "collapsed": true,
      "input": [
-      "=======\n",
-      "Heading\n",
-      "=======\n",
-      "\n",
-      "Some text.\n"
+      "def f(x):\n",
+      "    \"\"\"Secret, hidden function to be defined.\"\"\"\n",
+      "    return 42\n"
      ],
      "language": "python",
      "metadata": {},
@@ -22537,48 +22620,45 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "======= DocOnce test file =======\n",
-      "\n",
-      "===== Computer code =====\n",
-      "\n",
-      "Inline verbatim code, as in `import numpy as np`, is allowed, as well as\n",
-      "code blocks:\n",
-      "\n",
-      "!bc pycod\n",
-      "from math import sin\n",
-      "\n",
-      "def f(x):\n",
-      "    \"\"\"Example on a function.\"\"\"\n",
-      "    return sin(x) + 1\n",
-      "\n",
-      "print f(0)\n",
-      "!ec\n",
-      "\n",
-      "===== Mathematics =====\n",
-      "\n",
-      "Formulas can be inline, as in $\\nabla\\cdot\\boldsymbol{u} = 0$, or typeset\n",
-      "as equations:\n",
-      "\n",
-      "!bt\n",
-      "\\begin{align*}\n",
-      "\\nabla\\cdot\\boldsymbol{u} &= 0,\\\\ \n",
-      "\\boldsymbol{u} &= \\nabla\\phi .\n",
-      "\\end{align*}\n",
-      "!et\n",
-      "\n",
-      "=== Subsubsection heading ===\n",
-      "\n",
-      "DocOnce files can have chapters, sections, subsections, and subsubsections.\n",
-      "\n",
-      "__Paragraph heading.__ Paragraphs may have headings.\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        ======= DocOnce test file =======\n",
+      "        \n",
+      "        ===== Computer code =====\n",
+      "        \n",
+      "        Inline verbatim code, as in `import numpy as np`, is allowed, as well as\n",
+      "        code blocks:\n",
+      "        \n",
+      "        !bc pycod\n",
+      "        from math import sin\n",
+      "        \n",
+      "        def f(x):\n",
+      "            \"\"\"Example on a function.\"\"\"\n",
+      "            return sin(x) + 1\n",
+      "        \n",
+      "        print f(0)\n",
+      "        !ec\n",
+      "        \n",
+      "        \n",
+      "        ===== Mathematics =====\n",
+      "        \n",
+      "        Formulas can be inline, as in $\\nabla\\cdot\\boldsymbol{u} = 0$, or typeset\n",
+      "        as equations:\n",
+      "        \n",
+      "        !bt\n",
+      "        \\begin{align*}\n",
+      "        \\nabla\\cdot\\boldsymbol{u} &= 0,\\\\ \n",
+      "        \\boldsymbol{u} &= \\nabla\\phi .\n",
+      "        \\end{align*}\n",
+      "        !et\n",
+      "        \n",
+      "        === Subsubsection heading ===\n",
+      "        \n",
+      "        DocOnce files can have chapters, sections, subsections, and subsubsections.\n",
+      "        \n",
+      "        __Paragraph heading.__ Paragraphs may have headings.\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22608,19 +22688,15 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "Terminal> python -c 'print \"Testing\\noutput\\nfrom\\nPython.\"'\n",
-      "Testing\n",
-      "output\n",
-      "from\n",
-      "Python.\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        Terminal> python -c 'print \"Testing\\noutput\\nfrom\\nPython.\"'\n",
+      "        Testing\n",
+      "        output\n",
+      "        from\n",
+      "        Python.\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22658,16 +22734,15 @@ is at the end with only one newline.
       "Here is some more text before a new definition of a footnote that was used\n",
       "used above.\n",
       "\n",
-      "> **Non-breaking space character.**\n",
-      "> This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical\n",
-      "> example where this is needed is in physical units: 7.4 km is traveled\n",
-      "> in $7.4/5.5\\approx 1.345$ s.  Also check that a~[link](http://google.com) is\n",
-      "> not broken across lines (drag the browser window to test this).\n",
-      "> (On the other hand, the tilde is used in\n",
-      "> computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should\n",
-      "> of course remain a tilde in those contexts.)\n",
+      "**Non-breaking space character.**\n",
       "\n",
-      "\n",
+      "This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical\n",
+      "example where this is needed is in physical units: 7.4 km is traveled\n",
+      "in $7.4/5.5\\approx 1.345$ s.  Also check that a~[link](http://google.com) is\n",
+      "not broken across lines (drag the browser window to test this).\n",
+      "(On the other hand, the tilde is used in\n",
+      "computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should\n",
+      "of course remain a tilde in those contexts.)\n",
       "\n",
       "\n",
       "\n",
@@ -22715,16 +22790,12 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "def f(theta):\n",
-      "    return theta**2\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        def f(theta):\n",
+      "            return theta**2\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22856,21 +22927,17 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "  |--------------------------------|\n",
-      "  |time  | velocity | acceleration |\n",
-      "  |--l--------r-----------r--------|\n",
-      "  | 0.0  | 1.4186   | -5.01        |\n",
-      "  | 2.0  | 1.376512 | 11.919       |\n",
-      "  | 4.0  | 1.1E+1   | 14.717624    |\n",
-      "  |--------------------------------|\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "          |--------------------------------|\n",
+      "          |time  | velocity | acceleration |\n",
+      "          |--l--------r-----------r--------|\n",
+      "          | 0.0  | 1.4186   | -5.01        |\n",
+      "          | 2.0  | 1.376512 | 11.919       |\n",
+      "          | 4.0  | 1.1E+1   | 14.717624    |\n",
+      "          |--------------------------------|\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -23029,16 +23096,12 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "# Just to check that ampersand works in code blocks:\n",
-      "c = a & b\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        # Just to check that ampersand works in code blocks:\n",
+      "        c = a & b\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -23519,15 +23582,11 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "a = b  # code in solution\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        a = b  # code in solution\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -23565,16 +23624,12 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "def func(x):\n",
-      "    return x + 1  # with code in hint\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        def func(x):\n",
+      "            return x + 1  # with code in hint\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -23680,15 +23735,11 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "lambda x: x+2\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "        lambda x: x+2\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -24067,10 +24118,9 @@ is at the end with only one newline.
       "\n",
       "Without label.\n",
       "\n",
-      "> **Tip.**\n",
-      "> Here is a tip or hint box, typeset as a notice box.\n",
+      "**Tip.**\n",
       "\n",
-      "\n",
+      "Here is a tip or hint box, typeset as a notice box.\n",
       "\n",
       "\n",
       "\n",
@@ -24088,19 +24138,18 @@ is at the end with only one newline.
       "Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly\n",
       "from using version control systems.\n",
       "\n",
-      "> **Summary.**\n",
-      "> **Bold remark:** Make some text with this summary.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
-      "> Much testing in this document, otherwise stupid content.\n",
+      "**Summary.**\n",
       "\n",
-      "\n",
+      "**Bold remark:** Make some text with this summary.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
+      "Much testing in this document, otherwise stupid content.\n",
       "\n",
       "\n",
       "\n",
@@ -24655,6 +24704,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -25234,12 +25284,7 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo" />
-  <meta name="author" content="Kaare Dump at Segfault, Cyberspace" />
-  <meta name="author" content="A. Dummy Author" />
-  <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
-  <meta name="author" content="J. Doe" />
-  <title>A Document for Testing DocOnce</title>
+  <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
@@ -25263,15 +25308,19 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<div id="header">
-<h1 class="title">A Document for Testing DocOnce</h1>
-<h2 class="author"><strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
-<h2 class="author"><strong>Kaare Dump</strong> at Segfault, Cyberspace</h2>
-<h2 class="author"><strong>A. Dummy Author</strong></h2>
-<h2 class="author"><strong>I. S. Overworked and Outburned</strong> at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
-<h2 class="author"><strong>J. Doe</strong></h2>
-<h3 class="date">Jan 32, 2100</h3>
-</div>
+<!-- newcommands_bfmath.tex -->
+<p>$$ </p>
+<p>$$</p>
+<!-- newcommands_replace.tex -->
+<p><span class="math">\[
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+\]</span></p>
+<p>% A Document for Testing DocOnce % <strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo; <strong>Kaare Dump</strong> at Segfault, Cyberspace; <strong>A. Dummy Author</strong>; <strong>I. S. Overworked and Outburned</strong> at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst; <strong>J. Doe</strong> % Jan 32, 2100</p>
 <!-- Table of contents: Run pandoc with --toc option -->
 
 
@@ -25474,6 +25523,13 @@ Heading
 =======
 
 Some text.</code></pre>
+<!-- Here goes hidden code. -->
+<!-- Python can be treated by some formats, Fortran is always out. -->
+
+
+
+
+
 <p>Finally, <code>!bc do</code> supports highlighting of DocOnce source:</p>
 <pre><code>======= DocOnce test file =======
 
@@ -25491,6 +25547,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -29895,6 +29952,10 @@ results in
 Some text.
 </pre></div>
 </td></tr></table><p>
+<!-- Here goes hidden code. -->
+<!-- Python can be treated by some formats, Fortran is always out. -->
+
+<p>
 Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <p>
@@ -29933,7 +29994,8 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 31
 32
 33
-34</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+34
+35</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
 
 <span style="color: #000080; font-weight: bold">===== Computer code =====</span>
 
@@ -29949,6 +30011,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 <span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
 
@@ -32362,6 +32425,7 @@ def f(x):
 print f(0)
 !ec
 
+
 <span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
 
 Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
@@ -34316,6 +34380,10 @@ results in
 Some text.
 </pre></div>
 <p>
+<!-- Here goes hidden code. -->
+<!-- Python can be treated by some formats, Fortran is always out. -->
+
+<p>
 Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <p>
@@ -34337,6 +34405,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 <span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
 
@@ -36390,6 +36459,13 @@ Heading
 Some text.
 \erestructuredtext
 
+% Here goes hidden code.
+% Python can be treated by some formats, Fortran is always out.
+
+
+
+
+
 Finally, \code{!bc do} supports highlighting of DocOnce source:
 
 \bdo
@@ -36409,6 +36485,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 ===== Mathematics =====
 
@@ -38829,6 +38906,26 @@ to `\boldsymbol`.
 
 
 ************** File: math_test.md *****************
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
 % How various formats can deal with LaTeX math
 % **HPL**
 % Jan 32, 2100
@@ -39330,8 +39427,7 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="HPL" />
-  <title>How various formats can deal with LaTeX math</title>
+  <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   
 <script type="text/x-mathjax-config">
@@ -39345,11 +39441,19 @@ MathJax.Hub.Config({
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<div id="header">
-<h1 class="title">How various formats can deal with LaTeX math</h1>
-<h2 class="author"><strong>HPL</strong></h2>
-<h3 class="date">Jan 32, 2100</h3>
-</div>
+<!-- newcommands_bfmath.tex -->
+<p>$$ </p>
+<p>$$</p>
+<!-- newcommands_replace.tex -->
+<p><span class="math">\[
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+\]</span></p>
+<p>% How various formats can deal with LaTeX math % <strong>HPL</strong> % Jan 32, 2100</p>
 <p>This document is translated to the format <strong>pandoc</strong>. The purpose is to test math and doconce and various output formats.</p>
 <p><em>Test 1: Inline math.</em> Here is a sentence contains the equation <span class="math">\(u(t)=e^{-at}\)</span>.</p>
 <p><em>Test 2: A single equation without label.</em> Here it is</p>
@@ -39448,10 +39552,10 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 \frac{1}{\varrho}\nabla p,
 \]</span> and <span class="math">\(\nabla\u (\pmb{x})\cdot\pmb{n}\)</span> with plain old pmb. Here are the same formulas using <code>\bm</code>:</p>
 <p><span class="math">\[
- \color{blue}{\frac{\partial\ubm}{\partial t}} +
-\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
+ \color{blue}{\frac{\partial\boldsymbol{u}}{\partial t}} +
+\nabla\cdot\nabla\boldsymbol{u}= \nu\nabla^2\boldsymbol{u}-
 \frac{1}{\varrho}\nabla p,
-\]</span> and <span class="math">\(\nabla\ubm (\xbm)\cdot\normalvecbm\)</span>.</p>
+\]</span> and <span class="math">\(\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
 <p>Note: for the pandoc format, <code>\bm</code> was substituted by DocOnce to <code>\boldsymbol</code>.</p>
 </body>
 </html>
@@ -41243,6 +41347,10 @@ results in
 Some text.
 </pre></div>
 <p>
+<!-- Here goes hidden code. -->
+<!-- Python can be treated by some formats, Fortran is always out. -->
+
+<p>
 Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <p>
@@ -41264,6 +41372,7 @@ def f(x):
 
 print f(0)
 !ec
+
 
 <span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
 
@@ -43182,6 +43291,10 @@ results in
         
         Some text.
 
+.. Here goes hidden code.
+
+.. Python can be treated by some formats, Fortran is always out.
+
 Finally, ``!bc do`` supports highlighting of DocOnce source:
 
 .. code-block:: doconce
@@ -43202,6 +43315,7 @@ Finally, ``!bc do`` supports highlighting of DocOnce source:
         
         print f(0)
         !ec
+        
         
         ===== Mathematics =====
         
@@ -69467,6 +69581,26 @@ i,h_i,\bar T_i,L_i
 
 
 ************** File: github_md.md *****************
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
+<!-- newcommands_replace.tex -->
+$$
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
+\newcommand{\halfi}{1/2}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\report}{test report}
+$$
+
 <!-- Test of GitHub Flavored Markdown -->
 
 <!-- Write in doconce -->
@@ -78235,7 +78369,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Aug 20 07:29:15 2014.
+# sphinx-quickstart on Fri Aug 22 17:02:42 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79979,24 +80113,26 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 !ec
 The `@@@CODE` identifier must appear at the very beginning of the line.
-The first specification copies the complete file `doconce_program.sh`.
-The second specification copies from the first line matching the *regular
-expression* `doconce clean` up to, but not including the line
+The first line copies the complete file `doconce_program.sh`.
+The second line copies from the first line matching the *regular
+expression* `doconce clean` up to, but not including, the line
 matching the *regular expression* `^doconce split_rst`.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside `!bc shpro`
 and `!ec` directives, if a complete file is copied, while the
 directives become `!bc shcod` and `!ec` when a code snippet is copied
 from file. In general, for a filename extension `.X`, the environment
 becomes `!bc Xpro` or `!bc Xcod` for a complete program or snippet,
-respectively. The enivorments (`Xcod` and `Xpro`) are only active
-for `latex`, `pdflatex`, html`, and `sphinx` outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes `shpro` even if we copy a part
-of the file (here from `name=` until the end of the file).
+respectively. The enivorments (`Xcod` and `Xpro`) are only active for
+`latex`, `pdflatex`, html`, and `sphinx` outout.  The fourth line
+above specifies the code environment explicitly (`envir=shpro`) such
+that it indicates a complete shell program (`shpro`) even if we copy a
+part of the file (here from `name=` until the end of the file).
+Copying a part will by default lead to `!bc shcod`, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -81196,13 +81332,13 @@ Computer code can also be copied from a file:
 </code></pre>
 <!-- end verbatim block -->
 The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
-The first specification copies the complete file <code>doconce_program.sh</code>.
-The second specification copies from the first line matching the <em>regular
-expression</em> <code>doconce clean</code> up to, but not including the line
+The first line copies the complete file <code>doconce_program.sh</code>.
+The second line copies from the first line matching the <em>regular
+expression</em> <code>doconce clean</code> up to, but not including, the line
 matching the <em>regular expression</em> <code>^doconce split_rst</code>.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 <p>
 The copied lines from file are in this example put inside <code>!bc shpro</code>
@@ -81210,11 +81346,13 @@ and <code>!ec</code> directives, if a complete file is copied, while the
 directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
 from file. In general, for a filename extension <code>.X</code>, the environment
 becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
-respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
-for <code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes <code>shpro</code> even if we copy a part
-of the file (here from <code>name=</code> until the end of the file).
+respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active for
+<code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.  The fourth line
+above specifies the code environment explicitly (<code>envir=shpro</code>) such
+that it indicates a complete shell program (<code>shpro</code>) even if we copy a
+part of the file (here from <code>name=</code> until the end of the file).
+Copying a part will by default lead to <code>!bc shcod</code>, which indicates a
+code snippet that normally needs more code to run properly.
 
 <p>
 Important warnings:
@@ -82768,24 +82906,26 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 \eccq
 The \code{@@@CODE} identifier must appear at the very beginning of the line.
-The first specification copies the complete file \code{doconce_program.sh}.
-The second specification copies from the first line matching the \emph{regular
-expression} \code{doconce clean} up to, but not including the line
+The first line copies the complete file \code{doconce_program.sh}.
+The second line copies from the first line matching the \emph{regular
+expression} \code{doconce clean} up to, but not including, the line
 matching the \emph{regular expression} \code{^doconce split_rst}.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside \code{!bc shpro}
 and \code{!ec} directives, if a complete file is copied, while the
 directives become \code{!bc shcod} and \code{!ec} when a code snippet is copied
 from file. In general, for a filename extension \code{.X}, the environment
 becomes \code{!bc Xpro} or \code{!bc Xcod} for a complete program or snippet,
-respectively. The enivorments (\code{Xcod} and \code{Xpro}) are only active
-for \code{latex}, \code{pdflatex}, html`, and \code{sphinx} outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes \code{shpro} even if we copy a part
-of the file (here from \code{name=} until the end of the file).
+respectively. The enivorments (\code{Xcod} and \code{Xpro}) are only active for
+\code{latex}, \code{pdflatex}, html`, and \code{sphinx} outout.  The fourth line
+above specifies the code environment explicitly (\code{envir=shpro}) such
+that it indicates a complete shell program (\code{shpro}) even if we copy a
+part of the file (here from \code{name=} until the end of the file).
+Copying a part will by default lead to \code{!bc shcod}, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -83979,24 +84119,26 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The ``@@@CODE`` identifier must appear at the very beginning of the line.
-The first specification copies the complete file ``doconce_program.sh``.
-The second specification copies from the first line matching the *regular
-expression* ``doconce clean`` up to, but not including the line
+The first line copies the complete file ``doconce_program.sh``.
+The second line copies from the first line matching the *regular
+expression* ``doconce clean`` up to, but not including, the line
 matching the *regular expression* ``^doconce split_rst``.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside ``!bc shpro``
 and ``!ec`` directives, if a complete file is copied, while the
 directives become ``!bc shcod`` and ``!ec`` when a code snippet is copied
 from file. In general, for a filename extension ``.X``, the environment
 becomes ``!bc Xpro`` or ``!bc Xcod`` for a complete program or snippet,
-respectively. The enivorments (``Xcod`` and ``Xpro``) are only active
-for ``latex``, ``pdflatex``, html`, and ``sphinx`` outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes ``shpro`` even if we copy a part
-of the file (here from ``name=`` until the end of the file).
+respectively. The enivorments (``Xcod`` and ``Xpro``) are only active for
+``latex``, ``pdflatex``, html`, and ``sphinx`` outout.  The fourth line
+above specifies the code environment explicitly (``envir=shpro``) such
+that it indicates a complete shell program (``shpro``) even if we copy a
+part of the file (here from ``name=`` until the end of the file).
+Copying a part will by default lead to ``!bc shcod``, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -85188,24 +85330,26 @@ Computer code can also be copied from a file:
          @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The ``@@@CODE`` identifier must appear at the very beginning of the line.
-The first specification copies the complete file ``doconce_program.sh``.
-The second specification copies from the first line matching the *regular
-expression* ``doconce clean`` up to, but not including the line
+The first line copies the complete file ``doconce_program.sh``.
+The second line copies from the first line matching the *regular
+expression* ``doconce clean`` up to, but not including, the line
 matching the *regular expression* ``^doconce split_rst``.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside ``!bc shpro``
 and ``!ec`` directives, if a complete file is copied, while the
 directives become ``!bc shcod`` and ``!ec`` when a code snippet is copied
 from file. In general, for a filename extension ``.X``, the environment
 becomes ``!bc Xpro`` or ``!bc Xcod`` for a complete program or snippet,
-respectively. The enivorments (``Xcod`` and ``Xpro``) are only active
-for ``latex``, ``pdflatex``, html`, and ``sphinx`` outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes ``shpro`` even if we copy a part
-of the file (here from ``name=`` until the end of the file).
+respectively. The enivorments (``Xcod`` and ``Xpro``) are only active for
+``latex``, ``pdflatex``, html`, and ``sphinx`` outout.  The fourth line
+above specifies the code environment explicitly (``envir=shpro``) such
+that it indicates a complete shell program (``shpro``) even if we copy a
+part of the file (here from ``name=`` until the end of the file).
+Copying a part will by default lead to ``!bc shcod``, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -86373,24 +86517,26 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 }}}
 The `@@@CODE` identifier must appear at the very beginning of the line.
-The first specification copies the complete file `doconce_program.sh`.
-The second specification copies from the first line matching the *regular
-expression* `doconce clean` up to, but not including the line
+The first line copies the complete file `doconce_program.sh`.
+The second line copies from the first line matching the *regular
+expression* `doconce clean` up to, but not including, the line
 matching the *regular expression* `^doconce split_rst`.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside `!bc shpro`
 and `!ec` directives, if a complete file is copied, while the
 directives become `!bc shcod` and `!ec` when a code snippet is copied
 from file. In general, for a filename extension `.X`, the environment
 becomes `!bc Xpro` or `!bc Xcod` for a complete program or snippet,
-respectively. The enivorments (`Xcod` and `Xpro`) are only active
-for `latex`, `pdflatex`, html`, and `sphinx` outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes `shpro` even if we copy a part
-of the file (here from `name=` until the end of the file).
+respectively. The enivorments (`Xcod` and `Xpro`) are only active for
+`latex`, `pdflatex`, html`, and `sphinx` outout.  The fourth line
+above specifies the code environment explicitly (`envir=shpro`) such
+that it indicates a complete shell program (`shpro`) even if we copy a
+part of the file (here from `name=` until the end of the file).
+Copying a part will by default lead to `!bc shcod`, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -87512,24 +87658,26 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 </syntaxhighlight>
 The <code>@@@CODE</code> identifier must appear at the very beginning of the line.
-The first specification copies the complete file <code>doconce_program.sh</code>.
-The second specification copies from the first line matching the ''regular
-expression'' <code>doconce clean</code> up to, but not including the line
+The first line copies the complete file <code>doconce_program.sh</code>.
+The second line copies from the first line matching the ''regular
+expression'' <code>doconce clean</code> up to, but not including, the line
 matching the ''regular expression'' <code>^doconce split_rst</code>.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside <code>!bc shpro</code>
 and <code>!ec</code> directives, if a complete file is copied, while the
 directives become <code>!bc shcod</code> and <code>!ec</code> when a code snippet is copied
 from file. In general, for a filename extension <code>.X</code>, the environment
 becomes <code>!bc Xpro</code> or <code>!bc Xcod</code> for a complete program or snippet,
-respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active
-for <code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes <code>shpro</code> even if we copy a part
-of the file (here from <code>name=</code> until the end of the file).
+respectively. The enivorments (<code>Xcod</code> and <code>Xpro</code>) are only active for
+<code>latex</code>, <code>pdflatex</code>, html`, and <code>sphinx</code> outout.  The fourth line
+above specifies the code environment explicitly (<code>envir=shpro</code>) such
+that it indicates a complete shell program (<code>shpro</code>) even if we copy a
+part of the file (here from <code>name=</code> until the end of the file).
+Copying a part will by default lead to <code>!bc shcod</code>, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -88658,24 +88806,26 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 }}}
 The {{{@@@CODE}}} identifier must appear at the very beginning of the line.
-The first specification copies the complete file {{{doconce_program.sh}}}.
-The second specification copies from the first line matching the //regular
-expression// {{{doconce clean}}} up to, but not including the line
+The first line copies the complete file {{{doconce_program.sh}}}.
+The second line copies from the first line matching the //regular
+expression// {{{doconce clean}}} up to, but not including, the line
 matching the //regular expression// {{{^doconce split_rst}}}.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside {{{!bc shpro}}}
 and {{{!ec}}} directives, if a complete file is copied, while the
 directives become {{{!bc shcod}}} and {{{!ec}}} when a code snippet is copied
 from file. In general, for a filename extension {{{.X}}}, the environment
 becomes {{{!bc Xpro}}} or {{{!bc Xcod}}} for a complete program or snippet,
-respectively. The enivorments ({{{Xcod}}} and {{{Xpro}}}) are only active
-for {{{latex}}}, {{{pdflatex}}}, html`, and {{{sphinx}}} outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes {{{shpro}}} even if we copy a part
-of the file (here from {{{name=}}} until the end of the file).
+respectively. The enivorments ({{{Xcod}}} and {{{Xpro}}}) are only active for
+{{{latex}}}, {{{pdflatex}}}, html`, and {{{sphinx}}} outout.  The fourth line
+above specifies the code environment explicitly ({{{envir=shpro}}}) such
+that it indicates a complete shell program ({{{shpro}}}) even if we copy a
+part of the file (here from {{{name=}}} until the end of the file).
+Copying a part will by default lead to {{{!bc shcod}}}, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -89730,24 +89880,26 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The '@@@CODE' identifier must appear at the very beginning of the line.
-The first specification copies the complete file 'doconce_program.sh'.
-The second specification copies from the first line matching the *regular
-expression* 'doconce clean' up to, but not including the line
+The first line copies the complete file 'doconce_program.sh'.
+The second line copies from the first line matching the *regular
+expression* 'doconce clean' up to, but not including, the line
 matching the *regular expression* '^doconce split_rst'.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside '!bc shpro'
 and '!ec' directives, if a complete file is copied, while the
 directives become '!bc shcod' and '!ec' when a code snippet is copied
 from file. In general, for a filename extension '.X', the environment
 becomes '!bc Xpro' or '!bc Xcod' for a complete program or snippet,
-respectively. The enivorments ('Xcod' and 'Xpro') are only active
-for 'latex', 'pdflatex', html`, and 'sphinx' outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes 'shpro' even if we copy a part
-of the file (here from 'name=' until the end of the file).
+respectively. The enivorments ('Xcod' and 'Xpro') are only active for
+'latex', 'pdflatex', html`, and 'sphinx' outout.  The fourth line
+above specifies the code environment explicitly ('envir=shpro') such
+that it indicates a complete shell program ('shpro') even if we copy a
+part of the file (here from 'name=' until the end of the file).
+Copying a part will by default lead to '!bc shcod', which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -90800,24 +90952,26 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The C{@@@CODE} identifier must appear at the very beginning of the line.
-The first specification copies the complete file C{doconce_program.sh}.
-The second specification copies from the first line matching the I{regular
-expression} C{doconce clean} up to, but not including the line
+The first line copies the complete file C{doconce_program.sh}.
+The second line copies from the first line matching the I{regular
+expression} C{doconce clean} up to, but not including, the line
 matching the I{regular expression} C{^doconce split_rst}.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside C{!bc shpro}
 and C{!ec} directives, if a complete file is copied, while the
 directives become C{!bc shcod} and C{!ec} when a code snippet is copied
 from file. In general, for a filename extension C{.X}, the environment
 becomes C{!bc Xpro} or C{!bc Xcod} for a complete program or snippet,
-respectively. The enivorments (C{Xcod} and C{Xpro}) are only active
-for C{latex}, C{pdflatex}, html`, and C{sphinx} outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes C{shpro} even if we copy a part
-of the file (here from C{name=} until the end of the file).
+respectively. The enivorments (C{Xcod} and C{Xpro}) are only active for
+C{latex}, C{pdflatex}, html`, and C{sphinx} outout.  The fourth line
+above specifies the code environment explicitly (C{envir=shpro}) such
+that it indicates a complete shell program (C{shpro}) even if we copy a
+part of the file (here from C{name=} until the end of the file).
+Copying a part will by default lead to C{!bc shcod}, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -91911,24 +92065,26 @@ Computer code can also be copied from a file::
          @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The @@@CODE identifier must appear at the very beginning of the line.
-The first specification copies the complete file doconce_program.sh.
-The second specification copies from the first line matching the *regular
-expression* doconce clean up to, but not including the line
+The first line copies the complete file doconce_program.sh.
+The second line copies from the first line matching the *regular
+expression* doconce clean up to, but not including, the line
 matching the *regular expression* ^doconce split_rst.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside !bc shpro
 and !ec directives, if a complete file is copied, while the
 directives become !bc shcod and !ec when a code snippet is copied
 from file. In general, for a filename extension .X, the environment
 becomes !bc Xpro or !bc Xcod for a complete program or snippet,
-respectively. The enivorments (Xcod and Xpro) are only active
-for latex, pdflatex, html`, and sphinx outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes shpro even if we copy a part
-of the file (here from name= until the end of the file).
+respectively. The enivorments (Xcod and Xpro) are only active for
+latex, pdflatex, html`, and sphinx outout.  The fourth line
+above specifies the code environment explicitly (envir=shpro) such
+that it indicates a complete shell program (shpro) even if we copy a
+part of the file (here from name= until the end of the file).
+Copying a part will by default lead to !bc shcod, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -93092,24 +93248,26 @@ Computer code can also be copied from a file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The `@@@CODE` identifier must appear at the very beginning of the line.
-The first specification copies the complete file `doconce_program.sh`.
-The second specification copies from the first line matching the *regular
-expression* `doconce clean` up to, but not including the line
+The first line copies the complete file `doconce_program.sh`.
+The second line copies from the first line matching the *regular
+expression* `doconce clean` up to, but not including, the line
 matching the *regular expression* `^doconce split_rst`.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside `!bc shpro`
 and `!ec` directives, if a complete file is copied, while the
 directives become `!bc shcod` and `!ec` when a code snippet is copied
 from file. In general, for a filename extension `.X`, the environment
 becomes `!bc Xpro` or `!bc Xcod` for a complete program or snippet,
-respectively. The enivorments (`Xcod` and `Xpro`) are only active
-for `latex`, `pdflatex`, html`, and `sphinx` outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes `shpro` even if we copy a part
-of the file (here from `name=` until the end of the file).
+respectively. The enivorments (`Xcod` and `Xpro`) are only active for
+`latex`, `pdflatex`, html`, and `sphinx` outout.  The fourth line
+above specifies the code environment explicitly (`envir=shpro`) such
+that it indicates a complete shell program (`shpro`) even if we copy a
+part of the file (here from `name=` until the end of the file).
+Copying a part will by default lead to `!bc shcod`, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
@@ -94923,7 +95081,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1245.
+t line 1253.
 
 
 
@@ -94943,7 +95101,7 @@ t line 1245.
 
 
 
-t line 1254.
+t line 1262.
 
 
 
@@ -94963,7 +95121,7 @@ t line 1254.
 
 
 
-t line 1258.
+t line 1266.
 
 
 
@@ -95707,7 +95865,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1245.
+t line 1253.
 
 
 
@@ -95727,7 +95885,7 @@ t line 1245.
 
 
 
-t line 1254.
+t line 1262.
 
 
 
@@ -95747,7 +95905,7 @@ t line 1254.
 
 
 
-t line 1258.
+t line 1266.
 
 
 
@@ -96408,7 +96566,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1245.
+t line 1253.
 
 
 
@@ -96428,7 +96586,7 @@ t line 1245.
 
 
 
-t line 1254.
+t line 1262.
 
 
 
@@ -96448,7 +96606,7 @@ t line 1254.
 
 
 
-t line 1258.
+t line 1266.
 
 
 
@@ -97739,7 +97897,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 [15]
 
 
-t line 1196.
+t line 1204.
 
 
 
@@ -97759,7 +97917,7 @@ t line 1196.
 
 
 
-t line 1205.
+t line 1213.
 
 
 
@@ -97779,7 +97937,7 @@ t line 1205.
 
 
 
-t line 1209.
+t line 1217.
 
 
 
@@ -98515,9 +98673,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:365: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:401: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:401: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:370: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:406: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:406: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -98658,6 +98816,7 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system doconce format mwiki testdoc.do.txt --examples_as_exercises
@@ -99011,6 +99170,7 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
@@ -99660,6 +99820,7 @@ translating doconce text in tmp_mako__math_test.do.txt to pandoc
 
 *** warning: latex envir \begin{eqnarray} does not work well.
 
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.md
 + doconce md2html math_test.md
 pandoc -f markdown -t html --mathjax -s -o math_test.html math_test.md
@@ -99673,6 +99834,7 @@ translating doconce text in tmp_mako__math_test.do.txt to pandoc
 
 *** warning: latex envir \begin{eqnarray} does not work well.
 
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.md
 + doconce md2latex math_test
 pandoc -f markdown -t latex -s -o math_test.tex math_test.md
@@ -102643,6 +102805,7 @@ test_boots.html now links to the generated files
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in github_md.md
 + '[' 0 -ne 0 ']'
 + doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
@@ -107356,15 +107519,7 @@ ust place []
 
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[6] [7]
-Overfull \hbox (4.40176pt too wide) 
-\T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
-/10 reg-u-lar ex-pres-sion []
-
-Overfull \hbox (25.94336pt too wide) 
-\T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
-0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
-[8]
+[6] [7] [8]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
@@ -107743,15 +107898,7 @@ ust place []
 [6]
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[7] [8]
-Overfull \hbox (4.40176pt too wide) 
-\T1/phv/m/n/10 fi-ca-tion copies from the first line match-ing the \T1/phv/m/sl
-/10 reg-u-lar ex-pres-sion []
-
-Overfull \hbox (25.94336pt too wide) 
-\T1/phv/m/n/10 up to, but not in-clud-ing the line match-ing the \T1/phv/m/sl/1
-0 reg-u-lar ex-pres-sion []\T1/phv/m/n/10 .
-[9]
+[7] [8] [9]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
@@ -107763,11 +107910,11 @@ Overfull \hbox (8.97565pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[11] [12]
+[11] [12] [13]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-[13]
+
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 [14]
@@ -108276,10 +108423,6 @@ lit_rst
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
-
-Overfull \hbox (6.12766pt too wide) 
-\T1/ptm/m/n/10 to, but not in-clud-ing the line match-ing the \T1/ptm/m/it/10 r
-eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
 
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
@@ -108820,10 +108963,6 @@ lit_rst
 [8]
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
-
-Overfull \hbox (6.12766pt too wide) 
-\T1/ptm/m/n/10 to, but not in-clud-ing the line match-ing the \T1/ptm/m/it/10 r
-eg-u-lar ex-pres-sion \T1/pcr/m/n/10 ^doconce split_rst\T1/ptm/m/n/10 .
 
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
