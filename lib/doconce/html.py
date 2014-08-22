@@ -325,7 +325,7 @@ def toc2html(font_size=80, bootstrap=True):
     return toc_html
 
 
-def mathjax_header():
+def embed_newcommands():
     newcommands_files = list(
         sorted([name
                 for name in glob.glob('newcommands*.tex')
@@ -341,6 +341,10 @@ def mathjax_header():
         if text:
             newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
                            + '\n$$\n\n'
+    return newcommands
+
+def mathjax_header():
+    newcommands = embed_newcommands()
     mathjax_script_tag = """
 
 <script type="text/x-mathjax-config">

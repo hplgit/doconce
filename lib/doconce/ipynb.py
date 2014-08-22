@@ -42,23 +42,8 @@ def ipynb_figure(m):
 
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
-    # newcommands (code taken from html.py)
-    import glob
-    newcommands_files = list(
-        sorted([name
-                for name in glob.glob('newcommands*.tex')
-                if not name.endswith('.p.tex')]))
-    newcommands = ''
-    for filename in newcommands_files:
-        f = open(filename, 'r')
-        text = ''
-        for line in f.readlines():
-            if not line.startswith('%'):
-                text += line
-        text = text.strip()
-        if text:
-            newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
-                           + '\n$$\n\n'
+    from html import embed_newcommands
+    newcommands = embed_newcommands()
     if newcommands:
         filestr = newcommands + filestr
 
@@ -97,7 +82,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                     title = '**' + title + '**\n'
                     # Could also consider subsubsection formatting
                 block = m.group(2)
-                if envir_format == 'quote':
+                if envir_format == 'quote' or envir == 'quote':
                     # Make Markdown quote of the block: lines start with >
                     lines = []
                     for line in block.splitlines():

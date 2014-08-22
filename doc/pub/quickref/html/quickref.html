@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 20, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 22, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -552,23 +552,25 @@ for exact syntax):</p>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> identifier must appear at the very beginning of the line.
-The first specification copies the complete file <tt class="docutils literal"><span class="pre">doconce_program.sh</span></tt>.
-The second specification copies from the first line matching the <em>regular
-expression</em> <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></tt> up to, but not including the line
+The first line copies the complete file <tt class="docutils literal"><span class="pre">doconce_program.sh</span></tt>.
+The second line copies from the first line matching the <em>regular
+expression</em> <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></tt> up to, but not including, the line
 matching the <em>regular expression</em> <tt class="docutils literal"><span class="pre">^doconce</span> <span class="pre">split_rst</span></tt>.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).</p>
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).</p>
 <p>The copied lines from file are in this example put inside <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shpro</span></tt>
 and <tt class="docutils literal"><span class="pre">!ec</span></tt> directives, if a complete file is copied, while the
 directives become <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> when a code snippet is copied
 from file. In general, for a filename extension <tt class="docutils literal"><span class="pre">.X</span></tt>, the environment
 becomes <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">Xpro</span></tt> or <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">Xcod</span></tt> for a complete program or snippet,
-respectively. The enivorments (<tt class="docutils literal"><span class="pre">Xcod</span></tt> and <tt class="docutils literal"><span class="pre">Xpro</span></tt>) are only active
-for <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, html`, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes <tt class="docutils literal"><span class="pre">shpro</span></tt> even if we copy a part
-of the file (here from <tt class="docutils literal"><span class="pre">name=</span></tt> until the end of the file).</p>
+respectively. The enivorments (<tt class="docutils literal"><span class="pre">Xcod</span></tt> and <tt class="docutils literal"><span class="pre">Xpro</span></tt>) are only active for
+<tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, html`, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> outout.  The fourth line
+above specifies the code environment explicitly (<tt class="docutils literal"><span class="pre">envir=shpro</span></tt>) such
+that it indicates a complete shell program (<tt class="docutils literal"><span class="pre">shpro</span></tt>) even if we copy a
+part of the file (here from <tt class="docutils literal"><span class="pre">name=</span></tt> until the end of the file).
+Copying a part will by default lead to <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></tt>, which indicates a
+code snippet that normally needs more code to run properly.</p>
 <p>Important warnings:</p>
 <blockquote>
 <div><ul class="simple">

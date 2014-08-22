@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 20, 2014
+:Date: Aug 22, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -499,24 +499,26 @@ Computer code can also be copied from a file:
          @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The ``@@@CODE`` identifier must appear at the very beginning of the line.
-The first specification copies the complete file ``doconce_program.sh``.
-The second specification copies from the first line matching the *regular
-expression* ``doconce clean`` up to, but not including the line
+The first line copies the complete file ``doconce_program.sh``.
+The second line copies from the first line matching the *regular
+expression* ``doconce clean`` up to, but not including, the line
 matching the *regular expression* ``^doconce split_rst``.
-The third specification behaves as the second, but the line matching
-the first regular expression is not copied (aimed at copying
-text between begin-end comment pair in the file).
+The third line behaves as the second, but the line matching
+the first regular expression is not copied (this construction often
+used for copying text between begin-end comment pair in the file).
 
 The copied lines from file are in this example put inside ``!bc shpro``
 and ``!ec`` directives, if a complete file is copied, while the
 directives become ``!bc shcod`` and ``!ec`` when a code snippet is copied
 from file. In general, for a filename extension ``.X``, the environment
 becomes ``!bc Xpro`` or ``!bc Xcod`` for a complete program or snippet,
-respectively. The enivorments (``Xcod`` and ``Xpro``) are only active
-for ``latex``, ``pdflatex``, html`, and ``sphinx`` outout.
-The fourth specification above specifies the code environment
-explicitly such that the becomes ``shpro`` even if we copy a part
-of the file (here from ``name=`` until the end of the file).
+respectively. The enivorments (``Xcod`` and ``Xpro``) are only active for
+``latex``, ``pdflatex``, html`, and ``sphinx`` outout.  The fourth line
+above specifies the code environment explicitly (``envir=shpro``) such
+that it indicates a complete shell program (``shpro``) even if we copy a
+part of the file (here from ``name=`` until the end of the file).
+Copying a part will by default lead to ``!bc shcod``, which indicates a
+code snippet that normally needs more code to run properly.
 
 Important warnings:
 
