@@ -9,16 +9,21 @@ Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstr
 
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap.  If a `!split` command is used before the first
+from Bootstrap, resulting in large fonts on gray background.
+If a `!split` command is used before the first
 section heading, a button with `Read...` and a link to the next page
 is inserted if the document is split using `doconce split_html`.  This
-construction results in a short, standard Bootstrap main page.
+construction results in a short Bootstrap main page that has become
+very popular on web the last couple of years. The `--html_bootstrap_jumbotron=value` option can be used to adjust the jumbotron: `value` can be `on`, `off`,
+or `h2`. In the latter case a smaller `h2` heading is used rather than
+`h1` (which results in a quite large font).
 
 A multiple-page document is created by inserting `!split` at desired
-places. `doconce split_html` splits the document and inserts navigation
-button (previous and next page) at the bottom of each page. The
-option `--pagination` can be added to get a different navigation
-bar at the bottom where also the page number can be seen.
+places. `doconce split_html` splits the document and inserts
+navigation button (previous and next page) at the bottom of each
+page. The option `--pagination` can be added as option to the `doconce
+split_html` command to get a different navigation bar at the bottom
+where also the page number si seen.
 
 # A split before the first section will enable a button in the jumbotron
 # for going to the first real page
