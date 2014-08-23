@@ -779,7 +779,7 @@ def html_code(filestr, code_blocks, code_block_types,
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
-            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
+            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123][^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
             # Exclude lists (not a good idea if they are part of the intro...)
             #pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
             m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
@@ -950,14 +950,14 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                 newtext, n = re.subn(r'`(.+?)`', r'\g<1>', text)
                 if n > 0:
                     print '*** warning: found inline code tag `...` in footnote, which was removed'
-                    print '    since it does not work with bootstrap tooltips'
+                    print '    in tooltip (since it does not work with bootstrap tooltips)'
                     print text
                 text = newtext
             if '"' in text:
                 newtext, n = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
                 if n > 0:
                     print '*** warning: found link tag "...": "..." in footnote, which was removed'
-                    print '    since it does not work with bootstrap tooltips'
+                    print '    from tooltip (since it does not work with bootstrap tooltips)'
                     print text
                 text = newtext
             html = ' <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
