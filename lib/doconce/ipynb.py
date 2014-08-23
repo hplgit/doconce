@@ -6,16 +6,6 @@ from pandoc import pandoc_table, pandoc_ref_and_label, \
      pandoc_index_bib, pandoc_quote, pandoc_figure
 from misc import option
 
-"""
-TODO:
-
-1. Only pycod, pypro and later other languages should go to code tp,
-otherwise use plain markdown verbatim block and mark cell as "markdown"
-        for i in range(len(code_blocks)):
-            code_blocks[i] = indent_lines(code_blocks[i], format)
-
-sys with running a .py program, find full path, run "fullpath"
-"""
 
 def ipynb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
@@ -56,9 +46,14 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     envir_format = option('ipynb_admon=', 'paragraph')
     # Remove all !bpop-!epop environments (they cause only problens and
     # have no use)
-    for envir in 'pop', 'slidecell', 'notes':
-        filestr = re.sub('^!b%s.*\n' % envir, '', filestr, flags=re.MULTILINE)
-        filestr = re.sub('^!e%s\s+' % envir, '', filestr, flags=re.MULTILINE)
+    for envir in 'pop', 'slidecell':
+        filestr = re.sub('^<!-- !b%s .*\n' % envir, '', filestr,
+                         flags=re.MULTILINE)
+        filestr = re.sub('^<!-- !e%s .*\n' % envir, '', filestr,
+                         flags=re.MULTILINE)
+    filestr = re.sub('^<!-- !bnotes.*?<!-- !enotes -->\n', '', filestr,
+                     flags=re.DOTALL|re.MULTILINE)
+    filestr = re.sub('^<!-- !split -->\n', '', filestr)
     from doconce import doconce_envirs
     envirs = doconce_envirs()[8:-1]
     for envir in envirs:
