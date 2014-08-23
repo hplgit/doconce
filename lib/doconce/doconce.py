@@ -3301,16 +3301,17 @@ def doconce2format(filestr, format):
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)
     from expand_newcommands import expand_newcommands
-    if format not in ('latex', 'pdflatex'):  # replace for 'pandoc', 'html'
+    if format not in ('latex', 'pdflatex'):
         newcommand_files = glob.glob('newcommands*_replace.tex')
-        if format in ('sphinx',):
-            # replace all newcommands
+        if format in ('sphinx', 'pandoc', 'ipynb'):
+            # replace all newcommands in these formats
+            # (none of them likes a bulk of newcommands, only latex and html)
             newcommand_files = [name for name in glob.glob('newcommands*.tex')
                                 if not name.endswith('.p.tex')]
             # (note: could use substitutions (|newcommand|) in rst/sphinx,
             # but they don't allow arguments so expansion of \newcommand
             # is probably a better solution)
-        filestr = expand_newcommands(newcommand_files, filestr)
+        filestr = expand_newcommands(newcommand_files, filestr) # inline math
         for i in range(len(tex_blocks)):
             tex_blocks[i] = expand_newcommands(newcommand_files, tex_blocks[i])
 

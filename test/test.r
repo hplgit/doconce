@@ -1687,27 +1687,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -8366,27 +8345,6 @@ in a separate document: \Verb!admon.do.txt!.
         <script type="text/javascript"
          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
-        
-        <!-- newcommands_bfmath.tex -->
-        $$
-        \renewcommand{\u}{\pmb{u}}
-        
-        \newcommand{\xbm}{\bm{x}}
-        \newcommand{\normalvecbm}{\bm{n}}
-        \newcommand{\ubm}{\bm{u}}
-        $$
-        
-        
-        <!-- newcommands_replace.tex -->
-        $$
-        \newcommand{\x}{\pmb{x}}
-        \newcommand{\normalvec}{\pmb{n}}
-        \newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-        \newcommand{\halfi}{1/2}
-        \newcommand{\half}{\frac{1}{2}}
-        \newcommand{\report}{test report}
-        $$
-        
         
         
 
@@ -20437,26 +20395,6 @@ in a separate document: admon.do.txt.
 is at the end with only one newline.
 
 ************** File: testdoc.md *****************
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 % A Document for Testing DocOnce
 % **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
 % Jan 32, 2100
@@ -22082,26 +22020,6 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "<!-- newcommands_bfmath.tex -->\n",
-      "$$\n",
-      "\\renewcommand{\\u}{\\pmb{u}}\n",
-      "\n",
-      "\\newcommand{\\xbm}{\\boldsymbol{x}}\n",
-      "\\newcommand{\\normalvecbm}{\\boldsymbol{n}}\n",
-      "\\newcommand{\\ubm}{\\boldsymbol{u}}\n",
-      "$$\n",
-      "\n",
-      "\n",
-      "<!-- newcommands_replace.tex -->\n",
-      "$$\n",
-      "\\newcommand{\\x}{\\pmb{x}}\n",
-      "\\newcommand{\\normalvec}{\\pmb{n}}\n",
-      "\\newcommand{\\Ddt}[1]{\\frac{D#1}{dt}}\n",
-      "\\newcommand{\\halfi}{1/2}\n",
-      "\\newcommand{\\half}{\\frac{1}{2}}\n",
-      "\\newcommand{\\report}{test report}\n",
-      "$$\n",
-      "\n",
       "# A Document for Testing DocOnce\n",
       "**Jan 32, 2100**\n",
       "\n",
@@ -25284,7 +25202,12 @@ warranty, not even for merchantability or fitness for a particular purpose.
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <meta name="author" content="Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo" />
+  <meta name="author" content="Kaare Dump at Segfault, Cyberspace" />
+  <meta name="author" content="A. Dummy Author" />
+  <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
+  <meta name="author" content="J. Doe" />
+  <title>A Document for Testing DocOnce</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
@@ -25308,19 +25231,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<!-- newcommands_bfmath.tex -->
-<p>$$ </p>
-<p>$$</p>
-<!-- newcommands_replace.tex -->
-<p><span class="math">\[
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-\]</span></p>
-<p>% A Document for Testing DocOnce % <strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo; <strong>Kaare Dump</strong> at Segfault, Cyberspace; <strong>A. Dummy Author</strong>; <strong>I. S. Overworked and Outburned</strong> at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst; <strong>J. Doe</strong> % Jan 32, 2100</p>
+<div id="header">
+<h1 class="title">A Document for Testing DocOnce</h1>
+<h2 class="author"><strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
+<h2 class="author"><strong>Kaare Dump</strong> at Segfault, Cyberspace</h2>
+<h2 class="author"><strong>A. Dummy Author</strong></h2>
+<h2 class="author"><strong>I. S. Overworked and Outburned</strong> at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
+<h2 class="author"><strong>J. Doe</strong></h2>
+<h3 class="date">Jan 32, 2100</h3>
+</div>
 <!-- Table of contents: Run pandoc with --toc option -->
 
 
@@ -28039,27 +27958,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -29131,27 +29029,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -29477,27 +29354,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -30803,27 +30659,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -31677,27 +31512,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -33914,27 +33728,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -38906,26 +38699,6 @@ to `\boldsymbol`.
 
 
 ************** File: math_test.md *****************
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 % How various formats can deal with LaTeX math
 % **HPL**
 % Jan 32, 2100
@@ -39098,19 +38871,19 @@ Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}?
 We have
 
 $$
- \color{blue}{\frac{\partial\u}{\partial t}} +
-\nabla\cdot\nabla\u = \nu\nabla^2\u -
+ \color{blue}{\frac{\partial\pmb{u}}{\partial t}} +
+\nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
 \frac{1}{\varrho}\nabla p,
 $$
-and $\nabla\u (\pmb{x})\cdot\pmb{n}$
+and $\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}$
 with plain old pmb. Here are the same formulas using `\bm`:
 
 $$
- \color{blue}{\frac{\partial\ubm}{\partial t}} +
-\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
+ \color{blue}{\frac{\partial\boldsymbol{u}}{\partial t}} +
+\nabla\cdot\nabla\boldsymbol{u} = \nu\nabla^2\boldsymbol{u} -
 \frac{1}{\varrho}\nabla p,
 $$
-and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
+and $\nabla\boldsymbol{u} (\boldsymbol{x})\cdot\boldsymbol{n}$.
 
 Note: for the pandoc format, `\bm` was substituted by DocOnce
 to `\boldsymbol`.
@@ -39178,27 +38951,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -39427,7 +39179,8 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <meta name="author" content="HPL" />
+  <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
 <script type="text/x-mathjax-config">
@@ -39441,19 +39194,11 @@ MathJax.Hub.Config({
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<!-- newcommands_bfmath.tex -->
-<p>$$ </p>
-<p>$$</p>
-<!-- newcommands_replace.tex -->
-<p><span class="math">\[
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-\]</span></p>
-<p>% How various formats can deal with LaTeX math % <strong>HPL</strong> % Jan 32, 2100</p>
+<div id="header">
+<h1 class="title">How various formats can deal with LaTeX math</h1>
+<h2 class="author"><strong>HPL</strong></h2>
+<h3 class="date">Jan 32, 2100</h3>
+</div>
 <p>This document is translated to the format <strong>pandoc</strong>. The purpose is to test math and doconce and various output formats.</p>
 <p><em>Test 1: Inline math.</em> Here is a sentence contains the equation <span class="math">\(u(t)=e^{-at}\)</span>.</p>
 <p><em>Test 2: A single equation without label.</em> Here it is</p>
@@ -39547,15 +39292,15 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 \]</span> Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}?</p>
 <p><em>Test 8: newcommands and boldface bm vs pmb.</em> We have</p>
 <p><span class="math">\[
- \color{blue}{\frac{\partial\u}{\partial t}} +
-\nabla\cdot\nabla\u = \nu\nabla^2\u -
+ \color{blue}{\frac{\partial\pmb{u}}{\partial t}} +
+\nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
 \frac{1}{\varrho}\nabla p,
-\]</span> and <span class="math">\(\nabla\u (\pmb{x})\cdot\pmb{n}\)</span> with plain old pmb. Here are the same formulas using <code>\bm</code>:</p>
+\]</span> and <span class="math">\(\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}\)</span> with plain old pmb. Here are the same formulas using <code>\bm</code>:</p>
 <p><span class="math">\[
  \color{blue}{\frac{\partial\boldsymbol{u}}{\partial t}} +
-\nabla\cdot\nabla\boldsymbol{u}= \nu\nabla^2\boldsymbol{u}-
+\nabla\cdot\nabla\boldsymbol{u} = \nu\nabla^2\boldsymbol{u} -
 \frac{1}{\varrho}\nabla p,
-\]</span> and <span class="math">\(\nabla\boldsymbol{u}(\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
+\]</span> and <span class="math">\(\nabla\boldsymbol{u} (\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
 <p>Note: for the pandoc format, <code>\bm</code> was substituted by DocOnce to <code>\boldsymbol</code>.</p>
 </body>
 </html>
@@ -40265,27 +40010,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
 <a name="part0000"></a>
@@ -40626,27 +40350,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
 <a name="part0000"></a>
@@ -40986,27 +40689,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -42200,27 +41882,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -50266,27 +49927,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -50794,27 +50434,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -51319,27 +50938,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -52248,27 +51846,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -52851,27 +52428,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -53423,27 +52979,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -53961,27 +53496,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -54447,27 +53961,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -54605,27 +54098,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -55191,27 +54663,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -57001,27 +56452,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -62477,27 +61907,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -62821,27 +62230,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -64858,27 +64246,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -68345,27 +67712,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -69581,26 +68927,6 @@ i,h_i,\bar T_i,L_i
 
 
 ************** File: github_md.md *****************
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 <!-- Test of GitHub Flavored Markdown -->
 
 <!-- Write in doconce -->
@@ -73980,27 +73306,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -74496,27 +73801,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\bm{x}}
-\newcommand{\normalvecbm}{\bm{n}}
-\newcommand{\ubm}{\bm{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -74562,27 +73846,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\bm{x}}
-\newcommand{\normalvecbm}{\bm{n}}
-\newcommand{\ubm}{\bm{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -74627,27 +73890,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -77654,27 +76896,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -77829,27 +77050,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
 
 
 
@@ -78119,27 +77319,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_bfmath.tex -->
-$$
-\renewcommand{\u}{\pmb{u}}
-
-\newcommand{\xbm}{\boldsymbol{x}}
-\newcommand{\normalvecbm}{\boldsymbol{n}}
-\newcommand{\ubm}{\boldsymbol{u}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\halfi}{1/2}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\report}{test report}
-$$
-
-
 
 
     
@@ -78369,7 +77548,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Aug 22 17:02:42 2014.
+# sphinx-quickstart on Sat Aug 23 15:08:49 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -81780,7 +80959,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 
@@ -83339,7 +82518,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 
@@ -84534,7 +83713,7 @@ list of capabilities::
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
-        doconce split_rst complete_file        # !split delimiters
+        doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
         
@@ -85777,7 +84956,7 @@ list of capabilities:
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
-        doconce split_rst complete_file        # !split delimiters
+        doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
         
@@ -86906,7 +86085,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 
@@ -88077,7 +87256,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 
@@ -89195,7 +88374,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 
@@ -90268,7 +89447,7 @@ list of capabilities::
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
-        doconce split_rst complete_file        # !split delimiters
+        doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
         
@@ -91344,7 +90523,7 @@ list of capabilities::
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
-        doconce split_rst complete_file        # !split delimiters
+        doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
         
@@ -92475,7 +91654,7 @@ list of capabilities::
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
-        doconce split_rst complete_file        # !split delimiters
+        doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
         
@@ -93681,7 +92860,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 
@@ -94342,7 +93521,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
@@ -94461,7 +93639,6 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
              Usually better to hardcode authors in a footer in the template.
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_vagrant.html
@@ -94512,7 +93689,6 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 *** warning: --pygm_style=emacs is not recommended when --html_style=solarized
     automatically changed to --html_style=perldoc
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce remove_exercise_answers testdoc.html
@@ -94567,7 +93743,6 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 *** warning: --pygm_style=emacs is not recommended when --html_style=solarized
     automatically changed to --html_style=perldoc
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments
@@ -98816,7 +97991,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system doconce format mwiki testdoc.do.txt --examples_as_exercises
@@ -98957,7 +98131,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format ipynb
 *** warning: footnotes are not supported for format ipynb
     footnotes will be left in the doconce syntax
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.ipynb
 + '[' 0 -ne 0 ']'
 + system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 'MYVAR2=a string' --examples_as_exercises
@@ -99170,7 +98343,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format pandoc
 *** warning: footnotes are not supported for format pandoc
     footnotes will be left in the doconce syntax
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in testdoc.md
 + '[' 0 -ne 0 ']'
 + system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
@@ -99180,7 +98352,6 @@ output in testdoc.md
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_1st.html
@@ -99196,7 +98367,6 @@ slides written to slides1.html
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
@@ -99248,7 +98418,6 @@ figure file ../doc/src/slides/fig/latex_paper1:
     can use ../doc/src/slides/fig/latex_paper1.png for format html
 figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides2.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides2 reveal --html_slide_type=beigesmall
@@ -99333,7 +98502,6 @@ figure file ../doc/src/slides/fig/CN:
     can use ../doc/src/slides/fig/CN.png for format html
 figure file ../doc/src/slides/fig/teacher2:
     can use ../doc/src/slides/fig/teacher2.jpg for format html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides3.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides3 reveal --html_slide_type=beigesmall
@@ -99377,7 +98545,6 @@ slides written to slides3.tex
 + system doconce format html slides1 --pygments_html_style=emacs
 + doconce format html slides1 --pygments_html_style=emacs
 translating doconce text in slides1.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in slides1.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides1 all
@@ -99406,7 +98573,6 @@ output in html_template.html
 + doconce format html author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in author1.html
 + '[' 0 -ne 0 ']'
 + system doconce format latex author1
@@ -99687,7 +98853,6 @@ Transcript written on math_test.log.
 running preprocess -DFORMAT=html -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.html
 + '[' 0 -ne 0 ']'
 + cp math_test.html math_test_html.html
@@ -102516,7 +101681,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_lyx.html
@@ -102529,7 +101693,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_paragraph.html
@@ -102542,7 +101705,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_colors.html
@@ -102555,7 +101717,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_gray.html
@@ -102568,7 +101729,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_yellow.html
@@ -102581,7 +101741,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_apricot.html
@@ -102599,7 +101758,6 @@ figure file ../doc/src/manual/fig/wave1D:
              Usually better to hardcode authors in a footer in the template.
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
@@ -102612,7 +101770,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_bootstrap_alert.html
@@ -102628,7 +101785,6 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_bootswatch_panel.html
@@ -102796,7 +101952,6 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._a
 + system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 + doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
 translating doconce text in test_boots.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in test_boots.html
 + '[' 0 -ne 0 ']'
 + doconce split_html test_boots.html
@@ -102805,12 +101960,10 @@ test_boots.html now links to the generated files
 + system doconce format pandoc github_md.do.txt --github_md
 + doconce format pandoc github_md.do.txt --github_md
 translating doconce text in github_md.do.txt to pandoc
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in github_md.md
 + '[' 0 -ne 0 ']'
 + doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
 translating doconce text in markdown_input.do.txt to html
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in markdown_input.html
 + name=movies
 + system doconce format html movies --html_output=movies_3choices
@@ -106900,7 +106053,6 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
 mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'html'}
 translating doconce text in tmp_mako__encoding3.do.txt to html
 open file with encoding utf-8
-*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in encoding3.html
 + cp encoding3.html encoding3.html-utf8
 + cat _doconce_debugging.log
@@ -108596,8 +107748,9 @@ Overfull \hbox (113.00006pt too wide)
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
 
-Overfull \hbox (53.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
+Overfull \hbox (173.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
+splitting points  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
@@ -109132,8 +108285,9 @@ Overfull \hbox (113.00006pt too wide)
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
 [15]
-Overfull \hbox (53.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split delimiters  
+Overfull \hbox (173.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
+splitting points  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  

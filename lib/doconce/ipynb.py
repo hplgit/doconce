@@ -42,10 +42,13 @@ def ipynb_figure(m):
 
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
+    """
+    # We expand all newcommands now
     from html import embed_newcommands
-    newcommands = embed_newcommands()
+    newcommands = embed_newcommands(filestr)
     if newcommands:
         filestr = newcommands + filestr
+    """
 
     # filestr becomes json list after this function so we must typeset
     # envirs here. All envirs are typeset as pandoc_quote.

@@ -52,7 +52,7 @@ doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
-doconce split_rst complete_file        # !split delimiters
+doconce split_rst complete_file        # !split specifies the splitting points
 doconce sphinx_dir complete_file
 python automake_sphinx.py
 

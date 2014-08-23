@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 22, 2014
+:Date: Aug 23, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -946,7 +946,7 @@ list of capabilities:
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
-        doconce split_rst complete_file        # !split delimiters
+        doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
         

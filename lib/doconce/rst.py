@@ -134,7 +134,7 @@ def rst_code(filestr, code_blocks, code_block_types,
     if option('rst_mathjax') and (re.search(r'^!bt', filestr, flags=re.MULTILINE) or re.search(r'\\\( .+ \\\)', filestr)):
         # First add MathJax script in the very beginning of the file
         from html import mathjax_header
-        latex = indent_lines(mathjax_header().lstrip(), 'rst')
+        latex = indent_lines(mathjax_header(filestr).lstrip(), 'rst')
         filestr = '\n.. raw:: html\n\n' + latex + '\n\n' + filestr
         # Replace all the !bt parts by raw html directive (make sure
         # the coming block is sufficiently indented, we used 8 chars above)[[[

@@ -325,7 +325,8 @@ def toc2html(font_size=80, bootstrap=True):
     return toc_html
 
 
-def embed_newcommands():
+def embed_newcommands(filestr):
+    from expand_newcommands import process_newcommand
     newcommands_files = list(
         sorted([name
                 for name in glob.glob('newcommands*.tex')
@@ -335,16 +336,19 @@ def embed_newcommands():
         f = open(filename, 'r')
         text = ''
         for line in f.readlines():
-            if not line.startswith('%'):
-                text += line
+            if line.startswith(r'\newcommand') or \
+               line.startswith(r'\renewcommand'):
+                pattern, dummy = process_newcommand(line)
+                if pattern in filestr:
+                    text += line
         text = text.strip()
         if text:
             newcommands += '\n<!-- %s -->\n' % filename + '$$\n' + text \
                            + '\n$$\n\n'
     return newcommands
 
-def mathjax_header():
-    newcommands = embed_newcommands()
+def mathjax_header(filestr):
+    newcommands = embed_newcommands(filestr)
     mathjax_script_tag = """
 
 <script type="text/x-mathjax-config">
@@ -593,7 +597,7 @@ def html_code(filestr, code_blocks, code_block_types,
 
     # Add MathJax script if math is present (math is defined right above)
     if math and MATH_TYPESETTING == 'MathJax':
-        latex = mathjax_header()
+        latex = mathjax_header(filestr)
         if '<body>' in filestr:
             # Add MathJax stuff after <body> tag
             filestr = filestr.replace('<body>\n', '<body>' + latex)
