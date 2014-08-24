@@ -22,9 +22,13 @@ Here are some DocOnce features:
     MediaWiki, blogger.com, and wordpress.com.
     A piece of DocOnce text can enter (e.g.) a classical
     science book, an ebook, a web document, and a blog post.
+  * DocOnce offers a range of HTML designs, including many
+    Bootstrap and Sphinx styles and "solarized color schemes": "http://ethanschoonover.com/solarized".
+    A special feature is the many styles for admonitions (boxes for
+    warning, notice, question, etc.) in HTML and LaTeX.
   * DocOnce targets in particular large book projects where many different
-    pieces of text and software can be assembled and published in different
-    formats for different devices.
+    pieces of text and software can be assembled in different ways
+    and published in different formats for different devices.
   * DocOnce enables authors who write for many times of media
     (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
     source language such that lots of different pieces can easily be
