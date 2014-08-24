@@ -12,7 +12,7 @@ $ if [ ! -d srclib ]; then mkdir srclib; fi
 mercurial git subversion
 
 $ cd srclib
-# git clone git@github.com:hplgit/doconce.git
+$ git clone git@github.com:hplgit/doconce.git
 $ cd doconce
 $ sudo python setup.py install
 $ cd ../..
