@@ -26,11 +26,21 @@ def system(cmd):
     f = open(logfile, 'a'); f.write(output); f.close()
 
 system('sudo apt-get update --fix-missing')
+# Installation script for doconce and all dependencies
+
 # Translate this text file to .sh and .py scripts with
 # vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
 # (git clone git@github.com:hplgit/vagrantbox.git)
 
+# Install downloaded source code in ~/srclib
+# cd
+
+cmd = """
+if [ ! -d srclib ]; then mkdir srclib; fi
 # Version control systems
+
+"""
+system(cmd)
 system('sudo apt-get -y install mercurial')
 system('sudo apt-get -y install git')
 system('sudo apt-get -y install subversion')
@@ -38,7 +48,8 @@ system('sudo apt-get -y install subversion')
 
 cmd = """
 cd srclib
-hg clone https://code.google.com/p/doconce/
+# git clone git@github.com:hplgit/doconce.git
+
 cd doconce
 sudo python setup.py install
 cd ../..

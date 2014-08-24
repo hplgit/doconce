@@ -26,9 +26,15 @@ function pip_install {
 
 sudo apt-get update --fix-missing
 
+# Installation script for doconce and all dependencies
+
 # Translate this text file to .sh and .py scripts with
 # vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
 # (git clone git@github.com:hplgit/vagrantbox.git)
+
+# Install downloaded source code in ~/srclib
+# cd
+if [ ! -d srclib ]; then mkdir srclib; fi
 
 # Version control systems
 apt_install mercurial
@@ -36,7 +42,7 @@ apt_install git
 apt_install subversion
 
 cd srclib
-hg clone https://code.google.com/p/doconce/
+# git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ../..
