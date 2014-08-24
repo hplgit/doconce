@@ -6,7 +6,7 @@
 mercurial git subversion
 
 $ cd srclib
-$ hg clone https://code.google.com/p/doconce/
+$ git clone git@github.com:hplgit/doconce.git
 $ cd doconce
 $ sudo python setup.py install
 $ cd ../..
