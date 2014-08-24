@@ -42,7 +42,7 @@ apt_install git
 apt_install subversion
 
 cd srclib
-# git clone git@github.com:hplgit/doconce.git
+git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ../..
