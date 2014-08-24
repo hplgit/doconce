@@ -48,8 +48,7 @@ system('sudo apt-get -y install subversion')
 
 cmd = """
 cd srclib
-# git clone git@github.com:hplgit/doconce.git
-
+git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ../..
