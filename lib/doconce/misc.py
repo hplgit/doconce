@@ -269,6 +269,17 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
 Typesetting of admonitions and quotes.
 quote: as Markdown quote (default) with gray line on the left.
 paragraph: just the content with the title as paragraph heading."""),
+    ('--ipynb_figure=', """\
+How to typeset figures in ipynb: md (plain Markdown syntax, default),
+Image (python cell with Image object)."""),
+    ('--ipynb_movie=', """\
+How to typeset movies in ipynb:
+md (plain Markdown syntax, default)
+HTML (python cell with HTML object containing the code that is used
+in the HTML format)
+HTML-YouTubeVideo: If YouTube video, use YouTubeVideo object, otherwise
+use the HTML object with appropriat HTML code.
+local: local video files with encoding."""),
     ('--verbose',
      'Write out all OS commands run by doconce.'),
     ('--examples_as_exercises',
@@ -1377,7 +1388,7 @@ or
        doconce ptex2tex file -Dvar1=val1 ... envir=ans:nt
 
 or
-       doconce ptex2tex file "sys=\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]@\end{Verbatim}" envir=minted
+       doconce ptex2tex file "sys=\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]@\end{Verbatim}" envir=minted --minted_leftmargin=2
 
 (recall quotes in arguments with backslash), or
 
@@ -1500,8 +1511,12 @@ def ptex2tex():
                             envir2pygments[user_envir] = user_envir
 
                     if envir == 'envir':
+                        leftmargin = '7' # mm
+                        for arg in sys.argv[1:]:
+                            if arg.startswith('--minted_leftmargin='):
+                                leftmargin = arg.split('=')[1]
                         for lang in envir2pygments:
-                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{' + envir2pygments[lang] + '}'
+                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm]{' % leftmargin + envir2pygments[lang] + '}'
                             end = '\\' + 'end{minted}'
                             envir_user_spec.append((lang, begin, end))
                     else:
@@ -4535,6 +4550,16 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3
+    }
+\setlength{\parskip}{10pt}  %% {1em}
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  %% for subexercises: a), b), etc
