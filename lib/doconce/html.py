@@ -531,7 +531,7 @@ def html_code(filestr, code_blocks, code_block_types,
     from doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
-    debugpr('File after call to isnert_code_and tex (format html):', filestr)
+    debugpr('File after call to insert_code_and tex (format html):', filestr)
 
     if pygm or needs_online_python_tutor:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)

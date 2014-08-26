@@ -60,6 +60,25 @@ main_content_end = main_content_char*19 + ' end of main content ' + \
 # include "latex.py"
 #----------------------------------------------------------------------------
 
+def encode_error_message(exception, text, print_length=40):
+    m = str(exception)
+    if "codec can't encode character" in m:
+        pos = m.split('position')[1].split(':')[0]
+        print '*** error: problem with character when writing to file:'
+        print str(exception)
+        try:
+            pos = int(pos)
+        except:
+            if '-' in pos:
+                pos = pos.split('-')[0]
+                pos = int(pos)
+        print 'ordinal of this character is', ord(text[pos])
+        print repr(text[pos-print_length:pos+print_length])
+        print ' '*(print_length+2) + '^'
+        #print repr(text[pos-print_length:pos]), '<strange char>', repr(text[pos:+1:pos+print_length])
+        print '    remedies: fix character or try --encoding=utf-8'
+        _abort()
+
 def markdown2doconce(filestr, format):
     """
     Look for Markdown (and Extended Markdown) syntax in the file (filestr)
@@ -1168,7 +1187,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     for line_no in range(len(lines)):
         line = lines[line_no].lstrip()
         #print 'LINE %d:' % i, line
-        #import pprint; pprint.pprint(exer)
+        #pprint.pprint(exer)
 
         m_heading = re.search(exer_heading_pattern, line)
         if m_heading:
@@ -1616,7 +1635,7 @@ def typeset_tables(filestr, format):
                 # not a table line anymore, but we were just inside a table
                 # so the table is ended
                 inside_table = False
-                #import pprint; pprint.pprint(table)
+                #pprint.pprint(table)
 
                 # Check for consistency of the recorded table:
                 try:
@@ -2157,7 +2176,7 @@ def handle_cross_referencing(filestr, format):
             label = None
         sections.append((title, heading2section_type[len(heading)], label))
     #print 'sections:'
-    #import pprint; pprint.pprint(sections)
+    #pprint.pprint(sections)
 
     toc = TOC[format](sections)  # Always call TOC[format] to make a toc
     # See if the toc string is to be inserted in filestr
@@ -2529,8 +2548,8 @@ def interpret_quiz_text(text, insert_missing_heading= False,
     comments. The optional new page and heading lines are replaced
     by one-line comments.
     The function extract_quizzes can recognize the output of the
-    present function, and create data structure with the quiz
-    content (after full rendering of the text).
+    present function, and create a data structure with the quiz
+    content..
     """
     ct = comment_tag
     bct = begin_comment_tag
@@ -2745,16 +2764,25 @@ The raw code of this quiz at this stage of processing reads
 
 def typeset_quizzes2(filestr, format):
     quizzes, html_quizzes, filestr = extract_quizzes(filestr, format)
+    debugpr('The file after extracting quizzes, before inserting finally rendered quizzes', filestr)
     for i, quiz in enumerate(quizzes):
+        debugpr('Quiz no. %d data structure' % i, pprint.pformat(quiz))
         text = QUIZ[format](quiz)
-        filestr = filestr.replace('%d ' % i + _QUIZ_BLOCK, text)
-    import pprint
+        filestr = re.sub(r'^%d ' % i + _QUIZ_BLOCK, text, filestr,
+                         flags=re.MULTILINE)
     f = open('.%s.quiz' % dofile_basename, 'w')
-    f.write(pprint.pformat([dict(quiz) for quiz in quizzes]))
+    try:
+        text = pprint.pformat([dict(quiz) for quiz in quizzes])
+        f.write(text)
+    except UnicodeEncodeError as e:
+        encode_error_message(e, text)
     f.close()
     f = open('.%s.quiz.html' % dofile_basename, 'w')
     for quiz in html_quizzes:
-        f.write(quiz + '\n\n')
+        try:
+            f.write(quiz + '\n\n')
+        except UnicodeEncodeError as e:
+            encode_error_message(e, quiz)
     f.close()
     return filestr
 
@@ -2964,22 +2992,6 @@ def file2file(in_filename, format, basename):
     else:
         f = open(out_filename, 'w')
 
-    def error_message():
-        m = str(e)
-        if "codec can't encode character" in m:
-            pos = m.split('position')[1].split(':')[0]
-            print '*** error: problem with character when writing to file:'
-            print '(text position %s)' % pos
-            try:
-                pos = int(pos)
-            except:
-                if '-' in pos:
-                    pos = pos.split('-')[0]
-                    pos = int(pos)
-            print repr(filestr[pos-40:pos+40])
-            print ' '*42 + '^'
-            print '    remedies: fix character or try --encoding=utf-8'
-            _abort()
 
     try:
         f.write(filestr)
@@ -2988,7 +3000,7 @@ def file2file(in_filename, format, basename):
         # below that tries UTF-8 will result in strange characters
         # in the output. It is better that the user specifies
         # correct encoding and gets correct results.
-        error_message()
+        encode_error_message(e, filestr)
         # Try UTF-8 (not a good fallback as the output may be corrupt)
         """
         try:
