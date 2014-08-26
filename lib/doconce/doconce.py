@@ -3164,6 +3164,23 @@ def doconce2format(filestr, format):
         filestr = align2equations(filestr, format)
         debugpr('The file after {align} envirs are rewritten as separate equations:', filestr)
 
+    # If ipynb is to make use of Image or movie objects, this results in
+    # a living cell and hence a verbatim block, and figures/movies must be
+    # interpreted before such blocks are removed.
+    if format == 'ipynb':
+        call_handle_figures = False
+        if 'FIGURE:' in filestr and option('ipynb_figure=', 'md') == 'Image':
+            call_handle_figures = True
+        if option('figure_prefix=') is not None or \
+           option ('movie_prefix=') is not None:
+            call_handle_figures = True
+        if call_handle_figures:
+            filestr = handle_figures(filestr, format)
+        if 'MOVIE:' in filestr:
+            filestr = re.sub(INLINE_TAGS['movie'],
+                             INLINE_TAGS_SUBST[format]['movie'],
+                             filestr, flags=re.MULTILINE)
+
     # Next step: remove all verbatim and math blocks
 
     filestr, code_blocks, code_block_types, tex_blocks = \
@@ -3260,7 +3277,9 @@ def doconce2format(filestr, format):
     filestr = exercises(filestr, format, code_blocks, tex_blocks)
 
     # Next step: deal with figures
-    filestr = handle_figures(filestr, format)
+    if format != 'ipynb':
+        filestr = handle_figures(filestr, format)
+    # else: ipynb figures/movies must be handled early above
 
     report_progress('figures')
 

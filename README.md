@@ -2,7 +2,7 @@
 
  * When writing a note, report, manual, etc., do you find it difficult to choose the typesetting format? That is, to choose between plain (email-like) text, wiki, MS Word or OpenOffice, LaTeX, HTML, reStructuredText, Sphinx, XML, Markdown, etc.? Would it be convenient to start with some very simple text-like format that easily converts to the formats listed above?
  * Do you find it problematic that you have the same information scattered around in different filess in different typesetting formats? Would it be a good idea to write things once, in one place, and include anywhere?
- * Would you like to write books, theses, or papers both in a traditional, printed LaTeX PDF format *and* in HTML for the web with modern fancy styles such as Bootstrap and Sphinx?
+ * Would you like to write books, theses, or papers both in a traditional, printed LaTeX PDF format *and* in HTML for the web with a lot of modern fancy styles such as Bootstrap and Sphinx and their variants?
 
 You should take a look at DocOnce if any of these questions are of interest.
 
@@ -20,11 +20,12 @@ You should take a look at DocOnce if any of these questions are of interest.
 
 DocOnce looks similar to [Markdown](http://daringfireball.net/projects/markdown/), [Pandoc-extended
 Markdown](http://johnmacfarlane.net/pandoc/), and in particular
-"http://fletcherpenney.net/multimarkdown/". The main advantage of
-DocOnce is the richer support for writing large documents (books) with
-much math and code, with tailored output both in HTML and LaTeX. Books
-can be composed of many smaller documents that may exist independently
-of the book.
+[MultiMarkdown](http://fletcherpenney.net/multimarkdown/).  The main
+advantage of DocOnce is the richer support for writing large documents
+(books) with much math, code, and admonitions,
+with tailored output both in HTML and
+LaTeX. Books can be composed of many smaller documents that may exist
+independently of the book.
 
 
 ### Installation

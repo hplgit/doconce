@@ -182,7 +182,14 @@ def css_link_solarized_highlight(style='light'):
 
 css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">'
 css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
-css_solarized_thomasf = 'h1, h2, h3, h4 {color:#839496;}'  # gray colors
+css_solarized_thomasf_gray = """\
+h1, h2, h3, h4 { color:#839496; font-weight: bold; } /* gray */
+"""
+css_solarized_thomasf_green = """\
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+"""  # h2, h3 are green
 
 
 css_blueish = """\
@@ -1835,14 +1842,15 @@ def define(FILENAME_EXTENSION,
         css = css_solarized_dark
         css_links = css_link_solarized_highlight('dark')
     elif html_style in ('solarized2_light', 'solarized2'):
-        css = css_solarized_thomasf
+        css = css_solarized_thomasf_gray
         css_links = css_link_solarized_highlight('light') + '\n' + \
                     css_link_solarized_thomasf_light
     elif html_style == 'solarized2_dark':
-        css = css_solarized_thomasf
+        css = css_solarized_thomasf_gray
         css_links = css_link_solarized_highlight('dark') + '\n' + \
                     css_link_solarized_thomasf_dark
     elif html_style in ('solarized3_light', 'solarized3'):
+        css = css_solarized_thomasf_green
         css_links = css_link_solarized_highlight('light') + '\n' + \
                     css_link_solarized_thomasf_light
     elif html_style == 'solarized3_dark':

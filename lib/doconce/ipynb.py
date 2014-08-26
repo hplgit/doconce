@@ -1,11 +1,17 @@
 import re, sys, shutil, os
 from common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, indent_lines
+     insert_code_and_tex, indent_lines, _abort
 from html import html_movie
 from pandoc import pandoc_table, pandoc_ref_and_label, \
      pandoc_index_bib, pandoc_quote, pandoc_figure
 from misc import option
 
+# Global variables
+figure_encountered = False
+movie_encountered = False
+figure_files = []
+movie_files = []
+html_encountered = False
 
 def ipynb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
@@ -24,11 +30,115 @@ def ipynb_author(authors_and_institutions, auth2index,
 def ipynb_figure(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
+    global figure_files
     if not filename.startswith('http'):
-        text = '![%s](files/%s)' % (caption, filename)  # hack for plain file
-    else:
+        figure_files.append(filename)
+    display_method = option('ipynb_figure=', 'md')
+    if display_method == 'md':
+        # Markdown image syntax, embedded image in text
         text = '![%s](%s)' % (caption, filename)
+    elif display_method == 'Image':
+        # Image object
+        # NOTE: This code will normally not work because it inserts a verbatim
+        # block in the file *after* all such blocks have been removed and
+        # numbered. doconce.py makes a test prior to removal of blocks and
+        # runs the handle_figures and movie substitution if ipynb format
+        # and Image or movie object display.
+        text = '\n!bc pycod\n'
+        global figure_encountered
+        if not figure_encountered:
+            # First time we have a figure, we must import Image
+            text += 'from IPython.display import Image\n'
+            figure_encountered = True
+        if filename.startswith('http'):
+            keyword = 'url'
+        else:
+            keyword = 'filename'
+        text += 'Image(%s="%s")\n' % (keyword, filename)
+        text += '!ec\n'
     return text
+
+def ipynb_movie(m):
+    global html_encountered, movie_encountered, movie_files
+    filename = m.group('filename')
+    caption = m.group('caption').strip()
+    youtube = False
+    if 'youtu.be' in filename or 'youtube.com' in filename:
+        youtube = True
+    if '*' in filename or '->' in filename:
+        print '*** warning: * or -> in movie filenames is not supported in ipynb'
+        return '<!-- %s -->' % m.group()
+
+    def YouTubeVideo(filename):
+        # Use YouTubeVideo object
+        name = filename.split('watch?v=')[1]
+        text = ''
+        global movie_encountered
+        if not movie_encountered:
+            text += 'from IPython.display import YouTubeVideo\n'
+            movie_encountered = True
+        text += 'YouTubeVideo("%s")\n' % name
+        return text
+
+    display_method = option('ipynb_movie=', 'HTML')
+    if display_method == 'md':
+        return html_movie(m)
+    if display_method.startswith('HTML'):
+        text = '\n!bc pycod\n'
+        if youtube and 'YouTube' in display_method:
+            text += YouTubeVideo(filename)
+        else:
+            # Use HTML formatting
+            if not html_encountered:
+                text += 'from IPython.display import HTML\n'
+                html_encountered = True
+            text += '_s = """' + html_movie(m) + '"""\n'
+            text += 'HTML(_s)\n'
+            if not filename.startswith('http'):
+                movie_files.append(filename)
+        text += '!ec\n'
+        if caption:
+            text += '\nMovie above: *' + caption + '*\n'
+        return text
+    if display_method == 'local':
+        text = '!bc pycod\n'
+        if youtube:
+            text += YouTubeVideo(filename)
+        else:
+            # see http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%205%20-%20Rich%20Display%20System.ipynb
+            # http://stackoverflow.com/questions/18019477/how-can-i-play-a-local-video-in-my-ipython-notebook
+            # http://python.6.x6.nabble.com/IPython-User-embedding-non-YouTube-movies-in-the-IPython-notebook-td5024035.html
+            # Just support .mp4, .ogg, and.webm
+            stem, ext = os.path.splitext(filename)
+            if ext not in ('.mp4', '.ogg', '.webm'):
+                print '*** error: movie "%s" in format %s is not supported for --ipynb-movie=%s' % (filename, ext, display_method)
+                print '    use --ipynb_movie=HTML instead'
+                _abort()
+            height = 365
+            width = 640
+            if filename.startswith('http'):
+                file_open = 'import urllib\nvideo = urllib.urlopen("%s").read()' % filename
+            else:
+                file_open = 'video = open("%s", "rb").read()' % filename
+            text += """
+%s
+from base64 import b64encode
+video_encoded = b64encode(video)
+video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:video/%s;base64,{0}">'.format(video_encoded)
+""" % (file_open, filename, height, width, ext[1:])
+            if not filename.startswith('http'):
+                movie_files.append(filename)
+            if not html_encountered:
+                text += 'from IPython.display import HTML\n'
+                html_encountered = True
+            text += 'HTML(data=video_tag)\n'
+        text += '!ec\n'
+        if caption:
+            text += '\nMovie above: *' + caption + '*\n'
+        return text
+    print '*** error: --ipynb_movie=%s is not supported' % display_method
+    _abort()
+
 
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -53,7 +163,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                          flags=re.MULTILINE)
     filestr = re.sub('^<!-- !bnotes.*?<!-- !enotes -->\n', '', filestr,
                      flags=re.DOTALL|re.MULTILINE)
-    filestr = re.sub('^<!-- !split -->\n', '', filestr)
+    filestr = re.sub('^<!-- !split -->\n', '', filestr, flags=re.MULTILINE)
     from doconce import doconce_envirs
     envirs = doconce_envirs()[8:-1]
     for envir in envirs:
@@ -112,11 +222,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # Fix pyshell and ipy interactive sessions: remove prompt and output.
     # Fix sys and use run prog.py.
-    # Only typeset Python code as blocks, otherwise plain indented Markdown.
+    # Only typeset Python code as blocks, otherwise !bc environmens
+    # become plain indented Markdown.
     from doconce import dofile_basename
     from sets import Set
     ipynb_tarfile = 'ipynb-%s-src.tar.gz' % dofile_basename
-    src_dirs = Set()
+    src_paths = Set()
 
     ipynb_code_tp = [None]*len(code_blocks)
     for i in range(len(code_blocks)):
@@ -149,12 +260,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 if m:
                     name = m.group(2).strip()
                     if os.path.isfile(name):
-                        src_dirs.add(os.path.dirname(name))
+                        src_paths.add(os.path.dirname(name))
                         lines[j] = '%%run "%s"' % fullpath
                 else:
                     found_unix_lines = True
-            src_dirs = list(src_dirs)
-            if src_dirs and not found_unix_lines:
+            src_paths = list(src_paths)
+            if src_paths and not found_unix_lines:
                 # This is a sys block with run commands only
                 code_blocks[i] = '\n'.join(lines)
                 ipynb_code_tp[i] = 'cell'
@@ -171,11 +282,19 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             # Should support other languages as well, but not for now
             code_blocks[i] = indent_lines(code_blocks[i], format)
             ipynb_code_tp[i] = 'markdown'
-    if src_dirs:
+    # figure_files and movie_files are global variables and contain
+    # all figures and movies referred to
+    src_paths = list(src_paths)
+    if figure_files:
+        src_paths += figure_files
+    if movie_files:
+        src_paths += movie_files
+
+    if src_paths:
         # Make tar file with all the source dirs with files
         # that need to be executed
-        os.system('tar cfz %s %s' % (ipynb_tarfile, ' '.join(src_dirs)))
-        print 'collected all required .py files in', ipynb_tarfile, 'which must be distributed with the notebook'
+        os.system('tar cfz %s %s' % (ipynb_tarfile, ' '.join(src_paths)))
+        print 'collected all required additional files in', ipynb_tarfile, 'which must be distributed with the notebook'
 
 
     # Parse document into markdown text, code blocks, and tex blocks.
@@ -367,8 +486,7 @@ def define(FILENAME_EXTENSION,
         'emphasize': None,
         'bold':      r'\g<begin>**\g<subst>**\g<end>',
         'figure':    ipynb_figure,
-        #'movie':     default_movie,
-        'movie':     html_movie,
+        'movie':     ipynb_movie,
         'verbatim':  None,
         #'linkURL':   r'\g<begin>\g<link> (\g<url>)\g<end>',
         'linkURL2':  r'[\g<link>](\g<url>)',
