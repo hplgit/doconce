@@ -346,7 +346,8 @@ def embed_newcommands(filestr):
             if line.startswith(r'\newcommand') or \
                line.startswith(r'\renewcommand'):
                 pattern, dummy = process_newcommand(line)
-                if pattern in filestr:
+                m = re.search(pattern, filestr)
+                if m:
                     text += line
         text = text.strip()
         if text:
@@ -1670,10 +1671,16 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
-        return """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
+        # Strip off <p> at the end of block to reduce space below the text
+        block = re.sub('(<p>\s*)+$', '', block)
+        # Need a <p> after the title to ensure some space before the text
+        alert = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s">
+<b>%%s</b>
+<p>
 %%s
 </div>
 """ %% (text_size, title, block)
+        return alert
 
     elif html_admon_style == 'lyx':
         block = '<div class="alert-text-%%s">%%s</div>' %% (text_size, block)

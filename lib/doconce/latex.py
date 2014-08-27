@@ -497,6 +497,12 @@ def latex_figure(m, includegraphics=True):
   %s
 \end{center}
 """ % (includeline)
+        result = r"""
+
+%% inline figure
+%s
+
+""" % (includeline)
     return result
 
 def latex_movie(m):
@@ -1188,13 +1194,14 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # Fix common error et. al. cite{ (et. should be just et)
     filestr = re.sub(r'et\. +al +cite(\{|\[)', r'et al. cite\g<1>', filestr)
 
-    # fix periods followed by too long space:
+    # Fix periods followed by too long space in the following cases
     prefix = r'Prof\.', r'Profs\.', r'prof\.', r'profs\.', r'Dr\.', \
              r'assoc\.', r'Assoc.', r'Assist.', r'Mr\.', r'Ms\.', 'Mss\.', \
              r'Fig\.', r'Tab\.', r'Univ\.', r'Dept\.', r'abbr\.', r'cf\.', \
              r'e\.g\.', r'E\.g\.', r'i\.e\.', r'Approx\.', r'approx\.', \
-             r'Exer\.', r'Sec\.', r'Ch\.', r'App\.', r'et al\.', 'no\.'
-    # avoid r'assist\.' - matches too much
+             r'Exer\.', r'Sec\.', r'Ch\.', r'App\.', r'et al\.', 'no\.', \
+             r'vs\.'
+    # Avoid r'assist\.' - matches too much
     for p in prefix:
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)

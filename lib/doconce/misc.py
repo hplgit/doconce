@@ -4386,8 +4386,9 @@ td.padding {
                           part,
                           flags=re.DOTALL)
 
-        part = part.replace('</ul>', '</ul>\n<p>')
-        part = part.replace('</ol>', '</ol>\n<p>')
+        # Add space after list, except in admons (ended by </div>)
+        part = re.sub(r'</ul>(?!\s*</div>)', r'</ul>\n<p>', part)
+        part = re.sub(r'</ol>(?!\s*</div>)', r'</ol>\n<p>', part)
 
         slides += """
 %s
@@ -4559,7 +4560,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     pdftoolbar=true,
     bookmarksdepth=3
     }
-\setlength{\parskip}{10pt}  %% {1em}
+\setlength{\parskip}{7pt}  %% {1em}
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  %% for subexercises: a), b), etc
@@ -4688,13 +4689,14 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
         if r'\title{' in part:
             # Titlepage needs special treatment
+            # Find figure (no caption or figure envir, just includegraphics)
             m = re.search(r'(\\centerline\{\\includegraphics.+\}\})', part)
             if m:
                 titlepage_figure = m.group(1)
                 # Move titlepage figure to \date{}
                 part = part.replace('% <optional titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
                 # Remove original titlepage figure
-                part = re.sub(r'\\begin\{center\} +% inline figure.+?\\end\{center\}', '', part, flags=re.DOTALL)
+                part = re.sub(r'% inline figure\n\\centerline.+', '', part)
             slides += r"""
 %(part)s
 
