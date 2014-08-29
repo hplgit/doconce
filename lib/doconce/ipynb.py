@@ -3,7 +3,7 @@ from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, indent_lines, _abort
 from html import html_movie
 from pandoc import pandoc_table, pandoc_ref_and_label, \
-     pandoc_index_bib, pandoc_quote, pandoc_figure
+     pandoc_index_bib, pandoc_quote
 from misc import option
 
 # Global variables

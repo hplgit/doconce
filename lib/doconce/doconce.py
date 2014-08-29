@@ -3190,8 +3190,8 @@ def doconce2format(filestr, format):
     # If ipynb is to make use of Image or movie objects, this results in
     # a living cell and hence a verbatim block, and figures/movies must be
     # interpreted before such blocks are removed.
+    call_handle_figures = False
     if format == 'ipynb':
-        call_handle_figures = False
         if 'FIGURE:' in filestr and option('ipynb_figure=', 'md') == 'Image':
             call_handle_figures = True
         if option('figure_prefix=') is not None or \
@@ -3300,7 +3300,7 @@ def doconce2format(filestr, format):
     filestr = exercises(filestr, format, code_blocks, tex_blocks)
 
     # Next step: deal with figures
-    if format != 'ipynb':
+    if format != 'ipynb' or not call_handle_figures:
         filestr = handle_figures(filestr, format)
     # else: ipynb figures/movies must be handled early above
 

@@ -200,7 +200,7 @@ system doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 
 # IPython notebook
-doconce format ipynb demo
+ doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
 
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb $dest/demo/
 doconce format html index --html_style=bootstrap_bloodish --html_links_in_new_window
