@@ -44,6 +44,7 @@ system doconce format html testdoc --wordpress  $ex --html_exercise_icon=questio
 cp testdoc.html testdoc_wordpress.html
 
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
+system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
@@ -181,6 +182,9 @@ system doconce slides_beamer slides2
 system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
 system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
+
+system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
+system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
 
 rm -f *.aux
 theme=red3

@@ -254,28 +254,28 @@ doconce slides_html demo csss --html_slide_theme=csss_default
 
 !bc sys
 doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish
-doconce slides_html demo doconce --nav_button=space8
+doconce split_html doconce --method=colorline --nav_button=gray1
 !ec
 
 "HTML bloodish": "demo_html_bloodish.html" (plain HTML, red color, one long file, 8 blank lines separate slides)
 
 !bc sys
 doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish
-doconce slides_html demo doconce --nav_button=space8
+doconce split_html demo --method=space8 --nav_button=gray1
 !ec
 
 "HTML solarized": "demo_html_solarized.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 1)
 
 !bc sys
 doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized
-doconce slides_html demo doconce --nav_button=text
+doconce slides_html demo doconce --method=split --nav_button=text
 !ec
 
 "HTML solarized2": "demo_html_solarized.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 2)
 
 !bc sys
 doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized2
-doconce slides_html demo doconce --nav_button=text
+doconce slides_html demo doconce --method=split --nav_button=text
 !ec
 
 "HTML solarized3": "demo_html_solarized.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 3)

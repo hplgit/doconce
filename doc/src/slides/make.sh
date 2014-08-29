@@ -199,6 +199,6 @@ system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no 
 system doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 
-cp -r demo*.pdf demo_*.html reveal.js deck.js csss fig $dest/demo/
+cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig $dest/demo/
 doconce format html index --html_style=bootstrap_bloodish --html_links_in_new_window
 cp index.html $dest/demo/index.html
