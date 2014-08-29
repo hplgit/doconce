@@ -4,7 +4,7 @@
 #summary Scientific Writing and Publishing Anno 2013
 
 By *Hans Petter Langtangen*
-==== Aug 15, 2014 ====
+==== Aug 29, 2014 ====
 
 ---------------------------------------------------------------
 
@@ -900,6 +900,7 @@ Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.t
 == Tables ==
 
 {{{
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |---r-------r-----------r--------|
@@ -907,6 +908,7 @@ Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.t
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 }}}
 Gets rendered as
 

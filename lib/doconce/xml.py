@@ -771,7 +771,7 @@ def define(FILENAME_EXTENSION,
 
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 """
     m = re.search(r'^TITLE: *(.+)$', filestr, flags=re.MULTILINE)
     if m:
@@ -791,7 +791,7 @@ def define(FILENAME_EXTENSION,
     INTRO['xml'] = """\
 <!DOCTYPE html>
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>

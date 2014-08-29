@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-This is the main test suite of Doconce. Classical unit tests require
+This is the main test suite of DocOnce. Classical unit tests require
 a huge amount of work to establish. Instead, we have collected basic
 examples on functionality together with an increasing set of
 constructions that has caused bugs. By running all translations on
@@ -93,7 +93,7 @@ os.chdir(thisdir)
 # test DocWriter:
 log = open(logfilename, 'a')
 failure, output = commands.getstatusoutput('python ../lib/doconce/DocWriter.py')
-files = 'tmp_Doconce.do.txt', 'tmp_DocWriter.do.txt', 'tmp_DocWriter.html', \
+files = 'tmp_DocOnce.do.txt', 'tmp_DocWriter.do.txt', 'tmp_DocWriter.html', \
         'tmp_HTML.html'
 for f in files:
     add(f, log)

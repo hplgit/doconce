@@ -36,7 +36,7 @@ def rst_figure(m):
 
     caption = m.group('caption').strip()
 
-    # Stubstitute Doconce label by rst label in caption
+    # Stubstitute DocOnce label by rst label in caption
     # (also, remove final period in caption since caption is used as hyperlink
     # text to figures).
 
@@ -636,7 +636,7 @@ def define(FILENAME_EXTENSION,
     TOC['rst'] = lambda s: '.. contents:: Table of Contents\n   :depth: 2'
     QUIZ['rst'] = rst_quiz
     INTRO['rst'] = """\
-.. Automatically generated reStructuredText file from Doconce source
+.. Automatically generated reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 """

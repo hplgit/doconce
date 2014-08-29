@@ -697,7 +697,8 @@ def f(x):
 |ec
 |esol
 !ec
-leads to strange behavior: the _Solution_ heading appears after the code
+leads to strange behavior (with the `shadedquoteBlue` verbatim LaTeX
+environment: the _Solution_ heading appears after the code
 in the solution. This appears to be a LaTeX problem since the
 generated LaTeX code has the heading and solution content in the right
 order. A working remedy is to insert a text before the code:

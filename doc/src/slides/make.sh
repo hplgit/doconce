@@ -120,7 +120,7 @@ dest=../../pub/slides
 
 cp -r ${name}*.pdf ._${name}*.html *.md *.gwiki ${name}*.html deck.js reveal.js fig $dest/
 
-doconce format html sw_index.do.txt
+doconce format html sw_index.do.txt --html_style=bootstrap_bloodish --html_links_in_new_window
 cp sw_index.html $dest/index.html
 
 #drop demo part
@@ -200,5 +200,5 @@ system doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 
 cp -r demo*.pdf demo_*.html reveal.js deck.js csss fig $dest/demo/
-doconce format html index --html_style=blueish
+doconce format html index --html_style=bootstrap_bloodish --html_links_in_new_window
 cp index.html $dest/demo/index.html

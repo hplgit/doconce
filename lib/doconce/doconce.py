@@ -82,7 +82,7 @@ def encode_error_message(exception, text, print_length=40):
 def markdown2doconce(filestr, format):
     """
     Look for Markdown (and Extended Markdown) syntax in the file (filestr)
-    and transform the text to valid Doconce format.
+    and transform the text to valid DocOnce format.
     """
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
@@ -116,14 +116,14 @@ def markdown2doconce(filestr, format):
         # TOC
         (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
         # Smart StackEdit comments (must appear before normal comments)
-        # First treat Doconce-inspired syntax with [name: comment]
+        # First treat DocOnce-inspired syntax with [name: comment]
         (r"<!--- ([A-Za-z]+?): (.+?)-->", r'[\g<1>: \g<2>]', re.DOTALL),
-        # Second treat any such comment as inline Doconce comment
+        # Second treat any such comment as inline DocOnce comment
         (r"<!---(.+?)-->", r'[comment: \g<1>]', re.DOTALL),
         # Plain comments starting on the beginning of a line, avoid blank
         # to not confuse with headings
         (r"^<!--(.+?)-->", lambda m: '#' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
-        # Plain comments inside the text must be inline comments in Doconce
+        # Plain comments inside the text must be inline comments in DocOnce
         # or dropped...
         (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
         #(r"<!--(.+)-->", r'', re.DOTALL)
@@ -397,6 +397,19 @@ def syntax_check(filestr, format):
         print filestr[m.start()-50:m.start()+150]
         _abort()
 
+    # Need extra blank lines around tables
+    pattern = r'!b.+?\n\|----'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** syntax error: need blank line before table'
+        print filestr[m.start()-100:m.start()+100]
+        _abort()
+    pattern = r'----\|\n!e.+'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** syntax error: need blank line after table'
+        print filestr[m.start()-100:m.start()+100]
+        _abort()
     # Verbatim words must be the whole link, otherwise issue
     # warnings for the formats where this may look strange
     if format not in ('pandoc',):
@@ -625,7 +638,7 @@ def syntax_check(filestr, format):
     matches = re.findall(r'\\cite\{.+?\}', filestr)
     if matches:
         print '\n*** warning: found \\cite{...} with backslash'
-        print '    (cite{...} has no backslash in Doconce syntax)'
+        print '    (cite{...} has no backslash in DocOnce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\idx\{.+?\}', filestr)
@@ -643,13 +656,13 @@ def syntax_check(filestr, format):
     matches = re.findall(r'\\label\{.+?\}', filestr)
     if matches:
         print '\n*** warning: found \\label{...} with backslash'
-        print '    (label{...} has no backslash in Doconce syntax)'
+        print '    (label{...} has no backslash in DocOnce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\ref\{.+?\}', filestr)
     if matches:
         print '\n*** warning: found \\ref{...} with backslash'
-        print '    (ref{...} has no backslash in Doconce syntax)'
+        print '    (ref{...} has no backslash in DocOnce syntax)'
         print '\n'.join(matches)
 
     # consistency check between label{} and ref{}:
@@ -2765,11 +2778,21 @@ The raw code of this quiz at this stage of processing reads
 def typeset_quizzes2(filestr, format):
     quizzes, html_quizzes, filestr = extract_quizzes(filestr, format)
     debugpr('The file after extracting quizzes, before inserting finally rendered quizzes', filestr)
-    for i, quiz in enumerate(quizzes):
-        debugpr('Quiz no. %d data structure' % i, pprint.pformat(quiz))
-        text = QUIZ[format](quiz)
-        filestr = re.sub(r'^%d ' % i + _QUIZ_BLOCK, text, filestr,
-                         flags=re.MULTILINE)
+    lines = filestr.splitlines()
+    for i in range(len(lines)):
+        m = re.search(r'^(\d+) ' + _QUIZ_BLOCK, lines[i])
+        if m:
+            n = int(m.group(1))
+            quiz = quizzes[n]
+            text = QUIZ[format](quiz)
+            debugpr('Quiz no. %d data structure' % n, pprint.pformat(quiz))
+            lines[i] = text
+    filestr = '\n'.join(lines)
+    # This alternative method with re.sub has side effects since
+    # \f, \b in text are interpreted as special symbols.
+    # That is why we use the method above of exact replacement.
+    #filestr = re.sub(r'^%d ' % i , text, filestr,
+    #                 flags=re.MULTILINE)
     f = open('.%s.quiz' % dofile_basename, 'w')
     try:
         text = pprint.pformat([dict(quiz) for quiz in quizzes])
@@ -3896,7 +3919,7 @@ def format_driver():
     print 'output in', os.path.join(dirname, out_filename)
 
 
-class DoconceSyntaxError(Exception):
+class DocOnceSyntaxError(Exception):
     pass
 
 def doconce_format(format, dotext, compile=False,
@@ -3924,7 +3947,7 @@ def doconce_format(format, dotext, compile=False,
     failure, output = commands.getstatusoutput(cmd)
 
     if failure:
-        raise DoconceSyntaxError('Could not run %s.\nOutput:\n%s' %
+        raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
                                  (cmd, output))
     # Grab filename
     for line in output.splitlines():

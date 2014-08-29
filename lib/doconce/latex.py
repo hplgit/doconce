@@ -531,7 +531,7 @@ def latex_movie(m):
 
     movie = option('latex_movie=', 'href')
     controls = option('latex_movie_controls=', 'on')
-    # Do not typeset movies in figure environments since Doconce documents
+    # Do not typeset movies in figure environments since DocOnce documents
     # assume inline movies
     text = r"""
 \begin{doconce:movie}
@@ -1750,6 +1750,8 @@ def latex_quiz(quiz):
         for i, choice in enumerate(quiz['choices']):
     """
     '''
+    #text = fix_latex_command_regex(text, 'replacement') # only for re.sub
+    # but that won't work in other formats
     return text
 
 def define(FILENAME_EXTENSION,
@@ -1927,7 +1929,7 @@ def define(FILENAME_EXTENSION,
     section_headings = option('latex_section_headings=', 'std')
 
     INTRO['latex'] = r"""%%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION

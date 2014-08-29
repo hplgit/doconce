@@ -58,7 +58,7 @@ auctex
 imagemagick
 netpbm mjpegtools pdftk giftrans
 gv evince smpeg-plaympeg mplayer totem
-ffmpeg libav-tools
+libav-tools
 
 # Misc
 ispell

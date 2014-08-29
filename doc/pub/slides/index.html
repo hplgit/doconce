@@ -1,41 +1,21 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Scientific Writing with DocOnce">
 
+<title>Scientific Writing with DocOnce</title>
 
-
-
-<style type="text/css">
-/* blueish style */
-
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
-
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-
-div { text-align: justify; text-justify: inter-word; }
-</style>
+<!-- Bootstrap style: bootstrap_bloodish -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bloodish.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
 </head>
 
@@ -46,10 +26,36 @@ end of tocinfo -->
 <body>
 
     
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="sw_index.html">Scientific Writing with DocOnce</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Scientific Writing with DocOnce</title>
 
 <center><h1>Scientific Writing with DocOnce</h1></center>  <!-- document title -->
 
@@ -59,26 +65,37 @@ end of tocinfo -->
 DocOnce motivation and introduction talk <em>Scientific Writing and Publishing Anno 2013</em>:
 
 <ul>
- <li> <a href="scientific_writing-reveal.html" target="_self">HTML5 Slides</a> using <a href="http://lab.hakim.se/reveal-js/" target="_self">reveal.js</a> darkgray theme</li>
- <li> <a href="scientific_writing-reveal-beige.html" target="_self">HTML5 Slides</a> using <a href="http://lab.hakim.se/reveal-js/" target="_self">reveal.js</a> beige theme</li>
- <li> <a href="scientific_writing-reveal-white.html" target="_self">HTML5 Slides</a> using <a href="http://lab.hakim.se/reveal-js/" target="_self">reveal.js</a> simple theme</li>
- <li> <a href="scientific_writing-deck.html" target="_self">HTML5 Slides</a> using <a href="https://github.com/imakewebthings/deck.js/" target="_self">deck.js</a> sandstone.default theme</li>
- <li> <a href="scientific_writing-beamer.pdf" target="_self">LaTeX Beamer</a></li>
- <li> <a href="scientific_writing-plain.html" target="_self">Plain HTML slides</a></li>
- <li> <a href="scientific_writing-1.html" target="_self">One big plain HTML file</a></li>
- <li> <a href="scientific_writing-solarized.html" target="_self">One big HTML file with solarized colors</a></li>
+ <li> <a href="scientific_writing-reveal.html" target="_blank">HTML5 Slides</a> using <a href="http://lab.hakim.se/reveal-js/" target="_blank">reveal.js</a> darkgray theme</li>
+ <li> <a href="scientific_writing-reveal-beige.html" target="_blank">HTML5 Slides</a> using <a href="http://lab.hakim.se/reveal-js/" target="_blank">reveal.js</a> beige theme</li>
+ <li> <a href="scientific_writing-reveal-white.html" target="_blank">HTML5 Slides</a> using <a href="http://lab.hakim.se/reveal-js/" target="_blank">reveal.js</a> simple theme</li>
+ <li> <a href="scientific_writing-deck.html" target="_blank">HTML5 Slides</a> using <a href="https://github.com/imakewebthings/deck.js/" target="_blank">deck.js</a> sandstone.default theme</li>
+ <li> <a href="scientific_writing-beamer.pdf" target="_blank">LaTeX Beamer</a></li>
+ <li> <a href="scientific_writing-plain.html" target="_blank">Plain HTML slides</a></li>
+ <li> <a href="scientific_writing-1.html" target="_blank">One big plain HTML file</a></li>
+ <li> <a href="scientific_writing-solarized.html" target="_blank">One big HTML file with solarized colors</a></li>
 </ul>
 
 Some other document-style versions of the slides above
 
 <ul>
- <li> <a href="scientific_writing-anslistings.pdf" target="_self">PDF (LaTeX)</a> (anslistings.sty for code)</li>
- <li> <a href="scientific_writing-minted.pdf" target="_self">PDF (LaTeX)</a> (minted.sty for code)</li>
+ <li> <a href="scientific_writing-anslistings.pdf" target="_blank">PDF (LaTeX)</a> (anslistings.sty for code)</li>
+ <li> <a href="scientific_writing-minted.pdf" target="_blank">PDF (LaTeX)</a> (minted.sty for code)</li>
 </ul>
 
-DocOnce supports many slide styles, see the <a href="demo/index.html" target="_self">demo collection</a>.
+DocOnce supports many slide styles, see the <a href="demo/index.html" target="_blank">demo collection</a>.
 
 <!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 
 
 </body>

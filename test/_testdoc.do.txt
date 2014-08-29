@@ -576,6 +576,7 @@ label{mytab}
 
 The DocOnce source code reads
 !bc ccq
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -583,6 +584,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 !ec
 
 Here is yet another table to test that we can handle more than

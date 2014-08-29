@@ -1,4 +1,4 @@
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 25, 2014
+:Date: Aug 29, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -738,6 +738,7 @@ syntax:
 
 .. code-block:: text
 
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -747,6 +748,7 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
+        
 
 Note that
 

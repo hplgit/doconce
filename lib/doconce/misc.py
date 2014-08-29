@@ -326,7 +326,7 @@ Used if the just the specified movie format should be played."""),
     ('--markdown',
      'Allow Markdown (and some Extended Markdown) syntax as input.'),
     ('--md2do_output=',
-     """Dump to file the Doconce code arising from converting from
+     """Dump to file the DocOnce code arising from converting from
 Markdown. Default value is None (no dump).
 Any filename can be specified: --md2do_output=myfile.do.txt"""),
     ('--github_md',
@@ -489,46 +489,53 @@ def recommended_html_styles_and_pygments_styles():
     pygments styles for typesetting code.
     """
     combinations = {
+        'html': {
+            'blueish': ['default'],
+            'bloodish': ['default'],
+            'solarized': ['perldoc'],
+            'solarized2': ['perldoc'],
+            'solarized3': ['perldoc'],
+            },
         'deck': {
-        'neon': ['fruity', 'native'],
-        'sandstone.aurora': ['fruity'],
-        'sandstone.dark': ['native', 'fruity'],
-        'sandstone.mdn': ['fruity'],
-        'sandstone.mightly': ['fruity'],
-        'beamer': ['autumn', 'perldoc', 'manni', 'default', 'emacs'],
-        'mnml': ['default', 'autumn', 'manni', 'emacs'],
-        'sandstone.firefox': ['default', 'manni', 'autumn', 'emacs'],
-        'sandstone.default': ['perldoc', 'autumn', 'manni', 'default'],
-        'sandstone.light': ['emacs', 'autumn'],  # purple
-        'swiss': ['autumn', 'default', 'perldoc', 'manni', 'emacs'],
-        'web-2.0': ['autumn', 'default', 'perldoc', 'emacs'],
-        'cbc': ['default', 'autumn'],
-        },
+            'neon': ['fruity', 'native'],
+            'sandstone.aurora': ['fruity'],
+            'sandstone.dark': ['native', 'fruity'],
+            'sandstone.mdn': ['fruity'],
+            'sandstone.mightly': ['fruity'],
+            'beamer': ['autumn', 'perldoc', 'manni', 'default', 'emacs'],
+            'mnml': ['default', 'autumn', 'manni', 'emacs'],
+            'sandstone.firefox': ['default', 'manni', 'autumn', 'emacs'],
+            'sandstone.default': ['perldoc', 'autumn', 'manni', 'default'],
+            'sandstone.light': ['emacs', 'autumn'],  # purple
+            'swiss': ['autumn', 'default', 'perldoc', 'manni', 'emacs'],
+            'web-2.0': ['autumn', 'default', 'perldoc', 'emacs'],
+            'cbc': ['default', 'autumn'],
+            },
         'reveal': {
-        'beige': ['perldoc',],
-        'beigesmall': ['perldoc',],
-        'solarized': ['perldoc',],
-        'serif': ['perldoc'],
-        'simple': ['autumn', 'default', 'perldoc'],
-        'blood': ['monokai', 'native'],
-        'sky': ['default'],
-        'moon': ['fruity', 'native'],
-        'night': ['fruity', 'native'],
-        'moon': ['fruity', 'native'],
-        'darkgray': ['native', 'monokai'],
-        'cbc': ['default', 'autumn'],
-        'simula': ['autumn', 'default'],
-        },
+            'beige': ['perldoc',],
+            'beigesmall': ['perldoc',],
+            'solarized': ['perldoc',],
+            'serif': ['perldoc'],
+            'simple': ['autumn', 'default', 'perldoc'],
+            'blood': ['monokai', 'native'],
+            'sky': ['default'],
+            'moon': ['fruity', 'native'],
+            'night': ['fruity', 'native'],
+            'moon': ['fruity', 'native'],
+            'darkgray': ['native', 'monokai'],
+            'cbc': ['default', 'autumn'],
+            'simula': ['autumn', 'default'],
+            },
         'csss': {
-        'csss_default': ['monokai'],
-        },
+            'csss_default': ['monokai'],
+            },
         'dzslides': {
-        'dzslides_default': ['autumn', 'default'],
-        },
+            'dzslides_default': ['autumn', 'default'],
+            },
         'html5slides': {
-        'template-default': ['autumn', 'default'],
-        'template-io2011': ['autumn', 'default'],
-        }
+            'template-default': ['autumn', 'default'],
+            'template-io2011': ['autumn', 'default'],
+            }
         }
     return combinations
 
@@ -927,7 +934,7 @@ def expand_mako():
 
 def _usage_linkchecker():
     print 'Usage: doconce linkchecker file1.html|file1.do.txt|tmp_mako__file1.do.txt ...'
-    print 'Check if URLs or links to local files in Doconce or HTML files are valid.'
+    print 'Check if URLs or links to local files in DocOnce or HTML files are valid.'
 
 def linkchecker():
     if len(sys.argv) <= 1:
@@ -941,7 +948,7 @@ def linkchecker():
     for filename in sys.argv[1:]:
         ext = os.path.splitext(filename)[1]
         if not ext in ('.html', '.htm', '.txt'):
-            print '*** error: %s is not a Doconce or HTML file' % filename
+            print '*** error: %s is not a DocOnce or HTML file' % filename
             continue
         f = open(filename, 'r')
         text = f.read()
@@ -1036,10 +1043,10 @@ The old files are available as file1.rst.old~~, file2.rst.old~~ etc.
 Note that local links to HTML files which are linked to other local HTML
 documents (say a Sphinx document) demand all relevant files to be
 copied to _static. In such cases it is best to physically place
-the HTML documents in _static and let the Doconce document link
+the HTML documents in _static and let the DocOnce document link
 directly to _static.
 
-In general, it is better to link to _static from the Doconce document
+In general, it is better to link to _static from the DocOnce document
 rather than relying on the fixes in this script...
 """
 
@@ -1943,7 +1950,7 @@ def remove_exercise_answers():
 
 def clean():
     """
-    Remove all Doconce generated files and trash files.
+    Remove all DocOnce generated files and trash files.
     Place removed files in generated subdir Trash.
 
     For example, if ``d1.do.txt`` and ``d2.do.txt`` are found,
@@ -2368,7 +2375,13 @@ def slides_html():
          for sl_tp in r:
              for style in r[sl_tp]:
                  pygm_style = r[sl_tp][style][0]
-                 f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s\ndoconce slides_html %s %s --html_slide_theme=%s\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, filestem, sl_tp, style, filestem, filestem, sl_tp, style.replace('.', '_')))
+                 if sl_tp == 'html':
+                     if style.startswith('solarized'):
+                         f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=text\ncp %s.html %s_%s_%s.html\n\n' % (filestem, sl_tp, style, style, filestem, filestem, filestem, sl_tp, style.replace('.', '_')))
+                     else:
+                         f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=space8\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, filestem, sl_tp, style.replace('.', '_')))
+                 else:
+                     f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s\ndoconce slides_html %s %s --html_slide_theme=%s\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, filestem, sl_tp, style, filestem, filestem, sl_tp, style.replace('.', '_')))
          f.write('echo "Here are the slide shows:"\n/bin/ls %s_*_*.html\n' % filestem)
          print 'run\n  sh tmp_slides_html_all.sh\nto generate the slides'
          #print 'names:', ' '.join(glob.glob('%s_*_*.html' % filestem))
@@ -2382,7 +2395,7 @@ def slides_html():
 
     filestr = None
     if slide_type == 'doconce':
-        doconce_split_html(header, parts, footer, basename, filename, slides=True)
+        doconce_split_html(header, parts, footer, filestem, filename, slides=True)
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
@@ -2682,7 +2695,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
             n = parts_name2part.get(name, None) #part where this name is defined
             if n is None and name not in ids:
                 print '*** error: <a href="#%s" has no corresponding anchor (<a name= or some id=)' % name
-                print '    This is probably a bug in Doconce.'
+                print '    This is probably a bug in DocOnce.'
                 _abort()
                 continue  # go to next if abort is turned off
             if n is not None and n != i:
@@ -4474,7 +4487,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     handout = '[handout]' if option('handout') else ''
 
     slides = r"""
-%% LaTeX Beamer file automatically generated from Doconce
+%% LaTeX Beamer file automatically generated from DocOnce
 %% https://github.com/hplgit/doconce
 
 %%-------------------- begin beamer-specific preamble ----------------------
@@ -5211,8 +5224,8 @@ def latex_footer():
 # -------------------- functions for spell checking ---------------------
 
 _environments = [
-    # Doconce
-    ("!bc",                 "!ec"),  # could have side effect if in text, but that's only in Doconce manuals...
+    # DocOnce
+    ("!bc",                 "!ec"),  # could have side effect if in text, but that's only in DocOnce manuals...
     ("!bt",                 "!et"),
     #("!bhint",              "!ehint"),  # will not remove the environment
     #("!bans",               "!eans"),
@@ -5276,7 +5289,7 @@ _latex_environments = [
 _replacements = [
     # General
     (r'cf.', ''),
-    # Doconce
+    # DocOnce
     (r'^<%.+^%>', '', re.MULTILINE|re.DOTALL),  # Mako Python code
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
@@ -6502,7 +6515,7 @@ def md2latex():
 
 def insertdocstr():
     """
-    This scripts first finds all .do.txt (Doconce source code) files in a
+    This scripts first finds all .do.txt (DocOnce source code) files in a
     directory tree and transforms these to a format given as command-line
     argument to the present script. The transformed file has the extension
     .dst.txt (dst for Doc STring), regardless of the format.
@@ -6519,7 +6532,7 @@ def insertdocstr():
     '''
 
     In the subdirectory docstrings we have the file doc1.do.txt, which
-    contains the documentation in Doconce format. The current script
+    contains the documentation in DocOnce format. The current script
     detects this file, transforms it to be desired format, say Epytext.
     That action results in doc1.epytext. This file is then renamed to
     doc1.dst.txt.
@@ -7274,7 +7287,7 @@ def _latex2doconce(filestr):
 def latex2doconce():
     """
     Apply transformations to a latex file to help translate the
-    document into Doconce format.
+    document into DocOnce format.
 
     Suggestions for preparations: avoid pageref, replace subfigures
     by files combined to a single file, avoid footnotes, index inside
@@ -7300,7 +7313,7 @@ def latex2doconce():
 def html2doconce():
     """
     Apply transformations to an html file to help translate the
-    document into Doconce format.
+    document into DocOnce format.
     """
     print '# #ifdef LATEX2DOCONCE'
     print 'This is the result of the doconce htmldoconce program.'
@@ -7440,7 +7453,7 @@ Found \\begin{%s}, which can be handled, but it is
 recommended to avoid this construction.""" % envir
                 else:
                     print """
-Found \\begin{%s}, which will not carry over to Doconce
+Found \\begin{%s}, which will not carry over to DocOnce
 and other formats.""" % envir
                     # Could have message here (begin_messages) that
                     # guide rewrites, e.g., lstlisting etc.
@@ -7452,7 +7465,7 @@ and other formats.""" % envir
                 print line + '\n'
 
 
-# ---- Attempt to make a pygments syntax highlighter for Doconce ----
+# ---- Attempt to make a pygments syntax highlighter for DocOnce ----
 try:
     import pygments as pygm
     from pygments.lexer import RegexLexer, \
@@ -7469,10 +7482,10 @@ except ImportError:
 
 class DocOnceLexer(RegexLexer):
     """
-    Lexer for Doconce files.
+    Lexer for DocOnce files.
     """
 
-    name = 'Doconce'
+    name = 'DocOnce'
     aliases = ['doconce']
     filenames = ['*.do.txt']
     mimetypes = ['text/x-doconce']
@@ -7541,13 +7554,13 @@ class DocOnceLexer(RegexLexer):
 
 class DocOnceLexer(RegexLexer):
     """
-    Lexer for Doconce files.
+    Lexer for DocOnce files.
 
-    Built this one from TexLexer and extended with Doconce stuff.
+    Built this one from TexLexer and extended with DocOnce stuff.
     Difficult to get both to work
     """
 
-    name = 'Doconce'
+    name = 'DocOnce'
     aliases = ['doconce']
     filenames = ['*.do.txt']
     mimetypes = ['text/x-doconce']
@@ -7663,7 +7676,7 @@ class DocOnceLexer(RegexLexer):
 
 class DocOnceLexer(RegexLexer):
     """
-    Lexer for Doconce files.
+    Lexer for DocOnce files.
     """
 
     name = 'DocOnce'
@@ -7706,7 +7719,7 @@ def _usage_pygmentize():
 
 def pygmentize():
     """
-    Typeset a Doconce file with pygmentize, using the DocOnceLexer
+    Typeset a DocOnce file with pygmentize, using the DocOnceLexer
     class above.
 
     An alternative is to register the DocOnceLexer with Pygments.
@@ -8294,7 +8307,7 @@ def _usage_cvs2table():
     print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;]'
 
 def csv2table():
-    """Convert a csv file to a Doconce table."""
+    """Convert a csv file to a DocOnce table."""
     if len(sys.argv) < 2:
         _usage_csv2table()
         sys.exit(0)
