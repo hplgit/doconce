@@ -2234,9 +2234,6 @@ def html_colorbullets():
 def _usage_split_html():
     print """\
 Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination'
-where name can be gray1, gray2, bigblue, blue, green, text
-(name of navigation buttons, or just pure text for navigation).
-
 --method=split|space8|hrule|colorline specifies physical
 split (split) or just N blank lines (spaceN) or a horizontal
 rule (hrule) with blank lines above and below, or a colored rule
@@ -2313,12 +2310,34 @@ def split_html():
         f.write(filestr)
         f.close()
 
+        if '<!-- !bslidecell' in filestr:
+            print '*** warning: !bslidecell-!eslidecell constructions are'
+            print '    ignored unless --method=split is specified'
+            print '    (--method=spaceX|hr|hrule|colorline all ignores cells)'
+
 
 def _usage_slides_html():
-    print 'Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename'
-    print 'slide_types: reveal deck csss dzslides'
-    print 'note: reveal and deck slide styles are edited in doconce'
-    print 'or:    doconce slides_html mydoc.html all  (generate a lot)'
+    print """
+Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --nav_button=name
+
+slide_types: reveal deck csss dzslides'
+note: reveal and deck slide styles are edited in doconce
+or:    doconce slides_html mydoc.html all  (generate a lot)
+
+--nav_button=name sets the type of navigation button (next, previous):
+text, gray1 (default), gray2, bigblue, blue, green.
+See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
+for examples on these types (from left to right).
+--nav_button is ignored if the "doconce format html" command used
+bootstrap styles: --html_style=bootstrap*|bootswatch*.
+
+--pagination means that one can click on pages at the button
+if a bootstrap theme is used in the document.
+
+Note: if slide_tp is doconce, the doconce split_html command is
+more versatile since it allows the --method argument (can split,
+or keep all parts in one file with space or rulers for separating parts).
+"""
 
 def slides_html():
     """
@@ -2363,6 +2382,14 @@ def slides_html():
 
     slide_type = sys.argv[2]
 
+    for arg in sys.argv[1:]:
+        if arg.startswith('--method='):
+            if arg.split('=')[1] != 'split':
+                print '*** error: slides_html cannot accept --method= option'
+                print '    (the slides will always be split)'
+                print '    use split_html with --method=...'
+                _abort()
+
     # Treat the special case of generating a script for generating
     # all the different slide versions that are supported
     if slide_type == 'all':
@@ -2377,9 +2404,10 @@ def slides_html():
                  pygm_style = r[sl_tp][style][0]
                  if sl_tp == 'html':
                      if style.startswith('solarized'):
-                         f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=text\ncp %s.html %s_%s_%s.html\n\n' % (filestem, sl_tp, style, style, filestem, filestem, filestem, sl_tp, style.replace('.', '_')))
+                         f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce slides_html %s_html_%s doconce --nav_button=text\n\n' % (filestem, sl_tp, style, style, filestem, style, filestem, style))
                      else:
-                         f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=space8\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, filestem, filestem, sl_tp, style.replace('.', '_')))
+                         method = 'colorline' if style == 'blueish' else 'space8'
+                         f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce split_html %s_html_%s --method=%s  # one long file\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, style, filestem, style, method))
                  else:
                      f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s\ndoconce slides_html %s %s --html_slide_theme=%s\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, filestem, sl_tp, style, filestem, filestem, sl_tp, style.replace('.', '_')))
          f.write('echo "Here are the slide shows:"\n/bin/ls %s_*_*.html\n' % filestem)
@@ -2647,6 +2675,9 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         next_button = 'Knob_Forward'
     elif nav_button == 'text':
         pass
+    else:
+        print '*** warning: --nav_button=%s is illegal value, text is used' % nav_button
+        nav_button == 'text'
 
     header_part_line = ''  # 'colorline'
     if local_navigation_pics:
