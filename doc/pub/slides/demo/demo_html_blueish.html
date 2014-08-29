@@ -1,0 +1,293 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="On Schemes for Exponential Decay">
+
+<title>On Schemes for Exponential Decay</title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Goal ', 1, None, '___sec0'),
+              (' Mathematical problem ', 1, None, '___sec1'),
+              (' Numerical solution method ', 1, None, '___sec2'),
+              (' Forward Euler explained ', 2, None, '___sec3'),
+              (' Implementation ', 1, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The artifacts can be explained by some theory ',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Aug 29, 2014</h4></center> <!-- date -->
+<p>
+<center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
+
+<p>
+<!-- !split -->
+
+<h1>Goal  <a name="___sec0"></a></h1>
+
+The primary goal of this demo talk is to demonstrate how to write
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
+and get them rendered in numerous HTML formats.
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Layout.</b>
+<p>
+This version
+utilizes <module 'doconce.html' from '/usr/local/lib/python2.7/dist-packages/doconce/html.pyc'> slides with the theme <code>blueish</code>.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
+Speaker notes show up by
+</div>
+
+
+<p>
+<!-- !bnotes -->
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+<!-- !enotes -->
+
+<p>
+<!-- !split -->
+
+<h1>Mathematical problem  <a name="___sec1"></a></h1>
+
+<!-- !bslidecell 00 -->
+
+$$
+\begin{align}
+u'(t) &= -au(t),
+\label{ode}\\ 
+u(0)  &= I,
+\label{initial:value}
+\end{align}
+$$
+
+
+<ul>
+ <li> \( t\in (0,T] \)</li>
+ <li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
+ <li> \( u(t) \) is the unknown function</li>
+</ul>
+
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 01 -->
+<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
+<!-- !eslidecell -->
+
+<p>
+<!-- !split -->
+
+<h1>Numerical solution method  <a name="___sec2"></a></h1>
+
+<!-- !bpop -->
+
+<ul>
+ <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+</ul>
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+Numerical scheme:
+$$
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   $$
+
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h2>Forward Euler explained  <a name="___sec3"></a></h2>
+
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>
+<!-- !split -->
+
+<h1>Implementation  <a name="___sec4"></a></h1>
+
+The numerical method is implemented in a Python function:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+<p>
+<!-- !split -->
+
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+
+<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+
+<p>
+<!-- !split -->
+
+<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
+
+<!-- !bpop -->
+Exact solution of the scheme:
+
+$$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+
+<ul>
+ <li> Stability: \( |A| < 1 \)</li>
+ <li> No oscillations: \( A>0 \)</li>
+ <li> Always for Backward Euler (\( \theta=1 \))</li>
+ <li> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
+ <li> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
+</ul>
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks:</b>
+<p>
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+</div>
+
+<!-- !epop -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
