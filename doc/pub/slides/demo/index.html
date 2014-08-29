@@ -94,7 +94,7 @@ Some functionality in reveal works in Chrome and not in Firefox.
 
 <p>
 All the slides below are generated from the same
-<a href="demo_doconce.html" target="_blank">DocOnce source code</a>.
+<a href="demo.do.txt.html" target="_blank">DocOnce source code</a>.
 
 <p>
 
@@ -411,7 +411,7 @@ doconce slides_html demo csss --html_slide_theme=csss_default
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish
-doconce split_html doconce --method=colorline --nav_button=gray1
+doconce split_html demo --method=colorline
 </pre></div>
 <p>
 <a href="demo_html_bloodish.html" target="_blank">HTML bloodish</a> (plain HTML, red color, one long file, 8 blank lines separate slides)
@@ -420,7 +420,7 @@ doconce split_html doconce --method=colorline --nav_button=gray1
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish
-doconce split_html demo --method=space8 --nav_button=gray1
+doconce split_html demo --method=space8
 </pre></div>
 <p>
 <a href="demo_html_solarized.html" target="_blank">HTML solarized</a> (<a href="http://ethanschoonover.com/solarized" target="_blank">solarized color scheme</a>, version 1)
@@ -432,7 +432,7 @@ doconce split_html demo --method=space8 --nav_button=gray1
 doconce slides_html demo doconce --method=split --nav_button=text
 </pre></div>
 <p>
-<a href="demo_html_solarized.html" target="_blank">HTML solarized2</a> (<a href="http://ethanschoonover.com/solarized" target="_blank">solarized color scheme</a>, version 2)
+<a href="demo_html_solarized2.html" target="_blank">HTML solarized2</a> (<a href="http://ethanschoonover.com/solarized" target="_blank">solarized color scheme</a>, version 2)
 
 <p>
 
@@ -441,12 +441,21 @@ doconce slides_html demo doconce --method=split --nav_button=text
 doconce slides_html demo doconce --method=split --nav_button=text
 </pre></div>
 <p>
-<a href="demo_html_solarized.html" target="_blank">HTML solarized3</a> (<a href="http://ethanschoonover.com/solarized" target="_blank">solarized color scheme</a>, version 3)
+<a href="demo_html_solarized3.html" target="_blank">HTML solarized3</a> (<a href="http://ethanschoonover.com/solarized" target="_blank">solarized color scheme</a>, version 3)
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized3
+doconce slides_html demo doconce --nav_button=text
+</pre></div>
+<p>
+<a href="demo_html_solarized3_dark.html" target="_blank">HTML solarized3 dark</a> (<a href="http://ethanschoonover.com/solarized" target="_blank">solarized color scheme</a>, version 3)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized3_dark
 doconce slides_html demo doconce --nav_button=text
 </pre></div>
 

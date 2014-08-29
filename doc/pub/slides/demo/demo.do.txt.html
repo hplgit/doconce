@@ -1,0 +1,178 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: On Schemes for Exponential Decay</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #658b00">FIGURE: [fig/CN_logo, width=300 frac=0.4]</span>
+
+<span style="color: #228B22">## Comments start with a # and are visible as comments in the</span>
+<span style="color: #228B22">## output. Lines starting with ## are also comments, but not visible</span>
+<span style="color: #228B22">## in the output.</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+
+<span style="color: #228B22">## Headings have 5 = for h3/subsection and 7 = for h1/section</span>
+<span style="color: #000080; font-weight: bold">======= Goal =======</span>
+
+The primary goal of this demo talk is to demonstrate how to write
+talks with &quot;DocOnce&quot;: &quot;https://github.com/hplgit/doconce&quot;
+and get them rendered in numerous HTML formats.
+<span style="color: #228B22"># #if FORMAT in (&quot;html&quot;, &quot;pdflatex&quot;, &quot;latex&quot;)</span>
+<span style="color: #8B008B; font-weight: bold">!bnotice</span> Layout
+This version
+utilizes ${SLIDE_TYPE} slides with the theme `${SLIDE_THEME}`.
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #228B22">## Demonstrate use of Mako variables set on the command line</span>
+<span style="color: #228B22">## (see last sentence too). We use Preprocess (run before Mako)</span>
+<span style="color: #228B22">## to leave out the Mako test on SLIDE_THEME and SLIDE_TYPE.</span>
+<span style="color: #228B22">## In that way, we do not need to specify these variables on</span>
+<span style="color: #228B22">## the command line when compiling for LaTeX or other formats</span>
+<span style="color: #228B22">## (e.g. for handouts).</span>
+
+<span style="color: #228B22"># #if FORMAT == &quot;html&quot;</span>
+% if SLIDE_TYPE != &#39;doconce&#39;:
+<span style="color: #8B008B; font-weight: bold">!bnotice</span>
+Speaker notes show up by
+% if SLIDE_TYPE == &#39;reveal&#39;:
+pressing &quot;s&quot; (but you must run reveal locally and
+some packages installed, see &quot;this description&quot;: &quot;https://github.com/hakimel/reveal.js/#installation&quot;).
+% elif SLIDE_TYPE == &#39;deck&#39;:
+pressing &quot;n&quot;.
+% elif SLIDE_TYPE == &#39;csss&#39;:
+pressing &quot;Ctrl-P&quot;.
+% elif SLIDE_TYPE == &#39;html5slides&#39;:
+pressing &quot;p&quot;.
+% elif SLIDE_TYPE == &#39;dzslides&#39;:
+clicking on the arrow head before Details below.
+% elif SLIDE_TYPE == &#39;csss&#39;:
+using the &quot;onstage.html&quot;: &quot;https://raw.github.com/hplgit/doconce/master/bundled/dzslides/shells/onstage.html&quot; embedding page.
+% endif
+% endif
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #228B22">## Add speaker notes (can also use preprocess or mako for this)</span>
+
+<span style="color: #8B008B; font-weight: bold">!bnotes</span>
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation $u&#39;=-au$ with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+<span style="color: #8B008B; font-weight: bold">!enotes</span>
+
+<span style="color: #228B22">## New slide is indicated by !split at the beginning of a line:</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Mathematical problem =======</span>
+
+<span style="color: #228B22">## Use !bslidecell XY and !eslidecell as begin and end for</span>
+<span style="color: #228B22">## defining a cell XY in a table layout of the slide.</span>
+<span style="color: #228B22">## X=0,1,..., Y=0,1,... XY=00 is the upper left cell.</span>
+<span style="color: #228B22">## Here we define cell 00 and 01 (bullet list to the left</span>
+<span style="color: #228B22">## and figure to the right).</span>
+
+<span style="color: #8B008B; font-weight: bold">!bslidecell</span> 00
+
+<span style="color: #228B22">## latex blocks are surrounded by !bt and !et</span>
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+u&#39;(t) &amp;= -au(t),
+<span style="color: #658b00">label{ode}</span>\\
+u(0)  &amp;= I,
+<span style="color: #658b00">label{initial:value}</span>
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+ * $t\in (0,T]$
+ * $a$, $I$, and $T$ are prescribed parameters
+ * $u(t)$ is the unknown function
+
+<span style="color: #8B008B; font-weight: bold">!eslidecell</span>
+
+<span style="color: #228B22">## Figures can have a width parameter specifying the pixel</span>
+<span style="color: #228B22">## width in HTML. A caption can be added (after [...]).</span>
+
+<span style="color: #8B008B; font-weight: bold">!bslidecell</span> 01
+<span style="color: #658b00">FIGURE: [fig/teacher2, width=250 frac=0.5]</span>
+<span style="color: #8B008B; font-weight: bold">!eslidecell</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Numerical solution method =======</span>
+
+<span style="color: #228B22">## !bpop and !epop surround elements that are to pop up</span>
+<span style="color: #228B22">## as we progress in the slide show.</span>
+<span style="color: #228B22">## They will often not work if there is code inside.</span>
+
+<span style="color: #8B008B; font-weight: bold">!bpop</span>
+ * Mesh in time: $0= t_0&lt; t_1 \cdots &lt; t_N=T$
+ * Assume constant $\Delta t = t_{n}-t_{n-1}$
+ * $u^n$: numerical approx to the exact solution at $t_n$
+<span style="color: #8B008B; font-weight: bold">!epop</span>
+
+<span style="color: #8B008B; font-weight: bold">!bpop</span>
+Numerical scheme:
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+   \[
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   \]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!epop</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #228B22">## Next: embed YouTube video</span>
+
+<span style="color: #000080; font-weight: bold">===== Forward Euler explained =====</span>
+
+<span style="color: #658b00">MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]</span>
+
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #228B22">## Next: exemplify copying code directly from file (start</span>
+<span style="color: #228B22">## with the line matching &quot;def solver&quot; and ending with</span>
+<span style="color: #228B22">## &quot;def verify_three&quot;, but not including this last line).</span>
+
+<span style="color: #000080; font-weight: bold">======= Implementation =======</span>
+
+The numerical method is implemented in a Python function:
+
+<span style="color: #800080; font-weight: bold">@@@CODE src/dc_mod.py  fromto: def solver@def verify_three</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== The Crank-Nicolson method =====</span>
+
+<span style="color: #228B22">## Figure filenames do not need extension - the right version is picked</span>
+
+<span style="color: #658b00">FIGURE: [fig/CN, width=600]</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== The artifacts can be explained by some theory =====</span>
+
+<span style="color: #8B008B; font-weight: bold">!bpop</span>
+Exact solution of the scheme:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .\]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #8B008B; font-weight: bold">!epop</span>
+
+<span style="color: #8B008B; font-weight: bold">!bpop</span>
+ * Stability: $|A| &lt; 1$
+ * No oscillations: $A&gt;0$
+ * Always for Backward Euler ($\theta=1$)
+ * $\Delta t &lt; 1/a$ for Forward Euler ($\theta=0$)
+ * $\Delta t &lt; 2/a$ for Crank-Nicolson ($\theta=1/2$)
+<span style="color: #8B008B; font-weight: bold">!epop</span>
+
+<span style="color: #228B22">## The summary environment appears in a box in most formats</span>
+<span style="color: #228B22">## (warning, notice, question are other environments)</span>
+<span style="color: #8B008B; font-weight: bold">!bpop</span>
+<span style="color: #8B008B; font-weight: bold">!bsummary</span> Concluding remarks:
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+<span style="color: #8B008B; font-weight: bold">!esummary</span>
+<span style="color: #8B008B; font-weight: bold">!epop</span>
+</pre></div>

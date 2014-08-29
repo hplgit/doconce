@@ -33861,7 +33861,7 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
-<!-- !split -->
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <p>
 The format of this document is
@@ -35406,7 +35406,7 @@ With label.
 What about inserting a quiz?
 
 <p>
-<!-- !split -->
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2>Test of quizzes</h2>
 
 <!-- begin quiz -->
@@ -38109,6 +38109,7 @@ system doconce format html testdoc --wordpress  $ex --html_exercise_icon=questio
 cp testdoc.html testdoc_wordpress.html
 
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
+system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
@@ -38246,6 +38247,9 @@ system doconce slides_beamer slides2
 system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
 system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
+
+system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
+system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
 
 rm -f *.aux
 theme=red3
@@ -61856,18 +61860,6 @@ doconce format html slides1 --pygments_html_style=fruity --keep_pygments_html_bg
 doconce slides_html slides1 reveal --html_slide_theme=night
 cp slides1.html slides1_reveal_night.html
 
-doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=dzslides SLIDE_THEME=dzslides_default
-doconce slides_html slides1 dzslides --html_slide_theme=dzslides_default
-cp slides1.html slides1_dzslides_dzslides_default.html
-
-doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=html5slides SLIDE_THEME=template-io2011
-doconce slides_html slides1 html5slides --html_slide_theme=template-io2011
-cp slides1.html slides1_html5slides_template-io2011.html
-
-doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=html5slides SLIDE_THEME=template-default
-doconce slides_html slides1 html5slides --html_slide_theme=template-default
-cp slides1.html slides1_html5slides_template-default.html
-
 doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
 doconce slides_html slides1 deck --html_slide_theme=cbc
 cp slides1.html slides1_deck_cbc.html
@@ -61919,6 +61911,33 @@ cp slides1.html slides1_deck_sandstone_aurora.html
 doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=beamer
 doconce slides_html slides1 deck --html_slide_theme=beamer
 cp slides1.html slides1_deck_beamer.html
+
+doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=html5slides SLIDE_THEME=template-io2011
+doconce slides_html slides1 html5slides --html_slide_theme=template-io2011
+cp slides1.html slides1_html5slides_template-io2011.html
+
+doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=html5slides SLIDE_THEME=template-default
+doconce slides_html slides1 html5slides --html_slide_theme=template-default
+cp slides1.html slides1_html5slides_template-default.html
+
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish --html_output=slides1_html_bloodish
+doconce split_html slides1_html_bloodish --method=space8  # one long file
+
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish --html_output=slides1_html_blueish
+doconce split_html slides1_html_blueish --method=colorline  # one long file
+
+doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized --html_output=slides1_html_solarized
+doconce slides_html slides1_html_solarized doconce --nav_button=text
+
+doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3 --html_style=solarized3 --html_output=slides1_html_solarized3
+doconce slides_html slides1_html_solarized3 doconce --nav_button=text
+
+doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized2 --html_style=solarized2 --html_output=slides1_html_solarized2
+doconce slides_html slides1_html_solarized2 doconce --nav_button=text
+
+doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=dzslides SLIDE_THEME=dzslides_default
+doconce slides_html slides1 dzslides --html_slide_theme=dzslides_default
+cp slides1.html slides1_dzslides_dzslides_default.html
 
 echo "Here are the slide shows:"
 /bin/ls slides1_*_*.html
@@ -68274,6 +68293,145 @@ Reveal.initialize({
 
 </body>
 </html>
+
+************** File: ._slides3-solarized3001.html *****************
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="On Schemes for Exponential Decay">
+
+<title>On Schemes for Exponential Decay</title>
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Goal ', 1, None, '___sec0'),
+              (' Mathematical problem ', 1, None, '___sec1'),
+              (' Numerical solution method ', 1, None, '___sec2'),
+              (' Forward Euler explained ', 2, None, '___sec3'),
+              (' Implementation ', 1, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The artifacts can be explained by some theory ',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0001"></a>
+<!-- !split -->
+
+<h1>Goal  <a name="___sec0"></a></h1>
+
+The primary goal of this demo talk is to demonstrate how to write
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
+and get them rendered in numerous HTML formats.
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Layout.</b>
+<p>
+This version
+utilizes doconce slides with the theme solarized3.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
+Speaker notes show up by
+</div>
+
+
+<p>
+<!-- !bnotes -->
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+<!-- !enotes -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._slides3-solarized3000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev3.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._slides3-solarized3002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next3.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
 
 ************** File: slides3.p.tex *****************
 %%
@@ -77722,7 +77880,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Aug 29 22:04:38 2014.
+# sphinx-quickstart on Sat Aug 30 00:52:26 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -93722,6 +93880,9 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 output in testdoc.html
 + '[' 0 -ne 0 ']'
++ system doconce split_html testdoc.html --method=space10
++ doconce split_html testdoc.html --method=space10
++ '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
 + system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
 + doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
@@ -98704,6 +98865,25 @@ recommended styles are "perldoc"
 slides written to slides3.html
 + '[' 0 -ne 0 ']'
 + cp slides3.html slides3_reveal.html
++ system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
++ doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
+running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="doconce" -DSLIDE_THEME="solarized3" slides3.do.txt > tmp_preprocess__slides3.do.txt
+running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
+mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'doconce', 'SLIDE_THEME': 'solarized3', 'FORMAT': 'html'}
+translating doconce text in tmp_mako__slides3.do.txt to html
+copying from regex "def solver" until "def verify_three"
+     file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
+figure file ../doc/src/slides/fig/CN_logo:
+    can use ../doc/src/slides/fig/CN_logo.png for format html
+figure file ../doc/src/slides/fig/CN:
+    can use ../doc/src/slides/fig/CN.png for format html
+figure file ../doc/src/slides/fig/teacher2:
+    can use ../doc/src/slides/fig/teacher2.jpg for format html
+output in slides3-solarized3.html
++ '[' 0 -ne 0 ']'
++ system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
++ doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
++ '[' 0 -ne 0 ']'
 + rm -f '*.aux'
 + theme=red3
 + system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=red3 --latex_title_layout=beamer

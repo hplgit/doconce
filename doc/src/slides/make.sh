@@ -133,7 +133,7 @@ system doconce format html demo SLIDE_TYPE=dummy SLIDE_THEME=dummy # test
 
 # Make all the styles for the short demo talk
 system doconce slides_html demo all  # generates tmp_slides_html_all.sh
-pygmentize -l text -f html -o demo_doconce.html demo.do.txt
+doconce pygmentize demo.do.txt perldoc
 sh -x tmp_slides_html_all.sh
 
 # Redo cbc, simula, and uio themes with logo
@@ -199,6 +199,6 @@ system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no 
 system doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 
-cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig $dest/demo/
+cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html $dest/demo/
 doconce format html index --html_style=bootstrap_bloodish --html_links_in_new_window
 cp index.html $dest/demo/index.html

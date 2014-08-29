@@ -1,5 +1,5 @@
 TITLE: On Schemes for Exponential Decay
-AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 FIGURE: [fig/CN_logo, width=300 frac=0.4]
@@ -31,6 +31,7 @@ utilizes ${SLIDE_TYPE} slides with the theme `${SLIDE_THEME}`.
 ## (e.g. for handouts).
 
 # #if FORMAT == "html"
+% if SLIDE_TYPE != 'doconce':
 !bnotice
 Speaker notes show up by
 % if SLIDE_TYPE == 'reveal':
@@ -46,6 +47,7 @@ pressing "p".
 clicking on the arrow head before Details below.
 % elif SLIDE_TYPE == 'csss':
 using the "onstage.html": "https://raw.github.com/hplgit/doconce/master/bundled/dzslides/shells/onstage.html" embedding page.
+% endif
 % endif
 !enotice
 # #endif

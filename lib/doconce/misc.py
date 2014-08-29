@@ -495,6 +495,7 @@ def recommended_html_styles_and_pygments_styles():
             'solarized': ['perldoc'],
             'solarized2': ['perldoc'],
             'solarized3': ['perldoc'],
+            'solarized3_dark': ['native'],
             },
         'deck': {
             'neon': ['fruity', 'native'],
@@ -2295,7 +2296,7 @@ def split_html():
     elif method in ('colorline',):
         filestr = filestr.replace(
             '<!-- !split -->',
-            '<!-- !split -->' + '<br><br><br><img src="%s"><br><br><br>'
+            '<!-- !split -->' + '<br><br><br><br><br><br><img src="%s"><br><br>'
             % 'http://hplgit.github.io/doconce/bundled/html_images/colorline.png')
     else:
         header, parts, footer = get_header_parts_footer(filename, "html")
@@ -7746,7 +7747,7 @@ class DocOnceLexer(RegexLexer):
         True
 
 def _usage_pygmentize():
-    print 'Usage: doconce pygmentize doconce-file [style]'
+    print 'Usage: doconce pygmentize doconce-file [pygments style]'
 
 def pygmentize():
     """
@@ -7756,7 +7757,7 @@ def pygmentize():
     An alternative is to register the DocOnceLexer with Pygments.
     """
     if len(sys.argv) < 2:
-        _usge_pygmentize()
+        _usage_pygmentize()
         sys.exit(1)
 
     filename = sys.argv[1]
@@ -7772,6 +7773,7 @@ def pygmentize():
     formatter = HtmlFormatter(noclasses=True, style=pygm_style)
     text = highlight(text, lexer, formatter)
     f = open(filename + '.html', 'w');  f.write(text);  f.close()
+    print 'pygmentized doconce code written to %s.html' % filename
 
 def _usage_makefile():
     print 'Usage:   doconce makefile doconce-file [html pdflatex latex sphinx gwiki pandoc ipynb deck reveal beamer ...]'
