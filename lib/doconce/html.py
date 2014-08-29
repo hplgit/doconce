@@ -2140,10 +2140,11 @@ Automatically generated HTML file from Doconce source
 %s
 
 %s
+<title>%s</title>
 </head>
 <body>
 
-    """ % (meta_tags, style)
+    """ % (meta_tags, style, title)
 
     OUTRO['html'] = ''
     if html_style.startswith('boots'):
