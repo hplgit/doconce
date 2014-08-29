@@ -93,7 +93,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
+     equationNumbers: {  autoNumber: "none"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
@@ -105,6 +105,7 @@ MathJax.Hub.Config({
 
 
     
+<a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -130,167 +131,14 @@ MathJax.Hub.Config({
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
 <p>
-<!-- !split -->
-
-<h1>Goal  <a name="___sec0"></a></h1>
-
-The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
-and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice alert-text-normal">
-<b>Layout.</b>
 <p>
-This version
-utilizes <module 'doconce.html' from '/usr/local/lib/python2.7/dist-packages/doconce/html.pyc'> slides with the theme <code>solarized</code>.
-</div>
-
-
-<p>
-<div class="alert alert-block alert-notice alert-text-normal">
-<b>Notice.</b>
-<p>
-Speaker notes show up by
-</div>
-
-
-<p>
-<!-- !bnotes -->
-The talk investigates the accuracy of three finite difference
-schemes for the ordinary differential equation \( u'=-au \) with the
-aid of numerical experiments. Numerical artifacts are in particular
-demonstrated.
-<!-- !enotes -->
-
-<p>
-<!-- !split -->
-
-<h1>Mathematical problem  <a name="___sec1"></a></h1>
-
-<!-- !bslidecell 00 -->
-
-$$
-\begin{align}
-u'(t) &= -au(t),
-\label{ode}\\ 
-u(0)  &= I,
-\label{initial:value}
-\end{align}
-$$
-
-
-<ul>
- <li> \( t\in (0,T] \)</li>
- <li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
- <li> \( u(t) \) is the unknown function</li>
-</ul>
-
-<!-- !eslidecell -->
-
-<p>
-<!-- !bslidecell 01 -->
-<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
-<!-- !eslidecell -->
-
-<p>
-<!-- !split -->
-
-<h1>Numerical solution method  <a name="___sec2"></a></h1>
-
-<!-- !bpop -->
-
-<ul>
- <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
- <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
- <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
-</ul>
-
-<!-- !epop -->
-
-<p>
-<!-- !bpop -->
-Numerical scheme:
-$$
-   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-   \quad n=0,1,\ldots,N-1
-   $$
-
-<!-- !epop -->
-
-<p>
-<!-- !split -->
-
-<h2>Forward Euler explained  <a name="___sec3"></a></h2>
-
-
-<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
-
-
-<p>
-<!-- !split -->
-
-<h1>Implementation  <a name="___sec4"></a></h1>
-
-The numerical method is implemented in a Python function:
-
-<p>
-<!-- begin verbatim block  pycod-->
-<pre><code>def solver(I, a, T, dt, theta):
-    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
-    dt = float(dt)           # avoid integer division
-    N = int(round(T/dt))     # no of time intervals
-    T = N*dt                 # adjust T to fit time step dt
-    u = zeros(N+1)           # array of u[n] values
-    t = linspace(0, T, N+1)  # time mesh
-
-    u[0] = I                 # assign initial condition
-    for n in range(0, N):    # n=0,1,...,N-1
-        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
-    return u, t
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-<!-- !split -->
-
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
-
-<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
-
-<p>
-<!-- !split -->
-
-<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
-
-<!-- !bpop -->
-Exact solution of the scheme:
-
-$$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
-
-<!-- !epop -->
-
-<p>
-<!-- !bpop -->
-
-<ul>
- <li> Stability: \( |A| < 1 \)</li>
- <li> No oscillations: \( A>0 \)</li>
- <li> Always for Backward Euler (\( \theta=1 \))</li>
- <li> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
- <li> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
-</ul>
-
-<!-- !epop -->
-
-<p>
-<!-- !bpop -->
-<div class="alert alert-block alert-summary alert-text-normal">
-<b>Concluding remarks:</b>
-<p>
-Only the Backward Euler scheme is guaranteed to always give
-qualitatively correct results.
-</div>
-
-<!-- !epop -->
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+<div style="text-align: right;"><a href="._demo001.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
 
 <!-- ------------------- end of main content --------------- -->
 

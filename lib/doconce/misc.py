@@ -2379,7 +2379,7 @@ def slides_html():
                      if style.startswith('solarized'):
                          f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=text\ncp %s.html %s_%s_%s.html\n\n' % (filestem, sl_tp, style, style, filestem, filestem, filestem, sl_tp, style.replace('.', '_')))
                      else:
-                         f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=space8\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, filestem, sl_tp, style.replace('.', '_')))
+                         f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s\ndoconce slides_html %s doconce --nav_button=space8\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, filestem, filestem, sl_tp, style.replace('.', '_')))
                  else:
                      f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s\ndoconce slides_html %s %s --html_slide_theme=%s\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, filestem, sl_tp, style, filestem, filestem, sl_tp, style.replace('.', '_')))
          f.write('echo "Here are the slide shows:"\n/bin/ls %s_*_*.html\n' % filestem)
