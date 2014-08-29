@@ -1629,6 +1629,7 @@ A table like
 is built up of pipe symbols and dashes:
 
 !bc do
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--------------------------------|
@@ -1636,6 +1637,7 @@ is built up of pipe symbols and dashes:
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 !ec
 The pipes and column values do not need to be aligned (but why write
 the DocOnce source in an ugly way?). In the line below the heading,
@@ -1648,6 +1650,7 @@ An example of centered headings (which is default anyway), first
 column left-adjusted and the others right-adjusted looks like
 
 !bc do
+
   |--c--------c-----------c--------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -1655,6 +1658,7 @@ column left-adjusted and the others right-adjusted looks like
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 !ec
 
 Note that not all formats offer alignment of heading or entries
@@ -1687,6 +1691,7 @@ time, velocity, acceleration
 Running `doconce csv2table tmp.csv` creates the table
 
 !bc do
+
 |------c--------------c--------------c-------|
 | time         | velocity     | acceleration |
 |------c--------------c--------------c-------|
@@ -1694,6 +1699,7 @@ Running `doconce csv2table tmp.csv` creates the table
 | 2.0          | 1.376512     | 11.919       |
 | 4.0          | 1.1E+1       | 14.717624    |
 |--------------------------------------------|
+
 !ec
 
 If this output is redirected to a file, say `mytable.do.txt`, one can
@@ -3090,6 +3096,7 @@ The Mako call syntax in a cell is decided to be
 A 3x3 table of figures then look like
 
 !bc do
+
 |-------------------------------------------------|
 |               |                |                |
 |-------c---------------c----------------c--------|
@@ -3097,6 +3104,7 @@ A 3x3 table of figures then look like
 |${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
 |${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
 |-------------------------------------------------|
+
 !ec
 We do not want a heading, just a grid of figures, but a heading is
 required in DocOnce figures, so the solution is to provide

@@ -18,7 +18,7 @@ def sphinx_figure(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
 
-    # Stubstitute Doconce label by rst label in caption
+    # Stubstitute DocOnce label by rst label in caption
     # (also, remove final period in caption since caption is used as hyperlink
     # text to figures).
 

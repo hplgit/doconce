@@ -38,7 +38,7 @@ color_table = [
 
 def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     """
-    Add filename to the collection of needed files for a Doconce-based
+    Add filename to the collection of needed files for a DocOnce-based
     HTML document to work.
 
     The first time the function is called, `doconce_docname` != None
@@ -346,7 +346,8 @@ def embed_newcommands(filestr):
             if line.startswith(r'\newcommand') or \
                line.startswith(r'\renewcommand'):
                 pattern, dummy = process_newcommand(line)
-                if pattern in filestr:
+                m = re.search(pattern, filestr)
+                if m:
                     text += line
         text = text.strip()
         if text:
@@ -538,7 +539,7 @@ def html_code(filestr, code_blocks, code_block_types,
     from doconce import debugpr
     debugpr('File before call to insert_code_and_tex (format html):', filestr)
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
-    debugpr('File after call to isnert_code_and tex (format html):', filestr)
+    debugpr('File after call to insert_code_and tex (format html):', filestr)
 
     if pygm or needs_online_python_tutor:
         c = re.compile(r'^!bc(.*?)\n', re.MULTILINE)
@@ -674,12 +675,12 @@ def html_code(filestr, code_blocks, code_block_types,
         title = ''
         date = ''
 
-        header = '<title>' in filestr  # will the html file get a header?
+        header = '<!-- document title -->' in filestr  # will the html file get a header?
         if header:
             print """\
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:"""
-            pattern = r'<title>(.+?)</title>'
+            pattern = r'<center><h1>(.+?)</h1></center>  <!-- document title -->'
             m = re.search(pattern, filestr)
             if m:
                 title = m.group(1).strip()
@@ -738,7 +739,7 @@ def html_code(filestr, code_blocks, code_block_types,
 
         # Check that template does not have "main content" begin and
         # end lines that may interfere with the automatically generated
-        # ones in Doconce (may destroy the split_html command)
+        # ones in DocOnce (may destroy the split_html command)
         from doconce import main_content_char as _c
         m = re.findall(r'(<!-- %s+ main content %s+)' % (_c,_c), template)
         if m:
@@ -850,7 +851,6 @@ def html_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(pattern, '\n\n', filestr, flags=re.MULTILINE)
     # Elimate <p> before equations $$ and before lists
     filestr = re.sub(r'<p>\s+(\$\$|<ul>|<ol>)', r'\g<1>', filestr)
-    filestr = re.sub(r'<p>\s+<title>', '<title>', filestr)
     # Eliminate <p> after </h1>, </h2>, etc.
     filestr = re.sub(r'(</[hH]\d[^>]*>)\s+<p>', '\g<1>\n', filestr)
 
@@ -1670,10 +1670,16 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
         if not keep_pygm_bg:
             block = re.sub(pygments_pattern, r'"background: %%s">' %%
                            admon_css_vars[html_admon_style]['background'], block)
-        return """<div class="alert alert-block alert-%(_admon)s alert-text-%%s"><b>%%s</b>
+        # Strip off <p> at the end of block to reduce space below the text
+        block = re.sub('(<p>\s*)+$', '', block)
+        # Need a <p> after the title to ensure some space before the text
+        alert = """<div class="alert alert-block alert-%(_admon)s alert-text-%%s">
+<b>%%s</b>
+<p>
 %%s
 </div>
 """ %% (text_size, title, block)
+        return alert
 
     elif html_admon_style == 'lyx':
         block = '<div class="alert-text-%%s">%%s</div>' %% (text_size, block)
@@ -1766,7 +1772,7 @@ def define(FILENAME_EXTENSION,
         'subsubsection': r'\n<h3>\g<subst></h3>\n',
         'paragraph':     r'<b>\g<subst></b>\n',
         'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
-        'title':         r'\n<title>\g<subst></title>\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
+        'title':         r'\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
         'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->',
         'author':        html_author,
         'figure':        html_figure,
@@ -2013,7 +2019,7 @@ div { text-align: justify; text-justify: inter-word; }
             urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
                     'https://raw.githubusercontent.com/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
         elif html_style.startswith('bootstrap_'):
-            # Local Doconce stored or modified bootstrap themes
+            # Local DocOnce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
             urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
                     'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
@@ -2021,6 +2027,11 @@ div { text-align: justify; text-justify: inter-word; }
             default = 'cosmo'
             boots_style = default if 'bootswatch_' not in html_style else \
                           html_style.split('_')[1]
+            legal_bootswatch_styles = 'cerulean cosmo flatly journal lumen readable simplex spacelab united yeti amelia cyborg darkly slate spruce superhero'.split()
+            if boots_style not in legal_bootswatch_styles:
+                print '*** error: wrong bootswatch style %s' % boots_style
+                print '    legal choices:\n    %s' % ', '.join(legal_bootswatch_styles)
+                _abort()
             urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
             # Dark styles need some recommended options
             dark_styles = 'amelia cyborg darkly slate superhero'.split()
@@ -2071,9 +2082,10 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 """
     bootstrap_title_bar = ''
+    title = ''
     m = re.search(r'^TITLE: *(.+)$', filestr, flags=re.MULTILINE)
     if m:
         title = m.group(1).strip()
@@ -2132,18 +2144,18 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
     # <!DOCTYPE html>
     INTRO['html'] = """\
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 %s
-
+<title>%s</title>
 %s
 </head>
 <body>
 
-    """ % (meta_tags, style)
+    """ % (meta_tags, title, style)
 
     OUTRO['html'] = ''
     if html_style.startswith('boots'):

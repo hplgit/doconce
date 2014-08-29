@@ -576,6 +576,7 @@ label{mytab}
 
 The DocOnce source code reads
 !bc ccq
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -583,6 +584,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 !ec
 
 Here is yet another table to test that we can handle more than
@@ -828,9 +830,9 @@ footnotes.
 ===== Test of Some LaTeX Fixes =====
 
 Let's check abbr. of some common kind, e.g. the well-known i.e.
-expression as an example. Moreover, Dr. Tang and Prof. Monsen,
-or maybe also prof. Ting,
-will go to the Dept. of Science to test how Mr. Hansen is doing together
+expression as an example, and 1 vs.  2 which is also often used.
+Dr. Tang and Prof. Monsen, or maybe also prof.  Ting,
+will go to the Dept. of Science to test how Mr.    Hansen is doing together
 with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
 Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no. $i$ of DocOnce features.

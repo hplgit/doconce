@@ -592,6 +592,7 @@ label{mytab}
 
 The DocOnce source code reads
 !bc ccq
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -599,6 +600,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 !ec
 
 Here is yet another table to test that we can handle more than
@@ -844,9 +846,9 @@ footnotes.
 ===== Test of Some LaTeX Fixes =====
 
 Let's check abbr. of some common kind, e.g. the well-known i.e.
-expression as an example. Moreover, Dr. Tang and Prof. Monsen,
-or maybe also prof. Ting,
-will go to the Dept. of Science to test how Mr. Hansen is doing together
+expression as an example, and 1 vs.  2 which is also often used.
+Dr. Tang and Prof. Monsen, or maybe also prof.  Ting,
+will go to the Dept. of Science to test how Mr.    Hansen is doing together
 with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
 Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no. $i$ of DocOnce features.
@@ -1494,17 +1496,17 @@ is at the end with only one newline.
 
 ************** File: testdoc.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -1704,7 +1706,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing DocOnce</title>
 
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
@@ -1820,7 +1821,7 @@ MathJax.Hub.Config({
 
 ************** File: testdoc.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -2598,9 +2599,10 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
+
 
 
 \index{movies}
@@ -2626,9 +2628,10 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
+
 
 
 
@@ -2741,6 +2744,7 @@ with the preprocessor.
 
 The DocOnce source code reads
 \bccq
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -2748,6 +2752,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 \eccq
 
 Here is yet another table to test that we can handle more than
@@ -3071,8 +3076,8 @@ footnotes.
 \subsection{Test of Some {\LaTeX} Fixes}
 
 Let's check abbr.~of some common kind, e.g.~the well-known i.e.
-expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
-or maybe also prof.~Ting,
+expression as an example, and 1 vs.~2 which is also often used.
+Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
@@ -3910,10 +3915,9 @@ in a separate document: \code{admon.do.txt}.
 \end{document}
 % #endif
 
-
 ************** File: testdoc.tex_ptex2tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -4799,9 +4803,10 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+
 
 
 \index{movies}\marginpar{\footnotesize movies}
@@ -4827,9 +4832,10 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
+
 
 
 
@@ -4945,6 +4951,7 @@ with the preprocessor.
 The DocOnce source code reads
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -4952,6 +4959,7 @@ fontfamily=tt,xleftmargin=7mm]
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 \end{Verbatim}
 \noindent
 
@@ -5279,8 +5287,8 @@ footnotes.
 \subsection{Test of Some {\LaTeX} Fixes}
 
 Let's check abbr.~of some common kind, e.g.~the well--known i.e.
-expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
-or maybe also prof.~Ting,
+expression as an example, and 1 vs.~2 which is also often used.
+Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
@@ -6134,7 +6142,6 @@ in a separate document: \texttt{admon.do.txt}.
 \printindex
 
 \end{document}
-
 ************** File: testdoc.tex_doconce_ptex2tex *****************
 \bsys (!bc sys) -> \begin{Verbatim}[frame=lines]
 
@@ -6165,7 +6172,7 @@ in a separate document: \texttt{admon.do.txt}.
 output in testdoc.tex
 ----------- end of doconce ptex2tex output ----------------
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -7008,9 +7015,10 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+
 
 
 \index{movies}\marginpar{\footnotesize movies}
@@ -7036,9 +7044,10 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
+
 
 
 
@@ -7151,6 +7160,7 @@ with the preprocessor.
 
 The DocOnce source code reads
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -7158,6 +7168,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 \end{Verbatim}
 
 Here is yet another table to test that we can handle more than
@@ -7482,8 +7493,8 @@ footnotes.
 \subsection{Test of Some {\LaTeX} Fixes}
 
 Let's check abbr.~of some common kind, e.g.~the well--known i.e.
-expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
-or maybe also prof.~Ting,
+expression as an example, and 1 vs.~2 which is also often used.
+Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
@@ -8329,7 +8340,6 @@ in a separate document: \Verb!admon.do.txt!.
 
 \end{document}
 
-
 ************** File: testdoc.rst *****************
 
 .. raw:: html
@@ -8348,7 +8358,7 @@ in a separate document: \Verb!admon.do.txt!.
         
         
 
-.. Automatically generated reStructuredText file from Doconce source
+.. Automatically generated reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -8886,6 +8896,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads::
 
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -8893,6 +8904,7 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -10002,9 +10014,8 @@ in a separate document: ``admon.do.txt``.
 
 .. [#example-of-the-third-footnote] Not much to add here, but the footnote
    is at the end with only one newline.
-
 ************** File: testdoc.sphinx.rst *****************
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -10622,6 +10633,7 @@ The DocOnce source code reads
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -11745,7 +11757,6 @@ in a separate document: ``admon.do.txt``.
 
 .. [#example-of-the-third-footnote] Not much to add here, but the footnote
    is at the end with only one newline.
-
 ************** File: testdoc.gwiki *****************
 #summary A Document for Testing DocOnce
 
@@ -12346,6 +12357,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads
 {{{
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -12353,6 +12365,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 }}}
 
 Here is yet another table to test that we can handle more than
@@ -13253,7 +13266,6 @@ in a separate document: `admon.do.txt`.
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
 
-
 ************** File: testdoc.mwiki *****************
 #TITLE (actually governed by the filename): A Document for Testing DocOnce
 
@@ -13836,6 +13848,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads
 <syntaxhighlight lang="text">
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -13843,6 +13856,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 </syntaxhighlight>
 
 Here is yet another table to test that we can handle more than
@@ -14877,7 +14891,6 @@ in a separate document: <code>admon.do.txt</code>.
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
 
-
 ************** File: testdoc.cwiki *****************
 #summary A Document for Testing DocOnce
 <wiki:toc max_depth="2" />
@@ -15425,6 +15438,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads
 {{{
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -15432,6 +15446,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 }}}
 
 Here is yet another table to test that we can handle more than
@@ -16349,7 +16364,6 @@ in a separate document: {{{admon.do.txt}}}.
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
 
-
 ************** File: testdoc.st *****************
 TITLE: A Document for Testing DocOnce
 BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
@@ -16776,6 +16790,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads::
 
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -16783,6 +16798,7 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -17635,7 +17651,6 @@ in a separate document: 'admon.do.txt'.
 
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
-
 ************** File: testdoc.epytext *****************
 TITLE: A Document for Testing DocOnce
 BY: Hans Petter Langtangen (Center for Biomedical Computing, Simula Research Laboratory, and Department of Informatics, University of Oslo); Kaare Dump (Segfault, Cyberspace); A. Dummy Author; I. S. Overworked and Outburned (Inst1, and Inst2, Somewhere, and Third Inst, Elsewhere, and Fourth Inst); J. Doe
@@ -18037,6 +18052,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads::
 
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -18044,6 +18060,7 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -18936,7 +18953,6 @@ in a separate document: C{admon.do.txt}.
 
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
-
 ************** File: testdoc.txt *****************
 A Document for Testing DocOnce
 ==============================
@@ -19460,6 +19476,7 @@ Let us take this table from the manual:
 
 The DocOnce source code reads::
 
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -19467,6 +19484,7 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -20393,7 +20411,6 @@ in a separate document: admon.do.txt.
 
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
-
 ************** File: testdoc.md *****************
 % A Document for Testing DocOnce
 % **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
@@ -20977,6 +20994,7 @@ Let us take this table from the manual:
 The DocOnce source code reads
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -20984,6 +21002,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is yet another table to test that we can handle more than
@@ -22007,7 +22026,6 @@ in a separate document: `admon.do.txt`.
 [^example-of-the-third-footnote]: Not much to add here, but the footnote
 is at the end with only one newline.
 
-
 ************** File: testdoc.ipynb *****************
 {
  "metadata": {},
@@ -22023,7 +22041,6 @@ is at the end with only one newline.
       "# A Document for Testing DocOnce\n",
       "**Jan 32, 2100**\n",
       "\n",
-      "<!-- !split -->\n",
       "\n",
       "\n",
       "\n",
@@ -22670,11 +22687,11 @@ is at the end with only one newline.
       "Test of figures. In particular we refer to Figure ref{fig:impact} in which\n",
       "there is a flow.\n",
       "\n",
-      "![Visualization of a wave. ](files/../doc/src/manual/fig/wave1D.png)\n",
+      "FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. {fig:impact}\n",
       "\n",
       "Figures without captions are allowed and will be inlined.\n",
       "\n",
-      "![](files/../doc/src/manual/fig/wave1D.png)\n",
+      "FIGURE:[../doc/src/manual/fig/wave1D, width=200]\n",
       "\n",
       "\n",
       "\n",
@@ -22683,13 +22700,13 @@ is at the end with only one newline.
       "Here is figure ref{myfig} with a long multi-line caption\n",
       "and an extra space before the FIGURE keyword.\n",
       "\n",
-      "![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. ](files/../doc/src/manual/fig/wave1D.png)\n",
+      "FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. {myfig} \n",
       "\n",
       "<!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->\n",
       "\n",
       "Test URL as figure name:\n",
       "\n",
-      "![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)\n",
+      "FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]\n",
       "\n",
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
@@ -22848,13 +22865,15 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "        \n",
       "          |--------------------------------|\n",
       "          |time  | velocity | acceleration |\n",
       "          |--l--------r-----------r--------|\n",
       "          | 0.0  | 1.4186   | -5.01        |\n",
       "          | 2.0  | 1.376512 | 11.919       |\n",
       "          | 4.0  | 1.1E+1   | 14.717624    |\n",
-      "          |--------------------------------|\n"
+      "          |--------------------------------|\n",
+      "        \n"
      ]
     },
     {
@@ -24175,7 +24194,6 @@ is at the end with only one newline.
   }
  ]
 }
-
 ************** File: testdoc.tmp *****************
 label{subsec1}
 
@@ -24729,7 +24747,7 @@ Python.</code></pre>
 </table>
 <p>The DocOnce source code reads</p>
 </blockquote>
-<pre><code>|--------------------------------|
+<pre><code>  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
   | 0.0  | 1.4186   | -5.01        |
@@ -24928,7 +24946,7 @@ c = a &amp; b</code></pre>
 <p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>, <a href="{http://tinyurl.com/pwyasaa/formulas.ball1.py}"></a>, and <a href="{http://tinyurl.com/pwyasaa/formulas.ball2.py}"></a>.</p>
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
 <h2 id="test-of-some-latex-fixes">Test of Some <span>LaTeX</span> Fixes</h2>
-<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example. Moreover, Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of DocOnce features. A sentence containing “refines lines” could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
+<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example, and 1 vs. 2 which is also often used. Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of DocOnce features. A sentence containing “refines lines” could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
 <h1 id="latex-mathematics"><span>LaTeX</span> Mathematics</h1>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
 <p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
@@ -25603,13 +25621,15 @@ Python.</code></pre>
 </tbody>
 </table>
 <p>The DocOnce source code reads</p>
-<pre><code>  |--------------------------------|
+<pre><code>
+  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
   | 0.0  | 1.4186   | -5.01        |
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|</code></pre>
+  |--------------------------------|
+</code></pre>
 <p>Here is yet another table to test that we can handle more than one table:</p>
 <table>
 <thead>
@@ -27896,16 +27916,16 @@ MathJax.Hub.Config({
 
 ************** File: author1.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test of one author at one institution">
 
-
+<title>Test of one author at one institution</title>
 
 
 <style type="text/css">
@@ -27964,7 +27984,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Test of one author at one institution</title>
 
 <center><h1>Test of one author at one institution</h1></center>  <!-- document title -->
 
@@ -28187,7 +28206,7 @@ Inline math, \( a=b \), is the only math in this document.
 
 ************** File: author1.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -28501,7 +28520,7 @@ Inline math, $a=b$, is the only math in this document.
 
 
 ************** File: author1.rst *****************
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 Test of one author at one institution
@@ -28836,17 +28855,17 @@ Inline math, a=b, is the only math in this document.
 
 ************** File: ._testdoc000.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -29046,7 +29065,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing DocOnce</title>
 
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
@@ -29162,17 +29180,17 @@ MathJax.Hub.Config({
 
 ************** File: ._testdoc001.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -29958,7 +29976,9 @@ Here is some more text before a new definition of a footnote that was used
 used above.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Non-breaking space character.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Non-breaking space character.</b>
+<p>
 This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_self">non-breaking space character</a>, and a typical
 example where this is needed is in physical units: 7.4&nbsp;km is traveled
 in&nbsp;\( 7.4/5.5\approx 1.345 \)&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_self">link</a>&nbsp;is
@@ -30466,17 +30486,17 @@ footnotes.
 
 ************** File: ._testdoc002.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -31320,17 +31340,17 @@ What about inserting a quiz?
 
 ************** File: ._testdoc003.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -31559,7 +31579,9 @@ Bergen
 Without label.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Tip.</b>
+<p>
 Here is a tip or hint box, typeset as a notice box.
 </div>
 
@@ -31578,7 +31600,9 @@ Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for
 from using version control systems.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Summary.</b>
+<p>
 <b>Bold remark:</b> Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -31721,17 +31745,17 @@ is at the end with only one newline.
 
 ************** File: testdoc_wordpress.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <style type="text/css">
@@ -31796,7 +31820,6 @@ div { text-align: justify; text-justify: inter-word; }
 
 
 
-<title>A Document for Testing DocOnce</title>
 
 <center><h1>A Document for Testing DocOnce</h1></center>  
 
@@ -32324,7 +32347,9 @@ Here is some more text before a new definition of a footnote that was used
 used above.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Non-breaking space character.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Non-breaking space character.</b>
+<p>
 This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_blank">non-breaking space character</a>, and a typical
 example where this is needed is in physical units: 7.4&nbsp;km is traveled
 in&nbsp;$latex 7.4/5.5\approx 1.345$&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_blank">link</a>&nbsp;is
@@ -33397,7 +33422,9 @@ Those from Bergen would claim so, but nobody else.
 Without label.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Tip.</b>
+<p>
 Here is a tip or hint box, typeset as a notice box.
 </div>
 
@@ -33416,7 +33443,9 @@ Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for
 from using version control systems.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Summary.</b>
+<p>
 <b>Bold remark:</b> Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -33540,20 +33569,19 @@ is at the end with only one newline.
 </html>
     
 
-
 ************** File: testdoc_no_solutions.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Document for Testing DocOnce">
 <meta name="keywords" content="figures,movies,index with subindex,index, with comma, and one more">
 
-
+<title>A Document for Testing DocOnce</title>
 
 
 <style type="text/css">
@@ -33735,7 +33763,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing DocOnce</title>
 
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
 
@@ -34284,7 +34311,9 @@ Here is some more text before a new definition of a footnote that was used
 used above.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Non-breaking space character.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Non-breaking space character.</b>
+<p>
 This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_self">non-breaking space character</a>, and a typical
 example where this is needed is in physical units: 7.4&nbsp;km is traveled
 in&nbsp;\( 7.4/5.5\approx 1.345 \)&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_self">link</a>&nbsp;is
@@ -35409,7 +35438,9 @@ Bergen
 Without label.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Tip.</b>
+<p>
 Here is a tip or hint box, typeset as a notice box.
 </div>
 
@@ -35428,7 +35459,9 @@ Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for
 from using version control systems.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Summary.</b>
+<p>
 <b>Bold remark:</b> Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -35561,10 +35594,9 @@ is at the end with only one newline.
 </html>
     
 
-
 ************** File: testdoc_no_solutions.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -36385,9 +36417,10 @@ there is a flow.
 Figures without captions are allowed and will be inlined.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
+
 
 
 \index{movies}
@@ -36413,9 +36446,10 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
+
 
 
 
@@ -36527,6 +36561,7 @@ with the preprocessor.
 
 The DocOnce source code reads
 \bccq
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -36534,6 +36569,7 @@ The DocOnce source code reads
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 \eccq
 
 Here is yet another table to test that we can handle more than
@@ -36842,8 +36878,8 @@ footnotes.
 
 \paragraph{Test of Some {\LaTeX} Fixes.}
 Let's check abbr.~of some common kind, e.g.~the well-known i.e.
-expression as an example. Moreover, Dr.~Tang and Prof.~Monsen,
-or maybe also prof.~Ting,
+expression as an example, and 1 vs.~2 which is also often used.
+Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
@@ -37580,7 +37616,6 @@ in a separate document: \code{admon.do.txt}.
 
 \end{document}
 % #endif
-
 
 ************** File: mako_test1.html *****************
 
@@ -38892,16 +38927,16 @@ to `\boldsymbol`.
 
 ************** File: math_test_html.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="How various formats can deal with LaTeX math">
 
-
+<title>How various formats can deal with LaTeX math</title>
 
 
 <style type="text/css">
@@ -38952,13 +38987,21 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+<!-- newcommands_bfmath.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+$$
+
+
 
 
     
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>How various formats can deal with LaTeX math</title>
 
 <center><h1>How various formats can deal with LaTeX math</h1></center>  <!-- document title -->
 
@@ -39307,7 +39350,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 
 ************** File: math_test.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -39590,7 +39633,7 @@ and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 
 
 ************** File: math_test.rst *****************
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 How various formats can deal with LaTeX math
@@ -39829,6 +39872,8 @@ Footer at the end
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<title>A Document for Testing DocOnce</title>
+
 <!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
@@ -39848,8 +39893,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -40016,7 +40059,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing DocOnce</title>
 
 <div class="jumbotron">
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
@@ -40141,7 +40183,6 @@ abla \)?) </a><br>
 </div>
 </body>
 </html>
-
 
 ************** File: ._testdoc_vagrant000.html *****************
 <html>
@@ -40169,6 +40210,8 @@ Footer at the end
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<title>A Document for Testing DocOnce</title>
+
 <!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
@@ -40188,8 +40231,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -40356,7 +40397,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>A Document for Testing DocOnce</title>
 
 <div class="jumbotron">
 <center><h1>A Document for Testing DocOnce</h1></center>  <!-- document title -->
@@ -40482,7 +40522,6 @@ abla \)?) </a><br>
 </body>
 </html>
 
-
 ************** File: ._testdoc_vagrant001.html *****************
 <html>
 <head>
@@ -40509,6 +40548,8 @@ Footer at the end
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<title>A Document for Testing DocOnce</title>
+
 <!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
@@ -40528,8 +40569,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -41675,7 +41714,6 @@ footnotes.
 </body>
 </html>
 
-
 ************** File: ._testdoc_vagrant002.html *****************
 <html>
 <head>
@@ -41702,6 +41740,8 @@ Footer at the end
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<title>A Document for Testing DocOnce</title>
+
 <!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
@@ -41721,8 +41761,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title>A Document for Testing DocOnce</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -42622,9 +42660,8 @@ What about inserting a quiz?
 </body>
 </html>
 
-
 ************** File: ._testdoc000.rst *****************
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -43253,6 +43290,7 @@ The DocOnce source code reads
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -44389,10 +44427,9 @@ in a separate document: ``admon.do.txt``.
 
 .. [#example-of-the-third-footnote] Not much to add here, but the footnote
    is at the end with only one newline.
-
 ************** File: admon.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -45029,9 +45066,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_mdfboxadmon}
 
 
@@ -45068,7 +45105,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_colors1.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -45627,9 +45664,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_colors1admon}
 
 
@@ -45664,7 +45701,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_colors2.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -46230,9 +46267,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_colors2admon}
 
 
@@ -46267,7 +46304,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_mdfbox.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -46876,9 +46913,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_mdfboxadmon}
 
 
@@ -46913,7 +46950,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_graybox2.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -47438,9 +47475,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{graybox2admon}
 
 
@@ -47475,7 +47512,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_grayicon.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -48046,9 +48083,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_grayiconadmon}
 
 
@@ -48083,7 +48120,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_paragraph.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -48554,9 +48591,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{paragraphadmon}
 
 
@@ -48591,7 +48628,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_yellowicon.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -49162,9 +49199,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_yellowiconadmon}
 
 
@@ -49199,7 +49236,7 @@ exercises (and problems and projects too).
 
 ************** File: admon_double_envirs.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -49808,9 +49845,9 @@ class Forward3(Diff):
 And then we add a figure too.
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
 \end{notice_mdfboxadmon}
 
 
@@ -49845,16 +49882,16 @@ exercises (and problems and projects too).
 
 ************** File: admon_colors.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 
 <style type="text/css">
@@ -49933,7 +49970,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -50340,16 +50376,16 @@ exercises (and problems and projects too).
 
 ************** File: admon_gray.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 
 <style type="text/css">
@@ -50440,7 +50476,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -50566,7 +50601,9 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -50590,7 +50627,9 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="alert alert-block alert-warning alert-text-large">
+<b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<p>
 And here comes some text with bad news in larger font.
 
 <p>
@@ -50610,7 +50649,7 @@ And a complete program
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -50618,7 +50657,9 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="alert alert-block alert-warning alert-text-large">
+<b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<p>
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
@@ -50628,7 +50669,9 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Block with title.</b>
+<p>
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -50639,7 +50682,9 @@ of understanding.
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
@@ -50655,7 +50700,9 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="alert alert-block alert-notice alert-text-illegal-size">
+<b>Note, eventually!</b>
+<p>
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -50672,19 +50719,25 @@ $$
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Point1.</b>
+<p>
 Ah, we are soon close to the end.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-question alert-text-normal">
+<b>Question.</b>
+<p>
 So, how many admonition environments does DocOnce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-question alert-text-normal">
+<b>Question.</b>
+<p>
 
 <ol>
  <li> Once more, how many admonition environments does DocOnce support?</li>
@@ -50693,7 +50746,9 @@ So, how many admonition environments does DocOnce support?
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Tip.</b>
+<p>
 It is of outmost important to
 
 <ol>
@@ -50711,7 +50766,7 @@ Because here the thing is to do
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
 </pre></div>
-<p>
+
 </div>
 
 
@@ -50719,7 +50774,9 @@ Because here the thing is to do
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b></b>
+<p>
 And here comes some text with bad news.
 </div>
 
@@ -50730,7 +50787,9 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Going deeper.</b>
+<p>
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -50825,7 +50884,9 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks, for the novice.</b>
+<p>
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
@@ -50847,16 +50908,16 @@ exercises (and problems and projects too).
 
 ************** File: admon_yellow.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 
 <style type="text/css">
@@ -50945,7 +51006,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -51071,7 +51131,9 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -51095,7 +51157,9 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="alert alert-block alert-warning alert-text-large">
+<b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<p>
 And here comes some text with bad news in larger font.
 
 <p>
@@ -51115,7 +51179,7 @@ And a complete program
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #fcf8e3"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Hello, World!&quot;</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -51123,7 +51187,9 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="alert alert-block alert-warning alert-text-large">
+<b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<p>
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
@@ -51133,7 +51199,9 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Block with title.</b>
+<p>
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -51144,7 +51212,9 @@ of understanding.
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
@@ -51160,7 +51230,9 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="alert alert-block alert-notice alert-text-illegal-size">
+<b>Note, eventually!</b>
+<p>
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -51177,19 +51249,25 @@ $$
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Point1.</b>
+<p>
 Ah, we are soon close to the end.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-question alert-text-normal">
+<b>Question.</b>
+<p>
 So, how many admonition environments does DocOnce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-question alert-text-normal">
+<b>Question.</b>
+<p>
 
 <ol>
  <li> Once more, how many admonition environments does DocOnce support?</li>
@@ -51198,7 +51276,9 @@ So, how many admonition environments does DocOnce support?
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Tip.</b>
+<p>
 It is of outmost important to
 
 <ol>
@@ -51216,7 +51296,7 @@ Because here the thing is to do
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab</span>(url, filename):
     urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span>filename)
 </pre></div>
-<p>
+
 </div>
 
 
@@ -51224,7 +51304,9 @@ Because here the thing is to do
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b></b>
+<p>
 And here comes some text with bad news.
 </div>
 
@@ -51235,7 +51317,9 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Going deeper.</b>
+<p>
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -51330,7 +51414,9 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks, for the novice.</b>
+<p>
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
@@ -51775,16 +51861,16 @@ exercises (and problems and projects too).</p>
 </html>
 ************** File: admon_lyx.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 
 <style type="text/css">
@@ -51852,7 +51938,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -52357,16 +52442,16 @@ exercises (and problems and projects too).
 
 ************** File: admon_paragraph.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 
 <style type="text/css">
@@ -52434,7 +52519,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -52880,16 +52964,16 @@ exercises (and problems and projects too).
 
 ************** File: admon_apricot.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -52985,7 +53069,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <center><h1>Testing admons</h1></center>  <!-- document title -->
 
@@ -53110,7 +53193,9 @@ Let's begin a new paragraph and show a box with code only:
 Let us start with a plain warning environment.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -53134,7 +53219,9 @@ And more and more text.
 Test warning with title:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<div class="alert alert-block alert-warning alert-text-large">
+<b>Title ending with math \( \sqrt{2}\approx 1.4 \).</b>
+<p>
 And here comes some text with bad news in larger font.
 
 <p>
@@ -53160,7 +53247,9 @@ And a complete program
 Test warning with large title with math:
 
 <p>
-<div class="alert alert-block alert-warning alert-text-large"><b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<div class="alert alert-block alert-warning alert-text-large">
+<b>Watch out for \( \nabla\cdot\boldsymbol{u}=0 \) equations.</b>
+<p>
 Divergence freedom is often problematic from a numerical point
 of view.
 </div>
@@ -53170,7 +53259,9 @@ of view.
 Then we test a block, which is guaranteed to never have any admon icon.
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Block with title.</b>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Block with title.</b>
+<p>
 Here is a block of text with title. It is typeset
 <em>without any icon</em> and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -53181,7 +53272,9 @@ of understanding.
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
 </div>
@@ -53197,7 +53290,9 @@ code is present).
 <!-- those formats automatically add : to the admonition title. -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-illegal-size"><b>Note, eventually!</b>
+<div class="alert alert-block alert-notice alert-text-illegal-size">
+<b>Note, eventually!</b>
+<p>
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define \( \theta \) and \( \boldsymbol{r} \):
 
@@ -53214,19 +53309,25 @@ $$
 <!-- Test one word with a number -->
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Point1.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Point1.</b>
+<p>
 Ah, we are soon close to the end.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-question alert-text-normal">
+<b>Question.</b>
+<p>
 So, how many admonition environments does DocOnce support?
 </div>
 
 
 <p>
-<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+<div class="alert alert-block alert-question alert-text-normal">
+<b>Question.</b>
+<p>
 
 <ol>
  <li> Once more, how many admonition environments does DocOnce support?</li>
@@ -53235,7 +53336,9 @@ So, how many admonition environments does DocOnce support?
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Tip.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Tip.</b>
+<p>
 It is of outmost important to
 
 <ol>
@@ -53260,7 +53363,9 @@ def grab(url, filename):
 Next is a warning without a title ("none" implies no title).
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b></b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b></b>
+<p>
 And here comes some text with bad news.
 </div>
 
@@ -53271,7 +53376,9 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Going deeper.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Going deeper.</b>
+<p>
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -53364,7 +53471,9 @@ for the novice",
 just because we can.
 
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks, for the novice.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks, for the novice.</b>
+<p>
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
@@ -53410,6 +53519,8 @@ Footer at the end
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<title>Testing admons</title>
+
 <!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
@@ -53429,8 +53540,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title>Testing admons</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -53501,7 +53610,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <div class="jumbotron">
 <center><h1>Testing admons</h1></center>  <!-- document title -->
@@ -53916,16 +54024,16 @@ exercises (and problems and projects too).
 
 ************** File: admon_bootstrap_alert.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -54001,7 +54109,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <div class="jumbotron">
 <center><h1>Testing admons</h1></center>  <!-- document title -->
@@ -54054,16 +54161,16 @@ MathJax.Hub.Config({
 
 ************** File: admon_bootswatch_panel.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 <!-- Bootstrap style: bootswatch -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/cosmo/bootstrap.min.css" rel="stylesheet">
@@ -54138,7 +54245,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Testing admons</title>
 
 <div class="jumbotron">
 <center><h1>Testing admons</h1></center>  <!-- document title -->
@@ -54619,16 +54725,16 @@ exercises (and problems and projects too).
 
 ************** File: ._admon_bootstrap_alert001.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Testing admons">
 
-
+<title>Testing admons</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -55508,7 +55614,7 @@ exercises (and problems and projects too).
 
 
 ************** File: admon.rst *****************
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 Testing admons
@@ -56343,10 +56449,10 @@ title (Warning) since no title is specified.
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
-
+<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
 
 
@@ -56463,7 +56569,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
 <center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
 
@@ -56624,7 +56729,9 @@ f2 <span style="color: #666666">=</span> Fancy()
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Key PDE:</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Key PDE:</b>
+<p>
 This box has title and math in normal 90 percent font:
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
@@ -56636,7 +56743,9 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 
 <p class="fragment">
 
-<div class="fragment alert alert-block alert-notice alert-text-normal"><b></b>
+<div class="fragment alert alert-block alert-notice alert-text-normal">
+<b></b>
+
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
@@ -56646,7 +56755,9 @@ This one pops up after the rest of the slide.
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-small"><b>Warning.</b>
+<div class="alert alert-block alert-warning alert-text-small">
+<b>Warning.</b>
+<p>
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
@@ -61814,16 +61925,16 @@ echo "Here are the slide shows:"
 
 ************** File: slides1_1st.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
-
+<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
 
 <style type="text/css">
@@ -61913,7 +62024,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
 <center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
 
@@ -62034,7 +62144,9 @@ f2 <span style="color: #666666">=</span> Fancy()
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Key PDE:</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Key PDE:</b>
+<p>
 This box has title and math in normal 90 percent font:
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 </div>
@@ -62042,7 +62154,9 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 
 <p>
 <!-- !bpop -->
-<div class="alert alert-block alert-notice alert-text-normal"><b></b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b></b>
+<p>
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
@@ -62050,7 +62164,9 @@ This one pops up after the rest of the slide.
 <!-- !epop -->
 
 <p>
-<div class="alert alert-block alert-warning alert-text-small"><b>Warning.</b>
+<div class="alert alert-block alert-warning alert-text-small">
+<b>Warning.</b>
+<p>
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
@@ -62072,10 +62188,10 @@ title (Warning) since no title is specified.
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
-
+<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
 
 
@@ -62241,7 +62357,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
 
 <center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
 
@@ -62398,7 +62513,9 @@ f2 <span style="color: #666666">=</span> Fancy()
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Key PDE:</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold">Key PDE:</b>
+<p>
 This box has title and math in normal 90 percent font:
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
@@ -62410,7 +62527,9 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 
 <p class="slide">
 
-<div class="slide alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold"></b>
+<div class="slide alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold"></b>
+
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
@@ -62420,7 +62539,9 @@ This one pops up after the rest of the slide.
 
 
 <p>
-<div class="alert alert-block alert-warning alert-text-small"><b style="font-weight: bold">Warning.</b>
+<div class="alert alert-block alert-warning alert-text-small">
+<b style="font-weight: bold">Warning.</b>
+<p>
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
@@ -62813,7 +62934,7 @@ vertical-slide.scss
 
 ************** File: slides1.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -63113,9 +63234,10 @@ Univiversity of Oslo\inst{2}}
 
 % !bslidecell 01
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
+
 
 % !eslidecell
 
@@ -63232,7 +63354,7 @@ title (Warning) since no title is specified.
 
 ************** File: slides1.tex *****************
 
-% LaTeX Beamer file automatically generated from Doconce
+% LaTeX Beamer file automatically generated from DocOnce
 % https://github.com/hplgit/doconce
 
 %-------------------- begin beamer-specific preamble ----------------------
@@ -63309,6 +63431,16 @@ title (Warning) since no title is specified.
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3
+    }
+\setlength{\parskip}{7pt}  % {1em}
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
@@ -63413,9 +63545,9 @@ Univiversity of Oslo\inst{2}}
 
 
 \column{0.65\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
+
 
 
 \end{columns}
@@ -64136,11 +64268,11 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test slide features">
 <meta name="keywords" content="key word1,key word2">
 
-
+<title>Test slide features</title>
 
 
 
@@ -64257,7 +64389,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Test slide features</title>
 
 <center><h1>Test slide features</h1></center>  <!-- document title -->
 
@@ -64647,7 +64778,9 @@ DATE: today
 TOC: on
 </pre></div>
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
 Title and authors must have all information <em>on a single line</em>!
 </div>
 
@@ -64790,7 +64923,9 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 
 <h1>DocOnce: figures and movies  <a name="___sec19"></a></h1>
 
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
 Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:
 </div>
 
@@ -64918,7 +65053,9 @@ This gets rendered as
     <span style="color: #AA22FF; font-weight: bold">return</span> u, t
 </pre></div>
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Language-dependent typesetting of code:</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Language-dependent typesetting of code:</b>
+<p>
 The <code>!bc</code> command can be followed by a specification of the computer
 language: <code>pycod</code> for Python code snippet, <code>pypro</code> for complete Python
 program, <code>fcod</code> for Fortran snippet, <code>fpro</code> for Fortran program, and so
@@ -65375,7 +65512,7 @@ Reveal.initialize({
 
 ************** File: slides2.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -65675,9 +65812,9 @@ open=right               % start new chapters on odd-numbered pages
 % <optional titlepage figure>
 }
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
+
 
 
 % !split
@@ -65691,15 +65828,17 @@ open=right               % start new chapters on odd-numbered pages
 
 % !bslidecell 00 0.4
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{../doc/src/slides/fig/ipad.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{../doc/src/slides/fig/ipad.png}}
 
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/iphones.jpg}}
-\end{center}
+
+
+% inline figure
+\centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/iphones.jpg}}
+
 
 
 % FIGURE: [../doc/src/slides/fig/mbair, width=400]
@@ -65708,9 +65847,10 @@ open=right               % start new chapters on odd-numbered pages
 
 % !bslidecell 01 0.6
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/slides/fig/imac.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/slides/fig/imac.png}}
+
 
 % !eslidecell
 
@@ -65718,9 +65858,10 @@ open=right               % start new chapters on odd-numbered pages
 \section{The book will probably survive}
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/oldbooks.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/oldbooks.jpg}}
+
 
 
 % !split
@@ -65728,17 +65869,19 @@ open=right               % start new chapters on odd-numbered pages
 
 % !bslidecell 00
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_thesis.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_thesis.jpg}}
+
 
 % !eslidecell
 
 % !bslidecell 01
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_paper1.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_paper1.png}}
+
 
 % !eslidecell
 
@@ -65767,49 +65910,55 @@ open=right               % start new chapters on odd-numbered pages
 
 % !bslidecell 00 0.25
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/LaTeX_logo.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/LaTeX_logo.jpg}}
+
 
 % !eslidecell
 
 % !bslidecell 01 0.25
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MS_Word_logo.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MS_Word_logo.jpg}}
+
 
 % !eslidecell
 
 % !bslidecell 02 0.5
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/sphinx_logo.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/sphinx_logo.png}}
+
 
 % !eslidecell
 
 % !bslidecell 10 0.25
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/markdown_logo.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/markdown_logo.jpg}}
+
 
 % !eslidecell
 
 % !bslidecell 11 0.25
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MediaWiki_logo.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MediaWiki_logo.jpg}}
+
 
 % !eslidecell
 
 % !bslidecell 12 0.5
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.6\linewidth]{../doc/src/slides/fig/IPython_logo.png}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.6\linewidth]{../doc/src/slides/fig/IPython_logo.png}}
+
 
 % !eslidecell
 
@@ -65841,9 +65990,10 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 
 % !bslidecell 01
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/jungle_with_mess.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/jungle_with_mess.jpg}}
+
 
 % !eslidecell
 
@@ -66376,9 +66526,9 @@ Last page gets rendered to
 \end{itemize}
 
 \noindent
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
+
 
 
 Key equation:
@@ -66457,9 +66607,10 @@ Last page gets rendered to
 
 % !bslidecell 01
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
+
 
 % !eslidecell
 
@@ -66478,7 +66629,7 @@ Last page gets rendered to
 
 ************** File: slides2.tex *****************
 
-% LaTeX Beamer file automatically generated from Doconce
+% LaTeX Beamer file automatically generated from DocOnce
 % https://github.com/hplgit/doconce
 
 %-------------------- begin beamer-specific preamble ----------------------
@@ -66555,6 +66706,16 @@ Last page gets rendered to
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3
+    }
+\setlength{\parskip}{7pt}  % {1em}
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
@@ -66644,24 +66805,25 @@ Last page gets rendered to
 
 \begin{columns}
 \column{0.4\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.8\linewidth]{../doc/src/slides/fig/ipad.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{../doc/src/slides/fig/ipad.png}}
 
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/iphones.jpg}}
-\end{center}
+
+
+% inline figure
+\centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/iphones.jpg}}
+
 
 
 % FIGURE: [../doc/src/slides/fig/mbair, width=400]
 
 
 \column{0.6\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/slides/fig/imac.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/slides/fig/imac.png}}
+
 
 
 \end{columns}
@@ -66670,9 +66832,8 @@ Last page gets rendered to
 \begin{frame}[plain,fragile]
 \frametitle{The book will probably survive}
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/oldbooks.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/oldbooks.jpg}}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -66680,15 +66841,15 @@ Last page gets rendered to
 
 \begin{columns}
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_thesis.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_thesis.jpg}}
+
 
 
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_paper1.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=1.2\linewidth]{../doc/src/slides/fig/latex_paper1.png}}
+
 
 
 \end{columns}
@@ -66717,41 +66878,41 @@ Last page gets rendered to
 
 \begin{columns}
 \column{0.25\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/LaTeX_logo.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.3\linewidth]{../doc/src/slides/fig/LaTeX_logo.jpg}}
+
 
 
 \column{0.25\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MS_Word_logo.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MS_Word_logo.jpg}}
+
 
 
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/sphinx_logo.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/sphinx_logo.png}}
+
 
 
 \end{columns}
 \begin{columns}
 \column{0.25\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/markdown_logo.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/markdown_logo.jpg}}
+
 
 
 \column{0.25\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MediaWiki_logo.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.2\linewidth]{../doc/src/slides/fig/MediaWiki_logo.jpg}}
+
 
 
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.6\linewidth]{../doc/src/slides/fig/IPython_logo.png}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.6\linewidth]{../doc/src/slides/fig/IPython_logo.png}}
+
 
 
 \end{columns}
@@ -66783,9 +66944,9 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 \noindent
 
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/jungle_with_mess.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/jungle_with_mess.jpg}}
+
 
 
 \end{columns}
@@ -67323,9 +67484,9 @@ Last page gets rendered to
 \end{itemize}
 
 \noindent
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
+
 
 
 Key equation:
@@ -67411,9 +67572,9 @@ Last page gets rendered to
 
 
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
+
 
 
 \end{columns}
@@ -67602,10 +67763,10 @@ qualitatively correct results.
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
-
+<title>On Schemes for Exponential Decay</title>
 
 
 
@@ -67722,7 +67883,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On Schemes for Exponential Decay</title>
 
 <center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
@@ -67756,14 +67916,18 @@ MathJax.Hub.Config({
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Layout.</b>
+<p>
 This version
 utilizes reveal slides with the theme beigesmall.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
 Speaker notes show up by
 pressing "s".
 </div>
@@ -67951,7 +68115,9 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="fragment">
 
-<div class="fragment alert alert-block alert-summary alert-text-normal"><b>Concluding remarks:</b>
+<div class="fragment alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks:</b>
+
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
@@ -68111,7 +68277,7 @@ Reveal.initialize({
 
 ************** File: slides3.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -68385,9 +68551,9 @@ Department of Informatics, University of Oslo\inst{2}}
 % <optional titlepage figure>
 }
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
+
 
 
 
@@ -68445,9 +68611,10 @@ u(0)  &= I,
 
 % !bslidecell 01
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/teacher2.jpg}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/teacher2.jpg}}
+
 
 % !eslidecell
 
@@ -68502,9 +68669,10 @@ def solver(I, a, T, dt, theta):
 
 
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/CN.pdf}}
-\end{center}
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/CN.pdf}}
+
 
 
 % !split
@@ -68554,7 +68722,7 @@ qualitatively correct results.
 
 ************** File: slides3.tex *****************
 
-% LaTeX Beamer file automatically generated from Doconce
+% LaTeX Beamer file automatically generated from DocOnce
 % https://github.com/hplgit/doconce
 
 %-------------------- begin beamer-specific preamble ----------------------
@@ -68631,6 +68799,16 @@ qualitatively correct results.
 \newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
 \newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
 
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3
+    }
+\setlength{\parskip}{7pt}  % {1em}
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
@@ -68765,9 +68943,9 @@ u(0)  &= I,
 \noindent
 
 \column{0.5\textwidth}
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/teacher2.jpg}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/teacher2.jpg}}
+
 
 
 \end{columns}
@@ -68825,9 +69003,8 @@ def solver(I, a, T, dt, theta):
 \begin{frame}[plain,fragile]
 \frametitle{The Crank-Nicolson method}
 
-\begin{center}  % inline figure
-  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/CN.pdf}}
-\end{center}
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/CN.pdf}}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -69043,16 +69220,16 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 Finally, let us demonstrate referencing the movie ref{mov:wave}.
 ************** File: movies_3choices.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="This is a demo of movies in DocOnce">
 
-
+<title>This is a demo of movies in DocOnce</title>
 
 
 <style type="text/css">
@@ -69093,7 +69270,6 @@ end of tocinfo -->
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>This is a demo of movies in DocOnce</title>
 
 <center><h1>This is a demo of movies in DocOnce</h1></center>  <!-- document title -->
 
@@ -69786,16 +69962,16 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 
 ************** File: movies.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="This is a demo of movies in DocOnce">
 
-
+<title>This is a demo of movies in DocOnce</title>
 
 
 <style type="text/css">
@@ -69836,7 +70012,6 @@ end of tocinfo -->
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>This is a demo of movies in DocOnce</title>
 
 <center><h1>This is a demo of movies in DocOnce</h1></center>  <!-- document title -->
 
@@ -70529,7 +70704,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 
 ************** File: movies.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -70961,7 +71136,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 ************** File: movies.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -71361,7 +71536,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 ************** File: movies_media9.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -72742,7 +72917,7 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 ************************************************************
-unicode>>> File after call to isnert_code_and tex (format html):
+unicode>>> File after call to insert_code_and tex (format html):
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -73165,7 +73340,7 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 ************************************************************
-unicode>>> File after call to isnert_code_and tex (format html):
+unicode>>> File after call to insert_code_and tex (format html):
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -73756,7 +73931,7 @@ through the various stages of the text transformation process.
 
 
 ************************************************************
-unicode>>> File after call to isnert_code_and tex (format html):
+unicode>>> File after call to insert_code_and tex (format html):
 
 
 <!-- ------------------- main content ---------------------- -->
@@ -74564,7 +74739,7 @@ BIBFILE: papers.pub
 
 ************** File: Springer_T2/Springer_T2_book.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -75537,7 +75712,7 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 
 ************** File: Springer_T2/Springer_T2_book.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 
@@ -76837,16 +77012,16 @@ Terminal> python prog.py
 
 ************** File: test_boots.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test of the Bootstrap style">
 
-
+<title>Test of the Bootstrap style</title>
 
 <!-- Bootstrap style: bootswatch_journal -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
@@ -76936,7 +77111,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Test of the Bootstrap style</title>
 
 <div class="jumbotron">
 <center><h1>Test of the Bootstrap style</h1></center>  <!-- document title -->
@@ -76992,16 +77166,16 @@ Here goes optional text.
 
 ************** File: ._test_boots001.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test of the Bootstrap style">
 
-
+<title>Test of the Bootstrap style</title>
 
 <!-- Bootstrap style: bootswatch_journal -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
@@ -77260,16 +77434,16 @@ And then with plain words:
 
 ************** File: ._test_boots002.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Test of the Bootstrap style">
 
-
+<title>Test of the Bootstrap style</title>
 
 <!-- Bootstrap style: bootswatch_journal -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
@@ -77548,7 +77722,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Aug 23 15:08:49 2014.
+# sphinx-quickstart on Fri Aug 29 22:04:38 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78265,9 +78439,9 @@ comments are not accepted.]
 <!-- ------------------- end of main content --------------- -->
 
 
-************** File: tmp_Doconce.do.txt *****************
+************** File: tmp_DocOnce.do.txt *****************
 
-TITLE: My Test of Class Doconce
+TITLE: My Test of Class DocOnce
 AUTHOR: Hans Petter Langtangen; Simula Research Laboratory; Dept. of Informatics, Univ. of Oslo
 DATE: Jan 32, 2100
 
@@ -79508,6 +79682,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 The table in Section ref{quick:sections} was written with this
 syntax:
 !bc
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -79517,6 +79692,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 !ec
 
 Note that
@@ -79826,16 +80002,16 @@ examine the DocOnce source and the `doc/src/make.sh` script).
 
 ************** File: quickref.html *****************
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Quick Reference">
 
-
+<title>DocOnce Quick Reference</title>
 
 
 <style type="text/css">
@@ -79943,7 +80119,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>DocOnce Quick Reference</title>
 
 <center><h1>DocOnce Quick Reference</h1></center>  <!-- document title -->
 
@@ -80627,7 +80802,9 @@ is also important, one should follow these rules:
 labels in <code>align</code> environments work well.)
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -80757,7 +80934,8 @@ The latter results in
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
 syntax:
 <!-- begin verbatim block -->
-<pre><code>|----------------c--------|------------------c--------------------|
+<pre><code>
+|----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
 | chapter                 | `========= Heading ========` (9 `=`)  |
@@ -80766,6 +80944,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 </code></pre>
 <!-- end verbatim block -->
 
@@ -81266,7 +81445,7 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 ************** File: quickref.p.tex *****************
 %%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION
@@ -82322,6 +82501,7 @@ Movie \arabic{doconce:movie:counter}: Vimeo movie.
 The table in Section~\ref{quick:sections} was written with this
 syntax:
 \bccq
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -82331,6 +82511,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 \eccq
 
 Note that
@@ -82835,7 +83016,7 @@ examine the DocOnce source and the \code{doc/src/make.sh} script).
 
 
 ************** File: quickref.rst *****************
-.. Automatically generated reStructuredText file from Doconce source
+.. Automatically generated reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -83519,6 +83700,7 @@ Tables
 The table in the section `Section Types`_ was written with this
 syntax::
 
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -83528,6 +83710,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
+        
 
 Note that
 
@@ -84008,7 +84191,7 @@ Resources
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.sphinx.rst *****************
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -84748,6 +84931,7 @@ syntax:
 
 .. code-block:: text
 
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -84757,6 +84941,7 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
+        
 
 Note that
 
@@ -85904,6 +86089,7 @@ Vimeo movie. `http://vimeo.com/55562330`: load [movie_player1.html `movie_player
 The table in the section [#Section_Types] was written with this
 syntax:
 {{{
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -85913,6 +86099,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 }}}
 
 Note that
@@ -87064,6 +87251,7 @@ Vimeo movie. <code>http://vimeo.com/55562330</code>: load [movie_player1.html <c
 The table in the section [#Section_Types] was written with this
 syntax:
 <syntaxhighlight lang="text">
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -87073,6 +87261,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 </syntaxhighlight>
 
 Note that
@@ -88193,6 +88382,7 @@ Vimeo movie. {{{http://vimeo.com/55562330}}}: load [[movie_player1.html|{{{movie
 The table in the section [#Section_Types] was written with this
 syntax:
 {{{
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -88202,6 +88392,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 }}}
 
 Note that
@@ -89262,6 +89453,7 @@ Tables
 The table in the section "Section Types" was written with this
 syntax::
 
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -89271,6 +89463,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
+        
 
 Note that
 
@@ -90333,6 +90526,7 @@ Tables
 The table in the section "Section Types" was written with this
 syntax::
 
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -90342,6 +90536,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
+        
 
 Note that
 
@@ -91460,6 +91655,7 @@ Tables
 The table in the section "Section Types" was written with this
 syntax::
 
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -91469,6 +91665,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
+        
 
 Note that
 
@@ -92659,6 +92856,7 @@ The table in the section [Section Types](#s) was written with this
 syntax:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -92668,6 +92866,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Note that
@@ -94256,27 +94455,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1253.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1262.
+t line 1257.
 
 
 
@@ -94297,6 +94476,26 @@ t line 1262.
 
 
 t line 1266.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1270.
 
 
 
@@ -95040,27 +95239,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1253.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1262.
+t line 1257.
 
 
 
@@ -95081,6 +95260,26 @@ t line 1262.
 
 
 t line 1266.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1270.
 
 
 
@@ -95741,27 +95940,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1253.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1262.
+t line 1257.
 
 
 
@@ -95782,6 +95961,26 @@ t line 1262.
 
 
 t line 1266.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1270.
 
 
 
@@ -96977,8 +97176,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 <../doc/src/manual/fig/wave1D.png, id=292, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=294, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
- <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -97003,7 +97201,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-
+[11 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -97016,18 +97214,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12] [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=325, 586.8324pt x 442.292
+[12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=326, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=321, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=327, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=329, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=330, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -97049,15 +97247,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
@@ -97069,30 +97259,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[15]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
 
 
-t line 1204.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+[14]
 
 
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1213.
+t line 1208.
 
 
 
@@ -97132,15 +97310,7 @@ t line 1217.
 
 
 
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1221.
 
 
 
@@ -97176,16 +97346,45 @@ t line 1217.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[16]
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[15]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
+[16]
 
 
 .
@@ -97201,7 +97400,6 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
-[17]
 
 
 
@@ -97213,6 +97411,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[17]
 
 
 
@@ -97223,7 +97422,6 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[18]
 
 
 
@@ -97256,10 +97454,10 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg [19]) [20] [21] [22] (./testdoc.out.pyg)
+[18] (./testdoc.out.pyg) [19] [20] [21] (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
-[23]
+[22]
 
 
 .
@@ -97284,8 +97482,12 @@ Underfull \hbox (badness 10000)
 
 
 
-(./testdoc.bbl [24]) [25]
+(./testdoc.bbl [23] [24]) [25]
 Underfull \hbox (badness 10000) 
+
+
+
+...rest of part of LaTeX line number...
 
 [26]
 
@@ -97294,19 +97496,14 @@ Underfull \hbox (badness 10000)
 
 [27]
 
-
-...rest of part of LaTeX line number...
-
-[28]
-
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [29]
+(./testdoc.ind [28]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[30]) (./testdoc.aux)
+[29]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -97548,7 +97745,7 @@ hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
 mbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a
 .pfb>
-Output written on testdoc.pdf (30 pages, ).
+Output written on testdoc.pdf (29 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + system doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
@@ -98125,10 +98322,6 @@ copying after regex "a comment" until "^C\s+END1"
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 found info about 10 exercises
-... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
-    found!
-figure file ../doc/src/manual/fig/wave1D:
-    can use ../doc/src/manual/fig/wave1D.png for format ipynb
 *** warning: footnotes are not supported for format ipynb
     footnotes will be left in the doconce syntax
 output in testdoc.ipynb
@@ -98853,6 +99046,7 @@ Transcript written on math_test.log.
 running preprocess -DFORMAT=html -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to html
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 output in math_test.html
 + '[' 0 -ne 0 ']'
 + cp math_test.html math_test_html.html
@@ -99180,9 +99374,9 @@ Underfull \hbox (badness 10000)
 
 
 
-[6 <../doc/src/manual/fig/wave1D.pdf>]
+[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
 No file admon_colors1.ind.
-[7 <./latex_figs/summary.pdf>] (./admon_colors1.aux)
+[7] (./admon_colors1.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -106016,7 +106210,8 @@ output in encoding3.p.tex
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
-(text position  526)
+'ascii' codec can't encode character u'\xc5' in position 526: ordinal not in range(128)
+ordinal of this character is 197
 u'ight: 125%">a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n</pre></div>\n<p>\n\n<!-- -'
                                           ^
     remedies: fix character or try --encoding=utf-8
@@ -106177,7 +106372,7 @@ replacing # Comment before list by  in tmp2.do.txt
 translating doconce text in tmp2.do.txt to sphinx
 
 *** warning: found \cite{...} with backslash
-    (cite{...} has no backslash in Doconce syntax)
+    (cite{...} has no backslash in DocOnce syntax)
 \cite{mybook}
 
 *** warning: found \idx{...} (idx{...} has no backslash)
@@ -106214,7 +106409,7 @@ __Paragraph before.+!bc replaced by !bc in tmp2.do.txt
 translating doconce text in tmp2.do.txt to rst
 
 *** warning: found \label{...} with backslash
-    (label{...} has no backslash in Doconce syntax)
+    (label{...} has no backslash in DocOnce syntax)
 \label{mylab}
 *** error: missing comma after filename, before options in FIGURE
 FIGURE: [../doc/manual/fig/wave1D width=800]

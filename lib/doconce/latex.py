@@ -497,6 +497,12 @@ def latex_figure(m, includegraphics=True):
   %s
 \end{center}
 """ % (includeline)
+        result = r"""
+
+%% inline figure
+%s
+
+""" % (includeline)
     return result
 
 def latex_movie(m):
@@ -525,7 +531,7 @@ def latex_movie(m):
 
     movie = option('latex_movie=', 'href')
     controls = option('latex_movie_controls=', 'on')
-    # Do not typeset movies in figure environments since Doconce documents
+    # Do not typeset movies in figure environments since DocOnce documents
     # assume inline movies
     text = r"""
 \begin{doconce:movie}
@@ -1188,13 +1194,14 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # Fix common error et. al. cite{ (et. should be just et)
     filestr = re.sub(r'et\. +al +cite(\{|\[)', r'et al. cite\g<1>', filestr)
 
-    # fix periods followed by too long space:
+    # Fix periods followed by too long space in the following cases
     prefix = r'Prof\.', r'Profs\.', r'prof\.', r'profs\.', r'Dr\.', \
              r'assoc\.', r'Assoc.', r'Assist.', r'Mr\.', r'Ms\.', 'Mss\.', \
              r'Fig\.', r'Tab\.', r'Univ\.', r'Dept\.', r'abbr\.', r'cf\.', \
              r'e\.g\.', r'E\.g\.', r'i\.e\.', r'Approx\.', r'approx\.', \
-             r'Exer\.', r'Sec\.', r'Ch\.', r'App\.', r'et al\.', 'no\.'
-    # avoid r'assist\.' - matches too much
+             r'Exer\.', r'Sec\.', r'Ch\.', r'App\.', r'et al\.', 'no\.', \
+             r'vs\.'
+    # Avoid r'assist\.' - matches too much
     for p in prefix:
         filestr = re.sub(r'(%s) +([\\A-Za-z0-9$])' % p, r'\g<1>~\g<2>',
                          filestr)
@@ -1743,6 +1750,8 @@ def latex_quiz(quiz):
         for i, choice in enumerate(quiz['choices']):
     """
     '''
+    #text = fix_latex_command_regex(text, 'replacement') # only for re.sub
+    # but that won't work in other formats
     return text
 
 def define(FILENAME_EXTENSION,
@@ -1920,7 +1929,7 @@ def define(FILENAME_EXTENSION,
     section_headings = option('latex_section_headings=', 'std')
 
     INTRO['latex'] = r"""%%
-%% Automatically generated file from Doconce source
+%% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
 % #ifdef PTEX2TEX_EXPLANATION

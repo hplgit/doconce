@@ -4,11 +4,11 @@ from publish.common import short_author
 from publish.config.defaults import thesistype_strings
 
 #------------------------------------------------------------------------------
-# Doconce formatting
+# DocOnce formatting
 #------------------------------------------------------------------------------
 
 def doconce_format_articles(paper):
-    "Return string for article in Doconce format"
+    "Return string for article in DocOnce format"
     values = []
 
     # Key
@@ -56,7 +56,7 @@ def doconce_format_articles(paper):
     return _doconce_join(values)
 
 def doconce_format_books(paper):
-    "Return string for book in Doconce format"
+    "Return string for book in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -68,7 +68,7 @@ def doconce_format_books(paper):
     return _doconce_join(values)
 
 def doconce_format_edited(paper):
-    "Return string for edited book in Doconce format"
+    "Return string for edited book in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -79,7 +79,7 @@ def doconce_format_edited(paper):
     return _doconce_join(values)
 
 def doconce_format_chapters(paper):
-    "Return string for chapter in Doconce format"
+    "Return string for chapter in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -94,7 +94,7 @@ def doconce_format_chapters(paper):
     return _doconce_join(values)
 
 def doconce_format_proceedings(paper):
-    "Return string for proceeding in Doconce format"
+    "Return string for proceeding in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -107,7 +107,7 @@ def doconce_format_proceedings(paper):
     return _doconce_join(values)
 
 def doconce_format_reports(paper):
-    "Return string for report in Doconce format"
+    "Return string for report in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -119,7 +119,7 @@ def doconce_format_reports(paper):
     return _doconce_join(values)
 
 def doconce_format_manuals(paper):
-    "Return string for manual in Doconce format"
+    "Return string for manual in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -129,7 +129,7 @@ def doconce_format_manuals(paper):
     return _doconce_join(values)
 
 def doconce_format_theses(paper):
-    "Return string for thesis in Doconce format"
+    "Return string for thesis in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -141,7 +141,7 @@ def doconce_format_theses(paper):
     return _doconce_join(values)
 
 def doconce_format_courses(paper):
-    "Return string for course in Doconce format"
+    "Return string for course in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -152,7 +152,7 @@ def doconce_format_courses(paper):
     return _doconce_join(values)
 
 def doconce_format_talks(paper):
-    "Return string for talk in Doconce format"
+    "Return string for talk in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -163,7 +163,7 @@ def doconce_format_talks(paper):
     return _doconce_join(values)
 
 def doconce_format_posters(paper):
-    "Return string for poster in Doconce format"
+    "Return string for poster in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
@@ -175,7 +175,7 @@ def doconce_format_posters(paper):
 
 
 def doconce_format_misc(paper):
-    "Return string for misc in Doconce format"
+    "Return string for misc in DocOnce format"
     values = []
     values.append(_doconce_get_key_string(paper))
     if "author" in paper:
@@ -199,7 +199,7 @@ def _doconce_get_key_string(paper):
     return 'label{%s}' % paper["key"]
 
 def _doconce_format_title(paper):
-    "Format title for Doconce, with or without link to PDF file"
+    "Format title for DocOnce, with or without link to PDF file"
     if paper["category"] == "courses":
         title = "%s (%s)" % (paper["title"], paper["code"])
     else:
@@ -258,7 +258,7 @@ def _doconce_format_url(url):
     return 'URL: "%s"' % (url)
 
 def _doconce_join(values):
-    "Join values for Doconce entry"
+    "Join values for DocOnce entry"
     entry = values[1] + ". \n    " + ",\n    ".join(values[2:]) + "." + "\n"
     entry = entry.replace("{", "")
     entry = entry.replace("}", "")

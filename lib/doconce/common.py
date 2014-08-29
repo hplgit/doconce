@@ -1,6 +1,6 @@
 """
 This module contains data structures used in translation of the
-Doconce format to other formats.  Some convenience functions used in
+DocOnce format to other formats.  Some convenience functions used in
 translation modules (latex.py, html.py, etc.) are also included in
 here.
 """
@@ -78,9 +78,9 @@ def safe_join(lines, delimiter):
 
 def fix_backslashes(text):
     """
-    If some Doconce text is read from a doc string
+    If some DocOnce text is read from a doc string
     or from a GUI, backslashes are normally interpreted,
-    and the Doconce text is then malformed. This function
+    and the DocOnce text is then malformed. This function
     restores backslashes. For double backslash in LaTeX
     one needs to have the double backslash at the end of
     the line, otherwise they are not preserved.
@@ -540,7 +540,7 @@ def doconce_exercise_output(exer,
                             include_numbering=True,
                             include_type=True):
     """
-    Write exercise in Doconce format. This output can be
+    Write exercise in DocOnce format. This output can be
     reused in most formats.
     """
     # Note: answers, solutions, and hints must be written out and not
@@ -718,7 +718,7 @@ def plain_exercise(exer):
 
 def bibliography(pubdata, citations, format='doconce'):
     """
-    Return Doconce formatted list of references, based on the keys
+    Return DocOnce formatted list of references, based on the keys
     in the ordered dictionary ``citations`` (``pubdata`` is a list
     of dicts loaded from a Publish database file).
     """
@@ -813,7 +813,7 @@ inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 # the begin-end works, so don't touch (must be tested in a safe branch....)
 
-_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
+_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
 #_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
 INLINE_TAGS = {

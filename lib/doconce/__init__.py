@@ -1,13 +1,13 @@
 '''
 
 
-What Is Doconce?
+What Is DocOnce?
 ================
 
 
-Doconce is two things:
+DocOnce is two things:
 
- 1. Doconce is a very simple and minimally tagged markup language that
+ 1. DocOnce is a very simple and minimally tagged markup language that
     looks like ordinary ASCII text (much like what you would use in an
     email), but the text can be transformed to numerous other formats,
     including HTML, Wiki, LaTeX, PDF, reStructuredText (reST), Sphinx,
@@ -19,17 +19,17 @@ Doconce is two things:
     Pandoc one can generate Markdown, reST, LaTeX, HTML, PDF, DocBook XML,
     OpenOffice, GNU Texinfo, MediaWiki, RTF, Groff, and other formats.)
 
- 2. Doconce is a working strategy for never duplicating information.
+ 2. DocOnce is a working strategy for never duplicating information.
     Text is written in a single place and then transformed to
     a number of different destinations of diverse type (software
     source code, manuals, tutorials, books, wikis, memos, emails, etc.).
-    The Doconce markup language support this working strategy.
+    The DocOnce markup language support this working strategy.
     The slogan is: "Write once, include anywhere".
 
-What Does Doconce Look Like?
+What Does DocOnce Look Like?
 ============================
 
-Doconce text looks like ordinary text, but there are some almost invisible
+DocOnce text looks like ordinary text, but there are some almost invisible
 text constructions that allow you to control the formating. For example,
 
   * bullet lists arise from lines starting with an asterisk,
@@ -72,12 +72,12 @@ text constructions that allow you to control the formating. For example,
     in or out of the text,
 
   * with the Mako preprocessor one can even embed Python
-    code and use this to steer generation of Doconce text.
+    code and use this to steer generation of DocOnce text.
 
-Documentation of Doconce is found in
+Documentation of DocOnce is found in
 
   * The tutorial in doc/tutorial/tutorial.do.txt (file paths are here given
-    relative to the root of the Doconce source code).
+    relative to the root of the DocOnce source code).
 
   * The more comprehensive documentation in doc/manual/manual.do.txt.
 
@@ -94,4 +94,4 @@ author = __author__
 
 __acknowledgments__ = ''
 
-from doconce import doconce_format, DoconceSyntaxError
+from doconce import doconce_format, DocOnceSyntaxError

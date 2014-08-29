@@ -653,6 +653,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 The table in Section ref{quick:sections} was written with this
 syntax:
 !bc
+
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
 |----------------l--------|------------------l--------------------|
@@ -662,6 +663,7 @@ syntax:
 | subsubsection           | `=== Heading ===`            (3 `=`)  |
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
+
 !ec
 
 Note that

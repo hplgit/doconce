@@ -2,7 +2,7 @@
 <!-- TITLE: Scientific Writing Anno 2013: The DocOnce Way -->
 % Scientific Writing and Publishing Anno 2013
 % **Hans Petter Langtangen**
-% Aug 15, 2014
+% Aug 29, 2014
 
 ![](fig/doconce1b.png)
 
@@ -737,6 +737,7 @@ Can take a [DocOnce source](http://hplgit.github.com/teamods/writing_reports/_st
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |---r-------r-----------r--------|
@@ -744,6 +745,7 @@ Can take a [DocOnce source](http://hplgit.github.com/teamods/writing_reports/_st
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Gets rendered as

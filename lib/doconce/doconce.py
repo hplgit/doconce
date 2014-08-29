@@ -60,10 +60,29 @@ main_content_end = main_content_char*19 + ' end of main content ' + \
 # include "latex.py"
 #----------------------------------------------------------------------------
 
+def encode_error_message(exception, text, print_length=40):
+    m = str(exception)
+    if "codec can't encode character" in m:
+        pos = m.split('position')[1].split(':')[0]
+        print '*** error: problem with character when writing to file:'
+        print str(exception)
+        try:
+            pos = int(pos)
+        except:
+            if '-' in pos:
+                pos = pos.split('-')[0]
+                pos = int(pos)
+        print 'ordinal of this character is', ord(text[pos])
+        print repr(text[pos-print_length:pos+print_length])
+        print ' '*(print_length+2) + '^'
+        #print repr(text[pos-print_length:pos]), '<strange char>', repr(text[pos:+1:pos+print_length])
+        print '    remedies: fix character or try --encoding=utf-8'
+        _abort()
+
 def markdown2doconce(filestr, format):
     """
     Look for Markdown (and Extended Markdown) syntax in the file (filestr)
-    and transform the text to valid Doconce format.
+    and transform the text to valid DocOnce format.
     """
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
@@ -97,14 +116,14 @@ def markdown2doconce(filestr, format):
         # TOC
         (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
         # Smart StackEdit comments (must appear before normal comments)
-        # First treat Doconce-inspired syntax with [name: comment]
+        # First treat DocOnce-inspired syntax with [name: comment]
         (r"<!--- ([A-Za-z]+?): (.+?)-->", r'[\g<1>: \g<2>]', re.DOTALL),
-        # Second treat any such comment as inline Doconce comment
+        # Second treat any such comment as inline DocOnce comment
         (r"<!---(.+?)-->", r'[comment: \g<1>]', re.DOTALL),
         # Plain comments starting on the beginning of a line, avoid blank
         # to not confuse with headings
         (r"^<!--(.+?)-->", lambda m: '#' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
-        # Plain comments inside the text must be inline comments in Doconce
+        # Plain comments inside the text must be inline comments in DocOnce
         # or dropped...
         (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
         #(r"<!--(.+)-->", r'', re.DOTALL)
@@ -378,6 +397,19 @@ def syntax_check(filestr, format):
         print filestr[m.start()-50:m.start()+150]
         _abort()
 
+    # Need extra blank lines around tables
+    pattern = r'!b.+?\n\|----'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** syntax error: need blank line before table'
+        print filestr[m.start()-100:m.start()+100]
+        _abort()
+    pattern = r'----\|\n!e.+'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** syntax error: need blank line after table'
+        print filestr[m.start()-100:m.start()+100]
+        _abort()
     # Verbatim words must be the whole link, otherwise issue
     # warnings for the formats where this may look strange
     if format not in ('pandoc',):
@@ -606,7 +638,7 @@ def syntax_check(filestr, format):
     matches = re.findall(r'\\cite\{.+?\}', filestr)
     if matches:
         print '\n*** warning: found \\cite{...} with backslash'
-        print '    (cite{...} has no backslash in Doconce syntax)'
+        print '    (cite{...} has no backslash in DocOnce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\idx\{.+?\}', filestr)
@@ -624,13 +656,13 @@ def syntax_check(filestr, format):
     matches = re.findall(r'\\label\{.+?\}', filestr)
     if matches:
         print '\n*** warning: found \\label{...} with backslash'
-        print '    (label{...} has no backslash in Doconce syntax)'
+        print '    (label{...} has no backslash in DocOnce syntax)'
         print '\n'.join(matches)
 
     matches = re.findall(r'\\ref\{.+?\}', filestr)
     if matches:
         print '\n*** warning: found \\ref{...} with backslash'
-        print '    (ref{...} has no backslash in Doconce syntax)'
+        print '    (ref{...} has no backslash in DocOnce syntax)'
         print '\n'.join(matches)
 
     # consistency check between label{} and ref{}:
@@ -1168,7 +1200,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     for line_no in range(len(lines)):
         line = lines[line_no].lstrip()
         #print 'LINE %d:' % i, line
-        #import pprint; pprint.pprint(exer)
+        #pprint.pprint(exer)
 
         m_heading = re.search(exer_heading_pattern, line)
         if m_heading:
@@ -1616,7 +1648,7 @@ def typeset_tables(filestr, format):
                 # not a table line anymore, but we were just inside a table
                 # so the table is ended
                 inside_table = False
-                #import pprint; pprint.pprint(table)
+                #pprint.pprint(table)
 
                 # Check for consistency of the recorded table:
                 try:
@@ -2157,7 +2189,7 @@ def handle_cross_referencing(filestr, format):
             label = None
         sections.append((title, heading2section_type[len(heading)], label))
     #print 'sections:'
-    #import pprint; pprint.pprint(sections)
+    #pprint.pprint(sections)
 
     toc = TOC[format](sections)  # Always call TOC[format] to make a toc
     # See if the toc string is to be inserted in filestr
@@ -2529,8 +2561,8 @@ def interpret_quiz_text(text, insert_missing_heading= False,
     comments. The optional new page and heading lines are replaced
     by one-line comments.
     The function extract_quizzes can recognize the output of the
-    present function, and create data structure with the quiz
-    content (after full rendering of the text).
+    present function, and create a data structure with the quiz
+    content..
     """
     ct = comment_tag
     bct = begin_comment_tag
@@ -2745,16 +2777,35 @@ The raw code of this quiz at this stage of processing reads
 
 def typeset_quizzes2(filestr, format):
     quizzes, html_quizzes, filestr = extract_quizzes(filestr, format)
-    for i, quiz in enumerate(quizzes):
-        text = QUIZ[format](quiz)
-        filestr = filestr.replace('%d ' % i + _QUIZ_BLOCK, text)
-    import pprint
+    debugpr('The file after extracting quizzes, before inserting finally rendered quizzes', filestr)
+    lines = filestr.splitlines()
+    for i in range(len(lines)):
+        m = re.search(r'^(\d+) ' + _QUIZ_BLOCK, lines[i])
+        if m:
+            n = int(m.group(1))
+            quiz = quizzes[n]
+            text = QUIZ[format](quiz)
+            debugpr('Quiz no. %d data structure' % n, pprint.pformat(quiz))
+            lines[i] = text
+    filestr = '\n'.join(lines)
+    # This alternative method with re.sub has side effects since
+    # \f, \b in text are interpreted as special symbols.
+    # That is why we use the method above of exact replacement.
+    #filestr = re.sub(r'^%d ' % i , text, filestr,
+    #                 flags=re.MULTILINE)
     f = open('.%s.quiz' % dofile_basename, 'w')
-    f.write(pprint.pformat([dict(quiz) for quiz in quizzes]))
+    try:
+        text = pprint.pformat([dict(quiz) for quiz in quizzes])
+        f.write(text)
+    except UnicodeEncodeError as e:
+        encode_error_message(e, text)
     f.close()
     f = open('.%s.quiz.html' % dofile_basename, 'w')
     for quiz in html_quizzes:
-        f.write(quiz + '\n\n')
+        try:
+            f.write(quiz + '\n\n')
+        except UnicodeEncodeError as e:
+            encode_error_message(e, quiz)
     f.close()
     return filestr
 
@@ -2964,22 +3015,6 @@ def file2file(in_filename, format, basename):
     else:
         f = open(out_filename, 'w')
 
-    def error_message():
-        m = str(e)
-        if "codec can't encode character" in m:
-            pos = m.split('position')[1].split(':')[0]
-            print '*** error: problem with character when writing to file:'
-            print '(text position %s)' % pos
-            try:
-                pos = int(pos)
-            except:
-                if '-' in pos:
-                    pos = pos.split('-')[0]
-                    pos = int(pos)
-            print repr(filestr[pos-40:pos+40])
-            print ' '*42 + '^'
-            print '    remedies: fix character or try --encoding=utf-8'
-            _abort()
 
     try:
         f.write(filestr)
@@ -2988,7 +3023,7 @@ def file2file(in_filename, format, basename):
         # below that tries UTF-8 will result in strange characters
         # in the output. It is better that the user specifies
         # correct encoding and gets correct results.
-        error_message()
+        encode_error_message(e, filestr)
         # Try UTF-8 (not a good fallback as the output may be corrupt)
         """
         try:
@@ -3884,7 +3919,7 @@ def format_driver():
     print 'output in', os.path.join(dirname, out_filename)
 
 
-class DoconceSyntaxError(Exception):
+class DocOnceSyntaxError(Exception):
     pass
 
 def doconce_format(format, dotext, compile=False,
@@ -3912,7 +3947,7 @@ def doconce_format(format, dotext, compile=False,
     failure, output = commands.getstatusoutput(cmd)
 
     if failure:
-        raise DoconceSyntaxError('Could not run %s.\nOutput:\n%s' %
+        raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
                                  (cmd, output))
     # Grab filename
     for line in output.splitlines():

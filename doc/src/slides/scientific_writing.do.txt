@@ -713,6 +713,7 @@ Can take a "DocOnce source": "http://hplgit.github.com/teamods/writing_reports/_
 ======= Tables =======
 
 !bc
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |---r-------r-----------r--------|
@@ -720,6 +721,7 @@ Can take a "DocOnce source": "http://hplgit.github.com/teamods/writing_reports/_
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
+
 !ec
 Gets rendered as
 
@@ -1263,9 +1265,3 @@ For output formats different from `latex`, `pdflatex`, and `html`:
      are introduced and place them *before* subsubsection
      headings (`=== ... ===`) and after subsection and section headings.
    * a line of text and no comment or math before code or list.
-
-
-
-
-
-

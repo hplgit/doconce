@@ -545,10 +545,10 @@ Verbatim text in links works fine with underscores.
 
 ===== How can I have unnumbered sections? =====
 
-Do an automatic edit like this:
+Use the `--section_numbering=off` option:
 
 !bc sys
-Terminal> doconce replace 'section{' 'section*{' mydoc.do.txt
+Terminal> doconce format pdflatex mydoc --section_numbering=off
 !ec
 
 ===== Error when running latex: You must have 'pygmentize' installed =====
@@ -632,6 +632,7 @@ Make sure you have a `!split` before every slide heading.
 ===== Inline verbatim gives error  =====
 
 Check if the inline verbatim contains typical LaTeX commands, e.g.,
+
 !bc
 some text with `\usepackage{mypack}` is difficult because
 ptex2tex will replace this by \code{\usepackage{mypack}} and
@@ -684,6 +685,33 @@ There are comment lines with `--- begin preamble ---` and
 `--- end preamble ---` in the generate `.p.tex` file that can be
 used to replace the whole preamble by something more suitable.
 
+===== Solution heading in exercise solutions appear after the solution content =====
+
+Sometimes a solution environment with code
+
+!bc do
+|bsol
+|bc cod
+def f(x):
+    return x + 2
+|ec
+|esol
+!ec
+leads to strange behavior (with the `shadedquoteBlue` verbatim LaTeX
+environment: the _Solution_ heading appears after the code
+in the solution. This appears to be a LaTeX problem since the
+generated LaTeX code has the heading and solution content in the right
+order. A working remedy is to insert a text before the code:
+
+!bc do
+Code:
+|bsol
+|bc cod
+def f(x):
+    return x + 2
+|ec
+|esol
+!ec
 
 ======= Problems with gwiki Output =======
 

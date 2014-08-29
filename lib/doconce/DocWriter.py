@@ -1,10 +1,10 @@
 """
 DocWriter is a tool for writing documents in ASCII, HTML,
-LaTeX, Doconce, and other formats based on input from Python
+LaTeX, DocOnce, and other formats based on input from Python
 datastructures.
 
 The base class _BaseWriter defines common functions and data
-structures, while subclasses HTML, Doconce, etc.  implement (i.e.,
+structures, while subclasses HTML, DocOnce, etc.  implement (i.e.,
 write to) various formats.
 
 This module works, but is unifinished and needs documentation!
@@ -122,7 +122,7 @@ class _BaseWriter:
         """
         # do the indentation here, subclasses should call this method first
         text = '\n'.join([' '*indent + line for line in text.split('\n')])
-        # subclasses must substitute Doconce simple formatting
+        # subclasses must substitute DocOnce simple formatting
         # using the expandtext method
         return text
 
@@ -136,7 +136,7 @@ class _BaseWriter:
 
         This method allows application code to use some generic ways of
         writing emphasized, boldface, and verbatim text, typically in the
-        Doconce format with *emphasized text*, _boldface text_, and
+        DocOnce format with *emphasized text*, _boldface text_, and
         `verbatim fixed font width text`.
         """
         for tag in tags:
@@ -346,9 +346,9 @@ INLINE_TAGS = {
     (inline_tag_begin, inline_tag_end),
     }
 
-class Doconce(_BaseWriter):
+class DocOnce(_BaseWriter):
     def __init__(self):
-        _BaseWriter.__init__(self, 'Doconce', '.do.txt')
+        _BaseWriter.__init__(self, 'DocOnce', '.do.txt')
 
     def title(self, title, authors_and_institutions=[], date='today'):
         s = '\nTITLE: %s\n' % title
@@ -384,7 +384,7 @@ class Doconce(_BaseWriter):
 
     def text(self, text, indent=0):
         text = _BaseWriter.text(self, text, indent)
-        # not necessary since Doconce is the format for text:
+        # not necessary since DocOnce is the format for text:
         #text = _BaseWriter.expandtext(self, text,
         #                              INLINE_TAGS, HTML.INLINE_TAGS_SUBST)
         self.file.write(text)
@@ -446,7 +446,7 @@ class Doconce(_BaseWriter):
 
     def url(self, url_address, link_text=None):
         if link_text is None:
-            link_text = 'link'  # problems with Doconce and empty link text
+            link_text = 'link'  # problems with DocOnce and empty link text
         self.file.write(' %s<%s>' % (url_address, link_text))
 
     def link(self, link_text, link_target):
@@ -632,7 +632,7 @@ class HTML(_BaseWriter):
 class LaTeX(_BaseWriter):
     def __init__(self):
         raise NotImplementedError, \
-              'Use Doconce class instead and filter to LaTeX'
+              'Use DocOnce class instead and filter to LaTeX'
 
 # Efficient way of generating class DocWriter.
 # A better way (for pydoc and other API references) is to
@@ -1065,7 +1065,7 @@ b.item = 0  # create a new attribute
     d.write_to_file('tmp_%s' % d.__class__.__name__)
 
 if __name__ == '__main__':
-    formats = HTML, Doconce
+    formats = HTML, DocOnce
     for format in formats:
         d = format()
         _test(d)
