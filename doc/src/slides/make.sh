@@ -184,7 +184,7 @@ pdflatex -shell-escape demo_${theme}
 done
 
 # Beamer handouts
-theme=red_shadow
+theme=red_plain
 doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
 doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=$theme --handout  # note --handout!
@@ -199,6 +199,9 @@ system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no 
 system doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 
-cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html $dest/demo/
+# IPython notebook
+doconce format ipynb demo
+
+cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb $dest/demo/
 doconce format html index --html_style=bootstrap_bloodish --html_links_in_new_window
 cp index.html $dest/demo/index.html

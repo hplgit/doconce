@@ -296,7 +296,7 @@ doconce slides_html demo doconce --nav_button=text
 ===== LaTeX Beamer PDF =====
 
 % for theme in 'blue_plain blue_shadow red_plain red_shadow dark_gradient vintage cbc simula'.split():
-"Beamer theme ${theme}": "demo_${theme}.pdf"
+ * "Beamer theme ${theme}": "demo_${theme}.pdf"
 % endfor
 
 !bc sys
@@ -306,16 +306,16 @@ doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 !ec
 
-"Traditional handouts (2x3) in PDF": "demo_red_shadow_handouts2x3.pdf"
+"Traditional handouts (2x3) in PDF": "demo_red_plain_handouts2x3.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer
 doconce ptex2tex demo envir=minted
 
 # --handout prevents pop ups from generating multiple pages
-doconce slides_beamer demo --beamer_slide_theme=red_shadow --handout  # note --handout!
+doconce slides_beamer demo --beamer_slide_theme=red_plain --handout  # note --handout!
 pdflatex -shell-escape demo
-# Merge slides to 2x3 per page
+# Merge slides to 3 rows and 2 columns per page
 pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile demo.pdf demo.pdf
 !ec
 
@@ -326,6 +326,10 @@ doconce format pdflatex demo SLIDE_TYPE="latex" SLIDE_THEME="std. latex"
 doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 !ec
+
+===== IPython notebook =====
+
+"IPython notebook (w/viewer)": "http://nbviewer.ipython.org/url/hplgit.github.io/teamods/doconce/scientific_writing/demo/demo.ipynb"
 
 ===== Doconce talk: Why and How =====
 
