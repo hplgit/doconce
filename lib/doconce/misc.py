@@ -270,7 +270,9 @@ Typesetting of admonitions and quotes.
 quote: as Markdown quote (default) with gray line on the left.
 paragraph: just the content with the title as paragraph heading."""),
     ('--ipynb_figure=', """\
-How to typeset figures in ipynb: md (plain Markdown syntax, default),
+How to typeset figures in ipynb:
+md (plain Markdown syntax),
+imgtag (<img src="..." width=...> tag, default)
 Image (python cell with Image object)."""),
     ('--ipynb_movie=', """\
 How to typeset movies in ipynb:

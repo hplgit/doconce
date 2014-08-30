@@ -30,13 +30,27 @@ def ipynb_author(authors_and_institutions, auth2index,
 def ipynb_figure(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
+    opts = m.group('options').strip()
+    if opts:
+        info = [s.split('=') for s in opts.split()]
+        opts = ' ' .join(['%s=%s' % (opt, value)
+                          for opt, value in info if opt not in ['frac']])
+
     global figure_files
     if not filename.startswith('http'):
         figure_files.append(filename)
-    display_method = option('ipynb_figure=', 'md')
+    display_method = option('ipynb_figure=', 'imgtag')
     if display_method == 'md':
         # Markdown image syntax, embedded image in text
         text = '![%s](%s)' % (caption, filename)
+    elif display_method == 'imgtag':
+        # Plain <img tag, allows specifying the image size
+        text = """
+<center>
+<p>%s</p>
+<img src="%s" %s>
+</center>
+""" % (caption, filename, opts)
     elif display_method == 'Image':
         # Image object
         # NOTE: This code will normally not work because it inserts a verbatim

@@ -331,6 +331,13 @@ pdflatex -shell-escape demo
 
 "IPython notebook (w/viewer)": "http://nbviewer.ipython.org/url/hplgit.github.io/teamods/doconce/scientific_writing/demo/demo.ipynb", based on "IPython notebook source": "demo.ipynb.html"
 
+!bc sys
+doconce format ipynb demo
+
+# Or with URL to figures (required if rendered by nbviewer.ipython.org)
+doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
+!ec
+
 ===== Doconce talk: Why and How =====
 
  *  "reveal w/darkgrey": "../scientific_writing-reveal.html",
