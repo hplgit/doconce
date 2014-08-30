@@ -331,6 +331,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         # that need to be executed
         os.system('tar cfz %s %s' % (ipynb_tarfile, ' '.join(src_paths)))
         print 'collected all required additional files in', ipynb_tarfile, 'which must be distributed with the notebook'
+    elif os.path.isfile(ipynb_tarfile):
+        os.remove(ipynb_tarfile)
 
 
     # Parse document into markdown text, code blocks, and tex blocks.

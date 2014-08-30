@@ -3471,10 +3471,16 @@ def doconce2format(filestr, format):
     for envir in 'sol', 'ans', 'hint':
         option_name = 'without_' + envir2option[envir]
         if option(option_name):
-            pattern = comment_pattern % envir_delimiter_lines[envir][0] + \
-                      '\n.+?' + comment_pattern % \
-                      envir_delimiter_lines[envir][1] + '\n'
-            replacement = comment_pattern % ('removed !b%s ... !e%s environment\n' % (envir, envir)) + comment_pattern % ('(because of the command-line option --%s)\n' % option_name)
+            if callable(comment_pattern):
+                pattern = comment_pattern(envir_delimiter_lines[envir][0]) + \
+                     '\n.+?' + comment_pattern(envir_delimiter_lines[envir][1])\
+                     + '\n'
+                replacement = comment_pattern('removed !b%s ... !e%s environment' % (envir, envir) + ' (because of the command-line option --%s)\n' % option_name)
+            else:
+                pattern = comment_pattern % envir_delimiter_lines[envir][0] + \
+                          '\n.+?' + comment_pattern % \
+                          envir_delimiter_lines[envir][1] + '\n'
+                replacement = comment_pattern % ('removed !b%s ... !e%s environment\n' % (envir, envir)) + comment_pattern % ('(because of the command-line option --%s)\n' % option_name)
             filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
 
 
