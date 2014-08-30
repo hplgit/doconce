@@ -85,6 +85,8 @@ label{initial:value}
 \end{align}
 !et
 
+Here,
+
  * $t\in (0,T]$
  * $a$, $I$, and $T$ are prescribed parameters
  * $u(t)$ is the unknown function
@@ -158,6 +160,8 @@ Exact solution of the scheme:
 \[ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .\]
 !et
 !epop
+
+Key results:
 
 !bpop
  * Stability: $|A| < 1$
