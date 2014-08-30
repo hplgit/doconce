@@ -1141,6 +1141,7 @@ def html_movie(m):
                 '.ogg': """
     <source src='%(stem)s.ogg'  type='video/ogg;  codecs="theora, vorbis"'>""" % vars(),
                 }
+            movie_exists = False
             if sources3:
                 # Set up loading of three alternatives.
                 # Specify mp4 as first video because on iOS only
@@ -1149,13 +1150,24 @@ def html_movie(m):
                 msg = 'movie: trying to find'
                 if is_file_or_url(stem + '.mp4', msg) in ('file', 'url'):
                     text += ext2source_command['.mp4']
+                    movie_exists = True
                 if is_file_or_url(stem + '.webm', msg) in ('file', 'url'):
                     text += ext2source_command['.webm']
+                    movie_exists = True
                 if is_file_or_url(stem + '.ogg', msg) in ('file', 'url'):
                     text += ext2source_command['.ogg']
+                    movie_exists = True
             else:
                 # Load just the specified file
-                text += ext2source_command[ext]
+                if is_file_or_url(stem + ext, msg) in ('file', 'url'):
+                    text += ext2source_command[ext]
+                    movie_exists = True
+            if not movie_exists:
+                print '*** error: movie "%s" was not found' % filename
+                if sources3:
+                    print '    could not find any .ogg/.mp4/.webm version of this filename'
+                    _abort()
+
             text += """
 </video>
 </div>
@@ -2044,7 +2056,7 @@ div { text-align: justify; text-justify: inter-word; }
     --keep_pygments_html_bg           # keep code background in admons
     --html_code_style=inherit         # use <code> style in surroundings (no red)
     --html_pre_style=inherit          # use <pre> style in surroundings
-    """
+    """ % boots_style
 
         style = """
 <!-- Bootstrap style: %s -->
