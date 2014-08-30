@@ -204,5 +204,5 @@ pdflatex -shell-escape demo
  pygmentize -l json -o demo.ipynb.html demo.ipynb
 
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb demo.ipynb.html $dest/demo/
-doconce format html index --html_style=bootstrap_bloodish --html_links_in_new_window
+doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window
 cp index.html $dest/demo/index.html

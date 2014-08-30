@@ -10,9 +10,9 @@ Automatically generated HTML file from DocOnce source
 
 <title>Demo of DocOnce slide styles</title>
 
-<!-- Bootstrap style: bootstrap_bloodish -->
+<!-- Bootstrap style: bootstrap_FlatUI -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bloodish.css" rel="stylesheet">
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_FlatUI.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
@@ -511,6 +511,15 @@ pdflatex -shell-escape demo
 <h2 id="___sec5">IPython notebook <a name="___sec5"></a></h2>
 
 <a href="http://nbviewer.ipython.org/url/hplgit.github.io/teamods/doconce/scientific_writing/demo/demo.ipynb" target="_blank">IPython notebook (w/viewer)</a>, based on <a href="demo.ipynb.html" target="_blank">IPython notebook source</a>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format ipynb demo
+
+# Or with URL to figures (required if rendered by nbviewer.ipython.org)
+doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
+</pre></div>
 
 <h2 id="___sec6">Doconce talk: Why and How <a name="___sec6"></a></h2>
 
