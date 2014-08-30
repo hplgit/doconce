@@ -1,13 +1,46 @@
-## This is a minimalistic document for testing movies
+===== Test of tables =====
+label{sec:tables}
 
-Here is a movie:
+Here is a table with three columns:
+
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |--l--------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+===== Aligned equations with labels =====
+label{sec:math:align}
+
+Systems of equations with labels are not supported in Markdown, so
+notebooks struggle with these. Let's test my treatment of them.
+
+!bt
+\begin{align}
+ax + b & =0,
+label{eq1}\\
+x^2 + px + q &= 0.
+label{eq2}
+\end{align}
+!et
+Most science students are good at solving equations, but few can
+handle more than (ref{eq1})-(ref{eq2}).
+
+===== Mnimalistic test of movies =====
+label{sec:movies}
+
+Here is a movie about a wave:
 
 MOVIE: [mov-wavebc/gaussian_Nx50_C1_un0/movie.mp4] Reflecting boundaries ($u_x=0$) for a Gaussian wave.
 
-Here is an image:
+Figure ref{fig1} displays a plug-shaped wave signal.
 
-FIGURE: [fig-wavebc/plug_Gaussian.png, width=600]
+FIGURE: [fig-wavebc/plug_Gaussian.png, width=600] label{fig1}
 
-And finally a YouTube movie:
+=== Check YouTube videos ===
+
+We must be able to embed them as well:
 
 MOVIE: [https://www.youtube.com/watch?v=1j_HxD4iLn8]
