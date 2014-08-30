@@ -123,6 +123,8 @@ def ipynb_movie(m):
         text = '\n!bc pycod\n'
         if youtube and 'YouTube' in display_method:
             text += YouTubeVideo(filename)
+            if caption:
+                text += '\nprint "%s"' % caption
         else:
             # Use HTML formatting
             if not html_encountered:
@@ -133,13 +135,13 @@ def ipynb_movie(m):
             if not filename.startswith('http'):
                 movie_files.append(filename)
         text += '!ec\n'
-        if caption:
-            text += '\nMovie above: *' + caption + '*\n'
         return text
     if display_method == 'local':
         text = '!bc pycod\n'
         if youtube:
             text += YouTubeVideo(filename)
+            if caption:
+                text += '\nprint "%s"' % caption
         else:
             # see http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%205%20-%20Rich%20Display%20System.ipynb
             # http://stackoverflow.com/questions/18019477/how-can-i-play-a-local-video-in-my-ipython-notebook
@@ -147,7 +149,7 @@ def ipynb_movie(m):
             # Just support .mp4, .ogg, and.webm
             stem, ext = os.path.splitext(filename)
             if ext not in ('.mp4', '.ogg', '.webm'):
-                print '*** error: movie "%s" in format %s is not supported for --ipynb-movie=%s' % (filename, ext, display_method)
+                print '*** error: movie "%s" in format %s is not supported for --ipynb_movie=%s' % (filename, ext, display_method)
                 print '    use --ipynb_movie=HTML instead'
                 _abort()
             height = 365
@@ -168,9 +170,9 @@ video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:vide
                 text += 'from IPython.display import HTML\n'
                 html_encountered = True
             text += 'HTML(data=video_tag)\n'
+            if caption:
+                text += '\nprint "%s"' % caption
         text += '!ec\n'
-        if caption:
-            text += '\nMovie above: *' + caption + '*\n'
         return text
     print '*** error: --ipynb_movie=%s is not supported' % display_method
     _abort()
@@ -571,8 +573,8 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),
         'subsubsection': lambda m: '#### ' + m.group('subst') + '\n',
-        'paragraph':     r'*\g<subst>*\g<space>',
-        'abstract':      r'\n*\g<type>.* \g<text>\n\n\g<rest>',
+        'paragraph':     r'**\g<subst>**\g<space>',
+        'abstract':      r'\n**\g<type>.** \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>',  # Not sure how this is supported; Markdown applies <br> but that cannot be used for latex output with ipynb...
         'non-breaking-space': ' ',
