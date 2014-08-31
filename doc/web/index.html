@@ -10,6 +10,37 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
     <title>DocOnce by hplgit</title>
   </head>
 
@@ -69,19 +100,44 @@ independently of the book.
 
           <h2>Demo</h2>
 
-<p>
-A <a href="http://hplgit.github.io/teamods/writing_reports/index.html">short scientific report</a> demonstrates the many formats that DocOnce can generate and
-how mathematics and computer code look like.
+A <a href="http://hplgit.github.io/teamods/writing_reports/index.html" target="_self">short scientific report</a>
+demonstrates the many formats that DocOnce can generate and how
+mathematics and computer code look like. (Note that at the bottom of
+the page there is a link to another version of the demo with complete
+DocOnce commands for producing the different versions.)
 
 <p>
 <!-- Note: local links does not work since this README file is a source -->
 <!-- code file and not part of the published gh-pages. Use full URL. -->
 
 <p>
-There is also a demo of how DocOnce can
-be used to <a href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html">create slides</a> in various formats.
+Another demo shows how DocOnce can be used to <a href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" target="_self">create slides</a> in
+various formats (HTML5 reveal.js, deck.js, etc., as well as LaTeX
+Beamer).
+
+<p>
+DocOnce has support for HTML documents with design and functionality
+based on Bootstrap styles.  A <a href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" target="_self">demo</a>
+illustrates the many possibilities for colors and layouts.
+
+<p>
+A <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8" target="_self">complete book</a> (900 pages) has been written entirely
+in DocOnce. The primary format is a publisher-specific LaTeX style,
+but HTML or Sphinx formats can easily be generated, such as
+this chapter in the popular <a href="http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html" target="_self">Bootstrap style</a> or the <a href="http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-solarized.html" target="_self">solarized color style</a> as many prefer. Slides can quickly be generated from the raw text in the book.
+Here are examples in the
+<a href="http://hplgit.github.io/scipro-primer/slides/looplist/html/looplist-reveal-beige.html" target="_self">reveal.js</a> (HTML5) style, or the more traditional <a href="http://hplgit.github.io/scipro-primer/slides/looplist/pdf/looplist-beamer.pdf" target="_self">LaTeX Beamer</a> style, and even the modern <a href="http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/looplist/ipynb/looplist.ipynb" target="_self">IPython notebook</a> tool, which
+allows for interactive experimentation and annotation.
 
           <h2>Documentation</h2>
+
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
+These documents are under development...
+</div>
+
+
 <ul>
  <p><li> Tutorial: <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html">Sphinx</a>,
    <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html">HTML</a>,

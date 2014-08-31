@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Demo of the Bootstrap style">
 
-
+<title>DocOnce Demo of the Bootstrap style</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -76,6 +76,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._bootstrap_plain001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
      <!-- navigation toc: --> <li><a href="._bootstrap_plain001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
+     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="._bootstrap_plain002.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
 
         </ul>
       </li>
@@ -92,7 +95,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>DocOnce Demo of the Bootstrap style</title>
 
 <div class="jumbotron">
 <center><h1>DocOnce Demo of the Bootstrap style</h1></center>  <!-- document title -->
@@ -109,17 +111,22 @@ way:
 <p>
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap.  If a <code>!split</code> command is used before the first
+from Bootstrap, resulting in large fonts on gray background.
+If a <code>!split</code> command is used before the first
 section heading, a button with <code>Read...</code> and a link to the next page
 is inserted if the document is split using <code>doconce split_html</code>.  This
-construction results in a short, standard Bootstrap main page.
+construction results in a short Bootstrap main page that has become
+very popular on web the last couple of years. The <code>--html_bootstrap_jumbotron=value</code> option can be used to adjust the jumbotron: <code>value</code> can be <code>on</code>, <code>off</code>,
+or <code>h2</code>. In the latter case a smaller <code>h2</code> heading is used rather than
+<code>h1</code> (which results in a quite large font).
 
 <p>
 A multiple-page document is created by inserting <code>!split</code> at desired
-places. <code>doconce split_html</code> splits the document and inserts navigation
-button (previous and next page) at the bottom of each page. The
-option <code>--pagination</code> can be added to get a different navigation
-bar at the bottom where also the page number can be seen.
+places. <code>doconce split_html</code> splits the document and inserts
+navigation button (previous and next page) at the bottom of each
+page. The option <code>--pagination</code> can be added as option to the <code>doconce
+split_html</code> command to get a different navigation bar at the bottom
+where also the page number si seen.
 
 <p>
 <!-- A split before the first section will enable a button in the jumbotron -->
