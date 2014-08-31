@@ -10,7 +10,7 @@ You should take a look at DocOnce if any of these questions are of interest.
 
 ===== Highlights =====
 
- * DocOnce is a minimally tagged markup language (like Markdown) with strong support for small and large scale projects involving *much math and code in the text*.
+ * DocOnce is a minimally tagged markup language (see "example": "http://hplgit.github.io/teamods/writing_reports/index.html"), quite like Markdown, with strong support for small and large scale projects involving *much math and code in the text*.
  * For documents with math and code, you can generate clean plain LaTeX (PDF), HTML (with MathJax and pygments - embedded in your own templates), Sphinx for attractive web design (especially for scientific material), Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output is in the ptex2tex format for very flexible typesetting of computer code.
  * DocOnce can also output other formats (though without support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and other formats.
  * The document source is first preprocessed by Preprocess and Mako, which gives you full programming capabilities in the text. For example, with Mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you can determine the language at compile time of the document.
@@ -63,13 +63,23 @@ based on Bootstrap styles.  A "demo":
 "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html"
 illustrates the many possibilities for colors and layouts.
 
-A "complete book": "http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8" (900 pages) has been written entirely
-in DocOnce. The primary format is a publisher-specific LaTeX style,
-but HTML or Sphinx formats can easily be generated, such as
-this chapter in the popular "Bootstrap style": "http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html" or the "solarized color style": "http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-solarized.html" as many prefer. Slides can quickly be generated from the raw text in the book.
-Here are examples in the
-"reveal.js": "http://hplgit.github.io/scipro-primer/slides/looplist/html/looplist-reveal-beige.html" (HTML5) style, or the more traditional "LaTeX Beamer": "http://hplgit.github.io/scipro-primer/slides/looplist/pdf/looplist-beamer.pdf" style, and even the modern "IPython notebook": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/looplist/ipynb/looplist.ipynb" tool, which
-allows for interactive experimentation and annotation.
+A "complete book":
+"http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"
+(900 pages) has been written entirely in DocOnce. The primary format
+is a publisher-specific LaTeX style, but HTML or Sphinx formats can
+easily be generated, such as this chapter in the popular "Bootstrap
+style":
+"http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html"
+or the "solarized color style":
+"http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-solarized.html"
+as many prefer. Slides can quickly be generated from the raw text in
+the book.  Here are examples in the "reveal.js":
+"http://hplgit.github.io/scipro-primer/slides/looplist/html/looplist-reveal-beige.html"
+(HTML5) style, or the more traditional "LaTeX Beamer":
+"http://hplgit.github.io/scipro-primer/slides/looplist/pdf/looplist-beamer.pdf"
+style, and even the modern "IPython notebook":
+"http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/looplist/ipynb/looplist.ipynb"
+tool, which allows for interactive experimentation and annotation.
 
 ===== Documentation =====
 
@@ -90,6 +100,19 @@ These documents are under development...
    "HTML": "http://hplgit.github.io/doconce/doc/pub/trouble/trouble.html",
    "PDF": "http://hplgit.github.io/doconce/doc/pub/trouble/trouble.pdf"
 
+The tutorial presents the basic syntax and the most fundamental
+elements of a scientific document, while the manual has accumulated
+all the different features available. The most efficient way to get
+started is to look at the "report demo":
+"http://hplgit.github.io/teamods/writing_reports/index.html" and study
+the "source code":
+"http://hplgit.github.io/teamods/writing_reports/_static/report.do.txt.html">
+(it has all the basic elements such as title, author, abstract, table
+of contents, headings, comments, inline mathematical formulas,
+single/multiple equations, with and without numbering, labels,
+cross-references to sections and equations, bullet lists, enumerated
+lists, copying of computer code from files, inline computer code,
+index entries, figures, tables, and admonitions).
 
 ===== License =====
 
