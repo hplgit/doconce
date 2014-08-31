@@ -75,7 +75,7 @@ tool, which allows for interactive experimentation and annotation.
 
 ### Documentation
 
-*Warning.*\g<space>
+*Warning.* 
 These documents are under development...
 
 

@@ -1743,8 +1743,9 @@ def typeset_envirs(filestr, format):
                     # Recall that this formatting is called very late
                     # so native format must be used
                     if title:
-                        title = INLINE_TAGS_SUBST[format]['paragraph'].replace(
-                            r'\g<subst>', '%s') % title + '\n'
+                        title = INLINE_TAGS_SUBST[format]['paragraph'].\
+                                replace(r'\g<space>', ' ').\
+                                replace(r'\g<subst>', '%s') % title + '\n'
                         # Could also consider subsubsection formatting
                     text = title + m.group(2) + '\n\n'
                     return text
