@@ -48,10 +48,8 @@ system('sudo apt-get -y install subversion')
 
 cmd = """
 cd srclib
-git clone git@github.com:hplgit/doconce.git
-cd doconce
-sudo python setup.py install
-cd ../..
+git clone https://github.com/hplgit/doconce.git
+if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 # Python
 
 """
@@ -108,7 +106,6 @@ system('sudo apt-get -y install evince')
 system('sudo apt-get -y install smpeg-plaympeg')
 system('sudo apt-get -y install mplayer')
 system('sudo apt-get -y install totem')
-system('sudo apt-get -y install ffmpeg')
 system('sudo apt-get -y install libav-tools')
 
 # Misc
@@ -117,13 +114,13 @@ system('sudo apt-get -y install pandoc')
 system('sudo apt-get -y install libreoffice')
 system('sudo apt-get -y install unoconv')
 system('sudo apt-get -y install libreoffice-dmaths')
-system('sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc')
+#epydoc is old-fashioned
+#pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
 
 system('sudo apt-get -y install curl')
 system('sudo apt-get -y install a2ps')
 system('sudo apt-get -y install wdiff')
 system('sudo apt-get -y install meld')
-system('sudo apt-get -y install xxdiff')
 system('sudo apt-get -y install diffpdf')
 system('sudo apt-get -y install kdiff3')
 system('sudo apt-get -y install diffuse')

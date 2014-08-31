@@ -40,7 +40,7 @@ Terminal> sudo python setup.py install
 However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with. On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. See the [Installation Guide](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies) for
-details.
+details. Basically, you can run a [Bash script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh).
 
 ### Demo
 
@@ -97,7 +97,7 @@ The tutorial presents the basic syntax and the most fundamental
 elements of a scientific document, while the manual has accumulated
 all the different features available. The most efficient way to get
 started is to look at the [report demo](http://hplgit.github.io/teamods/writing_reports/index.html) and study
-the [source code](http://hplgit.github.io/teamods/writing_reports/_static/report.do.txt.html)>
+the [source code](http://hplgit.github.io/teamods/writing_reports/_static/report.do.txt.html)
 (it has all the basic elements such as title, author, abstract, table
 of contents, headings, comments, inline mathematical formulas,
 single/multiple equations, with and without numbering, labels,

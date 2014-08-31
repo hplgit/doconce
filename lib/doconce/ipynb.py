@@ -424,10 +424,11 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
         # Add standard labels <a name=""/> for the eqs above the block
         # (for reference)
-        tex_blocks[i] = '<!-- Equation labels as ordinary links -->\n' + \
-                        ' '.join(['<a name="%s"/>' % label
-                                  for label in labels]) + '\n\n' + \
-                                  tex_blocks[i]
+        if labels:
+            tex_blocks[i] = '<!-- Equation labels as ordinary links -->\n' + \
+                            ' '.join(['<a name="%s"/>' % label
+                                      for label in labels]) + '\n\n' + \
+                                      tex_blocks[i]
 
     # blocks is now a list of text chunks in markdown and math/code line
     # instructions. Insert code and tex blocks

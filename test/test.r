@@ -12173,7 +12173,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-*Non-breaking space character.*\g<space>
+*Non-breaking space character.* 
 This paragraph aims to test [http://en.wikipedia.org/wiki/Non-breaking_space non-breaking space character], and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in `7.4/5.5\approx 1.345` s.  Also check that a~[http://google.com link]~is
@@ -13143,7 +13143,7 @@ Cannot typeset quiz: "What is the capital of Norway?"
 
 Without label.
 
-*Tip.*\g<space>
+*Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -13162,7 +13162,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/ Script for Introduction to Version Control] provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.*\g<space>
+*Summary.* 
 *Bold remark:* Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -15306,7 +15306,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-//Non-breaking space character.//\g<space>
+//Non-breaking space character.// 
 This paragraph aims to test [[http://en.wikipedia.org/wiki/Non-breaking_space|non-breaking space character]], and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in {{{7.4/5.5\approx 1.345}}} s.  Also check that a~[[http://google.com|link]]~is
@@ -16235,7 +16235,7 @@ What about inserting a quiz?
 
 Without label.
 
-//Tip.//\g<space>
+//Tip.// 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -16254,7 +16254,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [[http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/|Script for Introduction to Version Control]] provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-//Summary.//\g<space>
+//Summary.// 
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -16694,7 +16694,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-*Non-breaking space character.*\g<space>
+*Non-breaking space character.* 
 This paragraph aims to test "http://en.wikipedia.org/wiki/Non-breaking_space":non-breaking space character, and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in 7.4/5.5\approx 1.345 s.  Also check that a~"http://google.com":link is
@@ -17532,7 +17532,7 @@ Appendix: Testing identical titles
 
 Without label.
 
-*Tip.*\g<space>
+*Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -17549,7 +17549,7 @@ have the latest updates of the files.
 Greg Wilson' excellent "http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/":Script for Introduction to Version Control provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.*\g<space>
+*Summary.* 
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -17952,7 +17952,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-I{Non-breaking space character.}\g<space>
+I{Non-breaking space character.} 
 This paragraph aims to test U{non-breaking space character<http://en.wikipedia.org/wiki/Non-breaking_space>}, and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in M{7.4/5.5\approx 1.345} s.  Also check that a U{link<http://google.com>} is
@@ -18832,7 +18832,7 @@ Appendix: Testing identical titles
 
 Without label.
 
-I{Tip.}\g<space>
+I{Tip.} 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -18849,7 +18849,7 @@ have the latest updates of the files.
 Greg Wilson' excellent U{Script for Introduction to Version Control<http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>} provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-I{Summary.}\g<space>
+I{Summary.} 
 B{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -20441,6 +20441,7 @@ is part of the abstract.
 
 
 ## Section 1
+<a name="sec1"/>
 
 Here is a nested list:
 
@@ -20478,16 +20479,17 @@ Even Equation \eqref{my:eq1} without the tilde.
 
 
 ### Subsection 1
+<a name="subsec1"/>
 
 
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
 More text, with a reference back to
-the section [Section 1](#n-1) and [Subsection 1](#n-1), and further to the
-the sections [Subsection 1](#n-1) and [URLs](#s), which
-encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 9: Make references to projects and problems](#s).
-Appendices     [Appendix: Just for testing; part I](#i) and [Appendix: Just for testing; part II](#i) are also nice elements.
+the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the
+the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
+encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).
+Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
 
 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
@@ -20843,7 +20845,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was used
 used above.
 
-*Non-breaking space character.*\g<space>
+*Non-breaking space character.* 
 This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical
 example where this is needed is in physical units: 7.4\ km is traveled
 in\ $7.4/5.5\approx 1.345$\ s.  Also check that a~[link](http://google.com)\ is
@@ -20855,12 +20857,12 @@ of course remain a tilde in those contexts.)
 
 
 ### Subsection 2: Testing figures
+<a name="subsec:ex"/>
 
-
-Test of figures. In particular we refer to Figure ref{fig:impact} in which
+Test of figures. In particular we refer to [Figure](#fig:impact) in which
 there is a flow.
 
-![Visualization of a wave. ](../doc/src/manual/fig/wave1D.png)
+![Visualization of a wave. <a name="fig:impact"/>](../doc/src/manual/fig/wave1D.png)
 
 Figures without captions are allowed and will be inlined.
 
@@ -20870,10 +20872,10 @@ Figures without captions are allowed and will be inlined.
 
 <!-- Test multi-line caption in figure -->
 
-Here is figure ref{myfig} with a long multi-line caption
+Here is [figure](#myfig) with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. ](../doc/src/manual/fig/wave1D.png)
+![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/>](../doc/src/manual/fig/wave1D.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
@@ -20892,6 +20894,7 @@ Movies are tested in separate file `movies.do.txt`.
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ### The $\theta$ parameter (not $\nabla$?)
+<a name="decay:sec:theta"/>
 
 Functions do not always need to be advanced, here is one
 involving $\theta$:
@@ -20959,6 +20962,8 @@ Should look nice in most formats!
 
 
 <!-- begin theorem -->
+<a name="theorem:fundamental1"/>
+
 
 *Theorem 5.*
 Let $a=1$ and $b=2$. Then $c=3$.
@@ -20975,6 +20980,7 @@ achievement.
 
 
 ### Tables
+<a name="subsec:table"/>
 
 
 <!-- index with comma could fool sphinx -->
@@ -21207,6 +21213,7 @@ the old ME-IN323 book @Langtangen:91 and the
 <!-- --- begin exercise --- -->
 
 ### Example 1: Examples can be typeset as exercises
+<a name="Example"/>
 
 Examples can start with a subsection heading starting with `Example:`
 and then, with the command-line option `--examples_as_exercises` be
@@ -21237,6 +21244,7 @@ maybe over multiple doconce input lines.
 
 
 ### URLs
+<a name="subsubsec:ex"/>
 
 Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or
 the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a
@@ -21330,9 +21338,9 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have  [Problem 2: Flip a Coin](#n) and  [Project 3: Compute a Probability](#y),
-as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#c), and in
-between there we have  [Exercise 9: Make references to projects and problems](#s).
+Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 3: Compute a Probability](#demo:ex:2),
+as well as  [Project 4: Explore Distributions of Random Circles](#proj:circle1) and [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
+between there we have  [Exercise 9: Make references to projects and problems](#exer:some:formula).
 
 
 ## Exercises
@@ -21342,7 +21350,7 @@ between there we have  [Exercise 9: Make references to projects and problems](#s
 <!-- --- begin exercise --- -->
 
 ### Problem 2: Flip a Coin
-
+<a name="demo:ex:1"/>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <!-- Torture tests -->
@@ -21418,6 +21426,7 @@ exercises.
 <!-- --- begin exercise --- -->
 
 ### Project 3: Compute a Probability
+<a name="demo:ex:2"/>
 
 <!-- Minimalistic exercise -->
 
@@ -21450,6 +21459,7 @@ compute the probability as $M/N$.
 <!-- --- begin exercise --- -->
 
 ### Project 4: Explore Distributions of Random Circles
+<a name="proj:circle1"/>
 
 The formula for a circle is given by
 
@@ -21540,6 +21550,7 @@ and give some perspectives.
 <!-- --- begin exercise --- -->
 
 ### Exercise 5: Determine some Distance
+<a name="exer:dist"/>
 
 Intro to this exercise. Questions are in subexercises below.
 
@@ -21687,6 +21698,7 @@ lambda x: x+2
 <!-- --- begin exercise --- -->
 
 ### Exercise 7: Solution of differential equation
+<a name="sec:this:exer:de"/>
 
 *Cannot typeset quiz*: "Given
 
@@ -21728,9 +21740,10 @@ With some text, before we continue with exercises.
 <!-- --- begin exercise --- -->
 
 ### Exercise 9: Make references to projects and problems
+<a name="exer:some:formula"/>
 
 <!-- Test comments not at the end only -->
-Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)
+Pick a statement from  [Project 4: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -21748,11 +21761,12 @@ Filename: `verify_formula.py`.
 
 <!-- --- begin exercise --- -->
 
-### Project 10: References to  [Project 3: Compute a Probability](#y) in a heading works for pandoc
+### Project 10: References to  [Project 3: Compute a Probability](#demo:ex:2) in a heading works for pandoc
+<a name="exer:you"/>
 
-Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#s),
-the two before that as  [Project 3: Compute a Probability](#y) and [Project 4: Explore Distributions of Random Circles](#s),
-and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#c).
+Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#exer:some:formula),
+the two before that as  [Project 3: Compute a Probability](#demo:ex:2) and [Project 4: Explore Distributions of Random Circles](#proj:circle1),
+and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
 Filename: `selc_composed.pdf`.
 
 <!-- --- end exercise --- -->
@@ -21866,6 +21880,7 @@ Filename: `selc_composed.pdf`.
     1994.
 
 ## Appendix: Just for testing; part I
+<a name="app1"/>
 
 This is the first appendix.
 
@@ -21874,6 +21889,7 @@ This is the first appendix.
 Some text.
 
 ## Appendix: Just for testing; part II
+<a name="app2"/>
 
 This is more stuff for an appendix.
 
@@ -21883,10 +21899,12 @@ Without label.
 
 
 ### Appendix: Testing identical titles
+<a name="test:title:id1"/>
 
 With label.
 
 ### Appendix: Testing identical titles
+<a name="test:title:id2"/>
 
 What about inserting a quiz?
 
@@ -21897,7 +21915,7 @@ What about inserting a quiz?
 
 Without label.
 
-*Tip.*\g<space>
+*Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -21916,7 +21934,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.*\g<space>
+*Summary.* 
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -22048,7 +22066,7 @@ is at the end with only one newline.
       "The format of this document is\n",
       "ipynb\n",
       "\n",
-      "*Abstract.* This is a document with many test constructions for doconce syntax.\n",
+      "**Abstract.** This is a document with many test constructions for doconce syntax.\n",
       "It was used heavily for the development and kept for testing\n",
       "numerous constructions, also special and less common cases.\n",
       "\n",
@@ -22061,6 +22079,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "## Section 1\n",
+      "<a name=\"sec1\"/>\n",
       "\n",
       "Here is a nested list:\n",
       "\n",
@@ -22086,7 +22105,7 @@ is at the end with only one newline.
       "      continuing on a new line\n",
       "\n",
       "\n",
-      "*Here is a list with paragraph heading.*\n",
+      "**Here is a list with paragraph heading.**\n",
       "\n",
       "  * item1\n",
       "\n",
@@ -22105,21 +22124,22 @@ is at the end with only one newline.
       "\n",
       "\n",
       "\n",
-      "Here are two references. Equation Eq (my:eq1) is fine. Eq. Eq (my:eq1) too.\n",
-      "Even Equation Eq (my:eq1) without the tilde.\n",
+      "Here are two references. Equation [(3)](#my:eq1) is fine. Eq. [(3)](#my:eq1) too.\n",
+      "Even Equation [(3)](#my:eq1) without the tilde.\n",
       "\n",
       "\n",
       "### Subsection 1\n",
+      "<a name=\"subsec1\"/>\n",
       "\n",
       "\n",
       "<!-- Refer to section/appendix etc. at the beginning of the line -->\n",
       "<!-- and other special fix situations for HTML. -->\n",
       "\n",
       "More text, with a reference back to\n",
-      "the section [Section 1](#n-1) and [Subsection 1](#n-1), and further to the\n",
-      "the sections [Subsection 1](#n-1) and [URLs](#s), which\n",
-      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#n) and [Exercise 9: Make references to projects and problems](#s).\n",
-      "Appendices     [Appendix: Just for testing; part I](#i) and [Appendix: Just for testing; part II](#i) are also nice elements.\n",
+      "the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the\n",
+      "the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which\n",
+      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).\n",
+      "Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.\n",
       "\n",
       "\n",
       "<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->\n",
@@ -22241,7 +22261,7 @@ is at the end with only one newline.
      "source": [
       "Test paragraph and subsubsection headings before code.\n",
       "\n",
-      "*Paragraph heading before code.*"
+      "**Paragraph heading before code.**"
      ]
     },
     {
@@ -22682,43 +22702,60 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Subsection 2: Testing figures\n",
+      "<a name=\"subsec:ex\"/>\n",
       "\n",
-      "\n",
-      "Test of figures. In particular we refer to Figure ref{fig:impact} in which\n",
+      "Test of figures. In particular we refer to [Figure](#fig:impact) in which\n",
       "there is a flow.\n",
       "\n",
-      "FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. {fig:impact}\n",
+      "<a name=\"fig:impact\"/>\n",
+      "<p>Visualization of a wave.</p>\n",
+      "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
+      "\n",
+      "\n",
       "\n",
       "Figures without captions are allowed and will be inlined.\n",
       "\n",
-      "FIGURE:[../doc/src/manual/fig/wave1D, width=200]\n",
+      "\n",
+      "<p></p>\n",
+      "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
+      "\n",
+      "\n",
       "\n",
       "\n",
       "\n",
       "<!-- Test multi-line caption in figure -->\n",
       "\n",
-      "Here is figure ref{myfig} with a long multi-line caption\n",
+      "Here is [figure](#myfig) with a long multi-line caption\n",
       "and an extra space before the FIGURE keyword.\n",
       "\n",
-      "FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. {myfig} \n",
+      "<a name=\"myfig\"/>\n",
+      "<p>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$.</p>\n",
+      "<img src=\"../doc/src/manual/fig/wave1D.png\" width=500>\n",
+      "\n",
+      "\n",
       "\n",
       "<!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->\n",
       "\n",
       "Test URL as figure name:\n",
       "\n",
-      "FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]\n",
+      "\n",
+      "<p></p>\n",
+      "<img src=\"https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png\" width=500,>\n",
+      "\n",
+      "\n",
       "\n",
       "\n",
       "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
       "\n",
       "\n",
-      "*Remark.*\n",
+      "**Remark.**\n",
       "Movies are tested in separate file `movies.do.txt`.\n",
       "\n",
       "\n",
       "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
       "\n",
       "### The $\\theta$ parameter (not $\\nabla$?)\n",
+      "<a name=\"decay:sec:theta\"/>\n",
       "\n",
       "Functions do not always need to be advanced, here is one\n",
       "involving $\\theta$:"
@@ -22736,7 +22773,7 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "*More on $\\theta$.* Here is more text following headline with math.\n",
+      "**More on $\\theta$.** Here is more text following headline with math.\n",
       "\n",
       "Newcommands must also be tested in this test report:\n",
       "$\\frac{1}{2}$, ${1/2}$, $\\pmb{x}$, $\\frac{Du}{dt}$,\n",
@@ -22781,10 +22818,13 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- Equation labels as ordinary links -->\n",
+      "<a name=\"aligneq1\"/>\n",
+      "\n",
       "$$\n",
       "\\begin{equation}\n",
       "\\frac{Du}{dt} = 0\n",
-      "\\label{aligneq1}\n",
+      "\\label{aligneq1} \\tag{1}\n",
       "\\end{equation}\n",
       "$$"
      ]
@@ -22804,10 +22844,13 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- Equation labels as ordinary links -->\n",
+      "<a name=\"aligneq2\"/>\n",
+      "\n",
       "$$\n",
       "\\begin{equation}  \n",
       "\\frac{1}{2}\\pmb{x} = \\pmb{n}\n",
-      "\\label{aligneq2}\n",
+      "\\label{aligneq2} \\tag{2}\n",
       "\\end{equation}\n",
       "$$"
      ]
@@ -22826,13 +22869,15 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- begin theorem -->\n",
+      "<a name=\"theorem:fundamental1\"/>\n",
       "\n",
-      "*Theorem 5.*\n",
+      "\n",
+      "**Theorem 5.**\n",
       "Let $a=1$ and $b=2$. Then $c=3$.\n",
       "<!-- end theorem -->\n",
       "\n",
       "<!-- begin proof -->\n",
-      "*Proof.*\n",
+      "**Proof.**\n",
       "Since $c=a+b$, the result follows from straightforward addition.\n",
       "$\\Diamond$\n",
       "<!-- end proof -->\n",
@@ -22842,6 +22887,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Tables\n",
+      "<a name=\"subsec:table\"/>\n",
       "\n",
       "\n",
       "<!-- index with comma could fool sphinx -->\n",
@@ -22849,14 +22895,16 @@ is at the end with only one newline.
       "Let us take this table from the manual:\n",
       "\n",
       "\n",
-      "\n",
-      "    time        velocity    acceleration  \n",
-      "------------  ------------  ------------  \n",
-      "0.0                 1.4186         -5.01  \n",
-      "2.0               1.376512        11.919  \n",
-      "4.0                 1.1E+1     14.717624  \n",
-      "\n",
-      "\n",
+      "<table border=\"1\">\n",
+      "<thead>\n",
+      "<tr><th align=\"center\">    time    </th> <th align=\"center\">  velocity  </th> <th align=\"center\">acceleration</th> </tr>\n",
+      "</thead>\n",
+      "<tbody>\n",
+      "<tr><td align=\"left\">   0.0             </td> <td align=\"right\">   1.4186          </td> <td align=\"right\">   -5.01           </td> </tr>\n",
+      "<tr><td align=\"left\">   2.0             </td> <td align=\"right\">   1.376512        </td> <td align=\"right\">   11.919          </td> </tr>\n",
+      "<tr><td align=\"left\">   4.0             </td> <td align=\"right\">   1.1E+1          </td> <td align=\"right\">   14.717624       </td> </tr>\n",
+      "</tbody>\n",
+      "</table>\n",
       "\n",
       "The DocOnce source code reads"
      ]
@@ -22883,53 +22931,61 @@ is at the end with only one newline.
       "Here is yet another table to test that we can handle more than\n",
       "one table:\n",
       "\n",
-      "\n",
-      "time          velocity      acceleration  \n",
-      "------------  ------------  ------------  \n",
-      "0.0           1.4186        -5.01         \n",
-      "1.0           1.376512      11.919        \n",
-      "3.0           1.1E+1        14.717624     \n",
-      "\n",
-      "\n",
+      "<table border=\"1\">\n",
+      "<thead>\n",
+      "<tr><th align=\"left\">    time    </th> <th align=\"left\">  velocity  </th> <th align=\"left\">acceleration</th> </tr>\n",
+      "</thead>\n",
+      "<tbody>\n",
+      "<tr><td align=\"left\">   0.0             </td> <td align=\"left\">   1.4186          </td> <td align=\"left\">   -5.01           </td> </tr>\n",
+      "<tr><td align=\"left\">   1.0             </td> <td align=\"left\">   1.376512        </td> <td align=\"left\">   11.919          </td> </tr>\n",
+      "<tr><td align=\"left\">   3.0             </td> <td align=\"left\">   1.1E+1          </td> <td align=\"left\">   14.717624       </td> </tr>\n",
+      "</tbody>\n",
+      "</table>\n",
       "And one with math headings (that are expanded and must be treated\n",
       "accordingly), verbatim heading and entry, and no space around the pipe\n",
       "symbol:\n",
       "\n",
-      "\n",
-      "   $i$        $h_i$     $\\bar T_i$    `L_i`     \n",
-      "----------  ----------  ----------  ----------  \n",
-      "0                    0         288     -0.0065  \n",
-      "1               11,000         216         0.0  \n",
-      "2               20,000         216       0.001  \n",
-      "3               32,000         228      0.0028  \n",
-      "4               47,000         270         0.0  \n",
-      "5               51,000         270     -0.0028  \n",
-      "6               71,000         214       `NaN`  \n",
-      "\n",
-      "\n",
+      "<table border=\"1\">\n",
+      "<thead>\n",
+      "<tr><th align=\"center\">   $i$    </th> <th align=\"center\">  $h_i$   </th> <th align=\"center\">$\\bar T_i$</th> <th align=\"center\">  <code>L_i</code>   </th> </tr>\n",
+      "</thead>\n",
+      "<tbody>\n",
+      "<tr><td align=\"left\">   0             </td> <td align=\"right\">   0             </td> <td align=\"right\">   288           </td> <td align=\"right\">   -0.0065       </td> </tr>\n",
+      "<tr><td align=\"left\">   1             </td> <td align=\"right\">   11,000        </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.0           </td> </tr>\n",
+      "<tr><td align=\"left\">   2             </td> <td align=\"right\">   20,000        </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.001         </td> </tr>\n",
+      "<tr><td align=\"left\">   3             </td> <td align=\"right\">   32,000        </td> <td align=\"right\">   228           </td> <td align=\"right\">   0.0028        </td> </tr>\n",
+      "<tr><td align=\"left\">   4             </td> <td align=\"right\">   47,000        </td> <td align=\"right\">   270           </td> <td align=\"right\">   0.0           </td> </tr>\n",
+      "<tr><td align=\"left\">   5             </td> <td align=\"right\">   51,000        </td> <td align=\"right\">   270           </td> <td align=\"right\">   -0.0028       </td> </tr>\n",
+      "<tr><td align=\"left\">   6             </td> <td align=\"right\">   71,000        </td> <td align=\"right\">   214           </td> <td align=\"right\">   <code>NaN</code>         </td> </tr>\n",
+      "</tbody>\n",
+      "</table>\n",
       "And add one with verbatim headings (with underscores),\n",
       "and rows starting with `|-` because of a negative number,\n",
       "and `|` right before and after verbatim word (with no space):\n",
       "\n",
-      "\n",
-      "    exact          `v_1`      $a_i$ + `v_2`    `verb_3_`    \n",
-      "-------------  -------------  -------------  -------------  \n",
-      "            9           9.62           5.57           8.98  \n",
-      "          -20         -23.39          -7.65         -19.93  \n",
-      "           10          17.74          -4.50           9.96  \n",
-      "            0          -9.19           4.13          -0.26  \n",
-      "\n",
-      "\n",
+      "<table border=\"1\">\n",
+      "<thead>\n",
+      "<tr><th align=\"center\">    exact    </th> <th align=\"center\">    <code>v_1</code>    </th> <th align=\"center\">$a_i$ + <code>v_2</code></th> <th align=\"center\">  <code>verb_3_</code>  </th> </tr>\n",
+      "</thead>\n",
+      "<tbody>\n",
+      "<tr><td align=\"right\">   9                </td> <td align=\"right\">   9.62             </td> <td align=\"right\">   5.57             </td> <td align=\"right\">   8.98             </td> </tr>\n",
+      "<tr><td align=\"right\">   -20              </td> <td align=\"right\">   -23.39           </td> <td align=\"right\">   -7.65            </td> <td align=\"right\">   -19.93           </td> </tr>\n",
+      "<tr><td align=\"right\">   10               </td> <td align=\"right\">   17.74            </td> <td align=\"right\">   -4.50            </td> <td align=\"right\">   9.96             </td> </tr>\n",
+      "<tr><td align=\"right\">   0                </td> <td align=\"right\">   -9.19            </td> <td align=\"right\">   4.13             </td> <td align=\"right\">   -0.26            </td> </tr>\n",
+      "</tbody>\n",
+      "</table>\n",
       "Pipe symbols in verbatim and math text in tables used to pose difficulties,\n",
       "but not anymore:\n",
       "\n",
-      "\n",
-      "     $S$          command     \n",
-      "-------------  -------------  \n",
-      "$ ||a_0|| $    `norm|length`  \n",
-      "$x\\cap y$              `x|y`  \n",
-      "\n",
-      "\n",
+      "<table border=\"1\">\n",
+      "<thead>\n",
+      "<tr><th align=\"center\">     $S$     </th> <th align=\"center\">   command   </th> </tr>\n",
+      "</thead>\n",
+      "<tbody>\n",
+      "<tr><td align=\"left\">   $ ||a_0|| $      </td> <td align=\"right\">   <code>norm|length</code>    </td> </tr>\n",
+      "<tr><td align=\"left\">   $x\\cap y$        </td> <td align=\"right\">   <code>x|y</code>            </td> </tr>\n",
+      "</tbody>\n",
+      "</table>\n",
       "Finally, a table with math\n",
       "and URLs.\n",
       "\n",
@@ -22937,18 +22993,18 @@ is at the end with only one newline.
       "<!-- (These types of tables did not work before Jan 2014) -->\n",
       "\n",
       "\n",
-      "\n",
-      "                                                                                                                                                                                 \n",
-      "---------------------------------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  \n",
-      "                     $\\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  \n",
-      "                          $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  \n",
-      "             $\\nabla\\cdot\\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  \n",
-      "\n",
-      "\n",
+      "<table border=\"1\">\n",
+      "<tr></tr>\n",
+      "<tbody>\n",
+      "<tr><td align=\"center\">   $\\mathcal{L}=0$                                              </td> <td align=\"center\">   [<code>080</code>](../doc/src/manual/mov/wave_frames/frame_0080.png)    </td> <td align=\"center\">   [<code>085</code>](../doc/src/manual/mov/wave_frames/frame_0085.png)    </td> </tr>\n",
+      "<tr><td align=\"center\">   $a=b$                                                        </td> <td align=\"center\">   [<code>090</code>](../doc/src/manual/mov/wave_frames/frame_0090.png)    </td> <td align=\"center\">   [<code>095</code>](../doc/src/manual/mov/wave_frames/frame_0095.png)    </td> </tr>\n",
+      "<tr><td align=\"center\">   $\\nabla\\cdot\\boldsymbol{u} =0 $                              </td> <td align=\"center\">   [<code>100</code>](../doc/src/manual/mov/wave_frames/frame_0100.png)    </td> <td align=\"center\">   [<code>105</code>](../doc/src/manual/mov/wave_frames/frame_0105.png)    </td> </tr>\n",
+      "</tbody>\n",
+      "</table>\n",
       "\n",
       "### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`\n",
       "\n",
-      "*Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is\n",
+      "**Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.** Here is\n",
       "some text.\n",
       "\n",
       "<!-- Test various types of headlines -->\n",
@@ -23001,31 +23057,31 @@ is at the end with only one newline.
       "Some text.\n",
       "\n",
       "\n",
-      "**Just emphasize*.* Some text.\n",
+      "***Just emphasize*.** Some text.\n",
       "\n",
       "\n",
-      "*`Just verbatim`.* Some text.\n",
+      "**`Just verbatim`.** Some text.\n",
       "\n",
       "\n",
-      "**Emphasize* beginning.* Some text.\n",
+      "***Emphasize* beginning.** Some text.\n",
       "\n",
       "\n",
-      "*`Verbatim beginning`.* Some text.\n",
+      "**`Verbatim beginning`.** Some text.\n",
       "\n",
       "\n",
-      "*Maybe *emphasize end*.* Some text.\n",
+      "**Maybe *emphasize end*.** Some text.\n",
       "\n",
       "\n",
-      "*Maybe `verbatim end`.* Some text.\n",
+      "**Maybe `verbatim end`.** Some text.\n",
       "\n",
       "\n",
-      "*The middle has *emphasize* word.* Some text.\n",
+      "**The middle has *emphasize* word.** Some text.\n",
       "\n",
       "\n",
-      "*The middle has `verbatim` word.* Some text.\n",
+      "**The middle has `verbatim` word.** Some text.\n",
       "\n",
       "\n",
-      "*Ampersand.*\n",
+      "**Ampersand.**\n",
       "We can test Hennes & Mauritz, often abbreviated H&M, but written\n",
       "as `Hennes & Mauritz` and `H & M`.\n",
       "A sole `&` must also work.\n",
@@ -23044,7 +23100,7 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "*Quotes.*\n",
+      "**Quotes.**\n",
       "Let us also add a test of quotes such as \"double quotes, with numbers\n",
       "like 3.14 and newline/comma and hyphen (as in double-quote)\"; written\n",
       "in the standard LaTeX-style that gives correct LaTeX formatting and\n",
@@ -23087,6 +23143,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Example 1: Examples can be typeset as exercises\n",
+      "<a name=\"Example\"/>\n",
       "\n",
       "Examples can start with a subsection heading starting with `Example:`\n",
       "and then, with the command-line option `--examples_as_exercises` be\n",
@@ -23094,22 +23151,22 @@ is at the end with only one newline.
       "environments as part of the example.\n",
       "\n",
       "\n",
-      "*a)*\n",
+      "**a)**\n",
       "State some problem.\n",
       "\n",
-      "*Solution.*\n",
+      "**Solution.**\n",
       "The answer to this subproblem can be written here.\n",
       "\n",
-      "*b)*\n",
+      "**b)**\n",
       "State some other problem.\n",
       "\n",
-      "*Hint 1.*\n",
+      "**Hint 1.**\n",
       "A hint can be given.\n",
       "\n",
-      "*Hint 2.*\n",
+      "**Hint 2.**\n",
       "Maybe even another hint?\n",
       "\n",
-      "*Solution.*\n",
+      "**Solution.**\n",
       "The answer to this other subproblem goes here,\n",
       "maybe over multiple doconce input lines.\n",
       "\n",
@@ -23117,6 +23174,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### URLs\n",
+      "<a name=\"subsubsec:ex\"/>\n",
       "\n",
       "Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or\n",
       "the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a\n",
@@ -23181,16 +23239,19 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "or with number and label, as in Eq (my:eq1), using the equation environment:"
+      "or with number and label, as in [(3)](#my:eq1), using the equation environment:"
      ]
     },
     {
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- Equation labels as ordinary links -->\n",
+      "<a name=\"my:eq1\"/>\n",
+      "\n",
       "$$\n",
       "\\begin{equation}\n",
-      "{\\partial u\\over\\partial t} = \\nabla^2 u \\label{my:eq1}\n",
+      "{\\partial u\\over\\partial t} = \\nabla^2 u \\label{my:eq1} \\tag{3}\n",
       "\\end{equation}\n",
       "$$"
      ]
@@ -23199,7 +23260,7 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "We can refer to this equation by Eq (my:eq1).\n",
+      "We can refer to this equation by [(3)](#my:eq1).\n",
       "\n",
       "Here is a system without equation numbers, using the align-astrisk environment:"
      ]
@@ -23228,9 +23289,9 @@ is at the end with only one newline.
      "source": [
       "More mathematical typesetting is demonstrated in the coming exercises.\n",
       "\n",
-      "Below, we have  [Problem 2: Flip a Coin](#n) and  [Project 3: Compute a Probability](#y),\n",
-      "as well as  [Project 4: Explore Distributions of Random Circles](#s) and [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#b), and in\n",
-      "between there we have  [Exercise 9: Make references to projects and problems](#s).\n",
+      "Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 3: Compute a Probability](#demo:ex:2),\n",
+      "as well as  [Project 4: Explore Distributions of Random Circles](#proj:circle1) and [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you), and in\n",
+      "between there we have  [Exercise 9: Make references to projects and problems](#exer:some:formula).\n",
       "\n",
       "\n",
       "## Exercises\n",
@@ -23240,7 +23301,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Problem 2: Flip a Coin\n",
-      "\n",
+      "<a name=\"demo:ex:1\"/>\n",
       "<!-- keywords = random numbers; Monte Carlo simulation -->\n",
       "\n",
       "<!-- Torture tests -->\n",
@@ -23264,14 +23325,14 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 1.*\n",
+      "**Hint 1.**\n",
       "Use `r = random.random()` and define head as `r <= 0.5`.\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 2.*\n",
+      "**Hint 2.**\n",
       "Draw an integer among $\\{1,2\\}$ with\n",
       "`r = random.randint(1,2)` and define head when `r` is 1.\n",
       "\n",
@@ -23279,7 +23340,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
-      "*Answer.*\n",
+      "**Answer.**\n",
       "If the `random.random()` function returns a number $<1/2$, let it be\n",
       "head, otherwise tail. Repeat this $N$ number of times.\n",
       "\n",
@@ -23287,7 +23348,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.*"
+      "**Solution.**"
      ]
     },
     {
@@ -23329,6 +23390,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Project 3: Compute a Probability\n",
+      "<a name=\"demo:ex:2\"/>\n",
       "\n",
       "<!-- Minimalistic exercise -->\n",
       "\n",
@@ -23346,7 +23408,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint.*\n",
+      "**Hint.**\n",
       "To answer this question empirically, let a program\n",
       "draw $N$ such random numbers using Python's standard `random` module,\n",
       "count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and\n",
@@ -23362,6 +23424,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Project 4: Explore Distributions of Random Circles\n",
+      "<a name=\"proj:circle1\"/>\n",
       "\n",
       "The formula for a circle is given by"
      ]
@@ -23429,12 +23492,12 @@ is at the end with only one newline.
       "above.\n",
       "\n",
       "\n",
-      "*a)*\n",
+      "**a)**\n",
       "Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint.*\n",
+      "**Hint.**\n",
       "Use the `numpy.random` module to draw the\n",
       "$x_0$, $y_0$, and $R$ quantities.\n",
       "\n",
@@ -23442,23 +23505,23 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
-      "*Answer.*\n",
+      "**Answer.**\n",
       "Here goes the short answer to part a).\n",
       "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.*\n",
+      "**Solution.**\n",
       "Here goes a full solution to part a).\n",
       "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
-      "*b)*\n",
+      "**b)**\n",
       "Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
       "Filename: `norm.py`.\n",
       "\n",
-      "*c)*\n",
+      "**c)**\n",
       "Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
       "\n",
       "Filename: `circles.pdf`.\n",
@@ -23479,6 +23542,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 5: Determine some Distance\n",
+      "<a name=\"exer:dist\"/>\n",
       "\n",
       "Intro to this exercise. Questions are in subexercises below.\n",
       "\n",
@@ -23497,7 +23561,7 @@ is at the end with only one newline.
       "2. item2\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.*\n",
+      "**Solution.**\n",
       "Here goes a full solution of the whole exercise.\n",
       "With some math $a=b$ in this solution:"
      ]
@@ -23534,12 +23598,12 @@ is at the end with only one newline.
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
       "\n",
-      "*a)*\n",
+      "**a)**\n",
       "Subexercises are numbered a), b), etc.\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 1.*\n",
+      "**Hint 1.**\n",
       "First hint to subexercise a).\n",
       "With math $a=b$ in hint:"
      ]
@@ -23576,7 +23640,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint 2.*\n",
+      "**Hint 2.**\n",
       "Second hint to subexercise a).\n",
       "\n",
       "Test list in hint:\n",
@@ -23590,13 +23654,13 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- --- begin answer of exercise --- -->\n",
-      "*Answer.*\n",
+      "**Answer.**\n",
       "Short answer to subexercise a).\n",
       "With math in answer: $a=b$.\n",
       "\n",
       "<!-- --- end answer of exercise --- -->\n",
       "\n",
-      "*b)*\n",
+      "**b)**\n",
       "Here goes the text for subexercise b).\n",
       "\n",
       "\n",
@@ -23618,7 +23682,7 @@ is at the end with only one newline.
      "source": [
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
-      "*Hint.*\n",
+      "**Hint.**\n",
       "A hint for this subexercise.\n",
       "\n",
       "<!-- --- end hint in exercise --- -->\n",
@@ -23626,7 +23690,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
-      "*Solution.*\n",
+      "**Solution.**\n",
       "Here goes the solution of this subexercise.\n",
       "\n",
       "<!-- --- end solution of exercise --- -->\n",
@@ -23693,6 +23757,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 7: Solution of differential equation\n",
+      "<a name=\"sec:this:exer:de\"/>\n",
       "\n",
       "<!-- --- begin quiz --- -->\n",
       "<!-- --- quiz heading: SOlution of differential equation -->\n",
@@ -23812,10 +23877,10 @@ is at the end with only one newline.
       "<!-- it is just typeset as it is written. -->\n",
       "\n",
       "\n",
-      "*a)*\n",
+      "**a)**\n",
       "What is the capital of Norway?\n",
       "\n",
-      "*Answer.*\n",
+      "**Answer.**\n",
       "Oslo.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -23832,9 +23897,10 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 9: Make references to projects and problems\n",
+      "<a name=\"exer:some:formula\"/>\n",
       "\n",
       "<!-- Test comments not at the end only -->\n",
-      "Pick a statement from  [Project 4: Explore Distributions of Random Circles](#s) or  [Problem 2: Flip a Coin](#n)\n",
+      "Pick a statement from  [Project 4: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)\n",
       "and verify it.\n",
       "\n",
       "Test list at the end of an exercise without other elements (like subexercise,\n",
@@ -23853,11 +23919,12 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Project 10: References to  [Project 3: Compute a Probability](#y) in a heading works for ipynb\n",
+      "### Project 10: References to  [Project 3: Compute a Probability](#demo:ex:2) in a heading works for ipynb\n",
+      "<a name=\"exer:you\"/>\n",
       "\n",
-      "Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#s),\n",
-      "the two before that as  [Project 3: Compute a Probability](#y) and [Project 4: Explore Distributions of Random Circles](#s),\n",
-      "and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#b).\n",
+      "Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#exer:some:formula),\n",
+      "the two before that as  [Project 3: Compute a Probability](#demo:ex:2) and [Project 4: Explore Distributions of Random Circles](#proj:circle1),\n",
+      "and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you).\n",
       "Filename: `selc_composed.pdf`.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -23990,6 +24057,7 @@ is at the end with only one newline.
       "    1994.\n",
       "\n",
       "## Appendix: Just for testing; part I\n",
+      "<a name=\"app1\"/>\n",
       "\n",
       "This is the first appendix.\n",
       "\n",
@@ -23998,6 +24066,7 @@ is at the end with only one newline.
       "Some text.\n",
       "\n",
       "## Appendix: Just for testing; part II\n",
+      "<a name=\"app2\"/>\n",
       "\n",
       "This is more stuff for an appendix.\n",
       "\n",
@@ -24007,10 +24076,12 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Appendix: Testing identical titles\n",
+      "<a name=\"test:title:id1\"/>\n",
       "\n",
       "With label.\n",
       "\n",
       "### Appendix: Testing identical titles\n",
+      "<a name=\"test:title:id2\"/>\n",
       "\n",
       "What about inserting a quiz?\n",
       "\n",
@@ -25276,6 +25347,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 <h2 id="section-1">Section 1</h2>
+<p><a name="sec1"/></p>
 <p>Here is a nested list:</p>
 <ul>
 <li>item1</li>
@@ -25307,10 +25379,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </blockquote>
 <p>Here are two references. Equation  is fine. Eq.  too. Even Equation  without the tilde.</p>
 <h3 id="subsection-1">Subsection 1</h3>
+<p><a name="subsec1"/></p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
-<p>More text, with a reference back to the section <a href="#n-1">Section 1</a> and <a href="#n-1">Subsection 1</a>, and further to the the sections <a href="#n-1">Subsection 1</a> and <a href="#s">URLs</a>, which encourages you to do the tasks in <a href="#n">Problem 2: Flip a Coin</a> and <a href="#s">Exercise 9: Make references to projects and problems</a>. Appendices <a href="#i">Appendix: Just for testing; part I</a> and <a href="#i">Appendix: Just for testing; part II</a> are also nice elements.</p>
+<p>More text, with a reference back to the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>. Appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.</p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
 <h4 id="computer-code">Computer code</h4>
@@ -25521,11 +25594,12 @@ Python.</code></pre>
 </ul>
 <p>which gives flexibility in writing. This is the third<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> example.</p>
 <p>Here is some more text before a new definition of a footnote that was used used above.</p>
-<p><em>Non-breaking space character.</em><space> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
+<p><em>Non-breaking space character.</em> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
 <h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
-<p>Test of figures. In particular we refer to Figure ref{fig:impact} in which there is a flow.</p>
+<p><a name="subsec:ex"/></p>
+<p>Test of figures. In particular we refer to <a href="#fig:impact">Figure</a> in which there is a flow.</p>
 <div class="figure">
-<img src="../doc/src/manual/fig/wave1D.png" alt="Visualization of a wave." /><p class="caption">Visualization of a wave.</p>
+<img src="../doc/src/manual/fig/wave1D.png" alt="Visualization of a wave. " /><p class="caption">Visualization of a wave. <a name="fig:impact"/></p>
 </div>
 <p>Figures without captions are allowed and will be inlined.</p>
 <div class="figure">
@@ -25533,9 +25607,9 @@ Python.</code></pre>
 </div>
 <!-- Test multi-line caption in figure -->
 
-<p>Here is figure ref{myfig} with a long multi-line caption and an extra space before the FIGURE keyword.</p>
+<p>Here is <a href="#myfig">figure</a> with a long multi-line caption and an extra space before the FIGURE keyword.</p>
 <div class="figure">
-<img src="../doc/src/manual/fig/wave1D.png" alt="A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}." /><p class="caption">A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in <span class="math">\(t_{i+1}\)</span>.</p>
+<img src="../doc/src/manual/fig/wave1D.png" alt="A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. " /><p class="caption">A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in <span class="math">\(t_{i+1}\)</span>. <a name="myfig"/></p>
 </div>
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
@@ -25550,6 +25624,7 @@ Python.</code></pre>
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 <h3 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h3>
+<p><a name="decay:sec:theta"/></p>
 <p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
 <pre><code>def f(theta):
     return theta**2</code></pre>
@@ -25585,12 +25660,13 @@ Python.</code></pre>
 <h3 id="custom-environments">Custom Environments</h3>
 <p>Here is an attempt to create a theorem environment via Mako (for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end LaTeX environments for theorems. Should look nice in most formats!</p>
 <!-- begin theorem -->
-
+<p><a name="theorem:fundamental1"/></p>
 <p><em>Theorem 5.</em> Let <span class="math">\(a=1\)</span> and <span class="math">\(b=2\)</span>. Then <span class="math">\(c=3\)</span>. <!-- end theorem --></p>
 <!-- begin proof -->
 <p><em>Proof.</em> Since <span class="math">\(c=a+b\)</span>, the result follows from straightforward addition. <span class="math">\(\Diamond\)</span> <!-- end proof --></p>
 <p>As we see, the proof of Theorem 5 is a modest achievement.</p>
 <h3 id="tables">Tables</h3>
+<p><a name="subsec:table"/></p>
 <!-- index with comma could fool sphinx -->
 
 <p>Let us take this table from the manual:</p>
@@ -25991,7 +26067,7 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="odd">
-<td align="center">### Example 1: Examples can be typeset as exercises</td>
+<td align="center">### Example 1: Examples can be typeset as exercises <a name="Example"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -26036,7 +26112,7 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center">### URLs</td>
+<td align="center">### URLs <a name="subsubsec:ex"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -26161,9 +26237,9 @@ b = \nabla^2 u + \nabla^4 x \label{eq2}
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center">Below, we have <a href="#n">Problem 2: Flip a Coin</a> and [Project as well as [Project 4: Explore Distributions of Random Cir between there we have [Exercise 9: Make references to proj</td>
-<td align="left">3: Compute a Probability](#y), cles](#s) and <a href="#s">Project 10: References to Project ref{demo:e ects and problems</a>.</td>
-<td align="left">x:2} in a heading works for pandoc](#c), and in</td>
+<td align="center">Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and [ as well as [Project 4: Explore Distributions of Random Cir between there we have [Exercise 9: Make references to proj</td>
+<td align="left">Project 3: Compute a Probability](#demo:ex:2), cles](#proj:circle1) and <a href="#exer:some:formula">Project 10: References to Project ects and problems</a>.</td>
+<td align="left">ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in</td>
 </tr>
 <tr class="odd">
 <td align="center">## Exercises</td>
@@ -26176,176 +26252,171 @@ b = \nabla^2 u + \nabla^4 x \label{eq2}
 <td align="left"></td>
 </tr>
 <tr class="odd">
-<td align="center">### Problem 2: Flip a Coin</td>
+<td align="center">### Problem 2: Flip a Coin <a name="demo:ex:1"/> <!-- keywords = random numbers; Monte Carlo simulation --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
-<td align="center"><!-- keywords = random numbers; Monte Carlo simulation --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
 <td align="center"><!-- Torture tests --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">#### Remarks</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Remarks with such a subsubsection heading would previously the beginning of a new exercise and cause trouble. Maybe a</td>
 <td align="left">mark list</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">1. Mark 1. 2. Mark 2.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>Hint 2.</em> Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end answer of exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><del>{.P import sys, random N = int(sys.argv[1]) heads = 0 for i in range(N): r = random.random() if r &lt;= 0.5: heads += 1 print 'Flipping a coin %d times gave %d heads' % (N, heads)</del></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~</sub></td>
 <td align="left">ython}</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end solution of exercise --- --> Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>. &lt;!-- solution files: mysol.txt, mysol_flip_coin.py, yet_ano</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">### Not an exercise</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Should be possible to stick a normal section in the middle exercises.</td>
 <td align="left">of many</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">### Project 3: Compute a Probability</td>
+<tr class="even">
+<td align="center">### Project 3: Compute a Probability <a name="demo:ex:2"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- Minimalistic exercise --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">What is the probability of getting a number between 0.5 and drawing uniformly distributed random numbers from the inter</td>
 <td align="left">0.6 when val <span class="math">\([0,1)\)</span>?</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">At the end we have a list because that caused problems in L in previous DocOnce versions:</td>
 <td align="left">aTeX</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">1. item1 2. item2</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard `rando count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0. compute the probability as \)</span>M/N$.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">### Project 4: Explore Distributions of Random Circles</td>
+<tr class="even">
+<td align="center">### Project 4: Explore Distributions of Random Circles <a name="proj:circle1"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">The formula for a circle is given by</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><span class="math">\[
 \begin{equation}
 x = x_0 + R\cos 2\pi t,
@@ -26354,7 +26425,7 @@ x = x_0 + R\cos 2\pi t,
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><span class="math">\[
 \begin{equation}
 y = y_0 + R\sin 2\pi t,
@@ -26363,604 +26434,604 @@ y = y_0 + R\sin 2\pi t,
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub><sub><sub>~</sub></sub></sub>{.P import numpy as np</td>
 <td align="left">ython}</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">def circle(R, x0, y0, n=501): t = np.linspace(0, 1, n) x = x0 + R<em>np.cos(2</em>np.pi<em>t) y = y0 + R</em>np.sin(2<em>np.pi</em>t) return x, y</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">x, y = circle(2.0, 0, 0) <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
 <td align="left">~<sub>~</sub></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- Often in an exercise we have some comments about the s
 <!-- which we normally want to keep where they are. --></td>
 <td align="left">olution --&gt;</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> func above.</td>
 <td align="left">tion</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>a)</em> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly d</td>
 <td align="left">istributed.</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>Hint.</em> Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> Here goes the short answer to part a).</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end answer of exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes a full solution to part a).</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end solution of exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>b)</em> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally d Filename: <code>norm.py</code>.</td>
 <td align="left">istributed.</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>c)</em> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Filename: <code>circles.pdf</code>.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- Closing remarks for this Project --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">#### Remarks</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">At the very end of the exercise it may be appropriate to su and give some perspectives.</td>
 <td align="left">mmarize</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="center">### Exercise 5: Determine some Distance</td>
+<tr class="odd">
+<td align="center">### Exercise 5: Determine some Distance <a name="exer:dist"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Intro to this exercise. Questions are in subexercises below</td>
 <td align="left">.</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- No meaning in this weired test example: --> The text here belongs to the main (intro) part of the exerc closing remarks to have text after subexercises.</td>
 <td align="left">ise. Need</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Test list in exercise:</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">1. item1 2. item2</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[
 \hbox{math in solution: } a = b
 \]</span> And code <code>a=b</code> in this solution:</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> a = b # code in solution <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
 <td align="left">~<sub>~</sub></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">End of solution is here.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end solution of exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>a)</em> Subexercises are numbered a), b), etc.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>Hint 1.</em> First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><span class="math">\[
 a=b.
 \]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> def func(x): return x + 1 # with code in hint <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
 <td align="left">~<sub>~</sub></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>Hint 2.</em> Second hint to subexercise a).</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Test list in hint:</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">1. item1 2. item2</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end hint in exercise --- --> Filename: <code>subexer_a.pdf</code>.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end answer of exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>b)</em> Here goes the text for subexercise b).</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single li</td>
 <td align="left">ne:</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><span class="math">\[
 \cos^2 x + \sin^2 x = 1 \thinspace .
 \]</span></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin hint in exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>Hint.</em> A hint for this subexercise.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end hint in exercise --- --> Filename: <code>subexer_b.pdf</code>.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes the solution of this subexercise.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end solution of exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- Closing remarks for this Exercise --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">#### Remarks</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Some final closing remarks, e.g., summarizing the main find and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.</td>
 <td align="left">ings</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">### Some exercise without the &quot;Exercise:&quot; prefix</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- Another minimalistic exercise --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Just some text. And some math saying that <span class="math">\(e^0=1\)</span> on a sing to test that math block insertion is correct:</td>
 <td align="left">le line,</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><span class="math">\[
 \exp{(0)} = 1
 \]</span></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">And a test that the code <code>lambda x: x+2</code> is correctly place</td>
 <td align="left">d here:</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> lambda x: x+2 <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
 <td align="left">~<sub>~</sub></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- the Filename: ... is written correctly. --> &lt;!-- Have some comments at the end of the exercise to see t</td>
 <td align="left">hat --&gt;</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="center">### Exercise 7: Solution of differential equation</td>
+<tr class="odd">
+<td align="center">### Exercise 7: Solution of differential equation <a name="sec:this:exer:de"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>Cannot typeset quiz</em>: &quot;Given</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><span class="math">\[
 \frac{dy}{dx} = -y(x),\quad y(0)=1
 \]</span> What is the solution of this equation?&quot; <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">### Example 8: Just an example</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- This example needs the --examples_as_exercises option,
 <!-- it is just typeset as it is written. --></td>
 <td align="left">otherwise --&gt;</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><em>a)</em> What is the capital of Norway?</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>Answer.</em> Oslo.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">## Here goes another section</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">With some text, before we continue with exercises.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">## More Exercises</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
+<tr class="even">
+<td align="center">### Exercise 9: Make references to projects and problems <a name="exer:some:formula"/></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
 <tr class="odd">
-<td align="center">### Exercise 9: Make references to projects and problems</td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="center"><!-- Test comments not at the end only --> Pick a statement from [Project 4: Explore Distributions of and verify it.</td>
+<td align="left">Random Circles](#proj:circle1) or [Problem 2: Flip a Coin</td>
+<td align="left">](#demo:ex:1)</td>
 </tr>
 <tr class="even">
-<td align="center"><!-- Test comments not at the end only --> Pick a statement from [Project 4: Explore Distributions of and verify it.</td>
-<td align="left">Random Circles](#s) or <a href="#n">Problem 2: Flip a Coin</a></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
 <td align="center">Test list at the end of an exercise without other elements hint, etc.):</td>
 <td align="left">(like subexercise,</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">1. item1 2. item2</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Filename: <code>verify_formula.py</code>.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- --- begin exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="center">### Project 10: References to [Project 3: Compute a Probab</td>
-<td align="left">ility](#y) in a heading works for pandoc</td>
+<tr class="odd">
+<td align="center">### Project 10: References to [Project 3: Compute a Probab <a name="exer:you"/></td>
+<td align="left">ility](#demo:ex:2) in a heading works for pandoc</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">Refer to the previous exercise as [Exercise 9: Make refere the two before that as [Project 3: Compute a Probability]( and this one as [Project 10: References to Project ref{dem Filename: <code>selc_composed.pdf</code>.</td>
-<td align="left">nces to projects and problems](#s), #y) and <a href="#c">Project 4: Explore Distributions of Random Circles o:ex:2} in a heading works for pandoc</a>.</td>
-<td align="left">](#s),</td>
-</tr>
 <tr class="even">
+<td align="center">Refer to the previous exercise as [Exercise 9: Make refere the two before that as [Project 3: Compute a Probability]( and this one as [Project 10: References to Project ref{dem Filename: <code>selc_composed.pdf</code>.</td>
+<td align="left">nces to projects and problems](#exer:some:formula), #demo:ex:2) and <a href="#exer:you">Project 4: Explore Distributions of Random o:ex:2} in a heading works for pandoc</a>.</td>
+<td align="left">Circles](#proj:circle1),</td>
+</tr>
+<tr class="odd">
 <td align="center"><!-- --- end exercise --- --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">## References</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">1.  <strong>H. P. Langtangen and Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Enginee 7(1), pp. 187-204, 2002. 2.  <strong>H. P. Langtangen, K.-A. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002. 3.  </strong>H. P. Langtangen<strong>. Numerical Solution of First Passage Problems in Random <em>SIAM Journal of Scientific and Statistical Computing</em>, 15, pp. 997-996, 1994. 4.  </strong>K.-A. Mardal, G. W. Zumbus Software Tools for Multigrid Methods, </em>Advanced Topics in Computational Partial Differential edited by </strong>H. P. Langtangen and A. Tveito<strong>, Springer, 2003. 5.  </strong>H. P. Langtangen<strong>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989. 6.  </strong>H. P. Langtangen<strong>. Stochastic Breakthrough Time Analysis of an Enhanced Oi <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992. 7.  </strong>M. Mortensen, H. P. Lang A FEniCS-Based Programming Framework for Modeling Turbu <em>Advances in Water Resources</em>, 34(9), [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.or 2011. 8.  <strong>S. Glimsdal, G. Pedersen Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006. 9.  </strong>S. Rahman, J. Gorman, C. H Numerical Investigation of a Piezoelectric Surface Acou <em>Physical Review B: Condensed Matter and Materials Phys 74, 2006. 10.  <strong>J. B. Haga, H. Osnes and H. On the Causes of Pressure Oscillations in Low-Permeable <em>International Journal of Analytical and Numerical Meth [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1 2011, &lt;http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/ab 11.  <strong>H. P. Langtangen</strong>. </em>Computational Partial Differential Equations - Numeric Springer, 2003. 12.  </strong>H. P. Langtangen<strong>. <em>Python Scripting for Computational Science</em>, Springer, 2008. 13.  </strong>H. P. Langtangen and G. Pederse Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by <strong>J. Grue, B. Gjevik and J. E. Weber</strong>, Kluwer Academic Publishers, pp. pp. 117-126, 1995, &lt;http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrody 14.  <strong>H. P. Langtangen</strong>. </em>A Primer on Scientific Programming With Python<em>, Springer, 2012. 15.  <strong>P. V. Jeberg, H. P. Langtan Optimization With Diffpack: Practical Example From Weld <em>Simula Research Laboratory</em>, 2004. 16.  </strong>H. P. Langtangen<strong>. Computational Methods for Two-Phase Flow in Oil Reservo Ph.D. Thesis, Mechanics Division, Department of Mathematics, Universi 1989. 17.  </strong>H. P. Langtangen<strong>. Computational Modeling of Huge Tsunamis From Asteroid I Invited keynote lecture at the confe 2007. 18.  </strong>H. P. Langtangen<strong>. Solution of the Navier-Stokes Equations With the Finite M.Sc. Thesis, Mechanics Division, Department of Mathematics, Universi 1985. 19.  </strong>H. P. Langtangen and A. Tveito</em> Numerical Methods in Continuum Mechanics, <em>Center for Industrial Research</em>, 1991. 20.  <strong>H. P. Langtangen</strong>. Diffpack: Software for Partial Differential Equations, *Proceedings of the Second Annual Object-Oriented Numer edited by <strong>A. Vermeulen</strong>, 1994.</td>
 <td align="left">G. Pedersen**.</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">## Appendix: Just for testing; part I</td>
+<tr class="even">
+<td align="center">## Appendix: Just for testing; part I <a name="app1"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">This is the first appendix.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">### A subsection within an appendix</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Some text.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">## Appendix: Just for testing; part II</td>
+<tr class="even">
+<td align="center">## Appendix: Just for testing; part II <a name="app2"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">This is more stuff for an appendix.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">### Appendix: Testing identical titles</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Without label.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">### Appendix: Testing identical titles</td>
+<tr class="even">
+<td align="center">### Appendix: Testing identical titles <a name="test:title:id1"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">With label.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
-<td align="center">### Appendix: Testing identical titles</td>
+<tr class="even">
+<td align="center">### Appendix: Testing identical titles <a name="test:title:id2"/></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">What about inserting a quiz?</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><em>Cannot typeset quiz</em>: &quot;What is the capital of Norway?&quot;</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">### Appendix: Testing identical titles</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Without label.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="center"><em>Tip.</em><space> Here is a tip or hint box, typeset as a notice box.</td>
+<tr class="odd">
+<td align="center"><em>Tip.</em> Here is a tip or hint box, typeset as a notice box.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Need a lot of text to surround the summary box. Version control systems allow you to record the history of and share files among several computers and collaborators i professional way. File changes on one computer are updated merged with changes on another computer. Especially when wo with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the proje have the latest updates of the files. Greg Wilson' excellent [Script for Introduction to Version from using version control systems.</td>
 <td align="left">files n a or rking</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
-<td align="center"><em>Summary.</em><space> <strong>Bold remark:</strong> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</td>
+<tr class="odd">
+<td align="center"><em>Summary.</em> <strong>Bold remark:</strong> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">Projects that you want to share among several computers or workers are today most conveniently stored at some web site cloud&quot; and updated through communication with that site. I recommend you to use such sites for all serious programming scientific writing work - and all other important files.</td>
 <td align="left">project &quot;in the strongly and</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">The simplest services for hosting project files are [Dropbo It is very easy to get started with these systems, and they to share files among laptops and mobile units with as many you want. The systems offer a kind of version control in th files are stored frequently (several times per minute), and back to previous versions for the last 30 days. However, it challenging to find the right version from the past when t so many of them.</td>
 <td align="left">x](http://dropbox.com) and [Google Drive](http://drive.goog allow you users as at the you can go is here are</td>
 <td align="left">le.com).</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">More seriously, when several people may edit files simultan can be difficult detect who did what when, roll back to pre versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Google Drive: project hosting services with true version co systems. The following text aims at providing you with the information to started with such systems. Numerous other tu contain more comprehensive material and in-depth explanatio concepts and tools.</td>
 <td align="left">eously, it vious</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">The idea with project hosting services is that you have the associated with a project in the cloud. Many people may sha files. Every time you want to work on the project you expl update your version of the files, edit the files as you lik synchronize the files with the &quot;master version&quot; at the site project is hosted. If you at some point need to go back to version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various</td>
 <td align="left">files re these icitly e, and where the a</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">All these services are very similar. Below we describe how started with Bitbucket, GitHub, and Googlecode. Launchpad w similarly to the latter three. All the project hosting serv excellent introductions available at their web sites, but t below are much shorter and aim at getting you started as qu possible by concentrating on the most important need-to-kno The Git tutorials we refer to later in this document contai detailed information and constitute of course very valuable when you use version control systems every day. The point n to get started.</td>
 <td align="left">you get orks very ices have he recipes ickly as w steps. n more readings ow is</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">### Appendix: Testing inline comments</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><!-- Names can be [ A-Za-z0-9_'+-]+ --></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center">Projects that you want to share among several computers or workers are today most conveniently stored at some web site cloud&quot; and updated through communication with that site. [hpl's semi opinion 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all se programming and scientific writing work - and all other imp files.</td>
 <td align="left">project &quot;in the</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center">The simplest services for hosting project files is Dropbox. how files, like <code>myfile.py</code>, perhaps containing much math, <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between ma is very easy to get started with Dropbox, and it allows you files among [hpl 3: laptops and mobile units -&gt; computers, and phones].</td>
 <td align="left">[mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the vid like chines.] It to share tablets,</td>
 <td align="left">eo. It explains</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><!-- Test horizontal rule --></td>
 <td align="left"></td>
 <td align="left"></td>
@@ -61920,20 +61991,23 @@ doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg
 doconce slides_html slides1 html5slides --html_slide_theme=template-default
 cp slides1.html slides1_html5slides_template-default.html
 
-doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish --html_output=slides1_html_bloodish
-doconce split_html slides1_html_bloodish --method=space8  # one long file
-
-doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish --html_output=slides1_html_blueish
-doconce split_html slides1_html_blueish --method=colorline  # one long file
-
-doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized --html_output=slides1_html_solarized
-doconce slides_html slides1_html_solarized doconce --nav_button=text
-
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3 --html_style=solarized3 --html_output=slides1_html_solarized3
 doconce slides_html slides1_html_solarized3 doconce --nav_button=text
 
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized2 --html_style=solarized2 --html_output=slides1_html_solarized2
 doconce slides_html slides1_html_solarized2 doconce --nav_button=text
+
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish --html_output=slides1_html_bloodish
+doconce split_html slides1_html_bloodish --method=space8  # one long file
+
+doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized --html_output=slides1_html_solarized
+doconce slides_html slides1_html_solarized doconce --nav_button=text
+
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish --html_output=slides1_html_blueish
+doconce split_html slides1_html_blueish --method=colorline  # one long file
+
+doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3_dark --html_style=solarized3_dark --html_output=slides1_html_solarized3_dark
+doconce slides_html slides1_html_solarized3_dark doconce --nav_button=text
 
 doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=dzslides SLIDE_THEME=dzslides_default
 doconce slides_html slides1 dzslides --html_slide_theme=dzslides_default
@@ -77880,7 +77954,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Aug 30 00:52:26 2014.
+# sphinx-quickstart on Sun Aug 31 13:08:30 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -86133,7 +86207,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
-*Notice.*\g<space>
+*Notice.* 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -88426,7 +88500,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to {{{sphinx}}} and other formats such that
 labels in {{{align}}} environments work well.)
 
-//Notice.//\g<space>
+//Notice.// 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure ({{{subfigure}}} package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -89502,7 +89576,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to 'sphinx' and other formats such that
 labels in 'align' environments work well.)
 
-*Notice.*\g<space>
+*Notice.* 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure ('subfigure' package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -90572,7 +90646,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to C{sphinx} and other formats such that
 labels in C{align} environments work well.)
 
-I{Notice.}\g<space>
+I{Notice.} 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (C{subfigure} package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -92415,6 +92489,7 @@ The table of contents is removed by writing `TOC: off`.
 
 
 ### Section Types
+<a name="quick:sections"/>
 
 
                 Section type                                    Syntax                    
@@ -92887,7 +92962,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
-*Notice.*\g<space>
+*Notice.* 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -93010,7 +93085,7 @@ The latter results in
 
 ### Tables
 
-The table in the section [Section Types](#s) was written with this
+The table in the section [Section Types](#quick:sections) was written with this
 syntax:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98453,6 +98528,8 @@ output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
 + doconce format ipynb testdoc.do.txt --examples_as_exercises
+tar: Removing leading `../' from member names
+tar: Removing leading `../' from hard link targets
 running preprocess -DFORMAT=ipynb -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to ipynb
@@ -98483,8 +98560,13 @@ copying after regex "a comment" until "^C\s+END1"
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 found info about 10 exercises
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format ipynb
 *** warning: footnotes are not supported for format ipynb
     footnotes will be left in the doconce syntax
+collected all required additional files in ipynb-testdoc-src.tar.gz which must be distributed with the notebook
 output in testdoc.ipynb
 + '[' 0 -ne 0 ']'
 + system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 'MYVAR2=a string' --examples_as_exercises
@@ -106621,13 +106703,13 @@ translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.png not found
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.gif not found
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpg not found
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99.jpeg not found
 *** error: figure http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media99:
     could not find URL with legal extension .png, .gif, .jpg, .jpeg
 Abort! (add --no_abort on the command line to avoid this abortion)
@@ -106645,27 +106727,13 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
-*** error: could not translate environment: !bsol
-    This is an environment in an exercise. Check if the
-    heading is correct so the subsection was recognized
-    as Exercise, Problem, or Project (Exercise: title).
-    context:
-
-Normal text.
-
-<p>
-Just a loner subexercise begin.
-!bsol
-Here is a solution.
-!esol
-Normal text.
-
-<h2>Links
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg not found
+*** error: movie "http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg" was not found
+    could not find any .ogg/.mp4/.webm version of this filename
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
 replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt
@@ -106679,27 +106747,13 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg, 404 error)
-*** error: could not translate environment: !bsol
-    This is an environment in an exercise. Check if the
-    heading is correct so the subsection was recognized
-    as Exercise, Problem, or Project (Exercise: title).
-    context:
-
-Normal text.
-
-<p>
-Just a loner subexercise begin.
-!bsol
-Here is a solution.
-!esol
-Normal text.
-
-<h2>Links
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg not found
+*** error: movie "http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.ogg" was not found
+    could not find any .ogg/.mp4/.webm version of this filename
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace 99x9.ogg .ogg tmp2.do.txt
 replacing 99x9.ogg by .ogg in tmp2.do.txt
@@ -106713,7 +106767,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
@@ -106753,7 +106807,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
@@ -106777,7 +106831,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
@@ -106788,7 +106842,7 @@ translating doconce text in tmp2.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf not found
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
     found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
@@ -106810,7 +106864,7 @@ translating doconce text in tmp2.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf ...
-    not found (http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf, 404 error)
+    http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.pdf not found
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
     found!
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
