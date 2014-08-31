@@ -1,0 +1,234 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Scientific Writing and Publishing Anno 2013">
+<meta name="keywords" content="key word1,key word2,key equation,$\u$ conservation,keyword">
+
+<title>Scientific Writing and Publishing Anno 2013</title>
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Challenges with tools for scientific writing  ',
+               0,
+               None,
+               '___sec0'),
+              (' Scientific writing = LaTeX ', 1, None, '___sec1'),
+              (' Scientific publishing needs to address new media ',
+               1,
+               None,
+               '___sec2'),
+              (' The book will probably survive ', 1, None, '___sec3'),
+              (' The classical report will survive ', 1, None, '___sec4'),
+              (' Scope of this presentation ', 1, None, '___sec5'),
+              (' Does your scientific writing today need to address new media (in the future)? ',
+               1,
+               None,
+               '___sec6'),
+              (' Can we factor pieces from a heterogeneous world to one coherent piece in the future? ',
+               1,
+               None,
+               '___sec7'),
+              (' Popular tools anno 2013 and their math support ',
+               1,
+               None,
+               '___sec8'),
+              (' LaTeX is very rich; other tools support much less ',
+               1,
+               None,
+               '___sec9'),
+              (' LaTeX is very rich; other tools support much less ',
+               1,
+               None,
+               '___sec10'),
+              (' Typesetting concerns I ', 1, None, '___sec11'),
+              (' Typesetting concerns II ', 1, None, '___sec12'),
+              (' Typesetting concerns III ', 1, None, '___sec13'),
+              (' Solution I: Use a format that translates to many ',
+               1,
+               None,
+               '___sec14'),
+              (' Solution II: Use DocOnce ', 1, None, '___sec15'),
+              (' DocOnce ', 0, None, '___sec16'),
+              (' DocOnce demos ', 1, None, '___sec17'),
+              (' DocOnce disclaimer ', 1, None, '___sec18'),
+              (' DocOnce experience: code generation is a great thing ',
+               1,
+               None,
+               '___sec19'),
+              (' Example: generate reveal.js or deck.js slides from HTML ',
+               2,
+               None,
+               '___sec20'),
+              (' A tour of DocOnce ', 0, None, '___sec21'),
+              (' Title, authors, date, toc ', 1, None, '___sec22'),
+              (' Abstract ', 1, None, '___sec23'),
+              (' Section headings ', 1, None, '___sec24'),
+              (' This is an H1/chapter heading ', 0, None, '___sec25'),
+              (' This is an H2/section heading ', 1, None, '___sec26'),
+              (' This is an H3/subsection heading ', 2, None, '___sec27'),
+              (' This is an H4/paragraph heading ', 3, None, '___sec28'),
+              (' Markup and lists ', 1, None, '___sec29'),
+              (' Labels, references, index items ', 1, None, '___sec30'),
+              (' Figures and movies ', 1, None, '___sec31'),
+              (' Math ', 1, None, '___sec32'),
+              (' Math flexibility ', 1, None, '___sec33'),
+              (' Displaying code ', 1, None, '___sec34'),
+              (' Copying code from source files ', 1, None, '___sec35'),
+              (' Typesetting of code is implied by the file extension ',
+               1,
+               None,
+               '___sec36'),
+              (' Demonstrating code execution; Online Python Tutor ',
+               1,
+               'slide:opt',
+               'slide:opt'),
+              (' Demonstrating code execution; Sage Cell Server ',
+               1,
+               'slide:sage:cell',
+               'slide:sage:cell'),
+              (' Demonstrating code execution; IPython notebook ',
+               1,
+               'slide:ipynb',
+               'slide:ipynb'),
+              (' Tables ', 1, None, '___sec40'),
+              (' Newcommands for math ', 1, None, '___sec41'),
+              (' Labels, citations, index, bibliography ',
+               1,
+               None,
+               '___sec42'),
+              (' Exercises ', 1, None, '___sec43'),
+              (' Rendering of the previous page ', 1, None, '___sec44'),
+              (' Problem 1: Flip a Coin ', 2, None, '___sec45'),
+              (' Exercises ', 1, None, '___sec46'),
+              (' Use of preprocessors ', 1, None, '___sec47'),
+              (' DocOnce admonitions ', 1, None, '___sec48'),
+              (' Slides ', 1, None, '___sec49'),
+              (' Example on slide code ', 1, None, '___sec50'),
+              (' Example on slide code ', 1, None, '___sec51'),
+              (' Headline ', 1, None, '___sec52'),
+              (' Grid layout of slide: MxN cells ', 1, None, '___sec53'),
+              (' Grid layout of slide: MxN cells  ', 1, None, '___sec54'),
+              (' Headline ', 1, None, '___sec55'),
+              (' Classic slide types ', 1, None, '___sec56'),
+              (' HTML5 slide types ', 1, None, '___sec57'),
+              (' DocOnce to HTML ', 1, None, '___sec58'),
+              (' Output for blog posts ', 1, None, '___sec59'),
+              (' DocOnce to pdfLaTeX ', 1, None, '___sec60'),
+              (' DocOnce to Sphinx ', 1, None, '___sec61'),
+              (' Output for wiki ', 1, None, '___sec62'),
+              (' DocOnce to other formats ', 1, None, '___sec63'),
+              (' Installation ', 1, None, '___sec64'),
+              (' Writing tips for LaTeX writers who want to convert to DocOnce  ',
+               1,
+               None,
+               '___sec65'),
+              (' DocOnce writing tips ', 1, None, '___sec66'),
+              (' DocOnce writing tips ', 1, None, '___sec67'),
+              (' Writing tips for sphinx and other formats ',
+               1,
+               None,
+               '___sec68')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0036"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._scientific_writing-solarized035.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._scientific_writing-solarized037.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>Demonstrating code execution; IPython notebook <a name="slide:ipynb"></a></h1>
+
+Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_blank">DocOnce source</a> and transform to an <a href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" target="_blank">IPython notebook</a> with <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html" target="_blank">source</a>
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._scientific_writing-solarized035.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._scientific_writing-solarized037.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
