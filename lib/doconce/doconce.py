@@ -1661,6 +1661,7 @@ def typeset_tables(filestr, format):
                 if not ok:
                     print '*** error: syntax error in table!'
                     print '    missing three horizontal rules and heading'
+                    print '    in the right places'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
                             # Check for common syntax error: |--l--|--r--|
@@ -1670,7 +1671,9 @@ def typeset_tables(filestr, format):
                             print '| ' + ' | '.join(row) + ' |'
                         else:
                             print '|---------------------| (horizontal rule)'
-                    print '(or maybe not a table, just an opening pipe symbol at the beginning of the line?)'
+                    print '\npossible trouble:'
+                    print '1. not a table, just an opening pipe symbol at the beginning of the line?'
+                    print '2. something wrong with the syntax in a preceding table?'
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -3553,11 +3556,19 @@ def preprocess(filename, format, preprocessor_options=[]):
             key = None
 
         if key is not None:
-            # Try eval(value), if it fails, assume string or bool
-            try:
-                mako_kwargs[key] = eval(value)
-            except (NameError, TypeError, SyntaxError):
+            # evaluate value if it has the form eval('something')
+            if isinstance(value, str) and value.startswith('eval('):
+                try:
+                    mako_kwargs[key] = eval(value)
+                except (NameError, TypeError, SyntaxError) as e:
+                    print '*** error: %s=%s imples running eval, but this failed' % (key, value)
+                    print '    ', str(e)
+                    _abort()
+            else:
                 mako_kwargs[key] = value
+
+            # No, this fails if value=input or something defined in python
+            # Work with just strings and use key='eval(something)' instead
 
     resultfile = 'tmp_preprocess__' + filename
     resultfile2 = 'tmp_mako__' + filename

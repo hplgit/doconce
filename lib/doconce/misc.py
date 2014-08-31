@@ -2778,8 +2778,10 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 undefined_labels.append(label)
     if undefined_labels:
         for label in undefined_labels:
-            print '*** (ref{%s}) but no label{%s}' % (label, label)
+            print '*** error: (ref{%s}) but no label{%s}' % (label, label)
         print '*** error: found references to undefined equation labels!'
+        print '    (use generalized references ref[][][] if labels are'
+        print '    defined outside this doconce document)'
         _abort()
     # Substitute eqrefs in each part.
     # MathJax cannot refer to labels in other HTML files.
