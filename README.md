@@ -44,14 +44,30 @@ details.
 
 ### Demo
 
-A [short scientific report](http://hplgit.github.io/teamods/writing_reports/index.html) demonstrates the many formats that DocOnce can generate and
-how mathematics and computer code look like.
+A [short scientific report](http://hplgit.github.io/teamods/writing_reports/index.html)
+demonstrates the many formats that DocOnce can generate and how
+mathematics and computer code look like. (Note that at the bottom of
+the page there is a link to another version of the demo with complete
+DocOnce commands for producing the different versions.)
 
 <!-- Note: local links does not work since this README file is a source -->
 <!-- code file and not part of the published gh-pages. Use full URL. -->
 
-There is also a demo of how DocOnce can
-be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html) in various formats.
+Another demo shows how DocOnce can be used to [create slides](http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html) in
+various formats (HTML5 reveal.js, deck.js, etc., as well as LaTeX
+Beamer).
+
+DocOnce has support for HTML documents with design and functionality
+based on Bootstrap styles.  A [demo](http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html)
+illustrates the many possibilities for colors and layouts.
+
+A [complete book](http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8) (900 pages) has been written entirely
+in DocOnce. The primary format is a publisher-specific LaTeX style,
+but HTML or Sphinx formats can easily be generated, such as
+this chapter in the popular [Bootstrap style](http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html) or the [solarized color style](http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-solarized.html) as many prefer. Slides can quickly be generated from the raw text in the book.
+Here are examples in the
+[reveal.js](http://hplgit.github.io/scipro-primer/slides/looplist/html/looplist-reveal-beige.html) (HTML5) style, or the more traditional [LaTeX Beamer](http://hplgit.github.io/scipro-primer/slides/looplist/pdf/looplist-beamer.pdf) style, and even the modern [IPython notebook](http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/looplist/ipynb/looplist.ipynb) tool, which
+allows for interactive experimentation and annotation.
 
 ### Documentation
 
@@ -76,5 +92,4 @@ These documents are under development...
 ### License
 
 DocOnce is licensed under the BSD license, see the included LICENSE file.
-
 
