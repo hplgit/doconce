@@ -223,6 +223,8 @@ def table_analysis(table):
         print '   ', '| ' + ' | '.join(table[1]) + ' |'
         print '   has %d columns while further down there are %d columns' % \
               (len(table[1]), max_num_columns)
+        print '   the list of columns in the headline reads'
+        print table[1]
     # Find width of the various columns
     column_list = []
     for i, row in enumerate(table):

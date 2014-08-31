@@ -500,6 +500,28 @@ def html_code(filestr, code_blocks, code_block_types,
             code_blocks[i] = code_blocks[i].replace('>', '&gt;')
             code_blocks[i] = code_blocks[i].replace('"', '&quot;')
 
+    # Inline math cannot have x<z<w as this is interpreted as tags
+    # and becomes invisible
+    inline_math = re.findall(r'\\\( (.+?) \\\)', filestr, flags=re.DOTALL)
+    for m in inline_math:
+        if '<' in m:
+            m_new = m
+            m_new = re.sub(r'([^ ])<', '\g<1> <', m_new)
+            m_new = re.sub(r'<([^ ])', '< \g<1>', m_new)
+            if m_new != m:
+                print '*** warning: inline math in HTML must have space around <:'
+                print '    %s  ->  %s' % (m, m_new)
+            filestr = filestr.replace(r'\( %s \)' % m, r'\( %s \)' % m_new)
+    for i in range(len(tex_blocks)):
+        if re.search(r'[^ {}]<', tex_blocks[i]) or re.search(r'<[^ {}]', tex_blocks[i]):
+            print '*** warning: math block in HTML must have space around <:'
+            print tex_blocks[i]
+            tex_blocks[i] = re.sub(r'([^ {}])<', '\g<1> <', tex_blocks[i])
+            tex_blocks[i] = re.sub(r'<([^ {}])', '< \g<1>', tex_blocks[i])
+            print '    changed to'
+            print tex_blocks[i]
+            print
+
     if option('wordpress'):
         # Change all equations to $latex ...$\n
         replace = [
@@ -1279,7 +1301,7 @@ def html_ref_and_label(section_label2title, format, filestr):
     # Recognize mdash ---
     # Must be attached to text or to a quote (ending in ., quotes, or
     # emphasis *)
-    pattern = r'''([A-Za-z0-9.'"*])---([A-Za-z ])'''
+    pattern = r'''([^-][A-Za-z0-9.'"*])---([A-Za-z ][^-])'''
     filestr = re.sub(pattern, '\g<1>&mdash;\g<2>', filestr)
 
     # extract the labels in the text (filestr is now without
