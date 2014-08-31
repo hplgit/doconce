@@ -9,19 +9,18 @@ The tests are run by
 A diff test.v test.r show differences of generated text
 (test.v) and reference data (test.r).
 
-Note that standard unit tests with nose are less suitable
-for a text transformation program such as doconce. The
-reason is that some functionality must be tested in larger
-files where many constructions play together. Also, test
-files are frequently changed to add new constructions,
-leading to signficant differences from the reference text,
-and approval of the result must be done by the human eye.
-This is more conveniently done by looking at one or a few
-larger files of differences rather than many small ones.
+Note that standard unit tests with nose/pytest are less suitable for a
+text transformation program such as doconce. The reason is that some
+functionality must be tested in larger files where many constructions
+play together. Also, test files are frequently changed to add new
+constructions, or test the effect of bug fixes, leading to a substantial
+evolution of the reference text. At least for a small project as
+DocOnce, this has turned out to be the most feasible testing approach.
+Basically, `python test.verify` is run and `test.v` is compared against
+`test.r` in a diff program, using the human eye. Many updates lead to
+significant changes in the diff, so automating the acceptance of new
+remains a future project.
 
 Dependencies for the test problems run by test.verify are
 basically all software that doconce depends on, see
 installation instructions in ../doc/pub/manual/manual.html.
-
-
-

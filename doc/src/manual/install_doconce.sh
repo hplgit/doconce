@@ -42,10 +42,8 @@ apt_install git
 apt_install subversion
 
 cd srclib
-git clone git@github.com:hplgit/doconce.git
-cd doconce
-sudo python setup.py install
-cd ../..
+git clone https://github.com/hplgit/doconce.git
+if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 
 # Python
 apt_install idle
@@ -96,7 +94,6 @@ apt_install evince
 apt_install smpeg-plaympeg
 apt_install mplayer
 apt_install totem
-apt_install ffmpeg
 apt_install libav-tools
 
 # Misc
@@ -105,13 +102,13 @@ apt_install pandoc
 apt_install libreoffice
 apt_install unoconv
 apt_install libreoffice-dmaths
-pip_install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
+#epydoc is old-fashioned
+#pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
 
 apt_install curl
 apt_install a2ps
 apt_install wdiff
 apt_install meld
-apt_install xxdiff
 apt_install diffpdf
 apt_install kdiff3
 apt_install diffuse
@@ -123,7 +120,6 @@ apt_install diffuse
 # example on installing mdframed.sty manually (it exists in texlive,
 # but sometimes needs to be in its newest version)
 git clone https://github.com/marcodaniel/mdframed
-make localinstall
-cd ..
-echo "remove the mdframe directory (if successful install of mdframed.sty): rm -rf mdframed"
+if [ -d mdframed ]; then cd mdframed; make localinstall; cd ..; fi
+#$ echo "remove the mdframe directory (if successful install of mdframed.sty): rm -rf mdframed"
 echo "Everything is successfully installed!"
