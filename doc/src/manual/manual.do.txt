@@ -2565,6 +2565,67 @@ the command line as explained in Section ref{doconce2formats}.
 More advanced use of mako can include Python code that may automate
 the writing of parts of the document.
 
+!bnotice On the type of a Mako variable from the command line
+You define Mako variables as in this example:
+
+!bc sys
+Terminal> doconce format html mydoc LANG=C NO=4 COMMENTS=False
+!ec
+The variable `LANG` gets the value `'C'` as a Python string
+inside the document. All values are treated as strings, except
+if the value is `True` or `False` or if it is an integer.
+Therefore, `NO` becomes the integer `4` and you can test
+like `% if NO > 4:`. The variable `COMMENTS` gets
+the boolean value `False` and `% if not COMMENT:` is a positive
+test. With Mako such variables set on the command-line
+you can easily leave out portions
+of the document or choose between different versions of the text
+in a very flexible and fine-tuned way.
+!enotice
+
+!bnotice Advanced setting of Mako variables
+Mako variables can also be run through `eval` before being
+sent to Mako. For example,
+
+!bc sys
+Terminal> doconce format latex mydoc \
+          SOMEVAR="eval(['problem', 'data', 'results'])"
+!ec
+Now, `SOMEVAR` will be defined by
+
+!bc pycod
+SOMEVAR = eval("['problem', 'data', 'results']")
+!ec
+and result in the list `['problem', 'data', 'results']`.
+In a DocOnce document, we can write
+
+!bc do
+% for element in SOMEVAR:
+ * "`${element}.pdf`": "http://some.net/pdf/${element}.pdf"
+% endfor
+!ec
+and produce the following LaTeX code:
+
+!bc latexcod
+\begin{itemize}
+ \item \href{{http://some.net/pdf/problem.pdf}}{\nolinkurl{problem.pdf}}
+
+ \item \href{{http://some.net/pdf/data.pdf}}{\nolinkurl{data.pdf}}
+
+ \item \href{{http://some.net/pdf/results.pdf}}{\nolinkurl{results.pdf}}
+\end{itemize}
+!ec
+Instead of giving the `SOMEVAR` list on the command line, we can hardcode
+it inside the document:
+
+!bc do
+<%
+SOMEVAR = ['problem', 'data', 'results']
+%>
+!ec
+The flexibility enabled by Mako variables and statements is one of the
+major reasons to adopt DocOnce.
+!enotice
 
 !split
 ===== Splitting Documents into Smaller Pieces =====

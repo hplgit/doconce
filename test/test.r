@@ -30860,7 +30860,7 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- --- begin answer of exercise --- -->
 <b>Answer.</b>
-If the <code>random.random()</code> function returns a number \( <1/2 \), let it be
+If the <code>random.random()</code> function returns a number \( < 1/2 \), let it be
 head, otherwise tail. Repeat this \( N \) number of times.
 
 <p>
@@ -42094,7 +42094,7 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- --- begin answer of exercise --- -->
 <b>Answer.</b>
-If the <code>random.random()</code> function returns a number \( <1/2 \), let it be
+If the <code>random.random()</code> function returns a number \( < 1/2 \), let it be
 head, otherwise tail. Repeat this \( N \) number of times.
 
 <p>
@@ -68093,7 +68093,7 @@ $$
 
 
 <ul>
- <p><li class="fragment"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <p><li class="fragment"> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
  <p><li class="fragment"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <p><li class="fragment"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
@@ -77954,7 +77954,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 31 13:08:30 2014.
+# sphinx-quickstart on Sun Aug 31 19:25:44 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -93953,6 +93953,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: inline math in HTML must have space around <:
+    <1/2  ->  < 1/2
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce split_html testdoc.html --method=space10
@@ -94069,6 +94071,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: inline math in HTML must have space around <:
+    <1/2  ->  < 1/2
 *** warning: TITLE may look strange with a template -
              it is recommended to comment out the title: #TITLE:
 *** warning: AUTHOR may look strange with a template -
@@ -94124,6 +94128,8 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 *** warning: --pygm_style=emacs is not recommended when --html_style=solarized
     automatically changed to --html_style=perldoc
+*** warning: inline math in HTML must have space around <:
+    <1/2  ->  < 1/2
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce remove_exercise_answers testdoc.html
@@ -94178,6 +94184,8 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 *** warning: --pygm_style=emacs is not recommended when --html_style=solarized
     automatically changed to --html_style=perldoc
+*** warning: inline math in HTML must have space around <:
+    <1/2  ->  < 1/2
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments
@@ -97988,7 +97996,7 @@ Transcript written on testdoc.log.
 + doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
 running preprocess -DFORMAT=plain -DDEVICE=screen -DSOMEVAR=1 testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
-mako variables: {'DEVICE': 'screen', 'SOMEVAR': 1, 'FORMAT': 'plain'}
+mako variables: {'DEVICE': 'screen', 'SOMEVAR': '1', 'FORMAT': 'plain'}
 translating doconce text in tmp_mako__testdoc.do.txt to plain
 
 *** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
@@ -98019,6 +98027,8 @@ found info about 10 exercises
 *** warning: table headline with entries
     | S | command |
    has 2 columns while further down there are 3 columns
+   the list of columns in the headline reads
+['S', 'command']
 output in testdoc.txt
 + '[' 0 -ne 0 ']'
 + system doconce format st testdoc.do.txt --examples_as_exercises
@@ -98057,6 +98067,8 @@ found info about 10 exercises
 *** warning: table headline with entries
     | S | command |
    has 2 columns while further down there are 3 columns
+   the list of columns in the headline reads
+['S', 'command']
 output in testdoc.st
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx testdoc.do.txt --examples_as_exercises
@@ -98524,6 +98536,8 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: table headline with entries
     |  |  |  |
    has 3 columns while further down there are 5 columns
+   the list of columns in the headline reads
+['', '', '']
 output in testdoc.cwiki
 + '[' 0 -ne 0 ']'
 + system doconce format ipynb testdoc.do.txt --examples_as_exercises
@@ -98938,6 +98952,8 @@ figure file ../doc/src/slides/fig/CN:
     can use ../doc/src/slides/fig/CN.png for format html
 figure file ../doc/src/slides/fig/teacher2:
     can use ../doc/src/slides/fig/teacher2.jpg for format html
+*** warning: inline math in HTML must have space around <:
+    0= t_0< t_1 \cdots < t_N=T  ->  0= t_0 < t_1 \cdots < t_N=T
 output in slides3.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides3 reveal --html_slide_type=beigesmall
@@ -98961,6 +98977,8 @@ figure file ../doc/src/slides/fig/CN:
     can use ../doc/src/slides/fig/CN.png for format html
 figure file ../doc/src/slides/fig/teacher2:
     can use ../doc/src/slides/fig/teacher2.jpg for format html
+*** warning: inline math in HTML must have space around <:
+    0= t_0< t_1 \cdots < t_N=T  ->  0= t_0 < t_1 \cdots < t_N=T
 output in slides3-solarized3.html
 + '[' 0 -ne 0 ']'
 + system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
