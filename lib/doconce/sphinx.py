@@ -247,6 +247,8 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         if not has_custom_pygments_lexer('doconce'):
             envir2pygments['do'] = 'text'
 
+    global activecode_counter  # used for Runestone books
+
     # Make correct code-block:: language constructions
     legal_pygments_languages = get_legal_pygments_lexers()
     import sets
@@ -289,7 +291,6 @@ found in line:
                                  filestr, flags=re.MULTILINE)
         elif key == 'pyscpro':
             if option('runestone'):
-                global activecode_counter
                 activecode_counter += 1
                 filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                                  """
@@ -303,7 +304,6 @@ found in line:
                                  filestr, flags=re.MULTILINE)
         elif key == 'pysccod':
             if option('runestone'):
-                global activecode_counter
                 activecode_counter += 1
                 # Include (i.e., run) all previous code segments...
                 # NOTE: this is most likely not what we want
@@ -330,7 +330,6 @@ found in line:
                     if code_block_types[i] == key:
                         code_block_types[i] = key.replace('hid', 'cod')
 
-                global activecode_counter
                 activecode_counter += 1
                 key2language = dict(py='python', js='javascript', html='html')
                 language = key2language[key.replace('hid', '')]
