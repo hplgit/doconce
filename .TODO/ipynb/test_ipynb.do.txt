@@ -1,0 +1,125 @@
+TITLE: Test of various elements in a document - rendering in IPython notebook
+AUTHOR: HPL
+DATE: today
+
+===== Test of tables =====
+label{sec:tables}
+
+Here is a table with three columns:
+
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |--l--------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+===== Aligned equations with labels =====
+label{sec:math:align}
+
+Systems of equations with labels are not supported in Markdown, so
+notebooks struggle with these. Let's test my treatment of them.
+
+!bt
+\begin{align}
+ax + b & =0,
+label{eq1}\\
+x^2 + px + q &= 0.
+label{eq2}
+\end{align}
+!et
+Most science students are good at solving equations, but few can
+handle more than (ref{eq1})-(ref{eq2}).
+
+===== Mnimalistic test of movies =====
+label{sec:movies}
+
+Here is a movie about a wave:
+
+MOVIE: [mov-wavebc/gaussian_Nx50_C1_un0/movie.mp4] Reflecting boundaries ($u_x=0$) for a Gaussian wave.
+
+Figure ref{fig1} displays a wave wave signal.
+
+FIGURE: [fig-wavebc/plug_Gaussian.png, width=600] label{fig1}
+
+=== Check YouTube videos ===
+
+We must be able to embed a video from "YouTube": "http://youtube.com":
+
+MOVIE: [https://www.youtube.com/watch?v=1j_HxD4iLn8]
+
+===== Exercise: Solve a problem =====
+
+Given
+
+!bt
+\[ u'=-u^\alpha,\quad u(0)=1,\]
+!et
+the following code solves this equation
+
+!bc pycod
+import numpy as np
+
+def solver(alpha, T, dt):
+    N = int(round(T/float(dt)))
+    u = np.zeros(N+1)
+    t = np.linspace(0, T, N+1)
+    u[0] = 1
+    for n in range(N):
+        u[n+1] = u[n] - dt*u[n]**alpha
+    return u, t
+!ec
+
+!bsubex
+Run the case $\alpha=\frac{1}{2}$ and plot the solution.
+
+!bsol
+!bc pycod
+alpha = 0.5
+u, t = solver(alpha, 4, 0.1)
+% matplotlib inline
+import matplotlib.pyplot as plt
+plt.plot(t, u)
+plt.xlabel('$t$'); plt.ylabel('$u(t)$')
+!ec
+!esol
+!esubex
+
+!bsubex
+Compute the exact solution and compare the numerical and
+exact solution.
+
+!bsol
+The method of separation of variables can be used to
+solve differential equation.
+
+!bc pycod
+def derive_exact_solution():
+    import sympy as sm
+    # Use symbol a for alpha
+    t, u, a = sm.symbols('t u a')
+    # Integrate from 0 to t, i.e., from u(0)=1 to u(t) in u:
+    lhs = sm.integrate(u**(-a), (u, 1, u), conds='none')
+    rhs = sm.integrate(-1, (t, 0, t))
+    r = sm.solve(lhs - rhs, u)
+    # Check that initial condition is satisfied
+    I = r[0].subs(t, 0)
+    assert I == 1, 'Initial condition %s != 1' % I
+    exact_solution = sm.lambdify([t, a], r[0])
+    sm.init_printing()
+    return exact_solution, r[0]
+
+exact_solution, exact_expression = derive_exact_solution()
+plt.plot(t, u, t, exact_solution(t, alpha))
+plt.legend(['numerical', 'exact'])
+plt.title('alpha=%g' % alpha)
+exact_expression  # get the expression nicely rendered in notebook
+!ec
+!esol
+!esubex
+
+!bremarks
+For testing purposes regarding cross-referencing, we refer back
+to Section ref{sec:math:align} and Equation (ref{eq2}).
+!eremarks

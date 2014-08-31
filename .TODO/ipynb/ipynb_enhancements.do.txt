@@ -1,0 +1,82 @@
+TITLE: Some shortcomings and their fixes for IPython notebooks
+AUTHOR: HPL
+DATE: today
+
+IPython notebooks (IPN) apply Markdown for text and many elements needed
+in a document. This short note summarizes some experience with
+using IPN to write science books. In particular,
+many of the encountered difficulties arise when manuscripts have
+their origin in LaTeX and then at a later stage are transformed,
+manually or semi-automatically, to the notebook format.
+
+===== Images =====
+
+IPN is ideal for generating plots. However, books will often need
+other images.  The Markdown syntax for images cannot specify the size
+of the image.  A remedy is to use HTML syntax and the `img` tag.
+This does not work locally in a browser, neither with `img` tag or
+native Mardown figure syntax, but `nbviewer` handles it.
+
+But how does this HTML code impact `nbconvert` (to LaTeX for instance)?
+
+===== Movies =====
+
+YouTube movies can be inserted by Python syntax in a cell. One can
+execute the cell, but it should be possible to just embed ready-made movies
+in text, like images. Also, for cross-platform robustness, movies must
+be made in WebM, Ogg, and MP4 formats, and the HTML5 video tag must
+load all of them with MP4 first to ensure they work across all devices.
+My remedy for this is to generate the necessary HTML code and
+execute it through the `HTML` function in a cell. The downside is that
+all the HTML syntax is visible in the cell and attracts unnecessary
+attention.
+
+Improvement: Embed the HTML code in the text instead.
+(Will probably destroy the possibilities of `nbconvert` to
+convert to various other formats, e.g., what to do with such
+movies in LaTeX?)
+
+===== Tables =====
+
+Markdown do not support tables. The remedy is to typeset tables as
+HTML code. This can easily be done of one has a simple script for
+taking a compact description of the table, e.g., in CSV format,
+and automatically generating the necessary HTML code.
+For me this works fine, but again, will `nbconvert` be able to
+handle it?
+
+===== Labels and references =====
+
+Markdown does not support labels and references so text needs to be
+rewritten.
+
+Remedy: Use `<a name="label"/>` tags for labels and find appropriate
+link texts with Markdown syntax (`[link text](#label)`).
+For example, when I normally would say `see Figure \ref{label}` in
+LaTeX, I express this as `see [Figure](label)` and make sure
+the figure caption has an anchor `<a name="label"/>`.
+
+===== Systems of equations with labels =====
+
+Labels in equations have no effect in Markdown and are not displayed.
+References with `\eqref{label}` leads to `(???)` links.
+
+My remedy is to generate all code for equations, which enables
+1) splitting systems of equations into a series of single equations,
+2) generating `tag{no}` numbering of equations, 3) a mapping from
+labels to tag numbers, 4) inserting labels as ordinary `<a name="..."/>`
+anchors above the equations such that 5) references can be ordinary
+links to those anchors. In this way, the standard equation referencing
+can be simulated.
+
+I expect future versions of IPN to use equation numbering such that
+`\eqref{}` works as in ordinary MathJax. In standard HTML/MathJax
+one can also refer directly to tags, say `\tag{10}` via
+`<a href="#mjx-eqn-10">(10></a>`, but this link does not work in IPN.
+
+
+===== Appendix: Sample code =====
+
+wavebc has a test file for movies in ipynb, extend with tmp2.do.txt
+
+@@@CODE

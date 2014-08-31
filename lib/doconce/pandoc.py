@@ -172,7 +172,8 @@ def pandoc_table(table):
     if option('github_md'):
         text = html_table(table)
         # Fix the problem that `verbatim` inside the table is not
-        # typeset as verbatim in the GitHub Issue Tracker
+        # typeset as verbatim (according to the pandoc translator rules)
+        # in the GitHub Issue Tracker
         text = re.sub(r'`([^`]+?)`', '<code>\g<1></code>', text)
         return text
 
@@ -249,18 +250,13 @@ def pandoc_ref_and_label(section_label2title, format, filestr):
     replacement = r' ref{'
     filestr = re.sub(pattern, replacement, filestr)
 
-    # Remove label{...} from output (when only label{} on a line, remove
-    # the newline too, leave label in figure captions, and remove all the rest)
-    #filestr = re.sub(r'^label\{.+?\}\s*$', '', filestr, flags=re.MULTILINE)
-    cpattern = re.compile(r'^label\{.+?\}\s*$', flags=re.MULTILINE)
-    filestr = cpattern.sub('', filestr)
-    #filestr = re.sub(r'^(FIGURE:.+)label\{(.+?)\}', '\g<1>{\g<2>}', filestr, flags=re.MULTILINE)
-    cpattern = re.compile(r'^(FIGURE:.+)label\{(.+?)\}', flags=re.MULTILINE)
-    filestr = cpattern.sub('\g<1>{\g<2>}', filestr)
-    filestr = re.sub(r'label\{.+?\}', '', filestr)  # all the remaining
+    # Use HTML anchors for labels and [link text](#label) for references
+    # outside mathematics.
+    #filestr = re.sub(r' *label\{.+?\}', '', filestr)
+    filestr = re.sub(r'label\{(.+?)\}', '<a name="\g<1>"/>', filestr)
 
     # Replace all references to sections. Pandoc needs a coding of
-    # the section header as link.
+    # the section header as link. (Not using this anymore.)
     def title2pandoc(title):
         # http://johnmacfarlane.net/pandoc/README.html
         for c in ('?', ';', ':'):
@@ -279,8 +275,17 @@ def pandoc_ref_and_label(section_label2title, format, filestr):
     for label in section_label2title:
         filestr = filestr.replace('ref{%s}' % label,
                   '[%s](#%s)' % (section_label2title[label],
-                                 title2pandoc(section_label2title[label])))
+                                 label))
+     #                            title2pandoc(section_label2title[label])))
 
+    # Treat the remaining ref{}
+    # Note done.
+    # Can place labels in equations as <a name tags before the equation
+    # environment and create appropriate [link](#label) syntax.
+    # Need to specify figures and movies separately to find the
+    # right link text. html.py has probably most solutions.
+    filestr = re.sub(r'([Ff]igure|[Mm]ovie)\s+ref\{(.+?)\}', '[\g<1>](#\g<2>)',
+                     filestr)
     return filestr
 
 

@@ -1,9 +1,8 @@
 import re, sys, shutil, os
 from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, indent_lines, _abort
-from html import html_movie
-from pandoc import pandoc_table, pandoc_ref_and_label, \
-     pandoc_index_bib, pandoc_quote
+from html import html_movie, html_table
+from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote
 from misc import option
 
 # Global variables
@@ -27,6 +26,14 @@ def ipynb_author(authors_and_institutions, auth2index,
     s ='authors = [%s]' % (', '.join(authors))
     return s
 
+def ipynb_table(table):
+    text = html_table(table)
+    # Fix the problem that `verbatim` inside the table is not
+    # typeset as verbatim (according to the ipynb translator rules)[[[
+    # in the GitHub Issue Tracker
+    text = re.sub(r'`([^`]+?)`', '<code>\g<1></code>', text)
+    return text
+
 def ipynb_figure(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
@@ -39,17 +46,32 @@ def ipynb_figure(m):
     global figure_files
     if not filename.startswith('http'):
         figure_files.append(filename)
+
+    # Extract optional label in caption
+    label = None
+    pattern = r' *label\{(.+?)\}'
+    m = re.search(pattern, caption)
+    if m:
+        label = m.group(1).strip()
+        caption = re.sub(pattern, '', caption)
+
     display_method = option('ipynb_figure=', 'imgtag')
     if display_method == 'md':
-        # Markdown image syntax, embedded image in text
-        text = '![%s](%s)' % (caption, filename)
+        # Markdown image syntax for embedded image in text
+        # (no control of size, then one must use HTML syntax)
+        text = ''
+        if label is not None:
+            text += '<a name="%s"/>\n' % label
+        text += '![%s](%s)' % (caption, filename)
     elif display_method == 'imgtag':
         # Plain <img tag, allows specifying the image size
-        text = """
-<center>
+        text = ''
+        if label is not None:
+            text += '<a name="%s"/>' % label
+        text += """
 <p>%s</p>
 <img src="%s" %s>
-</center>
+
 """ % (caption, filename, opts)
     elif display_method == 'Image':
         # Image object
@@ -101,6 +123,8 @@ def ipynb_movie(m):
         text = '\n!bc pycod\n'
         if youtube and 'YouTube' in display_method:
             text += YouTubeVideo(filename)
+            if caption:
+                text += '\nprint "%s"' % caption
         else:
             # Use HTML formatting
             if not html_encountered:
@@ -111,13 +135,13 @@ def ipynb_movie(m):
             if not filename.startswith('http'):
                 movie_files.append(filename)
         text += '!ec\n'
-        if caption:
-            text += '\nMovie above: *' + caption + '*\n'
         return text
     if display_method == 'local':
         text = '!bc pycod\n'
         if youtube:
             text += YouTubeVideo(filename)
+            if caption:
+                text += '\nprint "%s"' % caption
         else:
             # see http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%205%20-%20Rich%20Display%20System.ipynb
             # http://stackoverflow.com/questions/18019477/how-can-i-play-a-local-video-in-my-ipython-notebook
@@ -125,7 +149,7 @@ def ipynb_movie(m):
             # Just support .mp4, .ogg, and.webm
             stem, ext = os.path.splitext(filename)
             if ext not in ('.mp4', '.ogg', '.webm'):
-                print '*** error: movie "%s" in format %s is not supported for --ipynb-movie=%s' % (filename, ext, display_method)
+                print '*** error: movie "%s" in format %s is not supported for --ipynb_movie=%s' % (filename, ext, display_method)
                 print '    use --ipynb_movie=HTML instead'
                 _abort()
             height = 365
@@ -146,9 +170,9 @@ video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:vide
                 text += 'from IPython.display import HTML\n'
                 html_encountered = True
             text += 'HTML(data=video_tag)\n'
+            if caption:
+                text += '\nprint "%s"' % caption
         text += '!ec\n'
-        if caption:
-            text += '\nMovie above: *' + caption + '*\n'
         return text
     print '*** error: --ipynb_movie=%s is not supported' % display_method
     _abort()
@@ -358,7 +382,19 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     # Go through tex_blocks and wrap in $$
     # (doconce.py runs align2equations so there are no align/align*
     # environments in tex blocks)
+    label2tag = {}
+    tag_counter = 1
     for i in range(len(tex_blocks)):
+
+        # Extract labels and add tags
+        labels = re.findall(r'label\{(.+?)\}', tex_blocks[i])
+        for label in labels:
+            label2tag[label] = tag_counter
+            # Insert tag to get labeled equation
+            tex_blocks[i] = tex_blocks[i].replace(
+                'label{%s}' % label, 'label{%s} \\tag{%s}' % (label, tag_counter))
+            tag_counter += 1
+
         # Remove \[ and \] or \begin/end{equation*} in single equations
         tex_blocks[i] = tex_blocks[i].replace(r'\[', '')
         tex_blocks[i] = tex_blocks[i].replace(r'\]', '')
@@ -385,6 +421,13 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         # the equation then looks bigger
         elif eq_type == 'heading':
             tex_blocks[i] = '### $ ' + '  '.join(tex_blocks[i].splitlines()) + ' $'
+
+        # Add standard labels <a name=""/> for the eqs above the block
+        # (for reference)
+        tex_blocks[i] = '<!-- Equation labels as ordinary links -->\n' + \
+                        ' '.join(['<a name="%s"/>' % label
+                                  for label in labels]) + '\n\n' + \
+                                  tex_blocks[i]
 
     # blocks is now a list of text chunks in markdown and math/code line
     # instructions. Insert code and tex blocks
@@ -431,12 +474,24 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     filestr = IPython.nbformat.v3.nbjson.writes(nb)
 
     # must do the replacements here at the very end when json is written out
-    # \eqref and labels will not work, but labels do no harm
+    # \eqref and labels will not work, but labels (only in math) do no harm
     filestr = re.sub(r'([^\\])label\{', r'\g<1>\\\\label{', filestr,
                      flags=re.MULTILINE)
-    # \eqref crashes the notebook, may be better with full MathJax support?
-    #filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
-    filestr = re.sub(r'\(ref\{(.+?)\}\)', r'Eq (\g<1>)', filestr)
+    # \\eqref{} just gives (???) link at this stage - future versions
+    # will probably support labels
+    #filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\\eqref{\g<1>}', filestr)
+    # Now we use explicit references to tags
+    filestr = re.sub(r'\(ref\{(.+?)\}\)',
+                     lambda m: r'[(%s)](#%s)' % (label2tag[m.group(1)], label),
+                     filestr)
+    """
+    # MathJax reference to tag (recall that the equations have both label
+    # and tag (know that tag only works well in HTML, but this mjx-eqn-no
+    # label does not work in ipynb)
+    filestr = re.sub(r'\(ref\{(.+?)\}\)',
+                     lambda m: r'[(%s)](#mjx-eqn-%s)' % (label2tag[m.group(1)], label2tag[m.group(1)]), filestr)
+    """
+    #filestr = re.sub(r'\(ref\{(.+?)\}\)', r'Eq (\g<1>)', filestr)
 
     '''
     # Final fixes: replace all text between cells by markdown code cells
@@ -518,8 +573,8 @@ def define(FILENAME_EXTENSION,
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),
         'subsubsection': lambda m: '#### ' + m.group('subst') + '\n',
-        'paragraph':     r'*\g<subst>*\g<space>',
-        'abstract':      r'\n*\g<type>.* \g<text>\n\n\g<rest>',
+        'paragraph':     r'**\g<subst>**\g<space>',
+        'abstract':      r'\n**\g<type>.** \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
         'linebreak':     r'\g<text>',  # Not sure how this is supported; Markdown applies <br> but that cannot be used for latex output with ipynb...
         'non-breaking-space': ' ',
@@ -548,7 +603,7 @@ def define(FILENAME_EXTENSION,
         }
     CROSS_REFS['ipynb'] = pandoc_ref_and_label
 
-    TABLE['ipynb'] = pandoc_table
+    TABLE['ipynb'] = ipynb_table
     INDEX_BIB['ipynb'] = pandoc_index_bib
     EXERCISE['ipynb'] = plain_exercise
     TOC['ipynb'] = lambda s: ''
