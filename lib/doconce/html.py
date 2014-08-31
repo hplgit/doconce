@@ -278,6 +278,7 @@ def toc2html(font_size=80, bootstrap=True):
     # level_depth: how many levels that are represented in the toc
     level_depth = int(option('html_toc_depth=', '-1'))
     if level_depth == -1:
+        # Compute suitable depth in toc
         if bootstrap:
             # We can have max 17 lines, so analyze the toc
             level2no = {}
