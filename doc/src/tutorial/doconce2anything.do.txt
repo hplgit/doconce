@@ -421,6 +421,7 @@ def f(x, a=1, b=1, c=1):
 |  `h(x)`  | Heaviside function.            | Formula ready. |
 |  `I(x)`  | Indicator function.            | Nothing done yet. |
 |---------------------------------------------------------------|
+
 !ec
 Say this text is stored in a file `mycomments.do.txt`. Running
 

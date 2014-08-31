@@ -1,15 +1,15 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
 <meta name="keywords" content="doconce short explanation,demos,headlines,section headings,inline tagging,emphasized words,boldface words,verbatim text,inline comments,non-breaking space,nbsp,quotation syntax,non-breaking space,footnotes,cross referencing,labels,references,index,citations,bibliography,some index entry,main entry subentry,doconce format options,command-line options doconce format">
 
-
+<title>DocOnce Description</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
@@ -107,17 +107,17 @@ Automatically generated HTML file from Doconce source
                None,
                '___sec51'),
               (' Macros (Newcommands) ', 2, 'newcommands', 'newcommands'),
-              (' Admonitions ', 2, None, '___sec53'),
-              (' The Box Environment ', 3, None, '___sec54'),
-              (' Typesetting of Algorithms ', 2, None, '___sec55'),
-              (' Preprocessing Steps ', 2, None, '___sec56'),
+              (' Guidelines for LaTeX Writers ', 2, None, '___sec53'),
+              (' Admonitions ', 2, None, '___sec54'),
+              (' The Box Environment ', 3, None, '___sec55'),
+              (' Typesetting of Algorithms ', 2, None, '___sec56'),
+              (' Preprocessing Steps ', 2, None, '___sec57'),
               (' Splitting Documents into Smaller Pieces ',
                2,
                None,
-               '___sec57'),
-              (' Header and Footer ', 2, None, '___sec58'),
-              (' Missing Features ', 2, None, '___sec59'),
-              (' Guidelines for LaTeX Writers ', 2, None, '___sec60'),
+               '___sec58'),
+              (' Header and Footer ', 2, None, '___sec59'),
+              (' Missing Features ', 2, None, '___sec60'),
               (' Emacs DocOnce Formatter ',
                2,
                'emacs:doconce',
@@ -128,7 +128,7 @@ Automatically generated HTML file from Doconce source
               (' Potential Problems ', 3, None, '___sec65'),
               (' LaTeX Beamer Slides ', 2, None, '___sec66'),
               (' Themes ', 3, None, '___sec67'),
-              (' Mako Programming ', 1, None, '___sec68'),
+              (' Mako Programming ', 1, 'manual:mako', 'manual:mako'),
               (' The Basics of Mako ', 2, None, '___sec69'),
               (' Debugging Python code in Mako ',
                2,
@@ -242,32 +242,13 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_keep.tex -->
-$$
-\newcommand{\x}{\pmb{x}}
-\newcommand{\normalvec}{\pmb{n}}
-\newcommand{\Ddt}[1]{\frac{D#1}{dt}}
-\newcommand{\half}{\frac{1}{2}}
-$$
-
-
-<!-- newcommands_replace.tex -->
-$$
-\newcommand{\beqa}{\begin{eqnarray}}
-\newcommand{\eeqa}{\end{eqnarray}}
-\newcommand{\ep}{\thinspace . }
-\newcommand{\uvec}{\vec u}
-\newcommand{\Q}{\pmb{Q}}
-$$
-
 
 
 
@@ -287,77 +268,15 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._manual000.html#what:is:doconce" style="font-size: 80%;"><b>What Is DocOnce?</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual002.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demos</a></li>
-     <!-- navigation toc: --> <li><a href="._manual003.html#___sec2" style="font-size: 80%;"><b>The DocOnce Markup Language</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
-     <!-- navigation toc: --> <li><a href="._manual004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Special lines</a></li>
-     <!-- navigation toc: --> <li><a href="._manual004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Heading with title and author(s)</a></li>
-     <!-- navigation toc: --> <li><a href="._manual004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Table of contents</a></li>
-     <!-- navigation toc: --> <li><a href="._manual005.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Section headings</a></li>
-     <!-- navigation toc: --> <li><a href="._manual006.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures</a></li>
-     <!-- navigation toc: --> <li><a href="._manual007.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Movies</a></li>
-     <!-- navigation toc: --> <li><a href="._manual008.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Copying Computer Code from Source Files</a></li>
-     <!-- navigation toc: --> <li><a href="._manual008.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inserting the Output from Operating System Commands</a></li>
-     <!-- navigation toc: --> <li><a href="._manual009.html#inline:tagging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline Tagging</a></li>
-     <!-- navigation toc: --> <li><a href="._manual010.html#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Comments</a></li>
-     <!-- navigation toc: --> <li><a href="._manual011.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cross-Referencing</a></li>
-     <!-- navigation toc: --> <li><a href="._manual011.html#manual:genrefs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generalized Cross-Referencing</a></li>
-     <!-- navigation toc: --> <li><a href="._manual012.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Index</a></li>
-     <!-- navigation toc: --> <li><a href="._manual012.html#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Bibliography/References</a></li>
-     <!-- navigation toc: --> <li><a href="._manual013.html#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tables</a></li>
-     <!-- navigation toc: --> <li><a href="._manual014.html#___sec47" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercises, Problems, Projects, and Examples</a></li>
-     <!-- navigation toc: --> <li><a href="._manual015.html#sec:verbatim:blocks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blocks of Verbatim Computer Code</a></li>
-     <!-- navigation toc: --> <li><a href="._manual016.html#mathtext" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Blocks of Mathematical Text</a></li>
-     <!-- navigation toc: --> <li><a href="._manual017.html#newcommands" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Macros (Newcommands)</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec55" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Algorithms</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing Steps</a></li>
-     <!-- navigation toc: --> <li><a href="._manual019.html#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Splitting Documents into Smaller Pieces</a></li>
-     <!-- navigation toc: --> <li><a href="._manual019.html#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Header and Footer</a></li>
-     <!-- navigation toc: --> <li><a href="._manual020.html#___sec59" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Missing Features</a></li>
-     <!-- navigation toc: --> <li><a href="._manual020.html#___sec60" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Guidelines for LaTeX Writers</a></li>
-     <!-- navigation toc: --> <li><a href="._manual020.html#emacs:doconce" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Emacs DocOnce Formatter</a></li>
-     <!-- navigation toc: --> <li><a href="._manual021.html#___sec62" style="font-size: 80%;"><b>Writing Slides</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual022.html#___sec63" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Overview</a></li>
-     <!-- navigation toc: --> <li><a href="._manual022.html#___sec64" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML5 Slides</a></li>
-     <!-- navigation toc: --> <li><a href="._manual022.html#___sec66" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX Beamer Slides</a></li>
-     <!-- navigation toc: --> <li><a href="._manual023.html#___sec68" style="font-size: 80%;"><b>Mako Programming</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual023.html#___sec69" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Basics of Mako</a></li>
-     <!-- navigation toc: --> <li><a href="._manual023.html#mako:py:debugging" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging Python code in Mako</a></li>
-     <!-- navigation toc: --> <li><a href="._manual024.html#___sec71" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Executing Python and using SymPy Objects in LaTeX</a></li>
-     <!-- navigation toc: --> <li><a href="._manual025.html#manual:tables:wfigs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Extending Tables to Handle Figures</a></li>
-     <!-- navigation toc: --> <li><a href="._manual026.html#manual:theorem:envir" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Defining a Theorem Environment</a></li>
-     <!-- navigation toc: --> <li><a href="._manual027.html#___sec78" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tools for Writing DocOnce Documents</a></li>
-     <!-- navigation toc: --> <li><a href="._manual027.html#___sec79" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Debugging</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;"><b>From DocOnce to Other Formats</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec81" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating a makefile</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec82" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessing</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec83" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Removal of inline comments</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec84" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Notes</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec85" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demo of different formats</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec86" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec94" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Blog Posts</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec95" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Pandoc and Markdown</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec102" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec103" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;PDFLaTeX</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec104" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;XeLaTeX</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec105" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;From PDF to e-book formats</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec106" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plain ASCII Text</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec107" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;reStructuredText</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec108" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec110" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki Formats</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec111" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Google Docs</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec112" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tweaking the DocOnce Output</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec113" style="font-size: 80%;"><b>Options for the `doconce` commands</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec114" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`doconce format` command-line options</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec116" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec117" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#install:debian:script" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick Debian/Ubuntu Install</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec130" style="font-size: 80%;"><b>Basic Parsing Ideas</b></a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec131" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting of Function Arguments, Return Values, and Variables</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec132" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._manual000.html#what:is:doconce" style="font-size: 80%;">What Is DocOnce?</a></li>
+     <!-- navigation toc: --> <li><a href="._manual003.html#___sec2" style="font-size: 80%;">The DocOnce Markup Language</a></li>
+     <!-- navigation toc: --> <li><a href="._manual021.html#___sec62" style="font-size: 80%;">Writing Slides</a></li>
+     <!-- navigation toc: --> <li><a href="._manual023.html#manual:mako" style="font-size: 80%;">Mako Programming</a></li>
+     <!-- navigation toc: --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
+     <!-- navigation toc: --> <li><a href="._manual028.html#___sec113" style="font-size: 80%;">Options for the `doconce` commands</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec130" style="font-size: 80%;">Basic Parsing Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec132" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -373,7 +292,7 @@ $$
 <a name="part0018"></a>
 <!-- !split -->
 
-<h2 id="___sec53">Admonitions <a name="___sec53"></a></h2>
+<h2 id="___sec54">Admonitions <a name="___sec54"></a></h2>
 
 DocOnce offers strong support for admonition environments, such
 as warning boxes, notification boxes, question boxes,
@@ -529,7 +448,7 @@ replaces all default colors for all admon styles except <code>paragraph</code>.
 For example, an oval white box is produced by <code>--latex_admon=mdfbox</code>
 and <code>--latex_admon_color=white</code>.
 
-<h3 id="___sec54">The Box Environment <a name="___sec54"></a></h3>
+<h3 id="___sec55">The Box Environment <a name="___sec55"></a></h3>
 
 A plain box without any title or colored background,
 just a rectangular frame, is also
@@ -563,7 +482,7 @@ a summary, while a box is often used to highlight a key finding
 in the running text: an equation, a hypothesis, a theorem, a
 rule, or a conclusion.
 
-<h2 id="___sec55">Typesetting of Algorithms <a name="___sec55"></a></h2>
+<h2 id="___sec56">Typesetting of Algorithms <a name="___sec56"></a></h2>
 
 DocOnce has no support for typesetting of algorithms, while LaTeX
 has quite sophisticated support. LaTeX writes need some strategy with
@@ -598,7 +517,7 @@ if feature in element:
 % endif
 </pre></div>
 
-<h2 id="___sec56">Preprocessing Steps <a name="___sec56"></a></h2>
+<h2 id="___sec57">Preprocessing Steps <a name="___sec57"></a></h2>
 
 DocOnce allows preprocessor commands for, e.g., including files,
 leaving out text, or inserting special text depending on the format.
@@ -673,6 +592,90 @@ the command line as explained in the section <a href="._manual028.html#doconce2f
 <p>
 More advanced use of mako can include Python code that may automate
 the writing of parts of the document.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>On the type of a Mako variable from the command line.</b>
+You define Mako variables as in this example:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc LANG=C NO=4 COMMENTS=False
+</pre></div>
+<p>
+The variable <code>LANG</code> gets the value <code>'C'</code> as a Python string
+inside the document. All values are treated as strings, except
+if the value is <code>True</code> or <code>False</code> or if it is an integer.
+Therefore, <code>NO</code> becomes the integer <code>4</code> and you can test
+like <code>% if NO > 4:</code>. The variable <code>COMMENTS</code> gets
+the boolean value <code>False</code> and <code>% if not COMMENT:</code> is a positive
+test. With Mako such variables set on the command-line
+you can easily leave out portions
+of the document or choose between different versions of the text
+in a very flexible and fine-tuned way.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Advanced setting of Mako variables.</b>
+Mako variables can also be run through <code>eval</code> before being
+sent to Mako. For example,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc \
+          SOMEVAR=&quot;eval([&#39;problem&#39;, &#39;data&#39;, &#39;results&#39;])&quot;
+</pre></div>
+<p>
+Now, <code>SOMEVAR</code> will be defined by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">SOMEVAR <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #BA2121">&quot;[&#39;problem&#39;, &#39;data&#39;, &#39;results&#39;]&quot;</span>)
+</pre></div>
+<p>
+and result in the list <code>['problem', 'data', 'results']</code>.
+In a DocOnce document, we can write
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">% for element in SOMEVAR:
+ * &quot;`${element}.pdf`&quot;: &quot;http://some.net/pdf/${element}.pdf&quot;
+% endfor
+</pre></div>
+<p>
+and produce the following LaTeX code:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>itemize<span style="color: #008000">}</span>
+ <span style="color: #008000; font-weight: bold">\item</span> <span style="color: #008000; font-weight: bold">\href</span><span style="color: #008000">{{</span>http://some.net/pdf/problem.pdf<span style="color: #008000">}}{</span><span style="color: #008000; font-weight: bold">\nolinkurl</span><span style="color: #008000">{</span>problem.pdf<span style="color: #008000">}}</span>
+
+ <span style="color: #008000; font-weight: bold">\item</span> <span style="color: #008000; font-weight: bold">\href</span><span style="color: #008000">{{</span>http://some.net/pdf/data.pdf<span style="color: #008000">}}{</span><span style="color: #008000; font-weight: bold">\nolinkurl</span><span style="color: #008000">{</span>data.pdf<span style="color: #008000">}}</span>
+
+ <span style="color: #008000; font-weight: bold">\item</span> <span style="color: #008000; font-weight: bold">\href</span><span style="color: #008000">{{</span>http://some.net/pdf/results.pdf<span style="color: #008000">}}{</span><span style="color: #008000; font-weight: bold">\nolinkurl</span><span style="color: #008000">{</span>results.pdf<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>itemize<span style="color: #008000">}</span>
+</pre></div>
+<p>
+Instead of giving the <code>SOMEVAR</code> list on the command line, we can hardcode
+it inside the document:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">&lt;%
+SOMEVAR = [&#39;problem&#39;, &#39;data&#39;, &#39;results&#39;]
+%&gt;
+</pre></div>
+<p>
+The flexibility enabled by Mako variables and statements is one of the
+major reasons to adopt DocOnce.
+</div>
+
 
 <p>
 <p>

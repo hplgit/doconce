@@ -1,4 +1,4 @@
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
 .. |nbsp| unicode:: 0xA0
@@ -8,7 +8,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 8, 2014
+:Date: Aug 31, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -47,9 +47,14 @@ Here are some DocOnce features:
     A piece of DocOnce text can enter (e.g.) a classical
     science book, an ebook, a web document, and a blog post.
 
+  * DocOnce offers a range of HTML designs, including many
+    Bootstrap and Sphinx styles and `solarized color schemes <http://ethanschoonover.com/solarized>`__.
+    A special feature is the many styles for admonitions (boxes for
+    warning, notice, question, etc.) in HTML and LaTeX.
+
   * DocOnce targets in particular large book projects where many different
-    pieces of text and software can be assembled and published in different
-    formats for different devices.
+    pieces of text and software can be assembled in different ways
+    and published in different formats for different devices.
 
   * DocOnce enables authors who write for many times of media
     (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
@@ -93,19 +98,18 @@ however, is a series of features for supporting both small and large
 documents (books in particular) with much mathematics and computer
 code. DocOnce can also output Sphinx (not supported by Pandoc or
 MultiMarkdown), a format that is very attractive for presenting
-scientific material on the web.  A recent dialect of DocOnce allows
-Markdown syntax, extended with DocOnce syntax as you like, as valid
-input to the DocOnce translator.
+scientific material and software documentation on the web.
+(DocOnce allows basic Markdown syntax as input, extended with DocOnce
+syntax as you like.)
 
 **Disclaimer.**
 DocOnce applies *text transformations*, mostly via
 regular expressions. This is not a fool-proof method of translation
 compared to real parsing. The possibility for tweaking the layout in
-the DocOnce document is obviously limited (compared to LaTeX and HTML
-in particular) since the text can go to all sorts of sophisticated
+the DocOnce document is obviously limited (at least compared to LaTeX and HTML) since the text can go to all sorts of
 markup languages. This can be compensated, however, by clever use of
-the programmable preprocessors and by automatic editing of the output
-(via regular expressions).
+the programmable Mako preprocessor used by DocOnce and by automatic
+editing of the generated output (e.g., via regular expressions).
 
 .. !split
 
@@ -2170,7 +2174,7 @@ Also a non-breaking space (to avoid linebreak), linebreak,
 
    Since DocOnce applies regular expressions to recognize inline tagging,
    there might be cases where the tags are not correctly interpreted
-   and translated. Fortunately, such pitfalls are easily circumvented.
+   and translated. Fortunately, most such pitfalls are easily circumvented.
    The `troubleshooting document <http://hplgit.github.io/doconce/doc/pub/trouble/trouble/trouble.html#trouble:pitfalls>`__ shows some
    examples.
 
@@ -2785,7 +2789,7 @@ have text like
 
         ...as shown in Section ref{sec:eqs}.
 
-with `` defined in another file ``file2.do.txt``.
+with " defined in another file ``file2.do.txt``.
 If ``file1.do.txt`` and ``file2.do.txt`` are combined to a single
 document, the reference is treated correctly, but if ``file1.do.txt``
 is compiled as a single document, the label ``sec:eqs`` becomes
@@ -2944,7 +2948,7 @@ a book that exist as stand-alone documents.
     The ``doconce ref_external`` tool generates an ``external`` text
     in case of references to equations that says
     ``reference to specific **equations** (label eqs:g1 and eqs:g4)
-    in external document "name": "link" is not recommended''.
+    in external document "name": "link" is not recommended".
     One can then search for this text and make a Mako if-else rewrite
     as shown above.
 
@@ -3117,7 +3121,8 @@ surround verbatim text, which is correctly transformed in a LaTeX setting to
 
 Everything related to the index simply becomes invisible in plain
 text, Epytext, StructuredText, HTML, and wiki formats.  Note: ``idx``
-commands should be inserted outside paragraphs, not in between the
+commands should be inserted outside paragraphs and admonitions,
+not in between the
 text as this may cause some strange behaviour of reST and
 Sphinx formatting.  As a recommended rule, index items are naturally
 placed right after section headings, before the text begins, while
@@ -3317,6 +3322,7 @@ is built up of pipe symbols and dashes:
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 The pipes and column values do not need to be aligned (but why write
 the DocOnce source in an ugly way?). In the line below the heading,
@@ -3337,6 +3343,7 @@ column left-adjusted and the others right-adjusted looks like
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
+        
 
 Note that not all formats offer alignment of heading or entries
 in tables (``rst`` and ``sphinx`` are examples). Also note that
@@ -3378,6 +3385,7 @@ Running ``doconce csv2table tmp.csv`` creates the table
         | 2.0          | 1.376512     | 11.919       |
         | 4.0          | 1.1E+1       | 14.717624    |
         |--------------------------------------------|
+        
 
 If this output is redirected to a file, say ``mytable.do.txt``, one can
 easily include this file by ``# #include "mytable.do.txt"`` in the
@@ -3766,10 +3774,13 @@ This is the same as writing ``!bc X`` and copying parts of the ``somefile.py``
 text into the DocOnce source file, followed by ``!ec``.
 For example, if the lines between the ``myfunc`` and ``yourfunc`` functions
 actually work as a complete Python program, one could specify ``envir=pypro``
-to indicate that it is a complete program and not a snippet (i.e.,
-``pycod`` would be the default without ``envir=pypro`` in this case).
+to indicate that it is a complete program that can be run as is.
+By default, copying a part of a ``.py`` file will lead to
+``!bc pycod``, which indicates a code snippet that normally needs
+additional code to be run.
 
-Let us copy a whole file (the first line above):
+Let us demonstrate the result of copying a whole file, as
+specified in the first line above:
 
 .. code-block:: fortran
 
@@ -3873,7 +3884,7 @@ line and followed by a newline.
 
 The support of LaTeX mathematics varies among the formats:
 
- * Output in LaTeX (``latex`` and ``pdflatex`` formats) has of course full
+ * Output in LaTeX (``latex`` and ``pdflatex`` formats) has full
    support of all LaTeX mathematics, of course.
 
  * The ``html`` format supports single equations and multiple equations
@@ -3955,7 +3966,10 @@ Macros (Newcommands)
 --------------------
 
 DocOnce supports a type of macros via a LaTeX-style *newcommand*
-construction.  The newcommands defined in a file with name
+construction, but only inside mathematical expressions (inline
+LaTeX math or LaTeX math blocks, otherwise use Mako functions).
+
+The newcommands must be defined in a file with name
 ``newcommand_replace.tex`` are expanded when DocOnce is filtered to
 other formats, except for LaTeX (since LaTeX performs the expansion
 itself).  Newcommands in files with names ``newcommands.tex`` and
@@ -3972,6 +3986,78 @@ elsewhere throughout the text will usually be placed in
 newcommands in the ``newcommands*.tex`` files *must* appear on a single
 line (multi-line newcommands are too hard to parse with regular
 expressions).
+
+
+.. note::
+   If you desire a newcommand for the running text, using a Mako function
+   (written in plain Python) is much more flexible. See
+   the section :ref:`manual:mako`.
+
+
+
+
+Guidelines for LaTeX Writers
+----------------------------
+
+Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
+``mwiki``, ``html``, or ``ipynb`` formats
+is also important, one should follow these rules:
+
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
+
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``.
+
+ * MediaWiki (``mwiki``) does not support references to equations.
+
+(DocOnce performs extensions to ``sphinx`` and other formats such that
+labels in ``align`` environments work well.)
+
+
+.. note::
+   LaTeX supports lots of fancy formatting, for example, multiple
+   plots in the same figure (``subfigure`` package), margin notes, multi-page
+   tables, example and algorithm environments, code listings in figures, etc.
+   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
+   to only utilze very standard LaTeX-style writing. Correspondingly, the writer
+   must stick to simple constructs and avoid, for instance,
+   
+    * newcommands outside inline math or LaTeX blocks [#Mako-func]_
+   
+    * more than
+      one plot per figure (combine them into one using ``doconce combine_images``),
+   
+    * floating tables with captions (tables are inlined and explained in the text),
+   
+    * example environments (use subsection or subsubsection instead),
+   
+    * algorithms environments (see *Typesetting of Algorithms* in this manual),
+   
+    * code listings in figures (use just inline blocks).
+   
+   However, one can use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
+   include special code for ``latex`` and ``pdflatex`` output and more
+   straightforward typesetting for other formats. In this way, one can
+   also allow advanced LaTeX features and fine tuning of the resulting
+   PDF document. More tuning can be done by automatic editing of the
+   ``.tex`` produced by DocOnce.
+   
+   One can also use the Mako preprocessor to extend DocOnce functionality
+   and implement, e.g., theorem or example environments (see the section :ref:`manual:theorem:envir`) or tables with figures (see the section :ref:`manual:tables:wfigs`). Many other extensions are also possible.
+
+
+
+
+.. [#Mako-func] Mako functions written in plain Python or simple Mako
+   variables constitute a much more flexible tool than the LaTeX
+   newcommand construction. Such functions can be used both for the
+   running text and math environments.
 
 .. !split
 
@@ -4275,6 +4361,82 @@ the command line as explained in the section :ref:`doconce2formats`.
 More advanced use of mako can include Python code that may automate
 the writing of parts of the document.
 
+
+.. admonition:: On the type of a Mako variable from the command line
+
+   You define Mako variables as in this example:
+   
+   .. code-block:: text
+   
+           Terminal> doconce format html mydoc LANG=C NO=4 COMMENTS=False
+   
+   The variable ``LANG`` gets the value ``'C'`` as a Python string
+   inside the document. All values are treated as strings, except
+   if the value is ``True`` or ``False`` or if it is an integer.
+   Therefore, ``NO`` becomes the integer ``4`` and you can test
+   like ``% if NO > 4:``. The variable ``COMMENTS`` gets
+   the boolean value ``False`` and ``% if not COMMENT:`` is a positive
+   test. With Mako such variables set on the command-line
+   you can easily leave out portions
+   of the document or choose between different versions of the text
+   in a very flexible and fine-tuned way.
+
+
+
+
+
+.. admonition:: Advanced setting of Mako variables
+
+   Mako variables can also be run through ``eval`` before being
+   sent to Mako. For example,
+   
+   .. code-block:: text
+   
+           Terminal> doconce format latex mydoc \
+                     SOMEVAR="eval(['problem', 'data', 'results'])"
+   
+   Now, ``SOMEVAR`` will be defined by
+   
+   .. code-block:: python
+   
+           SOMEVAR = eval("['problem', 'data', 'results']")
+   
+   and result in the list ``['problem', 'data', 'results']``.
+   In a DocOnce document, we can write
+   
+   .. code-block:: doconce
+   
+           % for element in SOMEVAR:
+            * "`${element}.pdf`": "http://some.net/pdf/${element}.pdf"
+           % endfor
+   
+   and produce the following LaTeX code:
+   
+   .. code-block:: latex
+   
+           \begin{itemize}
+            \item \href{{http://some.net/pdf/problem.pdf}}{\nolinkurl{problem.pdf}}
+           
+            \item \href{{http://some.net/pdf/data.pdf}}{\nolinkurl{data.pdf}}
+           
+            \item \href{{http://some.net/pdf/results.pdf}}{\nolinkurl{results.pdf}}
+           \end{itemize}
+   
+   Instead of giving the ``SOMEVAR`` list on the command line, we can hardcode
+   it inside the document:
+   
+   .. code-block:: doconce
+   
+           <%
+           SOMEVAR = ['problem', 'data', 'results']
+           %>
+   
+   The flexibility enabled by Mako variables and statements is one of the
+   major reasons to adopt DocOnce.
+
+
+
+
 .. !split
 
 Splitting Documents into Smaller Pieces
@@ -4411,62 +4573,6 @@ alternatively script editing of the output from DocOnce. That is,
 we develop a Python or Bash script that runs the translation of
 a DocOnce document to a ready docoment in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.
-
-Guidelines for LaTeX Writers
-----------------------------
-
-Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
-``mwiki``, ``html``, or ``ipynb`` formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
-   and ``ipynb`` formats.
-
- * Only five equation environments can be used: ``\[ ... \]``,
-   ``equation*``, ``equation``, ``align*``, and ``align``.
-
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   ``newcommands*.tex``.
-
- * MediaWiki (``mwiki``) does not support references to equations.
-
-(DocOnce performs extensions to ``sphinx`` and other formats such that
-labels in ``align`` environments work well.)
-
-
-.. note::
-   LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, example and algorithm environments, code listings in figures, etc.
-   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
-   to only utilze very standard LaTeX-style writing. Correspondingly, the writer
-   must stick to simple constructs and avoid, for instance,
-   
-    * more than
-      one plot per figure (combine them into one using ``doconce combine_images``),
-   
-    * floating tables with captions (tables are inlined and explained in the text),
-   
-    * example environments (use subsection or subsubsection instead),
-   
-    * algorithms environments (see *Typesetting of Algorithms* in this manual),
-   
-    * code listings in figures (use just inline blocks).
-   
-   However, one can use preprocessor if-tests on
-   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
-   include special code for ``latex`` and ``pdflatex`` output and more
-   straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of the resulting
-   PDF document. More tuning can be done by automatic editing of the
-   ``.tex`` produced by DocOnce.
-   
-   One can also use the Mako preprocessor to extend DocOnce functionality
-   and implement, e.g., theorem or example environments (see the section :ref:`manual:theorem:envir`) or tables with figures (see the section :ref:`manual:tables:wfigs`). Many other extensions are also possible.
-
-
-
 
 .. _emacs:doconce:
 
@@ -4623,6 +4729,8 @@ for shadowed boxes and more visual structure in the slides.
 
 .. !split
 
+.. _manual:mako:
+
 Mako Programming
 ================
 
@@ -4775,6 +4883,24 @@ Especially when the Python code in Mako grows and becomes non-trivial,
 this setup for having the code external to the DocOnce document is
 very effective.
 
+
+.. admonition:: Things to remember when programming Mako
+
+   
+    * Do not use continuation character (backslash) in Python code.
+   
+    * When a Mako error refers to a line in the text, invoke the
+      file that Mako sees: ``tmp_preprocess__mydoc.do.txt`` if
+      the DocOnce file has name ``mydoc.do.txt``.
+   
+    * Use double ``##`` (Mako comment) to comment out Mako calls
+      of the form ``${name...}``.
+   
+   And to be repeated: keep the Python code in separate files!
+
+
+
+
 One can use Mako to extend the DocOnce syntax. Three examples are given next.
 
 .. !split
@@ -4880,6 +5006,7 @@ A 3x3 table of figures then look like
         |${tfig('095')} | ${tfig('100')} | ${tfig('105')} |
         |${tfig('110')} | ${tfig('115')} | ${tfig('120')} |
         |-------------------------------------------------|
+        
 
 We do not want a heading, just a grid of figures, but a heading is
 required in DocOnce figures, so the solution is to provide
@@ -5775,6 +5902,7 @@ where one first quotes the issue and then provides an answer:
         |  `h(x)`  | Heaviside function.            | Formula ready. |
         |  `I(x)`  | Indicator function.            | Nothing done yet. |
         |---------------------------------------------------------------|
+        
 
 Say this text is stored in a file ``mycomments.do.txt``. Running
 
@@ -6718,7 +6846,13 @@ here for convenience.
         --html_template=...
         
         Specify an HTML template with header/footer in which the doconce
-        document is embedded.
+        document is embedded. (Often preferred to run with --no_title)
+        
+        
+        --no_title
+        
+        Comment out TITLE, AUTHOR, DATE.
+        Often used with HTML templates.
         
         
         --html_toc_depth=...
@@ -7066,6 +7200,32 @@ here for convenience.
         Somewhat intelligent, but may give unwanted edits. Use with great care!
         
         
+        --ipynb_admon=...
+        
+        Typesetting of admonitions and quotes.
+        quote: as Markdown quote (default) with gray line on the left.
+        paragraph: just the content with the title as paragraph heading.
+        
+        
+        --ipynb_figure=...
+        
+        How to typeset figures in ipynb:
+        md (plain Markdown syntax),
+        imgtag (<img src="..." width=...> tag, default)
+        Image (python cell with Image object).
+        
+        
+        --ipynb_movie=...
+        
+        How to typeset movies in ipynb:
+        md (plain Markdown syntax, default)
+        HTML (python cell with HTML object containing the code that is used
+        in the HTML format)
+        HTML-YouTubeVideo: If YouTube video, use YouTubeVideo object, otherwise
+        use the HTML object with appropriat HTML code.
+        local: local video files with encoding.
+        
+        
         --verbose
         
         Write out all OS commands run by doconce.
@@ -7167,7 +7327,7 @@ here for convenience.
         
         --md2do_output=...
         
-        Dump to file the Doconce code arising from converting from
+        Dump to file the DocOnce code arising from converting from
         Markdown. Default value is None (no dump).
         Any filename can be specified: --md2do_output=myfile.do.txt
         
