@@ -3544,11 +3544,20 @@ def preprocess(filename, format, preprocessor_options=[]):
             opt2 = opt[2:]
             if '=' in opt:
                 key, value = opt2.split('=')
+                if value in ('True', 'False'):
+                    value = eval(value)  # make it bool
             else:
-                key = opt2;  value = opt.startswith('-D')
+                key = opt2;  value = True
         elif not opt.startswith('--'):
+            # This is key=value
+            # Treat value as string except if it is True or False
+            # or consists solely of digits
             try:
                 key, value = opt.split('=')
+                if value in ('True', 'False'):
+                    value = eval(value)  # make it bool
+                elif value.isdigit():
+                    value = int(value)
             except ValueError:
                 print 'command line argument "%s" not recognized' % opt
                 _abort()
@@ -3559,7 +3568,7 @@ def preprocess(filename, format, preprocessor_options=[]):
             # evaluate value if it has the form eval('something')
             if isinstance(value, str) and value.startswith('eval('):
                 try:
-                    mako_kwargs[key] = eval(value)
+                    mako_kwargs[key] = eval(value[5:-1])
                 except (NameError, TypeError, SyntaxError) as e:
                     print '*** error: %s=%s imples running eval, but this failed' % (key, value)
                     print '    ', str(e)
