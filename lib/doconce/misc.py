@@ -1685,7 +1685,7 @@ download preprocess from http://code.google.com/p/preprocess""")
                 end_pattern,
                 fix_latex_command_regex(end, application='replacement'),
                 filestr, flags=re.MULTILINE)
-            print '%s (!bc %s) -> %s ("%s" is unknown)\n' % (ptex2tex_begin, envir, begin, envir)
+            print '%s (!bc %s) -> %s ("%s" is unsupported so we use Verbatim)\n' % (ptex2tex_begin, envir, begin, envir)
 
     # Make sure we include the necessary verbatim packages
     if packages:
