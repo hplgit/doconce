@@ -676,8 +676,8 @@ def tfig(fileno):
 
 ===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
 
-__Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
-some text.
+__Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is more `__verbatim__` code and
+some plain text on a new line.
 
 # Test various types of headlines
 % for heading in ('_Just bold_', '*Just emphasize*', '`Just verbatim`', '_Bold_ beginning', '*Emphasize* beginning', '`Verbatim` beginning', 'Maybe _bold end_', 'Maybe *emphasize end*', 'Maybe `verbatim end`', 'The middle has _bold_ word', 'The middle has *emphasize* word', 'The middle has `verbatim` word'):
