@@ -692,8 +692,8 @@ def tfig(fileno):
 
 ===== A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` =====
 
-__Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is
-some text.
+__Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.__ Here is more `__verbatim__` code and
+some plain text on a new line.
 
 # Test various types of headlines
 % for heading in ('_Just bold_', '*Just emphasize*', '`Just verbatim`', '_Bold_ beginning', '*Emphasize* beginning', '`Verbatim` beginning', 'Maybe _bold end_', 'Maybe *emphasize end*', 'Maybe `verbatim end`', 'The middle has _bold_ word', 'The middle has *emphasize* word', 'The middle has `verbatim` word'):
@@ -2853,9 +2853,9 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 
 \subsection{A test of verbatim words in heading with subscript $a_i$: \protect\code{my\_file\_v1} and \protect\code{my\_file\_v2} }
 
-\paragraph{Files \protect\code{my\_file\_v1.py} and \protect\code{my\_file\_v2.py} define some math $a_{i-1}$.}
-Here is
-some text.
+\paragraph{Paragraph with verbatim and math: \protect\code{my\_file\_v1.py} and \protect\code{my\_file\_v2.py} define some math $a_{i-1}$.}
+Here is more \code{__verbatim__} code and
+some plain text on a new line.
 
 % Test various types of headlines
 \subsection{\textbf{Just bold}}
@@ -5061,9 +5061,9 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 
 \subsection{A test of verbatim words in heading with subscript $a_i$: {\protect\Verb!my\_file\_v1!} and {\protect\Verb!my\_file\_v2!} }
 
-\paragraph{Files {\protect\Verb!my\_file\_v1.py!} and {\protect\Verb!my\_file\_v2.py!} define some math $a_{i-1}$.}
-Here is
-some text.
+\paragraph{Paragraph with verbatim and math: {\protect\Verb!my\_file\_v1.py!} and {\protect\Verb!my\_file\_v2.py!} define some math $a_{i-1}$.}
+Here is more {\Verb!__verbatim__!} code and
+some plain text on a new line.
 
 % Test various types of headlines
 \subsection{\textbf{Just bold}}
@@ -6165,9 +6165,9 @@ in a separate document: \texttt{admon.do.txt}.
 
 \bcpppro (!bc cpp) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{c++}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
-\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cod" is unknown)
+\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cod" is unsupported so we use Verbatim)
 
 output in testdoc.tex
 ----------- end of doconce ptex2tex output ----------------
@@ -7269,9 +7269,9 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 
 \subsection{A test of verbatim words in heading with subscript $a_i$: \protect\Verb!my\_file\_v1! and \protect\Verb!my\_file\_v2! }
 
-\paragraph{Files \protect\Verb!my\_file\_v1.py! and \protect\Verb!my\_file\_v2.py! define some math $a_{i-1}$.}
-Here is
-some text.
+\paragraph{Paragraph with verbatim and math: \protect\Verb!my\_file\_v1.py! and \protect\Verb!my\_file\_v2.py! define some math $a_{i-1}$.}
+Here is more \Verb!__verbatim__! code and
+some plain text on a new line.
 
 % Test various types of headlines
 \subsection{\textbf{Just bold}}
@@ -8976,9 +8976,9 @@ and URLs.
 A test of verbatim words in heading with subscript \\( a_i \\): ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
 
-**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math \\( a_{i-1} \\).**
-Here is
-some text.
+**Paragraph with verbatim and math: ``my_file_v1.py`` and ``my_file_v2.py`` define some math \\( a_{i-1} \\).**
+Here is more ``__verbatim__`` code and
+some plain text on a new line.
 
 .. Test various types of headlines
 
@@ -10705,9 +10705,9 @@ and URLs.
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
 
-**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
-Here is
-some text.
+**Paragraph with verbatim and math: ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
+Here is more ``__verbatim__`` code and
+some plain text on a new line.
 
 .. Test various types of headlines
 
@@ -12430,8 +12430,8 @@ and URLs.
 
 ==== A test of verbatim words in heading with subscript `a_i`: `my_file_v1` and `my_file_v2` ====
 
-*Files `my_file_v1.py` and `my_file_v2.py` define some math `a_{i-1}`.* Here is
-some text.
+*Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math `a_{i-1}`.* Here is more `__verbatim__` code and
+some plain text on a new line.
 
 <wiki:comment> Test various types of headlines </wiki:comment>
 ==== *Just bold* ====
@@ -13935,9 +13935,9 @@ and URLs.
 
 ==== A test of verbatim words in heading with subscript <math>a_i</math>: <code>my_file_v1</code> and <code>my_file_v2</code> ====
 
-''Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <math>a_{i-1}</math>.''
-Here is
-some text.
+''Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math <math>a_{i-1}</math>.''
+Here is more <code>__verbatim__</code> code and
+some plain text on a new line.
 
 <!-- Test various types of headlines -->
 ==== '''Just bold''' ====
@@ -15512,8 +15512,8 @@ and URLs.
 
 == A test of verbatim words in heading with subscript {{{a_i}}}: {{{my_file_v1}}} and {{{my_file_v2}}} ==
 
-//Files {{{my_file_v1.py}}} and {{{my_file_v2.py}}} define some math {{{a_{i-1}}}}.// Here is
-some text.
+//Paragraph with verbatim and math: {{{my_file_v1.py}}} and {{{my_file_v2.py}}} define some math {{{a_{i-1}}}}.// Here is more {{{__verbatim__}}} code and
+some plain text on a new line.
 
 <wiki:comment> Test various types of headlines </wiki:comment>
 == **Just bold** ==
@@ -16863,8 +16863,8 @@ and URLs.
 
 A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_file_v2'
 
-*Files 'my_file_v1.py' and 'my_file_v2.py' define some math a_{i-1}.* Here is
-some text.
+*Paragraph with verbatim and math: 'my_file_v1.py' and 'my_file_v2.py' define some math a_{i-1}.* Here is more '__verbatim__' code and
+some plain text on a new line.
 
 **Just bold**
 
@@ -18126,8 +18126,8 @@ and URLs.
 A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{my_file_v2}
 ------------------------------------------------------------------------------------------
 
-I{Files C{my_file_v1.py} and C{my_file_v2.py} define some math M{a_{i-1}}.} Here is
-some text.
+I{Paragraph with verbatim and math: C{my_file_v1.py} and C{my_file_v2.py} define some math M{a_{i-1}}.} Here is more C{__verbatim__} code and
+some plain text on a new line.
 
 B{Just bold}
 ------------
@@ -19554,8 +19554,8 @@ and URLs.
 A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
 ---------------------------------------------------------------------------------
 
-*Files my_file_v1.py and my_file_v2.py define some math a_{i-1}.* Here is
-some text.
+*Paragraph with verbatim and math: my_file_v1.py and my_file_v2.py define some math a_{i-1}.* Here is more __verbatim__ code and
+some plain text on a new line.
 
 _Just bold_
 -----------
@@ -21081,8 +21081,8 @@ and URLs.
 
 ### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`
 
-*Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is
-some text.
+*Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is more `__verbatim__` code and
+some plain text on a new line.
 
 <!-- Test various types of headlines -->
 ### **Just bold**
@@ -23004,8 +23004,8 @@ is at the end with only one newline.
       "\n",
       "### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`\n",
       "\n",
-      "**Files `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.** Here is\n",
-      "some text.\n",
+      "**Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.** Here is more `__verbatim__` code and\n",
+      "some plain text on a new line.\n",
       "\n",
       "<!-- Test various types of headlines -->\n",
       "### **Just bold**\n",
@@ -24947,8 +24947,8 @@ Python.</code></pre>
 <span>ccc</span><br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0085.png" alt="image" /><br /><span class="math">\(a=b\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0090.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0095.png" alt="image" /><br /><span class="math">\(\nabla\cdot\bm{u} =0 \)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0100.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0105.png" alt="image" /><br />
 </blockquote>
 <h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
-<h4 id="files-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Files <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
-<p>Here is some text.</p>
+<h4 id="paragraph-with-verbatim-and-math-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Paragraph with verbatim and math: <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
+<p>Here is more <code>__verbatim__</code> code and some plain text on a new line.</p>
 <h2 id="just-bold"><strong>Just bold</strong></h2>
 <p>Some text.</p>
 <h2 id="just-emphasize"><em>Just emphasize</em></h2>
@@ -25867,9 +25867,9 @@ Python.</code></pre>
 <td align="left"></td>
 </tr>
 <tr class="odd">
-<td align="center">*Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math some text.</td>
-<td align="left"><span class="math">\(a_{i-1}\)</span>.* Here is</td>
-<td align="left"></td>
+<td align="center">*Paragraph with verbatim and math: <code>my_file_v1.py</code> and `my_ some plain text on a new line.</td>
+<td align="left">file_v2.py<code>define some math $a_{i-1}$.* Here is more</code>__ve</td>
+<td align="left">rbatim__` code and</td>
 </tr>
 <tr class="even">
 <td align="center"><!-- Test various types of headlines --> ### <strong>Just bold</strong></td>
@@ -30313,9 +30313,9 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
-<b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
-Here is
-some text.
+<b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
+Here is more <code>__verbatim__</code> code and
+some plain text on a new line.
 
 <p>
 <!-- Test various types of headlines -->
@@ -32667,9 +32667,9 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
-<b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
-Here is
-some text.
+<b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
+Here is more <code>__verbatim__</code> code and
+some plain text on a new line.
 
 <h2><b>Just bold</b>  <a name="___sec12"></a></h2>
 
@@ -34641,9 +34641,9 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
-<b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
-Here is
-some text.
+<b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
+Here is more <code>__verbatim__</code> code and
+some plain text on a new line.
 
 <p>
 <!-- Test various types of headlines -->
@@ -36740,9 +36740,9 @@ $\nabla\cdot\bm{u} =0 $                                                       & 
 \noindent
 
 \paragraph{A test of verbatim words in heading with subscript $a_i$: \protect\code{my\_file\_v1} and \protect\code{my\_file\_v2}.}
-\paragraph{Files \protect\code{my\_file\_v1.py} and \protect\code{my\_file\_v2.py} define some math $a_{i-1}$.}
-Here is
-some text.
+\paragraph{Paragraph with verbatim and math: \protect\code{my\_file\_v1.py} and \protect\code{my\_file\_v2.py} define some math $a_{i-1}$.}
+Here is more \code{__verbatim__} code and
+some plain text on a new line.
 
 % Test various types of headlines
 \paragraph{\textbf{Just bold}.}
@@ -41541,9 +41541,9 @@ and URLs.
 
 <h2 id="___sec11">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> <a name="___sec11"></a></h2>
 
-<b>Files <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
-Here is
-some text.
+<b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
+Here is more <code>__verbatim__</code> code and
+some plain text on a new line.
 
 <p>
 <!-- Test various types of headlines -->
@@ -43437,9 +43437,9 @@ and URLs.
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
 
-**Files ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
-Here is
-some text.
+**Paragraph with verbatim and math: ``my_file_v1.py`` and ``my_file_v2.py`` define some math :math:`a_{i-1}`.**
+Here is more ``__verbatim__`` code and
+some plain text on a new line.
 
 .. Test various types of headlines
 
@@ -77954,7 +77954,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 31 19:25:44 2014.
+# sphinx-quickstart on Mon Sep  1 12:44:32 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79478,10 +79478,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -79512,7 +79516,10 @@ Here is a bullet list:
   * subitem2 of item2
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -80643,10 +80650,14 @@ by a keyword and a colon.
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -80685,7 +80696,11 @@ Here is a bullet list:
  <li> item3</li>
 </ul>
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
+<p>
 Here is an enumeration list:
 
 <ol>
@@ -82245,10 +82260,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -82290,7 +82309,10 @@ Here is a bullet list:
 \end{itemize}
 
 \noindent
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 \begin{enumerate}
@@ -83480,10 +83502,14 @@ by a keyword and a colon::
          * item1
          * item2
           * subitem1 of item2
-          * subitem2 of item2
+          * subitem2 of item2,
+            second line of subitem2
          * item3
         
-        Note that sublists are consistently indented by one or more blanks..
+        Note that sublists are consistently indented by one or more blanks as
+        shown: bullets must exactly match and continuation lines must start
+        right below the line above.
+        
         Here is an enumeration list:
         
          o item1
@@ -83518,7 +83544,10 @@ Here is a bullet list:
 
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 1. item1
@@ -84670,10 +84699,14 @@ by a keyword and a colon.
          * item1
          * item2
           * subitem1 of item2
-          * subitem2 of item2
+          * subitem2 of item2,
+            second line of subitem2
          * item3
         
-        Note that sublists are consistently indented by one or more blanks..
+        Note that sublists are consistently indented by one or more blanks as
+        shown: bullets must exactly match and continuation lines must start
+        right below the line above.
+        
         Here is an enumeration list:
         
          o item1
@@ -84708,7 +84741,10 @@ Here is a bullet list:
 
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 1. item1
@@ -85894,10 +85930,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -85932,7 +85972,10 @@ Here is a bullet list:
 
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 
@@ -87010,10 +87053,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -87051,7 +87098,10 @@ Here is a bullet list:
  <li> item3
 </ul>
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 
@@ -88187,10 +88237,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -88225,7 +88279,10 @@ Here is a bullet list:
 
  // item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 
@@ -89277,10 +89334,14 @@ by a keyword and a colon::
          * item1
          * item2
           * subitem1 of item2
-          * subitem2 of item2
+          * subitem2 of item2,
+            second line of subitem2
          * item3
         
-        Note that sublists are consistently indented by one or more blanks..
+        Note that sublists are consistently indented by one or more blanks as
+        shown: bullets must exactly match and continuation lines must start
+        right below the line above.
+        
         Here is an enumeration list:
         
          o item1
@@ -89312,7 +89373,10 @@ Here is a bullet list:
 
  - item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 1. item1
@@ -90348,10 +90412,14 @@ by a keyword and a colon::
          * item1
          * item2
           * subitem1 of item2
-          * subitem2 of item2
+          * subitem2 of item2,
+            second line of subitem2
          * item3
         
-        Note that sublists are consistently indented by one or more blanks..
+        Note that sublists are consistently indented by one or more blanks as
+        shown: bullets must exactly match and continuation lines must start
+        right below the line above.
+        
         Here is an enumeration list:
         
          o item1
@@ -90383,7 +90451,10 @@ Here is a bullet list:
 
  - item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 1. item1
@@ -91452,10 +91523,14 @@ by a keyword and a colon::
          * item1
          * item2
           * subitem1 of item2
-          * subitem2 of item2
+          * subitem2 of item2,
+            second line of subitem2
          * item3
         
-        Note that sublists are consistently indented by one or more blanks..
+        Note that sublists are consistently indented by one or more blanks as
+        shown: bullets must exactly match and continuation lines must start
+        right below the line above.
+        
         Here is an enumeration list:
         
          o item1
@@ -91490,7 +91565,10 @@ Here is a bullet list:
 
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 1. item1
@@ -92610,10 +92688,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -92646,7 +92728,10 @@ Here is a bullet list:
 
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
 1. item1
@@ -94725,6 +94810,7 @@ t line 1266.
 
 ...rest of part of LaTeX line number...
 
+[15]
 
 
 ...rest of part of LaTeX line number...
@@ -94809,11 +94895,10 @@ t line 1270.
 
 ...rest of part of LaTeX line number...
 
-[15]
+[16]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[16]
 
 
 .
@@ -94884,10 +94969,9 @@ Package amsmath Warning: Foreign command \over;
 ...rest of part of LaTeX line number...
 
 [18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21] (./testdoc.out.pyg)
-
+[22]
 Underfull \hbox (badness 10000) 
 
-[22]
 
 
 .
@@ -94898,6 +94982,7 @@ Underfull \hbox (badness 10000)
 
 
 
+[23]
 
 
 ...rest of part of LaTeX line number...
@@ -94913,7 +94998,7 @@ Underfull \hbox (badness 10000)
 
 
 No file testdoc.bbl.
-[23]
+
 Underfull \hbox (badness 10000) 
 
 [24]
@@ -95509,6 +95594,7 @@ t line 1266.
 
 ...rest of part of LaTeX line number...
 
+[16]
 
 
 ...rest of part of LaTeX line number...
@@ -95593,23 +95679,22 @@ t line 1270.
 
 ...rest of part of LaTeX line number...
 
-[16]
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[17]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
-(./testdoc.out.pyg)
+(./testdoc.out.pyg) [23]
 Underfull \hbox (badness 10000) 
 
-[23]
-No file testdoc.bbl.
 [24]
+No file testdoc.bbl.
+
 Underfull \hbox (badness 10000) 
 
 [25] [26] [27]
@@ -96210,6 +96295,7 @@ t line 1266.
 
 ...rest of part of LaTeX line number...
 
+[16]
 
 
 ...rest of part of LaTeX line number...
@@ -96294,21 +96380,20 @@ t line 1270.
 
 ...rest of part of LaTeX line number...
 
-[16]
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[17]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
-(./testdoc.out.pyg)
+(./testdoc.out.pyg) [23]
 Underfull \hbox (badness 10000) 
 
-[23] (./testdoc.bbl [24] [25]) [26]
+[24] (./testdoc.bbl [25]) [26]
 Underfull \hbox (badness 10000) 
 
 [27] [28] (./testdoc.ind [29]
@@ -96866,21 +96951,20 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[15] [16]
+[15] [16] [17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[17]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
-(./testdoc.out.pyg)
+(./testdoc.out.pyg) [23]
 Underfull \hbox (badness 10000) 
 
-[23] (./testdoc.bbl [24] [25]) [26]
+[24] (./testdoc.bbl [25]) [26]
 Underfull \hbox (badness 10000) 
 
 [27] [28] (./testdoc.ind [29]
@@ -97507,11 +97591,11 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
+[14]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14]
 
 
 t line 1208.
@@ -97624,11 +97708,10 @@ t line 1221.
 
 ...rest of part of LaTeX line number...
 
-[15]
+[15] [16]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[16]
 
 
 .
@@ -97698,10 +97781,9 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[18] (./testdoc.out.pyg) [19] [20] [21] (./testdoc.out.pyg)
+[18] (./testdoc.out.pyg) [19] [20] [21] [22] (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
-[22]
 
 
 .
@@ -97709,6 +97791,7 @@ Underfull \hbox (badness 10000)
 
 
 
+[23]
 
 
 
@@ -97726,7 +97809,7 @@ Underfull \hbox (badness 10000)
 
 
 
-(./testdoc.bbl [23] [24]) [25]
+(./testdoc.bbl [24]) [25]
 Underfull \hbox (badness 10000) 
 
 
@@ -98712,31 +98795,31 @@ output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex testdoc
 + doconce ptex2tex testdoc
-\bfcod (!bc fcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("fcod" is unknown)
+\bfcod (!bc fcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("fcod" is unsupported so we use Verbatim)
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
-\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unknown)
+\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unsupported so we use Verbatim)
 
-\bpypro (!bc pypro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pypro" is unknown)
+\bpypro (!bc pypro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pypro" is unsupported so we use Verbatim)
 
-\bcycod (!bc cycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cycod" is unknown)
+\bcycod (!bc cycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cycod" is unsupported so we use Verbatim)
 
-\bpyshell (!bc pyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pyshell" is unknown)
+\bpyshell (!bc pyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pyshell" is unsupported so we use Verbatim)
 
-\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ipy" is unknown)
+\bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ipy" is unsupported so we use Verbatim)
 
-\bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cpppro" is unknown)
+\bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cpppro" is unsupported so we use Verbatim)
 
-\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cod" is unknown)
+\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cod" is unsupported so we use Verbatim)
 
-\bhtmlcod (!bc htmlcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("htmlcod" is unknown)
+\bhtmlcod (!bc htmlcod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("htmlcod" is unsupported so we use Verbatim)
 
-\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("sys" is unknown)
+\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("sys" is unsupported so we use Verbatim)
 
-\brestructuredtext (!bc restructuredtext) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("restructuredtext" is unknown)
+\brestructuredtext (!bc restructuredtext) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("restructuredtext" is unsupported so we use Verbatim)
 
-\bdo (!bc do) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("do" is unknown)
+\bdo (!bc do) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("do" is unsupported so we use Verbatim)
 
 output in testdoc.tex
 + '[' 0 -ne 0 ']'
@@ -98834,7 +98917,7 @@ output in slides1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides1
 + doconce ptex2tex slides1
-\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unknown)
+\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unsupported so we use Verbatim)
 
 output in slides1.tex
 + '[' 0 -ne 0 ']'
@@ -98930,7 +99013,7 @@ output in slides2.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in slides2.tex
 + '[' 0 -ne 0 ']'
@@ -99098,7 +99181,7 @@ running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.
 translating doconce text in tmp_mako__math_test.do.txt to pdflatex
 output in math_test.p.tex
 + doconce ptex2tex math_test
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in math_test.tex
 + pdflatex math_test
@@ -99498,7 +99581,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_colors1.tex
@@ -99838,7 +99921,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_mdfbox.tex
@@ -100325,7 +100408,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_paragraph.tex
@@ -100737,7 +100820,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_graybox2.tex
@@ -101223,7 +101306,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_yellowicon.tex
@@ -101532,7 +101615,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_grayicon.tex
@@ -101840,7 +101923,7 @@ output in admon.p.tex
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_colors2.tex
@@ -102141,7 +102224,7 @@ output in admon.p.tex
 
 \bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
 
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in admon.tex
 + cp admon.tex admon_double_envirs.tex
@@ -102478,7 +102561,7 @@ output in movies.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex movies
 + doconce ptex2tex movies
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -103685,7 +103768,7 @@ output in movies.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex movies
 + doconce ptex2tex movies
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -104284,7 +104367,7 @@ output in movies.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex movies
 + doconce ptex2tex movies
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unknown)
+\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
 
 output in movies.tex
 + '[' 0 -ne 0 ']'
@@ -107118,11 +107201,11 @@ ust place []
 
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[6] [7] [8]
+[6] [7] [8] [9]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
-[9]
+
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
 
@@ -107501,14 +107584,9 @@ Overfull \hbox (12.68103pt too wide)
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
-
+[10]
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[10]
-
-
-...rest of part of LaTeX line number...
-
 [11] [12] [13]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
@@ -107521,7 +107599,7 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[15] [16] [17] [18] [19]
+[15] [16] [17] [18] [19] [20]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -107529,7 +107607,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[20] (./quickref.aux)
+[21] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -107676,14 +107754,11 @@ RS)
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.dvi (20 pages, ).
+Output written on quickref.dvi (21 pages, ).
 Transcript written on quickref.log.
 + dvipdf quickref.dvi
 + system doconce format sphinx quickref --no_preprocess
@@ -107966,9 +108041,13 @@ Overfull \hbox (95.00006pt too wide)
 []\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
 th. 
 
-Overfull \hbox (113.00006pt too wide) 
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
-anks..  
+anks as  
+
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must 
+start  
 [4]
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
@@ -108507,9 +108586,13 @@ Overfull \hbox (95.00006pt too wide)
 []\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
 th. 
 
-Overfull \hbox (113.00006pt too wide) 
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
-anks..  
+anks as  
+
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must 
+start  
 [5]
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
@@ -108520,7 +108603,7 @@ Overfull \hbox (83.00006pt too wide)
 
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
-
+[7]
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
 sume  
@@ -108530,7 +108613,7 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 \T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
-[7]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
 asic]  
@@ -108545,7 +108628,7 @@ a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-
+[8]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -108560,7 +108643,7 @@ it_rst
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
 lit_rst  
-[8]
+
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
 
@@ -108591,11 +108674,11 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-
+[11]
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
-[11]
+
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
@@ -108642,20 +108725,20 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
 `)  |  
-
+[12]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[12]
+
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
-
+[13]
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-[13]
+
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -108663,7 +108746,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-
+[14]
 Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -108674,7 +108757,7 @@ ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
 _localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
 t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
 f gitdiff fix_bibtex4publish csv2table  
-[14]
+
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -108724,14 +108807,14 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-
+[15]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[15]
+
 Overfull \hbox (173.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
 splitting points  
@@ -108767,7 +108850,7 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-
+[16]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -108780,7 +108863,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-[16]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
@@ -108821,13 +108904,13 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
+[17]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-[17]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
@@ -108841,21 +108924,21 @@ Overfull \hbox (77.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-
+[18]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
-[18]
+
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-
+[19]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -108866,18 +108949,18 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[19]
+
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-
+[20]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[20]
+
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub

@@ -584,18 +584,18 @@ IPython sessions:
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "perldoc" -->
+<!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">In [<span style="color: #B452CD">1</span>]: <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
 
-In [<span style="color: #B452CD">2</span>]: <span style="color: #228B22"># Some comment</span>
+<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
 
-In [<span style="color: #B452CD">3</span>]: x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
-Value: <span style="color: #B452CD">0.932039085967</span>
+<span style="color: #555555">In [3]: </span>x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
+<span style="color: #888888">Value: 0.932039085967</span>
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
@@ -734,7 +734,7 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 
 <p>
 
-<!-- code=text (!bc do) typeset with pygments style "perldoc" -->
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
  2
  3
@@ -769,9 +769,9 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 32
 33
 34
-35</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">======= DocOnce test file =======
+35</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
 
-===== Computer code =====
+<span style="color: #000080; font-weight: bold">===== Computer code =====</span>
 
 Inline verbatim code, as in `import numpy as np`, is allowed, as well as
 code blocks:
@@ -787,23 +787,23 @@ print f(0)
 !ec
 
 
-===== Mathematics =====
+<span style="color: #000080; font-weight: bold">===== Mathematics =====</span>
 
 Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
 as equations:
 
 !bt
-\begin{align*}
+<span style="color: #658b00">\begin{align*}</span>
 \nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
-\end{align*}
+<span style="color: #658b00">\end{align*}</span>
 !et
 
-=== Subsubsection heading ===
+<span style="color: #000080; font-weight: bold">=== Subsubsection heading ===</span>
 
 DocOnce files can have chapters, sections, subsections, and subsubsections.
 
-__Paragraph heading.__ Paragraphs may have headings.
+<span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
