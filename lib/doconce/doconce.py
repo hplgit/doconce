@@ -1569,7 +1569,7 @@ def typeset_tables(filestr, format):
     if re.search(horizontal_rule_pattern, lines[-1]):
         lines.append('\n')
 
-    for line in lines:
+    for line_no, line in enumerate(lines):
         lin = line.strip()
         # horisontal table rule?
         if re.search(horizontal_rule_pattern, lin):
@@ -1662,6 +1662,10 @@ def typeset_tables(filestr, format):
                     print '*** error: syntax error in table!'
                     print '    missing three horizontal rules and heading'
                     print '    in the right places'
+                    print '\n    lines surrounding the table:'
+                    for _line in lines[line_no-10:line_no+5]:
+                        print _line
+                    print '\n    here are the recorded table rows:'
                     for row in table['rows']:
                         if row != ['horizontal rule']:
                             # Check for common syntax error: |--l--|--r--|
@@ -1672,8 +1676,10 @@ def typeset_tables(filestr, format):
                         else:
                             print '|---------------------| (horizontal rule)'
                     print '\npossible trouble:'
-                    print '1. not a table, just an opening pipe symbol at the beginning of the line?'
-                    print '2. something wrong with the syntax in a preceding table?'
+                    print '1. Not a table, just an opening pipe symbol at the beginning of the line?'
+                    print '2. Something wrong with the syntax in a preceding table?'
+                    if format not in ('latex', 'pdflatex', 'html', 'sphinx', 'mwiki'):
+                        print '3. In simple formats without math support, like %s, a formula like $|x|$ at the beginning of the line will have stripped off $ and hence line starts with |, which indicates a table. Move the formula so that it is not at the beginning of a line.' % format
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table

@@ -156,9 +156,11 @@ and double single quotes, as in ``this example''.
 Lists are typeset as you would do in email,
 
   * item 1
-  * item 2
+  * item 2,
+    perhaps with a 2nd line
   * item 3
 
+Note the consistent use of indentation (as in Python programming!).
 Lists can also have automatically numbered items instead of bullets,
 
   o item 1
@@ -223,8 +225,11 @@ and double single quotes, as in ``this example''.
 Lists are typeset as you would do in an email,
 
   * item 1
-  * item 2
+  * item 2,
+    perhaps with a 2nd line
   * item 3
+
+Note the consistent use of indentation (as in Python programming!).
 
 Lists can also have numbered items instead of bullets, just use an `o`
 (for ordered) instead of the asterisk:

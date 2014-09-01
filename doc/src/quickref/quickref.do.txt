@@ -217,10 +217,14 @@ Here is a bullet list:
  * item1
  * item2
   * subitem1 of item2
-  * subitem2 of item2
+  * subitem2 of item2,
+    second line of subitem2
  * item3
 
-Note that sublists are consistently indented by one or more blanks..
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
@@ -251,7 +255,10 @@ Here is a bullet list:
   * subitem2 of item2
  * item3
 
-Note that sublists are indented.
+Note that sublists are consistently indented by one or more blanks as
+shown: bullets must exactly match and continuation lines must start
+right below the line above.
+
 Here is an enumeration list:
 
  o item1
