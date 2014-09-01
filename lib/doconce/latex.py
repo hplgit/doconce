@@ -363,9 +363,8 @@ def latex_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(pattern, subst, filestr)
 
     # \code{} in section headings and paragraph needs a \protect
-    cpattern = re.compile(r'^\s*(\\.*section\*?|\\paragraph)\{(.*)\}\s*$',
-                         re.MULTILINE)
-    headings = cpattern.findall(filestr)
+    pattern = r'^\s*(\\.*section\*?|\\paragraph)\{(.*)\}\s*$'
+    headings = re.findall(pattern, filestr, flags=re.MULTILINE)
 
     for tp, heading in headings:
         if '\\code{' in heading:
@@ -377,6 +376,17 @@ def latex_code(filestr, code_blocks, code_block_types,
                                  new_heading)
             filestr = filestr.replace(r'%s{%s}' % (tp, heading),
                                       r'%s{%s}' % (tp, new_heading))
+    # Headings in paragraph versions of admons also need \protect\code
+    pattern = r'^(!b[a-z]+ +)(.*)$'
+    headings = re.findall(pattern, filestr, flags=re.MULTILINE)
+    for tp, heading in headings:
+        if '\\code{' in heading:
+            new_heading = re.sub(r'\\code\{(.*?)\}', underscore_in_code,
+                                 heading)
+            new_heading = new_heading.replace(r'\code{', r'\protect\code{')
+            filestr = filestr.replace(r'%s%s' % (tp, heading),
+                                      r'%s%s' % (tp, new_heading))
+
     # addcontentsline also needs \protect\code
     addcontentslines = re.findall(r'^(\\addcontentsline\{.+)$', filestr,
                                   flags=re.MULTILINE)
@@ -384,6 +394,8 @@ def latex_code(filestr, code_blocks, code_block_types,
         if '\\code{' in line:
             new_line = line.replace(r'\code{', r'\protect\code{')
             filestr = filestr.replace(line, new_line)
+    # paragraphadmon also needs \protect\Verb
+
 
     if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
