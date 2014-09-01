@@ -487,7 +487,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         try:
             return r'[(%s)](#%s)' % (label2tag[m.group(1)], label)
         except KeyError as e:
-            print '*** error: label "%s" is not defined' % str(e).split(':')[1].strip()
+            print '*** error: label "%s" is not defined' % str(e)
+
     filestr = re.sub(r'\(ref\{(.+?)\}\)', subst, filestr)
     """
     # MathJax reference to tag (recall that the equations have both label
