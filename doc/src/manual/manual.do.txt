@@ -76,36 +76,30 @@ lists, special lines, inline tags, and environments.
 ===== Lists =====
 
 An unordered bullet list makes use of the `*` as bullet sign
-and is indented as follows
+and is consistently *indented* by some chosen spaces as follows
 
 !bc do
    * item 1
-
    * item 2
-
      * subitem 1, if there are more
        lines, each line must
-       be intended as shown here
-
+       be exactly intended as shown here
+       (i.e., start in the same column)
      * subitem 2,
        also spans two lines
-
    * item 3
 !ec
 
 This list gets typeset as
 
    * item 1
-
    * item 2
-
      * subitem 1, if there are more
        lines, each line must
-       be intended as shown here
-
+       be exactly intended as shown here
+       (i.e., start in the same column)
      * subitem 2,
        also spans two lines
-
    * item 3
 
 # #if FORMAT == "gwiki"

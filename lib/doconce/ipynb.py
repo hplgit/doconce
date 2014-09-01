@@ -404,7 +404,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         m = re.search(r'\\begin\{(.+?)\}', tex_blocks[i])
         if m:
             envir = m.group(1)
-            if envir not in ('equation', 'equation*', 'align*', 'align'):
+            if envir not in ('equation', 'equation*', 'align*', 'align',
+                             'array'):
                 print """\
 *** warning: latex envir \\begin{%s} does not work well in Markdown.
     Stick to \\[ ... \\], equation, equation*, align, or align*
@@ -482,9 +483,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     # will probably support labels
     #filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\\eqref{\g<1>}', filestr)
     # Now we use explicit references to tags
-    filestr = re.sub(r'\(ref\{(.+?)\}\)',
-                     lambda m: r'[(%s)](#%s)' % (label2tag[m.group(1)], label),
-                     filestr)
+    def subst(m):
+        try:
+            return r'[(%s)](#%s)' % (label2tag[m.group(1)], label)
+        except KeyError as e:
+            print '*** error: label "%s" is not defined' % str(e).split(':')[1].strip()
+    filestr = re.sub(r'\(ref\{(.+?)\}\)', subst, filestr)
     """
     # MathJax reference to tag (recall that the equations have both label
     # and tag (know that tag only works well in HTML, but this mjx-eqn-no
