@@ -300,11 +300,14 @@ doconce slides_html demo doconce --nav_button=text
 % endfor
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer --latex_admon_title_no_period
 doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 !ec
+(A period is usually added to addmon titles without a final `?.:`, but
+Beamer headings look better without adding a period, and that is why we
+use `--latex_admon_title_no_period`.)
 
 "Traditional handouts (2x3) in PDF": "demo_red_plain_handouts2x3.pdf"
 
