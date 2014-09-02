@@ -1,251 +1,232 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Doconce Troubleshooting">
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="DocOnce Troubleshooting">
 
+<title>DocOnce Troubleshooting</title>
 
-
-<style type="text/css">
-    /* blueish style */
-
-    /* Color definitions:  http://www.december.com/html/spec/color0.html
-       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
-
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    h1 { font-size: 1.8em; color: #1e36ce; }
-    h2 { font-size: 1.6em; color: #1e36ce; }
-    h3 { font-size: 1.4em; color: #1e36ce; }
-    a { color: #1e36ce; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
-    p { text-indent: 0px; }
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-style: normal; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #f8f8f8;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
-
-</style>
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' General Problems ', 1, None, '___sec0'),
-              (' Spellcheck reports a lot of mistakes related to LaTeX math ',
+              (' How can I control the vertical spacing in slides? ',
                2,
                None,
                '___sec1'),
-              (' Text between subexercises are moved ', 2, None, '___sec2'),
-              (' Doconce aborts because of a syntax error that is not an error ',
+              (' Spellcheck reports a lot of mistakes related to LaTeX math ',
                2,
                None,
-               '___sec3'),
-              (' Figure captions are incomplete ', 2, None, '___sec4'),
-              (' Problems with boldface and emphasize ', 2, None, '___sec5'),
+               '___sec2'),
+              (' Text between subexercises are moved ', 2, None, '___sec3'),
+              (' DocOnce aborts because of a syntax error that is not an error ',
+               2,
+               None,
+               '___sec4'),
+              (' Figure captions are incomplete ', 2, None, '___sec5'),
+              (' Problems with boldface and emphasize ', 2, None, '___sec6'),
               (' Links to local directories do not work ',
                2,
                None,
-               '___sec6'),
-              (' Links are not typeset correctly ', 2, None, '___sec7'),
-              (' Inline verbatim code is not detected ', 2, None, '___sec8'),
+               '___sec7'),
+              (' Links are not typeset correctly ', 2, None, '___sec8'),
+              (' Inline verbatim code is not detected ', 2, None, '___sec9'),
               (' Inline verbatim text is not formatted correctly ',
                2,
                None,
-               '___sec9'),
-              (' Strange non-English characters ', 2, None, '___sec10'),
-              (' Wrong Norwegian charcters ', 2, None, '___sec11'),
+               '___sec10'),
+              (' Strange non-English characters ', 2, None, '___sec11'),
+              (' Wrong Norwegian charcters ', 2, None, '___sec12'),
               (' Too short underlining of reST headlines ',
                2,
                None,
-               '___sec12'),
+               '___sec13'),
               (' Found `!bt` but no tex blocks extracted (BUG) ',
                2,
                None,
-               '___sec13'),
+               '___sec14'),
               (' Examples are typset with environment delimiters visible ',
                2,
                None,
-               '___sec14'),
+               '___sec15'),
               (' Emacs editing does not work properly because of "regexp overflow" ',
                2,
                None,
-               '___sec15'),
+               '___sec16'),
               (' My machine hangs if I have many movies ',
                2,
                None,
-               '___sec16'),
-              (' How can I use quotes in a link? ', 2, None, '___sec17'),
-              (' Conversion from Doconce to Google Docs ',
-               2,
-               None,
-               '___sec18'),
-              (' Convesion from Google Docs to Doconce ',
+               '___sec17'),
+              (' How can I use quotes in a link? ', 2, None, '___sec18'),
+              (' Conversion from DocOnce to Google Docs ',
                2,
                None,
                '___sec19'),
-              (' Are there any tools for shared online writing of Doconce documents? ',
+              (' Convesion from Google Docs to DocOnce ',
                2,
                None,
                '___sec20'),
-              (' Preprocess/Mako problems ', 1, None, '___sec21'),
-              (' The Mako preprocessor is seemingly not run ',
+              (' Are there any tools for shared online writing of DocOnce documents? ',
                2,
                None,
-               '___sec22'),
-              (' The Mako preprocessor gives strange error messages ',
+               '___sec21'),
+              (' Examples on seemingly legal syntax that fails ',
                2,
-               None,
-               '___sec23'),
-              (' The Mako preprocessor is fooled by Doconce text ',
-               2,
-               None,
-               '___sec24'),
-              (' The Mako preprocessor claims a variable is undefined ',
-               2,
-               None,
-               '___sec25'),
-              (' Something goes wrong in the preprocessing step ',
+               'trouble:pitfalls',
+               'trouble:pitfalls'),
+              (' Double bold/italic ', 3, None, '___sec23'),
+              (' Mix of bold/italic and math ', 3, None, '___sec24'),
+              (' Preprocess/Mako problems ', 1, None, '___sec25'),
+              (' List important things to remember when programming Mako ',
                2,
                None,
                '___sec26'),
-              (' Preprocessor directives do not work ', 2, None, '___sec27'),
-              (' Problems with code or Tex Blocks ', 1, None, '___sec28'),
-              (' Code or math block errors in reST ', 2, None, '___sec29'),
-              (' Strange errors around code or TeX blocks in reST ',
+              (' The Mako preprocessor is seemingly not run ',
+               2,
+               None,
+               '___sec27'),
+              (' The Mako preprocessor gives syntax error in Python code ',
+               2,
+               None,
+               '___sec28'),
+              (' The Mako preprocessor gives strange error messages ',
+               2,
+               None,
+               '___sec29'),
+              (' The Mako preprocessor is fooled by DocOnce text ',
                2,
                None,
                '___sec30'),
-              (' Something is wrong with a verbatim code block ',
+              (' The Mako preprocessor claims a variable is undefined ',
                2,
                None,
                '___sec31'),
-              (' Code/TeX block is not shown in reST format ',
+              (' Something goes wrong in the preprocessing step ',
                2,
                None,
                '___sec32'),
-              (' Verbatim code blocks inside lists look ugly ',
+              (' Preprocessor directives do not work ', 2, None, '___sec33'),
+              (' Problems with code or Tex Blocks ', 1, None, '___sec34'),
+              (' Code or math block errors in reST ', 2, None, '___sec35'),
+              (' Strange errors around code or TeX blocks in reST ',
                2,
                None,
-               '___sec33'),
-              (' LaTeX code blocks inside lists look ugly ',
+               '___sec36'),
+              (' Something is wrong with a verbatim code block ',
                2,
                None,
-               '___sec34'),
-              (' Problems with reST/Sphinx Output ', 1, None, '___sec35'),
-              (' Title level inconsistent ', 2, None, '___sec36'),
-              (' Lists do not appear in .rst files ', 2, None, '___sec37'),
-              (' Error message "Undefined substitution..." from reST ',
+               '___sec37'),
+              (' Code/TeX block is not shown in reST format ',
                2,
                None,
                '___sec38'),
-              (' Warning about duplicate link names ', 2, None, '___sec39'),
-              (' Inconsistent headings in reST ', 2, None, '___sec40'),
+              (' Verbatim code blocks inside lists look ugly ',
+               2,
+               None,
+               '___sec39'),
+              (' LaTeX code blocks inside lists look ugly ',
+               2,
+               None,
+               '___sec40'),
+              (' Problems with reST/Sphinx Output ', 1, None, '___sec41'),
+              (' Title level inconsistent ', 2, None, '___sec42'),
+              (' Lists do not appear in .rst files ', 2, None, '___sec43'),
+              (' Error message "Undefined substitution..." from reST ',
+               2,
+               None,
+               '___sec44'),
+              (' Warning about duplicate link names ', 2, None, '___sec45'),
+              (' Inconsistent headings in reST ', 2, None, '___sec46'),
               (' No code environment appears before "bc ipy" blocks ',
                2,
                None,
-               '___sec41'),
-              (' Problems with LaTeX Output ', 1, None, '___sec42'),
+               '___sec47'),
+              (' Problems with LaTeX Output ', 1, None, '___sec48'),
               (' LaTeX does not like underscores in URLs ',
                2,
                None,
-               '___sec43'),
-              (' How can I have unnumbered sections? ', 2, None, '___sec44'),
+               '___sec49'),
+              (' How can I have unnumbered sections? ', 2, None, '___sec50'),
               (" Error when running latex: You must have 'pygmentize' installed ",
                2,
                None,
-               '___sec45'),
+               '___sec51'),
               (' Why are the LaTeX section headings smaller than normal? ',
                2,
                None,
-               '___sec46'),
+               '___sec52'),
               (' I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises ',
                2,
                None,
-               '___sec47'),
+               '___sec53'),
               (' Can I have LaTeX figures with shadows? ',
                2,
                None,
-               '___sec48'),
+               '___sec54'),
               (' How can I use my fancy LaTeX environments? ',
                2,
                None,
-               '___sec49'),
-              (' The LaTeX file does not compile ', 2, None, '___sec50'),
+               '___sec55'),
+              (' The LaTeX file does not compile ', 2, None, '___sec56'),
               (' The LaTeX Beamer file does not compile ',
                2,
                None,
-               '___sec51'),
-              (' Inline verbatim gives error  ', 2, None, '___sec52'),
-              (' Errors in figure captions ', 2, None, '___sec53'),
-              (' Chapters are ignored ', 2, None, '___sec54'),
+               '___sec57'),
+              (' Inline verbatim gives error  ', 2, None, '___sec58'),
+              (' Errors in figure captions ', 2, None, '___sec59'),
+              (' Chapters are ignored ', 2, None, '___sec60'),
               (' I want to tune the top (preamble) of the LaTeX file ',
                2,
                None,
-               '___sec55'),
-              (' Problems with gwiki Output ', 1, None, '___sec56'),
-              (' Strange nested lists in gwiki ', 2, None, '___sec57'),
-              (' Lists in gwiki look ugly in the gwiki source ',
-               2,
-               None,
-               '___sec58'),
-              (' Problems with HTML Output ', 1, None, '___sec59'),
-              (' MathJax formulas are not properly rendered ',
-               2,
-               None,
-               '___sec60'),
-              (' How can I change the layout of the HTML page? ',
-               2,
-               None,
                '___sec61'),
-              (' Why do figures look ugly when using HTML templates? ',
+              (' Solution heading in exercise solutions appear after the solution content ',
                2,
                None,
                '___sec62'),
+              (' Problems with gwiki Output ', 1, None, '___sec63'),
+              (' Strange nested lists in gwiki ', 2, None, '___sec64'),
+              (' Lists in gwiki look ugly in the gwiki source ',
+               2,
+               None,
+               '___sec65'),
+              (' Problems with HTML Output ', 1, None, '___sec66'),
+              (' MathJax formulas are not properly rendered ',
+               2,
+               None,
+               '___sec67'),
+              (' How can I change the layout of the HTML page? ',
+               2,
+               None,
+               '___sec68'),
+              (' Why do figures look ugly when using HTML templates? ',
+               2,
+               None,
+               '___sec69'),
               (' Problems with reveal/deck HTML5 slides ',
                1,
                None,
-               '___sec63'),
+               '___sec70'),
+              (' Reveal slides are stacked on top of each other ',
+               2,
+               None,
+               '___sec71'),
               (' Reveal slides are moving steadily to the left ',
                2,
                None,
-               '___sec64'),
-              (' YouTube movies do not work ', 2, None, '___sec65'),
-              (' Online Python Tutor does not work ', 2, None, '___sec66')]}
+               '___sec72'),
+              (' YouTube movies do not work ', 2, None, '___sec73'),
+              (' Online Python Tutor does not work ', 2, None, '___sec74')]}
 end of tocinfo -->
 
 <body>
@@ -256,26 +237,58 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
     
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="trouble.html">DocOnce Troubleshooting</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">General Problems</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">Preprocess/Mako problems</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec34" style="font-size: 80%;">Problems with code or Tex Blocks</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">Problems with reST/Sphinx Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;">Problems with LaTeX Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec63" style="font-size: 80%;">Problems with gwiki Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec66" style="font-size: 80%;">Problems with HTML Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec70" style="font-size: 80%;">Problems with reveal/deck HTML5 slides</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Doconce Troubleshooting</title>
 
-<center><h1>Doconce Troubleshooting</h1></center>  <!-- document title -->
+<div class="jumbotron">
+<center><h1>DocOnce Troubleshooting</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -291,20 +304,68 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 28, 2014</h4></center> <!-- date -->
+<center><h4>Sep 2, 2014</h4></center> <!-- date -->
 <p>
-<b>Disclaimer.</b>
-Doconce has some support for syntax checking.  If you encounter Python
+<div class="alert alert-block alert-danger alert-text-normal"><b>Disclaimer.</b>
+DocOnce has some support for syntax checking.  If you encounter Python
 errors while running <code>doconce format</code>, the reason for the error is
-most likely a syntax problem in your Doconce source file. You have to
-track down this syntax problem yourself. However, Doconce applies
+most likely a syntax problem in your DocOnce source file. You have to
+track down this syntax problem yourself. However, DocOnce applies
 regular expressions to a large extent for transforming text, and
-regular expressions may sometimes fail. Therefore, there is a chance that legal
-Doconce syntax is not treated properly.
+regular expressions may sometimes lead to undesired results.
+Therefore, there is a chance that legal DocOnce syntax is not
+treated properly. The section <a href="#trouble:pitfalls">Examples on seemingly legal syntax that fails</a> gives some examples of what
+can go wrong.
+</div>
 
-<h1>General Problems  <a name="___sec0"></a></h1>
 
-<h2>Spellcheck reports a lot of mistakes related to LaTeX math  <a name="___sec1"></a></h2>
+<p>
+
+
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0">General Problems <a name="___sec0"></a></h1>
+
+<h2 id="___sec1">How can I control the vertical spacing in slides? <a name="___sec1"></a></h2>
+
+HTML5 and LaTeX slides control the spacings for you. However, sometimes
+you really want to add some space. The <code><linebreak></code> is effective for
+this purpose. For example,
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bblock (large) So, how to be excellent?
+&lt;linebreak&gt;
+Excellence is not a planned goal - it is the corollary of
+deep passion for scientific subjects, very much hard (and exciting!)
+work, and *thinking constantly about it*.
+!eblock
+</pre></div>
+<p>
+is rendered as
+
+<p>
+<div class="alert alert-block alert-success alert-text-large"><b>So, how to be excellent?</b>
+  <br />
+Excellence is not a planned goal - it is the corollary of
+deep passion for scientific subjects, very much hard (and exciting!)
+work, and <em>thinking constantly about it</em>.
+</div>
+
+
+<p>
+Without <code><linebreak></code> the rendering becomes
+
+<p>
+<div class="alert alert-block alert-success alert-text-large"><b>So, how to be excellent?</b>
+Excellence is not a planned goal - it is the corollary of
+deep passion for scientific subjects, very much hard (and exciting!)
+work, and <em>thinking constantly about it</em>.
+</div>
+
+
+<h2 id="___sec2">Spellcheck reports a lot of mistakes related to LaTeX math <a name="___sec2"></a></h2>
 
 The <code>doconce spellcheck</code> command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
@@ -317,123 +378,134 @@ that there are math expressions in the stripped file that should not
 be there. (Because of wrong begin and end signs around math expressions
 ordinary text has instead been stripped away. This way, a missing dollar
 sign can lead to hundreds of misspellings.)
-Find the problem in the corresponding Doconce file and correct it.
+Find the problem in the corresponding DocOnce file and correct it.
 A similar error can be caused by wrong matching
 of equation environments between <code>!bt</code> and <code>!et</code>.
 
-<h2>Text between subexercises are moved  <a name="___sec2"></a></h2>
+<h2 id="___sec3">Text between subexercises are moved <a name="___sec3"></a></h2>
 
 If you insert text between a <code>!esubex</code> and the next <code>!bsubex</code>, this
 text is moved before all the subexercises. This is a feature, not a
 bug (exercises have certain elements: main text, subexercises, hints,
 etc. that are typeset in a specific order, which may be different from
-what appears in the Doconce source file). If you need a comment
+what appears in the DocOnce source file). If you need a comment
 between two subexercises, just place the comment at the end of the
 previous subexercise.
 
-<h2>Doconce aborts because of a syntax error that is not an error  <a name="___sec3"></a></h2>
+<h2 id="___sec4">DocOnce aborts because of a syntax error that is not an error <a name="___sec4"></a></h2>
 
-Doconce searches for typical syntax errors and usually aborts the
+DocOnce searches for typical syntax errors and usually aborts the
 execution if errors are found. However, it may happen,
-especially in verbatim blocks, that Doconce reports syntax errors
+especially in verbatim blocks, that DocOnce reports syntax errors
 that are not errors. To continue execution, simply add the
 <code>--no_abort</code> option on the command line. You may send an email
-to the Doconce author at <code>hpl@simula.no</code> and report the problem.
+to the DocOnce author at <code>hpl@simula.no</code> and report the problem.
 
-<h2>Figure captions are incomplete  <a name="___sec4"></a></h2>
+<h2 id="___sec5">Figure captions are incomplete <a name="___sec5"></a></h2>
 
-If only the first part of a figure caption in the Doconce file is seen
+If only the first part of a figure caption in the DocOnce file is seen
 in the target output format, the reason is usually that the caption
-occupies multiple lines in the Doconce file. The figure caption must
+occupies multiple lines in the DocOnce file. The figure caption must
 be written as <em>one line</em>, at the same line as the FIGURE keyword.
 
-<h2>Problems with boldface and emphasize  <a name="___sec5"></a></h2>
+<h2 id="___sec6">Problems with boldface and emphasize <a name="___sec6"></a></h2>
 
 Two boldface or emphasize expressions after each other are not rendered
 correctly. Merge them into one common expression.
 
-<h2>Links to local directories do not work  <a name="___sec6"></a></h2>
+<h2 id="___sec7">Links to local directories do not work <a name="___sec7"></a></h2>
 
 Links of the type
-<!-- begin verbatim block -->
-<pre><code>see the &quot;examples directory&quot;: &quot;src/examples&quot;
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">see the &quot;examples directory&quot;: &quot;src/examples&quot;
+</pre></div>
+<p>
 do not work well. You need to link to a specific HTML file:
-<!-- begin verbatim block -->
-<pre><code>see the &quot;examples directory&quot;: &quot;src/examples/index.html&quot;
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">see the &quot;examples directory&quot;: &quot;src/examples/index.html&quot;
+</pre></div>
+<p>
 We recommend to put all files you link to in a <code>_static</code> directory
 if you intend to use the <code>sphinx</code> output. This guarantees that all
 your files are collected in the Sphinx directory tree bundle.
 With plain <code>html</code> output only, you can link to whatever, but remember
 to move all files you link to if you move the primary <code>.html</code> file.
 
-<h2>Links are not typeset correctly  <a name="___sec7"></a></h2>
+<h2 id="___sec8">Links are not typeset correctly <a name="___sec8"></a></h2>
 
 Not all formats will allow formatting of the links. Verbatim words
 in links are allowed if the whole link is typeset in verbatim:
-<!-- begin verbatim block -->
-<pre><code>see the directory &quot;`examples`&quot;: &quot;src/examples/index.html&quot;.
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">see the directory &quot;`examples`&quot;: &quot;src/examples/index.html&quot;.
+</pre></div>
+<p>
 However, the following will not be typeset correctly:
-<!-- begin verbatim block -->
-<pre><code>see the &quot;`examples`&quot;: &quot;src/examples/index.html&quot; directory.
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">see the &quot;`examples`&quot;: &quot;src/examples/index.html&quot; directory.
+</pre></div>
+<p>
 The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
 
-<h2>Inline verbatim code is not detected  <a name="___sec8"></a></h2>
+<h2 id="___sec9">Inline verbatim code is not detected <a name="___sec9"></a></h2>
 
 Make sure there is a space before the first back-tick.
 
-<h2>Inline verbatim text is not formatted correctly  <a name="___sec9"></a></h2>
+<h2 id="___sec10">Inline verbatim text is not formatted correctly <a name="___sec10"></a></h2>
 
 Make sure there is whitespace surrounding the text in back-ticks.
 
-<h2>Strange non-English characters  <a name="___sec10"></a></h2>
+<h2 id="___sec11">Strange non-English characters <a name="___sec11"></a></h2>
 
-The former reason for this problem is that Doconce could only work with latin1
-(ISO-8859) encoding and not UTF-8. After May 2013, Doconce applies
+The former reason for this problem is that DocOnce could only work with latin1
+(ISO-8859) encoding and not UTF-8. After May 2013, DocOnce applies
 UTF-8 both for HTML and LaTeX.
 
 <p>
 Check the encoding of the <code>.do.txt</code> file with the Unix <code>file</code> command
 or with
-<!-- begin verbatim block -->
-<pre><code>Terminal&gt; doconce guess_encoding myfile.do.txt
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce guess_encoding myfile.do.txt
+</pre></div>
+<p>
 If the encoding is UTF-8, convert to latin1 using either of
 the Unix commands
-<!-- begin verbatim block -->
-<pre><code>Terminal&gt; doconce change_encoding utf-8 latin1 myfile.do.txt
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce change_encoding utf-8 latin1 myfile.do.txt
 Terminal&gt; iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
 
-<h2>Wrong Norwegian charcters  <a name="___sec11"></a></h2>
+<h2 id="___sec12">Wrong Norwegian charcters <a name="___sec12"></a></h2>
 
-When Doconce documents have characters not in the standard ASCII set,
+When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
 the section "Strange non-English characters" above for how to
-run <code>doconce change_encoding</code> to change the encoding of the Doconce file.
+run <code>doconce change_encoding</code> to change the encoding of the DocOnce file.
 
-<h2>Too short underlining of reST headlines  <a name="___sec12"></a></h2>
+<h2 id="___sec13">Too short underlining of reST headlines <a name="___sec13"></a></h2>
 
 This may happen if there is a paragraph heading without
 proceeding text before some section heading.
 
-<h2>Found <code>!bt</code> but no tex blocks extracted (BUG)  <a name="___sec13"></a></h2>
+<h2 id="___sec14">Found <code>!bt</code> but no tex blocks extracted (BUG) <a name="___sec14"></a></h2>
 
 This message points to a bug, but has been resolved by removing blank lines
 between the text and the first <code>!bt</code> (inserting the blanks again did not
 trigger the error message again...).
 
-<h2>Examples are typset with environment delimiters visible  <a name="___sec14"></a></h2>
+<h2 id="___sec15">Examples are typset with environment delimiters visible <a name="___sec15"></a></h2>
 
 If you see an Example section containing <code>!bsubex</code>, <code>!bsol</code>, or other
 begin and end tags for environments, it means that you have intended
@@ -441,43 +513,45 @@ to typeset examples as exercises, but forgotten the command-line
 option <code>--examples_as_exercises</code>. The text in the example is typeset
 as is unless this option is included.
 
-<h2>Emacs editing does not work properly because of "regexp overflow"  <a name="___sec15"></a></h2>
+<h2 id="___sec16">Emacs editing does not work properly because of "regexp overflow" <a name="___sec16"></a></h2>
 
 Sometimes the Doonce editing mode (see the section ref{emacs:doconce}) in Emacs
 leads to an error message ending with "overflow in regexp matcher".
-This error is due to some regular expression used in the Doconce editing
+This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
 the pieces using the <code>preprocess</code> directive <code>#include "piece.do.txt"</code>.
-The error message comes with the Doconce file contains too much text
+The error message comes with the DocOnce file contains too much text
 for Emacs to handle.
 
-<h2>My machine hangs if I have many movies  <a name="___sec16"></a></h2>
+<h2 id="___sec17">My machine hangs if I have many movies <a name="___sec17"></a></h2>
 
-Doconce has no limits on the amount of movies. When the output is
+DocOnce has no limits on the amount of movies. When the output is
 in HTML, one big HTML file may contain too many movies (local movie
 files or embedded YouTube movies) for the browser to handle.
 The remedy is to split the document into smaller pieces by inserting
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>!split
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!split
+</pre></div>
+<p>
 for every new page. After <code>doconce format html mydoc</code>, run
 <code>doconce split_html mydoc.html</code> to get the document split into
 a main document <code>mydoc.html</code> and pieces <code>._mydocXXX.html</code>, where
 <code>XXX</code> stands for three digits (<code>000</code>, <code>001</code>, <code>002</code>, and so forth).
 
-<h2>How can I use quotes in a link?  <a name="___sec17"></a></h2>
+<h2 id="___sec18">How can I use quotes in a link? <a name="___sec18"></a></h2>
 
-Links are typeset inside double quotes, but Doconce applies double backticks
+Links are typeset inside double quotes, but DocOnce applies double backticks
 and double single quotes to typeset quotes, so the right form is
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>&quot;This is a ``link text'' to google&quot;: &quot;http://google.com&quot;.
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;This is a ``link text&#39;&#39; to google&quot;: &quot;http://google.com&quot;.
+</pre></div>
+<p>
 It appears as
 
 <p>
@@ -486,10 +560,10 @@ It appears as
 </blockquote>
 
 
-<h2>Conversion from Doconce to Google Docs  <a name="___sec18"></a></h2>
+<h2 id="___sec19">Conversion from DocOnce to Google Docs <a name="___sec19"></a></h2>
 
 <ul>
- <li> Transform the Doconce document to HTML, upload to Google Drive,
+ <li> Transform the DocOnce document to HTML, upload to Google Drive,
    right-click the file and open as Google Docs.</li>
  <li> It might be necessary to adjust formatting, e.g., insert an extra
    line between paragraphs.</li>
@@ -498,12 +572,12 @@ It appears as
  <li> Pygmentized computer code and admons look fine.</li>
 </ul>
 
-<h2>Convesion from Google Docs to Doconce  <a name="___sec19"></a></h2>
+<h2 id="___sec20">Convesion from Google Docs to DocOnce <a name="___sec20"></a></h2>
 
 <ul>
  <li> Save as HTML file and use Pandoc to convert to Markdown.
    Use the <code>--markdown</code> and <code>--md2do_output=</code> options to
-   `doconce format to convert to Doconce.</li>
+   `doconce format to convert to DocOnce.</li>
  <li> Lists in Markdown must be intended.</li>
  <li> Notes in Google Docs become (potentially many) footnotes.
    Some tailored editing is necessary.</li>
@@ -512,37 +586,157 @@ It appears as
 This solution is not much explored and more text transformations from
 Pandoc-generated Markdown is certainly needed.
 
-<h2>Are there any tools for shared online writing of Doconce documents?  <a name="___sec20"></a></h2>
+<h2 id="___sec21">Are there any tools for shared online writing of DocOnce documents? <a name="___sec21"></a></h2>
 
 In theory, <a href="http://draftin.com" target="_self"><tt>http://draftin.com</tt></a> and <a href="https://stackedit.io" target="_self"><tt>https://stackedit.io</tt></a>
 can be used to share Markdown documents and these can be transform
-to and from Doconce documents. Tested to a little degree, but may
+to and from DocOnce documents. Tested to a little degree, but may
 work for very simple documents (sections, lists, code - no labels, refs,
 math, admons, code copied from file).
-Not all of Extended Markdown is interpreted by Doconce, and Doconce
+Not all of Extended Markdown is interpreted by DocOnce, and DocOnce
 transforms to Panddoc-extended Markdown, not the Extended Markdown
 used by these sites.
 
-<h1>Preprocess/Mako problems  <a name="___sec21"></a></h1>
+<h2 id="trouble:pitfalls">Examples on seemingly legal syntax that fails<a name="trouble:pitfalls"></a></h2>
 
-<h2>The Mako preprocessor is seemingly not run  <a name="___sec22"></a></h2>
+Since DocOnce applies regular expressions to a large extent to translate
+the input source to the output format, limitations of regular expressions
+may lead to unexpected results. Here are some examples on what can go wrong.
+
+<h3 id="___sec23">Double bold/italic <a name="___sec23"></a></h3>
+
+Two strings with bold or emphasize after each other will not work:
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Not properly interpreted:
+Here is a _bold_ _word_.
+# This is how to do it:
+Here is a _bold word_.
+
+# Same with emphasize/italic:
+Cannot write *two emphasized* *words*,
+but must write *two emphasized words*.
+</pre></div>
+<p>
+The wrong syntax implies that one of the texts inside
+bold/italic tags will appear with DocOnce syntax in the output.
+
+<h3 id="___sec24">Mix of bold/italic and math <a name="___sec24"></a></h3>
+
+Trying to typeset a mixture of text and mathematics or code in boldface or
+emphasized font fails:
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">_It is important that $u_1=2$!_
+*It is important that `a*b=b*a` in any computer language*.
+</pre></div>
+<p>
+The reason is that boldface or emphasize text cannot contain the
+special characters dollar sign and backtick. However, if these
+were allowed, the above examples would fail because the underscore
+in <code>$u_1=2$</code> would mark the end of the boldface text. Similarly,
+the <code>*</code> in <code>a*b</code> would mark the end of the emphasized text.
+Such problems are avoided by <em>only using plain text inside
+emphasize or boldface tags</em>:
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">_It is important that_ $u_1=2$!
+*It is important that* `a*b=b*a` *in any computer language*.
+</pre></div>
+<p>
+Another similar example is the mix of <code><font color="col">text</font></code> syntax
+with braces inside the text. For example,
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">color{blue}{However, here a blue color specification
+fails: $\frac{1}{2}\omega^2$.}
+</pre></div>
+<p>
+The text part is interpreted as string with <code>However</code> and lasting up
+to the first right brace, which is in <code>\frac{1}</code>. A remedy is, as above,
+to only use plain text inside the text part of the color specification
+and use a <code>\textcolor</code> command inside the mathematics:
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">color{blue}{However, here a blue color specification
+fails:} $\textcolor{red}{\frac{1}{2}\omega^2}$.}
+</pre></div>
+<p>
+Mathematics and code in blocks are invisible when inline tagging is
+interpreted and translated. Therefore, a specification as follows
+works well:
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">color{red}{This equation,
+
+!bt
+\begin{equation}
+a = b
+label{eq1}
+\end{equation}
+!et
+is meant to be in red and it works.}
+</pre></div>
+<p>
+The rules are that <code>*text*</code>, <code>_text_</code>, and <code><font color="color">text</font></code>
+employs a simple rule: <code>text</code> lasts up to the first end-tag
+character (<code>*</code>, <code>_</code>, and <code>}</code> above), but code and math blocks
+do not count.
+
+<h1 id="___sec25">Preprocess/Mako problems <a name="___sec25"></a></h1>
+
+<h2 id="___sec26">List important things to remember when programming Mako <a name="___sec26"></a></h2>
+
+<ul>
+ <li> Keep Python code more than a few lines <em>outside</em> of the DocOnce
+   file, and use <code># #include</code> to include the code. See
+   the <em>Debugging Python code in Mako</em> section in the manual for
+   how to do it.</li>
+ <li> Do not use continuation character (backslash) in Python code.</li>
+ <li> When a Mako error refers to a line in the text, invoke the
+   file that Mako sees: <code>tmp_preprocess__mydoc.do.txt</code> if
+   the DocOnce file has name <code>mydoc.do.txt</code>.</li>
+ <li> Use double <code>##</code> (Mako comment) to comment out Mako calls
+   of the form <code>${name...}</code>.</li>
+</ul>
+
+<h2 id="___sec27">The Mako preprocessor is seemingly not run <a name="___sec27"></a></h2>
 
 If you have lines starting with <code>%</code> inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
-because it thinks these lines are Mako statements. Doconce detects
+because it thinks these lines are Mako statements. DocOnce detects
 this problem and avoids running Mako.  Examine the output from
-Doconce: warnings are issued if Mako is not run.
+DocOnce: warnings are issued if Mako is not run.
 
-<h2>The Mako preprocessor gives strange error messages  <a name="___sec23"></a></h2>
+<h2 id="___sec28">The Mako preprocessor gives syntax error in Python code <a name="___sec28"></a></h2>
+
+The information with respect to syntax errors in Python code is
+sparse. It is recommended to move the Python code to separate files
+and test it with the ordinary Python interpreter. See the
+section <em>Debugging Python code in Mako</em> in the DocOnce manual.
+
+<h2 id="___sec29">The Mako preprocessor gives strange error messages <a name="___sec29"></a></h2>
 
 If you to a little syntax error in Mako, the consequences can be
 quite unpredictable. Especially, if you forget curly braces around
 variables or function calls, the forthcoming text is processed as
 part of the Mako command. Pay attention to the line number reported
 by Mako: this is the line number after Preprocess has processed
-the Doconce document, so you need to load <code>tmp_preprocess__mydoc.do.txt</code>
+the DocOnce document, so you need to load <code>tmp_preprocess__mydoc.do.txt</code>
 and go to the right line in that file to see the Mako problem
-(here the Doconce document is named <code>mydoc.do.txt</code>).
+(here the DocOnce document is named <code>mydoc.do.txt</code>).
 
 <p>
 Look through the specific Mako problems
@@ -558,7 +752,7 @@ In this way you can easier see which parts of the document that
 work and where the error suddenly appears.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Tip: Compile your Doconce document frequently.</b>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: Compile your DocOnce document frequently.</b>
 The best means against Mako problems is to run <code>doconce format</code>
 often. Combined Git, you can take
 a <code>git diff</code> to see what you have recently changed and get an idea
@@ -566,7 +760,7 @@ what can be wrong.
 </div>
 
 
-<h2>The Mako preprocessor is fooled by Doconce text  <a name="___sec24"></a></h2>
+<h2 id="___sec30">The Mako preprocessor is fooled by DocOnce text <a name="___sec30"></a></h2>
 
 Here are possible problems for Mako:
 
@@ -575,7 +769,7 @@ Here are possible problems for Mako:
    to <code>'T < %.1f'</code> to avoid this confusion.</li>
 </ul>
 
-<h2>The Mako preprocessor claims a variable is undefined  <a name="___sec25"></a></h2>
+<h2 id="___sec31">The Mako preprocessor claims a variable is undefined <a name="___sec31"></a></h2>
 
 Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
@@ -607,25 +801,25 @@ problem is, comment out half of that half, find in which half the
 problem is, and so on. The procedure converges pretty quickly, even
 for large books.
 
-<h2>Something goes wrong in the preprocessing step  <a name="___sec26"></a></h2>
+<h2 id="___sec32">Something goes wrong in the preprocessing step <a name="___sec32"></a></h2>
 
 You can examine <code>tmp_preprocess__filename</code> and <code>tmp_mako__filename</code>,
-where <code>filename</code> is the complete name of the Doconce file, to see
+where <code>filename</code> is the complete name of the DocOnce file, to see
 what the preprocessors actually to and if something is wrong in these
-files before Doconce starts translating the text.
+files before DocOnce starts translating the text.
 One or both of those files may be missing, but examine the beginning
-of the output from Doconce to see exactly which preprocessors are run
+of the output from DocOnce to see exactly which preprocessors are run
 and on which files.
 
-<h2>Preprocessor directives do not work  <a name="___sec27"></a></h2>
+<h2 id="___sec33">Preprocessor directives do not work <a name="___sec33"></a></h2>
 
 Make sure the preprocessor instructions, in Preprocess or Mako, have
 correct syntax. Also make sure that you do not mix Preprocess and Mako
-instructions. Doconce will then only run Preprocess.
+instructions. DocOnce will then only run Preprocess.
 
-<h1>Problems with code or Tex Blocks  <a name="___sec28"></a></h1>
+<h1 id="___sec34">Problems with code or Tex Blocks <a name="___sec34"></a></h1>
 
-<h2>Code or math block errors in reST  <a name="___sec29"></a></h2>
+<h2 id="___sec35">Code or math block errors in reST <a name="___sec35"></a></h2>
 
 First note that a code or math block must come after some plain
 sentence (at least for successful output in reST), not directly
@@ -637,7 +831,7 @@ error messages are issued.
 <p>
 Sometimes reST reports an "Unexpected indentation" at the beginning of
 a code block. If you see a <code>!bc</code>, which should have been removed when
-running <code>doconce format sphinx</code>, it is usually an error in the Doconce
+running <code>doconce format sphinx</code>, it is usually an error in the DocOnce
 source, or a problem with the rst/sphinx translator.  Check if the
 line before the code block ends in one colon (not two!), a question
 mark, an exclamation mark, a comma, a period, or just a newline/space
@@ -646,7 +840,7 @@ mentioned. Then <code>!bc</code> will most likely be replaced and a double colon
 at the preceding line will appear (which is the right way in reST to
 indicate a verbatim block of text).
 
-<h2>Strange errors around code or TeX blocks in reST  <a name="___sec30"></a></h2>
+<h2 id="___sec36">Strange errors around code or TeX blocks in reST <a name="___sec36"></a></h2>
 
 If <code>idx</code> commands for defining indices are placed inside paragraphs,
 and especially right before a code block, the reST translator
@@ -655,19 +849,19 @@ code blocks that cause errors when the reST text is transformed to
 other formats. The remedy is to define items for the index outside
 paragraphs.
 
-<h2>Something is wrong with a verbatim code block  <a name="___sec31"></a></h2>
+<h2 id="___sec37">Something is wrong with a verbatim code block <a name="___sec37"></a></h2>
 
 Check first that there is a "normal" sentence right before
 the block (this is important for reST and similar
 "ASCII-close" formats).
 
-<h2>Code/TeX block is not shown in reST format  <a name="___sec32"></a></h2>
+<h2 id="___sec38">Code/TeX block is not shown in reST format <a name="___sec38"></a></h2>
 
 A comment right before a code or tex block will treat the whole
 block also as a comment. It is important that there is normal
 running text right before <code>!bt</code> and <code>!bc</code> environments.
 
-<h2>Verbatim code blocks inside lists look ugly  <a name="___sec33"></a></h2>
+<h2 id="___sec39">Verbatim code blocks inside lists look ugly <a name="___sec39"></a></h2>
 
 Read the the section ref{sec:verbatim:blocks} above.  Start the
 <code>!bc</code> and <code>!ec</code> tags in column 1 of the file, and be careful with
@@ -676,39 +870,39 @@ you cannot resolve the problem this way, get rid of the list and use
 paragraph headings instead. In fact, that is what is recommended:
 avoid verbatim code blocks inside lists (it makes life easier).
 
-<h2>LaTeX code blocks inside lists look ugly  <a name="___sec34"></a></h2>
+<h2 id="___sec40">LaTeX code blocks inside lists look ugly <a name="___sec40"></a></h2>
 
 Same solution as for computer code blocks as described in the
 previous paragraph. Make sure the <code>!bt</code> and <code>!et</code> tags are in column 1
 and that the rest of the non-LaTeX surrounding text is correctly indented.
 Using paragraphs instead of list items is a good idea also here.
 
-<h1>Problems with reST/Sphinx Output  <a name="___sec35"></a></h1>
+<h1 id="___sec41">Problems with reST/Sphinx Output <a name="___sec41"></a></h1>
 
-<h2>Title level inconsistent  <a name="___sec36"></a></h2>
+<h2 id="___sec42">Title level inconsistent <a name="___sec42"></a></h2>
 
 reST does not like jumps in the levels of headings. For example, you cannot
 have a <code>===</code> (paragraph) heading after a <code>=======</code> (section) heading without
 a <code>====</code> (subsection) heading in between.
 
-<h2>Lists do not appear in .rst files  <a name="___sec37"></a></h2>
+<h2 id="___sec43">Lists do not appear in .rst files <a name="___sec43"></a></h2>
 
 Check if you have a comment right above the list. That comment
 will include the list if the list is indentend. Remove the comment.
 
-<h2>Error message "Undefined substitution..." from reST  <a name="___sec38"></a></h2>
+<h2 id="___sec44">Error message "Undefined substitution..." from reST <a name="___sec44"></a></h2>
 
 This may happen if there is much inline math in the text. reST cannot
 understand inline LaTeX commands and interprets them as illegal code.
 Just ignore these error messages.
 
-<h2>Warning about duplicate link names  <a name="___sec39"></a></h2>
+<h2 id="___sec45">Warning about duplicate link names <a name="___sec45"></a></h2>
 
 Link names should be unique, but if (e.g.) "file" is used as link text
 several places in a reST file, the links still work. The warning can
 therefore be ignorned.
 
-<h2>Inconsistent headings in reST  <a name="___sec40"></a></h2>
+<h2 id="___sec46">Inconsistent headings in reST <a name="___sec46"></a></h2>
 
 The <code>rst2*.py</code> and Sphinx converters abort if the headers of sections
 are not consistent, i.e., a subsection must come under a section,
@@ -717,144 +911,154 @@ a subsubsection directly under a section). Search for <code>===</code>,
 count the number of equality signs (or underscores if you use that)
 and make sure they decrease by two every time a lower level is encountered.
 
-<h2>No code environment appears before "bc ipy" blocks  <a name="___sec41"></a></h2>
+<h2 id="___sec47">No code environment appears before "bc ipy" blocks <a name="___sec47"></a></h2>
 
 The <code>!bc ipy</code> directive behaves this way for <code>sphinx</code> output because
 interactive sessions are automatically handled. If this is not
 appropriate, shift to <code>!bc cod</code> or another specification of the
 verbatim environment.
 
-<h1>Problems with LaTeX Output  <a name="___sec42"></a></h1>
+<h1 id="___sec48">Problems with LaTeX Output <a name="___sec48"></a></h1>
 
-<h2>LaTeX does not like underscores in URLs  <a name="___sec43"></a></h2>
+<h2 id="___sec49">LaTeX does not like underscores in URLs <a name="___sec49"></a></h2>
 
 Suppose you have a URL reference like
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>..which can be found in the file &quot;my_file.txt&quot;:
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">..which can be found in the file &quot;my_file.txt&quot;:
 &quot;http://some.where.net/web/dir/my_file.txt&quot;.
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 LaTeX will stop with a message about a missing dollar sign. The reason
 is that underscores in link texts need to be preceded by a backslash.
-However, this is incovenient to do in the Doconce source since the
+However, this is incovenient to do in the DocOnce source since the
 underscore is misleading in other formats.
 The remedy is to format the link text with inline verbatim tags (backticks):
-<!-- begin verbatim block -->
-<pre><code>..which can be found in the file &quot;`my_file.txt`&quot;:
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">..which can be found in the file &quot;`my_file.txt`&quot;:
 &quot;http://some.where.net/web/dir/my_file.txt&quot;.
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Verbatim text in links works fine with underscores.
 
-<h2>How can I have unnumbered sections?  <a name="___sec44"></a></h2>
+<h2 id="___sec50">How can I have unnumbered sections? <a name="___sec50"></a></h2>
 
-Do an automatic edit like this:
+Use the <code>--section_numbering=off</code> option:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce replace 'section{' 'section*{' mydoc.do.txt
-</code></pre>
-<!-- end verbatim block -->
 
-<h2>Error when running latex: You must have 'pygmentize' installed  <a name="___sec45"></a></h2>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --section_numbering=off
+</pre></div>
+
+<h2 id="___sec51">Error when running latex: You must have 'pygmentize' installed <a name="___sec51"></a></h2>
 
 This message points to the use of the minted style for typesetting verbatim
 code. You need to include the <code>-shell-escape</code> command-line argument when
 running <code>latex</code> or <code>pdflatex</code>:
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; latex -shell-escape file mydoc.tex
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex -shell-escape file mydoc.tex
 Terminal&gt; pdflatex -shell-escape file mydoc.tex
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 Using <code>doconce ptex2tex</code> will turn on the minted style if specified as
 environment on the command line, while using <code>ptex2tex</code> requires the
 preprocessor option <code>-DMINTED</code> to turn on the minted package.
 When this package is included, <code>latex</code> or <code>pdflatex</code> runs the
 <code>pygmentize</code> program and the <code>shell-escape</code> option is required.
 
-<h2>Why are the LaTeX section headings smaller than normal?  <a name="___sec46"></a></h2>
+<h2 id="___sec52">Why are the LaTeX section headings smaller than normal? <a name="___sec52"></a></h2>
 
-Doconce inserts a special command to make the headings
+DocOnce inserts a special command to make the headings
 more compact:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>\usepackage[compact]{titlesec}
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">\usepackage[compact]{titlesec}
+</pre></div>
+<p>
 as explained in the <a href="http://www.ctex.org/documents/packages/layout/titlesec.pdf" target="_self"><tt>titlesec</tt></a> package documentation.
 To retrieve the standard LaTeX headings, comment out this line or remove it:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pdflatex mydoc
-Terminal&gt; doconce subst '\\usepack.+\{titlesec\} '' mydoc.p.tex
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc
+Terminal&gt; doconce subst &#39;\\usepack.+\{titlesec\} &#39;&#39; mydoc.p.tex
+</pre></div>
 <p>
 You can easily make the headings even smaller than the normal font
 by replacing <code>[compact]</code> by <code>[compact,small]</code> as parameter specification
 for <code>titlesec</code>.
 
-<h2>I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises  <a name="___sec47"></a></h2>
+<h2 id="___sec53">I get LaTeX compilation errors about "shadedquoteBlue" in code blocks in exercises <a name="___sec53"></a></h2>
 
 When using colored boxes for code in LaTeX, a code snippet is needed
 in the ordinary running text <em>before</em> code snippets inside exercises, problems,
-or projects. This is a kind of bug in Doconce that is challenging to fix.
+or projects. This is a kind of bug in DocOnce that is challenging to fix.
 It is usually only a problem when writing documents mainly containing
 exercises, problems, or projects.
 
-<h2>Can I have LaTeX figures with shadows?  <a name="___sec48"></a></h2>
+<h2 id="___sec54">Can I have LaTeX figures with shadows? <a name="___sec54"></a></h2>
 
 This is easy by including the <code>fancybox</code> and <code>graphicx</code> packages
 and wrapping all <code>\includegraphics</code> in a shadow box:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pdflatex mydoc
-Terminal&gt; doconce replace \
-          'microtype}', 'microtype,fancybox,graphicx}' mydoc.p.tex
-Terminal&gt; doconce subst '(\\includegraphics\[.+\}\})' \
-          '\\shadowbox{\g&lt;1&gt;}' mydoc.p.tex
-</code></pre>
-<!-- end verbatim block -->
 
-<h2>How can I use my fancy LaTeX environments?  <a name="___sec49"></a></h2>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc
+Terminal&gt; doconce replace \
+          &#39;microtype}&#39;, &#39;microtype,fancybox,graphicx}&#39; mydoc.p.tex
+Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \
+          &#39;\\shadowbox{\g&lt;1&gt;}&#39; mydoc.p.tex
+</pre></div>
+
+<h2 id="___sec55">How can I use my fancy LaTeX environments? <a name="___sec55"></a></h2>
 
 See the section ref{manual:theorem:envir} for how to make a custom
-theorem environment also in Doconce, without using implementations
+theorem environment also in DocOnce, without using implementations
 restricted to LaTeX.
 
-<h2>The LaTeX file does not compile  <a name="___sec50"></a></h2>
+<h2 id="___sec56">The LaTeX file does not compile <a name="___sec56"></a></h2>
 
 If the problem is undefined control sequence involving
-<!-- begin verbatim block -->
-<pre><code>\code{...}
-</code></pre>
-<!-- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">\code{...}
+</pre></div>
+<p>
 the cause is usually a verbatim inline text (in back-ticks in the
-Doconce file) spans more than one line. Make sure, in the Doconce source,
+DocOnce file) spans more than one line. Make sure, in the DocOnce source,
 that all inline verbatim text appears on the same line.
 
-<h2>The LaTeX Beamer file does not compile  <a name="___sec51"></a></h2>
+<h2 id="___sec57">The LaTeX Beamer file does not compile <a name="___sec57"></a></h2>
 
 Make sure you have a <code>!split</code> before every slide heading.
 
-<h2>Inline verbatim gives error   <a name="___sec52"></a></h2>
+<h2 id="___sec58">Inline verbatim gives error  <a name="___sec58"></a></h2>
 
 Check if the inline verbatim contains typical LaTeX commands, e.g.,
-<!-- begin verbatim block -->
-<pre><code>some text with `\usepackage{mypack}` is difficult because
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">some text with `\usepackage{mypack}` is difficult because
 ptex2tex will replace this by \code{\usepackage{mypack}} and
 then replace this by
 {\fontsize{10pt}{10pt}\verb!\usepackage{mypack!}}
-which is wrong because ptex2tex applies regex that don't
+which is wrong because ptex2tex applies regex that don&#39;t
 capture the second }
-</code></pre>
-<!-- end verbatim block -->
+</pre></div>
+<p>
 The remedy is to place verbatim LaTeX commands in verbatim
 blocks - that is safe.
 
@@ -862,39 +1066,40 @@ blocks - that is safe.
 <!-- Could have doconce configure file where inline verbatim is -->
 <!-- configured to be \fontsize... directly, not via ptex2tex \code{}. -->
 
-<h2>Errors in figure captions  <a name="___sec53"></a></h2>
+<h2 id="___sec59">Errors in figure captions <a name="___sec59"></a></h2>
 
 Such errors typically arise from unbalanced curly braces, or dollar signs
 around math, and similar LaTeX syntax errors.
 
 <p>
 (Note that verbatim font is likely to cause trouble inside figure captions,
-but Doconce will automatically replace verbatim text in back-ticks by
+but DocOnce will automatically replace verbatim text in back-ticks by
 a proper <code>texttt</code> command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
-<h2>Chapters are ignored  <a name="___sec54"></a></h2>
+<h2 id="___sec60">Chapters are ignored <a name="___sec60"></a></h2>
 
-The default LaTeX style is "article". If you chapters in the Doconce file,
+The default LaTeX style is "article". If you chapters in the DocOnce file,
 you need to run <code>ptex2tex</code> with the option <code>-DBOOK</code> to set the LaTeX
 documentstyle to "book".
 
-<h2>I want to tune the top (preamble) of the LaTeX file  <a name="___sec55"></a></h2>
+<h2 id="___sec61">I want to tune the top (preamble) of the LaTeX file <a name="___sec61"></a></h2>
 
-The default preamble generated by Doconce has several <code>preprocess</code>
+The default preamble generated by DocOnce has several <code>preprocess</code>
 options to set the font, type of titlepage, etc., when running
 <code>ptex2tex</code> or <code>doconce ptex2tex</code>. However, it is easy to provide
 a customized preamble text:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex
-</code></pre>
-<!-- end verbatim block -->
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex
+</pre></div>
+<p>
 If <code>mytop.tex</code> starts with a <code>documentclass</code> specification, the whole
 file becomes the complete preamble in <code>mydoc.p.tex</code>, otherwise
 <code>mytop.tex</code> is added at the end of the preamble generated by
-Doconce.
+DocOnce.
 
 <p>
 Note also that <code>doconce replace</code> and <code>doconce subst</code> can be used
@@ -903,25 +1108,58 @@ There are comment lines with <code>--- begin preamble ---</code> and
 <code>--- end preamble ---</code> in the generate <code>.p.tex</code> file that can be
 used to replace the whole preamble by something more suitable.
 
-<h1>Problems with gwiki Output  <a name="___sec56"></a></h1>
+<h2 id="___sec62">Solution heading in exercise solutions appear after the solution content <a name="___sec62"></a></h2>
 
-<h2>Strange nested lists in gwiki  <a name="___sec57"></a></h2>
+Sometimes a solution environment with code
 
-Doconce cannot handle nested lists correctly in the gwiki format.
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bsol
+!bc cod
+def f(x):
+    return x + 2
+!ec
+!esol
+</pre></div>
+<p>
+leads to strange behavior (with the <code>shadedquoteBlue</code> verbatim LaTeX
+environment: the <b>Solution</b> heading appears after the code
+in the solution. This appears to be a LaTeX problem since the
+generated LaTeX code has the heading and solution content in the right
+order. A working remedy is to insert a text before the code:
+
+<p>
+
+<!-- code=text (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Code:
+!bsol
+!bc cod
+def f(x):
+    return x + 2
+!ec
+!esol
+</pre></div>
+
+<h1 id="___sec63">Problems with gwiki Output <a name="___sec63"></a></h1>
+
+<h2 id="___sec64">Strange nested lists in gwiki <a name="___sec64"></a></h2>
+
+DocOnce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the <code>.gwiki</code> file directly.
 
-<h2>Lists in gwiki look ugly in the gwiki source  <a name="___sec58"></a></h2>
+<h2 id="___sec65">Lists in gwiki look ugly in the gwiki source <a name="___sec65"></a></h2>
 
 Because the Google Code wiki format requires all text of a list item to
-be on one line, Doconce simply concatenates lines in that format,
-and because of the indentation in the original Doconce text, the gwiki
+be on one line, DocOnce simply concatenates lines in that format,
+and because of the indentation in the original DocOnce text, the gwiki
 output looks somewhat ugly. The good thing is that this gwiki source
-is seldom to be looked at - it is the Doconce source that one edits
+is seldom to be looked at - it is the DocOnce source that one edits
 further.
 
-<h1>Problems with HTML Output  <a name="___sec59"></a></h1>
+<h1 id="___sec66">Problems with HTML Output <a name="___sec66"></a></h1>
 
-<h2>MathJax formulas are not properly rendered  <a name="___sec60"></a></h2>
+<h2 id="___sec67">MathJax formulas are not properly rendered <a name="___sec67"></a></h2>
 
 Here are some common problems:
 
@@ -931,11 +1169,11 @@ Here are some common problems:
  <li> <code>[</code> and <code>]</code> brackets must sometimes be replaced by <code>\lbrack</code> and <code>\rbrack</code></li>
 </ul>
 
-<h2>How can I change the layout of the HTML page?  <a name="___sec61"></a></h2>
+<h2 id="___sec68">How can I change the layout of the HTML page? <a name="___sec68"></a></h2>
 
 The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
-Doconce document to HTML. The edits should therefore be automated
+DocOnce document to HTML. The edits should therefore be automated
 using <code>doconce subst</code> (for regular expression editing) or <code>doconce replace</code>
 (for plain text substitution editing) commands in the file where
 you run <code>doconce format html mydoc</code>. For example, say you want narrower
@@ -944,12 +1182,11 @@ style must then be changed, more precisely the <code>border</code> and the <code
 specification:
 
 <p>
-<!-- begin verbatim block  shcod-->
-<pre><code>doconce replace 'border:1px' 'border:11px' mydoc.html
-doconce replace 'width: 75%;' 'width: 35%' mydoc.html
-</code></pre>
-<!-- end verbatim block -->
 
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace <span style="color: #BA2121">&#39;border:1px&#39;</span> <span style="color: #BA2121">&#39;border:11px&#39;</span> mydoc.html
+doconce replace <span style="color: #BA2121">&#39;width: 75%;&#39;</span> <span style="color: #BA2121">&#39;width: 35%&#39;</span> mydoc.html
+</pre></div>
 <p>
 Another way to control the layout is to copy the style in the HTML
 file into a <code>.css</code> file, edit that file as you like, and provide the
@@ -958,10 +1195,10 @@ flag.
 
 <p>
 The standard of way of completely controlling the HTML format is to
-use an HTML template. The Doconce source is then the body of text
+use an HTML template. The DocOnce source is then the body of text
 (leave out <code>TITLE:</code> to get HTML without a header and footer). The
 <code>--html_template=filename</code> command-line option will then embed the
-Doconce text in the specified template file, where you can use style
+DocOnce text in the specified template file, where you can use style
 sheets and desired constructs in the header and footer.  The template
 can have "slots" for a title (<code>%(title)s</code>), a date (<code>%(date)s</code>), and
 the main body of text (<code>%(main)s</code>).  For typesetting code, <code>pygments</code>
@@ -972,9 +1209,9 @@ is used (if installed) and can be turned off by <code>--no_pygments_html</code>
 The easiest way is to get fancy layouts in HTML is to
 use the <code>sphinx</code> format and one its many themes.
 
-<h2>Why do figures look ugly when using HTML templates?  <a name="___sec62"></a></h2>
+<h2 id="___sec69">Why do figures look ugly when using HTML templates? <a name="___sec69"></a></h2>
 
-The HTML header that Doconce generates contain special styles for
+The HTML header that DocOnce generates contain special styles for
 figure captions and the horizontal rule above figures. When using
 templates these styles are not defined, resulting in a rule that
 spans the width and a centered caption. Changing the appearance
@@ -982,33 +1219,51 @@ of the rule and caption can either be done by inserting styles or
 simply by automatic editing of the HTML code in a little shell script:
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>doconce replace '&lt;p class=&quot;caption&quot;&gt;' \
- '&lt;p style=&quot;width: 50%; font-style: italic; color: blue&quot;&gt;' mydoc.html
-doconce replace '&lt;hr class=&quot;figure&quot;&gt;' \
- '&lt;hr style=&quot;width: 50%&quot;&gt;' mydoc.html
-</code></pre>
-<!-- end verbatim block -->
 
-<h1>Problems with reveal/deck HTML5 slides  <a name="___sec63"></a></h1>
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace &#39;&lt;p class=&quot;caption&quot;&gt;&#39; \
+ &#39;&lt;p style=&quot;width: 50%; font-style: italic; color: blue&quot;&gt;&#39; mydoc.html
+doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
+ &#39;&lt;hr style=&quot;width: 50%&quot;&gt;&#39; mydoc.html
+</pre></div>
 
-<h2>Reveal slides are moving steadily to the left  <a name="___sec64"></a></h2>
+<h1 id="___sec70">Problems with reveal/deck HTML5 slides <a name="___sec70"></a></h1>
+
+<h2 id="___sec71">Reveal slides are stacked on top of each other <a name="___sec71"></a></h2>
+
+This problem can be caused by having a <code>!bblock</code> environment crossing two
+slides because of a forgotten <code>!eblock</code> on the first slide.
+To locate the problematic slides, copy chunks of slides to a new file,
+compile, and inspect. This will reveal the problematic chunk.
+
+<h2 id="___sec72">Reveal slides are moving steadily to the left <a name="___sec72"></a></h2>
 
 This seems to be a problem when one has used the mouse to scroll down
 on a slide and continue to use the right arrow for moving to the
 next slide. Click on the arrow in the slide instead of using the arrow key.
 
-<h2>YouTube movies do not work  <a name="___sec65"></a></h2>
+<h2 id="___sec73">YouTube movies do not work <a name="___sec73"></a></h2>
 
 They do not work in reveal or deck unless the Chrome browser is used.
 Usually the HTML5 slides work best in Firefox.
 
-<h2>Online Python Tutor does not work  <a name="___sec66"></a></h2>
+<h2 id="___sec74">Online Python Tutor does not work <a name="___sec74"></a></h2>
 
 Seems to be a problem with reveal slides. The <em>Forward</em> button is not
 clickable.
 
 <!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 
 
 </body>

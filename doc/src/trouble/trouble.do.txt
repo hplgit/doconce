@@ -17,6 +17,40 @@ can go wrong.
 
 ======= General Problems =======
 
+===== How can I control the vertical spacing in slides? =====
+
+HTML5 and LaTeX slides control the spacings for you. However, sometimes
+you really want to add some space. The `<linebreak>` is effective for
+this purpose. For example,
+
+!bc do
+|bblock (large) So, how to be excellent?
+<linebreak>
+Excellence is not a planned goal - it is the corollary of
+deep passion, very much hard (and exciting!)
+work, and *thinking constantly about it*.
+|eblock
+!ec
+is rendered as
+
+!bblock (large) So, how to be excellent?
+<linebreak>
+Excellence is not a planned goal - it is the corollary of
+deep passion, very much hard (and exciting!)
+work, and *thinking constantly about it*.
+!eblock
+
+Without `<linebreak>` the rendering becomes
+
+!bblock (large) So, how to be excellent?
+Excellence is not a planned goal - it is the corollary of
+deep passion, very much hard (and exciting!)
+work, and *thinking constantly about it*.
+!eblock
+
+The `<linebreak>` is a newline in LaTeX if it has preceding text,
+otherwise it is a `\vspace{3mm}`. In HTML, `<linebreak>` is `<br>`.
+
 ===== Spellcheck reports a lot of mistakes related to LaTeX math =====
 
 The `doconce spellcheck` command should ignore LaTeX math, but if
