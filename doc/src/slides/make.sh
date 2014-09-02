@@ -72,7 +72,7 @@ system doconce split_html $html --method=space8
 
 # LaTeX Beamer slides
 beamertheme=red_shadow
-system doconce format pdflatex $name --latex_title_layout=beamer
+system doconce format pdflatex $name --latex_title_layout=beamer --latex_admon_title_no_period
 editfix ${name}.p.tex
 system doconce ptex2tex $name envir=minted
 system doconce slides_beamer $name --beamer_slide_theme=$beamertheme
@@ -185,7 +185,7 @@ done
 
 # Beamer handouts
 theme=red_plain
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period
 doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=$theme --handout  # note --handout!
 pdflatex -shell-escape demo
@@ -204,5 +204,7 @@ pdflatex -shell-escape demo
  pygmentize -l json -o demo.ipynb.html demo.ipynb
 
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb demo.ipynb.html $dest/demo/
+
+# index.html toc file
 doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window
 cp index.html $dest/demo/index.html
