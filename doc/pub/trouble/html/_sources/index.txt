@@ -1,13 +1,13 @@
 
 .. Master file automatically created by doconce sphinx_dir
 
-Doconce Troubleshooting
+DocOnce Troubleshooting
 =======================
 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    trouble
 

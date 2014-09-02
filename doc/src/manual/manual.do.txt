@@ -1044,14 +1044,34 @@ than when doing other intellectual tasks.* <linebreak>
 Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
 !equote
 
+The `<linebreak>` is a newline in LaTeX if it has preceding text,
+otherwise it is a `\vspace{3mm}`. In HTML, `<linebreak>` is `<br>`.
+
+!bnotice Tip on using forced linebreaks
+The '<linebreak>` tag is often useful in slides to avoid overfull
+lines in bullet lists, partion such lines into separate lines,
+or to insert vertical
+space. It can be used in admonitions too to get more space between
+the title and the text.
+!enotice
 
 === Inline Mathematics ===
 
 Inline mathematics is written as in LaTeX, i.e., inside dollar signs.
-Many formats leave this syntax as it is (including to dollar signs),
+Many formats leave this syntax as it is (including the two dollar signs),
 hence nice math formatting is only obtained in LaTeX, HTML, MediaWiki,
 and Sphinx (Epytext has some inline math support that is utilized).
-However, mathematical expressions in LaTeX syntax often contains
+
+The following text
+
+!bc do
+Let $a=\sin(x) + \cos(x)$. Then $a^2 = 2\sin(x)\cos(x)$
+because $\sin^2x + \cos^2x = 1$.
+!ec
+is rendered as ``Let $a=\sin(x) + \cos(x)$. Then $a^2 = 2\sin(x)\cos(x)$
+because $\sin^2x + \cos^2x = 1$.''
+
+Mathematical expressions in LaTeX syntax often contains
 special formatting commands, which may appear annoying in plain
 text. DocOnce therefore supports an extended inline math syntax where
 the writer can provide an alternative syntax suited for formats close
