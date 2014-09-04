@@ -732,6 +732,13 @@ Movie \arabic{doconce:movie:counter}: %s
 """ % caption
     text += '\\end{doconce:movie}\n'
     return text
+def latex_linebreak(m):
+    text = m.group('text').strip()
+    if text:
+        return '%s\\\\' % text
+    else:
+        # no text, use \vspace instead
+        return '\n\n\\vspace{3mm}\n\n'
 
 def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
     footnotes = {name: text for name, text, dummy in
@@ -1834,7 +1841,7 @@ def define(FILENAME_EXTENSION,
         'figure':        latex_figure,
         'movie':         latex_movie,
         'comment':       '%% %s',
-        'linebreak':     r'\g<text>\\\\',
+        'linebreak':     latex_linebreak,
         'footnote':      latex_footnotes,
         'non-breaking-space': None,
         'ampersand1':    r'\g<1> {\&} \g<2>',
