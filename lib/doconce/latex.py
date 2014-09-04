@@ -751,13 +751,15 @@ def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
     return filestr
 
 def latex_table(table):
-    latex_table_align = option('latex_table_align=', 'quote')
-    if latex_table_align == 'left':
+    latex_table_format = option('latex_table_format=', 'quote')
+    if latex_table_format == 'left':
         table_align = ('', '')
-    elif latex_table_align == 'quote':
+    elif latex_table_format == 'quote':
         table_align = (r'\begin{quote}', r'\end{quote}')
-    elif latex_table_align == 'center':
+    elif latex_table_format == 'center':
         table_align = (r'\begin{center}', r'\end{center}')
+    elif latex_table_format == 'footnotesize':
+        table_align = (r'{\footnotesize', r'}')
     latex_style = option('latex_style=', 'std')
 
     column_width = table_analysis(table['rows'])
