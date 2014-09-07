@@ -852,9 +852,10 @@ will go to the Dept. of Science to test how Mr.    Hansen is doing together
 with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
 Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no. $i$ of DocOnce features.
-A sentence containing "refines lines" could easily
-fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
+Percentage must be fixed: 7%,  87.65% and
+50% at the beginning of the line.
+
 % endif
 
 !split and check if these extra words are included properly in the comment
@@ -2525,9 +2526,9 @@ in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
 and a DocOnce directive a la \code{!bc}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak. \\
-And one more.} Some formats will only display \\
-this correctly when HTML is the output format. \\
+green color containing a linebreak.\\
+And one more.} Some formats will only display\\
+this correctly when HTML is the output format.\\
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -3082,9 +3083,10 @@ will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-A sentence containing "refines lines" could easily
-fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Percentage must be fixed: 7\%,  87.65\% and
+50\% at the beginning of the line.
+
 
 % !split and check if these extra words are included properly in the comment
 
@@ -4727,9 +4729,9 @@ in {\LaTeX} inline verbatim, we need to test it, as in {\Verb~a != b~},
 and a DocOnce directive a la {\Verb~!bc~}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak. \\
-And one more.} Some formats will only display \\
-this correctly when HTML is the output format. \\
+green color containing a linebreak.\\
+And one more.} Some formats will only display\\
+this correctly when HTML is the output format.\\
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -5293,9 +5295,10 @@ will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-A sentence containing "refines lines" could easily
-fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Percentage must be fixed: 7\%,  87.65\% and
+50\% at the beginning of the line.
+
 
 % !split and check if these extra words are included properly in the comment
 
@@ -6941,9 +6944,9 @@ in {\LaTeX} inline verbatim, we need to test it, as in \Verb?a != b?,
 and a DocOnce directive a la \Verb?!bc?.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak. \\
-And one more.} Some formats will only display \\
-this correctly when HTML is the output format. \\
+green color containing a linebreak.\\
+And one more.} Some formats will only display\\
+this correctly when HTML is the output format.\\
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -7499,9 +7502,10 @@ will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-A sentence containing "refines lines" could easily
-fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Percentage must be fixed: 7\%,  87.65\% and
+50\% at the beginning of the line.
+
 
 % !split and check if these extra words are included properly in the comment
 
@@ -25017,7 +25021,7 @@ c = a &amp; b</code></pre>
 <p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>, <a href="{http://tinyurl.com/pwyasaa/formulas.ball1.py}"></a>, and <a href="{http://tinyurl.com/pwyasaa/formulas.ball2.py}"></a>.</p>
 <p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
 <h2 id="test-of-some-latex-fixes">Test of Some <span>LaTeX</span> Fixes</h2>
-<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example, and 1 vs. 2 which is also often used. Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of DocOnce features. A sentence containing “refines lines” could easily fool a regex substitution with only i.e. since the dot matches anything. Also, look at Fig. 4 to see how the data compares with Tab. [mytab].</p>
+<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example, and 1 vs. 2 which is also often used. Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of DocOnce features. Also, look at Fig. 4 to see how the data compares with Tab. [mytab]. Percentage must be fixed: 7%, 87.65% and 50% at the beginning of the line.</p>
 <h1 id="latex-mathematics"><span>LaTeX</span> Mathematics</h1>
 <p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
 <p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
@@ -36414,9 +36418,9 @@ in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
 and a DocOnce directive a la \code{!bc}.
 
 Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak. \\
-And one more.} Some formats will only display \\
-this correctly when HTML is the output format. \\
+green color containing a linebreak.\\
+And one more.} Some formats will only display\\
+this correctly when HTML is the output format.\\
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -36955,9 +36959,10 @@ will go to the Dept.~of Science to test how Mr.~Hansen is doing together
 with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
 Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-A sentence containing "refines lines" could easily
-fool a regex substitution with only i.e.~since the dot matches anything.
 Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Percentage must be fixed: 7\%,  87.65\% and
+50\% at the beginning of the line.
+
 
 % !split and check if these extra words are included properly in the comment
 
@@ -44826,9 +44831,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -45424,9 +45429,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -46027,9 +46032,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -46673,9 +46678,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -47212,9 +47217,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -47843,9 +47848,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -48352,9 +48357,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -48959,9 +48964,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -49605,9 +49610,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
-By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+proportional to the value of the issues at stake."\\
+By way of corollary, it adds:\\
+"That is why academic politics are so bitter."\\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -75438,7 +75443,7 @@ of different object types.
 \emph{People only become computer programmers if they're
 obsessive about details, crave power over machines, and can bear
 to be told day after day exactly how
-stupid they are.} \\
+stupid they are.}\\
 Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
 \end{quote}
 
@@ -76415,7 +76420,7 @@ of different object types.
 \emph{People only become computer programmers if they're
 obsessive about details, crave power over machines, and can bear
 to be told day after day exactly how
-stupid they are.} \\
+stupid they are.}\\
 Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
 \end{quote}
 
@@ -77954,7 +77959,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Sep  1 12:44:32 2014.
+# sphinx-quickstart on Mon Sep  8 00:39:34 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -104842,8 +104847,8 @@ output in movies.txt
 + bash -x make.sh
 + name=Springer_T2_book
 + rm -f 'tmp_*'
-+ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_align=center --latex_admon_title_no_period
-+ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_align=center --latex_admon_title_no_period
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period
 
 Summary of papers
 -----------------

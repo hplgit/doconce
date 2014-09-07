@@ -1209,8 +1209,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
 
     # Handle "50%" and similar (with initial space, does not work
     # for 50% as first word on a line, so we add a fix for that
-    filestr = re.sub(r'( [0-9]{1,3})%', r'\g<1>\%', filestr)
-    filestr = re.sub(r'(^[0-9]{1,3})%', r'\g<1>\%', filestr, flags=re.MULTILINE)
+    filestr = re.sub(r'( [0-9.]+)%', r'\g<1>\%', filestr)
+    filestr = re.sub(r'(^[0-9.]+)%', r'\g<1>\%', filestr, flags=re.MULTILINE)
 
     # Fix common error et. al. cite{ (et. should be just et)
     filestr = re.sub(r'et\. +al +cite(\{|\[)', r'et al. cite\g<1>', filestr)
