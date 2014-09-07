@@ -836,9 +836,10 @@ will go to the Dept. of Science to test how Mr.    Hansen is doing together
 with Ms. Larsen. A reference like Sec. ref{subsubsec:ex} or
 Ch. ref{subsubsec:ex}, or even App. ref{subsubsec:ex}, must also be
 handled. Likewise, this is test no. $i$ of DocOnce features.
-A sentence containing "refines lines" could easily
-fool a regex substitution with only i.e. since the dot matches anything.
 Also, look at Fig. 4 to see how the data compares with Tab. ref{mytab}.
+Percentage must be fixed: 7%,  87.65% and
+50% at the beginning of the line.
+
 % endif
 
 !split and check if these extra words are included properly in the comment
