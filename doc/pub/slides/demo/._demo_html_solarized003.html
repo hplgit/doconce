@@ -12,7 +12,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -70,6 +70,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -79,7 +80,10 @@ div { text-align: justify; text-justify: inter-word; }
               (' Numerical solution method ', 1, None, '___sec2'),
               (' Forward Euler explained ', 2, None, '___sec3'),
               (' Implementation ', 1, None, '___sec4'),
-              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
+               2,
+               None,
+               '___sec5'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
@@ -113,7 +117,7 @@ MathJax.Hub.Config({
 <!-- !bpop -->
 
 <ul>
- <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <li> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
  <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
@@ -124,9 +128,9 @@ MathJax.Hub.Config({
 <!-- !bpop -->
 Numerical scheme:
 $$
-   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-   \quad n=0,1,\ldots,N-1
-   $$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\quad n=0,1,\ldots,N-1
+$$
 
 <!-- !epop -->
 

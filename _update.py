@@ -68,9 +68,17 @@ def pack_reveal_deck_csss():
         print """
 NOTE: cloning repos like reveal.js and deck.js may bring in new
 versions of styles that are not compatible with previous tuning.
-Be careful to mix doconce tunings with new versions.
+So, be careful to mix doconce tunings with new versions.
 If styles are to be tuned more, a good idea can be to pack out
 the zip file instead and tune directly those style files.
+
+If new versions are cloned (i.e., you answer "yes" below), first
+take a copy of the reveal.js and deck.js source trees and run
+a diff on the new and old trees to get an overview of what type
+of files that has changed. (Note that any diff will point of
+differences between doconce specific versions of css files and
+the original ones. doconce specific versions will be automatically
+copied into new, cloned directories before the zip file is packed.)
 
 (Detected time-consuming incompatibilities Jan, 2014, after reveal and
 deck had undergone significant developments.)

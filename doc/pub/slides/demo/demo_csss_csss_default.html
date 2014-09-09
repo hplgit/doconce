@@ -11,6 +11,7 @@
 
 
 
+
 <!-- CSSS: http://leaverou.github.com/CSSS/ -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -77,7 +78,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 30, 2014</h4></center> <!-- date -->
+<center><h4>Sep 9, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -178,7 +179,7 @@ Here,
 
 
 <ul>
- <p><li class="delayed"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <p><li class="delayed"> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
  <p><li class="delayed"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <p><li class="delayed"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
@@ -192,9 +193,9 @@ Here,
 
 Numerical scheme:
 $$
-   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-   \quad n=0,1,\ldots,N-1
-   $$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\quad n=0,1,\ldots,N-1
+$$
 
 
 </p>
@@ -247,7 +248,7 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec5"></a></h2>
 
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 

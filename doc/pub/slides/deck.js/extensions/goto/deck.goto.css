@@ -1,4 +1,4 @@
-.goto-form {
+.deck-container .goto-form {
   position: absolute;
   z-index: 3;
   bottom: 10px;
@@ -10,15 +10,20 @@
   display: none;
   background: #ccc;
   overflow: hidden;
+}
+.borderradius .deck-container .goto-form {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   border-radius: 10px;
 }
-.goto-form label {
+.deck-container .goto-form label {
   font-weight: bold;
 }
-.goto-form label, .goto-form input {
+.deck-container .goto-form label, .deck-container .goto-form input {
   display: inline-block;
   font-family: inherit;
 }
+
 .deck-goto .goto-form {
   display: block;
 }
@@ -31,6 +36,6 @@
 
 @media print {
   .goto-form, #goto-slide {
-    display: none;
+    display: none !important;
   }
 }

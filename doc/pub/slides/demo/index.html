@@ -17,6 +17,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -85,7 +86,7 @@ end of tocinfo -->
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Aug 30, 2014</h4></center> <!-- date -->
+<center><h4>Sep 9, 2014</h4></center> <!-- date -->
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Note:</b>
 These slides are normally best viewed in Chrome in full screen mode.
@@ -477,11 +478,16 @@ doconce slides_html demo doconce --nav_button=text
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex demo SLIDE_TYPE=&quot;beamer&quot; SLIDE_THEME=&quot;red_shadow&quot; --latex_title_layout=beamer
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex demo SLIDE_TYPE=&quot;beamer&quot; SLIDE_THEME=&quot;red_shadow&quot; --latex_title_layout=beamer --latex_admon_title_no_period
 doconce ptex2tex demo envir=minted
 doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 </pre></div>
+<p>
+(A period is usually added to addmon titles without a final <code>?.:</code>, but
+Beamer headings look better without adding a period, and that is why we
+use <code>--latex_admon_title_no_period</code>.)
+
 <p>
 <a href="demo_red_plain_handouts2x3.pdf" target="_blank">Traditional handouts (2x3) in PDF</a>
 

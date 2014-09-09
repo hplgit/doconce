@@ -4,7 +4,7 @@
 #summary Scientific Writing and Publishing Anno 2013
 
 By *Hans Petter Langtangen*
-==== Aug 30, 2014 ====
+==== Sep 9, 2014 ====
 
 ---------------------------------------------------------------
 
@@ -51,7 +51,7 @@ print 'Hello, World!'
 \end{Verbatim}
 }}}
 
-*Big late 1990s question:*\g<space>
+*Big late 1990s question:* 
 Will MS Word replace LaTeX? It never did!
 
 
@@ -510,7 +510,7 @@ http://hplgit.github.com/teamods/writing_reports/
  * Based on text transformations (reg.exp.) so valid syntax may   occasionally give problems<wiki:comment> * Actively developed and maintained, but one-man show </wiki:comment>
 
 
-*DocOnce divorce.*\g<space>
+*DocOnce divorce.* 
 At any time one can divorce from DocOnce and marry one of the output
 formats, such as LaTeX or Sphinx. The generated code is clean.
 
@@ -585,7 +585,7 @@ DATE: today
 TOC: on
 }}}
 
-*Notice.*\g<space>
+*Notice.* 
 Title and authors must have all information *on a single line*!
 
 
@@ -691,7 +691,7 @@ URL: "https://github.com/hplgit/doconce"
 <wiki:comment> !split </wiki:comment>
 == Figures and movies ==
 
-*Important:*\g<space>
+*Important:* 
 Figures with HTML and LaTeX size info, and caption: *everything on one line*
 
 
@@ -765,7 +765,7 @@ Limit math environments to
 \end{align}
 }}}
 
-*DocOnce fix of shortcomings.*\g<space>
+*DocOnce fix of shortcomings.* 
 
  * Sphinx, Markdown, and MediaWiki cannot have   `align` with labels
  * MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot   handle equation references across web pages
@@ -821,7 +821,7 @@ ending with (line not included) `def next(x, y,` is specified by
 start and end regular expressions:
 
 {{{
-@@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
+@@@CODE src/somefile.py  fromto: def solver\(@def next\(x,\s*y,
 }}}
 
 <wiki:comment> !split </wiki:comment>
@@ -885,7 +885,7 @@ xlabel('x'); ylabel('y')
 show()
 }}}
 
-*Warning.*\g<space>
+*Warning.* 
 Works only in Sphinx documents (but HTML support is possible).
 
 
@@ -1075,18 +1075,18 @@ processing (e.g., making a book of problems).
 <wiki:comment> !split </wiki:comment>
 == DocOnce admonitions ==
 
-*Use with caution!*\g<space>
+*Use with caution!* 
 Such environments may light up the document, but can be disturbing too.
 Some admon styles have icons.
 
 
 
-*Going deeper.*\g<space>
+*Going deeper.* 
 More details can be separated from the rest.
 
 
 
-*Time for review!*\g<space>
+*Time for review!* 
 Tasks:
 
 

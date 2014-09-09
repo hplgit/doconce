@@ -17,7 +17,7 @@ a figure to the right (two cells, numbered 00 and 01).
 !split
 ======= Headline =======
 
-!bslidecell 00
+|bslidecell 00
  * Key point 1
  * Key point 2
  * Key point 3 takes very much more text to explain because
@@ -25,15 +25,15 @@ a figure to the right (two cells, numbered 00 and 01).
    bullet points are not recommended in general, we need
    it here for demonstration purposes
 
-!bt
+|bt
 \[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
-!et
+|et
 
-!eslidecell
+|eslidecell
 
-!bslidecell 01
+|bslidecell 01
 FIGURE: [fig/broken_pen_and_paper, width=400]
-!eslidecell
+|eslidecell
 
 !split
 ======= Next slide... =======
@@ -81,10 +81,10 @@ idx{finite difference scheme}
 !bpop
 Numerical scheme:
 !bt
-   \[
-   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-   \quad n=0,1,\ldots,N-1
-   \]
+ [
+ u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+ \quad n=0,1,\ldots,N-1
+ ]
 !et
 !epop
 
@@ -96,10 +96,6 @@ $\theta=1/2$: Crank-Nicolson
 !split
 
 
-===== Implementation =====
+===== Implementation: Python program is embedded in a web service, Python Online Tutor, which enables stepwise execution and examination of variables =====
 
-@@@CODE src/dc_mod.pyopt
-
-
-!split
-
+@@@CODE src/solver.pyopt

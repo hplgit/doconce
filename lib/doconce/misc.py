@@ -40,7 +40,8 @@ Default: default (other values: monokai, manni, rrt, perldoc,
 borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
 vim, pastie, friendly, native).
 none, no, off: turn off pygments to typeset computer code in HTML,
-use plain <pre> tags."""),
+use plain <pre> tags.
+highlight.js: use highlight.js syntax highlighting, not pygments."""),
     ('--pygments_html_linenos',
      """Turn on line numbers in pygmentized computer code in HTML.
 (In LaTeX line numbers can be added via doconce subst or
@@ -4399,16 +4400,16 @@ td.padding {
                 else:
                     # Treat whole block as paragraph
 
-                    # Agument any class= (especially in admonitions)
-                    # by class_tp so that piece also pops up
-                    body = body.replace('div class="',
-                                        'div class="%s ' % class_tp)
+                    # Agument admonitions with pop-up syntax
+                    body = body.replace('div class="alert',
+                                        'div class="%s alert' % class_tp)
 
                     # Hack to preserve spacings before equation (see above),
-                    # when <p> below is removed
+                    # when <p> is removed (as we must do below)
                     body = body.replace('<p>&nbsp;<br>', '&nbsp;<br>&nbsp;<br>')
                     body = body.replace('<p>', '')  # can make strange behavior
                     body2 = '\n<p class="%s">\n' % class_tp
+
                     if slide_tp == 'reveal' and arg:  # reveal specific
                         args = arg.split()
                         for arg in args:

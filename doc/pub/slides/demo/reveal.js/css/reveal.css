@@ -73,11 +73,14 @@ body {
 .reveal h4,
 .reveal h5,
 .reveal h6 {
+/*
 	-webkit-hyphens: auto;
 	   -moz-hyphens: auto;
 	        hyphens: auto;
 
 	word-wrap: break-word;
+(removed by hpl)
+*/
 	line-height: 1;
 }
 

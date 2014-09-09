@@ -176,7 +176,7 @@ a:hover { color: #2aa198; }
 def css_link_solarized_highlight(style='light'):
     return """
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_%(style)s_code.css" rel="stylesheet" type="text/css" title="%(style)s"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 """ % vars()
 
@@ -2174,7 +2174,13 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
     if keywords:
         meta_tags += '<meta name="keywords" content="%s">\n' % keywords
 
-
+    scripts = ''
+    if option('pygments_html_style=', 'default') == 'highlight.js':
+        scripts += """
+<!-- use highlight.js and styles for code -->
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+"""
     # Had to take DOCTYPE out from 1st line to load css files from github...
     # <!DOCTYPE html>
     INTRO['html'] = """\
@@ -2187,10 +2193,11 @@ Automatically generated HTML file from DocOnce source
 %s
 <title>%s</title>
 %s
+%s
 </head>
 <body>
 
-    """ % (meta_tags, title, style)
+    """ % (meta_tags, title, style, scripts)
 
     OUTRO['html'] = ''
     if html_style.startswith('boots'):

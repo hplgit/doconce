@@ -116,10 +116,10 @@ Here,
 <span style="color: #8B008B; font-weight: bold">!bpop</span>
 Numerical scheme:
 <span style="color: #8B008B; font-weight: bold">!bt</span>
-   \[
-   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-   \quad n=0,1,\ldots,N-1
-   \]
+\[
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\quad n=0,1,\ldots,N-1
+\]
 <span style="color: #8B008B; font-weight: bold">!et</span>
 <span style="color: #8B008B; font-weight: bold">!epop</span>
 
@@ -141,10 +141,10 @@ Numerical scheme:
 
 The numerical method is implemented in a Python function:
 
-<span style="color: #800080; font-weight: bold">@@@CODE src/dc_mod.py  fromto: def solver@def verify_three</span>
+<span style="color: #800080; font-weight: bold">@@@CODE src/solver.py  fromto: def solver@def exact_solution</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
-<span style="color: #000080; font-weight: bold">===== The Crank-Nicolson method =====</span>
+<span style="color: #000080; font-weight: bold">===== The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone =====</span>
 
 <span style="color: #228B22">## Figure filenames do not need extension - the right version is picked</span>
 

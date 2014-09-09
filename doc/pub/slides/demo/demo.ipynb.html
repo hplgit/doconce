@@ -10,12 +10,11 @@
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;# On Schemes for Exponential Decay\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;**Aug 30, 2014**\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**Sep 9, 2014**\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;center&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;img src=\&quot;https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/fig/CN_logo.png\&quot; width=300&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;/center&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -38,10 +37,13 @@
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;ode\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;u&#39;(t) = -au(t),\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;\\label{ode}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\label{ode} \\tag{1}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
      <span class="p">]</span>
@@ -50,10 +52,13 @@
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;initial:value\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation} \n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;u(0)  = I,\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;\\label{initial:value}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\label{initial:value} \\tag{2}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
      <span class="p">]</span>
@@ -73,10 +78,9 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;center&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;img src=\&quot;https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/fig/teacher2.jpg\&quot; width=250&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;/center&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;## Numerical solution method\n&quot;</span><span class="p">,</span>
@@ -98,7 +102,7 @@
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;u^{n+1} = \\frac{1 - (1-\\theta) a\\Delta t}{1 + \\theta a\\Delta t}u^n,\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;   \\quad n=0,1,\\ldots,N-1\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\quad n=0,1,\\ldots,N-1\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
@@ -159,14 +163,13 @@
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;### The Crank-Nicolson method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;center&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;img src=\&quot;https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/fig/CN.png\&quot; width=600&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;/center&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;### The artifacts can be explained by some theory\n&quot;</span><span class="p">,</span>

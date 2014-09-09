@@ -15,46 +15,6 @@ def solver(I, a, T, dt, theta):
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 
-def verify_three_steps():
-    """
-    Run three steps and compare with pre-computed correct values.
-    Return True if the computations are right.
-    """
-    theta = 0.8; a = 2; I = 0.1; dt = 0.8
-    factor = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)
-    u1 = factor*I
-    u2 = factor*u1
-    u3 = factor*u2
-
-    N = 3  # number of time steps
-    u, t = solver(I=I, a=a, T=N*dt, dt=dt, theta=theta)
-
-    tol = 1E-15  # tolerance for comparing floats
-    difference = abs(u1-u[1]) + abs(u2-u[2]) + abs(u3-u[3])
-    success = difference <= tol
-    return success
-
-def verify_exact_discrete_solution():
-    """
-    Compare the solution computed by solver
-    with a formula for the exact discrete solution.
-    Return True if the computations are right.
-    """
-
-    def exact_discrete_solution(n, I, a, theta, dt):
-        factor = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)
-        return I*factor**n
-
-    theta = 0.8; a = 2; I = 0.1; dt = 0.8
-    N = int(8/dt)  # no of steps
-    u, t = solver(I=I, a=a, T=N*dt, dt=dt, theta=theta)
-    u_de = array([exact_discrete_solution(n, I, a, theta, dt)
-                  for n in range(N+1)])
-    difference = abs(u_de - u).max()  # max deviation
-    tol = 1E-15  # tolerance for comparing floats
-    success = difference <= tol
-    return success
-
 def exact_solution(t, I, a):
     return I*exp(-a*t)
 
@@ -153,17 +113,7 @@ def verify_convergence_rate():
     return True  # all tests passed
 
 if __name__ == '__main__':
-    # Use verify and verify_rates on the command line to
-    # run verification tests. These command-line arguments
-    # must be removed before parameters are read from the
-    # command line.
-    if 'verify' in sys.argv:
-        sys.argv.remove('verify')
-        if verify_three_steps() and verify_discrete_solution():
-            pass # ok
-        else:
-            print 'Bug in the implementation!'
-    elif 'verify_rates' in sys.argv:
+    if 'verify_rates' in sys.argv:
         sys.argv.remove('verify_rates')
         if not '--dt' in sys.argv:
             print 'Must assign several dt values through the --dt option'

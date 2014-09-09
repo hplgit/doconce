@@ -63,6 +63,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -72,7 +73,10 @@ div { text-align: justify; text-justify: inter-word; }
               (' Numerical solution method ', 1, None, '___sec2'),
               (' Forward Euler explained ', 2, None, '___sec3'),
               (' Implementation ', 1, None, '___sec4'),
-              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
+               2,
+               None,
+               '___sec5'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
@@ -118,7 +122,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 30, 2014</h4></center> <!-- date -->
+<center><h4>Sep 9, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -134,7 +138,7 @@ and get them rendered in numerous HTML formats.
 <b>Layout.</b>
 <p>
 This version
-utilizes <module 'doconce.html' from '/usr/local/lib/python2.7/dist-packages/doconce/html.pyc'> slides with the theme <code>blueish</code>.
+utilizes html slides with the theme <code>blueish</code>.
 </div>
 
 
@@ -195,7 +199,7 @@ Here,
 <!-- !bpop -->
 
 <ul>
- <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <li> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
  <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
@@ -206,9 +210,9 @@ Here,
 <!-- !bpop -->
 Numerical scheme:
 $$
-   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-   \quad n=0,1,\ldots,N-1
-   $$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\quad n=0,1,\ldots,N-1
+$$
 
 <!-- !epop -->
 
@@ -247,7 +251,7 @@ The numerical method is implemented in a Python function:
 <p>
 <!-- !split --><br><br><br><br><br><br><img src="http://hplgit.github.io/doconce/bundled/html_images/colorline.png"><br><br>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec5"></a></h2>
 
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 

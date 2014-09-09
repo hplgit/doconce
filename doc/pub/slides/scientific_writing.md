@@ -2,7 +2,7 @@
 <!-- TITLE: Scientific Writing Anno 2013: The DocOnce Way -->
 % Scientific Writing and Publishing Anno 2013
 % **Hans Petter Langtangen**
-% Aug 30, 2014
+% Sep 9, 2014
 
 ![](fig/doconce1b.png)
 
@@ -37,7 +37,7 @@ print 'Hello, World!'
 \end{Verbatim}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Big late 1990s question:*\g<space>
+*Big late 1990s question:* 
 Will MS Word replace LaTeX? It never did!
 
 
@@ -329,7 +329,7 @@ especially for scientific writing with *much math and code*.
    occasionally give problems
 <!-- * Actively developed and maintained, but one-man show -->
 
-*DocOnce divorce.*\g<space>
+*DocOnce divorce.* 
 At any time one can divorce from DocOnce and marry one of the output
 formats, such as LaTeX or Sphinx. The generated code is clean.
 
@@ -401,7 +401,7 @@ DATE: today
 TOC: on
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Notice.*\g<space>
+*Notice.* 
 Title and authors must have all information *on a single line*!
 
 
@@ -509,7 +509,7 @@ URL: "https://github.com/hplgit/doconce"
 <!-- !split -->
 ## Figures and movies
 
-*Important:*\g<space>
+*Important:* 
 Figures with HTML and LaTeX size info, and caption: *everything on one line*
 
 
@@ -598,7 +598,7 @@ Limit math environments to
 \end{align}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*DocOnce fix of shortcomings.*\g<space>
+*DocOnce fix of shortcomings.* 
  * Sphinx, Markdown, and MediaWiki cannot have
    `align` with labels
  * MathJax (HTML, Sphinx, Markdown, Mediawiki, ...) cannot
@@ -659,7 +659,7 @@ start and end regular expressions:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
+@@@CODE src/somefile.py  fromto: def solver\(@def next\(x,\s*y,
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
@@ -677,6 +677,7 @@ start and end regular expressions:
 
 <!-- !split -->
 ## Demonstrating code execution; Online Python Tutor
+<a name="slide:opt"/>
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 [Online Python Tutor](http://pythontutor.com) for displaying
@@ -702,6 +703,7 @@ print u
 
 <!-- !split -->
 ## Demonstrating code execution; Sage Cell Server
+<a name="slide:sage:cell"/>
 
 With `!bc pyscpro` or a file `*.pysc`, the code is typeset in
 a sage cell:
@@ -722,13 +724,14 @@ xlabel('x'); ylabel('y')
 show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Warning.*\g<space>
+*Warning.* 
 Works only in Sphinx documents (but HTML support is possible).
 
 
 
 <!-- !split -->
 ## Demonstrating code execution; IPython notebook
+<a name="slide:ipynb"/>
 
 Can take a [DocOnce source](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and transform to an [IPython notebook](http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb) with [source](http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html)
 
@@ -914,18 +917,18 @@ processing (e.g., making a book of problems).
 <!-- !split -->
 ## DocOnce admonitions
 
-*Use with caution!*\g<space>
+*Use with caution!* 
 Such environments may light up the document, but can be disturbing too.
 Some admon styles have icons.
 
 
 
-*Going deeper.*\g<space>
+*Going deeper.* 
 More details can be separated from the rest.
 
 
 
-*Time for review!*\g<space>
+*Time for review!* 
 Tasks:
 
   * Maybe ask a question?
