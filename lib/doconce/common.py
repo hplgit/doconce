@@ -773,8 +773,8 @@ def has_custom_pygments_lexer(name):
         try:
             get_lexer_by_name(name)
         except Exception as e:
-            print '*** warning: !bc doconce used for DocOnce code, but'
-            print '    doconce is not supported for syntax highlighting!'
+            print '*** warning: !bc do used for DocOnce code, but'
+            print '    not supported for syntax highlighting!'
             print '    install:'
             print '    git clone https://github.com/hplgit/pygments-doconce.git; cd pygments-doconce; sudo python setup.py install'
             print e

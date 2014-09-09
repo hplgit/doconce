@@ -1502,7 +1502,9 @@ def ptex2tex():
                         )
                     # Find substitutes for ipy and doconce if these lexers
                     # are not installed
-                    # (third-party repos, does not come with pygments)
+                    # (third-party repos, does not come with pygments, but
+                    # warnings have been issued by doconce format, with
+                    # URLs to where the code can be obtained)
                     from pygments.lexers import get_lexer_by_name
                     try:
                         get_lexer_by_name('ipy')
@@ -3178,7 +3180,7 @@ Reveal.initialize({
     // The "normal" size of the presentation, aspect ratio will be preserved
     // when the presentation is scaled to fit different resolutions. Can be
     // specified using percentage units.
-    width:  960,
+    width: 1170,  // original: 960,
     height: 700,
 
     // Factor of the display size that should remain empty around the content
