@@ -11,6 +11,7 @@ $ if [ ! -d srclib ]; then mkdir srclib; fi
 # Version control systems
 mercurial git subversion
 
+# DocOnce itself
 $ cd srclib
 $ git clone https://github.com/hplgit/doconce.git
 $ if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
@@ -30,7 +31,10 @@ pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sph
 pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
 
-pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+#pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
+pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce
+
 
 $ cd srclib
 $ svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex

@@ -41,6 +41,7 @@ apt_install mercurial
 apt_install git
 apt_install subversion
 
+# DocOnce itself
 cd srclib
 git clone https://github.com/hplgit/doconce.git
 if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
@@ -61,7 +62,10 @@ pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sph
 pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
 
-pip_install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+#pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+pip_install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
+pip_install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce
+
 
 cd srclib
 svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex

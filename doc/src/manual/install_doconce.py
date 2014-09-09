@@ -45,6 +45,7 @@ system('sudo apt-get -y install mercurial')
 system('sudo apt-get -y install git')
 system('sudo apt-get -y install subversion')
 
+# DocOnce itself
 
 cmd = """
 cd srclib
@@ -69,7 +70,10 @@ system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.sola
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
 
-system('sudo pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console')
+#pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
+system('sudo pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console')
+system('sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce')
+
 
 
 cmd = """
