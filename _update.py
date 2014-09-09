@@ -64,7 +64,8 @@ def zipfiles2lib():
 
 
 def pack_reveal_deck_csss():
-    print """
+    if clone:
+        print """
 NOTE: cloning repos like reveal.js and deck.js may bring in new
 versions of styles that are not compatible with previous tuning.
 Be careful to mix doconce tunings with new versions.
@@ -74,14 +75,14 @@ the zip file instead and tune directly those style files.
 (Detected time-consuming incompatibilities Jan, 2014, after reveal and
 deck had undergone significant developments.)
 """
-    ans = raw_input('Sure you want to proceed? ')
-    if ans.lower().startswith('n'):
-        return
+        ans = raw_input('Sure you want to proceed? ')
+        if ans.lower().startswith('n'):
+            return
 
-    if clone:
         system('sh clean.sh')
         rmtree('reveal.js')
         system('git clone git://github.com/hakimel/reveal.js.git')
+
     os.system('cp doconce_modifications/reveal/css/reveal*.css reveal.js/css/')
     os.system('cp doconce_modifications/reveal/css/theme/*.css reveal.js/css/theme/')
     os.system('cp doconce_modifications/reveal/css/theme/source/*.scss reveal.js/css/theme/source/')
@@ -133,6 +134,9 @@ deck had undergone significant developments.)
 
     #system('cp doconce_modifications/deck/core/*.css deck.js/core/')
     system('cp doconce_modifications/deck/themes/style/*.css deck.js/themes/style/')
+    if not os.path.isdir('deck.js/themes/images'):
+        os.mkdir('deck.js/themes/images')
+    system('cp doconce_modifications/deck/themes/images/*.png deck.js/themes/images/')
 
     # this find will always generate errors..., use os.system
     os.system("find deck.js/extensions -name '.git' -exec rm -rf {} \;")

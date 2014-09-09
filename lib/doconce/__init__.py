@@ -4,7 +4,6 @@
 What Is DocOnce?
 ================
 
-
 DocOnce is two things:
 
  1. DocOnce is a very simple and minimally tagged markup language that
