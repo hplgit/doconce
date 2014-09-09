@@ -63,4 +63,3 @@ def define(FILENAME_EXTENSION,
     INLINE_TAGS_SUBST['pdflatex'] = {}
     for tag in INLINE_TAGS_SUBST['latex']:
         INLINE_TAGS_SUBST['pdflatex'][tag] = INLINE_TAGS_SUBST['latex'][tag]
-

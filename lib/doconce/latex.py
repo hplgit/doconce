@@ -1478,14 +1478,26 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         text_block = r'{\large ' + text_block + '\n\\par}'
         title = r'{\large ' + title + '}'
 
-    # title in mdfbox (or graybox2 with mdframed) cannot handle ,
-    title_mdframed = title.replace(',', '')
+    # title in mdfbox (or graybox2 with mdframed) cannot handle , or []
+    title_mdframed = title   # potentially modified title for mdframed package
+    if latex_admon == 'mdfbox' or \
+        (latex_admon =='graybox2' and '%(_admon)s' != 'summary'):
+        for char in ',[]':
+            if char in title_mdframed:
+                print '*** error: character "%%s" is not legal in %(_admon)s admon title:' %% char
+                print '   ', title
+                print '    for --latex_admon=%%s' %% latex_admon
+                print '    (the character will simply be removed if you override the abortion)'
+                _abort()
+                title_mdframed = title_mdframed.replace(char, '')
+        if '%%' in title_mdframed:  # must be escaped
+            title_mdframed = title_mdframed.replace('%%', r'\%%')
     if title_mdframed and title_mdframed[-1] not in ('.', ':', '!', '?'):
         title_mdframed += '%(_title_period)s'
-    if latex_admon == 'mdfbox':
+    if latex_admon in ('mdfbox',):
         title = title_mdframed
 
-    title_para = title
+    title_para = title  # potentially modified title for paragraphs
     if title_para and title_para[-1] not in ('.', ':', '!', '?'):
         title_para += '%(_title_period)s'
 
@@ -1501,7 +1513,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
                 title_graybox2 += ':'
             text_block_graybox2 = r'\textbf{%%s} ' %% title_graybox2 + text_block_graybox2
         # else: no title if title == 'Summary' for graybox2
-        # Any code in text_block_graybox2?
+        # Any code in text_block_graybox2? If so, cannot use \grayboxhrules
         m1 = re.search(r'^\\(b|e).*(cod|pro)', text_block_graybox2, flags=re.MULTILINE)
         m2 = '\\code{' in text_block_graybox2
         if m1 or m2:
@@ -1510,11 +1522,12 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             grayboxhrules = True
 
     if grayboxhrules:
+        # summary admon without any code
         envir_graybox2 = r'''\grayboxhrules{
 %%s
 }''' %% text_block_graybox2
     else:
-        # same mdframed package as for mdfbox admon, use title_mdframed
+        # same mdframed package as for mdfbox admon, use modified title_mdframed
         envir_graybox2 = r'''
 \begin{graybox2admon}[%%s]
 %%s
