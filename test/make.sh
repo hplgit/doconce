@@ -236,14 +236,17 @@ doconce md2latex $name
 # LaTeX admon styles
 admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
+color=
+opts=
 if [ $admon_tp = 'mdfbox' ]; then
    color="--latex_admon_color=gray!6"
+   opts=--no_abort
 elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
-else
-   color=
+elif [ $admon_tp = 'graybox2' ]; then
+   opts=--no_abort
 fi
-system doconce format pdflatex admon --latex_admon=$admon_tp $color
+system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts
 doconce ptex2tex admon envir=minted
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex -shell-escape admon_${admon_tp}
@@ -258,7 +261,7 @@ rm -rf latex_figs
 done
 
 # Test different code envirs inside admons
-doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2
+doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2 --no_abort
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
 rm -rf latex_figs

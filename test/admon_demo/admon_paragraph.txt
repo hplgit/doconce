@@ -3,7 +3,7 @@ Testing admons
 
 hpl
 
-Date: Sep 8, 2014
+Date: Sep 9, 2014
 
 # !split
 Introduction
@@ -156,10 +156,6 @@ Block --------------------------------------------------------------------------
 | and is useful when you want some admons with icon and some without.             |
 |---------------------------------------------------------------------------------|
 
-
-The next admonition features a title "Note, eventually!" (the comma
-must be removed in the mdfbox admon also in graybox2 if
-code is present).
 
 
 Note, eventually! ----------------------------------------------------------|

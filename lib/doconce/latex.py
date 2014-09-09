@@ -1487,6 +1487,8 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
                 print '*** error: character "%%s" is not legal in %(_admon)s admon title:' %% char
                 print '   ', title
                 print '    for --latex_admon=%%s' %% latex_admon
+                if char == ',':
+                    print '    see if you can replace , by "and" or a dash...'
                 print '    (the character will simply be removed if you override the abortion)'
                 _abort()
                 title_mdframed = title_mdframed.replace(char, '')

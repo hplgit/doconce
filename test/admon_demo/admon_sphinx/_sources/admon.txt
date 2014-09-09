@@ -5,7 +5,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: hpl
-:Date: Sep 8, 2014
+:Date: Sep 9, 2014
 
 .. !split
 
@@ -203,10 +203,6 @@ applies the generic title "Notice:" for the Sphinx format:
 
 
 
-
-The next admonition features a title "Note, eventually!" (the comma
-must be removed in the ``mdfbox`` admon also in ``graybox2`` if
-code is present).
 
 .. Note that the final ! does not appear in Sphinx and reST since
 
