@@ -1529,7 +1529,15 @@ def ptex2tex():
                             if arg.startswith('--minted_leftmargin='):
                                 leftmargin = arg.split('=')[1]
                         for lang in envir2pygments:
-                            begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm]{' % leftmargin + envir2pygments[lang] + '}'
+                            # mathescape can be used with minted and lstlisting
+                            # see http://tex.stackexchange.com/questions/149710/how-to-write-math-symbols-in-a-verbatim, minted can only have math in comments within the code
+                            # but mathescape make problems with bash and $#
+                            # (can perhaps be fixed with escapechar=... but
+                            # I haven't found out)
+                            if lang != 'sh':
+                                begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm]{' % leftmargin + envir2pygments[lang] + '}'
+                            else:
+                                begin = '\\' + 'begin{minted}[fontsize=\\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm]{' % leftmargin + envir2pygments[lang] + '}'
                             end = '\\' + 'end{minted}'
                             envir_user_spec.append((lang, begin, end))
                     else:
@@ -4653,6 +4661,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     # Add possible user customization from the original latex file,
     # plus the newcommands and \begin{document}
     preamble_divider_line = '% --- end of standard preamble for documents ---'
+    if preamble_divider_line not in header:
+        print '*** error: generated latex document has missing'
+        print '    title, author, and date - add TITLE:, AUTHOR:, DATE:'
+        _abort()
     slides += header.split(preamble_divider_line)[1]
 
     for part in parts:
