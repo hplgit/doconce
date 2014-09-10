@@ -151,7 +151,7 @@ siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
     ('--section_numbering=',
      'Turn section numbering on/off. Default: off for all formats except latex and pdflatex (on for those).'),
     ('--latex_table_format=',
-     'Default: quote. Other values: left, center, footnotesize.'),
+     'Default: quote. Other values: left, center, footnotesize, tiny.'),
     ('--latex_title_layout=',
      """Layout of the title, authors, and date:
 std: traditional LaTeX layout,

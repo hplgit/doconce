@@ -1511,7 +1511,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -1568,6 +1568,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -28029,6 +28030,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -28944,7 +28946,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -29001,6 +29003,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -29269,7 +29272,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -29326,6 +29329,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -30575,7 +30579,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -30632,6 +30636,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -31429,7 +31434,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -31486,6 +31491,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -31884,6 +31890,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -33710,6 +33717,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -39047,6 +39055,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -48246,9 +48255,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- begin definitions of admonition environments ---
 
-% Admonition style "paragraph" is just a plain paragraph
-\newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
-
 % --- end of definitions of admonition environments ---
 
 % prevent orhpans and widows
@@ -48412,7 +48418,8 @@ def some_code(x):
 Let us start with a plain warning environment.
 
 
-\begin{paragraphadmon}[Warning.]
+% --- begin paragraph admon ---
+\paragraph{Warning.}
 And here is a warning about something to pay attention to. We
 test how the heading behave and add quite some extra texts
 in comparison with the other admons.
@@ -48431,14 +48438,15 @@ And more and more text.
 And more and more text.
 And more and more text.
 And more and more text.
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 Test warning with title:
 
 
-\begin{paragraphadmon}[{\large Title ending with math $\sqrt{2}\approx 1.4$}.]
+% --- begin paragraph admon ---
+\paragraph{{\large Title ending with math $\sqrt{2}\approx 1.4$}.}
 {\large And here comes some text with bad news in larger font.
 
 Also some code:
@@ -48453,25 +48461,27 @@ And a complete program
 print "Hello, World!"
 \end{minted}
 \par}
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 Test warning with large title with math:
 
 
-\begin{paragraphadmon}[{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.]
+% --- begin paragraph admon ---
+\paragraph{{\large Watch out for $\nabla\cdot\bm{u}=0$ equations}.}
 {\large Divergence freedom is often problematic from a numerical point
 of view.
 \par}
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 Then we test a block, which is guaranteed to never have any admon icon.
 
 
-\begin{paragraphadmon}[Block with title.]
+% --- begin paragraph admon ---
+\paragraph{Block with title.}
 {\footnotesize Here is a block of text with title. It is typeset
 \emph{without any icon} and is useful when you want some admons with icon
 and some without. With the small font size, as used here, one can have
@@ -48479,16 +48489,17 @@ more comment-style text or text that really goes deeper or talks
 about fun facts that are not strictly necessary for the main flow
 of understanding.
 \par}
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 
 
-\begin{paragraphadmon}[]
+% --- begin paragraph admon ---
+\paragraph{}
 Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
@@ -48496,7 +48507,8 @@ and is useful when you want some admons with icon and some without.
 % those formats automatically add : to the admonition title.
 
 
-\begin{paragraphadmon}[Note, eventually!]
+% --- begin paragraph admon ---
+\paragraph{Note, eventually!}
 Ah, we are soon close to the end (with illegal font size specification!).
 But first a bit of math where we define $\theta$ and $\bm{r}$:
 
@@ -48504,39 +48516,43 @@ But first a bit of math where we define $\theta$ and $\bm{r}$:
 \theta &= q^2,\\
 \bm{r} &= \varrho\bm{i}
 \end{align*}
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 % Test one word with a number
 
 
-\begin{paragraphadmon}[Point1.]
+% --- begin paragraph admon ---
+\paragraph{Point1.}
 Ah, we are soon close to the end.
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 
-\begin{paragraphadmon}[Question.]
+% --- begin paragraph admon ---
+\paragraph{Question.}
 So, how many admonition environments does DocOnce support?
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 
-\begin{paragraphadmon}[Question.]
+% --- begin paragraph admon ---
+\paragraph{Question.}
 \begin{enumerate}
  \item Once more, how many admonition environments does DocOnce support?
 \end{enumerate}
 
 \noindent
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 
-\begin{paragraphadmon}[Tip.]
+% --- begin paragraph admon ---
+\paragraph{Tip.}
 It is of outmost important to
 
 \begin{enumerate}
@@ -48554,16 +48570,17 @@ import urllib
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
 \end{minted}
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
 Next is a warning without a title ("none" implies no title).
 
 
-\begin{paragraphadmon}[]
+% --- begin paragraph admon ---
+\paragraph{}
 And here comes some text with bad news.
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
@@ -48573,7 +48590,8 @@ Here is a long notice environment with a custom title and much
 text, math and code.
 
 
-\begin{paragraphadmon}[Going deeper.]
+% --- begin paragraph admon ---
+\paragraph{Going deeper.}
 We have some equations that should be preceded by much text, so the
 task is to write and write. The number of words, and not the
 meaning, is what counts here. We need desperately to fill up the
@@ -48649,7 +48667,7 @@ And then we add a figure too.
 
 % inline figure
 \centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
@@ -48661,11 +48679,12 @@ for the novice",
 just because we can.
 
 
-\begin{paragraphadmon}[Concluding remarks, for the novice.]
+% --- begin paragraph admon ---
+\paragraph{Concluding remarks, for the novice.}
 We can summarize the most important things with admons: they have
 a different typesetting, and they may have a symbol.
 Titles should be optional.
-\end{paragraphadmon}
+% --- end paragraph admon ---
 
 
 
@@ -49983,6 +50002,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -50483,6 +50503,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -51008,6 +51029,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -51933,6 +51955,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -52509,6 +52532,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -52996,7 +53020,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -53053,6 +53077,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -54050,6 +54075,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -54186,6 +54212,7 @@ Automatically generated HTML file from DocOnce source
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
 
 </head>
 
@@ -54745,6 +54772,7 @@ Automatically generated HTML file from DocOnce source
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
 
 </head>
 
@@ -56336,18 +56364,20 @@ DATE: Today
 
 !bslidecell 00  0.35
 !bpop
-
+!bblock (small) Title with comma, and brackets: $[a,b]$
   * Here is a *wave packet*
   * It can move
   * But here it is just a figure
-
+!eblock
 !epop
 !eslidecell
 
 # Test that it is okay to leave out width if there are only two columns
 
 !bslidecell 01
+!bblock
 FIGURE: [../doc/src/manual/fig/wave1D.png, width=300]
+!eblock
 !eslidecell
 
 !bpop highlight-red
@@ -56382,11 +56412,13 @@ Over multiple lines.
 !split
 ===== Some math and computer code =====
 
+!bblock A simple, mathematical problem:
 !bt
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 !et
-Python implementation:
+!eblock
 
+!bblock Simple, Pythonic implementation:
 !bc pycod
 import numpy as np
 
@@ -56401,25 +56433,26 @@ class Fancy:
         return f(x, y, t)
 
 f2 = Fancy()
+!eblock
 !ec
 
 !split
-===== Admon blocks =====
+===== Various admon blocks =====
 
 Can use admons to simulate blocks:
 
-!bnotice Key PDE:
-This box has title and math in normal 90 percent font:
+!bnotice (large) Key PDE:
+This box has title and math in large font:
 !bt
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 !et
 !enotice
 
 !bpop
-!bnotice None
+!bsummary None
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-!enotice
+!esummary
 !epop
 
 !bwarning (small)
@@ -56429,9 +56462,6 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 !ewarning
 
-
-
-
 ************** File: slides1_reveal.html *****************
 <!DOCTYPE html>
 
@@ -56440,6 +56470,7 @@ title (Warning) since no title is specified.
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
 <title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
+
 
 
 
@@ -56588,18 +56619,26 @@ MathJax.Hub.Config({
 <tr>
 <td class="padding">
 
+<div class="alert alert-block alert-block alert-text-small">
+<b>Title with comma, and brackets: \( [a,b] \).</b>
+<p>
 
 <ul>
   <p><li class="fragment"> Here is a <em>wave packet</em></li>
   <p><li class="fragment"> It can move</li>
   <p><li class="fragment"> But here it is just a figure</li>
 </ul>
-<p>
+</div>
 
 
 </td>
 <td class="padding">
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=300></p></center>
+</div>
+
 </td>
 </tr>
 </table>
@@ -56681,12 +56720,19 @@ Over multiple lines.
 
 <h2>Some math and computer code  <a name="___sec2"></a></h2>
 
+<div class="alert alert-block alert-block alert-text-normal">
+<b>A simple, mathematical problem:</b>
+<p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 <p>&nbsp;<br>
+</div>
 
-Python implementation:
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Simple, Pythonic implementation:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
@@ -56703,6 +56749,8 @@ Python implementation:
         <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
 
 f2 <span style="color: #666666">=</span> Fancy()
+</div>
+
 </pre></div>
 <p>
 
@@ -56711,15 +56759,15 @@ f2 <span style="color: #666666">=</span> Fancy()
 
 <section>
 
-<h2>Admon blocks  <a name="___sec3"></a></h2>
+<h2>Various admon blocks  <a name="___sec3"></a></h2>
 
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal">
+<div class="alert alert-block alert-notice alert-text-large">
 <b>Key PDE:</b>
 <p>
-This box has title and math in normal 90 percent font:
+This box has title and math in large font:
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
@@ -56730,7 +56778,7 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 
 <p class="fragment">
 
-<div class="fragment alert alert-block alert-notice alert-text-normal">
+<div class="fragment alert alert-block alert-summary alert-text-normal">
 <b></b>
 
 Just some block with text and a conclusion that something is important.
@@ -56751,8 +56799,6 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
 
-
-<p>
 
 
 </section>
@@ -57275,6 +57321,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -57285,7 +57332,7 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Some math and computer code ', 2, None, '___sec2'),
-              (' Admon blocks ', 2, None, '___sec3')]}
+              (' Various admon blocks ', 2, None, '___sec3')]}
 end of tocinfo -->
 
 <body>
@@ -57335,12 +57382,16 @@ MathJax.Hub.Config({
 
 <!-- !bslidecell 00  0.35 -->
 <!-- !bpop -->
+<div class="alert alert-block alert-block alert-text-small">
+<b>Title with comma, and brackets: \( [a,b] \).</b>
+<p>
 
 <ul>
   <li> Here is a <em>wave packet</em></li>
   <li> It can move</li>
   <li> But here it is just a figure</li>
 </ul>
+</div>
 
 <!-- !epop -->
 <!-- !eslidecell -->
@@ -57350,7 +57401,12 @@ MathJax.Hub.Config({
 
 <p>
 <!-- !bslidecell 01 -->
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=300></p></center>
+</div>
+
 <!-- !eslidecell -->
 
 <p>
@@ -57401,10 +57457,17 @@ Over multiple lines.
 
 <h2>Some math and computer code  <a name="___sec2"></a></h2>
 
+<div class="alert alert-block alert-block alert-text-normal">
+<b>A simple, mathematical problem:</b>
+<p>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
+</div>
 
-Python implementation:
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Simple, Pythonic implementation:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
@@ -57421,26 +57484,28 @@ Python implementation:
         <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
 
 f2 <span style="color: #666666">=</span> Fancy()
+</div>
+
 </pre></div>
 <p>
 <!-- !split -->
 
-<h2>Admon blocks  <a name="___sec3"></a></h2>
+<h2>Various admon blocks  <a name="___sec3"></a></h2>
 
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal">
+<div class="alert alert-block alert-notice alert-text-large">
 <b>Key PDE:</b>
 <p>
-This box has title and math in normal 90 percent font:
+This box has title and math in large font:
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 </div>
 
 
 <p>
 <!-- !bpop -->
-<div class="alert alert-block alert-notice alert-text-normal">
+<div class="alert alert-block alert-summary alert-text-normal">
 <b></b>
 <p>
 Just some block with text and a conclusion that something is important.
@@ -57460,8 +57525,6 @@ title (Warning) since no title is specified.
 </div>
 
 
-<p>
-
 <!-- ------------------- end of main content --------------- -->
 
 
@@ -57478,6 +57541,7 @@ title (Warning) since no title is specified.
 <meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
 
 <title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
+
 
 
 
@@ -57675,18 +57739,26 @@ MathJax.Hub.Config({
 <tr>
 <td class="padding">
 
+<div class="alert alert-block alert-block alert-text-small">
+<b style="font-weight: bold">Title with comma, and brackets: \( [a,b] \).</b>
+<p>
 
 <ul>
   <p><li class="slide"> Here is a <em>wave packet</em></li>
   <p><li class="slide"> It can move</li>
   <p><li class="slide"> But here it is just a figure</li>
 </ul>
-<p>
+</div>
 
 
 </td>
 <td class="padding">
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=300></p></center>
+</div>
+
 </td>
 </tr>
 </table>
@@ -57764,12 +57836,19 @@ Over multiple lines.
 
 <h2>Some math and computer code  <a name="___sec2"></a></h2>
 
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">A simple, mathematical problem:</b>
+<p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 <p>&nbsp;<br>
+</div>
 
-Python implementation:
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Simple, Pythonic implementation:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
@@ -57786,6 +57865,8 @@ Python implementation:
         <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
 
 f2 <span style="color: #666666">=</span> Fancy()
+</div>
+
 </pre></div>
 <p>
 
@@ -57794,15 +57875,15 @@ f2 <span style="color: #666666">=</span> Fancy()
 
 <section class="slide">
 
-<h2>Admon blocks  <a name="___sec3"></a></h2>
+<h2>Various admon blocks  <a name="___sec3"></a></h2>
 
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal">
+<div class="alert alert-block alert-notice alert-text-large">
 <b style="font-weight: bold">Key PDE:</b>
 <p>
-This box has title and math in normal 90 percent font:
+This box has title and math in large font:
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
@@ -57813,7 +57894,7 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 
 <p class="slide">
 
-<div class="slide alert alert-block alert-notice alert-text-normal">
+<div class="slide alert alert-block alert-summary alert-text-normal">
 <b style="font-weight: bold"></b>
 
 Just some block with text and a conclusion that something is important.
@@ -57834,8 +57915,6 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
 
-
-<p>
 
 
 </section>
@@ -58510,6 +58589,8 @@ Univiversity of Oslo\inst{2}}
 
 % !bslidecell 00  0.35
 % !bpop
+\begin{block}{Title with comma, and brackets: $[a,b]$}
+\footnotesize
 
 \begin{itemize}
   \item Here is a \emph{wave packet}
@@ -58520,18 +58601,21 @@ Univiversity of Oslo\inst{2}}
 \end{itemize}
 
 \noindent
+\end{block}
 % !epop
 % !eslidecell
 
 % Test that it is okay to leave out width if there are only two columns
 
 % !bslidecell 01
+\begin{block}{}
 
 
 % inline figure
 \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
 
 
+\end{block}
 % !eslidecell
 
 % !bpop highlight-red
@@ -58578,9 +58662,11 @@ Over multiple lines.
 % !split
 \subsection{Some math and computer code}
 
+\begin{block}{A simple, mathematical problem:}
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
-Python implementation:
+\end{block}
 
+\begin{block}{Simple, Pythonic implementation:}
 \bpycod
 import numpy as np
 
@@ -58595,45 +58681,34 @@ class Fancy:
         return f(x, y, t)
 
 f2 = Fancy()
+\end{block}
 \epycod
 
 % !split
-\subsection{Admon blocks}
+\subsection{Various admon blocks}
 
 Can use admons to simulate blocks:
 
+\begin{block}{Key PDE:}
+\large
 
-\begin{notice_mdfboxadmon}[Key PDE:]
-This box has title and math in normal 90 percent font:
+This box has title and math in large font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 % !bpop
-
-\begin{notice_mdfboxadmon}[]
+\begin{block}{}
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 % !epop
 
-
-\begin{warning_mdfboxadmon}[Warning.]
-\vspace{0.5mm}\par\noindent
-{\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
+\begin{block}{(small)}
+Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
-\par}
-\end{warning_mdfboxadmon}
-
-
-
-
-
+\end{block}
 
 % ------------------- end of main content ---------------
 
@@ -58738,34 +58813,6 @@ title (Warning) since no title is specified.
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
-\newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
@@ -58824,7 +58871,9 @@ Univiversity of Oslo\inst{2}}
 \column{0.35\textwidth}
 
 \pause
-\begin{block}{}
+\begin{block}{Title with comma, and brackets: $[a,b]$}
+\footnotesize
+
 \begin{itemize}
   \item Here is a \emph{wave packet}
 
@@ -58838,10 +58887,14 @@ Univiversity of Oslo\inst{2}}
 
 
 \column{0.65\textwidth}
+\begin{block}{}
+
+
 % inline figure
 \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
 
 
+\end{block}
 
 \end{columns}
 
@@ -58897,9 +58950,11 @@ Over multiple lines.
 \begin{frame}[plain,fragile]
 \frametitle{Some math and computer code}
 
+\begin{block}{A simple, mathematical problem:}
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
-Python implementation:
+\end{block}
 
+\begin{block}{Simple, Pythonic implementation:}
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 import numpy as np
 
@@ -58914,39 +58969,36 @@ class Fancy:
         return f(x, y, t)
 
 f2 = Fancy()
+\end{block}
 \end{Verbatim}
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Admon blocks}
+\frametitle{Various admon blocks}
 
 Can use admons to simulate blocks:
 
+\begin{block}{Key PDE:}
+\large
 
-\begin{notice_mdfboxadmon}[Key PDE:]
-This box has title and math in normal 90 percent font:
+This box has title and math in large font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 
 \pause
-\begin{notice_mdfboxadmon}[]
+\begin{block}{}
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-\end{notice_mdfboxadmon}
+\end{block}
 
 
-
-\begin{warning_mdfboxadmon}[Warning.]
-\vspace{0.5mm}\par\noindent
-{\footnotesize Can use, e.g., a warning admon to have my own notes, preferably
+\begin{block}{(small)}
+Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
-\par}
-\end{warning_mdfboxadmon}
+\end{block}
 \end{frame}
 
 \end{document}
@@ -59356,7 +59408,7 @@ With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 "Online Python Tutor": "http://pythontutor.com" for displaying
 program flow and state of variables:
 
-@@@CODE ../doc/src/slides/src/dc_mod.pyopt
+@@@CODE ../doc/src/slides/src/solver.pyopt
 
 
 
@@ -59556,7 +59608,6 @@ Last page gets rendered to
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 !eslidecell
 
-
 ************** File: slides2_reveal.html *****************
 <!DOCTYPE html>
 
@@ -59566,6 +59617,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 <meta name="keywords" content="key word1,key word2">
 
 <title>Test slide features</title>
+
 
 
 
@@ -61419,12 +61471,9 @@ DATE: today
 TOC: on
 \eccq
 
-
-\begin{notice_mdfboxadmon}[Notice.]
+\begin{block}{Notice}
 Title and authors must have all information \emph{on a single line}!
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 % !split
 \section{DocOnce: abstract}
@@ -61536,12 +61585,9 @@ URL: "https://github.com/hplgit/doconce"
 % !split
 \section{DocOnce: figures and movies}
 
-
-\begin{notice_mdfboxadmon}[Notice.]
+\begin{block}{Notice}
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 \bccq
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
@@ -61638,15 +61684,12 @@ def solver(I, a, T, dt, theta):
     return u, t
 \epycod
 
-
-\begin{notice_mdfboxadmon}[Language-dependent typesetting of code:]
+\begin{block}{Language-dependent typesetting of code:}
 The \code{!bc} command can be followed by a specification of the computer
 language: \code{pycod} for Python code snippet, \code{pypro} for complete Python
 program, \code{fcod} for Fortran snippet, \code{fpro} for Fortran program, and so
 forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} for Matlab).
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 
 % !split
@@ -62013,34 +62056,6 @@ Last page gets rendered to
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
-\newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
@@ -62378,10 +62393,9 @@ DATE: today
 TOC: on
 \end{Verbatim}
 
-
-\begin{notice_mdfboxadmon}[Notice.]
+\begin{block}{Notice}
 Title and authors must have all information \emph{on a single line}!
-\end{notice_mdfboxadmon}
+\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -62497,11 +62511,9 @@ URL: "https://github.com/hplgit/doconce"
 \begin{frame}[plain,fragile]
 \frametitle{DocOnce: figures and movies}
 
-\begin{notice_mdfboxadmon}[Notice.]
+\begin{block}{Notice}
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
@@ -62598,13 +62610,12 @@ def solver(I, a, T, dt, theta):
     return u, t
 \end{minted}
 
-
-\begin{notice_mdfboxadmon}[Language-dependent typesetting of code:]
+\begin{block}{Language-dependent typesetting of code:}
 The \Verb?!bc? command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
 forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
-\end{notice_mdfboxadmon}
+\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -63014,7 +63025,7 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 
 The numerical method is implemented in a Python function:
 
-@@@CODE ../doc/src/slides/src/dc_mod.py  fromto: def solver@def verify_three
+@@@CODE ../doc/src/slides/src/solver.py  fromto: def solver@def exact_sol
 
 !split
 ===== The Crank-Nicolson method =====
@@ -63051,7 +63062,6 @@ qualitatively correct results.
 !esummary
 !epop
 
-
 ************** File: slides3_reveal.html *****************
 <!DOCTYPE html>
 
@@ -63060,6 +63070,7 @@ qualitatively correct results.
 <meta name="description" content="On Schemes for Exponential Decay">
 
 <title>On Schemes for Exponential Decay</title>
+
 
 
 
@@ -63583,7 +63594,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -63620,6 +63631,7 @@ h1 {color: #b58900;}  /* yellow */
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -63996,13 +64008,10 @@ Department of Informatics, University of Oslo\inst{2}}
 The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
 and get them rendered in numerous HTML formats.
-
-\begin{notice_mdfboxadmon}[Layout.]
+\begin{block}{Layout}
 This version
 utilizes beamer slides with the theme red3.
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 
 
@@ -64133,13 +64142,10 @@ Exact solution of the scheme:
 % !epop
 
 % !bpop
-
-\begin{summary_mdfboxadmon}[Concluding remarks:]
+\begin{block}{Concluding remarks:}
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
-\end{summary_mdfboxadmon}
-
-
+\end{block}
 % !epop
 
 % ------------------- end of main content ---------------
@@ -64245,34 +64251,6 @@ qualitatively correct results.
 \newcounter{doconceexercisecounter}
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
-\newenvironment{notice_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{notice_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{summary_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{warning_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{question_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_colors1admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_colors2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_grayiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_yellowiconadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{block_mdfboxadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{paragraphadmon}[1][]{\begin{block}{#1}}{\end{block}}
-\newenvironment{graybox2admon}[1][]{\begin{block}{#1}}{\end{block}}
-\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
 
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
@@ -64333,13 +64311,10 @@ Department of Informatics, University of Oslo\inst{2}}
 The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
 and get them rendered in numerous HTML formats.
-
-\begin{notice_mdfboxadmon}[Layout.]
+\begin{block}{Layout}
 This version
 utilizes beamer slides with the theme red3.
-\end{notice_mdfboxadmon}
-
-
+\end{block}
 
 
 
@@ -64471,10 +64446,10 @@ Exact solution of the scheme:
 
 
 \pause
-\begin{summary_mdfboxadmon}[Concluding remarks:]
+\begin{block}{Concluding remarks:}
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
-\end{summary_mdfboxadmon}
+\end{block}
 \end{frame}
 
 \end{document}
@@ -64689,6 +64664,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -65431,6 +65407,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -72466,6 +72443,7 @@ Automatically generated HTML file from DocOnce source
 code { color: inherit; background-color: transparent; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -72619,6 +72597,7 @@ Automatically generated HTML file from DocOnce source
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
 </style>
+
 
 </head>
 
@@ -72888,6 +72867,7 @@ Automatically generated HTML file from DocOnce source
 code { color: inherit; background-color: transparent; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -73154,7 +73134,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Sep  9 12:35:18 2014.
+# sphinx-quickstart on Wed Sep 10 21:12:21 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75504,6 +75484,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -94131,7 +94112,7 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile slides1.pd
 + doconce format html slides2 --pygments_html_style=emacs
 running preprocess -DFORMAT=html -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to html
-copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
+copy complete file ../doc/src/slides/src/solver.pyopt  (format: pyoptpro)
 found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
     can use ../doc/src/slides/fig/iphones.jpg for format html
@@ -94185,7 +94166,7 @@ slides written to slides2.html
 + doconce format pdflatex slides2 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
-copy complete file ../doc/src/slides/src/dc_mod.pyopt  (format: pyoptpro)
+copy complete file ../doc/src/slides/src/solver.pyopt  (format: pyoptpro)
 found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
     can use ../doc/src/slides/fig/iphones.jpg for format pdflatex
@@ -94227,8 +94208,8 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="reveal" -DSLIDE_T
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'reveal', 'SLIDE_THEME': 'beigesmall', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__slides3.do.txt to html
-copying from regex "def solver" until "def verify_three"
-     file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
+copying from regex "def solver" until "def exact_sol"
+     file: ../doc/src/slides/src/solver.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
     can use ../doc/src/slides/fig/CN_logo.png for format html
 figure file ../doc/src/slides/fig/CN:
@@ -94252,8 +94233,8 @@ running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="doconce" -DSLIDE_
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'doconce', 'SLIDE_THEME': 'solarized3', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__slides3.do.txt to html
-copying from regex "def solver" until "def verify_three"
-     file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
+copying from regex "def solver" until "def exact_sol"
+     file: ../doc/src/slides/src/solver.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
     can use ../doc/src/slides/fig/CN_logo.png for format html
 figure file ../doc/src/slides/fig/CN:
@@ -94275,8 +94256,8 @@ running preprocess -DFORMAT=pdflatex -DDEVICE=screen -DSLIDE_TYPE="beamer" -DSLI
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'beamer', 'SLIDE_THEME': 'red3', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__slides3.do.txt to pdflatex
-copying from regex "def solver" until "def verify_three"
-     file: ../doc/src/slides/src/dc_mod.py,  lines 5-18  (format: pycod)
+copying from regex "def solver" until "def exact_sol"
+     file: ../doc/src/slides/src/solver.py,  lines 5-18  (format: pycod)
 figure file ../doc/src/slides/fig/CN_logo:
     can use ../doc/src/slides/fig/CN_logo.pdf for format pdflatex
 figure file ../doc/src/slides/fig/CN:
