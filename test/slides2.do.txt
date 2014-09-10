@@ -402,7 +402,7 @@ With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 "Online Python Tutor": "http://pythontutor.com" for displaying
 program flow and state of variables:
 
-@@@CODE ../doc/src/slides/src/dc_mod.pyopt
+@@@CODE ../doc/src/slides/src/solver.pyopt
 
 
 
@@ -601,4 +601,3 @@ Last page gets rendered to
 !bslidecell 01
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 !eslidecell
-

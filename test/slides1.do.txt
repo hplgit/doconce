@@ -8,18 +8,20 @@ DATE: Today
 
 !bslidecell 00  0.35
 !bpop
-
+!bblock (small) Title with comma, and brackets: $[a,b]$
   * Here is a *wave packet*
   * It can move
   * But here it is just a figure
-
+!eblock
 !epop
 !eslidecell
 
 # Test that it is okay to leave out width if there are only two columns
 
 !bslidecell 01
+!bblock
 FIGURE: [../doc/src/manual/fig/wave1D.png, width=300]
+!eblock
 !eslidecell
 
 !bpop highlight-red
@@ -54,11 +56,13 @@ Over multiple lines.
 !split
 ===== Some math and computer code =====
 
+!bblock A simple, mathematical problem:
 !bt
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 !et
-Python implementation:
+!eblock
 
+!bblock Simple, Pythonic implementation:
 !bc pycod
 import numpy as np
 
@@ -73,25 +77,26 @@ class Fancy:
         return f(x, y, t)
 
 f2 = Fancy()
+!eblock
 !ec
 
 !split
-===== Admon blocks =====
+===== Various admon blocks =====
 
 Can use admons to simulate blocks:
 
-!bnotice Key PDE:
-This box has title and math in normal 90 percent font:
+!bnotice (large) Key PDE:
+This box has title and math in large font:
 !bt
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 !et
 !enotice
 
 !bpop
-!bnotice None
+!bsummary None
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
-!enotice
+!esummary
 !epop
 
 !bwarning (small)
@@ -100,6 +105,3 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 !ewarning
-
-
-

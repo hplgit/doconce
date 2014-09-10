@@ -136,7 +136,7 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 
 The numerical method is implemented in a Python function:
 
-@@@CODE ../doc/src/slides/src/dc_mod.py  fromto: def solver@def verify_three
+@@@CODE ../doc/src/slides/src/solver.py  fromto: def solver@def exact_sol
 
 !split
 ===== The Crank-Nicolson method =====
@@ -172,4 +172,3 @@ Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 !esummary
 !epop
-

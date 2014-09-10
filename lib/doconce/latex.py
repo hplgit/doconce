@@ -174,14 +174,27 @@ def latex_code(filestr, code_blocks, code_block_types,
         # with the beamer block envir. (This is more robus for the admon
         # title than previous solution where we redefined all admon envirs
         # to be block envirs.)
-        print 'XXX'
         admons = 'notice', 'summary', 'warning', 'question', 'block'
+        Admons = [admon[0].upper() + admon[1:] for admon in admons]
         for admon in admons:
+            # First admons without title
+            pattern = r'!b%s *\n' % admon
+            filestr = re.sub(pattern, r'\\begin{block}{%s}\n' %
+                             ('' if admon == 'block' else
+                              admon[0].upper() + admon[1:]), filestr)
+            # Admons with title and fontsize spec.
+            pattern = r'!b%s +\((.+?)\) +(.*)' % admon
+            filestr = re.sub(pattern, lambda m: '\\begin{block}{%s}\n' %
+                             m.group(2) + ('\\footnotesize\n'
+                                           if m.group(1) == 'small'
+                                           else '\\large\n'), filestr)
+            # Admons with title
             pattern = r'!b%s +(.+)' % admon
             filestr = re.sub(pattern, r'\\begin{block}{\g<1>}', filestr)
             pattern = r'!e%s' % admon
             filestr = re.sub(pattern, r'\end{block}', filestr)
-            print filestr
+            # Fix None titles to empty
+            filestr = filestr.replace('begin{block}{None}', 'begin{block}{}')
 
     # Make sure exercises are surrounded by \begin{doconceexercise} and
     # \end{doconceexercise} with some exercise counter
@@ -782,6 +795,8 @@ def latex_table(table):
         table_align = (r'\begin{center}', r'\end{center}')
     elif latex_table_format == 'footnotesize':
         table_align = (r'{\footnotesize', r'}')
+    elif latex_table_format == 'tiny':
+        table_align = (r'{\tiny', r'}')
     latex_style = option('latex_style=', 'std')
 
     column_width = table_analysis(table['rows'])
