@@ -58589,7 +58589,7 @@ Univiversity of Oslo\inst{2}}
 
 % !bslidecell 00  0.35
 % !bpop
-\begin{block}{Title with comma, and brackets: $[a,b]$}
+\begin{block}{Title with comma, and brackets: $[a,b]$ }
 \footnotesize
 
 \begin{itemize}
@@ -58662,11 +58662,11 @@ Over multiple lines.
 % !split
 \subsection{Some math and computer code}
 
-\begin{block}{A simple, mathematical problem:}
+\begin{block}{A simple, mathematical problem: }
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 \end{block}
 
-\begin{block}{Simple, Pythonic implementation:}
+\begin{block}{Simple, Pythonic implementation: }
 \bpycod
 import numpy as np
 
@@ -58689,7 +58689,7 @@ f2 = Fancy()
 
 Can use admons to simulate blocks:
 
-\begin{block}{Key PDE:}
+\begin{block}{Key PDE: }
 \large
 
 This box has title and math in large font:
@@ -58703,7 +58703,9 @@ This one pops up after the rest of the slide.
 \end{block}
 % !epop
 
-\begin{block}{(small)}
+\begin{block}{Warning}
+\footnotesize
+
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
@@ -58871,7 +58873,7 @@ Univiversity of Oslo\inst{2}}
 \column{0.35\textwidth}
 
 \pause
-\begin{block}{Title with comma, and brackets: $[a,b]$}
+\begin{block}{Title with comma, and brackets: $[a,b]$ }
 \footnotesize
 
 \begin{itemize}
@@ -58950,11 +58952,11 @@ Over multiple lines.
 \begin{frame}[plain,fragile]
 \frametitle{Some math and computer code}
 
-\begin{block}{A simple, mathematical problem:}
+\begin{block}{A simple, mathematical problem: }
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 \end{block}
 
-\begin{block}{Simple, Pythonic implementation:}
+\begin{block}{Simple, Pythonic implementation: }
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 import numpy as np
 
@@ -58978,7 +58980,7 @@ f2 = Fancy()
 
 Can use admons to simulate blocks:
 
-\begin{block}{Key PDE:}
+\begin{block}{Key PDE: }
 \large
 
 This box has title and math in large font:
@@ -58993,7 +58995,9 @@ This one pops up after the rest of the slide.
 \end{block}
 
 
-\begin{block}{(small)}
+\begin{block}{Warning}
+\footnotesize
+
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
@@ -61684,7 +61688,7 @@ def solver(I, a, T, dt, theta):
     return u, t
 \epycod
 
-\begin{block}{Language-dependent typesetting of code:}
+\begin{block}{Language-dependent typesetting of code: }
 The \code{!bc} command can be followed by a specification of the computer
 language: \code{pycod} for Python code snippet, \code{pypro} for complete Python
 program, \code{fcod} for Fortran snippet, \code{fpro} for Fortran program, and so
@@ -62610,7 +62614,7 @@ def solver(I, a, T, dt, theta):
     return u, t
 \end{minted}
 
-\begin{block}{Language-dependent typesetting of code:}
+\begin{block}{Language-dependent typesetting of code: }
 The \Verb?!bc? command can be followed by a specification of the computer
 language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
 program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
@@ -64008,7 +64012,7 @@ Department of Informatics, University of Oslo\inst{2}}
 The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
 and get them rendered in numerous HTML formats.
-\begin{block}{Layout}
+\begin{block}{Layout }
 This version
 utilizes beamer slides with the theme red3.
 \end{block}
@@ -64142,7 +64146,7 @@ Exact solution of the scheme:
 % !epop
 
 % !bpop
-\begin{block}{Concluding remarks:}
+\begin{block}{Concluding remarks: }
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 \end{block}
@@ -64311,7 +64315,7 @@ Department of Informatics, University of Oslo\inst{2}}
 The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
 and get them rendered in numerous HTML formats.
-\begin{block}{Layout}
+\begin{block}{Layout }
 This version
 utilizes beamer slides with the theme red3.
 \end{block}
@@ -64446,7 +64450,7 @@ Exact solution of the scheme:
 
 
 \pause
-\begin{block}{Concluding remarks:}
+\begin{block}{Concluding remarks: }
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 \end{block}
@@ -73134,7 +73138,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Sep 10 21:12:21 2014.
+# sphinx-quickstart on Wed Sep 10 22:48:04 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

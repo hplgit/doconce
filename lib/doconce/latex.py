@@ -184,7 +184,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                               admon[0].upper() + admon[1:]), filestr)
             # Admons with title and fontsize spec.
             pattern = r'!b%s +\((.+?)\) +(.*)' % admon
-            filestr = re.sub(pattern, lambda m: '\\begin{block}{%s}\n' %
+            filestr = re.sub(pattern, lambda m: '\\begin{block}{%s }\n' %
                              m.group(2) + ('\\footnotesize\n'
                                            if m.group(1) == 'small'
                                            else '\\large\n'), filestr)
@@ -197,11 +197,14 @@ def latex_code(filestr, code_blocks, code_block_types,
                               else '\\large\n'), filestr)
             # Admons with title
             pattern = r'!b%s +(.+)' % admon
-            filestr = re.sub(pattern, r'\\begin{block}{\g<1>}', filestr)
+            filestr = re.sub(pattern, r'\\begin{block}{\g<1> }', filestr)
             pattern = r'!e%s' % admon
             filestr = re.sub(pattern, r'\end{block}', filestr)
-            # Fix None titles to empty titles
-            filestr = filestr.replace('begin{block}{None}', 'begin{block}{}')
+    # Fix None titles to empty titles
+    filestr = filestr.replace('begin{block}{None }', 'begin{block}{}')
+    # Fix % inside verbatim in block/paragraph titles
+    pattern = r'(begin\{block\}|paragraph)\{.*?\\code\{.*?%.*?\}'
+    filestr = re.sub(pattern, lambda m: m.group().replace('%', '\\%'), filestr)
 
     # Make sure exercises are surrounded by \begin{doconceexercise} and
     # \end{doconceexercise} with some exercise counter
@@ -1539,10 +1542,6 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     if latex_admon in ('mdfbox',):
         title = title_mdframed
 
-    title_para = title  # potentially modified title for paragraphs
-    if title_para and title_para[-1] not in ('.', ':', '!', '?'):
-        title_para += '%(_title_period)s'
-
     # For graybox2 we use graybox2admon except for summary without verbatim code,
     # then \grayboxhrules is used (which can be wrapped in a small box of 50 percent
     # with in the text for A4 format)
@@ -1592,9 +1591,13 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
                 figname += '.eps'
             _get_admon_figs(figname)
     elif latex_admon == 'paragraph':
+        if title and title[-1] not in ('.', ':', '!', '?'):
+            title += '%(_title_period)s'
+        if '%%' in title:
+            title = title.replace('%%', '\\%%')
         text = r'''
 %%%% --- begin paragraph admon ---
-\paragraph{%%(title_para)s}
+\paragraph{%%(title)s}
 %%(text_block)s
 %%%% --- end paragraph admon ---
 
