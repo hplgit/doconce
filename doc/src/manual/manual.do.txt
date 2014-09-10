@@ -1020,7 +1020,8 @@ Terminal> doconce apply_edit_comments mydoc.do.txt
 
 === Forced Line Breaks ===
 
-By ending a line with `<linebreak>` the output format has a forced
+By *ending* a line in the DocOnce file
+with `<linebreak>` the output format has a forced
 linebreak at this point. This can be used to typeset poems,
 songs (if not in a verbatim block), or the origin of quotes.
 Here is an example:
@@ -1046,13 +1047,16 @@ Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
 
 The `<linebreak>` is a newline in LaTeX if it has preceding text,
 otherwise it is a `\vspace{3mm}`. In HTML, `<linebreak>` is `<br>`.
+Both constructions can be used to either force a linebreak or add
+vertical space.
 
 !bnotice Tip on using forced linebreaks
-The '<linebreak>` tag is often useful in slides to avoid overfull
+The `<linebreak>` tag is often useful in slides to avoid overfull
 lines in bullet lists, partion such lines into separate lines,
 or to insert vertical
 space. It can be used in admonitions too to get more space between
-the title and the text.
+the title and the text. Remember to have `<linebreak>` at the end of
+the line.
 !enotice
 
 === Inline Mathematics ===

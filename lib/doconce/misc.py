@@ -4635,18 +4635,24 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         slides = slides.replace(
             r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
 
+    '''
     # Override all admon environments from latex.py by Beamer block envirs
+    # Not necessary as latex.py substitutes all admon envirs by block envirs
+    # for --latex_title_layout=beamer
     admons = 'notice', 'summary', 'warning', 'question', 'block'
+    envirs = 'colors1', 'colors2', 'grayicon', 'yellowicon', 'mdfbox'
     for admon in admons:
         Admon = admon[0].upper() + admon[1:]
-        for envir in 'colors1', 'colors2', 'grayicon', 'yellowicon', 'mdfbox':
+        for envir in envirs:
             slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     for envir in 'paragraph', 'graybox2':
         slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
 """ % vars()
     slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
+    '''
 
+    slides += r"""
 \newenvironment{doconce:exercise}{}{}
 \newcounter{doconce:exercise:counter}
 \newenvironment{doconce:movie}{}{}

@@ -168,6 +168,21 @@ def latex_code(filestr, code_blocks, code_block_types,
                      count=1)
     filestr = re.sub(appendix_pattern, r'\\\g<1>{', filestr) # all others
 
+    # Replace all admon envirs by block envirs in case of beamer.
+    if option('latex_title_layout=', '') == 'beamer':
+        # The admon envir is paragraph if beamer. Replace all such envirs
+        # with the beamer block envir. (This is more robus for the admon
+        # title than previous solution where we redefined all admon envirs
+        # to be block envirs.)
+        print 'XXX'
+        admons = 'notice', 'summary', 'warning', 'question', 'block'
+        for admon in admons:
+            pattern = r'!b%s +(.+)' % admon
+            filestr = re.sub(pattern, r'\\begin{block}{\g<1>}', filestr)
+            pattern = r'!e%s' % admon
+            filestr = re.sub(pattern, r'\end{block}', filestr)
+            print filestr
+
     # Make sure exercises are surrounded by \begin{doconceexercise} and
     # \end{doconceexercise} with some exercise counter
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
@@ -1463,6 +1478,9 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 
     latex_admon = option('latex_admon=', 'mdfbox')
+    if option('latex_title_layout=', '') == 'beamer':
+        latex_admon = 'paragraph'  # block environ will be used anyway
+
     if text_size == 'small':
         # When a font size changing command is used, incl a \par at the end
         text_block = r'{\footnotesize ' + text_block + '\n\\par}'
@@ -1553,9 +1571,10 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             _get_admon_figs(figname)
     elif latex_admon == 'paragraph':
         text = r'''
-\begin{paragraphadmon}[%%(title_para)s]
+%%%% --- begin paragraph admon ---
+\paragraph{%%(title_para)s}
 %%(text_block)s
-\end{paragraphadmon}
+%%%% --- end paragraph admon ---
 
 ''' %% vars()
 
@@ -2476,10 +2495,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
 
         elif latex_admon == 'paragraph':
-            INTRO['latex'] += r"""
-% Admonition style "paragraph" is just a plain paragraph
-\newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
-"""
+            pass  # we use plain \paragraph for this
+        #            INTRO['latex'] += r"""
+        #% Admonition style "paragraph" is just a plain paragraph
+        #\newenvironment{paragraphadmon}[1][]{\paragraph{#1}}{}
+        #"""
 
         # Define environments depending on the admon type
         for admon in admons:
