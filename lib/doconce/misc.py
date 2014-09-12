@@ -1736,23 +1736,37 @@ download preprocess from http://code.google.com/p/preprocess""")
     verb_command = 'Verb'  # requires fancyvrb package, otherwise use std 'verb'
 
     verb_delimiter = '!'
-    alt_verb_delimiter = '?'  # can't use ~,%,#,$,^,&,* in latex headings, alternative is @
+    alt_verb_delimiters = '?', '@', '|'  # can't use ~,%,#,$,^,&,* in latex headings
     cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'-])""", re.DOTALL)
     # Check if the verbatim text contains verb_delimiter and make
     # special solutions for these first
+    alt_verb_delimiter = None
     for verbatim, dummy in cpattern.findall(filestr):
         if verb_delimiter in verbatim:
-            if alt_verb_delimiter in verbatim:
+            for delimiter in alt_verb_delimiters:
+                if delimiter not in verbatim:
+                    alt_verb_delimiter = delimiter
+                    break
+            if alt_verb_delimiter is None:
+                alt_verb_delimiter = alt_verb_delimiters[0]
                 print """
 *** warning: inline verbatim "%s"
-    contains both delimiters %s and %s that the \\%s LaTeX
-    command \\Verb will use - be prepared for strange output that
-    requires manual editing (or use doconce replace/subst)
-""" % (verbatim, verb_delimiter, alt_verb_delimiter)
-            filestr = re.sub(r"""\\code\{%s\}([ \n,.;:?!)"'-])""" % verbatim,
-                             r'\\%s%s%s%s\g<1>' %
-            (verb_command, alt_verb_delimiter, verbatim, alt_verb_delimiter),
-                             filestr, flags=re.DOTALL)
+    contains all delimiters %s that the LaTeX
+    command \\Verb can make use of - be prepared for strange output that
+    requires manual editing (or use doconce replace/subst) of
+    \\Verb%s%s%s
+    or move this line verbatim expression to a code block !bc ... !ec.
+""" % (verbatim, [verb_delimiter] + list(alt_verb_delimiter),
+       alt_verb_delimiter, verbatim, alt_verb_delimiter)
+            # Here one can have a problem in that verbatim contains
+            # special regex chars such as $, \, ., etc. Use re.escape
+            pattern = re.escape(r'\code{%s}' % verbatim) + r"""([ \n,.;:?!)"'-])"""
+            replacement = r'\\%s%s%s%s\g<1>' % \
+            (verb_command, alt_verb_delimiter, verbatim, alt_verb_delimiter)
+            # Note: A previous occurence in cpattern.findall may have performed
+            # this substitution
+            filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
+    # Exceptional cases are dealt with, proceed with the standard case
     filestr = cpattern.sub(r'\\%s%s\g<1>%s\g<2>' %
                            (verb_command, verb_delimiter, verb_delimiter),
                            filestr)
@@ -1770,7 +1784,7 @@ download preprocess from http://code.google.com/p/preprocess""")
     filestr = cpattern.sub(r'{\\fontsize{%spt}{%spt}\\%s!\g<1>!}\g<2>' %
                            (fontsize, fontsize, verb_command), filestr)
     '''
-    # \Verb!...! does not cause linebreak in latex, shift to \texttt{}
+    # \Verb!...! does not cause linebreak in latex, therefore shift to \texttt{}
     # where possible since this will reduce overfull hboxes
     filestr = re.sub(r'\{\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
@@ -4569,17 +4583,20 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \usepackage{epsfig}
 \usepackage{relsize}
 
+\usepackage{fancybox}  %% make sure fancybox is loaded before fancyvrb
+
 \usepackage{fancyvrb}
 %%\usepackage{minted} %% requires pygments and latex -shell-escape filename
 %%\usepackage{anslistings}
 
 \usepackage{amsmath,amssymb,bm}
 %%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{colortbl}
 \usepackage[english]{babel}
 \usepackage{tikz}
-\usepackage{framed,anslistings}
+\usepackage{framed}
 %% Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
@@ -4635,22 +4652,6 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         slides = slides.replace(
             r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
 
-    '''
-    # Override all admon environments from latex.py by Beamer block envirs
-    # Not necessary as latex.py substitutes all admon envirs by block envirs
-    # for --latex_title_layout=beamer
-    admons = 'notice', 'summary', 'warning', 'question', 'block'
-    envirs = 'colors1', 'colors2', 'grayicon', 'yellowicon', 'mdfbox'
-    for admon in admons:
-        Admon = admon[0].upper() + admon[1:]
-        for envir in envirs:
-            slides += r"""\newenvironment{%(admon)s_%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
-""" % vars()
-    for envir in 'paragraph', 'graybox2':
-        slides += r"""\newenvironment{%(envir)sadmon}[1][]{\begin{block}{#1}}{\end{block}}
-""" % vars()
-    slides += r"""\newcommand{\grayboxhrules}[1]{\begin{block}{}#1\end{block}}
-    '''
 
     slides += r"""
 \newenvironment{doconce:exercise}{}{}

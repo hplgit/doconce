@@ -62,23 +62,18 @@ Over multiple lines.
 !et
 !eblock
 
-!bblock Simple, Pythonic implementation:
-!bc pycod
-import numpy as np
+!bblock Bash demanded more of DocOnce than Python, so let's do Bash:
+First, inline `$? != 0`, then comments with dollar variables (and minted
+style):
 
-def f(x, y, t):
-    return np.exp(-x*t)*np.sin(np.pi*y)
-
-class Fancy:
-    def __init__(self):
-        pass
-
-    def __call__(self, x, y, t):
-        return f(x, y, t)
-
-f2 = Fancy()
-!eblock
+!bc shcod
+var=10
+# $1, $2, ... are command-line args
+if [ $? -eq 0 ]; then   # $? reflects success or not
+  echo "Great!"
+fi
 !ec
+!eblock
 
 !split
 ===== Various admon blocks =====

@@ -38314,10 +38314,12 @@ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
+# The toughest test of slides1 is with minted code envir
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
-system doconce ptex2tex slides1
+system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
+system pdflatex -shell-escape slides1
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
@@ -56418,23 +56420,18 @@ Over multiple lines.
 !et
 !eblock
 
-!bblock Simple, Pythonic implementation:
-!bc pycod
-import numpy as np
+!bblock Bash demanded more of DocOnce than Python, so let's do Bash:
+First, inline `$? != 0`, then comments with dollar variables (and minted
+style):
 
-def f(x, y, t):
-    return np.exp(-x*t)*np.sin(np.pi*y)
-
-class Fancy:
-    def __init__(self):
-        pass
-
-    def __call__(self, x, y, t):
-        return f(x, y, t)
-
-f2 = Fancy()
-!eblock
+!bc shcod
+var=10
+# $1, $2, ... are command-line args
+if [ $? -eq 0 ]; then   # $? reflects success or not
+  echo "Great!"
+fi
 !ec
+!eblock
 
 !split
 ===== Various admon blocks =====
@@ -56731,27 +56728,24 @@ $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Simple, Pythonic implementation:</b>
+<b>Bash demanded more of DocOnce than Python, so let's do Bash:</b>
 <p>
+First, inline <code>$? != 0</code>, then comments with dollar variables (and minted
+style):
+
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #B8860B">var</span><span style="color: #666666">=</span>10
+<span style="color: #008800; font-style: italic"># $1, $2, ... are command-line args</span>
+<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq 0 <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
+  <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Great!&quot;</span>
+<span style="color: #AA22FF; font-weight: bold">fi</span>
+</pre></div>
 
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
-    <span style="color: #AA22FF; font-weight: bold">return</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">*</span>t)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>y)
-
-<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">Fancy</span>:
-    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>):
-        <span style="color: #AA22FF; font-weight: bold">pass</span>
-
-    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__call__</span>(<span style="color: #AA22FF">self</span>, x, y, t):
-        <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
-
-f2 <span style="color: #666666">=</span> Fancy()
 </div>
 
-</pre></div>
+
 <p>
 
 </section>
@@ -57466,27 +57460,24 @@ $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Simple, Pythonic implementation:</b>
+<b>Bash demanded more of DocOnce than Python, so let's do Bash:</b>
 <p>
+First, inline <code>$? != 0</code>, then comments with dollar variables (and minted
+style):
+
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">var</span><span style="color: #666666">=</span>10
+<span style="color: #008800; font-style: italic"># $1, $2, ... are command-line args</span>
+<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq 0 <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
+  <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Great!&quot;</span>
+<span style="color: #AA22FF; font-weight: bold">fi</span>
+</pre></div>
 
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
-    <span style="color: #AA22FF; font-weight: bold">return</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">*</span>t)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>y)
-
-<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">Fancy</span>:
-    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>):
-        <span style="color: #AA22FF; font-weight: bold">pass</span>
-
-    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__call__</span>(<span style="color: #AA22FF">self</span>, x, y, t):
-        <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
-
-f2 <span style="color: #666666">=</span> Fancy()
 </div>
 
-</pre></div>
+
 <p>
 <!-- !split -->
 
@@ -57847,27 +57838,24 @@ $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b style="font-weight: bold">Simple, Pythonic implementation:</b>
+<b style="font-weight: bold">Bash demanded more of DocOnce than Python, so let's do Bash:</b>
 <p>
+First, inline <code>$? != 0</code>, then comments with dollar variables (and minted
+style):
+
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">var</span><span style="color: #666666">=</span>10
+<span style="color: #008800; font-style: italic"># $1, $2, ... are command-line args</span>
+<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq 0 <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
+  <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Great!&quot;</span>
+<span style="color: #AA22FF; font-weight: bold">fi</span>
+</pre></div>
 
-<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x, y, t):
-    <span style="color: #AA22FF; font-weight: bold">return</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">*</span>t)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>y)
-
-<span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">Fancy</span>:
-    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>):
-        <span style="color: #AA22FF; font-weight: bold">pass</span>
-
-    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__call__</span>(<span style="color: #AA22FF">self</span>, x, y, t):
-        <span style="color: #AA22FF; font-weight: bold">return</span> f(x, y, t)
-
-f2 <span style="color: #666666">=</span> Fancy()
 </div>
 
-</pre></div>
+
 <p>
 
 </section>
@@ -58666,23 +58654,18 @@ Over multiple lines.
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 \end{block}
 
-\begin{block}{Simple, Pythonic implementation: }
-\bpycod
-import numpy as np
+\begin{block}{Bash demanded more of DocOnce than Python, so let's do Bash: }
+First, inline \code{$? != 0}, then comments with dollar variables (and minted
+style):
 
-def f(x, y, t):
-    return np.exp(-x*t)*np.sin(np.pi*y)
-
-class Fancy:
-    def __init__(self):
-        pass
-
-    def __call__(self, x, y, t):
-        return f(x, y, t)
-
-f2 = Fancy()
+\bshcod
+var=10
+# $1, $2, ... are command-line args
+if [ $? -eq 0 ]; then   # $? reflects success or not
+  echo "Great!"
+fi
+\eshcod
 \end{block}
-\epycod
 
 % !split
 \subsection{Various admon blocks}
@@ -58759,17 +58742,20 @@ title (Warning) since no title is specified.
 \usepackage{epsfig}
 \usepackage{relsize}
 
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+
 \usepackage{fancyvrb}
-%\usepackage{minted} % requires pygments and latex -shell-escape filename
+\usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{colortbl}
 \usepackage[english]{babel}
 \usepackage{tikz}
-\usepackage{framed,anslistings}
+\usepackage{framed}
 % Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
@@ -58956,23 +58942,18 @@ Over multiple lines.
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 \end{block}
 
-\begin{block}{Simple, Pythonic implementation: }
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-import numpy as np
+\begin{block}{Bash demanded more of DocOnce than Python, so let's do Bash: }
+First, inline \Verb@$? != 0@, then comments with dollar variables (and minted
+style):
 
-def f(x, y, t):
-    return np.exp(-x*t)*np.sin(np.pi*y)
-
-class Fancy:
-    def __init__(self):
-        pass
-
-    def __call__(self, x, y, t):
-        return f(x, y, t)
-
-f2 = Fancy()
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
+var=10
+# $1, $2, ... are command-line args
+if [ $? -eq 0 ]; then   # $? reflects success or not
+  echo "Great!"
+fi
+\end{minted}
 \end{block}
-\end{Verbatim}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -62004,17 +61985,20 @@ Last page gets rendered to
 \usepackage{epsfig}
 \usepackage{relsize}
 
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+
 \usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{colortbl}
 \usepackage[english]{babel}
 \usepackage{tikz}
-\usepackage{framed,anslistings}
+\usepackage{framed}
 % Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
@@ -64199,17 +64183,20 @@ qualitatively correct results.
 \usepackage{epsfig}
 \usepackage{relsize}
 
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+
 \usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{colortbl}
 \usepackage[english]{babel}
 \usepackage{tikz}
-\usepackage{framed,anslistings}
+\usepackage{framed}
 % Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
@@ -73138,7 +73125,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Sep 10 22:48:04 2014.
+# sphinx-quickstart on Fri Sep 12 13:38:23 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -94100,9 +94087,9 @@ slides written to slides1.html
 translating doconce text in slides1.do.txt to pdflatex
 output in slides1.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce ptex2tex slides1
-+ doconce ptex2tex slides1
-\bpycod (!bc pycod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pycod" is unsupported so we use Verbatim)
++ system doconce ptex2tex slides1 envir=minted
++ doconce ptex2tex slides1 envir=minted
+\bshcod (!bc sh) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
 
 output in slides1.tex
 + '[' 0 -ne 0 ']'
@@ -94111,6 +94098,625 @@ output in slides1.tex
 slides written to slides1.tex
 printing for handout:
 pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile slides1.pdf slides1.pdf
++ '[' 0 -ne 0 ']'
++ system pdflatex -shell-escape slides1
++ pdflatex -shell-escape slides1
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ \write18 enabled.
+entering extended mode
+(./slides1.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+
+Document Class: beamer 2012/10/15 development version 3.24 A class for typesett
+ing presentations (rcs-revision 24853e6b98cf)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
+
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+Package hyperref Message: Stopped early.
+
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaserequires.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetranslator.sty
+(/usr/share/texmf/tex/latex/beamer/base/translator/translator.sty
+(/usr/share/texmf/tex/latex/beamer/base/translator/translator-language-mappings
+.tex))) 
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
+
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemedefault.sty
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemedefault.st
+y)
+(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemedefault.st
+y)
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemedefault.st
+y))) (/home/hpl/texmf/tex/latex/misc/beamerthemeblue_shadow.sty
+
+LaTeX Warning: You have requested package `beamerthemeblue_shadow',
+               but the package provides `beamerthemeshadow'.
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemesmoothbars
+.sty)
+(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemerounded.st
+y)
+(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeorchid.sty
+)
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemeshadow.sty
+
+)
+(/usr/share/texmf/tex/latex/beamer/base/themes/font/beamerfontthemestructurebol
+d.sty)) (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfarrows.sty
+
+Package pgfarrows Warning: This package is obsolete. pgf.sty will load arrow ma
+nagement automatically on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfnodes.sty
+
+Package pgfnodes Warning: This package is obsolete. pgf.sty will load node mana
+gement automatically on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfautomata.sty
+
+Package pgfautomata Warning: This package is obsolete. on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfheaps.sty
+
+Package pgfheaps Warning: This package is obsolete. on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfshade.sty
+
+Package pgfshade Warning: This package is obsolete. pgf.sty will load shade man
+agement automatically on .
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+
+(./slides1.w18))/usr/local/bin/pygmentize
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) 
+Writing index file slides1.idx
+No file slides1.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
+onary/translator-basic-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-bibliograph
+y-dictionary/translator-bibliography-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-environment
+-dictionary/translator-environment-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-months-dict
+ionary/translator-months-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-numbers-dic
+tionary/translator-numbers-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-theorem-dic
+tionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
+No file slides1.nav.
+(./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+Package hyperref Warning: Option `pdfauthor' has already been used,
+(hyperref)                setting the option has no effect on .
+
+(./slides1.vrb 
+ [1{/var/lib/texmf/f
+onts/map/pdftex/updmap/pdftex.map}] (./slides1.vrb
+<../doc/src/manual/fig/wave1D.png, id=36, 586.8324pt x 442.2924pt>
+<use ../doc/src/manual/fig/wave1D.png>) [2 <../doc/src/manual/fig/wave1D.png>]
+(./slides1.vrb) [3] (./slides1.vrb
+
+[4] (./slides1.vrb) [5] (./slides1.aux)
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsi1200
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecsi1200
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi1200.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
+ Ok) ) ) )
+Font metrics written on ecsi1200.tfm.
+Output written on ecsi1200.600gf (256 characters, ).
+Transcript written on ecsi1200.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk: successfully generated.
+
+
+Package rerunfilecheck Warning: File `slides1.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk>
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecss1200
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecss1200
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss1200.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
+ Ok) ) ) )
+Font metrics written on ecss1200.tfm.
+Output written on ecss1200.600gf (256 characters, ).
+Transcript written on ecss1200.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1200.600pk: successfully generated.
+ </home/hpl
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1200.600pk> </home/hpl/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ectt1095.600pk>
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsi0800
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecsi0800
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi0800.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
+ Ok) ) ) )
+Font metrics written on ecsi0800.tfm.
+Output written on ecsi0800.600gf (256 characters, ).
+Transcript written on ecsi0800.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600pk: successfully generated.
+ </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600
+pk>
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecss0700
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecss0700
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss0700.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
+ Ok) ) ) )
+Font metrics written on ecss0700.tfm.
+Output written on ecss0700.600gf (256 characters, ).
+Transcript written on ecss0700.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk: successfully generated.
+ </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/hp
+l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk>
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsi0900
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecsi0900
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi0900.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
+ Ok) ) ) )
+Font metrics written on ecsi0900.tfm.
+Output written on ecsi0900.600gf (256 characters, ).
+Transcript written on ecsi0900.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk: successfully generated.
+ </home/hpl/.texmf-var/
+fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk>
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecss0900
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecss0900
+This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss0900.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
+ Ok) ) ) )
+Font metrics written on ecss0900.tfm.
+Output written on ecss0900.600gf (256 characters, ).
+Transcript written on ecss0900.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk: successfully generated.
+ </home/hpl/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0600.60
+0pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/h
+pl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/hpl/.texmf-var
+/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on slides1.pdf (5 pages, ).
+Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
 + system doconce format html slides2 --pygments_html_style=emacs
 + doconce format html slides2 --pygments_html_style=emacs
@@ -94165,7 +94771,7 @@ recommended styles are "perldoc"
 slides written to slides2.html
 + '[' 0 -ne 0 ']'
 + cp slides2.html slides2_reveal.html
-+ rm -f '*.aux'
++ rm -f slides1.aux
 + system doconce format pdflatex slides2 --latex_title_layout=beamer
 + doconce format pdflatex slides2 --latex_title_layout=beamer
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
@@ -102119,6 +102725,12 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
+
+...doconce translation: handled inline substitutions 28.6 s
+
+...doconce translation: handled insertion of verbatim and latex blocks 28.9 s
+
+...doconce translation: handled !benvir/!eenvir constructions 28.9 s
 *** error: could not translate environment: !bsol
     This is an environment in an exercise. Check if the
     heading is correct so the subsection was recognized

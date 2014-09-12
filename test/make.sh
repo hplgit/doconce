@@ -165,10 +165,12 @@ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
+# The toughest test of slides1 is with minted code envir
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer
-system doconce ptex2tex slides1
+system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
+system pdflatex -shell-escape slides1
 
 system doconce format html slides2 --pygments_html_style=emacs
 system doconce slides_html slides2 reveal --html_slide_type=beigesmall
