@@ -1011,7 +1011,11 @@ def html_table(table):
     bootstrap = option('html_style=', '').startswith('boots')
 
     if bootstrap:
-        span = ncolumns+1
+        #span = ncolumns+1
+        # Base span on total width of all columns
+        #print 'XXX', table['rows'][3]
+        #print 'XXX total length:', sum(column_width), '%.1f' % (sum(column_width)/100.0*12)
+        span = min(int(sum(column_width)/100.0*12), 12)
         s = """
 <div class="row">
   <div class="col-xs-%d">

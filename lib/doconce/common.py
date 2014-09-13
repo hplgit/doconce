@@ -225,15 +225,13 @@ def table_analysis(table):
               (len(table[1]), max_num_columns)
         print '   the list of columns in the headline reads'
         print table[1]
-    # Find width of the various columns
-    column_list = []
+    # Find the width of the various columns
+    column_width = [0]*max_num_columns
     for i, row in enumerate(table):
         if row != ['horizontal rule']:
-            if not column_list:
-                column_list = [[]]*max_num_columns
             for j, column in enumerate(row):
-                column_list[j].append(len(column))
-    return [max(c) for c in column_list]
+                column_width[j] = max(column_width[j], len(column))
+    return column_width
 
 def online_python_tutor(code, return_tp='iframe'):
     """
