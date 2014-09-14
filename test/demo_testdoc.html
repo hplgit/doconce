@@ -237,7 +237,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Sep 12, 2014</h4></center> <!-- date -->
+<center><h4>Sep 14, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -676,7 +676,13 @@ HTML:
 <span style="color: #8B008B; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 </td></tr></table><p>
-System call:
+But inline HTML code is also important, like text that starts with
+<code>&lt;a href=&quot;</code> (which can destroy the following text if not properly
+quoted).
+
+<p>
+And here is a system call:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
@@ -1025,12 +1031,12 @@ Let us take this table from the manual:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="center">time</th> <th align="center">velocity</th> <th align="center">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="left">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -1060,12 +1066,12 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
+<tr><th align="left">time</th> <th align="left">velocity</th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
-<tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
-<tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="left">   1.4186      </td> <td align="left">   -5.01           </td> </tr>
+<tr><td align="left">   1.0     </td> <td align="left">   1.376512    </td> <td align="left">   11.919          </td> </tr>
+<tr><td align="left">   3.0     </td> <td align="left">   1.1E+1      </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -1076,16 +1082,16 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
+<tr><td align="center">\( i \)</td> <td align="center">\( h_i \)</td> <td align="center">\( \bar T_i \)</td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0          </td> <td align="right">   0            </td> <td align="right">   288               </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1          </td> <td align="right">   11,000       </td> <td align="right">   216               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2          </td> <td align="right">   20,000       </td> <td align="right">   216               </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3          </td> <td align="right">   32,000       </td> <td align="right">   228               </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4          </td> <td align="right">   47,000       </td> <td align="right">   270               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5          </td> <td align="right">   51,000       </td> <td align="right">   270               </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
 </table>
 <p>
@@ -1096,13 +1102,13 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
+<tr><th align="center">exact</th> <td align="center"><code>v_1</code></td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center"><code>verb_3_</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
-<tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
-<tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
-<tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+<tr><td align="right">   9        </td> <td align="right">   9.62                </td> <td align="right">   5.57                            </td> <td align="right">   8.98                    </td> </tr>
+<tr><td align="right">   -20      </td> <td align="right">   -23.39              </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                  </td> </tr>
+<tr><td align="right">   10       </td> <td align="right">   17.74               </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                    </td> </tr>
+<tr><td align="right">   0        </td> <td align="right">   -9.19               </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                   </td> </tr>
 </tbody>
 </table>
 <p>
@@ -1112,11 +1118,11 @@ but not anymore:
 <p>
 <table border="1">
 <thead>
-<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+<tr><td align="center">   \( S \)   </td> <th align="center">        command         </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
-<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
+<tr><td align="left">   $ ||a_0|| $      </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)    </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -1133,9 +1139,9 @@ and URLs.
 <table border="1">
 <tr></tr>
 <tbody>
-<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                              </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </tbody>
 </table>
 
@@ -1443,7 +1449,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <p>
 <b>Hint 1.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <!-- --- end hint in exercise --- -->

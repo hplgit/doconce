@@ -378,6 +378,17 @@ MathJax.Hub.Config({
     latex = '\n\n' + mathjax_script_tag + newcommands + '\n\n'
     return latex
 
+def html_verbatim(m):
+    code = m.group('subst')
+    begin = m.group('begin')
+    end = m.group('end')
+    # Must quote special characters
+    code = code.replace('&', '&amp;')
+    code = code.replace('<', '&lt;')
+    code = code.replace('>', '&gt;')
+    code = code.replace('"', '&quot;')
+    return r'%(begin)s<code>%(code)s</code>%(end)s' % vars()
+
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
@@ -1796,7 +1807,7 @@ def define(FILENAME_EXTENSION,
         'math2':         r'\g<begin>\( \g<latexmath> \)\g<end>',
         'emphasize':     r'\g<begin><em>\g<subst></em>\g<end>',
         'bold':          r'\g<begin><b>\g<subst></b>\g<end>',
-        'verbatim':      r'\g<begin><code>\g<subst></code>\g<end>',
+        'verbatim':      html_verbatim,
         'colortext':     r'<font color="\g<color>">\g<text></font>',
         #'linkURL':       r'\g<begin><a href="\g<url>">\g<link></a>\g<end>',
         'linkURL2':      r'<a href="\g<url>" target="_self">\g<link></a>',

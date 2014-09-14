@@ -134,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Sep 12, 2014</h4></center> <!-- date -->
+<center><h4>Sep 14, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -203,7 +203,7 @@ Google and Wordpress.
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
-<code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
+<code>(load-file &quot;~/.doconce-mode.el&quot;)</code> to the <code>.emacs</code> file.
 
 <p>
 Besides syntax highlighting of DocOnce documents, this Emacs mode
@@ -212,25 +212,25 @@ provides a lot of shortcuts for setting up many elements in a document:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">                         Emacs key                          </th> <th align="center">                           Action                           </th> </tr>
+<tr><th align="center">  Emacs key  </th> <th align="center">                           Action                           </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
-<tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
-<tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
-<tr><td align="left">   Ctrl+c h2                                                       </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
-<tr><td align="left">   Ctrl+c h3                                                       </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
-<tr><td align="left">   Ctrl+c hp                                                       </td> <td align="left">   heading for paragraph                                           </td> </tr>
-<tr><td align="left">   Ctrl+c me                                                       </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
-<tr><td align="left">   Ctrl+c ma                                                       </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
-<tr><td align="left">   Ctrl+c ce                                                       </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
-<tr><td align="left">   Ctrl+c cf                                                       </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
-<tr><td align="left">   Ctrl+c table2                                                   </td> <td align="left">   table with 2 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c table3                                                   </td> <td align="left">   table with 3 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c table4                                                   </td> <td align="left">   table with 4 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
-<tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
-<tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
+<tr><td align="left">   Ctrl+c f         </td> <td align="left">   figure                                                          </td> </tr>
+<tr><td align="left">   Ctrl+c v         </td> <td align="left">   movie/video                                                     </td> </tr>
+<tr><td align="left">   Ctrl+c h1        </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
+<tr><td align="left">   Ctrl+c h2        </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c h3        </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c hp        </td> <td align="left">   heading for paragraph                                           </td> </tr>
+<tr><td align="left">   Ctrl+c me        </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma        </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce        </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf        </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
+<tr><td align="left">   Ctrl+c table2    </td> <td align="left">   table with 2 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table3    </td> <td align="left">   table with 3 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table4    </td> <td align="left">   table with 4 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c exer      </td> <td align="left">   exercise outline                                                </td> </tr>
+<tr><td align="left">   Ctrl+c slide     </td> <td align="left">   slide outline                                                   </td> </tr>
+<tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                                                </td> </tr>
 </tbody>
 </table>
 
@@ -276,19 +276,19 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <table border="1">
 <thead>
-<tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
+<tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
-<tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
-<tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
-<tr><td align="left">   subsubsection                                                        </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
-<tr><td align="left">   paragraph                                                            </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
-<tr><td align="left">   abstract                                                             </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
-<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
-<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
-<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
-<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   chapter          </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
+<tr><td align="left">   section          </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsection       </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsubsection    </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
+<tr><td align="left">   paragraph        </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
+<tr><td align="left">   abstract         </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
 </tbody>
 </table>
 <p>
@@ -326,7 +326,7 @@ Quotations appear inside double backticks and double single quotes:
 <!-- end verbatim block -->
 
 <p>
-A forced linebreak is specified by <code><linebreak></code> at the point where the
+A forced linebreak is specified by <code>&lt;linebreak&gt;</code> at the point where the
 linebreak in the output is wanted.
 
 <p>
@@ -826,7 +826,7 @@ some.
 
 <p>
 However, one can use preprocessor if-tests on
-the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
+the format (typically <code>#if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</code>) to
 include special code for <code>latex</code> and <code>pdflatex</code> output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of the resulting
