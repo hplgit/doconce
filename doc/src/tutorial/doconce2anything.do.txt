@@ -718,6 +718,20 @@ need to convert to their format. The "Calibre": "http://calibre-ebook.com/"
 program can produce epub, mobi, and other e-book formats from PDF,
 see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html".
 
+===== Microsoft Word or LibreOffice =====
+
+Transforming DocOnce files to Word format is best done with the aid
+of `pandoc`. A standard way is to first generate the Markdown format
+(`doconce format pandoc`) and then use `pandoc` to generate a `.docx`
+file:
+
+!bc sys
+Terminal> doconce format pandoc mydoc
+Terminal> pandoc -t docx -o mydoc.docx mydoc.md
+!ec
+The transformation works well for simple text files, but LaTeX mathematics
+does not work.
+
 ===== Plain ASCII Text =====
 
 We can go from DocOnce "back to" plain untagged text suitable for viewing
