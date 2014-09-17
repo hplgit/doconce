@@ -268,7 +268,12 @@ HTML:
 </table>
 !ec
 
-System call:
+But inline HTML code is also important, like text that starts with
+`<a href="` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 !bc sys
 Terminal> mkdir test
 Terminal> cd test
@@ -2438,7 +2443,12 @@ HTML:
 </table>
 \ehtmlcod
 
-System call:
+But inline HTML code is also important, like text that starts with
+\code{<a href="} (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 \bsys
 Terminal> mkdir test
 Terminal> cd test
@@ -2734,9 +2744,9 @@ with the preprocessor.
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+2.0  & 1.376512 & 11.919       \\
+4.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -2766,9 +2776,9 @@ one table:
 \hline
 \multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-1.0          & 1.376512     & 11.919       \\
-3.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+1.0  & 1.376512 & 11.919       \\
+3.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -2784,13 +2794,13 @@ symbol:
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \code{L\_i} } \\
 \hline
-0          & 0          & 288        & -0.0065    \\
-1          & 11,000     & 216        & 0.0        \\
-2          & 20,000     & 216        & 0.001      \\
-3          & 32,000     & 228        & 0.0028     \\
-4          & 47,000     & 270        & 0.0        \\
-5          & 51,000     & 270        & -0.0028    \\
-6          & 71,000     & 214        & \code{NaN} \\
+0   & 0      & 288        & -0.0065    \\
+1   & 11,000 & 216        & 0.0        \\
+2   & 20,000 & 216        & 0.001      \\
+3   & 32,000 & 228        & 0.0028     \\
+4   & 47,000 & 270        & 0.0        \\
+5   & 51,000 & 270        & -0.0028    \\
+6   & 71,000 & 214        & \code{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -2806,10 +2816,10 @@ and \code{|} right before and after verbatim word (with no space):
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \code{v\_1} } & \multicolumn{1}{c}{ $a_i$ + \code{v\_2} } & \multicolumn{1}{c}{ \code{verb\_3\_} } \\
 \hline
-9                  & 9.62               & 5.57               & 8.98               \\
--20                & -23.39             & -7.65              & -19.93             \\
-10                 & 17.74              & -4.50              & 9.96               \\
-0                  & -9.19              & 4.13               & -0.26              \\
+9     & 9.62       & 5.57               & 8.98           \\
+-20   & -23.39     & -7.65              & -19.93         \\
+10    & 17.74      & -4.50              & 9.96           \\
+0     & -9.19      & 4.13               & -0.26          \\
 \hline
 \end{tabular}
 \end{quote}
@@ -2824,8 +2834,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $        & \code{norm|length} \\
-$x\cap y$          & \code{x|y}         \\
+$ ||a_0|| $ & \code{norm|length} \\
+$x\cap y$   & \code{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -2844,9 +2854,9 @@ and URLs.
 \hline
  \\
 \hline
-$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
-$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
-$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
+$\mathcal{L}=0$         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                   & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -4636,7 +4646,12 @@ HTML:
 \end{minted}
 \noindent
 
-System call:
+But inline HTML code is also important, like text that starts with
+\texttt{<a href="} (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 \vspace{4pt}
 \begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},
 labelposition=topline,framesep=2.5mm,framerule=0.7pt]
@@ -4941,9 +4956,9 @@ with the preprocessor.
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+2.0  & 1.376512 & 11.919       \\
+4.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -4975,9 +4990,9 @@ one table:
 \hline
 \multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-1.0          & 1.376512     & 11.919       \\
-3.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+1.0  & 1.376512 & 11.919       \\
+3.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -4993,13 +5008,13 @@ symbol:
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ {\Verb!L\_i!} } \\
 \hline
-0          & 0          & 288        & -0.0065    \\
-1          & 11,000     & 216        & 0.0        \\
-2          & 20,000     & 216        & 0.001      \\
-3          & 32,000     & 228        & 0.0028     \\
-4          & 47,000     & 270        & 0.0        \\
-5          & 51,000     & 270        & -0.0028    \\
-6          & 71,000     & 214        & \texttt{NaN} \\
+0   & 0      & 288        & -0.0065    \\
+1   & 11,000 & 216        & 0.0        \\
+2   & 20,000 & 216        & 0.001      \\
+3   & 32,000 & 228        & 0.0028     \\
+4   & 47,000 & 270        & 0.0        \\
+5   & 51,000 & 270        & -0.0028    \\
+6   & 71,000 & 214        & \texttt{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -5015,10 +5030,10 @@ and \texttt{|} right before and after verbatim word (with no space):
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ {\Verb!v\_1!} } & \multicolumn{1}{c}{ $a_i$ + {\Verb!v\_2!} } & \multicolumn{1}{c}{ {\Verb!verb\_3\_!} } \\
 \hline
-9                  & 9.62               & 5.57               & 8.98               \\
--20                & -23.39             & -7.65              & -19.93             \\
-10                 & 17.74              & -4.50              & 9.96               \\
-0                  & -9.19              & 4.13               & -0.26              \\
+9     & 9.62       & 5.57               & 8.98           \\
+-20   & -23.39     & -7.65              & -19.93         \\
+10    & 17.74      & -4.50              & 9.96           \\
+0     & -9.19      & 4.13               & -0.26          \\
 \hline
 \end{tabular}
 \end{quote}
@@ -5033,8 +5048,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $        & \texttt{norm|length} \\
-$x\cap y$          & \texttt{x|y}         \\
+$ ||a_0|| $ & \texttt{norm|length} \\
+$x\cap y$   & \texttt{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -5053,9 +5068,9 @@ and URLs.
 \hline
  \\
 \hline
-$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
-$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
-$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
+$\mathcal{L}=0$         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                   & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -6857,7 +6872,12 @@ HTML:
 </table>
 \end{minted}
 
-System call:
+But inline HTML code is also important, like text that starts with
+\Verb!<a href="! (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 \begin{Verbatim}[frame=lines]
 Terminal> mkdir test
 Terminal> cd test
@@ -7152,9 +7172,9 @@ with the preprocessor.
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+2.0  & 1.376512 & 11.919       \\
+4.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -7184,9 +7204,9 @@ one table:
 \hline
 \multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-1.0          & 1.376512     & 11.919       \\
-3.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+1.0  & 1.376512 & 11.919       \\
+3.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -7202,13 +7222,13 @@ symbol:
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \Verb!L\_i! } \\
 \hline
-0          & 0          & 288        & -0.0065    \\
-1          & 11,000     & 216        & 0.0        \\
-2          & 20,000     & 216        & 0.001      \\
-3          & 32,000     & 228        & 0.0028     \\
-4          & 47,000     & 270        & 0.0        \\
-5          & 51,000     & 270        & -0.0028    \\
-6          & 71,000     & 214        & \Verb!NaN! \\
+0   & 0      & 288        & -0.0065    \\
+1   & 11,000 & 216        & 0.0        \\
+2   & 20,000 & 216        & 0.001      \\
+3   & 32,000 & 228        & 0.0028     \\
+4   & 47,000 & 270        & 0.0        \\
+5   & 51,000 & 270        & -0.0028    \\
+6   & 71,000 & 214        & \Verb!NaN! \\
 \hline
 \end{tabular}
 \end{quote}
@@ -7224,10 +7244,10 @@ and \Verb!|! right before and after verbatim word (with no space):
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \Verb!v\_1! } & \multicolumn{1}{c}{ $a_i$ + \Verb!v\_2! } & \multicolumn{1}{c}{ \Verb!verb\_3\_! } \\
 \hline
-9                  & 9.62               & 5.57               & 8.98               \\
--20                & -23.39             & -7.65              & -19.93             \\
-10                 & 17.74              & -4.50              & 9.96               \\
-0                  & -9.19              & 4.13               & -0.26              \\
+9     & 9.62       & 5.57               & 8.98           \\
+-20   & -23.39     & -7.65              & -19.93         \\
+10    & 17.74      & -4.50              & 9.96           \\
+0     & -9.19      & 4.13               & -0.26          \\
 \hline
 \end{tabular}
 \end{quote}
@@ -7242,8 +7262,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $        & \Verb!norm|length! \\
-$x\cap y$          & \Verb!x|y!         \\
+$ ||a_0|| $ & \Verb!norm|length! \\
+$x\cap y$   & \Verb!x|y!         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -7262,9 +7282,9 @@ and URLs.
 \hline
  \\
 \hline
-$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
-$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
-$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
+$\mathcal{L}=0$         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                   & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -8619,7 +8639,11 @@ HTML::
         <!-- comment -->
         </table>
 
-System call::
+But inline HTML code is also important, like text that starts with
+``<a href="`` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call::
 
         Terminal> mkdir test
         Terminal> cd test
@@ -8891,13 +8915,13 @@ Tables
 
 Let us take this table from the manual:
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
@@ -8914,42 +8938,42 @@ The DocOnce source code reads::
 Here is yet another table to test that we can handle more than
 one table:
 
-============  ============  ============  
-time          velocity      acceleration  
-============  ============  ============  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-================  ================  ================  ================  
-   \\( i \\)        \\( h_i \\)     \\( \bar T_i \\)      ``L_i``       
-================  ================  ================  ================  
-0                                0               288           -0.0065  
-1                           11,000               216               0.0  
-2                           20,000               216             0.001  
-3                           32,000               228            0.0028  
-4                           47,000               270               0.0  
-5                           51,000               270           -0.0028  
-6                           71,000               214           ``NaN``  
-================  ================  ================  ================  
+=========  ===========  ================  =======  
+\\( i \\)  \\( h_i \\)  \\( \bar T_i \\)  ``L_i``  
+=========  ===========  ================  =======  
+0                    0               288  -0.0065  
+1               11,000               216      0.0  
+2               20,000               216    0.001  
+3               32,000               228   0.0028  
+4               47,000               270      0.0  
+5               51,000               270  -0.0028  
+6               71,000               214  ``NaN``  
+=========  ===========  ================  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=====================  =====================  =====================  =====================  
-        exact                 ``v_1``         \\( a_i \\) + ``v_2``       ``verb_3_``       
-=====================  =====================  =====================  =====================  
-                    9                   9.62                   5.57                   8.98  
-                  -20                 -23.39                  -7.65                 -19.93  
-                   10                  17.74                  -4.50                   9.96  
-                    0                  -9.19                   4.13                  -0.26  
-=====================  =====================  =====================  =====================  
+=====  =======  =====================  ===========  
+exact  ``v_1``  \\( a_i \\) + ``v_2``  ``verb_3_``  
+=====  =======  =====================  ===========  
+    9     9.62                   5.57         8.98  
+  -20   -23.39                  -7.65       -19.93  
+   10    17.74                  -4.50         9.96  
+    0    -9.19                   4.13        -0.26  
+=====  =======  =====================  ===========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
@@ -8970,13 +8994,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-==========================================================  ==========================================================  ==========================================================  
-                                                                                                                                                                                    
-==========================================================  ==========================================================  ==========================================================  
-                  \\( \mathcal{L}=0 \\)                     `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
-                       \\( a=b \\)                          `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
-              \\( \nabla\cdot\bm{u} =0  \\)                 `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
-==========================================================  ==========================================================  ==========================================================  
+=============================  ==========================================================  ==========================================================  
+                                                                                                                                                       
+=============================  ==========================================================  ==========================================================  
+    \\( \mathcal{L}=0 \\)      `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+         \\( a=b \\)           `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+\\( \nabla\cdot\bm{u} =0  \\)  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+=============================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript \\( a_i \\): ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -10309,7 +10333,11 @@ HTML:
         <!-- comment -->
         </table>
 
-System call:
+But inline HTML code is also important, like text that starts with
+``<a href="`` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
 
 .. code-block:: console
 
@@ -10619,13 +10647,13 @@ Tables
 
 Let us take this table from the manual:
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads
 
@@ -10643,42 +10671,42 @@ The DocOnce source code reads
 Here is yet another table to test that we can handle more than
 one table:
 
-============  ============  ============  
-time          velocity      acceleration  
-============  ============  ============  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-================  ================  ================  ================  
-   :math:`i`        :math:`h_i`     :math:`\bar T_i`      ``L_i``       
-================  ================  ================  ================  
-0                                0               288           -0.0065  
-1                           11,000               216               0.0  
-2                           20,000               216             0.001  
-3                           32,000               228            0.0028  
-4                           47,000               270               0.0  
-5                           51,000               270           -0.0028  
-6                           71,000               214           ``NaN``  
-================  ================  ================  ================  
+=========  ===========  ================  =======  
+:math:`i`  :math:`h_i`  :math:`\bar T_i`  ``L_i``  
+=========  ===========  ================  =======  
+0                    0               288  -0.0065  
+1               11,000               216      0.0  
+2               20,000               216    0.001  
+3               32,000               228   0.0028  
+4               47,000               270      0.0  
+5               51,000               270  -0.0028  
+6               71,000               214  ``NaN``  
+=========  ===========  ================  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=====================  =====================  =====================  =====================  
-        exact                 ``v_1``         :math:`a_i` + ``v_2``       ``verb_3_``       
-=====================  =====================  =====================  =====================  
-                    9                   9.62                   5.57                   8.98  
-                  -20                 -23.39                  -7.65                 -19.93  
-                   10                  17.74                  -4.50                   9.96  
-                    0                  -9.19                   4.13                  -0.26  
-=====================  =====================  =====================  =====================  
+=====  =======  =====================  ===========  
+exact  ``v_1``  :math:`a_i` + ``v_2``  ``verb_3_``  
+=====  =======  =====================  ===========  
+    9     9.62                   5.57         8.98  
+  -20   -23.39                  -7.65       -19.93  
+   10    17.74                  -4.50         9.96  
+    0    -9.19                   4.13        -0.26  
+=====  =======  =====================  ===========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
@@ -10699,13 +10727,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-==========================================================  ==========================================================  ==========================================================  
-                                                                                                                                                                                    
-==========================================================  ==========================================================  ==========================================================  
-                  :math:`\mathcal{L}=0`                     `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
-                       :math:`a=b`                          `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
-           :math:`\nabla\cdot\boldsymbol{u} =0`             `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
-==========================================================  ==========================================================  ==========================================================  
+====================================  ==========================================================  ==========================================================  
+                                                                                                                                                              
+====================================  ==========================================================  ==========================================================  
+       :math:`\mathcal{L}=0`          `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+            :math:`a=b`               `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+:math:`\nabla\cdot\boldsymbol{u} =0`  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+====================================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -12037,7 +12065,12 @@ HTML:
 </table>
 }}}
 
-System call:
+But inline HTML code is also important, like text that starts with
+`<a href="` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 {{{
 Terminal> mkdir test
 Terminal> cd test
@@ -12353,10 +12386,10 @@ Let us take this table from the manual:
 
 
 
- ||      _time_       ||    _velocity_     ||  _acceleration_   ||
- ||  0.0              ||  1.4186           ||  -5.01            ||
- ||  2.0              ||  1.376512         ||  11.919           ||
- ||  4.0              ||  1.1E+1           ||  14.717624        ||
+ ||  _time_   ||  _velocity_   ||  _acceleration_   ||
+ ||  0.0      ||  1.4186       ||  -5.01            ||
+ ||  2.0      ||  1.376512     ||  11.919           ||
+ ||  4.0      ||  1.1E+1       ||  14.717624        ||
 
 
 
@@ -12377,10 +12410,10 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
- ||      _time_       ||    _velocity_     ||  _acceleration_   ||
- ||  0.0              ||  1.4186           ||  -5.01            ||
- ||  1.0              ||  1.376512         ||  11.919           ||
- ||  3.0              ||  1.1E+1           ||  14.717624        ||
+ ||  _time_   ||  _velocity_   ||  _acceleration_   ||
+ ||  0.0      ||  1.4186       ||  -5.01            ||
+ ||  1.0      ||  1.376512     ||  11.919           ||
+ ||  3.0      ||  1.1E+1       ||  14.717624        ||
 
 
 And one with math headings (that are expanded and must be treated
@@ -12388,14 +12421,14 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
- ||     _`i`_       ||    _`h_i`_      ||  _`\bar T_i`_   ||    _`L_i`_      ||
- ||  0              ||  0              ||  288            ||  -0.0065        ||
- ||  1              ||  11,000         ||  216            ||  0.0            ||
- ||  2              ||  20,000         ||  216            ||  0.001          ||
- ||  3              ||  32,000         ||  228            ||  0.0028         ||
- ||  4              ||  47,000         ||  270            ||  0.0            ||
- ||  5              ||  51,000         ||  270            ||  -0.0028        ||
- ||  6              ||  71,000         ||  214            ||  `NaN`          ||
+ ||  _`i`_   ||  _`h_i`_    ||  _`\bar T_i`_   ||   _`L_i`_    ||
+ ||  0       ||  0          ||  288            ||  -0.0065     ||
+ ||  1       ||  11,000     ||  216            ||  0.0         ||
+ ||  2       ||  20,000     ||  216            ||  0.001       ||
+ ||  3       ||  32,000     ||  228            ||  0.0028      ||
+ ||  4       ||  47,000     ||  270            ||  0.0         ||
+ ||  5       ||  51,000     ||  270            ||  -0.0028     ||
+ ||  6       ||  71,000     ||  214            ||  `NaN`       ||
 
 
 And add one with verbatim headings (with underscores),
@@ -12403,20 +12436,20 @@ and rows starting with `|-` because of a negative number,
 and `|` right before and after verbatim word (with no space):
 
 
- ||      _exact_       ||      _`v_1`_       ||  _`a_i` + `v_2`_   ||    _`verb_3_`_     ||
- ||  9                 ||  9.62              ||  5.57              ||  8.98              ||
- ||  -20               ||  -23.39            ||  -7.65             ||  -19.93            ||
- ||  10                ||  17.74             ||  -4.50             ||  9.96              ||
- ||  0                 ||  -9.19             ||  4.13              ||  -0.26             ||
+ ||  _exact_   ||  _`v_1`_    ||  _`a_i` + `v_2`_   ||  _`verb_3_`_   ||
+ ||  9         ||  9.62       ||  5.57              ||  8.98          ||
+ ||  -20       ||  -23.39     ||  -7.65             ||  -19.93        ||
+ ||  10        ||  17.74      ||  -4.50             ||  9.96          ||
+ ||  0         ||  -9.19      ||  4.13              ||  -0.26         ||
 
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
 
- ||       _`S`_        ||     _command_      ||
- ||  $ ||a_0|| $       ||  `norm|length`     ||
- ||  `x\cap y`         ||  `x|y`             ||
+ ||      _`S`_       ||     _command_      ||
+ ||  $ ||a_0|| $     ||  `norm|length`     ||
+ ||  `x\cap y`       ||  `x|y`             ||
 
 
 Finally, a table with math
@@ -12427,9 +12460,9 @@ and URLs.
 
 
 
- ||  `\mathcal{L}=0`                                              ||  [../doc/src/manual/mov/wave_frames/frame_0080.png `080`]     ||  [../doc/src/manual/mov/wave_frames/frame_0085.png `085`]     ||
- ||  `a=b`                                                        ||  [../doc/src/manual/mov/wave_frames/frame_0090.png `090`]     ||  [../doc/src/manual/mov/wave_frames/frame_0095.png `095`]     ||
- ||  `\nabla\cdot\bm{u} =0 `                                      ||  [../doc/src/manual/mov/wave_frames/frame_0100.png `100`]     ||  [../doc/src/manual/mov/wave_frames/frame_0105.png `105`]     ||
+ ||  `\mathcal{L}=0`             ||  [../doc/src/manual/mov/wave_frames/frame_0080.png `080`]     ||  [../doc/src/manual/mov/wave_frames/frame_0085.png `085`]     ||
+ ||  `a=b`                       ||  [../doc/src/manual/mov/wave_frames/frame_0090.png `090`]     ||  [../doc/src/manual/mov/wave_frames/frame_0095.png `095`]     ||
+ ||  `\nabla\cdot\bm{u} =0 `     ||  [../doc/src/manual/mov/wave_frames/frame_0100.png `100`]     ||  [../doc/src/manual/mov/wave_frames/frame_0105.png `105`]     ||
 
 
 
@@ -13560,7 +13593,12 @@ HTML:
 </table>
 </syntaxhighlight>
 
-System call:
+But inline HTML code is also important, like text that starts with
+<code><a href="</code> (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 <syntaxhighlight lang="bash">
 Terminal> mkdir test
 Terminal> cd test
@@ -13842,12 +13880,12 @@ Let us take this table from the manual:
 
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="center">time</th> <th align="center">velocity</th> <th align="center">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="left">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
 
@@ -13869,12 +13907,12 @@ one table:
 
 <table border="1">
 <thead>
-<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
+<tr><th align="left">time</th> <th align="left">velocity</th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
-<tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
-<tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="left">   1.4186      </td> <td align="left">   -5.01           </td> </tr>
+<tr><td align="left">   1.0     </td> <td align="left">   1.376512    </td> <td align="left">   11.919          </td> </tr>
+<tr><td align="left">   3.0     </td> <td align="left">   1.1E+1      </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
 </table>
 And one with math headings (that are expanded and must be treated
@@ -13883,16 +13921,16 @@ symbol:
 
 <table border="1">
 <thead>
-<tr><th align="center">    <math>i</math>   </th> <th align="center">   <math>h_i</math>  </th> <th align="center"><math>\bar T_i</math></th> <td align="center">   <code>L_i</code>  </td> </tr>
+<tr><th align="center"><math>i</math></th> <th align="center"><math>h_i</math></th> <th align="center"><math>\bar T_i</math></th> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                        </td> <td align="right">   0                        </td> <td align="right">   288                      </td> <td align="right">   -0.0065                  </td> </tr>
-<tr><td align="left">   1                        </td> <td align="right">   11,000                   </td> <td align="right">   216                      </td> <td align="right">   0.0                      </td> </tr>
-<tr><td align="left">   2                        </td> <td align="right">   20,000                   </td> <td align="right">   216                      </td> <td align="right">   0.001                    </td> </tr>
-<tr><td align="left">   3                        </td> <td align="right">   32,000                   </td> <td align="right">   228                      </td> <td align="right">   0.0028                   </td> </tr>
-<tr><td align="left">   4                        </td> <td align="right">   47,000                   </td> <td align="right">   270                      </td> <td align="right">   0.0                      </td> </tr>
-<tr><td align="left">   5                        </td> <td align="right">   51,000                   </td> <td align="right">   270                      </td> <td align="right">   -0.0028                  </td> </tr>
-<tr><td align="left">   6                        </td> <td align="right">   71,000                   </td> <td align="right">   214                      </td> <td align="right">   <code>NaN</code>         </td> </tr>
+<tr><td align="left">   0                 </td> <td align="right">   0                   </td> <td align="right">   288                      </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1                 </td> <td align="right">   11,000              </td> <td align="right">   216                      </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2                 </td> <td align="right">   20,000              </td> <td align="right">   216                      </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3                 </td> <td align="right">   32,000              </td> <td align="right">   228                      </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4                 </td> <td align="right">   47,000              </td> <td align="right">   270                      </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5                 </td> <td align="right">   51,000              </td> <td align="right">   270                      </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6                 </td> <td align="right">   71,000              </td> <td align="right">   214                      </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
 </table>
 And add one with verbatim headings (with underscores),
@@ -13901,13 +13939,13 @@ and <code>|</code> right before and after verbatim word (with no space):
 
 <table border="1">
 <thead>
-<tr><th align="center">               exact               </th> <td align="center">          <code>v_1</code>         </td> <td align="center"><math>a_i</math> + <code>v_2</code></td> <td align="center">        <code>verb_3_</code>       </td> </tr>
+<tr><th align="center">exact</th> <td align="center"><code>v_1</code></td> <td align="center"><math>a_i</math> + <code>v_2</code></td> <td align="center"><code>verb_3_</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   9                                      </td> <td align="right">   9.62                                   </td> <td align="right">   5.57                                   </td> <td align="right">   8.98                                   </td> </tr>
-<tr><td align="right">   -20                                    </td> <td align="right">   -23.39                                 </td> <td align="right">   -7.65                                  </td> <td align="right">   -19.93                                 </td> </tr>
-<tr><td align="right">   10                                     </td> <td align="right">   17.74                                  </td> <td align="right">   -4.50                                  </td> <td align="right">   9.96                                   </td> </tr>
-<tr><td align="right">   0                                      </td> <td align="right">   -9.19                                  </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                                  </td> </tr>
+<tr><td align="right">   9        </td> <td align="right">   9.62                </td> <td align="right">   5.57                                   </td> <td align="right">   8.98                    </td> </tr>
+<tr><td align="right">   -20      </td> <td align="right">   -23.39              </td> <td align="right">   -7.65                                  </td> <td align="right">   -19.93                  </td> </tr>
+<tr><td align="right">   10       </td> <td align="right">   17.74               </td> <td align="right">   -4.50                                  </td> <td align="right">   9.96                    </td> </tr>
+<tr><td align="right">   0        </td> <td align="right">   -9.19               </td> <td align="right">   4.13                                   </td> <td align="right">   -0.26                   </td> </tr>
 </tbody>
 </table>
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
@@ -13915,11 +13953,11 @@ but not anymore:
 
 <table border="1">
 <thead>
-<tr><th align="center">     <math>S</math>     </th> <th align="center">        command         </th> </tr>
+<tr><th align="center">   <math>S</math>   </th> <th align="center">        command         </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
-<tr><td align="left">   <math>x\cap y</math>        </td> <td align="right">   <code>x|y</code>            </td> </tr>
+<tr><td align="left">   $ ||a_0|| $             </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   <math>x\cap y</math>    </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 Finally, a table with math
@@ -13932,9 +13970,9 @@ and URLs.
 <table border="1">
 <tr></tr>
 <tbody>
-<tr><td align="center">   <math>\mathcal{L}=0</math>                                             </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0080.png <code>080</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0085.png <code>085</code>]    </td> </tr>
-<tr><td align="center">   <math>a=b</math>                                                       </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0090.png <code>090</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0095.png <code>095</code>]    </td> </tr>
-<tr><td align="center">   <math>\nabla\cdot\bm{u} =0 </math>                                     </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0100.png <code>100</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0105.png <code>105</code>]    </td> </tr>
+<tr><td align="center">   <math>\mathcal{L}=0</math>            </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0080.png <code>080</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0085.png <code>085</code>]    </td> </tr>
+<tr><td align="center">   <math>a=b</math>                      </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0090.png <code>090</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0095.png <code>095</code>]    </td> </tr>
+<tr><td align="center">   <math>\nabla\cdot\bm{u} =0 </math>    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0100.png <code>100</code>]    </td> <td align="center">   [../doc/src/manual/mov/wave_frames/frame_0105.png <code>105</code>]    </td> </tr>
 </tbody>
 </table>
 
@@ -15173,7 +15211,12 @@ HTML:
 </table>
 }}}
 
-System call:
+But inline HTML code is also important, like text that starts with
+{{{<a href="}}} (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 {{{
 Terminal> mkdir test
 Terminal> cd test
@@ -15434,10 +15477,10 @@ Let us take this table from the manual:
 
 
 
- | =time             | =velocity         | =acceleration     |
- |  0.0              |  1.4186           |  -5.01            |
- |  2.0              |  1.376512         |  11.919           |
- |  4.0              |  1.1E+1           |  14.717624        |
+ | =time     | =velocity     | =acceleration     |
+ |  0.0      |  1.4186       |  -5.01            |
+ |  2.0      |  1.376512     |  11.919           |
+ |  4.0      |  1.1E+1       |  14.717624        |
 
 
 
@@ -15458,10 +15501,10 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
- | =time             | =velocity         | =acceleration     |
- |  0.0              |  1.4186           |  -5.01            |
- |  1.0              |  1.376512         |  11.919           |
- |  3.0              |  1.1E+1           |  14.717624        |
+ | =time     | =velocity     | =acceleration     |
+ |  0.0      |  1.4186       |  -5.01            |
+ |  1.0      |  1.376512     |  11.919           |
+ |  3.0      |  1.1E+1       |  14.717624        |
 
 
 And one with math headings (that are expanded and must be treated
@@ -15469,14 +15512,14 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
- | ={{{i}}}            | ={{{h_i}}}          | ={{{\bar T_i}}}     | ={{{L_i}}}          |
- |  0                  |  0                  |  288                |  -0.0065            |
- |  1                  |  11,000             |  216                |  0.0                |
- |  2                  |  20,000             |  216                |  0.001              |
- |  3                  |  32,000             |  228                |  0.0028             |
- |  4                  |  47,000             |  270                |  0.0                |
- |  5                  |  51,000             |  270                |  -0.0028            |
- |  6                  |  71,000             |  214                |  {{{NaN}}}          |
+ | ={{{i}}}     | ={{{h_i}}}     | ={{{\bar T_i}}}     | ={{{L_i}}}     |
+ |  0           |  0             |  288                |  -0.0065       |
+ |  1           |  11,000        |  216                |  0.0           |
+ |  2           |  20,000        |  216                |  0.001         |
+ |  3           |  32,000        |  228                |  0.0028        |
+ |  4           |  47,000        |  270                |  0.0           |
+ |  5           |  51,000        |  270                |  -0.0028       |
+ |  6           |  71,000        |  214                |  {{{NaN}}}     |
 
 
 And add one with verbatim headings (with underscores),
@@ -15484,20 +15527,20 @@ and rows starting with {{{|-}}} because of a negative number,
 and {{{|}}} right before and after verbatim word (with no space):
 
 
- | =exact                     | ={{{v_1}}}                 | ={{{a_i}}} + {{{v_2}}}     | ={{{verb_3_}}}             |
- |  9                         |  9.62                      |  5.57                      |  8.98                      |
- |  -20                       |  -23.39                    |  -7.65                     |  -19.93                    |
- |  10                        |  17.74                     |  -4.50                     |  9.96                      |
- |  0                         |  -9.19                     |  4.13                      |  -0.26                     |
+ | =exact     | ={{{v_1}}}     | ={{{a_i}}} + {{{v_2}}}     | ={{{verb_3_}}}     |
+ |  9         |  9.62          |  5.57                      |  8.98              |
+ |  -20       |  -23.39        |  -7.65                     |  -19.93            |
+ |  10        |  17.74         |  -4.50                     |  9.96              |
+ |  0         |  -9.19         |  4.13                      |  -0.26             |
 
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
 
- | ={{{S}}}               | =command               |
- |  $ ||a_0|| $           |  {{{norm|length}}}     |
- |  {{{x\cap y}}}         |  {{{x|y}}}             |
+ | ={{{S}}}           | =command               |
+ |  $ ||a_0|| $       |  {{{norm|length}}}     |
+ |  {{{x\cap y}}}     |  {{{x|y}}}             |
 
 
 Finally, a table with math
@@ -15508,10 +15551,10 @@ and URLs.
 
 
 
- | =                                                       | =                                                       | =                                                       |
- |  {{{\mathcal{L}=0}}}                                    |  [[../doc/src/manual/mov/wave_frames/frame_0080.png     |  {{{080}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0085.png     |  {{{085}}}]]                                            |
- |  {{{a=b}}}                                              |  [[../doc/src/manual/mov/wave_frames/frame_0090.png     |  {{{090}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0095.png     |  {{{095}}}]]                                            |
- |  {{{\nabla\cdot\bm{u} =0 }}}                            |  [[../doc/src/manual/mov/wave_frames/frame_0100.png     |  {{{100}}}]]                                            |  [[../doc/src/manual/mov/wave_frames/frame_0105.png     |  {{{105}}}]]                                            |
+ | =                                | =                                                       | =                |
+ |  {{{\mathcal{L}=0}}}             |  [[../doc/src/manual/mov/wave_frames/frame_0080.png     |  {{{080}}}]]     |  [[../doc/src/manual/mov/wave_frames/frame_0085.png     |  {{{085}}}]]     |
+ |  {{{a=b}}}                       |  [[../doc/src/manual/mov/wave_frames/frame_0090.png     |  {{{090}}}]]     |  [[../doc/src/manual/mov/wave_frames/frame_0095.png     |  {{{095}}}]]     |
+ |  {{{\nabla\cdot\bm{u} =0 }}}     |  [[../doc/src/manual/mov/wave_frames/frame_0100.png     |  {{{100}}}]]     |  [[../doc/src/manual/mov/wave_frames/frame_0105.png     |  {{{105}}}]]     |
 
 
 
@@ -16578,7 +16621,11 @@ HTML::
         <!-- comment -->
         </table>
 
-System call::
+But inline HTML code is also important, like text that starts with
+'<a href="' (which can destroy the following text if not properly
+quoted).
+
+And here is a system call::
 
         Terminal> mkdir test
         Terminal> cd test
@@ -16785,13 +16832,13 @@ Tables
 
 Let us take this table from the manual:
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
@@ -16808,63 +16855,63 @@ The DocOnce source code reads::
 Here is yet another table to test that we can handle more than
 one table:
 
-============  ============  ============  
-time          velocity      acceleration  
-============  ============  ============  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-========  ========  ========  ========  
-   i        h_i     \bar T_i   'L_i'    
-========  ========  ========  ========  
-0                0       288   -0.0065  
-1           11,000       216       0.0  
-2           20,000       216     0.001  
-3           32,000       228    0.0028  
-4           47,000       270       0.0  
-5           51,000       270   -0.0028  
-6           71,000       214     'NaN'  
-========  ========  ========  ========  
+=  ======  ========  =======  
+i   h_i    \bar T_i   'L_i'   
+=  ======  ========  =======  
+0       0       288  -0.0065  
+1  11,000       216      0.0  
+2  20,000       216    0.001  
+3  32,000       228   0.0028  
+4  47,000       270      0.0  
+5  51,000       270  -0.0028  
+6  71,000       214    'NaN'  
+=  ======  ========  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with '|-' because of a negative number,
 and '|' right before and after verbatim word (with no space):
 
-===========  ===========  ===========  ===========  
-   exact        'v_1'     a_i + 'v_2'   'verb_3_'   
-===========  ===========  ===========  ===========  
-          9         9.62         5.57         8.98  
-        -20       -23.39        -7.65       -19.93  
-         10        17.74        -4.50         9.96  
-          0        -9.19         4.13        -0.26  
-===========  ===========  ===========  ===========  
+=====  ======  ===========  =========  
+exact  'v_1'   a_i + 'v_2'  'verb_3_'  
+=====  ======  ===========  =========  
+    9    9.62         5.57       8.98  
+  -20  -23.39        -7.65     -19.93  
+   10   17.74        -4.50       9.96  
+    0   -9.19         4.13      -0.26  
+=====  ======  ===========  =========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===========  ===========  ===========  
-     S         command    
-===========  ===========  ===========  
-$ ||a_0|| $        'norm  
-x\cap y               'x  
-===========  ===========  ===========  
+===========  =======  =======  
+     S       command  
+===========  =======  =======  
+$ ||a_0|| $    'norm  
+x\cap y           'x  
+===========  =======  =======  
 
 Finally, a table with math
 and URLs.
 
-======================================================  ======================================================  ======================================================  
-                                                                                                                                                                        
-======================================================  ======================================================  ======================================================  
-                    \mathcal{L}=0                       ../doc/src/manual/mov/wave_frames/frame_0080.png:'080'  ../doc/src/manual/mov/wave_frames/frame_0085.png:'085'  
-                         a=b                            ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'  
-                 \nabla\cdot\bm{u} =0                   ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'  
-======================================================  ======================================================  ======================================================  
+====================  ======================================================  ======================================================  
+                                                                                                                                      
+====================  ======================================================  ======================================================  
+   \mathcal{L}=0      ../doc/src/manual/mov/wave_frames/frame_0080.png:'080'  ../doc/src/manual/mov/wave_frames/frame_0085.png:'085'  
+        a=b           ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'  
+\nabla\cdot\bm{u} =0  ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'  
+====================  ======================================================  ======================================================  
 
 A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_file_v2'
 
@@ -17870,7 +17917,11 @@ HTML::
         <!-- comment -->
         </table>
 
-System call::
+But inline HTML code is also important, like text that starts with
+C{<a href="} (which can destroy the following text if not properly
+quoted).
+
+And here is a system call::
 
         Terminal> mkdir test
         Terminal> cd test
@@ -18047,13 +18098,13 @@ Tables
 
 Let us take this table from the manual:
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
@@ -18070,63 +18121,63 @@ The DocOnce source code reads::
 Here is yet another table to test that we can handle more than
 one table:
 
-============  ============  ============  
-time          velocity      acceleration  
-============  ============  ============  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-===========  ===========  ===========  ===========  
-    M{i}        M{h_i}    M{\bar T_i}     C{L_i}    
-===========  ===========  ===========  ===========  
-0                      0          288      -0.0065  
-1                 11,000          216          0.0  
-2                 20,000          216        0.001  
-3                 32,000          228       0.0028  
-4                 47,000          270          0.0  
-5                 51,000          270      -0.0028  
-6                 71,000          214       C{NaN}  
-===========  ===========  ===========  ===========  
+====  ======  ===========  =======  
+M{i}  M{h_i}  M{\bar T_i}   C{L_i}  
+====  ======  ===========  =======  
+0          0          288  -0.0065  
+1     11,000          216      0.0  
+2     20,000          216    0.001  
+3     32,000          228   0.0028  
+4     47,000          270      0.0  
+5     51,000          270  -0.0028  
+6     71,000          214   C{NaN}  
+====  ======  ===========  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with C{|-} because of a negative number,
 and C{|} right before and after verbatim word (with no space):
 
-===============  ===============  ===============  ===============  
-     exact            C{v_1}      M{a_i} + C{v_2}     C{verb_3_}    
-===============  ===============  ===============  ===============  
-              9             9.62             5.57             8.98  
-            -20           -23.39            -7.65           -19.93  
-             10            17.74            -4.50             9.96  
-              0            -9.19             4.13            -0.26  
-===============  ===============  ===============  ===============  
+=====  ======  ===============  ==========  
+exact  C{v_1}  M{a_i} + C{v_2}  C{verb_3_}  
+=====  ======  ===============  ==========  
+    9    9.62             5.57        8.98  
+  -20  -23.39            -7.65      -19.93  
+   10   17.74            -4.50        9.96  
+    0   -9.19             4.13       -0.26  
+=====  ======  ===============  ==========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-==============  ==============  
-     M{S}          command      
-==============  ==============  
-$ ||a_0|| $     C{norm|length}  
-M{x\cap y}              C{x|y}  
-==============  ==============  
+===========  ==============  
+    M{S}        command      
+===========  ==============  
+$ ||a_0|| $  C{norm|length}  
+M{x\cap y}           C{x|y}  
+===========  ==============  
 
 Finally, a table with math
 and URLs.
 
-===========================================================  ===========================================================  ===========================================================  
-                                                                                                                                                                                       
-===========================================================  ===========================================================  ===========================================================  
-                      M{\mathcal{L}=0}                       U{C{080}<../doc/src/manual/mov/wave_frames/frame_0080.png>}  U{C{085}<../doc/src/manual/mov/wave_frames/frame_0085.png>}  
-                           M{a=b}                            U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}  
-                  M{\nabla\cdot\bm{u} =0 }                   U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}  
-===========================================================  ===========================================================  ===========================================================  
+========================  ===========================================================  ===========================================================  
+                                                                                                                                                    
+========================  ===========================================================  ===========================================================  
+    M{\mathcal{L}=0}      U{C{080}<../doc/src/manual/mov/wave_frames/frame_0080.png>}  U{C{085}<../doc/src/manual/mov/wave_frames/frame_0085.png>}  
+         M{a=b}           U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}  
+M{\nabla\cdot\bm{u} =0 }  U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}  
+========================  ===========================================================  ===========================================================  
 
 A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{my_file_v2}
 ------------------------------------------------------------------------------------------
@@ -19253,7 +19304,11 @@ HTML::
         <!-- comment -->
         </table>
 
-System call::
+But inline HTML code is also important, like text that starts with
+<a href=" (which can destroy the following text if not properly
+quoted).
+
+And here is a system call::
 
         Terminal> mkdir test
         Terminal> cd test
@@ -19471,13 +19526,13 @@ Tables
 
 Let us take this table from the manual:
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
@@ -19494,52 +19549,52 @@ The DocOnce source code reads::
 Here is yet another table to test that we can handle more than
 one table:
 
-============  ============  ============  
-time          velocity      acceleration  
-============  ============  ============  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-========  ========  ========  ========  
-   i        h_i     \bar T_i    L_i     
-========  ========  ========  ========  
-0                0       288   -0.0065  
-1           11,000       216       0.0  
-2           20,000       216     0.001  
-3           32,000       228    0.0028  
-4           47,000       270       0.0  
-5           51,000       270   -0.0028  
-6           71,000       214       NaN  
-========  ========  ========  ========  
+=  ======  ========  =======  
+i   h_i    \bar T_i    L_i    
+=  ======  ========  =======  
+0       0       288  -0.0065  
+1  11,000       216      0.0  
+2  20,000       216    0.001  
+3  32,000       228   0.0028  
+4  47,000       270      0.0  
+5  51,000       270  -0.0028  
+6  71,000       214      NaN  
+=  ======  ========  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with |- because of a negative number,
 and | right before and after verbatim word (with no space):
 
-=========  =========  =========  =========  
-  exact       v_1     a_i + v_2   verb_3_   
-=========  =========  =========  =========  
-        9       9.62       5.57       8.98  
-      -20     -23.39      -7.65     -19.93  
-       10      17.74      -4.50       9.96  
-        0      -9.19       4.13      -0.26  
-=========  =========  =========  =========  
+=====  ======  =========  =======  
+exact   v_1    a_i + v_2  verb_3_  
+=====  ======  =========  =======  
+    9    9.62       5.57     8.98  
+  -20  -23.39      -7.65   -19.93  
+   10   17.74      -4.50     9.96  
+    0   -9.19       4.13    -0.26  
+=====  ======  =========  =======  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===========  ===========  ===========  
-     S         command    
-===========  ===========  ===========  
-$ ||a_0|| $         norm  
-x\cap y                x  
-===========  ===========  ===========  
+===========  =======  ======  
+     S       command  
+===========  =======  ======  
+$ ||a_0|| $     norm  
+x\cap y            x  
+===========  =======  ======  
 
 NOTE: The above table is not correctly handled in the plain text format
 because in this format inline verbatim text look like normal text,
@@ -19548,13 +19603,13 @@ and the first line in the table then looks like three columns.
 Finally, a table with math
 and URLs.
 
-======================================================  ======================================================  ======================================================  
-                                                                                                                                                                        
-======================================================  ======================================================  ======================================================  
-                    \mathcal{L}=0                       080 (../doc/src/manual/mov/wave_frames/frame_0080.png)  085 (../doc/src/manual/mov/wave_frames/frame_0085.png)  
-                         a=b                            090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)  
-                 \nabla\cdot\bm{u} =0                   100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)  
-======================================================  ======================================================  ======================================================  
+====================  ======================================================  ======================================================  
+                                                                                                                                      
+====================  ======================================================  ======================================================  
+   \mathcal{L}=0      080 (../doc/src/manual/mov/wave_frames/frame_0080.png)  085 (../doc/src/manual/mov/wave_frames/frame_0085.png)  
+        a=b           090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)  
+\nabla\cdot\bm{u} =0  100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)  
+====================  ======================================================  ======================================================  
 
 A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
 ---------------------------------------------------------------------------------
@@ -20708,7 +20763,12 @@ HTML:
 </table>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-System call:
+But inline HTML code is also important, like text that starts with
+`<a href="` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Terminal> mkdir test
@@ -20994,11 +21054,11 @@ Let us take this table from the manual:
 
 
 
-    time        velocity    acceleration  
-------------  ------------  ------------  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
+time  velocity  acceleration  
+----  --------  ------------  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
 
 
 
@@ -21020,11 +21080,11 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-time          velocity      acceleration  
-------------  ------------  ------------  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
+time  velocity  acceleration  
+----  --------  ------------  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
 
 
 And one with math headings (that are expanded and must be treated
@@ -21032,15 +21092,15 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
-   $i$        $h_i$     $\bar T_i$    `L_i`     
-----------  ----------  ----------  ----------  
-0                    0         288     -0.0065  
-1               11,000         216         0.0  
-2               20,000         216       0.001  
-3               32,000         228      0.0028  
-4               47,000         270         0.0  
-5               51,000         270     -0.0028  
-6               71,000         214       `NaN`  
+$i$  $h_i$   $\bar T_i$   `L_i`   
+---  ------  ----------  -------  
+0         0         288  -0.0065  
+1    11,000         216      0.0  
+2    20,000         216    0.001  
+3    32,000         228   0.0028  
+4    47,000         270      0.0  
+5    51,000         270  -0.0028  
+6    71,000         214    `NaN`  
 
 
 And add one with verbatim headings (with underscores),
@@ -21048,22 +21108,22 @@ and rows starting with `|-` because of a negative number,
 and `|` right before and after verbatim word (with no space):
 
 
-    exact          `v_1`      $a_i$ + `v_2`    `verb_3_`    
--------------  -------------  -------------  -------------  
-            9           9.62           5.57           8.98  
-          -20         -23.39          -7.65         -19.93  
-           10          17.74          -4.50           9.96  
-            0          -9.19           4.13          -0.26  
+exact  `v_1`   $a_i$ + `v_2`  `verb_3_`  
+-----  ------  -------------  ---------  
+    9    9.62           5.57       8.98  
+  -20  -23.39          -7.65     -19.93  
+   10   17.74          -4.50       9.96  
+    0   -9.19           4.13      -0.26  
 
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
 
-     $S$          command     
--------------  -------------  
-$ ||a_0|| $    `norm|length`  
-$x\cap y$              `x|y`  
+    $S$         command     
+-----------  -------------  
+$ ||a_0|| $  `norm|length`  
+$x\cap y$            `x|y`  
 
 
 Finally, a table with math
@@ -21076,11 +21136,11 @@ and URLs.
 
 
 
-                                                                                                                                                                                 
----------------------------------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
-                     $\mathcal{L}=0$                       [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
-                          $a=b$                            [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
-             $\nabla\cdot\boldsymbol{u} =0 $               [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
+                                                                                                                                                       
+-------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
+        $\mathcal{L}=0$          [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+             $a=b$               [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+$\nabla\cdot\boldsymbol{u} =0 $  [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
 
 
 
@@ -22499,7 +22559,11 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "System call:"
+      "But inline HTML code is also important, like text that starts with\n",
+      "`<a href=\"` (which can destroy the following text if not properly\n",
+      "quoted).\n",
+      "\n",
+      "And here is a system call:"
      ]
     },
     {
@@ -22902,12 +22966,12 @@ is at the end with only one newline.
       "\n",
       "<table border=\"1\">\n",
       "<thead>\n",
-      "<tr><th align=\"center\">    time    </th> <th align=\"center\">  velocity  </th> <th align=\"center\">acceleration</th> </tr>\n",
+      "<tr><th align=\"center\">time</th> <th align=\"center\">velocity</th> <th align=\"center\">acceleration</th> </tr>\n",
       "</thead>\n",
       "<tbody>\n",
-      "<tr><td align=\"left\">   0.0             </td> <td align=\"right\">   1.4186          </td> <td align=\"right\">   -5.01           </td> </tr>\n",
-      "<tr><td align=\"left\">   2.0             </td> <td align=\"right\">   1.376512        </td> <td align=\"right\">   11.919          </td> </tr>\n",
-      "<tr><td align=\"left\">   4.0             </td> <td align=\"right\">   1.1E+1          </td> <td align=\"right\">   14.717624       </td> </tr>\n",
+      "<tr><td align=\"left\">   0.0     </td> <td align=\"right\">   1.4186      </td> <td align=\"right\">   -5.01           </td> </tr>\n",
+      "<tr><td align=\"left\">   2.0     </td> <td align=\"right\">   1.376512    </td> <td align=\"right\">   11.919          </td> </tr>\n",
+      "<tr><td align=\"left\">   4.0     </td> <td align=\"right\">   1.1E+1      </td> <td align=\"right\">   14.717624       </td> </tr>\n",
       "</tbody>\n",
       "</table>\n",
       "\n",
@@ -22938,12 +23002,12 @@ is at the end with only one newline.
       "\n",
       "<table border=\"1\">\n",
       "<thead>\n",
-      "<tr><th align=\"left\">    time    </th> <th align=\"left\">  velocity  </th> <th align=\"left\">acceleration</th> </tr>\n",
+      "<tr><th align=\"left\">time</th> <th align=\"left\">velocity</th> <th align=\"left\">acceleration</th> </tr>\n",
       "</thead>\n",
       "<tbody>\n",
-      "<tr><td align=\"left\">   0.0             </td> <td align=\"left\">   1.4186          </td> <td align=\"left\">   -5.01           </td> </tr>\n",
-      "<tr><td align=\"left\">   1.0             </td> <td align=\"left\">   1.376512        </td> <td align=\"left\">   11.919          </td> </tr>\n",
-      "<tr><td align=\"left\">   3.0             </td> <td align=\"left\">   1.1E+1          </td> <td align=\"left\">   14.717624       </td> </tr>\n",
+      "<tr><td align=\"left\">   0.0     </td> <td align=\"left\">   1.4186      </td> <td align=\"left\">   -5.01           </td> </tr>\n",
+      "<tr><td align=\"left\">   1.0     </td> <td align=\"left\">   1.376512    </td> <td align=\"left\">   11.919          </td> </tr>\n",
+      "<tr><td align=\"left\">   3.0     </td> <td align=\"left\">   1.1E+1      </td> <td align=\"left\">   14.717624       </td> </tr>\n",
       "</tbody>\n",
       "</table>\n",
       "And one with math headings (that are expanded and must be treated\n",
@@ -22952,16 +23016,16 @@ is at the end with only one newline.
       "\n",
       "<table border=\"1\">\n",
       "<thead>\n",
-      "<tr><th align=\"center\">   $i$    </th> <th align=\"center\">  $h_i$   </th> <th align=\"center\">$\\bar T_i$</th> <th align=\"center\">  <code>L_i</code>   </th> </tr>\n",
+      "<tr><th align=\"center\">$i$</th> <th align=\"center\">$h_i$ </th> <th align=\"center\">$\\bar T_i$</th> <th align=\"center\"> <code>L_i</code> </th> </tr>\n",
       "</thead>\n",
       "<tbody>\n",
-      "<tr><td align=\"left\">   0             </td> <td align=\"right\">   0             </td> <td align=\"right\">   288           </td> <td align=\"right\">   -0.0065       </td> </tr>\n",
-      "<tr><td align=\"left\">   1             </td> <td align=\"right\">   11,000        </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.0           </td> </tr>\n",
-      "<tr><td align=\"left\">   2             </td> <td align=\"right\">   20,000        </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.001         </td> </tr>\n",
-      "<tr><td align=\"left\">   3             </td> <td align=\"right\">   32,000        </td> <td align=\"right\">   228           </td> <td align=\"right\">   0.0028        </td> </tr>\n",
-      "<tr><td align=\"left\">   4             </td> <td align=\"right\">   47,000        </td> <td align=\"right\">   270           </td> <td align=\"right\">   0.0           </td> </tr>\n",
-      "<tr><td align=\"left\">   5             </td> <td align=\"right\">   51,000        </td> <td align=\"right\">   270           </td> <td align=\"right\">   -0.0028       </td> </tr>\n",
-      "<tr><td align=\"left\">   6             </td> <td align=\"right\">   71,000        </td> <td align=\"right\">   214           </td> <td align=\"right\">   <code>NaN</code>         </td> </tr>\n",
+      "<tr><td align=\"left\">   0      </td> <td align=\"right\">   0         </td> <td align=\"right\">   288           </td> <td align=\"right\">   -0.0065    </td> </tr>\n",
+      "<tr><td align=\"left\">   1      </td> <td align=\"right\">   11,000    </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.0        </td> </tr>\n",
+      "<tr><td align=\"left\">   2      </td> <td align=\"right\">   20,000    </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.001      </td> </tr>\n",
+      "<tr><td align=\"left\">   3      </td> <td align=\"right\">   32,000    </td> <td align=\"right\">   228           </td> <td align=\"right\">   0.0028     </td> </tr>\n",
+      "<tr><td align=\"left\">   4      </td> <td align=\"right\">   47,000    </td> <td align=\"right\">   270           </td> <td align=\"right\">   0.0        </td> </tr>\n",
+      "<tr><td align=\"left\">   5      </td> <td align=\"right\">   51,000    </td> <td align=\"right\">   270           </td> <td align=\"right\">   -0.0028    </td> </tr>\n",
+      "<tr><td align=\"left\">   6      </td> <td align=\"right\">   71,000    </td> <td align=\"right\">   214           </td> <td align=\"right\">   <code>NaN</code>      </td> </tr>\n",
       "</tbody>\n",
       "</table>\n",
       "And add one with verbatim headings (with underscores),\n",
@@ -22970,13 +23034,13 @@ is at the end with only one newline.
       "\n",
       "<table border=\"1\">\n",
       "<thead>\n",
-      "<tr><th align=\"center\">    exact    </th> <th align=\"center\">    <code>v_1</code>    </th> <th align=\"center\">$a_i$ + <code>v_2</code></th> <th align=\"center\">  <code>verb_3_</code>  </th> </tr>\n",
+      "<tr><th align=\"center\">exact</th> <th align=\"center\"><code>v_1</code> </th> <th align=\"center\">$a_i$ + <code>v_2</code></th> <th align=\"center\"><code>verb_3_</code></th> </tr>\n",
       "</thead>\n",
       "<tbody>\n",
-      "<tr><td align=\"right\">   9                </td> <td align=\"right\">   9.62             </td> <td align=\"right\">   5.57             </td> <td align=\"right\">   8.98             </td> </tr>\n",
-      "<tr><td align=\"right\">   -20              </td> <td align=\"right\">   -23.39           </td> <td align=\"right\">   -7.65            </td> <td align=\"right\">   -19.93           </td> </tr>\n",
-      "<tr><td align=\"right\">   10               </td> <td align=\"right\">   17.74            </td> <td align=\"right\">   -4.50            </td> <td align=\"right\">   9.96             </td> </tr>\n",
-      "<tr><td align=\"right\">   0                </td> <td align=\"right\">   -9.19            </td> <td align=\"right\">   4.13             </td> <td align=\"right\">   -0.26            </td> </tr>\n",
+      "<tr><td align=\"right\">   9        </td> <td align=\"right\">   9.62      </td> <td align=\"right\">   5.57             </td> <td align=\"right\">   8.98         </td> </tr>\n",
+      "<tr><td align=\"right\">   -20      </td> <td align=\"right\">   -23.39    </td> <td align=\"right\">   -7.65            </td> <td align=\"right\">   -19.93       </td> </tr>\n",
+      "<tr><td align=\"right\">   10       </td> <td align=\"right\">   17.74     </td> <td align=\"right\">   -4.50            </td> <td align=\"right\">   9.96         </td> </tr>\n",
+      "<tr><td align=\"right\">   0        </td> <td align=\"right\">   -9.19     </td> <td align=\"right\">   4.13             </td> <td align=\"right\">   -0.26        </td> </tr>\n",
       "</tbody>\n",
       "</table>\n",
       "Pipe symbols in verbatim and math text in tables used to pose difficulties,\n",
@@ -22984,11 +23048,11 @@ is at the end with only one newline.
       "\n",
       "<table border=\"1\">\n",
       "<thead>\n",
-      "<tr><th align=\"center\">     $S$     </th> <th align=\"center\">   command   </th> </tr>\n",
+      "<tr><th align=\"center\">    $S$    </th> <th align=\"center\">   command   </th> </tr>\n",
       "</thead>\n",
       "<tbody>\n",
-      "<tr><td align=\"left\">   $ ||a_0|| $      </td> <td align=\"right\">   <code>norm|length</code>    </td> </tr>\n",
-      "<tr><td align=\"left\">   $x\\cap y$        </td> <td align=\"right\">   <code>x|y</code>            </td> </tr>\n",
+      "<tr><td align=\"left\">   $ ||a_0|| $    </td> <td align=\"right\">   <code>norm|length</code>    </td> </tr>\n",
+      "<tr><td align=\"left\">   $x\\cap y$      </td> <td align=\"right\">   <code>x|y</code>            </td> </tr>\n",
       "</tbody>\n",
       "</table>\n",
       "Finally, a table with math\n",
@@ -23001,9 +23065,9 @@ is at the end with only one newline.
       "<table border=\"1\">\n",
       "<tr></tr>\n",
       "<tbody>\n",
-      "<tr><td align=\"center\">   $\\mathcal{L}=0$                                              </td> <td align=\"center\">   [<code>080</code>](../doc/src/manual/mov/wave_frames/frame_0080.png)    </td> <td align=\"center\">   [<code>085</code>](../doc/src/manual/mov/wave_frames/frame_0085.png)    </td> </tr>\n",
-      "<tr><td align=\"center\">   $a=b$                                                        </td> <td align=\"center\">   [<code>090</code>](../doc/src/manual/mov/wave_frames/frame_0090.png)    </td> <td align=\"center\">   [<code>095</code>](../doc/src/manual/mov/wave_frames/frame_0095.png)    </td> </tr>\n",
-      "<tr><td align=\"center\">   $\\nabla\\cdot\\boldsymbol{u} =0 $                              </td> <td align=\"center\">   [<code>100</code>](../doc/src/manual/mov/wave_frames/frame_0100.png)    </td> <td align=\"center\">   [<code>105</code>](../doc/src/manual/mov/wave_frames/frame_0105.png)    </td> </tr>\n",
+      "<tr><td align=\"center\">   $\\mathcal{L}=0$                    </td> <td align=\"center\">   [<code>080</code>](../doc/src/manual/mov/wave_frames/frame_0080.png)    </td> <td align=\"center\">   [<code>085</code>](../doc/src/manual/mov/wave_frames/frame_0085.png)    </td> </tr>\n",
+      "<tr><td align=\"center\">   $a=b$                              </td> <td align=\"center\">   [<code>090</code>](../doc/src/manual/mov/wave_frames/frame_0090.png)    </td> <td align=\"center\">   [<code>095</code>](../doc/src/manual/mov/wave_frames/frame_0095.png)    </td> </tr>\n",
+      "<tr><td align=\"center\">   $\\nabla\\cdot\\boldsymbol{u} =0 $    </td> <td align=\"center\">   [<code>100</code>](../doc/src/manual/mov/wave_frames/frame_0100.png)    </td> <td align=\"center\">   [<code>105</code>](../doc/src/manual/mov/wave_frames/frame_0105.png)    </td> </tr>\n",
       "</tbody>\n",
       "</table>\n",
       "\n",
@@ -24505,835 +24569,11 @@ iso-8859-1
 iso-8859-1
 iso-8859-1
 
-************** File: testdoc_pnd_l2h.html *****************
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <title></title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-</head>
-<body>
-<p>The format of this document is plain, homemade <span>LaTeX</span> (from DocOnce).</p>
-<p>This is a document with many test constructions for doconce syntax. It was used heavily for the development and kept for testing numerous constructions, also special and less common cases.</p>
-<p>And exactly for test purposes we have an extra line here, which is part of the abstract.</p>
-<h1 id="sec1">Section 1</h1>
-<p>Here is a nested list:</p>
-<ul>
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-<li><p>item3 which continues on the next line to test that feature</p></li>
-<li><p>and a sublist</p>
-<ul>
-<li><p>with indented subitem1</p></li>
-<li><p>and a subitem2</p></li>
-</ul></li>
-<li><p>and perhaps an ordered sublist</p>
-<ol style="list-style-type: decimal">
-<li><p>first item</p></li>
-<li><p>second item, continuing on a new line</p></li>
-</ol></li>
-</ul>
-<h4 id="here-is-a-list-with-paragraph-heading.">Here is a list with paragraph heading.</h4>
-<ul>
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-</ul>
-<h4 id="here-is-a-list-with-subsubsection-heading.">Here is a list with subsubsection heading.</h4>
-<ul>
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-</ul>
-<blockquote>
-<p>Here are two lines that make up a block quote.</p>
-</blockquote>
-<p>Here are two references. Equation ([my:eq1]) is fine. Eq. ([my:eq1]) too. Even Equation ([my:eq1]) without the tilde.</p>
-<h2 id="subsec1">Subsection 1</h2>
-<p>More text, with a reference back to Section [sec1] and [subsec1], and further to the sections [subsec1] and [subsubsec:ex], which encourages you to do the tasks in the Exercises [demo:ex:1] and [exer:some:formula]. Appendices [app1] and [app2] are also nice elements.</p>
-<h4 id="computer-code.">Computer code.</h4>
-<p>Let’s do some copying from files too. First from subroutine up to the very end,</p>
-<pre><code>subroutine test()
-      integer i
-      real*8 r
-      r = 0
-      do i = 1, i
-         r = r + i
-      end do
-      return
-C     END1
+************** File: testdoc.md *****************
+% A Document for Testing DocOnce
+% **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
+% Jan 32, 2100
 
-      program testme
-      call test()
-      return</code></pre>
-<p>and then just the subroutine,</p>
-<pre><code>      subroutine test()
-      integer i
-      real*8 r
-      r = 0
-      do i = 1, i
-         r = r + i
-      end do
-      return</code></pre>
-<p>and finally the complete file with a plain text verbatim environment (<code>envir=ccq</code>):</p>
-<pre><code>C     a comment
-
-      subroutine test()
-      integer i
-      real*8 r
-      r = 0
-      do i = 1, i
-         r = r + i
-      end do
-      return
-C     END1
-
-      program testme
-      call test()
-      return</code></pre>
-<p>Testing other code environments. First Python:</p>
-<pre><code>!bc pycod
-def f(x):
-    return x+1
-!ec</code></pre>
-<p>which gets rendered as</p>
-<pre><code>def f(x):
-    return x+1</code></pre>
-<p>Test paragraph and subsubsection headings before code.</p>
-<h4 id="paragraph-heading-before-code.">Paragraph heading before code.</h4>
-<pre><code>def g(y):
-    return y+1</code></pre>
-<h4 id="subsubsection-heading-before-code.">Subsubsection heading before code.</h4>
-<pre><code>def h(z):
-    return z+1</code></pre>
-<p>Now a complete program to be shown via Python Online Tutorial:</p>
-<pre><code>class Line:
-    def __init__(self, a, b):
-        self.a, self.b = a, b
-
-    def __call__(self, x):
-        a, b = self.a, self.b
-        return a*x + b
-
-line = Line(2, 1)
-y = line(x=3)
-print y</code></pre>
-<p>(<a href="{http://pythontutor.com/visualize.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=2&amp;curInstr=0}">Visualize execution</a>)</p>
-<p>Some more Python code (actually specified as a sage cell, but such cells are not supported by this format).</p>
-<pre><code>a = 2
-b = 3
-print &#39;a+b:&#39;, a + b
-
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
-plot(x, y)
-xlabel(&#39;x&#39;); ylabel(&#39;y&#39;)
-show()</code></pre>
-<p>Then Cython:</p>
-<pre><code>cpdef f(double x):
-    return x + 1</code></pre>
-<p>Standard Python shell sessions:</p>
-<pre><code>&gt;&gt;&gt; from numpy import sin
-&gt;&gt;&gt; # Some comment
-&gt;&gt;&gt; x = sin(1.2); print &#39;Value:&#39;, x
-Value: 0.932039085967</code></pre>
-<p>IPython sessions:</p>
-<pre><code>In [1]: from numpy import sin
-
-In [2]: # Some comment
-
-In [3]: x = sin(1.2); print &#39;Value:&#39;, x
-Value: 0.932039085967</code></pre>
-<p>C++:</p>
-<pre><code>#include &lt;iostream&gt;
-
-int main()
-{
-   std::cout &lt;&lt; &quot;Sample output&quot; &lt;&lt; std::endl;
-   return 0
-}</code></pre>
-<p>And a little bit of Fortran:</p>
-<pre><code>!bc cod
-      subroutine midpt(x, length, a, b)
-      real*8 a, b, x
-      x = (a + b)/2
-      length = b - a
-      return
-      end
-!ec</code></pre>
-<p>which then is typeset as</p>
-<pre><code>subroutine midpt(x, length, a, b)
-      real*8 a, b, x
-      x = (a + b)/2
-      length = b - a
-      return
-      end</code></pre>
-<p>HTML:</p>
-<pre><code>&lt;table&gt;
-&lt;tr&gt;&lt;td&gt;Column 1&lt;/td&gt;&lt;td&gt;Column 2&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;0.67526 &lt;/td&gt;&lt;td&gt;0.92871 &lt;/td&gt;&lt;/tr&gt;
-&lt;!-- comment --&gt;
-&lt;/table&gt;</code></pre>
-<p>System call:</p>
-<pre><code>Terminal&gt; mkdir test
-Terminal&gt; cd test
-Terminal&gt; myprog -f
-output1
-output2</code></pre>
-<p>Any valid pygments lexer/language name can appear to, e.g.,</p>
-<pre><code>!bc restructuredtext
-=======
-Heading
-=======
-
-Some text.
-!ec</code></pre>
-<p>results in</p>
-<pre><code>=======
-Heading
-=======
-
-Some text.</code></pre>
-<p>Finally, ?!bc do? supports highlighting of DocOnce source:</p>
-<pre><code>======= DocOnce test file =======
-
-===== Computer code =====
-
-Inline verbatim code, as in `import numpy as np`, is allowed, as well as
-code blocks:
-
-!bc pycod
-from math import sin
-
-def f(x):
-    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
-    return sin(x) + 1
-
-print f(0)
-!ec
-
-
-===== Mathematics =====
-
-Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
-as equations:
-
-!bt
-\begin{align*}
-\nabla\cdot\bm{u} &amp;= 0,\\ 
-\bm{u} &amp;= \nabla\phi .
-\end{align*}
-!et
-
-=== Subsubsection heading ===
-
-DocOnce files can have chapters, sections, subsections, and subsubsections.
-
-__Paragraph heading.__ Paragraphs may have headings.</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test ?!bc? and ?!ec? as well as ?!bsummary?. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in <span>LaTeX</span> inline verbatim, we need to test it, as in ?a != b?, and a DocOnce directive a la ?!bc?.</p>
-<p>Here is some color and an attempt to write Some formats will only display<br />this correctly when HTML is the output format.<br />But here some more running text is added which is not part of the previous blocks with line breaks.</p>
-<h4 id="running-os-commands.">Running OS commands.</h4>
-<pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
-Testing
-output
-from
-Python.</code></pre>
-<h4 id="footnotes.">Footnotes.</h4>
-<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors, now in</p>
-<ul>
-<li><p>list items</p></li>
-<li><p>even with math <span class="math">\(\nabla^2u\)</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
-<li><p>and code `h[i] += 1`<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</p></li>
-<li><p>and <a href="{http://google.com}">links</a><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p></li>
-</ul>
-<p>which gives flexibility in writing. This is the third<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> example.</p>
-<p>Here is some more text before a new definition of a footnote that was used used above.</p>
-<p>[Non-breaking space character.] This paragraph aims to test <a href="{http://en.wikipedia.org/wiki/Non-breaking_space}">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a <a href="{http://google.com}">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
-<h2 id="subsec:ex">Subsection 2: Testing figures</h2>
-<p>Test of figures. In particular we refer to Figure [fig:impact] in which there is a flow.</p>
-<div class="figure">
-<embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
-</div>
-<p>Figures without captions are allowed and will be inlined.</p>
-<div class="figure">
-<embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
-</div>
-<p>Here is figure [myfig] with a long multi-line caption and an extra space before the FIGURE keyword.</p>
-<div class="figure">
-<embed src="../doc/src/manual/fig/wave1D.eps" /><p class="caption">image</p>
-</div>
-<p>Test URL as figure name:</p>
-<div class="figure">
-<img src="downloaded_figures/f_plot.png" alt="image" /><p class="caption">image</p>
-</div>
-<h4 id="remark.">Remark.</h4>
-<p>Movies are tested in separate file <code>movies.do.txt</code>.</p>
-<h2 id="decay:sec:theta">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h2>
-<p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
-<pre><code>def f(theta):
-    return theta**2</code></pre>
-<h4 id="more-on-theta.">More on <span class="math">\(\theta\)</span>.</h4>
-<p>Here is more text following headline with math.</p>
-<p>Newcommands must also be tested in this test report: <span class="math">\(\frac{1}{2}\)</span>, <span class="math">\(1/2\)</span>, <span class="math">\(\pmb{x}\)</span>, <span class="math">\(\frac{Du}{dt}\)</span>, both inline and in block:</p>
-<p><span class="math">\[\begin{aligned}
-\frac{Du}{dt} &amp;= 0
-\\ 
-\frac{1}{2}&amp;= 1/2\\ 
-\frac{1}{2}\pmb{x}&amp;= \pmb{n}\end{aligned}\]</span></p>
-<p>Or with align with label and numbers:</p>
-<p><span class="math">\[\begin{aligned}
-\frac{Du}{dt} &amp;= 0
-\label{aligneq1}\\ 
-\frac{1}{2}&amp;= 1/2\\ 
-\frac{1}{2}\pmb{x}&amp;= \pmb{n}\label{aligneq2}\end{aligned}\]</span></p>
-<h2 id="custom-environments">Custom Environments</h2>
-<p>Here is an attempt to create a theorem environment via Mako (for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end <span>LaTeX</span> environments for theorems. Should look nice in most formats!</p>
-<p>[theorem:fundamental1]</p>
-<h4 id="theorem-5.">Theorem 5.</h4>
-<p>Let <span class="math">\(a=1\)</span> and <span class="math">\(b=2\)</span>. Then <span class="math">\(c=3\)</span>.</p>
-<h4 id="proof.">Proof.</h4>
-<p>Since <span class="math">\(c=a+b\)</span>, the result follows from straightforward addition. <span class="math">\(\Diamond\)</span></p>
-<p>As we see, the proof of Theorem 5 is a modest achievement.</p>
-<h2 id="subsec:table">Tables</h2>
-<p>Let us take this table from the manual:</p>
-<blockquote>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">0.0</td>
-<td align="right">1.4186</td>
-<td align="right">-5.01</td>
-</tr>
-<tr class="even">
-<td align="left">2.0</td>
-<td align="right">1.376512</td>
-<td align="right">11.919</td>
-</tr>
-<tr class="odd">
-<td align="left">4.0</td>
-<td align="right">1.1E+1</td>
-<td align="right">14.717624</td>
-</tr>
-</tbody>
-</table>
-<p>The DocOnce source code reads</p>
-</blockquote>
-<pre><code>  |--------------------------------|
-  |time  | velocity | acceleration |
-  |--l--------r-----------r--------|
-  | 0.0  | 1.4186   | -5.01        |
-  | 2.0  | 1.376512 | 11.919       |
-  | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|</code></pre>
-<p>Here is yet another table to test that we can handle more than one table:</p>
-<blockquote>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">0.0</td>
-<td align="left">1.4186</td>
-<td align="left">-5.01</td>
-</tr>
-<tr class="even">
-<td align="left">1.0</td>
-<td align="left">1.376512</td>
-<td align="left">11.919</td>
-</tr>
-<tr class="odd">
-<td align="left">3.0</td>
-<td align="left">1.1E+1</td>
-<td align="left">14.717624</td>
-</tr>
-</tbody>
-</table>
-<p>And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:</p>
-</blockquote>
-<blockquote>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">0</td>
-<td align="right">0</td>
-<td align="right">288</td>
-<td align="right">-0.0065</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="right">11,000</td>
-<td align="right">216</td>
-<td align="right">0.0</td>
-</tr>
-<tr class="odd">
-<td align="left">2</td>
-<td align="right">20,000</td>
-<td align="right">216</td>
-<td align="right">0.001</td>
-</tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="right">32,000</td>
-<td align="right">228</td>
-<td align="right">0.0028</td>
-</tr>
-<tr class="odd">
-<td align="left">4</td>
-<td align="right">47,000</td>
-<td align="right">270</td>
-<td align="right">0.0</td>
-</tr>
-<tr class="even">
-<td align="left">5</td>
-<td align="right">51,000</td>
-<td align="right">270</td>
-<td align="right">-0.0028</td>
-</tr>
-<tr class="odd">
-<td align="left">6</td>
-<td align="right">71,000</td>
-<td align="right">214</td>
-<td align="right"><code>NaN</code></td>
-</tr>
-</tbody>
-</table>
-<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):</p>
-</blockquote>
-<blockquote>
-<table>
-<tbody>
-<tr class="odd">
-<td align="right">9</td>
-<td align="right">9.62</td>
-<td align="right">5.57</td>
-<td align="right">8.98</td>
-</tr>
-<tr class="even">
-<td align="right">-20</td>
-<td align="right">-23.39</td>
-<td align="right">-7.65</td>
-<td align="right">-19.93</td>
-</tr>
-<tr class="odd">
-<td align="right">10</td>
-<td align="right">17.74</td>
-<td align="right">-4.50</td>
-<td align="right">9.96</td>
-</tr>
-<tr class="even">
-<td align="right">0</td>
-<td align="right">-9.19</td>
-<td align="right">4.13</td>
-<td align="right">-0.26</td>
-</tr>
-</tbody>
-</table>
-<p>Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:</p>
-</blockquote>
-<blockquote>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">$ ||a_0|| $</td>
-<td align="right"><code>norm|length</code></td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math">\(x\cap y\)</span></td>
-<td align="right"><code>x|y</code></td>
-</tr>
-</tbody>
-</table>
-<p>Finally, a table with math and URLs.</p>
-</blockquote>
-<blockquote>
-<span>ccc</span><br /><span class="math">\(\mathcal{L}=0\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0085.png" alt="image" /><br /><span class="math">\(a=b\)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0090.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0095.png" alt="image" /><br /><span class="math">\(\nabla\cdot\bm{u} =0 \)</span> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0100.png" alt="image" /> &amp; <img src="../doc/src/manual/mov/wave_frames/frame_0105.png" alt="image" /><br />
-</blockquote>
-<h2 id="a-test-of-verbatim-words-in-heading-with-subscript-a_i-my_file_v1-and-my_file_v2">A test of verbatim words in heading with subscript <span class="math">\(a_i\)</span>: <code>my\_file\_v1</code> and <code>my\_file\_v2</code></h2>
-<h4 id="paragraph-with-verbatim-and-math-my_file_v1.py-and-my_file_v2.py-define-some-math-a_i-1.">Paragraph with verbatim and math: <code>my\_file\_v1.py</code> and <code>my\_file\_v2.py</code> define some math <span class="math">\(a_{i-1}\)</span>.</h4>
-<p>Here is more <code>__verbatim__</code> code and some plain text on a new line.</p>
-<h2 id="just-bold"><strong>Just bold</strong></h2>
-<p>Some text.</p>
-<h2 id="just-emphasize"><em>Just emphasize</em></h2>
-<p>Some text.</p>
-<h2 id="just-verbatim"><code>Just verbatim</code></h2>
-<p>Some text.</p>
-<h2 id="bold-beginning"><strong>Bold</strong> beginning</h2>
-<p>Some text.</p>
-<h2 id="emphasize-beginning"><em>Emphasize</em> beginning</h2>
-<p>Some text.</p>
-<h2 id="verbatim-beginning"><code>Verbatim</code> beginning</h2>
-<p>Some text.</p>
-<h2 id="maybe-bold-end">Maybe <strong>bold end</strong></h2>
-<p>Some text.</p>
-<h2 id="maybe-emphasize-end">Maybe <em>emphasize end</em></h2>
-<p>Some text.</p>
-<h2 id="maybe-verbatim-end">Maybe <code>verbatim end</code></h2>
-<p>Some text.</p>
-<h2 id="the-middle-has-bold-word">The middle has <strong>bold</strong> word</h2>
-<p>Some text.</p>
-<h2 id="the-middle-has-emphasize-word">The middle has <em>emphasize</em> word</h2>
-<p>Some text.</p>
-<h2 id="the-middle-has-verbatim-word">The middle has <code>verbatim</code> word</h2>
-<p>Some text.</p>
-<h4 id="just-emphasize."><em>Just emphasize</em>.</h4>
-<p>Some text.</p>
-<h4 id="just-verbatim."><code>Just verbatim</code>.</h4>
-<p>Some text.</p>
-<h4 id="emphasize-beginning."><em>Emphasize</em> beginning.</h4>
-<p>Some text.</p>
-<h4 id="verbatim-beginning."><code>Verbatim beginning</code>.</h4>
-<p>Some text.</p>
-<h4 id="maybe-emphasize-end.">Maybe <em>emphasize end</em>.</h4>
-<p>Some text.</p>
-<h4 id="maybe-verbatim-end.">Maybe <code>verbatim end</code>.</h4>
-<p>Some text.</p>
-<h4 id="the-middle-has-emphasize-word.">The middle has <em>emphasize</em> word.</h4>
-<p>Some text.</p>
-<h4 id="the-middle-has-verbatim-word.">The middle has <code>verbatim</code> word.</h4>
-<p>Some text.</p>
-<h4 id="ampersand.">Ampersand.</h4>
-<p>We can test Hennes <span>&amp;</span> Mauritz, often abbreviated H<span>&amp;</span>M, but written as <code>Hennes &amp; Mauritz</code> and <code>H &amp; M</code>. A sole <code>&amp;</code> must also work.</p>
-<pre><code># Just to check that ampersand works in code blocks:
-c = a &amp; b</code></pre>
-<h4 id="quotes.">Quotes.</h4>
-<p>Let us also add a test of quotes such as “double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)”; written in the standard <span>LaTeX</span>-style that gives correct <span>LaTeX</span> formatting and ordinary double quotes for all non-<span>LaTeX</span> formats. Here is another sentence that “caused” a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.</p>
-<h2 id="bibliography-test">Bibliography test</h2>
-<p>Here is an example: <span class="citation">@Langtangen_Pedersen_2002</span> discussed propagation of large destructive water waves, <span class="citation">@Langtangen_et_al_2002</span> gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in <span class="citation">@Langtangen_1994a</span>. The book chapter <span class="citation">@Mardal_et_al_2003a</span> contains information on C++ software tools for programming multigrid methods. A real retro reference is <span class="citation">@Langtangen_1988d</span> about a big FORTRAN package. Multiple references are also possible, e.g., see <span class="citation">@Langtangen_Pedersen_2002 [@Mardal_et_al_2003a]</span>.</p>
-<p>We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: <span class="citation">@Langtangen_1992c [@Langtangen_1994a; @Mortensen_et_al_2011; @Langtangen_Pedersen_2002]</span> and <span class="citation">@Langtangen_et_al_2002 [@Glimsdal_et_al_20006; @Rahman_et_al_2006b; @Haga_et_al_2011a; @Langtangen_2003a; @Langtangen_2008a; @Langtangen:95]</span> and all the work of <span class="citation">@Langtangen_2012 [@Mardal_et_al_2003a; @Jeberg_et_al_2004]</span> as well as old work <span class="citation">@Langtangen_1988d</span> and <span class="citation">@Langtangen_1989e</span>, and the talk <span class="citation">@Langtangen_talk_2007a</span>. Langtangen also had two thesis <span class="citation">@Langtangen:85 [@Langtangen_1989e]</span>. More retro citations are the old ME-IN323 book <span class="citation">@Langtangen:91</span> and the <span class="citation">@Langtangen:94b</span> OONSKI ’94 paper.</p>
-<h2 id="Example" class="unnumbered">Example : Examples can be typeset as exercises</h2>
-<p>Examples can start with a subsection heading starting with <code>Example:</code> and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> State some problem.</p>
-<h4 id="solution.">Solution.</h4>
-<p>The answer to this subproblem can be written here.</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>b)</span> State some other problem.</p>
-<h4 id="hint-1.">Hint 1.</h4>
-<p>A hint can be given.</p>
-<h4 id="hint-2.">Hint 2.</h4>
-<p>Maybe even another hint?</p>
-<h4 id="solution.-1">Solution.</h4>
-<p>The answer to this other subproblem goes here, maybe over multiple doconce input lines.</p>
-<h2 id="subsubsec:ex">URLs</h2>
-<p>Testing of URLs: hpl’s home page <a href="{http://folk.uio.no/hpl}">hpl</a>, or the entire URL if desired, <a href="{http://folk.uio.no/hpl}"></a>. Here is a plain file link <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a>, or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}"></a> or <a href="{testdoc.do.txt}">a link with newline</a>. Can test spaces with the link with word too: <a href="{http://folk.uio.no/hpl}">hpl</a> or <a href="{http://folk.uio.no/hpl}">hpl</a>. Also <code>file:///</code> works: <a href="{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}">link to a file</a> is fine to have. Moreover, “loose” URLs work, i.e., no quotes, just the plain URL as in <a href="{http://folk.uio.no/hpl}"></a>, if followed by space, comma, colon, semi-colon, question mark, exclamation mark, but not a period (which gets confused with the periods inside the URL).</p>
-<p>Mail addresses can also be used: <a href="{mailto:hpl@simula.no}"></a>, or just a <a href="{mailto:hpl@simula.no}">mail link</a>, or a raw <a href="{mailto:hpl@simula.no}"></a>.</p>
-<p>Here are some tough tests of URLs, especially for the <code>latex</code> format: <a href="{http://en.wikipedia.org/wiki/NewtonCotes_formulas}">Newton-Cotes</a> formulas and a <a href="{http://www.springer.com/mathematics/computational+scienceengineering/book/978-3-642-23098-1}">good book</a>. Need to test Newton-Cotes with percentage in URL too: <a href="{http://en.wikipedia.org/wiki/NewtonCotes_formulas}"></a> and <a href="{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}"></a> which has a shebang.</p>
-<p>For the <code>--device=paper</code> option it is important to test that URLs with monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code> is used), as in this reference to <a href="{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}"></a>, <a href="{http://tinyurl.com/pwyasaa/formulas.ball1.py}"></a>, and <a href="{http://tinyurl.com/pwyasaa/formulas.ball2.py}"></a>.</p>
-<p>More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="{http://google.com}">google</a>, <a href="{http://google.com}">google</a>, and <a href="{http://google.com}">google</a>, which should result in exactly three footnotes.</p>
-<h2 id="test-of-some-latex-fixes">Test of Some <span>LaTeX</span> Fixes</h2>
-<p>Let’s check abbr. of some common kind, e.g. the well-known i.e. expression as an example, and 1 vs. 2 which is also often used. Dr. Tang and Prof. Monsen, or maybe also prof. Ting, will go to the Dept. of Science to test how Mr. Hansen is doing together with Ms. Larsen. A reference like Sec. [subsubsec:ex] or Ch. [subsubsec:ex], or even App. [subsubsec:ex], must also be handled. Likewise, this is test no. <span class="math">\(i\)</span> of DocOnce features. Also, look at Fig. 4 to see how the data compares with Tab. [mytab]. Percentage must be fixed: 7%, 87.65% and 50% at the beginning of the line.</p>
-<h1 id="latex-mathematics"><span>LaTeX</span> Mathematics</h1>
-<p>Here is an equation without label using backslash-bracket environment: <span class="math">\[a = b + c\]</span> or with number and label, as in ([my:eq1]), using the equation environment:</p>
-<p><span class="math">\[{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}\]</span></p>
-<p>We can refer to this equation by ([my:eq1]).</p>
-<p>Here is a system without equation numbers, using the align-astrisk environment:</p>
-<p><span class="math">\[\begin{aligned}
-\pmb{a} &amp;= \pmb{q}\times\pmb{n} \\ 
-b &amp;= \nabla^2 u + \nabla^4 v\end{aligned}\]</span></p>
-<p>And here is a system of equations with labels in an align environment:</p>
-<p><span class="math">\[\begin{aligned}
-a &amp;= q + 4 + 5+ 6 \label{eq1} \\ 
-b &amp;= \nabla^2 u + \nabla^4 x \label{eq2}\end{aligned}\]</span></p>
-<p>We can refer to ([eq1])-([eq2]). They are a bit simpler than the Navier-Stokes equations. And test <span>LaTeX</span> hyphen in <code>CG-2</code>. Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</p>
-<p>Many of the next environments will fail in non-latex formats. Testing multiline:</p>
-<p><span class="math">\[\begin{gathered}
-a = b = q + \\ 
-  f + \nabla\cdot\nabla u
-\label{multiline:eq1}\end{gathered}\]</span></p>
-<p>Testing split:</p>
-<p><span class="math">\[\label{split:envir:eq}
-\begin{split}
-a = b = q &amp;+ \\ 
-  &amp; f + \nabla\cdot\nabla u
-\end{split}\]</span></p>
-<p>We can refer to the last equation by ([split:envir:eq]).</p>
-<p>Testing gather:</p>
-<p><span class="math">\[\begin{gathered}
-a = b \\ 
-c = d + 7 + 9\end{gathered}\]</span></p>
-<p>Testing alignat:</p>
-<p><span class="math">\[\begin{aligned}
-{2}
-a &amp;= q + 4 + 5+ 6\qquad &amp; \mbox{for } q\geq 0 \label{eq1a} \\ 
-b &amp;= \nabla^2 u + \nabla^4 x &amp; x\in\Omega \label{eq2a}\end{aligned}\]</span></p>
-<p>Let us refer to ([eq1])-([eq2]) again, and to the alignat variant ([eq1a])-([eq2a]), and to ([my:eq1]).</p>
-<p>Testing eqnarray:</p>
-<p><span class="math">\[\begin{aligned}
-{\partial u\over\partial t} &amp;=&amp; \nabla^2 u + f, \label{myeq1}\\ 
-{\partial v\over\partial t} &amp;=&amp; \nabla\cdot(q(u)\nabla v) + g \label{myeq2}\end{aligned}\]</span></p>
-<p>More mathematical typesetting is demonstrated in the coming exercises.</p>
-<p>Below, we have Problem [demo:ex:1] and Project [demo:ex:2], as well as Projects [proj:circle1] and [exer:you], and in between there we have Exercise [exer:some:formula].</p>
-<h1 id="exercises">Exercises</h1>
-<h2 id="demo:ex:1" class="unnumbered">Problem : Flip a Coin</h2>
-<p>Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out “tail” or “head” for each flip and let the program count the number of heads.</p>
-<h4 id="remarks.">Remarks.</h4>
-<p>Remarks with such a subsubsection heading would previously mark the beginning of a new exercise and cause trouble. Maybe a list</p>
-<ol style="list-style-type: decimal">
-<li><p>Mark 1.</p></li>
-<li><p>Mark 2.</p></li>
-</ol>
-<h4 id="hint-1.-1">Hint 1.</h4>
-<p>Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</p>
-<h4 id="hint-2.-1">Hint 2.</h4>
-<p>Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.</p>
-<h4 id="answer.">Answer.</h4>
-<p>If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, let it be head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</p>
-<h4 id="solution.-2">Solution.</h4>
-<pre><code>import sys, random
-N = int(sys.argv[1])
-heads = 0
-for i in range(N):
-    r = random.random()
-    if r &lt;= 0.5:
-        heads += 1
-print &#39;Flipping a coin %d times gave %d heads&#39; % (N, heads)</code></pre>
-<p>Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.</p>
-<h2 id="not-an-exercise">Not an exercise</h2>
-<p>Should be possible to stick a normal section in the middle of many exercises.</p>
-<h2 id="demo:ex:2" class="unnumbered">Project : Compute a Probability</h2>
-<p>What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval <span class="math">\([0,1)\)</span>?</p>
-<p>At the end we have a list because that caused problems in <span>LaTeX</span> in previous DocOnce versions:</p>
-<ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-</ol>
-<h4 id="hint.">Hint.</h4>
-<p>To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python’s standard <code>random</code> module, count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0.5,0.6)\)</span>, and compute the probability as <span class="math">\(M/N\)</span>.</p>
-<h2 id="proj:circle1" class="unnumbered">Project : Explore Distributions of Random Circles</h2>
-<p>The formula for a circle is given by</p>
-<p><span class="math">\[\begin{aligned}
-x &amp;= x_0 + R\cos 2\pi t,\\ 
-y &amp;= y_0 + R\sin 2\pi t,\end{aligned}\]</span></p>
-<p>where <span class="math">\(R\)</span> is the radius of the circle, <span class="math">\((x_0,y_0)\)</span> is the center point, and <span class="math">\(t\)</span> is a parameter in the unit interval <span class="math">\([0,1]\)</span>. For any <span class="math">\(t\)</span>, <span class="math">\((x,y)\)</span> is a point on the circle. The formula can be used to generate <code>n</code> points on a circle:</p>
-<pre><code>import numpy as np
-
-def circle(R, x0, y0, n=501):
-    t = np.linspace(0, 1, n)
-    x = x0 + R*np.cos(2*np.pi*t)
-    y = y0 + R*np.sin(2*np.pi*t)
-    return x, y
-
-x, y = circle(2.0, 0, 0)</code></pre>
-<p>The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> function above.</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly distributed.</p>
-<h4 id="hint.-1">Hint.</h4>
-<p>Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</p>
-<h4 id="answer.-1">Answer.</h4>
-<p>Here goes the short answer to part a).</p>
-<h4 id="solution.-3">Solution.</h4>
-<p>Here goes a full solution to part a).</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>b)</span> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally distributed. Filename: <code>norm.py</code>.</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>c)</span> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</p>
-<p>Filename: <code>circles.pdf</code>.</p>
-<h4 id="remarks.-1">Remarks.</h4>
-<p>At the very end of the exercise it may be appropriate to summarize and give some perspectives.</p>
-<h2 id="exer:dist" class="unnumbered">Exercise : Determine some Distance</h2>
-<p>Intro to this exercise. Questions are in subexercises below.</p>
-<p>The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.</p>
-<p>Test list in exercise:</p>
-<ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-</ol>
-<h4 id="solution.-4">Solution.</h4>
-<p>Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[\hbox{math in solution: } a = b\]</span> And code <code>a=b</code> in this solution:</p>
-<pre><code>a = b  # code in solution</code></pre>
-<p>End of solution is here.</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> Subexercises are numbered a), b), etc.</p>
-<h4 id="hint-1.-2">Hint 1.</h4>
-<p>First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</p>
-<p><span class="math">\[a=b.\]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</p>
-<pre><code>def func(x):
-    return x + 1  # with code in hint</code></pre>
-<h4 id="hint-2.-2">Hint 2.</h4>
-<p>Second hint to subexercise a).</p>
-<p>Test list in hint:</p>
-<ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-</ol>
-<p>Filename: <code>subexer_a.pdf</code>.</p>
-<h4 id="answer.-2">Answer.</h4>
-<p>Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</p>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>b)</span> Here goes the text for subexercise b).</p>
-<p>Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single line:</p>
-<p><span class="math">\[\cos^2 x + \sin^2 x = 1 \thinspace .\]</span></p>
-<h4 id="hint.-2">Hint.</h4>
-<p>A hint for this subexercise.</p>
-<p>Filename: <code>subexer_b.pdf</code>.</p>
-<h4 id="solution.-5">Solution.</h4>
-<p>Here goes the solution of this subexercise.</p>
-<h4 id="remarks.-2">Remarks.</h4>
-<p>Some final closing remarks, e.g., summarizing the main findings and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.</p>
-<h2 id="some-exercise-without-the-exercise-prefix">Some exercise without the “Exercise:” prefix</h2>
-<p>Just some text. And some math saying that <span class="math">\(e^0=1\)</span> on a single line, to test that math block insertion is correct:</p>
-<p><span class="math">\[\exp{(0)} = 1\]</span></p>
-<p>And a test that the code <code>lambda x: x+2</code> is correctly placed here:</p>
-<pre><code>lambda x: x+2</code></pre>
-<h2 id="sec:this:exer:de" class="unnumbered">Exercise : Solution of differential equation</h2>
-<p>[quiz:diff:eq1]</p>
-<p><strong>SOlution of differential equation</strong></p>
-<p>Given</p>
-<p><span class="math">\[\frac{dy}{dx} = -y(x),\quad y(0)=1\]</span> What is the solution of this equation?</p>
-<p><strong>A</strong>. <span class="math">\(y=e^{-y}\)</span></p>
-<p><strong>B</strong>. <span class="math">\(y=e^{y}\)</span></p>
-<p><strong>C</strong>.</p>
-<pre><code>from math import exp
-def f(x):
-    return exp(x)</code></pre>
-<p><strong>D</strong>. The solution cannot be found because there is a derivative in the equation.</p>
-<p><strong>E</strong>. The equation is meaningless: an equation must be an equation for <span class="math">\(x\)</span> or <span class="math">\(y\)</span>, not a function <span class="math">\(y(x)\)</span>.</p>
-<h4 id="answer">Answer:</h4>
-<p>A.</p>
-<p><br /> <strong>A</strong>: Right.</p>
-<p><strong>B</strong>: Wrong. Almost, but the sign is wrong (note the minus!).</p>
-<p><strong>C</strong>: Wrong. Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation:</p>
-<p><span class="math">\[y(x) = e^{-y}.\]</span></p>
-<p><strong>D</strong>: Wrong. Equations with derivatives can be solved; they are termed <em>differential equations</em>.</p>
-<p><strong>E</strong>: Wrong.</p>
-<h2 id="example-just-an-example" class="unnumbered">Example : Just an example</h2>
-<p>startsection<span>paragraph</span><span>4</span><span>@</span> <span>1.5explus1ex minus.2ex</span> <span>-0.5em</span> <span>****</span><span>a)</span> What is the capital of Norway?</p>
-<h4 id="answer.-3">Answer.</h4>
-<p>Oslo.</p>
-<h1 id="here-goes-another-section">Here goes another section</h1>
-<p>With some text, before we continue with exercises.</p>
-<h1 id="more-exercises">More Exercises</h1>
-<h2 id="exer:some:formula" class="unnumbered">Exercise : Make references to projects and problems</h2>
-<p>Pick a statement from Project [proj:circle1] or Problem [demo:ex:1] and verify it.</p>
-<p>Test list at the end of an exercise without other elements (like subexercise, hint, etc.):</p>
-<ol style="list-style-type: decimal">
-<li><p>item1</p></li>
-<li><p>item2</p></li>
-</ol>
-<p>Filename: <code>verify_formula.py</code>.</p>
-<h2 id="exer:you" class="unnumbered">Project : References to Project [demo:ex:2] in a heading works for latex</h2>
-<p>Refer to the previous exercise as Exercise [exer:some:formula], the two before that as Projects [demo:ex:2] and [proj:circle1], and this one as Project [exer:you]. Filename: <code>selc_composed.pdf</code>.</p>
-<h1 id="app1">Just for testing; part I</h1>
-<p>This is the first appendix.</p>
-<h2 id="a-subsection-within-an-appendix">A subsection within an appendix</h2>
-<p>Some text.</p>
-<h1 id="app2">Just for testing; part II</h1>
-<p>This is more stuff for an appendix.</p>
-<h2 id="appendix-testing-identical-titles">Appendix: Testing identical titles</h2>
-<p>Without label.</p>
-<h2 id="test:title:id1">Appendix: Testing identical titles</h2>
-<p>With label.</p>
-<h2 id="test:title:id2">Appendix: Testing identical titles</h2>
-<p>What about inserting a quiz?</p>
-<p>[quiz:2]</p>
-<p><strong>Capital of Norway</strong></p>
-<h4 id="fundamental-test">Fundamental test:</h4>
-<p>What is the capital of Norway?</p>
-<p><strong>A</strong>. Stockholm</p>
-<p><strong>B</strong>. London</p>
-<p><strong>C</strong>. Oslo</p>
-<p><strong>D</strong>. Bergen</p>
-<h4 id="answer-1">Answer:</h4>
-<p>C.</p>
-<p><br /> <strong>A</strong>: Wrong. Stockholm is the capital of Sweden.</p>
-<p><strong>B</strong>: Wrong.</p>
-<p><strong>C</strong>: Right.</p>
-<p><strong>D</strong>: Wrong. Those from Bergen would claim so, but nobody else.</p>
-<h2 id="appendix-testing-identical-titles-1">Appendix: Testing identical titles</h2>
-<p>Without label.</p>
-<p>[Tip.] Here is a tip or hint box, typeset as a notice box.</p>
-<p>Need a lot of text to surround the summary box. Version control systems allow you to record the history of files and share files among several computers and collaborators in a professional way. File changes on one computer are updated or merged with changes on another computer. Especially when working with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the project have the latest updates of the files. Greg Wilson’ excellent <a href="{http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/}">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly from using version control systems.</p>
-<p>[Summary.] <strong>Bold remark:</strong> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</p>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files are <a href="{http://dropbox.com}">Dropbox</a> and <a href="{http://drive.google.com}">Google Drive</a>. It is very easy to get started with these systems, and they allow you to share files among laptops and mobile units with as many users as you want. The systems offer a kind of version control in that the files are stored frequently (several times per minute), and you can go back to previous versions for the last 30 days. However, it is challenging to find the right version from the past when there are so many of them.</p>
-<p>More seriously, when several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox or Google Drive: project hosting services with true version control systems. The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.</p>
-<p>The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files. Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the “master version” at the site where the project is hosted. If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.</p>
-<p>All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.</p>
-<h2 id="appendix-testing-inline-comments">Appendix: Testing inline comments</h2>
-<p>Projects that you want to share among several computers or project workers are today most conveniently stored at some web site “in the cloud” and updated through communication with that site. <span>: not sure if in the cloud is understood by all. </span> I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. <span>: Simply go to <a href="{http://dropbox.com}"></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between machines. </span> It is very easy to get started with Dropbox, and it allows you to share files among .</p>
-<p>——</p>
-<p>First consider a quantity <span class="math">\(Q\)</span>. <span class="math">\(Q&gt;0\)</span>, because (<strong>edit 6</strong>:) negative (<strong>edit 8</strong>:) negative.</p>
-<h2 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h2>
-<p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in <span>LaTeX</span>.</p>
-<p>We also test mdash—used as alternative to hyphen without spaces around, or in quotes:</p>
-<blockquote>
-<p><em>Fun is fun.</em>— Unknown.</p>
-</blockquote>
-<p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, <span>LaTeX</span> removes the definition and inserts the footnote as part of the <span>LaTeX</span> text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p><a href="{google.com}"></a> is perhaps the most famous web site today.<a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref5">↩</a></p></li>
-</ol>
-</div>
-</body>
-</html>
-pandoc 1.12.2.1
-Compiled with texmath 0.6.5.2, highlighting-kate 0.5.5.1.
-Syntax highlighting is supported for the following languages:
-    actionscript, ada, apache, asn1, asp, awk, bash, bibtex, boo, c, changelog,
-    clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css, curry, d,
-    diff, djangotemplate, doxygen, doxygenlua, dtd, eiffel, email, erlang,
-    fortran, fsharp, gnuassembler, go, haskell, haxe, html, ini, java, javadoc,
-    javascript, json, jsp, julia, latex, lex, literatecurry, literatehaskell,
-    lua, makefile, mandoc, markdown, matlab, maxima, metafont, mips, modelines,
-    modula2, modula3, monobasic, nasm, noweb, objectivec, objectivecpp, ocaml,
-    octave, pascal, perl, php, pike, postscript, prolog, python, r,
-    relaxngcompact, rhtml, roff, ruby, rust, scala, scheme, sci, sed, sgml, sql,
-    sqlmysql, sqlpostgresql, tcl, texinfo, verilog, vhdl, xml, xorg, xslt, xul,
-    yacc, yaml
-Default user data directory: /home/hpl/.pandoc
-Copyright (C) 2006-2013 John MacFarlane
-Web:  http://johnmacfarlane.net/pandoc
-This is free software; see the source for copying conditions.  There is no
-warranty, not even for merchantability or fitness for a particular purpose.
-
-************** File: testdoc_pnd_d2h.html *****************
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo" />
-  <meta name="author" content="Kaare Dump at Segfault, Cyberspace" />
-  <meta name="author" content="A. Dummy Author" />
-  <meta name="author" content="I. S. Overworked and Outburned at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst" />
-  <meta name="author" content="J. Doe" />
-  <title>A Document for Testing DocOnce</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
-  </style>
-  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-</head>
-<body>
-<div id="header">
-<h1 class="title">A Document for Testing DocOnce</h1>
-<h2 class="author"><strong>Hans Petter Langtangen</strong> at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo</h2>
-<h2 class="author"><strong>Kaare Dump</strong> at Segfault, Cyberspace</h2>
-<h2 class="author"><strong>A. Dummy Author</strong></h2>
-<h2 class="author"><strong>I. S. Overworked and Outburned</strong> at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst</h2>
-<h2 class="author"><strong>J. Doe</strong></h2>
-<h3 class="date">Jan 32, 2100</h3>
-</div>
 <!-- Table of contents: Run pandoc with --toc option -->
 
 
@@ -25344,79 +24584,113 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 
 
-<p>The format of this document is pandoc <em>Abstract.</em> This is a document with many test constructions for doconce syntax. It was used heavily for the development and kept for testing numerous constructions, also special and less common cases.</p>
-<p>And exactly for test purposes we have an extra line here, which is part of the abstract.</p>
+The format of this document is
+pandoc
+*Abstract.* This is a document with many test constructions for doconce syntax.
+It was used heavily for the development and kept for testing
+numerous constructions, also special and less common cases.
+
+And exactly for test purposes we have an extra line here, which
+is part of the abstract.
+
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
 <!-- is mutually exclusive in LaTeX -->
 
 
 
-<h2 id="section-1">Section 1</h2>
-<p><a name="sec1"/></p>
-<p>Here is a nested list:</p>
-<ul>
-<li>item1</li>
-<li>item2</li>
-<li>item3 which continues on the next line to test that feature</li>
-<li>and a sublist
-<ul>
-<li>with indented subitem1</li>
-<li>and a subitem2</li>
-</ul></li>
-<li>and perhaps an ordered sublist</li>
-</ul>
-<ol style="list-style-type: decimal">
-<li>first item</li>
-<li>second item, continuing on a new line</li>
-</ol>
-<p><em>Here is a list with paragraph heading.</em></p>
-<ul>
-<li>item1</li>
-<li>item2</li>
-</ul>
-<h4 id="here-is-a-list-with-subsubsection-heading">Here is a list with subsubsection heading</h4>
-<ul>
-<li>item1</li>
-<li>item2</li>
-</ul>
-<blockquote>
-<p>Here are two lines that make up a block quote.</p>
-</blockquote>
-<p>Here are two references. Equation  is fine. Eq.  too. Even Equation  without the tilde.</p>
-<h3 id="subsection-1">Subsection 1</h3>
-<p><a name="subsec1"/></p>
+## Section 1
+<a name="sec1"/>
+
+Here is a nested list:
+
+  * item1
+  * item2
+  * item3 which continues
+    on the next line to test that feature
+  * and a sublist
+    * with indented subitem1
+    * and a subitem2
+
+  * and perhaps an ordered sublist
+   1. first item
+   2. second item,
+      continuing on a new line
+
+
+*Here is a list with paragraph heading.*
+
+  * item1
+  * item2
+
+#### Here is a list with subsubsection heading
+
+  * item1
+  * item2
+
+> Here are two lines that make up
+> a block quote.
+
+
+
+Here are two references. Equation\ \eqref{my:eq1} is fine. Eq.\ \eqref{my:eq1} too.
+Even Equation \eqref{my:eq1} without the tilde.
+
+
+### Subsection 1
+<a name="subsec1"/>
+
+
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
-<p>More text, with a reference back to the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>. Appendices <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.</p>
+More text, with a reference back to
+the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the
+the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
+encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).
+Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
+
+
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h4 id="computer-code">Computer code</h4>
-<p>Let's do some copying from files too. First from subroutine up to the very end,</p>
-<pre class="sourceCode Fortran"><code class="sourceCode fortran">      <span class="kw">subroutine</span> test()
-      <span class="dt">integer</span> i
-      <span class="dt">real*8</span> r
-      r <span class="kw">=</span> <span class="dv">0</span>
-      <span class="kw">do</span> i <span class="kw">=</span> <span class="dv">1</span>, i
-         r <span class="kw">=</span> r <span class="kw">+</span> i
-      <span class="kw">end do</span>
-      <span class="kw">return</span>
-<span class="co">C     END1</span>
+#### Computer code
 
-      <span class="kw">program</span> testme
-      <span class="kw">call</span> test()
-      <span class="kw">return</span></code></pre>
-<p>and then just the subroutine,</p>
-<pre class="sourceCode Fortran"><code class="sourceCode fortran">      <span class="kw">subroutine</span> test()
-      <span class="dt">integer</span> i
-      <span class="dt">real*8</span> r
-      r <span class="kw">=</span> <span class="dv">0</span>
-      <span class="kw">do</span> i <span class="kw">=</span> <span class="dv">1</span>, i
-         r <span class="kw">=</span> r <span class="kw">+</span> i
-      <span class="kw">end do</span>
-      <span class="kw">return</span></code></pre>
-<p>and finally the complete file with a plain text verbatim environment (<code>envir=ccq</code>):</p>
-<pre><code>C     a comment
+Let's do some copying from files too. First from subroutine up to the very end,
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Fortran}
+      subroutine test()
+      integer i
+      real*8 r
+      r = 0
+      do i = 1, i
+         r = r + i
+      end do
+      return
+C     END1
+
+      program testme
+      call test()
+      return
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+and then just the subroutine,
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Fortran}
+      subroutine test()
+      integer i
+      real*8 r
+      r = 0
+      do i = 1, i
+         r = r + i
+      end do
+      return
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+and finally the complete file with a plain text verbatim environment
+(`envir=ccq`):
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C     a comment
 
       subroutine test()
       integer i
@@ -25430,114 +24704,202 @@ C     END1
 
       program testme
       call test()
-      return</code></pre>
-<p>Testing other code environments. First Python:</p>
-<pre><code>!bc pycod
+      return
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Testing other code environments. First Python:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!bc pycod
 def f(x):
     return x+1
-!ec</code></pre>
-<p>which gets rendered as</p>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> f(x):
-    <span class="kw">return</span> x<span class="dv">+1</span></code></pre>
-<p>Test paragraph and subsubsection headings before code.</p>
-<p><em>Paragraph heading before code.</em></p>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> g(y):
-    <span class="kw">return</span> y<span class="dv">+1</span></code></pre>
-<h4 id="subsubsection-heading-before-code">Subsubsection heading before code</h4>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> h(z):
-    <span class="kw">return</span> z<span class="dv">+1</span></code></pre>
-<p>Here is a program that is supposed to be interactive via Python Online Tutorial, but that service is not accessible for the present format.</p>
-<pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">class</span> Line:
-    <span class="kw">def</span> <span class="ot">__init__</span>(<span class="ot">self</span>, a, b):
-        <span class="ot">self</span>.a, <span class="ot">self</span>.b = a, b
+!ec
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    <span class="kw">def</span> <span class="ot">__call__</span>(<span class="ot">self</span>, x):
-        a, b = <span class="ot">self</span>.a, <span class="ot">self</span>.b
-        <span class="kw">return</span> a*x + b
+which gets rendered as
 
-line = Line(<span class="dv">2</span>, <span class="dv">1</span>)
-y = line(x=<span class="dv">3</span>)
-<span class="dt">print</span> y</code></pre>
-<p>Some more Python code (actually specified as a sage cell, but such cells are not supported by this format).</p>
-<pre class="sourceCode Python"><code class="sourceCode python">a = <span class="dv">2</span>
-b = <span class="dv">3</span>
-<span class="dt">print</span> <span class="st">&#39;a+b:&#39;</span>, a + b
 
-<span class="co"># In a sage cell we can also plot</span>
-<span class="ch">from</span> matplotlib.pyplot <span class="ch">import</span> *
-<span class="ch">from</span> numpy <span class="ch">import</span> *
-x = linspace(<span class="dv">0</span>, <span class="dv">4</span>*pi, <span class="dv">101</span>)
-y = exp(-<span class="fl">0.1</span>*x)*cos(x)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+def f(x):
+    return x+1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Test paragraph and subsubsection headings before code.
+
+*Paragraph heading before code.*
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+def g(y):
+    return y+1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#### Subsubsection heading before code
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+def h(z):
+    return z+1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is a program that is supposed to be interactive via
+Python Online Tutorial, but that service is not accessible
+for the present format.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
 plot(x, y)
-xlabel(<span class="st">&#39;x&#39;</span>); ylabel(<span class="st">&#39;y&#39;</span>)
-show()</code></pre>
-<p>Then Cython:</p>
-<pre><code>cpdef f(double x):
-    return x + 1</code></pre>
-<p>Standard Python shell sessions:</p>
-<pre class="sourceCode Python"><code class="sourceCode python">&gt;&gt;&gt; <span class="ch">from</span> numpy <span class="ch">import</span> sin
-&gt;&gt;&gt; <span class="co"># Some comment</span>
-&gt;&gt;&gt; x = sin(<span class="fl">1.2</span>); <span class="dt">print</span> <span class="st">&#39;Value:&#39;</span>, x
-Value: <span class="fl">0.932039085967</span></code></pre>
-<p>IPython sessions:</p>
-<pre class="sourceCode Python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="ch">from</span> numpy <span class="ch">import</span> sin
+xlabel('x'); ylabel('y')
+show()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In [<span class="dv">2</span>]: <span class="co"># Some comment</span>
+Then Cython:
 
-In [<span class="dv">3</span>]: x = sin(<span class="fl">1.2</span>); <span class="dt">print</span> <span class="st">&#39;Value:&#39;</span>, x
-Value: <span class="fl">0.932039085967</span></code></pre>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cpdef f(double x):
+    return x + 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Standard Python shell sessions:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IPython sessions:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 <!-- This one tests a + sign before a code environment -->
-<p>C++:</p>
-<pre class="sourceCode Cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
+C++:
 
-<span class="dt">int</span> main()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Cpp}
+#include <iostream>
+
+int main()
 {
-   std::cout &lt;&lt; <span class="st">&quot;Sample output&quot;</span> &lt;&lt; std::endl;
-   <span class="kw">return</span> <span class="dv">0</span>
-}</code></pre>
+   std::cout << "Sample output" << std::endl;
+   return 0
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-<p>And a little bit of Fortran:</p>
-<pre><code>!bc cod
+And a little bit of Fortran:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!bc cod
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
       length = b - a
       return
       end
-!ec</code></pre>
-<p>which then is typeset as</p>
-<pre class="sourceCode Python"><code class="sourceCode python">      subroutine midpt(x, length, a, b)
-      real*<span class="dv">8</span> a, b, x
-      x = (a + b)/<span class="dv">2</span>
+!ec
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+which then is typeset as
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+      subroutine midpt(x, length, a, b)
+      real*8 a, b, x
+      x = (a + b)/2
       length = b - a
-      <span class="kw">return</span>
-      end</code></pre>
-<p>HTML:</p>
-<pre class="sourceCode HTML"><code class="sourceCode html"><span class="kw">&lt;table&gt;</span>
-<span class="kw">&lt;tr&gt;&lt;td&gt;</span>Column 1<span class="kw">&lt;/td&gt;&lt;td&gt;</span>Column 2<span class="kw">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="kw">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span class="kw">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span class="kw">&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="co">&lt;!-- comment --&gt;</span>
-<span class="kw">&lt;/table&gt;</span></code></pre>
-<p>System call:</p>
-<pre><code>Terminal&gt; mkdir test
-Terminal&gt; cd test
-Terminal&gt; myprog -f
+      return
+      end
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HTML:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.HTML}
+<table>
+<tr><td>Column 1</td><td>Column 2</td></tr>
+<tr><td>0.67526 </td><td>0.92871 </td></tr>
+<!-- comment -->
+</table>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+But inline HTML code is also important, like text that starts with
+`<a href="` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Terminal> mkdir test
+Terminal> cd test
+Terminal> myprog -f
 output1
-output2</code></pre>
-<p>Any valid pygments lexer/language name can appear to, e.g.,</p>
-<pre><code>!bc restructuredtext
+output2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!bc restructuredtext
 =======
 Heading
 =======
 
 Some text.
-!ec</code></pre>
-<p>results in</p>
-<pre><code>=======
+!ec
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+results in
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======
 Heading
 =======
 
-Some text.</code></pre>
+Some text.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 <!-- Here goes hidden code. -->
 <!-- Python can be treated by some formats, Fortran is always out. -->
 
@@ -25545,8 +24907,11 @@ Some text.</code></pre>
 
 
 
-<p>Finally, <code>!bc do</code> supports highlighting of DocOnce source:</p>
-<pre><code>======= DocOnce test file =======
+Finally, `!bc do` supports highlighting of DocOnce source:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+======= DocOnce test file =======
 
 ===== Computer code =====
 
@@ -25557,7 +24922,7 @@ code blocks:
 from math import sin
 
 def f(x):
-    &quot;&quot;&quot;Example on a function.&quot;&quot;&quot;
+    """Example on a function."""
     return sin(x) + 1
 
 print f(0)
@@ -25571,8 +24936,8 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
-\boldsymbol{u} &amp;= \nabla\phi .
+\nabla\cdot\boldsymbol{u} &= 0,\\ 
+\boldsymbol{u} &= \nabla\phi .
 \end{align*}
 !et
 
@@ -25580,129 +24945,225 @@ as equations:
 
 DocOnce files can have chapters, sections, subsections, and subsubsections.
 
-__Paragraph heading.__ Paragraphs may have headings.</code></pre>
-<p>It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The exclamation mark inside the verbatim text is potentially not smart since latex use ! in the <code>Verb</code> typesetting, but this should now be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline verbatim text. Since the exclamation mark is used as delimiter in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>, and a DocOnce directive a la <code>!bc</code>.</p>
-<p>The following attempt to exemplify colored text does not work in format pandoc. Here is some <font color="red">red</font> color and an attempt to write <font color="green">with green color containing a linebreak. And one more.</font> Some formats will only display this correctly when HTML is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.</p>
-<h4 id="running-os-commands">Running OS commands</h4>
-<pre><code>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+__Paragraph heading.__ Paragraphs may have headings.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is time to test `verbatim inline font` especially with `a newline
+inside the text` and an exclamation mark at the end: `BEGIN`! The
+exclamation mark inside the verbatim text is potentially not smart
+since latex use ! in the `Verb` typesetting, but this should now
+be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
+`\end{this}\end{that}`, and `{something \inside braces}` in inline
+verbatim text. Since the exclamation mark is used as delimiter
+in LaTeX inline verbatim, we need to test it, as in `a != b`,
+and a DocOnce directive a la `!bc`.
+
+The following attempt to exemplify colored text does not work in
+format pandoc.
+Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
+green color containing a linebreak. \n
+And one more.</font> Some formats will only display \n
+this correctly when HTML is the output format. \n
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
+
+#### Running OS commands
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
 Testing
 output
 from
-Python.</code></pre>
-<h4 id="footnotes">Footnotes</h4>
-<p>Here is a test of footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, which are handy in text. They are used in different flavors, now in</p>
-<ul>
-<li>list items</li>
-<li>even with math <span class="math">\(\nabla^2u\)</span> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></li>
-<li>and code <code>h[i] += 1</code> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>,</li>
-<li>and <a href="http://google.com">links</a> <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></li>
-</ul>
-<p>which gives flexibility in writing. This is the third<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> example.</p>
-<p>Here is some more text before a new definition of a footnote that was used used above.</p>
-<p><em>Non-breaking space character.</em> This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4 km is traveled in <span class="math">\(7.4/5.5\approx 1.345\)</span> s. Also check that a~<a href="http://google.com">link</a> is not broken across lines (drag the browser window to test this). (On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)</p>
-<h3 id="subsection-2-testing-figures">Subsection 2: Testing figures</h3>
-<p><a name="subsec:ex"/></p>
-<p>Test of figures. In particular we refer to <a href="#fig:impact">Figure</a> in which there is a flow.</p>
-<div class="figure">
-<img src="../doc/src/manual/fig/wave1D.png" alt="Visualization of a wave. " /><p class="caption">Visualization of a wave. <a name="fig:impact"/></p>
-</div>
-<p>Figures without captions are allowed and will be inlined.</p>
-<div class="figure">
-<img src="../doc/src/manual/fig/wave1D.png" />
-</div>
+Python.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#### Footnotes
+
+Here is a test of footnotes[^footnote], which are handy in text.
+They are used in different flavors, now in
+
+ * list items
+ * even with math $\nabla^2u$ [^math1]
+ * and code `h[i] += 1` [^code],
+ * and [links](http://google.com) [^google-search]
+
+which gives flexibility in writing.
+This is the third[^example-of-the-third-footnote] example.
+
+  [^footnote]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the
+definition and inserts the footnote as part of the LaTeX text.
+reStructuredText and Sphinx employ a similar type of typesetting
+as Extended Markdown and DocOnce, and in HTML we keep the same
+syntax, just displayed properly in HTML.
+[^math1]: Math footnotes can be dangerous since it
+interferes with an exponent.
+[^code]: One-line footnote.
+
+[^google-search]: <google.com> is perhaps the most famous
+web site today.
+
+Here is some more text before a new definition of a footnote that was used
+used above.
+
+*Non-breaking space character.* 
+This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical
+example where this is needed is in physical units: 7.4\ km is traveled
+in\ $7.4/5.5\approx 1.345$\ s.  Also check that a~[link](http://google.com)\ is
+not broken across lines (drag the browser window to test this).
+(On the other hand, the tilde is used in
+computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should
+of course remain a tilde in those contexts.)
+
+
+
+### Subsection 2: Testing figures
+<a name="subsec:ex"/>
+
+Test of figures. In particular we refer to [Figure](#fig:impact) in which
+there is a flow.
+
+![Visualization of a wave. <a name="fig:impact"/>](../doc/src/manual/fig/wave1D.png)
+
+Figures without captions are allowed and will be inlined.
+
+![](../doc/src/manual/fig/wave1D.png)
+
+
+
 <!-- Test multi-line caption in figure -->
 
-<p>Here is <a href="#myfig">figure</a> with a long multi-line caption and an extra space before the FIGURE keyword.</p>
-<div class="figure">
-<img src="../doc/src/manual/fig/wave1D.png" alt="A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. " /><p class="caption">A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in <span class="math">\(t_{i+1}\)</span>. <a name="myfig"/></p>
-</div>
+Here is [figure](#myfig) with a long multi-line caption
+and an extra space before the FIGURE keyword.
+
+![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/>](../doc/src/manual/fig/wave1D.png)
+
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
-<p>Test URL as figure name:</p>
-<div class="figure">
-<img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" />
-</div>
+Test URL as figure name:
+
+![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
+
+
 <!-- Test wikimedia type of files that otherwise reside in subdirs -->
 
 
-<p><em>Remark.</em> Movies are tested in separate file <code>movies.do.txt</code>.</p>
+*Remark.*
+Movies are tested in separate file `movies.do.txt`.
+
+
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
-<h3 id="the-theta-parameter-not-nabla">The <span class="math">\(\theta\)</span> parameter (not <span class="math">\(\nabla\)</span>?)</h3>
-<p><a name="decay:sec:theta"/></p>
-<p>Functions do not always need to be advanced, here is one involving <span class="math">\(\theta\)</span>:</p>
-<pre><code>def f(theta):
-    return theta**2</code></pre>
-<p><em>More on <span class="math">\(\theta\)</span>.</em> Here is more text following headline with math.</p>
-<p>Newcommands must also be tested in this test report: <span class="math">\(\frac{1}{2}\)</span>, <span class="math">\({1/2}\)</span>, <span class="math">\(\pmb{x}\)</span>, <span class="math">\(\frac{Du}{dt}\)</span>, both inline and in block:</p>
-<p>$$</p>
-<p> = 0</p>
-<p>$$</p>
-<p>$$</p>
-<p> = {1/2}</p>
-<p>$$</p>
-<p>$$</p>
-<p> = </p>
-<p>$$</p>
-<p>Or with align with label and numbers:</p>
-<p><span class="math">\[
+### The $\theta$ parameter (not $\nabla$?)
+<a name="decay:sec:theta"/>
+
+Functions do not always need to be advanced, here is one
+involving $\theta$:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def f(theta):
+    return theta**2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*More on $\theta$.* Here is more text following headline with math.
+
+Newcommands must also be tested in this test report:
+$\frac{1}{2}$, ${1/2}$, $\pmb{x}$, $\frac{Du}{dt}$,
+both inline and in block:
+
+$$
+
+\frac{Du}{dt} = 0
+
+
+$$
+
+$$
+  
+\frac{1}{2} = {1/2}
+
+$$
+
+$$
+  
+\frac{1}{2}\pmb{x} = \pmb{n}
+
+$$
+
+Or with align with label and numbers:
+
+$$
 \begin{equation}
 \frac{Du}{dt} = 0
 \label{aligneq1}
 \end{equation}
-\]</span></p>
-<p><span class="math">\[
+$$
+
+$$
 \begin{equation}  
 \frac{1}{2} = {1/2}
 \end{equation}
-\]</span></p>
-<p><span class="math">\[
+$$
+
+$$
 \begin{equation}  
 \frac{1}{2}\pmb{x} = \pmb{n}
 \label{aligneq2}
 \end{equation}
-\]</span></p>
-<h3 id="custom-environments">Custom Environments</h3>
-<p>Here is an attempt to create a theorem environment via Mako (for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end LaTeX environments for theorems. Should look nice in most formats!</p>
+$$
+
+
+### Custom Environments
+
+Here is an attempt to create a theorem environment via Mako
+(for counting theorems) and comment lines to help replacing lines in
+the `.tex` by proper begin-end LaTeX environments for theorems.
+Should look nice in most formats!
+
+
+
 <!-- begin theorem -->
-<p><a name="theorem:fundamental1"/></p>
-<p><em>Theorem 5.</em> Let <span class="math">\(a=1\)</span> and <span class="math">\(b=2\)</span>. Then <span class="math">\(c=3\)</span>. <!-- end theorem --></p>
+<a name="theorem:fundamental1"/>
+
+
+*Theorem 5.*
+Let $a=1$ and $b=2$. Then $c=3$.
+<!-- end theorem -->
+
 <!-- begin proof -->
-<p><em>Proof.</em> Since <span class="math">\(c=a+b\)</span>, the result follows from straightforward addition. <span class="math">\(\Diamond\)</span> <!-- end proof --></p>
-<p>As we see, the proof of Theorem 5 is a modest achievement.</p>
-<h3 id="tables">Tables</h3>
-<p><a name="subsec:table"/></p>
+*Proof.*
+Since $c=a+b$, the result follows from straightforward addition.
+$\Diamond$
+<!-- end proof -->
+
+As we see, the proof of Theorem 5 is a modest
+achievement.
+
+
+### Tables
+<a name="subsec:table"/>
+
+
 <!-- index with comma could fool sphinx -->
 
-<p>Let us take this table from the manual:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">time</th>
-<th align="center">velocity</th>
-<th align="left">acceleration</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0.0</td>
-<td align="center">1.4186</td>
-<td align="left">-5.01</td>
-</tr>
-<tr class="even">
-<td align="center">2.0</td>
-<td align="center">1.376512</td>
-<td align="left">11.919</td>
-</tr>
-<tr class="odd">
-<td align="center">4.0</td>
-<td align="center">1.1E+1</td>
-<td align="left">14.717624</td>
-</tr>
-</tbody>
-</table>
-<p>The DocOnce source code reads</p>
-<pre><code>
+Let us take this table from the manual:
+
+
+
+time  velocity  acceleration  
+----  --------  ------------  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+
+
+
+The DocOnce source code reads
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -25710,1380 +25171,1041 @@ Python.</code></pre>
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
-</code></pre>
-<p>Here is yet another table to test that we can handle more than one table:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">time</th>
-<th align="left">velocity</th>
-<th align="left">acceleration</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">0.0</td>
-<td align="left">1.4186</td>
-<td align="left">-5.01</td>
-</tr>
-<tr class="even">
-<td align="left">1.0</td>
-<td align="left">1.376512</td>
-<td align="left">11.919</td>
-</tr>
-<tr class="odd">
-<td align="left">3.0</td>
-<td align="left">1.1E+1</td>
-<td align="left">14.717624</td>
-</tr>
-</tbody>
-</table>
-<p>And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><span class="math">\(i\)</span></th>
-<th align="center"><span class="math">\(h_i\)</span></th>
-<th align="left"><span class="math">\(\bar T_i\)</span></th>
-<th align="center"><code>L_i</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="left">288</td>
-<td align="center">-0.0065</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">11,000</td>
-<td align="left">216</td>
-<td align="center">0.0</td>
-</tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">20,000</td>
-<td align="left">216</td>
-<td align="center">0.001</td>
-</tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">32,000</td>
-<td align="left">228</td>
-<td align="center">0.0028</td>
-</tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">47,000</td>
-<td align="left">270</td>
-<td align="center">0.0</td>
-</tr>
-<tr class="even">
-<td align="center">5</td>
-<td align="center">51,000</td>
-<td align="left">270</td>
-<td align="center">-0.0028</td>
-</tr>
-<tr class="odd">
-<td align="center">6</td>
-<td align="center">71,000</td>
-<td align="left">214</td>
-<td align="center"><code>NaN</code></td>
-</tr>
-</tbody>
-</table>
-<p>And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">exact</th>
-<th align="center"><code>v_1</code></th>
-<th align="left"><span class="math">\(a_i\)</span> + <code>v_2</code></th>
-<th align="center"><code>verb_3_</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">9</td>
-<td align="center">9.62</td>
-<td align="left">5.57</td>
-<td align="center">8.98</td>
-</tr>
-<tr class="even">
-<td align="center">-20</td>
-<td align="center">-23.39</td>
-<td align="left">-7.65</td>
-<td align="center">-19.93</td>
-</tr>
-<tr class="odd">
-<td align="center">10</td>
-<td align="center">17.74</td>
-<td align="left">-4.50</td>
-<td align="center">9.96</td>
-</tr>
-<tr class="even">
-<td align="center">0</td>
-<td align="center">-9.19</td>
-<td align="left">4.13</td>
-<td align="center">-0.26</td>
-</tr>
-</tbody>
-</table>
-<p>Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><span class="math">\(S\)</span></th>
-<th align="center">command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">$ ||a_0|| $</td>
-<td align="center"><code>norm|length</code></td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math">\(x\cap y\)</span></td>
-<td align="center"><code>x|y</code></td>
-</tr>
-</tbody>
-</table>
-<p>Finally, a table with math (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but cleanly handled now) and URLs.</p>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is yet another table to test that we can handle more than
+one table:
+
+
+time  velocity  acceleration  
+----  --------  ------------  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+
+
+And one with math headings (that are expanded and must be treated
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
+
+
+$i$  $h_i$   $\bar T_i$   `L_i`   
+---  ------  ----------  -------  
+0         0         288  -0.0065  
+1    11,000         216      0.0  
+2    20,000         216    0.001  
+3    32,000         228   0.0028  
+4    47,000         270      0.0  
+5    51,000         270  -0.0028  
+6    71,000         214    `NaN`  
+
+
+And add one with verbatim headings (with underscores),
+and rows starting with `|-` because of a negative number,
+and `|` right before and after verbatim word (with no space):
+
+
+exact  `v_1`   $a_i$ + `v_2`  `verb_3_`  
+-----  ------  -------------  ---------  
+    9    9.62           5.57       8.98  
+  -20  -23.39          -7.65     -19.93  
+   10   17.74          -4.50       9.96  
+    0   -9.19           4.13      -0.26  
+
+
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+    $S$         command     
+-----------  -------------  
+$ ||a_0|| $  `norm|length`  
+$x\cap y$            `x|y`  
+
+
+Finally, a table with math
+(`bm` that expands to `boldsymbol`, was tricky, but
+cleanly handled now)
+and URLs.
+
 <!-- Mako code to expand URLs in the table -->
 <!-- (These types of tables did not work before Jan 2014) -->
 
 
 
+                                                                                                                                                       
+-------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
+        $\mathcal{L}=0$          [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+             $a=b$               [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+$\nabla\cdot\boldsymbol{u} =0 $  [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
 
-<table>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-<tbody>
-<tr class="odd">
-<td align="center"><span class="math">\(\mathcal{L}=0\)</span> <span class="math">\(a=b\)</span> <span class="math">\(\nabla\cdot\boldsymbol{u} =0 \)</span></td>
-<td align="left"><a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><code>080</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><code>090</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><code>100</code></a></td>
-<td align="left"><a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><code>085</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><code>095</code></a> <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><code>105</code></a></td>
-</tr>
-<tr class="even">
-<td align="center">### A test of verbatim words in heading with subscript $a_i</td>
-<td align="left">$: <code>my_file_v1</code> and <code>my_file_v2</code></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">*Paragraph with verbatim and math: <code>my_file_v1.py</code> and `my_ some plain text on a new line.</td>
-<td align="left">file_v2.py<code>define some math $a_{i-1}$.* Here is more</code>__ve</td>
-<td align="left">rbatim__` code and</td>
-</tr>
-<tr class="even">
-<td align="center"><!-- Test various types of headlines --> ### <strong>Just bold</strong></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### <em>Just emphasize</em></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### <code>Just verbatim</code></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### <strong>Bold</strong> beginning</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### <em>Emphasize</em> beginning</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### <code>Verbatim</code> beginning</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Maybe <strong>bold end</strong></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Maybe <em>emphasize end</em></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Maybe <code>verbatim end</code></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### The middle has <strong>bold</strong> word</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### The middle has <em>emphasize</em> word</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### The middle has <code>verbatim</code> word</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">**Just emphasize<em>.</em> Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em><code>Just verbatim</code>.</em> Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">**Emphasize* beginning.* Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em><code>Verbatim beginning</code>.</em> Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Maybe </em>emphasize end<em>.</em> Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Maybe <code>verbatim end</code>.</em> Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>The middle has </em>emphasize* word.* Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>The middle has <code>verbatim</code> word.</em> Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Ampersand.</em> We can test Hennes &amp; Mauritz, often abbreviated H&amp;M, but wr as <code>Hennes &amp; Mauritz</code> and <code>H &amp; M</code>. A sole <code>&amp;</code> must also work. &lt;!-- Note: substitutions must not occur inside verbatim, ju</td>
-<td align="left">itten</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> # Just to check that ampersand works in code blocks: c = a &amp; b <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
-<td align="left">~<sub>~</sub></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Quotes.</em> Let us also add a test of quotes such as &quot;double quotes, wi like 3.14 and newline/comma and hyphen (as in double-quote) in the standard LaTeX-style that gives correct LaTeX format ordinary double quotes for all non-LaTeX formats. Here is sentence that &quot;caused&quot; a bug in the past because double bac quotes could imply verbatim text up to a verbatim word star period, like <code>.txt</code>.</td>
-<td align="left">th numbers &quot;; written ting and another ktick ting with</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Bibliography test</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Here is an example: <span class="citation">@Langtangen_Pedersen_2002</span> discussed pro large destructive water waves, <span class="citation">@Langtangen_et_al_2002</span> gave an overview of numerical methods for solving the Navier-Sto while the use of Backward Kolmogorov equations for analyzin random vibrations was investigated in <span class="citation">@Langtangen_1994a</span>. The book chapter <span class="citation">@Mardal_et_al_2003a</span> contains information o C++ software tools for programming multigrid methods. A rea reference is <span class="citation">@Langtangen_1988d</span> about a big FORTRAN package. Multiple references are also possible, e.g., see <span class="citation">@Langtangen_Pedersen_2002</span>;<span class="citation">@Mardal_et_al_2003a</span>.</td>
-<td align="left">pagation of</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">We need to cite more than 10 papers to reproduce an old for problem with blanks in the keys in reST format: <span class="citation">@Langtangen_1992c</span>;<span class="citation">@Langtangen_1994a</span>;<span class="citation">@Mortensen_et_al_2011</span>;@ and <span class="citation">@Langtangen_et_al_2002</span>;<span class="citation">@Glimsdal_et_al_20006</span>;<span class="citation">@Rahman_et_al</span>_ and all the work of <span class="citation">@Langtangen_2012</span>;<span class="citation">@Mardal_et_al_2003a</span>;<span class="citation">@Jeberg_et_al_2004</span> as old work <span class="citation">@Langtangen_1988d</span> and <span class="citation">@Langtangen_1989e</span>, and the talk <span class="citation">@Langtangen_talk_2007a</span>. Langtangen also had two thesis <span class="citation">@Langtangen:85</span>;<span class="citation">@Langtangen_1</span> More retro citations are the old ME-IN323 book <span class="citation">@Langtangen:91</span> and the <span class="citation">@Langtangen:94b</span> OONSKI '94 paper.</td>
-<td align="left">matting</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Example 1: Examples can be typeset as exercises <a name="Example"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Examples can start with a subsection heading starting with and then, with the command-line option `--examples_as_exerc typeset as exercises. This is useful if one has solution environments as part of the example.</td>
-<td align="left"><code>Example:</code> ises` be</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>a)</em> State some problem.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Solution.</em> The answer to this subproblem can be written here.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>b)</em> State some other problem.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Hint 1.</em> A hint can be given.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Hint 2.</em> Maybe even another hint?</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Solution.</em> The answer to this other subproblem goes here, maybe over multiple doconce input lines.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### URLs <a name="subsubsec:ex"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Testing of URLs: hpl's home page [hpl](http://folk.uio.no/h the entire URL if desired, <a href="http://folk.uio.no/hpl">http://folk.uio.no/hpl</a>. Here plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or <testdoc.do.txt> or <testdoc.do.txt> or <a href="testdoc.do.txt">a link with newline</a>. Can test spaces with the link wit too: <a href="http://folk.uio.no/hpl">hpl</a> or [hpl](http://folk.uio file](file:///home/hpl/vc/doconce/doc/demos/manual/manual.h fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, the plain URL as in <a href="http://folk.uio.no/hpl">http://folk.uio.no/hpl</a>, if followed b colon, semi-colon, question mark, exclamation mark, but not (which gets confused with the periods inside the URL).</td>
-<td align="left">pl), or is a</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Mail addresses can also be used: [<code>hpl@simula.no</code>](mailto:h</td>
-<td align="left">pl@simula.no), or just a <script type="text/javascript">
-<!--
-h='&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;';a='&#64;';n='&#104;&#112;&#108;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mail link'+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x6d;&#x61;&#x69;&#108;&#32;&#108;&#x69;&#110;&#x6b;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>,</td>
-<td align="left">or a raw <script type="text/javascript">
-<!--
-h='&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;';a='&#64;';n='&#104;&#112;&#108;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'mailto:hpl@simula.no'+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#104;&#112;&#108;&#64;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#46;&#110;&#x6f;&#32;&#40;&#104;&#112;&#108;&#32;&#x61;&#116;&#32;&#x73;&#x69;&#x6d;&#x75;&#108;&#x61;&#32;&#100;&#x6f;&#116;&#32;&#110;&#x6f;&#x29;</noscript>.</td>
-</tr>
-<tr class="odd">
-<td align="center">Here are some tough tests of URLs, especially for the `late [Newton-Cotes](http://en.wikipedia.org/wiki/Newton%E2%80%93 and a [good book](http://www.springer.com/mathematics/compu Newton-Cotes with percentage in URL too: &lt;http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas and &lt;http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.</td>
-<td align="left">x` format: Cotes_formulas) formulas tational+science+%26+engineering/book/978-3-642-23098-1). N</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">For the <code>--device=paper</code> option it is important to test tha monofont link text get a footnote (unless the <code>--latex_no_p is used), as in this reference to [</code>decay_mod<code>](https://github.com/hplgit/INF5620/tree/gh-pag and [</code>ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.</td>
-<td align="left">t URLs with rogram_footnotelink`</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Comments should be inserted outside paragraphs (becaus
-<!-- format extra blanks make a paragraph break). --></td>
-<td align="left">e in the rst --&gt;</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">&lt;!-- Note that when there is no http: or file:, it can be a &lt;!-- if the link name is URL, url, &quot;URL&quot;, or &quot;url&quot;. Such fi &lt;!-- if rst output is desired, but placed in a <code>_static*</code> f</td>
-<td align="left">file link --&gt; les should, --&gt; older. --&gt;</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">More tough tests: repeated URLs whose footnotes when using <code>--device=paper</code> option must be correct. We have <a href="http://google.com">google</a>, <a href="http://google.com">google</a>, a <a href="http://google.com">google</a>, which should result in exactly footnotes.</td>
-<td align="left">the</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">&lt;!-- !split and check if these extra words are included pro</td>
-<td align="left">perly in the comment --&gt;</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">## LaTeX Mathematics</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Here is an equation without label using backslash-bracket e <span class="math">\[
-a = b + c
-\]</span> or with number and label, as in , using the e <span class="math">\[
+
+
+### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`
+
+*Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is more `__verbatim__` code and
+some plain text on a new line.
+
+<!-- Test various types of headlines -->
+### **Just bold**
+
+Some text.
+
+### *Just emphasize*
+
+Some text.
+
+### `Just verbatim`
+
+Some text.
+
+### **Bold** beginning
+
+Some text.
+
+### *Emphasize* beginning
+
+Some text.
+
+### `Verbatim` beginning
+
+Some text.
+
+### Maybe **bold end**
+
+Some text.
+
+### Maybe *emphasize end*
+
+Some text.
+
+### Maybe `verbatim end`
+
+Some text.
+
+### The middle has **bold** word
+
+Some text.
+
+### The middle has *emphasize* word
+
+Some text.
+
+### The middle has `verbatim` word
+
+Some text.
+
+
+**Just emphasize*.* Some text.
+
+
+*`Just verbatim`.* Some text.
+
+
+**Emphasize* beginning.* Some text.
+
+
+*`Verbatim beginning`.* Some text.
+
+
+*Maybe *emphasize end*.* Some text.
+
+
+*Maybe `verbatim end`.* Some text.
+
+
+*The middle has *emphasize* word.* Some text.
+
+
+*The middle has `verbatim` word.* Some text.
+
+
+*Ampersand.*
+We can test Hennes & Mauritz, often abbreviated H&M, but written
+as `Hennes & Mauritz` and `H & M`.
+A sole `&` must also work.
+<!-- Note: substitutions must not occur inside verbatim, just in ordinary text. -->
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Just to check that ampersand works in code blocks:
+c = a & b
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Quotes.*
+Let us also add a test of quotes such as "double quotes, with numbers
+like 3.14 and newline/comma and hyphen (as in double-quote)"; written
+in the standard LaTeX-style that gives correct LaTeX formatting and
+ordinary double quotes for all non-LaTeX formats.  Here is another
+sentence that "caused" a bug in the past because double backtick
+quotes could imply verbatim text up to a verbatim word starting with
+period, like `.txt`.
+
+
+### Bibliography test
+
+Here is an example: @Langtangen_Pedersen_2002 discussed propagation of
+large destructive water waves, @Langtangen_et_al_2002 gave
+an overview of numerical methods for solving the Navier-Stokes equations,
+while the use of Backward Kolmogorov equations for analyzing
+random vibrations was investigated in @Langtangen_1994a.
+The book chapter @Mardal_et_al_2003a contains information on
+C++ software tools for programming multigrid methods. A real retro
+reference is @Langtangen_1988d about a big FORTRAN package.
+Multiple references are also possible, e.g., see
+@Langtangen_Pedersen_2002;@Mardal_et_al_2003a.
+
+We need to cite more than 10 papers to reproduce an old formatting
+problem with blanks in the keys in reST format:
+@Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002
+and
+@Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95
+and all the work of
+@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004 as well as
+old work @Langtangen_1988d and @Langtangen_1989e, and the
+talk @Langtangen_talk_2007a.
+Langtangen also had two thesis @Langtangen:85;@Langtangen_1989e.
+More retro citations are
+the old ME-IN323 book @Langtangen:91 and the
+@Langtangen:94b OONSKI '94 paper.
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Example 1: Examples can be typeset as exercises
+<a name="Example"/>
+
+Examples can start with a subsection heading starting with `Example:`
+and then, with the command-line option `--examples_as_exercises` be
+typeset as exercises. This is useful if one has solution
+environments as part of the example.
+
+
+*a)*
+State some problem.
+
+*Solution.*
+The answer to this subproblem can be written here.
+
+*b)*
+State some other problem.
+
+*Hint 1.*
+A hint can be given.
+
+*Hint 2.*
+Maybe even another hint?
+
+*Solution.*
+The answer to this other subproblem goes here,
+maybe over multiple doconce input lines.
+
+<!-- --- end exercise --- -->
+
+
+### URLs
+<a name="subsubsec:ex"/>
+
+Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or
+the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a
+plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or
+<testdoc.do.txt> or <testdoc.do.txt> or [a link with
+newline](testdoc.do.txt). Can test spaces with the link with word
+too: [hpl](http://folk.uio.no/hpl) or [hpl](http://folk.uio.no/hpl). Also `file:///` works: [link to a
+file](file:///home/hpl/vc/doconce/doc/demos/manual/manual.html) is
+fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+the plain URL as in <http://folk.uio.no/hpl>, if followed by space, comma,
+colon, semi-colon, question mark, exclamation mark, but not a period
+(which gets confused with the periods inside the URL).
+
+Mail addresses can also be used: [`hpl@simula.no`](mailto:hpl@simula.no), or just a [mail link](mailto:hpl@simula.no), or a raw <mailto:hpl@simula.no>.
+
+Here are some tough tests of URLs, especially for the `latex` format:
+[Newton-Cotes](http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas) formulas
+and a [good book](http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1). Need to test
+Newton-Cotes with percentage in URL too:
+<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>
+and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.
+
+For the `--device=paper` option it is important to test that URLs with
+monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+is used), as in this reference to
+[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),
+and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).
+
+
+<!-- Comments should be inserted outside paragraphs (because in the rst -->
+<!-- format extra blanks make a paragraph break). -->
+
+<!-- Note that when there is no http: or file:, it can be a file link -->
+<!-- if the link name is URL, url, "URL", or "url". Such files should, -->
+<!-- if rst output is desired, but placed in a `_static*` folder. -->
+
+More tough tests: repeated URLs whose footnotes when using the
+`--device=paper` option must be correct. We have
+[google](http://google.com), [google](http://google.com), and
+[google](http://google.com), which should result in exactly three
+footnotes.
+
+
+
+<!-- !split and check if these extra words are included properly in the comment -->
+
+## LaTeX Mathematics
+
+Here is an equation without label using backslash-bracket environment:
+$$
+ a = b + c 
+$$
+or with number and label, as in \eqref{my:eq1}, using the equation environment:
+$$
 \begin{equation}
 {\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
 \end{equation}
-\]</span> We can refer to this equation by .</td>
-<td align="left">nvironment:</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Here is a system without equation numbers, using the align- $$</td>
-<td align="left">astrisk environment:</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"> = </td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">$$</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">$$</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">b = ^2 u + ^4 v</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">$$</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">And here is a system of equations with labels in an align e <span class="math">\[
+$$
+We can refer to this equation by \eqref{my:eq1}.
+
+Here is a system without equation numbers, using the align-astrisk environment:
+$$
+
+\pmb{a} = \pmb{q}\times\pmb{n} 
+
+$$
+
+$$
+  
+b = \nabla^2 u + \nabla^4 v
+
+$$
+
+
+And here is a system of equations with labels in an align environment:
+$$
 \begin{equation}
-a = q + 4 + 5+ 6 \label{eq1}
+a = q + 4 + 5+ 6 \label{eq1} 
 \end{equation}
-\]</span></td>
-<td align="left">nvironment:</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math">\[
-\begin{equation}
+$$
+
+$$
+\begin{equation}  
 b = \nabla^2 u + \nabla^4 x \label{eq2}
 \end{equation}
-\]</span> We can refer to -. They are a bit sim the Navier-Stokes equations. And test LaTeX hyphen in `CG-2 Also test <span class="math">\(a_{i-j}\)</span> as well as <span class="math">\(kx-wt\)</span>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">More mathematical typesetting is demonstrated in the coming</td>
-<td align="left">exercises.</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and [ as well as [Project 4: Explore Distributions of Random Cir between there we have [Exercise 9: Make references to proj</td>
-<td align="left">Project 3: Compute a Probability](#demo:ex:2), cles](#proj:circle1) and <a href="#exer:some:formula">Project 10: References to Project ects and problems</a>.</td>
-<td align="left">ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in</td>
-</tr>
-<tr class="odd">
-<td align="center">## Exercises</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Problem 2: Flip a Coin <a name="demo:ex:1"/> <!-- keywords = random numbers; Monte Carlo simulation --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- Torture tests --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Make a program that simulates flipping a coin <span class="math">\(N\)</span> times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">#### Remarks</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Remarks with such a subsubsection heading would previously the beginning of a new exercise and cause trouble. Maybe a</td>
-<td align="left">mark list</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">1. Mark 1. 2. Mark 2.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Hint 1.</em> Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Hint 2.</em> Draw an integer among <span class="math">\(\{1,2\}\)</span> with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> If the <code>random.random()</code> function returns a number <span class="math">\(&lt;1/2\)</span>, head, otherwise tail. Repeat this <span class="math">\(N\)</span> number of times.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end answer of exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><del>{.P import sys, random N = int(sys.argv[1]) heads = 0 for i in range(N): r = random.random() if r &lt;= 0.5: heads += 1 print 'Flipping a coin %d times gave %d heads' % (N, heads)</del></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~</sub></td>
-<td align="left">ython}</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end solution of exercise --- --> Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>. &lt;!-- solution files: mysol.txt, mysol_flip_coin.py, yet_ano</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Not an exercise</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Should be possible to stick a normal section in the middle exercises.</td>
-<td align="left">of many</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Project 3: Compute a Probability <a name="demo:ex:2"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Minimalistic exercise --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">What is the probability of getting a number between 0.5 and drawing uniformly distributed random numbers from the inter</td>
-<td align="left">0.6 when val <span class="math">\([0,1)\)</span>?</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">At the end we have a list because that caused problems in L in previous DocOnce versions:</td>
-<td align="left">aTeX</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">1. item1 2. item2</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Hint.</em> To answer this question empirically, let a program draw <span class="math">\(N\)</span> such random numbers using Python's standard `rando count how many of them, <span class="math">\(M\)</span>, that fall in the interval <span class="math">\((0. compute the probability as \)</span>M/N$.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Project 4: Explore Distributions of Random Circles <a name="proj:circle1"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">The formula for a circle is given by</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math">\[
+$$
+We can refer to \eqref{eq1}-\eqref{eq2}. They are a bit simpler than
+the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
+Also test $a_{i-j}$ as well as $kx-wt$.
+
+
+More mathematical typesetting is demonstrated in the coming exercises.
+
+Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 3: Compute a Probability](#demo:ex:2),
+as well as  [Project 4: Explore Distributions of Random Circles](#proj:circle1) and [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
+between there we have  [Exercise 9: Make references to projects and problems](#exer:some:formula).
+
+
+## Exercises
+
+
+
+<!-- --- begin exercise --- -->
+
+### Problem 2: Flip a Coin
+<a name="demo:ex:1"/>
+<!-- keywords = random numbers; Monte Carlo simulation -->
+
+<!-- Torture tests -->
+
+Make a program that simulates flipping a coin $N$ times.
+Print out "tail" or "head" for each flip and
+let the program count the number of heads.
+
+
+
+
+
+#### Remarks
+
+Remarks with such a subsubsection heading would previously mark
+the beginning of a new exercise and cause trouble. Maybe a list
+
+1. Mark 1.
+2. Mark 2.
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint 1.*
+Use `r = random.random()` and define head as `r <= 0.5`.
+
+<!-- --- end hint in exercise --- -->
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint 2.*
+Draw an integer among $\{1,2\}$ with
+`r = random.randint(1,2)` and define head when `r` is 1.
+
+<!-- --- end hint in exercise --- -->
+
+
+<!-- --- begin answer of exercise --- -->
+*Answer.*
+If the `random.random()` function returns a number $<1/2$, let it be
+head, otherwise tail. Repeat this $N$ number of times.
+
+<!-- --- end answer of exercise --- -->
+
+
+<!-- --- begin solution of exercise --- -->
+*Solution.*
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+import sys, random
+N = int(sys.argv[1])
+heads = 0
+for i in range(N):
+    r = random.random()
+    if r <= 0.5:
+        heads += 1
+print 'Flipping a coin %d times gave %d heads' % (N, heads)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- --- end solution of exercise --- -->
+Filenames: `flip_coin.py`, `flip_coin.pdf`.
+<!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
+
+<!-- --- end exercise --- -->
+
+
+### Not an exercise
+
+Should be possible to stick a normal section in the middle of many
+exercises.
+
+
+
+<!-- --- begin exercise --- -->
+
+### Project 3: Compute a Probability
+<a name="demo:ex:2"/>
+
+<!-- Minimalistic exercise -->
+
+
+What is the probability of getting a number between 0.5 and 0.6 when
+drawing uniformly distributed random numbers from the interval $[0,1)$?
+
+
+At the end we have a list because that caused problems in LaTeX
+in previous DocOnce versions:
+
+1. item1
+2. item2
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint.*
+To answer this question empirically, let a program
+draw $N$ such random numbers using Python's standard `random` module,
+count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
+compute the probability as $M/N$.
+
+<!-- --- end hint in exercise --- -->
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Project 4: Explore Distributions of Random Circles
+<a name="proj:circle1"/>
+
+The formula for a circle is given by
+
+$$
 \begin{equation}
 x = x_0 + R\cos 2\pi t,
 \end{equation}
-\]</span></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math">\[
-\begin{equation}
+$$
+
+$$
+\begin{equation}  
 y = y_0 + R\sin 2\pi t,
 \end{equation}
-\]</span> where <span class="math">\(R\)</span> is the radius of the circle, <span class="math">\((x_0,y_0)\)</span> is the center point, and <span class="math">\(t\)</span> is a parameter in the unit interval $ For any <span class="math">\(t\)</span>, <span class="math">\((x,y)\)</span> is a point on the circle. The formula can be used to generate <code>n</code> points on a circle:</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub><sub><sub>~</sub></sub></sub>{.P import numpy as np</td>
-<td align="left">ython}</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">def circle(R, x0, y0, n=501): t = np.linspace(0, 1, n) x = x0 + R<em>np.cos(2</em>np.pi<em>t) y = y0 + R</em>np.sin(2<em>np.pi</em>t) return x, y</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">x, y = circle(2.0, 0, 0) <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
-<td align="left">~<sub>~</sub></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Often in an exercise we have some comments about the s
-<!-- which we normally want to keep where they are. --></td>
-<td align="left">olution --&gt;</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">The goal of this project is to draw <span class="math">\(N\)</span> circles with random center and radius. Plot each circle using the <code>circle</code> func above.</td>
-<td align="left">tion</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>a)</em> Let <span class="math">\(R\)</span> be normally distributed and <span class="math">\((x_0,y_0)\)</span> uniformly d</td>
-<td align="left">istributed.</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Hint.</em> Use the <code>numpy.random</code> module to draw the <span class="math">\(x_0\)</span>, <span class="math">\(y_0\)</span>, and <span class="math">\(R\)</span> quantities.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> Here goes the short answer to part a).</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end answer of exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes a full solution to part a).</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end solution of exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>b)</em> Let <span class="math">\(R\)</span> be uniformly distributed and <span class="math">\((x_0,y_0)\)</span> normally d Filename: <code>norm.py</code>.</td>
-<td align="left">istributed.</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>c)</em> Let <span class="math">\(R\)</span> and <span class="math">\((x_0,y_0)\)</span> be normally distributed.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Filename: <code>circles.pdf</code>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- Closing remarks for this Project --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">#### Remarks</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">At the very end of the exercise it may be appropriate to su and give some perspectives.</td>
-<td align="left">mmarize</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Exercise 5: Determine some Distance <a name="exer:dist"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Intro to this exercise. Questions are in subexercises below</td>
-<td align="left">.</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- No meaning in this weired test example: --> The text here belongs to the main (intro) part of the exerc closing remarks to have text after subexercises.</td>
-<td align="left">ise. Need</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Test list in exercise:</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">1. item1 2. item2</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes a full solution of the whole exercise. With some math <span class="math">\(a=b\)</span> in this solution: <span class="math">\[
-\hbox{math in solution: } a = b
-\]</span> And code <code>a=b</code> in this solution:</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> a = b # code in solution <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
-<td align="left">~<sub>~</sub></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">End of solution is here.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end solution of exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>a)</em> Subexercises are numbered a), b), etc.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Hint 1.</em> First hint to subexercise a). With math <span class="math">\(a=b\)</span> in hint:</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math">\[
-a=b.
-\]</span> And with code (in plain verbatim) returning <span class="math">\(x+1\)</span> in hint:</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> def func(x): return x + 1 # with code in hint <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
-<td align="left">~<sub>~</sub></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Hint 2.</em> Second hint to subexercise a).</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Test list in hint:</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">1. item1 2. item2</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end hint in exercise --- --> Filename: <code>subexer_a.pdf</code>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin answer of exercise --- --> <em>Answer.</em> Short answer to subexercise a). With math in answer: <span class="math">\(a=b\)</span>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end answer of exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>b)</em> Here goes the text for subexercise b).</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Some math <span class="math">\(\cos^2 x + \sin^2 x = 1\)</span> written one a single li</td>
-<td align="left">ne:</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math">\[
-\cos^2 x + \sin^2 x = 1 \thinspace .
-\]</span></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin hint in exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Hint.</em> A hint for this subexercise.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end hint in exercise --- --> Filename: <code>subexer_b.pdf</code>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin solution of exercise --- --> <em>Solution.</em> Here goes the solution of this subexercise.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end solution of exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Closing remarks for this Exercise --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">#### Remarks</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some final closing remarks, e.g., summarizing the main find and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.</td>
-<td align="left">ings</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Some exercise without the &quot;Exercise:&quot; prefix</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Another minimalistic exercise --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Just some text. And some math saying that <span class="math">\(e^0=1\)</span> on a sing to test that math block insertion is correct:</td>
-<td align="left">le line,</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math">\[
-\exp{(0)} = 1
-\]</span></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">And a test that the code <code>lambda x: x+2</code> is correctly place</td>
-<td align="left">d here:</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub> lambda x: x+2 <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~<sub>~</sub></td>
-<td align="left">~<sub>~</sub></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- the Filename: ... is written correctly. --> &lt;!-- Have some comments at the end of the exercise to see t</td>
-<td align="left">hat --&gt;</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Exercise 7: Solution of differential equation <a name="sec:this:exer:de"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Cannot typeset quiz</em>: &quot;Given</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math">\[
-\frac{dy}{dx} = -y(x),\quad y(0)=1
-\]</span> What is the solution of this equation?&quot; <!-- --- end explanation of choice 5 --- --> <!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Example 8: Just an example</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- This example needs the --examples_as_exercises option,
-<!-- it is just typeset as it is written. --></td>
-<td align="left">otherwise --&gt;</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>a)</em> What is the capital of Norway?</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Answer.</em> Oslo.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">## Here goes another section</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">With some text, before we continue with exercises.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">## More Exercises</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Exercise 9: Make references to projects and problems <a name="exer:some:formula"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Test comments not at the end only --> Pick a statement from [Project 4: Explore Distributions of and verify it.</td>
-<td align="left">Random Circles](#proj:circle1) or [Problem 2: Flip a Coin</td>
-<td align="left">](#demo:ex:1)</td>
-</tr>
-<tr class="even">
-<td align="center">Test list at the end of an exercise without other elements hint, etc.):</td>
-<td align="left">(like subexercise,</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">1. item1 2. item2</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Filename: <code>verify_formula.py</code>.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- --- begin exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Project 10: References to [Project 3: Compute a Probab <a name="exer:you"/></td>
-<td align="left">ility](#demo:ex:2) in a heading works for pandoc</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Refer to the previous exercise as [Exercise 9: Make refere the two before that as [Project 3: Compute a Probability]( and this one as [Project 10: References to Project ref{dem Filename: <code>selc_composed.pdf</code>.</td>
-<td align="left">nces to projects and problems](#exer:some:formula), #demo:ex:2) and <a href="#exer:you">Project 4: Explore Distributions of Random o:ex:2} in a heading works for pandoc</a>.</td>
-<td align="left">Circles](#proj:circle1),</td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- --- end exercise --- --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">## References</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">1.  <strong>H. P. Langtangen and Propagation of Large Destructive Waves, <em>International Journal of Applied Mechanics and Enginee 7(1), pp. 187-204, 2002. 2.  <strong>H. P. Langtangen, K.-A. Numerical Methods for Incompressible Viscous Flow, <em>Advances in Water Resources</em>, 25, pp. 1125-1146, 2002. 3.  </strong>H. P. Langtangen<strong>. Numerical Solution of First Passage Problems in Random <em>SIAM Journal of Scientific and Statistical Computing</em>, 15, pp. 997-996, 1994. 4.  </strong>K.-A. Mardal, G. W. Zumbus Software Tools for Multigrid Methods, </em>Advanced Topics in Computational Partial Differential edited by </strong>H. P. Langtangen and A. Tveito<strong>, Springer, 2003. 5.  </strong>H. P. Langtangen<strong>. The FEMDEQS Program System, <em>Department of Mathematics, University of Oslo</em>, 1989. 6.  </strong>H. P. Langtangen<strong>. Stochastic Breakthrough Time Analysis of an Enhanced Oi <em>SIAM Journal on Scientific Computing</em>, 13, pp. 1394-1417, 1992. 7.  </strong>M. Mortensen, H. P. Lang A FEniCS-Based Programming Framework for Modeling Turbu <em>Advances in Water Resources</em>, 34(9), [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.or 2011. 8.  <strong>S. Glimsdal, G. Pedersen Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: <em>International Journal of Fluid Mechanics Research</em>, 33(1), pp. 15-43, 2006. 9.  </strong>S. Rahman, J. Gorman, C. H Numerical Investigation of a Piezoelectric Surface Acou <em>Physical Review B: Condensed Matter and Materials Phys 74, 2006. 10.  <strong>J. B. Haga, H. Osnes and H. On the Causes of Pressure Oscillations in Low-Permeable <em>International Journal of Analytical and Numerical Meth [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1 2011, &lt;http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/ab 11.  <strong>H. P. Langtangen</strong>. </em>Computational Partial Differential Equations - Numeric Springer, 2003. 12.  </strong>H. P. Langtangen<strong>. <em>Python Scripting for Computational Science</em>, Springer, 2008. 13.  </strong>H. P. Langtangen and G. Pederse Finite Elements for the Boussinesq Wave Equations, Waves and Non-linear Processes in Hydrodynamics, edited by <strong>J. Grue, B. Gjevik and J. E. Weber</strong>, Kluwer Academic Publishers, pp. pp. 117-126, 1995, &lt;http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrody 14.  <strong>H. P. Langtangen</strong>. </em>A Primer on Scientific Programming With Python<em>, Springer, 2012. 15.  <strong>P. V. Jeberg, H. P. Langtan Optimization With Diffpack: Practical Example From Weld <em>Simula Research Laboratory</em>, 2004. 16.  </strong>H. P. Langtangen<strong>. Computational Methods for Two-Phase Flow in Oil Reservo Ph.D. Thesis, Mechanics Division, Department of Mathematics, Universi 1989. 17.  </strong>H. P. Langtangen<strong>. Computational Modeling of Huge Tsunamis From Asteroid I Invited keynote lecture at the confe 2007. 18.  </strong>H. P. Langtangen<strong>. Solution of the Navier-Stokes Equations With the Finite M.Sc. Thesis, Mechanics Division, Department of Mathematics, Universi 1985. 19.  </strong>H. P. Langtangen and A. Tveito</em> Numerical Methods in Continuum Mechanics, <em>Center for Industrial Research</em>, 1991. 20.  <strong>H. P. Langtangen</strong>. Diffpack: Software for Partial Differential Equations, *Proceedings of the Second Annual Object-Oriented Numer edited by <strong>A. Vermeulen</strong>, 1994.</td>
-<td align="left">G. Pedersen**.</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">## Appendix: Just for testing; part I <a name="app1"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">This is the first appendix.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### A subsection within an appendix</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Some text.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">## Appendix: Just for testing; part II <a name="app2"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">This is more stuff for an appendix.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Appendix: Testing identical titles</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Without label.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Appendix: Testing identical titles <a name="test:title:id1"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">With label.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">### Appendix: Testing identical titles <a name="test:title:id2"/></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">What about inserting a quiz?</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><em>Cannot typeset quiz</em>: &quot;What is the capital of Norway?&quot;</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Appendix: Testing identical titles</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Without label.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Tip.</em> Here is a tip or hint box, typeset as a notice box.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Need a lot of text to surround the summary box. Version control systems allow you to record the history of and share files among several computers and collaborators i professional way. File changes on one computer are updated merged with changes on another computer. Especially when wo with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the proje have the latest updates of the files. Greg Wilson' excellent [Script for Introduction to Version from using version control systems.</td>
-<td align="left">files n a or rking</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center"><em>Summary.</em> <strong>Bold remark:</strong> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">Projects that you want to share among several computers or workers are today most conveniently stored at some web site cloud&quot; and updated through communication with that site. I recommend you to use such sites for all serious programming scientific writing work - and all other important files.</td>
-<td align="left">project &quot;in the strongly and</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">The simplest services for hosting project files are [Dropbo It is very easy to get started with these systems, and they to share files among laptops and mobile units with as many you want. The systems offer a kind of version control in th files are stored frequently (several times per minute), and back to previous versions for the last 30 days. However, it challenging to find the right version from the past when t so many of them.</td>
-<td align="left">x](http://dropbox.com) and [Google Drive](http://drive.goog allow you users as at the you can go is here are</td>
-<td align="left">le.com).</td>
-</tr>
-<tr class="even">
-<td align="center">More seriously, when several people may edit files simultan can be difficult detect who did what when, roll back to pre versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Google Drive: project hosting services with true version co systems. The following text aims at providing you with the information to started with such systems. Numerous other tu contain more comprehensive material and in-depth explanatio concepts and tools.</td>
-<td align="left">eously, it vious</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">The idea with project hosting services is that you have the associated with a project in the cloud. Many people may sha files. Every time you want to work on the project you expl update your version of the files, edit the files as you lik synchronize the files with the &quot;master version&quot; at the site project is hosted. If you at some point need to go back to version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various</td>
-<td align="left">files re these icitly e, and where the a</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">All these services are very similar. Below we describe how started with Bitbucket, GitHub, and Googlecode. Launchpad w similarly to the latter three. All the project hosting serv excellent introductions available at their web sites, but t below are much shorter and aim at getting you started as qu possible by concentrating on the most important need-to-kno The Git tutorials we refer to later in this document contai detailed information and constitute of course very valuable when you use version control systems every day. The point n to get started.</td>
-<td align="left">you get orks very ices have he recipes ickly as w steps. n more readings ow is</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">### Appendix: Testing inline comments</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center"><!-- Names can be [ A-Za-z0-9_'+-]+ --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="center">Projects that you want to share among several computers or workers are today most conveniently stored at some web site cloud&quot; and updated through communication with that site. [hpl's semi opinion 1: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all se programming and scientific writing work - and all other imp files.</td>
-<td align="left">project &quot;in the</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="center">The simplest services for hosting project files is Dropbox. how files, like <code>myfile.py</code>, perhaps containing much math, <span class="math">\(\partial u/\partial t\)</span>, are easily communicated between ma is very easy to get started with Dropbox, and it allows you files among [hpl 3: laptops and mobile units -&gt; computers, and phones].</td>
-<td align="left">[mp 2: Simply go to <a href="http://dropbox.com">http://dropbox.com</a> and watch the vid like chines.] It to share tablets,</td>
-<td align="left">eo. It explains</td>
-</tr>
-<tr class="odd">
-<td align="center"><!-- Test horizontal rule --></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
+$$
+where $R$ is the radius of the circle, $(x_0,y_0)$ is the
+center point, and $t$ is a parameter in the unit interval $[0,1]$.
+For any $t$, $(x,y)$ is a point on the circle.
+The formula can be used to generate `n` points on a circle:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+import numpy as np
+
+def circle(R, x0, y0, n=501):
+    t = np.linspace(0, 1, n)
+    x = x0 + R*np.cos(2*np.pi*t)
+    y = y0 + R*np.sin(2*np.pi*t)
+    return x, y
+
+x, y = circle(2.0, 0, 0)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- Often in an exercise we have some comments about the solution -->
+<!-- which we normally want to keep where they are. -->
+
+The goal of this project is to draw $N$ circles with random
+center and radius. Plot each circle using the `circle` function
+above.
+
+
+*a)*
+Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint.*
+Use the `numpy.random` module to draw the
+$x_0$, $y_0$, and $R$ quantities.
+
+<!-- --- end hint in exercise --- -->
+
+
+<!-- --- begin answer of exercise --- -->
+*Answer.*
+Here goes the short answer to part a).
+
+<!-- --- end answer of exercise --- -->
+
+
+<!-- --- begin solution of exercise --- -->
+*Solution.*
+Here goes a full solution to part a).
+
+<!-- --- end solution of exercise --- -->
+
+*b)*
+Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
+Filename: `norm.py`.
+
+*c)*
+Let $R$ and $(x_0,y_0)$ be normally distributed.
+
+Filename: `circles.pdf`.
+
+<!-- Closing remarks for this Project -->
+
+#### Remarks
+
+At the very end of the exercise it may be appropriate to summarize
+and give some perspectives.
+
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Exercise 5: Determine some Distance
+<a name="exer:dist"/>
+
+Intro to this exercise. Questions are in subexercises below.
+
+
+
+
+
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+2. item2
+
+<!-- --- begin solution of exercise --- -->
+*Solution.*
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+$$
+ \hbox{math in solution: } a = b 
+$$
+And code `a=b` in this solution:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+a = b  # code in solution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+End of solution is here.
+
+<!-- --- end solution of exercise --- -->
+
+
+*a)*
+Subexercises are numbered a), b), etc.
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint 1.*
+First hint to subexercise a).
+With math $a=b$ in hint:
+
+$$
+ a=b. 
+$$
+And with code (in plain verbatim) returning $x+1$ in hint:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def func(x):
+    return x + 1  # with code in hint
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- --- end hint in exercise --- -->
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint 2.*
+Second hint to subexercise a).
+
+Test list in hint:
+
+1. item1
+2. item2
+
+<!-- --- end hint in exercise --- -->
+Filename: `subexer_a.pdf`.
+
+
+<!-- --- begin answer of exercise --- -->
+*Answer.*
+Short answer to subexercise a).
+With math in answer: $a=b$.
+
+<!-- --- end answer of exercise --- -->
+
+*b)*
+Here goes the text for subexercise b).
+
+
+Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
+
+$$
+ \cos^2 x + \sin^2 x = 1 \thinspace .
+$$
+
+<!-- --- begin hint in exercise --- -->
+
+*Hint.*
+A hint for this subexercise.
+
+<!-- --- end hint in exercise --- -->
+Filename: `subexer_b.pdf`.
+
+
+<!-- --- begin solution of exercise --- -->
+*Solution.*
+Here goes the solution of this subexercise.
+
+<!-- --- end solution of exercise --- -->
+
+<!-- Closing remarks for this Exercise -->
+
+#### Remarks
+
+Some final closing remarks, e.g., summarizing the main findings
+and their implications in other problems can be made. These
+remarks will appear at the end of the typeset exercise.
+
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Some exercise without the "Exercise:" prefix
+
+<!-- Another minimalistic exercise -->
+
+Just some text. And some math saying that $e^0=1$ on a single line,
+to test that math block insertion is correct:
+
+$$
+ \exp{(0)} = 1 
+$$
+
+And a test that the code `lambda x: x+2` is correctly placed here:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lambda x: x+2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- the Filename: ... is written correctly. -->
+<!-- Have some comments at the end of the exercise to see that -->
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Exercise 7: Solution of differential equation
+<a name="sec:this:exer:de"/>
+
+*Cannot typeset quiz*: "Given
+
+$$
+ \frac{dy}{dx} = -y(x),\quad y(0)=1 
+$$
+What is the solution of this equation?"
+<!-- --- end explanation of choice 5 --- -->
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Example 8: Just an example
+
+<!-- This example needs the --examples_as_exercises option, otherwise -->
+<!-- it is just typeset as it is written. -->
+
+
+*a)*
+What is the capital of Norway?
+
+*Answer.*
+Oslo.
+
+<!-- --- end exercise --- -->
+
+
+## Here goes another section
+
+With some text, before we continue with exercises.
+
+## More Exercises
+
+
+
+<!-- --- begin exercise --- -->
+
+### Exercise 9: Make references to projects and problems
+<a name="exer:some:formula"/>
+
+<!-- Test comments not at the end only -->
+Pick a statement from  [Project 4: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
+and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+1. item1
+2. item2
+
+Filename: `verify_formula.py`.
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Project 10: References to  [Project 3: Compute a Probability](#demo:ex:2) in a heading works for pandoc
+<a name="exer:you"/>
+
+Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#exer:some:formula),
+the two before that as  [Project 3: Compute a Probability](#demo:ex:2) and [Project 4: Explore Distributions of Random Circles](#proj:circle1),
+and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
+Filename: `selc_composed.pdf`.
+
+<!-- --- end exercise --- -->
+
+
+## References
+
+ 1. \label{Langtangen_Pedersen_2002} **H. P. Langtangen and G. Pedersen**. 
+    Propagation of Large Destructive Waves,
+    *International Journal of Applied Mechanics and Engineering*,
+    7(1),
+    pp. 187-204,
+    2002.
+ 2. \label{Langtangen_et_al_2002} **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
+    Numerical Methods for Incompressible Viscous Flow,
+    *Advances in Water Resources*,
+    25,
+    pp. 1125-1146,
+    2002.
+ 3. \label{Langtangen_1994a} **H. P. Langtangen**. 
+    Numerical Solution of First Passage Problems in Random Vibrations,
+    *SIAM Journal of Scientific and Statistical Computing*,
+    15,
+    pp. 997-996,
+    1994.
+ 4. \label{Mardal_et_al_2003a} **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
+    Software Tools for Multigrid Methods,
+    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
+    edited by **H. P. Langtangen and A. Tveito**,
+    Springer,
+    2003.
+ 5. \label{Langtangen_1988d} **H. P. Langtangen**. 
+    The FEMDEQS Program System,
+    *Department of Mathematics, University of Oslo*,
+    1989.
+ 6. \label{Langtangen_1992c} **H. P. Langtangen**. 
+    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
+    *SIAM Journal on Scientific Computing*,
+    13,
+    pp. 1394-1417,
+    1992.
+ 7. \label{Mortensen_et_al_2011} **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
+    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
+    *Advances in Water Resources*,
+    34(9),
+    [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
+    2011.
+ 8. \label{Glimsdal_et_al_20006} **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
+    Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
+    *International Journal of Fluid Mechanics Research*,
+    33(1),
+    pp. 15-43,
+    2006.
+ 9. \label{Rahman_et_al_2006b} **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
+    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
+    *Physical Review B: Condensed Matter and Materials Physics*,
+    74,
+    2006.
+10. \label{Haga_et_al_2011a} **J. B. Haga, H. Osnes and H. P. Langtangen**. 
+    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
+    *International Journal of Analytical and Numerical Methods in Geomechanics*,
+    [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
+    2011,
+    <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
+11. \label{Langtangen_2003a} **H. P. Langtangen**. 
+    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+    Springer,
+    2003.
+12. \label{Langtangen_2008a} **H. P. Langtangen**. 
+    *Python Scripting for Computational Science*,
+    Springer,
+    2008.
+13. \label{Langtangen:95} **H. P. Langtangen and G. Pedersen**. 
+    Finite Elements for the Boussinesq Wave Equations,
+    Waves and Non-linear Processes in Hydrodynamics,
+    edited by **J. Grue, B. Gjevik and J. E. Weber**,
+    Kluwer Academic Publishers,
+    pp. pp. 117-126,
+    1995,
+    <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
+14. \label{Langtangen_2012} **H. P. Langtangen**. 
+    *A Primer on Scientific Programming With Python*,
+    Springer,
+    2012.
+15. \label{Jeberg_et_al_2004} **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
+    Optimization With Diffpack: Practical Example From Welding,
+    *Simula Research Laboratory*,
+    2004.
+16. \label{Langtangen_1989e} **H. P. Langtangen**. 
+    Computational Methods for Two-Phase Flow in Oil Reservoirs,
+    Ph.D. Thesis,
+    Mechanics Division, Department of Mathematics, University of Oslo,
+    1989.
+17. \label{Langtangen_talk_2007a} **H. P. Langtangen**. 
+    Computational Modeling of Huge Tsunamis From Asteroid Impacts,
+    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
+    2007.
+18. \label{Langtangen:85} **H. P. Langtangen**. 
+    Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
+    M.Sc. Thesis,
+    Mechanics Division, Department of Mathematics, University of Oslo,
+    1985.
+19. \label{Langtangen:91} **H. P. Langtangen and A. Tveito**. 
+    Numerical Methods in Continuum Mechanics,
+    *Center for Industrial Research*,
+    1991.
+20. \label{Langtangen:94b} **H. P. Langtangen**. 
+    Diffpack: Software for Partial Differential Equations,
+    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
+    edited by **A. Vermeulen**,
+    1994.
+
+## Appendix: Just for testing; part I
+<a name="app1"/>
+
+This is the first appendix.
+
+### A subsection within an appendix
+
+Some text.
+
+## Appendix: Just for testing; part II
+<a name="app2"/>
+
+This is more stuff for an appendix.
+
+### Appendix: Testing identical titles
+
+Without label.
+
+
+### Appendix: Testing identical titles
+<a name="test:title:id1"/>
+
+With label.
+
+### Appendix: Testing identical titles
+<a name="test:title:id2"/>
+
+What about inserting a quiz?
+
+*Cannot typeset quiz*: "What is the capital of Norway?"
+
+
+### Appendix: Testing identical titles
+
+Without label.
+
+*Tip.* 
+Here is a tip or hint box, typeset as a notice box.
+
+
+
+
+
+Need a lot of text to surround the summary box.
+Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. File changes on one computer are updated or
+merged with changes on another computer. Especially when working
+with programs or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly
+from using version control systems.
+
+*Summary.* 
+**Bold remark:** Make some text with this summary.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+
+
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work - and all other important files.
+
+The simplest services for hosting project files are [Dropbox](http://dropbox.com) and [Google Drive](http://drive.google.com).
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.
+
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
+
+The idea with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" at the site where the
+project is hosted.  If you at some point need to go back to a
+version of the files at some particular point in the past,
+this is an easy operation. You can also use tools to see
+what various people have done with the files in the various versions.
+
+All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three. All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.
+The Git tutorials we refer to later in this document contain more
+detailed information and constitute of course very valuable readings
+when you use version control systems every day. The point now is
+to get started.
+
+
+### Appendix: Testing inline comments
+
+<!-- Names can be [ A-Za-z0-9_'+-]+ -->
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that
+site. [hpl's semi opinion 1: not sure if in the cloud is
+understood by
+all.] I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
+
+The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <http://dropbox.com> and watch the video. It explains
+how files, like `myfile.py`, perhaps containing much math, like
+$\partial u/\partial t$, are easily communicated between machines.] It
+is very easy to get started with Dropbox, and it allows you to share
+files among [hpl 3: laptops and mobile units -> computers, tablets,
+and phones].
+
+<!-- Test horizontal rule -->
+
+------
+
 <!-- Coments for editing -->
 
-<p>First[add 4: ,] consider a quantity <span class="math">\(Q\)</span>. [edit 5: To this end, -&gt; We note that] <span class="math">\(Q&gt;0\)</span>, because [del 6: a] negative [edit 7: quantity is -&gt; quantities are] [del 8: just] negative. [add 9: This comes as no surprise.]</p>
-<h3 id="appendix-testing-headings-ending-with-verbatim-inline">Appendix: Testing headings ending with <code>verbatim inline</code></h3>
-<p>The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.</p>
-<p>We also test mdash---used as alternative to hyphen without spaces around, or in quotes:</p>
-<blockquote>
-<p><em>Fun is fun.</em>--- Unknown.</p>
-</blockquote>
-<p>And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.</p>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Math footnotes can be dangerous since it interferes with an exponent.<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>One-line footnote.<a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p><google.com> is perhaps the most famous web site today.<a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p>Not much to add here, but the footnote is at the end with only one newline.<a href="#fnref5">↩</a></p></li>
-</ol>
-</div>
-</body>
-</html>
-pandoc 1.12.2.1
-Compiled with texmath 0.6.5.2, highlighting-kate 0.5.5.1.
-Syntax highlighting is supported for the following languages:
-    actionscript, ada, apache, asn1, asp, awk, bash, bibtex, boo, c, changelog,
-    clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css, curry, d,
-    diff, djangotemplate, doxygen, doxygenlua, dtd, eiffel, email, erlang,
-    fortran, fsharp, gnuassembler, go, haskell, haxe, html, ini, java, javadoc,
-    javascript, json, jsp, julia, latex, lex, literatecurry, literatehaskell,
-    lua, makefile, mandoc, markdown, matlab, maxima, metafont, mips, modelines,
-    modula2, modula3, monobasic, nasm, noweb, objectivec, objectivecpp, ocaml,
-    octave, pascal, perl, php, pike, postscript, prolog, python, r,
-    relaxngcompact, rhtml, roff, ruby, rust, scala, scheme, sci, sed, sgml, sql,
-    sqlmysql, sqlpostgresql, tcl, texinfo, verilog, vhdl, xml, xorg, xslt, xul,
-    yacc, yaml
-Default user data directory: /home/hpl/.pandoc
-Copyright (C) 2006-2013 John MacFarlane
-Web:  http://johnmacfarlane.net/pandoc
-This is free software; see the source for copying conditions.  There is no
-warranty, not even for merchantability or fitness for a particular purpose.
+First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
+$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities
+are] [del 8: just] negative. [add 9: This comes as no surprise.]
+
+### Appendix: Testing headings ending with `verbatim inline`
+
+The point here is to test 1) `verbatim` code in headings, and 2)
+ending a heading with verbatim code as this triggers a special
+case in LaTeX.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+> *Fun is fun.*--- Unknown.
+
+
+
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: `admon.do.txt`.
+
+[^example-of-the-third-footnote]: Not much to add here, but the footnote
+is at the end with only one newline.
 
 ************** File: html_template.do.txt *****************
 DATE: today
@@ -29854,7 +28976,13 @@ HTML:
 <span style="color: #8B008B; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 </td></tr></table><p>
-System call:
+But inline HTML code is also important, like text that starts with
+<code>&lt;a href=&quot;</code> (which can destroy the following text if not properly
+quoted).
+
+<p>
+And here is a system call:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
@@ -30205,12 +29333,12 @@ Let us take this table from the manual:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="center">time</th> <th align="center">velocity</th> <th align="center">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="left">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -30240,12 +29368,12 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
+<tr><th align="left">time</th> <th align="left">velocity</th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
-<tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
-<tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="left">   1.4186      </td> <td align="left">   -5.01           </td> </tr>
+<tr><td align="left">   1.0     </td> <td align="left">   1.376512    </td> <td align="left">   11.919          </td> </tr>
+<tr><td align="left">   3.0     </td> <td align="left">   1.1E+1      </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -30256,16 +29384,16 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
+<tr><td align="center">\( i \)</td> <td align="center">\( h_i \)</td> <td align="center">\( \bar T_i \)</td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0          </td> <td align="right">   0            </td> <td align="right">   288               </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1          </td> <td align="right">   11,000       </td> <td align="right">   216               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2          </td> <td align="right">   20,000       </td> <td align="right">   216               </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3          </td> <td align="right">   32,000       </td> <td align="right">   228               </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4          </td> <td align="right">   47,000       </td> <td align="right">   270               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5          </td> <td align="right">   51,000       </td> <td align="right">   270               </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
 </table>
 <p>
@@ -30276,13 +29404,13 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
+<tr><th align="center">exact</th> <td align="center"><code>v_1</code></td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center"><code>verb_3_</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
-<tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
-<tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
-<tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+<tr><td align="right">   9        </td> <td align="right">   9.62                </td> <td align="right">   5.57                            </td> <td align="right">   8.98                    </td> </tr>
+<tr><td align="right">   -20      </td> <td align="right">   -23.39              </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                  </td> </tr>
+<tr><td align="right">   10       </td> <td align="right">   17.74               </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                    </td> </tr>
+<tr><td align="right">   0        </td> <td align="right">   -9.19               </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                   </td> </tr>
 </tbody>
 </table>
 <p>
@@ -30292,11 +29420,11 @@ but not anymore:
 <p>
 <table border="1">
 <thead>
-<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+<tr><td align="center">   \( S \)   </td> <th align="center">        command         </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
-<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
+<tr><td align="left">   $ ||a_0|| $      </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)    </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -30313,9 +29441,9 @@ and URLs.
 <table border="1">
 <tr></tr>
 <tbody>
-<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                              </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </tbody>
 </table>
 
@@ -30850,7 +29978,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <p>
 <b>Hint 1.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -32285,7 +31413,13 @@ HTML:
 <span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 <p>
-System call:
+But inline HTML code is also important, like text that starts with
+<code>&lt;a href=&quot;</code> (which can destroy the following text if not properly
+quoted).
+
+<p>
+And here is a system call:
+
 <p>
 
 
@@ -32572,12 +31706,12 @@ Let us take this table from the manual:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="center">time</th> <th align="center">velocity</th> <th align="center">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="left">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -32601,12 +31735,12 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
+<tr><th align="left">time</th> <th align="left">velocity</th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
-<tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
-<tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="left">   1.4186      </td> <td align="left">   -5.01           </td> </tr>
+<tr><td align="left">   1.0     </td> <td align="left">   1.376512    </td> <td align="left">   11.919          </td> </tr>
+<tr><td align="left">   3.0     </td> <td align="left">   1.1E+1      </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -32617,16 +31751,16 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">   $latex i$    </th> <th align="center">  $latex h_i$   </th> <th align="center">$latex \bar T_i$</th> <td align="center"><code>L_i</code></td> </tr>
+<tr><th align="center">$latex i$</th> <th align="center">$latex h_i$</th> <th align="center">$latex \bar T_i$</th> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0            </td> <td align="right">   0              </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1            </td> <td align="right">   11,000         </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2            </td> <td align="right">   20,000         </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3            </td> <td align="right">   32,000         </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4            </td> <td align="right">   47,000         </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5            </td> <td align="right">   51,000         </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6            </td> <td align="right">   71,000         </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
 </table>
 <p>
@@ -32637,13 +31771,13 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">            exact             </th> <td align="center">       <code>v_1</code>       </td> <td align="center">$latex a_i$ + <code>v_2</code></td> <td align="center">     <code>verb_3_</code>     </td> </tr>
+<tr><th align="center">exact</th> <td align="center"><code>v_1</code></td> <td align="center">$latex a_i$ + <code>v_2</code></td> <td align="center"><code>verb_3_</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   9                                 </td> <td align="right">   9.62                              </td> <td align="right">   5.57                              </td> <td align="right">   8.98                              </td> </tr>
-<tr><td align="right">   -20                               </td> <td align="right">   -23.39                            </td> <td align="right">   -7.65                             </td> <td align="right">   -19.93                            </td> </tr>
-<tr><td align="right">   10                                </td> <td align="right">   17.74                             </td> <td align="right">   -4.50                             </td> <td align="right">   9.96                              </td> </tr>
-<tr><td align="right">   0                                 </td> <td align="right">   -9.19                             </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                             </td> </tr>
+<tr><td align="right">   9        </td> <td align="right">   9.62                </td> <td align="right">   5.57                              </td> <td align="right">   8.98                    </td> </tr>
+<tr><td align="right">   -20      </td> <td align="right">   -23.39              </td> <td align="right">   -7.65                             </td> <td align="right">   -19.93                  </td> </tr>
+<tr><td align="right">   10       </td> <td align="right">   17.74               </td> <td align="right">   -4.50                             </td> <td align="right">   9.96                    </td> </tr>
+<tr><td align="right">   0        </td> <td align="right">   -9.19               </td> <td align="right">   4.13                              </td> <td align="right">   -0.26                   </td> </tr>
 </tbody>
 </table>
 <p>
@@ -32653,11 +31787,11 @@ but not anymore:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">       $latex S$        </th> <th align="center">        command         </th> </tr>
+<tr><th align="center">   $latex S$   </th> <th align="center">        command         </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
-<tr><td align="left">   $latex x\cap y$             </td> <td align="right">   <code>x|y</code>            </td> </tr>
+<tr><td align="left">   $ ||a_0|| $        </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   $latex x\cap y$    </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -32670,9 +31804,9 @@ and URLs.
 <table border="1">
 <tr></tr>
 <tbody>
-<tr><td align="center">   $latex \mathcal{L}=0$                                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   $latex a=b$                                                                                                                                </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   $latex \nabla\cdot\boldsymbol{u} =0 $                                                                                                      </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex \mathcal{L}=0$                    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex a=b$                              </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   $latex \nabla\cdot\boldsymbol{u} =0 $    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </tbody>
 </table>
 
@@ -32957,7 +32091,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <p>
 <b>Hint 1.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <b>Hint 2.</b>
@@ -34246,7 +33380,13 @@ HTML:
 <span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 <p>
-System call:
+But inline HTML code is also important, like text that starts with
+<code>&lt;a href=&quot;</code> (which can destroy the following text if not properly
+quoted).
+
+<p>
+And here is a system call:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -34543,12 +33683,12 @@ Let us take this table from the manual:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="center">time</th> <th align="center">velocity</th> <th align="center">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="left">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -34572,12 +33712,12 @@ one table:
 <p>
 <table border="1">
 <thead>
-<tr><th align="left">    time    </th> <th align="left">  velocity  </th> <th align="left">acceleration</th> </tr>
+<tr><th align="left">time</th> <th align="left">velocity</th> <th align="left">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
-<tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
-<tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="left">   1.4186      </td> <td align="left">   -5.01           </td> </tr>
+<tr><td align="left">   1.0     </td> <td align="left">   1.376512    </td> <td align="left">   11.919          </td> </tr>
+<tr><td align="left">   3.0     </td> <td align="left">   1.1E+1      </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -34588,16 +33728,16 @@ symbol:
 <p>
 <table border="1">
 <thead>
-<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
+<tr><td align="center">\( i \)</td> <td align="center">\( h_i \)</td> <td align="center">\( \bar T_i \)</td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0          </td> <td align="right">   0            </td> <td align="right">   288               </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1          </td> <td align="right">   11,000       </td> <td align="right">   216               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2          </td> <td align="right">   20,000       </td> <td align="right">   216               </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3          </td> <td align="right">   32,000       </td> <td align="right">   228               </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4          </td> <td align="right">   47,000       </td> <td align="right">   270               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5          </td> <td align="right">   51,000       </td> <td align="right">   270               </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
 </table>
 <p>
@@ -34608,13 +33748,13 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">           exact            </th> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
+<tr><th align="center">exact</th> <td align="center"><code>v_1</code></td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center"><code>verb_3_</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
-<tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
-<tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
-<tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+<tr><td align="right">   9        </td> <td align="right">   9.62                </td> <td align="right">   5.57                            </td> <td align="right">   8.98                    </td> </tr>
+<tr><td align="right">   -20      </td> <td align="right">   -23.39              </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                  </td> </tr>
+<tr><td align="right">   10       </td> <td align="right">   17.74               </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                    </td> </tr>
+<tr><td align="right">   0        </td> <td align="right">   -9.19               </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                   </td> </tr>
 </tbody>
 </table>
 <p>
@@ -34624,11 +33764,11 @@ but not anymore:
 <p>
 <table border="1">
 <thead>
-<tr><td align="center">        \( S \)         </td> <th align="center">        command         </th> </tr>
+<tr><td align="center">   \( S \)   </td> <th align="center">        command         </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
-<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
+<tr><td align="left">   $ ||a_0|| $      </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)    </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -34645,9 +33785,9 @@ and URLs.
 <table border="1">
 <tr></tr>
 <tbody>
-<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                              </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </tbody>
 </table>
 
@@ -34954,7 +34094,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <p>
 <b>Hint 1.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -36337,7 +35477,12 @@ HTML:
 </table>
 \ehtmlcod
 
-System call:
+But inline HTML code is also important, like text that starts with
+\code{<a href="} (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 \bsys
 Terminal> mkdir test
 Terminal> cd test
@@ -36632,9 +35777,9 @@ with the preprocessor.
 \hline
 \multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+2.0  & 1.376512 & 11.919       \\
+4.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -36664,9 +35809,9 @@ one table:
 \hline
 \multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
 \hline
-0.0          & 1.4186       & -5.01        \\
-1.0          & 1.376512     & 11.919       \\
-3.0          & 1.1E+1       & 14.717624    \\
+0.0  & 1.4186   & -5.01        \\
+1.0  & 1.376512 & 11.919       \\
+3.0  & 1.1E+1   & 14.717624    \\
 \hline
 \end{tabular}
 \end{quote}
@@ -36682,13 +35827,13 @@ symbol:
 \hline
 \multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \code{L\_i} } \\
 \hline
-0          & 0          & 288        & -0.0065    \\
-1          & 11,000     & 216        & 0.0        \\
-2          & 20,000     & 216        & 0.001      \\
-3          & 32,000     & 228        & 0.0028     \\
-4          & 47,000     & 270        & 0.0        \\
-5          & 51,000     & 270        & -0.0028    \\
-6          & 71,000     & 214        & \code{NaN} \\
+0   & 0      & 288        & -0.0065    \\
+1   & 11,000 & 216        & 0.0        \\
+2   & 20,000 & 216        & 0.001      \\
+3   & 32,000 & 228        & 0.0028     \\
+4   & 47,000 & 270        & 0.0        \\
+5   & 51,000 & 270        & -0.0028    \\
+6   & 71,000 & 214        & \code{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -36704,10 +35849,10 @@ and \code{|} right before and after verbatim word (with no space):
 \hline
 \multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \code{v\_1} } & \multicolumn{1}{c}{ $a_i$ + \code{v\_2} } & \multicolumn{1}{c}{ \code{verb\_3\_} } \\
 \hline
-9                  & 9.62               & 5.57               & 8.98               \\
--20                & -23.39             & -7.65              & -19.93             \\
-10                 & 17.74              & -4.50              & 9.96               \\
-0                  & -9.19              & 4.13               & -0.26              \\
+9     & 9.62       & 5.57               & 8.98           \\
+-20   & -23.39     & -7.65              & -19.93         \\
+10    & 17.74      & -4.50              & 9.96           \\
+0     & -9.19      & 4.13               & -0.26          \\
 \hline
 \end{tabular}
 \end{quote}
@@ -36722,8 +35867,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $        & \code{norm|length} \\
-$x\cap y$          & \code{x|y}         \\
+$ ||a_0|| $ & \code{norm|length} \\
+$x\cap y$   & \code{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -36742,9 +35887,9 @@ and URLs.
 \hline
  \\
 \hline
-$\mathcal{L}=0$                                                               & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
-$a=b$                                                                         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
-$\nabla\cdot\bm{u} =0 $                                                       & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
+$\mathcal{L}=0$         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                   & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
 \hline
 \end{tabular}
 \end{quote}
@@ -38288,13 +37433,13 @@ system doconce replace '\Verb!' '\verb!' testdoc.tex
 doconce replace '%E2%80%93' '' testdoc.tex
 doconce replace '+%26+' '' testdoc.tex
 
-system pandoc -f latex -t markdown -o testdoc.md testdoc.tex
-system pandoc -f markdown -t html -o testdoc_pnd_l2h.html --mathjax -s testdoc.md
-pandoc -v >> testdoc_pnd_l2h.html
+#system pandoc -f latex -t markdown -o testdoc.md testdoc.tex
+#system pandoc -f markdown -t html -o testdoc_pnd_l2h.html --mathjax -s testdoc.md
+#pandoc -v >> testdoc_pnd_l2h.html
 
 system doconce format pandoc testdoc.do.txt $ex
-system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
-pandoc -v >> testdoc_pnd_d2h.html
+#system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
+#pandoc -v >> testdoc_pnd_d2h.html
 
 # Test slides
 # slides1: rough small test
@@ -41125,7 +40270,13 @@ HTML:
 <span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 <p>
-System call:
+But inline HTML code is also important, like text that starts with
+<code>&lt;a href=&quot;</code> (which can destroy the following text if not properly
+quoted).
+
+<p>
+And here is a system call:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -41420,19 +40571,19 @@ Let us take this table from the manual:
 <p>
 
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-2">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="center"><b>    time    </b></td> <td align="center"><b>  velocity  </b></td> <td align="center"><b>acceleration</b></td> </tr>
+<tr><td align="center"><b>time</b></td> <td align="center"><b>velocity</b></td> <td align="center"><b>acceleration</b></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="left">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="left">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="left">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-4 -->
+</div> <!-- col-xs-2 -->
 <p>
 The DocOnce source code reads
 <p>
@@ -41454,19 +40605,19 @@ one table:
 <p>
 
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-2">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="left"><b>    time    </b></td> <td align="left"><b>  velocity  </b></td> <td align="left"><b>acceleration</b></td> </tr>
+<tr><td align="left"><b>time</b></td> <td align="left"><b>velocity</b></td> <td align="left"><b>acceleration</b></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0.0             </td> <td align="left">   1.4186          </td> <td align="left">   -5.01           </td> </tr>
-<tr><td align="left">   1.0             </td> <td align="left">   1.376512        </td> <td align="left">   11.919          </td> </tr>
-<tr><td align="left">   3.0             </td> <td align="left">   1.1E+1          </td> <td align="left">   14.717624       </td> </tr>
+<tr><td align="left">   0.0     </td> <td align="left">   1.4186      </td> <td align="left">   -5.01           </td> </tr>
+<tr><td align="left">   1.0     </td> <td align="left">   1.376512    </td> <td align="left">   11.919          </td> </tr>
+<tr><td align="left">   3.0     </td> <td align="left">   1.1E+1      </td> <td align="left">   14.717624       </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-4 -->
+</div> <!-- col-xs-2 -->
 <p>
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
@@ -41478,16 +40629,16 @@ symbol:
   <div class="col-xs-5">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="center">    \( i \)     </td> <td align="center">   \( h_i \)    </td> <td align="center"> \( \bar T_i \) </td> <td align="center"><code>L_i</code></td> </tr>
+<tr><td align="center">\( i \)</td> <td align="center">\( h_i \)</td> <td align="center">\( \bar T_i \)</td> <td align="center"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0          </td> <td align="right">   0            </td> <td align="right">   288               </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1          </td> <td align="right">   11,000       </td> <td align="right">   216               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2          </td> <td align="right">   20,000       </td> <td align="right">   216               </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3          </td> <td align="right">   32,000       </td> <td align="right">   228               </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4          </td> <td align="right">   47,000       </td> <td align="right">   270               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5          </td> <td align="right">   51,000       </td> <td align="right">   270               </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
     </table>
   </div>
@@ -41500,20 +40651,20 @@ and <code>|</code> right before and after verbatim word (with no space):
 <p>
 
 <div class="row">
-  <div class="col-xs-5">
+  <div class="col-xs-8">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="center"><b>           exact            </b></td> <td align="center">      <code>v_1</code>      </td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center">    <code>verb_3_</code>    </td> </tr>
+<tr><td align="center"><b>exact</b></td> <td align="center"><code>v_1</code></td> <td align="center">\( a_i \) + <code>v_2</code></td> <td align="center"><code>verb_3_</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   9                               </td> <td align="right">   9.62                            </td> <td align="right">   5.57                            </td> <td align="right">   8.98                            </td> </tr>
-<tr><td align="right">   -20                             </td> <td align="right">   -23.39                          </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                          </td> </tr>
-<tr><td align="right">   10                              </td> <td align="right">   17.74                           </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                            </td> </tr>
-<tr><td align="right">   0                               </td> <td align="right">   -9.19                           </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                           </td> </tr>
+<tr><td align="right">   9        </td> <td align="right">   9.62                </td> <td align="right">   5.57                            </td> <td align="right">   8.98                    </td> </tr>
+<tr><td align="right">   -20      </td> <td align="right">   -23.39              </td> <td align="right">   -7.65                           </td> <td align="right">   -19.93                  </td> </tr>
+<tr><td align="right">   10       </td> <td align="right">   17.74               </td> <td align="right">   -4.50                           </td> <td align="right">   9.96                    </td> </tr>
+<tr><td align="right">   0        </td> <td align="right">   -9.19               </td> <td align="right">   4.13                            </td> <td align="right">   -0.26                   </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-5 -->
+</div> <!-- col-xs-8 -->
 <p>
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
@@ -41521,18 +40672,18 @@ but not anymore:
 <p>
 
 <div class="row">
-  <div class="col-xs-3">
+  <div class="col-xs-4">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="center">        \( S \)         </td> <td align="center"><b>        command         </b></td> </tr>
+<tr><td align="center">   \( S \)   </td> <td align="center"><b>        command         </b></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   $ ||a_0|| $                 </td> <td align="right">   <code>norm|length</code>    </td> </tr>
-<tr><td align="left">   \( x\cap y \)               </td> <td align="right">   <code>x|y</code>            </td> </tr>
+<tr><td align="left">   $ ||a_0|| $      </td> <td align="right">   <code>norm|length</code>    </td> </tr>
+<tr><td align="left">   \( x\cap y \)    </td> <td align="right">   <code>x|y</code>            </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-3 -->
+</div> <!-- col-xs-4 -->
 <p>
 Finally, a table with math
 (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
@@ -41546,17 +40697,17 @@ and URLs.
 <p>
 
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-12">
     <table class="table table-striped table-hover table-condensed">
 <tr></tr>
 <tbody>
-<tr><td align="center">   \( \mathcal{L}=0 \)                                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( a=b \)                                                                                                                                  </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
-<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)                                                                                                        </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \mathcal{L}=0 \)                    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0080.png"><img src="../doc/src/manual/mov/wave_frames/frame_0080.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0085.png"><img src="../doc/src/manual/mov/wave_frames/frame_0085.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( a=b \)                              </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0090.png"><img src="../doc/src/manual/mov/wave_frames/frame_0090.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0095.png"><img src="../doc/src/manual/mov/wave_frames/frame_0095.png" width="300"></a>    </td> </tr>
+<tr><td align="center">   \( \nabla\cdot\boldsymbol{u} =0  \)    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0100.png"><img src="../doc/src/manual/mov/wave_frames/frame_0100.png" width="300"></a>    </td> <td align="center">   <a href="../doc/src/manual/mov/wave_frames/frame_0105.png"><img src="../doc/src/manual/mov/wave_frames/frame_0105.png" width="300"></a>    </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-4 -->
+</div> <!-- col-xs-12 -->
 
 <h2 id="___sec11">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> <a name="___sec11"></a></h2>
 
@@ -42094,7 +41245,7 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 <p>
 <b>Hint 1.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -43051,7 +42202,11 @@ HTML:
         <!-- comment -->
         </table>
 
-System call:
+But inline HTML code is also important, like text that starts with
+``<a href="`` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
 
 .. code-block:: console
 
@@ -43365,13 +42520,13 @@ Tables
 
 Let us take this table from the manual:
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-0.0                 1.4186         -5.01  
-2.0               1.376512        11.919  
-4.0                 1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads
 
@@ -43389,42 +42544,42 @@ The DocOnce source code reads
 Here is yet another table to test that we can handle more than
 one table:
 
-============  ============  ============  
-time          velocity      acceleration  
-============  ============  ============  
-0.0           1.4186        -5.01         
-1.0           1.376512      11.919        
-3.0           1.1E+1        14.717624     
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-================  ================  ================  ================  
-   :math:`i`        :math:`h_i`     :math:`\bar T_i`      ``L_i``       
-================  ================  ================  ================  
-0                                0               288           -0.0065  
-1                           11,000               216               0.0  
-2                           20,000               216             0.001  
-3                           32,000               228            0.0028  
-4                           47,000               270               0.0  
-5                           51,000               270           -0.0028  
-6                           71,000               214           ``NaN``  
-================  ================  ================  ================  
+=========  ===========  ================  =======  
+:math:`i`  :math:`h_i`  :math:`\bar T_i`  ``L_i``  
+=========  ===========  ================  =======  
+0                    0               288  -0.0065  
+1               11,000               216      0.0  
+2               20,000               216    0.001  
+3               32,000               228   0.0028  
+4               47,000               270      0.0  
+5               51,000               270  -0.0028  
+6               71,000               214  ``NaN``  
+=========  ===========  ================  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=====================  =====================  =====================  =====================  
-        exact                 ``v_1``         :math:`a_i` + ``v_2``       ``verb_3_``       
-=====================  =====================  =====================  =====================  
-                    9                   9.62                   5.57                   8.98  
-                  -20                 -23.39                  -7.65                 -19.93  
-                   10                  17.74                  -4.50                   9.96  
-                    0                  -9.19                   4.13                  -0.26  
-=====================  =====================  =====================  =====================  
+=====  =======  =====================  ===========  
+exact  ``v_1``  :math:`a_i` + ``v_2``  ``verb_3_``  
+=====  =======  =====================  ===========  
+    9     9.62                   5.57         8.98  
+  -20   -23.39                  -7.65       -19.93  
+   10    17.74                  -4.50         9.96  
+    0    -9.19                   4.13        -0.26  
+=====  =======  =====================  ===========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
@@ -43445,13 +42600,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-==========================================================  ==========================================================  ==========================================================  
-                                                                                                                                                                                    
-==========================================================  ==========================================================  ==========================================================  
-                  :math:`\mathcal{L}=0`                     `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
-                       :math:`a=b`                          `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
-           :math:`\nabla\cdot\boldsymbol{u} =0`             `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
-==========================================================  ==========================================================  ==========================================================  
+====================================  ==========================================================  ==========================================================  
+                                                                                                                                                              
+====================================  ==========================================================  ==========================================================  
+       :math:`\mathcal{L}=0`          `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+            :math:`a=b`               `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+:math:`\nabla\cdot\boldsymbol{u} =0`  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+====================================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -60487,7 +59642,7 @@ Make a program that simulates flipping a coin \( N \) times.
 
 <p>
 <b>Hint.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -64539,12 +63694,12 @@ def f(x, a=1, b=1, c=1):
 
 <table border="1">
 <thead>
-<tr><th align="center">           function           </th> <th align="center">           purpose            </th> <th align="center">            state             </th> </tr>
+<tr><th align="center">function</th> <th align="center">           purpose            </th> <th align="center">      state      </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   <code>g(x)</code>                            </td> <td align="left">   Compute the Gaussian function.    </td> <td align="left">   Formula ready.                    </td> </tr>
-<tr><td align="left">   <code>h(x)</code>                            </td> <td align="left">   Heaviside function.               </td> <td align="left">   Formula ready.                    </td> </tr>
-<tr><td align="left">   <code>I(x)</code>                            </td> <td align="left">   Indicator function.               </td> <td align="left">   Nothing done yet.                 </td> </tr>
+<tr><td align="left">   <code>g(x)</code>      </td> <td align="left">   Compute the Gaussian function.    </td> <td align="left">   Formula ready.       </td> </tr>
+<tr><td align="left">   <code>h(x)</code>      </td> <td align="left">   Heaviside function.               </td> <td align="left">   Formula ready.       </td> </tr>
+<tr><td align="left">   <code>I(x)</code>      </td> <td align="left">   Indicator function.               </td> <td align="left">   Nothing done yet.    </td> </tr>
 </tbody>
 </table>
 
@@ -69176,7 +68331,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using \g<begin><code>\g<subst></code>\g<end>
+verbatim is to be replaced using <function html_verbatim at 0x7f93c70775f0>
 
 
 First occurence: " `mako`."
@@ -70742,23 +69897,23 @@ a = np.linspace(p, q, n)
 \hline
 \multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
 \hline
-\code{array(ld)}                                                    & copy list data \code{ld} to a \code{numpy} array                    \\
-\code{asarray(d)}                                                   & make array of data \code{d} (no data copy if already array)         \\
-\code{zeros(n)}                                                     & make a \code{float} vector/array of length \code{n}, with zeros     \\
-\code{zeros(n, int)}                                                & make an \code{int} vector/array of length \code{n} with zeros       \\
-\code{zeros((m,n))}                                                 & make a two-dimensional \code{float} array with shape (\code{m},`n`) \\
-\code{zeros_like(x)}                                                & make array of same shape and element type as \code{x}               \\
-\code{linspace(a,b,m)}                                              & uniform sequence of \code{m} numbers in $[a,b]$                     \\
-\code{a.shape}                                                      & tuple containing \code{a}'s shape                                   \\
-\code{a.size}                                                       & total no of elements in \code{a}                                    \\
-\code{len(a)}                                                       & length of a one-dim. array \code{a} (same as \code{a.shape[0]})     \\
-\code{a.dtype}                                                      & the type of elements in \code{a}                                    \\
-\code{a.reshape(3,2)}                                               & return \code{a} reshaped as $3\times 2$ array                       \\
-\code{a[i]}                                                         & vector indexing                                                     \\
-\code{a[i,j]}                                                       & two-dim. array indexing                                             \\
-\code{a[1:k]}                                                       & slice: reference data with indices \code{1},\ldots,`k-1`            \\
-\code{a[1:8:3]}                                                     & slice: reference data with indices \code{1}, \code{4},\ldots,`7`    \\
-\code{b = a.copy()}                                                 & copy an array                                                       \\
+\code{array(ld)}       & copy list data \code{ld} to a \code{numpy} array                    \\
+\code{asarray(d)}      & make array of data \code{d} (no data copy if already array)         \\
+\code{zeros(n)}        & make a \code{float} vector/array of length \code{n}, with zeros     \\
+\code{zeros(n, int)}   & make an \code{int} vector/array of length \code{n} with zeros       \\
+\code{zeros((m,n))}    & make a two-dimensional \code{float} array with shape (\code{m},`n`) \\
+\code{zeros_like(x)}   & make array of same shape and element type as \code{x}               \\
+\code{linspace(a,b,m)} & uniform sequence of \code{m} numbers in $[a,b]$                     \\
+\code{a.shape}         & tuple containing \code{a}'s shape                                   \\
+\code{a.size}          & total no of elements in \code{a}                                    \\
+\code{len(a)}          & length of a one-dim. array \code{a} (same as \code{a.shape[0]})     \\
+\code{a.dtype}         & the type of elements in \code{a}                                    \\
+\code{a.reshape(3,2)}  & return \code{a} reshaped as $3\times 2$ array                       \\
+\code{a[i]}            & vector indexing                                                     \\
+\code{a[i,j]}          & two-dim. array indexing                                             \\
+\code{a[1:k]}          & slice: reference data with indices \code{1},\ldots,`k-1`            \\
+\code{a[1:8:3]}        & slice: reference data with indices \code{1}, \code{4},\ldots,`7`    \\
+\code{b = a.copy()}    & copy an array                                                       \\
 \hline
 \end{tabular}
 
@@ -71747,23 +70902,23 @@ a = np.linspace(p, q, n)
 \hline
 \multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
 \hline
-\texttt{array(ld)}                                                    & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
-\texttt{asarray(d)}                                                   & make array of data \texttt{d} (no data copy if already array)         \\
-\texttt{zeros(n)}                                                     & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
-\texttt{zeros(n, int)}                                                & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
-\texttt{zeros((m,n))}                                                 & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
-{\Verb!zeros_like(x)!}                                                & make array of same shape and element type as \texttt{x}               \\
-\texttt{linspace(a,b,m)}                                              & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
-\texttt{a.shape}                                                      & tuple containing \texttt{a}'s shape                                   \\
-\texttt{a.size}                                                       & total no of elements in \texttt{a}                                    \\
-\texttt{len(a)}                                                       & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
-\texttt{a.dtype}                                                      & the type of elements in \texttt{a}                                    \\
-\texttt{a.reshape(3,2)}                                               & return \texttt{a} reshaped as $3\times 2$ array                       \\
-\texttt{a[i]}                                                         & vector indexing                                                     \\
-\texttt{a[i,j]}                                                       & two-dim. array indexing                                             \\
-\texttt{a[1:k]}                                                       & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
-\texttt{a[1:8:3]}                                                     & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
-\texttt{b = a.copy()}                                                 & copy an array                                                       \\
+\texttt{array(ld)}       & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
+\texttt{asarray(d)}      & make array of data \texttt{d} (no data copy if already array)         \\
+\texttt{zeros(n)}        & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
+\texttt{zeros(n, int)}   & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
+\texttt{zeros((m,n))}    & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
+{\Verb!zeros_like(x)!}   & make array of same shape and element type as \texttt{x}               \\
+\texttt{linspace(a,b,m)} & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
+\texttt{a.shape}         & tuple containing \texttt{a}'s shape                                   \\
+\texttt{a.size}          & total no of elements in \texttt{a}                                    \\
+\texttt{len(a)}          & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
+\texttt{a.dtype}         & the type of elements in \texttt{a}                                    \\
+\texttt{a.reshape(3,2)}  & return \texttt{a} reshaped as $3\times 2$ array                       \\
+\texttt{a[i]}            & vector indexing                                                     \\
+\texttt{a[i,j]}          & two-dim. array indexing                                             \\
+\texttt{a[1:k]}          & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
+\texttt{a[1:8:3]}        & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
+\texttt{b = a.copy()}    & copy an array                                                       \\
 \hline
 \end{tabular}
 
@@ -72767,16 +71922,16 @@ Tables, first with math headings:
   <div class="col-xs-5">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="left">    \( i \)     </td> <td align="right">   \( h_i \)    </td> <td align="right"> \( \bar T_i \) </td> <td align="right"><code>L_i</code></td> </tr>
+<tr><td align="left">\( i \)</td> <td align="right">\( h_i \)</td> <td align="right">\( \bar T_i \)</td> <td align="right"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0          </td> <td align="right">   0            </td> <td align="right">   288               </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1          </td> <td align="right">   11,000       </td> <td align="right">   216               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2          </td> <td align="right">   20,000       </td> <td align="right">   216               </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3          </td> <td align="right">   32,000       </td> <td align="right">   228               </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4          </td> <td align="right">   47,000       </td> <td align="right">   270               </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5          </td> <td align="right">   51,000       </td> <td align="right">   270               </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
     </table>
   </div>
@@ -72787,23 +71942,23 @@ And then with plain words:
 <p>
 
 <div class="row">
-  <div class="col-xs-5">
+  <div class="col-xs-4">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="left"><b>       i        </b></td> <td align="right"><b>     height     </b></td> <td align="right"><b>  Temperature   </b></td> <td align="right"><b>       L        </b></td> </tr>
+<tr><td align="left"><b>i</b></td> <td align="right"><b>height</b></td> <td align="right"><b>Temperature</b></td> <td align="right"><b>       L        </b></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0    </td> <td align="right">   0         </td> <td align="right">   288            </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1    </td> <td align="right">   11,000    </td> <td align="right">   216            </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2    </td> <td align="right">   20,000    </td> <td align="right">   216            </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3    </td> <td align="right">   32,000    </td> <td align="right">   228            </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4    </td> <td align="right">   47,000    </td> <td align="right">   270            </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5    </td> <td align="right">   51,000    </td> <td align="right">   270            </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6    </td> <td align="right">   71,000    </td> <td align="right">   214            </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-5 -->
+</div> <!-- col-xs-4 -->
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -73125,7 +72280,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Sep 12 13:38:23 2014.
+# sphinx-quickstart on Sun Sep 14 07:25:02 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -75616,7 +74771,7 @@ Google and Wordpress.
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
-<code>(load-file "~/.doconce-mode.el")</code> to the <code>.emacs</code> file.
+<code>(load-file &quot;~/.doconce-mode.el&quot;)</code> to the <code>.emacs</code> file.
 
 <p>
 Besides syntax highlighting of DocOnce documents, this Emacs mode
@@ -75625,25 +74780,25 @@ provides a lot of shortcuts for setting up many elements in a document:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">                         Emacs key                          </th> <th align="center">                           Action                           </th> </tr>
+<tr><th align="center">  Emacs key  </th> <th align="center">                           Action                           </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
-<tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
-<tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
-<tr><td align="left">   Ctrl+c h2                                                       </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
-<tr><td align="left">   Ctrl+c h3                                                       </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
-<tr><td align="left">   Ctrl+c hp                                                       </td> <td align="left">   heading for paragraph                                           </td> </tr>
-<tr><td align="left">   Ctrl+c me                                                       </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
-<tr><td align="left">   Ctrl+c ma                                                       </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
-<tr><td align="left">   Ctrl+c ce                                                       </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
-<tr><td align="left">   Ctrl+c cf                                                       </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
-<tr><td align="left">   Ctrl+c table2                                                   </td> <td align="left">   table with 2 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c table3                                                   </td> <td align="left">   table with 3 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c table4                                                   </td> <td align="left">   table with 4 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
-<tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
-<tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
+<tr><td align="left">   Ctrl+c f         </td> <td align="left">   figure                                                          </td> </tr>
+<tr><td align="left">   Ctrl+c v         </td> <td align="left">   movie/video                                                     </td> </tr>
+<tr><td align="left">   Ctrl+c h1        </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
+<tr><td align="left">   Ctrl+c h2        </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c h3        </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c hp        </td> <td align="left">   heading for paragraph                                           </td> </tr>
+<tr><td align="left">   Ctrl+c me        </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma        </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce        </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf        </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
+<tr><td align="left">   Ctrl+c table2    </td> <td align="left">   table with 2 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table3    </td> <td align="left">   table with 3 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table4    </td> <td align="left">   table with 4 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c exer      </td> <td align="left">   exercise outline                                                </td> </tr>
+<tr><td align="left">   Ctrl+c slide     </td> <td align="left">   slide outline                                                   </td> </tr>
+<tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                                                </td> </tr>
 </tbody>
 </table>
 
@@ -75689,19 +74844,19 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <table border="1">
 <thead>
-<tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
+<tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
-<tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
-<tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
-<tr><td align="left">   subsubsection                                                        </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
-<tr><td align="left">   paragraph                                                            </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
-<tr><td align="left">   abstract                                                             </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
-<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
-<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
-<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
-<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   chapter          </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
+<tr><td align="left">   section          </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsection       </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsubsection    </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
+<tr><td align="left">   paragraph        </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
+<tr><td align="left">   abstract         </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
 </tbody>
 </table>
 <p>
@@ -75739,7 +74894,7 @@ Quotations appear inside double backticks and double single quotes:
 <!-- end verbatim block -->
 
 <p>
-A forced linebreak is specified by <code><linebreak></code> at the point where the
+A forced linebreak is specified by <code>&lt;linebreak&gt;</code> at the point where the
 linebreak in the output is wanted.
 
 <p>
@@ -76239,7 +75394,7 @@ some.
 
 <p>
 However, one can use preprocessor if-tests on
-the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
+the format (typically <code>#if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</code>) to
 include special code for <code>latex</code> and <code>pdflatex</code> output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of the resulting
@@ -77259,22 +76414,22 @@ provides a lot of shortcuts for setting up many elements in a document:
 \hline
 \multicolumn{1}{c}{ Emacs key } & \multicolumn{1}{c}{ Action } \\
 \hline
-Ctrl+c f                                         & figure                                           \\
-Ctrl+c v                                         & movie/video                                      \\
-Ctrl+c h1                                        & heading level 1 (section/h1)                     \\
-Ctrl+c h2                                        & heading level 2 (subsection/h2)                  \\
-Ctrl+c h3                                        & heading level 2 (subsection/h3)                  \\
-Ctrl+c hp                                        & heading for paragraph                            \\
-Ctrl+c me                                        & math environment: \code{!bt} equation \code{!et} \\
-Ctrl+c ma                                        & math environment: \code{!bt} align \code{!et}    \\
-Ctrl+c ce                                        & code environment: \code{!bc} code \code{!ec}     \\
-Ctrl+c cf                                        & code from file: \code{@@@CODE}                   \\
-Ctrl+c table2                                    & table with 2 columns                             \\
-Ctrl+c table3                                    & table with 3 columns                             \\
-Ctrl+c table4                                    & table with 4 columns                             \\
-Ctrl+c exer                                      & exercise outline                                 \\
-Ctrl+c slide                                     & slide outline                                    \\
-Ctrl+c help                                      & print this table                                 \\
+Ctrl+c f      & figure                                           \\
+Ctrl+c v      & movie/video                                      \\
+Ctrl+c h1     & heading level 1 (section/h1)                     \\
+Ctrl+c h2     & heading level 2 (subsection/h2)                  \\
+Ctrl+c h3     & heading level 2 (subsection/h3)                  \\
+Ctrl+c hp     & heading for paragraph                            \\
+Ctrl+c me     & math environment: \code{!bt} equation \code{!et} \\
+Ctrl+c ma     & math environment: \code{!bt} align \code{!et}    \\
+Ctrl+c ce     & code environment: \code{!bc} code \code{!ec}     \\
+Ctrl+c cf     & code from file: \code{@@@CODE}                   \\
+Ctrl+c table2 & table with 2 columns                             \\
+Ctrl+c table3 & table with 3 columns                             \\
+Ctrl+c table4 & table with 4 columns                             \\
+Ctrl+c exer   & exercise outline                                 \\
+Ctrl+c slide  & slide outline                                    \\
+Ctrl+c help   & print this table                                 \\
 \hline
 \end{tabular}
 \end{quote}
@@ -77323,16 +76478,16 @@ The table of contents is removed by writing \code{TOC: off}.
 \hline
 \multicolumn{1}{c}{ Section type } & \multicolumn{1}{c}{ Syntax } \\
 \hline
-chapter                                               & \code{========= Heading ========} (9 \code{=})        \\
-section                                               & \code{======= Heading =======}    (7 \code{=})        \\
-subsection                                            & \code{===== Heading =====}        (5 \code{=})        \\
-subsubsection                                         & \code{=== Heading ===}            (3 \code{=})        \\
-paragraph                                             & \code{__Heading.__}               (2 \code{_})        \\
-abstract                                              & \code{__Abstract.__} Running text...                  \\
-appendix                                              & \code{======= Appendix: heading =======} (7 \code{=}) \\
-appendix                                              & \code{===== Appendix: heading =====} (5 \code{=})     \\
-exercise                                              & \code{======= Exercise: heading =======} (7 \code{=}) \\
-exercise                                              & \code{===== Exercise: heading =====} (5 \code{=})     \\
+chapter       & \code{========= Heading ========} (9 \code{=})        \\
+section       & \code{======= Heading =======}    (7 \code{=})        \\
+subsection    & \code{===== Heading =====}        (5 \code{=})        \\
+subsubsection & \code{=== Heading ===}            (3 \code{=})        \\
+paragraph     & \code{__Heading.__}               (2 \code{_})        \\
+abstract      & \code{__Abstract.__} Running text...                  \\
+appendix      & \code{======= Appendix: heading =======} (7 \code{=}) \\
+appendix      & \code{===== Appendix: heading =====} (5 \code{=})     \\
+exercise      & \code{======= Exercise: heading =======} (7 \code{=}) \\
+exercise      & \code{===== Exercise: heading =====} (5 \code{=})     \\
 \hline
 \end{tabular}
 \end{quote}
@@ -78513,26 +77668,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==========================================  ==========================================  
-                Emacs key                                     Action                    
-==========================================  ==========================================  
-Ctrl+c f                                    figure                                      
-Ctrl+c v                                    movie/video                                 
-Ctrl+c h1                                   heading level 1 (section/h1)                
-Ctrl+c h2                                   heading level 2 (subsection/h2)             
-Ctrl+c h3                                   heading level 2 (subsection/h3)             
-Ctrl+c hp                                   heading for paragraph                       
-Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
-Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
-Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
-Ctrl+c cf                                   code from file: ``@@@CODE``                 
-Ctrl+c table2                               table with 2 columns                        
-Ctrl+c table3                               table with 3 columns                        
-Ctrl+c table4                               table with 4 columns                        
-Ctrl+c exer                                 exercise outline                            
-Ctrl+c slide                                slide outline                               
-Ctrl+c help                                 print this table                            
-==========================================  ==========================================  
+=============  ==========================================  
+  Emacs key                      Action                    
+=============  ==========================================  
+Ctrl+c f       figure                                      
+Ctrl+c v       movie/video                                 
+Ctrl+c h1      heading level 1 (section/h1)                
+Ctrl+c h2      heading level 2 (subsection/h2)             
+Ctrl+c h3      heading level 2 (subsection/h3)             
+Ctrl+c hp      heading for paragraph                       
+Ctrl+c me      math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma      math environment: ``!bt`` align ``!et``     
+Ctrl+c ce      code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf      code from file: ``@@@CODE``                 
+Ctrl+c table2  table with 2 columns                        
+Ctrl+c table3  table with 3 columns                        
+Ctrl+c table4  table with 4 columns                        
+Ctrl+c exer    exercise outline                            
+Ctrl+c slide   slide outline                               
+Ctrl+c help    print this table                            
+=============  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -78572,20 +77727,20 @@ The table of contents is removed by writing ``TOC: off``.
 Section Types
 -------------
 
-===============================================  ===============================================  
-                  Section type                                        Syntax                      
-===============================================  ===============================================  
-chapter                                          ``========= Heading ========`` (9 ``=``)         
-section                                          ``======= Heading =======``    (7 ``=``)         
-subsection                                       ``===== Heading =====``        (5 ``=``)         
-subsubsection                                    ``=== Heading ===``            (3 ``=``)         
-paragraph                                        ``__Heading.__``               (2 ``_``)         
-abstract                                         ``__Abstract.__`` Running text...                
-appendix                                         ``======= Appendix: heading =======`` (7 ``=``)  
-appendix                                         ``===== Appendix: heading =====`` (5 ``=``)      
-exercise                                         ``======= Exercise: heading =======`` (7 ``=``)  
-exercise                                         ``===== Exercise: heading =====`` (5 ``=``)      
-===============================================  ===============================================  
+=============  ===============================================  
+ Section type                       Syntax                      
+=============  ===============================================  
+chapter        ``========= Heading ========`` (9 ``=``)         
+section        ``======= Heading =======``    (7 ``=``)         
+subsection     ``===== Heading =====``        (5 ``=``)         
+subsubsection  ``=== Heading ===``            (3 ``=``)         
+paragraph      ``__Heading.__``               (2 ``_``)         
+abstract       ``__Abstract.__`` Running text...                
+appendix       ``======= Appendix: heading =======`` (7 ``=``)  
+appendix       ``===== Appendix: heading =====`` (5 ``=``)      
+exercise       ``======= Exercise: heading =======`` (7 ``=``)  
+exercise       ``===== Exercise: heading =====`` (5 ``=``)      
+=============  ===============================================  
 
 Note that abstracts are recognized by starting with ``__Abstract.__`` or
 ``__Summary.__`` at the beginning of a line and ending with three or
@@ -79692,26 +78847,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==========================================  ==========================================  
-                Emacs key                                     Action                    
-==========================================  ==========================================  
-Ctrl+c f                                    figure                                      
-Ctrl+c v                                    movie/video                                 
-Ctrl+c h1                                   heading level 1 (section/h1)                
-Ctrl+c h2                                   heading level 2 (subsection/h2)             
-Ctrl+c h3                                   heading level 2 (subsection/h3)             
-Ctrl+c hp                                   heading for paragraph                       
-Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
-Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
-Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
-Ctrl+c cf                                   code from file: ``@@@CODE``                 
-Ctrl+c table2                               table with 2 columns                        
-Ctrl+c table3                               table with 3 columns                        
-Ctrl+c table4                               table with 4 columns                        
-Ctrl+c exer                                 exercise outline                            
-Ctrl+c slide                                slide outline                               
-Ctrl+c help                                 print this table                            
-==========================================  ==========================================  
+=============  ==========================================  
+  Emacs key                      Action                    
+=============  ==========================================  
+Ctrl+c f       figure                                      
+Ctrl+c v       movie/video                                 
+Ctrl+c h1      heading level 1 (section/h1)                
+Ctrl+c h2      heading level 2 (subsection/h2)             
+Ctrl+c h3      heading level 2 (subsection/h3)             
+Ctrl+c hp      heading for paragraph                       
+Ctrl+c me      math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma      math environment: ``!bt`` align ``!et``     
+Ctrl+c ce      code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf      code from file: ``@@@CODE``                 
+Ctrl+c table2  table with 2 columns                        
+Ctrl+c table3  table with 3 columns                        
+Ctrl+c table4  table with 4 columns                        
+Ctrl+c exer    exercise outline                            
+Ctrl+c slide   slide outline                               
+Ctrl+c help    print this table                            
+=============  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -79755,20 +78910,20 @@ The table of contents is removed by writing ``TOC: off``.
 Section Types
 -------------
 
-===============================================  ===============================================  
-                  Section type                                        Syntax                      
-===============================================  ===============================================  
-chapter                                          ``========= Heading ========`` (9 ``=``)         
-section                                          ``======= Heading =======``    (7 ``=``)         
-subsection                                       ``===== Heading =====``        (5 ``=``)         
-subsubsection                                    ``=== Heading ===``            (3 ``=``)         
-paragraph                                        ``__Heading.__``               (2 ``_``)         
-abstract                                         ``__Abstract.__`` Running text...                
-appendix                                         ``======= Appendix: heading =======`` (7 ``=``)  
-appendix                                         ``===== Appendix: heading =====`` (5 ``=``)      
-exercise                                         ``======= Exercise: heading =======`` (7 ``=``)  
-exercise                                         ``===== Exercise: heading =====`` (5 ``=``)      
-===============================================  ===============================================  
+=============  ===============================================  
+ Section type                       Syntax                      
+=============  ===============================================  
+chapter        ``========= Heading ========`` (9 ``=``)         
+section        ``======= Heading =======``    (7 ``=``)         
+subsection     ``===== Heading =====``        (5 ``=``)         
+subsubsection  ``=== Heading ===``            (3 ``=``)         
+paragraph      ``__Heading.__``               (2 ``_``)         
+abstract       ``__Abstract.__`` Running text...                
+appendix       ``======= Appendix: heading =======`` (7 ``=``)  
+appendix       ``===== Appendix: heading =====`` (5 ``=``)      
+exercise       ``======= Exercise: heading =======`` (7 ``=``)  
+exercise       ``===== Exercise: heading =====`` (5 ``=``)      
+=============  ===============================================  
 
 Note that abstracts are recognized by starting with ``__Abstract.__`` or
 ``__Summary.__`` at the beginning of a line and ending with three or
@@ -80938,23 +80093,23 @@ Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
- ||                _Emacs key_                  ||                  _Action_                   ||
- ||  Ctrl+c f                                   ||  figure                                     ||
- ||  Ctrl+c v                                   ||  movie/video                                ||
- ||  Ctrl+c h1                                  ||  heading level 1 (section/h1)               ||
- ||  Ctrl+c h2                                  ||  heading level 2 (subsection/h2)            ||
- ||  Ctrl+c h3                                  ||  heading level 2 (subsection/h3)            ||
- ||  Ctrl+c hp                                  ||  heading for paragraph                      ||
- ||  Ctrl+c me                                  ||  math environment: `!bt` equation `!et`     ||
- ||  Ctrl+c ma                                  ||  math environment: `!bt` align `!et`        ||
- ||  Ctrl+c ce                                  ||  code environment: `!bc` code `!ec`         ||
- ||  Ctrl+c cf                                  ||  code from file: `@@@CODE`                  ||
- ||  Ctrl+c table2                              ||  table with 2 columns                       ||
- ||  Ctrl+c table3                              ||  table with 3 columns                       ||
- ||  Ctrl+c table4                              ||  table with 4 columns                       ||
- ||  Ctrl+c exer                                ||  exercise outline                           ||
- ||  Ctrl+c slide                               ||  slide outline                              ||
- ||  Ctrl+c help                                ||  print this table                           ||
+ ||    _Emacs key_     ||                  _Action_                   ||
+ ||  Ctrl+c f          ||  figure                                     ||
+ ||  Ctrl+c v          ||  movie/video                                ||
+ ||  Ctrl+c h1         ||  heading level 1 (section/h1)               ||
+ ||  Ctrl+c h2         ||  heading level 2 (subsection/h2)            ||
+ ||  Ctrl+c h3         ||  heading level 2 (subsection/h3)            ||
+ ||  Ctrl+c hp         ||  heading for paragraph                      ||
+ ||  Ctrl+c me         ||  math environment: `!bt` equation `!et`     ||
+ ||  Ctrl+c ma         ||  math environment: `!bt` align `!et`        ||
+ ||  Ctrl+c ce         ||  code environment: `!bc` code `!ec`         ||
+ ||  Ctrl+c cf         ||  code from file: `@@@CODE`                  ||
+ ||  Ctrl+c table2     ||  table with 2 columns                       ||
+ ||  Ctrl+c table3     ||  table with 3 columns                       ||
+ ||  Ctrl+c table4     ||  table with 4 columns                       ||
+ ||  Ctrl+c exer       ||  exercise outline                           ||
+ ||  Ctrl+c slide      ||  slide outline                              ||
+ ||  Ctrl+c help       ||  print this table                           ||
 
 
 ==== Title, Authors, and Date ====
@@ -80994,17 +80149,17 @@ The table of contents is removed by writing `TOC: off`.
 ==== Section Types ====
 
 
- ||                  _Section type_                  ||                     _Syntax_                     ||
- ||  chapter                                         ||  `========= Heading ========` (9 `=`)            ||
- ||  section                                         ||  `======= Heading =======`    (7 `=`)            ||
- ||  subsection                                      ||  `===== Heading =====`        (5 `=`)            ||
- ||  subsubsection                                   ||  `=== Heading ===`            (3 `=`)            ||
- ||  paragraph                                       ||  `__Heading.__`               (2 `_`)            ||
- ||  abstract                                        ||  `__Abstract.__` Running text...                 ||
- ||  appendix                                        ||  `======= Appendix: heading =======` (7 `=`)     ||
- ||  appendix                                        ||  `===== Appendix: heading =====` (5 `=`)         ||
- ||  exercise                                        ||  `======= Exercise: heading =======` (7 `=`)     ||
- ||  exercise                                        ||  `===== Exercise: heading =====` (5 `=`)         ||
+ ||   _Section type_   ||                     _Syntax_                     ||
+ ||  chapter           ||  `========= Heading ========` (9 `=`)            ||
+ ||  section           ||  `======= Heading =======`    (7 `=`)            ||
+ ||  subsection        ||  `===== Heading =====`        (5 `=`)            ||
+ ||  subsubsection     ||  `=== Heading ===`            (3 `=`)            ||
+ ||  paragraph         ||  `__Heading.__`               (2 `_`)            ||
+ ||  abstract          ||  `__Abstract.__` Running text...                 ||
+ ||  appendix          ||  `======= Appendix: heading =======` (7 `=`)     ||
+ ||  appendix          ||  `===== Appendix: heading =====` (5 `=`)         ||
+ ||  exercise          ||  `======= Exercise: heading =======` (7 `=`)     ||
+ ||  exercise          ||  `===== Exercise: heading =====` (5 `=`)         ||
 
 
 Note that abstracts are recognized by starting with `__Abstract.__` or
@@ -82056,25 +81211,25 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <table border="1">
 <thead>
-<tr><th align="center">                         Emacs key                          </th> <th align="center">                           Action                           </th> </tr>
+<tr><th align="center">  Emacs key  </th> <th align="center">                           Action                           </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   Ctrl+c f                                                        </td> <td align="left">   figure                                                          </td> </tr>
-<tr><td align="left">   Ctrl+c v                                                        </td> <td align="left">   movie/video                                                     </td> </tr>
-<tr><td align="left">   Ctrl+c h1                                                       </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
-<tr><td align="left">   Ctrl+c h2                                                       </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
-<tr><td align="left">   Ctrl+c h3                                                       </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
-<tr><td align="left">   Ctrl+c hp                                                       </td> <td align="left">   heading for paragraph                                           </td> </tr>
-<tr><td align="left">   Ctrl+c me                                                       </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
-<tr><td align="left">   Ctrl+c ma                                                       </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
-<tr><td align="left">   Ctrl+c ce                                                       </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
-<tr><td align="left">   Ctrl+c cf                                                       </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
-<tr><td align="left">   Ctrl+c table2                                                   </td> <td align="left">   table with 2 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c table3                                                   </td> <td align="left">   table with 3 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c table4                                                   </td> <td align="left">   table with 4 columns                                            </td> </tr>
-<tr><td align="left">   Ctrl+c exer                                                     </td> <td align="left">   exercise outline                                                </td> </tr>
-<tr><td align="left">   Ctrl+c slide                                                    </td> <td align="left">   slide outline                                                   </td> </tr>
-<tr><td align="left">   Ctrl+c help                                                     </td> <td align="left">   print this table                                                </td> </tr>
+<tr><td align="left">   Ctrl+c f         </td> <td align="left">   figure                                                          </td> </tr>
+<tr><td align="left">   Ctrl+c v         </td> <td align="left">   movie/video                                                     </td> </tr>
+<tr><td align="left">   Ctrl+c h1        </td> <td align="left">   heading level 1 (section/h1)                                    </td> </tr>
+<tr><td align="left">   Ctrl+c h2        </td> <td align="left">   heading level 2 (subsection/h2)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c h3        </td> <td align="left">   heading level 2 (subsection/h3)                                 </td> </tr>
+<tr><td align="left">   Ctrl+c hp        </td> <td align="left">   heading for paragraph                                           </td> </tr>
+<tr><td align="left">   Ctrl+c me        </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma        </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce        </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf        </td> <td align="left">   code from file: <code>@@@CODE</code>                            </td> </tr>
+<tr><td align="left">   Ctrl+c table2    </td> <td align="left">   table with 2 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table3    </td> <td align="left">   table with 3 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c table4    </td> <td align="left">   table with 4 columns                                            </td> </tr>
+<tr><td align="left">   Ctrl+c exer      </td> <td align="left">   exercise outline                                                </td> </tr>
+<tr><td align="left">   Ctrl+c slide     </td> <td align="left">   slide outline                                                   </td> </tr>
+<tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                                                </td> </tr>
 </tbody>
 </table>
 ==== Title, Authors, and Date ====
@@ -82115,19 +81270,19 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <table border="1">
 <thead>
-<tr><th align="center">                           Section type                          </th> <th align="center">                              Syntax                             </th> </tr>
+<tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   chapter                                                              </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
-<tr><td align="left">   section                                                              </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
-<tr><td align="left">   subsection                                                           </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
-<tr><td align="left">   subsubsection                                                        </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
-<tr><td align="left">   paragraph                                                            </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
-<tr><td align="left">   abstract                                                             </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
-<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
-<tr><td align="left">   appendix                                                             </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
-<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
-<tr><td align="left">   exercise                                                             </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   chapter          </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
+<tr><td align="left">   section          </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsection       </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsubsection    </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
+<tr><td align="left">   paragraph        </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
+<tr><td align="left">   abstract         </td> <td align="left">   <code>__Abstract.__</code> Running text...                           </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
 </tbody>
 </table>
 Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
@@ -83244,23 +82399,23 @@ Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
- | =Emacs key                                          | =Action                                             |
- |  Ctrl+c f                                           |  figure                                             |
- |  Ctrl+c v                                           |  movie/video                                        |
- |  Ctrl+c h1                                          |  heading level 1 (section/h1)                       |
- |  Ctrl+c h2                                          |  heading level 2 (subsection/h2)                    |
- |  Ctrl+c h3                                          |  heading level 2 (subsection/h3)                    |
- |  Ctrl+c hp                                          |  heading for paragraph                              |
- |  Ctrl+c me                                          |  math environment: {{{!bt}}} equation {{{!et}}}     |
- |  Ctrl+c ma                                          |  math environment: {{{!bt}}} align {{{!et}}}        |
- |  Ctrl+c ce                                          |  code environment: {{{!bc}}} code {{{!ec}}}         |
- |  Ctrl+c cf                                          |  code from file: {{{@@@CODE}}}                      |
- |  Ctrl+c table2                                      |  table with 2 columns                               |
- |  Ctrl+c table3                                      |  table with 3 columns                               |
- |  Ctrl+c table4                                      |  table with 4 columns                               |
- |  Ctrl+c exer                                        |  exercise outline                                   |
- |  Ctrl+c slide                                       |  slide outline                                      |
- |  Ctrl+c help                                        |  print this table                                   |
+ | =Emacs key         | =Action                                             |
+ |  Ctrl+c f          |  figure                                             |
+ |  Ctrl+c v          |  movie/video                                        |
+ |  Ctrl+c h1         |  heading level 1 (section/h1)                       |
+ |  Ctrl+c h2         |  heading level 2 (subsection/h2)                    |
+ |  Ctrl+c h3         |  heading level 2 (subsection/h3)                    |
+ |  Ctrl+c hp         |  heading for paragraph                              |
+ |  Ctrl+c me         |  math environment: {{{!bt}}} equation {{{!et}}}     |
+ |  Ctrl+c ma         |  math environment: {{{!bt}}} align {{{!et}}}        |
+ |  Ctrl+c ce         |  code environment: {{{!bc}}} code {{{!ec}}}         |
+ |  Ctrl+c cf         |  code from file: {{{@@@CODE}}}                      |
+ |  Ctrl+c table2     |  table with 2 columns                               |
+ |  Ctrl+c table3     |  table with 3 columns                               |
+ |  Ctrl+c table4     |  table with 4 columns                               |
+ |  Ctrl+c exer       |  exercise outline                                   |
+ |  Ctrl+c slide      |  slide outline                                      |
+ |  Ctrl+c help       |  print this table                                   |
 
 
 == Title, Authors, and Date ==
@@ -83301,17 +82456,17 @@ The table of contents is removed by writing {{{TOC: off}}}.
 
 
 
- | =Section type                                            | =Syntax                                                  |
- |  chapter                                                 |  {{{========= Heading ========}}} (9 {{{=}}})            |
- |  section                                                 |  {{{======= Heading =======}}}    (7 {{{=}}})            |
- |  subsection                                              |  {{{===== Heading =====}}}        (5 {{{=}}})            |
- |  subsubsection                                           |  {{{=== Heading ===}}}            (3 {{{=}}})            |
- |  paragraph                                               |  {{{__Heading.__}}}               (2 {{{_}}})            |
- |  abstract                                                |  {{{__Abstract.__}}} Running text...                     |
- |  appendix                                                |  {{{======= Appendix: heading =======}}} (7 {{{=}}})     |
- |  appendix                                                |  {{{===== Appendix: heading =====}}} (5 {{{=}}})         |
- |  exercise                                                |  {{{======= Exercise: heading =======}}} (7 {{{=}}})     |
- |  exercise                                                |  {{{===== Exercise: heading =====}}} (5 {{{=}}})         |
+ | =Section type      | =Syntax                                                  |
+ |  chapter           |  {{{========= Heading ========}}} (9 {{{=}}})            |
+ |  section           |  {{{======= Heading =======}}}    (7 {{{=}}})            |
+ |  subsection        |  {{{===== Heading =====}}}        (5 {{{=}}})            |
+ |  subsubsection     |  {{{=== Heading ===}}}            (3 {{{=}}})            |
+ |  paragraph         |  {{{__Heading.__}}}               (2 {{{_}}})            |
+ |  abstract          |  {{{__Abstract.__}}} Running text...                     |
+ |  appendix          |  {{{======= Appendix: heading =======}}} (7 {{{=}}})     |
+ |  appendix          |  {{{===== Appendix: heading =====}}} (5 {{{=}}})         |
+ |  exercise          |  {{{======= Exercise: heading =======}}} (7 {{{=}}})     |
+ |  exercise          |  {{{===== Exercise: heading =====}}} (5 {{{=}}})         |
 
 
 Note that abstracts are recognized by starting with {{{__Abstract.__}}} or
@@ -84351,26 +83506,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-======================================  ======================================  
-              Emacs key                                 Action                  
-======================================  ======================================  
-Ctrl+c f                                figure                                  
-Ctrl+c v                                movie/video                             
-Ctrl+c h1                               heading level 1 (section/h1)            
-Ctrl+c h2                               heading level 2 (subsection/h2)         
-Ctrl+c h3                               heading level 2 (subsection/h3)         
-Ctrl+c hp                               heading for paragraph                   
-Ctrl+c me                               math environment: '!bt' equation '!et'  
-Ctrl+c ma                               math environment: '!bt' align '!et'     
-Ctrl+c ce                               code environment: '!bc' code '!ec'      
-Ctrl+c cf                               code from file: '@@@CODE'               
-Ctrl+c table2                           table with 2 columns                    
-Ctrl+c table3                           table with 3 columns                    
-Ctrl+c table4                           table with 4 columns                    
-Ctrl+c exer                             exercise outline                        
-Ctrl+c slide                            slide outline                           
-Ctrl+c help                             print this table                        
-======================================  ======================================  
+=============  ======================================  
+  Emacs key                    Action                  
+=============  ======================================  
+Ctrl+c f       figure                                  
+Ctrl+c v       movie/video                             
+Ctrl+c h1      heading level 1 (section/h1)            
+Ctrl+c h2      heading level 2 (subsection/h2)         
+Ctrl+c h3      heading level 2 (subsection/h3)         
+Ctrl+c hp      heading for paragraph                   
+Ctrl+c me      math environment: '!bt' equation '!et'  
+Ctrl+c ma      math environment: '!bt' align '!et'     
+Ctrl+c ce      code environment: '!bc' code '!ec'      
+Ctrl+c cf      code from file: '@@@CODE'               
+Ctrl+c table2  table with 2 columns                    
+Ctrl+c table3  table with 3 columns                    
+Ctrl+c table4  table with 4 columns                    
+Ctrl+c exer    exercise outline                        
+Ctrl+c slide   slide outline                           
+Ctrl+c help    print this table                        
+=============  ======================================  
 
 Title, Authors, and Date
 
@@ -84406,20 +83561,20 @@ The table of contents is removed by writing 'TOC: off'.
 
 Section Types
 
-===========================================  ===========================================  
-                Section type                                    Syntax                    
-===========================================  ===========================================  
-chapter                                      '========= Heading ========' (9 '=')         
-section                                      '======= Heading ======='    (7 '=')         
-subsection                                   '===== Heading ====='        (5 '=')         
-subsubsection                                '=== Heading ==='            (3 '=')         
-paragraph                                    '__Heading.__'               (2 '_')         
-abstract                                     '__Abstract.__' Running text...              
-appendix                                     '======= Appendix: heading =======' (7 '=')  
-appendix                                     '===== Appendix: heading =====' (5 '=')      
-exercise                                     '======= Exercise: heading =======' (7 '=')  
-exercise                                     '===== Exercise: heading =====' (5 '=')      
-===========================================  ===========================================  
+=============  ===========================================  
+ Section type                     Syntax                    
+=============  ===========================================  
+chapter        '========= Heading ========' (9 '=')         
+section        '======= Heading ======='    (7 '=')         
+subsection     '===== Heading ====='        (5 '=')         
+subsubsection  '=== Heading ==='            (3 '=')         
+paragraph      '__Heading.__'               (2 '_')         
+abstract       '__Abstract.__' Running text...              
+appendix       '======= Appendix: heading =======' (7 '=')  
+appendix       '===== Appendix: heading =====' (5 '=')      
+exercise       '======= Exercise: heading =======' (7 '=')  
+exercise       '===== Exercise: heading =====' (5 '=')      
+=============  ===========================================  
 
 Note that abstracts are recognized by starting with '__Abstract.__' or
 '__Summary.__' at the beginning of a line and ending with three or
@@ -85430,26 +84585,26 @@ C{(load-file "~/.doconce-mode.el")} to the C{.emacs} file.
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-========================================  ========================================  
-               Emacs key                                   Action                   
-========================================  ========================================  
-Ctrl+c f                                  figure                                    
-Ctrl+c v                                  movie/video                               
-Ctrl+c h1                                 heading level 1 (section/h1)              
-Ctrl+c h2                                 heading level 2 (subsection/h2)           
-Ctrl+c h3                                 heading level 2 (subsection/h3)           
-Ctrl+c hp                                 heading for paragraph                     
-Ctrl+c me                                 math environment: C{!bt} equation C{!et}  
-Ctrl+c ma                                 math environment: C{!bt} align C{!et}     
-Ctrl+c ce                                 code environment: C{!bc} code C{!ec}      
-Ctrl+c cf                                 code from file: C{@@@CODE}                
-Ctrl+c table2                             table with 2 columns                      
-Ctrl+c table3                             table with 3 columns                      
-Ctrl+c table4                             table with 4 columns                      
-Ctrl+c exer                               exercise outline                          
-Ctrl+c slide                              slide outline                             
-Ctrl+c help                               print this table                          
-========================================  ========================================  
+=============  ========================================  
+  Emacs key                     Action                   
+=============  ========================================  
+Ctrl+c f       figure                                    
+Ctrl+c v       movie/video                               
+Ctrl+c h1      heading level 1 (section/h1)              
+Ctrl+c h2      heading level 2 (subsection/h2)           
+Ctrl+c h3      heading level 2 (subsection/h3)           
+Ctrl+c hp      heading for paragraph                     
+Ctrl+c me      math environment: C{!bt} equation C{!et}  
+Ctrl+c ma      math environment: C{!bt} align C{!et}     
+Ctrl+c ce      code environment: C{!bc} code C{!ec}      
+Ctrl+c cf      code from file: C{@@@CODE}                
+Ctrl+c table2  table with 2 columns                      
+Ctrl+c table3  table with 3 columns                      
+Ctrl+c table4  table with 4 columns                      
+Ctrl+c exer    exercise outline                          
+Ctrl+c slide   slide outline                             
+Ctrl+c help    print this table                          
+=============  ========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -85487,20 +84642,20 @@ The table of contents is removed by writing C{TOC: off}.
 Section Types
 -------------
 
-=============================================  =============================================  
-                 Section type                                      Syntax                     
-=============================================  =============================================  
-chapter                                        C{========= Heading ========} (9 C{=})         
-section                                        C{======= Heading =======}    (7 C{=})         
-subsection                                     C{===== Heading =====}        (5 C{=})         
-subsubsection                                  C{=== Heading ===}            (3 C{=})         
-paragraph                                      C{__Heading.__}               (2 C{_})         
-abstract                                       C{__Abstract.__} Running text...               
-appendix                                       C{======= Appendix: heading =======} (7 C{=})  
-appendix                                       C{===== Appendix: heading =====} (5 C{=})      
-exercise                                       C{======= Exercise: heading =======} (7 C{=})  
-exercise                                       C{===== Exercise: heading =====} (5 C{=})      
-=============================================  =============================================  
+=============  =============================================  
+ Section type                      Syntax                     
+=============  =============================================  
+chapter        C{========= Heading ========} (9 C{=})         
+section        C{======= Heading =======}    (7 C{=})         
+subsection     C{===== Heading =====}        (5 C{=})         
+subsubsection  C{=== Heading ===}            (3 C{=})         
+paragraph      C{__Heading.__}               (2 C{_})         
+abstract       C{__Abstract.__} Running text...               
+appendix       C{======= Appendix: heading =======} (7 C{=})  
+appendix       C{===== Appendix: heading =====} (5 C{=})      
+exercise       C{======= Exercise: heading =======} (7 C{=})  
+exercise       C{===== Exercise: heading =====} (5 C{=})      
+=============  =============================================  
 
 Note that abstracts are recognized by starting with C{__Abstract.__} or
 C{__Summary.__} at the beginning of a line and ending with three or
@@ -86536,26 +85691,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==================================  ==================================  
-            Emacs key                             Action                
-==================================  ==================================  
-Ctrl+c f                            figure                              
-Ctrl+c v                            movie/video                         
-Ctrl+c h1                           heading level 1 (section/h1)        
-Ctrl+c h2                           heading level 2 (subsection/h2)     
-Ctrl+c h3                           heading level 2 (subsection/h3)     
-Ctrl+c hp                           heading for paragraph               
-Ctrl+c me                           math environment: !bt equation !et  
-Ctrl+c ma                           math environment: !bt align !et     
-Ctrl+c ce                           code environment: !bc code !ec      
-Ctrl+c cf                           code from file: @@@CODE             
-Ctrl+c table2                       table with 2 columns                
-Ctrl+c table3                       table with 3 columns                
-Ctrl+c table4                       table with 4 columns                
-Ctrl+c exer                         exercise outline                    
-Ctrl+c slide                        slide outline                       
-Ctrl+c help                         print this table                    
-==================================  ==================================  
+=============  ==================================  
+  Emacs key                  Action                
+=============  ==================================  
+Ctrl+c f       figure                              
+Ctrl+c v       movie/video                         
+Ctrl+c h1      heading level 1 (section/h1)        
+Ctrl+c h2      heading level 2 (subsection/h2)     
+Ctrl+c h3      heading level 2 (subsection/h3)     
+Ctrl+c hp      heading for paragraph               
+Ctrl+c me      math environment: !bt equation !et  
+Ctrl+c ma      math environment: !bt align !et     
+Ctrl+c ce      code environment: !bc code !ec      
+Ctrl+c cf      code from file: @@@CODE             
+Ctrl+c table2  table with 2 columns                
+Ctrl+c table3  table with 3 columns                
+Ctrl+c table4  table with 4 columns                
+Ctrl+c exer    exercise outline                    
+Ctrl+c slide   slide outline                       
+Ctrl+c help    print this table                    
+=============  ==================================  
 
 Title, Authors, and Date
 ------------------------
@@ -86593,20 +85748,20 @@ The table of contents is removed by writing TOC: off.
 Section Types
 -------------
 
-=======================================  =======================================  
-              Section type                                Syntax                  
-=======================================  =======================================  
-chapter                                  ========= Heading ======== (9 =)         
-section                                  ======= Heading =======    (7 =)         
-subsection                               ===== Heading =====        (5 =)         
-subsubsection                            === Heading ===            (3 =)         
-paragraph                                __Heading.__               (2 _)         
-abstract                                 __Abstract.__ Running text...            
-appendix                                 ======= Appendix: heading ======= (7 =)  
-appendix                                 ===== Appendix: heading ===== (5 =)      
-exercise                                 ======= Exercise: heading ======= (7 =)  
-exercise                                 ===== Exercise: heading ===== (5 =)      
-=======================================  =======================================  
+=============  =======================================  
+ Section type                   Syntax                  
+=============  =======================================  
+chapter        ========= Heading ======== (9 =)         
+section        ======= Heading =======    (7 =)         
+subsection     ===== Heading =====        (5 =)         
+subsubsection  === Heading ===            (3 =)         
+paragraph      __Heading.__               (2 _)         
+abstract       __Abstract.__ Running text...            
+appendix       ======= Appendix: heading ======= (7 =)  
+appendix       ===== Appendix: heading ===== (5 =)      
+exercise       ======= Exercise: heading ======= (7 =)  
+exercise       ===== Exercise: heading ===== (5 =)      
+=============  =======================================  
 
 Note that abstracts are recognized by starting with __Abstract.__ or
 *Summary.* at the beginning of a line and ending with three or
@@ -87680,24 +86835,24 @@ Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 
-              Emacs key                                 Action                  
---------------------------------------  --------------------------------------  
-Ctrl+c f                                figure                                  
-Ctrl+c v                                movie/video                             
-Ctrl+c h1                               heading level 1 (section/h1)            
-Ctrl+c h2                               heading level 2 (subsection/h2)         
-Ctrl+c h3                               heading level 2 (subsection/h3)         
-Ctrl+c hp                               heading for paragraph                   
-Ctrl+c me                               math environment: `!bt` equation `!et`  
-Ctrl+c ma                               math environment: `!bt` align `!et`     
-Ctrl+c ce                               code environment: `!bc` code `!ec`      
-Ctrl+c cf                               code from file: `@@@CODE`               
-Ctrl+c table2                           table with 2 columns                    
-Ctrl+c table3                           table with 3 columns                    
-Ctrl+c table4                           table with 4 columns                    
-Ctrl+c exer                             exercise outline                        
-Ctrl+c slide                            slide outline                           
-Ctrl+c help                             print this table                        
+  Emacs key                    Action                  
+-------------  --------------------------------------  
+Ctrl+c f       figure                                  
+Ctrl+c v       movie/video                             
+Ctrl+c h1      heading level 1 (section/h1)            
+Ctrl+c h2      heading level 2 (subsection/h2)         
+Ctrl+c h3      heading level 2 (subsection/h3)         
+Ctrl+c hp      heading for paragraph                   
+Ctrl+c me      math environment: `!bt` equation `!et`  
+Ctrl+c ma      math environment: `!bt` align `!et`     
+Ctrl+c ce      code environment: `!bc` code `!ec`      
+Ctrl+c cf      code from file: `@@@CODE`               
+Ctrl+c table2  table with 2 columns                    
+Ctrl+c table3  table with 3 columns                    
+Ctrl+c table4  table with 4 columns                    
+Ctrl+c exer    exercise outline                        
+Ctrl+c slide   slide outline                           
+Ctrl+c help    print this table                        
 
 
 ### Title, Authors, and Date
@@ -87742,18 +86897,18 @@ The table of contents is removed by writing `TOC: off`.
 <a name="quick:sections"/>
 
 
-                Section type                                    Syntax                    
--------------------------------------------  -------------------------------------------  
-chapter                                      `========= Heading ========` (9 `=`)         
-section                                      `======= Heading =======`    (7 `=`)         
-subsection                                   `===== Heading =====`        (5 `=`)         
-subsubsection                                `=== Heading ===`            (3 `=`)         
-paragraph                                    `__Heading.__`               (2 `_`)         
-abstract                                     `__Abstract.__` Running text...              
-appendix                                     `======= Appendix: heading =======` (7 `=`)  
-appendix                                     `===== Appendix: heading =====` (5 `=`)      
-exercise                                     `======= Exercise: heading =======` (7 `=`)  
-exercise                                     `===== Exercise: heading =====` (5 `=`)      
+ Section type                     Syntax                    
+-------------  -------------------------------------------  
+chapter        `========= Heading ========` (9 `=`)         
+section        `======= Heading =======`    (7 `=`)         
+subsection     `===== Heading =====`        (5 `=`)         
+subsubsection  `=== Heading ===`            (3 `=`)         
+paragraph      `__Heading.__`               (2 `_`)         
+abstract       `__Abstract.__` Running text...              
+appendix       `======= Appendix: heading =======` (7 `=`)  
+appendix       `===== Appendix: heading =====` (5 `=`)      
+exercise       `======= Exercise: heading =======` (7 `=`)  
+exercise       `===== Exercise: heading =====` (5 `=`)      
 
 
 Note that abstracts are recognized by starting with `__Abstract.__` or
@@ -89956,7 +89111,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1257.
+t line 1262.
 
 
 
@@ -89976,7 +89131,7 @@ t line 1257.
 
 
 
-t line 1266.
+t line 1271.
 
 
 
@@ -89997,7 +89152,7 @@ t line 1266.
 
 
 
-t line 1270.
+t line 1275.
 
 
 
@@ -90740,7 +89895,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1257.
+t line 1262.
 
 
 
@@ -90760,7 +89915,7 @@ t line 1257.
 
 
 
-t line 1266.
+t line 1271.
 
 
 
@@ -90781,7 +89936,7 @@ t line 1266.
 
 
 
-t line 1270.
+t line 1275.
 
 
 
@@ -91441,7 +90596,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1257.
+t line 1262.
 
 
 
@@ -91461,7 +90616,7 @@ t line 1257.
 
 
 
-t line 1266.
+t line 1271.
 
 
 
@@ -91482,7 +90637,7 @@ t line 1266.
 
 
 
-t line 1270.
+t line 1275.
 
 
 
@@ -92654,12 +91809,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-(./testdoc.out.pyg) [7]
-
-
-...rest of part of LaTeX line number...
-
-[8]
+(./testdoc.out.pyg) [7] [8]
 
 
 ...rest of part of LaTeX line number...
@@ -92770,7 +91920,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1208.
+t line 1213.
 
 
 
@@ -92790,7 +91940,7 @@ t line 1208.
 
 
 
-t line 1217.
+t line 1222.
 
 
 
@@ -92810,7 +91960,7 @@ t line 1217.
 
 
 
-t line 1221.
+t line 1226.
 
 
 
@@ -93548,9 +92698,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:370: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:406: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:406: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:374: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:410: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:410: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -94003,13 +93153,6 @@ replacing \Verb! by \verb! in testdoc.tex
 replacing %E2%80%93 by  in testdoc.tex
 + doconce replace +%26+ '' testdoc.tex
 replacing +%26+ by  in testdoc.tex
-+ system pandoc -f latex -t markdown -o testdoc.md testdoc.tex
-+ pandoc -f latex -t markdown -o testdoc.md testdoc.tex
-+ '[' 0 -ne 0 ']'
-+ system pandoc -f markdown -t html -o testdoc_pnd_l2h.html --mathjax -s testdoc.md
-+ pandoc -f markdown -t html -o testdoc_pnd_l2h.html --mathjax -s testdoc.md
-+ '[' 0 -ne 0 ']'
-+ pandoc -v
 + system doconce format pandoc testdoc.do.txt --examples_as_exercises
 + doconce format pandoc testdoc.do.txt --examples_as_exercises
 running preprocess -DFORMAT=pandoc -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -94050,10 +93193,6 @@ figure file ../doc/src/manual/fig/wave1D:
     footnotes will be left in the doconce syntax
 output in testdoc.md
 + '[' 0 -ne 0 ']'
-+ system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
-+ pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
-+ '[' 0 -ne 0 ']'
-+ pandoc -v
 + system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 + doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
@@ -94341,8 +93480,7 @@ ionary/translator-months-dictionary-English.dict)
 tionary/translator-numbers-dictionary-English.dict)
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-theorem-dic
 tionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
-No file slides1.nav.
-(./newcommands_bfmath.tex) (./newcommands_replace.tex)
+(./slides1.nav) (./newcommands_bfmath.tex) (./newcommands_replace.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on .
@@ -94355,355 +93493,19 @@ onts/map/pdftex/updmap/pdftex.map}] (./slides1.vrb
 (./slides1.vrb) [3] (./slides1.vrb
 
 [4] (./slides1.vrb) [5] (./slides1.aux)
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsi1200
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecsi1200
-This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi1200.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
- Ok) ) ) )
-Font metrics written on ecsi1200.tfm.
-Output written on ecsi1200.600gf (256 characters, ).
-Transcript written on ecsi1200.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk: successfully generated.
-
 
 Package rerunfilecheck Warning: File `slides1.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk>
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecss1200
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecss1200
-This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss1200.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
- Ok) ) ) )
-Font metrics written on ecss1200.tfm.
-Output written on ecss1200.600gf (256 characters, ).
-Transcript written on ecss1200.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1200.600pk: successfully generated.
- </home/hpl
+ ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl
 /.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1200.600pk> </home/hpl/.texmf-var/f
 onts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
 r/jknappen/ec/ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
-/ectt1095.600pk>
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsi0800
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecsi0800
-This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi0800.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
- Ok) ) ) )
-Font metrics written on ecsi0800.tfm.
-Output written on ecsi0800.600gf (256 characters, ).
-Transcript written on ecsi0800.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600pk: successfully generated.
- </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600
-pk>
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecss0700
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecss0700
-This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss0700.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
- Ok) ) ) )
-Font metrics written on ecss0700.tfm.
-Output written on ecss0700.600gf (256 characters, ).
-Transcript written on ecss0700.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk: successfully generated.
- </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/hp
-l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk>
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsi0900
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecsi0900
-This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi0900.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsi.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
- Ok) ) ) )
-Font metrics written on ecsi0900.tfm.
-Output written on ecsi0900.600gf (256 characters, ).
-Transcript written on ecsi0900.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk: successfully generated.
- </home/hpl/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk>
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecss0900
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecss0900
-This is METAFONT, Version 2.718281 (TeX Live 2013/Debian)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss0900.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecss.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrligtb.mf
- Ok) ) ) )
-Font metrics written on ecss0900.tfm.
-Output written on ecss0900.600gf (256 characters, ).
-Transcript written on ecss0900.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk: successfully generated.
- </home/hpl/.texmf-var/fonts/pk/ljfo
+/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600
+pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/hp
+l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/hpl/.texmf-var/
+fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfo
 ur/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/e
 c/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0600.60
 0pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/h
@@ -102725,12 +101527,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...
     found!
-
-...doconce translation: handled inline substitutions 28.6 s
-
-...doconce translation: handled insertion of verbatim and latex blocks 28.9 s
-
-...doconce translation: handled !benvir/!eenvir constructions 28.9 s
 *** error: could not translate environment: !bsol
     This is an environment in an exercise. Check if the
     heading is correct so the subsection was recognized
@@ -103820,21 +102616,6 @@ Overfull \hbox (4.55762pt too wide)
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
  [1]
-Overfull \hbox (4.50082pt too wide) in alignment at lines 170--178
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 178--186
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 186--188
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 188--189
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 189--286
- [] [] 
-
 Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
 imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
@@ -103846,35 +102627,17 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 [2]
-Overfull \hbox (4.50082pt too wide) in alignment at lines 336--344
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 344--352
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 352--354
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 354--355
- [] [] 
-
-Underfull \hbox (badness 10000) 
-[]|\T1/pcr/m/n/10 ========= Heading ========
-
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Appendix: heading
 
-Underfull \hbox (badness 10000) 
-[]|\T1/pcr/m/n/10 ===== Appendix: heading
+Underfull \hbox (badness 1168) 
+[]|\T1/pcr/m/n/10 ===== Appendix: heading ===== \T1/ptm/m/n/10 (5
 
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Exercise: heading
 
-Underfull \hbox (badness 10000) 
-[]|\T1/pcr/m/n/10 ===== Exercise: heading
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 355--416
- [] [] 
+Underfull \hbox (badness 1168) 
+[]|\T1/pcr/m/n/10 ===== Exercise: heading ===== \T1/ptm/m/n/10 (5
 
 Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
@@ -104364,22 +103127,7 @@ Package hyperref Message: Driver (default): hdvips.
 Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 170--178
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 178--186
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 186--188
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 188--189
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 189--286
- [] [] 
-[2]
+ [2]
 Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
 imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
@@ -104391,35 +103139,17 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Overfull \hbox (4.50082pt too wide) in alignment at lines 336--344
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 344--352
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 352--354
- [] [] 
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 354--355
- [] [] 
-
-Underfull \hbox (badness 10000) 
-[]|\T1/pcr/m/n/10 ========= Heading ========
-
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Appendix: heading
 
-Underfull \hbox (badness 10000) 
-[]|\T1/pcr/m/n/10 ===== Appendix: heading
+Underfull \hbox (badness 1168) 
+[]|\T1/pcr/m/n/10 ===== Appendix: heading ===== \T1/ptm/m/n/10 (5
 
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Exercise: heading
 
-Underfull \hbox (badness 10000) 
-[]|\T1/pcr/m/n/10 ===== Exercise: heading
-
-Overfull \hbox (4.50082pt too wide) in alignment at lines 355--416
- [] [] 
+Underfull \hbox (badness 1168) 
+[]|\T1/pcr/m/n/10 ===== Exercise: heading ===== \T1/ptm/m/n/10 (5
 [3]
 Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
@@ -104486,11 +103216,11 @@ a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-[8]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
-
+[8]
 Overfull \hbox (5.00006pt too wide) 
 []    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z) 
 
@@ -104532,11 +103262,11 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[11]
+
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
-
+[11]
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
@@ -104583,20 +103313,20 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
 `)  |  
-[12]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-
+[12]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
-[13]
+
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-
+[13]
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -104604,7 +103334,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[14]
+
 Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -104615,7 +103345,7 @@ ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
 _localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
 t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
 f gitdiff fix_bibtex4publish csv2table  
-
+[14]
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -104665,14 +103395,14 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-[15]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-
+[15]
 Overfull \hbox (173.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
 splitting points  
@@ -104708,7 +103438,7 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-[16]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -104721,7 +103451,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-
+[16]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
@@ -104762,13 +103492,13 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-[17]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
+[17]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
@@ -104782,21 +103512,21 @@ Overfull \hbox (77.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-[18]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
-
+[18]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[19]
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -104807,18 +103537,18 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-
+[19]
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-[20]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[20]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub

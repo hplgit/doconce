@@ -779,7 +779,6 @@ def has_custom_pygments_lexer(name):
             return False
     return True
 
-
 BLANKLINE = {}
 FILENAME_EXTENSION = {}
 LIST = {}

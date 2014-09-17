@@ -139,13 +139,13 @@ system doconce replace '\Verb!' '\verb!' testdoc.tex
 doconce replace '%E2%80%93' '' testdoc.tex
 doconce replace '+%26+' '' testdoc.tex
 
-system pandoc -f latex -t markdown -o testdoc.md testdoc.tex
-system pandoc -f markdown -t html -o testdoc_pnd_l2h.html --mathjax -s testdoc.md
-pandoc -v >> testdoc_pnd_l2h.html
+#system pandoc -f latex -t markdown -o testdoc.md testdoc.tex
+#system pandoc -f markdown -t html -o testdoc_pnd_l2h.html --mathjax -s testdoc.md
+#pandoc -v >> testdoc_pnd_l2h.html
 
 system doconce format pandoc testdoc.do.txt $ex
-system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
-pandoc -v >> testdoc_pnd_d2h.html
+#system pandoc -t html -o testdoc_pnd_d2h.html --mathjax -s testdoc.md
+#pandoc -v >> testdoc_pnd_d2h.html
 
 # Test slides
 # slides1: rough small test

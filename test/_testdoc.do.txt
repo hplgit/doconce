@@ -252,7 +252,12 @@ HTML:
 </table>
 !ec
 
-System call:
+But inline HTML code is also important, like text that starts with
+`<a href="` (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
 !bc sys
 Terminal> mkdir test
 Terminal> cd test

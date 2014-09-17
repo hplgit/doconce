@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 12, 2014
+:Date: Sep 14, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -66,26 +66,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-==========================================  ==========================================  
-                Emacs key                                     Action                    
-==========================================  ==========================================  
-Ctrl+c f                                    figure                                      
-Ctrl+c v                                    movie/video                                 
-Ctrl+c h1                                   heading level 1 (section/h1)                
-Ctrl+c h2                                   heading level 2 (subsection/h2)             
-Ctrl+c h3                                   heading level 2 (subsection/h3)             
-Ctrl+c hp                                   heading for paragraph                       
-Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
-Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
-Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
-Ctrl+c cf                                   code from file: ``@@@CODE``                 
-Ctrl+c table2                               table with 2 columns                        
-Ctrl+c table3                               table with 3 columns                        
-Ctrl+c table4                               table with 4 columns                        
-Ctrl+c exer                                 exercise outline                            
-Ctrl+c slide                                slide outline                               
-Ctrl+c help                                 print this table                            
-==========================================  ==========================================  
+=============  ==========================================  
+  Emacs key                      Action                    
+=============  ==========================================  
+Ctrl+c f       figure                                      
+Ctrl+c v       movie/video                                 
+Ctrl+c h1      heading level 1 (section/h1)                
+Ctrl+c h2      heading level 2 (subsection/h2)             
+Ctrl+c h3      heading level 2 (subsection/h3)             
+Ctrl+c hp      heading for paragraph                       
+Ctrl+c me      math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma      math environment: ``!bt`` align ``!et``     
+Ctrl+c ce      code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf      code from file: ``@@@CODE``                 
+Ctrl+c table2  table with 2 columns                        
+Ctrl+c table3  table with 3 columns                        
+Ctrl+c table4  table with 4 columns                        
+Ctrl+c exer    exercise outline                            
+Ctrl+c slide   slide outline                               
+Ctrl+c help    print this table                            
+=============  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -129,20 +129,20 @@ The table of contents is removed by writing ``TOC: off``.
 Section Types
 -------------
 
-===============================================  ===============================================  
-                  Section type                                        Syntax                      
-===============================================  ===============================================  
-chapter                                          ``========= Heading ========`` (9 ``=``)         
-section                                          ``======= Heading =======``    (7 ``=``)         
-subsection                                       ``===== Heading =====``        (5 ``=``)         
-subsubsection                                    ``=== Heading ===``            (3 ``=``)         
-paragraph                                        ``__Heading.__``               (2 ``_``)         
-abstract                                         ``__Abstract.__`` Running text...                
-appendix                                         ``======= Appendix: heading =======`` (7 ``=``)  
-appendix                                         ``===== Appendix: heading =====`` (5 ``=``)      
-exercise                                         ``======= Exercise: heading =======`` (7 ``=``)  
-exercise                                         ``===== Exercise: heading =====`` (5 ``=``)      
-===============================================  ===============================================  
+=============  ===============================================  
+ Section type                       Syntax                      
+=============  ===============================================  
+chapter        ``========= Heading ========`` (9 ``=``)         
+section        ``======= Heading =======``    (7 ``=``)         
+subsection     ``===== Heading =====``        (5 ``=``)         
+subsubsection  ``=== Heading ===``            (3 ``=``)         
+paragraph      ``__Heading.__``               (2 ``_``)         
+abstract       ``__Abstract.__`` Running text...                
+appendix       ``======= Appendix: heading =======`` (7 ``=``)  
+appendix       ``===== Appendix: heading =====`` (5 ``=``)      
+exercise       ``======= Exercise: heading =======`` (7 ``=``)  
+exercise       ``===== Exercise: heading =====`` (5 ``=``)      
+=============  ===============================================  
 
 Note that abstracts are recognized by starting with ``__Abstract.__`` or
 ``__Summary.__`` at the beginning of a line and ending with three or

@@ -486,6 +486,13 @@ def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):
             _abort()
     return failure
 
+def remove_verbatim_blocks(text, format):
+    if format in ("latex", "pdflatex"):
+        envirs = r'([Vv]erbatim|minted|lstlisting|latex|tex)'
+        pattern = r'^\\begin\{%s\}.*^\\end\{%s\}' % (envirs, envirs)
+        return re.sub(pattern, '', text, flags=re.MULTILINE|re.DOTALL)
+
+
 def recommended_html_styles_and_pygments_styles():
     """
     List good combinations of HTML slide styles and
@@ -4758,7 +4765,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             if line.strip() != '':
                 empty_slide = False
 
-        if r'\title{' in part:
+        if r'\title{' in remove_verbatim_blocks(part, 'latex'):
+            print 'XXX yes part with title', part
             # Titlepage needs special treatment
             # Find figure (no caption or figure envir, just includegraphics)
             m = re.search(r'(\\centerline\{\\includegraphics.+\}\})', part)
