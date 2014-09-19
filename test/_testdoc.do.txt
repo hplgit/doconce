@@ -363,9 +363,9 @@ and a DocOnce directive a la `!bc`.
 The following attempt to exemplify colored text does not work in
 format ${FORMAT}.
 # #endif
-Here is some color{red}{red} color and an attempt to write color{green}{with
-green color containing a linebreak. <linebreak>
-And one more.} Some formats will only display <linebreak>
+Here is some color{red}{red color} and an attempt to write color{green}{with
+green color containing a linebreak and `verbatim`<linebreak>
+code.} Some formats will only display <linebreak>
 this correctly when HTML is the output format. <linebreak>
 But here some more running text is added which is not part of
 the previous blocks with line breaks.

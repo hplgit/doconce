@@ -1744,7 +1744,7 @@ download preprocess from http://code.google.com/p/preprocess""")
 
     verb_delimiter = '!'
     alt_verb_delimiters = '?', '@', '|'  # can't use ~,%,#,$,^,&,* in latex headings
-    cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'-])""", re.DOTALL)
+    cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'\\-])""", re.DOTALL)
     # Check if the verbatim text contains verb_delimiter and make
     # special solutions for these first
     alt_verb_delimiter = None

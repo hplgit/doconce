@@ -3153,7 +3153,10 @@ def doconce2format(filestr, format):
             f = open(fname, 'w')
             f.write(filestr)
 
-    # Next step: first reformatting of quizzes
+    # Next step: standardize newlines
+    filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
+
+        # Next step: first reformatting of quizzes
     filestr, num_quizzes = typeset_quizzes1(
         filestr, insert_missing_quiz_header=False)
     if num_quizzes:

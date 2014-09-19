@@ -38,25 +38,49 @@ Over multiple lines.
 !enotes
 
 !split
-===== Scientific writing needs to address many new media =====
+===== A LaTeX document =====
+
+# Beamer had trouble with multiple \title{ strings, check that it works.
 
 !bpop
+!bc latex
+\documentclass[11pt]{article}
+\usepackage{fancyvrb}
+\begin{document}
 
- * Old days (1985-2005): mostly black-and-white documents aimed at printing
- * Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...
- * LaTeX writing may be very different from writing in other formats
- * Main problem:
-    * LaTeX provide all sorts of fancy packages, but
-    * PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats
- * Conclusion: We need more than LaTeX
-
+\title{Here goes the title...}
+\author{John Doe \and
+Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
+\date{\today}
+\maketitle
+!ec
 !epop
+
+!bpop
+!bc
+\section{Heading}
+bla-bla
+\end{document}
+!ec
+!epop
+
+!split
+===== An HTML document =====
+
+!bc html
+<html><head></head><body bgcolor="red">
+<title>Here goes the title...<title>
+<h1>Section heading</h1>
+</body>
+</html>
+!ec
 
 !split
 ===== Some math and computer code =====
 
-!bblock A simple, mathematical problem:
+## Command and [] used to be problematic in blocks, check that it is ok
+
+!bblock A simple, mathematical formula where $t\in [0,\pi]$:
 !bt
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 !et
