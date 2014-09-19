@@ -2366,6 +2366,7 @@ def handle_index_and_bib(filestr, format, has_title):
         print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1 or later'
     if len(citations) > 0 and 'BIBFILE:' not in filestr:
         print '*** warning: you have citations but no bibliography (BIBFILE: ...)'
+        print ', '.join(list(citations.keys()))
         #_abort()
     if 'BIBFILE:' in filestr and len(citations) > 0 and \
            which('publish') is None:
