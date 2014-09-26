@@ -52,19 +52,27 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 1, None, '___sec0'),
-              (' Mathematical problem ', 1, None, '___sec1'),
-              (' Numerical solution method ', 1, None, '___sec2'),
-              (' Forward Euler explained ', 2, None, '___sec3'),
-              (' Implementation ', 1, None, '___sec4'),
+ 'sections': [(' Goal ', 2, None, '___sec0'),
+              (' Problem setting and methods ', 1, None, '___sec1'),
+              (' We aim to solve the (almost) simplest possible differential equation problem ',
+               2,
+               None,
+               '___sec2'),
+              (' The ODE problem is solved by a finite difference scheme ',
+               2,
+               None,
+               '___sec3'),
+              (' The Forward Euler scheme explained ', 2, None, '___sec4'),
+              (' Implementation ', 2, None, '___sec5'),
+              (' Results ', 1, None, '___sec6'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec5'),
+               '___sec7'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec6')]}
+               '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -89,41 +97,8 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1>Mathematical problem  <a name="___sec1"></a></h1>
-
-
-<table border="0">
-<tr>
-<td class="padding">
-$$
-\begin{align}
-u'(t) &= -au(t),
-\tag{1}\\ 
-u(0)  &= I,
-\tag{2}
-\end{align}
-$$
-
-
-<p>
-Here,
-
-<ul>
- <li> \( t\in (0,T] \)</li>
- <li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
- <li> \( u(t) \) is the unknown function</li>
-</ul>
-
-</td>
-<td class="padding">
-<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
-</td>
-</tr>
-</table>
-
-
-<p>
-
+<h1>Problem setting and methods  <a name="___sec1"></a></h1>
+<!-- Short title: Problem -->
 
 <p>
 <p>

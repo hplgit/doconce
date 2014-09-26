@@ -28,7 +28,7 @@ Automatically generated HTML file from DocOnce source
               (' Plain HTML slides ', 2, None, '___sec3'),
               (' LaTeX Beamer PDF ', 2, None, '___sec4'),
               (' IPython notebook ', 2, None, '___sec5'),
-              (' Doconce talk: Why and How ', 2, None, '___sec6')]}
+              (' DocOnce talk: Why and How ', 2, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -55,7 +55,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Plain HTML slides</a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">LaTeX Beamer PDF</a></li>
      <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">IPython notebook</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">Doconce talk: Why and How</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">DocOnce talk: Why and How</a></li>
 
         </ul>
       </li>
@@ -86,7 +86,7 @@ end of tocinfo -->
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
+<center><h4>Sep 26, 2014</h4></center> <!-- date -->
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Note:</b>
 These slides are normally best viewed in Chrome in full screen mode.
@@ -106,12 +106,14 @@ All the slides below are generated from the same
 
 <h2 id="___sec0">reveal.js HTML5 slides <a name="___sec0"></a></h2>
 
+<p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
 The css style files are slightly changed (compared to the original
 <a href="http://lab.hakim.se/reveal-js/#/" target="_blank">reveal.js</a> style):
 left-adjusted, lower case headings with smaller fonts; "darkgray" corresponds to
 the original "default" theme; and pygments is used for typesetting
-code in most of the demos below.
+code in most of the demos below. Alternatively, reveal's pre environment
+is used for code (<code>--pygments_html_style=none</code>)
 </div>
 
 
@@ -146,7 +148,7 @@ doconce slides_html demo reveal --html_slide_theme=beigesmall
 doconce slides_html demo reveal --html_slide_theme=solarized
 </pre></div>
 <p>
-<a href="demo_reveal_solarized_plainpre.html" target="_blank">reveal, solarized theme with plain pre, no pygments</a>
+<a href="demo_reveal_solarized_plainpre.html" target="_blank">reveal, solarized theme with native reveal code</a> (plain reveal pre, no pygments)
 
 <p>
 
@@ -164,34 +166,7 @@ doconce slides_html demo reveal --html_slide_theme=solarized
 doconce slides_html demo reveal --html_slide_theme=darkgray
 </pre></div>
 <p>
-<a href="demo_reveal_serif.html" target="_blank">reveal, serif theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=serif
-doconce slides_html demo reveal --html_slide_theme=serif
-</pre></div>
-<p>
-<a href="demo_reveal_night.html" target="_blank">reveal, night theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=night
-doconce slides_html demo reveal --html_slide_theme=night
-</pre></div>
-<p>
-<a href="demo_reveal_moon.html" target="_blank">reveal, moon theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
-doconce slides_html demo reveal --html_slide_theme=moon
-</pre></div>
-<p>
-<a href="demo_reveal_simple.html" target="_blank">reveal, simple theme</a>
+<a href="demo_reveal_simple.html" target="_blank">reveal, simple theme</a> (white)
 
 <p>
 
@@ -200,7 +175,43 @@ doconce slides_html demo reveal --html_slide_theme=moon
 doconce slides_html demo reveal --html_slide_theme=simple
 </pre></div>
 <p>
-<a href="demo_reveal_blood.html" target="_blank">reveal, blood theme</a>
+<a href="demo_reveal_serif.html" target="_blank">reveal, serif theme</a> (beige)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=serif
+doconce slides_html demo reveal --html_slide_theme=serif
+</pre></div>
+<p>
+<a href="demo_reveal_night.html" target="_blank">reveal, night theme</a> (black)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=night
+doconce slides_html demo reveal --html_slide_theme=night
+</pre></div>
+<p>
+<a href="demo_reveal_moon.html" target="_blank">reveal, moon theme</a> (dark blue)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
+doconce slides_html demo reveal --html_slide_theme=moon
+</pre></div>
+<p>
+<a href="demo_reveal_sky.html" target="_blank">reveal, sky theme</a> (light blue)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=sky
+doconce slides_html demo reveal --html_slide_theme=sky
+</pre></div>
+<p>
+<a href="demo_reveal_blood.html" target="_blank">reveal, blood theme</a> (brown-gray-white)
 
 <p>
 
@@ -209,7 +220,7 @@ doconce slides_html demo reveal --html_slide_theme=simple
 doconce slides_html demo reveal --html_slide_theme=blood
 </pre></div>
 <p>
-<a href="demo_reveal_cbc_footer.html" target="_blank">reveal, cbc footer theme</a>
+<a href="demo_reveal_cbc_footer.html" target="_blank">reveal, cbc footer theme</a> (red-gray; note: not suited for too long slides)
 
 <p>
 
@@ -218,7 +229,7 @@ doconce slides_html demo reveal --html_slide_theme=blood
 doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc_footer
 </pre></div>
 <p>
-<a href="demo_reveal_cbc_symbol.html" target="_blank">reveal, cbc symbol theme</a>
+<a href="demo_reveal_cbc_symbol.html" target="_blank">reveal, cbc symbol theme</a> (red-gray)
 
 <p>
 
@@ -245,27 +256,39 @@ doconce slides_html demo reveal --html_slide_theme=simula --html_footer_logo=sim
 doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_symbol
 </pre></div>
 <p>
-<a href="demo_reveal_uio_simula.html" target="_blank">reveal, combined uio+simula theme</a>
+<a href="demo_reveal_uio_simula.html" target="_blank">reveal, combined uio+simula theme</a> (with plain reveal pre, no pygments)
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=&quot;uio+simula&quot;
-doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_simula_symbol
+doconce slides_html demo reveal --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
 </pre></div>
-<p>
-<a href="demo_reveal_sky.html" target="_blank">reveal, sky theme</a>
 
 <h2 id="___sec1">deck.js HTML5 slides <a name="___sec1"></a></h2>
 
+<p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
-The <code>sandstone.default</code> css style is slightly changed:
+Most of the css styles are slightly changed:
 somewhat smaller fonts for
-headings and verbatim code, and figure sizes in <code>sandstone.default</code>
+headings and verbatim code, and figure sizes
 are respected.
+
+<p>
+Also note that most of the deck.js styles automatically reduce the font
+in overfull slides. Use reveal.js if this is not desired.
 </div>
 
 
+<p>
+<a href="demo_deck_swiss.html" target="_blank">deck, swiss theme</a> (white, red headings)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=swiss
+doconce slides_html demo deck --html_slide_theme=swiss
+</pre></div>
 <p>
 <a href="demo_deck_beamer.html" target="_blank">deck, beamer theme</a>
 
@@ -294,71 +317,7 @@ doconce slides_html demo deck --html_slide_theme=mnml
 doconce slides_html demo deck --html_slide_theme=neon
 </pre></div>
 <p>
-<a href="demo_deck_sandstone_aurora.html" target="_blank">deck, sandstone.aurora theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg    SLIDE_TYPE=deck SLIDE_THEME=sandstone-aurora
-doconce slides_html demo deck --html_slide_theme=sandstone.aurora
-</pre></div>
-<p>
-<a href="demo_deck_sandstone_dark.html" target="_blank">deck, sandstone.dark theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.dark
-doconce slides_html demo deck --html_slide_theme=sandstone.dark
-</pre></div>
-<p>
-<a href="demo_deck_sandstone_default.html" target="_blank">deck, sandstone.default theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.default
-doconce slides_html demo deck --html_slide_theme=sandstone.default
-</pre></div>
-<p>
-<a href="demo_deck_sandstone_firefox.html" target="_blank">deck, sandstone.firefox theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.firefox
-doconce slides_html demo deck --html_slide_theme=sandstone.firefox
-</pre></div>
-<p>
-<a href="demo_deck_sandstone_light.html" target="_blank">deck, sandstone.light theme</a>,
-<a href="demo_deck_sandstone_mdn.html" target="_blank">deck, sandstone.mdn theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=emacs --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.light
-doconce slides_html demo deck --html_slide_theme=sandstone.light
-</pre></div>
-<p>
-<a href="demo_deck_sandstone_mightly.html" target="_blank">deck, sandstone.mightly theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
-doconce slides_html demo deck --html_slide_theme=sandstone.mightly
-</pre></div>
-<p>
-<a href="demo_deck_swiss.html" target="_blank">deck, swiss theme</a>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=swiss
-doconce slides_html demo deck --html_slide_theme=swiss
-</pre></div>
-<p>
-<a href="demo_deck_web-2_0.html" target="_blank">deck, web-2_0 theme</a>
+<a href="demo_deck_web-2_0.html" target="_blank">deck, web-2_0 theme</a> (white, blue headings)
 
 <p>
 
@@ -367,7 +326,7 @@ doconce slides_html demo deck --html_slide_theme=swiss
 doconce slides_html demo deck --html_slide_theme=web-2.0
 </pre></div>
 <p>
-<a href="demo_deck_cbc_footer.html" target="_blank">deck, cbc footer theme</a>
+<a href="demo_deck_cbc_footer.html" target="_blank">deck, cbc footer theme</a> (red-gray; note: too long slides cannot be scrolled)
 
 <p>
 
@@ -376,7 +335,7 @@ doconce slides_html demo deck --html_slide_theme=web-2.0
 doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_footer.png
 </pre></div>
 <p>
-<a href="demo_deck_cbc_symbol.html" target="_blank">deck, cbc symbol theme</a>
+<a href="demo_deck_cbc_symbol.html" target="_blank">deck, cbc symbol theme</a> (red-gray)
 
 <p>
 
@@ -384,9 +343,81 @@ doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_foot
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
 doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_symbol.png
 </pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Note.</b>
+The sandstone family of deck.js styles have gradients in the color
+backgrounds, which is not ideal for too long slides that can be
+vertically scrolled (cf. the last slide).
+</div>
+
+
+<p>
+<a href="demo_deck_sandstone_default.html" target="_blank">deck, sandstone.default theme</a> (beige)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.default
+doconce slides_html demo deck --html_slide_theme=sandstone.default
+</pre></div>
+<p>
+<a href="demo_deck_sandstone_dark.html" target="_blank">deck, sandstone.dark theme</a> (gray)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.dark
+doconce slides_html demo deck --html_slide_theme=sandstone.dark
+</pre></div>
+<p>
+<a href="demo_deck_sandstone_mdn.html" target="_blank">deck, sandstone.mdn theme</a> (red)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=emacs --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mdn
+doconce slides_html demo deck --html_slide_theme=sandstone.mdn
+</pre></div>
+<p>
+<a href="demo_deck_sandstone_aurora.html" target="_blank">deck, sandstone.aurora theme</a> (dark purple)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg    SLIDE_TYPE=deck SLIDE_THEME=sandstone-aurora
+doconce slides_html demo deck --html_slide_theme=sandstone.aurora
+</pre></div>
+<p>
+<a href="demo_deck_sandstone_light.html" target="_blank">deck, sandstone.light theme</a> (light purple)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=emacs --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.light
+doconce slides_html demo deck --html_slide_theme=sandstone.light
+</pre></div>
+<p>
+<a href="demo_deck_sandstone_firefox.html" target="_blank">deck, sandstone.firefox theme</a> (light blue)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.firefox
+doconce slides_html demo deck --html_slide_theme=sandstone.firefox
+</pre></div>
+<p>
+<a href="demo_deck_sandstone_mightly.html" target="_blank">deck, sandstone.mightly theme</a> (white, small font)
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
+doconce slides_html demo deck --html_slide_theme=sandstone.mightly
+</pre></div>
 
 <h2 id="___sec2">dzslides and csss HTML5 slides <a name="___sec2"></a></h2>
 
+<p>
 <a href="demo_dzslides_dzslides_default.html" target="_blank">dzslides</a>
 
 <p>
@@ -408,7 +439,8 @@ doconce slides_html demo csss --html_slide_theme=csss_default
 
 <h2 id="___sec3">Plain HTML slides <a name="___sec3"></a></h2>
 
-<a href="demo_html_blueish.html" target="_blank">HTML blueish</a> (plain HTML, blue color, one long file, 8 blank lines separate slides)
+<p>
+<a href="demo_html_blueish.html" target="_blank">HTML blueish</a> (plain HTML, blue color, one long file, blank lines and a color line separate slides)
 
 <p>
 
@@ -516,6 +548,7 @@ pdflatex -shell-escape demo
 
 <h2 id="___sec5">IPython notebook <a name="___sec5"></a></h2>
 
+<p>
 <a href="http://nbviewer.ipython.org/url/hplgit.github.io/teamods/doconce/scientific_writing/demo/demo.ipynb" target="_blank">IPython notebook (w/viewer)</a>, based on <a href="demo.ipynb.html" target="_blank">IPython notebook source</a>
 
 <p>
@@ -527,7 +560,7 @@ pdflatex -shell-escape demo
 doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
 </pre></div>
 
-<h2 id="___sec6">Doconce talk: Why and How <a name="___sec6"></a></h2>
+<h2 id="___sec6">DocOnce talk: Why and How <a name="___sec6"></a></h2>
 
 <ul>
   <li> <a href="../scientific_writing-reveal.html" target="_blank">reveal w/darkgrey</a>,</li>

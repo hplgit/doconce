@@ -68,19 +68,27 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 1, None, '___sec0'),
-              (' Mathematical problem ', 1, None, '___sec1'),
-              (' Numerical solution method ', 1, None, '___sec2'),
-              (' Forward Euler explained ', 2, None, '___sec3'),
-              (' Implementation ', 1, None, '___sec4'),
+ 'sections': [(' Goal ', 2, None, '___sec0'),
+              (' Problem setting and methods ', 1, None, '___sec1'),
+              (' We aim to solve the (almost) simplest possible differential equation problem ',
+               2,
+               None,
+               '___sec2'),
+              (' The ODE problem is solved by a finite difference scheme ',
+               2,
+               None,
+               '___sec3'),
+              (' The Forward Euler scheme explained ', 2, None, '___sec4'),
+              (' Implementation ', 2, None, '___sec5'),
+              (' Results ', 1, None, '___sec6'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec5'),
+               '___sec7'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec6')]}
+               '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -105,27 +113,43 @@ MathJax.Hub.Config({
 <a name="part0003"></a>
 <!-- !split -->
 
-<h1>Numerical solution method  <a name="___sec2"></a></h1>
-
-<!-- !bpop -->
-
-<ul>
- <li> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
- <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
- <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
-</ul>
-
-<!-- !epop -->
+<h2>We aim to solve the (almost) simplest possible differential equation problem  <a name="___sec2"></a></h2>
 
 <p>
-<!-- !bpop -->
-Numerical scheme:
+
+<table border="0">
+<tr>
+<td class="padding">
 $$
-u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
-\quad n=0,1,\ldots,N-1
+\begin{align}
+u'(t) &= -au(t)
+\tag{1}\\ 
+u(0)  &= I
+\tag{2}
+\end{align}
 $$
 
-<!-- !epop -->
+
+<p>
+Here,
+
+<ul>
+ <li> \( t\in (0,T] \)</li>
+ <li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
+ <li> \( u(t) \) is the unknown function</li>
+ <li> The ODE <a href="#mjx-eqn-1">(1)</a> has the initial condition <a href="#mjx-eqn-2">(2)</a></li>
+</ul>
+
+</td>
+<td class="padding">
+<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
 
 <p>
 <p>

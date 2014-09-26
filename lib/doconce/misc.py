@@ -102,17 +102,6 @@ If the file does not exist, the default or specified style
 (--html_style=) is written to it."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
-    ('--html_slide_theme=',
-     """Option for doconce slides_html: specify a theme for the
-present slide type.
-Examples from reveal.js: darkgray, beige, solarized, default;
-from deck.js: sandstone.default, swiss, web-2.0.
-(The HTML file contains a comment with the various stylesheets
-for the various available themes.)"""),
-    ('--html_footer_logo=',
-     """Specify a filename or a style name for a logo in the slide footer."""),
-    ('--beamer_slide_theme=',
-     """Specify a theme for beamer slides. Examples:"""),
     ('--html_exercise_icon=',
      """Specify a question icon in bundled/html_images for being
 inserted to the right in exercises - "default" and "none" are allowed
@@ -470,6 +459,23 @@ def check_command_line_options(option_start):
                 print '*** warning: unrecognized command-line option'
                 print '   ', arg_user
 
+
+def misc_option(name, default=None):
+    """
+    As option, but for options related to other doconce programs
+    than doconce format.
+    """
+    option_name = '--' + name
+    value = default
+    if option_name.endswith('='):
+        for arg in sys.argv[1:]:
+            if arg.startswith(option_name):
+                opt, value = arg.split('=')
+                break
+    elif option_name in sys.argv:
+        value = True
+    return value
+
 def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):
     """
     Run OS command cmd.
@@ -490,7 +496,11 @@ def remove_verbatim_blocks(text, format):
     if format in ("latex", "pdflatex"):
         envirs = r'([Vv]erbatim|minted|lstlisting|latex|tex)'
         pattern = r'^\\begin\{%s\}.*^\\end\{%s\}' % (envirs, envirs)
-        return re.sub(pattern, '', text, flags=re.MULTILINE|re.DOTALL)
+        text = re.sub(pattern, '', text, flags=re.MULTILINE|re.DOTALL)
+        # Do not remove comments too (they are actively used when searching
+        # text returned from this function)
+        ##text = re.sub(r'(?<=[^!?@|\\])%.*', '', text)
+        return text
 
 
 def recommended_html_styles_and_pygments_styles():
@@ -512,7 +522,7 @@ def recommended_html_styles_and_pygments_styles():
             'sandstone.aurora': ['fruity'],
             'sandstone.dark': ['native', 'fruity'],
             'sandstone.mdn': ['fruity'],
-            'sandstone.mightly': ['fruity'],
+            'sandstone.mightly': ['default', 'autumn', 'manni', 'emacs'],
             'beamer': ['autumn', 'perldoc', 'manni', 'default', 'emacs'],
             'mnml': ['default', 'autumn', 'manni', 'emacs'],
             'sandstone.firefox': ['default', 'manni', 'autumn', 'emacs'],
@@ -1744,7 +1754,7 @@ download preprocess from http://code.google.com/p/preprocess""")
 
     verb_delimiter = '!'
     alt_verb_delimiters = '?', '@', '|'  # can't use ~,%,#,$,^,&,* in latex headings
-    cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'\\-])""", re.DOTALL)
+    cpattern = re.compile(r"""\\code\{(.*?)\}([ \n,.;:?!)"'-])""", re.DOTALL)
     # Check if the verbatim text contains verb_delimiter and make
     # special solutions for these first
     alt_verb_delimiter = None
@@ -2353,11 +2363,30 @@ def split_html():
 
 def _usage_slides_html():
     print """
-Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --nav_button=name
+Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name
 
 slide_types: reveal deck csss dzslides'
-note: reveal and deck slide styles are edited in doconce
-or:    doconce slides_html mydoc.html all  (generate a lot)
+note: reveal and deck slide styles are doconce variants, different from the
+original styles
+
+or:    doconce slides_html mydoc.html all  (generate all types of slides)
+
+themename is the reveal or deck theme:
+
+reveal.js: beige, beigesmall, solarized, serif, simple, blood, sky,
+moon, night, moon, darkgray, cbc, simula
+
+deck.js: neon, sandstone.aurora, sandstone.dark, sandstone.mdn,
+sandstone.mightly, sandstone.firefox, sandstone.default,
+sandstone.light, beamer, mnml, swiss, web-2.0, cbc
+
+(The generated HTML file contains a comment with link tags for the
+the various stylesheets for the various available themes.)
+
+--html_footer_logo=name sets the footer logo to be used, name is
+a full URL to the logo image file,
+or cbc_footer, cbc_symbol, simula_footer, simula_symbol,
+uio_footer, uio_symbol (for which the full path is automatically created)
 
 --nav_button=name sets the type of navigation button (next, previous):
 text, gray1 (default), gray2, bigblue, blue, green.
@@ -4017,9 +4046,10 @@ git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
 -->
 
-<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/fade.css">
 <link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
@@ -4029,31 +4059,39 @@ git://github.com/barraq/deck.ext.js.git
 <script src="deck.js/modernizr.custom.js"></script>
 
 <style type="text/css">
-    hr { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%%; font-size: 60%%; font-style: italic; text-align: left; }
-    hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
-    .slide .alert-text-small   { font-size: 80%%;  }
-    .slide .alert-text-large   { font-size: 130%%; }
-    .slide .alert-text-normal  { font-size: 90%%;  }
-    .slide .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
-             border-radius:14px
-             background-position: 10px 10px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 30px; /* 55px; if icon */
-     }
-     .slide .alert-block {padding-top:14px; padding-bottom:14px}
-     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
-     /*.slide .alert li {margin-top: 1em}*/
-     .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
-     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%%; font-size: 60%%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%%;  }
+.slide .alert-text-large   { font-size: 130%%; }
+.slide .alert-text-normal  { font-size: 90%%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -4182,7 +4220,7 @@ git://github.com/barraq/deck.ext.js.git
             ),
         )
 
-    theme = option('html_slide_theme=', default='default')
+    theme = misc_option('html_slide_theme=', default='default')
 
     # Check that the theme name is registered
     #from doconce.misc import recommended_html_styles_and_pygments_styles
@@ -4223,19 +4261,28 @@ git://github.com/barraq/deck.ext.js.git
     slide_syntax[slide_tp]['body_header'] = \
            slide_syntax[slide_tp]['body_header'] % slide_syntax[slide_tp]
 
-    footer_logo = option('html_footer_logo=', default=None)
+    footer_logo = misc_option('html_footer_logo=', default=None)
+
+    # Handle short forms for cbc, simula, and uio logos
     if footer_logo == 'cbc':
         footer_logo = 'cbc_footer'
     elif footer_logo == 'simula':
         footer_logo = 'simula_footer'
     elif footer_logo == 'uio':
         footer_logo = 'uio_footer'
+
+    # Default footer logo command
+    repl = """
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px;">
+<img src="%s/cbc_footer.png" width=110%%;></div>
+""" % footer_logo
+
+    # Override repl for cbc, simula, uio logos since these are specified
+    # without full URLs
+
+    # Path to cbc, simula, uio logo files
     footer_logo_path = dict(reveal='reveal.js/css/images',
                             deck='deck.js/themes/images')
-    pattern = dict(
-        reveal=r'<!-- begin footer logo\s+(.+?)\s+end footer logo -->',
-        deck=r'<!-- Here goes a footer -->')
-
     if footer_logo == 'cbc_footer':
         if slide_tp not in ('reveal', 'deck'):
             raise ValueError('slide type "%s" cannot have --html_footer_logo' ^ slide_tp)
@@ -4246,7 +4293,7 @@ git://github.com/barraq/deck.ext.js.git
     elif footer_logo == 'cbc_symbol':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 20px;">
-<img src="%s/cbc_symbol.png"></div>
+<img src="%s/cbc_symbol.png" width="50"></div>
 """ % footer_logo_path[slide_tp]
     elif footer_logo == 'simula_footer':
         repl = """
@@ -4271,10 +4318,15 @@ git://github.com/barraq/deck.ext.js.git
     elif footer_logo == 'uio_simula_symbol':
         repl = """
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 20px; margin-bottom: 0px;">
-<img src="%s/uio_footer.png" width=180></div>
+<img src="%s/uio_footer.png" width="180"></div>
 <div style="position: absolute; bottom: 0px; left: 0; margin-left: 250px; margin-bottom: 0px;">
-<img src="%s/simula_symbol.png" width=250></div>
-""" % footer_logo_path[slide_tp]
+<img src="%s/simula_symbol.png" width="250"></div>
+""" % (footer_logo_path[slide_tp], footer_logo_path[slide_tp])
+
+    pattern = dict(
+        reveal=r'<!-- begin footer logo\s+(.+?)\s+end footer logo -->',
+        deck=r'<!-- Here goes a footer -->')
+
     if footer_logo is not None:
         slide_syntax[slide_tp]['footer'] = re.sub(
             pattern[slide_tp], repl,
@@ -4362,8 +4414,20 @@ td.padding {
                           flags=re.DOTALL)
 
         if slide_tp == 'deck':
+            if '<!-- document title -->' in part:
+                # h1 title should be h2 to fix problems with
+                # .csstransforms h1, .csstransforms .vcenter in css files
+                pattern = r'<center><h1>(.+?)</h1></center>'
+                part = re.sub(pattern,
+                              r'<h2 style="text-align: center;">\g<1></h2>',
+                              part)
+                # Date should use b rather than h4 (which is too big)
+                pattern = '<center><h4>(.+?)</h4></center>'
+                part = re.sub(pattern, r'<center><b>\g<1></b></center>', part)
+
             # <b> does not work, so we must turn on bold manually
             part = part.replace('<b>', '<b style="font-weight: bold">')
+
         if slide_tp in ('deck', 'reveal'):
             # Add more space around equations
             part = re.sub(r'\$\$([^$]+)\$\$',
@@ -4408,6 +4472,9 @@ td.padding {
                 part = part.replace('background: #202020',
                                     'background: #000000')
 
+        # Make h1 section headings centered
+        part = part.replace('<h1>', '<h1 style="text-align: center;">')
+
         # Pieces to pop up item by item as the user is clicking
         if '<!-- !bpop' in part:
             pattern = r'<!-- !bpop (.*?)-->(.+?)<!-- !epop.*?-->'
@@ -4418,27 +4485,44 @@ td.padding {
                 if arg:
                     arg = ' ' + arg
 
+                inserted_pop_up = False
                 class_tp = slide_syntax[slide_tp]['pop'][0]
                 placements = slide_syntax[slide_tp]['pop'][1:]
                 body = m.group(2)
+
+                # Insert special pop-up tags for lists, admons, and
+                # pygments code blocks first.
+                # If none of these are found (inserted_pop_up = False)
+                # mark the whole paragraph as pop-up element
+
                 if '<ol>' in body or '<ul>' in body:
                     for tag in placements:
                         tag = '<%s>' % tag.lower()
                         if tag in body:
                             body = body.replace(tag, '%s class="%s%s">' % (tag[:-1], class_tp, arg))
-                else:
-                    # Treat whole block as paragraph
-
-                    # Agument admonitions with pop-up syntax
+                            inserted_pop_up = True
+                if '<div class="alert' in body:
+                    # Augment admonitions with pop-up syntax
                     body = body.replace('div class="alert',
                                         'div class="%s alert' % class_tp)
+                    inserted_pop_up = True
+                if '<div class="highlight' in body:
+                    # Augment pygments blocks with pop-up syntax
+                    body = body.replace('<div class="highlight',
+                                        '<div class="%s" class="highlight' % class_tp)
+                    inserted_pop_up = True
+                if not inserted_pop_up:
+                    # Treat whole block as pop-up paragraph
 
                     # Hack to preserve spacings before equation (see above),
                     # when <p> is removed (as we must do below)
                     body = body.replace('<p>&nbsp;<br>', '&nbsp;<br>&nbsp;<br>')
                     body = body.replace('<p>', '')  # can make strange behavior
+                    # Add a <p class="fragments"> to the whole body
+                    # (but only if not code or admon content?)
                     body2 = '\n<p class="%s">\n' % class_tp
 
+                    # Add arguments specified after !bpop?
                     if slide_tp == 'reveal' and arg:  # reveal specific
                         args = arg.split()
                         for arg in args:
@@ -4506,7 +4590,18 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print 'Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename [--handout]'
+    print """Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename --beamer_slide_navigation=off [--handout]
+
+themename can be
+red_plain, blue_plain, red_shadow, blue_shadow, dark, dark_gradient, vintage
+
+--beamer_slide_navigation=on turns on navigation links in the header
+and footer. The links are defined by sections (only), i.e., headings
+with 7 = in the source file.
+
+--handout is used for generating PDF that can be printed as handouts
+(usually after using pdfnup to put multiple slides per sheet).
+"""
 
 def slides_beamer():
     """
@@ -4538,21 +4633,27 @@ def slides_beamer():
         f.write(filestr)
         f.close()
         print 'slides written to', filename
-        if option('handout'):
+        if misc_option('handout', False):
             print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile %s.pdf %s.pdf' % (filestem, filestem)
 
 
 def generate_beamer_slides(header, parts, footer, basename, filename):
     # Styles: red/blue_plain/shadow, dark, dark_gradient, vintage
     header = ''.join(header)
-    theme = option('beamer_slide_theme=', default='default')
+    theme = misc_option('beamer_slide_theme=', default='default')
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
         packages = [beamerstyle]
         if theme == 'vintage':
             packages.append('vintage_background.png')
         copy_latex_packages(packages)
-    handout = '[handout]' if option('handout') else ''
+    handout = '[handout]' if misc_option('handout', False) else ''
+
+    if misc_option('beamer_slide_navigation=', 'off') == 'on':
+        frame_options = '[fragile]'
+    else:
+        # plain signifies no navigation
+        frame_options = '[plain,fragile]'
 
     slides = r"""
 %% LaTeX Beamer file automatically generated from DocOnce
@@ -4607,25 +4708,21 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 %% Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
+%% --- begin table of contents based on sections ---
 %% Delete this, if you do not want the table of contents to pop up at
 %% the beginning of each section:
+%% (Only section headings can enter the table of contents in Beamer
+%% slides generated from DocOnce source, while subsections are used
+%% for the title in ordinary slides.)
 \AtBeginSection[]
 {
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
+  \begin{frame}<beamer>[plain]
+  \frametitle{}
+  %%\frametitle{Outline}
+  \tableofcontents[currentsection]
+  \end{frame}
 }
-
-%% Delete this, if you do not want the table of contents to pop up at
-%% the beginning of each section:
-\AtBeginSection[]
-{
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
-}
+%% --- end table of contents based on sections ---
 
 %% If you wish to uncover everything in a step-wise fashion, uncomment
 %% the following command:
@@ -4683,6 +4780,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
     for part in parts:
         part = ''.join(part)
+        code_free_part = remove_verbatim_blocks(part, 'latex')
 
         if 'inlinecomment{' in part:
             # Inline comments are typeset as notes in this beamer preamble
@@ -4734,26 +4832,71 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
             part = cpattern.sub(subst, part)
 
+        # Check that we do not have multiple subsections (i.e., multiple
+        # slides) on this split - if so, it is a forgotten !split
+        subsections = re.findall(r'\\subsection\{', code_free_part)
+        if len(subsections) > 1:
+            print '*** error: more than one subsection in a slide:'
+            print part
+            _abort()
+
         # Add text for this slide
 
-        # Grab title as first section/subsection
-        pattern = r'section\{(.+)\}'  # greedy so it goes to the end
-        m = re.search(pattern, part)
+        # Grab slide title as *first* subsection in part
+        pattern = r'subsection\{(.+)\}'  # greedy so it goes to the end
+        m = re.search(pattern, code_free_part)
         if m:
             title = m.group(1).strip()
             title = r'\frametitle{%s}' % title + '\n'
             part = re.sub('\\\\.*' + pattern, '', part, count=1)
-        elif r'\title{' in part:
+        elif r'\title{' in code_free_part:
             title = ''
         else:
             title = '% No title on this slide\n'
 
-        # Beamer does not support chapter, section, subsection, paragraph
-        part = part.replace(r'\chapter{', r'\noindent\textbf{\huge ')
-        part = part.replace(r'\section{', r'\noindent\textbf{\Large ')
-        part = part.replace(r'\subsection{', r'\noindent\textbf{\large ')
-        part = part.replace(r'\paragraph{', r'\noindent\textbf{')
-        # But unnumbered \section*{ works fine?
+        # Beamer does not support chapter, paragraph,
+        # while section is here used for the toc and subsection
+        # for the title
+        if r'\chapter{' in code_free_part:
+            part = part.replace(r'\chapter{', r'\noindent\textbf{\huge ')
+        if r'\paragraph{' in code_free_part:
+            part = part.replace(r'\paragraph{', r'\noindent\textbf{')
+
+        section_slide = False
+        # \section{} should be \section[short title]{long title}
+        # This is signified in a comment
+        if r'\section{' in code_free_part:
+            section_slide = True
+
+            # Empty section is fine, but if there are more here than
+            # labels and comments, we embed that in a separate slide
+            # with the same title (otherwise it will come out as garbage)
+            section_title = re.search(r'\\section\{(.+)\}', part).group(1)
+            remove_patterns = [r'\\section\{.+\}', r'\\label\{.+\}', '^%.*',]
+            stripped_part = part
+            for pattern in remove_patterns:
+                stripped_part = re.sub(pattern, '', stripped_part,
+                                       flags=re.MULTILINE)
+            stripped_part = stripped_part.strip()
+            if stripped_part:
+                # Embed everything after section in a new slide
+                part = re.sub(r'(\\section\{.+\})', r"""\g<1>
+
+\\begin{frame}%(frame_options)s
+\\frametitle{%(section_title)s}
+""" % vars(), part)
+                part += '\n\\end{frame}\n'
+
+            # Add short title? (\section[short title]{ordinary title})
+            short_title = '' # signifies ordinary slide
+            m = re.search(r'^% +short +title: +(.+)', code_free_part,
+                          flags=re.MULTILINE|re.IGNORECASE)
+            if m:
+                short_title = m.group(1).strip()
+                part = re.sub(r'\\section\{', r'\\section[%s]{' % short_title,
+                              part)
+                part = part.replace(m.group(), '')  # remove short title comment
+            # --- end of section slide treatment ---
 
         part = part.rstrip()
 
@@ -4765,8 +4908,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             if line.strip() != '':
                 empty_slide = False
 
-        if r'\title{' in remove_verbatim_blocks(part, 'latex'):
-            print 'XXX yes part with title', part
+        if r'\title{' in code_free_part:
             # Titlepage needs special treatment
             # Find figure (no caption or figure envir, just includegraphics)
             m = re.search(r'(\\centerline\{\\includegraphics.+\}\})', part)
@@ -4779,14 +4921,19 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             slides += r"""
 %(part)s
 
-\begin{frame}[plain,fragile]
+\begin{frame}%(frame_options)s
 \titlepage
 \end{frame}
+""" % vars()
+        elif section_slide:
+            # Special section slide, not frame environment
+            slides += r"""
+%(part)s
 """ % vars()
         elif not empty_slide:
             # Ordinary slide
             slides += r"""
-\begin{frame}[plain,fragile]
+\begin{frame}%(frame_options)s
 %(title)s
 %(part)s
 \end{frame}

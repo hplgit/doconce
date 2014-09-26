@@ -770,8 +770,9 @@ Movie \arabic{doconce:movie:counter}: %s
 """ % caption
     text += '\\end{doconce:movie}\n'
     return text
+
 def latex_linebreak(m):
-    text = m.group('text').strip()
+    text = m.group('text')
     if text:
         return '%s\\\\' % text
     else:

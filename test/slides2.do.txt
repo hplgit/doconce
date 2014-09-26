@@ -8,7 +8,7 @@ FIGURE: [../doc/src/slides/fig/doconce1b, width=400 frac=0.5]
 TOC: on
 
 !split
-======= Scientific writing for the future needs to address many new media =======
+===== Scientific writing for the future needs to address many new media =====
 
 !bslidecell 00 0.4
 FIGURE: [../doc/src/slides/fig/ipad, width=400 frac=0.8]
@@ -24,12 +24,12 @@ FIGURE: [../doc/src/slides/fig/imac, width=350 frac=0.7]
 !eslidecell
 
 !split
-======= The book will probably survive =======
+===== The book will probably survive =====
 
 FIGURE: [../doc/src/slides/fig/oldbooks, width=800]
 
 !split
-======= The classical report will survive =======
+===== The classical report will survive =====
 
 !bslidecell 00
 FIGURE: [../doc/src/slides/fig/latex_thesis, width=400 frac=1.2]
@@ -40,7 +40,7 @@ FIGURE: [../doc/src/slides/fig/latex_paper1, width=400 frac=1.2]
 !eslidecell
 
 !split
-======= Scope =======
+===== Scope =====
 
 #  * Scientific writing = lecture notes, slides, reports, thesis, books,  ...
 #  * (Journal papers typeset by journals are out of scope)
@@ -80,7 +80,7 @@ FIGURE: [../doc/src/slides/fig/IPython_logo.png, width=300 frac=0.6]
 
 
 !split
-======= Scientific writing for the future needs to address many new media =======
+===== Scientific writing for the future needs to address many new media =====
 
 # Insert links here to reports
 
@@ -101,7 +101,7 @@ FIGURE: [../doc/src/slides/fig/jungle_with_mess.jpg, width=500]
 
 !split
 
-======= Fundamental question =======
+===== Fundamental question =====
 
 When I write some scientific material,
 
@@ -120,7 +120,7 @@ Probably not, but I have a solution :-)
 
 !split
 
-======= LaTeX is very rich; other tools support only some elements =======
+===== LaTeX is very rich; other tools support only some elements =====
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
  * LaTeX equation math:
@@ -132,7 +132,7 @@ Probably not, but I have a solution :-)
     * _Markdown_: `equation*`, `equation`, `eqnarray*`, `align*` (but no labels)
 
 !split
-======= LaTeX is very rich; other tools support only some elements =======
+===== LaTeX is very rich; other tools support only some elements =====
 
 !bpop
  * Figures: all
@@ -156,7 +156,7 @@ based on HTML and vice versa.
 
 
 !split
-======= DocOnce demo =======
+===== DocOnce demo =====
 
 URL: "http://hplgit.github.com/teamods/writing_reports/"
 
@@ -172,13 +172,13 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
 
 # #if FORMAT in ("latex", "pdflatex")
 # latex interprets 9 = as chapter and then needs book style...
-======= A tour of DocOnce =======
+===== A tour of DocOnce =====
 # #else
-========= A tour of DocOnce =========
+======= A tour of DocOnce =======
 # #endif
 
 !split
-======= DocOnce: title, authors, date, toc =======
+===== DocOnce: title, authors, date, toc =====
 
 !bc
 TITLE: Some Title
@@ -195,7 +195,7 @@ Title and authors must have all information *on a single line*!
 !enotice
 
 !split
-======= DocOnce: abstract =======
+===== DocOnce: abstract =====
 
 !bc
 __Abstract.__
@@ -210,13 +210,13 @@ Here goes the summary...
 
 
 !split
-======= DocOnce: section headings =======
+===== DocOnce: section headings =====
 
 Headings are surrounded by `=` signs:
 !bc
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -225,21 +225,23 @@ Headings are surrounded by `=` signs:
 __This is a paragraph heading.__
 !ec
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 Result:
 
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
 === This is an H4/paragraph heading ===
 
 __This is a paragraph heading.__
-
+# #endif
 
 !split
-======= DocOnce: markup and lists =======
+===== DocOnce: markup and lists =====
 
 !bc
  * Bullet list items start with `*`
@@ -264,7 +266,7 @@ This gets rendered as
    o items are just indented as you would do in email
 
 !split
-======= DocOnce: labels, references, index items =======
+===== DocOnce: labels, references, index items =====
 
 !bc
 # Insert index items in the source
@@ -290,7 +292,7 @@ URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split
-======= DocOnce: figures and movies =======
+===== DocOnce: figures and movies =====
 
 !bnotice
 Figure with HTML and LaTeX info, and caption, *all on one line*:
@@ -313,7 +315,7 @@ and rendered as
 MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 
 !split
-======= DocOnce: math =======
+===== DocOnce: math =====
 
 Inline math as in LaTeX:
 
@@ -349,7 +351,7 @@ label{b:eq}
 
 
 !split
-======= DocOnce: displaying code =======
+===== DocOnce: displaying code =====
 
 Code is enclosed in `!bc` and `!ec` tags:
 
@@ -395,7 +397,7 @@ forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
 
 
 !split
-======= DocOnce: displaying interactive demo code =======
+===== DocOnce: displaying interactive demo code =====
 label{slide:pot}
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
@@ -408,7 +410,7 @@ program flow and state of variables:
 
 
 !split
-======= DocOnce: exercises =======
+===== DocOnce: exercises =====
 
 DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
@@ -449,8 +451,10 @@ of getting at least three heads out of 5 throws.
 
 Solutions/answers can easily be left out of the document.
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 !split
-======= DocOnce: exercises =======
+===== DocOnce: exercises =====
 
 Last page gets rendered as follows:
 
@@ -484,14 +488,14 @@ A full solution to this subexercise can go here.
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 !esubex
-
+# #endif
 
 !split
-======= DocOnce: example on slide code =======
+===== DocOnce: example on slide code =====
 
 !bc
 !split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -511,15 +515,17 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 !ec
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 !split
-======= DocOnce: example on slide code =======
+===== DocOnce: example on slide code =====
 
 Last page gets rendered to
 
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -533,9 +539,10 @@ Key equation:
 !et
 
 And maybe a final comment?
+# #endif
 
 !split
-======= DocOnce: example on slide code with cells =======
+===== DocOnce: example on slide code with cells =====
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -545,7 +552,7 @@ a figure to the right (two cells, numbered 00 and 01).
 
 !bc
 !split
-======= Headline =======
+===== Headline =====
 
 |bslidecell 00
 |bpop
@@ -570,15 +577,17 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 |eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 !ec
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 !split
-======= DocOnce: example on slide code =======
+===== DocOnce: example on slide code =====
 
 Last page gets rendered to
 
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -601,3 +610,4 @@ Last page gets rendered to
 !bslidecell 01
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 !eslidecell
+# #endif

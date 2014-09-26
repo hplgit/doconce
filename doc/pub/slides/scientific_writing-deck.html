@@ -2,10 +2,10 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Scientific Writing and Publishing Anno 2013">
+<meta name="description" content="Scientific Writing and Publishing Anno 2014">
 <meta name="keywords" content="key word1,key word2,key equation,$\u$ conservation,keyword">
 
-<title>Scientific Writing and Publishing Anno 2013</title>
+<title>Scientific Writing and Publishing Anno 2014</title>
 
 
 
@@ -84,9 +84,10 @@ git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
 -->
 
-<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/fade.css">
 <link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
@@ -96,31 +97,39 @@ git://github.com/barraq/deck.ext.js.git
 <script src="deck.js/modernizr.custom.js"></script>
 
 <style type="text/css">
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .slide .alert-text-small   { font-size: 80%;  }
-    .slide .alert-text-large   { font-size: 130%; }
-    .slide .alert-text-normal  { font-size: 90%;  }
-    .slide .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
-             border-radius:14px
-             background-position: 10px 10px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 30px; /* 55px; if icon */
-     }
-     .slide .alert-block {padding-top:14px; padding-bottom:14px}
-     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
-     /*.slide .alert li {margin-top: 1em}*/
-     .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
-     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -177,7 +186,7 @@ MathJax.Hub.Config({
 <!-- TITLE: Scientific Writing Anno 2013: The DocOnce Way -->
 
 
-<center><h1>Scientific Writing and Publishing Anno 2013</h1></center>  <!-- document title -->
+<h2 style="text-align: center;">Scientific Writing and Publishing Anno 2014</h2>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -190,19 +199,18 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
+<center><b style="font-weight: bold">Sep 26, 2014</b></center> <!-- date -->
 <p>
 <center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
 
 <p>
-<!-- latex interprets 9 = as chapter and then needs book style... -->
 
 </section>
 
 
 <section class="slide">
 
-<h1>Challenges with tools for scientific writing   <a name="___sec0"></a></h1> <hr>
+<h1 style="text-align: center;">Challenges with tools for scientific writing   <a name="___sec0"></a></h1>
 
 <p>
 
@@ -211,7 +219,7 @@ MathJax.Hub.Config({
 
 <section class="slide">
 
-<h1>Scientific writing = LaTeX  <a name="___sec1"></a></h1>
+<h2>Scientific writing = LaTeX  <a name="___sec1"></a></h2>
 
 <ul>
  <p><li> Pre 1980: Handwriting + publisher (paper or book)</li>
@@ -255,8 +263,9 @@ Will MS Word replace LaTeX? It never did!
 
 <section class="slide">
 
-<h1>Scientific publishing needs to address new media  <a name="___sec2"></a></h1>
+<h2>Scientific publishing needs to address new media  <a name="___sec2"></a></h2>
 
+<p>
 
 <table border="0">
 <tr>
@@ -288,8 +297,9 @@ Will MS Word replace LaTeX? It never did!
 
 <section class="slide">
 
-<h1>The book will probably survive  <a name="___sec3"></a></h1>
+<h2>The book will probably survive  <a name="___sec3"></a></h2>
 
+<p>
 <center><p><img src="fig/oldbooks.jpg" align="bottom" width=800></p></center>
 
 <p>
@@ -299,8 +309,9 @@ Will MS Word replace LaTeX? It never did!
 
 <section class="slide">
 
-<h1>The classical report will survive  <a name="___sec4"></a></h1>
+<h2>The classical report will survive  <a name="___sec4"></a></h2>
 
+<p>
 
 <table border="0">
 <tr>
@@ -326,7 +337,7 @@ Will MS Word replace LaTeX? It never did!
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
 
-<h1>Scope of this presentation  <a name="___sec5"></a></h1>
+<h2>Scope of this presentation  <a name="___sec5"></a></h2>
 
 <ul>
   <p><li> Focus: documents with <font color="red">much</font> <em>math</em> and <em>computer code</em></li>
@@ -393,8 +404,9 @@ Sphinx, Markdown, MediaWiki, IPython notebook.
 
 <section class="slide">
 
-<h1>Does your scientific writing today need to address new media (in the future)?  <a name="___sec6"></a></h1>
+<h2>Does your scientific writing today need to address new media (in the future)?  <a name="___sec6"></a></h2>
 
+<p>
 <!-- Insert links here to reports -->
 
 <p>
@@ -432,8 +444,9 @@ Sphinx, Markdown, MediaWiki, IPython notebook.
 
 <section class="slide">
 
-<h1>Can we factor pieces from a heterogeneous world to one coherent piece in the future?  <a name="___sec7"></a></h1>
+<h2>Can we factor pieces from a heterogeneous world to one coherent piece in the future?  <a name="___sec7"></a></h2>
 
+<p>
 When I write some scientific material,
 
 <ul>
@@ -466,8 +479,18 @@ Probably not, but I have a solution :-)
 
 <section class="slide">
 
-<h1>Popular tools anno 2013 and their math support  <a name="___sec8"></a></h1>
+<h1 style="text-align: center;">Pros and cons of various tools  <a name="___sec8"></a></h1>
 
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Popular tools anno 2013 and their math support  <a name="___sec9"></a></h2>
+
+<p>
 
 
 <ul>
@@ -503,7 +526,7 @@ Probably not, but I have a solution :-)
 
 <section class="slide">
 
-<h1>LaTeX is very rich; other tools support much less  <a name="___sec9"></a></h1>
+<h2>LaTeX is very rich; other tools support much less  <a name="___sec10"></a></h2>
 
 <ul>
  <p><li> LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)</li>
@@ -528,8 +551,9 @@ Probably not, but I have a solution :-)
 
 <section class="slide">
 
-<h1>LaTeX is very rich; other tools support much less  <a name="___sec10"></a></h1>
+<h2>LaTeX is very rich; other tools support much less  <a name="___sec11"></a></h2>
 
+<p>
 
 
 <ul>
@@ -567,8 +591,9 @@ based on HTML and vice versa.
 
 <section class="slide">
 
-<h1>Typesetting concerns I  <a name="___sec11"></a></h1>
+<h2>Typesetting concerns I  <a name="___sec12"></a></h2>
 
+<p>
 
 
 <ul>
@@ -597,8 +622,9 @@ based on HTML and vice versa.
 
 <section class="slide">
 
-<h1>Typesetting concerns II  <a name="___sec12"></a></h1>
+<h2>Typesetting concerns II  <a name="___sec13"></a></h2>
 
+<p>
 
 
 <ul>
@@ -629,8 +655,9 @@ based on HTML and vice versa.
 
 <section class="slide">
 
-<h1>Typesetting concerns III  <a name="___sec13"></a></h1>
+<h2>Typesetting concerns III  <a name="___sec14"></a></h2>
 
+<p>
 
 
 <ul>
@@ -655,7 +682,7 @@ based on HTML and vice versa.
 
 <section class="slide">
 
-<h1>Solution I: Use a format that translates to many  <a name="___sec14"></a></h1>
+<h2>Solution I: Use a format that translates to many  <a name="___sec15"></a></h2>
 
 <ul>
  <p><li> Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,
@@ -674,8 +701,9 @@ based on HTML and vice versa.
 
 <section class="slide">
 
-<h1>Solution II: Use DocOnce  <a name="___sec15"></a></h1>
+<h2>Solution II: Use DocOnce  <a name="___sec16"></a></h2>
 
+<p>
 <a href="http://hplgit.github.io/doconce/doc/web/index.html" target="_blank">DocOnce</a>
 offers minimalistic typing, great flexibility wrt format,
 especially for scientific writing with <em>much math and code</em>.
@@ -689,8 +717,7 @@ especially for scientific writing with <em>much math and code</em>.
    admonitions, modern LaTeX layouts, ...)</li>
  <p><li> Very effective for generating slides from ordinary text</li>
  <p><li> Applies Mako: DocOnce text is a program (!)</li>
- <p><li> Much like Markdown, less tagged than LaTeX, HTML, Sphinx
-<!-- latex interprets 9 = as chapter and then needs book style... --></li>
+ <p><li> Much like Markdown, less tagged than LaTeX, HTML, Sphinx</li>
 </ul>
 <p>
 
@@ -700,7 +727,7 @@ especially for scientific writing with <em>much math and code</em>.
 
 <section class="slide">
 
-<h1>DocOnce  <a name="___sec16"></a></h1> <hr>
+<h1 style="text-align: center;">DocOnce  <a name="___sec17"></a></h1>
 
 <p>
 
@@ -709,8 +736,9 @@ especially for scientific writing with <em>much math and code</em>.
 
 <section class="slide">
 
-<h1>DocOnce demos  <a name="___sec17"></a></h1>
+<h2>DocOnce demos  <a name="___sec18"></a></h2>
 
+<p>
 <a href="http://hplgit.github.com/teamods/writing_reports/" target="_blank"><tt>http://hplgit.github.com/teamods/writing_reports/</tt></a>
 
 <ul>
@@ -729,7 +757,7 @@ especially for scientific writing with <em>much math and code</em>.
 
 <section class="slide">
 
-<h1>DocOnce disclaimer  <a name="___sec18"></a></h1>
+<h2>DocOnce disclaimer  <a name="___sec19"></a></h2>
 
 <ul>
  <p><li> Based on text transformations (reg.exp.) so valid syntax may
@@ -753,8 +781,9 @@ formats, such as LaTeX or Sphinx. The generated code is clean.
 
 <section class="slide">
 
-<h1>DocOnce experience: code generation is a great thing  <a name="___sec19"></a></h1>
+<h2>DocOnce experience: code generation is a great thing  <a name="___sec20"></a></h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -788,7 +817,7 @@ Advantages:
 
 <section class="slide">
 
-<h2>Example: generate reveal.js or deck.js slides from HTML  <a name="___sec20"></a></h2>
+<h2>Example: generate reveal.js or deck.js slides from HTML  <a name="___sec21"></a></h2>
 
 <ul>
  <p><li> Write the content of each slide in plain HTML(5)</li>
@@ -833,7 +862,7 @@ The default answer is LaTeX.
 
 <section class="slide">
 
-<h1>A tour of DocOnce  <a name="___sec21"></a></h1> <hr>
+<h1 style="text-align: center;">A tour of DocOnce  <a name="___sec22"></a></h1>
 
 <p>
 
@@ -842,8 +871,9 @@ The default answer is LaTeX.
 
 <section class="slide">
 
-<h1>Title, authors, date, toc  <a name="___sec22"></a></h1>
+<h2>Title, authors, date, toc  <a name="___sec23"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">TITLE: Some Title
@@ -869,8 +899,9 @@ Title and authors must have all information <em>on a single line</em>!
 
 <section class="slide">
 
-<h1>Abstract  <a name="___sec23"></a></h1>
+<h2>Abstract  <a name="___sec24"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">__Abstract.__
@@ -891,15 +922,16 @@ Here goes the summary...
 
 <section class="slide">
 
-<h1>Section headings  <a name="___sec24"></a></h1>
+<h2>Section headings  <a name="___sec25"></a></h2>
 
+<p>
 Headings are surrounded by <code>=</code> signs:
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">========= This is an H1/chapter heading =========
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -910,14 +942,15 @@ __This is a paragraph heading.__
 <p>
 Result:
 
-<h1>This is an H1/chapter heading  <a name="___sec25"></a></h1> <hr>
+<h1 style="text-align: center;">This is an H1/chapter heading  <a name="___sec26"></a></h1>
 
-<h1>This is an H2/section heading  <a name="___sec26"></a></h1>
+<h2>This is an H2/section heading  <a name="___sec27"></a></h2>
 
-<h2>This is an H3/subsection heading  <a name="___sec27"></a></h2>
+<h2>This is an H3/subsection heading  <a name="___sec28"></a></h2>
 
-<h3>This is an H4/paragraph heading  <a name="___sec28"></a></h3>
+<h3>This is an H4/paragraph heading  <a name="___sec29"></a></h3>
 
+<p>
 <b style="font-weight: bold">This is a paragraph heading.</b>
 
 <p>
@@ -927,8 +960,9 @@ Result:
 
 <section class="slide">
 
-<h1>Markup and lists  <a name="___sec29"></a></h1>
+<h2>Markup and lists  <a name="___sec30"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"> * Bullet list items start with `*`
@@ -966,8 +1000,9 @@ This gets rendered as
 
 <section class="slide">
 
-<h1>Labels, references, index items  <a name="___sec30"></a></h1>
+<h2>Labels, references, index items  <a name="___sec31"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"># Insert index items in the source
@@ -998,8 +1033,9 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 
 <section class="slide">
 
-<h1>Figures and movies  <a name="___sec31"></a></h1>
+<h2>Figures and movies  <a name="___sec32"></a></h2>
 
+<p>
 <div class="alert alert-block alert-notice alert-text-normal">
 <b style="font-weight: bold">Important:</b>
 <p>
@@ -1035,8 +1071,9 @@ and rendered as
 
 <section class="slide">
 
-<h1>Math  <a name="___sec32"></a></h1>
+<h2>Math  <a name="___sec33"></a></h2>
 
+<p>
 Inline math as in LaTeX:
 
 <p>
@@ -1085,8 +1122,9 @@ $$
 
 <section class="slide">
 
-<h1>Math flexibility  <a name="___sec33"></a></h1>
+<h2>Math flexibility  <a name="___sec34"></a></h2>
 
+<p>
 Limit math environments to
 
 <p>
@@ -1127,8 +1165,9 @@ Limit math environments to
 
 <section class="slide">
 
-<h1>Displaying code  <a name="___sec34"></a></h1>
+<h2>Displaying code  <a name="___sec35"></a></h2>
 
+<p>
 Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
 
 <p>
@@ -1169,8 +1208,9 @@ This gets rendered as
 
 <section class="slide">
 
-<h1>Copying code from source files  <a name="___sec35"></a></h1>
+<h2>Copying code from source files  <a name="___sec36"></a></h2>
 
+<p>
 We recommend to copy as much code as possible directly from the
 source files:
 
@@ -1197,7 +1237,7 @@ start and end regular expressions:
 
 <section class="slide">
 
-<h1>Typesetting of code is implied by the file extension  <a name="___sec36"></a></h1>
+<h2>Typesetting of code is implied by the file extension  <a name="___sec37"></a></h2>
 
 <ul>
  <p><li> <code>.py</code>: <code>pypro</code> if complete file, <code>pycod</code> if snippet</li>
@@ -1218,8 +1258,9 @@ start and end regular expressions:
 
 <section class="slide">
 
-<h1>Demonstrating code execution; Online Python Tutor <a name="slide:opt"></a></h1>
+<h2>Demonstrating code execution; Online Python Tutor <a name="slide:opt"></a></h2>
 
+<p>
 With <code>!bc pyoptpro</code> or a file <code>*.pyopt</code>, the code applies the
 <a href="http://pythontutor.com" target="_blank">Online Python Tutor</a> for displaying
 program flow and state of variables:
@@ -1236,8 +1277,9 @@ program flow and state of variables:
 
 <section class="slide">
 
-<h1>Demonstrating code execution; Sage Cell Server <a name="slide:sage:cell"></a></h1>
+<h2>Demonstrating code execution; Sage Cell Server <a name="slide:sage:cell"></a></h2>
 
+<p>
 With <code>!bc pyscpro</code> or a file <code>*.pysc</code>, the code is typeset in
 a sage cell:
 
@@ -1272,8 +1314,9 @@ Works only in Sphinx documents (but HTML support is possible).
 
 <section class="slide">
 
-<h1>Demonstrating code execution; IPython notebook <a name="slide:ipynb"></a></h1>
+<h2>Demonstrating code execution; IPython notebook <a name="slide:ipynb"></a></h2>
 
+<p>
 Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_blank">DocOnce source</a> and transform to an <a href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" target="_blank">IPython notebook</a> with <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html" target="_blank">source</a>
 
 <p>
@@ -1283,8 +1326,9 @@ Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/rep
 
 <section class="slide">
 
-<h1>Tables  <a name="___sec40"></a></h1>
+<h2>Tables  <a name="___sec41"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">  |--------------------------------|
@@ -1301,12 +1345,12 @@ Gets rendered as
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">    time    </th> <th align="center">  velocity  </th> <th align="center">acceleration</th> </tr>
+<tr><th align="center">time</th> <th align="center">velocity</th> <th align="center">acceleration</th> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   0.0             </td> <td align="right">   1.4186          </td> <td align="right">   -5.01           </td> </tr>
-<tr><td align="right">   2.0             </td> <td align="right">   1.376512        </td> <td align="right">   11.919          </td> </tr>
-<tr><td align="right">   4.0             </td> <td align="right">   1.1E+1          </td> <td align="right">   14.717624       </td> </tr>
+<tr><td align="right">   0.0     </td> <td align="right">   1.4186      </td> <td align="right">   -5.01           </td> </tr>
+<tr><td align="right">   2.0     </td> <td align="right">   1.376512    </td> <td align="right">   11.919          </td> </tr>
+<tr><td align="right">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
 <p>
@@ -1316,7 +1360,7 @@ Gets rendered as
 
 <section class="slide">
 
-<h1>Newcommands for math  <a name="___sec41"></a></h1>
+<h2>Newcommands for math  <a name="___sec42"></a></h2>
 
 <ul>
  <p><li> <code>newcommands*.tex</code> files contain newcommands</li>
@@ -1331,8 +1375,9 @@ Gets rendered as
 
 <section class="slide">
 
-<h1>Labels, citations, index, bibliography  <a name="___sec42"></a></h1>
+<h2>Labels, citations, index, bibliography  <a name="___sec43"></a></h2>
 
+<p>
 Lables, citations, index, and bibliography follow the ideas of
 LaTeX, but without backslashes:
 
@@ -1376,8 +1421,9 @@ format (easy to make from BibTeX).
 
 <section class="slide">
 
-<h1>Exercises  <a name="___sec43"></a></h1>
+<h2>Exercises  <a name="___sec44"></a></h2>
 
+<p>
 DocOnce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
 and <em>examples</em>:
 
@@ -1413,11 +1459,12 @@ Compute the probability of getting heads.
 
 <section class="slide">
 
-<h1>Rendering of the previous page  <a name="___sec44"></a></h1>
+<h2>Rendering of the previous page  <a name="___sec45"></a></h2>
 
+<p>
 <!-- --- begin exercise --- -->
 
-<h2>Problem 1: Flip a Coin  <a name="___sec45"></a></h2>
+<h2>Problem 1: Flip a Coin  <a name="___sec46"></a></h2>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <p>
@@ -1429,7 +1476,7 @@ Make a program that simulates flipping a coin \( N \) times.
 
 <p>
 <b style="font-weight: bold">Hint.</b>
-Use <code>r = random.random()</code> and define head as <code>r <= 0.5</code>.
+Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -1460,8 +1507,9 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <section class="slide">
 
-<h1>Exercises  <a name="___sec46"></a></h1>
+<h2>Exercises  <a name="___sec47"></a></h2>
 
+<p>
 All <em>exercises</em>, <em>problems</em>, and <em>projects</em> in a document are parsed
 and available in a data structure (list of dicts) for further
 processing (e.g., making a book of problems).
@@ -1491,7 +1539,7 @@ processing (e.g., making a book of problems).
 
 <section class="slide">
 
-<h1>Use of preprocessors  <a name="___sec47"></a></h1>
+<h2>Use of preprocessors  <a name="___sec48"></a></h2>
 
 <ul>
  <p><li> Simple if-else tests a la the C/C++ preprocessor</li>
@@ -1516,8 +1564,9 @@ processing (e.g., making a book of problems).
 
 <section class="slide">
 
-<h1>DocOnce admonitions  <a name="___sec48"></a></h1>
+<h2>DocOnce admonitions  <a name="___sec49"></a></h2>
 
+<p>
 <div class="alert alert-block alert-warning alert-text-normal">
 <b style="font-weight: bold">Use with caution!</b>
 <p>
@@ -1567,8 +1616,9 @@ Conclusion:
 
 <section class="slide">
 
-<h1>Slides  <a name="___sec49"></a></h1>
+<h2>Slides  <a name="___sec50"></a></h2>
 
+<p>
 Very effective way to generate slides from running text:
 
 <ul>
@@ -1591,12 +1641,13 @@ Very effective way to generate slides from running text:
 
 <section class="slide">
 
-<h1>Example on slide code  <a name="___sec50"></a></h1>
+<h2>Example on slide code  <a name="___sec51"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -1617,7 +1668,7 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 </pre></div>
 <p>
 
@@ -1626,11 +1677,12 @@ And maybe a final comment?
 
 <section class="slide">
 
-<h1>Example on slide code  <a name="___sec51"></a></h1>
+<h2>Example on slide code  <a name="___sec52"></a></h2>
 
+<p>
 Last page gets rendered to
 
-<h1>Headline  <a name="___sec52"></a></h1>
+<h2>Headline  <a name="___sec53"></a></h2>
 
 <ul>
  <p><li> Key point 1</li>
@@ -1658,8 +1710,9 @@ And maybe a final comment?
 
 <section class="slide">
 
-<h1>Grid layout of slide: MxN cells  <a name="___sec53"></a></h1>
+<h2>Grid layout of slide: MxN cells  <a name="___sec54"></a></h2>
 
+<p>
 Example with a bullet list to the left and
 a figure to the right (two cells: 00 and 01):
 
@@ -1667,7 +1720,7 @@ a figure to the right (two cells: 00 and 01):
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!split
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -1689,7 +1742,7 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 </pre></div>
 <p>
 
@@ -1698,12 +1751,14 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 
 <section class="slide">
 
-<h1>Grid layout of slide: MxN cells   <a name="___sec54"></a></h1>
+<h2>Grid layout of slide: MxN cells   <a name="___sec55"></a></h2>
 
+<p>
 Last page gets rendered to
 
-<h1>Headline  <a name="___sec55"></a></h1>
+<h2>Headline  <a name="___sec56"></a></h2>
 
+<p>
 
 <table border="0">
 <tr>
@@ -1750,7 +1805,7 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <section class="slide">
 
-<h1>Classic slide types  <a name="___sec56"></a></h1>
+<h2>Classic slide types  <a name="___sec57"></a></h2>
 
 <ul>
  <p><li> LaTeX Beamer</li>
@@ -1771,8 +1826,9 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <section class="slide">
 
-<h1>HTML5 slide types  <a name="___sec57"></a></h1>
+<h2>HTML5 slide types  <a name="___sec58"></a></h2>
 
+<p>
 
 
 <ul>
@@ -1828,8 +1884,9 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <section class="slide">
 
-<h1>DocOnce to HTML  <a name="___sec58"></a></h1>
+<h2>DocOnce to HTML  <a name="___sec59"></a></h2>
 
+<p>
 Run in terminal window:
 <p>
 
@@ -1855,8 +1912,9 @@ doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 
 <section class="slide">
 
-<h1>Output for blog posts  <a name="___sec59"></a></h1>
+<h2>Output for blog posts  <a name="___sec60"></a></h2>
 
+<p>
 Two formats of blog posts are supported:
 
 <ul>
@@ -1884,8 +1942,9 @@ and paste the code into the text area.
 
 <section class="slide">
 
-<h1>DocOnce to pdfLaTeX  <a name="___sec60"></a></h1>
+<h2>DocOnce to pdfLaTeX  <a name="___sec61"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">doconce format pdflatex doconcefile
@@ -1914,8 +1973,9 @@ doconce ptex2tex doconcefile envir=ans:nt
 
 <section class="slide">
 
-<h1>DocOnce to Sphinx  <a name="___sec61"></a></h1>
+<h2>DocOnce to Sphinx  <a name="___sec62"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">doconce format sphinx doconcefile
@@ -1938,8 +1998,9 @@ Much easier than running the Sphinx tools manually!
 
 <section class="slide">
 
-<h1>Output for wiki  <a name="___sec62"></a></h1>
+<h2>Output for wiki  <a name="___sec63"></a></h2>
 
+<p>
 Only MediaWiki supports math.
 
 <p>
@@ -1971,8 +2032,9 @@ Publishing of "official" documents:
 
 <section class="slide">
 
-<h1>DocOnce to other formats  <a name="___sec63"></a></h1>
+<h2>DocOnce to other formats  <a name="___sec64"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">doconce format pandoc doconcefile  # (Pandoc extended) Markdown
@@ -1988,7 +2050,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section class="slide">
 
-<h1>Installation  <a name="___sec64"></a></h1>
+<h2>Installation  <a name="___sec65"></a></h2>
 
 <ul>
  <p><li> Ubuntu: <code>sudo apt-get install python-doconce</code> (old!)</li>
@@ -2017,7 +2079,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section class="slide">
 
-<h1>Writing tips for LaTeX writers who want to convert to DocOnce   <a name="___sec65"></a></h1>
+<h2>Writing tips for LaTeX writers who want to convert to DocOnce   <a name="___sec66"></a></h2>
 
 <ul>
  <p><li> <code>doconce latex2doconce</code> helps the translation</li>
@@ -2046,8 +2108,9 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section class="slide">
 
-<h1>DocOnce writing tips  <a name="___sec66"></a></h1>
+<h2>DocOnce writing tips  <a name="___sec67"></a></h2>
 
+<p>
 <!-- * See the previous <em>Typesetting concerns I, II and III</em> slides for issues when writing -->
 <!-- for multiple formats. However: DocOnce makes a fix so that Sphinx and -->
 <!-- other formats works with labels in align environments :-) -->
@@ -2077,14 +2140,14 @@ Figures and movies:
 
 <section class="slide">
 
-<h1>DocOnce writing tips  <a name="___sec67"></a></h1>
+<h2>DocOnce writing tips  <a name="___sec68"></a></h2>
 
 <ul>
  <p><li> <code>\boldsymbol{u}</code> gives nicer boldface typesetting of math symbols than
    the alternatives <code>\boldsymbol{u}</code> and <code>\pmb{u}</code>.</li>
  <p><li> For HTML-based formats using MathJax, <code>\boldsymbol{u}</code> is not supported
    and therefore automatically replaced by <code>\boldsymbol{u}</code> by DocOnce.</li>
- <p><li> Use <code>\<font color="blue">formula</font></code> in math expressions to color a part.</li>
+ <p><li> Use <code>\&lt;font color=&quot;blue&quot;&gt;formula&lt;/font&gt;</code> in math expressions to color a part.</li>
  <p><li> Not all LaTeX math is supported by MathJax. Some legal LaTeX math
    might give MathJax problems - then one has to rewrite the expression
    to find a syntax that works both with LaTeX and MathJax.</li>
@@ -2099,8 +2162,9 @@ Figures and movies:
 
 <section class="slide">
 
-<h1>Writing tips for sphinx and other formats  <a name="___sec68"></a></h1>
+<h2>Writing tips for sphinx and other formats  <a name="___sec69"></a></h2>
 
+<p>
 For output formats different from <code>latex</code>, <code>pdflatex</code>, and <code>html</code>:
 
 <ul>

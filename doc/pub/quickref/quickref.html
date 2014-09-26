@@ -134,10 +134,11 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Sep 14, 2014</h4></center> <!-- date -->
+<center><h4>Sep 26, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="#___sec0"> Supported Formats </a><br>
 <a href="#___sec1"> Emacs syntax support </a><br>
 <a href="#___sec2"> Title, Authors, and Date </a><br>
@@ -176,6 +177,7 @@ mathematics and code.
 
 <h2>Supported Formats  <a name="___sec0"></a></h2>
 
+<p>
 DocOnce currently translates files to the following formats:
 
 <ul>
@@ -200,6 +202,7 @@ Google and Wordpress.
 
 <h2>Emacs syntax support  <a name="___sec1"></a></h2>
 
+<p>
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
@@ -236,6 +239,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <h2>Title, Authors, and Date  <a name="___sec2"></a></h2>
 
+<p>
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
@@ -274,6 +278,7 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <h2>Section Types <a name="quick:sections"></a></h2>
 
+<p>
 <table border="1">
 <thead>
 <tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
@@ -304,6 +309,7 @@ problem.
 
 <h2>Inline Formatting  <a name="___sec4"></a></h2>
 
+<p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <code>_boldface_</code> becomes <b>boldface</b>. Colored words
@@ -398,6 +404,7 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 
 <h2>Lists  <a name="___sec5"></a></h2>
 
+<p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
 with <code>*</code>, <em>enumeration lists</em>, where each item starts with <code>o</code> and gets
 consqutive numbers,
@@ -494,6 +501,7 @@ And finally a description list:
 
 <h2>Comment lines  <a name="___sec6"></a></h2>
 
+<p>
 Lines starting with <code>#</code> are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before LaTeX math
@@ -517,6 +525,7 @@ DocOnce starts processing the file.
 
 <h2>Inline comments  <a name="___sec7"></a></h2>
 
+<p>
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax
@@ -633,6 +642,7 @@ To implement these edits, run
 
 <h2>Verbatim/Computer Code  <a name="___sec8"></a></h2>
 
+<p>
 Inline verbatim code is typeset within back-ticks, as in
 <!-- begin verbatim block -->
 <pre><code>Some sentence with `words in verbatim style`.
@@ -728,6 +738,7 @@ Important warnings:
 
 <h2>LaTeX Mathematics  <a name="___sec9"></a></h2>
 
+<p>
 DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
 pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
@@ -852,6 +863,7 @@ will be much more flexible and powerful).
 
 <h2>Hyperlinks  <a name="___sec10"></a></h2>
 
+<p>
 Links use either a link text or the raw URL:
 
 <p>
@@ -871,6 +883,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 
 <h2>Figures and Movies  <a name="___sec11"></a></h2>
 
+<p>
 Figures and movies have almost equal syntax:
 <!-- begin verbatim block -->
 <pre><code>FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
@@ -937,6 +950,7 @@ The latter results in
 
 <h2>Tables  <a name="___sec12"></a></h2>
 
+<p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
 syntax:
 <!-- begin verbatim block -->
@@ -981,6 +995,7 @@ load tables into spreadsheet programs for further analysis.
 
 <h2>Labels and References  <a name="___sec13"></a></h2>
 
+<p>
 The notion of labels and references (as well as bibliography and index)
 is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
@@ -1010,6 +1025,7 @@ reference by parenthesis.
 
 <h2>Citations and Bibliography  <a name="___sec14"></a></h2>
 
+<p>
 Single citations are written as
 <!-- begin verbatim block -->
 <pre><code>cite{name}
@@ -1037,6 +1053,7 @@ than LaTeX).
 
 <h2>Generalized Citations  <a name="___sec15"></a></h2>
 
+<p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
 a reference with <code>ref</code> to have one formulation if the label is
 in the same document and another formulation if the reference is
@@ -1068,6 +1085,7 @@ documents.  If none of the two situations above applies, the
 
 <h2>Index of Keywords  <a name="___sec16"></a></h2>
 
+<p>
 DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
@@ -1084,6 +1102,7 @@ forthcoming text. The index is only produced for the <code>latex</code>,
 
 <h2>Capabilities of The Program <code>doconce</code>  <a name="___sec17"></a></h2>
 
+<p>
 The <code>doconce</code> program can be used for a number of purposes besides
 transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
@@ -1248,6 +1267,7 @@ doconce latex_exercise_toc myfile
 
 <h2>Exercises  <a name="___sec18"></a></h2>
 
+<p>
 DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
@@ -1363,6 +1383,7 @@ examples.
 
 <h2>Environments  <a name="___sec19"></a></h2>
 
+<p>
 DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
 where <code>envirname</code> is the name of the environment. Here is a listing of
 the environments:
@@ -1383,6 +1404,7 @@ the environments:
 
 <h2>Preprocessing  <a name="___sec20"></a></h2>
 
+<p>
 DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
 <code>mako</code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).

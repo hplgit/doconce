@@ -1,10 +1,10 @@
 
 <wiki:comment> TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way </wiki:comment>
 <wiki:comment> TITLE: Scientific Writing Anno 2013: The DocOnce Way </wiki:comment>
-#summary Scientific Writing and Publishing Anno 2013
+#summary Scientific Writing and Publishing Anno 2014
 
 By *Hans Petter Langtangen*
-==== Sep 9, 2014 ====
+==== Sep 26, 2014 ====
 
 ---------------------------------------------------------------
 
@@ -20,13 +20,11 @@ googlecode repository) and substitute the line above with the URL.
 
 
 
-<wiki:comment> latex interprets 9 = as chapter and then needs book style... </wiki:comment>
 <wiki:comment> !split </wiki:comment>
-= Challenges with tools for scientific writing =
+== Challenges with tools for scientific writing ==
 
 <wiki:comment> !split </wiki:comment>
-== Scientific writing = LaTeX ==
-
+==== Scientific writing = LaTeX ====
 
  * Pre 1980: Handwriting + publisher (paper or book)
  * Post 1985: scientists write LaTeX
@@ -57,7 +55,7 @@ Will MS Word replace LaTeX? It never did!
 
 
 <wiki:comment> !split </wiki:comment>
-== Scientific publishing needs to address new media ==
+==== Scientific publishing needs to address new media ====
 
 <wiki:comment> !bslidecell 00 0.4 </wiki:comment>
 
@@ -115,9 +113,7 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> !eslidecell </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-== The book will probably survive ==
-
-
+==== The book will probably survive ====
 
 ---------------------------------------------------------------
 
@@ -134,7 +130,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-== The classical report will survive ==
+==== The classical report will survive ====
 
 <wiki:comment> !bslidecell 00 </wiki:comment>
 
@@ -176,8 +172,7 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> * Scientific writing = lecture notes, slides, reports, thesis, books,  ... </wiki:comment>
 <wiki:comment> * (Journal papers typeset by journals are out of scope) </wiki:comment>
 
-== Scope of this presentation ==
-
+==== Scope of this presentation ====
 
   * Focus: documents with <font color="red">much</font> *math* and *computer code*
   * Key question: What tools should I use for scientific writing?
@@ -297,8 +292,9 @@ googlecode repository) and substitute the line above with the URL.
 
 <wiki:comment> !eslidecell </wiki:comment>
 
+
 <wiki:comment> !split </wiki:comment>
-== Does your scientific writing today need to address new media (in the future)? ==
+==== Does your scientific writing today need to address new media (in the future)? ====
 
 <wiki:comment> Insert links here to reports </wiki:comment>
 
@@ -335,7 +331,7 @@ googlecode repository) and substitute the line above with the URL.
 
 <wiki:comment> !split </wiki:comment>
 
-== Can we factor pieces from a heterogeneous world to one coherent piece in the future? ==
+==== Can we factor pieces from a heterogeneous world to one coherent piece in the future? ====
 
 When I write some scientific material,
 
@@ -356,7 +352,10 @@ Probably not, but I have a solution :-)
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-== Popular tools anno 2013 and their math support ==
+== Pros and cons of various tools ==
+
+<wiki:comment> !split </wiki:comment>
+==== Popular tools anno 2013 and their math support ====
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -379,8 +378,7 @@ Probably not, but I have a solution :-)
 
 <wiki:comment> !split </wiki:comment>
 
-== LaTeX is very rich; other tools support much less ==
-
+==== LaTeX is very rich; other tools support much less ====
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
  * LaTeX equation math:
@@ -394,7 +392,7 @@ Probably not, but I have a solution :-)
 
 
 <wiki:comment> !split </wiki:comment>
-== LaTeX is very rich; other tools support much less ==
+==== LaTeX is very rich; other tools support much less ====
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -419,7 +417,7 @@ based on HTML and vice versa.
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-== Typesetting concerns I ==
+==== Typesetting concerns I ====
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -433,7 +431,7 @@ based on HTML and vice versa.
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-== Typesetting concerns II ==
+==== Typesetting concerns II ====
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -450,7 +448,7 @@ based on HTML and vice versa.
 <wiki:comment> "bibitems" a la BibTeX must look sensible and consistent. </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-== Typesetting concerns III ==
+==== Typesetting concerns III ====
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -462,8 +460,7 @@ based on HTML and vice versa.
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-== Solution I: Use a format that translates to many ==
-
+==== Solution I: Use a format that translates to many ====
 
  * Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,   man pages, Gnome devhelp files, Qt help files, texinfo, JSON
  * Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,   reStructuredText, epub, DocBook, ... but not Sphinx
@@ -471,7 +468,7 @@ based on HTML and vice versa.
  * Sphinx and Markdown has some limited math support
 
 <wiki:comment> !split </wiki:comment>
-== Solution II: Use DocOnce ==
+==== Solution II: Use DocOnce ====
 
 [http://hplgit.github.io/doconce/doc/web/index.html DocOnce]
 offers minimalistic typing, great flexibility wrt format,
@@ -484,14 +481,13 @@ especially for scientific writing with *much math and code*.
  * Many special features (code snippets from files, embedded movies,   admonitions, modern LaTeX layouts, ...)
  * Very effective for generating slides from ordinary text
  * Applies Mako: DocOnce text is a program (!)
- * Much like Markdown, less tagged than LaTeX, HTML, Sphinx<wiki:comment> latex interprets 9 = as chapter and then needs book style... </wiki:comment>
-
-
-<wiki:comment> !split </wiki:comment>
-= DocOnce =
+ * Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce demos ==
+== DocOnce ==
+
+<wiki:comment> !split </wiki:comment>
+==== DocOnce demos ====
 
 http://hplgit.github.com/teamods/writing_reports/
 
@@ -504,8 +500,7 @@ http://hplgit.github.com/teamods/writing_reports/
  * DocOnce [http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html source code] and [http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html tutorial]
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce disclaimer ==
-
+==== DocOnce disclaimer ====
 
  * Based on text transformations (reg.exp.) so valid syntax may   occasionally give problems<wiki:comment> * Actively developed and maintained, but one-man show </wiki:comment>
 
@@ -517,7 +512,7 @@ formats, such as LaTeX or Sphinx. The generated code is clean.
 
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce experience: code generation is a great thing ==
+==== DocOnce experience: code generation is a great thing ====
 
 
 Regardless of what format you write in, introduce a step where
@@ -569,11 +564,11 @@ The default answer is LaTeX.
 }}}
 
 <wiki:comment> !split </wiki:comment>
+== A tour of DocOnce ==
 
-= A tour of DocOnce =
 
 <wiki:comment> !split </wiki:comment>
-== Title, authors, date, toc ==
+==== Title, authors, date, toc ====
 
 {{{
 TITLE: Some Title
@@ -591,7 +586,7 @@ Title and authors must have all information *on a single line*!
 
 
 <wiki:comment> !split </wiki:comment>
-== Abstract ==
+==== Abstract ====
 
 {{{
 __Abstract.__
@@ -606,13 +601,13 @@ Here goes the summary...
 
 
 <wiki:comment> !split </wiki:comment>
-== Section headings ==
+==== Section headings ====
 
 Headings are surrounded by `=` signs:
 {{{
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -623,9 +618,9 @@ __This is a paragraph heading.__
 
 Result:
 
-= This is an H1/chapter heading =
+== This is an H1/chapter heading ==
 
-== This is an H2/section heading ==
+==== This is an H2/section heading ====
 
 ==== This is an H3/subsection heading ====
 
@@ -633,9 +628,8 @@ Result:
 
 *This is a paragraph heading.*
 
-
 <wiki:comment> !split </wiki:comment>
-== Markup and lists ==
+==== Markup and lists ====
 
 {{{
  * Bullet list items start with `*`
@@ -663,7 +657,7 @@ This gets rendered as
 
 
 <wiki:comment> !split </wiki:comment>
-== Labels, references, index items ==
+==== Labels, references, index items ====
 
 {{{
 # Insert index items in the source
@@ -689,7 +683,7 @@ URL: "https://github.com/hplgit/doconce"
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Figures and movies ==
+==== Figures and movies ====
 
 *Important:* 
 Figures with HTML and LaTeX size info, and caption: *everything on one line*
@@ -710,7 +704,7 @@ and rendered as
  `http://youtu.be/IDeGDFZSYo8`: load [movie_player1.html `movie_player1.html`] into a browser
 
 <wiki:comment> !split </wiki:comment>
-== Math ==
+==== Math ====
 
 Inline math as in LaTeX:
 
@@ -745,7 +739,7 @@ label{b:eq}
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Math flexibility ==
+==== Math flexibility ====
 
 Limit math environments to
 
@@ -773,7 +767,7 @@ Limit math environments to
 
 
 <wiki:comment> !split </wiki:comment>
-== Displaying code ==
+==== Displaying code ====
 
 Code is enclosed in `!bc` and `!ec` tags:
 
@@ -807,7 +801,7 @@ def solver(I, a, T, dt, theta):
 
 
 <wiki:comment> !split </wiki:comment>
-== Copying code from source files ==
+==== Copying code from source files ====
 
 We recommend to copy as much code as possible directly from the
 source files:
@@ -825,8 +819,7 @@ start and end regular expressions:
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Typesetting of code is implied by the file extension ==
-
+==== Typesetting of code is implied by the file extension ====
 
  * `.py`: `pypro` if complete file, `pycod` if snippet
  * `.pyopt`: visualized execution via the [http://pythontutor.com Online Python Tutor]
@@ -839,8 +832,7 @@ start and end regular expressions:
  * `pygments` is used for code in HTML (ca 10 styles)
 
 <wiki:comment> !split </wiki:comment>
-== Demonstrating code execution; Online Python Tutor ==
-
+==== Demonstrating code execution; Online Python Tutor ====
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 [http://pythontutor.com Online Python Tutor] for displaying
@@ -864,8 +856,7 @@ print u
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Demonstrating code execution; Sage Cell Server ==
-
+==== Demonstrating code execution; Sage Cell Server ====
 
 With `!bc pyscpro` or a file `*.pysc`, the code is typeset in
 a sage cell:
@@ -891,13 +882,12 @@ Works only in Sphinx documents (but HTML support is possible).
 
 
 <wiki:comment> !split </wiki:comment>
-== Demonstrating code execution; IPython notebook ==
-
+==== Demonstrating code execution; IPython notebook ====
 
 Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html DocOnce source] and transform to an [http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb IPython notebook] with [http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html source]
 
 <wiki:comment> !split </wiki:comment>
-== Tables ==
+==== Tables ====
 
 {{{
 
@@ -913,23 +903,22 @@ Can take a [http://hplgit.github.com/teamods/writing_reports/_static/report.do.t
 Gets rendered as
 
 
- ||      _time_       ||    _velocity_     ||  _acceleration_   ||
- ||  0.0              ||  1.4186           ||  -5.01            ||
- ||  2.0              ||  1.376512         ||  11.919           ||
- ||  4.0              ||  1.1E+1           ||  14.717624        ||
+ ||  _time_   ||  _velocity_   ||  _acceleration_   ||
+ ||  0.0      ||  1.4186       ||  -5.01            ||
+ ||  2.0      ||  1.376512     ||  11.919           ||
+ ||  4.0      ||  1.1E+1       ||  14.717624        ||
 
 
 
 <wiki:comment> !split </wiki:comment>
-== Newcommands for math ==
-
+==== Newcommands for math ====
 
  * `newcommands*.tex` files contain newcommands
  * Used directly in LaTeX
  * Substitution made for many other formats
 
 <wiki:comment> !split </wiki:comment>
-== Labels, citations, index, bibliography ==
+==== Labels, citations, index, bibliography ====
 
 Lables, citations, index, and bibliography follow the ideas of
 LaTeX, but without backslashes:
@@ -965,7 +954,7 @@ The `papers.pub` file must be in [https://bitbucket.org/logg/publish Publish]
 format (easy to make from BibTeX).
 
 <wiki:comment> !split </wiki:comment>
-== Exercises ==
+==== Exercises ====
 
 DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
@@ -995,10 +984,7 @@ Compute the probability of getting heads.
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Rendering of the previous page ==
-
-
-
+==== Rendering of the previous page ====
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
@@ -1034,7 +1020,7 @@ Filenames: `flip_coin.py`, `flip_coin.pdf`.
 
 
 <wiki:comment> !split </wiki:comment>
-== Exercises ==
+==== Exercises ====
 
 All *exercises*, *problems*, and *projects* in a document are parsed
 and available in a data structure (list of dicts) for further
@@ -1058,8 +1044,7 @@ processing (e.g., making a book of problems).
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Use of preprocessors ==
-
+==== Use of preprocessors ====
 
  * Simple if-else tests a la the C/C++ preprocessor
  * `FORMAT` variable can be used to test on format, e.g.,
@@ -1073,7 +1058,7 @@ processing (e.g., making a book of problems).
  * The mako preprocessor is really powerful - gives a   complete programming language inside the document!
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce admonitions ==
+==== DocOnce admonitions ====
 
 *Use with caution!* 
 Such environments may light up the document, but can be disturbing too.
@@ -1103,7 +1088,7 @@ Conclusion:
 
 
 <wiki:comment> !split </wiki:comment>
-== Slides ==
+==== Slides ====
 
 Very effective way to generate slides from running text:
 
@@ -1118,11 +1103,11 @@ Very effective way to generate slides from running text:
  * Supported slide types: Beamer, HTML,   HTML5 (reveal.js, deck.js, csss, dzslides)
 
 <wiki:comment> !split </wiki:comment>
-== Example on slide code ==
+==== Example on slide code ====
 
 {{{
 !split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -1143,16 +1128,15 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Example on slide code ==
+==== Example on slide code ====
 
 Last page gets rendered to
 
-== Headline ==
-
+==== Headline ====
 
  * Key point 1
  * Key point 2
@@ -1180,14 +1164,14 @@ Key equation:
 And maybe a final comment?
 
 <wiki:comment> !split </wiki:comment>
-== Grid layout of slide: MxN cells ==
+==== Grid layout of slide: MxN cells ====
 
 Example with a bullet list to the left and
 a figure to the right (two cells: 00 and 01):
 
 {{{
 !split
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -1209,18 +1193,18 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Grid layout of slide: MxN cells ==
+==== Grid layout of slide: MxN cells ====
 
 Last page gets rendered to
 
 
 
 
-== Headline ==
+==== Headline ====
 
 <wiki:comment> !bslidecell 00 </wiki:comment>
 <wiki:comment> !bpop </wiki:comment>
@@ -1259,8 +1243,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-== Classic slide types ==
-
+==== Classic slide types ====
 
  * LaTeX Beamer
  * Plain HTML w/various styles
@@ -1271,7 +1254,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-== HTML5 slide types ==
+==== HTML5 slide types ====
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -1308,7 +1291,7 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce to HTML ==
+==== DocOnce to HTML ====
 
 Run in terminal window:
 {{{
@@ -1328,7 +1311,7 @@ doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Output for blog posts ==
+==== Output for blog posts ====
 
 Two formats of blog posts are supported:
 
@@ -1345,7 +1328,7 @@ and paste the code into the text area.
 
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce to pdfLaTeX ==
+==== DocOnce to pdfLaTeX ====
 
 {{{
 doconce format pdflatex doconcefile
@@ -1369,7 +1352,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce to Sphinx ==
+==== DocOnce to Sphinx ====
 
 {{{
 doconce format sphinx doconcefile
@@ -1386,7 +1369,7 @@ google-chrome sphinx-rootdir/_build/html/index.html
 Much easier than running the Sphinx tools manually!
 
 <wiki:comment> !split </wiki:comment>
-== Output for wiki ==
+==== Output for wiki ====
 
 Only MediaWiki supports math.
 
@@ -1407,7 +1390,7 @@ Publishing of "official" documents:
  * Wikipedia
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce to other formats ==
+==== DocOnce to other formats ====
 
 {{{
 doconce format pandoc doconcefile  # (Pandoc extended) Markdown
@@ -1418,8 +1401,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 }}}
 
 <wiki:comment> !split </wiki:comment>
-== Installation ==
-
+==== Installation ====
 
  * Ubuntu: `sudo apt-get install python-doconce` (old!)
  * Source at [https://github.com/hplgit/doconce GitHub] (recommended!)
@@ -1436,8 +1418,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 
 <wiki:comment> !split </wiki:comment>
-== Writing tips for LaTeX writers who want to convert to DocOnce ==
-
+==== Writing tips for LaTeX writers who want to convert to DocOnce ====
 
  * `doconce latex2doconce` helps the translation
  * Use `\[ \]`, `equation`, `equation*`, `align`, `align*` and nothing more for   equations
@@ -1455,7 +1436,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Avoid all fancy LaTeX constructs - more backslashes than needed in math   and sections is a bad thing...
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce writing tips ==
+==== DocOnce writing tips ====
 
 <wiki:comment> * See the previous *Typesetting concerns I, II and III* slides for issues when writing </wiki:comment>
 <wiki:comment> for multiple formats. However: DocOnce makes a fix so that Sphinx and </wiki:comment>
@@ -1472,8 +1453,7 @@ Figures and movies:
  * Favor the movie formats MP4, WebM, and Ogg (best suited for modern browsers).
 
 <wiki:comment> !split </wiki:comment>
-== DocOnce writing tips ==
-
+==== DocOnce writing tips ====
 
  * `\bm{u}` gives nicer boldface typesetting of math symbols than   the alternatives `\boldsymbol{u}` and `\pmb{u}`.
  * For HTML-based formats using MathJax, `\bm{u}` is not supported   and therefore automatically replaced by `\boldsymbol{u}` by DocOnce.
@@ -1483,7 +1463,7 @@ Figures and movies:
  * Avoid page references and footnotes.
 
 <wiki:comment> !split </wiki:comment>
-== Writing tips for sphinx and other formats ==
+==== Writing tips for sphinx and other formats ====
 
 For output formats different from `latex`, `pdflatex`, and `html`:
 

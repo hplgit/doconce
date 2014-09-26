@@ -151,16 +151,17 @@ system doconce format pandoc testdoc.do.txt $ex
 # slides1: rough small test
 # slides2: much of scientific_writing.do.txt
 # slides3: equal to slides/demo.do.txt
-system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
+
+system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
 cp slides1.html slides1_1st.html  # before running slides_html
 
-system doconce slides_html slides1 reveal --html_slide_type=beigesmall
+system doconce slides_html slides1 reveal --html_slide_themee=simple
 
 cp slides1.html slides1_reveal.html
 /bin/ls -R reveal.js >> slides1_reveal.html
 
 system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
-system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
+system doconce slides_html slides1 deck --html_slide_theme=web-2.0
 
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
@@ -171,13 +172,21 @@ system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 system pdflatex -shell-escape slides1
+cp slides1.tex slides1_handout.tex
+cp slides1.pdf slides1_handout.pdf
+
+# Ordinary beamer slides (not handout)
+system doconce format pdflatex slides1 --latex_title_layout=beamer
+system doconce ptex2tex slides1 envir=minted
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
+system pdflatex -shell-escape slides1
 
 system doconce format html slides2 --pygments_html_style=emacs
-system doconce slides_html slides2 reveal --html_slide_type=beigesmall
+system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 cp slides2.html slides2_reveal.html
 
 rm -f *.aux
-system doconce format pdflatex slides2 --latex_title_layout=beamer
+system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 

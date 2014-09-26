@@ -379,10 +379,11 @@ and a DocOnce directive a la `!bc`.
 The following attempt to exemplify colored text does not work in
 format ${FORMAT}.
 # #endif
-Here is some color{red}{red} color and an attempt to write color{green}{with
-green color containing a linebreak. <linebreak>
-And one more.} Some formats will only display <linebreak>
-this correctly when HTML is the output format. <linebreak>
+Here is some color{red}{red color} and an attempt to write color{green}{with
+green color containing a linebreak<linebreak>
+code.} Some formats will only display <linebreak>
+this correctly when `html` <linebreak>
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -1755,6 +1756,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
@@ -2536,10 +2538,11 @@ verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
 and a DocOnce directive a la \code{!bc}.
 
-Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.\\
-And one more.} Some formats will only display\\
-this correctly when HTML is the output format.\\
+Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
+green color containing a linebreak\\
+code.} Some formats will only display \\
+this correctly when \code{html} \\
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -4744,10 +4747,11 @@ verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in {\Verb~a != b~},
 and a DocOnce directive a la {\Verb~!bc~}.
 
-Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.\\
-And one more.} Some formats will only display\\
-this correctly when HTML is the output format.\\
+Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
+green color containing a linebreak\\
+code.} Some formats will only display \\
+this correctly when \texttt{html} \\
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -6964,10 +6968,11 @@ verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in \Verb?a != b?,
 and a DocOnce directive a la \Verb?!bc?.
 
-Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.\\
-And one more.} Some formats will only display\\
-this correctly when HTML is the output format.\\
+Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
+green color containing a linebreak\\
+code.} Some formats will only display \\
+this correctly when \Verb!html! \\
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -8724,13 +8729,14 @@ and a DocOnce directive a la ``!bc``.
 
 The following attempt to exemplify colored text does not work in
 format rst.
-Here is some **red** color and an attempt to write **with
-green color containing a linebreak. 
+Here is some **red color** and an attempt to write **with
+green color containing a linebreak
 
-| And one more.** Some formats will only display 
-| this correctly when HTML is the output format. 
-| But here some more running text is added which is not part of
+| code.** Some formats will only display 
+| this correctly when ``html`` 
+| is the output format.
 
+But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 Running OS commands
@@ -10426,13 +10432,14 @@ and a DocOnce directive a la ``!bc``.
 
 The following attempt to exemplify colored text does not work in
 format sphinx.
-Here is some **red** color and an attempt to write **with
-green color containing a linebreak. 
+Here is some **red color** and an attempt to write **with
+green color containing a linebreak
 
-| And one more.** Some formats will only display 
-| this correctly when HTML is the output format. 
-| But here some more running text is added which is not part of
+| code.** Some formats will only display 
+| this correctly when ``html`` 
+| is the output format.
 
+But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 Running OS commands
@@ -12160,13 +12167,14 @@ and a DocOnce directive a la `!bc`.
 
 The following attempt to exemplify colored text does not work in
 format gwiki.
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. 
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak
 
-And one more.</font> Some formats will only display 
+code.</font> Some formats will only display 
 
-this correctly when HTML is the output format. 
+this correctly when `html` 
 
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -13688,10 +13696,11 @@ and a DocOnce directive a la <code>!bc</code>.
 
 The following attempt to exemplify colored text does not work in
 format mwiki.
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. <br />
-And one more.</font> Some formats will only display <br />
-this correctly when HTML is the output format. <br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak<br />
+code.</font> Some formats will only display <br />
+this correctly when <code>html</code> <br />
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -15306,10 +15315,11 @@ and a DocOnce directive a la {{{!bc}}}.
 
 The following attempt to exemplify colored text does not work in
 format cwiki.
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. <br />
-And one more.</font> Some formats will only display <br />
-this correctly when HTML is the output format. <br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak<br />
+code.</font> Some formats will only display <br />
+this correctly when {{{html}}} <br />
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -16703,9 +16713,10 @@ and a DocOnce directive a la '!bc'.
 The following attempt to exemplify colored text does not work in
 format st.
 Here is some red color and an attempt to write with
-green color containing a linebreak. 
-And one more. Some formats will only display 
-this correctly when HTML is the output format. 
+green color containing a linebreak
+code. Some formats will only display 
+this correctly when 'html' 
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -17966,9 +17977,10 @@ and a DocOnce directive a la C{!bc}.
 The following attempt to exemplify colored text does not work in
 format epytext.
 Here is some red color and an attempt to write with
-green color containing a linebreak. 
-And one more. Some formats will only display 
-this correctly when HTML is the output format. 
+green color containing a linebreak
+code. Some formats will only display 
+this correctly when C{html} 
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -19386,9 +19398,10 @@ and a DocOnce directive a la !bc.
 The following attempt to exemplify colored text does not work in
 format plain.
 Here is some red color and an attempt to write with
-green color containing a linebreak. 
-And one more. Some formats will only display 
-this correctly when HTML is the output format. 
+green color containing a linebreak
+code. Some formats will only display 
+this correctly when html 
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -20863,10 +20876,11 @@ and a DocOnce directive a la `!bc`.
 
 The following attempt to exemplify colored text does not work in
 format pandoc.
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. \n
-And one more.</font> Some formats will only display \n
-this correctly when HTML is the output format. \n
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak\n
+code.</font> Some formats will only display \n
+this correctly when `html` \n
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -22701,10 +22715,11 @@ is at the end with only one newline.
       "\n",
       "The following attempt to exemplify colored text does not work in\n",
       "format ipynb.\n",
-      "Here is some <font color=\"red\">red</font> color and an attempt to write <font color=\"green\">with\n",
-      "green color containing a linebreak. \n",
-      "And one more.</font> Some formats will only display \n",
-      "this correctly when HTML is the output format. \n",
+      "Here is some <font color=\"red\">red color</font> and an attempt to write <font color=\"green\">with\n",
+      "green color containing a linebreak\n",
+      "code.</font> Some formats will only display \n",
+      "this correctly when `html` \n",
+      "is the output format.\n",
       "But here some more running text is added which is not part of\n",
       "the previous blocks with line breaks.\n",
       "\n",
@@ -24961,10 +24976,11 @@ and a DocOnce directive a la `!bc`.
 
 The following attempt to exemplify colored text does not work in
 format pandoc.
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. \n
-And one more.</font> Some formats will only display \n
-this correctly when HTML is the output format. \n
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak\n
+code.</font> Some formats will only display \n
+this correctly when `html` \n
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -26312,11 +26328,13 @@ end of tocinfo -->
 
 <h2>This is a test of HTML templates  <a name="___sec0"></a></h2>
 
+<p>
 Note: When using HTML templates, the DocOnce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 <h1>This is a 7 heading  <a name="___sec1"></a></h1>
 
+<p>
 Here is some code:
 <!-- begin verbatim block  pycod-->
 <pre><code>class Diff:
@@ -26333,6 +26351,7 @@ class Forward1(Diff):
 
 <h2>This is a 5 heading  <a name="___sec2"></a></h2>
 
+<p>
 The template can be any HTML file with header and footer and
 three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
 where <em>main</em> will become the DocOnce file (the main body of text),
@@ -26554,11 +26573,13 @@ end of tocinfo -->
 
 <h2>This is a test of HTML templates  <a name="___sec0"></a></h2>
 
+<p>
 Note: When using HTML templates, the DocOnce file cannot have a title
 (to avoid generating a header). It should neither have an author.
 
 <h1>This is a 7 heading  <a name="___sec1"></a></h1>
 
+<p>
 Here is some code:
 <p>
 
@@ -26576,6 +26597,7 @@ Here is some code:
 
 <h2>This is a 5 heading  <a name="___sec2"></a></h2>
 
+<p>
 The template can be any HTML file with header and footer and
 three possible slots: <em>title</em>, <em>date</em> and <em>main</em>,
 where <em>main</em> will become the DocOnce file (the main body of text),
@@ -28307,6 +28329,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
@@ -28610,6 +28633,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
+<p>
 Here is a nested list:
 
 <p><table border="0">
@@ -28669,6 +28693,7 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
+<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -28684,6 +28709,7 @@ encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 
 
 <h3>Computer code  <a name="___sec3"></a></h3>
 
+<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -28812,6 +28838,7 @@ Test paragraph and subsubsection headings before code.
 </pre></div>
 </td></tr></table><h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
@@ -29125,15 +29152,17 @@ in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
 and a DocOnce directive a la <code>!bc</code>.
 
 <p>
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. <br />
-And one more.</font> Some formats will only display <br />
-this correctly when HTML is the output format. <br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak<br />
+code.</font> Some formats will only display <br />
+this correctly when <code>html</code> <br />
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
+<p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
@@ -29148,6 +29177,7 @@ Python.
 </pre></div>
 </td></tr></table><h3>Footnotes  <a name="___sec6"></a></h3>
 
+<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors, now in
 
@@ -29198,6 +29228,7 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
+<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -29255,6 +29286,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
 
+<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -29298,6 +29330,7 @@ $$
 
 <h2>Custom Environments  <a name="___sec9"></a></h2>
 
+<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -29325,6 +29358,7 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
+<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -29449,6 +29483,7 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
+<p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is more <code>__verbatim__</code> code and
 some plain text on a new line.
@@ -29458,50 +29493,62 @@ some plain text on a new line.
 
 <h2><b>Just bold</b>  <a name="___sec12"></a></h2>
 
+<p>
 Some text.
 
 <h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
 
+<p>
 Some text.
 
 <h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
 
+<p>
 Some text.
 
 <h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
 
+<p>
 Some text.
 
 <h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
 
+<p>
 Some text.
 
 <h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
 
+<p>
 Some text.
 
 <p>
@@ -29562,6 +29609,7 @@ period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec24"></a></h2>
 
+<p>
 Here is an example: <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -29593,6 +29641,7 @@ the old ME-IN323 book <a href="._testdoc002.html#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
+<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -29628,6 +29677,7 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
+<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -29906,6 +29956,7 @@ MathJax.Hub.Config({
 
 <h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
 
+<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -29951,6 +30002,7 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 
 <h1>Exercises  <a name="___sec28"></a></h1>
 
+<p>
 <!-- --- begin exercise --- -->
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
@@ -29966,6 +30018,7 @@ let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec30"></a></h3>
 
+<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
 
@@ -30012,6 +30065,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2>Not an exercise  <a name="___sec31"></a></h2>
 
+<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -30020,6 +30074,7 @@ exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
+<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -30055,6 +30110,7 @@ compute the probability as \( M/N \).
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
+<p>
 The formula for a circle is given by
 
 $$
@@ -30141,6 +30197,7 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec34"></a></h3>
 
+<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -30152,6 +30209,7 @@ and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
+<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -30249,6 +30307,7 @@ Filename: <code>subexer_b.pdf</code>.
 
 <h3>Remarks  <a name="___sec36"></a></h3>
 
+<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -30261,6 +30320,7 @@ remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
 
+<p>
 <!-- Another minimalistic exercise -->
 
 <p>
@@ -30290,6 +30350,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
+<p>
 <!-- begin quiz -->
 Given
 
@@ -30337,6 +30398,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 
 <h2>Example 8: Just an example  <a name="___sec39"></a></h2>
 
+<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -30353,14 +30415,17 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec40"></a></h1>
 
+<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec41"></a></h1>
 
+<p>
 <!-- --- begin exercise --- -->
 
 <h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
+<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -30384,6 +30449,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
+<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
@@ -30394,6 +30460,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec44"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -30507,26 +30574,32 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
+<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec46"></a></h2>
 
+<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
+<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
 
+<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
+<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
+<p>
 What about inserting a quiz?
 
 <p>
@@ -30785,6 +30858,7 @@ Bergen
 
 <h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
 
+<p>
 Without label.
 
 <p>
@@ -30878,6 +30952,7 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec52"></a></h2>
 
+<p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
 
 <p>
@@ -30916,6 +30991,7 @@ First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
 
+<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -31072,6 +31148,7 @@ div { text-align: justify; text-justify: inter-word; }
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
@@ -31142,6 +31219,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
+<p>
 Here is a nested list:
 
 <ul>
@@ -31193,6 +31271,7 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
+<p>
 More text, with a reference back to
 the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
 the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
@@ -31201,6 +31280,7 @@ encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a
 
 <h3>Computer code  <a name="___sec3"></a></h3>
 
+<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -31292,6 +31372,7 @@ Test paragraph and subsubsection headings before code.
 
 <h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
+<p>
 
 
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
@@ -31510,15 +31591,17 @@ in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
 and a DocOnce directive a la <code>!bc</code>.
 
 <p>
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. <br />
-And one more.</font> Some formats will only display <br />
-this correctly when HTML is the output format. <br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak<br />
+code.</font> Some formats will only display <br />
+this correctly when <code>html</code> <br />
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
+<p>
 
 
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -31530,6 +31613,7 @@ Python.
 
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
+<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors, now in
 
@@ -31578,6 +31662,7 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
+<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -31623,6 +31708,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The $latex \theta$ parameter (not $latex \nabla$?) <a name="decay:sec:theta"></a></h2>
 
+<p>
 Functions do not always need to be advanced, here is one
 involving $latex \theta$:
 <p>
@@ -31674,6 +31760,7 @@ $latex
 
 <h2>Custom Environments  <a name="___sec9"></a></h2>
 
+<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -31701,6 +31788,7 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
+<p>
 Let us take this table from the manual:
 
 <p>
@@ -31812,56 +31900,69 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
+<p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is more <code>__verbatim__</code> code and
 some plain text on a new line.
 
 <h2><b>Just bold</b>  <a name="___sec12"></a></h2>
 
+<p>
 Some text.
 
 <h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
 
+<p>
 Some text.
 
 <h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
 
+<p>
 Some text.
 
 <h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
 
+<p>
 Some text.
 
 <h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
 
+<p>
 Some text.
 
 <h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
 
+<p>
 Some text.
 
 <p>
@@ -31921,6 +32022,7 @@ period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec24"></a></h2>
 
+<p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -31949,6 +32051,7 @@ the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
+<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -31981,6 +32084,7 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
+<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or
@@ -32020,6 +32124,7 @@ footnotes.
 
 <h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
 
+<p>
 Here is an equation without label using backslash-bracket environment:
 
 $latex  a = b + c  $
@@ -32073,12 +32178,15 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
 
+
+<p>
 Make a program that simulates flipping a coin $latex N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec30"></a></h3>
 
+<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
 
@@ -32125,11 +32233,13 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2>Not an exercise  <a name="___sec31"></a></h2>
 
+<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
+<p>
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval $latex [0,1)$?
 
@@ -32153,6 +32263,7 @@ compute the probability as $latex M/N$.
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
+<p>
 The formula for a circle is given by
 
 <p>
@@ -32221,11 +32332,13 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec34"></a></h3>
 
+<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
+<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -32329,12 +32442,14 @@ Here goes the solution of this subexercise.
 
 <h3>Remarks  <a name="___sec36"></a></h3>
 
+<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
 
+<p>
 Just some text. And some math saying that $latex e^0=1$ on a single line,
 to test that math block insertion is correct:
 
@@ -32355,6 +32470,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
+<p>
 
 Given
 
@@ -32429,6 +32545,7 @@ special techniques.
 
 <h2>Example 8: Just an example  <a name="___sec39"></a></h2>
 
+<p>
 <b>a)</b>
 What is the capital of Norway?
 
@@ -32438,12 +32555,14 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec40"></a></h1>
 
+<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec41"></a></h1>
 
 <h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
+<p>
 
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -32461,6 +32580,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
+<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
@@ -32577,26 +32697,32 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
+<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec46"></a></h2>
 
+<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
+<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
 
+<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
+<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
+<p>
 What about inserting a quiz?
 
 <p>
@@ -32635,6 +32761,7 @@ Those from Bergen would claim so, but nobody else.
 
 <h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
 
+<p>
 Without label.
 
 <p>
@@ -32728,6 +32855,7 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec52"></a></h2>
 
+<p>
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
@@ -32757,6 +32885,7 @@ $latex Q>0$, because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> n
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
 
+<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -33022,6 +33151,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
@@ -33102,6 +33232,7 @@ is part of the abstract.
 
 <h1>Section 1 <a name="sec1"></a></h1>
 
+<p>
 Here is a nested list:
 
 <ul>
@@ -33153,6 +33284,7 @@ This equation appears in another part if this document is split.
 
 <h2>Subsection 1 <a name="subsec1"></a></h2>
 
+<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -33168,6 +33300,7 @@ encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a
 
 <h3>Computer code  <a name="___sec3"></a></h3>
 
+<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -33259,6 +33392,7 @@ Test paragraph and subsubsection headings before code.
 
 <h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
 
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
@@ -33481,15 +33615,17 @@ in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
 and a DocOnce directive a la <code>!bc</code>.
 
 <p>
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. <br />
-And one more.</font> Some formats will only display <br />
-this correctly when HTML is the output format. <br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak<br />
+code.</font> Some formats will only display <br />
+this correctly when <code>html</code> <br />
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 <h3>Running OS commands  <a name="___sec5"></a></h3>
 
+<p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -33501,6 +33637,7 @@ Python.
 
 <h3>Footnotes  <a name="___sec6"></a></h3>
 
+<p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors, now in
 
@@ -33549,6 +33686,7 @@ of course remain a tilde in those contexts.)
 
 <h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
 
+<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -33606,6 +33744,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
 
+<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -33648,6 +33787,7 @@ $$
 
 <h2>Custom Environments  <a name="___sec9"></a></h2>
 
+<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -33675,6 +33815,7 @@ achievement.
 
 <h2>Tables <a name="subsec:table"></a></h2>
 
+<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -33793,6 +33934,7 @@ and URLs.
 
 <h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
 
+<p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is more <code>__verbatim__</code> code and
 some plain text on a new line.
@@ -33802,50 +33944,62 @@ some plain text on a new line.
 
 <h2><b>Just bold</b>  <a name="___sec12"></a></h2>
 
+<p>
 Some text.
 
 <h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
 
+<p>
 Some text.
 
 <h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
 
+<p>
 Some text.
 
 <h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
 
+<p>
 Some text.
 
 <h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
 
+<p>
 Some text.
 
 <h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
 
+<p>
 Some text.
 
 <h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
 
+<p>
 Some text.
 
 <h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
 
+<p>
 Some text.
 
 <p>
@@ -33905,6 +34059,7 @@ period, like <code>.txt</code>.
 
 <h2>Bibliography test  <a name="___sec24"></a></h2>
 
+<p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -33936,6 +34091,7 @@ the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 
 <h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
 
+<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -33971,6 +34127,7 @@ maybe over multiple doconce input lines.
 
 <h2>URLs <a name="subsubsec:ex"></a></h2>
 
+<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -34022,6 +34179,7 @@ footnotes.
 
 <h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
 
+<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -34067,6 +34225,7 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 
 <h1>Exercises  <a name="___sec28"></a></h1>
 
+<p>
 <!-- --- begin exercise --- -->
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
@@ -34082,6 +34241,7 @@ let the program count the number of heads.
 
 <h3>Remarks  <a name="___sec30"></a></h3>
 
+<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
 
@@ -34125,6 +34285,7 @@ Draw an integer among \( \{1,2\} \) with
 
 <h2>Not an exercise  <a name="___sec31"></a></h2>
 
+<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -34133,6 +34294,7 @@ exercises.
 
 <h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
 
+<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -34168,6 +34330,7 @@ compute the probability as \( M/N \).
 
 <h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
+<p>
 The formula for a circle is given by
 
 $$
@@ -34244,6 +34407,7 @@ Filename: <code>circles.pdf</code>.
 
 <h3>Remarks  <a name="___sec34"></a></h3>
 
+<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -34255,6 +34419,7 @@ and give some perspectives.
 
 <h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
 
+<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -34350,6 +34515,7 @@ Filename: <code>subexer_b.pdf</code>.
 
 <h3>Remarks  <a name="___sec36"></a></h3>
 
+<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -34362,6 +34528,7 @@ remarks will appear at the end of the typeset exercise.
 
 <h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
 
+<p>
 <!-- Another minimalistic exercise -->
 
 <p>
@@ -34391,6 +34558,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
+<p>
 <!-- begin quiz -->
 Given
 
@@ -34436,6 +34604,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 
 <h2>Example 8: Just an example  <a name="___sec39"></a></h2>
 
+<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -34452,14 +34621,17 @@ Oslo.
 
 <h1>Here goes another section  <a name="___sec40"></a></h1>
 
+<p>
 With some text, before we continue with exercises.
 
 <h1>More Exercises  <a name="___sec41"></a></h1>
 
+<p>
 <!-- --- begin exercise --- -->
 
 <h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
+<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -34483,6 +34655,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
+<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
@@ -34493,6 +34666,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>References  <a name="___sec44"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -34606,26 +34780,32 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
 
+<p>
 This is the first appendix.
 
 <h2>A subsection within an appendix  <a name="___sec46"></a></h2>
 
+<p>
 Some text.
 
 <h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
 
+<p>
 This is more stuff for an appendix.
 
 <h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
 
+<p>
 Without label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
 
+<p>
 With label.
 
 <h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
 
+<p>
 What about inserting a quiz?
 
 <p>
@@ -34658,6 +34838,7 @@ Bergen
 
 <h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
 
+<p>
 Without label.
 
 <p>
@@ -34751,6 +34932,7 @@ to get started.
 
 <h2>Appendix: Testing inline comments  <a name="___sec52"></a></h2>
 
+<p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
 
 <p>
@@ -34789,6 +34971,7 @@ First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \
 
 <h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
 
+<p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in LaTeX.
@@ -35570,10 +35753,11 @@ verbatim text. Since the exclamation mark is used as delimiter
 in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
 and a DocOnce directive a la \code{!bc}.
 
-Here is some \textcolor{red}{red} color and an attempt to write \textcolor{green}{with
-green color containing a linebreak.\\
-And one more.} Some formats will only display\\
-this correctly when HTML is the output format.\\
+Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
+green color containing a linebreak\\
+code.} Some formats will only display \\
+this correctly when \code{html} \\
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
@@ -37445,16 +37629,17 @@ system doconce format pandoc testdoc.do.txt $ex
 # slides1: rough small test
 # slides2: much of scientific_writing.do.txt
 # slides3: equal to slides/demo.do.txt
-system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
+
+system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
 cp slides1.html slides1_1st.html  # before running slides_html
 
-system doconce slides_html slides1 reveal --html_slide_type=beigesmall
+system doconce slides_html slides1 reveal --html_slide_themee=simple
 
 cp slides1.html slides1_reveal.html
 /bin/ls -R reveal.js >> slides1_reveal.html
 
 system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
-system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
+system doconce slides_html slides1 deck --html_slide_theme=web-2.0
 
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
@@ -37465,13 +37650,21 @@ system doconce format pdflatex slides1 --latex_title_layout=beamer
 system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 system pdflatex -shell-escape slides1
+cp slides1.tex slides1_handout.tex
+cp slides1.pdf slides1_handout.pdf
+
+# Ordinary beamer slides (not handout)
+system doconce format pdflatex slides1 --latex_title_layout=beamer
+system doconce ptex2tex slides1 envir=minted
+system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
+system pdflatex -shell-escape slides1
 
 system doconce format html slides2 --pygments_html_style=emacs
-system doconce slides_html slides2 reveal --html_slide_type=beigesmall
+system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 cp slides2.html slides2_reveal.html
 
 rm -f *.aux
-system doconce format pdflatex slides2 --latex_title_layout=beamer
+system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 
@@ -39339,6 +39532,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
@@ -39677,6 +39871,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
@@ -39992,6 +40187,7 @@ is part of the abstract.
 
 <h1 id="sec1">Section 1<a name="sec1"></a></h1>
 
+<p>
 Here is a nested list:
 
 <ul>
@@ -40043,6 +40239,7 @@ This equation appears in another part if this document is split.
 
 <h2 id="subsec1">Subsection 1<a name="subsec1"></a></h2>
 
+<p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
 <!-- and other special fix situations for HTML. -->
 
@@ -40058,6 +40255,7 @@ encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">
 
 <h3 id="___sec3">Computer code <a name="___sec3"></a></h3>
 
+<p>
 Let's do some copying from files too. First from subroutine up to the very end,
 
 <p>
@@ -40149,6 +40347,7 @@ Test paragraph and subsubsection headings before code.
 
 <h3 id="___sec4">Subsubsection heading before code <a name="___sec4"></a></h3>
 
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(z):
@@ -40371,15 +40570,17 @@ in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
 and a DocOnce directive a la <code>!bc</code>.
 
 <p>
-Here is some <font color="red">red</font> color and an attempt to write <font color="green">with
-green color containing a linebreak. <br />
-And one more.</font> Some formats will only display <br />
-this correctly when HTML is the output format. <br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
+green color containing a linebreak<br />
+code.</font> Some formats will only display <br />
+this correctly when <code>html</code> <br />
+is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 <h3 id="___sec5">Running OS commands <a name="___sec5"></a></h3>
 
+<p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
@@ -40391,6 +40592,7 @@ Python.
 
 <h3 id="___sec6">Footnotes <a name="___sec6"></a></h3>
 
+<p>
 Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors, now in
 
@@ -40437,6 +40639,7 @@ of course remain a tilde in those contexts.)
 
 <h2 id="subsec:ex">Subsection 2: Testing figures<a name="subsec:ex"></a></h2>
 
+<p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
 there is a flow.
 
@@ -40494,6 +40697,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 
 <h2 id="decay:sec:theta">The \( \theta \) parameter (not \( \nabla \)?)<a name="decay:sec:theta"></a></h2>
 
+<p>
 Functions do not always need to be advanced, here is one
 involving \( \theta \):
 <p>
@@ -40536,6 +40740,7 @@ $$
 
 <h2 id="___sec9">Custom Environments <a name="___sec9"></a></h2>
 
+<p>
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
 the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
@@ -40563,6 +40768,7 @@ achievement.
 
 <h2 id="subsec:table">Tables<a name="subsec:table"></a></h2>
 
+<p>
 <!-- index with comma could fool sphinx -->
 
 <p>
@@ -40711,6 +40917,7 @@ and URLs.
 
 <h2 id="___sec11">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> <a name="___sec11"></a></h2>
 
+<p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
 Here is more <code>__verbatim__</code> code and
 some plain text on a new line.
@@ -40720,50 +40927,62 @@ some plain text on a new line.
 
 <h2 id="___sec12"><b>Just bold</b> <a name="___sec12"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec13"><em>Just emphasize</em> <a name="___sec13"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec14"><code>Just verbatim</code> <a name="___sec14"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec15"><b>Bold</b> beginning <a name="___sec15"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec16"><em>Emphasize</em> beginning <a name="___sec16"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec17"><code>Verbatim</code> beginning <a name="___sec17"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec18">Maybe <b>bold end</b> <a name="___sec18"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec19">Maybe <em>emphasize end</em> <a name="___sec19"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec20">Maybe <code>verbatim end</code> <a name="___sec20"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec21">The middle has <b>bold</b> word <a name="___sec21"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec22">The middle has <em>emphasize</em> word <a name="___sec22"></a></h2>
 
+<p>
 Some text.
 
 <h2 id="___sec23">The middle has <code>verbatim</code> word <a name="___sec23"></a></h2>
 
+<p>
 Some text.
 
 <p>
@@ -40823,6 +41042,7 @@ period, like <code>.txt</code>.
 
 <h2 id="___sec24">Bibliography test <a name="___sec24"></a></h2>
 
+<p>
 Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
 large destructive water waves, <a href="._testdoc_vagrant002.html#Langtangen_et_al_2002">[2]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
@@ -40854,6 +41074,7 @@ the old ME-IN323 book <a href="._testdoc_vagrant002.html#Langtangen:91">[19]</a>
 
 <h2 id="Example">Example 1: Examples can be typeset as exercises<a name="Example"></a></h2>
 
+<p>
 Examples can start with a subsection heading starting with <code>Example:</code>
 and then, with the command-line option <code>--examples_as_exercises</code> be
 typeset as exercises. This is useful if one has solution
@@ -40889,6 +41110,7 @@ maybe over multiple doconce input lines.
 
 <h2 id="subsubsec:ex">URLs<a name="subsubsec:ex"></a></h2>
 
+<p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
 the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
 plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt></a>, or
@@ -41173,6 +41395,7 @@ MathJax.Hub.Config({
 
 <h1 id="___sec27">LaTeX Mathematics <a name="___sec27"></a></h1>
 
+<p>
 Here is an equation without label using backslash-bracket environment:
 $$ a = b + c $$
 
@@ -41218,6 +41441,7 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 
 <h1 id="___sec28">Exercises <a name="___sec28"></a></h1>
 
+<p>
 <!-- --- begin exercise --- -->
 
 <h2 id="demo:ex:1">Problem 2: Flip a Coin<a name="demo:ex:1"></a></h2>
@@ -41233,6 +41457,7 @@ let the program count the number of heads.
 
 <h3 id="___sec30">Remarks <a name="___sec30"></a></h3>
 
+<p>
 Remarks with such a subsubsection heading would previously mark
 the beginning of a new exercise and cause trouble. Maybe a list
 
@@ -41295,6 +41520,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <h2 id="___sec31">Not an exercise <a name="___sec31"></a></h2>
 
+<p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
@@ -41303,6 +41529,7 @@ exercises.
 
 <h2 id="demo:ex:2">Project 3: Compute a Probability<a name="demo:ex:2"></a></h2>
 
+<p>
 <!-- Minimalistic exercise -->
 
 <p>
@@ -41338,6 +41565,7 @@ compute the probability as \( M/N \).
 
 <h2 id="proj:circle1">Project 4: Explore Distributions of Random Circles<a name="proj:circle1"></a></h2>
 
+<p>
 The formula for a circle is given by
 
 $$
@@ -41422,6 +41650,7 @@ Filename: <code>circles.pdf</code>.
 
 <h3 id="___sec34">Remarks <a name="___sec34"></a></h3>
 
+<p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
@@ -41433,6 +41662,7 @@ and give some perspectives.
 
 <h2 id="exer:dist">Exercise 5: Determine some Distance<a name="exer:dist"></a></h2>
 
+<p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
@@ -41552,6 +41782,7 @@ Here goes the solution of this subexercise.
 
 <h3 id="___sec36">Remarks <a name="___sec36"></a></h3>
 
+<p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
@@ -41564,6 +41795,7 @@ remarks will appear at the end of the typeset exercise.
 
 <h2 id="___sec37">Some exercise without the "Exercise:" prefix <a name="___sec37"></a></h2>
 
+<p>
 <!-- Another minimalistic exercise -->
 
 <p>
@@ -41593,6 +41825,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
 <h2 id="sec:this:exer:de">Exercise 7: Solution of differential equation<a name="sec:this:exer:de"></a></h2>
 
+<p>
 <!-- begin quiz -->
 Given
 
@@ -41689,6 +41922,7 @@ Wrong!
 
 <h2 id="___sec39">Example 8: Just an example <a name="___sec39"></a></h2>
 
+<p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
 
@@ -41705,14 +41939,17 @@ Oslo.
 
 <h1 id="___sec40">Here goes another section <a name="___sec40"></a></h1>
 
+<p>
 With some text, before we continue with exercises.
 
 <h1 id="___sec41">More Exercises <a name="___sec41"></a></h1>
 
+<p>
 <!-- --- begin exercise --- -->
 
 <h2 id="exer:some:formula">Exercise 9: Make references to projects and problems<a name="exer:some:formula"></a></h2>
 
+<p>
 <!-- Test comments not at the end only -->
 Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
@@ -41736,6 +41973,7 @@ Filename: <code>verify_formula.py</code>.
 
 <h2 id="exer:you">Project 10: References in a headings do not work well in html<a name="exer:you"></a></h2>
 
+<p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
 the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
 and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
@@ -41746,6 +41984,7 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1 id="___sec44">References <a name="___sec44"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -41859,26 +42098,32 @@ Filename: <code>selc_composed.pdf</code>.
 
 <h1 id="app1">Appendix: Just for testing; part I<a name="app1"></a></h1>
 
+<p>
 This is the first appendix.
 
 <h2 id="___sec46">A subsection within an appendix <a name="___sec46"></a></h2>
 
+<p>
 Some text.
 
 <h1 id="app2">Appendix: Just for testing; part II<a name="app2"></a></h1>
 
+<p>
 This is more stuff for an appendix.
 
 <h2 id="___sec48">Appendix: Testing identical titles <a name="___sec48"></a></h2>
 
+<p>
 Without label.
 
 <h2 id="test:title:id1">Appendix: Testing identical titles<a name="test:title:id1"></a></h2>
 
+<p>
 With label.
 
 <h2 id="test:title:id2">Appendix: Testing identical titles<a name="test:title:id2"></a></h2>
 
+<p>
 What about inserting a quiz?
 
 <p>
@@ -42295,13 +42540,14 @@ and a DocOnce directive a la ``!bc``.
 
 The following attempt to exemplify colored text does not work in
 format sphinx.
-Here is some **red** color and an attempt to write **with
-green color containing a linebreak. 
+Here is some **red color** and an attempt to write **with
+green color containing a linebreak
 
-| And one more.** Some formats will only display 
-| this correctly when HTML is the output format. 
-| But here some more running text is added which is not part of
+| code.** Some formats will only display 
+| this correctly when ``html`` 
+| is the output format.
 
+But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 Running OS commands
@@ -44000,9 +44246,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -44594,9 +44840,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -45193,9 +45439,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -45835,9 +46081,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -46370,9 +46616,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -46997,9 +47243,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -47499,9 +47745,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -48115,9 +48361,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -48757,9 +49003,9 @@ Here is a plain quote environment.
 \begin{quote}
 Sayre's law states that
 "in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake."\\
-By way of corollary, it adds:\\
-"That is why academic politics are so bitter."\\
+proportional to the value of the issues at stake." \\
+By way of corollary, it adds: \\
+"That is why academic politics are so bitter." \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -49218,6 +49464,7 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -49238,6 +49485,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -49316,6 +49564,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -49474,6 +49723,7 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -49568,6 +49818,7 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -49720,6 +49971,7 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -49740,6 +49992,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -49818,6 +50071,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -49998,6 +50252,7 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -50094,6 +50349,7 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -50246,6 +50502,7 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -50266,6 +50523,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -50344,6 +50602,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -50524,6 +50783,7 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -50620,6 +50880,7 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -51171,6 +51432,7 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -51191,6 +51453,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -51269,6 +51532,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -51509,6 +51773,7 @@ Next is a warning without a title ("none" implies no title).
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -51611,6 +51876,7 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -51748,6 +52014,7 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -51768,6 +52035,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -51846,6 +52114,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -52037,6 +52306,7 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -52134,6 +52404,7 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -52294,6 +52565,7 @@ and the surrounding text.
 
 <h2>Code  <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -52315,6 +52587,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2>Quotes and boxes  <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -52391,6 +52664,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2>Admonitions  <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -52568,6 +52842,7 @@ And here comes some text with bad news.
 
 <h2>Going deeper environments  <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -52662,6 +52937,7 @@ And then we add a figure too.
 
 <h2>The end  <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -52832,6 +53108,7 @@ and the surrounding text.
 
 <h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -52852,6 +53129,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -52930,6 +53208,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -53088,6 +53367,7 @@ And here comes some text with bad news.
 
 <h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -53182,6 +53462,7 @@ And then we add a figure too.
 
 <h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -53466,6 +53747,7 @@ and the surrounding text.
 
 <h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -53486,6 +53768,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -53564,6 +53847,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -53771,6 +54055,7 @@ And here comes some text with bad news.
 
 <h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -53870,6 +54155,7 @@ And then we add a figure too.
 
 <h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -54004,6 +54290,7 @@ and the surrounding text.
 
 <h2 id="___sec1">Code <a name="___sec1"></a></h2>
 
+<p>
 Need some code outside admons for color and font comparisons:
 
 <p>
@@ -54024,6 +54311,7 @@ x=1.1 y=0.3 z=0.1
 
 <h2 id="___sec2">Quotes and boxes <a name="___sec2"></a></h2>
 
+<p>
 Here is a plain quote environment.
 
 <p>
@@ -54102,6 +54390,7 @@ Let's begin a new paragraph and show a box with code only:
 
 <h2 id="___sec3">Admonitions <a name="___sec3"></a></h2>
 
+<p>
 Let us start with a plain warning environment.
 
 <p>
@@ -54260,6 +54549,7 @@ And here comes some text with bad news.
 
 <h2 id="___sec4">Going deeper environments <a name="___sec4"></a></h2>
 
+<p>
 Here is a long notice environment with a custom title and much
 text, math and code.
 
@@ -54354,6 +54644,7 @@ And then we add a figure too.
 
 <h2 id="___sec5">The end <a name="___sec5"></a></h2>
 
+<p>
 A bit of text before the summary, which we now call "Concluding remarks,
 for the novice",
 just because we can.
@@ -55511,39 +55802,42 @@ The remarks and hint environments are not allowed outside
 exercises (and problems and projects too).
 
 ************** File: slides1.do.txt *****************
-TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way
-AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & Univiversity of Oslo
+TITLE: Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo
 DATE: Today
 
+!split
+======= This is the first section =======
+# Short title: First
 
 !split
 ===== Figure and bullet list =====
 
-!bslidecell 00  0.35
+!bslidecell 00  0.60
 !bpop
 !bblock (small) Title with comma, and brackets: $[a,b]$
-  * Here is a *wave packet*
-  * It can move
+  * Here is a *wave signal* $f(x-ct)$
+  * It moves with velocity $c$
   * But here it is just a figure
 !eblock
 !epop
 !eslidecell
 
-# Test that it is okay to leave out width if there are only two columns
-
 !bslidecell 01
 !bblock
-FIGURE: [../doc/src/manual/fig/wave1D.png, width=300]
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=300 frac=0.7]
 !eblock
 !eslidecell
 
+!split
+===== Slide with pop-ups in red and notes =====
+
+[hpl: Comments are typeset as usual in DocOnce.]
+
 !bpop highlight-red
-Here we have a paragraph to pop up in red.
+Here we have a paragraph to pop up in red.<linebreak>
 And a line more
 !epop
-
-[hpl: Here are some notes that can go to notes typesetting
-in the slide environment.]
 
 !bnotes
 One can also have ordinary notes.
@@ -55551,25 +55845,62 @@ Over multiple lines.
 !enotes
 
 !split
-===== Scientific writing needs to address many new media =====
+===== A LaTeX document =====
+
+## Beamer had trouble with multiple \title{} strings, check that it works.
 
 !bpop
+!bc latex
+\documentclass[11pt]{article}
+\usepackage{fancyvrb}
+\begin{document}
 
- * Old days (1985-2005): mostly black-and-white documents aimed at printing
- * Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...
- * LaTeX writing may be very different from writing in other formats
- * Main problem:
-    * LaTeX provide all sorts of fancy packages, but
-    * PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats
- * Conclusion: We need more than LaTeX
-
+\title{Here goes the title...}
+\author{John Doe \and
+Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
+\date{\today}
+\maketitle
+!ec
 !epop
+
+!bpop
+!bnotice
+LaTeX has a lot of backslashes.
+!enotice
+!epop
+
+!bpop
+!bc latex
+\section{Heading}
+bla-bla
+\end{document}
+!ec
+!epop
+
+!split
+===== An HTML document =====
+
+!bc html
+<html><head></head><body bgcolor="red">
+<title>Here goes the title...<title>
+<h1>Section heading</h1>
+</body>
+</html>
+!ec
+
+!split
+======= Second section =======
+
+!bblock
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=600 frac=0.8]
+!eblock
 
 !split
 ===== Some math and computer code =====
 
-!bblock A simple, mathematical problem:
+## Command and [] used to be problematic in blocks, check that it is ok
+
+!bblock A simple, mathematical formula where $t\in [0,\pi]$:
 !bt
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 !et
@@ -55593,12 +55924,13 @@ fi
 
 Can use admons to simulate blocks:
 
-!bnotice (large) Key PDE:
-This box has title and math in large font:
+!bpop
+!bnotice (large) Key PDE (with large title and math font):
 !bt
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 !et
 !enotice
+!epop
 
 !bpop
 !bsummary None
@@ -55607,21 +55939,23 @@ This one pops up after the rest of the slide.
 !esummary
 !epop
 
+!bpop
 !bwarning (small)
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 !ewarning
+!epop
 
 ************** File: slides1_reveal.html *****************
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
+<meta name="description" content="Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides">
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
+<title>Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</title>
 
 
 
@@ -55740,7 +56074,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -55754,7 +56088,7 @@ MathJax.Hub.Config({
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>Univiversity of Oslo</b></center>
+<center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
@@ -55764,20 +56098,31 @@ MathJax.Hub.Config({
 
 <section>
 
-<h2>Figure and bullet list  <a name="___sec0"></a></h2>
+<h1 style="text-align: center;">This is the first section  <a name="___sec0"></a></h1>
+<!-- Short title: First -->
 
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Figure and bullet list  <a name="___sec1"></a></h2>
+
+<p>
 
 <table border="0">
 <tr>
 <td class="padding">
 
-<div class="alert alert-block alert-block alert-text-small">
+<div class="fragment alert alert-block alert-block alert-text-small">
 <b>Title with comma, and brackets: \( [a,b] \).</b>
 <p>
 
 <ul>
-  <p><li class="fragment"> Here is a <em>wave packet</em></li>
-  <p><li class="fragment"> It can move</li>
+  <p><li class="fragment"> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
+  <p><li class="fragment"> It moves with velocity \( c \)</li>
   <p><li class="fragment"> But here it is just a figure</li>
 </ul>
 </div>
@@ -55797,9 +56142,22 @@ MathJax.Hub.Config({
 
 
 <p>
-<!-- Test that it is okay to leave out width if there are only two columns -->
+
 
 <p>
+
+</section>
+
+
+<section>
+
+<h2>Slide with pop-ups in red and notes  <a name="___sec2"></a></h2>
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">(<b>hpl 1</b>: Comments are typeset as usual in DocOnce.)</font>
+<!-- end inline comment -->
 
 
 <p>
@@ -55808,19 +56166,12 @@ MathJax.Hub.Config({
 
 <span class="fragment highlight-red">
 
-Here we have a paragraph to pop up in red.
+Here we have a paragraph to pop up in red.<br />
 And a line more
 
 </span>
 
 </p>
-
-
-<p>
-
-<!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: Here are some notes that can go to notes typesetting in the slide environment.)</font>
-<!-- end inline comment -->
 
 
 <p>
@@ -55840,27 +56191,46 @@ Over multiple lines.
 
 <section>
 
-<h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
+<h2>A LaTeX document  <a name="___sec3"></a></h2>
 
-
-
-<ul>
- <p><li class="fragment"> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
- <p><li class="fragment"> Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...</li>
- <p><li class="fragment"> LaTeX writing may be very different from writing in other formats</li>
- <p><li class="fragment"> Main problem:</li>
-
-<ul>
-    <p><li class="fragment"> LaTeX provide all sorts of fancy packages, but</li>
-    <p><li class="fragment"> PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats</li>
-</ul>
 <p>
 
- <p><li class="fragment"> Conclusion: We need more than LaTeX</li>
-</ul>
 <p>
 
+<!-- code=latex (!bc latex) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">\documentclass</span><span style="color: #658b00">[11pt]{</span>article<span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\usepackage</span><span style="color: #658b00">{</span>fancyvrb<span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\begin</span><span style="color: #658b00">{</span>document<span style="color: #658b00">}</span>
+
+<span style="color: #8B008B; font-weight: bold">\title</span><span style="color: #658b00">{</span>Here goes the title...<span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\author</span><span style="color: #658b00">{</span>John Doe <span style="color: #8B008B; font-weight: bold">\and</span>
+Jane Doe<span style="color: #8B008B; font-weight: bold">\footnote</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\texttt</span><span style="color: #658b00">{</span>jane.doe@cyber.net<span style="color: #658b00">}</span>.<span style="color: #658b00">}}</span>
+<span style="color: #8B008B; font-weight: bold">\date</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\today</span><span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\maketitle</span>
+</pre></div>
+<p>
+
+
+<p>
+
+<div class="fragment alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
+LaTeX has a lot of backslashes.
+</div>
+
+
+
+<p>
+
+<p>
+
+<!-- code=latex (!bc latex) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">\section</span><span style="color: #658b00">{</span>Heading<span style="color: #658b00">}</span>
+bla-bla
+<span style="color: #8B008B; font-weight: bold">\end</span><span style="color: #658b00">{</span>document<span style="color: #658b00">}</span>
+</pre></div>
+<p>
 
 
 <p>
@@ -55870,10 +56240,46 @@ Over multiple lines.
 
 <section>
 
-<h2>Some math and computer code  <a name="___sec2"></a></h2>
+<h2>An HTML document  <a name="___sec4"></a></h2>
 
+<p>
+
+<!-- code=html (!bc html) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body</span> <span style="color: #658b00">bgcolor=</span><span style="color: #CD5555">&quot;red&quot;</span><span style="color: #8B008B; font-weight: bold">&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;title&gt;</span>Here goes the title...<span style="color: #8B008B; font-weight: bold">&lt;title&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;h1&gt;</span>Section heading<span style="color: #8B008B; font-weight: bold">&lt;/h1&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;/html&gt;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Second section  <a name="___sec5"></a></h1>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>A simple, mathematical problem:</b>
+<b></b>
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=600></p></center>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Some math and computer code  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>A simple, mathematical formula where \( t\in [0,\pi] \):</b>
 <p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
@@ -55890,12 +56296,12 @@ style):
 
 <p>
 
-<!-- code=bash (!bc shcod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #B8860B">var</span><span style="color: #666666">=</span>10
-<span style="color: #008800; font-style: italic"># $1, $2, ... are command-line args</span>
-<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq 0 <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
-  <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Great!&quot;</span>
-<span style="color: #AA22FF; font-weight: bold">fi</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #00688B">var</span>=10
+<span style="color: #228B22"># $1, $2, ... are command-line args</span>
+<span style="color: #8B008B; font-weight: bold">if</span> [ <span style="color: #00688B">$?</span> -eq 0 ]; <span style="color: #8B008B; font-weight: bold">then</span>   <span style="color: #228B22"># $? reflects success or not</span>
+  <span style="color: #658b00">echo</span> <span style="color: #CD5555">&quot;Great!&quot;</span>
+<span style="color: #8B008B; font-weight: bold">fi</span>
 </pre></div>
 
 </div>
@@ -55908,38 +56314,37 @@ style):
 
 <section>
 
-<h2>Various admon blocks  <a name="___sec3"></a></h2>
+<h2>Various admon blocks  <a name="___sec7"></a></h2>
 
+<p>
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-large">
-<b>Key PDE:</b>
+
+<div class="fragment alert alert-block alert-notice alert-text-large">
+<b>Key PDE (with large title and math font):</b>
 <p>
-This box has title and math in large font:
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
 </div>
 
 
-<p>
 
-<p class="fragment">
+<p>
 
 <div class="fragment alert alert-block alert-summary alert-text-normal">
 <b></b>
-
+<p>
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
 
 
-</p>
-
 
 <p>
-<div class="alert alert-block alert-warning alert-text-small">
+
+<div class="fragment alert alert-block alert-warning alert-text-small">
 <b>Warning.</b>
 <p>
 Can use, e.g., a warning admon to have my own notes, preferably
@@ -55947,6 +56352,7 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
+
 
 
 
@@ -56099,7 +56505,6 @@ Reveal.initialize({
 </html>
 reveal.js:
 css
-examples
 Gruntfile.js
 index.html
 js
@@ -56108,6 +56513,7 @@ LICENSE
 package.json
 plugin
 README.md
+test
 
 reveal.js/css:
 images
@@ -56166,17 +56572,6 @@ reveal.js/css/theme/template:
 mixins.scss
 settings.scss
 theme.scss
-
-reveal.js/examples:
-assets
-barebones.html
-embedded-media.html
-math.html
-slide-backgrounds.html
-
-reveal.js/examples/assets:
-image1.png
-image2.png
 
 reveal.js/js:
 reveal.js
@@ -56261,6 +56656,30 @@ search.js
 reveal.js/plugin/zoom-js:
 zoom.js
 
+reveal.js/test:
+examples
+qunit-1.12.0.css
+qunit-1.12.0.js
+test.html
+test.js
+test-markdown-element-attributes.html
+test-markdown-element-attributes.js
+test-markdown.html
+test-markdown.js
+test-markdown-slide-attributes.html
+test-markdown-slide-attributes.js
+
+reveal.js/test/examples:
+assets
+barebones.html
+embedded-media.html
+math.html
+slide-backgrounds.html
+
+reveal.js/test/examples/assets:
+image1.png
+image2.png
+
 ************** File: tmp_slides_html_all.sh *****************
 #!/bin/sh
 
@@ -56323,7 +56742,7 @@ doconce format html slides1 --pygments_html_style=default --keep_pygments_html_b
 doconce slides_html slides1 deck --html_slide_theme=cbc
 cp slides1.html slides1_deck_cbc.html
 
-doconce format html slides1 --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
+doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
 doconce slides_html slides1 deck --html_slide_theme=sandstone.mightly
 cp slides1.html slides1_deck_sandstone_mightly.html
 
@@ -56413,9 +56832,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
+<meta name="description" content="Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides">
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
+<title>Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</title>
 
 
 <style type="text/css">
@@ -56474,14 +56893,15 @@ div { text-align: justify; text-justify: inter-word; }
 </head>
 
 <!-- tocinfo
-{'highest level': 2,
- 'sections': [(' Figure and bullet list ', 2, None, '___sec0'),
-              (' Scientific writing needs to address many new media ',
-               2,
-               None,
-               '___sec1'),
-              (' Some math and computer code ', 2, None, '___sec2'),
-              (' Various admon blocks ', 2, None, '___sec3')]}
+{'highest level': 1,
+ 'sections': [(' This is the first section ', 1, None, '___sec0'),
+              (' Figure and bullet list ', 2, None, '___sec1'),
+              (' Slide with pop-ups in red and notes ', 2, None, '___sec2'),
+              (' A LaTeX document ', 2, None, '___sec3'),
+              (' An HTML document ', 2, None, '___sec4'),
+              (' Second section ', 1, None, '___sec5'),
+              (' Some math and computer code ', 2, None, '___sec6'),
+              (' Various admon blocks ', 2, None, '___sec7')]}
 end of tocinfo -->
 
 <body>
@@ -56507,7 +56927,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
+<center><h1>Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -56521,32 +56941,36 @@ MathJax.Hub.Config({
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>Univiversity of Oslo</b></center>
+<center>[2] <b>University of Oslo</b></center>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
 <!-- !split -->
 
-<h2>Figure and bullet list  <a name="___sec0"></a></h2>
+<h1>This is the first section  <a name="___sec0"></a></h1>
+<!-- Short title: First -->
 
-<!-- !bslidecell 00  0.35 -->
+<p>
+<!-- !split -->
+
+<h2>Figure and bullet list  <a name="___sec1"></a></h2>
+
+<p>
+<!-- !bslidecell 00  0.60 -->
 <!-- !bpop -->
 <div class="alert alert-block alert-block alert-text-small">
 <b>Title with comma, and brackets: \( [a,b] \).</b>
 <p>
 
 <ul>
-  <li> Here is a <em>wave packet</em></li>
-  <li> It can move</li>
+  <li> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
+  <li> It moves with velocity \( c \)</li>
   <li> But here it is just a figure</li>
 </ul>
 </div>
 
 <!-- !epop -->
 <!-- !eslidecell -->
-
-<p>
-<!-- Test that it is okay to leave out width if there are only two columns -->
 
 <p>
 <!-- !bslidecell 01 -->
@@ -56559,17 +56983,22 @@ MathJax.Hub.Config({
 <!-- !eslidecell -->
 
 <p>
-<!-- !bpop highlight-red -->
-Here we have a paragraph to pop up in red.
-And a line more
-<!-- !epop -->
+<!-- !split -->
+
+<h2>Slide with pop-ups in red and notes  <a name="___sec2"></a></h2>
 
 <p>
 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 1</b>: Here are some notes that can go to notes typesetting in the slide environment.)</font>
+<font color="red">(<b>hpl 1</b>: Comments are typeset as usual in DocOnce.)</font>
 <!-- end inline comment -->
 
+
+<p>
+<!-- !bpop highlight-red -->
+Here we have a paragraph to pop up in red.<br />
+And a line more
+<!-- !epop -->
 
 <p>
 <!-- !bnotes -->
@@ -56580,34 +57009,83 @@ Over multiple lines.
 <p>
 <!-- !split -->
 
-<h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
+<h2>A LaTeX document  <a name="___sec3"></a></h2>
 
+<p>
 <!-- !bpop -->
+<p>
 
-<ul>
- <li> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
- <li> Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...</li>
- <li> LaTeX writing may be very different from writing in other formats</li>
- <li> Main problem:</li>
+<!-- code=latex (!bc latex) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">\documentclass</span><span style="color: #658b00">[11pt]{</span>article<span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\usepackage</span><span style="color: #658b00">{</span>fancyvrb<span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\begin</span><span style="color: #658b00">{</span>document<span style="color: #658b00">}</span>
 
-<ul>
-    <li> LaTeX provide all sorts of fancy packages, but</li>
-    <li> PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats</li>
-</ul>
+<span style="color: #8B008B; font-weight: bold">\title</span><span style="color: #658b00">{</span>Here goes the title...<span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\author</span><span style="color: #658b00">{</span>John Doe <span style="color: #8B008B; font-weight: bold">\and</span>
+Jane Doe<span style="color: #8B008B; font-weight: bold">\footnote</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\texttt</span><span style="color: #658b00">{</span>jane.doe@cyber.net<span style="color: #658b00">}</span>.<span style="color: #658b00">}}</span>
+<span style="color: #8B008B; font-weight: bold">\date</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\today</span><span style="color: #658b00">}</span>
+<span style="color: #8B008B; font-weight: bold">\maketitle</span>
+</pre></div>
+<p>
+<!-- !epop -->
 
- <li> Conclusion: We need more than LaTeX</li>
-</ul>
+<p>
+<!-- !bpop -->
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
+LaTeX has a lot of backslashes.
+</div>
 
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+<p>
+
+<!-- code=latex (!bc latex) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">\section</span><span style="color: #658b00">{</span>Heading<span style="color: #658b00">}</span>
+bla-bla
+<span style="color: #8B008B; font-weight: bold">\end</span><span style="color: #658b00">{</span>document<span style="color: #658b00">}</span>
+</pre></div>
+<p>
 <!-- !epop -->
 
 <p>
 <!-- !split -->
 
-<h2>Some math and computer code  <a name="___sec2"></a></h2>
+<h2>An HTML document  <a name="___sec4"></a></h2>
 
+<p>
+
+<!-- code=html (!bc html) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body</span> <span style="color: #658b00">bgcolor=</span><span style="color: #CD5555">&quot;red&quot;</span><span style="color: #8B008B; font-weight: bold">&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;title&gt;</span>Here goes the title...<span style="color: #8B008B; font-weight: bold">&lt;title&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;h1&gt;</span>Section heading<span style="color: #8B008B; font-weight: bold">&lt;/h1&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #8B008B; font-weight: bold">&lt;/html&gt;</span>
+</pre></div>
+<p>
+<!-- !split -->
+
+<h1>Second section  <a name="___sec5"></a></h1>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>A simple, mathematical problem:</b>
+<b></b>
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=600></p></center>
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2>Some math and computer code  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>A simple, mathematical formula where \( t\in [0,\pi] \):</b>
 <p>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 </div>
@@ -56622,12 +57100,12 @@ style):
 
 <p>
 
-<!-- code=bash (!bc shcod) typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">var</span><span style="color: #666666">=</span>10
-<span style="color: #008800; font-style: italic"># $1, $2, ... are command-line args</span>
-<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq 0 <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
-  <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Great!&quot;</span>
-<span style="color: #AA22FF; font-weight: bold">fi</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #00688B">var</span>=10
+<span style="color: #228B22"># $1, $2, ... are command-line args</span>
+<span style="color: #8B008B; font-weight: bold">if</span> [ <span style="color: #00688B">$?</span> -eq 0 ]; <span style="color: #8B008B; font-weight: bold">then</span>   <span style="color: #228B22"># $? reflects success or not</span>
+  <span style="color: #658b00">echo</span> <span style="color: #CD5555">&quot;Great!&quot;</span>
+<span style="color: #8B008B; font-weight: bold">fi</span>
 </pre></div>
 
 </div>
@@ -56636,18 +57114,20 @@ style):
 <p>
 <!-- !split -->
 
-<h2>Various admon blocks  <a name="___sec3"></a></h2>
+<h2>Various admon blocks  <a name="___sec7"></a></h2>
 
+<p>
 Can use admons to simulate blocks:
 
 <p>
+<!-- !bpop -->
 <div class="alert alert-block alert-notice alert-text-large">
-<b>Key PDE:</b>
+<b>Key PDE (with large title and math font):</b>
 <p>
-This box has title and math in large font:
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 </div>
 
+<!-- !epop -->
 
 <p>
 <!-- !bpop -->
@@ -56661,6 +57141,7 @@ This one pops up after the rest of the slide.
 <!-- !epop -->
 
 <p>
+<!-- !bpop -->
 <div class="alert alert-block alert-warning alert-text-small">
 <b>Warning.</b>
 <p>
@@ -56670,6 +57151,7 @@ This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
 
+<!-- !epop -->
 
 <!-- ------------------- end of main content --------------- -->
 
@@ -56684,9 +57166,9 @@ title (Warning) since no title is specified.
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way">
+<meta name="description" content="Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides">
 
-<title>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</title>
+<title>Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</title>
 
 
 
@@ -56765,9 +57247,10 @@ git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
 -->
 
-<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/fade.css">
 <link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
@@ -56777,31 +57260,39 @@ git://github.com/barraq/deck.ext.js.git
 <script src="deck.js/modernizr.custom.js"></script>
 
 <style type="text/css">
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .slide .alert-text-small   { font-size: 80%;  }
-    .slide .alert-text-large   { font-size: 130%; }
-    .slide .alert-text-normal  { font-size: 90%;  }
-    .slide .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
-             border-radius:14px
-             background-position: 10px 10px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 30px; /* 55px; if icon */
-     }
-     .slide .alert-block {padding-top:14px; padding-bottom:14px}
-     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
-     /*.slide .alert li {margin-top: 1em}*/
-     .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
-     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -56854,7 +57345,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way</h1></center>  <!-- document title -->
+<h2 style="text-align: center;">Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</h2>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -56868,9 +57359,9 @@ MathJax.Hub.Config({
 <!-- institution(s) -->
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
-<center>[2] <b style="font-weight: bold">Univiversity of Oslo</b></center>
+<center>[2] <b style="font-weight: bold">University of Oslo</b></center>
 <p>
-<center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<center><b style="font-weight: bold">Jan 32, 2100</b></center> <!-- date -->
 <p>
 
 </section>
@@ -56878,20 +57369,31 @@ MathJax.Hub.Config({
 
 <section class="slide">
 
-<h2>Figure and bullet list  <a name="___sec0"></a></h2>
+<h1 style="text-align: center;">This is the first section  <a name="___sec0"></a></h1>
+<!-- Short title: First -->
 
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Figure and bullet list  <a name="___sec1"></a></h2>
+
+<p>
 
 <table border="0">
 <tr>
 <td class="padding">
 
-<div class="alert alert-block alert-block alert-text-small">
+<div class="slide alert alert-block alert-block alert-text-small">
 <b style="font-weight: bold">Title with comma, and brackets: \( [a,b] \).</b>
 <p>
 
 <ul>
-  <p><li class="slide"> Here is a <em>wave packet</em></li>
-  <p><li class="slide"> It can move</li>
+  <p><li class="slide"> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
+  <p><li class="slide"> It moves with velocity \( c \)</li>
   <p><li class="slide"> But here it is just a figure</li>
 </ul>
 </div>
@@ -56911,26 +57413,32 @@ MathJax.Hub.Config({
 
 
 <p>
-<!-- Test that it is okay to leave out width if there are only two columns -->
+
 
 <p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Slide with pop-ups in red and notes  <a name="___sec2"></a></h2>
+
+<p>
+
+<!-- begin inline comment -->
+<font color="red">(<b style="font-weight: bold">hpl 1</b>: Comments are typeset as usual in DocOnce.)</font>
+<!-- end inline comment -->
 
 
 <p>
 
 <p class="slide">
 
-Here we have a paragraph to pop up in red.
+Here we have a paragraph to pop up in red.<br />
 And a line more
 
 </p>
-
-
-<p>
-
-<!-- begin inline comment -->
-<font color="red">(<b style="font-weight: bold">hpl 1</b>: Here are some notes that can go to notes typesetting in the slide environment.)</font>
-<!-- end inline comment -->
 
 
 <p>
@@ -56950,27 +57458,46 @@ Over multiple lines.
 
 <section class="slide">
 
-<h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
+<h2>A LaTeX document  <a name="___sec3"></a></h2>
 
-
-
-<ul>
- <p><li class="slide"> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
- <p><li class="slide"> Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...</li>
- <p><li class="slide"> LaTeX writing may be very different from writing in other formats</li>
- <p><li class="slide"> Main problem:</li>
-
-<ul>
-    <p><li class="slide"> LaTeX provide all sorts of fancy packages, but</li>
-    <p><li class="slide"> PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats</li>
-</ul>
 <p>
 
- <p><li class="slide"> Conclusion: We need more than LaTeX</li>
-</ul>
 <p>
 
+<!-- code=latex (!bc latex) typeset with pygments style "emacs" -->
+<div class="slide" class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">\documentclass</span><span style="color: #BB4444">[11pt]</span><span style="color: #AA22FF">{</span>article<span style="color: #AA22FF">}</span>
+<span style="color: #AA22FF; font-weight: bold">\usepackage</span><span style="color: #AA22FF">{</span>fancyvrb<span style="color: #AA22FF">}</span>
+<span style="color: #AA22FF; font-weight: bold">\begin</span><span style="color: #AA22FF">{</span>document<span style="color: #AA22FF">}</span>
+
+<span style="color: #AA22FF; font-weight: bold">\title</span><span style="color: #AA22FF">{</span>Here goes the title...<span style="color: #AA22FF">}</span>
+<span style="color: #AA22FF; font-weight: bold">\author</span><span style="color: #AA22FF">{</span>John Doe <span style="color: #AA22FF; font-weight: bold">\and</span>
+Jane Doe<span style="color: #AA22FF; font-weight: bold">\footnote</span><span style="color: #AA22FF">{</span><span style="color: #AA22FF; font-weight: bold">\texttt</span><span style="color: #AA22FF">{</span>jane.doe@cyber.net<span style="color: #AA22FF">}</span>.<span style="color: #AA22FF">}}</span>
+<span style="color: #AA22FF; font-weight: bold">\date</span><span style="color: #AA22FF">{</span><span style="color: #AA22FF; font-weight: bold">\today</span><span style="color: #AA22FF">}</span>
+<span style="color: #AA22FF; font-weight: bold">\maketitle</span>
+</pre></div>
+<p>
+
+
+<p>
+
+<div class="slide alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold">Notice.</b>
+<p>
+LaTeX has a lot of backslashes.
+</div>
+
+
+
+<p>
+
+<p>
+
+<!-- code=latex (!bc latex) typeset with pygments style "emacs" -->
+<div class="slide" class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">\section</span><span style="color: #AA22FF">{</span>Heading<span style="color: #AA22FF">}</span>
+bla-bla
+<span style="color: #AA22FF; font-weight: bold">\end</span><span style="color: #AA22FF">{</span>document<span style="color: #AA22FF">}</span>
+</pre></div>
+<p>
 
 
 <p>
@@ -56980,10 +57507,46 @@ Over multiple lines.
 
 <section class="slide">
 
-<h2>Some math and computer code  <a name="___sec2"></a></h2>
+<h2>An HTML document  <a name="___sec4"></a></h2>
 
+<p>
+
+<!-- code=html (!bc html) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body</span> <span style="color: #BB4444">bgcolor=&quot;red&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;title&gt;</span>Here goes the title...<span style="color: #008000; font-weight: bold">&lt;title&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>Section heading<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 style="text-align: center;">Second section  <a name="___sec5"></a></h1>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b style="font-weight: bold">A simple, mathematical problem:</b>
+<b style="font-weight: bold"></b>
+<p>
+<center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=600></p></center>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Some math and computer code  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">A simple, mathematical formula where \( t\in [0,\pi] \):</b>
 <p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
@@ -57018,38 +57581,37 @@ style):
 
 <section class="slide">
 
-<h2>Various admon blocks  <a name="___sec3"></a></h2>
+<h2>Various admon blocks  <a name="___sec7"></a></h2>
 
+<p>
 Can use admons to simulate blocks:
 
 <p>
-<div class="alert alert-block alert-notice alert-text-large">
-<b style="font-weight: bold">Key PDE:</b>
+
+<div class="slide alert alert-block alert-notice alert-text-large">
+<b style="font-weight: bold">Key PDE (with large title and math font):</b>
 <p>
-This box has title and math in large font:
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
 </div>
 
 
-<p>
 
-<p class="slide">
+<p>
 
 <div class="slide alert alert-block alert-summary alert-text-normal">
 <b style="font-weight: bold"></b>
-
+<p>
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
 
 
-</p>
-
 
 <p>
-<div class="alert alert-block alert-warning alert-text-small">
+
+<div class="slide alert alert-block alert-warning alert-text-small">
 <b style="font-weight: bold">Warning.</b>
 <p>
 Can use, e.g., a warning admon to have my own notes, preferably
@@ -57057,6 +57619,7 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
+
 
 
 
@@ -57136,11 +57699,12 @@ title (Warning) since no title is specified.
 </html>
 deck.js:
 boilerplate.html
+CHANGELOG.md
 core
 extensions
-GPL-license.txt
 introduction
-jquery-1.7.2.min.js
+jquery.min.js
+Makefile
 MIT-license.txt
 modernizr.custom.js
 README.md
@@ -57151,12 +57715,13 @@ deck.js/core:
 deck.core.css
 deck.core.js
 deck.core.scss
+print.css
+print.scss
 
 deck.js/extensions:
 codemirror
 deck.annotate.js
 goto
-hash
 menu
 navigation
 notes
@@ -57317,6 +57882,7 @@ neat.css
 night.css
 
 deck.js/extensions/deck.annotate.js:
+bower.json
 deck.annotate.css
 deck.annotate.js
 example.png
@@ -57327,12 +57893,6 @@ deck.goto.css
 deck.goto.html
 deck.goto.js
 deck.goto.scss
-
-deck.js/extensions/hash:
-deck.hash.css
-deck.hash.html
-deck.hash.js
-deck.hash.scss
 
 deck.js/extensions/menu:
 deck.menu.css
@@ -57384,17 +57944,13 @@ lib
 settings.js
 spec.core.js
 spec.goto.js
-spec.hash.js
 spec.menu.js
 spec.navigation.js
 spec.scale.js
 spec.status.js
 
 deck.js/test/fixtures:
-complex.html
 empty.html
-iframes.html
-iframe_simple.html
 nesteds.html
 standard.html
 
@@ -57425,10 +57981,12 @@ cbc.css
 mnml.css
 neon.css
 neon.scss
+_reset.scss
 sandstone.aurora.css
 sandstone.css
 sandstone.dark.css
 sandstone.default.css
+sandstone.default.css.old~~
 sandstone.firefox.css
 sandstone.light.css
 sandstone.mdn.css
@@ -57713,14 +58271,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % ----------------- title -------------------------
 
-\title{On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way}
+\title{Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides}
 
 % ----------------- author(s) -------------------------
 
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
-Univiversity of Oslo\inst{2}}
+University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
 \date{Jan 32, 2100
@@ -57728,17 +58286,21 @@ Univiversity of Oslo\inst{2}}
 }
 
 % !split
+\section{This is the first section}
+% Short title: First
+
+% !split
 \subsection{Figure and bullet list}
 
-% !bslidecell 00  0.35
+% !bslidecell 00  0.60
 % !bpop
 \begin{block}{Title with comma, and brackets: $[a,b]$ }
 \footnotesize
 
 \begin{itemize}
-  \item Here is a \emph{wave packet}
+  \item Here is a \emph{wave signal} $f(x-ct)$
 
-  \item It can move
+  \item It moves with velocity $c$
 
   \item But here it is just a figure
 \end{itemize}
@@ -57748,25 +58310,26 @@ Univiversity of Oslo\inst{2}}
 % !epop
 % !eslidecell
 
-% Test that it is okay to leave out width if there are only two columns
-
 % !bslidecell 01
 \begin{block}{}
 
 
 % inline figure
-\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.png}}
 
 
 \end{block}
 % !eslidecell
 
+% !split
+\subsection{Slide with pop-ups in red and notes}
+
+\shortinlinecomment{hpl 1}{ Comments are typeset as usual in DocOnce. }{ Comments are typeset as }
+
 % !bpop highlight-red
-Here we have a paragraph to pop up in red.
+Here we have a paragraph to pop up in red.\\
 And a line more
 % !epop
-
-\shortinlinecomment{hpl 1}{ Here are some notes that can go to notes typesetting in the slide environment. }{ Here are some notes }
 
 % !bnotes
 One can also have ordinary notes.
@@ -57774,38 +58337,65 @@ Over multiple lines.
 % !enotes
 
 % !split
-\subsection{Scientific writing needs to address many new media}
+\subsection{A {\LaTeX} document}
+
 
 % !bpop
+\blatex
+\documentclass[11pt]{article}
+\usepackage{fancyvrb}
+\begin{document}
 
-\begin{itemize}
- \item Old days (1985-2005): mostly black-and-white documents aimed at printing
-
- \item Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...
-
- \item {\LaTeX} writing may be very different from writing in other formats
-
- \item Main problem:
-\begin{itemize}
-
-    \item {\LaTeX} provide all sorts of fancy packages, but
-
-    \item PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats
-
-\end{itemize}
-
-\noindent
- \item Conclusion: We need more than {\LaTeX}
-\end{itemize}
-
-\noindent
+\title{Here goes the title...}
+\author{John Doe \and
+Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
+\date{\today}
+\maketitle
+\elatex
 % !epop
+
+% !bpop
+\begin{block}{Notice}
+{\LaTeX} has a lot of backslashes.
+\end{block}
+% !epop
+
+% !bpop
+\blatex
+\section{Heading}
+bla-bla
+\end{document}
+\elatex
+% !epop
+
+% !split
+\subsection{An HTML document}
+
+\bhtml
+<html><head></head><body bgcolor="red">
+<title>Here goes the title...<title>
+<h1>Section heading</h1>
+</body>
+</html>
+\ehtml
+
+% !split
+\section{Second section}
+
+\begin{block}{}
+
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{../doc/src/manual/fig/wave1D.png}}
+
+
+\end{block}
 
 % !split
 \subsection{Some math and computer code}
 
-\begin{block}{A simple, mathematical problem: }
+
+\begin{block}{A simple, mathematical formula where $t\in [0,\pi]$: }
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 \end{block}
 
@@ -57827,12 +58417,13 @@ fi
 
 Can use admons to simulate blocks:
 
-\begin{block}{Key PDE: }
+% !bpop
+\begin{block}{Key PDE (with large title and math font): }
 \large
 
-This box has title and math in large font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 \end{block}
+% !epop
 
 % !bpop
 \begin{block}{}
@@ -57841,6 +58432,7 @@ This one pops up after the rest of the slide.
 \end{block}
 % !epop
 
+% !bpop
 \begin{block}{Warning}
 \footnotesize
 
@@ -57849,6 +58441,7 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 \end{block}
+% !epop
 
 % ------------------- end of main content ---------------
 
@@ -57867,7 +58460,7 @@ title (Warning) since no title is specified.
 
 %-------------------- begin beamer-specific preamble ----------------------
 
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \usetheme{blue_shadow}
 \usecolortheme{default}
@@ -57914,25 +58507,21 @@ title (Warning) since no title is specified.
 % Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
+% --- begin table of contents based on sections ---
 % Delete this, if you do not want the table of contents to pop up at
 % the beginning of each section:
+% (Only section headings can enter the table of contents in Beamer
+% slides generated from DocOnce source, while subsections are used
+% for the title in ordinary slides.)
 \AtBeginSection[]
 {
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
+  \begin{frame}<beamer>[plain]
+  \frametitle{}
+  %\frametitle{Outline}
+  \tableofcontents[currentsection]
+  \end{frame}
 }
-
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each section:
-\AtBeginSection[]
-{
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
-}
+% --- end table of contents based on sections ---
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
 % the following command:
@@ -57989,14 +58578,14 @@ title (Warning) since no title is specified.
 
 % ----------------- title -------------------------
 
-\title{On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way}
+\title{Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides}
 
 % ----------------- author(s) -------------------------
 
 \author{Hans Petter Langtangen\inst{1,2}}
 \institute{Simula Research Laboratory\inst{1}
 \and
-Univiversity of Oslo\inst{2}}
+University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
 \date{Jan 32, 2100
@@ -58007,55 +58596,52 @@ Univiversity of Oslo\inst{2}}
 \titlepage
 \end{frame}
 
+\section[First]{This is the first section}
+
 \begin{frame}[plain,fragile]
 \frametitle{Figure and bullet list}
 
 \begin{columns}
-\column{0.35\textwidth}
-
-\pause
+\column{0.6\textwidth}
 \begin{block}{Title with comma, and brackets: $[a,b]$ }
 \footnotesize
 
 \begin{itemize}
-  \item Here is a \emph{wave packet}
+  \item<2-> Here is a \emph{wave signal} $f(x-ct)$
 
-  \item It can move
+  \item<3-> It moves with velocity $c$
 
-  \item But here it is just a figure
+  \item<4-> But here it is just a figure
 \end{itemize}
 
 \noindent
 \end{block}
 
-
-\column{0.65\textwidth}
+\column{0.4\textwidth}
 \begin{block}{}
 
 
 % inline figure
-\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.png}}
 
 
 \end{block}
 
 \end{columns}
+\end{frame}
 
+\begin{frame}[plain,fragile]
+\frametitle{Slide with pop-ups in red and notes}
 
-
-% Test that it is okay to leave out width if there are only two columns
-
-
+\shortinlinecomment{hpl 1}{ Comments are typeset as usual in DocOnce. }{ Comments are typeset as }
 
 
 \pause
 \begin{block}{}
-Here we have a paragraph to pop up in red.
+Here we have a paragraph to pop up in red.\\
 And a line more
 \end{block}
 
-
-\shortinlinecomment{hpl 1}{ Here are some notes that can go to notes typesetting in the slide environment. }{ Here are some notes }
 
 \note{
 One can also have ordinary notes.
@@ -58064,36 +58650,76 @@ Over multiple lines.
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{Scientific writing needs to address many new media}
+\frametitle{A {\LaTeX} document}
 
-\begin{itemize}
- \item<2-> Old days (1985-2005): mostly black-and-white documents aimed at printing
+\pause
+\begin{block}{}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\documentclass[11pt]{article}
+\usepackage{fancyvrb}
+\begin{document}
 
- \item<3-> Now: also color PDF, web pages, wikis - for paper, PC, iPad, ...
+\title{Here goes the title...}
+\author{John Doe \and
+Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
+\date{\today}
+\maketitle
+\end{minted}
+\end{block}
 
- \item<4-> {\LaTeX} writing may be very different from writing in other formats
 
- \item<5-> Main problem:
-\begin{itemize}
 
-    \item<6-> {\LaTeX} provide all sorts of fancy packages, but
+\pause
+\begin{block}{Notice}
+{\LaTeX} has a lot of backslashes.
+\end{block}
 
-    \item<7-> PDF in browsers has limited capabilities (design, navigation)
-      compared to native HTML formats
 
-\end{itemize}
 
-\noindent
- \item<8-> Conclusion: We need more than {\LaTeX}
-\end{itemize}
+\pause
+\begin{block}{}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\section{Heading}
+bla-bla
+\end{document}
+\end{minted}
+\end{block}
+\end{frame}
 
-\noindent
+\begin{frame}[plain,fragile]
+\frametitle{An HTML document}
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+<html><head></head><body bgcolor="red">
+<title>Here goes the title...<title>
+<h1>Section heading</h1>
+</body>
+</html>
+\end{minted}
+\end{frame}
+
+\section{Second section}
+
+\begin{frame}[plain,fragile]
+\frametitle{Second section}
+
+
+\begin{block}{}
+
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{../doc/src/manual/fig/wave1D.png}}
+
+
+\end{block}
+
+
 \end{frame}
 
 \begin{frame}[plain,fragile]
 \frametitle{Some math and computer code}
 
-\begin{block}{A simple, mathematical problem: }
+\begin{block}{A simple, mathematical formula where $t\in [0,\pi]$: }
 \[ f(x,y,t) = e^{-xt}\sin\pi y \]
 \end{block}
 
@@ -58116,12 +58742,14 @@ fi
 
 Can use admons to simulate blocks:
 
-\begin{block}{Key PDE: }
+
+\pause
+\begin{block}{Key PDE (with large title and math font): }
 \large
 
-This box has title and math in large font:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 \end{block}
+
 
 
 \pause
@@ -58131,6 +58759,328 @@ This one pops up after the rest of the slide.
 \end{block}
 
 
+
+\pause
+\begin{block}{Warning}
+\footnotesize
+
+Can use, e.g., a warning admon to have my own notes, preferably
+inside preprocess/mako if statements to turn notes on and off.
+This one is typeset in a small font and with the default
+title (Warning) since no title is specified.
+\end{block}
+\end{frame}
+
+\end{document}
+
+************** File: slides1_handout.tex *****************
+
+% LaTeX Beamer file automatically generated from DocOnce
+% https://github.com/hplgit/doconce
+
+%-------------------- begin beamer-specific preamble ----------------------
+
+\documentclass[handout]{beamer}
+
+\usetheme{blue_shadow}
+\usecolortheme{default}
+
+% turn off the almost invisible, yet disturbing, navigation symbols:
+\setbeamertemplate{navigation symbols}{}
+
+% Examples on customization:
+%\usecolortheme[named=RawSienna]{structure}
+%\usetheme[height=7mm]{Rochester}
+%\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape}
+%\setbeamertemplate{items}[ball]
+%\setbeamertemplate{blocks}[rounded][shadow=true]
+%\useoutertheme{infolines}
+%
+%\usefonttheme{}
+%\useinntertheme{}
+%
+%\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen=right}
+
+% fine for B/W printing:
+%\usecolortheme{seahorse}
+
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{relsize}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+
+\usepackage{fancyvrb}
+\usepackage{minted} % requires pygments and latex -shell-escape filename
+%\usepackage{anslistings}
+
+\usepackage{amsmath,amssymb,bm}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usepackage{framed}
+% Use some nice templates
+\beamertemplatetransparentcovereddynamic
+
+% --- begin table of contents based on sections ---
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each section:
+% (Only section headings can enter the table of contents in Beamer
+% slides generated from DocOnce source, while subsections are used
+% for the title in ordinary slides.)
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>[plain]
+  \frametitle{}
+  %\frametitle{Outline}
+  \tableofcontents[currentsection]
+  \end{frame}
+}
+% --- end table of contents based on sections ---
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
+\newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
+
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3
+    }
+\setlength{\parskip}{7pt}  % {1em}
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
+
+
+\newenvironment{doconce:exercise}{}{}
+\newcounter{doconce:exercise:counter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
+
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\title{Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides}
+
+% ----------------- author(s) -------------------------
+
+\author{Hans Petter Langtangen\inst{1,2}}
+\institute{Simula Research Laboratory\inst{1}
+\and
+University of Oslo\inst{2}}
+% ----------------- end author(s) -------------------------
+
+\date{Jan 32, 2100
+% <optional titlepage figure>
+}
+
+\begin{frame}[plain,fragile]
+\titlepage
+\end{frame}
+
+\section[First]{This is the first section}
+
+\begin{frame}[plain,fragile]
+\frametitle{Figure and bullet list}
+
+\begin{columns}
+\column{0.6\textwidth}
+\begin{block}{Title with comma, and brackets: $[a,b]$ }
+\footnotesize
+
+\begin{itemize}
+  \item<2-> Here is a \emph{wave signal} $f(x-ct)$
+
+  \item<3-> It moves with velocity $c$
+
+  \item<4-> But here it is just a figure
+\end{itemize}
+
+\noindent
+\end{block}
+
+\column{0.4\textwidth}
+\begin{block}{}
+
+
+% inline figure
+\centerline{\includegraphics[width=0.7\linewidth]{../doc/src/manual/fig/wave1D.png}}
+
+
+\end{block}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Slide with pop-ups in red and notes}
+
+\shortinlinecomment{hpl 1}{ Comments are typeset as usual in DocOnce. }{ Comments are typeset as }
+
+
+\pause
+\begin{block}{}
+Here we have a paragraph to pop up in red.\\
+And a line more
+\end{block}
+
+
+\note{
+One can also have ordinary notes.
+Over multiple lines.
+}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{A {\LaTeX} document}
+
+\pause
+\begin{block}{}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\documentclass[11pt]{article}
+\usepackage{fancyvrb}
+\begin{document}
+
+\title{Here goes the title...}
+\author{John Doe \and
+Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
+\date{\today}
+\maketitle
+\end{minted}
+\end{block}
+
+
+
+\pause
+\begin{block}{Notice}
+{\LaTeX} has a lot of backslashes.
+\end{block}
+
+
+
+\pause
+\begin{block}{}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\section{Heading}
+bla-bla
+\end{document}
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{An HTML document}
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+<html><head></head><body bgcolor="red">
+<title>Here goes the title...<title>
+<h1>Section heading</h1>
+</body>
+</html>
+\end{minted}
+\end{frame}
+
+\section{Second section}
+
+\begin{frame}[plain,fragile]
+\frametitle{Second section}
+
+
+\begin{block}{}
+
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{../doc/src/manual/fig/wave1D.png}}
+
+
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Some math and computer code}
+
+\begin{block}{A simple, mathematical formula where $t\in [0,\pi]$: }
+\[ f(x,y,t) = e^{-xt}\sin\pi y \]
+\end{block}
+
+\begin{block}{Bash demanded more of DocOnce than Python, so let's do Bash: }
+First, inline \Verb@$? != 0@, then comments with dollar variables (and minted
+style):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
+var=10
+# $1, $2, ... are command-line args
+if [ $? -eq 0 ]; then   # $? reflects success or not
+  echo "Great!"
+fi
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Various admon blocks}
+
+Can use admons to simulate blocks:
+
+
+\pause
+\begin{block}{Key PDE (with large title and math font): }
+\large
+
+\[ \frac{\partial u}{\partial t} = \nabla^2 u \]
+\end{block}
+
+
+
+\pause
+\begin{block}{}
+Just some block with text and a conclusion that something is important.
+This one pops up after the rest of the slide.
+\end{block}
+
+
+
+\pause
 \begin{block}{Warning}
 \footnotesize
 
@@ -58154,7 +59104,7 @@ FIGURE: [../doc/src/slides/fig/doconce1b, width=400 frac=0.5]
 TOC: on
 
 !split
-======= Scientific writing for the future needs to address many new media =======
+===== Scientific writing for the future needs to address many new media =====
 
 !bslidecell 00 0.4
 FIGURE: [../doc/src/slides/fig/ipad, width=400 frac=0.8]
@@ -58170,12 +59120,12 @@ FIGURE: [../doc/src/slides/fig/imac, width=350 frac=0.7]
 !eslidecell
 
 !split
-======= The book will probably survive =======
+===== The book will probably survive =====
 
 FIGURE: [../doc/src/slides/fig/oldbooks, width=800]
 
 !split
-======= The classical report will survive =======
+===== The classical report will survive =====
 
 !bslidecell 00
 FIGURE: [../doc/src/slides/fig/latex_thesis, width=400 frac=1.2]
@@ -58186,7 +59136,7 @@ FIGURE: [../doc/src/slides/fig/latex_paper1, width=400 frac=1.2]
 !eslidecell
 
 !split
-======= Scope =======
+===== Scope =====
 
 #  * Scientific writing = lecture notes, slides, reports, thesis, books,  ...
 #  * (Journal papers typeset by journals are out of scope)
@@ -58226,7 +59176,7 @@ FIGURE: [../doc/src/slides/fig/IPython_logo.png, width=300 frac=0.6]
 
 
 !split
-======= Scientific writing for the future needs to address many new media =======
+===== Scientific writing for the future needs to address many new media =====
 
 # Insert links here to reports
 
@@ -58247,7 +59197,7 @@ FIGURE: [../doc/src/slides/fig/jungle_with_mess.jpg, width=500]
 
 !split
 
-======= Fundamental question =======
+===== Fundamental question =====
 
 When I write some scientific material,
 
@@ -58266,7 +59216,7 @@ Probably not, but I have a solution :-)
 
 !split
 
-======= LaTeX is very rich; other tools support only some elements =======
+===== LaTeX is very rich; other tools support only some elements =====
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
  * LaTeX equation math:
@@ -58278,7 +59228,7 @@ Probably not, but I have a solution :-)
     * _Markdown_: `equation*`, `equation`, `eqnarray*`, `align*` (but no labels)
 
 !split
-======= LaTeX is very rich; other tools support only some elements =======
+===== LaTeX is very rich; other tools support only some elements =====
 
 !bpop
  * Figures: all
@@ -58302,7 +59252,7 @@ based on HTML and vice versa.
 
 
 !split
-======= DocOnce demo =======
+===== DocOnce demo =====
 
 URL: "http://hplgit.github.com/teamods/writing_reports/"
 
@@ -58318,13 +59268,13 @@ URL: "http://hplgit.github.com/teamods/writing_reports/"
 
 # #if FORMAT in ("latex", "pdflatex")
 # latex interprets 9 = as chapter and then needs book style...
-======= A tour of DocOnce =======
+===== A tour of DocOnce =====
 # #else
-========= A tour of DocOnce =========
+======= A tour of DocOnce =======
 # #endif
 
 !split
-======= DocOnce: title, authors, date, toc =======
+===== DocOnce: title, authors, date, toc =====
 
 !bc
 TITLE: Some Title
@@ -58341,7 +59291,7 @@ Title and authors must have all information *on a single line*!
 !enotice
 
 !split
-======= DocOnce: abstract =======
+===== DocOnce: abstract =====
 
 !bc
 __Abstract.__
@@ -58356,13 +59306,13 @@ Here goes the summary...
 
 
 !split
-======= DocOnce: section headings =======
+===== DocOnce: section headings =====
 
 Headings are surrounded by `=` signs:
 !bc
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -58371,21 +59321,23 @@ Headings are surrounded by `=` signs:
 __This is a paragraph heading.__
 !ec
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 Result:
 
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
 === This is an H4/paragraph heading ===
 
 __This is a paragraph heading.__
-
+# #endif
 
 !split
-======= DocOnce: markup and lists =======
+===== DocOnce: markup and lists =====
 
 !bc
  * Bullet list items start with `*`
@@ -58410,7 +59362,7 @@ This gets rendered as
    o items are just indented as you would do in email
 
 !split
-======= DocOnce: labels, references, index items =======
+===== DocOnce: labels, references, index items =====
 
 !bc
 # Insert index items in the source
@@ -58436,7 +59388,7 @@ URL: "https://github.com/hplgit/doconce"
 !ec
 
 !split
-======= DocOnce: figures and movies =======
+===== DocOnce: figures and movies =====
 
 !bnotice
 Figure with HTML and LaTeX info, and caption, *all on one line*:
@@ -58459,7 +59411,7 @@ and rendered as
 MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 
 !split
-======= DocOnce: math =======
+===== DocOnce: math =====
 
 Inline math as in LaTeX:
 
@@ -58495,7 +59447,7 @@ label{b:eq}
 
 
 !split
-======= DocOnce: displaying code =======
+===== DocOnce: displaying code =====
 
 Code is enclosed in `!bc` and `!ec` tags:
 
@@ -58541,7 +59493,7 @@ forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
 
 
 !split
-======= DocOnce: displaying interactive demo code =======
+===== DocOnce: displaying interactive demo code =====
 label{slide:pot}
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
@@ -58554,7 +59506,7 @@ program flow and state of variables:
 
 
 !split
-======= DocOnce: exercises =======
+===== DocOnce: exercises =====
 
 DocOnce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
@@ -58595,8 +59547,10 @@ of getting at least three heads out of 5 throws.
 
 Solutions/answers can easily be left out of the document.
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 !split
-======= DocOnce: exercises =======
+===== DocOnce: exercises =====
 
 Last page gets rendered as follows:
 
@@ -58630,14 +59584,14 @@ A full solution to this subexercise can go here.
 Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 !esubex
-
+# #endif
 
 !split
-======= DocOnce: example on slide code =======
+===== DocOnce: example on slide code =====
 
 !bc
 !split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -58657,15 +59611,17 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 !ec
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 !split
-======= DocOnce: example on slide code =======
+===== DocOnce: example on slide code =====
 
 Last page gets rendered to
 
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -58679,9 +59635,10 @@ Key equation:
 !et
 
 And maybe a final comment?
+# #endif
 
 !split
-======= DocOnce: example on slide code with cells =======
+===== DocOnce: example on slide code with cells =====
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -58691,7 +59648,7 @@ a figure to the right (two cells, numbered 00 and 01).
 
 !bc
 !split
-======= Headline =======
+===== Headline =====
 
 |bslidecell 00
 |bpop
@@ -58716,15 +59673,17 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 |eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 !ec
 
+## Headings in slides don't make sense in LaTeX Beamer
+# #ifndef BEAMER
 !split
-======= DocOnce: example on slide code =======
+===== DocOnce: example on slide code =====
 
 Last page gets rendered to
 
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -58747,6 +59706,7 @@ Last page gets rendered to
 !bslidecell 01
 FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 !eslidecell
+# #endif
 
 ************** File: slides2_reveal.html *****************
 <!DOCTYPE html>
@@ -58772,7 +59732,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400]
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
@@ -58875,7 +59835,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>Test slide features</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Test slide features</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Core Dump -->
@@ -58903,6 +59863,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 &nbsp; &nbsp; &nbsp; <a href="#___sec0"> Scientific writing for the future needs to address many new media </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> The book will probably survive </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> The classical report will survive </a><br>
@@ -58918,8 +59879,8 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec12"> DocOnce: section headings </a><br>
 <a href="#___sec13"> This is an H1/chapter heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec14"> This is an H2/section heading </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> This is an H3/subsection heading </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> This is an H4/paragraph heading </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> This is an H3/subsection heading </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> This is an H4/paragraph heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec17"> DocOnce: markup and lists </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec18"> DocOnce: labels, references, index items </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec19"> DocOnce: figures and movies </a><br>
@@ -58928,7 +59889,7 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#slide:pot"> DocOnce: displaying interactive demo code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec23"> DocOnce: exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec24"> DocOnce: exercises </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 1: Flip a Coin </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 1: Flip a Coin </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec26"> DocOnce: example on slide code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec27"> DocOnce: example on slide code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec28"> Headline </a><br>
@@ -58943,8 +59904,9 @@ MathJax.Hub.Config({
 
 <section>
 
-<h1>Scientific writing for the future needs to address many new media  <a name="___sec0"></a></h1>
+<h2>Scientific writing for the future needs to address many new media  <a name="___sec0"></a></h2>
 
+<p>
 
 <table border="0">
 <tr>
@@ -58976,8 +59938,9 @@ MathJax.Hub.Config({
 
 <section>
 
-<h1>The book will probably survive  <a name="___sec1"></a></h1>
+<h2>The book will probably survive  <a name="___sec1"></a></h2>
 
+<p>
 <center><p><img src="../doc/src/slides/fig/oldbooks.jpg" align="bottom" width=800></p></center>
 
 <p>
@@ -58987,8 +59950,9 @@ MathJax.Hub.Config({
 
 <section>
 
-<h1>The classical report will survive  <a name="___sec2"></a></h1>
+<h2>The classical report will survive  <a name="___sec2"></a></h2>
 
+<p>
 
 <table border="0">
 <tr>
@@ -59012,8 +59976,9 @@ MathJax.Hub.Config({
 
 <section>
 
-<h1>Scope  <a name="___sec3"></a></h1>
+<h2>Scope  <a name="___sec3"></a></h2>
 
+<p>
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
 
@@ -59082,8 +60047,9 @@ MathJax.Hub.Config({
 
 <section>
 
-<h1>Scientific writing for the future needs to address many new media  <a name="___sec4"></a></h1>
+<h2>Scientific writing for the future needs to address many new media  <a name="___sec4"></a></h2>
 
+<p>
 <!-- Insert links here to reports -->
 
 <p>
@@ -59121,8 +60087,9 @@ Old days (1985-2005): LaTeX for BW paper output, but now
 
 <section>
 
-<h1>Fundamental question  <a name="___sec5"></a></h1>
+<h2>Fundamental question  <a name="___sec5"></a></h2>
 
+<p>
 When I write some scientific material,
 
 <ul>
@@ -59157,7 +60124,7 @@ Probably not, but I have a solution :-)
 
 <section>
 
-<h1>LaTeX is very rich; other tools support only some elements  <a name="___sec6"></a></h1>
+<h2>LaTeX is very rich; other tools support only some elements  <a name="___sec6"></a></h2>
 
 <ul>
  <p><li> LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)</li>
@@ -59182,8 +60149,9 @@ Probably not, but I have a solution :-)
 
 <section>
 
-<h1>LaTeX is very rich; other tools support only some elements  <a name="___sec7"></a></h1>
+<h2>LaTeX is very rich; other tools support only some elements  <a name="___sec7"></a></h2>
 
+<p>
 
 
 <ul>
@@ -59221,8 +60189,9 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>DocOnce demo  <a name="___sec8"></a></h1>
+<h2>DocOnce demo  <a name="___sec8"></a></h2>
 
+<p>
 <a href="http://hplgit.github.com/teamods/writing_reports/" target="_self"><tt>http://hplgit.github.com/teamods/writing_reports/</tt></a>
 
 <ul>
@@ -59241,7 +60210,7 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>A tour of DocOnce  <a name="___sec9"></a></h1> <hr>
+<h1 style="text-align: center;">A tour of DocOnce  <a name="___sec9"></a></h1>
 
 <p>
 
@@ -59250,8 +60219,9 @@ based on HTML and vice versa.
 
 <section>
 
-<h1>DocOnce: title, authors, date, toc  <a name="___sec10"></a></h1>
+<h2>DocOnce: title, authors, date, toc  <a name="___sec10"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">TITLE: Some Title
@@ -59277,8 +60247,9 @@ Title and authors must have all information <em>on a single line</em>!
 
 <section>
 
-<h1>DocOnce: abstract  <a name="___sec11"></a></h1>
+<h2>DocOnce: abstract  <a name="___sec11"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">__Abstract.__
@@ -59299,15 +60270,16 @@ Here goes the summary...
 
 <section>
 
-<h1>DocOnce: section headings  <a name="___sec12"></a></h1>
+<h2>DocOnce: section headings  <a name="___sec12"></a></h2>
 
+<p>
 Headings are surrounded by <code>=</code> signs:
 <p>
 
 <!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">========= This is an H1/chapter heading =========
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -59318,14 +60290,15 @@ __This is a paragraph heading.__
 <p>
 Result:
 
-<h1>This is an H1/chapter heading  <a name="___sec13"></a></h1> <hr>
+<h1 style="text-align: center;">This is an H1/chapter heading  <a name="___sec13"></a></h1>
 
-<h1>This is an H2/section heading  <a name="___sec14"></a></h1>
+<h2>This is an H2/section heading  <a name="___sec14"></a></h2>
 
 <h2>This is an H3/subsection heading  <a name="___sec15"></a></h2>
 
 <h3>This is an H4/paragraph heading  <a name="___sec16"></a></h3>
 
+<p>
 <b>This is a paragraph heading.</b>
 
 <p>
@@ -59335,8 +60308,9 @@ Result:
 
 <section>
 
-<h1>DocOnce: markup and lists  <a name="___sec17"></a></h1>
+<h2>DocOnce: markup and lists  <a name="___sec17"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"> * Bullet list items start with `*`
@@ -59374,8 +60348,9 @@ This gets rendered as
 
 <section>
 
-<h1>DocOnce: labels, references, index items  <a name="___sec18"></a></h1>
+<h2>DocOnce: labels, references, index items  <a name="___sec18"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"># Insert index items in the source
@@ -59406,8 +60381,9 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 
 <section>
 
-<h1>DocOnce: figures and movies  <a name="___sec19"></a></h1>
+<h2>DocOnce: figures and movies  <a name="___sec19"></a></h2>
 
+<p>
 <div class="alert alert-block alert-notice alert-text-normal">
 <b>Notice.</b>
 <p>
@@ -59446,8 +60422,9 @@ and rendered as
 
 <section>
 
-<h1>DocOnce: math  <a name="___sec20"></a></h1>
+<h2>DocOnce: math  <a name="___sec20"></a></h2>
 
+<p>
 Inline math as in LaTeX:
 
 <p>
@@ -59496,8 +60473,9 @@ $$
 
 <section>
 
-<h1>DocOnce: displaying code  <a name="___sec21"></a></h1>
+<h2>DocOnce: displaying code  <a name="___sec21"></a></h2>
 
+<p>
 Code is enclosed in <code>!bc</code> and <code>!ec</code> tags:
 
 <p>
@@ -59555,8 +60533,9 @@ forth (<code>c</code> for C, <code>cpp</code> for C++, <code>sh</code> for Unix 
 
 <section>
 
-<h1>DocOnce: displaying interactive demo code <a name="slide:pot"></a></h1>
+<h2>DocOnce: displaying interactive demo code <a name="slide:pot"></a></h2>
 
+<p>
 With <code>!bc pyoptpro</code> or a file <code>*.pyopt</code>, the code applies the
 <a href="http://pythontutor.com" target="_self">Online Python Tutor</a> for displaying
 program flow and state of variables:
@@ -59573,8 +60552,9 @@ program flow and state of variables:
 
 <section>
 
-<h1>DocOnce: exercises  <a name="___sec23"></a></h1>
+<h2>DocOnce: exercises  <a name="___sec23"></a></h2>
 
+<p>
 DocOnce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
 and <em>examples</em>:
 
@@ -59623,8 +60603,9 @@ Solutions/answers can easily be left out of the document.
 
 <section>
 
-<h1>DocOnce: exercises  <a name="___sec24"></a></h1>
+<h2>DocOnce: exercises  <a name="___sec24"></a></h2>
 
+<p>
 Last page gets rendered as follows:
 
 <p>
@@ -59686,12 +60667,13 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <section>
 
-<h1>DocOnce: example on slide code  <a name="___sec26"></a></h1>
+<h2>DocOnce: example on slide code  <a name="___sec26"></a></h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">!split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -59711,7 +60693,7 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 </pre></div>
 <p>
 
@@ -59720,11 +60702,12 @@ And maybe a final comment?
 
 <section>
 
-<h1>DocOnce: example on slide code  <a name="___sec27"></a></h1>
+<h2>DocOnce: example on slide code  <a name="___sec27"></a></h2>
 
+<p>
 Last page gets rendered to
 
-<h1>Headline  <a name="___sec28"></a></h1>
+<h2>Headline  <a name="___sec28"></a></h2>
 
 <ul>
  <p><li> Key point 1</li>
@@ -59752,8 +60735,9 @@ And maybe a final comment?
 
 <section>
 
-<h1>DocOnce: example on slide code with cells  <a name="___sec29"></a></h1>
+<h2>DocOnce: example on slide code with cells  <a name="___sec29"></a></h2>
 
+<p>
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
 MN is surrounded by <code>!bslidecell MN</code> and <code>!eslidecell</code>
@@ -59764,7 +60748,7 @@ a figure to the right (two cells, numbered 00 and 01).
 
 <!-- code=text typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">!split
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -59789,7 +60773,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 </pre></div>
 <p>
 
@@ -59798,12 +60782,14 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 
 <section>
 
-<h1>DocOnce: example on slide code  <a name="___sec30"></a></h1>
+<h2>DocOnce: example on slide code  <a name="___sec30"></a></h2>
 
+<p>
 Last page gets rendered to
 
-<h1>Headline  <a name="___sec31"></a></h1>
+<h2>Headline  <a name="___sec31"></a></h2>
 
+<p>
 
 <table border="0">
 <tr>
@@ -60032,9 +61018,7 @@ Reveal.initialize({
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
-chapterprefix=true,      % "Chapter" word at beginning of each chapter
-open=right               % start new chapters on odd-numbered pages
-10pt]{book}
+10pt]{article}
 
 \listfiles               % print all files needed to compile this document
 
@@ -60257,11 +61241,6 @@ open=right               % start new chapters on odd-numbered pages
 \makeatother
 
 
-% Make sure blank even-numbered pages before new chapters are
-% totally blank with no header
-\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
-%\let\cleardoublepage\clearemptydoublepage % caused error in the toc
-
 % --- end of standard preamble for documents ---
 
 
@@ -60309,7 +61288,7 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % !split
-\section{Scientific writing for the future needs to address many new media}
+\subsection{Scientific writing for the future needs to address many new media}
 
 % !bslidecell 00 0.4
 
@@ -60340,7 +61319,7 @@ open=right               % start new chapters on odd-numbered pages
 % !eslidecell
 
 % !split
-\section{The book will probably survive}
+\subsection{The book will probably survive}
 
 
 
@@ -60350,7 +61329,7 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % !split
-\section{The classical report will survive}
+\subsection{The classical report will survive}
 
 % !bslidecell 00
 
@@ -60371,7 +61350,7 @@ open=right               % start new chapters on odd-numbered pages
 % !eslidecell
 
 % !split
-\section{Scope}
+\subsection{Scope}
 
 % * Scientific writing = lecture notes, slides, reports, thesis, books,  ...
 % * (Journal papers typeset by journals are out of scope)
@@ -60449,7 +61428,7 @@ open=right               % start new chapters on odd-numbered pages
 
 
 % !split
-\section{Scientific writing for the future needs to address many new media}
+\subsection{Scientific writing for the future needs to address many new media}
 
 % Insert links here to reports
 
@@ -60484,7 +61463,7 @@ Old days (1985-2005): {\LaTeX} for BW paper output, but now
 
 % !split
 
-\section{Fundamental question}
+\subsection{Fundamental question}
 
 When I write some scientific material,
 
@@ -60510,7 +61489,7 @@ Probably not, but I have a solution :-)
 
 % !split
 
-\section{{\LaTeX} is very rich; other tools support only some elements}
+\subsection{{\LaTeX} is very rich; other tools support only some elements}
 
 \begin{itemize}
  \item {\LaTeX} inline math: works with all ({\LaTeX}, MathJax, Sphinx, Markdown, MediaWiki)
@@ -60535,7 +61514,7 @@ Probably not, but I have a solution :-)
 
 \noindent
 % !split
-\section{{\LaTeX} is very rich; other tools support only some elements}
+\subsection{{\LaTeX} is very rich; other tools support only some elements}
 
 % !bpop
 \begin{itemize}
@@ -60574,7 +61553,7 @@ based on HTML and vice versa.
 
 
 % !split
-\section{DocOnce demo}
+\subsection{DocOnce demo}
 
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
@@ -60596,10 +61575,10 @@ based on HTML and vice versa.
 % !split
 
 % latex interprets 9 = as chapter and then needs book style...
-\section{A tour of DocOnce}
+\subsection{A tour of DocOnce}
 
 % !split
-\section{DocOnce: title, authors, date, toc}
+\subsection{DocOnce: title, authors, date, toc}
 
 \bccq
 TITLE: Some Title
@@ -60616,7 +61595,7 @@ Title and authors must have all information \emph{on a single line}!
 \end{block}
 
 % !split
-\section{DocOnce: abstract}
+\subsection{DocOnce: abstract}
 
 \bccq
 __Abstract.__
@@ -60631,13 +61610,13 @@ Here goes the summary...
 
 
 % !split
-\section{DocOnce: section headings}
+\subsection{DocOnce: section headings}
 
 Headings are surrounded by \code{=} signs:
 \bccq
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -60646,20 +61625,9 @@ Headings are surrounded by \code{=} signs:
 __This is a paragraph heading.__
 \eccq
 
-Result:
-
-\chapter{This is an H1/chapter heading}
-
-\section{This is an H2/section heading}
-
-\subsection{This is an H3/subsection heading}
-
-\paragraph{This is an H4/paragraph heading.}
-\paragraph{This is a paragraph heading.}
-
 
 % !split
-\section{DocOnce: markup and lists}
+\subsection{DocOnce: markup and lists}
 
 \bccq
  * Bullet list items start with `*`
@@ -60697,7 +61665,7 @@ This gets rendered as
 
 \noindent
 % !split
-\section{DocOnce: labels, references, index items}
+\subsection{DocOnce: labels, references, index items}
 
 \bccq
 # Insert index items in the source
@@ -60723,7 +61691,7 @@ URL: "https://github.com/hplgit/doconce"
 \eccq
 
 % !split
-\section{DocOnce: figures and movies}
+\subsection{DocOnce: figures and movies}
 
 \begin{block}{Notice}
 Figure with HTML and {\LaTeX} info, and caption, \emph{all on one line}:
@@ -60753,7 +61721,7 @@ and rendered as
 
 
 % !split
-\section{DocOnce: math}
+\subsection{DocOnce: math}
 
 Inline math as in {\LaTeX}:
 
@@ -60787,7 +61755,7 @@ which is rendered as
 
 
 % !split
-\section{DocOnce: displaying code}
+\subsection{DocOnce: displaying code}
 
 Code is enclosed in \code{!bc} and \code{!ec} tags:
 
@@ -60833,7 +61801,7 @@ forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} f
 
 
 % !split
-\section{DocOnce: displaying interactive demo code}
+\subsection{DocOnce: displaying interactive demo code}
 \label{slide:pot}
 
 With \code{!bc pyoptpro} or a file \code{*.pyopt}, the code applies the
@@ -60864,7 +61832,7 @@ print u
 
 
 % !split
-\section{DocOnce: exercises}
+\subsection{DocOnce: exercises}
 
 DocOnce offers a special format for \emph{exercises}, \emph{problems}, \emph{projects},
 and \emph{examples}:
@@ -60905,67 +61873,13 @@ of getting at least three heads out of 5 throws.
 
 Solutions/answers can easily be left out of the document.
 
-% !split
-\section{DocOnce: exercises}
-
-Last page gets rendered as follows:
-
-
-
-% --- begin exercise ---
-\begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
-
-\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
-
-\label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
-
-
-\subex{a)}
-Make a program that simulates flipping a coin $N$ times.
-
-% --- begin hint in exercise ---
-
-\paragraph{Hint.}
-Use \code{r = random.random()} and define head as \code{r <= 0.5}.
-
-% --- end hint in exercise ---
-
-\subex{b)}
-Compute the probability of getting heads.
-
-
-% --- begin answer of exercise ---
-\paragraph{Answer.}
-A short answer: 0.5.
-
-% --- end answer of exercise ---
-
-
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-A full solution to this subexercise can go here.
-
-% --- end solution of exercise ---
-
-\subex{c)}
-Make another program that computes the probability
-of getting at least three heads out of 5 throws.
-
-\noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
-% solution files: mysol.txt, mysol_flip_coin.py
-
-\end{doconceexercise}
-% --- end exercise ---
-
 
 % !split
-\section{DocOnce: example on slide code}
+\subsection{DocOnce: example on slide code}
 
 \bccq
 !split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -60985,36 +61899,12 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 \eccq
 
-% !split
-\section{DocOnce: example on slide code}
-
-Last page gets rendered to
-
-\section{Headline}
-
-\begin{itemize}
- \item Key point 1
-
- \item Key point 2
-\end{itemize}
-
-\noindent
-% inline figure
-\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
-
-
-
-Key equation:
-
-\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
-
-And maybe a final comment?
 
 % !split
-\section{DocOnce: example on slide code with cells}
+\subsection{DocOnce: example on slide code with cells}
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -61024,7 +61914,7 @@ a figure to the right (two cells, numbered 00 and 01).
 
 \bccq
 !split
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -61049,54 +61939,14 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 \eccq
 
-% !split
-\section{DocOnce: example on slide code}
-
-Last page gets rendered to
-
-\section{Headline}
-
-% !bslidecell 00
-% !bpop
-\begin{itemize}
- \item Key point 1
-
- \item Key point 2
-
- \item Key point 3 takes very much more text to explain because
-   this point is really comprehensive, and although long
-   bullet points are not recommended in general, we need
-   it here for demonstration purposes
-\end{itemize}
-
-\noindent
-% !epop
-
-% !bpop
-\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
-% !epop
-
-% !eslidecell
-
-% !bslidecell 01
-
-
-% inline figure
-\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
-
-
-% !eslidecell
 
 % ------------------- end of main content ---------------
 
 
 % #ifdef PREAMBLE
-\clearemptydoublepage
-\markboth{Index}{Index}
-\thispagestyle{empty}
 \printindex
 
 \end{document}
@@ -61157,25 +62007,21 @@ Last page gets rendered to
 % Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
+% --- begin table of contents based on sections ---
 % Delete this, if you do not want the table of contents to pop up at
 % the beginning of each section:
+% (Only section headings can enter the table of contents in Beamer
+% slides generated from DocOnce source, while subsections are used
+% for the title in ordinary slides.)
 \AtBeginSection[]
 {
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
+  \begin{frame}<beamer>[plain]
+  \frametitle{}
+  %\frametitle{Outline}
+  \tableofcontents[currentsection]
+  \end{frame}
 }
-
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each section:
-\AtBeginSection[]
-{
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
-}
+% --- end table of contents based on sections ---
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
 % the following command:
@@ -61561,9 +62407,9 @@ Here goes the summary...
 
 Headings are surrounded by \Verb!=! signs:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-========= This is an H1/chapter heading =========
+======= This is an H1/chapter heading =======
 
-======= This is an H2/section heading =======
+===== This is an H2/section heading =====
 
 ===== This is an H3/subsection heading =====
 
@@ -61571,17 +62417,6 @@ Headings are surrounded by \Verb!=! signs:
 
 __This is a paragraph heading.__
 \end{Verbatim}
-
-Result:
-
-\noindent\textbf{\huge This is an H1/chapter heading}
-
-\noindent\textbf{\Large This is an H2/section heading}
-
-\noindent\textbf{\large This is an H3/subsection heading}
-
-\noindent\textbf{This is an H4/paragraph heading.}
-\noindent\textbf{This is a paragraph heading.}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -61834,66 +62669,11 @@ Solutions/answers can easily be left out of the document.
 \end{frame}
 
 \begin{frame}[plain,fragile]
-\frametitle{DocOnce: exercises}
-
-Last page gets rendered as follows:
-
-
-
-% --- begin exercise ---
-\begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
-
-\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
-
-\label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
-
-
-\subex{a)}
-Make a program that simulates flipping a coin $N$ times.
-
-% --- begin hint in exercise ---
-
-\noindent\textbf{Hint.}
-Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
-
-% --- end hint in exercise ---
-
-\subex{b)}
-Compute the probability of getting heads.
-
-
-% --- begin answer of exercise ---
-\noindent\textbf{Answer.}
-A short answer: 0.5.
-
-% --- end answer of exercise ---
-
-
-% --- begin solution of exercise ---
-\noindent\textbf{Solution.}
-A full solution to this subexercise can go here.
-
-% --- end solution of exercise ---
-
-\subex{c)}
-Make another program that computes the probability
-of getting at least three heads out of 5 throws.
-
-\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
-% solution files: mysol.txt, mysol_flip_coin.py
-
-\end{doconceexercise}
-% --- end exercise ---
-\end{frame}
-
-\begin{frame}[plain,fragile]
 \frametitle{DocOnce: example on slide code}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !split
-======= Headline =======
+===== Headline =====
 
  * Key point 1
  * Key point 2
@@ -61913,34 +62693,8 @@ Key equation:
 And maybe a final comment?
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 \end{Verbatim}
-\end{frame}
-
-\begin{frame}[plain,fragile]
-\frametitle{DocOnce: example on slide code}
-
-Last page gets rendered to
-
-\noindent\textbf{\Large Headline}
-
-\begin{itemize}
- \item Key point 1
-
- \item Key point 2
-\end{itemize}
-
-\noindent
-% inline figure
-\centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/teacher1.pdf}}
-
-
-
-Key equation:
-
-\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
-
-And maybe a final comment?
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -61954,7 +62708,7 @@ a figure to the right (two cells, numbered 00 and 01).
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !split
-======= Headline =======
+===== Headline =====
 
 !bslidecell 00
 !bpop
@@ -61979,52 +62733,8 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !eslidecell
 
 !split
-======= Next slide... =======
+===== Next slide... =====
 \end{Verbatim}
-\end{frame}
-
-\begin{frame}[plain,fragile]
-\frametitle{DocOnce: example on slide code}
-
-Last page gets rendered to
-
-\noindent\textbf{\Large Headline}
-
-\begin{columns}
-\column{0.5\textwidth}
-
-\pause
-\begin{block}{}
-\begin{itemize}
- \item Key point 1
-
- \item Key point 2
-
- \item Key point 3 takes very much more text to explain because
-   this point is really comprehensive, and although long
-   bullet points are not recommended in general, we need
-   it here for demonstration purposes
-\end{itemize}
-
-\noindent
-\end{block}
-
-
-
-\pause
-\begin{block}{}
-\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
-\end{block}
-
-
-
-\column{0.5\textwidth}
-% inline figure
-\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/slides/fig/broken_pen_and_paper.jpg}}
-
-
-
-\end{columns}
 \end{frame}
 
 \end{document}
@@ -62041,9 +62751,7 @@ FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
 ## in the output.
 
 !split
-
-## Headings have 5 = for h3/subsection and 7 = for h1/section
-======= Goal =======
+===== Goal =====
 
 The primary goal of this demo talk is to demonstrate how to write
 talks with "DocOnce": "https://github.com/hplgit/doconce"
@@ -62088,10 +62796,13 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 !enotes
 
+!split
+======= Methods =======
+
 ## New slide is indicated by !split at the beginning of a line:
 
 !split
-======= Mathematical problem =======
+===== Mathematical problem =====
 
 ## Use !bslidecell XY and !eslidecell as begin and end for
 ## defining a cell XY in a table layout of the slide.
@@ -62126,7 +62837,7 @@ FIGURE: [../doc/src/slides/fig/teacher2, width=250 frac=0.5]
 !eslidecell
 
 !split
-======= Numerical solution method =======
+===== Numerical solution method =====
 
 ## !bpop and !epop surround elements that are to pop up
 ## as we progress in the slide show.
@@ -62164,11 +62875,16 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 ## with the line matching "def solver" and ending with
 ## "def verify_three", but not including this last line).
 
-======= Implementation =======
+===== Implementation =====
 
 The numerical method is implemented in a Python function:
 
 @@@CODE ../doc/src/slides/src/solver.py  fromto: def solver@def exact_sol
+
+!split
+======= Selected results =======
+# Short title: Results
+
 
 !split
 ===== The Crank-Nicolson method =====
@@ -62331,7 +63047,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">On Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -62358,8 +63074,9 @@ MathJax.Hub.Config({
 
 <section>
 
-<h1>Goal  <a name="___sec0"></a></h1>
+<h2>Goal  <a name="___sec0"></a></h2>
 
+<p>
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
@@ -62399,8 +63116,18 @@ demonstrated.
 
 <section>
 
-<h1>Mathematical problem  <a name="___sec1"></a></h1>
+<h1 style="text-align: center;">Methods  <a name="___sec1"></a></h1>
 
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Mathematical problem  <a name="___sec2"></a></h2>
+
+<p>
 
 <table border="0">
 <tr>
@@ -62442,8 +63169,9 @@ $$
 
 <section>
 
-<h1>Numerical solution method  <a name="___sec2"></a></h1>
+<h2>Numerical solution method  <a name="___sec3"></a></h2>
 
+<p>
 
 
 <ul>
@@ -62478,8 +63206,9 @@ $$
 
 <section>
 
-<h2>Forward Euler explained  <a name="___sec3"></a></h2>
+<h2>Forward Euler explained  <a name="___sec4"></a></h2>
 
+<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -62491,8 +63220,9 @@ $$
 
 <section>
 
-<h1>Implementation  <a name="___sec4"></a></h1>
+<h2>Implementation  <a name="___sec5"></a></h2>
 
+<p>
 The numerical method is implemented in a Python function:
 
 <p>
@@ -62518,8 +63248,19 @@ The numerical method is implemented in a Python function:
 
 <section>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h1 style="text-align: center;">Selected results  <a name="___sec6"></a></h1>
+<!-- Short title: Results -->
 
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The Crank-Nicolson method  <a name="___sec7"></a></h2>
+
+<p>
 <center><p><img src="../doc/src/slides/fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -62529,8 +63270,9 @@ The numerical method is implemented in a Python function:
 
 <section>
 
-<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
+<h2>The artifacts can be explained by some theory  <a name="___sec8"></a></h2>
 
+<p>
 
 <p class="fragment">
 
@@ -62560,17 +63302,13 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p>
 
-<p class="fragment">
-
 <div class="fragment alert alert-block alert-summary alert-text-normal">
 <b>Concluding remarks:</b>
-
+<p>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
 
-
-</p>
 
 
 
@@ -62780,16 +63518,18 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 1, None, '___sec0'),
-              (' Mathematical problem ', 1, None, '___sec1'),
-              (' Numerical solution method ', 1, None, '___sec2'),
-              (' Forward Euler explained ', 2, None, '___sec3'),
-              (' Implementation ', 1, None, '___sec4'),
-              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+ 'sections': [(' Goal ', 2, None, '___sec0'),
+              (' Methods ', 1, None, '___sec1'),
+              (' Mathematical problem ', 2, None, '___sec2'),
+              (' Numerical solution method ', 2, None, '___sec3'),
+              (' Forward Euler explained ', 2, None, '___sec4'),
+              (' Implementation ', 2, None, '___sec5'),
+              (' Selected results ', 1, None, '___sec6'),
+              (' The Crank-Nicolson method ', 2, None, '___sec7'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec6')]}
+               '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -62814,8 +63554,9 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1>Goal  <a name="___sec0"></a></h1>
+<h2>Goal  <a name="___sec0"></a></h2>
 
+<p>
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
@@ -63145,8 +63886,7 @@ Department of Informatics, University of Oslo\inst{2}}
 
 
 % !split
-
-\section{Goal}
+\subsection{Goal}
 
 The primary goal of this demo talk is to demonstrate how to write
 talks with \href{{https://github.com/hplgit/doconce}}{DocOnce}
@@ -63166,9 +63906,12 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 % !enotes
 
+% !split
+\section{Methods}
+
 
 % !split
-\section{Mathematical problem}
+\subsection{Mathematical problem}
 
 
 % !bslidecell 00
@@ -63203,7 +63946,7 @@ u(0)  &= I,
 % !eslidecell
 
 % !split
-\section{Numerical solution method}
+\subsection{Numerical solution method}
 
 
 % !bpop
@@ -63229,7 +63972,7 @@ Numerical scheme:
 
 % !split
 
-\section{Implementation}
+\subsection{Implementation}
 
 The numerical method is implemented in a Python function:
 
@@ -63247,6 +63990,11 @@ def solver(I, a, T, dt, theta):
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 \epycod
+
+% !split
+\section{Selected results}
+% Short title: Results
+
 
 % !split
 \subsection{The Crank-Nicolson method}
@@ -63355,25 +64103,21 @@ qualitatively correct results.
 % Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
+% --- begin table of contents based on sections ---
 % Delete this, if you do not want the table of contents to pop up at
 % the beginning of each section:
+% (Only section headings can enter the table of contents in Beamer
+% slides generated from DocOnce source, while subsections are used
+% for the title in ordinary slides.)
 \AtBeginSection[]
 {
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
+  \begin{frame}<beamer>[plain]
+  \frametitle{}
+  %\frametitle{Outline}
+  \tableofcontents[currentsection]
+  \end{frame}
 }
-
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each section:
-\AtBeginSection[]
-{
-    \begin{frame}<beamer>[plain]
-    \frametitle{}
-    \tableofcontents[currentsection]
-    \end{frame}
-}
+% --- end table of contents based on sections ---
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
 % the following command:
@@ -63473,6 +64217,8 @@ demonstrated.
 }
 \end{frame}
 
+\section{Methods}
+
 \begin{frame}[plain,fragile]
 \frametitle{Mathematical problem}
 
@@ -63552,6 +64298,8 @@ def solver(I, a, T, dt, theta):
     return u, t
 \end{minted}
 \end{frame}
+
+\section[Results]{Selected results}
 
 \begin{frame}[plain,fragile]
 \frametitle{The Crank-Nicolson method}
@@ -68331,7 +69079,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f93c70775f0>
+verbatim is to be replaced using <function html_verbatim at 0x7f1eba9b5758>
 
 
 First occurence: " `mako`."
@@ -69761,7 +70509,7 @@ of different object types.
 \emph{People only become computer programmers if they're
 obsessive about details, crave power over machines, and can bear
 to be told day after day exactly how
-stupid they are.}\\
+stupid they are.} \\
 Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
 \end{quote}
 
@@ -70738,7 +71486,7 @@ of different object types.
 \emph{People only become computer programmers if they're
 obsessive about details, crave power over machines, and can bear
 to be told day after day exactly how
-stupid they are.}\\
+stupid they are.} \\
 Gregory J. E. Rawlins \cite{Rawlins_1998}, computer scientist.
 \end{quote}
 
@@ -71825,6 +72573,7 @@ MathJax.Hub.Config({
 
 <h1 id="___sec1">Demonstrations of admons <a name="___sec1"></a></h1>
 
+<p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
 
 <ul>
@@ -72094,6 +72843,7 @@ MathJax.Hub.Config({
 
 <h2 id="___sec3">Principles of grid structures <a name="___sec3"></a></h2>
 
+<p>
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
 
@@ -72119,6 +72869,7 @@ the following syntax in case of a 1x3 grid:
 
 <h2 id="___sec4">Example on a 1x3 grid structure <a name="___sec4"></a></h2>
 
+<p>
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
 <b>Mathematics.</b>
@@ -72174,6 +72925,7 @@ we can run the program:
 
 <h2 id="___sec5">Variation of the previous grid structure using panels <a name="___sec5"></a></h2>
 
+<p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
 <p>
@@ -72280,7 +73032,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Sep 14 07:25:02 2014.
+# sphinx-quickstart on Fri Sep 26 09:40:45 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -72989,6 +73741,7 @@ end of tocinfo -->
 
 <h3>Test of &#230;, &#248;, &#229; in headline  <a name="___sec0"></a></h3>
 
+<p>
 Name with Norwegian characters: &#197;smund &#216;deg&#229;rd.
 Test inline tagging too: &quot;&#216;deg&#229;rd&quot;, <em>&#216;deg&#229;rd</em>, <b>&#216;deg&#229;rd</b>.
 [&#197;smund: non-English chars in names in inline
@@ -74706,6 +75459,7 @@ MathJax.Hub.Config({
 
 <h2>Table of contents</h2>
 
+<p>
 <a href="#___sec0"> Supported Formats </a><br>
 <a href="#___sec1"> Emacs syntax support </a><br>
 <a href="#___sec2"> Title, Authors, and Date </a><br>
@@ -74744,6 +75498,7 @@ mathematics and code.
 
 <h2>Supported Formats  <a name="___sec0"></a></h2>
 
+<p>
 DocOnce currently translates files to the following formats:
 
 <ul>
@@ -74768,6 +75523,7 @@ Google and Wordpress.
 
 <h2>Emacs syntax support  <a name="___sec1"></a></h2>
 
+<p>
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
@@ -74804,6 +75560,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 
 <h2>Title, Authors, and Date  <a name="___sec2"></a></h2>
 
+<p>
 A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
@@ -74842,6 +75599,7 @@ The table of contents is removed by writing <code>TOC: off</code>.
 
 <h2>Section Types <a name="quick:sections"></a></h2>
 
+<p>
 <table border="1">
 <thead>
 <tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
@@ -74872,6 +75630,7 @@ problem.
 
 <h2>Inline Formatting  <a name="___sec4"></a></h2>
 
+<p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
 appear in boldface: <code>_boldface_</code> becomes <b>boldface</b>. Colored words
@@ -74966,6 +75725,7 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 
 <h2>Lists  <a name="___sec5"></a></h2>
 
+<p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
 with <code>*</code>, <em>enumeration lists</em>, where each item starts with <code>o</code> and gets
 consqutive numbers,
@@ -75062,6 +75822,7 @@ And finally a description list:
 
 <h2>Comment lines  <a name="___sec6"></a></h2>
 
+<p>
 Lines starting with <code>#</code> are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before LaTeX math
@@ -75085,6 +75846,7 @@ DocOnce starts processing the file.
 
 <h2>Inline comments  <a name="___sec7"></a></h2>
 
+<p>
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax
@@ -75201,6 +75963,7 @@ To implement these edits, run
 
 <h2>Verbatim/Computer Code  <a name="___sec8"></a></h2>
 
+<p>
 Inline verbatim code is typeset within back-ticks, as in
 <!-- begin verbatim block -->
 <pre><code>Some sentence with `words in verbatim style`.
@@ -75296,6 +76059,7 @@ Important warnings:
 
 <h2>LaTeX Mathematics  <a name="___sec9"></a></h2>
 
+<p>
 DocOnce supports inline mathematics and blocks of mathematics, using
 standard LaTeX syntax. The output formats <code>html</code>, <code>sphinx</code>, <code>latex</code>,
 pdflatex`, <code>pandoc</code>, and <code>mwiki</code> work with this syntax while all other
@@ -75420,6 +76184,7 @@ will be much more flexible and powerful).
 
 <h2>Hyperlinks  <a name="___sec10"></a></h2>
 
+<p>
 Links use either a link text or the raw URL:
 
 <p>
@@ -75439,6 +76204,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 
 <h2>Figures and Movies  <a name="___sec11"></a></h2>
 
+<p>
 Figures and movies have almost equal syntax:
 <!-- begin verbatim block -->
 <pre><code>FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
@@ -75505,6 +76271,7 @@ The latter results in
 
 <h2>Tables  <a name="___sec12"></a></h2>
 
+<p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
 syntax:
 <!-- begin verbatim block -->
@@ -75549,6 +76316,7 @@ load tables into spreadsheet programs for further analysis.
 
 <h2>Labels and References  <a name="___sec13"></a></h2>
 
+<p>
 The notion of labels and references (as well as bibliography and index)
 is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
@@ -75578,6 +76346,7 @@ reference by parenthesis.
 
 <h2>Citations and Bibliography  <a name="___sec14"></a></h2>
 
+<p>
 Single citations are written as
 <!-- begin verbatim block -->
 <pre><code>cite{name}
@@ -75605,6 +76374,7 @@ than LaTeX).
 
 <h2>Generalized Citations  <a name="___sec15"></a></h2>
 
+<p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
 a reference with <code>ref</code> to have one formulation if the label is
 in the same document and another formulation if the reference is
@@ -75636,6 +76406,7 @@ documents.  If none of the two situations above applies, the
 
 <h2>Index of Keywords  <a name="___sec16"></a></h2>
 
+<p>
 DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
@@ -75652,6 +76423,7 @@ forthcoming text. The index is only produced for the <code>latex</code>,
 
 <h2>Capabilities of The Program <code>doconce</code>  <a name="___sec17"></a></h2>
 
+<p>
 The <code>doconce</code> program can be used for a number of purposes besides
 transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
@@ -75816,6 +76588,7 @@ doconce latex_exercise_toc myfile
 
 <h2>Exercises  <a name="___sec18"></a></h2>
 
+<p>
 DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
 These are typeset
 as ordinary sections and referred to by their section labels.
@@ -75931,6 +76704,7 @@ examples.
 
 <h2>Environments  <a name="___sec19"></a></h2>
 
+<p>
 DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
 where <code>envirname</code> is the name of the environment. Here is a listing of
 the environments:
@@ -75951,6 +76725,7 @@ the environments:
 
 <h2>Preprocessing  <a name="___sec20"></a></h2>
 
+<p>
 DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
 <code>mako</code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
@@ -88972,11 +89747,7 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
-
-Package hyperref Warning: old loe file detected, not used; run LaTeX again.
-
-[2] 
+dmap/pdftex.map}] [2] 
 
 
 
@@ -89111,7 +89882,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1262.
+t line 1263.
 
 
 
@@ -89131,7 +89902,7 @@ t line 1262.
 
 
 
-t line 1271.
+t line 1272.
 
 
 
@@ -89152,7 +89923,7 @@ t line 1271.
 
 
 
-t line 1275.
+t line 1276.
 
 
 
@@ -89895,7 +90666,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1262.
+t line 1263.
 
 
 
@@ -89915,7 +90686,7 @@ t line 1262.
 
 
 
-t line 1271.
+t line 1272.
 
 
 
@@ -89936,7 +90707,7 @@ t line 1271.
 
 
 
-t line 1275.
+t line 1276.
 
 
 
@@ -90596,7 +91367,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1262.
+t line 1263.
 
 
 
@@ -90616,7 +91387,7 @@ t line 1262.
 
 
 
-t line 1271.
+t line 1272.
 
 
 
@@ -90637,7 +91408,7 @@ t line 1271.
 
 
 
-t line 1275.
+t line 1276.
 
 
 
@@ -91920,7 +92691,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1213.
+t line 1214.
 
 
 
@@ -91940,7 +92711,7 @@ t line 1213.
 
 
 
-t line 1222.
+t line 1223.
 
 
 
@@ -91960,7 +92731,7 @@ t line 1222.
 
 
 
-t line 1226.
+t line 1227.
 
 
 
@@ -92699,8 +93470,8 @@ reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:374: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:410: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:410: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:411: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:411: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -93193,17 +93964,15 @@ figure file ../doc/src/manual/fig/wave1D:
     footnotes will be left in the doconce syntax
 output in testdoc.md
 + '[' 0 -ne 0 ']'
-+ system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
-+ doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
++ system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
++ doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
 translating doconce text in slides1.do.txt to html
 output in slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_1st.html
-+ system doconce slides_html slides1 reveal --html_slide_type=beigesmall
-+ doconce slides_html slides1 reveal --html_slide_type=beigesmall
++ system doconce slides_html slides1 reveal --html_slide_themee=simple
++ doconce slides_html slides1 reveal --html_slide_themee=simple
 made subdirectory reveal.js
-*** warning: pygments style "emacs" is not recommended for "beige"!
-recommended styles are "perldoc"
 slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_reveal.html
@@ -93213,8 +93982,8 @@ slides written to slides1.html
 translating doconce text in slides1.do.txt to html
 output in slides1.html
 + '[' 0 -ne 0 ']'
-+ system doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
-+ doconce slides_html slides1 deck --html_slide_type=sandstone.firefox
++ system doconce slides_html slides1 deck --html_slide_theme=web-2.0
++ doconce slides_html slides1 deck --html_slide_theme=web-2.0
 made subdirectory deck.js
 slides written to slides1.html
 + '[' 0 -ne 0 ']'
@@ -93228,7 +93997,11 @@ output in slides1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides1 envir=minted
 + doconce ptex2tex slides1 envir=minted
+\blatex (!bc latex) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+
 \bshcod (!bc sh) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
+
+\bhtml (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
 
 output in slides1.tex
 + '[' 0 -ne 0 ']'
@@ -93487,37 +94260,351 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 
 (./slides1.vrb 
  [1{/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}] (./slides1.vrb
-<../doc/src/manual/fig/wave1D.png, id=36, 586.8324pt x 442.2924pt>
+onts/map/pdftex/updmap/pdftex.map}]
+No file slides1.toc.
+(./slides1.vrb
+<../doc/src/manual/fig/wave1D.png, id=38, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [2 <../doc/src/manual/fig/wave1D.png>]
-(./slides1.vrb) [3] (./slides1.vrb
+(./slides1.vrb) [3] (./slides1.vrb (./slides1.out.pyg
 
-[4] (./slides1.vrb) [5] (./slides1.aux)
+[4] (./slides1.vrb (./slides1.out.pyg)) [5]
+No file slides1.toc.
+(./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [6] (./slides1.vrb
+(./slides1.out.pyg)) [7] (./slides1.vrb) [8] (./slides1.aux)
 
 Package rerunfilecheck Warning: File `slides1.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
  ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1200.600pk> </home/hpl/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
-/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0800.600
-pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0700.600pk> </home/hp
-l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600pk> </home/hpl/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0600.60
-0pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/h
-pl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/hpl/.texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on slides1.pdf (5 pages, ).
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600
+pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hp
+l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/
+fonts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecss0600.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecss0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.60
+0pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy9.pfb>
+Output written on slides1.pdf (8 pages, ).
+Transcript written on slides1.log.
++ '[' 0 -ne 0 ']'
++ cp slides1.tex slides1_handout.tex
++ cp slides1.pdf slides1_handout.pdf
++ system doconce format pdflatex slides1 --latex_title_layout=beamer
++ doconce format pdflatex slides1 --latex_title_layout=beamer
+translating doconce text in slides1.do.txt to pdflatex
+output in slides1.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex slides1 envir=minted
++ doconce ptex2tex slides1 envir=minted
+\blatex (!bc latex) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+
+\bshcod (!bc sh) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
+
+\bhtml (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+
+output in slides1.tex
++ '[' 0 -ne 0 ']'
++ system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
++ doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
+slides written to slides1.tex
++ '[' 0 -ne 0 ']'
++ system pdflatex -shell-escape slides1
++ pdflatex -shell-escape slides1
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ \write18 enabled.
+entering extended mode
+(./slides1.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+
+Document Class: beamer 2012/10/15 development version 3.24 A class for typesett
+ing presentations (rcs-revision 24853e6b98cf)
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
+
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+
+
+
+(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
+
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+Package hyperref Message: Stopped early.
+
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaserequires.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetranslator.sty
+(/usr/share/texmf/tex/latex/beamer/base/translator/translator.sty
+(/usr/share/texmf/tex/latex/beamer/base/translator/translator-language-mappings
+.tex))) 
+
+
+
+
+
+
+
+
+
+
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
+
+
+(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemedefault.sty
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemedefault.st
+y)
+(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemedefault.st
+y)
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemedefault.st
+y))) (/home/hpl/texmf/tex/latex/misc/beamerthemeblue_shadow.sty
+
+LaTeX Warning: You have requested package `beamerthemeblue_shadow',
+               but the package provides `beamerthemeshadow'.
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemesmoothbars
+.sty)
+(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemerounded.st
+y)
+(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeorchid.sty
+)
+
+
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemeshadow.sty
+
+)
+(/usr/share/texmf/tex/latex/beamer/base/themes/font/beamerfontthemestructurebol
+d.sty)) (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
+
+
+
+
+(/usr/share/texmf/tex/latex/pgf/compatibility/pgfarrows.sty
+
+Package pgfarrows Warning: This package is obsolete. pgf.sty will load arrow ma
+nagement automatically on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfnodes.sty
+
+Package pgfnodes Warning: This package is obsolete. pgf.sty will load node mana
+gement automatically on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfautomata.sty
+
+Package pgfautomata Warning: This package is obsolete. on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfheaps.sty
+
+Package pgfheaps Warning: This package is obsolete. on .
+
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfshade.sty
+
+Package pgfshade Warning: This package is obsolete. pgf.sty will load shade man
+agement automatically on .
+
+) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+
+(./slides1.w18))/usr/local/bin/pygmentize
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
+hs.code.tex))) 
+Writing index file slides1.idx
+(./slides1.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+ABD: EveryShipout initializing macros
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./slides1.out) (./slides1.out)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
+onary/translator-basic-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-bibliograph
+y-dictionary/translator-bibliography-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-environment
+-dictionary/translator-environment-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-months-dict
+ionary/translator-months-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-numbers-dic
+tionary/translator-numbers-dictionary-English.dict)
+(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-theorem-dic
+tionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
+(./slides1.nav) (./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+Package hyperref Warning: Option `pdfauthor' has already been used,
+(hyperref)                setting the option has no effect on .
+
+(./slides1.vrb 
+ [1{/var/lib/texmf/f
+onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
+<../doc/src/manual/fig/wave1D.png, id=60, 586.8324pt x 442.2924pt>
+<use ../doc/src/manual/fig/wave1D.png>) [3 <../doc/src/manual/fig/wave1D.png>]
+(./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [4] (./slides1.vrb
+<use ../doc/src/manual/fig/wave1D.png>) [5] (./slides1.vrb
+<use ../doc/src/manual/fig/wave1D.png>) [6] (./slides1.vrb) [7] (./slides1.vrb)
+ [8] (./slides1.vrb (./slides1.out.pyg
+
+[9] (./slides1.vrb (./slides1.out.pyg) (./slides1.out.pyg)) [10] (./slides1.vrb
+(./slides1.out.pyg) (./slides1.out.pyg)) [11] (./slides1.vrb (./slides1.out.pyg
+) (./slides1.out.pyg)) [12] (./slides1.vrb (./slides1.out.pyg)) [13]
+(./slides1.toc) [14] (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>)
+[15] (./slides1.vrb (./slides1.out.pyg)) [16] (./slides1.vrb) [17]
+(./slides1.vrb) [18] (./slides1.vrb) [19] (./slides1.vrb) [20] (./slides1.aux) 
+) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600p
+k> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hpl
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecsx0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecss0600.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600
+pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/hp
+l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on slides1.pdf (20 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
 + system doconce format html slides2 --pygments_html_style=emacs
@@ -93546,50 +94633,45 @@ figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format html
 output in slides2.html
 + '[' 0 -ne 0 ']'
-+ system doconce slides_html slides2 reveal --html_slide_type=beigesmall
-+ doconce slides_html slides2 reveal --html_slide_type=beigesmall
-*** warning: pygments style "emacs" is not recommended for "beige"!
++ system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
++ doconce slides_html slides2 reveal --html_slide_theme=beigesmall
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
-*** warning: pygments style "emacs" is not recommended for "beige"!
+*** warning: pygments style "emacs" is not recommended for "beigesmall"!
 recommended styles are "perldoc"
 slides written to slides2.html
 + '[' 0 -ne 0 ']'
 + cp slides2.html slides2_reveal.html
 + rm -f slides1.aux
-+ system doconce format pdflatex slides2 --latex_title_layout=beamer
-+ doconce format pdflatex slides2 --latex_title_layout=beamer
-running preprocess -DFORMAT=pdflatex -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
++ system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
++ doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen -DBEAMER slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to pdflatex
 copy complete file ../doc/src/slides/src/solver.pyopt  (format: pyoptpro)
-found info about 1 exercises
 figure file ../doc/src/slides/fig/iphones:
     can use ../doc/src/slides/fig/iphones.jpg for format pdflatex
 figure file ../doc/src/slides/fig/imac:
     can use ../doc/src/slides/fig/imac.png for format pdflatex
-figure file ../doc/src/slides/fig/teacher1:
-    can use ../doc/src/slides/fig/teacher1.pdf for format pdflatex
 figure file ../doc/src/slides/fig/latex_thesis:
     can use ../doc/src/slides/fig/latex_thesis.jpg for format pdflatex
-figure file ../doc/src/slides/fig/broken_pen_and_paper:
-    can use ../doc/src/slides/fig/broken_pen_and_paper.jpg for format pdflatex
 figure file ../doc/src/slides/fig/oldbooks:
     can use ../doc/src/slides/fig/oldbooks.jpg for format pdflatex
 figure file ../doc/src/slides/fig/ipad:
@@ -101481,6 +102563,7 @@ figure file ../doc/src/manual/fig/wave1D:
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
     http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
@@ -101501,6 +102584,7 @@ figure file ../doc/src/manual/fig/wave1D:
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 ...
     http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie99x9.webm ...
@@ -101521,6 +102605,7 @@ figure file ../doc/src/manual/fig/wave1D:
 figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media:
     can use http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png for format html
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
     http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
@@ -101561,6 +102646,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
     http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
@@ -101585,6 +102671,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
     http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
@@ -101627,6 +102714,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 ... checking existence of http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png ...
     found!
 *** warning: you have citations but no bibliography (BIBFILE: ...)
+mybook
 output in tmp2.p.tex
 + echo
 

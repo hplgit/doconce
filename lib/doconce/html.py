@@ -886,7 +886,8 @@ def html_code(filestr, code_blocks, code_block_types,
     # Elimate <p> before equations $$ and before lists
     filestr = re.sub(r'<p>\s+(\$\$|<ul>|<ol>)', r'\g<1>', filestr)
     # Eliminate <p> after </h1>, </h2>, etc.
-    filestr = re.sub(r'(</[hH]\d[^>]*>)\s+<p>', '\g<1>\n', filestr)
+    #filestr = re.sub(r'(</[hH]\d[^>]*>)\s+<p>', '\g<1>\n', filestr)
+    #bad side effect in deck.js slides
 
     return filestr
 

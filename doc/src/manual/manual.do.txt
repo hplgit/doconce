@@ -2775,6 +2775,7 @@ in the compiled directory (usually `sphinx-rootdir/_build/html`) and
 can easily be moved around.
 
 
+__Split and LaTeX.__
 LaTeX Beamer slides generated from DocOnce source also apply `!split` to
 indicate the start of individual slides. However, the split is
 performed by the `doconce slides_beamer` command and does not result
@@ -2890,6 +2891,11 @@ Points to consider (just sketches...):
  * From doconce to PP or GP: use the latexslides script to convert
    to PDFs and odp format, convert odp to ppt interactively or with
    `unoconv`.
+ * Sections (7 `=`) are used to indicate sections in slides (gives
+   a toc in beamer slides), while subsections (5 `=`) are used for
+   slide headings. Remember `!split` before each slide (subsection).
+   A comment `# Short title: title` after a section is interpreted
+   in `latex` and `pdflatex` output as a short title for the section.
 
 !split
 ===== Overview =====

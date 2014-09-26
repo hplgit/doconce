@@ -8,10 +8,13 @@
 <span style="color: #228B22">## output. Lines starting with ## are also comments, but not visible</span>
 <span style="color: #228B22">## in the output.</span>
 
-<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #228B22"># Each slide starts with !split and a title inside 5 = on each side</span>
+<span style="color: #228B22"># (i.e., DocOnce subsections are used to specify slide titles,</span>
+<span style="color: #228B22"># sections are used for parts/sections of the talk to appear in a</span>
+<span style="color: #228B22"># table of contents)</span>
 
-<span style="color: #228B22">## Headings have 5 = for h3/subsection and 7 = for h1/section</span>
-<span style="color: #000080; font-weight: bold">======= Goal =======</span>
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Goal =====</span>
 
 The primary goal of this demo talk is to demonstrate how to write
 talks with &quot;DocOnce&quot;: &quot;https://github.com/hplgit/doconce&quot;
@@ -61,10 +64,14 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 <span style="color: #8B008B; font-weight: bold">!enotes</span>
 
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Problem setting and methods =======</span>
+<span style="color: #228B22"># Short title: Problem</span>
+
 <span style="color: #228B22">## New slide is indicated by !split at the beginning of a line:</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
-<span style="color: #000080; font-weight: bold">======= Mathematical problem =======</span>
+<span style="color: #000080; font-weight: bold">===== We aim to solve the (almost) simplest possible differential equation problem =====</span>
 
 <span style="color: #228B22">## Use !bslidecell XY and !eslidecell as begin and end for</span>
 <span style="color: #228B22">## defining a cell XY in a table layout of the slide.</span>
@@ -78,18 +85,22 @@ demonstrated.
 
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 <span style="color: #658b00">\begin{align}</span>
-u&#39;(t) &amp;= -au(t),
+u&#39;(t) &amp;= -au(t)
 <span style="color: #658b00">label{ode}</span>\\
-u(0)  &amp;= I,
+u(0)  &amp;= I
 <span style="color: #658b00">label{initial:value}</span>
 <span style="color: #658b00">\end{align}</span>
 <span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #228B22">## Demonstrate bullet list, inline mathematics, and</span>
+<span style="color: #228B22">## references to equations</span>
 
 Here,
 
  * $t\in (0,T]$
  * $a$, $I$, and $T$ are prescribed parameters
  * $u(t)$ is the unknown function
+ * The ODE (ref{ode}) has the initial condition (ref{initial:value})
 
 <span style="color: #8B008B; font-weight: bold">!eslidecell</span>
 
@@ -101,7 +112,7 @@ Here,
 <span style="color: #8B008B; font-weight: bold">!eslidecell</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
-<span style="color: #000080; font-weight: bold">======= Numerical solution method =======</span>
+<span style="color: #000080; font-weight: bold">===== The ODE problem is solved by a finite difference scheme =====</span>
 
 <span style="color: #228B22">## !bpop and !epop surround elements that are to pop up</span>
 <span style="color: #228B22">## as we progress in the slide show.</span>
@@ -114,20 +125,27 @@ Here,
 <span style="color: #8B008B; font-weight: bold">!epop</span>
 
 <span style="color: #8B008B; font-weight: bold">!bpop</span>
-Numerical scheme:
+The $\theta$ rule,
+
 <span style="color: #8B008B; font-weight: bold">!bt</span>
 \[
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 \quad n=0,1,\ldots,N-1
 \]
 <span style="color: #8B008B; font-weight: bold">!et</span>
+contains the &quot;Forward Euler&quot;:
+<span style="color: #CD5555">&quot;http://en.wikipedia.org/wiki/Forward_Euler_method&quot;</span> ($\theta=0$),
+the &quot;Backward Euler&quot;:
+<span style="color: #CD5555">&quot;http://en.wikipedia.org/wiki/Backward_Euler_method&quot;</span> ($\theta=1$),
+and the &quot;Crank-Nicolson&quot;:
+<span style="color: #CD5555">&quot;http://en.wikipedia.org/wiki/Crank-Nicolson&quot;</span> ($\theta=0.5$)
+schemes.
 <span style="color: #8B008B; font-weight: bold">!epop</span>
-
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #228B22">## Next: embed YouTube video</span>
 
-<span style="color: #000080; font-weight: bold">===== Forward Euler explained =====</span>
+<span style="color: #000080; font-weight: bold">===== The Forward Euler scheme explained =====</span>
 
 <span style="color: #658b00">MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]</span>
 
@@ -137,11 +155,14 @@ u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 <span style="color: #228B22">## with the line matching &quot;def solver&quot; and ending with</span>
 <span style="color: #228B22">## &quot;def verify_three&quot;, but not including this last line).</span>
 
-<span style="color: #000080; font-weight: bold">======= Implementation =======</span>
+<span style="color: #000080; font-weight: bold">===== Implementation =====</span>
 
 The numerical method is implemented in a Python function:
 
 <span style="color: #800080; font-weight: bold">@@@CODE src/solver.py  fromto: def solver@def exact_solution</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Results =======</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #000080; font-weight: bold">===== The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone =====</span>

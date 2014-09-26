@@ -1,148 +1,142 @@
 /* mnml.css
- * 
+ *
  * This is a customized version of the Swiss default theme. It is dual-licenced under the
  * GPL2 and MIT licenses and adapted from its original by Laurens Duijvesteijn. The original
- * swiss.css, as created by Caleb Troughton, is found on Github: 
+ * swiss.css, as created by Caleb Troughton, is found on Github:
  *
  * https://github.com/imakewebthings/deck.js
- * 
+ *
  */
 
 .deck-container {
-    font-family: Georgia, Times, "Times New Roman", serif;
-    font-size: 1.25em;
-    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
-    -webkit-text-size-adjust: 100%;
-    background: #fff;
-    -webkit-box-shadow: 0 0 4em #ccc;
-       -moz-box-shadow: 0 0 4em #ccc;
-            box-shadow: 0 0 4em #ccc;
+  background: #fafafa;
+  font-size: 1.25em;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+  -webkit-text-size-adjust: 100%;
 }
-.deck-container .slide {
-    background: #fafafa;
-}
-.deck-container h1,
-.deck-container h2,
-.deck-container h3,
-.deck-container h4,
-.deck-container h5 {
-    font-weight: normal;
-    border-top: 8px solid #333333;
-    border-bottom: 1px solid #333333;
-    text-transform: uppercase;
+.slide {
+  background: #fafafa;
+  margin: 40px;
 }
 
-.deck-container h1 {
-    min-height: 215px
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  line-height: 1;
 }
-
-.deck-container h1 span {
-    font-size: .7em;
-    display: block;
+h1 {
+  /* text-transform: uppercase; modified by hpl */
+  /* font-size: 5.5em; modified by hpl */
+  font-weight: bold;
+  /* border-bottom: 5px #000 solid; modified by hpl */
+  margin: 0 0 70px 0;
 }
-
-.deck-container h2 {
-    font-size: 1.5em;
-    min-height: 60px;
-    margin-top: 1.5em;
+h2 {
+  margin: 35px 0 25px 0;
+  font-size: 2em;
+  font-style: italic;
+  width:90%;  /* added by hpl to avoid cut off of long titles */
 }
-
-.deck-container h3,
-.deck-container h4 {
-    margin-top: 1em;
-    margin-bottom: .5em;
-    padding-bottom: .2em;
+h3 {
+  margin: 30 0 20px 0;
+  font-size: 1.3em;
 }
-
-.deck-container h3 {
-    font-size: 1.3em;
-    border-top: 0;
+ul > li > h3 {
+  margin: 0 0 20px 0;
 }
-
-.deck-container h4 {
-    color: #27bbd1;
-    padding-top: 1em;
-    border-bottom: 0;
+h4 {
+  font-variant: small-caps;
 }
-.deck-container .slide pre {
-    border-color: #ccc
+.slide pre {
+  font-style: italic;
+  background: #eee;
+  padding: 20px;
+  margin-bottom: 20px;
 }
-.deck-container .slide code {
-    color: #888
+.slide code {
+  color: #444;
 }
-.deck-container .slide blockquote {
-    font-size: 1.5em;
-    font-style: italic;
-    margin-left: 1em;
-    padding: .5em 2em;
-    color: #000;
-    border: none;
-    border-left: 2px #ccc solid;
+.slide blockquote {
+  margin-left: 1em;
+  padding: .5em 2em;
+  border: none;
+  border-left: 2px #ccc solid;
+  color: #000;
+  font-style: italic;
+  font-size: 1.5em;
 }
-.deck-container .slide blockquote p {
-    margin: 0
+.slide blockquote p {
+  margin: 0;
 }
-.deck-container .slide blockquote cite {
-    font-size: .5em;
-    font-style: normal;
-    font-weight: bold;
-    color: #888;
+.slide blockquote cite {
+  color: #888;
+  font-weight: bold;
+  font-style: normal;
+  font-size: .5em;
 }
-.deck-container .slide ::-moz-selection {
-    background: #c00;
-    color: #fff;
+.slide ol {
+  list-style-type: square;
 }
-.deck-container .slide ::selection {
-    background: #c00;
-    color: #fff;
+.slide ::-moz-selection {
+  background: #c00;
+  color: #fff;
 }
-.deck-container .slide a,
-.deck-container .slide a:hover,
-.deck-container .slide a:focus,
-.deck-container .slide a:active,
-.deck-container .slide a:visited {
-    color: #c00;
-    text-decoration: none;
+.slide ::selection {
+  background: #c00;
+  color: #fff;
 }
-.deck-container .slide a:hover,
-.deck-container .slide a:focus {
-    text-decoration: underline
+.slide a,
+.slide a:hover,
+.slide a:focus,
+.slide a:active,
+.slide a:visited {
+  color: #c00;
+  text-decoration: none;
 }
-.deck-container > .slide .deck-before,
-.deck-container > .slide .deck-previous {
-    opacity: 0.4
+.slide a:hover,
+.slide a:focus {
+  text-decoration: underline;
 }
-.deck-container .deck-prev-link,
-.deck-container .deck-next-link {
-    background: #ccc;
-    font-family: serif;
+.slide .deck-before,
+.slide .deck-previous {
+  opacity: 0.4;
 }
-.deck-container .deck-prev-link,
-.deck-container .deck-prev-link:hover,
-.deck-container .deck-prev-link:focus,
-.deck-container .deck-prev-link:active,
-.deck-container .deck-prev-link:visited,
-.deck-container .deck-next-link,
-.deck-container .deck-next-link:hover,
-.deck-container .deck-next-link:focus,
-.deck-container .deck-next-link:active,
-.deck-container .deck-next-link:visited {
-    color: #fff
+.deck-prev-link,
+.deck-next-link {
+  background: #ccc;
+  font-family: serif;
 }
-.deck-container .deck-prev-link:hover,
-.deck-container .deck-prev-link:focus,
-.deck-container .deck-next-link:hover,
-.deck-container .deck-next-link:focus {
-    background: #c00;
-    text-decoration: none;
+.deck-prev-link,
+.deck-prev-link:hover,
+.deck-prev-link:focus,
+.deck-prev-link:active,
+.deck-prev-link:visited,
+.deck-next-link,
+.deck-next-link:hover,
+.deck-next-link:focus,
+.deck-next-link:active,
+.deck-next-link:visited {
+  color: #fff;
 }
-.deck-container .deck-status {
-    font-size: 0.6666em
+.deck-prev-link:hover,
+.deck-prev-link:focus,
+.deck-next-link:hover,
+.deck-next-link:focus {
+  background: #c00;
+  text-decoration: none;
 }
-.deck-container.deck-menu .slide {
-    background: #eee
+.deck-status {
+  font-size: 0.6666em;
 }
-.deck-container.deck-menu .deck-current,
+.deck-menu .slide {
+  background: #eee;
+}
+.deck-menu .deck-current,
 .no-touch .deck-container.deck-menu .slide:hover {
-    background: #ddf
+  background: #ddf;
 }

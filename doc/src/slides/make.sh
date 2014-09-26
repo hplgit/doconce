@@ -72,11 +72,12 @@ system doconce split_html $html --method=space8
 
 # LaTeX Beamer slides
 beamertheme=red_shadow
-system doconce format pdflatex $name --latex_title_layout=beamer --latex_admon_title_no_period
+system doconce format pdflatex $name --latex_title_layout=beamer --latex_admon_title_no_period -DBEAMER
 editfix ${name}.p.tex
 system doconce ptex2tex $name envir=minted
 system doconce slides_beamer $name --beamer_slide_theme=$beamertheme
 cp $name.tex ${name}-beamer.tex
+system pdflatex -shell-escape ${name}-beamer
 system pdflatex -shell-escape ${name}-beamer
 
 # LaTeX documents
@@ -87,6 +88,7 @@ doconce replace 'section{' 'section*{' $name.tex
 # Hack: suddenly \subex{} didn't work in this document
 doconce subst -m '^\\subex\{' '\paragraph{' $name.tex
 system pdflatex -shell-escape $name
+system pdflatex -shell-escape $name
 mv -f $name.pdf ${name}-minted.pdf
 cp $name.tex ${name}-minted.tex
 
@@ -96,6 +98,7 @@ doconce replace 'section{' 'section*{' ${name}.p.tex
 system doconce ptex2tex $name envir=ans:nt
 # Hack: suddenly \subex{} didn't work in this document
 doconce subst -m '^\\subex\{' '\paragraph{' $name.tex
+system pdflatex $name
 system pdflatex $name
 mv -f $name.pdf ${name}-anslistings.pdf
 cp $name.tex ${name}-anslistings.tex
@@ -143,8 +146,8 @@ footer_types="footer symbol"
 for slide_tp in $slide_types; do
 for footer_tp in $footer_types; do
 # CBC
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=cbc
-doconce slides_html demo ${slide_tp} --html_slide_theme=cbc --html_footer_logo=cbc_${footer_tp}
+system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=cbc
+system doconce slides_html demo ${slide_tp} --html_slide_theme=cbc --html_footer_logo=cbc_${footer_tp}
 doconce replace 'controls: true,' 'controls: false,' demo.html  # turn off nav.
 cp demo.html demo_${slide_tp}_cbc_${footer_tp}.html
 done
@@ -154,57 +157,57 @@ done
 slide_tp=reveal
 
 # Simula
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=simula
-doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=simula_symbol
+system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=simula
+system doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=simula_symbol
 cp demo.html demo_${slide_tp}_simula.html
 
 # UiO
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=uio
-doconce slides_html demo ${slide_tp} --html_slide_theme=simple --html_footer_logo=uio_symbol
+system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=uio
+system doconce slides_html demo ${slide_tp} --html_slide_theme=simple --html_footer_logo=uio_symbol
 cp demo.html demo_${slide_tp}_uio.html
 
 # Combined UiO and Simula footer
-doconce format html demo --pygments_html_style=none SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula"
-doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
+system doconce format html demo --pygments_html_style=none SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula"
+system doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
 cp demo.html demo_${slide_tp}_uio_simula.html
 
 # Solarized without pygments
-doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
-doconce slides_html demo reveal --html_slide_theme=solarized
+system doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
+system doconce slides_html demo reveal --html_slide_theme=solarized
 cp demo.html demo_reveal_solarized_plainpre.html
 
 # LaTeX Beamer slides
 themes="blue_plain blue_shadow red_plain red_shadow dark_gradient vintage cbc simula"
 for theme in $themes; do
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
-doconce ptex2tex demo envir=minted
-doconce slides_beamer demo --beamer_slide_theme=$theme
+system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
+system doconce ptex2tex demo envir=minted
+system doconce slides_beamer demo --beamer_slide_theme=$theme
 cp demo.tex demo_${theme}.tex
-pdflatex -shell-escape demo_${theme}
+system pdflatex -shell-escape demo_${theme}
 done
 
 # Beamer handouts
 theme=red_plain
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period
-doconce ptex2tex demo envir=minted
-doconce slides_beamer demo --beamer_slide_theme=$theme --handout  # note --handout!
-pdflatex -shell-escape demo
+system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period
+system doconce ptex2tex demo envir=minted
+system doconce slides_beamer demo --beamer_slide_theme=$theme --handout  # note --handout!
+system pdflatex -shell-escape demo
 # Merge slides to 2x3 per page
 pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile demo.pdf demo.pdf
 cp demo.pdf demo_${theme}_handouts2x3.pdf
 
 # Ordinary plain LaTeX document (no slides)
 rm -f demo.aux  # important after beamer
-system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
-system doconce ptex2tex demo envir=minted
-pdflatex -shell-escape demo
+system system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
+system system doconce ptex2tex demo envir=minted
+system pdflatex -shell-escape demo
 
 # IPython notebook
- doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
- pygmentize -l json -o demo.ipynb.html demo.ipynb
+system  doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
+pygmentize -l json -o demo.ipynb.html demo.ipynb
 
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb demo.ipynb.html $dest/demo/
 
 # index.html toc file
-doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window
+system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window
 cp index.html $dest/demo/index.html

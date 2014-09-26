@@ -180,7 +180,7 @@ a:link {
 
 /* End HTML5 Boilerplate adaptations */
 .slide h1 {
-  font-size: 3.8em;
+  font-size: 2.8em; /* changed from 3.8em; */
 }
 
 h1 {
@@ -192,7 +192,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.7em;
+  font-size: 1.5em;  /* changed from 1.7em; */
   font-weight: bold;
   padding-top: .5em;
   margin: 0 0 .66666em 0;
@@ -227,7 +227,7 @@ img, iframe, video {
 }
 
 video, iframe, img {
-  width: 100%;
+  /*width: 100%;*/
   display: block;
   margin: 0 auto;
 }
@@ -242,6 +242,7 @@ pre {
   word-wrap: break-word;
   padding: 1em;
   border: 1px solid #888;
+  font-size: 70%;   /* added by hpl */
 }
 
 em {
@@ -330,7 +331,7 @@ a:hover, a:focus {
 
 .deck-container {
   font-family: "Helvetica", sans-serif;
-  font-size: 1.75em;
+  font-size: 1.4em;  /* changed from 1.75 */
   background: #fff;
 }
 .deck-container > .slide {

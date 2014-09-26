@@ -53,19 +53,27 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 1, None, '___sec0'),
-              (' Mathematical problem ', 1, None, '___sec1'),
-              (' Numerical solution method ', 1, None, '___sec2'),
-              (' Forward Euler explained ', 2, None, '___sec3'),
-              (' Implementation ', 1, None, '___sec4'),
+ 'sections': [(' Goal ', 2, None, '___sec0'),
+              (' Problem setting and methods ', 1, None, '___sec1'),
+              (' We aim to solve the (almost) simplest possible differential equation problem ',
+               2,
+               None,
+               '___sec2'),
+              (' The ODE problem is solved by a finite difference scheme ',
+               2,
+               None,
+               '___sec3'),
+              (' The Forward Euler scheme explained ', 2, None, '___sec4'),
+              (' Implementation ', 2, None, '___sec5'),
+              (' Results ', 1, None, '___sec6'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec5'),
+               '___sec7'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec6')]}
+               '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -90,9 +98,27 @@ MathJax.Hub.Config({
 <a name="part0006"></a>
 <!-- !split -->
 
-<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec5"></a></h2>
+<h2>Implementation  <a name="___sec5"></a></h2>
 
-<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+<p>
+The numerical method is implemented in a Python function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+</code></pre>
+<!-- end verbatim block -->
 
 <p>
 <p>

@@ -52,19 +52,27 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 1, None, '___sec0'),
-              (' Mathematical problem ', 1, None, '___sec1'),
-              (' Numerical solution method ', 1, None, '___sec2'),
-              (' Forward Euler explained ', 2, None, '___sec3'),
-              (' Implementation ', 1, None, '___sec4'),
+ 'sections': [(' Goal ', 2, None, '___sec0'),
+              (' Problem setting and methods ', 1, None, '___sec1'),
+              (' We aim to solve the (almost) simplest possible differential equation problem ',
+               2,
+               None,
+               '___sec2'),
+              (' The ODE problem is solved by a finite difference scheme ',
+               2,
+               None,
+               '___sec3'),
+              (' The Forward Euler scheme explained ', 2, None, '___sec4'),
+              (' Implementation ', 2, None, '___sec5'),
+              (' Results ', 1, None, '___sec6'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec5'),
+               '___sec7'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec6')]}
+               '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -89,11 +97,33 @@ MathJax.Hub.Config({
 <a name="part0004"></a>
 <!-- !split -->
 
-<h2>Forward Euler explained  <a name="___sec3"></a></h2>
+<h2>The ODE problem is solved by a finite difference scheme  <a name="___sec3"></a></h2>
 
+<p>
+<!-- !bpop -->
 
-<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+<ul>
+ <li> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
+ <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+</ul>
 
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+The \( \theta \) rule,
+
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\quad n=0,1,\ldots,N-1
+$$
+
+contains the <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a> (\( \theta=0 \)),
+the <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a> (\( \theta=1 \)),
+and the <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a> (\( \theta=0.5 \))
+schemes.
+<!-- !epop -->
 
 <p>
 <p>

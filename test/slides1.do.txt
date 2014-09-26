@@ -1,36 +1,39 @@
-TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way
-AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & Univiversity of Oslo
+TITLE: Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo
 DATE: Today
 
+!split
+======= This is the first section =======
+# Short title: First
 
 !split
 ===== Figure and bullet list =====
 
-!bslidecell 00  0.35
+!bslidecell 00  0.60
 !bpop
 !bblock (small) Title with comma, and brackets: $[a,b]$
-  * Here is a *wave packet*
-  * It can move
+  * Here is a *wave signal* $f(x-ct)$
+  * It moves with velocity $c$
   * But here it is just a figure
 !eblock
 !epop
 !eslidecell
 
-# Test that it is okay to leave out width if there are only two columns
-
 !bslidecell 01
 !bblock
-FIGURE: [../doc/src/manual/fig/wave1D.png, width=300]
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=300 frac=0.7]
 !eblock
 !eslidecell
 
+!split
+===== Slide with pop-ups in red and notes =====
+
+[hpl: Comments are typeset as usual in DocOnce.]
+
 !bpop highlight-red
-Here we have a paragraph to pop up in red.
+Here we have a paragraph to pop up in red.<linebreak>
 And a line more
 !epop
-
-[hpl: Here are some notes that can go to notes typesetting
-in the slide environment.]
 
 !bnotes
 One can also have ordinary notes.
@@ -40,7 +43,7 @@ Over multiple lines.
 !split
 ===== A LaTeX document =====
 
-# Beamer had trouble with multiple \title{ strings, check that it works.
+## Beamer had trouble with multiple \title{} strings, check that it works.
 
 !bpop
 !bc latex
@@ -57,7 +60,13 @@ Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
 !epop
 
 !bpop
-!bc
+!bnotice
+LaTeX has a lot of backslashes.
+!enotice
+!epop
+
+!bpop
+!bc latex
 \section{Heading}
 bla-bla
 \end{document}
@@ -74,6 +83,13 @@ bla-bla
 </body>
 </html>
 !ec
+
+!split
+======= Second section =======
+
+!bblock
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=600 frac=0.8]
+!eblock
 
 !split
 ===== Some math and computer code =====
@@ -104,12 +120,13 @@ fi
 
 Can use admons to simulate blocks:
 
-!bnotice (large) Key PDE:
-This box has title and math in large font:
+!bpop
+!bnotice (large) Key PDE (with large title and math font):
 !bt
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 !et
 !enotice
+!epop
 
 !bpop
 !bsummary None
@@ -118,9 +135,11 @@ This one pops up after the rest of the slide.
 !esummary
 !epop
 
+!bpop
 !bwarning (small)
 Can use, e.g., a warning admon to have my own notes, preferably
 inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 !ewarning
+!epop

@@ -1,3 +1,7 @@
+# Deprecated! 
+
+Recent changes to deck.js make this no longer usable. If you'd like to make a pull request to update this plugin, please do, otherwise don't use it.
+
 Deck.js-CodeMirror Extension
 ============================
 

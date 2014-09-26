@@ -83,9 +83,10 @@ git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
 -->
 
-<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/fade.css">
 <link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
@@ -95,31 +96,39 @@ git://github.com/barraq/deck.ext.js.git
 <script src="deck.js/modernizr.custom.js"></script>
 
 <style type="text/css">
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .slide .alert-text-small   { font-size: 80%;  }
-    .slide .alert-text-large   { font-size: 130%; }
-    .slide .alert-text-normal  { font-size: 90%;  }
-    .slide .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
-             border-radius:14px
-             background-position: 10px 10px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 30px; /* 55px; if icon */
-     }
-     .slide .alert-block {padding-top:14px; padding-bottom:14px}
-     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
-     /*.slide .alert li {margin-top: 1em}*/
-     .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
-     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -172,7 +181,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
+<h2 style="text-align: center;">On Schemes for Exponential Decay</h2>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -188,9 +197,15 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
+<center><b style="font-weight: bold">Sep 26, 2014</b></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
+
+<p>
+<!-- Each slide starts with !split and a title inside 5 = on each side -->
+<!-- (i.e., DocOnce subsections are used to specify slide titles, -->
+<!-- sections are used for parts/sections of the talk to appear in a -->
+<!-- table of contents) -->
 
 <p>
 
@@ -199,8 +214,9 @@ MathJax.Hub.Config({
 
 <section class="slide">
 
-<h1>Goal  <a name="___sec0"></a></h1>
+<h2>Goal  <a name="___sec0"></a></h2>
 
+<p>
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
@@ -240,8 +256,19 @@ demonstrated.
 
 <section class="slide">
 
-<h1>Mathematical problem  <a name="___sec1"></a></h1>
+<h1 style="text-align: center;">Problem setting and methods  <a name="___sec1"></a></h1>
+<!-- Short title: Problem -->
 
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>We aim to solve the (almost) simplest possible differential equation problem  <a name="___sec2"></a></h2>
+
+<p>
 
 <table border="0">
 <tr>
@@ -249,9 +276,9 @@ demonstrated.
 <p>&nbsp;<br>
 $$
 \begin{align}
-u'(t) &= -au(t),
+u'(t) &= -au(t)
 \tag{1}\\ 
-u(0)  &= I,
+u(0)  &= I
 \tag{2}
 \end{align}
 $$
@@ -265,6 +292,7 @@ Here,
  <p><li> \( t\in (0,T] \)</li>
  <p><li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
  <p><li> \( u(t) \) is the unknown function</li>
+ <p><li> The ODE <a href="#mjx-eqn-1">(1)</a> has the initial condition <a href="#mjx-eqn-2">(2)</a></li>
 </ul>
 <p>
 
@@ -286,8 +314,9 @@ Here,
 
 <section class="slide">
 
-<h1>Numerical solution method  <a name="___sec2"></a></h1>
+<h2>The ODE problem is solved by a finite difference scheme  <a name="___sec3"></a></h2>
 
+<p>
 
 
 <ul>
@@ -303,7 +332,8 @@ Here,
 
 <p class="slide">
 
-Numerical scheme:
+The \( \theta \) rule,
+
 &nbsp;<br>&nbsp;<br>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
@@ -311,6 +341,10 @@ u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
 &nbsp;<br>&nbsp;<br>
 
+contains the <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a> (\( \theta=0 \)),
+the <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a> (\( \theta=1 \)),
+and the <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a> (\( \theta=0.5 \))
+schemes.
 
 </p>
 
@@ -322,8 +356,9 @@ $$
 
 <section class="slide">
 
-<h2>Forward Euler explained  <a name="___sec3"></a></h2>
+<h2>The Forward Euler scheme explained  <a name="___sec4"></a></h2>
 
+<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -335,25 +370,26 @@ $$
 
 <section class="slide">
 
-<h1>Implementation  <a name="___sec4"></a></h1>
+<h2>Implementation  <a name="___sec5"></a></h2>
 
+<p>
 The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "fruity" -->
-<div class="highlight" style="background: #111111"><pre style="line-height: 125%"><span style="color: #fb660a; font-weight: bold">def</span> <span style="color: #ff0086; font-weight: bold">solver</span><span style="color: #ffffff">(I,</span> <span style="color: #ffffff">a,</span> <span style="color: #ffffff">T,</span> <span style="color: #ffffff">dt,</span> <span style="color: #ffffff">theta):</span>
-    <span style="color: #0086d2">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    <span style="color: #ffffff">dt</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">float(dt)</span>           <span style="color: #008800; font-style: italic; background-color: #0f140f"># avoid integer division</span>
-    <span style="color: #ffffff">N</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">int(round(T/dt))</span>     <span style="color: #008800; font-style: italic; background-color: #0f140f"># no of time intervals</span>
-    <span style="color: #ffffff">T</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">N*dt</span>                 <span style="color: #008800; font-style: italic; background-color: #0f140f"># adjust T to fit time step dt</span>
-    <span style="color: #ffffff">u</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">zeros(N+</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span>           <span style="color: #008800; font-style: italic; background-color: #0f140f"># array of u[n] values</span>
-    <span style="color: #ffffff">t</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">linspace(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">T,</span> <span style="color: #ffffff">N+</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">)</span>  <span style="color: #008800; font-style: italic; background-color: #0f140f"># time mesh</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
 
-    <span style="color: #ffffff">u[</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">]</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">I</span>                 <span style="color: #008800; font-style: italic; background-color: #0f140f"># assign initial condition</span>
-    <span style="color: #fb660a; font-weight: bold">for</span> <span style="color: #ffffff">n</span> <span style="color: #ffffff">in</span> <span style="color: #ffffff">range(</span><span style="color: #0086f7; font-weight: bold">0</span><span style="color: #ffffff">,</span> <span style="color: #ffffff">N):</span>    <span style="color: #008800; font-style: italic; background-color: #0f140f"># n=0,1,...,N-1</span>
-        <span style="color: #ffffff">u[n+</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">]</span> <span style="color: #ffffff">=</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">1</span> <span style="color: #ffffff">-</span> <span style="color: #ffffff">(</span><span style="color: #0086f7; font-weight: bold">1</span><span style="color: #ffffff">-theta)*a*dt)/(</span><span style="color: #0086f7; font-weight: bold">1</span> <span style="color: #ffffff">+</span> <span style="color: #ffffff">theta*dt*a)*u[n]</span>
-    <span style="color: #fb660a; font-weight: bold">return</span> <span style="color: #ffffff">u,</span> <span style="color: #ffffff">t</span>
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 <p>
 
@@ -362,8 +398,18 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec5"></a></h2>
+<h1 style="text-align: center;">Results  <a name="___sec6"></a></h1>
 
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec7"></a></h2>
+
+<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -373,8 +419,9 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
+<h2>The artifacts can be explained by some theory  <a name="___sec8"></a></h2>
 
+<p>
 
 <p class="slide">
 
@@ -407,17 +454,13 @@ Key results:
 
 <p>
 
-<p class="slide">
-
 <div class="slide alert alert-block alert-summary alert-text-normal">
 <b style="font-weight: bold">Concluding remarks:</b>
-
+<p>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
 
-
-</p>
 
 
 

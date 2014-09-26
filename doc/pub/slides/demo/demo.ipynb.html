@@ -10,7 +10,7 @@
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;# On Schemes for Exponential Decay\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;**Sep 9, 2014**\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**Sep 26, 2014**\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;img src=\&quot;https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/fig/CN_logo.png\&quot; width=300&gt;\n&quot;</span><span class="p">,</span>
@@ -18,8 +18,12 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;!-- Each slide starts with !split and a title inside 5 = on each side --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;!-- (i.e., DocOnce subsections are used to specify slide titles, --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;!-- sections are used for parts/sections of the talk to appear in a --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;!-- table of contents) --&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;## Goal\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### Goal\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;The primary goal of this demo talk is to demonstrate how to write\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;talks with [DocOnce](https://github.com/hplgit/doconce)\n&quot;</span><span class="p">,</span>
@@ -29,8 +33,11 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;## Problem setting and methods\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;!-- Short title: Problem --&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;## Mathematical problem&quot;</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### We aim to solve the (almost) simplest possible differential equation problem&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -42,7 +49,7 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation}\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;u&#39;(t) = -au(t),\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u&#39;(t) = -au(t)\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\label{ode} \\tag{1}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
@@ -57,7 +64,7 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation} \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;u(0)  = I,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u(0)  = I\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\label{initial:value} \\tag{2}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
@@ -75,6 +82,8 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot; * $u(t)$ is the unknown function\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; * The ODE [(1)](#initial:value) has the initial condition [(2)](#initial:value)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -83,7 +92,7 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;## Numerical solution method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### The ODE problem is solved by a finite difference scheme\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot; * Mesh in time: $0= t_0&lt; t_1 \\cdots &lt; t_N=T$\n&quot;</span><span class="p">,</span>
@@ -93,7 +102,7 @@
       <span class="s2">&quot; * $u^n$: numerical approx to the exact solution at $t_n$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;Numerical scheme:&quot;</span>
+      <span class="s2">&quot;The $\\theta$ rule,&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -110,7 +119,13 @@
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;### Forward Euler explained&quot;</span>
+      <span class="s2">&quot;contains the [Forward Euler](http://en.wikipedia.org/wiki/Forward_Euler_method) ($\\theta=0$),\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;the [Backward Euler](http://en.wikipedia.org/wiki/Backward_Euler_method) ($\\theta=1$),\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;and the [Crank-Nicolson](http://en.wikipedia.org/wiki/Crank-Nicolson) ($\\theta=0.5$)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;schemes.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### The Forward Euler scheme explained&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -132,7 +147,7 @@
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;## Implementation\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### Implementation\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;The numerical method is implemented in a Python function:&quot;</span>
      <span class="p">]</span>
@@ -163,6 +178,8 @@
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;## Results\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;### The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>

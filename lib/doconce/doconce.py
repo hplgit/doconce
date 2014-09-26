@@ -367,6 +367,14 @@ def syntax_check(filestr, format):
             print filestr[m.start()-100:m.start()+len(m.group())+100]
             _abort()
 
+    # Linebreaks must have space before them if verbatim
+    pattern = r'`<linebreak>[^`]'
+    m = re.search(pattern, filestr)
+    if m:
+        print '*** error: need space between inline verbatim code and <linebreak>'
+        print filestr[m.start()-50:m.end()]
+        _abort()
+
     # Footnotes cannot be at the beginning of the line
     pattern = r'^\[\^[A-Za-z].+?\][^:]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)

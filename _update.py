@@ -83,7 +83,7 @@ copied into new, cloned directories before the zip file is packed.)
 (Detected time-consuming incompatibilities Jan, 2014, after reveal and
 deck had undergone significant developments.)
 """
-        ans = raw_input('Sure you want to proceed? ')
+        ans = raw_input('Sure you want to proceed? (y/n) ')
         if ans.lower().startswith('n'):
             return
 

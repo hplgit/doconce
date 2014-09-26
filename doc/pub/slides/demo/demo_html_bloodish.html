@@ -65,19 +65,27 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 1, None, '___sec0'),
-              (' Mathematical problem ', 1, None, '___sec1'),
-              (' Numerical solution method ', 1, None, '___sec2'),
-              (' Forward Euler explained ', 2, None, '___sec3'),
-              (' Implementation ', 1, None, '___sec4'),
+ 'sections': [(' Goal ', 2, None, '___sec0'),
+              (' Problem setting and methods ', 1, None, '___sec1'),
+              (' We aim to solve the (almost) simplest possible differential equation problem ',
+               2,
+               None,
+               '___sec2'),
+              (' The ODE problem is solved by a finite difference scheme ',
+               2,
+               None,
+               '___sec3'),
+              (' The Forward Euler scheme explained ', 2, None, '___sec4'),
+              (' Implementation ', 2, None, '___sec5'),
+              (' Results ', 1, None, '___sec6'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec5'),
+               '___sec7'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec6')]}
+               '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -119,15 +127,22 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
+<center><h4>Sep 26, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
 <p>
+<!-- Each slide starts with !split and a title inside 5 = on each side -->
+<!-- (i.e., DocOnce subsections are used to specify slide titles, -->
+<!-- sections are used for parts/sections of the talk to appear in a -->
+<!-- table of contents) -->
+
+<p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Goal  <a name="___sec0"></a></h1>
+<h2>Goal  <a name="___sec0"></a></h2>
 
+<p>
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
@@ -158,15 +173,22 @@ demonstrated.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Mathematical problem  <a name="___sec1"></a></h1>
+<h1>Problem setting and methods  <a name="___sec1"></a></h1>
+<!-- Short title: Problem -->
 
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2>We aim to solve the (almost) simplest possible differential equation problem  <a name="___sec2"></a></h2>
+
+<p>
 <!-- !bslidecell 00 -->
 
 $$
 \begin{align}
-u'(t) &= -au(t),
+u'(t) &= -au(t)
 \label{ode}\\ 
-u(0)  &= I,
+u(0)  &= I
 \label{initial:value}
 \end{align}
 $$
@@ -179,6 +201,7 @@ Here,
  <li> \( t\in (0,T] \)</li>
  <li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
  <li> \( u(t) \) is the unknown function</li>
+ <li> The ODE \eqref{ode} has the initial condition \eqref{initial:value}</li>
 </ul>
 
 <!-- !eslidecell -->
@@ -191,8 +214,9 @@ Here,
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Numerical solution method  <a name="___sec2"></a></h1>
+<h2>The ODE problem is solved by a finite difference scheme  <a name="___sec3"></a></h2>
 
+<p>
 <!-- !bpop -->
 
 <ul>
@@ -205,19 +229,25 @@ Here,
 
 <p>
 <!-- !bpop -->
-Numerical scheme:
+The \( \theta \) rule,
+
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 \quad n=0,1,\ldots,N-1
 $$
 
+contains the <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a> (\( \theta=0 \)),
+the <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a> (\( \theta=1 \)),
+and the <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a> (\( \theta=0.5 \))
+schemes.
 <!-- !epop -->
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Forward Euler explained  <a name="___sec3"></a></h2>
+<h2>The Forward Euler scheme explained  <a name="___sec4"></a></h2>
 
+<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -225,8 +255,9 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Implementation  <a name="___sec4"></a></h1>
+<h2>Implementation  <a name="___sec5"></a></h2>
 
+<p>
 The numerical method is implemented in a Python function:
 
 <p>
@@ -248,15 +279,22 @@ The numerical method is implemented in a Python function:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec5"></a></h2>
+<h1>Results  <a name="___sec6"></a></h1>
 
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec7"></a></h2>
+
+<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
+<h2>The artifacts can be explained by some theory  <a name="___sec8"></a></h2>
 
+<p>
 <!-- !bpop -->
 Exact solution of the scheme:
 

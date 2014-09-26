@@ -17,7 +17,7 @@ function apt_install {
 }
 
 function pip_install {
-  sudo pip install "$@"
+  sudo pip install --upgrade "$@"
   if [ $? -ne 0 ]; then
     echo "could not install $p - abort"
     exit 1
@@ -28,12 +28,17 @@ sudo apt-get update --fix-missing
 
 # Installation script for doconce and all dependencies
 
-# Translate this text file to .sh and .py scripts with
+# This script is translated from
+# doc/src/manual/debpkg_doconce.txt
+# in the doconce source tree, with help of
 # vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
 # (git clone git@github.com:hplgit/vagrantbox.git)
 
+# Python v2.7 must be installed (doconce does not work with v3.x)
+pyversion=`python -c 'import sys; print sys.version[:3]'`
+if [ $pyversion != '2.7' ]; then echo "Python v${pyversion} cannot be used with DocOnce"; exit 1; fi
+
 # Install downloaded source code in ~/srclib
-# cd
 if [ ! -d srclib ]; then mkdir srclib; fi
 
 # Version control systems
@@ -46,15 +51,20 @@ cd srclib
 git clone https://github.com/hplgit/doconce.git
 if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 
-# Python
+# --- Python-based packages and tools ---
+apt_install python-pip
 apt_install idle
 apt_install ipython
-apt_install python-pip
 apt_install python-pdftools
-pip_install sphinx
-pip_install mako
+
+# Preprocessors
 pip_install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+pip_install mako
+# Publish for handling bibliography
 pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish
+
+# Sphinx (with additional third/party themes)
+pip_install sphinx
 
 pip_install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
 pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme

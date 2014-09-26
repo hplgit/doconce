@@ -9,9 +9,7 @@ FIGURE: [../doc/src/slides/fig/CN_logo, width=300 frac=0.4]
 ## in the output.
 
 !split
-
-## Headings have 5 = for h3/subsection and 7 = for h1/section
-======= Goal =======
+===== Goal =====
 
 The primary goal of this demo talk is to demonstrate how to write
 talks with "DocOnce": "https://github.com/hplgit/doconce"
@@ -56,10 +54,13 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 !enotes
 
+!split
+======= Methods =======
+
 ## New slide is indicated by !split at the beginning of a line:
 
 !split
-======= Mathematical problem =======
+===== Mathematical problem =====
 
 ## Use !bslidecell XY and !eslidecell as begin and end for
 ## defining a cell XY in a table layout of the slide.
@@ -94,7 +95,7 @@ FIGURE: [../doc/src/slides/fig/teacher2, width=250 frac=0.5]
 !eslidecell
 
 !split
-======= Numerical solution method =======
+===== Numerical solution method =====
 
 ## !bpop and !epop surround elements that are to pop up
 ## as we progress in the slide show.
@@ -132,11 +133,16 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 ## with the line matching "def solver" and ending with
 ## "def verify_three", but not including this last line).
 
-======= Implementation =======
+===== Implementation =====
 
 The numerical method is implemented in a Python function:
 
 @@@CODE ../doc/src/slides/src/solver.py  fromto: def solver@def exact_sol
+
+!split
+======= Selected results =======
+# Short title: Results
+
 
 !split
 ===== The Crank-Nicolson method =====

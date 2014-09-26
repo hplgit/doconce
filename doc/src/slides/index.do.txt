@@ -19,7 +19,8 @@ The css style files are slightly changed (compared to the original
 "reveal.js": "http://lab.hakim.se/reveal-js/#/" style):
 left-adjusted, lower case headings with smaller fonts; "darkgray" corresponds to
 the original "default" theme; and pygments is used for typesetting
-code in most of the demos below.
+code in most of the demos below. Alternatively, reveal's pre environment
+is used for code (`--pygments_html_style=none`)
 !enotice
 
 "reveal, beige theme": "demo_reveal_beige.html"
@@ -44,7 +45,7 @@ doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg S
 doconce slides_html demo reveal --html_slide_theme=solarized
 !ec
 
-"reveal, solarized theme with plain pre, no pygments": "demo_reveal_solarized_plainpre.html"
+"reveal, solarized theme with native reveal code": "demo_reveal_solarized_plainpre.html" (plain reveal pre, no pygments)
 
 !bc sys
 doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
@@ -58,49 +59,57 @@ doconce format html demo --pygments_html_style=native --keep_pygments_html_bg SL
 doconce slides_html demo reveal --html_slide_theme=darkgray
 !ec
 
-"reveal, serif theme": "demo_reveal_serif.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=serif
-doconce slides_html demo reveal --html_slide_theme=serif
-!ec
-
-"reveal, night theme": "demo_reveal_night.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=night
-doconce slides_html demo reveal --html_slide_theme=night
-!ec
-
-"reveal, moon theme": "demo_reveal_moon.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
-doconce slides_html demo reveal --html_slide_theme=moon
-!ec
-
-"reveal, simple theme": "demo_reveal_simple.html"
+"reveal, simple theme": "demo_reveal_simple.html" (white)
 
 !bc sys
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=simple
 doconce slides_html demo reveal --html_slide_theme=simple
 !ec
 
-"reveal, blood theme": "demo_reveal_blood.html"
+"reveal, serif theme": "demo_reveal_serif.html" (beige)
+
+!bc sys
+doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=serif
+doconce slides_html demo reveal --html_slide_theme=serif
+!ec
+
+"reveal, night theme": "demo_reveal_night.html" (black)
+
+!bc sys
+doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=night
+doconce slides_html demo reveal --html_slide_theme=night
+!ec
+
+"reveal, moon theme": "demo_reveal_moon.html" (dark blue)
+
+!bc sys
+doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=moon
+doconce slides_html demo reveal --html_slide_theme=moon
+!ec
+
+"reveal, sky theme": "demo_reveal_sky.html" (light blue)
+
+!bc sys
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=sky
+doconce slides_html demo reveal --html_slide_theme=sky
+!ec
+
+
+"reveal, blood theme": "demo_reveal_blood.html" (brown-gray-white)
 
 !bc sys
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=blood
 doconce slides_html demo reveal --html_slide_theme=blood
 !ec
 
-"reveal, cbc footer theme": "demo_reveal_cbc_footer.html"
+"reveal, cbc footer theme": "demo_reveal_cbc_footer.html" (red-gray; note: not suited for too long slides)
 
 !bc sys
 doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
 doconce slides_html demo reveal --html_slide_theme=cbc --html_footer_logo=cbc_footer
 !ec
 
-"reveal, cbc symbol theme": "demo_reveal_cbc_symbol.html"
+"reveal, cbc symbol theme": "demo_reveal_cbc_symbol.html" (red-gray)
 
 !bc sys
 doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=reveal SLIDE_THEME=cbc
@@ -121,23 +130,31 @@ doconce format html demo --pygments_html_style=default --keep_pygments_html_bg S
 doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_symbol
 !ec
 
-"reveal, combined uio+simula theme": "demo_reveal_uio_simula.html"
+"reveal, combined uio+simula theme": "demo_reveal_uio_simula.html" (with plain reveal pre, no pygments)
 
 !bc sys
 doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME="uio+simula"
-doconce slides_html demo reveal --html_slide_theme=simple --html_footer_logo=uio_simula_symbol
+doconce slides_html demo reveal --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
 !ec
-
-"reveal, sky theme": "demo_reveal_sky.html"
 
 ===== deck.js HTML5 slides =====
 
 !bnotice
-The `sandstone.default` css style is slightly changed:
+Most of the css styles are slightly changed:
 somewhat smaller fonts for
-headings and verbatim code, and figure sizes in `sandstone.default`
+headings and verbatim code, and figure sizes
 are respected.
+
+Also note that most of the deck.js styles automatically reduce the font
+in overfull slides. Use reveal.js if this is not desired.
 !enotice
+
+"deck, swiss theme": "demo_deck_swiss.html" (white, red headings)
+
+!bc sys
+doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=swiss
+doconce slides_html demo deck --html_slide_theme=swiss
+!ec
 
 "deck, beamer theme": "demo_deck_beamer.html"
 
@@ -160,76 +177,82 @@ doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SL
 doconce slides_html demo deck --html_slide_theme=neon
 !ec
 
-"deck, sandstone.aurora theme": "demo_deck_sandstone_aurora.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg    SLIDE_TYPE=deck SLIDE_THEME=sandstone-aurora
-doconce slides_html demo deck --html_slide_theme=sandstone.aurora
-!ec
-
-"deck, sandstone.dark theme": "demo_deck_sandstone_dark.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.dark
-doconce slides_html demo deck --html_slide_theme=sandstone.dark
-!ec
-
-"deck, sandstone.default theme": "demo_deck_sandstone_default.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.default
-doconce slides_html demo deck --html_slide_theme=sandstone.default
-!ec
-
-"deck, sandstone.firefox theme": "demo_deck_sandstone_firefox.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.firefox
-doconce slides_html demo deck --html_slide_theme=sandstone.firefox
-!ec
-
-"deck, sandstone.light theme": "demo_deck_sandstone_light.html",
-"deck, sandstone.mdn theme": "demo_deck_sandstone_mdn.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=emacs --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.light
-doconce slides_html demo deck --html_slide_theme=sandstone.light
-!ec
-
-"deck, sandstone.mightly theme": "demo_deck_sandstone_mightly.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
-doconce slides_html demo deck --html_slide_theme=sandstone.mightly
-!ec
-
-"deck, swiss theme": "demo_deck_swiss.html"
-
-!bc sys
-doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=swiss
-doconce slides_html demo deck --html_slide_theme=swiss
-!ec
-
-"deck, web-2_0 theme": "demo_deck_web-2_0.html"
+"deck, web-2_0 theme": "demo_deck_web-2_0.html" (white, blue headings)
 
 !bc sys
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=web-2.0
 doconce slides_html demo deck --html_slide_theme=web-2.0
 !ec
 
-"deck, cbc footer theme": "demo_deck_cbc_footer.html"
+"deck, cbc footer theme": "demo_deck_cbc_footer.html" (red-gray; note: too long slides cannot be scrolled)
 
 !bc sys
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
 doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_footer.png
 !ec
 
-"deck, cbc symbol theme": "demo_deck_cbc_symbol.html"
+"deck, cbc symbol theme": "demo_deck_cbc_symbol.html" (red-gray)
 
 !bc sys
 doconce format html demo --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
 doconce slides_html demo deck --html_slide_theme=cbc --html_footer_logo=cbc_symbol.png
 !ec
+
+!bnotice Note
+The sandstone family of deck.js styles have gradients in the color
+backgrounds, which is not ideal for too long slides that can be
+vertically scrolled (cf. the last slide).
+!enotice
+
+"deck, sandstone.default theme": "demo_deck_sandstone_default.html" (beige)
+
+!bc sys
+doconce format html demo --pygments_html_style=perldoc --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.default
+doconce slides_html demo deck --html_slide_theme=sandstone.default
+!ec
+
+"deck, sandstone.dark theme": "demo_deck_sandstone_dark.html" (gray)
+
+!bc sys
+doconce format html demo --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.dark
+doconce slides_html demo deck --html_slide_theme=sandstone.dark
+!ec
+
+"deck, sandstone.mdn theme": "demo_deck_sandstone_mdn.html" (red)
+
+!bc sys
+doconce format html demo --pygments_html_style=emacs --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mdn
+doconce slides_html demo deck --html_slide_theme=sandstone.mdn
+!ec
+
+"deck, sandstone.aurora theme": "demo_deck_sandstone_aurora.html" (dark purple)
+
+!bc sys
+doconce format html demo --pygments_html_style=fruity --keep_pygments_html_bg    SLIDE_TYPE=deck SLIDE_THEME=sandstone-aurora
+doconce slides_html demo deck --html_slide_theme=sandstone.aurora
+!ec
+
+"deck, sandstone.light theme": "demo_deck_sandstone_light.html" (light purple)
+
+!bc sys
+doconce format html demo --pygments_html_style=emacs --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.light
+doconce slides_html demo deck --html_slide_theme=sandstone.light
+!ec
+
+"deck, sandstone.firefox theme": "demo_deck_sandstone_firefox.html" (light blue)
+
+!bc sys
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.firefox
+doconce slides_html demo deck --html_slide_theme=sandstone.firefox
+!ec
+
+"deck, sandstone.mightly theme": "demo_deck_sandstone_mightly.html" (white, small font)
+
+!bc sys
+doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=sandstone.mightly
+doconce slides_html demo deck --html_slide_theme=sandstone.mightly
+!ec
+
 
 ===== dzslides and csss HTML5 slides =====
 
@@ -250,7 +273,7 @@ doconce slides_html demo csss --html_slide_theme=csss_default
 
 ===== Plain HTML slides =====
 
-"HTML blueish": "demo_html_blueish.html" (plain HTML, blue color, one long file, 8 blank lines separate slides)
+"HTML blueish": "demo_html_blueish.html" (plain HTML, blue color, one long file, blank lines and a color line separate slides)
 
 !bc sys
 doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish
@@ -341,7 +364,7 @@ doconce format ipynb demo
 doconce format ipynb demo --figure_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/
 !ec
 
-===== Doconce talk: Why and How =====
+===== DocOnce talk: Why and How =====
 
  *  "reveal w/darkgrey": "../scientific_writing-reveal.html",
  *  "deck w/sandstone.default": "../scientific_writing-deck.html",
