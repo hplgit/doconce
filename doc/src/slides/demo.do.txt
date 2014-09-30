@@ -64,11 +64,16 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 !enotes
 
+## Parts in slides that come up as \section{} in Beamer
+## are typeset with section heading (7 =) - this is used
+## to divide a talk into natural parts such as methods and
+## results in the present demo
+
 !split
 ======= Problem setting and methods =======
 # Short title: Problem
 
-FIGURE: [fig/method, width=800 frac=1.0]
+FIGURE: [fig/method, width=600 frac=0.8]
 
 ## New slide is indicated by !split at the beginning of a line:
 
@@ -166,7 +171,7 @@ The numerical method is implemented in a Python function:
 !split
 ======= Results =======
 
-FIGURE: [fig/results, width=800 frac=1.0]
+FIGURE: [fig/results, width=600 frac=0.8]
 
 !split
 ===== The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone =====
