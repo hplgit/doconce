@@ -68,6 +68,8 @@ demonstrated.
 ======= Problem setting and methods =======
 # Short title: Problem
 
+FIGURE: [fig/method, width=800 frac=1.0]
+
 ## New slide is indicated by !split at the beginning of a line:
 
 !split
@@ -163,6 +165,8 @@ The numerical method is implemented in a Python function:
 
 !split
 ======= Results =======
+
+FIGURE: [fig/results, width=800 frac=1.0]
 
 !split
 ===== The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone =====

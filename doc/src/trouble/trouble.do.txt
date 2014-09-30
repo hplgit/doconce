@@ -523,6 +523,15 @@ reST does not like jumps in the levels of headings. For example, you cannot
 have a `===` (paragraph) heading after a `=======` (section) heading without
 a `====` (subsection) heading in between.
 
+===== Subsection headings appear at the level sections in the table of contents =====
+
+This is a problem that arises if you split a Sphinx document at the
+subsection level. Then the subsection is the highest level in that part,
+and it will then move up to the section level in the table of contents
+(this is done by Sphinx, and DocOnce has no influence on the process).
+The only way at present to avoid this wrong table of contents,
+is to only split Sphinx documents at the section level.
+
 ===== Lists do not appear in .rst files =====
 
 Check if you have a comment right above the list. That comment

@@ -2,7 +2,7 @@
 <!-- TITLE: Scientific Writing Anno 2013: The DocOnce Way -->
 % Scientific Writing and Publishing Anno 2014
 % **Hans Petter Langtangen**
-% Sep 26, 2014
+% Sep 30, 2014
 
 ![](fig/doconce1b.png)
 
