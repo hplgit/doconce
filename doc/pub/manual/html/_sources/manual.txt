@@ -8,7 +8,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 31, 2014
+:Date: Oct 1, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -99,7 +99,7 @@ documents (books in particular) with much mathematics and computer
 code. DocOnce can also output Sphinx (not supported by Pandoc or
 MultiMarkdown), a format that is very attractive for presenting
 scientific material and software documentation on the web.
-(DocOnce allows basic Markdown syntax as input, extended with DocOnce
+(DocOnce allows basic `Markdown syntax <https://guides.github.com/features/mastering-markdown/>`__ as input, extended with DocOnce
 syntax as you like.)
 
 **Disclaimer.**
@@ -187,21 +187,18 @@ Lists
 -----
 
 An unordered bullet list makes use of the ``*`` as bullet sign
-and is indented as follows
+and is consistently *indented* by some chosen spaces as follows
 
 .. code-block:: doconce
 
            * item 1
-        
            * item 2
-        
              * subitem 1, if there are more
                lines, each line must
-               be intended as shown here
-        
+               be exactly intended as shown here
+               (i.e., start in the same column)
              * subitem 2,
                also spans two lines
-        
            * item 3
 
 This list gets typeset as
@@ -212,7 +209,8 @@ This list gets typeset as
 
      * subitem 1, if there are more
        lines, each line must
-       be intended as shown here
+       be exactly intended as shown here
+       (i.e., start in the same column)
 
      * subitem 2,
        also spans two lines
@@ -2040,7 +2038,7 @@ Here is an example:
    the PDF file is not always available. The ``movie15`` package also leads
    to problems because Acrobat Reader depends on an external player to
    show the files, and the correct plugins to launch players with support
-   for a given format are not trivial to install. Even the plain `h:ref:`run:file``
+   for a given format are not trivial to install. Even the plain `h:ref:`run:file"
    command relies on an external player and not all formats will be
    supported on a given computer.
    
@@ -2139,559 +2137,6 @@ set the (terminal) prompt that prefixes the command:
 
 .. !split
 
-.. _inline:tagging:
-
-Inline Tagging
---------------
-
-.. index:: inline tagging
-
-.. index:: emphasized words
-
-.. index:: boldface words
-
-.. index:: verbatim text
-
-.. index:: inline comments
-
-.. index:: non-breaking space
-
-.. index:: nbsp
-
-DocOnce supports tags for *emphasized phrases*, **boldface phrases**,
-and ``verbatim text`` (also called type writer text, for inline code),
-plus LaTeX/TeX inline mathematics, such as :math:`\nu = \sin(x)`.
-Links are easy to define, either with a `text <http://google.com>`__ or
-just a plain `<http://google.com>`_.
-Also a non-breaking space (to avoid linebreak), linebreak,
-
-| m-dash (as in m---dash), and horizontal rule can be specified (below).
-
----------
-
-
-.. admonition:: Limitation of inline tagging
-
-   Since DocOnce applies regular expressions to recognize inline tagging,
-   there might be cases where the tags are not correctly interpreted
-   and translated. Fortunately, most such pitfalls are easily circumvented.
-   The `troubleshooting document <http://hplgit.github.io/doconce/doc/pub/trouble/trouble/trouble.html#trouble:pitfalls>`__ shows some
-   examples.
-
-
-
-
-Emphasized Words
-~~~~~~~~~~~~~~~~
-
-Emphasized text is typeset inside a pair of asterisk, and there should
-be no spaces between an asterisk and the emphasized text, as in
-
-.. code-block:: doconce
-
-        *emphasized words*
-
-Boldface font is recognized by an underscore instead of an asterisk:
-
-.. code-block:: doconce
-
-        _several words in boldface_ followed by *ephasized text*.
-
-The line above gets typeset as
-**several words in boldface** followed by *ephasized text*.
-One should only have pure text (no mathematical formulas) between the boldface
-or emphasize markers, and no leading or trailing blanks (with such blanks,
-the text will not be recognized as boldface or emphasize).
-
-Colored text is formatted as
-
-.. code-block:: doconce
-
-        some text color{red}{more text in red}
-
-The current output format does not support colors, however.
-
-Inline Verbatim Text
-~~~~~~~~~~~~~~~~~~~~
-
-Verbatim text, typically used for short inline code,
-is typeset between backticks:
-
-.. code-block:: doconce
-
-        `call myroutine(a, b)` looks like a Fortran call
-        while `void myfunc(double *a, double *b)` must be C.
-
-The typesetting result looks like this:
-``call myroutine(a, b)`` looks like a Fortran call
-while ``void myfunc(double *a, double *b)`` must be C.
-Note that there must be no leading or trailing spaces inside the backticks.
-
-It is recommended to have inline verbatim text on the same line in
-the DocOnce file, because some formats (LaTeX in combination with
-the ``ptex2tex`` program (but not ``doconce pretex``))
-will have problems with inline verbatim text that is split over two lines.
-
-
-.. note::
-   Watch out for mixing backticks and asterisk (i.e., verbatim and
-   emphasized code): the DocOnce interpreter is not very smart in
-   detecting such errors. A missing backtick will also quickly create
-   strange output. If you suspect inline code to be the
-   source of problems in the final format, examine the
-   DocOnce source and the output.
-
-
-
-
-Links to Web Addresses
-~~~~~~~~~~~~~~~~~~~~~~
-
-Web addresses with links are typeset as
-
-.. code-block:: doconce
-
-        some URL like "Search Google": "http://google.com".
-
-which appears as some URL like `Search Google <http://google.com>`__.
-The space after colon is optional, but it is important to enclose the
-link and the URL in double quotes.
-
-To have the URL address itself as link text, put an "URL" or URL
-before the address enclosed in double quotes:
-
-.. code-block:: doconce
-
-        Click on this link: URL: "https://github.com/hplgit/doconce".
-
-which gets rendered as
-Click on this link: `<https://github.com/hplgit/doconce>`_.
-
-(There is also support for lazy writing of URLs: any http or https web address
-with a leading space and a trailing space, comma, semi-colon, or question
-mark (but not period!) becomes a link with the web address as link text.)
-
-Mail Addresses
-~~~~~~~~~~~~~~
-
-Links that launches a mail to a specified address is written as
-ordinary URLs, typically as
-
-.. code-block:: doconce
-
-        Send "mail": "mailto:hpl@simula.no"
-        # Alternative:
-        to "`hpl@simula.no`": "mailto:hpl@simula.no".
-
-which appears as Send `mail <mailto:hpl@simula.no>`__ to
-`hpl@simula.no <mailto:hpl@simula.no>`__.
-
-Links to Local Files
-~~~~~~~~~~~~~~~~~~~~
-
-Links to files ending in ``.txt``, ``.html``, ``.pdf``, ``.py``, ``.f``,
-``.f77``, ``.f90``, ``.f95``, ``.sh``, ``.csh``, ``.ksh``, ``.zsh``,
-``.c``, ``.cpp``, ``.cxx``, ``.pl``, and ``.java`` follows the same
-setup:
-
-.. code-block:: doconce
-
-        see the "DocOnce Manual": "manual.do.txt".
-
-which appears as see the `DocOnce Manual <manual.do.txt>`__.
-However, linking to local files like this needs caution:
-
-  * In the ``html`` format the links work well if the files are
-    supplied with the ``.html`` with the same relative location.
-
-  * In the ``latex`` and ``pdflatex`` formats, such links in PDF files
-    will unless the ``.tex`` file has a full URL specified through
-    a ``\hyperbaseurl`` command and the linked files are located correctly
-    relative to this URL. Otherwise full URL must be used in links.
-
-  * In the ``sphinx`` format, links to local files do not work unless the
-    files reside in a ``_static`` directory (a warning is issued about this).
-
-As a consequence, we strongly recommend that one copies the relevant
-files to a ``_static`` or ``_static-name`` directory and makes links to
-files in this directory only (``name`` is the nickname of the DocOnce
-document, usually the name of the parent directory or main document).
-Other links to files should use the full URL. If DocOnce is used
-for HTML output only, then plain links to local files work fine.
-
-If you want a link to a local source code file and have it
-viewed in the browser rather than being downloaded, we recommend
-to transform the source code file to HTML format by running
-``pygmentize``, e.g.,
-
-.. code-block:: text
-
-        Terminal> pygmentize -l bash -f html -O full,style=emacs \
-                  -o _static/make.sh.html subdir/make.sh
-
-Then you can link to ``_static/make.sh.html`` instead of
-``subdir/make.sh``. Here is an example where the reader
-has the file available as ``src/myprog.py`` in her
-software and the document links to ``_static/myprog.py``:
-
-.. code-block:: doconce
-
-        See the code URL:"src/myprog.py" ("view: "_static/myprog.py.html").
-
-Links to files with other extensions are typeset with
-*the filename as link text*. The syntax consists of
-the keyword URL, followed by a colon, and then the filename enclosed
-in double quotes:
-
-.. code-block:: doconce
-
-        URL: "manual.html"
-
-resulting in the link `<manual.html>`_.
-
-.. This is now automatically carried out by the autogenerated
-
-.. script for sphinx:
-
-.. For such local links to
-
-.. work with the ``sphinx`` format, the ``.rst`` file needs a fix, carried
-
-.. out by
-
-.. !bc sys
-
-.. doconce sphinxfix_localURLs mydoc.rst
-
-.. !ec
-
-.. (The files, such as ``manual.html``, are then copied to a subdirectory
-
-.. ``_static``, which must be manually copied to the Sphinx directory's
-
-.. ``_static`` directory - links in the ``.rst`` files are automatically
-
-.. adjusted.)
-
-.. index:: quotation syntax
-
-Quotes
-~~~~~~
-
-Quotations employ either the emphasized font or double quotation marks.
-In the latter case, one should not use the character ``"`` but rather
-the (LaTeX-inspired) construction with double backticks and two single
-quotes:
-
-.. code-block:: doconce
-
-        This is a sentence with ``words to be quoted''.
-
-To candidates for find double quotes that should be transferred to the above
-type of quotation (which is a common mistake),
-one can run a regular expression search like
-
-.. code-block:: text
-
-        Terminal> find . -name '*.do.txt' -exec grep -E \
-                  '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
-
-This search may give many false hits as double quotes are frequently
-used in computer code and preprocessor instructions (URLs and hyperlinks
-should not give hits in the above regular expressions).
-
-.. index:: non-breaking space
-
-Non-Breaking Space
-~~~~~~~~~~~~~~~~~~
-
-The non-breaking space character is tilde:
-
-.. code-block:: doconce
-
-        Here comes a long line with a specification of a number with unit at the end,
-        which is an example that requires a "non-breaking space character":
-        "http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
-        in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
-        meaning, as in `y = ~x`, is not affected. The non-breaking character only
-        works between characters, numbers, and the math dollar sign.)
-
-This is rendered as
-
-
-..
-
-    Here comes a long line with a specification of a number with unit at the end,
-    which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`__: 7.4 |nbsp| km is traveled
-    in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s. (Computer code, where the tilde has a
-    meaning, as in ``y = ~x``, is not affected. The non-breaking character only
-    works between characters, numbers, and the math dollar sign.)
-
-
-
-.. index:: footnotes
-
-Horizontal rule
-~~~~~~~~~~~~~~~
-
-A horizontal rule for separating content vertically, like this:
-
----------
-
-is typeset as four or more hyphens on a single line:
-
-.. code-block:: doconce
-
-        ---------
-
-em-dash
-~~~~~~~
-
-The ``latex``, ``pdflatex``, ``sphinx``, and ``html`` formats support em-dash,
-indicated by three hyphens: ``---``. The em-dash has two applications: 1)
-as alternative to a hyphen with space around in a sentence---except that
-there are no spaces around the em-dash, and 2) origin of quotes,
-where there is no space between the end of the quote and the m-dash:
-
-
-..
-
-    *Premature optimization is the root of all evil.*--- Donald Knuth.
-
-
-The associated DocOnce source reads
-
-.. code-block:: doconce
-
-        !bquote
-        *Premature optimization is the root of all evil.*--- Donald Knuth.
-        !equote
-
-Ampersand
-~~~~~~~~~
-
-An ampersand, as in Guns & Roses or Texas A&M, is written as a
-plain ``&`` *with space(s) on both sides*. Single upper case letters on each
-side of ``&``, as in ``Texas A & M``, remove the spaces and result in
-Texas A&M, while words on both sides of ``&``, as in ``Guns & Roses``,
-preserve the spaces: Guns & Roses. Failing to have spaces before and
-after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
-``latex``, and ``pdflatex`` formats.
-
-Footnotes
-~~~~~~~~~
-
-Typesetting of footnotes employs a common email or Extended Markdown syntax:
-
-.. code-block:: doconce
-
-        Footnotes are typeset according to the output format[^typesetting].
-        The syntax is optional spaces, opening bracket, hat,
-        a name without spaces [^remedy-for-name-with-spaces], and closing
-        bracket. The logical name of the footnote is not used in LaTeX,
-        HTML, reStructuredText, or Sphinx, because these languages employ
-        numbered footnotes. Other formats employ the logical name.
-        
-          [^typesetting]: Typesetting of the footnote depends on the format.
-        Plain text does nothing, LaTeX removes the
-        definition and inserts the footnote as part of the LaTeX text.
-        reStructuredText and Sphinx employ a similar type of typesetting
-        as Extended Markdown and DocOnce, and in HTML we keep the same
-        syntax, just displayed properly in HTML.
-        
-        Footnotes are preferably defined after the paragraph they are used.
-        The definition is the footnote syntax (some optional space, bracket,
-        hat, name, bracket) followed by colon and a text.
-        
-        [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
-        case of spaces.
-
-The text above looks as follows.
-
-Footnotes are typeset according to the output format [#typesetting]_.
-The syntax is optional spaces, opening bracket, hat,
-a name without spaces [#remedy-for-name-with-spaces]_, and closing
-bracket. The logical name of the footnote is not used in LaTeX,
-HTML, reStructuredText, or Sphinx, because these languages employ
-numbered footnotes. Other formats employ the logical name.
-
-.. [#typesetting] Typesetting of the footnote depends on the format.
-   Plain text does nothing, LaTeX removes the
-   definition and inserts the footnote as part of the LaTeX text.
-   reStructuredText and Sphinx employ a similar type of typesetting
-   as Extended Markdown and DocOnce, and in HTML we keep the same
-   syntax, just displayed properly in HTML.
-
-Footnotes are preferably defined after the paragraph they are used.
-The definition is the footnote syntax (some optional space, bracket,
-hat, name, bracket) followed by colon and a text.
-
-.. [#remedy-for-name-with-spaces] Just put in dashes or underscores in
-   case of spaces.
-
-Inline Comments
-~~~~~~~~~~~~~~~
-
-DocOnce also supports inline comments in the text:
-
-.. code-block:: doconce
-
-        [name: comment]
-
-where ``name`` is (e.g.) the name of the author of the comment, and ``comment`` is a
-plain text text. Note that *there must be a space after the colon*,
-otherwise the comment is not recognized. The name can contain upper and lower
-case characters, digits, single quote, ``+`` and ``-``, as well
-as space. Next is an example.
-[**hpl's comment 1**: Inline comments can span several lines, if desired.]
-
-The name and comment are visible in the output unless ``doconce format``
-is run with a command-line argument ``--skip_inline_comments``
-(see the section :ref:`doconce2formats` for an example). Inline comments
-are helpful during development of a document since different authors
-and readers can comment on formulations, missing points, etc.
-All such comments can easily be removed from the ``.do.txt`` file
-by ``doconce remove_inline_comments`` (see the section :ref:`doconce2formats`).
-
-Inline comments are typeset in a simple way: boldface name, a
-numbering of the comment, and then the comment, all in red and in
-parenthesis. However, with the ``--latex_todonotes`` option, LaTeX will
-apply the ``todonotespackage`` to typeset the comments in very visible
-color boxes.
-
-Inline Comments for Editing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Inline comments can also be used to markup editing of the text.
-The following syntax is supported:
-
-.. code-block:: doconce
-
-        [add: ,]
-        [add: .]
-        [add: ;]
-        [del: ,]
-        [del: ,]
-        [del: .]
-        [del: ;]
-        [add: some text]
-        [del: some text]
-        [edit: some text -> some replacement for text]
-        [name: some text -> some replacement for text]
-
-That is, one can add, delete, and replace text, and adding or deleting
-a comma, period, or semicolon leads to special typesetting where
-such a small edit is highlighted. Below
-is an example of a text with inline editing.
-
-Originally, we have the text
-
-.. code-block:: doconce
-
-        First consider a quantity $Q$. Without loss of generality, we assume
-        $Q>0$. There are three, fundamental, basic property of $Q$.
-
-Then, some reader wants to change this text and explicitly demonstrate
-what is deleted, added, and replaced (as when using track changes
-in Microsoft Word). The use of the ``add``, ``del``, and replacement
-construction with ``->`` may look as follows.
-
-.. code-block:: doconce
-
-        First[add: ,] consider [edit: a quantity -> the flux]
-        [del: $Q$. Without loss of generality,
-        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
-        [edit: property -> properties] of $Q$. [add: These are not
-        important for the following discussion.]
-
-The text gets rendered as
-
-
-..
-
-    First, (**edit 2: add comma**) consider (**edit 3: remove** a quantity) (**insert:**)the flux (**end insert**)
-    (**edit 4**: **delete** :math:`Q`. Without loss of generality,
-    we assume) :math:`Q>0`. There are three (**edit 5**: delete comma) fundamental(**edit 6**: **delete** , basic)
-    (**edit 7: remove** property) (**insert:**)properties (**end insert**) of :math:`Q`.  (**edit 8: add**) These are not
-    important for the following discussion. (**end add**)
-
-
-
-Such inline comments with edits are only given special typesetting in
-the output formats ``latex``, ``pdflatex``, ``html``, and ``sphinx``.
-Otherwise, just the DocOnce syntax is shown (but that is also quite
-readable as edit instructions.)
-
-The editing implied by the edit comments can be implemented in the DocOnce
-file by the command
-
-.. code-block:: text
-
-        Terminal> doconce apply_edit_comments mydoc.do.txt
-
-Forced Line Breaks
-~~~~~~~~~~~~~~~~~~
-
-By ending a line with ``<linebreak>`` the output format has a forced
-linebreak at this point. This can be used to typeset poems,
-songs (if not in a verbatim block), or the origin of quotes.
-Here is an example:
-
-.. code-block:: doconce
-
-        !bquote
-        *Program writing is substantially more demanding than book
-        writing. Why is it so? I think the main reason is that a larger
-        attention span is needed when working on a large computer program
-        than when doing other intellectual tasks.* <linebreak>
-        Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
-        !equote
-
-is rendered as
-
-
-..
-
-    *Program writing is substantially more demanding than book
-    writing. Why is it so? I think the main reason is that a larger
-    attention span is needed when working on a large computer program
-    than when doing other intellectual tasks.* 
-    
-    | Donald Knuth [Ref1]_ (p. 18), computer scientist, 1938-.
-
-
-
-Inline Mathematics
-~~~~~~~~~~~~~~~~~~
-
-Inline mathematics is written as in LaTeX, i.e., inside dollar signs.
-Many formats leave this syntax as it is (including to dollar signs),
-hence nice math formatting is only obtained in LaTeX, HTML, MediaWiki,
-and Sphinx (Epytext has some inline math support that is utilized).
-However, mathematical expressions in LaTeX syntax often contains
-special formatting commands, which may appear annoying in plain
-text. DocOnce therefore supports an extended inline math syntax where
-the writer can provide an alternative syntax suited for formats close
-to plain ASCII:
-
-.. code-block:: doconce
-
-        Here is an example on a linear system
-        ${\bf A}{\bf x} = {\bf b}$|$Ax=b$,
-        where $\bf A$|$A$ is an $n\times n$|$nxn$ matrix, and
-        $\bf x$|$x$ and $\bf b$|$b$ are vectors of length $n$|$n$.
-
-That is, we provide two alternative expressions, both enclosed in
-dollar signs and separated by a pipe symbol, the expression to the
-left is used in formats with LaTeX support (``latex``, ``pdflatex``, ``html``,
-``sphinx``, ``mwiki``), while the expression to the right is used for
-all other formats.  The above text is typeset as "Here is an example
-on a linear system :math:`{\bf A}{\bf x} = {\bf b}`, where :math:`\bf A`
-is an :math:`n\times n` matrix, and :math:`\bf x` and :math:`\bf b`
-are vectors of length :math:`n`."
-
-.. !split
-
 Comments
 --------
 
@@ -2753,7 +2198,7 @@ the plain text, Epytext, and StructuredText formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 ``rst`` and ``sphinx`` formats, the end effect is the same, but
-the "label" and "ref" commands are first translated to the proper
+the ``label" and "ref" commands are first translated to the proper
 reST commands by ``doconce format``. In the HTML and (Google
 Code) wiki formats, labels become anchors and references become links,
 and with LaTeX "label" and "ref" are just equipped with backslashes so
@@ -2882,7 +2327,7 @@ Very often a reference to a chapter in a book becomes just
 a reference to a complete document, not a specific section,
 if chapters are compiled individually. For ``latex`` and ``pdflatex``
 output one would then do a reference `the chapter :ref:`ch:eqs``
-as just ``[Ref2]_``. That is, one would just use
+as just ``[Ref1]_``. That is, one would just use
 the ``cite`` text and not ``internal`` plus ``cite``. This is enabled
 by writing the generalized reference with ``refch`` instead of
 ``ref``:
@@ -3035,7 +2480,7 @@ The rendered text in the current format becomes
     As explained in
     a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`__ in
     the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
-    [Ref3]_, DocOnce documents may include tables.
+    [Ref2]_, DocOnce documents may include tables.
 
 
 
@@ -3070,7 +2515,7 @@ The resulting rendered text in the current format becomes
     As explained in
     the document
     `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
-    [Ref3]_, DocOnce documents may include tables.
+    [Ref2]_, DocOnce documents may include tables.
 
 
 
@@ -3135,167 +2580,6 @@ the index keywords should be placed above the heading.
 The keywords in the index are automatically placed in a meta
 tag in ``html`` output such that search engines can make use of the them.
 
-Bibliography/References
------------------------
-
-DocOnce applies the software tool `Publish <https://bitbucket.org/logg/publish>`__ to handle the bibliography in a
-document. With Publish it is easy to import BibTeX data and maintain a
-database in a clean, self-explanatory textual format. From the Publish
-format it is easy to go BibTeX and reST or straightforward DocOnce
-typesetting (and from there to HTML, plain text, wiki formats, and so
-on).
-
-Installing Publish is straightforward: just checkout the code on
-`bitbucket.org <https://bitbucket.org/logg/publish>`__, move to the
-``publish`` directory and run ``sudo python setup.py install``.
-
-Importing your data to the Publish database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Many scientists have their bibliographic data in the BibTex format. Here we
-assume that you have two files, ``refs1.bib`` and ``refs2.bib``. These can
-be imported to a Publish database, residing in the file ``papers.pub``,
-by the commands
-
-.. code-block:: text
-
-        publish import refs1.bib
-        publish import refs2.bib
-
-During import, Publish may ask you for accepting the name of new
-institutions or journals. Publish already have a database of journals
-and institutions/departments, but when you add new, you also get
-a file ``venues.list`` (in the current working directory) which will be used
-for future imports in this directory. Make sure you store ``publish.pub``
-and ``venues.list`` along with your DocOnce document files (e.g., add them to
-your version control system).
-
-Requirements to input data
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-.. note::
-   Note that Publish only accepts BibTeX files where the keys (author,
-   title, etc.) are in lower case and where the data are enclosed in
-   curly braces. You may need to edit your BibTeX files to meet this
-   demand.
-
-
-
-
-The utility ``doconce fix_bibtex4publish file.bib`` fixes several known
-issues with BibTeX files such that Publish has a better chance of
-accepting the entries. Run this utility first, then run Publish,
-respond to any requirements that Publish spits out, remove ``papers.pub``
-if it exists, and run the import statements again.
-
-Although references are visible as numbers only in the
-output, it is recommended to have apply a nice, consistent
-typesetting of your keys. It is suggested to use the following scheme:
-
-.. code-block:: doconce
-
-        Langtangen_2003a          # single author
-        Langtangen_Pedersen_2002  # two authors
-        Langtangen_et_al_2002     # three or more authors
-
-One can add a, b, c, and so forth if several keys feature the same
-authors and year.
-
-Adding new references to the database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-When you get some new BibTeX references you simply put them in
-a file, say ``refs3.pub`` and run the ``publish import refs3.pub`` command
-to update the database. You may also consider editing the ``papers.pub``
-file directly when adding new references.
-
-Exporting the database
-~~~~~~~~~~~~~~~~~~~~~~
-
-Export of everything in the database to
-BibTeX is done by
-
-.. code-block:: text
-
-        publish export mybibtexfile.bib
-
-You can easily export subsets of the database, e.g., only papers associated
-with a particular author (the Publish manual has details on how this is
-done). DocOnce will automatically export the database to BibTeX if
-the output format is ``latex`` or ``pdflatex``.
-
-Referring to publications
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-We use the command
-
-.. code-block:: doconce
-
-        cite{key}
-
-to refer to a publication with bibliographic key ``key``.
-Here is an example: [Ref4]_ discussed propagation of
-large destructive water waves, [Ref5]_ gave
-an overview of numerical methods for solving the Navier-Stokes equations,
-while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in [Ref6]_.
-The book chapter [Ref7]_ contains information on
-C++ software tools for programming multigrid methods. A real retro
-reference is [Ref8]_ about a big FORTRAN package.
-Multiple references are also possible, e.g., see
-[Ref4]_ [Ref7]_.
-
-A LaTeX-style cite command with additional detailed reference is also possible,
-
-.. code-block:: doconce
-
-        cite[details]{key}
-
-for example as in [Ref5]_ (Section 2)
-or [Ref5]_ (Equation (4.2)).
-
-In LaTeX, the ``cite`` command is directly translated to the
-corresponding LaTeX version of the command with a backslash; in reST
-and Sphinx the citations becomes links, with the citation keys as
-names; in HTML the citations are numbered from 1, 2, and so forth
-according to their appearance, and the numbers appear as links; while
-in other formats the citations are simply the keys inside square
-brackets and the corresponding references are listed in the order they
-are cited.
-
-Specifying the Publish database
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The specification of the Publish database file in the DocOnce document
-is done one a line containing ``BIBFILE: papers.pub`` (you may give
-the database file another name and store it in another directory).
-The references will be inserted at the place where this command appears.
-Before the command you will often want to have a headline with
-"References", "Bibliography", or similar.
-Here is an example:
-
-.. code-block:: doconce
-
-        ======= References =======
-        
-        BIBFILE: papers.pub
-
-In LaTeX and pdfLaTeX the ``papers.pub`` file is exported to BibTeX format
-and included in the document, while in all other formats, suitable
-text is produced from the database.
-
-LaTeX bibliography style
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The bibliography style is "plain" in LaTeX output. To change this, just
-edit the ``.p.tex`` file. For example,
-
-.. code-block:: text
-
-        doconce format latex mydoc
-        doconce replace 'bibliographystyle{plain}' 'bibliographystyle{abbrev}' mydoc.p.tex
-
 .. !split
 
 Tables
@@ -3303,13 +2587,13 @@ Tables
 
 A table like
 
-============  ============  ============  
-    time        velocity    acceleration  
-============  ============  ============  
-         0.0        1.4186         -5.01  
-         2.0      1.376512        11.919  
-         4.0        1.1E+1     14.717624  
-============  ============  ============  
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+ 0.0    1.4186         -5.01  
+ 2.0  1.376512        11.919  
+ 4.0    1.1E+1     14.717624  
+====  ========  ============  
 
 is built up of pipe symbols and dashes:
 
@@ -3393,8 +2677,965 @@ DocOnce source file.
 
 .. !split
 
-Exercises, Problems, Projects, and Examples
+Admonitions
+-----------
+
+DocOnce offers strong support for admonition environments, such
+as warning boxes, notification boxes, question boxes,
+and summary boxes. The boxes normally have an icon, a heading,
+and may also have a background color. A special box, the block,
+has never any icon and can be used when an icon would be disturbing
+or misleading.
+
+The following admonition environments are available:
+``block``, ``warning``, ``notice``, ``question``, and ``summary``.
+The box is defined by begin and end tags such as ``!bnotice`` and ``!enotice``.
+The title of the box is fully customizable.
+
+Here are a few examples:
+
+.. code-block:: doconce
+
+        !bwarning
+        Here is a warning!
+        !ewarning
+        
+        !bnotice Hint
+        This is a hint.
+        !enotice
+        
+        !bblock This is a block.
+        A block has never any icon. It is mostly used in slides
+        and gives the text block effect in LaTeX beamer.
+        !eblock
+        
+        !bnotice Going deeper
+        This is text meant to provide more details. The box has the
+        layout of the notice box, but a custom title, here *Going deeper*.
+        !enotice
+        
+        Finally some summary:
+        
+        !bsummary
+        The main message is to utilize the admonition styles for
+        marking different parts of the text
+        !esummary
+
+The above DocOnce code is in the present format rendered as
+
+
+.. warning::
+    Here is a warning!
+
+
+
+
+
+.. admonition:: Hint
+
+   This is a hint.
+
+
+
+
+
+.. admonition:: This is a block
+
+   A block has never any icon.
+
+
+
+
+
+.. admonition:: Going deeper
+
+   This is text meant to provide more details. The box has the
+   layout of the notice box, but a custom title, here *Going deeper*.
+
+
+
+
+Finally some summary:
+
+
+.. admonition:: Summary
+
+   The main message is to utilize the admonition styles for
+   marking different parts of the text
+
+
+
+
+The layout of admonitions depend on the format.
+In ``rst`` and ``sphinx`` one applies the native admonitions, but
+in ``sphinx`` the ``automake_sphinx.py`` script manipulates the HTML
+file to set a gray background for all admonitions.
+In ``html`` one has a command-line argument ``--html_admon`` that
+can be set to different styles:
+
+ * ``--html_admon=gray`` for
+   icons with gray background and small font,
+
+ * ``--html_admon=yellow``
+   and ``--html_admon=apricot`` are similar,
+   but the icons and colors are different,
+
+ * ``--html_admon=colors`` has quite bright colors
+   as backgrounds for the different admonitions,
+
+ * ``--html_admon=lyx``
+   gives a white background and small icons,
+
+ * ``--html_admon=paragraph`` results in a simple paragraph with the
+   admon title as heading.
+
+The options ``--html_admon_bg_color=...`` and ``--html_admon_bd_color=...``
+can be used to override the default background and boundary frame colors
+of the admon styles (respectively). These options have only effect
+for the ``apricot``, ``yellow``, and ``gray`` styles.
+
+Some recommended combinations for admonitions in HTML are
+
+ * ``--html_style=blueish2``, ``--html_admon=yellow``, ``--pygments_html_style=none`` or ``--pygments_html_style=default``
+
+ * ``--html_style=bloodish``, ``--html_admon=gray``, ``--pygments_html_style=none`` or
+   ``--pygments_html_style=default``
+
+ * ``--html_style=boots*``, ``--html_admon=bootstrap_alert`` or ``--html_admon=bootstrap_panel``
+
+The ``--html_admon`` style has no effect for the vagrant style template
+in ``bundled/html_styles/style_vagrant``.
+
+In ``latex`` and ``pdflatex``, the type of admonition style is set by
+the command-line option ``--latex_admon=``.
+Several values are available:
+
+ * ``paragraph`` is the simplest type of admonition and typeset
+   as plain text with an optional paragraph heading.
+
+ * ``colors1`` (inspired by the NumPy User Guide) applies different colors for
+   the different admons with an embedded icon.
+
+ * ``colors2`` is like ``colors1`` but the text is wrapped around the icon.
+
+ * ``mdfbox`` is the default and gives rounded (gray) boxes with a potential
+   title and no icon (using the very flexible ``mdframed`` packaged in LaTeX)
+
+ * ``graybox2`` has square corners, gray background, and is narrower
+   than ``mdfbox``. One special feature of ``graybox2`` is the summary
+   admon, which has a different look with horizontal rules only,
+   and for A4 format, the summary box is half of the text width and
+   wrapped with running text around (if it does not contain verbatim text,
+   in that case the standard ``graybox2`` style is used). This small
+   summary box is effective in proposals to disperse small paragraphs
+   of key points around.
+
+ * ``grayicon`` has icons and a light gray background.
+
+ * ``yellowicon`` has icons and a light yellow background.
+
+There is also an option ``--latex_admon_color=...`` that can be used
+to override the default color. Values are either saturated colors
+like ``gray!10`` or an RGB tuple ``0.95,0.91,0.97``. The chosen color
+replaces all default colors for all admon styles except ``paragraph``.
+For example, an oval white box is produced by ``--latex_admon=mdfbox``
+and ``--latex_admon_color=white``.
+
+The Box Environment
+~~~~~~~~~~~~~~~~~~~
+
+A plain box without any title or colored background,
+just a rectangular frame, is also
+available. The syntax goes like
+
+.. code-block:: doconce
+
+        !bbox
+        !bt
+        \[ \nabla\cdot\boldsymbol{u} = 0  \quad\hbox{(mass balance)}\]
+        !et
+        !ebox
+
+resulting in
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so (the box formatting is just ignored)
+
+
+.. math::
+         \nabla\cdot\boldsymbol{u} = 0\quad\hbox{(mass balance)}
+
+
+Admonitions are usually used to typeset something that should be distinct
+from the running text: a warning, a remark, a notification, a question,
+a summary, while a box is often used to highlight a key finding
+in the running text: an equation, a hypothesis, a theorem, a
+rule, or a conclusion.
+
+.. !split
+
+.. _inline:tagging:
+
+Inline Tagging
+==============
+
+.. index:: inline tagging
+
+.. index:: emphasized words
+
+.. index:: boldface words
+
+.. index:: verbatim text
+
+.. index:: inline comments
+
+.. index:: non-breaking space
+
+.. index:: nbsp
+
+DocOnce supports tags for *emphasized phrases*, **boldface phrases**,
+and ``verbatim text`` (also called type writer text, for inline code),
+plus LaTeX/TeX inline mathematics, such as :math:`\nu = \sin(x)`.
+Links are easy to define, either with a `text <http://google.com>`__ or
+just a plain `<http://google.com>`_.
+Also a non-breaking space (to avoid linebreak), linebreak,
+
+| m-dash (as in m---dash), and horizontal rule can be specified (below).
+
+---------
+
+
+.. admonition:: Limitation of inline tagging
+
+   Since DocOnce applies regular expressions to recognize inline tagging,
+   there might be cases where the tags are not correctly interpreted
+   and translated. Fortunately, most such pitfalls are easily circumvented.
+   The `troubleshooting document <http://hplgit.github.io/doconce/doc/pub/trouble/trouble/trouble.html#trouble:pitfalls>`__ shows some
+   examples.
+
+
+
+
+Emphasized Words
+----------------
+
+Emphasized text is typeset inside a pair of asterisk, and there should
+be no spaces between an asterisk and the emphasized text, as in
+
+.. code-block:: doconce
+
+        *emphasized words*
+
+Boldface font is recognized by an underscore instead of an asterisk:
+
+.. code-block:: doconce
+
+        _several words in boldface_ followed by *ephasized text*.
+
+The line above gets typeset as
+**several words in boldface** followed by *ephasized text*.
+One should only have pure text (no mathematical formulas) between the boldface
+or emphasize markers, and no leading or trailing blanks (with such blanks,
+the text will not be recognized as boldface or emphasize).
+
+Colored text is formatted as
+
+.. code-block:: doconce
+
+        some text color{red}{more text in red}
+
+The current output format does not support colors, however.
+
+Inline Verbatim Text
+--------------------
+
+Verbatim text, typically used for short inline code,
+is typeset between backticks:
+
+.. code-block:: doconce
+
+        `call myroutine(a, b)` looks like a Fortran call
+        while `void myfunc(double *a, double *b)` must be C.
+
+The typesetting result looks like this:
+``call myroutine(a, b)`` looks like a Fortran call
+while ``void myfunc(double *a, double *b)`` must be C.
+Note that there must be no leading or trailing spaces inside the backticks.
+
+It is recommended to have inline verbatim text on the same line in
+the DocOnce file, because some formats (LaTeX in combination with
+the ``ptex2tex`` program (but not ``doconce pretex``))
+will have problems with inline verbatim text that is split over two lines.
+
+
+.. note::
+   Watch out for mixing backticks and asterisk (i.e., verbatim and
+   emphasized code): the DocOnce interpreter is not very smart in
+   detecting such errors. A missing backtick will also quickly create
+   strange output. If you suspect inline code to be the
+   source of problems in the final format, examine the
+   DocOnce source and the output.
+
+
+
+
+Links to Web Addresses
+----------------------
+
+Web addresses with links are typeset as
+
+.. code-block:: doconce
+
+        some URL like "Search Google": "http://google.com".
+
+which appears as some URL like `Search Google <http://google.com>`__.
+The space after colon is optional, but it is important to enclose the
+link and the URL in double quotes.
+
+To have the URL address itself as link text, put an "URL" or URL
+before the address enclosed in double quotes:
+
+.. code-block:: doconce
+
+        Click on this link: URL: "https://github.com/hplgit/doconce".
+
+which gets rendered as
+Click on this link: `<https://github.com/hplgit/doconce>`_.
+
+(There is also support for lazy writing of URLs: any http or https web address
+with a leading space and a trailing space, comma, semi-colon, or question
+mark (but not period!) becomes a link with the web address as link text.)
+
+Links to Mail Addresses
+-----------------------
+
+Links that launches a mail to a specified address is written as
+ordinary URLs, typically as
+
+.. code-block:: doconce
+
+        Send "mail": "mailto:hpl@simula.no"
+        # Alternative:
+        to "`hpl@simula.no`": "mailto:hpl@simula.no".
+
+which appears as Send `mail <mailto:hpl@simula.no>`__ to
+`hpl@simula.no <mailto:hpl@simula.no>`__.
+
+Links to Local Files
+--------------------
+
+Links to files ending in ``.txt``, ``.html``, ``.pdf``, ``.py``, ``.f``,
+``.f77``, ``.f90``, ``.f95``, ``.sh``, ``.csh``, ``.ksh``, ``.zsh``,
+``.c``, ``.cpp``, ``.cxx``, ``.pl``, and ``.java`` follows the same
+setup:
+
+.. code-block:: doconce
+
+        see the "DocOnce Manual": "manual.do.txt".
+
+which appears as see the `DocOnce Manual <manual.do.txt>`__.
+However, linking to local files like this needs caution:
+
+  * In the ``html`` format the links work well if the files are
+    supplied with the ``.html`` with the same relative location.
+
+  * In the ``latex`` and ``pdflatex`` formats, such links in PDF files
+    will unless the ``.tex`` file has a full URL specified through
+    a ``\hyperbaseurl`` command and the linked files are located correctly
+    relative to this URL. Otherwise full URL must be used in links.
+
+  * In the ``sphinx`` format, links to local files do not work unless the
+    files reside in a ``_static`` directory (a warning is issued about this).
+
+As a consequence, we strongly recommend that one copies the relevant
+files to a ``_static`` or ``_static-name`` directory and makes links to
+files in this directory only (``name`` is the nickname of the DocOnce
+document, usually the name of the parent directory or main document).
+Other links to files should use the full URL. If DocOnce is used
+for HTML output only, then plain links to local files work fine.
+
+If you want a link to a local source code file and have it
+viewed in the browser rather than being downloaded, we recommend
+to transform the source code file to HTML format by running
+``pygmentize``, e.g.,
+
+.. code-block:: text
+
+        Terminal> pygmentize -l bash -f html -O full,style=emacs \
+                  -o _static/make.sh.html subdir/make.sh
+
+Then you can link to ``_static/make.sh.html`` instead of
+``subdir/make.sh``. Here is an example where the reader
+has the file available as ``src/myprog.py`` in her
+software and the document links to ``_static/myprog.py``:
+
+.. code-block:: doconce
+
+        See the code URL:"src/myprog.py" ("view: "_static/myprog.py.html").
+
+Links to files with other extensions are typeset with
+*the filename as link text*. The syntax consists of
+the keyword URL, followed by a colon, and then the filename enclosed
+in double quotes:
+
+.. code-block:: doconce
+
+        URL: "manual.html"
+
+resulting in the link `<manual.html>`_.
+
+.. This is now automatically carried out by the autogenerated
+
+.. script for sphinx:
+
+.. For such local links to
+
+.. work with the ``sphinx`` format, the ``.rst`` file needs a fix, carried
+
+.. out by
+
+.. !bc sys
+
+.. doconce sphinxfix_localURLs mydoc.rst
+
+.. !ec
+
+.. (The files, such as ``manual.html``, are then copied to a subdirectory
+
+.. ``_static``, which must be manually copied to the Sphinx directory's
+
+.. ``_static`` directory - links in the ``.rst`` files are automatically
+
+.. adjusted.)
+
+.. index:: quotation syntax
+
+Quotes
+------
+
+Quotations employ either the emphasized font or double quotation marks.
+In the latter case, one should not use the character ``"`` but rather
+the (LaTeX-inspired) construction with double backticks and two single
+quotes:
+
+.. code-block:: doconce
+
+        This is a sentence with ``words to be quoted''.
+
+To candidates for find double quotes that should be transferred to the above
+type of quotation (which is a common mistake),
+one can run a regular expression search like
+
+.. code-block:: text
+
+        Terminal> find . -name '*.do.txt' -exec grep -E \
+                  '[^("]"[A-Za-z0-9 ,]+" *[^:`)"]' {} \; -print
+
+This search may give many false hits as double quotes are frequently
+used in computer code and preprocessor instructions (URLs and hyperlinks
+should not give hits in the above regular expressions).
+
+.. index:: non-breaking space
+
+Non-Breaking Space
+------------------
+
+The non-breaking space character is tilde:
+
+.. code-block:: doconce
+
+        Here comes a long line with a specification of a number with unit at the end,
+        which is an example that requires a "non-breaking space character":
+        "http://en.wikipedia.org/wiki/Non-breaking_space": 7.4~km is traveled
+        in~$7.4/5.5\approx 1.345$~s. (Computer code, where the tilde has a
+        meaning, as in `y = ~x`, is not affected. The non-breaking character only
+        works between characters, numbers, and the math dollar sign.)
+
+This is rendered as
+
+
+..
+
+    Here comes a long line with a specification of a number with unit at the end,
+    which is an example that requires a `non-breaking space character <http://en.wikipedia.org/wiki/Non-breaking_space>`__: 7.4 |nbsp| km is traveled
+    in |nbsp| :math:`7.4/5.5\approx 1.345` |nbsp| s. (Computer code, where the tilde has a
+    meaning, as in ``y = ~x``, is not affected. The non-breaking character only
+    works between characters, numbers, and the math dollar sign.)
+
+
+
+.. index:: footnotes
+
+Horizontal rule
+---------------
+
+A horizontal rule for separating content vertically, like this:
+
+---------
+
+is typeset as four or more hyphens on a single line:
+
+.. code-block:: doconce
+
+        ---------
+
+Em-dash
+-------
+
+The ``latex``, ``pdflatex``, ``sphinx``, and ``html`` formats support em-dash,
+indicated by three hyphens: ``---``. The em-dash has two applications: 1)
+as alternative to a hyphen with space around in a sentence---except that
+there are no spaces around the em-dash, and 2) origin of quotes,
+where there is no space between the end of the quote and the m-dash:
+
+
+..
+
+    *Premature optimization is the root of all evil.*--- Donald Knuth.
+
+
+The associated DocOnce source reads
+
+.. code-block:: doconce
+
+        !bquote
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
+        !equote
+
+Ampersand
+---------
+
+An ampersand, as in Guns & Roses or Texas A&M, is written as a
+plain ``&`` *with space(s) on both sides*. Single upper case letters on each
+side of ``&``, as in ``Texas A & M``, remove the spaces and result in
+Texas A&M, while words on both sides of ``&``, as in ``Guns & Roses``,
+preserve the spaces: Guns & Roses. Failing to have spaces before and
+after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
+``latex``, and ``pdflatex`` formats.
+
+Footnotes
+---------
+
+Typesetting of footnotes employs a common email or Extended Markdown syntax:
+
+.. code-block:: doconce
+
+        Footnotes are typeset according to the output format[^typesetting].
+        The syntax is optional spaces, opening bracket, hat,
+        a name without spaces [^remedy-for-name-with-spaces], and closing
+        bracket. The logical name of the footnote is not used in LaTeX,
+        HTML, reStructuredText, or Sphinx, because these languages employ
+        numbered footnotes. Other formats employ the logical name.
+        
+          [^typesetting]: Typesetting of the footnote depends on the format.
+        Plain text does nothing, LaTeX removes the
+        definition and inserts the footnote as part of the LaTeX text.
+        reStructuredText and Sphinx employ a similar type of typesetting
+        as Extended Markdown and DocOnce, and in HTML we keep the same
+        syntax, just displayed properly in HTML.
+        
+        Footnotes are preferably defined after the paragraph they are used.
+        The definition is the footnote syntax (some optional space, bracket,
+        hat, name, bracket) followed by colon and a text.
+        
+        [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
+        case of spaces.
+
+The text above looks as follows.
+
+Footnotes are typeset according to the output format [#typesetting]_.
+The syntax is optional spaces, opening bracket, hat,
+a name without spaces [#remedy-for-name-with-spaces]_, and closing
+bracket. The logical name of the footnote is not used in LaTeX,
+HTML, reStructuredText, or Sphinx, because these languages employ
+numbered footnotes. Other formats employ the logical name.
+
+.. [#typesetting] Typesetting of the footnote depends on the format.
+   Plain text does nothing, LaTeX removes the
+   definition and inserts the footnote as part of the LaTeX text.
+   reStructuredText and Sphinx employ a similar type of typesetting
+   as Extended Markdown and DocOnce, and in HTML we keep the same
+   syntax, just displayed properly in HTML.
+
+Footnotes are preferably defined after the paragraph they are used.
+The definition is the footnote syntax (some optional space, bracket,
+hat, name, bracket) followed by colon and a text.
+
+.. [#remedy-for-name-with-spaces] Just put in dashes or underscores in
+   case of spaces.
+
+Inline Comments
+---------------
+
+DocOnce also supports inline comments in the text:
+
+.. code-block:: doconce
+
+        [name: comment]
+
+where ``name`` is (e.g.) the name of the author of the comment, and ``comment`` is a
+plain text text. Note that *there must be a space after the colon*,
+otherwise the comment is not recognized. The name can contain upper and lower
+case characters, digits, single quote, ``+`` and ``-``, as well
+as space. Next is an example.
+[**hpl's comment 1**: Inline comments can span several lines, if desired.]
+
+The name and comment are visible in the output unless ``doconce format``
+is run with a command-line argument ``--skip_inline_comments``
+(see the section :ref:`doconce2formats` for an example). Inline comments
+are helpful during development of a document since different authors
+and readers can comment on formulations, missing points, etc.
+All such comments can easily be removed from the ``.do.txt`` file
+by ``doconce remove_inline_comments`` (see the section :ref:`doconce2formats`).
+
+Inline comments are typeset in a simple way: boldface name, a
+numbering of the comment, and then the comment, all in red and in
+parenthesis. However, with the ``--latex_todonotes`` option, LaTeX will
+apply the ``todonotespackage`` to typeset the comments in very visible
+color boxes.
+
+Inline Comments for Editing
+---------------------------
+
+Inline comments can also be used to markup editing of the text.
+The following syntax is supported:
+
+.. code-block:: doconce
+
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
+
+That is, one can add, delete, and replace text, and adding or deleting
+a comma, period, or semicolon leads to special typesetting where
+such a small edit is highlighted. Below
+is an example of a text with inline editing.
+
+Originally, we have the text
+
+.. code-block:: doconce
+
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
+
+Then, some reader wants to change this text and explicitly demonstrate
+what is deleted, added, and replaced (as when using track changes
+in Microsoft Word). The use of the ``add``, ``del``, and replacement
+construction with ``->`` may look as follows.
+
+.. code-block:: doconce
+
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
+
+The text gets rendered as
+
+
+..
+
+    First, (**edit 2: add comma**) consider (**edit 3: remove** a quantity) (**insert:**)the flux (**end insert**)
+    (**edit 4**: **delete** :math:`Q`. Without loss of generality,
+    we assume) :math:`Q>0`. There are three (**edit 5**: delete comma) fundamental(**edit 6**: **delete** , basic)
+    (**edit 7: remove** property) (**insert:**)properties (**end insert**) of :math:`Q`.  (**edit 8: add**) These are not
+    important for the following discussion. (**end add**)
+
+
+
+Such inline comments with edits are only given special typesetting in
+the output formats ``latex``, ``pdflatex``, ``html``, and ``sphinx``.
+Otherwise, just the DocOnce syntax is shown (but that is also quite
+readable as edit instructions.)
+
+The editing implied by the edit comments can be implemented in the DocOnce
+file by the command
+
+.. code-block:: text
+
+        Terminal> doconce apply_edit_comments mydoc.do.txt
+
+Forced Line Breaks
+------------------
+
+By *ending* a line in the DocOnce file
+with ``<linebreak>`` the output format has a forced
+linebreak at this point. This can be used to typeset poems,
+songs (if not in a verbatim block), or the origin of quotes.
+Here is an example:
+
+.. code-block:: doconce
+
+        !bquote
+        *Program writing is substantially more demanding than book
+        writing. Why is it so? I think the main reason is that a larger
+        attention span is needed when working on a large computer program
+        than when doing other intellectual tasks.* <linebreak>
+        Donald Knuth cite[p. 18]{Knuth85}, computer scientist, 1938-.
+        !equote
+
+is rendered as
+
+
+..
+
+    *Program writing is substantially more demanding than book
+    writing. Why is it so? I think the main reason is that a larger
+    attention span is needed when working on a large computer program
+    than when doing other intellectual tasks.* 
+    
+    | Donald Knuth [Ref3]_ (p. 18), computer scientist, 1938-.
+
+
+
+The ``<linebreak>`` is a newline in LaTeX if it has preceding text,
+otherwise it is a ``\vspace{3mm}``. In HTML, ``<linebreak>`` is ``<br>``.
+Both constructions can be used to either force a linebreak or add
+vertical space.
+
+
+.. admonition:: Tip on using forced linebreaks
+
+   The ``<linebreak>`` tag is often useful in slides to avoid overfull
+   lines in bullet lists, partion such lines into separate lines,
+   or to insert vertical
+   space. It can be used in admonitions too to get more space between
+   the title and the text. Remember to have ``<linebreak>`` at the end of
+   the line.
+
+
+
+
+Inline Mathematics
+------------------
+
+Inline mathematics is written as in LaTeX, i.e., inside dollar signs.
+Many formats leave this syntax as it is (including the two dollar signs),
+hence nice math formatting is only obtained in LaTeX, HTML, MediaWiki,
+and Sphinx (Epytext has some inline math support that is utilized).
+
+The following text
+
+.. code-block:: doconce
+
+        Let $a=\sin(x) + \cos(x)$. Then $a^2 = 2\sin(x)\cos(x)$
+        because $\sin^2x + \cos^2x = 1$.
+
+is rendered as "Let :math:`a=\sin(x) + \cos(x)`. Then :math:`a^2 = 2\sin(x)\cos(x)`
+because :math:`\sin^2x + \cos^2x = 1`."
+
+Mathematical expressions in LaTeX syntax often contains
+special formatting commands, which may appear annoying in plain
+text. DocOnce therefore supports an extended inline math syntax where
+the writer can provide an alternative syntax suited for formats close
+to plain ASCII:
+
+.. code-block:: doconce
+
+        Here is an example on a linear system
+        ${\bf A}{\bf x} = {\bf b}$|$Ax=b$,
+        where $\bf A$|$A$ is an $n\times n$|$nxn$ matrix, and
+        $\bf x$|$x$ and $\bf b$|$b$ are vectors of length $n$|$n$.
+
+That is, we provide two alternative expressions, both enclosed in
+dollar signs and separated by a pipe symbol, the expression to the
+left is used in formats with LaTeX support (``latex``, ``pdflatex``, ``html``,
+``sphinx``, ``mwiki``), while the expression to the right is used for
+all other formats.  The above text is typeset as "Here is an example
+on a linear system :math:`{\bf A}{\bf x} = {\bf b}`, where :math:`\bf A`
+is an :math:`n\times n` matrix, and :math:`\bf x` and :math:`\bf b`
+are vectors of length :math:`n`."
+
+Emojis
+------
+
+Emojis are specified by syntax like ``:sweat_smile:``, followed by
+whitespace (blank or newline) before and after.
+The available emoji names are shown at `<http://www.emoji-cheat-sheet.com>`_.
+Here is an example: :sweat_smile:
+
+DocOnce supports emojis for the ``html`` and ``pdflatex`` formats. All other
+formats will just print the raw emoji name (like ``:sweat_smile:``).
+The command-line option ``--no_emoji`` removes all emojis from the output.
+
+Bibliography/References
+=======================
+
+DocOnce applies the software tool `Publish <https://bitbucket.org/logg/publish>`__ to handle the bibliography in a
+document. With Publish it is easy to import BibTeX data and maintain a
+database in a clean, self-explanatory textual format. From the Publish
+format it is easy to go BibTeX and reST or straightforward DocOnce
+typesetting (and from there to HTML, plain text, wiki formats, and so
+on).
+
+Installing Publish is straightforward: just checkout the code on
+`bitbucket.org <https://bitbucket.org/logg/publish>`__, move to the
+``publish`` directory and run ``sudo python setup.py install``.
+
+Importing your data to the Publish database
 -------------------------------------------
+
+Many scientists have their bibliographic data in the BibTex format. Here we
+assume that you have two files, ``refs1.bib`` and ``refs2.bib``. These can
+be imported to a Publish database, residing in the file ``papers.pub``,
+by the commands
+
+.. code-block:: text
+
+        publish import refs1.bib
+        publish import refs2.bib
+
+During import, Publish may ask you for accepting the name of new
+institutions or journals. Publish already have a database of journals
+and institutions/departments, but when you add new, you also get
+a file ``venues.list`` (in the current working directory) which will be used
+for future imports in this directory. Make sure you store ``publish.pub``
+and ``venues.list`` along with your DocOnce document files (e.g., add them to
+your version control system).
+
+Requirements to input data
+--------------------------
+
+
+.. note::
+   Note that Publish only accepts BibTeX files where the keys (author,
+   title, etc.) are in lower case and where the data are enclosed in
+   curly braces. You may need to edit your BibTeX files to meet this
+   demand.
+
+
+
+
+The utility ``doconce fix_bibtex4publish file.bib`` fixes several known
+issues with BibTeX files such that Publish has a better chance of
+accepting the entries. Run this utility first, then run Publish,
+respond to any requirements that Publish spits out, remove ``papers.pub``
+if it exists, and run the import statements again.
+
+Although references are visible as numbers only in the
+output, it is recommended to have apply a nice, consistent
+typesetting of your keys. It is suggested to use the following scheme:
+
+.. code-block:: doconce
+
+        Langtangen_2003a          # single author
+        Langtangen_Pedersen_2002  # two authors
+        Langtangen_et_al_2002     # three or more authors
+
+One can add a, b, c, and so forth if several keys feature the same
+authors and year.
+
+Adding new references to the database
+-------------------------------------
+
+When you get some new BibTeX references you simply put them in
+a file, say ``refs3.pub`` and run the ``publish import refs3.pub`` command
+to update the database. You may also consider editing the ``papers.pub``
+file directly when adding new references.
+
+Exporting the database
+----------------------
+
+Export of everything in the database to
+BibTeX is done by
+
+.. code-block:: text
+
+        publish export mybibtexfile.bib
+
+You can easily export subsets of the database, e.g., only papers associated
+with a particular author (the Publish manual has details on how this is
+done). DocOnce will automatically export the database to BibTeX if
+the output format is ``latex`` or ``pdflatex``.
+
+Referring to publications
+-------------------------
+
+We use the command
+
+.. code-block:: doconce
+
+        cite{key}
+
+to refer to a publication with bibliographic key ``key``.
+Here is an example: [Ref4]_ discussed propagation of
+large destructive water waves, [Ref5]_ gave
+an overview of numerical methods for solving the Navier-Stokes equations,
+while the use of Backward Kolmogorov equations for analyzing
+random vibrations was investigated in [Ref6]_.
+The book chapter [Ref7]_ contains information on
+C++ software tools for programming multigrid methods. A real retro
+reference is [Ref8]_ about a big FORTRAN package.
+Multiple references are also possible, e.g., see
+[Ref4]_ [Ref7]_.
+
+A LaTeX-style cite command with additional detailed reference is also possible,
+
+.. code-block:: doconce
+
+        cite[details]{key}
+
+for example as in [Ref5]_ (Section 2)
+or [Ref5]_ (Equation (4.2)).
+
+In LaTeX, the ``cite`` command is directly translated to the
+corresponding LaTeX version of the command with a backslash; in reST
+and Sphinx the citations becomes links, with the citation keys as
+names; in HTML the citations are numbered from 1, 2, and so forth
+according to their appearance, and the numbers appear as links; while
+in other formats the citations are simply the keys inside square
+brackets and the corresponding references are listed in the order they
+are cited.
+
+Specifying the Publish database
+-------------------------------
+
+The specification of the Publish database file in the DocOnce document
+is done one a line containing ``BIBFILE: papers.pub`` (you may give
+the database file another name and store it in another directory).
+The references will be inserted at the place where this command appears.
+Before the command you will often want to have a headline with
+"References", "Bibliography", or similar.
+Here is an example:
+
+.. code-block:: doconce
+
+        ======= References =======
+        
+        BIBFILE: papers.pub
+
+In LaTeX and pdfLaTeX the ``papers.pub`` file is exported to BibTeX format
+and included in the document, while in all other formats, suitable
+text is produced from the database.
+
+LaTeX Bibliography Style
+------------------------
+
+The bibliography style is "plain" in LaTeX output. To change this, just
+edit the ``.p.tex`` file. For example,
+
+.. code-block:: text
+
+        doconce format latex mydoc
+        doconce replace 'bibliographystyle{plain}' 'bibliographystyle{abbrev}' mydoc.p.tex
+
+.. !split
+
+Exercises, Problems, Projects, and Examples
+===========================================
+
+Basic Syntax
+------------
 
 DocOnce has special support for four types of "exercises", named
 *exercise*, *problem*, *project*, or *example*.
@@ -3558,7 +3799,7 @@ commands to indicate a subproblem and a solution. In this way, the
 typesetting of the example looks like an exercise equipped with a solution.
 
 List of Exercises, Problems, and Projects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------
 
 DocOnce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
@@ -3579,6 +3820,12 @@ edits the ``.tex`` file, preferably by a script after each ``doconce format``
 command).
 
 .. !split
+
+Code and Math Blocks
+====================
+
+Blocks with LaTeX equations or computer code are typeset inside special
+begin-end tags.
 
 .. _sec:verbatim:blocks:
 
@@ -4059,204 +4306,6 @@ labels in ``align`` environments work well.)
    newcommand construction. Such functions can be used both for the
    running text and math environments.
 
-.. !split
-
-Admonitions
------------
-
-DocOnce offers strong support for admonition environments, such
-as warning boxes, notification boxes, question boxes,
-and summary boxes. The boxes normally have an icon, a heading,
-and may also have a background color. A special box, the block,
-has never any icon and can be used when an icon would be disturbing
-or misleading.
-
-The following admonition environments are available:
-``block``, ``warning``, ``notice``, ``question``, and ``summary``.
-The box is defined by begin and end tags such as ``!bnotice`` and ``!enotice``.
-The title of the box is fully customizable.
-
-Here are a few examples:
-
-.. code-block:: doconce
-
-        !bwarning
-        Here is a warning!
-        !ewarning
-        
-        !bnotice Hint
-        This is a hint.
-        !enotice
-        
-        !bblock This is a block.
-        A block has never any icon. It is mostly used in slides
-        and gives the text block effect in LaTeX beamer.
-        !eblock
-        
-        !bnotice Going deeper
-        This is text meant to provide more details. The box has the
-        layout of the notice box, but a custom title, here *Going deeper*.
-        !enotice
-        
-        Finally some summary:
-        
-        !bsummary
-        The main message is to utilize the admonition styles for
-        marking different parts of the text
-        !esummary
-
-The above DocOnce code is in the present format rendered as
-
-
-.. warning::
-    Here is a warning!
-
-
-
-
-
-.. admonition:: Hint
-
-   This is a hint.
-
-
-
-
-
-.. admonition:: This is a block
-
-   A block has never any icon.
-
-
-
-
-
-.. admonition:: Going deeper
-
-   This is text meant to provide more details. The box has the
-   layout of the notice box, but a custom title, here *Going deeper*.
-
-
-
-
-Finally some summary:
-
-
-.. admonition:: Summary
-
-   The main message is to utilize the admonition styles for
-   marking different parts of the text
-
-
-
-
-The layout of admonitions depend on the format.
-In ``rst`` and ``sphinx`` one applies the native admonitions, but
-in ``sphinx`` the ``automake_sphinx.py`` script manipulates the HTML
-file to set a gray background for all admonitions.
-In ``html`` one has a command-line argument ``--html_admon`` that
-can be set to different styles:
-
- * ``--html_admon=gray`` for
-   icons with gray background and small font,
-
- * ``--html_admon=yellow``
-   and ``--html_admon=apricot`` are similar,
-   but the icons and colors are different,
-
- * ``--html_admon=colors`` has quite bright colors
-   as backgrounds for the different admonitions,
-
- * ``--html_admon=lyx``
-   gives a white background and small icons,
-
- * ``--html_admon=paragraph`` results in a simple paragraph with the
-   admon title as heading.
-
-The options ``--html_admon_bg_color=...`` and ``--html_admon_bd_color=...``
-can be used to override the default background and boundary frame colors
-of the admon styles (respectively). These options have only effect
-for the ``apricot``, ``yellow``, and ``gray`` styles.
-
-Some recommended combinations for admonitions in HTML are
-
- * ``--html_style=blueish2``, ``--html_admon=yellow``, ``--pygments_html_style=none`` or ``--pygments_html_style=default``
-
- * ``--html_style=bloodish``, ``--html_admon=gray``, ``--pygments_html_style=none`` or
-   ``--pygments_html_style=default``
-
- * ``--html_style=boots*``, ``--html_admon=bootstrap_alert`` or ``--html_admon=bootstrap_panel``
-
-The ``--html_admon`` style has no effect for the vagrant style template
-in ``bundled/html_styles/style_vagrant``.
-
-In ``latex`` and ``pdflatex``, the type of admonition style is set by
-the command-line option ``--latex_admon=``.
-Several values are available:
-
- * ``paragraph`` is the simplest type of admonition and typeset
-   as plain text with an optional paragraph heading.
-
- * ``colors1`` (inspired by the NumPy User Guide) applies different colors for
-   the different admons with an embedded icon.
-
- * ``colors2`` is like ``colors1`` but the text is wrapped around the icon.
-
- * ``mdfbox`` is the default and gives rounded (gray) boxes with a potential
-   title and no icon (using the very flexible ``mdframed`` packaged in LaTeX)
-
- * ``graybox2`` has square corners, gray background, and is narrower
-   than ``mdfbox``. One special feature of ``graybox2`` is the summary
-   admon, which has a different look with horizontal rules only,
-   and for A4 format, the summary box is half of the text width and
-   wrapped with running text around (if it does not contain verbatim text,
-   in that case the standard ``graybox2`` style is used). This small
-   summary box is effective in proposals to disperse small paragraphs
-   of key points around.
-
- * ``grayicon`` has icons and a light gray background.
-
- * ``yellowicon`` has icons and a light yellow background.
-
-There is also an option ``--latex_admon_color=...`` that can be used
-to override the default color. Values are either saturated colors
-like ``gray!10`` or an RGB tuple ``0.95,0.91,0.97``. The chosen color
-replaces all default colors for all admon styles except ``paragraph``.
-For example, an oval white box is produced by ``--latex_admon=mdfbox``
-and ``--latex_admon_color=white``.
-
-The Box Environment
-~~~~~~~~~~~~~~~~~~~
-
-A plain box without any title or colored background,
-just a rectangular frame, is also
-available. The syntax goes like
-
-.. code-block:: doconce
-
-        !bbox
-        !bt
-        \[ \nabla\cdot\boldsymbol{u} = 0  \quad\hbox{(mass balance)}\]
-        !et
-        !ebox
-
-resulting in
-
-
-.. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
-
-
-.. math::
-         \nabla\cdot\boldsymbol{u} = 0\quad\hbox{(mass balance)}
-
-
-Admonitions are usually used to typeset something that should be distinct
-from the running text: a warning, a remark, a notification, a question,
-a summary, while a box is often used to highlight a key finding
-in the running text: an equation, a hypothesis, a theorem, a
-rule, or a conclusion.
-
 Typesetting of Algorithms
 -------------------------
 
@@ -4290,11 +4339,21 @@ to select the typesetting. With Mako we can write
             * ...
         % endif
 
-Preprocessing Steps
--------------------
+.. !split
+
+Preprocessing and Postprocessing
+================================
 
 DocOnce allows preprocessor commands for, e.g., including files,
 leaving out text, or inserting special text depending on the format.
+These commands are run prior to translation of the document.
+After translation, there are ``doconce split_*`` commands available
+for splitting HTML and Sphinx documents into smaller pieces (web pages)
+as a postprocess.
+
+The Preprocess and Mako Preprocessors
+-------------------------------------
+
 Two preprocessors are supported: preprocess
 (`<http://code.google.com/p/preprocess>`_) and mako
 (`<http://www.makotemplates.org/>`_). The former allows include and if-else
@@ -4526,98 +4585,11 @@ directory, the whole Sphinx document exists in a complete version
 in the compiled directory (usually ``sphinx-rootdir/_build/html``) and
 can easily be moved around.
 
+**Split and LaTeX.**
 LaTeX Beamer slides generated from DocOnce source also apply ``!split`` to
 indicate the start of individual slides. However, the split is
 performed by the ``doconce slides_beamer`` command and does not result
 in individual files like ``split_rst`` and ``split_html`` do.
-
-Header and Footer
------------------
-
-Some formats use a header and footer in the document. LaTeX and
-HTML are two examples of such formats. When the document is to be
-included in another document (which is often the case with
-DocOnce-based documents), the header and footer are not wanted, while
-these are needed (at least in a LaTeX context) if the document is
-stand-alone. We have introduced the convention that if ``TITLE:``
-is found at the beginning of the line (i.e., the document
-has a title), the header and footer are included, otherwise not.
-
-.. !split
-
-Missing Features
-----------------
-
-DocOnce does not aim to support sophisticated typesetting, simply because
-sophisticated typesetting usually depend quite strongly on the particular
-output format chosen. When a particular feature needed is not supported
-by DocOnce, it is recommended to hardcode that feature for a particular
-format and use the if-else construction of the preprocessor. For example,
-if a sophisticated table is desired in LaTeX output, do something like
-
-.. code-block:: text
-
-        # #if FORMAT in ("latex", "pdflatex")
-        # insert native LaTeX code for fancy table
-        # #else
-        # insert a DocOnce-formatted "inline" table
-        # #endif
-
-Similarly, if certain adjustments are needed, like
-pagebreaks in LaTeX, hardcode that in the DocOnce format (and recall
-that this is really LaTeX dependent - pagebreaks are not
-relevant HTML formats).
-
-Instead of inserting special code in the DocOnce document, one can
-alternatively script editing of the output from DocOnce. That is,
-we develop a Python or Bash script that runs the translation of
-a DocOnce document to a ready docoment in another format. Inside this
-script, we may edit and fine-tune the output from DocOnce.
-
-.. _emacs:doconce:
-
-Emacs DocOnce Formatter
------------------------
-
-The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__ in the DocOnce source distribution
-gives a "DocOnce Editing Mode" in Emacs.
-
-Here is how to get the DocOnce Editing Mode in Emacs: Download `.doconce-mode.el <https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el>`__ and save it in your home directory, then add these lines to ``~/.emacs``:
-
-.. code-block:: doconce
-
-        (load-file "~/.doconce-mode.el")
-
-Emacs will now recognize files with extension ``.do.txt`` and enter
-the DocOnce Editing Mode.
-
-The major advantage with the DocOnce Editing Mode in Emacs is that
-many keyboard shortcuts are defined:
-
-==========================================  ==========================================  
-                Emacs key                                     Action                    
-==========================================  ==========================================  
-Ctrl+c f                                    figure                                      
-Ctrl+c v                                    movie/video                                 
-Ctrl+c h1                                   heading level 1 (section/h1)                
-Ctrl+c h2                                   heading level 2 (subsection/h2)             
-Ctrl+c h3                                   heading level 2 (subsection/h3)             
-Ctrl+c hp                                   heading for paragraph                       
-Ctrl+c me                                   math environment: ``!bt`` equation ``!et``  
-Ctrl+c ma                                   math environment: ``!bt`` align ``!et``     
-Ctrl+c ce                                   code environment: ``!bc`` code ``!ec``      
-Ctrl+c cf                                   code from file: ``@@@CODE``                 
-Ctrl+c table2                               table with 2 columns                        
-Ctrl+c table3                               table with 3 columns                        
-Ctrl+c table4                               table with 4 columns                        
-Ctrl+c exer                                 exercise outline                            
-Ctrl+c slide                                slide outline                               
-Ctrl+c help                                 print this table                            
-==========================================  ==========================================  
-
-Typing ``Ctrl+c help`` prints the above table in Emacs. Try out
-the different shortcuts and see how handy they are in learning
-DocOnce and saving much typing!
 
 .. !split
 
@@ -4653,6 +4625,12 @@ Points to consider (just sketches...):
  * From doconce to PP or GP: use the latexslides script to convert
    to PDFs and odp format, convert odp to ppt interactively or with
    ``unoconv``.
+
+ * Sections (7 ``=``) are used to indicate sections in slides (gives
+   a toc in beamer slides), while subsections (5 ``=``) are used for
+   slide headings. Remember ``!split`` before each slide (subsection).
+   A comment ``# Short title: title`` after a section is interpreted
+   in ``latex`` and ``pdflatex`` output as a short title for the section.
 
 .. !split
 
@@ -4726,6 +4704,85 @@ Four themes come with DocOnce: ``X_Y``, where ``X`` is ``blue`` or ``red``
 for simple layout and
 `shadow <http://hplgit.github.io/teamods/doconce/demo/demo_blue_shadow.pdf>`__
 for shadowed boxes and more visual structure in the slides.
+
+Misc
+====
+
+.. !split
+
+Missing Features
+----------------
+
+DocOnce does not aim to support sophisticated typesetting, simply because
+sophisticated typesetting usually depend quite strongly on the particular
+output format chosen. When a particular feature needed is not supported
+by DocOnce, it is recommended to hardcode that feature for a particular
+format and use the if-else construction of the preprocessor. For example,
+if a sophisticated table is desired in LaTeX output, do something like
+
+.. code-block:: text
+
+        # #if FORMAT in ("latex", "pdflatex")
+        # insert native LaTeX code for fancy table
+        # #else
+        # insert a DocOnce-formatted "inline" table
+        # #endif
+
+Similarly, if certain adjustments are needed, like
+pagebreaks in LaTeX, hardcode that in the DocOnce format (and recall
+that this is really LaTeX dependent - pagebreaks are not
+relevant HTML formats).
+
+Instead of inserting special code in the DocOnce document, one can
+alternatively script editing of the output from DocOnce. That is,
+we develop a Python or Bash script that runs the translation of
+a DocOnce document to a ready docoment in another format. Inside this
+script, we may edit and fine-tune the output from DocOnce.
+
+.. _emacs:doconce:
+
+Emacs DocOnce Formatter
+-----------------------
+
+The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__ in the DocOnce source distribution
+gives a "DocOnce Editing Mode" in Emacs.
+
+Here is how to get the DocOnce Editing Mode in Emacs: Download `.doconce-mode.el <https://raw.github.com/hplgit/doconce/master/misc/.doconce-mode.el>`__ and save it in your home directory, then add these lines to ``~/.emacs``:
+
+.. code-block:: doconce
+
+        (load-file "~/.doconce-mode.el")
+
+Emacs will now recognize files with extension ``.do.txt`` and enter
+the DocOnce Editing Mode.
+
+The major advantage with the DocOnce Editing Mode in Emacs is that
+many keyboard shortcuts are defined:
+
+=============  ==========================================  
+  Emacs key                      Action                    
+=============  ==========================================  
+Ctrl+c f       figure                                      
+Ctrl+c v       movie/video                                 
+Ctrl+c h1      heading level 1 (section/h1)                
+Ctrl+c h2      heading level 2 (subsection/h2)             
+Ctrl+c h3      heading level 2 (subsection/h3)             
+Ctrl+c hp      heading for paragraph                       
+Ctrl+c me      math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma      math environment: ``!bt`` align ``!et``     
+Ctrl+c ce      code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf      code from file: ``@@@CODE``                 
+Ctrl+c table2  table with 2 columns                        
+Ctrl+c table3  table with 3 columns                        
+Ctrl+c table4  table with 4 columns                        
+Ctrl+c exer    exercise outline                            
+Ctrl+c slide   slide outline                               
+Ctrl+c help    print this table                            
+=============  ==========================================  
+
+Typing ``Ctrl+c help`` prints the above table in Emacs. Try out
+the different shortcuts and see how handy they are in learning
+DocOnce and saving much typing!
 
 .. !split
 
@@ -5063,13 +5120,13 @@ The resulting table is displayed below.
 
 .. them here.
 
-========================================  ========================================  ========================================  
-                                                                                                                              
-========================================  ========================================  ========================================  
+========================================  ========================================    
+                                                                                      
+========================================  ========================================    
 `085 <mov/wave_frames/frame_0085.png>`__  `090 <mov/wave_frames/frame_0090.png>`__  
 `100 <mov/wave_frames/frame_0100.png>`__  `105 <mov/wave_frames/frame_0105.png>`__  
 `115 <mov/wave_frames/frame_0115.png>`__  `120 <mov/wave_frames/frame_0120.png>`__  
-========================================  ========================================  ========================================  
+========================================  ========================================    
 
 Generating the Entire Table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5858,8 +5915,8 @@ syntax.
 GitHub-flavored Markdown
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Adding the command-line option ``github-md`` turns on the GutHub-flavored
-Markdown dialect, which is used for the issue tracker on `GitHub <http://github.com>`__. A special feature is the support of task lists:
+Adding the command-line option ``github-md`` turns on the
+`GutHub-flavored Markdown dialect <https://guides.github.com/features/mastering-markdown/>`__, which is used for the issue tracker on `GitHub <http://github.com>`__. A special feature is the support of task lists:
 unnumbered lists with ``[x]`` (task done) or ``[ ]`` (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
 is different from Pandoc extended Markdown.) Below is a typical
@@ -6254,6 +6311,22 @@ However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The `Calibre <http://calibre-ebook.com/>`__
 program can produce epub, mobi, and other e-book formats from PDF,
 see a `description <http://www.dedoimedo.com/computers/latex-lyx-e-books.html>`__.
+
+Microsoft Word or LibreOffice
+-----------------------------
+
+Transforming DocOnce files to Word format is best done with the aid
+of ``pandoc``. A standard way is to first generate the Markdown format
+(``doconce format pandoc``) and then use ``pandoc`` to generate a ``.docx``
+file:
+
+.. code-block:: text
+
+        Terminal> doconce format pandoc mydoc
+        Terminal> pandoc -t docx -o mydoc.docx mydoc.md
+
+The transformation works well for simple text files, but LaTeX mathematics
+does not work.
 
 Plain ASCII Text
 ----------------
@@ -6770,6 +6843,11 @@ here for convenience.
         Do not include header and footer in (LaTeX and HTML) documents.
         
         
+        --no_emoji
+        
+        Remove all emojis.
+        
+        
         --runestone
         
         Make a RunestoneInteractive version of a Sphinx document.
@@ -6800,6 +6878,7 @@ here for convenience.
         vim, pastie, friendly, native).
         none, no, off: turn off pygments to typeset computer code in HTML,
         use plain <pre> tags.
+        highlight.js: use highlight.js syntax highlighting, not pygments.
         
         
         --pygments_html_linenos
@@ -6918,26 +6997,6 @@ here for convenience.
         Add a shadow effect in HTML box environments.
         
         
-        --html_slide_theme=...
-        
-        Option for doconce slides_html: specify a theme for the
-        present slide type.
-        Examples from reveal.js: darkgray, beige, solarized, default;
-        from deck.js: sandstone.default, swiss, web-2.0.
-        (The HTML file contains a comment with the various stylesheets
-        for the various available themes.)
-        
-        
-        --html_footer_logo=...
-        
-        Specify a filename or a style name for a logo in the slide footer.
-        
-        
-        --beamer_slide_theme=...
-        
-        Specify a theme for beamer slides. Examples:
-        
-        
         --html_exercise_icon=...
         
         Specify a question icon in bundled/html_images for being
@@ -7009,9 +7068,9 @@ here for convenience.
         Turn section numbering on/off. Default: off for all formats except latex and pdflatex (on for those).
         
         
-        --latex_table_align=...
+        --latex_table_format=...
         
-        Default: quote. Other values: left, center.
+        Default: quote. Other values: left, center, footnotesize, tiny.
         
         
         --latex_title_layout=...
@@ -7803,17 +7862,17 @@ should be available on all Unix/Linux systems. Other choices, their
 URL, and their ``sudo apt-get install`` command on Debian (Ubuntu) systems
 appear in the table below.
 
-===========================================================================================  ===========================================================================================  ===========================================================================================  
-                                          Program                                                                                        URL                                                                                 Debian/Ubuntu install                                     
-===========================================================================================  ===========================================================================================  ===========================================================================================  
-``pdiff``                                                                                    `a2ps <http://www.gnu.org/software/a2ps/>`__ `wdiff <http://www.gnu.org/software/wdiff/>`__  ``sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended``            
-``latexdiff``                                                                                `latexdiff <http://www.ctan.org/pkg/latexdiff>`__                                            ``sudo apt-get install latexdiff``                                                           
-``kdiff3``                                                                                   `kdiff3 <http://kdiff3.sourceforge.net/>`__                                                  ``sudo apt-get install kdiff3``                                                              
-``diffuse``                                                                                  `diffuse <http://diffuse.sourceforge.net/>`__                                                ``sudo apt-get install diffuse``                                                             
-``xxdiff``                                                                                   `xxdiff <http://xxdiff.sourceforge.net/local/>`__                                            ``sudo apt-get install xxdiff``                                                              
-``meld``                                                                                     `meld <http://meldmerge.org/>`__                                                             ``sudo apt-get install meld``                                                                
-``tkdiff.tcl``                                                                               `tkdiff <https://sourceforge.net/projects/tkdiff/>`__                                        not in Debian                                                                                
-===========================================================================================  ===========================================================================================  ===========================================================================================  
+==============  ===========================================================================================  =================================================================================  
+   Program                                                  URL                                                                            Debian/Ubuntu install                                
+==============  ===========================================================================================  =================================================================================  
+``pdiff``       `a2ps <http://www.gnu.org/software/a2ps/>`__ `wdiff <http://www.gnu.org/software/wdiff/>`__  ``sudo apt-get install a2ps wdiff texlive-latex-extra texlive-latex-recommended``  
+``latexdiff``   `latexdiff <http://www.ctan.org/pkg/latexdiff>`__                                            ``sudo apt-get install latexdiff``                                                 
+``kdiff3``      `kdiff3 <http://kdiff3.sourceforge.net/>`__                                                  ``sudo apt-get install kdiff3``                                                    
+``diffuse``     `diffuse <http://diffuse.sourceforge.net/>`__                                                ``sudo apt-get install diffuse``                                                   
+``xxdiff``      `xxdiff <http://xxdiff.sourceforge.net/local/>`__                                            ``sudo apt-get install xxdiff``                                                    
+``meld``        `meld <http://meldmerge.org/>`__                                                             ``sudo apt-get install meld``                                                      
+``tkdiff.tcl``  `tkdiff <https://sourceforge.net/projects/tkdiff/>`__                                        not in Debian                                                                      
+==============  ===========================================================================================  =================================================================================  
 
 .. _install:debian:script:
 
@@ -8003,21 +8062,21 @@ References
 
 
 .. [Ref1]
+   [Ref1]. **T. H. E. Author**,
+   Some Equations,
+   2008.
+
+.. [Ref2]
+   [Ref2]. **H. P. Langtangen**,
+   A Document for Testing DocOnce,
+   `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
+
+.. [Ref3]
    **D. E. Knuth**. Theory and Practice,
    *EATCS Bulletin*,
    27,
    pp. 14-21,
    1985.
-
-.. [Ref2]
-   [Ref2]. **T. H. E. Author**,
-   Some Equations,
-   2008.
-
-.. [Ref3]
-   [Ref3]. **H. P. Langtangen**,
-   A Document for Testing DocOnce,
-   `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
 
 .. [Ref4]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
