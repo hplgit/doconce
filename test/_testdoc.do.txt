@@ -219,7 +219,8 @@ int main()
 }
 !ec
 # The next should get correctly typset in sphinx (cod is fcod)
-And a little bit of Fortran:
+# It also tests emoji before code
+And a little bit of Fortran: :dizzy_face:
 
 !bc
 |bc cod

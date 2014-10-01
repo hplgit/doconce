@@ -17,6 +17,7 @@ no_mako = False
 no_preprocess = False
 mako_strict_undefined = False
 no_header_footer = False
+no_emoji = False
 runestone = False
 #max_bc_linelength = 
 keep_pygments_html_bg = False

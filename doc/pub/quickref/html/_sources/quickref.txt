@@ -8,7 +8,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 26, 2014
+:Date: Oct 1, 2014
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -228,6 +228,13 @@ Texas A&M, while words on both sides of ``&``, as in ``Guns & Roses``,
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 ``latex``, and ``pdflatex`` formats.
+
+Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
+inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
+before or after. Only the ``pdflatex`` and ``html`` output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+``--no_emoji`` removes all emojis from the output document.
 
 Lists
 -----

@@ -378,8 +378,8 @@ syntax.
 
 === GitHub-flavored Markdown ===
 
-Adding the command-line option `github-md` turns on the GutHub-flavored
-Markdown dialect, which is used for the issue tracker on "GitHub": "http://github.com". A special feature is the support of task lists:
+Adding the command-line option `github-md` turns on the
+"GutHub-flavored Markdown dialect": "https://guides.github.com/features/mastering-markdown/", which is used for the issue tracker on "GitHub": "http://github.com". A special feature is the support of task lists:
 unnumbered lists with `[x]` (task done) or `[ ]` (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
 is different from Pandoc extended Markdown.) Below is a typical

@@ -134,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Sep 26, 2014</h4></center> <!-- date -->
+<center><h4>Oct 1, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -401,6 +401,14 @@ Texas A&amp;M, while words on both sides of <code>&</code>, as in <code>Guns & R
 preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
 after <code>&</code> will result in wrong typesetting of the ampersand in the <code>html</code>,
 <code>latex</code>, and <code>pdflatex</code> formats.
+
+<p>
+Emojis, as defined in <a href="http://www.emoji-cheat-sheet.com" target="_self"><tt>http://www.emoji-cheat-sheet.com</tt></a>, can be
+inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
+before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+<code>--no_emoji</code> removes all emojis from the output document.
 
 <h2>Lists  <a name="___sec5"></a></h2>
 

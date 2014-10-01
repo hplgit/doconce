@@ -2250,7 +2250,7 @@ def handle_cross_referencing(filestr, format):
     return filestr
 
 
-def handle_index_and_bib(filestr, format, has_title):
+def handle_index_and_bib(filestr, format):
     """Process idx{...} and cite{...} and footnote instructions."""
     # Footnotes: start of line, spaces, [^name]: explanation
     # goes up to next footnote [^name] or a double newline or the end of the str
@@ -2887,6 +2887,7 @@ def inline_tag_subst(filestr, format):
         'ampersand1',
         'colortext',
         'verbatim',
+        'emoji',
         'paragraph',  # after bold and emphasize
         'plainURL',   # must come before linkURL2 to avoid "URL" as link name
         'linkURL2v',
@@ -2914,6 +2915,9 @@ def inline_tag_subst(filestr, format):
             continue  # just ignore missing tags in current format
         if replacement is None:
             continue  # no substitution
+
+        if tag == 'emoji' and option('no_emoji'):
+            replacement = ''
 
         findlist = c.findall(filestr)
         occurences = len(findlist)
@@ -3248,13 +3252,6 @@ def doconce2format(filestr, format):
             filestr = re.sub(r'^%s:' % tag, '#%s:' % tag,
                              filestr, flags=re.MULTILINE)
 
-    # Check if ^?TITLE: is present, and if so, header and footer
-    # are to be included (later below):
-    if re.search(r'^TITLE:', filestr, re.MULTILINE):
-        has_title = True
-    else:
-        has_title = False
-
     # Lift sections up or down?
     s2name = {9: 'chapter', 7: 'section',
               5: 'subsection', 3: 'subsubsection'}
@@ -3333,7 +3330,7 @@ def doconce2format(filestr, format):
 
     debugpr('The file after handling ref and label cross referencing:', filestr)
     # Next step: deal with index and bibliography (must be done before lists):
-    filestr = handle_index_and_bib(filestr, format, has_title)
+    filestr = handle_index_and_bib(filestr, format)
 
     debugpr('The file after handling index and bibliography:', filestr)
 
@@ -3409,7 +3406,10 @@ def doconce2format(filestr, format):
         delimiter = main_content_end
         delimiter = comment_pattern % delimiter + '\n'  # wrap as comment
         filestr = filestr + '\n' + delimiter
-    if has_title and not option('no_header_footer') and \
+
+    # Add header and footer if not an HTML template is specified or if
+    # header and footer is turned off by --no_header_footer
+    if not option('no_header_footer') and \
            option('html_template=', default='') == '':
         if format in INTRO:
             filestr = INTRO[format] + filestr

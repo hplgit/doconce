@@ -2,7 +2,7 @@ import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
      cite_with_multiple_args2multiple_cites, _abort, is_file_or_url, \
-     get_legal_pygments_lexers, has_custom_pygments_lexer
+     get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url
 from misc import option
 
 # fold/unfold: use !bblock Title unfold
@@ -1835,6 +1835,7 @@ def define(FILENAME_EXTENSION,
         'horizontal-rule': '<hr>',
         'ampersand1':    r'\g<1> &amp; \g<2>',
         'ampersand2':    r' \g<1>&amp;\g<2>',
+        'emoji':         r'\g<1><img src="%s\g<2>.png" width="22px" height="22px" align="center">\g<3>' % emoji_url
         }
 
     if option('wordpress'):

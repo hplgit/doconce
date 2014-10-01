@@ -235,7 +235,8 @@ int main()
 }
 !ec
 # The next should get correctly typset in sphinx (cod is fcod)
-And a little bit of Fortran:
+# It also tests emoji before code
+And a little bit of Fortran: :dizzy_face:
 
 !bc
 |bc cod
@@ -2079,6 +2080,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
+\usepackage{calc}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
@@ -2412,7 +2415,8 @@ int main()
 }
 \ecpppro
 % The next should get correctly typset in sphinx (cod is fcod)
-And a little bit of Fortran:
+% It also tests emoji before code
+And a little bit of Fortran: (\Verb!dizzy_face!)
 
 \bccq
 !bc cod
@@ -4596,7 +4600,8 @@ int main()
 \end{minted}
 \noindent
 % The next should get correctly typset in sphinx (cod is fcod)
-And a little bit of Fortran:
+% It also tests emoji before code
+And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{latex_figs/dizzy_face.png}}
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
@@ -6843,7 +6848,8 @@ int main()
 }
 \end{minted}
 % The next should get correctly typset in sphinx (cod is fcod)
-And a little bit of Fortran:
+% It also tests emoji before code
+And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{latex_figs/dizzy_face.png}}
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 !bc cod
@@ -8616,7 +8622,9 @@ C++::
 
 .. The next should get correctly typset in sphinx (cod is fcod)
 
-And a little bit of Fortran::
+.. It also tests emoji before code
+
+And a little bit of Fortran: :dizzy_face::
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -10305,7 +10313,9 @@ C++:
 
 .. The next should get correctly typset in sphinx (cod is fcod)
 
-And a little bit of Fortran:
+.. It also tests emoji before code
+
+And a little bit of Fortran: :dizzy_face:
 
 .. code-block:: text
 
@@ -12039,7 +12049,8 @@ int main()
 }
 }}}
 <wiki:comment> The next should get correctly typset in sphinx (cod is fcod) </wiki:comment>
-And a little bit of Fortran:
+<wiki:comment> It also tests emoji before code </wiki:comment>
+And a little bit of Fortran: :dizzy_face:
 
 {{{
 !bc cod
@@ -13568,7 +13579,8 @@ int main()
 }
 </syntaxhighlight>
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-And a little bit of Fortran:
+<!-- It also tests emoji before code -->
+And a little bit of Fortran: :dizzy_face:
 
 <syntaxhighlight lang="text">
 !bc cod
@@ -15187,7 +15199,8 @@ int main()
 }
 }}}
 <wiki:comment> The next should get correctly typset in sphinx (cod is fcod) </wiki:comment>
-And a little bit of Fortran:
+<wiki:comment> It also tests emoji before code </wiki:comment>
+And a little bit of Fortran: :dizzy_face:
 
 {{{
 !bc cod
@@ -16603,7 +16616,7 @@ C++::
            return 0
         }
 
-And a little bit of Fortran::
+And a little bit of Fortran: :dizzy_face::
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -17900,7 +17913,7 @@ C++::
            return 0
         }
 
-And a little bit of Fortran::
+And a little bit of Fortran: :dizzy_face::
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -19288,7 +19301,7 @@ C++::
            return 0
         }
 
-And a little bit of Fortran::
+And a little bit of Fortran: :dizzy_face::
 
         !bc cod
               subroutine midpt(x, length, a, b)
@@ -20739,7 +20752,8 @@ int main()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-And a little bit of Fortran:
+<!-- It also tests emoji before code -->
+And a little bit of Fortran: :dizzy_face:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22515,7 +22529,8 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "<!-- The next should get correctly typset in sphinx (cod is fcod) -->\n",
-      "And a little bit of Fortran:"
+      "<!-- It also tests emoji before code -->\n",
+      "And a little bit of Fortran: :dizzy_face:"
      ]
     },
     {
@@ -24839,7 +24854,8 @@ int main()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-And a little bit of Fortran:
+<!-- It also tests emoji before code -->
+And a little bit of Fortran: :dizzy_face:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28947,7 +28963,8 @@ C++:
 </pre></div>
 </td></tr></table><p>
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-And a little bit of Fortran:
+<!-- It also tests emoji before code -->
+And a little bit of Fortran: <img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/dizzy_face.png" width="22px" height="22px" align="center">
 
 <p>
 
@@ -31454,7 +31471,8 @@ C++:
 </pre></div>
 <p>
 
-And a little bit of Fortran:
+
+And a little bit of Fortran: <img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/dizzy_face.png" width="22px" height="22px" align="center">
 
 <p>
 
@@ -33474,7 +33492,8 @@ C++:
 </pre></div>
 <p>
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-And a little bit of Fortran:
+<!-- It also tests emoji before code -->
+And a little bit of Fortran: <img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/dizzy_face.png" width="22px" height="22px" align="center">
 
 <p>
 
@@ -35251,6 +35270,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \clubpenalty = 10000
 \widowpenalty = 10000
 
+\usepackage{calc}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 % --- begin definition of \listofexercises command ---
@@ -35627,7 +35648,8 @@ int main()
 }
 \ecpppro
 % The next should get correctly typset in sphinx (cod is fcod)
-And a little bit of Fortran:
+% It also tests emoji before code
+And a little bit of Fortran: (\Verb!dizzy_face!)
 
 \bccq
 !bc cod
@@ -37858,7 +37880,7 @@ cd ..
 # in latex, media9 is unreliable
 
 # Test encoding: guess and change
-doconce format html encoding1
+doconce format html encoding1   --no_header_footer
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -37872,37 +37894,37 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 
 # Handle encoding problems (and test debug output too)
 # Plain ASCII with Norwegian chars printed as is (and utf8 package mode)
-doconce format latex encoding3 --debug
+doconce format latex encoding3 --debug --no_header_footer
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --pygments_html_style=off --debug
+doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
 # Plain ASCII with verbatim blocks with Norwegian chars
-doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
+doconce format latex encoding3 -DPREPROCESS --no_header_footer  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
-doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
+doconce format html encoding3 -DPREPROCESS --no_header_footer  # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug --no_header_footer # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
-doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
+doconce format latex encoding3 -DMAKO --no_header_footer  # mako fails due to Norwegian chars
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
+doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO  --encoding=utf-8  --pygments_html_style=off --debug
+doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --pygments_html_style=off  # mako variable only, no % lines
-system doconce format html mako_test2 --pygments_html_style=off  # % lines inside code, but need for mako
-system doconce format html mako_test3 --pygments_html_style=off  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  --no_header_footer  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  --no_header_footer  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  --no_header_footer  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --pygments_html_style=none # no problem message
-system doconce format html mako_test4 --pygments_html_style=no  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none  --no_header_footer # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  --no_header_footer  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
@@ -40429,7 +40451,8 @@ C++:
 </pre></div>
 <p>
 <!-- The next should get correctly typset in sphinx (cod is fcod) -->
-And a little bit of Fortran:
+<!-- It also tests emoji before code -->
+And a little bit of Fortran: <img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/dizzy_face.png" width="22px" height="22px" align="center">
 
 <p>
 
@@ -42413,7 +42436,9 @@ C++:
 
 .. The next should get correctly typset in sphinx (cod is fcod)
 
-And a little bit of Fortran:
+.. It also tests emoji before code
+
+And a little bit of Fortran: :dizzy_face:
 
 .. code-block:: text
 
@@ -57986,7 +58011,6 @@ sandstone.aurora.css
 sandstone.css
 sandstone.dark.css
 sandstone.default.css
-sandstone.default.css.old~~
 sandstone.firefox.css
 sandstone.light.css
 sandstone.mdn.css
@@ -68130,6 +68154,10 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
+*************** Working with tag "emoji"
+
+
+
 *************** Working with tag "paragraph"
 
 
@@ -68530,6 +68558,10 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *************** Working with tag "verbatim"
+
+
+
+*************** Working with tag "emoji"
 
 
 
@@ -69079,7 +69111,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f1eba9b5758>
+verbatim is to be replaced using <function html_verbatim at 0x7f5eae87e7d0>
 
 
 First occurence: " `mako`."
@@ -69105,6 +69137,10 @@ through the various stages of the text transformation process.
 --------------------------------------------------------------------------------
 
 
+
+
+
+*************** Working with tag "emoji"
 
 
 
@@ -73032,7 +73068,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Sep 26 09:40:45 2014.
+# sphinx-quickstart on Wed Oct  1 11:57:08 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -73382,7 +73418,7 @@ elif html_theme == 'uio':
 
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ['_themes']
+html_theme_path = ['_themes'] + sphinx_bootstrap_theme.get_html_theme_path()
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -74543,6 +74579,13 @@ Texas A & M, while words on both sides of `&`, as in `Guns & Roses`,
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after `&` will result in wrong typesetting of the ampersand in the `html`,
 `latex`, and `pdflatex` formats.
+
+Emojis, as defined in URL: "http://www.emoji-cheat-sheet.com", can be
+inserted in the text, as (e.g.) `:dizzy_face:` with blank or newline
+before or after. Only the `pdflatex` and `html` output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+`--no_emoji` removes all emojis from the output document.
 
 ===== Lists =====
 
@@ -75722,6 +75765,14 @@ Texas A&amp;M, while words on both sides of <code>&</code>, as in <code>Guns & R
 preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
 after <code>&</code> will result in wrong typesetting of the ampersand in the <code>html</code>,
 <code>latex</code>, and <code>pdflatex</code> formats.
+
+<p>
+Emojis, as defined in <a href="http://www.emoji-cheat-sheet.com" target="_self"><tt>http://www.emoji-cheat-sheet.com</tt></a>, can be
+inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
+before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+<code>--no_emoji</code> removes all emojis from the output document.
 
 <h2>Lists  <a name="___sec5"></a></h2>
 
@@ -77349,6 +77400,13 @@ preserve the spaces: Guns {\&} Roses. Failing to have spaces before and
 after \code{&} will result in wrong typesetting of the ampersand in the \code{html},
 \code{latex}, and \code{pdflatex} formats.
 
+Emojis, as defined in \href{{http://www.emoji-cheat-sheet.com}}{\nolinkurl{http://www.emoji-cheat-sheet.com}}, can be
+inserted in the text, as (e.g.) \code{:dizzy_face:} with blank or newline
+before or after. Only the \code{pdflatex} and \code{html} output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+\code{--no_emoji} removes all emojis from the output document.
+
 \subsection{Lists}
 
 There are three types of lists: \emph{bullet lists}, where each item starts
@@ -78590,6 +78648,13 @@ preserve the spaces: Guns & Roses. Failing to have spaces before and
 after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 ``latex``, and ``pdflatex`` formats.
 
+Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
+inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
+before or after. Only the ``pdflatex`` and ``html`` output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+``--no_emoji`` removes all emojis from the output document.
+
 Lists
 -----
 
@@ -79784,6 +79849,13 @@ Texas A&M, while words on both sides of ``&``, as in ``Guns & Roses``,
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 ``latex``, and ``pdflatex`` formats.
+
+Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
+inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
+before or after. Only the ``pdflatex`` and ``html`` output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+``--no_emoji`` removes all emojis from the output document.
 
 Lists
 -----
@@ -81019,6 +81091,13 @@ preserve the spaces: Guns & Roses. Failing to have spaces before and
 after `&` will result in wrong typesetting of the ampersand in the `html`,
 `latex`, and `pdflatex` formats.
 
+Emojis, as defined in http://www.emoji-cheat-sheet.com, can be
+inserted in the text, as (e.g.) `:dizzy_face:` with blank or newline
+before or after. Only the `pdflatex` and `html` output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+`--no_emoji` removes all emojis from the output document.
+
 ==== Lists ====
 
 There are three types of lists: *bullet lists*, where each item starts
@@ -82141,6 +82220,13 @@ Texas A&M, while words on both sides of <code>&</code>, as in <code>Guns & Roses
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after <code>&</code> will result in wrong typesetting of the ampersand in the <code>html</code>,
 <code>latex</code>, and <code>pdflatex</code> formats.
+
+Emojis, as defined in http://www.emoji-cheat-sheet.com, can be
+inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
+before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+<code>--no_emoji</code> removes all emojis from the output document.
 
 ==== Lists ====
 
@@ -83326,6 +83412,13 @@ preserve the spaces: Guns & Roses. Failing to have spaces before and
 after {{{&}}} will result in wrong typesetting of the ampersand in the {{{html}}},
 {{{latex}}}, and {{{pdflatex}}} formats.
 
+Emojis, as defined in [[http://www.emoji-cheat-sheet.com]], can be
+inserted in the text, as (e.g.) {{{:dizzy_face:}}} with blank or newline
+before or after. Only the {{{pdflatex}}} and {{{html}}} output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+{{{--no_emoji}}} removes all emojis from the output document.
+
 == Lists ==
 
 There are three types of lists: //bullet lists//, where each item starts
@@ -84423,6 +84516,13 @@ preserve the spaces: Guns & Roses. Failing to have spaces before and
 after '&' will result in wrong typesetting of the ampersand in the 'html',
 'latex', and 'pdflatex' formats.
 
+Emojis, as defined in "http://www.emoji-cheat-sheet.com":http://www.emoji-cheat-sheet.com, can be
+inserted in the text, as (e.g.) ':dizzy_face:' with blank or newline
+before or after. Only the 'pdflatex' and 'html' output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+'--no_emoji' removes all emojis from the output document.
+
 Lists
 
 There are three types of lists: *bullet lists*, where each item starts
@@ -85499,6 +85599,13 @@ Texas A&M, while words on both sides of C{&}, as in C{Guns & Roses},
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after C{&} will result in wrong typesetting of the ampersand in the C{html},
 C{latex}, and C{pdflatex} formats.
+
+Emojis, as defined in U{http://www.emoji-cheat-sheet.com<http://www.emoji-cheat-sheet.com>}, can be
+inserted in the text, as (e.g.) C{:dizzy_face:} with blank or newline
+before or after. Only the C{pdflatex} and C{html} output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+C{--no_emoji} removes all emojis from the output document.
 
 Lists
 -----
@@ -86610,6 +86717,13 @@ Texas A&M, while words on both sides of &, as in Guns & Roses,
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after & will result in wrong typesetting of the ampersand in the html,
 latex, and pdflatex formats.
+
+Emojis, as defined in http://www.emoji-cheat-sheet.com, can be
+inserted in the text, as (e.g.) :dizzy_face: with blank or newline
+before or after. Only the pdflatex and html output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+--no_emoji removes all emojis from the output document.
 
 Lists
 -----
@@ -87775,6 +87889,13 @@ Texas A&M, while words on both sides of `&`, as in `Guns & Roses`,
 preserve the spaces: Guns & Roses. Failing to have spaces before and
 after `&` will result in wrong typesetting of the ampersand in the `html`,
 `latex`, and `pdflatex` formats.
+
+Emojis, as defined in <http://www.emoji-cheat-sheet.com>, can be
+inserted in the text, as (e.g.) `:dizzy_face:` with blank or newline
+before or after. Only the `pdflatex` and `html` output formats translates
+emoji specifications to images, while all other formats leaves the
+textual specification in the document. The command-line option
+`--no_emoji` removes all emojis from the output document.
 
 ### Lists
 
@@ -89785,7 +89906,9 @@ dmap/pdftex.map}] [2]
 [3] (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg [4]) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) (./testdoc.out.pyg) [6] [7]
+[5]) <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
+.png>] [7]
 
 
 ...rest of part of LaTeX line number...
@@ -89793,7 +89916,7 @@ dmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=88, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=91, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
 
@@ -89801,9 +89924,9 @@ dmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=120, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=123, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=122, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=124, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89843,17 +89966,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=151, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=153, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=152, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=154, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=155, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=154, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=156, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=155, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=157, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=158, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -89882,7 +90005,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1263.
+t line 1264.
 
 
 
@@ -89902,7 +90025,7 @@ t line 1263.
 
 
 
-t line 1272.
+t line 1273.
 
 
 
@@ -89923,7 +90046,7 @@ t line 1272.
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -90295,6 +90418,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+latex_figs/dizzy_face.png
  testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
@@ -90579,15 +90703,18 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=318, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg [6])
+<latex_figs/dizzy_face.png, id=295, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
+.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=321, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9]
 
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=349, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=353, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=351, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=354, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90627,17 +90754,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=377, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=379, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=378, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=380, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=379, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=380, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=382, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90666,7 +90793,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1263.
+t line 1264.
 
 
 
@@ -90686,7 +90813,7 @@ t line 1263.
 
 
 
-t line 1272.
+t line 1273.
 
 
 
@@ -90707,7 +90834,7 @@ t line 1272.
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -90983,6 +91110,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+latex_figs/dizzy_face.png
  testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
@@ -91280,15 +91408,18 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=318, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg [6])
+<latex_figs/dizzy_face.png, id=295, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
+.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=321, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9]
 
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=349, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=353, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=351, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=354, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91328,17 +91459,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=377, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=379, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=378, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=380, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=379, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=380, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=382, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91367,7 +91498,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1263.
+t line 1264.
 
 
 
@@ -91387,7 +91518,7 @@ t line 1263.
 
 
 
-t line 1272.
+t line 1273.
 
 
 
@@ -91408,7 +91539,7 @@ t line 1272.
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -91684,6 +91815,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+latex_figs/dizzy_face.png
  testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
@@ -91965,15 +92097,18 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6]) (./testdoc.out.pyg) [7] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=318, 586.83241pt x 442.29242pt>
+(./testdoc.out.pyg) (./testdoc.out.pyg [6])
+<latex_figs/dizzy_face.png, id=295, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
+.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=321, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9]
 
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=349, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=353, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=351, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=354, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92013,17 +92148,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=377, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=379, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=378, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=380, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=379, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=380, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=382, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92255,6 +92390,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+latex_figs/dizzy_face.png
  testdoc.out.pyg
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
@@ -92579,8 +92715,9 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./testdoc.out.pyg) (./testdoc.out.pyg)
 
 (./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-(./testdoc.out.pyg) [7] [8]
+(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=238, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
+.png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
 
 
 ...rest of part of LaTeX line number...
@@ -92588,15 +92725,15 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=275, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=278, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=292, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=295, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=294, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=296, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92636,17 +92773,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=320, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=322, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=323, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=324, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=325, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=326, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=325, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=327, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92691,7 +92828,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1214.
+t line 1215.
 
 
 
@@ -92711,7 +92848,7 @@ t line 1214.
 
 
 
-t line 1223.
+t line 1224.
 
 
 
@@ -92731,7 +92868,7 @@ t line 1223.
 
 
 
-t line 1227.
+t line 1228.
 
 
 
@@ -93105,6 +93242,7 @@ lstlang1.sty    2013/08/26 1.5b listings language file
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
+latex_figs/dizzy_face.png
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -93469,9 +93607,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:374: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:411: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:411: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:376: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:413: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:413: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -95572,6 +95710,7 @@ admon=colors1
 + echo latex_figs:
 latex_figs:
 + /bin/ls latex_figs
+dizzy_face.png
 notice.eps
 notice.pdf
 question.pdf
@@ -102260,7 +102399,7 @@ Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + cd ..
-+ doconce format html encoding1
++ doconce format html encoding1 --no_header_footer
 translating doconce text in encoding1.do.txt to html
 output in encoding1.html
 + system doconce guess_encoding encoding1.do.txt
@@ -102287,25 +102426,25 @@ output in encoding1.html
 + doconce change_encoding utf-8 latin1 tmp2.do.txt
 + '[' 0 -ne 0 ']'
 + doconce guess_encoding tmp2.do.txt
-+ doconce format latex encoding3 --debug
++ doconce format latex encoding3 --debug --no_header_footer
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii
-+ doconce format html encoding3 --pygments_html_style=off --debug
++ doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 output in encoding3.html
 + cp encoding3.html encoding3.html-ascii
 + cat _doconce_debugging.log
-+ doconce format latex encoding3 -DPREPROCESS
++ doconce format latex encoding3 -DPREPROCESS --no_header_footer
 running preprocess -DFORMAT=latex -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii-verb
-+ doconce format html encoding3 -DPREPROCESS
++ doconce format html encoding3 -DPREPROCESS --no_header_footer
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
@@ -102315,7 +102454,7 @@ u'ight: 125%">a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n</pre></div>
                                           ^
     remedies: fix character or try --encoding=utf-8
 Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --pygments_html_style=none --debug
++ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --pygments_html_style=none --debug --no_header_footer
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
@@ -102323,16 +102462,16 @@ open file with encoding utf-8
 output in encoding3.html
 + cp encoding3.html encoding3.html-ascii-verb
 + cat _doconce_debugging.log
-+ doconce format latex encoding3 -DMAKO
++ doconce format latex encoding3 -DMAKO --no_header_footer
 running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
 *** mako error: mako.exceptions.CompileException
     Unicode decode operation of encoding 'ascii' failed at line: 0 char: 0
     reason: doconce file contains non-ascii characters
     rerun with --encoding=utf-8 (or similar):
-    doconce format latex encoding3.do.txt -DMAKO --encoding=utf-8
+    doconce format latex encoding3.do.txt -DMAKO --no_header_footer --encoding=utf-8
 Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce format latex encoding3 -DMAKO --encoding=utf-8
++ doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer
 running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
 mako variables: {'DEVICE': 'screen', 'MAKO': True, 'FORMAT': 'latex'}
@@ -102340,7 +102479,7 @@ translating doconce text in tmp_mako__encoding3.do.txt to latex
 open file with encoding utf-8
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-utf8
-+ doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug
++ doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
@@ -102350,32 +102489,32 @@ open file with encoding utf-8
 output in encoding3.html
 + cp encoding3.html encoding3.html-utf8
 + cat _doconce_debugging.log
-+ system doconce format html mako_test1 --pygments_html_style=off
-+ doconce format html mako_test1 --pygments_html_style=off
++ system doconce format html mako_test1 --pygments_html_style=off --no_header_footer
++ doconce format html mako_test1 --pygments_html_style=off --no_header_footer
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
 translating doconce text in tmp_mako__mako_test1.do.txt to html
 output in mako_test1.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test2 --pygments_html_style=off
-+ doconce format html mako_test2 --pygments_html_style=off
++ system doconce format html mako_test2 --pygments_html_style=off --no_header_footer
++ doconce format html mako_test2 --pygments_html_style=off --no_header_footer
 translating doconce text in mako_test2.do.txt to html
 output in mako_test2.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test3 --pygments_html_style=off
-+ doconce format html mako_test3 --pygments_html_style=off
++ system doconce format html mako_test3 --pygments_html_style=off --no_header_footer
++ doconce format html mako_test3 --pygments_html_style=off --no_header_footer
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + cp mako_test3.html mako_test3b.html
-+ system doconce format html mako_test3 --pygments_html_style=none
-+ doconce format html mako_test3 --pygments_html_style=none
++ system doconce format html mako_test3 --pygments_html_style=none --no_header_footer
++ doconce format html mako_test3 --pygments_html_style=none --no_header_footer
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test4 --pygments_html_style=no
-+ doconce format html mako_test4 --pygments_html_style=no
++ system doconce format html mako_test4 --pygments_html_style=no --no_header_footer
++ doconce format html mako_test4 --pygments_html_style=no --no_header_footer
 running mako on mako_test4.do.txt to make tmp_mako__mako_test4.do.txt
 translating doconce text in tmp_mako__mako_test4.do.txt to html
 output in mako_test4.html
@@ -102936,7 +103075,10 @@ Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
-[3] [4] [5]
+[3]
+Overfull \hbox (3.86172pt too wide) 
+[]\T1/phv/m/n/10 Emojis, as de-fined in [][][][][][], can be in-serted
+[4] [5]
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
@@ -103315,11 +103457,14 @@ Writing index file quickref.idx
 Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
-[4] [5]
+[4]
+Overfull \hbox (3.86172pt too wide) 
+[]\T1/phv/m/n/10 Emojis, as de-fined in [][][][][][], can be in-serted
+[5] [6]
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[6]
+
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
 [7] [8] [9]
@@ -103749,7 +103894,7 @@ Overfull \hbox (11.00006pt too wide)
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
 th. 
-
+[4]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
 anks as  
@@ -103757,7 +103902,7 @@ anks as
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must 
 start  
-[4]
+
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
 [5]
@@ -103832,13 +103977,13 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
-
+[10]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[10]
+
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
@@ -103861,7 +104006,7 @@ Overfull \hbox (119.00006pt too wide)
 
 ...rest of part of LaTeX line number...
 
-
+[11]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -103893,16 +104038,16 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
 `)  |  
-[11]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-
+[12]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
-[12]
+
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
@@ -103972,10 +104117,10 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[14]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-[14]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
@@ -104008,7 +104153,7 @@ Overfull \hbox (125.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
-
+[15]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
@@ -104018,7 +104163,7 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-[15]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -104066,13 +104211,13 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-
+[16]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-[16]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
@@ -104089,10 +104234,10 @@ Overfull \hbox (101.00006pt too wide)
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
-
+[17]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-[17]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
@@ -104304,11 +104449,11 @@ a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-
+[8]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
-[8]
+
 Overfull \hbox (5.00006pt too wide) 
 []    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z) 
 
@@ -104350,11 +104495,11 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-
+[11]
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
-[11]
+
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
@@ -104401,20 +104546,20 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
 `)  |  
-
+[12]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[12]
+
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
-
+[13]
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-[13]
+
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -104422,7 +104567,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-
+[14]
 Overfull \hbox (3623.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -104433,7 +104578,7 @@ ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
 _localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
 t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
 f gitdiff fix_bibtex4publish csv2table  
-[14]
+
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
 i|cwiki|pandoc|st|epytext dofile  
@@ -104483,14 +104628,14 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-
+[15]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform a .bbl file to a .rst file with reST bibliography 
 format  
-[15]
+
 Overfull \hbox (173.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
 splitting points  
@@ -104526,7 +104671,7 @@ uote}
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-
+[16]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -104539,7 +104684,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-[16]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
@@ -104580,13 +104725,13 @@ Overfull \hbox (17.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-
+[17]
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-[17]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
@@ -104600,21 +104745,21 @@ Overfull \hbox (77.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-
+[18]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
-[18]
+
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-
+[19]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -104625,18 +104770,18 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[19]
+
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-
+[20]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[20]
+
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub

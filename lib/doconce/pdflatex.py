@@ -1,6 +1,22 @@
 # -*- coding: iso-8859-15 -*-
 from latex import *
 
+def pdflatex_emoji(m):
+    space1 = m.group(1)
+    space2 = m.group(3)
+    name = m.group(2)
+    if not os.path.isdir(latexfigdir):
+        os.mkdir(latexfigdir)
+    emojifile = os.path.join(latexfigdir, name + '.png')
+    if not os.path.isfile(emojifile):
+        # Download emoji image
+        from common import emoji_url
+        url = emoji_url + name + '.png'
+        import urllib
+        urllib.urlretrieve(url, filename=emojifile)
+    s = space1 + r'\raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{%s}}' % emojifile + space2
+    return s
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -63,3 +79,4 @@ def define(FILENAME_EXTENSION,
     INLINE_TAGS_SUBST['pdflatex'] = {}
     for tag in INLINE_TAGS_SUBST['latex']:
         INLINE_TAGS_SUBST['pdflatex'][tag] = INLINE_TAGS_SUBST['latex'][tag]
+    INLINE_TAGS_SUBST['pdflatex']['emoji'] = pdflatex_emoji

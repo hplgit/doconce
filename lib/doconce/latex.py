@@ -345,6 +345,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'^(Filenames?): +?\\code\{',
                      r'\\noindent \g<1>: \code{', filestr,
                      flags=re.MULTILINE)
+
     # Preface is normally an unnumbered section or chapter
     # (add \markboth only if book style with chapters
     if chapters:
@@ -1906,6 +1907,8 @@ def define(FILENAME_EXTENSION,
         'non-breaking-space': None,
         'ampersand1':    r'\g<1> {\&} \g<2>',
         'ampersand2':    r' \g<1>{\&}\g<2>',
+        # Use \Verb instead of \textbf since emoji name can contain underscore
+        'emoji':         r'\g<1>(\Verb!\g<2>!)\g<3>',
         }
 
     ENVIRS['latex'] = {
@@ -2788,6 +2791,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     # Note: the line above is key for extracting the correct part
     # of the preamble for beamer slides in misc.slides_beamer
+
+    # pdflatex needs calc package for emojis
+    if re.search(INLINE_TAGS['emoji'], filestr):
+        if not ',calc' in INTRO['latex']:
+            INTRO['latex'] += '\n\\usepackage{calc}\n'
 
     # Make exercise, problem and project counters
     exer_envirs = ['Exercise', 'Problem', 'Project']

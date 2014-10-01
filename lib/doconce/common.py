@@ -13,6 +13,8 @@ _MATH_BLOCK = '<<<!!MATH_BLOCK'
 # Chapter regex
 chapter_pattern = r'^=========\s*[A-Za-z0-9].+?========='
 
+emoji_url = 'https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/'
+
 # Functions for creating and reading comment tags
 def begin_end_comment_tags(tag):
     return '--- begin ' + tag + ' ---', '--- end ' + tag + ' ---'
@@ -940,8 +942,11 @@ INLINE_TAGS = {
     # (i.e., after substitutions of $...$, color, etc.)
     'non-breaking-space': r'(?<=[})>$A-Za-z0-9_`.])~(?=[{(\\<$A-Za-z0-9`:])',
     'horizontal-rule': r'^----+$',
+    # ampersand1: Guns & Roses -> Guns {\&} Roses in latex
     'ampersand1': r'(?P<pre>[A-Za-z0-9]) +& +(?P<post>[A-Za-z0-9])',  # \1 & \2
+    # Texas A & M (doconce) -> Texas A{\&}M in latex (no spaces around &)
     'ampersand2': r' (?P<pre>[A-Z]) +& +(?P<post>[A-Z](?=\n|[ .,;-?:`]))',
+    'emoji': r'(\s):([a-z_]+):(\s)',
     }
 
 INLINE_TAGS_SUBST = {}

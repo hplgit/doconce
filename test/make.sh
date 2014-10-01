@@ -380,7 +380,7 @@ cd ..
 # in latex, media9 is unreliable
 
 # Test encoding: guess and change
-doconce format html encoding1
+doconce format html encoding1   --no_header_footer
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -394,37 +394,37 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 
 # Handle encoding problems (and test debug output too)
 # Plain ASCII with Norwegian chars printed as is (and utf8 package mode)
-doconce format latex encoding3 --debug
+doconce format latex encoding3 --debug --no_header_footer
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --pygments_html_style=off --debug
+doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
 # Plain ASCII with verbatim blocks with Norwegian chars
-doconce format latex encoding3 -DPREPROCESS  # preprocess handles utf-8
+doconce format latex encoding3 -DPREPROCESS --no_header_footer  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
-doconce format html encoding3 -DPREPROCESS  # html fails with utf-8 in !bc
+doconce format html encoding3 -DPREPROCESS --no_header_footer  # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug --no_header_footer # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
-doconce format latex encoding3 -DMAKO  # mako fails due to Norwegian chars
+doconce format latex encoding3 -DMAKO --no_header_footer  # mako fails due to Norwegian chars
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format latex encoding3 -DMAKO  --encoding=utf-8  # utf-8 and unicode
+doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO  --encoding=utf-8  --pygments_html_style=off --debug
+doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --pygments_html_style=off  # mako variable only, no % lines
-system doconce format html mako_test2 --pygments_html_style=off  # % lines inside code, but need for mako
-system doconce format html mako_test3 --pygments_html_style=off  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  --no_header_footer  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  --no_header_footer  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  --no_header_footer  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --pygments_html_style=none # no problem message
-system doconce format html mako_test4 --pygments_html_style=no  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none  --no_header_footer # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  --no_header_footer  # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
