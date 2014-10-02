@@ -67,6 +67,12 @@ The three most common formats can be found on the web:
 and
 "PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf".
 
+!bwarning
+Do not read the detailed descriptions of DocOnce syntax that follows
+(this is a manual!) before you have read the tutorial and played
+a little around with a simple document.
+!ewarning
+
 #The DocOnce format introduces four constructs to markup text:
 #lists, special lines, inline tags, and environments.
 
