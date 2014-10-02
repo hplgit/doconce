@@ -66,7 +66,8 @@ If any of these questions are of interest, you should keep on reading.
 
 ======= What Does DocOnce Look Like? =======
 
-DocOnce text looks like ordinary text (much like Markdown), but there
+DocOnce text looks like ordinary text (much like Markdown [^markdown-input]),
+but there
 are some almost invisible text constructions that allow you to control
 the formating. Here are some examples.
 
@@ -116,6 +117,11 @@ the formating. Here are some examples.
     included. With Mako a single text can output its program examples
     in two or more languages.
 
+[^markdown-input]: In fact, DocOnce allows basic
+"GitHub/extended Markdown syntax": "https://guides.github.com/features/mastering-markdown/" as input. This is attractive for newcomers from Markdown or
+writers who also write Markdown documents (or uses Markdown frequently at
+GitHub).
+
 ===== What Can DocOnce Be Used For? =====
 
 LaTeX is ideal for articles, thesis, and books, but not so suited
@@ -153,6 +159,11 @@ _boldface_ words, *emphasized* words, and `computer` words look
 natural in plain text.  Quotations appear inside double backticks
 and double single quotes, as in ``this example''.
 
+Below the section title we have a *label*, which can be used to
+refer to Section ref{my:first:sec}.
+References to equations, such as (ref{myeq1}), work in the same
+LaTeX-inspired way.
+
 Lists are typeset as you would do in email,
 
   * item 1
@@ -175,11 +186,6 @@ and screen output. In traditional paper output, in PDF generated from LaTeX
 generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
-
-References to sections may use logical names as labels (e.g., a
-"label" command right after the section title), as in the reference to
-Section ref{my:first:sec}. References to equations such as
-(ref{myeq1}) work in the same way.
 
 __Inline comments.__
 DocOnce also allows inline comments of the form [name: comment] (with
@@ -222,6 +228,11 @@ _boldface_ words, *emphasized* words, and `computer` words look
 natural in plain text.  Quotations appear inside double backticks
 and double single quotes, as in ``this example''.
 
+Below the section title we have a *label*, which can be used to
+refer to Section ref{my:first:sec}.
+References to equations, such as (ref{myeq1}), work in the same
+LaTeX-inspired way.
+
 Lists are typeset as you would do in an email,
 
   * item 1
@@ -246,12 +257,6 @@ and screen output. In traditional paper output, in PDF generated from LaTeX
 generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
-
-__Cross-references.__
-References to sections may use logical names as labels (e.g., a
-"label" command right after the section title), as in the reference to
-Section ref{my:first:sec}. References to equations such as
-(ref{myeq1}) work in the same way.
 
 __Inline comments.__
 DocOnce also allows inline comments such as [hpl: here I will make
