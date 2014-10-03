@@ -270,6 +270,170 @@ p.caption { width: 80%; font-style: normal; text-align: left; }
 hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
+# Tactile theme from GitHub web page generator
+css_tactile = """
+/* Builds on
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   Many changes for DocOnce by Hans Petter Langtangen.
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q {	quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+table {	border-collapse: collapse; border-spacing: 0; }
+
+body {
+  font-size: 1em;
+  line-height: 1.5;
+  background: #e7e7e7 url(https://raw.githubusercontent.com/hplgit/num-methods-for-PDEs/master/doc/web/images/body-bg.png) 0 0 repeat;
+  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #6d6d6d;
+  width: 620px;
+  margin: 0 auto;
+}
+
+code, pre {
+  font-family: "Monospace";
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+code {
+  border: solid 2px #ddd;
+  padding: 0 3px;
+}
+
+pre {
+  padding: 20px;
+  color: #222;
+  text-shadow: none;
+  overflow: auto;
+  border: solid 4px #ddd;
+}
+
+a { color: #d5000d; }
+a:hover { color: #c5000c; }
+ul, ol, dl { margin-bottom: 20px; }
+
+hr {
+  height: 1px;
+  line-height: 1px;
+  margin-top: 1em;
+  padding-bottom: 1em;
+  border: none;
+}
+
+b, strong { font-weight: bold; }
+em { font-style: italic; }
+table { width: 100%%; border: 1px solid #ebebeb; }
+th { font-weight: 500; }
+td { border: 1px solid #ddd; text-align: center; font-weight: 300; }
+
+/* red color: #d5000d; /*black color: #303030; gray is default */
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  %s
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  %s
+}
+
+h3 { font-size: 18px; }
+p { font-weight: 300; margin-bottom: 20px; }
+a { text-decoration: none; }
+p a { font-weight: 400; }
+
+blockquote {
+  font-size: 1.6em;
+  border-left: 10px solid #e9e9e9;
+  margin-bottom: 20px;
+  padding: 0 0 0 30px;
+}
+
+ul li {
+  list-style: disc inside;
+  padding-left: 20px;
+}
+
+ol li {
+  list-style: decimal inside;
+  padding-left: 3px;
+}
+
+dl dt {
+  color: #303030;
+}
+
+footer {
+  background: transparent url('../images/hr.png') 0 0 no-repeat;
+  margin-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+footer a {
+  color: #666;
+}
+footer a:hover {
+  color: #444;
+}
+
+
+/* #Media Queries
+================================================== */
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {}
+"""
+
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
 
@@ -1920,13 +2084,23 @@ def define(FILENAME_EXTENSION,
         css = css_blueish2
     elif html_style == 'bloodish':
         css = css_bloodish
+    elif html_style.startswith('tactile'):
+        h1_color = h2_color = ''
+        if '-' in html_style:
+            if html_style.endswith('red'):
+                h1_color = h2_color = 'color: #d5000d;'
+            elif html_style.endswith('black'):
+                h1_color = h2_color = 'color: #303030;'
+
+        css = css_tactile % (h1_color, h2_color)
     elif html_style == 'plain':
         css = ''
     else:
         css = css_blueish # default
 
     if option('pygments_html_style=', None) not in ('no', 'none', 'off') \
-        and not option('html_style=', 'blueish').startswith('solarized'):
+        and not option('html_style=', 'blueish').startswith('solarized') \
+        and not option('html_style=', 'blueish').startswith('tactile'):
         # Remove pre style as it destroys the background for pygments
         css = re.sub(r'pre .*?\{.+?\}', '', css, flags=re.DOTALL)
 
