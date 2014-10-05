@@ -2252,7 +2252,7 @@ def handle_cross_referencing(filestr, format):
 
 def handle_index_and_bib(filestr, format):
     """Process idx{...} and cite{...} and footnote instructions."""
-    # Footnotes: start of line, spaces, [^name]: explanation
+    # Footnote definitions: start of line, spaces, [^name]: explanation
     # goes up to next footnote [^name] or a double newline or the end of the str
     pattern_def = '^ *\[\^(?P<name>.+?)\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
     #footnotes = {name: footnote for name, footnote, lookahead in

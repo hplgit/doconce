@@ -217,7 +217,9 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 """
 
 css_blueish2 = """\
-/* blueish2 style */
+/* blueish2 style (as blueish style, but different pre and code tags
+   (only effective if not pygments is used)
+*/
 
 /* Color definitions:  http://www.december.com/html/spec/color0.html
    CSS examples:       http://www.w3schools.com/css/css_examples.asp */
@@ -242,7 +244,6 @@ border: 1px solid rgba(0,0,0,.2);
         box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 pre, code { font-size: 90%; line-height: 1.6em; }
-pre > code { background-color: #fefbf3; border: none }
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -322,7 +323,7 @@ body {
   margin: 0 auto;
 }
 
-code, pre {
+pre, code {
   font-family: "Monospace";
   margin-bottom: 30px;
   font-size: 14px;
@@ -357,7 +358,7 @@ b, strong { font-weight: bold; }
 em { font-style: italic; }
 table { width: 100%%; border: 1px solid #ebebeb; }
 th { font-weight: 500; }
-td { border: 1px solid #ddd; text-align: center; font-weight: 300; }
+td { border: 4px solid #ddd; text-align: center; font-weight: 300; }
 
 /* red color: #d5000d; /*black color: #303030; gray is default */
 
@@ -376,7 +377,7 @@ h2 {
 }
 
 h3 { font-size: 18px; }
-p { font-weight: 300; margin-bottom: 20px; }
+p { font-weight: 300; margin-bottom: 20px; margin-top: 12px; }
 a { text-decoration: none; }
 p a { font-weight: 400; }
 
@@ -2102,7 +2103,7 @@ def define(FILENAME_EXTENSION,
         and not option('html_style=', 'blueish').startswith('solarized') \
         and not option('html_style=', 'blueish').startswith('tactile'):
         # Remove pre style as it destroys the background for pygments
-        css = re.sub(r'pre .*?\{.+?\}', '', css, flags=re.DOTALL)
+        css = re.sub(r'(pre|pre, code) +\{.+?\}', r'/* \g<1> style removed because it will interfer with pygments */', css, flags=re.DOTALL)
 
     # Fonts
     body_font_family = option('html_body_font=', None)

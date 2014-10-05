@@ -402,7 +402,7 @@ interferes with an exponent.
 [^google-search]: URL: "google.com" is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 !bnotice Non-breaking space character
@@ -811,7 +811,8 @@ URL: "http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"
 and URL: "http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+monospace font link text get a footnote
+(unless the `--latex_no_program_footnotelink`
 is used), as in this reference to
 "`decay_mod`":
 "https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py", "`ball1.py`": "http://tinyurl.com/pwyasaa/formulas.ball1.py",
@@ -865,7 +866,7 @@ or with number and label, as in (ref{my:eq1}), using the equation environment:
 !et
 We can refer to this equation by (ref{my:eq1}).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 !bt
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\

@@ -5438,16 +5438,8 @@ def latex_footer():
 # -------------------- functions for spell checking ---------------------
 
 _environments = [
-    # DocOnce
-    ("!bc",                 "!ec"),  # could have side effect if in text, but that's only in DocOnce manuals...
-    ("!bt",                 "!et"),
-    #("!bhint",              "!ehint"),  # will not remove the environment
-    #("!bans",               "!eans"),
-    #("!bsol",               "!esol"),
-    #("!bsubex",             "!esubex"),
-    #("!bremarks",           "!eremarks"),
-    # Mako
-    ("<%doc>",              "</%doc>"),
+    # DocOnce: use regex instead, it is safer (!bc at beginning of line etc.)
+    # Mako: use regex
     # hpl tex stuff
     ("\\beq",               "\\eeq"),
     ("\\beqa",              "\\eeqa"),
@@ -5505,6 +5497,7 @@ _replacements = [
     (r'cf.', ''),
     # DocOnce
     (r'^<%.+^%>', '', re.MULTILINE|re.DOTALL),  # Mako Python code
+    (r'^<%doc.+^/%doc>', '', re.MULTILINE|re.DOTALL),  # Mako comments
     (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),
@@ -5513,7 +5506,9 @@ _replacements = [
     (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),
     (r' +\| +', ' '),
     ('<linebreak>', ''),
-    (r"={3,}",  ""),
+    (r"={3,}",  ""),  # section
+    (r"^__(.+?)__", r"\g<1>\n", re.MULTILINE),  # paragraph
+    (r"\[\^.+?\]", ""), # footnote
     (r'`[^ ][^`]*?`', ""),
     (r"`[A-Za-z0-9_.]+?`", ""),
     (r"^#.*$",          "", re.MULTILINE),
@@ -5521,14 +5516,14 @@ _replacements = [
     (r'"ftp://.*?"', ""),
     (r"\b[A-Za-z_0-9/.:]+\.(com|org|net|edu|)\b", ""),  # net name
     (r'\[[A-Za-z]+:\s+[^\]]*?\]', ''),  # inline comment
-    (r'^\s*files?=[A-Za-z_0-9.,* ]+\s*$', '', re.MULTILINE),
+    (r'''^\s*files?=[${}()"'A-Za-z_0-9.,*= ]+\s*$''', '', re.MULTILINE),
     (r"^@@@CODE.*$", "", re.MULTILINE),
     (r"^@@@OSCMD.*$", "", re.MULTILINE),
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
     (r"^\s*BIBFILE:.+$",    "", re.MULTILINE),
     (r"^\s*TOC:\s+(on|off)", "", re.MULTILINE),
-    (r"\$[^{].*?\$", "", re.DOTALL),  # inline math (before mako variables)
-    (r"\$\{.*?\}", ""),   # mako variables (clashes with math: ${\cal O}(dx)$)
+    (r"\$[^{].*?\$", "", re.DOTALL),  # inline math (after mako subst)
+    (r"\$\{[A-Za-z_].+?\}", "", re.DOTALL),   # mako substitutions (note that ${\cal O}..$ math is not allowed)
     ('!split', ''),
     (r'![be]slidecell', ''),
     (r'![be]ans', ''),
@@ -5544,6 +5539,7 @@ _replacements = [
     (r'![be]quote', ''),
     (r'![be]box', ''),
     (r'![be]remarks', ''),
+    (r'![be]quiz', ''),
     # Preprocess
     (r"^#.*ifn?def.*$", "", re.MULTILINE),
     (r"^#.*else.*$", "", re.MULTILINE),
@@ -5636,6 +5632,8 @@ def _grep_common_typos(text, filename, common_typos):
 
 def _strip_environments(text, environments, verbose=0):
     """Remove environments in the ``environments`` list from the text."""
+    # Note: this stripping does not work well for !bc and !bt envirs,
+    # because a phrase like `!bc pycod` in running text gives a split...
     for item in environments:
         if len(item) != 2:
             raise ValueError(
@@ -5648,11 +5646,15 @@ def _strip_environments(text, environments, verbose=0):
         for part in parts[1:]:
             subparts = part.split(end)
             text += end.join(subparts[1:])
-            if verbose > 0:
+            if verbose > 1:
                 print '\n============ split %s <-> %s\ntext so far:' % (begin, end)
                 print text
                 print '\n============\nSkipped:'
                 print subparts[0]
+        if verbose > 0:
+            print 'split away environments: %s %s\nnew text:\n' % (begin, end)
+            print text
+            print '\n=================='
     return text
 
 def _do_regex_replacements(text, replacements, verbose=0):
@@ -5759,11 +5761,15 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
     text = re.sub(pattern, r'\g<1>', text)
     # Remove inline verbatim and !bc and !bt blocks
-    text2 = re.sub(r'`.+?`', '`....`', text)  # remove inline verbatim
+    text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
     code = re.compile(r'^!bc(.*?)\n(.*?)^!ec *\n', re.DOTALL|re.MULTILINE)
-    text2 = code.sub('', text2)
+    text = code.sub('', text)
     tex = re.compile(r'^!bt\n(.*?)^!et *\n', re.DOTALL|re.MULTILINE)
-    text2 = tex.sub('', text2)
+    text = tex.sub('', text)
+    if verbose > 0:
+        print 'removal of quotes, inline verbatim, code and tex blocks\nnew text:\n'
+        print text
+        print '==================\n'
 
     # First check for double words
 
@@ -5771,8 +5777,8 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     found = False
     offset = 30  # no of chars before and after double word to be printed
     start = 0
-    while start < len(text2)-1:
-        m = re.search(pattern, text2[start:])
+    while start < len(text)-1:
+        m = re.search(pattern, text[start:])
         if m:
             # Words only
             word = m.group(0)
@@ -5787,10 +5793,10 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
             if is_word:
                 print "\ndouble words detected in %s (see inside [...]):\n------------------------" % filename
                 print "%s[%s]%s\n------------------------" % \
-                      (text2[max(0,start+m.start()-offset):start+m.start()],
+                      (text[max(0,start+m.start()-offset):start+m.start()],
                        word,
-                       text2[start+m.end():min(start+m.end()+offset,
-                                               len(text2)-1)])
+                       text[start+m.end():min(start+m.end()+offset,
+                                               len(text)-1)])
                 found = True
             start += m.end()
         else:

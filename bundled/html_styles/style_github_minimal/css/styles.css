@@ -1,5 +1,4 @@
 /* Small changes by Hans Petter Langtangen, hpl@simula.no */
-/* see comments with "original: ..." */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
@@ -24,7 +23,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size:28px;
+  font-size:36px;
 }
 
 h2 {
@@ -49,7 +48,7 @@ a small {
 }
 
 .wrapper {
-  width:960px;  /* original: 860px */
+  width:960px;
   margin:0 auto;
 }
 
@@ -61,9 +60,8 @@ blockquote {
 }
 
 code, pre {
-  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#333;
-  font-size:12px;
+  font-family: "Monospace";
+  color:#777;
 }
 
 pre {
@@ -163,7 +161,7 @@ header ul a strong {
 }
 
 section {
-  width:650px;  /* original: 500px */
+  width:650px;
   float:right;
   padding-bottom:50px;
 }

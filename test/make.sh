@@ -36,6 +36,8 @@ y
 1
 EOF
 
+system doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
+
 ex="--examples_as_exercises"
 #ex=
 
