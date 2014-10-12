@@ -60,12 +60,12 @@ bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 (dark:) amelia, cyborg, darkly, slate, spruce,
                 superhero (demo: bootswatch.com"""),
     ('--html_code_style=',
-     """off, inherit, transparent: enable normal inline verbatim font
+     """on, off, inherit, transparent: enable normal inline verbatim font
 where foreground and background color is inherited from the
 surroundnings (e.g., to avoid the red Boostrap color).
 Default: on."""),
     ('--html_pre_style=',
-     """off, inherit, transparent: let code blocks inside <pre> tags have
+     """on, off, inherit, transparent: let code blocks inside <pre> tags have
 foreground and background color inherited from the surroundnings.
 Default: on."""),
     ('--html_template=',
