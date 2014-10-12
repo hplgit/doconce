@@ -458,7 +458,8 @@ def rst_format_misc(paper):
     values = []
     values.append(_rst_get_key_string(paper))
     values.append(_rst_get_key_string(paper))
-    values.append(_rst_get_authors_string(paper["author"]))
+    if "author" in paper:
+        values.append(_rst_get_authors_string(paper["author"]))
     values.append(_rst_format_title(paper))
     if "howpublished" in paper:
         howpublished = paper["howpublished"]

@@ -2361,12 +2361,18 @@ The main message is to utilize the admonition styles for
 marking different parts of the text
 !esummary
 
-The layout of admonitions depend on the format.
-In `rst` and `sphinx` one applies the native admonitions, but
-in `sphinx` the `automake_sphinx.py` script manipulates the HTML
-file to set a gray background for all admonitions.
-In `html` one has a command-line argument `--html_admon` that
-can be set to different styles:
+
+The layout of admonitions depend on the format.  In the `rst` and
+`sphinx` formats one applies the native admonitions, but in `sphinx`
+the `automake_sphinx.py` script manipulates the HTML file to set a
+gray background for all admonitions.  In `html`, `latex` and
+`pdflatex` there is quite some functionality to control the layout of
+admonitions.
+
+=== Layout of admonitions in HTML ===
+
+The command-line argument `--html_admon` sets the admonition style
+for the `html` format:
 
  * `--html_admon=gray` for
    icons with gray background and small font,
@@ -2377,6 +2383,13 @@ can be set to different styles:
    as backgrounds for the different admonitions,
  * `--html_admon=lyx`
    gives a white background and small icons,
+ * `--html_admon=bootstrap_alert` gives the common colored admonition
+   boxes associated with the Bootstrap HTML styles (only effective
+   if `--html_style=boots*`),
+ * `--html_admon=bootstrap_panel` applies the panel construction
+   in Bootstrap to make admonition boxes with (normally) white background
+   but a colored background for the title (only effective
+   if `--html_style=boots*`),
  * `--html_admon=paragraph` results in a simple paragraph with the
    admon title as heading.
 
@@ -2387,13 +2400,12 @@ for the `apricot`, `yellow`, and `gray` styles.
 
 Some recommended combinations for admonitions in HTML are
 
- * `--html_style=blueish2`, `--html_admon=yellow`, `--pygments_html_style=none` or `--pygments_html_style=default`
  * `--html_style=bloodish`, `--html_admon=gray`, `--pygments_html_style=none` or
    `--pygments_html_style=default`
+ * `--html_style=blueish2`, `--html_admon=yellow`, `--pygments_html_style=none` or `--pygments_html_style=default`
  * `--html_style=boots*`, `--html_admon=bootstrap_alert` or `--html_admon=bootstrap_panel`
 
-The `--html_admon` style has no effect for the vagrant style template
-in `bundled/html_styles/style_vagrant`.
+=== Layout of admonitions in LaTeX ===
 
 In `latex` and `pdflatex`, the type of admonition style is set by
 the command-line option `--latex_admon=`.
@@ -2401,11 +2413,12 @@ Several values are available:
 
  * `paragraph` is the simplest type of admonition and typeset
    as plain text with an optional paragraph heading.
- * `colors1` (inspired by the NumPy User Guide) applies different colors for
+ * `colors1` (inspired by the original NumPy User Guide in LaTeX/PDF)
+   applies different colors for
    the different admons with an embedded icon.
  * `colors2` is like `colors1` but the text is wrapped around the icon.
- * `mdfbox` is the default and gives rounded (gray) boxes with a potential
-   title and no icon (using the very flexible `mdframed` packaged in LaTeX)
+ * `mdfbox` is the default and gives rounded white boxes with a potential
+   title and no icon (using the very flexible `mdframed` packaged in LaTeX).
  * `graybox2` has square corners, gray background, and is narrower
    than `mdfbox`. One special feature of `graybox2` is the summary
    admon, which has a different look with horizontal rules only,
@@ -2421,8 +2434,51 @@ There is also an option `--latex_admon_color=...` that can be used
 to override the default color. Values are either saturated colors
 like `gray!10` or an RGB tuple `0.95,0.91,0.97`. The chosen color
 replaces all default colors for all admon styles except `paragraph`.
-For example, an oval white box is produced by `--latex_admon=mdfbox`
-and `--latex_admon_color=white`.
+For example, an oval gray box is produced by `--latex_admon=mdfbox`
+and `'--latex_admon_color=gray!10'` (note the quotes: they are necessary
+to avoid a Bash error due to the exclamation mark in the color
+specification).
+
+The `mdfbox` admonition styles has boxes with many possibilities for
+customization by editing the `.tex` file. For example, `linecolor`
+sets the color of the frame border and `frametitlebackgroundcolor`
+sets the background color of the title area. A dark blue frame and
+a light blue background for the title is produced by this automatic
+edit:
+
+!bc shpro
+doconce replace 'linecolor=black,' 'linecolor=darkblue,' mydoc.tex
+doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5 mydoc.tex
+!ec
+
+Admonition titles without a period, exclamation mark, or colon at the end
+will by default get a period at the end. For some LaTeX admonitions
+(e.g., `mdfbox`), it may be natural to view the title with a heading
+*without* any period. The command-line option `--latex_admon_title_no_period`
+avoids appending a period.
+
+=== LaTeX code environments inside admonitions ===
+
+Sometimes one sets a special background color in the admonitions, and
+colored code blocks, which look fine in the running text, may then
+have inappropriate colors inside admonitions. The option
+`--latex_admon_envir_map=...` is used to map an environment (usually
+for code) to a new style inside admonitions. Specifying a number,
+say 2, as in `--latex_admon_envir_map=2`, appends the number
+to all environments inside admonitions, so `!bc pycod` becomes
+effectively `!bc pycod2`.
+One can then in `doconce ptex2tex` (or in the `ptex2tex` configuration
+file) specify the typesetting
+of the `pycod2` environment.
+Otherwise the specification must be a mapping for each envir
+that should be changed inside the admons:
+
+!bc
+--latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
+!ec
+i.e., a from-to, from-to type of syntax. In this particular example,
+the `!bc pycod` environment becomes `!bc pycod_yellow` and
+`!bc fpro` becomes `!bc fpro2` inside admonitions.
 
 === The Box Environment ===
 

@@ -209,7 +209,7 @@ colors2:
 like `colors1` but the text is wrapped around the icon,
 
 mdfbox:
-rounded gray boxes with a optional title and no icon (default),
+rounded boxes with a optional title and no icon (default),
 
 graybox2:
 box with square corners, gray background, and narrower
@@ -225,23 +225,39 @@ yellowicon:
 box yellow icons and a default light yellow background,
 
 paragraph:  plain paragraph with boldface heading.
+
+Note: the colors in mdfbox and other boxes can customized.
 """),
     ('--latex_admon_color=',
      """The color to be used as background in admonitions.
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
  '--latex_admon_color=yellow!5'
-(note the quotes, needed for bash, in the latter example)
+Note the quotes, needed for bash, in the latter example.
+
+If --latex_admon=mdfbox, the background of the title and
+the color of the border of box can also be customized by
+direct editing. For example, a dark blue border and light
+blue title background is obtained by editing the .tex file as
+
+doconce replace 'linecolor=black,' 'linecolor=darkblue,' mydoc.tex
+doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' mydoc.tex
 """),
     ('--latex_admon_title_no_period',
-     """Do not add a period at the end of admon titles in LaTeX if
-it is missing."""),
+     """By default, a period is added to title admons that do not have a period, question mark, or similar. This option prevents adding a period such that the title acts like a heading."""),
     ('--latex_admon_envir_map=',
-     """Mapping of code envirs to new envir names inside admons
-(e.g., to get a different code typesetting inside admons).
-If a number, say 2, as in --latex_admon_envir_map=2,
-an envir like pycod gets the number appended:
-pycod2. Otherwise it must be a mapping for each envir:
+     """Mapping of code envirs to new envir names inside admons, e.g.,
+to get a different code typesetting inside admons. This is useful
+if admons have a special color and the color background of code
+blocks does not fit will with the color background inside admons.
+Then it is natural to use a different verbatim code style inside
+admons.
+If specifying a number, say 2, as in --latex_admon_envir_map=2,
+an envir like pycod gets the number appended: pycod2. One can
+then in doconce ptex2tex (or ptex2tex) specify the typesetting
+of pycod2 environments.
+Otherwise the specification must be a mapping for each envir
+that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax)."""),
     ('--latex_exercise_numbering=',
