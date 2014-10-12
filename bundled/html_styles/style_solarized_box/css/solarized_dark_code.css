@@ -7,14 +7,12 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 
 code {
   background: #073642; color: #839496;
-  /* box-shadow: 2.5px 2.5px 2.5px 0px #002731; */
-  box-shadow: 1px 1px 1px 0px #002731;
+  box-shadow: 2.5px 2.5px 2.5px 0px #002731;
 }
 
 pre code {
   display: block; padding: 0.5em;
   background: #073642; color: #839496;
-  border: 0pt;
 }
 
 pre .comment,

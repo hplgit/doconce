@@ -2066,21 +2066,25 @@ def define(FILENAME_EXTENSION,
         css_links = css_link_solarized_highlight('dark')
     elif html_style in ('solarized2_light', 'solarized2'):
         css = css_solarized_thomasf_gray
-        css_links = css_link_solarized_thomasf_light + '\n' + \
-                    css_link_solarized_highlight('light')
+        css_links = css_link_solarized_highlight('light') + '\n' + \
+                    css_link_solarized_thomasf_light
     elif html_style == 'solarized2_dark':
         css = css_solarized_thomasf_gray
-        css_links = css_link_solarized_thomasf_dark + '\n' + \
-                    css_link_solarized_highlight('dark')
+        css_links = css_link_solarized_highlight('dark') + '\n' + \
+                    css_link_solarized_thomasf_dark
 
     elif html_style in ('solarized3_light', 'solarized3'):
+        # Note: have tried to remove the extra box around code,
+        # but did not succeed, think the original css file of thomasf
+        # must be manipulated in some way...a lot of tries did not
+        # succeed
         css = css_solarized_thomasf_green
-        css_links = css_link_solarized_thomasf_light + '\n' + \
-                    css_link_solarized_highlight('light')
+        css_links = css_link_solarized_highlight('light') + '\n' + \
+                    css_link_solarized_thomasf_light
 
     elif html_style == 'solarized3_dark':
-        css_links = css_link_solarized_thomasf_dark + '\n' + \
-                    css_link_solarized_highlight('dark')
+        css_links = css_link_solarized_highlight('dark') + '\n' + \
+                    css_link_solarized_thomasf_dark
 
     elif html_style == 'blueish':
         css = css_blueish
