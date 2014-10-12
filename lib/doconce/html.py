@@ -2066,19 +2066,22 @@ def define(FILENAME_EXTENSION,
         css_links = css_link_solarized_highlight('dark')
     elif html_style in ('solarized2_light', 'solarized2'):
         css = css_solarized_thomasf_gray
-        css_links = css_link_solarized_highlight('light') + '\n' + \
-                    css_link_solarized_thomasf_light
+        css_links = css_link_solarized_thomasf_light + '\n' + \
+                    css_link_solarized_highlight('light')
     elif html_style == 'solarized2_dark':
         css = css_solarized_thomasf_gray
-        css_links = css_link_solarized_highlight('dark') + '\n' + \
-                    css_link_solarized_thomasf_dark
+        css_links = css_link_solarized_thomasf_dark + '\n' + \
+                    css_link_solarized_highlight('dark')
+
     elif html_style in ('solarized3_light', 'solarized3'):
         css = css_solarized_thomasf_green
-        css_links = css_link_solarized_highlight('light') + '\n' + \
-                    css_link_solarized_thomasf_light
+        css_links = css_link_solarized_thomasf_light + '\n' + \
+                    css_link_solarized_highlight('light')
+
     elif html_style == 'solarized3_dark':
-        css_links = css_link_solarized_highlight('dark') + '\n' + \
-                    css_link_solarized_thomasf_dark
+        css_links = css_link_solarized_thomasf_dark + '\n' + \
+                    css_link_solarized_highlight('dark')
+
     elif html_style == 'blueish':
         css = css_blueish
     elif html_style == 'blueish2':
