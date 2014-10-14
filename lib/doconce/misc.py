@@ -5514,7 +5514,7 @@ _replacements = [
     # DocOnce
     (r'^<%.+^%>', '', re.MULTILINE|re.DOTALL),  # Mako Python code
     (r'^<%doc.+^/%doc>', '', re.MULTILINE|re.DOTALL),  # Mako comments
-    (r'"([^"]+?)":\s*"[^"]+?"', r'\g<1>'),  # links
+    (r'"([^"]*?)":\s*"[^"]+?"', r'\g<1>'),  # links ("`file.py`" -> "": "...")
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),
     (r"cite\[.+?\]\{.+?\}", ""),
@@ -5538,7 +5538,7 @@ _replacements = [
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
     (r"^\s*BIBFILE:.+$",    "", re.MULTILINE),
     (r"^\s*TOC:\s+(on|off)", "", re.MULTILINE),
-    (r"\$[^{].*?\$", "", re.DOTALL),  # inline math (after mako subst)
+    (r"\$[^{].*?\$", "", re.DOTALL),  # inline math
     (r"\$\{[A-Za-z_].+?\}", "", re.DOTALL),   # mako substitutions (note that ${\cal O}..$ math is not allowed)
     ('!split', ''),
     (r'![be]slidecell', ''),
@@ -5746,7 +5746,7 @@ def _do_fixes_4MSWord(text):
 
 
 def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
-                remove_multiplicity=False, strip_file='.strip'):
+                remove_multiplicity=False, strip_file='.strip', verbose=False):
     """
     Spellcheck `filename` and list misspellings in the file misspellings.txt~.
     The `dictionaries` list contains filenames for dictionaries to be
@@ -5767,8 +5767,6 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     except IOError:
         print '\nfile %s does not exist!' % filename
         _abort()
-
-    verbose = 1 if option('debug') else 0
 
     text = f.read()
     f.close()
@@ -6044,12 +6042,17 @@ def spellcheck():
             dictionary = ['.dict4spell.txt']
         else:
             dictionary = []
+    verbose = False
+    for i in range(1, len(sys.argv)):
+        if sys.argv[i] == '--debug':
+            del sys.argv[i]
+            verbose = True
     if len(sys.argv) < 2:
         _usage_spellcheck()
         sys.exit(0)
 
     _spellcheck_all(newdict='misspellings.txt~', remove_multiplicity=False,
-                    dictionaries=dictionary,)
+                    dictionaries=dictionary, verbose=verbose)
 
 def _usage_ref_external():
     print 'doconce ref_external dofile [pubfile --skip_chapter]'

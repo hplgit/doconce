@@ -313,8 +313,8 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
     filestr = re.sub(pattern, replacement, filestr)
 
     # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!])\s+the (sections?|captions?)\s+ref'
-    replacement = r'\g<1> The \g<2> ref'
+    pattern = r'([.?!]\s+|\n\n|[%=~-]\n+)the (sections?|chapters?)\s+ref'
+    replacement = r'\g<1>The \g<2> ref'
     filestr = re.sub(pattern, replacement, filestr)
 
     # Remove Exercise, Project, Problem in references since those words

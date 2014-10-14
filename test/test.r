@@ -103,6 +103,11 @@ encourages you to do the tasks in the
 Exercises ref{demo:ex:1} and ref{exer:some:formula}.
 Appendices     ref{app1} and ref{app2} are also nice elements.
 
+=== Test Section reference at beginning of line and after a sentence ===
+
+Section ref{subsec1} is fine.
+Section ref{subsubsec:ex} too.
+
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -418,7 +423,7 @@ interferes with an exponent.
 [^google-search]: URL: "google.com" is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 !bnotice Non-breaking space character
@@ -827,7 +832,8 @@ URL: "http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas"
 and URL: "http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+monospace font link text get a footnote
+(unless the `--latex_no_program_footnotelink`
 is used), as in this reference to
 "`decay_mod`":
 "https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py", "`ball1.py`": "http://tinyurl.com/pwyasaa/formulas.ball1.py",
@@ -881,7 +887,7 @@ or with number and label, as in (ref{my:eq1}), using the equation environment:
 !et
 We can refer to this equation by (ref{my:eq1}).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 !bt
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\
@@ -1587,10 +1593,14 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -1599,35 +1609,35 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -1636,23 +1646,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -1661,11 +1671,11 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -1674,12 +1684,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 <body>
@@ -1761,57 +1771,58 @@ MathJax.Hub.Config({
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec12"> <b>Just bold</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec13"> <em>Just emphasize</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec14"> <code>Just verbatim</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec15"> <b>Bold</b> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec16"> <em>Emphasize</em> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec17"> <code>Verbatim</code> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec18"> Maybe <b>bold end</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec19"> Maybe <em>emphasize end</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec20"> Maybe <code>verbatim end</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec21"> The middle has <b>bold</b> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec22"> The middle has <em>emphasize</em> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec23"> The middle has <code>verbatim</code> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec24"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec13"> <b>Just bold</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec14"> <em>Just emphasize</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec15"> <code>Just verbatim</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec16"> <b>Bold</b> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec17"> <em>Emphasize</em> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec18"> <code>Verbatim</code> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec19"> Maybe <b>bold end</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec20"> Maybe <em>emphasize end</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec21"> Maybe <code>verbatim end</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec22"> The middle has <b>bold</b> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec23"> The middle has <em>emphasize</em> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec24"> The middle has <code>verbatim</code> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc002.html#___sec27"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec28"> Exercises </a><br>
+<a href="._testdoc002.html#___sec28"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec39"> Example 8: Just an example </a><br>
-<a href="._testdoc002.html#___sec40"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec41"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Example 8: Just an example </a><br>
+<a href="._testdoc002.html#___sec41"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec42"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec44"> References </a><br>
+<a href="._testdoc002.html#___sec45"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec46"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec47"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec48"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec49"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec51"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec52"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec52"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec53"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -2255,6 +2266,10 @@ encourages you to do the tasks in the
 Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
 Appendices~\ref{app1} and~\ref{app2} are also nice elements.
 
+\paragraph{Test Section reference at beginning of line and after a sentence.}
+Section~\ref{subsec1} is fine.
+Section~\ref{subsubsec:ex} too.
+
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -2582,7 +2597,7 @@ This is the third\footnote{Not much to add here, but the footnote is at the end 
 
 
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -3071,7 +3086,8 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \code{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote (unless the \code{--latex_no_program_footnotelink}
+monospace font link text get a footnote
+(unless the \code{--latex_no_program_footnotelink}
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -3118,7 +3134,7 @@ or with number and label, as in (\ref{my:eq1}), using the equation environment:
 \end{equation}
 We can refer to this equation by (\ref{my:eq1}).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
@@ -4428,6 +4444,10 @@ encourages you to do the tasks in the
 Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
 Appendices~\ref{app1} and~\ref{app2} are also nice elements.
 
+\paragraph{Test Section reference at beginning of line and after a sentence.}
+Section~\ref{subsec1} is fine.
+Section~\ref{subsubsec:ex} too.
+
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -4794,7 +4814,7 @@ This is the third\footnote{Not much to add here, but the footnote is at the end 
 
 
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -5290,7 +5310,8 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \texttt{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote (unless the {\Verb!--latex_no_program_footnotelink!}
+monospace font link text get a footnote
+(unless the {\Verb!--latex_no_program_footnotelink!}
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -5337,7 +5358,7 @@ or with number and label, as in (\ref{my:eq1}), using the equation environment:
 \end{equation}
 We can refer to this equation by (\ref{my:eq1}).
 
-Here is a system without equation numbers, using the align--astrisk environment:
+Here is a system without equation numbers, using the align--asterisk environment:
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
@@ -6691,6 +6712,10 @@ encourages you to do the tasks in the
 Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
 Appendices~\ref{app1} and~\ref{app2} are also nice elements.
 
+\paragraph{Test Section reference at beginning of line and after a sentence.}
+Section~\ref{subsec1} is fine.
+Section~\ref{subsubsec:ex} too.
+
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -7014,7 +7039,7 @@ This is the third\footnote{Not much to add here, but the footnote is at the end 
 
 
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -7504,7 +7529,8 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \Verb!--device=paper! option it is important to test that URLs with
-monofont link text get a footnote (unless the \Verb!--latex_no_program_footnotelink!
+monospace font link text get a footnote
+(unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -7551,7 +7577,7 @@ or with number and label, as in (\ref{my:eq1}), using the equation environment:
 \end{equation}
 We can refer to this equation by (\ref{my:eq1}).
 
-Here is a system without equation numbers, using the align--astrisk environment:
+Here is a system without equation numbers, using the align--asterisk environment:
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
@@ -8491,6 +8517,12 @@ the sections `Subsection 1`_ and `URLs`_, which
 encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 9: Make references to projects and problems`_.
 Appendices     `Appendix: Just for testing; part I`_ and `Appendix: Just for testing; part II`_ are also nice elements.
 
+Test Section reference at beginning of line and after a sentence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The section `Subsection 1`_ is fine.
+The section `URLs`_ too.
+
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 Computer code
@@ -8788,7 +8820,7 @@ This is the third [#example-of-the-third-footnote]_ example.
 .. [#google-search] `<google.com>`_ is perhaps the most famous
    web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -9216,7 +9248,8 @@ Newton-Cotes with percentage in URL too:
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
 
 For the ``--device=paper`` option it is important to test that URLs with
-monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
+monospace font link text get a footnote
+(unless the ``--latex_no_program_footnotelink``
 is used), as in this reference to
 `decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`__, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`__,
 and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`__.
@@ -9260,7 +9293,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment
+Here is a system without equation numbers, using the align-asterisk environment
 
 .. raw:: html
 
@@ -10155,6 +10188,12 @@ the sections :ref:`subsec1` and :ref:`subsubsec:ex`, which
 encourages you to do the tasks in :ref:`demo:ex:1` and :ref:`exer:some:formula`.
 Appendices     :ref:`app1` and :ref:`app2` are also nice elements.
 
+Test Section reference at beginning of line and after a sentence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The section :ref:`subsec1` is fine.
+The section :ref:`subsubsec:ex` too.
+
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 Computer code
@@ -10495,7 +10534,7 @@ This is the third [#example-of-the-third-footnote]_ example.
 .. [#google-search] `<google.com>`_ is perhaps the most famous
    web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -10954,7 +10993,8 @@ Newton-Cotes with percentage in URL too:
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
 
 For the ``--device=paper`` option it is important to test that URLs with
-monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
+monospace font link text get a footnote
+(unless the ``--latex_no_program_footnotelink``
 is used), as in this reference to
 `decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`__, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`__,
 and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`__.
@@ -10995,7 +11035,7 @@ or with number and label, as in :eq:`my:eq1`, using the equation environment:
 
 We can refer to this equation by :eq:`my:eq1`.
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 
 .. math::
         
@@ -11888,6 +11928,11 @@ the sections [#Subsection_1] and [#URLs], which
 encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
+==== Test Section reference at beginning of line and after a sentence ====
+
+The section [#Subsection_1] is fine.
+The section [#URLs] too.
+
 
 <wiki:comment> sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console </wiki:comment>
 
@@ -12227,7 +12272,7 @@ interferes with an exponent.
 [^google-search]: google.com is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 *Non-breaking space character.* 
@@ -12671,7 +12716,8 @@ http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 and http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+monospace font link text get a footnote
+(unless the `--latex_no_program_footnotelink`
 is used), as in this reference to
 [https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py `decay_mod`], [http://tinyurl.com/pwyasaa/formulas.ball1.py `ball1.py`],
 and [http://tinyurl.com/pwyasaa/formulas.ball2.py `ball2.py`].
@@ -12708,7 +12754,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 }}}
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 {{{
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -13419,6 +13465,11 @@ the sections [#Subsection_1] and [#URLs], which
 encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
+==== Test Section reference at beginning of line and after a sentence ====
+
+The section [#Subsection_1] is fine.
+The section [#URLs] too.
+
 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
@@ -13756,7 +13807,7 @@ interferes with an exponent.
 [^google-search]: google.com is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -14192,7 +14243,8 @@ http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 and http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+monospace font link text get a footnote
+(unless the <code>--latex_no_program_footnotelink</code>
 is used), as in this reference to
 [https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py <code>decay_mod</code>], [http://tinyurl.com/pwyasaa/formulas.ball1.py <code>ball1.py</code>],
 and [http://tinyurl.com/pwyasaa/formulas.ball2.py <code>ball2.py</code>].
@@ -14226,7 +14278,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 {\partial u\over\partial t} = \nabla^2 u </math>
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 :<math>
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -15038,6 +15090,11 @@ the sections [#Subsection_1] and [#URLs], which
 encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
+=== Test Section reference at beginning of line and after a sentence ===
+
+The section [#Subsection_1] is fine.
+The section [#URLs] too.
+
 
 <wiki:comment> sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console </wiki:comment>
 
@@ -15374,7 +15431,7 @@ interferes with an exponent.
 [^google-search]: [[google.com]] is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 //Non-breaking space character.// 
@@ -15769,7 +15826,8 @@ Newton-Cotes with percentage in URL too:
 and [[http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae]] which has a shebang.
 
 For the {{{--device=paper}}} option it is important to test that URLs with
-monofont link text get a footnote (unless the {{{--latex_no_program_footnotelink}}}
+monospace font link text get a footnote
+(unless the {{{--latex_no_program_footnotelink}}}
 is used), as in this reference to
 [[https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py|{{{decay_mod}}}]], [[http://tinyurl.com/pwyasaa/formulas.ball1.py|{{{ball1.py}}}]],
 and [[http://tinyurl.com/pwyasaa/formulas.ball2.py|{{{ball2.py}}}]].
@@ -15806,7 +15864,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 }}}
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 {{{
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -16492,6 +16550,11 @@ the sections "Subsection 1" and "URLs", which
 encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
+Test Section reference at beginning of line and after a sentence
+
+The section "Subsection 1" is fine.
+The section "URLs" too.
+
 Computer code
 
 Let's do some copying from files too. First from subroutine up to the very end::
@@ -16767,7 +16830,7 @@ interferes with an exponent.
 [^google-search]: "google.com":google.com is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 *Non-breaking space character.* 
@@ -17104,7 +17167,8 @@ Newton-Cotes with percentage in URL too:
 and "http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae":http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the '--device=paper' option it is important to test that URLs with
-monofont link text get a footnote (unless the '--latex_no_program_footnotelink'
+monospace font link text get a footnote
+(unless the '--latex_no_program_footnotelink'
 is used), as in this reference to
 https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py:'decay_mod', http://tinyurl.com/pwyasaa/formulas.ball1.py:'ball1.py',
 and http://tinyurl.com/pwyasaa/formulas.ball2.py:'ball2.py'.
@@ -17131,7 +17195,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment::
+Here is a system without equation numbers, using the align-asterisk environment::
 
         \begin{align*}
         \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -17788,6 +17852,12 @@ the sections "Subsection 1" and "URLs", which
 encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
+Test Section reference at beginning of line and after a sentence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The section "Subsection 1" is fine.
+The section "URLs" too.
+
 Computer code
 ~~~~~~~~~~~~~
 
@@ -18030,7 +18100,7 @@ interferes with an exponent.
 [^google-search]: U{google.com<google.com>} is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 I{Non-breaking space character.} 
@@ -18387,7 +18457,8 @@ U{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas<http://en.wikipedia
 and U{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>} which has a shebang.
 
 For the C{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote (unless the C{--latex_no_program_footnotelink}
+monospace font link text get a footnote
+(unless the C{--latex_no_program_footnotelink}
 is used), as in this reference to
 U{C{decay_mod}<https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>}, U{C{ball1.py}<http://tinyurl.com/pwyasaa/formulas.ball1.py>},
 and U{C{ball2.py}<http://tinyurl.com/pwyasaa/formulas.ball2.py>}.
@@ -18414,7 +18485,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment::
+Here is a system without equation numbers, using the align-asterisk environment::
 
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
@@ -19059,6 +19130,7 @@ Table of contents:
  Section 1 
      Here is a list with subsubsection heading 
    Subsection 1 
+     Test Section reference at beginning of line and after a sentence 
      Computer code 
      Running OS commands 
      Footnotes 
@@ -19175,6 +19247,12 @@ the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
 encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
+
+Test Section reference at beginning of line and after a sentence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The section "Subsection 1" is fine.
+The section "URLs" too.
 
 Computer code
 ~~~~~~~~~~~~~
@@ -19457,7 +19535,7 @@ interferes with an exponent.
 [^google-search]: google.com is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -19820,7 +19898,8 @@ http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 and http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae which has a shebang.
 
 For the --device=paper option it is important to test that URLs with
-monofont link text get a footnote (unless the --latex_no_program_footnotelink
+monospace font link text get a footnote
+(unless the --latex_no_program_footnotelink
 is used), as in this reference to
 decay_mod (https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), ball1.py (http://tinyurl.com/pwyasaa/formulas.ball1.py),
 and ball2.py (http://tinyurl.com/pwyasaa/formulas.ball2.py).
@@ -19848,7 +19927,7 @@ or with number and label, as in Equation (my:eq1), using the equation environmen
 
 We can refer to this equation by Equation (my:eq1).
 
-Here is a system without equation numbers, using the align-astrisk environment::
+Here is a system without equation numbers, using the align-asterisk environment::
 
         \begin{align*}
         \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -20577,6 +20656,11 @@ the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
 encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).
 Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
 
+#### Test Section reference at beginning of line and after a sentence
+
+The section [Subsection 1](#subsec1) is fine.
+The section [URLs](#subsubsec:ex) too.
+
 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
@@ -20935,7 +21019,7 @@ interferes with an exponent.
 [^google-search]: <google.com> is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 *Non-breaking space character.* 
@@ -21361,7 +21445,8 @@ Newton-Cotes with percentage in URL too:
 and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+monospace font link text get a footnote
+(unless the `--latex_no_program_footnotelink`
 is used), as in this reference to
 [`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),
 and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).
@@ -21398,7 +21483,7 @@ $$
 $$
 We can refer to this equation by \eqref{my:eq1}.
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 $$
 
 \pmb{a} = \pmb{q}\times\pmb{n} 
@@ -22234,6 +22319,11 @@ is at the end with only one newline.
       "encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).\n",
       "Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.\n",
       "\n",
+      "#### Test Section reference at beginning of line and after a sentence\n",
+      "\n",
+      "The section [Subsection 1](#subsec1) is fine.\n",
+      "The section [URLs](#subsubsec:ex) too.\n",
+      "\n",
       "\n",
       "<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->\n",
       "\n",
@@ -22785,7 +22875,7 @@ is at the end with only one newline.
       "[^google-search]: <google.com> is perhaps the most famous\n",
       "web site today.\n",
       "\n",
-      "Here is some more text before a new definition of a footnote that was used\n",
+      "Here is some more text before a new definition of a footnote that was\n",
       "used above.\n",
       "\n",
       "**Non-breaking space character.**\n",
@@ -23297,7 +23387,8 @@ is at the end with only one newline.
       "and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.\n",
       "\n",
       "For the `--device=paper` option it is important to test that URLs with\n",
-      "monofont link text get a footnote (unless the `--latex_no_program_footnotelink`\n",
+      "monospace font link text get a footnote\n",
+      "(unless the `--latex_no_program_footnotelink`\n",
       "is used), as in this reference to\n",
       "[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),\n",
       "and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).\n",
@@ -23361,7 +23452,7 @@ is at the end with only one newline.
      "source": [
       "We can refer to this equation by [(3)](#my:eq1).\n",
       "\n",
-      "Here is a system without equation numbers, using the align-astrisk environment:"
+      "Here is a system without equation numbers, using the align-asterisk environment:"
      ]
     },
     {
@@ -24379,6 +24470,11 @@ encourages you to do the tasks in the
 Exercises ref{demo:ex:1} and ref{exer:some:formula}.
 Appendices     ref{app1} and ref{app2} are also nice elements.
 
+=== Test Section reference at beginning of line and after a sentence ===
+
+Section ref{subsec1} is fine.
+Section ref{subsubsec:ex} too.
+
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -24678,6 +24774,11 @@ the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the
 the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
 encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).
 Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
+
+#### Test Section reference at beginning of line and after a sentence
+
+The section [Subsection 1](#subsec1) is fine.
+The section [URLs](#subsubsec:ex) too.
 
 
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
@@ -25037,7 +25138,7 @@ interferes with an exponent.
 [^google-search]: <google.com> is perhaps the most famous
 web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 *Non-breaking space character.* 
@@ -25463,7 +25564,8 @@ Newton-Cotes with percentage in URL too:
 and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.
 
 For the `--device=paper` option it is important to test that URLs with
-monofont link text get a footnote (unless the `--latex_no_program_footnotelink`
+monospace font link text get a footnote
+(unless the `--latex_no_program_footnotelink`
 is used), as in this reference to
 [`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),
 and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).
@@ -25500,7 +25602,7 @@ $$
 $$
 We can refer to this equation by \eqref{my:eq1}.
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 $$
 
 \pmb{a} = \pmb{q}\times\pmb{n} 
@@ -27181,7 +27283,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -28175,10 +28277,14 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -28187,35 +28293,35 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -28224,23 +28330,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -28249,11 +28355,11 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -28262,12 +28368,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 <body>
@@ -28349,57 +28455,58 @@ MathJax.Hub.Config({
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec9"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec12"> <b>Just bold</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec13"> <em>Just emphasize</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec14"> <code>Just verbatim</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec15"> <b>Bold</b> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec16"> <em>Emphasize</em> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec17"> <code>Verbatim</code> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec18"> Maybe <b>bold end</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec19"> Maybe <em>emphasize end</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec20"> Maybe <code>verbatim end</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec21"> The middle has <b>bold</b> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec22"> The middle has <em>emphasize</em> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec23"> The middle has <code>verbatim</code> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec24"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec13"> <b>Just bold</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec14"> <em>Just emphasize</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec15"> <code>Just verbatim</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec16"> <b>Bold</b> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec17"> <em>Emphasize</em> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec18"> <code>Verbatim</code> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec19"> Maybe <b>bold end</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec20"> Maybe <em>emphasize end</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec21"> Maybe <code>verbatim end</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec22"> The middle has <b>bold</b> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec23"> The middle has <em>emphasize</em> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec24"> The middle has <code>verbatim</code> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc002.html#___sec27"> LaTeX Mathematics </a><br>
-<a href="._testdoc002.html#___sec28"> Exercises </a><br>
+<a href="._testdoc002.html#___sec28"> LaTeX Mathematics </a><br>
+<a href="._testdoc002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec30"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec34"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec36"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec39"> Example 8: Just an example </a><br>
-<a href="._testdoc002.html#___sec40"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec41"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Example 8: Just an example </a><br>
+<a href="._testdoc002.html#___sec41"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec42"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec44"> References </a><br>
+<a href="._testdoc002.html#___sec45"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec46"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec47"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec48"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec49"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec51"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec52"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec52"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec53"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -28502,10 +28609,14 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -28514,35 +28625,35 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -28551,23 +28662,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -28576,11 +28687,11 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -28589,12 +28700,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 <body>
@@ -28720,10 +28831,16 @@ the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URL
 encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
  <a href="._testdoc002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
+<h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
+
+<p>
+The section <a href="#subsec1">Subsection 1</a> is fine.
+The section <a href="#subsubsec:ex">URLs</a> too.
+
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec3"></a></h3>
+<h3>Computer code  <a name="___sec4"></a></h3>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -28852,7 +28969,7 @@ Test paragraph and subsubsection headings before code.
 2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(y):
     <span style="color: #8B008B; font-weight: bold">return</span> y+<span style="color: #B452CD">1</span>
 </pre></div>
-</td></tr></table><h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+</td></tr></table><h3>Subsubsection heading before code  <a name="___sec5"></a></h3>
 
 <p>
 
@@ -29177,7 +29294,7 @@ is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec5"></a></h3>
+<h3>Running OS commands  <a name="___sec6"></a></h3>
 
 <p>
 
@@ -29192,7 +29309,7 @@ output
 from
 Python.
 </pre></div>
-</td></tr></table><h3>Footnotes  <a name="___sec6"></a></h3>
+</td></tr></table><h3>Footnotes  <a name="___sec7"></a></h3>
 
 <p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
@@ -29226,7 +29343,7 @@ interferes with an exponent.
 web site today.
 
 <p>
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 <p>
@@ -29345,7 +29462,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec9"></a></h2>
+<h2>Custom Environments  <a name="___sec10"></a></h2>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -29498,7 +29615,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
+<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec12"></a></h2>
 
 <p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
@@ -29508,62 +29625,62 @@ some plain text on a new line.
 <p>
 <!-- Test various types of headlines -->
 
-<h2><b>Just bold</b>  <a name="___sec12"></a></h2>
+<h2><b>Just bold</b>  <a name="___sec13"></a></h2>
 
 <p>
 Some text.
 
-<h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
+<h2><em>Just emphasize</em>  <a name="___sec14"></a></h2>
 
 <p>
 Some text.
 
-<h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
+<h2><code>Just verbatim</code>  <a name="___sec15"></a></h2>
 
 <p>
 Some text.
 
-<h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
+<h2><b>Bold</b> beginning  <a name="___sec16"></a></h2>
 
 <p>
 Some text.
 
-<h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
+<h2><em>Emphasize</em> beginning  <a name="___sec17"></a></h2>
 
 <p>
 Some text.
 
-<h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
+<h2><code>Verbatim</code> beginning  <a name="___sec18"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
+<h2>Maybe <b>bold end</b>  <a name="___sec19"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
+<h2>Maybe <em>emphasize end</em>  <a name="___sec20"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
+<h2>Maybe <code>verbatim end</code>  <a name="___sec21"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
+<h2>The middle has <b>bold</b> word  <a name="___sec22"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
+<h2>The middle has <em>emphasize</em> word  <a name="___sec23"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
+<h2>The middle has <code>verbatim</code> word  <a name="___sec24"></a></h2>
 
 <p>
 Some text.
@@ -29624,7 +29741,7 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec24"></a></h2>
+<h2>Bibliography test  <a name="___sec25"></a></h2>
 
 <p>
 Here is an example: <a href="._testdoc002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -29720,7 +29837,8 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+monospace font link text get a footnote
+(unless the <code>--latex_no_program_footnotelink</code>
 is used), as in this reference to
 <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_self"><tt>ball1.py</tt></a>,
 and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_self"><tt>ball2.py</tt></a>.
@@ -29843,10 +29961,14 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -29855,35 +29977,35 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -29892,23 +30014,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -29917,11 +30039,11 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -29930,12 +30052,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 <body>
@@ -29971,7 +30093,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec28"></a></h1>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -29987,7 +30109,7 @@ $$
 We can refer to this equation by <a href="#mjx-eqn-3">(3)</a>.
 
 <p>
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 $$
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -30017,7 +30139,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec28"></a></h1>
+<h1>Exercises  <a name="___sec29"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -30033,7 +30155,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec30"></a></h3>
+<h3>Remarks  <a name="___sec31"></a></h3>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -30080,7 +30202,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec31"></a></h2>
+<h2>Not an exercise  <a name="___sec32"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -30212,7 +30334,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec34"></a></h3>
+<h3>Remarks  <a name="___sec35"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -30322,7 +30444,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3>Remarks  <a name="___sec36"></a></h3>
+<h3>Remarks  <a name="___sec37"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -30335,7 +30457,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec38"></a></h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -30413,7 +30535,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec39"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec40"></a></h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -30430,12 +30552,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec40"></a></h1>
+<h1>Here goes another section  <a name="___sec41"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec41"></a></h1>
+<h1>More Exercises  <a name="___sec42"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -30475,7 +30597,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec44"></a></h1>
+<h1>References  <a name="___sec45"></a></h1>
 
 <p>
 <!-- begin bibliography -->
@@ -30594,7 +30716,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec46"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec47"></a></h2>
 
 <p>
 Some text.
@@ -30604,7 +30726,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec49"></a></h2>
 
 <p>
 Without label.
@@ -30721,10 +30843,14 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -30733,35 +30859,35 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -30770,23 +30896,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -30795,11 +30921,11 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -30808,12 +30934,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 <body>
@@ -30873,7 +30999,7 @@ Bergen
 <!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec52"></a></h2>
 
 <p>
 Without label.
@@ -30967,7 +31093,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec52"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec53"></a></h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -31006,7 +31132,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec54"></a></h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -31077,7 +31203,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -31169,57 +31295,58 @@ div { text-align: justify; text-justify: inter-word; }
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The $latex \theta$ parameter (not $latex \nabla$?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> <b>Just bold</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec13"> <em>Just emphasize</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec14"> <code>Just verbatim</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec15"> <b>Bold</b> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec16"> <em>Emphasize</em> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> <code>Verbatim</code> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Maybe <b>bold end</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Maybe <em>emphasize end</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Maybe <code>verbatim end</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> The middle has <b>bold</b> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> The middle has <em>emphasize</em> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> The middle has <code>verbatim</code> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> <b>Just bold</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> <em>Just emphasize</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> <code>Just verbatim</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> <b>Bold</b> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> <em>Emphasize</em> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> <code>Verbatim</code> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Maybe <b>bold end</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Maybe <em>emphasize end</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Maybe <code>verbatim end</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> The middle has <b>bold</b> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> The middle has <em>emphasize</em> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> The middle has <code>verbatim</code> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-<a href="#___sec27"> LaTeX Mathematics </a><br>
-<a href="#___sec28"> Exercises </a><br>
+<a href="#___sec28"> LaTeX Mathematics </a><br>
+<a href="#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec34"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec35"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec36"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Example 8: Just an example </a><br>
-<a href="#___sec40"> Here goes another section </a><br>
-<a href="#___sec41"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Example 8: Just an example </a><br>
+<a href="#___sec41"> Here goes another section </a><br>
+<a href="#___sec42"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="#___sec44"> References </a><br>
+<a href="#___sec45"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec46"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec47"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec48"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 The format of this document is
@@ -31295,7 +31422,13 @@ the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URL
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
  <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
-<h3>Computer code  <a name="___sec3"></a></h3>
+<h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
+
+<p>
+The section <a href="#subsec1">Subsection 1</a> is fine.
+The section <a href="#subsubsec:ex">URLs</a> too.
+
+<h3>Computer code  <a name="___sec4"></a></h3>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -31387,7 +31520,7 @@ Test paragraph and subsubsection headings before code.
     <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
 </pre></div>
 
-<h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+<h3>Subsubsection heading before code  <a name="___sec5"></a></h3>
 
 <p>
 
@@ -31617,7 +31750,7 @@ is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec5"></a></h3>
+<h3>Running OS commands  <a name="___sec6"></a></h3>
 
 <p>
 
@@ -31629,7 +31762,7 @@ from
 Python.
 </pre></div>
 
-<h3>Footnotes  <a name="___sec6"></a></h3>
+<h3>Footnotes  <a name="___sec7"></a></h3>
 
 <p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
@@ -31661,7 +31794,7 @@ interferes with an exponent.
 web site today.
 
 <p>
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 <p>
@@ -31776,7 +31909,7 @@ $latex
 
  $
 
-<h2>Custom Environments  <a name="___sec9"></a></h2>
+<h2>Custom Environments  <a name="___sec10"></a></h2>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -31916,69 +32049,69 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
+<h2>A test of verbatim words in heading with subscript $latex a_i$: <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec12"></a></h2>
 
 <p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
 Here is more <code>__verbatim__</code> code and
 some plain text on a new line.
 
-<h2><b>Just bold</b>  <a name="___sec12"></a></h2>
+<h2><b>Just bold</b>  <a name="___sec13"></a></h2>
 
 <p>
 Some text.
 
-<h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
+<h2><em>Just emphasize</em>  <a name="___sec14"></a></h2>
 
 <p>
 Some text.
 
-<h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
+<h2><code>Just verbatim</code>  <a name="___sec15"></a></h2>
 
 <p>
 Some text.
 
-<h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
+<h2><b>Bold</b> beginning  <a name="___sec16"></a></h2>
 
 <p>
 Some text.
 
-<h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
+<h2><em>Emphasize</em> beginning  <a name="___sec17"></a></h2>
 
 <p>
 Some text.
 
-<h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
+<h2><code>Verbatim</code> beginning  <a name="___sec18"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
+<h2>Maybe <b>bold end</b>  <a name="___sec19"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
+<h2>Maybe <em>emphasize end</em>  <a name="___sec20"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
+<h2>Maybe <code>verbatim end</code>  <a name="___sec21"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
+<h2>The middle has <b>bold</b> word  <a name="___sec22"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
+<h2>The middle has <em>emphasize</em> word  <a name="___sec23"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
+<h2>The middle has <code>verbatim</code> word  <a name="___sec24"></a></h2>
 
 <p>
 Some text.
@@ -32038,7 +32171,7 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec24"></a></h2>
+<h2>Bibliography test  <a name="___sec25"></a></h2>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -32128,7 +32261,8 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+monospace font link text get a footnote
+(unless the <code>--latex_no_program_footnotelink</code>
 is used), as in this reference to
 <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_blank"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_blank"><tt>ball1.py</tt></a>,
 and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_blank"><tt>ball2.py</tt></a>.
@@ -32140,7 +32274,7 @@ More tough tests: repeated URLs whose footnotes when using the
 <a href="http://google.com" target="_blank">google</a>, which should result in exactly three
 footnotes.
 
-<h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec28"></a></h1>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -32158,7 +32292,7 @@ $latex
 We can refer to this equation by <b>(REF to equation my:eq1 not supported)</b>.
 
 <p>
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 
 $latex 
 \pmb{a} = \pmb{q}\times\pmb{n}  $
@@ -32192,7 +32326,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec28"></a></h1>
+<h1>Exercises  <a name="___sec29"></a></h1>
 
 <h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
 
@@ -32202,7 +32336,7 @@ Make a program that simulates flipping a coin $latex N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec30"></a></h3>
+<h3>Remarks  <a name="___sec31"></a></h3>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -32249,7 +32383,7 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
-<h2>Not an exercise  <a name="___sec31"></a></h2>
+<h2>Not an exercise  <a name="___sec32"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -32348,7 +32482,7 @@ Let $latex R$ and $latex (x_0,y_0)$ be normally distributed.
 <p>
 Filename: <code>circles.pdf</code>.
 
-<h3>Remarks  <a name="___sec34"></a></h3>
+<h3>Remarks  <a name="___sec35"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -32458,14 +32592,14 @@ Filename: <code>subexer_b.pdf</code>.
 <b>Solution.</b>
 Here goes the solution of this subexercise.
 
-<h3>Remarks  <a name="___sec36"></a></h3>
+<h3>Remarks  <a name="___sec37"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec38"></a></h2>
 
 <p>
 Just some text. And some math saying that $latex e^0=1$ on a single line,
@@ -32561,7 +32695,7 @@ Equations where the unknown is a function, as $latex y(x)$
 here, are called <em>differential equations</em>, and are solved by
 special techniques.
 
-<h2>Example 8: Just an example  <a name="___sec39"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec40"></a></h2>
 
 <p>
 <b>a)</b>
@@ -32571,12 +32705,12 @@ What is the capital of Norway?
 <b>Answer.</b>
 Oslo.
 
-<h1>Here goes another section  <a name="___sec40"></a></h1>
+<h1>Here goes another section  <a name="___sec41"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec41"></a></h1>
+<h1>More Exercises  <a name="___sec42"></a></h1>
 
 <h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
@@ -32604,7 +32738,7 @@ the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a>
 and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
-<h1>References  <a name="___sec44"></a></h1>
+<h1>References  <a name="___sec45"></a></h1>
 
 <ol>
  <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -32718,7 +32852,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec46"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec47"></a></h2>
 
 <p>
 Some text.
@@ -32728,7 +32862,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec49"></a></h2>
 
 <p>
 Without label.
@@ -32777,7 +32911,7 @@ Bergen
 
 Those from Bergen would claim so, but nobody else.
 
-<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec52"></a></h2>
 
 <p>
 Without label.
@@ -32871,7 +33005,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec52"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec53"></a></h2>
 
 <p>
 Projects that you want to share among several computers or project
@@ -32901,7 +33035,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$.  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 $latex Q>0$, because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec54"></a></h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -32964,7 +33098,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -33010,10 +33144,14 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -33022,35 +33160,35 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -33059,23 +33197,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -33084,11 +33222,11 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -33097,12 +33235,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 <body>
@@ -33173,57 +33311,58 @@ MathJax.Hub.Config({
 <a href="#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> <b>Just bold</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec13"> <em>Just emphasize</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec14"> <code>Just verbatim</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec15"> <b>Bold</b> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec16"> <em>Emphasize</em> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> <code>Verbatim</code> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Maybe <b>bold end</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Maybe <em>emphasize end</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Maybe <code>verbatim end</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> The middle has <b>bold</b> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> The middle has <em>emphasize</em> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> The middle has <code>verbatim</code> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> <b>Just bold</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> <em>Just emphasize</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> <code>Just verbatim</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> <b>Bold</b> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> <em>Emphasize</em> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> <code>Verbatim</code> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Maybe <b>bold end</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Maybe <em>emphasize end</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Maybe <code>verbatim end</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> The middle has <b>bold</b> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> The middle has <em>emphasize</em> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> The middle has <code>verbatim</code> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-<a href="#___sec27"> LaTeX Mathematics </a><br>
-<a href="#___sec28"> Exercises </a><br>
+<a href="#___sec28"> LaTeX Mathematics </a><br>
+<a href="#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec34"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec35"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec36"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Example 8: Just an example </a><br>
-<a href="#___sec40"> Here goes another section </a><br>
-<a href="#___sec41"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Example 8: Just an example </a><br>
+<a href="#___sec41"> Here goes another section </a><br>
+<a href="#___sec42"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="#___sec44"> References </a><br>
+<a href="#___sec45"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec46"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec47"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec48"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -33313,10 +33452,16 @@ the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URL
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
  <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
+<h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
+
+<p>
+The section <a href="#subsec1">Subsection 1</a> is fine.
+The section <a href="#subsubsec:ex">URLs</a> too.
+
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec3"></a></h3>
+<h3>Computer code  <a name="___sec4"></a></h3>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -33408,7 +33553,7 @@ Test paragraph and subsubsection headings before code.
     <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
 </pre></div>
 
-<h3>Subsubsection heading before code  <a name="___sec4"></a></h3>
+<h3>Subsubsection heading before code  <a name="___sec5"></a></h3>
 
 <p>
 
@@ -33642,7 +33787,7 @@ is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec5"></a></h3>
+<h3>Running OS commands  <a name="___sec6"></a></h3>
 
 <p>
 
@@ -33654,7 +33799,7 @@ from
 Python.
 </pre></div>
 
-<h3>Footnotes  <a name="___sec6"></a></h3>
+<h3>Footnotes  <a name="___sec7"></a></h3>
 
 <p>
 Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
@@ -33686,7 +33831,7 @@ interferes with an exponent.
 web site today.
 
 <p>
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 <p>
@@ -33804,7 +33949,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec9"></a></h2>
+<h2>Custom Environments  <a name="___sec10"></a></h2>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -33951,7 +34096,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec11"></a></h2>
+<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec12"></a></h2>
 
 <p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
@@ -33961,62 +34106,62 @@ some plain text on a new line.
 <p>
 <!-- Test various types of headlines -->
 
-<h2><b>Just bold</b>  <a name="___sec12"></a></h2>
+<h2><b>Just bold</b>  <a name="___sec13"></a></h2>
 
 <p>
 Some text.
 
-<h2><em>Just emphasize</em>  <a name="___sec13"></a></h2>
+<h2><em>Just emphasize</em>  <a name="___sec14"></a></h2>
 
 <p>
 Some text.
 
-<h2><code>Just verbatim</code>  <a name="___sec14"></a></h2>
+<h2><code>Just verbatim</code>  <a name="___sec15"></a></h2>
 
 <p>
 Some text.
 
-<h2><b>Bold</b> beginning  <a name="___sec15"></a></h2>
+<h2><b>Bold</b> beginning  <a name="___sec16"></a></h2>
 
 <p>
 Some text.
 
-<h2><em>Emphasize</em> beginning  <a name="___sec16"></a></h2>
+<h2><em>Emphasize</em> beginning  <a name="___sec17"></a></h2>
 
 <p>
 Some text.
 
-<h2><code>Verbatim</code> beginning  <a name="___sec17"></a></h2>
+<h2><code>Verbatim</code> beginning  <a name="___sec18"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <b>bold end</b>  <a name="___sec18"></a></h2>
+<h2>Maybe <b>bold end</b>  <a name="___sec19"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <em>emphasize end</em>  <a name="___sec19"></a></h2>
+<h2>Maybe <em>emphasize end</em>  <a name="___sec20"></a></h2>
 
 <p>
 Some text.
 
-<h2>Maybe <code>verbatim end</code>  <a name="___sec20"></a></h2>
+<h2>Maybe <code>verbatim end</code>  <a name="___sec21"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <b>bold</b> word  <a name="___sec21"></a></h2>
+<h2>The middle has <b>bold</b> word  <a name="___sec22"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <em>emphasize</em> word  <a name="___sec22"></a></h2>
+<h2>The middle has <em>emphasize</em> word  <a name="___sec23"></a></h2>
 
 <p>
 Some text.
 
-<h2>The middle has <code>verbatim</code> word  <a name="___sec23"></a></h2>
+<h2>The middle has <code>verbatim</code> word  <a name="___sec24"></a></h2>
 
 <p>
 Some text.
@@ -34076,7 +34221,7 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec24"></a></h2>
+<h2>Bibliography test  <a name="___sec25"></a></h2>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -34172,7 +34317,8 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+monospace font link text get a footnote
+(unless the <code>--latex_no_program_footnotelink</code>
 is used), as in this reference to
 <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_self"><tt>ball1.py</tt></a>,
 and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_self"><tt>ball2.py</tt></a>.
@@ -34196,7 +34342,7 @@ footnotes.
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec27"></a></h1>
+<h1>LaTeX Mathematics  <a name="___sec28"></a></h1>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -34212,7 +34358,7 @@ $$
 We can refer to this equation by \eqref{my:eq1}.
 
 <p>
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 $$
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -34242,7 +34388,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec28"></a></h1>
+<h1>Exercises  <a name="___sec29"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -34258,7 +34404,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec30"></a></h3>
+<h3>Remarks  <a name="___sec31"></a></h3>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -34302,7 +34448,7 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec31"></a></h2>
+<h2>Not an exercise  <a name="___sec32"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -34424,7 +34570,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec34"></a></h3>
+<h3>Remarks  <a name="___sec35"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -34532,7 +34678,7 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3>Remarks  <a name="___sec36"></a></h3>
+<h3>Remarks  <a name="___sec37"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -34545,7 +34691,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec37"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec38"></a></h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -34621,7 +34767,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec39"></a></h2>
+<h2>Example 8: Just an example  <a name="___sec40"></a></h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -34638,12 +34784,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec40"></a></h1>
+<h1>Here goes another section  <a name="___sec41"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec41"></a></h1>
+<h1>More Exercises  <a name="___sec42"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -34683,7 +34829,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec44"></a></h1>
+<h1>References  <a name="___sec45"></a></h1>
 
 <p>
 <!-- begin bibliography -->
@@ -34802,7 +34948,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec46"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec47"></a></h2>
 
 <p>
 Some text.
@@ -34812,7 +34958,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec48"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec49"></a></h2>
 
 <p>
 Without label.
@@ -34855,7 +35001,7 @@ Bergen
 <!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec52"></a></h2>
 
 <p>
 Without label.
@@ -34949,7 +35095,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec52"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec53"></a></h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -34988,7 +35134,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec53"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec54"></a></h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -35488,6 +35634,10 @@ encourages you to do the tasks in the
 Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
 Appendices~\ref{app1} and~\ref{app2} are also nice elements.
 
+\paragraph{Test Section reference at beginning of line and after a sentence.}
+Section~\ref{subsec1} is fine.
+Section~\ref{subsubsec:ex} too.
+
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -35815,7 +35965,7 @@ This is the third\footnote{Not much to add here, but the footnote is at the end 
 
 
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -36289,7 +36439,8 @@ Newton-Cotes with percentage in URL too:
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
 For the \code{--device=paper} option it is important to test that URLs with
-monofont link text get a footnote (unless the \code{--latex_no_program_footnotelink}
+monospace font link text get a footnote
+(unless the \code{--latex_no_program_footnotelink}
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -36335,7 +36486,7 @@ or with number and label, as in (\ref{my:eq1}), using the equation environment:
 \end{equation}
 We can refer to this equation by (\ref{my:eq1}).
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
@@ -37536,6 +37687,8 @@ y
 1
 EOF
 
+system doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
+
 ex="--examples_as_exercises"
 #ex=
 
@@ -38409,7 +38562,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -39374,11 +39527,11 @@ h1, h2, h3, h4, h5, h6 {
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec42" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec45" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -39396,10 +39549,14 @@ h1, h2, h3, h4, h5, h6 {
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -39408,35 +39565,35 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -39445,23 +39602,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -39470,11 +39627,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -39483,12 +39640,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 
@@ -39558,58 +39715,59 @@ MathJax.Hub.Config({
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( 	heta \) parameter (not \( 
 abla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> <b>Just bold</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec13"> <em>Just emphasize</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec14"> <code>Just verbatim</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec15"> <b>Bold</b> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec16"> <em>Emphasize</em> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec17"> <code>Verbatim</code> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec18"> Maybe <b>bold end</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec19"> Maybe <em>emphasize end</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec20"> Maybe <code>verbatim end</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec21"> The middle has <b>bold</b> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec22"> The middle has <em>emphasize</em> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec23"> The middle has <code>verbatim</code> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec24"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec13"> <b>Just bold</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec14"> <em>Just emphasize</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec15"> <code>Just verbatim</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec16"> <b>Bold</b> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec17"> <em>Emphasize</em> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec18"> <code>Verbatim</code> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec19"> Maybe <b>bold end</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec20"> Maybe <em>emphasize end</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec21"> Maybe <code>verbatim end</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec22"> The middle has <b>bold</b> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec23"> The middle has <em>emphasize</em> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec24"> The middle has <code>verbatim</code> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec28"> Exercises </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec39"> Example 8: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec40"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec41"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Example 8: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec41"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec42"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec44"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec45"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec46"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec47"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec48"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec49"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec51"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec52"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec52"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 
@@ -39713,11 +39871,11 @@ h1, h2, h3, h4, h5, h6 {
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec42" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec45" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -39735,10 +39893,14 @@ h1, h2, h3, h4, h5, h6 {
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -39747,35 +39909,35 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -39784,23 +39946,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -39809,11 +39971,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -39822,12 +39984,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 
@@ -39897,58 +40059,59 @@ MathJax.Hub.Config({
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Footnotes </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Computer code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Subsubsection heading before code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Running OS commands </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( 	heta \) parameter (not \( 
 abla \)?) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec9"> Custom Environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec11"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> <b>Just bold</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec13"> <em>Just emphasize</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec14"> <code>Just verbatim</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec15"> <b>Bold</b> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec16"> <em>Emphasize</em> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec17"> <code>Verbatim</code> beginning </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec18"> Maybe <b>bold end</b> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec19"> Maybe <em>emphasize end</em> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec20"> Maybe <code>verbatim end</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec21"> The middle has <b>bold</b> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec22"> The middle has <em>emphasize</em> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec23"> The middle has <code>verbatim</code> word </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec24"> Bibliography test </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec13"> <b>Just bold</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec14"> <em>Just emphasize</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec15"> <code>Just verbatim</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec16"> <b>Bold</b> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec17"> <em>Emphasize</em> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec18"> <code>Verbatim</code> beginning </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec19"> Maybe <b>bold end</b> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec20"> Maybe <em>emphasize end</em> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec21"> Maybe <code>verbatim end</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec22"> The middle has <b>bold</b> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec23"> The middle has <em>emphasize</em> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec24"> The middle has <code>verbatim</code> word </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#Example"> Example 1: Examples can be typeset as exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsubsec:ex"> URLs </a><br>
-<a href="._testdoc_vagrant002.html#___sec27"> LaTeX Mathematics </a><br>
-<a href="._testdoc_vagrant002.html#___sec28"> Exercises </a><br>
+<a href="._testdoc_vagrant002.html#___sec28"> LaTeX Mathematics </a><br>
+<a href="._testdoc_vagrant002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec30"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec34"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec36"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec39"> Example 8: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec40"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec41"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Example 8: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec41"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec42"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec44"> References </a><br>
+<a href="._testdoc_vagrant002.html#___sec45"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec46"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec47"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec48"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec49"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec51"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec52"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec52"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 
@@ -40052,11 +40215,11 @@ h1, h2, h3, h4, h5, h6 {
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
      <!-- navigation toc: --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec40" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec42" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec45" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -40074,10 +40237,14 @@ h1, h2, h3, h4, h5, h6 {
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -40086,35 +40253,35 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -40123,23 +40290,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -40148,11 +40315,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -40161,12 +40328,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 
@@ -40272,10 +40439,16 @@ the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URL
 encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
  <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc_vagrant002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
+<h3 id="___sec3">Test Section reference at beginning of line and after a sentence <a name="___sec3"></a></h3>
+
+<p>
+The section <a href="#subsec1">Subsection 1</a> is fine.
+The section <a href="#subsubsec:ex">URLs</a> too.
+
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3 id="___sec3">Computer code <a name="___sec3"></a></h3>
+<h3 id="___sec4">Computer code <a name="___sec4"></a></h3>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -40367,7 +40540,7 @@ Test paragraph and subsubsection headings before code.
     <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
 </pre></div>
 
-<h3 id="___sec4">Subsubsection heading before code <a name="___sec4"></a></h3>
+<h3 id="___sec5">Subsubsection heading before code <a name="___sec5"></a></h3>
 
 <p>
 
@@ -40601,7 +40774,7 @@ is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3 id="___sec5">Running OS commands <a name="___sec5"></a></h3>
+<h3 id="___sec6">Running OS commands <a name="___sec6"></a></h3>
 
 <p>
 
@@ -40613,7 +40786,7 @@ from
 Python.
 </pre></div>
 
-<h3 id="___sec6">Footnotes <a name="___sec6"></a></h3>
+<h3 id="___sec7">Footnotes <a name="___sec7"></a></h3>
 
 <p>
 Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
@@ -40645,7 +40818,7 @@ interferes with an exponent.
 web site today.
 
 <p>
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 <p>
@@ -40761,7 +40934,7 @@ $$
 \end{align}
 $$
 
-<h2 id="___sec9">Custom Environments <a name="___sec9"></a></h2>
+<h2 id="___sec10">Custom Environments <a name="___sec10"></a></h2>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -40938,7 +41111,7 @@ and URLs.
   </div>
 </div> <!-- col-xs-12 -->
 
-<h2 id="___sec11">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> <a name="___sec11"></a></h2>
+<h2 id="___sec12">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> <a name="___sec12"></a></h2>
 
 <p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
@@ -40948,62 +41121,62 @@ some plain text on a new line.
 <p>
 <!-- Test various types of headlines -->
 
-<h2 id="___sec12"><b>Just bold</b> <a name="___sec12"></a></h2>
+<h2 id="___sec13"><b>Just bold</b> <a name="___sec13"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec13"><em>Just emphasize</em> <a name="___sec13"></a></h2>
+<h2 id="___sec14"><em>Just emphasize</em> <a name="___sec14"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec14"><code>Just verbatim</code> <a name="___sec14"></a></h2>
+<h2 id="___sec15"><code>Just verbatim</code> <a name="___sec15"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec15"><b>Bold</b> beginning <a name="___sec15"></a></h2>
+<h2 id="___sec16"><b>Bold</b> beginning <a name="___sec16"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec16"><em>Emphasize</em> beginning <a name="___sec16"></a></h2>
+<h2 id="___sec17"><em>Emphasize</em> beginning <a name="___sec17"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec17"><code>Verbatim</code> beginning <a name="___sec17"></a></h2>
+<h2 id="___sec18"><code>Verbatim</code> beginning <a name="___sec18"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec18">Maybe <b>bold end</b> <a name="___sec18"></a></h2>
+<h2 id="___sec19">Maybe <b>bold end</b> <a name="___sec19"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec19">Maybe <em>emphasize end</em> <a name="___sec19"></a></h2>
+<h2 id="___sec20">Maybe <em>emphasize end</em> <a name="___sec20"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec20">Maybe <code>verbatim end</code> <a name="___sec20"></a></h2>
+<h2 id="___sec21">Maybe <code>verbatim end</code> <a name="___sec21"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec21">The middle has <b>bold</b> word <a name="___sec21"></a></h2>
+<h2 id="___sec22">The middle has <b>bold</b> word <a name="___sec22"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec22">The middle has <em>emphasize</em> word <a name="___sec22"></a></h2>
+<h2 id="___sec23">The middle has <em>emphasize</em> word <a name="___sec23"></a></h2>
 
 <p>
 Some text.
 
-<h2 id="___sec23">The middle has <code>verbatim</code> word <a name="___sec23"></a></h2>
+<h2 id="___sec24">The middle has <code>verbatim</code> word <a name="___sec24"></a></h2>
 
 <p>
 Some text.
@@ -41063,7 +41236,7 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
-<h2 id="___sec24">Bibliography test <a name="___sec24"></a></h2>
+<h2 id="___sec25">Bibliography test <a name="___sec25"></a></h2>
 
 <p>
 Here is an example: <a href="._testdoc_vagrant002.html#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -41159,7 +41332,8 @@ and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes
 
 <p>
 For the <code>--device=paper</code> option it is important to test that URLs with
-monofont link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+monospace font link text get a footnote
+(unless the <code>--latex_no_program_footnotelink</code>
 is used), as in this reference to
 <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_self"><tt>ball1.py</tt></a>,
 and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_self"><tt>ball2.py</tt></a>.
@@ -41278,11 +41452,11 @@ h1, h2, h3, h4, h5, h6 {
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">LaTeX Mathematics</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec42" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec45" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -41300,10 +41474,14 @@ h1, h2, h3, h4, h5, h6 {
                None,
                '___sec1'),
               (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Computer code ', 3, None, '___sec3'),
-              (' Subsubsection heading before code ', 3, None, '___sec4'),
-              (' Running OS commands ', 3, None, '___sec5'),
-              (' Footnotes ', 3, None, '___sec6'),
+              (' Test Section reference at beginning of line and after a sentence ',
+               3,
+               None,
+               '___sec3'),
+              (' Computer code ', 3, None, '___sec4'),
+              (' Subsubsection heading before code ', 3, None, '___sec5'),
+              (' Running OS commands ', 3, None, '___sec6'),
+              (' Footnotes ', 3, None, '___sec7'),
               (' Subsection 2: Testing figures ',
                2,
                'subsec:ex',
@@ -41312,35 +41490,35 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec9'),
+              (' Custom Environments ', 2, None, '___sec10'),
               (' Tables ', 2, 'subsec:table', 'subsec:table'),
               (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
                2,
                None,
-               '___sec11'),
-              (' _Just bold_ ', 2, None, '___sec12'),
-              (' *Just emphasize* ', 2, None, '___sec13'),
-              (' `Just verbatim` ', 2, None, '___sec14'),
-              (' _Bold_ beginning ', 2, None, '___sec15'),
-              (' *Emphasize* beginning ', 2, None, '___sec16'),
-              (' `Verbatim` beginning ', 2, None, '___sec17'),
-              (' Maybe _bold end_ ', 2, None, '___sec18'),
-              (' Maybe *emphasize end* ', 2, None, '___sec19'),
-              (' Maybe `verbatim end` ', 2, None, '___sec20'),
-              (' The middle has _bold_ word ', 2, None, '___sec21'),
-              (' The middle has *emphasize* word ', 2, None, '___sec22'),
-              (' The middle has `verbatim` word ', 2, None, '___sec23'),
-              (' Bibliography test ', 2, None, '___sec24'),
+               '___sec12'),
+              (' _Just bold_ ', 2, None, '___sec13'),
+              (' *Just emphasize* ', 2, None, '___sec14'),
+              (' `Just verbatim` ', 2, None, '___sec15'),
+              (' _Bold_ beginning ', 2, None, '___sec16'),
+              (' *Emphasize* beginning ', 2, None, '___sec17'),
+              (' `Verbatim` beginning ', 2, None, '___sec18'),
+              (' Maybe _bold end_ ', 2, None, '___sec19'),
+              (' Maybe *emphasize end* ', 2, None, '___sec20'),
+              (' Maybe `verbatim end` ', 2, None, '___sec21'),
+              (' The middle has _bold_ word ', 2, None, '___sec22'),
+              (' The middle has *emphasize* word ', 2, None, '___sec23'),
+              (' The middle has `verbatim` word ', 2, None, '___sec24'),
+              (' Bibliography test ', 2, None, '___sec25'),
               (' Example 1: Examples can be typeset as exercises ',
                2,
                'Example',
                'Example'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec27'),
-              (' Exercises ', 1, None, '___sec28'),
+              (' LaTeX Mathematics ', 1, None, '___sec28'),
+              (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec30'),
-              (' Not an exercise ', 2, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec31'),
+              (' Not an exercise ', 2, None, '___sec32'),
               (' Project 3: Compute a Probability ',
                2,
                'demo:ex:2',
@@ -41349,23 +41527,23 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
               (' Exercise 5: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec36'),
+              (' Remarks ', 3, None, '___sec37'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (' Exercise 7: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec39'),
-              (' Here goes another section ', 1, None, '___sec40'),
-              (' More Exercises ', 1, None, '___sec41'),
+              (' Example 8: Just an example ', 2, None, '___sec40'),
+              (' Here goes another section ', 1, None, '___sec41'),
+              (' More Exercises ', 1, None, '___sec42'),
               (' Exercise 9: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -41374,11 +41552,11 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec44'),
+              (' References ', 1, None, '___sec45'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec46'),
+              (' A subsection within an appendix ', 2, None, '___sec47'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec48'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -41387,12 +41565,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec52'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec53')]}
+               '___sec54')]}
 end of tocinfo -->
 
 
@@ -41416,7 +41594,7 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1 id="___sec27">LaTeX Mathematics <a name="___sec27"></a></h1>
+<h1 id="___sec28">LaTeX Mathematics <a name="___sec28"></a></h1>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -41432,7 +41610,7 @@ $$
 We can refer to this equation by <a href="#mjx-eqn-3">(3)</a>.
 
 <p>
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 $$
 \begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
@@ -41462,7 +41640,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
 
-<h1 id="___sec28">Exercises <a name="___sec28"></a></h1>
+<h1 id="___sec29">Exercises <a name="___sec29"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -41478,7 +41656,7 @@ Make a program that simulates flipping a coin \( N \) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
 
-<h3 id="___sec30">Remarks <a name="___sec30"></a></h3>
+<h3 id="___sec31">Remarks <a name="___sec31"></a></h3>
 
 <p>
 Remarks with such a subsubsection heading would previously mark
@@ -41541,7 +41719,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h2 id="___sec31">Not an exercise <a name="___sec31"></a></h2>
+<h2 id="___sec32">Not an exercise <a name="___sec32"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -41671,7 +41849,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3 id="___sec34">Remarks <a name="___sec34"></a></h3>
+<h3 id="___sec35">Remarks <a name="___sec35"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -41803,7 +41981,7 @@ Here goes the solution of this subexercise.
 <p>
 <!-- Closing remarks for this Exercise -->
 
-<h3 id="___sec36">Remarks <a name="___sec36"></a></h3>
+<h3 id="___sec37">Remarks <a name="___sec37"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -41816,7 +41994,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec37">Some exercise without the "Exercise:" prefix <a name="___sec37"></a></h2>
+<h2 id="___sec38">Some exercise without the "Exercise:" prefix <a name="___sec38"></a></h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -41943,7 +42121,7 @@ Wrong!
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec39">Example 8: Just an example <a name="___sec39"></a></h2>
+<h2 id="___sec40">Example 8: Just an example <a name="___sec40"></a></h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -41960,12 +42138,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec40">Here goes another section <a name="___sec40"></a></h1>
+<h1 id="___sec41">Here goes another section <a name="___sec41"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1 id="___sec41">More Exercises <a name="___sec41"></a></h1>
+<h1 id="___sec42">More Exercises <a name="___sec42"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -42005,7 +42183,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec44">References <a name="___sec44"></a></h1>
+<h1 id="___sec45">References <a name="___sec45"></a></h1>
 
 <p>
 <!-- begin bibliography -->
@@ -42124,7 +42302,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2 id="___sec46">A subsection within an appendix <a name="___sec46"></a></h2>
+<h2 id="___sec47">A subsection within an appendix <a name="___sec47"></a></h2>
 
 <p>
 Some text.
@@ -42134,7 +42312,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2 id="___sec48">Appendix: Testing identical titles <a name="___sec48"></a></h2>
+<h2 id="___sec49">Appendix: Testing identical titles <a name="___sec49"></a></h2>
 
 <p>
 Without label.
@@ -42277,6 +42455,12 @@ the section :ref:`sec1` and :ref:`subsec1`, and further to the
 the sections :ref:`subsec1` and :ref:`subsubsec:ex`, which
 encourages you to do the tasks in :ref:`demo:ex:1` and :ref:`exer:some:formula`.
 Appendices     :ref:`app1` and :ref:`app2` are also nice elements.
+
+Test Section reference at beginning of line and after a sentence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The section :ref:`subsec1` is fine.
+The section :ref:`subsubsec:ex` too.
 
 .. sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
@@ -42618,7 +42802,7 @@ This is the third [#example-of-the-third-footnote]_ example.
 .. [#google-search] `<google.com>`_ is perhaps the most famous
    web site today.
 
-Here is some more text before a new definition of a footnote that was used
+Here is some more text before a new definition of a footnote that was
 used above.
 
 
@@ -43081,7 +43265,8 @@ Newton-Cotes with percentage in URL too:
 and `<http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae>`_ which has a shebang.
 
 For the ``--device=paper`` option it is important to test that URLs with
-monofont link text get a footnote (unless the ``--latex_no_program_footnotelink``
+monospace font link text get a footnote
+(unless the ``--latex_no_program_footnotelink``
 is used), as in this reference to
 `decay_mod <https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py>`__, `ball1.py <http://tinyurl.com/pwyasaa/formulas.ball1.py>`__,
 and `ball2.py <http://tinyurl.com/pwyasaa/formulas.ball2.py>`__.
@@ -43131,7 +43316,7 @@ or with number and label, as in :eq:`my:eq1`, using the equation environment:
 
 We can refer to this equation by :eq:`my:eq1`.
 
-Here is a system without equation numbers, using the align-astrisk environment:
+Here is a system without equation numbers, using the align-asterisk environment:
 
 .. math::
         
@@ -49405,7 +49590,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -49884,7 +50069,9 @@ Automatically generated HTML file from DocOnce source
 
 
 <style type="text/css">
-/* blueish2 style */
+/* blueish2 style (as blueish style, but different pre and code tags
+   (only effective if not pygments is used))
+*/
 
 /* Color definitions:  http://www.december.com/html/spec/color0.html
    CSS examples:       http://www.w3schools.com/css/css_examples.asp */
@@ -49900,9 +50087,8 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
-pre, code { font-size: 90%; line-height: 1.6em; }
-
+/* pre style removed because it will interfer with pygments */
+/* pre, code style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -50433,7 +50619,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -51368,7 +51554,9 @@ Automatically generated HTML file from DocOnce source
 
 
 <style type="text/css">
-/* blueish2 style */
+/* blueish2 style (as blueish style, but different pre and code tags
+   (only effective if not pygments is used))
+*/
 
 /* Color definitions:  http://www.december.com/html/spec/color0.html
    CSS examples:       http://www.w3schools.com/css/css_examples.asp */
@@ -51384,9 +51572,8 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
-pre, code { font-size: 90%; line-height: 1.6em; }
-
+/* pre style removed because it will interfer with pygments */
+/* pre, code style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -51950,7 +52137,9 @@ Automatically generated HTML file from DocOnce source
 
 
 <style type="text/css">
-/* blueish2 style */
+/* blueish2 style (as blueish style, but different pre and code tags
+   (only effective if not pygments is used))
+*/
 
 /* Color definitions:  http://www.december.com/html/spec/color0.html
    CSS examples:       http://www.w3schools.com/css/css_examples.asp */
@@ -51966,9 +52155,8 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
-pre, code { font-size: 90%; line-height: 1.6em; }
-
+/* pre style removed because it will interfer with pygments */
+/* pre, code style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -56879,7 +57067,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -64574,7 +64762,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -65317,7 +65505,7 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -69111,7 +69299,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f5eae87e7d0>
+verbatim is to be replaced using <function html_verbatim at 0x7f569da967d0>
 
 
 First occurence: " `mako`."
@@ -73068,7 +73256,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Oct  1 11:57:08 2014.
+# sphinx-quickstart on Tue Oct 14 20:03:34 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -89176,6 +89364,9 @@ Total:                              21
 
 Saving backup copy of database to file "papers.pub.bak"
 Saving database to file "papers.pub"
++ system doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
++ doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
++ '[' 0 -ne 0 ']'
 + ex=--examples_as_exercises
 + system doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window
 + doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window
@@ -89903,23 +90094,29 @@ dmap/pdftex.map}] [2]
 
 
 
-[3] (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg [4]) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg
-[5]) <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt>
+[3]
+
+
+
+
+
+
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [4])
+(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
+<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] [7]
 
 
 ...rest of part of LaTeX line number...
 
-
-
-
-<../doc/src/manual/fig/wave1D.pdf, id=91, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
 
+
+
+<../doc/src/manual/fig/wave1D.pdf, id=111, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
@@ -89927,7 +90124,7 @@ dmap/pdftex.map}] [2]
 <../doc/src/manual/fig/wave1D.png, id=123, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=124, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
+<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -89952,7 +90149,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>]
+[11 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -90005,7 +90202,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1264.
+t line 1268.
 
 
 
@@ -90025,7 +90222,7 @@ t line 1264.
 
 
 
-t line 1273.
+t line 1277.
 
 
 
@@ -90046,7 +90243,7 @@ t line 1273.
 
 
 
-t line 1277.
+t line 1281.
 
 
 
@@ -90701,21 +90898,19 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6])
-<latex_figs/dizzy_face.png, id=295, 64.24pt x 64.24pt>
+(./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+<latex_figs/dizzy_face.png, id=297, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=321, 586.83241pt x 442.29242pt>
+.png>] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=341, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
-
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=353, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=355, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=354, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=356, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -90740,7 +90935,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <./downloaded_figures/f_plot.png>]
+[12 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -90754,17 +90949,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=379, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=380, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=382, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=385, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=386, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90793,7 +90988,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1264.
+t line 1268.
 
 
 
@@ -90813,7 +91008,7 @@ t line 1264.
 
 
 
-t line 1273.
+t line 1277.
 
 
 
@@ -90834,7 +91029,7 @@ t line 1273.
 
 
 
-t line 1277.
+t line 1281.
 
 
 
@@ -91406,21 +91601,19 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6])
-<latex_figs/dizzy_face.png, id=295, 64.24pt x 64.24pt>
+(./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+<latex_figs/dizzy_face.png, id=297, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=321, 586.83241pt x 442.29242pt>
+.png>] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=341, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
-
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=353, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=355, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=354, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=356, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -91445,7 +91638,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <./downloaded_figures/f_plot.png>]
+[12 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -91459,17 +91652,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=379, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=380, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=382, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=385, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=386, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91498,7 +91691,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1264.
+t line 1268.
 
 
 
@@ -91518,7 +91711,7 @@ t line 1264.
 
 
 
-t line 1273.
+t line 1277.
 
 
 
@@ -91539,7 +91732,7 @@ t line 1273.
 
 
 
-t line 1277.
+t line 1281.
 
 
 
@@ -92095,21 +92288,19 @@ Writing index file testdoc.idx
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [5])
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg [6])
-<latex_figs/dizzy_face.png, id=295, 64.24pt x 64.24pt>
+(./testdoc.out.pyg) [6] (./testdoc.out.pyg)
+<latex_figs/dizzy_face.png, id=297, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=321, 586.83241pt x 442.29242pt>
+.png>] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=341, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
-
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=353, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=355, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=354, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+<downloaded_figures/f_plot.png, id=356, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -92134,7 +92325,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <./downloaded_figures/f_plot.png>]
+[12 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -92148,17 +92339,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=379, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=381, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=380, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=382, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=385, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=386, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92711,10 +92902,17 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-[3] (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) [4]
+[3]
+
+
+
+
+
+
+(./testdoc.out.pyg) (./testdoc.out.pyg) [4] (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg)
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
+(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=238, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
@@ -92828,27 +93026,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1215.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1224.
+t line 1219.
 
 
 
@@ -92869,6 +93047,26 @@ t line 1224.
 
 
 t line 1228.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1232.
 
 
 
@@ -93607,9 +93805,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:376: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:413: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:413: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:382: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:419: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:419: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found

@@ -87,6 +87,11 @@ encourages you to do the tasks in the
 Exercises ref{demo:ex:1} and ref{exer:some:formula}.
 Appendices     ref{app1} and ref{app2} are also nice elements.
 
+=== Test Section reference at beginning of line and after a sentence ===
+
+Section ref{subsec1} is fine.
+Section ref{subsubsec:ex} too.
+
 
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 

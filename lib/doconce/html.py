@@ -218,7 +218,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 css_blueish2 = """\
 /* blueish2 style (as blueish style, but different pre and code tags
-   (only effective if not pygments is used)
+   (only effective if not pygments is used))
 */
 
 /* Color definitions:  http://www.december.com/html/spec/color0.html
