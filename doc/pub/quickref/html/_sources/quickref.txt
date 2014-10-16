@@ -4,11 +4,13 @@
 .. |nbsp| unicode:: 0xA0
    :trim:
 
+.. !split
+
 DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 14, 2014
+:Date: Oct 16, 2014
 
 **WARNING: This quick reference is very incomplete!**
 

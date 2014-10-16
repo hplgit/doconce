@@ -1,13 +1,13 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. !split
+
 Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: hpl
-:Date: Oct 14, 2014
-
-.. !split
+:Date: Oct 16, 2014
 
 Introduction
 ============

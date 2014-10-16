@@ -10097,13 +10097,13 @@ in a separate document: ``admon.do.txt``.
 .. |nbsp| unicode:: 0xA0
    :trim:
 
+.. !split
+
 A Document for Testing DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
 :Date: Jan 32, 2100
-
-.. !split
 
 The format of this document is
 sphinx
@@ -27862,6 +27862,8 @@ Inline math, $a=b$, is the only math in this document.
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. !split
+
 Test of one author at one institution
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27871,6 +27873,8 @@ Test of one author at one institution
 .. Externaldocument: testdoc
 
 .. _genrefs:
+
+.. !split
 
 Generalized References
 %%%%%%%%%%%%%%%%%%%%%%
@@ -28026,6 +28030,8 @@ The text is rendered to
 
 
 
+.. !split
+
 Test of math
 %%%%%%%%%%%%
 
@@ -28042,7 +28048,6 @@ Inline math, :math:`a=b`, is the only math in this document.
    *Simula Research Laboratory*,
    2013,
    `http://doconce.googlecode.com/hg/test/demo_testdoc.html <http://doconce.googlecode.com/hg/test/demo_testdoc.html>`_.
-
 
 
 ************** File: author1.txt *****************
@@ -42358,12 +42363,6 @@ What about inserting a quiz?
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-A Document for Testing DocOnce
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:Authors: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
-:Date: Jan 32, 2100
-
 
 ************** File: ._testdoc001.rst *****************
 
@@ -42372,6 +42371,12 @@ A Document for Testing DocOnce
    :trim:
 
 .. !split
+
+A Document for Testing DocOnce
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: Hans Petter Langtangen (hpl at simula.no), Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned, J. Doe (j_doe at cyberspace.com)
+:Date: Jan 32, 2100
 
 The format of this document is
 sphinx
@@ -55301,13 +55306,13 @@ exercises (and problems and projects too).
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. !split
+
 Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: hpl
 :Date: Jan 32, 2100
-
-.. !split
 
 Introduction
 ============
@@ -69299,7 +69304,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f569da967d0>
+verbatim is to be replaced using <function html_verbatim at 0x7fdd612317d0>
 
 
 First occurence: " `mako`."
@@ -73256,7 +73261,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Oct 14 20:03:34 2014.
+# sphinx-quickstart on Thu Oct 16 00:31:30 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79812,6 +79817,8 @@ Resources
 
 .. |nbsp| unicode:: 0xA0
    :trim:
+
+.. !split
 
 DocOnce Quick Reference
 =======================
@@ -93805,9 +93812,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:382: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:419: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:419: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:388: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -93819,13 +93826,14 @@ writing output... [ 50%] ._testdoc001
 writing output... [ 75%] ._testdoc002
 writing output... [100%] index
 
+/home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc000' that doesn't have a title: no link will be generated
 writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
 copying extra files... dumping search index... done
 dumping object inventory... done
-build succeeded, 5 warnings.
+build succeeded, 6 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying movie_demo to sphinx-testdoc/_static/movie_demo

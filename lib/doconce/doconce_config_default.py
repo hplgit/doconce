@@ -108,4 +108,5 @@ multimarkdown_output = False
 #quiz_horizontal_rule = 
 rst_uio = False
 rst_mathjax = False
+sphinx_keep_splits = False
 oneline_paragraphs = False

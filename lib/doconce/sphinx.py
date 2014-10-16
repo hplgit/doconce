@@ -412,12 +412,34 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
     for label in section_label2title:
         filestr = filestr.replace('ref{%s}' % label, ':ref:`%s`' % label)
 
-    # not of interest after sphinx got equation references:
+    # Not of interest after sphinx got equation references:
     #from common import ref2equations
     #filestr = ref2equations(filestr)
 
-    # replace remaining ref{x} as :ref:`x`
+    # Replace remaining ref{x} as :ref:`x`
     filestr = re.sub(r'ref\{(.+?)\}', ':ref:`\g<1>`', filestr)
+
+    # Special fix early in the process:
+    # Deal with !split - by default we place splits before
+    # the topmost sections (assuming the document also has a title
+    # so split on the topmost sections makes sense)
+    if not option('sphinx_keep_splits'):
+        topmost_section = 0
+        for i in [9, 7, 5]:
+            if re.search(r'^%s' % ('='*i), filestr, flags=re.MULTILINE):
+                topmost_section = i
+                break
+        if topmost_section:
+            # First remove all !split
+            filestr = re.sub(r'^!split *\n', '', filestr, flags=re.MULTILINE)
+            # Insert new splits before all topmost sections
+            pattern = r'^%s (.+?) %s' % \
+                      ('='*topmost_section, '='*topmost_section)
+            lines = filestr.splitlines()
+            for i in range(len(lines)):
+                if re.search(pattern, lines[i]):
+                    lines[i] = '!split\n' + lines[i]
+            filestr = '\n'.join(lines)
 
     return filestr
 

@@ -376,6 +376,11 @@ results in no prefix/title before the the answer "Two".
      'Univ. of Oslo version of rst files for their Vortex system.'),
     ('--rst_mathjax',
      'Use raw HTML with MathJax for LaTeX mathematics in rst files.'),
+    ('--sphinx_keep_splits',
+     """Respect user's !split commands. Default: Override user's !split
+and insert new !split before all topmost sections. This is what
+makes sense in a Sphinx Table of Contents if one wants to split
+the document into multiple parts."""),
     ('--oneline_paragraphs',
      'Combine paragraphs to one line (does not work well).'),
     ]
@@ -5038,7 +5043,6 @@ def split_rst0():
         #print 'Extracted part', parts[i], 'in', filename
     print ' '.join(parts)
 
-
 def _usage_split_rst():
     print 'Usage: doconce split_rst mydoc'
     print """Example:
@@ -5554,6 +5558,7 @@ _replacements = [
     (r'![be]notice', ''),
     (r'![be]quote', ''),
     (r'![be]box', ''),
+    (r'![be]block', ''),
     (r'![be]remarks', ''),
     (r'![be]quiz', ''),
     # Preprocess
