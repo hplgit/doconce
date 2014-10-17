@@ -67,7 +67,7 @@ The three most common formats can be found on the web:
 and
 "PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf".
 
-!bwarning
+!bwarning This guide is for the experience DocOnce writer
 Do not read the detailed descriptions of DocOnce syntax that follows
 (this is a manual!) before you have read the tutorial and played
 a little around with a simple document.
@@ -644,7 +644,7 @@ DocOnce source file.
 ===== Lists =====
 
 An unordered bullet list makes use of the `*` as bullet sign
-and is consistently *indented* by some chosen spaces as follows
+and is *consistently indented* by some chosen spaces as follows
 
 !bc do
    * item 1
@@ -726,6 +726,14 @@ The result becomes
      lines)
 
 
+
+!bwarning No indentation, except in lists!
+DocOnce syntax is sensitive to whitespace!
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+Also note that extra whitespace after ``item'' indicators (`*`, `o`, or `-`)
+in lists may give strange behavior.
+!ewarning
 
 
 

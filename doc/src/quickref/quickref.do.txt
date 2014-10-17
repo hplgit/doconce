@@ -287,6 +287,13 @@ And finally a description list:
  - keyword3: and its description may fit on one line
 
 
+!bwarning No indentation, except in lists!
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+!ewarning
+
+
 ===== Comment lines =====
 
 Lines starting with `#` are treated as comments in the document and

@@ -154,10 +154,11 @@ heading, and 3 a subsubsection heading.
 ===== A Subsection with Sample Text =====
 label{my:first:sec}
 
-Ordinary text looks like ordinary text, and the tags used for
-_boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Quotations appear inside double backticks
-and double single quotes, as in ``this example''.
+Ordinary text looks like ordinary text, but must always start at the
+beginning of lines. Tags used for _boldface_ words, *emphasized*
+words, and `computer` words look natural in plain text.  Quotations
+appear inside double backticks and double single quotes, as in ``this
+example''.
 
 Below the section title we have a *label*, which can be used to
 refer to Section ref{my:first:sec}.
@@ -223,10 +224,11 @@ heading, and 3 a subsubsection heading.
 ===== A Subsection with Sample Text =====
 label{my:first:sec}
 
-Ordinary text looks like ordinary text, and the tags used for
-_boldface_ words, *emphasized* words, and `computer` words look
-natural in plain text.  Quotations appear inside double backticks
-and double single quotes, as in ``this example''.
+Ordinary text looks like ordinary text, but must always start at the
+beginning of lines. Tags used for _boldface_ words, *emphasized*
+words, and `computer` words look natural in plain text.  Quotations
+appear inside double backticks and double single quotes, as in ``this
+example''.
 
 Below the section title we have a *label*, which can be used to
 refer to Section ref{my:first:sec}.

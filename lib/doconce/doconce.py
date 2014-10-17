@@ -1991,6 +1991,19 @@ def typeset_lists(filestr, format, debug_info=[]):
             debugpr('%s (%s)\n--> %s' % (db_line, db_line_tp, db_result.rstrip()))
         else:
             debugpr('%s (%s)' % (db_line, db_line_tp))
+            """
+            # Cannot do this test here because some formats have already
+            # made indentation as part of their syntax
+            if lines[i][0] == ' ':  # indented line?
+                print '*** error: found indented line (syntax error):\n'
+                print '>>> illegal indented line: "%s"\n' % lines[i]
+                print 'surrounding text:\n'
+                for _l in lines[i-3:i+4]:
+                    print _l
+                print '\nNote: all ordinary text and commands must start at the beginning of the line'
+                print '(only lists can be indented)'
+                _abort()
+            """
 
     # end lists if any are left:
     while lists:
