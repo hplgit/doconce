@@ -5517,7 +5517,7 @@ _replacements = [
     (r'cf.', ''),
     # DocOnce
     (r'^<%.+^%>', '', re.MULTILINE|re.DOTALL),  # Mako Python code
-    (r'^<%doc.+^/%doc>', '', re.MULTILINE|re.DOTALL),  # Mako comments
+    (r'^<%doc.+^</%doc>', '', re.MULTILINE|re.DOTALL),  # Mako comments
     (r'"([^"]*?)":\s*"[^"]+?"', r'\g<1>'),  # links ("`file.py`" -> "": "...")
     (r"^#.*$", "", re.MULTILINE),
     (r"(idx|label|ref|cite)\{.*?\}", ""),

@@ -287,7 +287,7 @@ And finally a description list:
  - keyword3: and its description may fit on one line
 
 
-!bwarning No indentation, except in lists!
+!bwarning No indentation - except in lists!
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -691,6 +691,7 @@ Note that
 
  * Each line begins and ends with a vertical bar (pipe symbol).
  * Column data are separated by a vertical bar (pipe symbol).
+ * There must be a blank line before and after the table.
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -708,6 +709,15 @@ The command-line option `--tables2csv` (to `doconce format`)
 makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+!bc sys
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+!ec
+Now we can do `# #include "mydata_table.do.txt"` in the DocOnce
+source file or simply copy the table in `mydata_table.do.txt`
+into the DocOnce file.
 
 ===== Labels and References =====
 

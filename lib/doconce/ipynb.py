@@ -275,7 +275,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             re.search(r'import +matplotlib', code_blocks[i]) or \
             re.search(r'from +matplotlib', code_blocks[i]) or \
             re.search(r'import +scitools', code_blocks[i]) or \
-            re.search(r'from +scitools', code_blocks[i]):
+            re.search(r'from +scitools', code_blocks[i])):
             code_blocks[i] = '%matplotlib inline\n\n' + code_blocks[i]
             mpl_inline = True
 

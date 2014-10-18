@@ -550,62 +550,98 @@ preprocessor and an if-else block with a variable that is undefined
 !split
 ===== Tables =====
 
+=== Basic Syntax ===
+
 A table like
 
-  |--------------------------------|
-  |time  | velocity | acceleration |
-  |--r--------r-----------r--------|
-  | 0.0  | 1.4186   | -5.01        |
-  | 2.0  | 1.376512 | 11.919       |
-  | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|
+|--------------------------------|
+|time  | velocity | acceleration |
+|--r--------r-----------r--------|
+| 0.0  | 1.4186   | -5.01        |
+| 2.0  | 1.376512 | 11.919       |
+| 4.0  | 1.1E+1   | 14.717624    |
+|--------------------------------|
 
 is built up of pipe symbols and dashes:
 
 !bc do
 
-  |--------------------------------|
-  |time  | velocity | acceleration |
-  |--------------------------------|
-  | 0.0  | 1.4186   | -5.01        |
-  | 2.0  | 1.376512 | 11.919       |
-  | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|
+|--------------------------------|
+|time  | velocity | acceleration |
+|--------------------------------|
+| 0.0  | 1.4186   | -5.01        |
+| 2.0  | 1.376512 | 11.919       |
+| 4.0  | 1.1E+1   | 14.717624    |
+|--------------------------------|
 
 !ec
-The pipes and column values do not need to be aligned (but why write
-the DocOnce source in an ugly way?). In the line below the heading,
-one can insert the characters `c`, `r`, or `l` to specify the
-alignment of the columns (centered, right, or left, respectively).
-Similar character can be inserted in the line above the header to
-algn the headings. Pipes `|` can also be inserted to indicate
-vertical rules in LaTeX tables (they are ignored for other formats).
-An example of centered headings (which is default anyway), first
-column left-adjusted and the others right-adjusted looks like
+
+ * The pipes and column values do not need to be aligned (but why write
+   the DocOnce source in an ugly way?).
+ * In the line below the heading,
+   one can insert the characters `c`, `r`, or `l` to specify the
+   alignment of the columns (centered, right, or left, respectively).
+ * Similar character can be inserted in the line above the header to
+   align the headings.
+ * There must be a blank line before and after the table
+
+Here is an example with centered headings (which is default anyway),
+and the numbers are
+left-adjusted in the first column and right-adjusted in the two others.
 
 !bc do
 
-  |--c--------c-----------c--------|
-  |time  | velocity | acceleration |
-  |--l--------r-----------r--------|
-  | 0.0  | 1.4186   | -5.01        |
-  | 2.0  | 1.376512 | 11.919       |
-  | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|
+|--c--------c-----------c--------|
+|time  | velocity | acceleration |
+|--l--------r-----------r--------|
+| 0.0  | 1.4186   | -5.01        |
+| 2.0  | 1.376512 | 11.919       |
+| 4.0  | 1.1E+1   | 14.717624    |
+|--------------------------------|
 
 !ec
 
-Note that not all formats offer alignment of heading or entries
-in tables (`rst` and `sphinx` are examples). Also note that
-DocOnce tables are very simple: neither entries nor
-headings can span several columns or rows. When that functionality
-is needed, one can make use of the preprocessor and if-tests on
-the format and insert format-specific code for tables.
+Typeset result:
 
-The command-line option `--tables2csv` (to `doconce format`)
-makes DocOnce dump each table to CSV format in a file `table_X.csv`,
-where `X` is the table number. This feature makes it easy to
-load tables into spreadsheet programs for further analysis.
+|--c--------c-----------c--------|
+|time  | velocity | acceleration |
+|--l--------r-----------r--------|
+| 0.0  | 1.4186   | -5.01        |
+| 2.0  | 1.376512 | 11.919       |
+| 4.0  | 1.1E+1   | 14.717624    |
+|--------------------------------|
+
+Pipes `|` can also be inserted to indicate
+vertical rules in LaTeX tables (they are ignored for other formats):
+
+!bc do
+
+|--------------------------------|
+|time  | velocity | acceleration |
+|--l---|----r-----|-----r--------|
+| 0.0  | 1.4186   | -5.01        |
+| 2.0  | 1.376512 | 11.919       |
+| 4.0  | 1.1E+1   | 14.717624    |
+|--------------------------------|
+
+!ec
+
+!bnotice
+ * Not all formats offer alignment of heading or entries
+   in tables (`rst` and `sphinx` are examples).
+ * DocOnce tables are very simple: neither entries nor
+   headings can span several columns or rows. When that functionality
+   is needed, one can make use of the preprocessor and if-tests on
+   the format and insert format-specific code for tables.
+!enotice
+
+=== Tables to/from CSV Data Files ===
+
+The command-line option `--tables2csv` (to `doconce format`) makes
+DocOnce dump each table to CSV format in a file `table_X.csv`, where
+`X` is a generated table number. This feature makes it easy to load
+tables from DocOnce documents into spreadsheet programs for further
+analysis.
 
 Data in CSV format can be transformed to DocOnce table format
 by the `doconce csv2table` utility:
@@ -636,9 +672,14 @@ Running `doconce csv2table tmp.csv` creates the table
 
 !ec
 
-If this output is redirected to a file, say `mytable.do.txt`, one can
-easily include this file by `# #include "mytable.do.txt"` in the
-DocOnce source file.
+If the output from `doconce csv2table` is redirected to a file:
+
+!bc sys
+Terminal> doconce csv2table data.csv > mytable.do.txt
+!ec
+one can easily include this file by `# #include "mytable.do.txt"` in the
+DocOnce source file. This is an efficient method for generating
+DocOnce tables directly from data.
 
 
 ===== Lists =====

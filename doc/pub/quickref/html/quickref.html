@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 16, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 18, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -426,6 +426,12 @@ lines</dd>
 <dd>and its description may fit on one line</dd>
 </dl>
 </div></blockquote>
+<div class="admonition-no-indentation-except-in-lists admonition">
+<p class="first admonition-title">No indentation - except in lists</p>
+<p class="last">DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.</p>
+</div>
 </div>
 <div class="section" id="comment-lines">
 <h2>Comment lines<a class="headerlink" href="#comment-lines" title="Permalink to this headline">¶</a></h2>
@@ -773,6 +779,7 @@ syntax:</p>
 <div><ul class="simple">
 <li>Each line begins and ends with a vertical bar (pipe symbol).</li>
 <li>Column data are separated by a vertical bar (pipe symbol).</li>
+<li>There must be a blank line before and after the table.</li>
 <li>There may be horizontal rules, i.e., lines with dashes for
 indicating the heading and the end of the table, and these may
 contain characters &#8216;c&#8217;, &#8216;l&#8217;, or &#8216;r&#8217; for how to align headings or
@@ -791,6 +798,13 @@ have no effect.</li>
 makes DocOnce dump each table to CSV format in a file <tt class="docutils literal"><span class="pre">table_X.csv</span></tt>,
 where <tt class="docutils literal"><span class="pre">X</span></tt> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.</p>
+<p>DocOnce tables can be efficiently made directly from data in CSV files.</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce csv2table mydata.csv &gt; mydata_table.do.txt
+</pre></div>
+</div>
+<p>Now we can do <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;mydata_table.do.txt&quot;</span></tt> in the DocOnce
+source file or simply copy the table in <tt class="docutils literal"><span class="pre">mydata_table.do.txt</span></tt>
+into the DocOnce file.</p>
 </div>
 <div class="section" id="labels-and-references">
 <h2>Labels and References<a class="headerlink" href="#labels-and-references" title="Permalink to this headline">¶</a></h2>

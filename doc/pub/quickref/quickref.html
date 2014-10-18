@@ -134,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Oct 16, 2014</h4></center> <!-- date -->
+<center><h4>Oct 18, 2014</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -506,6 +506,15 @@ And finally a description list:
  <dt>keyword3:<dd> 
    and its description may fit on one line
 </dl>
+
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>No indentation - except in lists!</b>
+<p>
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+</div>
+
 
 <h2>Comment lines  <a name="___sec6"></a></h2>
 
@@ -982,6 +991,7 @@ Note that
 <ul>
  <li> Each line begins and ends with a vertical bar (pipe symbol).</li>
  <li> Column data are separated by a vertical bar (pipe symbol).</li>
+ <li> There must be a blank line before and after the table.</li>
  <li> There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -1000,6 +1010,18 @@ The command-line option <code>--tables2csv</code> (to <code>doconce format</code
 makes DocOnce dump each table to CSV format in a file <code>table_X.csv</code>,
 where <code>X</code> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+<p>
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce csv2table mydata.csv &gt; mydata_table.do.txt
+</code></pre>
+<!-- end verbatim block -->
+Now we can do <code># #include &quot;mydata_table.do.txt&quot;</code> in the DocOnce
+source file or simply copy the table in <code>mydata_table.do.txt</code>
+into the DocOnce file.
 
 <h2>Labels and References  <a name="___sec13"></a></h2>
 

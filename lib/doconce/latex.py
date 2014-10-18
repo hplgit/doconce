@@ -1530,7 +1530,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         for char in ',[]':
             if char in title_mdframed:
                 print '*** error: character "%%s" is not legal in %(_admon)s admon title:' %% char
-                print '   ', title
+                print '   "%s"' % title
                 print '    for --latex_admon=%%s' %% latex_admon
                 if char == ',':
                     print '    see if you can replace , by "and" or a dash...'
