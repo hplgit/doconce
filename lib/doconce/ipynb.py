@@ -260,15 +260,25 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # Fix pyshell and ipy interactive sessions: remove prompt and output.
     # Fix sys and use run prog.py.
+    # Insert %matplotlib inline in the first block using matplotlib
     # Only typeset Python code as blocks, otherwise !bc environmens
     # become plain indented Markdown.
     from doconce import dofile_basename
     from sets import Set
     ipynb_tarfile = 'ipynb-%s-src.tar.gz' % dofile_basename
     src_paths = Set()
+    mpl_inline = False
 
     ipynb_code_tp = [None]*len(code_blocks)
     for i in range(len(code_blocks)):
+        if not mpl_inline and (
+            re.search(r'import +matplotlib', code_blocks[i]) or \
+            re.search(r'from +matplotlib', code_blocks[i]) or \
+            re.search(r'import +scitools', code_blocks[i]) or \
+            re.search(r'from +scitools', code_blocks[i]):
+            code_blocks[i] = '%matplotlib inline\n\n' + code_blocks[i]
+            mpl_inline = True
+
         tp = code_block_types[i]
         if tp in ('pyshell', 'ipy'):
             # Remove prompt and output lines; leave code executable in cell
