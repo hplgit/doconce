@@ -3044,14 +3044,16 @@ DATE: today
 FIGURE: [fig/logo, width=300 frac=0.3]
 !ec
 
-=== Parts page ===
+=== Parts Page ===
 
 Parts of the presentation are divided by section headings. Here
 we also add some keywords in a bullet list on the left and a
-figure on the right. The `!bslidecell XY` command starts the
+figure on the right. The `!bslidecell XY f` command starts the
 definition of a cell in a grid of cells in the slide. The `XY`
 part defines the coordinates of the cell, `00` is upper left,
-`01` is upper right.
+`01` is upper right. The `f` parameter specifies the fraction
+of the width occupied by this column of cells (can be left out,
+which results in columns of equal widths).
 
 !bc do
 !split
@@ -3070,6 +3072,10 @@ part defines the coordinates of the cell, `00` is upper left,
 FIGURE: [fig/method, width=600 frac=0.7]
 |eslidecell
 !ec
+The `# Short title: ...` line can be used to define a short
+title for slide formats with navigation (where long titles are
+inappropriate), e.g., Beamer PDF slides.
+
 
 === Standard bullet list page ===
 
@@ -3216,9 +3222,18 @@ Beamer slides:
    is popped up as a block (making further use of `!bblock` look
    like a ``double'' background block).
 
-======= Misc =======
+=== Compilation ===
+
+The cycle is
+
+ * `doconce format pdflatex mydoc` for producing `mydoc.p.tex`
+ * `doconce ptex2tex` or `ptex2tex` for translating `mydoc.p.tex` to `mydoc.tex`
+ * `doconce slides_beamer mydoc.tex` to produce a Beamer version `mydoc.tex`
+ * standard pdfLaTeX compilation of `mydoc.tex`
 
 !split
+======= Misc =======
+
 ===== Missing Features =====
 
 DocOnce does not aim to support sophisticated typesetting, simply because
