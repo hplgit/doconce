@@ -2,7 +2,7 @@ TITLE: On Schemes for Exponential Decay
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
-FIGURE: [fig/CN_logo, width=300 frac=0.4]
+FIGURE: [fig/CN_logo, width=300 frac=0.3]
 
 ## Comments start with a # and are visible as comments in the
 ## output. Lines starting with ## are also comments, but not visible
@@ -149,12 +149,18 @@ and the "Crank-Nicolson":
 schemes.
 !epop
 
+
 !split
 ## Next: embed YouTube video
 
 ===== The Forward Euler scheme explained =====
 
+## !bblock and !eblock are used to get frames or in Beamer the block
+## environment
+
+!bblock
 MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
+!eblock
 
 
 !split
@@ -164,11 +170,14 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 
 ===== Implementation =====
 
-The numerical method is implemented in a Python function:
+!bblock Implementation in a Python function:
 
 @@@CODE src/solver.py  fromto: def solver@def exact_solution
 
+!eblock
+
 !split
+
 ======= Results =======
 
 FIGURE: [fig/results, width=600 frac=0.8]
@@ -178,7 +187,7 @@ FIGURE: [fig/results, width=600 frac=0.8]
 
 ## Figure filenames do not need extension - the right version is picked
 
-FIGURE: [fig/CN, width=600]
+FIGURE: [fig/CN, width=600 frac=0.9]
 
 !split
 ===== The artifacts can be explained by some theory =====

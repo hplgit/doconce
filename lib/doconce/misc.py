@@ -4612,7 +4612,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print """Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename --beamer_slide_navigation=off [--handout]
+    print """Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout]
 
 themename can be
 red_plain, blue_plain, red_shadow, blue_shadow, dark, dark_gradient, vintage
@@ -4620,6 +4620,11 @@ red_plain, blue_plain, red_shadow, blue_shadow, dark, dark_gradient, vintage
 --beamer_slide_navigation=on turns on navigation links in the header
 and footer. The links are defined by sections (only), i.e., headings
 with 7 = in the source file.
+
+--beamer_block_style=X controls how beamer blocks are typeset.
+X=native gives the standard beamer blocks.
+X=mdbox gives a mdframed box around the content. This is preferable
+for simple slide styles.
 
 --handout is used for generating PDF that can be printed as handouts
 (usually after using pdfnup to put multiple slides per sheet).
@@ -4676,6 +4681,9 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     else:
         # plain signifies no navigation
         frame_options = '[plain,fragile]'
+
+    block_style = misc_option('beamer_block_style=', 'native')
+    parskip = 0 if theme.endswith('_plain') else 7
 
     slides = r"""
 %% LaTeX Beamer file automatically generated from DocOnce
@@ -4763,11 +4771,14 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     pdftoolbar=true,
     bookmarksdepth=3
     }
-\setlength{\parskip}{7pt}  %% {1em}
+\setlength{\parskip}{%(parskip)spt}  %% {1em}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-\newcommand{\subex}[1]{\noindent\textbf{#1}}  %% for subexercises: a), b), etc
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
 
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  %% for subexercises: a), b), etc
 """ % vars()
 
     # Check if we need minted or anslistings:
@@ -4778,13 +4789,48 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         slides = slides.replace(
             r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
 
+    if block_style.startswith('mdbox'):
+        # Add defnition of an appropriate mdframe
+        slides += r"""
+\usepackage[framemethod=TikZ]{mdframed}
+\newcommand{\frametitlecolor}{gray!65!black}
+%\usetikzlibrary{shadows}
+%\usetikzlibrary{shadows.blur}
+% block with title
+\newenvironment{mdboxt}[1]{%
+    \begin{mdframed}[%
+        frametitle={#1\vphantom{\frametitlecolor}},
+        skipabove=0.5\baselineskip,
+        skipbelow=0.5\baselineskip,
+        outerlinewidth=0.5pt,
+        frametitlerule=true,
+        frametitlebackgroundcolor=gray!15,
+        frametitlefont=\normalfont,
+        frametitleaboveskip=3pt,
+        frametitlebelowskip=2pt,
+        frametitlerulewidth=0.5pt,
+        roundcorner=2pt,
+        %shadow=true,
+        %shadowcolor=green!10!black!40,
+        %shadowsize=5pt
+        %apptotikzsetting={\tikzset{mdfshadow/.style=blur shadow={shadow blur steps=5,shadow blur extra rounding=1.3pt,xshift=3pt,yshift=-3pt}}}
+    ]%
+}{\end{mdframed}}
+
+% block without title
+\newenvironment{mdbox}{%
+    \begin{mdframed}[%
+        roundcorner=2pt,
+        %shadow=true,
+        %shadowcolor=green!10!black!40,
+        %shadowsize=5pt
+        %apptotikzsetting={\tikzset{mdfshadow/.style=blur shadow={shadow blur steps=5,shadow blur extra rounding=1.3pt,xshift=3pt,yshift=-3pt}}}
+    ]%
+}{\end{mdframed}}
+
+"""
 
     slides += r"""
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
-\newenvironment{doconce:movie}{}{}
-\newcounter{doconce:movie:counter}
-
 %-------------------- end beamer-specific preamble ----------------------
 
 % Add user's preamble
@@ -4813,6 +4859,20 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
                           r'\\note{\g<1>}', part,
                           flags=re.DOTALL)
 
+        # Keep blocks or make mdbox
+        if block_style.startswith('mdbox'):
+            def subst(m):
+                title = m.group(1).strip()
+                text = m.group(2)
+                b = 'mdboxt' if title else 'mdbox'
+                s = r'\begin{%s}{%s}%s\end{%s}' % (b, title, text, b)
+                return s
+
+            pattern = r'\\begin\{block\}\{(.*?)\}(.+)?\\end\{block\}'
+            part = re.sub(pattern, subst, part, flags=re.DOTALL)
+            # remove margins becomes boxes are not that big
+            part = part.replace('leftmargin=7mm', 'leftmargin=0mm')
+
         # Pieces to pop up item by item as the user is clicking
         if '% !bpop' in part:
             num_pops = part.count('% !bpop')
@@ -4835,7 +4895,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
                                             'item<%d->' % (i+2), 1)
                 else:
                     # treat whole part as a block
-                    pattern = r'(\\begin\{block|\\summarybox\{|\\begin\{[A-Za-z0-9_]+admon\})'
+                    pattern = r'(\\begin\{block|\\begin\{mdbox|\\summarybox\{|\\begin\{[A-Za-z0-9_]+admon\})'
                     m = re.match(pattern, body.lstrip())
                     if m:
                         # body has a construction that is already a block

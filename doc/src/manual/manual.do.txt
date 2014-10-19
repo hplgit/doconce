@@ -768,7 +768,7 @@ The result becomes
 
 
 
-!bwarning No indentation, except in lists!
+!bwarning No indentation - except in lists!
 DocOnce syntax is sensitive to whitespace!
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -2966,12 +2966,12 @@ in individual files like `split_rst` and `split_html` do.
 !split
 ======= Writing Slides =======
 
-It is a fast procedure to make slides from large amounts of DocOnce
-text, in particular for condensing running material for teaching or
-just providing the slide set as an overview or study guide.
-The slides can either be ordinary, separate slides - or just
-a document with much briefer text and emphasis on bullet lists,
-figures, mathematical formulas, admonitions, and little text.
+It is a potentially fast procedure to make slides from large amounts
+of DocOnce text, in particular for condensing running material for
+teaching or just providing the slide set as an overview or study
+guide.  The slides can either be ordinary, separate slides - or just a
+document with much briefer text and emphasis on bullet lists, figures,
+mathematical formulas, admonitions, and little text.
 
 Points to consider (just sketches...):
 
@@ -3005,12 +3005,17 @@ considerably from ordinary running text. Some guidelines on
 the elements within each slide are necessary to produce effective
 slide sets:
 
+ * Use a section heading (7 `=`) for dividing a presentation into parts.
+   There can be text of figure(s) after the heading to illustrate
+   the part.
  * Use a subsection heading as slide heading (5 `=`).
  * Limit the amount of running text (as always).
  * Limit the amount of material so it fits within a slide
    (inspect slides visually to move or delete content - just
    an extra `!split` and a new heading is enough to make a new
    slide).
+ * Use the `pop` environment to pop up list items or blocks
+   one by one.
  * Use the `slidecell` environment (see below) to create
    a grid of slide cells (makes it easy to move figures and
    bullet lists or text around).
@@ -3020,7 +3025,151 @@ slide sets:
 
 DocOnce can generate two types of slides: HTML5+CSS3 type of
 slides to be presented through a web browser, and classical
-LaTeX Beamer slides.
+LaTeX Beamer slides. A "comprehensive demo": "http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" shows the range of possibile
+layouts.
+
+===== Slide Elements =====
+
+=== Title page ===
+
+Here is a typical title page:
+
+!bc do
+TITLE: On Something Interesting
+AUTHOR: O. Nordmann at Seg. Fault Ltd. & D. Bug Inc.
+AUTHOR: John Doe Email: john.doe@mail.com at Progress Ltd.
+AUTHOR: Chan Siu Ming at Progress Ltd & Moon University
+DATE: today
+
+FIGURE: [fig/logo, width=300 frac=0.3]
+!ec
+
+=== Parts page ===
+
+Parts of the presentation are divided by section headings. Here
+we also add some keywords in a bullet list on the left and a
+figure on the right. The `!bslidecell XY` command starts the
+definition of a cell in a grid of cells in the slide. The `XY`
+part defines the coordinates of the cell, `00` is upper left,
+`01` is upper right.
+
+!bc do
+!split
+======= Problem setting and methods =======
+# Short title: Problem
+
+|bslidecell 00 0.4
+
+ * Scope
+ * Focus
+ * Approach
+
+|eslidecell
+
+|bslidecell 01 0.6
+FIGURE: [fig/method, width=600 frac=0.7]
+|eslidecell
+!ec
+
+=== Standard bullet list page ===
+
+Bullet lists are typeset as usual in DocOnce:
+
+!bc do
+!split
+===== Methods =====
+
+ * Slow:
+   * Pick-and-choose
+   * Foxtrot
+ * Fast:
+   * Quickstep
+   * MMST
+   * PQR
+!ec
+
+Some prefer the bullet list or other contents of the slide to
+appear in a frame or Beamer block (potentially with shadows in
+some Beamer styles). This design is enabled by putting the
+contents inside the `block` environment:
+
+!bc do
+!split
+===== Methods =====
+
+|bblock Methods are slow or fast:
+ * Slow:
+   * Pick-and-choose
+   * Foxtrot
+ * Fast:
+   * Quickstep
+   * MMST
+   * PQR
+|eblock
+!ec
+The block title is optional.
+
+One can easily pop up one item at a time using `!bpop` and `!epop`:
+
+!bc do
+!split
+===== Methods =====
+
+|bblock Methods are slow or fast:
+|bpop
+ * Slow:
+   * Pick-and-choose
+   * Foxtrot
+ * Fast:
+   * Quickstep
+   * MMST
+   * PQR
+|epop
+|eblock
+!ec
+
+
+=== Equations, movies, figures ===
+
+Standard DocOnce elements and formatting work in slides too:
+
+!bc do
+!split
+===== Key formulas =====
+
+|bt
+\[ a = b \]
+|et
+
+FIGURE: [fig/a_eq_b, width=500 frac=0.4]
+
+MOVIE: [mov/animate_a_eq_b]
+!ec
+
+Here is another example on math and code:
+
+!bc do
+!split
+===== Example =====
+
+|bblock Problem:
+Solve $ax+b=0$.
+|eblock
+
+|bblock Solution:
+$x=-b/a$
+|eblock
+
+|bblock Implementation:
+|bc pypro
+import sys
+a = float(sys.argv[1])
+b = float(sys.argv[2])
+x = -b/a
+print x
+|ec
+|eblock
+!ec
 
 ===== HTML5 Slides =====
 
@@ -3047,8 +3196,6 @@ Terminal> doconce slides_html myslides reveal \
 
 ===== LaTeX Beamer Slides =====
 
-Not yet written...
-
 === Themes ===
 
 Four themes come with DocOnce: `X_Y`, where `X` is `blue` or `red`
@@ -3057,6 +3204,17 @@ Four themes come with DocOnce: `X_Y`, where `X` is `blue` or `red`
 for simple layout and
 "`shadow`": "http://hplgit.github.io/teamods/doconce/demo/demo_blue_shadow.pdf"
 for shadowed boxes and more visual structure in the slides.
+
+=== Pop of items and blocks ===
+
+The `!bpop` and `!epop` directives has the following effect in
+Beamer slides:
+
+ * If there is only one pop-up pair on the slide, individual list
+   items are popped one by one.
+ * There there are multiple pop-up pairs on the slide, each pair
+   is popped up as a block (making further use of `!bblock` look
+   like a ``double'' background block).
 
 ======= Misc =======
 

@@ -3,7 +3,7 @@ from matplotlib.pyplot import *
 import sys
 
 def solver(I, a, T, dt, theta):
-    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    """Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt."""
     dt = float(dt)           # avoid integer division
     N = int(round(T/dt))     # no of time intervals
     T = N*dt                 # adjust T to fit time step dt

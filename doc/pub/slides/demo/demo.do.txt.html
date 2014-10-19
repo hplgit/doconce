@@ -2,7 +2,7 @@
 <span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
-<span style="color: #658b00">FIGURE: [fig/CN_logo, width=300 frac=0.4]</span>
+<span style="color: #658b00">FIGURE: [fig/CN_logo, width=300 frac=0.3]</span>
 
 <span style="color: #228B22">## Comments start with a # and are visible as comments in the</span>
 <span style="color: #228B22">## output. Lines starting with ## are also comments, but not visible</span>
@@ -149,12 +149,15 @@ and the &quot;Crank-Nicolson&quot;:
 schemes.
 <span style="color: #8B008B; font-weight: bold">!epop</span>
 
+
 <span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #228B22">## Next: embed YouTube video</span>
 
 <span style="color: #000080; font-weight: bold">===== The Forward Euler scheme explained =====</span>
 
+<span style="color: #8B008B; font-weight: bold">!bblock</span>
 <span style="color: #658b00">MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
 
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
@@ -164,11 +167,17 @@ schemes.
 
 <span style="color: #000080; font-weight: bold">===== Implementation =====</span>
 
-The numerical method is implemented in a Python function:
+<span style="color: #228B22">## !bblock and !eblock are used to get frames or in Beamer the block</span>
+<span style="color: #228B22">## environment</span>
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> Implementation in a Python function:
 
 <span style="color: #800080; font-weight: bold">@@@CODE src/solver.py  fromto: def solver@def exact_solution</span>
 
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
 <span style="color: #8B008B; font-weight: bold">!split</span>
+
 <span style="color: #000080; font-weight: bold">======= Results =======</span>
 
 <span style="color: #658b00">FIGURE: [fig/results, width=600 frac=0.8]</span>
@@ -178,7 +187,7 @@ The numerical method is implemented in a Python function:
 
 <span style="color: #228B22">## Figure filenames do not need extension - the right version is picked</span>
 
-<span style="color: #658b00">FIGURE: [fig/CN, width=600]</span>
+<span style="color: #658b00">FIGURE: [fig/CN, width=600 frac=0.9]</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #000080; font-weight: bold">===== The artifacts can be explained by some theory =====</span>

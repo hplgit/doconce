@@ -332,6 +332,17 @@ pdflatex -shell-escape demo
 Beamer headings look better without adding a period, and that is why we
 use `--latex_admon_title_no_period`.)
 
+"Beamer blocks converted to mdframed boxes": "demo_red_plain_mdbox.pdf"
+
+!bc sys
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer --latex_admon_title_no_period
+doconce ptex2tex demo envir=minted
+doconce slides_beamer demo --beamer_slide_theme=red_plain --beamer_block_style=mdbox
+# Change the title background in mdframed boxes
+doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!5,' demo.tex
+pdflatex -shell-escape demo
+!ec
+
 "Traditional handouts (2x3) in PDF": "demo_red_plain_handouts2x3.pdf"
 
 !bc sys

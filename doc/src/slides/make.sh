@@ -186,6 +186,16 @@ cp demo.tex demo_${theme}.tex
 system pdflatex -shell-escape demo_${theme}
 done
 
+# Simple boxes around admons and blocks
+theme=red_plain
+system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
+system doconce ptex2tex demo envir=minted
+system doconce slides_beamer demo --beamer_slide_theme=$theme --beamer_block_style=mdbox
+# Change the title background in mdframed boxes
+doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!5,' demo.tex
+cp demo.tex demo_${theme}_mdbox.tex
+system pdflatex -shell-escape demo_${theme}_mdbox
+
 # Beamer handouts
 theme=red_plain
 system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period

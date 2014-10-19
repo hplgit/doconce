@@ -103,12 +103,14 @@ MathJax.Hub.Config({
 <h2>Implementation  <a name="___sec5"></a></h2>
 
 <p>
-The numerical method is implemented in a Python function:
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Implementation in a Python function:</b>
+<p>
 
 <p>
 <!-- begin verbatim block  pycod-->
 <pre><code>def solver(I, a, T, dt, theta):
-    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt.&quot;&quot;&quot;
     dt = float(dt)           # avoid integer division
     N = int(round(T/dt))     # no of time intervals
     T = N*dt                 # adjust T to fit time step dt
@@ -121,6 +123,10 @@ The numerical method is implemented in a Python function:
     return u, t
 </code></pre>
 <!-- end verbatim block -->
+
+
+</div>
+
 
 <p>
 <p>

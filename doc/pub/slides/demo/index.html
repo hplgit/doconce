@@ -86,7 +86,7 @@ end of tocinfo -->
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Sep 30, 2014</h4></center> <!-- date -->
+<center><h4>Oct 19, 2014</h4></center> <!-- date -->
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Note:</b>
 These slides are normally best viewed in Chrome in full screen mode.
@@ -520,6 +520,19 @@ pdflatex -shell-escape demo
 Beamer headings look better without adding a period, and that is why we
 use <code>--latex_admon_title_no_period</code>.)
 
+<p>
+<a href="demo_red_plain_mdbox.pdf" target="_blank">Beamer blocks converted to mdframed boxes</a>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex demo SLIDE_TYPE=&quot;beamer&quot; SLIDE_THEME=&quot;red_plain&quot; --latex_title_layout=beamer --latex_admon_title_no_period
+doconce ptex2tex demo envir=minted
+doconce slides_beamer demo --beamer_slide_theme=red_plain --beamer_block_style=mdbox
+# Change the title background in mdframed boxes
+doconce subst &#39;frametitlebackgroundcolor=.+,&#39; &#39;frametitlebackgroundcolor=red!5,&#39; demo.tex
+pdflatex -shell-escape demo
+</pre></div>
 <p>
 <a href="demo_red_plain_handouts2x3.pdf" target="_blank">Traditional handouts (2x3) in PDF</a>
 

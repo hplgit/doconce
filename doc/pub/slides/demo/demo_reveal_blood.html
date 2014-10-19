@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 30, 2014</h4></center> <!-- date -->
+<center><h4>Oct 19, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -305,8 +305,12 @@ schemes.
 <h2>The Forward Euler scheme explained  <a name="___sec4"></a></h2>
 
 <p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+</div>
 
 
 <p>
@@ -319,13 +323,15 @@ schemes.
 <h2>Implementation  <a name="___sec5"></a></h2>
 
 <p>
-The numerical method is implemented in a Python function:
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Implementation in a Python function:</b>
+<p>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "monokai" -->
 <div class="highlight" style="background: #272822"><pre style="font-size: 80%; line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">solver</span><span style="color: #f8f8f2">(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta):</span>
-    <span style="color: #e6db74">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T]; step: dt.&quot;&quot;&quot;</span>
     <span style="color: #f8f8f2">dt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">float(dt)</span>           <span style="color: #75715e"># avoid integer division</span>
     <span style="color: #f8f8f2">N</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">int(round(T</span><span style="color: #f92672">/</span><span style="color: #f8f8f2">dt))</span>     <span style="color: #75715e"># no of time intervals</span>
     <span style="color: #f8f8f2">T</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">N</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt</span>                 <span style="color: #75715e"># adjust T to fit time step dt</span>
@@ -337,6 +343,10 @@ The numerical method is implemented in a Python function:
         <span style="color: #f8f8f2">u[n</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">theta)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt)</span><span style="color: #f92672">/</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">theta</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">a)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">u[n]</span>
     <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">u,</span> <span style="color: #f8f8f2">t</span>
 </pre></div>
+
+</div>
+
+
 <p>
 
 </section>
