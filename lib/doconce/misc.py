@@ -4873,6 +4873,9 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
             # remove margins becomes boxes are not that big
             part = part.replace('leftmargin=7mm', 'leftmargin=0mm')
 
+        # Use smaller margin in slides
+        part = part.replace('leftmargin=7mm', 'leftmargin=2mm')
+
         # Pieces to pop up item by item as the user is clicking
         if '% !bpop' in part:
             num_pops = part.count('% !bpop')

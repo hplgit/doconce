@@ -155,6 +155,9 @@ schemes.
 
 <span style="color: #000080; font-weight: bold">===== The Forward Euler scheme explained =====</span>
 
+<span style="color: #228B22">## !bblock and !eblock are used to get frames or in Beamer the block</span>
+<span style="color: #228B22">## environment</span>
+
 <span style="color: #8B008B; font-weight: bold">!bblock</span>
 <span style="color: #658b00">MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]</span>
 <span style="color: #8B008B; font-weight: bold">!eblock</span>
@@ -166,9 +169,6 @@ schemes.
 <span style="color: #228B22">## &quot;def verify_three&quot;, but not including this last line).</span>
 
 <span style="color: #000080; font-weight: bold">===== Implementation =====</span>
-
-<span style="color: #228B22">## !bblock and !eblock are used to get frames or in Beamer the block</span>
-<span style="color: #228B22">## environment</span>
 
 <span style="color: #8B008B; font-weight: bold">!bblock</span> Implementation in a Python function:
 
@@ -205,7 +205,6 @@ Key results:
 <span style="color: #8B008B; font-weight: bold">!bpop</span>
  * Stability: $|A| &lt; 1$
  * No oscillations: $A&gt;0$
- * Always for Backward Euler ($\theta=1$)
  * $\Delta t &lt; 1/a$ for Forward Euler ($\theta=0$)
  * $\Delta t &lt; 2/a$ for Crank-Nicolson ($\theta=1/2$)
 <span style="color: #8B008B; font-weight: bold">!epop</span>

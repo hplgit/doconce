@@ -205,7 +205,6 @@ Key results:
 !bpop
  * Stability: $|A| < 1$
  * No oscillations: $A>0$
- * Always for Backward Euler ($\theta=1$)
  * $\Delta t < 1/a$ for Forward Euler ($\theta=0$)
  * $\Delta t < 2/a$ for Crank-Nicolson ($\theta=1/2$)
 !epop

@@ -184,6 +184,7 @@ system doconce ptex2tex demo envir=minted
 system doconce slides_beamer demo --beamer_slide_theme=$theme
 cp demo.tex demo_${theme}.tex
 system pdflatex -shell-escape demo_${theme}
+system pdflatex -shell-escape demo_${theme}
 done
 
 # Simple boxes around admons and blocks
@@ -192,8 +193,9 @@ system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --l
 system doconce ptex2tex demo envir=minted
 system doconce slides_beamer demo --beamer_slide_theme=$theme --beamer_block_style=mdbox
 # Change the title background in mdframed boxes
-doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!5,' demo.tex
+doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!20,' demo.tex
 cp demo.tex demo_${theme}_mdbox.tex
+system pdflatex -shell-escape demo_${theme}_mdbox
 system pdflatex -shell-escape demo_${theme}_mdbox
 
 # Beamer handouts
@@ -201,6 +203,7 @@ theme=red_plain
 system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period
 system doconce ptex2tex demo envir=minted
 system doconce slides_beamer demo --beamer_slide_theme=$theme --handout  # note --handout!
+system pdflatex -shell-escape demo
 system pdflatex -shell-escape demo
 # Merge slides to 2x3 per page
 pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile demo.pdf demo.pdf
@@ -210,6 +213,7 @@ cp demo.pdf demo_${theme}_handouts2x3.pdf
 rm -f demo.aux  # important after beamer
 system system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
 system system doconce ptex2tex demo envir=minted
+system pdflatex -shell-escape demo
 system pdflatex -shell-escape demo
 
 # IPython notebook
