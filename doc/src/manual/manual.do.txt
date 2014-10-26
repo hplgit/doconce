@@ -1856,7 +1856,7 @@ Here is a plain code block:
 !ec
 which gets rendered as
 
-!bc do
+!bc dat
 % Could be a comment line in some file
 % And some data
 1.003 1.025
@@ -1864,6 +1864,7 @@ which gets rendered as
 3.001 1.198
 !ec
 
+=== Typesetting Styles ===
 
 There may be an argument after the `!bc` tag to specify a certain
 environment (for `ptex2tex`, `doconce ptex2tex`, or Sphinx) for
@@ -1972,9 +1973,12 @@ void myfunc(double* x, const double& myarr) {
 }
 !ec
 
-# When showing copy from file in !bc envir, intent a character - otherwise
-# ptex2tex is confused and starts copying. However, here (in make.sh) we use
+# When showing @@@COPY from file in !bc envir, indent a character - otherwise
+# ptex2tex is confused and starts copying. However, here we use
 # doconce ptex2tex which does not have this problem.
+
+=== Copying Code from Source Files ===
+
 Computer code can be copied directly from a file, if desired. The syntax
 is then
 
@@ -2025,7 +2029,9 @@ directive above:
 
 @@@CODE __testcode.f fromto:subroutine\s+test@^C\s{5}END1
 
-Note that the ``to'' line is not copied into the DocOnce file, but the
+=== The `fromto` and `from-to` directives ===
+
+Note that the ``to'' line is never copied into the DocOnce file, but the
 ``from'' line is. Sometimes it is convenient to also neglect the
 ``from'' line, a feature that is allowed by replacing `fromto:` by
 `from-to` (``from with minus''). This allows for copying very similar
@@ -2057,10 +2063,9 @@ With only `fromto:` this would be impossible.
 Remark for those familiar with `ptex2tex`: The from-to
 syntax is slightly different from that used in `ptex2tex`. When
 transforming DocOnce to LaTeX, one first transforms the document to a
-`.p.tex` file to be treated by `ptex2tex`. However, the `@@@CODE` line
-is interpreted by DocOnce and replaced by the mentioned
-pro or cod environment which are defined in the `ptex2tex` configuration
-file.
+`.p.tex` file to be treated by `ptex2tex` or `doconce ptex2tex`.
+However, note that the `@@@CODE` line
+is always interpreted by DocOnce first.
 
 Remark for those familiar with the `listings` package in LaTeX: the
 `listing` package can copy code from files, but snippets must be

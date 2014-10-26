@@ -3808,7 +3808,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 print '    doconce format %s %s %s --encoding=utf-8' \
                       % (format, orig_filename, ' '.join(sys.argv[1:]))
             elif "line:" in str(e):
-                print '    Note: the line number refers to the file', filename
+                print '    Note: the line number refers to the file', resultfile2
             _abort()
 
         debugpr('Keyword arguments to be sent to mako: %s' % \

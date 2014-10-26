@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 19, 2014
+:Date: Oct 26, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -3526,13 +3526,16 @@ Here is a plain code block:
 
 which gets rendered as
 
-.. code-block:: doconce
+.. code-block:: text
 
         % Could be a comment line in some file
         % And some data
         1.003 1.025
         2.204 1.730
         3.001 1.198
+
+Typesetting Styles
+~~~~~~~~~~~~~~~~~~
 
 There may be an argument after the ``!bc`` tag to specify a certain
 environment (for ``ptex2tex``, ``doconce ptex2tex``, or Sphinx) for
@@ -3650,11 +3653,14 @@ with the rendered result
             }
         }
 
-.. When showing copy from file in !bc envir, intent a character - otherwise
+.. When showing @@@COPY from file in !bc envir, indent a character - otherwise
 
-.. ptex2tex is confused and starts copying. However, here (in make.sh) we use
+.. ptex2tex is confused and starts copying. However, here we use
 
 .. doconce ptex2tex which does not have this problem.
+
+Copying Code from Source Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Computer code can be copied directly from a file, if desired. The syntax
 is then
@@ -3733,7 +3739,10 @@ directive above:
               end do
               return
 
-Note that the "to" line is not copied into the DocOnce file, but the
+The ``fromto`` and ``from-to`` directives
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Note that the "to" line is never copied into the DocOnce file, but the
 "from" line is. Sometimes it is convenient to also neglect the
 "from" line, a feature that is allowed by replacing ``fromto:`` by
 ``from-to`` ("from with minus"). This allows for copying very similar
@@ -3767,10 +3776,9 @@ With only ``fromto:`` this would be impossible.
 Remark for those familiar with ``ptex2tex``: The from-to
 syntax is slightly different from that used in ``ptex2tex``. When
 transforming DocOnce to LaTeX, one first transforms the document to a
-``.p.tex`` file to be treated by ``ptex2tex``. However, the ``@@@CODE`` line
-is interpreted by DocOnce and replaced by the mentioned
-pro or cod environment which are defined in the ``ptex2tex`` configuration
-file.
+``.p.tex`` file to be treated by ``ptex2tex`` or ``doconce ptex2tex``.
+However, note that the ``@@@CODE`` line
+is always interpreted by DocOnce first.
 
 Remark for those familiar with the ``listings`` package in LaTeX: the
 ``listing`` package can copy code from files, but snippets must be
@@ -4821,15 +4829,17 @@ Here is a typical title page:
         
         FIGURE: [fig/logo, width=300 frac=0.3]
 
-Parts page
+Parts Page
 ~~~~~~~~~~
 
 Parts of the presentation are divided by section headings. Here
 we also add some keywords in a bullet list on the left and a
-figure on the right. The ``!bslidecell XY`` command starts the
+figure on the right. The ``!bslidecell XY f`` command starts the
 definition of a cell in a grid of cells in the slide. The ``XY``
 part defines the coordinates of the cell, ``00`` is upper left,
-``01`` is upper right.
+``01`` is upper right. The ``f`` parameter specifies the fraction
+of the width occupied by this column of cells (can be left out,
+which results in columns of equal widths).
 
 .. code-block:: doconce
 
@@ -4848,6 +4858,10 @@ part defines the coordinates of the cell, ``00`` is upper left,
         !bslidecell 01 0.6
         FIGURE: [fig/method, width=600 frac=0.7]
         !eslidecell
+
+The ``# Short title: ...`` line can be used to define a short
+title for slide formats with navigation (where long titles are
+inappropriate), e.g., Beamer PDF slides.
 
 Standard bullet list page
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5002,6 +5016,19 @@ Beamer slides:
  * There there are multiple pop-up pairs on the slide, each pair
    is popped up as a block (making further use of ``!bblock`` look
    like a "double" background block).
+
+Compilation
+~~~~~~~~~~~
+
+The cycle is
+
+ * ``doconce format pdflatex mydoc`` for producing ``mydoc.p.tex``
+
+ * ``doconce ptex2tex`` or ``ptex2tex`` for translating ``mydoc.p.tex`` to ``mydoc.tex``
+
+ * ``doconce slides_beamer mydoc.tex`` to produce a Beamer version ``mydoc.tex``
+
+ * standard pdfLaTeX compilation of ``mydoc.tex``
 
 Misc
 ====
