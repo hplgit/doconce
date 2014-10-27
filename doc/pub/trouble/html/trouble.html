@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce Troubleshooting" href="index.html" />
-    <link rel="prev" title="DocOnce Troubleshooting" href="index.html" /> 
+    <link rel="prev" title="DocOnce Troubleshooting" href="index.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -64,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 2, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 27, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -87,30 +105,32 @@ can go wrong.</p>
 <p>HTML5 and LaTeX slides control the spacings for you. However, sometimes
 you really want to add some space. The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is effective for
 this purpose. For example,</p>
-<div class="highlight-text"><div class="highlight"><pre>!bblock (large) So, how to be excellent?
+<div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bblock</span> (large) So - how to be excellent?
 &lt;linebreak&gt;
 Excellence is not a planned goal - it is the corollary of
-deep passion for scientific subjects, very much hard (and exciting!)
+deep passion, very much hard (and exciting!)
 work, and *thinking constantly about it*.
-!eblock
+<span class="k">!eblock</span>
 </pre></div>
 </div>
 <p>is rendered as</p>
 <div class="admonition-so-how-to-be-excellent admonition">
-<p class="first admonition-title">So, how to be excellent</p>
+<p class="first admonition-title">So - how to be excellent</p>
 <div class="line-block">
 <div class="line">Excellence is not a planned goal - it is the corollary of</div>
 </div>
-<p class="last">deep passion for scientific subjects, very much hard (and exciting!)
+<p class="last">deep passion, very much hard (and exciting!)
 work, and <em>thinking constantly about it</em>.</p>
 </div>
 <p>Without <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> the rendering becomes</p>
 <div class="admonition-so-how-to-be-excellent admonition">
-<p class="first admonition-title">So, how to be excellent</p>
+<p class="first admonition-title">So - how to be excellent</p>
 <p class="last">Excellence is not a planned goal - it is the corollary of
-deep passion for scientific subjects, very much hard (and exciting!)
+deep passion, very much hard (and exciting!)
 work, and <em>thinking constantly about it</em>.</p>
 </div>
+<p>The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is a newline in LaTeX if it has preceding text,
+otherwise it is a <tt class="docutils literal"><span class="pre">\vspace{3mm}</span></tt>. In HTML, <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is <tt class="docutils literal"><span class="pre">&lt;br&gt;</span></tt>.</p>
 </div>
 <div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
 <h3>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h3>
@@ -324,12 +344,12 @@ may lead to unexpected results. Here are some examples on what can go wrong.</p>
 <div class="section" id="double-bold-italic">
 <h4>Double bold/italic<a class="headerlink" href="#double-bold-italic" title="Permalink to this headline">¶</a></h4>
 <p>Two strings with bold or emphasize after each other will not work:</p>
-<div class="highlight-text"><div class="highlight"><pre># Not properly interpreted:
+<div class="highlight-doconce"><div class="highlight"><pre><span class="c"># Not properly interpreted:</span>
 Here is a _bold_ _word_.
-# This is how to do it:
+<span class="c"># This is how to do it:</span>
 Here is a _bold word_.
 
-# Same with emphasize/italic:
+<span class="c"># Same with emphasize/italic:</span>
 Cannot write *two emphasized* *words*,
 but must write *two emphasized words*.
 </pre></div>
@@ -341,7 +361,7 @@ bold/italic tags will appear with DocOnce syntax in the output.</p>
 <h4>Mix of bold/italic and math<a class="headerlink" href="#mix-of-bold-italic-and-math" title="Permalink to this headline">¶</a></h4>
 <p>Trying to typeset a mixture of text and mathematics or code in boldface or
 emphasized font fails:</p>
-<div class="highlight-text"><div class="highlight"><pre>_It is important that $u_1=2$!_
+<div class="highlight-doconce"><div class="highlight"><pre>_It is important that $u_1=2$!_
 *It is important that `a*b=b*a` in any computer language*.
 </pre></div>
 </div>
@@ -352,13 +372,13 @@ in <tt class="docutils literal"><span class="pre">$u_1=2$</span></tt> would mark
 the <tt class="docutils literal"><span class="pre">*</span></tt> in <tt class="docutils literal"><span class="pre">a*b</span></tt> would mark the end of the emphasized text.
 Such problems are avoided by <em>only using plain text inside
 emphasize or boldface tags</em>:</p>
-<div class="highlight-text"><div class="highlight"><pre>_It is important that_ $u_1=2$!
+<div class="highlight-doconce"><div class="highlight"><pre>_It is important that_ $u_1=2$!
 *It is important that* `a*b=b*a` *in any computer language*.
 </pre></div>
 </div>
 <p>Another similar example is the mix of <tt class="docutils literal"><span class="pre">**text**</span></tt> syntax
 with braces inside the text. For example,</p>
-<div class="highlight-text"><div class="highlight"><pre>color{blue}{However, here a blue color specification
+<div class="highlight-doconce"><div class="highlight"><pre>color{blue}{However, here a blue color specification
 fails: $\frac{1}{2}\omega^2$.}
 </pre></div>
 </div>
@@ -366,21 +386,21 @@ fails: $\frac{1}{2}\omega^2$.}
 to the first right brace, which is in <tt class="docutils literal"><span class="pre">\frac{1}</span></tt>. A remedy is, as above,
 to only use plain text inside the text part of the color specification
 and use a <tt class="docutils literal"><span class="pre">\textcolor</span></tt> command inside the mathematics:</p>
-<div class="highlight-text"><div class="highlight"><pre>color{blue}{However, here a blue color specification
+<div class="highlight-doconce"><div class="highlight"><pre>color{blue}{However, here a blue color specification
 fails:} $\textcolor{red}{\frac{1}{2}\omega^2}$.}
 </pre></div>
 </div>
 <p>Mathematics and code in blocks are invisible when inline tagging is
 interpreted and translated. Therefore, a specification as follows
 works well:</p>
-<div class="highlight-text"><div class="highlight"><pre>color{red}{This equation,
+<div class="highlight-doconce"><div class="highlight"><pre>color{red}{This equation,
 
-!bt
-\begin{equation}
+<span class="k">!bt</span>
+<span class="nb">\begin{equation}</span>
 a = b
-label{eq1}
-\end{equation}
-!et
+<span class="nb">label{eq1}</span>
+<span class="nb">\end{equation}</span>
+<span class="k">!et</span>
 is meant to be in red and it works.}
 </pre></div>
 </div>
@@ -574,6 +594,15 @@ Using paragraphs instead of list items is a good idea also here.</p>
 have a <tt class="docutils literal"><span class="pre">===</span></tt> (paragraph) heading after a <tt class="docutils literal"><span class="pre">=======</span></tt> (section) heading without
 a <tt class="docutils literal"><span class="pre">====</span></tt> (subsection) heading in between.</p>
 </div>
+<div class="section" id="subsection-headings-appear-at-the-level-sections-in-the-table-of-contents">
+<h3>Subsection headings appear at the level sections in the table of contents<a class="headerlink" href="#subsection-headings-appear-at-the-level-sections-in-the-table-of-contents" title="Permalink to this headline">¶</a></h3>
+<p>This is a problem that arises if you split a Sphinx document at the
+subsection level. Then the subsection is the highest level in that part,
+and it will then move up to the section level in the table of contents
+(this is done by Sphinx, and DocOnce has no influence on the process).
+The only way at present to avoid this wrong table of contents,
+is to only split Sphinx documents at the section level.</p>
+</div>
 <div class="section" id="lists-do-not-appear-in-rst-files">
 <h3>Lists do not appear in .rst files<a class="headerlink" href="#lists-do-not-appear-in-rst-files" title="Permalink to this headline">¶</a></h3>
 <p>Check if you have a comment right above the list. That comment
@@ -610,6 +639,15 @@ verbatim environment.</p>
 </div>
 <div class="section" id="problems-with-latex-output">
 <h2>Problems with LaTeX Output<a class="headerlink" href="#problems-with-latex-output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sphinx-and-html-show-pygmetized-code-but-not-latex">
+<h3>Sphinx and HTML show pygmetized code, but not LaTeX<a class="headerlink" href="#sphinx-and-html-show-pygmetized-code-but-not-latex" title="Permalink to this headline">¶</a></h3>
+<p>You have to explicitly select the <tt class="docutils literal"><span class="pre">minted</span></tt> environment when running <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
+to get pygmentized computer code in LaTeX:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce ptex2tex mydoc envir=minted
+Terminal&gt; pdflatex -shell-escape mydoc
+</pre></div>
+</div>
+</div>
 <div class="section" id="latex-does-not-like-underscores-in-urls">
 <h3>LaTeX does not like underscores in URLs<a class="headerlink" href="#latex-does-not-like-underscores-in-urls" title="Permalink to this headline">¶</a></h3>
 <p>Suppose you have a URL reference like</p>
@@ -758,12 +796,12 @@ used to replace the whole preamble by something more suitable.</p>
 <div class="section" id="solution-heading-in-exercise-solutions-appear-after-the-solution-content">
 <h3>Solution heading in exercise solutions appear after the solution content<a class="headerlink" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes a solution environment with code</p>
-<div class="highlight-text"><div class="highlight"><pre>!bsol
-!bc cod
+<div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bsol</span>
+<span class="k">!bc</span> cod
 def f(x):
     return x + 2
-!ec
-!esol
+<span class="k">!ec</span>
+<span class="k">!esol</span>
 </pre></div>
 </div>
 <p>leads to strange behavior (with the <tt class="docutils literal"><span class="pre">shadedquoteBlue</span></tt> verbatim LaTeX
@@ -771,13 +809,13 @@ environment: the <strong>Solution</strong> heading appears after the code
 in the solution. This appears to be a LaTeX problem since the
 generated LaTeX code has the heading and solution content in the right
 order. A working remedy is to insert a text before the code:</p>
-<div class="highlight-text"><div class="highlight"><pre>Code:
-!bsol
-!bc cod
+<div class="highlight-doconce"><div class="highlight"><pre>Code:
+<span class="k">!bsol</span>
+<span class="k">!bc</span> cod
 def f(x):
     return x + 2
-!ec
-!esol
+<span class="k">!ec</span>
+<span class="k">!esol</span>
 </pre></div>
 </div>
 </div>
@@ -948,6 +986,7 @@ clickable.</p>
 </li>
 <li><a class="reference internal" href="#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
 <li><a class="reference internal" href="#title-level-inconsistent">Title level inconsistent</a></li>
+<li><a class="reference internal" href="#subsection-headings-appear-at-the-level-sections-in-the-table-of-contents">Subsection headings appear at the level sections in the table of contents</a></li>
 <li><a class="reference internal" href="#lists-do-not-appear-in-rst-files">Lists do not appear in .rst files</a></li>
 <li><a class="reference internal" href="#error-message-undefined-substitution-from-rest">Error message &#8220;Undefined substitution...&#8221; from reST</a></li>
 <li><a class="reference internal" href="#warning-about-duplicate-link-names">Warning about duplicate link names</a></li>
@@ -956,6 +995,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-latex-output">Problems with LaTeX Output</a><ul>
+<li><a class="reference internal" href="#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
 <li><a class="reference internal" href="#how-can-i-have-unnumbered-sections">How can I have unnumbered sections?</a></li>
 <li><a class="reference internal" href="#error-when-running-latex-you-must-have-pygmentize-installed">Error when running latex: You must have &#8216;pygmentize&#8217; installed</a></li>
@@ -1033,7 +1073,7 @@ clickable.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

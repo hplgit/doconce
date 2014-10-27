@@ -1877,19 +1877,19 @@ environment, which is defined in the config file `.ptex2tex.cfg`,
 while for Sphinx it defaults to the `python` environment).
 
 By default, `pro` is used for complete programs in Python, `cod` is
-for a code snippet in Python, while `xcod` and `xpro` implies computer
-language specific typesetting where `x` can be `f` for Fortran, `c`
+for a code snippet in Python, while `Xcod` and `Xpro` imply computer
+language specific typesetting where `X` can be `f` for Fortran, `c`
 for C, `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for
-Matlab, `cy` for Cython, `r` for Ruby, and `py` for Python.  The
+Matlab, `cy` for Cython, `r` for Ruby, `js` for JavaScript,
+`latex` for LaTeX, `html` for HTML, and `py` for Python.  The
 argument `sys` means by default `console` for Sphinx and
 `CodeTerminal` (ptex2tex environent) for LaTeX. Other specifications
-are `dat` for a data file or print out, `latex` for LaTeX`, `js` for
-JavaScript, `html` for HTML, `pyshell` for plain interactive Python
+are `dat` for a data file or print out, `pyshell` for plain interactive Python
 shell sessions, and `ipy` for interactive IPython sessions (the latter
 does not introduce any environment in `sphinx` output, as interactive
 sessions are automatically recognized and handled in that format).
 (All these definitions of the arguments after `!bc` can be redefined
-in the `.ptex2tex.cfg` configuration file for ptex2tex/LaTeX and in
+in the `.ptex2tex.cfg` configuration file for `ptex2tex` and in
 the `sphinx code-blocks` comments for Sphinx, see below.)
 
 

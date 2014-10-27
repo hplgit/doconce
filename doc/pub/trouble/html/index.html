@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,8 +26,26 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce Troubleshooting" href="#" />
-    <link rel="next" title="DocOnce Troubleshooting" href="trouble.html" /> 
+    <link rel="next" title="DocOnce Troubleshooting" href="trouble.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -109,6 +127,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#title-level-inconsistent">Title level inconsistent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trouble.html#subsection-headings-appear-at-the-level-sections-in-the-table-of-contents">Subsection headings appear at the level sections in the table of contents</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#lists-do-not-appear-in-rst-files">Lists do not appear in .rst files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#error-message-undefined-substitution-from-rest">Error message &#8220;Undefined substitution...&#8221; from reST</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#warning-about-duplicate-link-names">Warning about duplicate link names</a></li>
@@ -117,6 +136,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#problems-with-latex-output">Problems with LaTeX Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trouble.html#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#how-can-i-have-unnumbered-sections">How can I have unnumbered sections?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#error-when-running-latex-you-must-have-pygmentize-installed">Error when running latex: You must have &#8216;pygmentize&#8217; installed</a></li>
@@ -218,7 +238,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
     </div>
   </body>
 </html>

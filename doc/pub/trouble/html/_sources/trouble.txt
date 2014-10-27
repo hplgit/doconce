@@ -1,11 +1,13 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. !split
+
 DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 2, 2014
+:Date: Oct 27, 2014
 
 
 .. admonition:: Disclaimer
@@ -33,25 +35,24 @@ HTML5 and LaTeX slides control the spacings for you. However, sometimes
 you really want to add some space. The ``<linebreak>`` is effective for
 this purpose. For example,
 
-.. code-block:: text
+.. code-block:: doconce
 
-        !bblock (large) So, how to be excellent?
+        !bblock (large) So - how to be excellent?
         <linebreak>
         Excellence is not a planned goal - it is the corollary of
-        deep passion for scientific subjects, very much hard (and exciting!)
+        deep passion, very much hard (and exciting!)
         work, and *thinking constantly about it*.
         !eblock
 
 is rendered as
 
 
-.. admonition:: So, how to be excellent
+.. admonition:: So - how to be excellent
 
-     
    
    | Excellence is not a planned goal - it is the corollary of
    
-   deep passion for scientific subjects, very much hard (and exciting!)
+   deep passion, very much hard (and exciting!)
    work, and *thinking constantly about it*.
 
 
@@ -60,14 +61,17 @@ is rendered as
 Without ``<linebreak>`` the rendering becomes
 
 
-.. admonition:: So, how to be excellent
+.. admonition:: So - how to be excellent
 
    Excellence is not a planned goal - it is the corollary of
-   deep passion for scientific subjects, very much hard (and exciting!)
+   deep passion, very much hard (and exciting!)
    work, and *thinking constantly about it*.
 
 
 
+
+The ``<linebreak>`` is a newline in LaTeX if it has preceding text,
+otherwise it is a ``\vspace{3mm}``. In HTML, ``<linebreak>`` is ``<br>``.
 
 Spellcheck reports a lot of mistakes related to LaTeX math
 ----------------------------------------------------------
@@ -326,7 +330,7 @@ Double bold/italic
 
 Two strings with bold or emphasize after each other will not work:
 
-.. code-block:: text
+.. code-block:: doconce
 
         # Not properly interpreted:
         Here is a _bold_ _word_.
@@ -346,7 +350,7 @@ Mix of bold/italic and math
 Trying to typeset a mixture of text and mathematics or code in boldface or
 emphasized font fails:
 
-.. code-block:: text
+.. code-block:: doconce
 
         _It is important that $u_1=2$!_
         *It is important that `a*b=b*a` in any computer language*.
@@ -359,7 +363,7 @@ the ``*`` in ``a*b`` would mark the end of the emphasized text.
 Such problems are avoided by *only using plain text inside
 emphasize or boldface tags*:
 
-.. code-block:: text
+.. code-block:: doconce
 
         _It is important that_ $u_1=2$!
         *It is important that* `a*b=b*a` *in any computer language*.
@@ -367,7 +371,7 @@ emphasize or boldface tags*:
 Another similar example is the mix of ``**text**`` syntax
 with braces inside the text. For example,
 
-.. code-block:: text
+.. code-block:: doconce
 
         color{blue}{However, here a blue color specification
         fails: $\frac{1}{2}\omega^2$.}
@@ -377,7 +381,7 @@ to the first right brace, which is in ``\frac{1}``. A remedy is, as above,
 to only use plain text inside the text part of the color specification
 and use a ``\textcolor`` command inside the mathematics:
 
-.. code-block:: text
+.. code-block:: doconce
 
         color{blue}{However, here a blue color specification
         fails:} $\textcolor{red}{\frac{1}{2}\omega^2}$.}
@@ -386,7 +390,7 @@ Mathematics and code in blocks are invisible when inline tagging is
 interpreted and translated. Therefore, a specification as follows
 works well:
 
-.. code-block:: text
+.. code-block:: doconce
 
         color{red}{This equation,
         
@@ -607,6 +611,16 @@ reST does not like jumps in the levels of headings. For example, you cannot
 have a ``===`` (paragraph) heading after a ``=======`` (section) heading without
 a ``====`` (subsection) heading in between.
 
+Subsection headings appear at the level sections in the table of contents
+-------------------------------------------------------------------------
+
+This is a problem that arises if you split a Sphinx document at the
+subsection level. Then the subsection is the highest level in that part,
+and it will then move up to the section level in the table of contents
+(this is done by Sphinx, and DocOnce has no influence on the process).
+The only way at present to avoid this wrong table of contents,
+is to only split Sphinx documents at the section level.
+
 Lists do not appear in .rst files
 ---------------------------------
 
@@ -647,6 +661,17 @@ verbatim environment.
 
 Problems with LaTeX Output
 ==========================
+
+Sphinx and HTML show pygmetized code, but not LaTeX
+---------------------------------------------------
+
+You have to explicitly select the ``minted`` environment when running ``ptex2tex``
+to get pygmentized computer code in LaTeX:
+
+.. code-block:: text
+
+        Terminal> doconce ptex2tex mydoc envir=minted
+        Terminal> pdflatex -shell-escape mydoc
 
 LaTeX does not like underscores in URLs
 ---------------------------------------
@@ -835,7 +860,7 @@ Solution heading in exercise solutions appear after the solution content
 
 Sometimes a solution environment with code
 
-.. code-block:: text
+.. code-block:: doconce
 
         !bsol
         !bc cod
@@ -850,7 +875,7 @@ in the solution. This appears to be a LaTeX problem since the
 generated LaTeX code has the heading and solution content in the right
 order. A working remedy is to insert a text before the code:
 
-.. code-block:: text
+.. code-block:: doconce
 
         Code:
         !bsol

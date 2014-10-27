@@ -24,7 +24,7 @@ you really want to add some space. The `<linebreak>` is effective for
 this purpose. For example,
 
 !bc do
-|bblock (large) So, how to be excellent?
+|bblock (large) So - how to be excellent?
 <linebreak>
 Excellence is not a planned goal - it is the corollary of
 deep passion, very much hard (and exciting!)
@@ -33,7 +33,7 @@ work, and *thinking constantly about it*.
 !ec
 is rendered as
 
-!bblock (large) So, how to be excellent?
+!bblock (large) So - how to be excellent?
 <linebreak>
 Excellence is not a planned goal - it is the corollary of
 deep passion, very much hard (and exciting!)
@@ -42,7 +42,7 @@ work, and *thinking constantly about it*.
 
 Without `<linebreak>` the rendering becomes
 
-!bblock (large) So, how to be excellent?
+!bblock (large) So - how to be excellent?
 Excellence is not a planned goal - it is the corollary of
 deep passion, very much hard (and exciting!)
 work, and *thinking constantly about it*.
@@ -566,6 +566,16 @@ appropriate, shift to `!bc cod` or another specification of the
 verbatim environment.
 
 ======= Problems with LaTeX Output =======
+
+===== Sphinx and HTML show pygmetized code, but not LaTeX =====
+
+You have to explicitly select the `minted` environment when running `ptex2tex`
+to get pygmentized computer code in LaTeX:
+
+!bc sys
+Terminal> doconce ptex2tex mydoc envir=minted
+Terminal> pdflatex -shell-escape mydoc
+!ec
 
 ===== LaTeX does not like underscores in URLs =====
 
