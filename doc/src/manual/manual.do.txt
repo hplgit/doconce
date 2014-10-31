@@ -3216,16 +3216,15 @@ for simple layout and
 "`shadow`": "http://hplgit.github.io/teamods/doconce/demo/demo_blue_shadow.pdf"
 for shadowed boxes and more visual structure in the slides.
 
-=== Pop of items and blocks ===
+=== Pop of list items and blocks ===
 
-The `!bpop` and `!epop` directives has the following effect in
+The `!bpop` and `!epop` directives have the following effect in
 Beamer slides:
 
- * If there is only one pop-up pair on the slide, individual list
-   items are popped one by one.
- * There there are multiple pop-up pairs on the slide, each pair
-   is popped up as a block (making further use of `!bblock` look
-   like a ``double'' background block).
+ * If `!bpop` comes right before the beginning of a list, each list
+   item is popped up, one at a time.
+ * Otherwise, the rest of the slide, or the text until the next `!bpop`
+   pops up all at once.
 
 === Compilation ===
 
