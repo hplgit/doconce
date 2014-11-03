@@ -78,7 +78,9 @@ __Here is a list with paragraph heading.__
 
 !bquote
 Here are two lines that make up
-a block quote.
+a block quote for testing *emphasized words* and _boldface words_,
+also with hypens:
+*pre*-fix, post-*fix*, _pre_-fix, post-_fix_.
 !equote
 
 Here are two references. Equation~(ref{my:eq1}) is fine. Eq.~(ref{my:eq1}) too.
@@ -2243,7 +2245,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -4421,7 +4425,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -6689,7 +6695,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -8495,7 +8503,9 @@ Here is a list with subsubsection heading
 ..
 
     Here are two lines that make up
-    a block quote.
+    a block quote for testing *emphasized words* and **boldface words**,
+    also with hypens:
+    *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -10163,7 +10173,9 @@ Here is a list with subsubsection heading
 ..
 
     Here are two lines that make up
-    a block quote.
+    a block quote for testing *emphasized words* and **boldface words**,
+    also with hypens:
+    *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -13444,7 +13456,9 @@ Here is a nested list:
 
 {{quote box
 | quote = Here are two lines that make up
-a block quote.
+a block quote for testing ''emphasized words'' and '''boldface words''',
+also with hypens:
+''pre''-fix, post-''fix'', '''pre'''-fix, post-'''fix'''.
 | textstyle = font-size: 90%;
 }}
 
@@ -19233,7 +19247,9 @@ Here is a list with subsubsection heading
   * item2
 
         Here are two lines that make up
-        a block quote.
+        a block quote for testing *emphasized words* and _boldface words_,
+        also with hypens:
+        *pre*-fix, post-*fix*, _pre_-fix, post-_fix_.
 
 
 Here are two references. Equation (ref{my:eq1}) is fine. Eq. (ref{my:eq1}) too.
@@ -20635,7 +20651,9 @@ Here is a nested list:
   * item2
 
 > Here are two lines that make up
-> a block quote.
+> a block quote for testing *emphasized words* and **boldface words**,
+> also with hypens:
+> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -22296,7 +22314,9 @@ is at the end with only one newline.
       "  * item2\n",
       "\n",
       "> Here are two lines that make up\n",
-      "> a block quote.\n",
+      "> a block quote for testing *emphasized words* and **boldface words**,\n",
+      "> also with hypens:\n",
+      "> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.\n",
       "\n",
       "\n",
       "\n",
@@ -24756,7 +24776,9 @@ Here is a nested list:
   * item2
 
 > Here are two lines that make up
-> a block quote.
+> a block quote for testing *emphasized words* and **boldface words**,
+> also with hypens:
+> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -28816,7 +28838,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -31411,7 +31435,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -33437,7 +33463,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -35618,7 +35646,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -40424,7 +40454,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -42438,7 +42470,9 @@ Here is a list with subsubsection heading
 ..
 
     Here are two lines that make up
-    a block quote.
+    a block quote for testing *emphasized words* and **boldface words**,
+    also with hypens:
+    *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -69265,7 +69299,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f1c6838e8c0>
+verbatim is to be replaced using <function html_verbatim at 0x7f8cff7488c0>
 
 
 First occurence: " `mako`."
@@ -73222,7 +73256,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Oct 31 17:03:00 2014.
+# sphinx-quickstart on Mon Nov  3 10:25:56 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -90269,6 +90303,7 @@ dmap/pdftex.map}] [2]
 
 
 
+[3]
 
 
 
@@ -90294,7 +90329,6 @@ dmap/pdftex.map}] [2]
 
 
 
-[3]
 
 
 
@@ -90304,7 +90338,7 @@ dmap/pdftex.map}] [2]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [4])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=67, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] [7]
 
@@ -90315,15 +90349,15 @@ dmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=111, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=112, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=123, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=124, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=124, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=125, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90402,7 +90436,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1268.
+t line 1270.
 
 
 
@@ -90422,7 +90456,7 @@ t line 1268.
 
 
 
-t line 1277.
+t line 1279.
 
 
 
@@ -90443,7 +90477,7 @@ t line 1277.
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -91188,7 +91222,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1268.
+t line 1270.
 
 
 
@@ -91208,7 +91242,7 @@ t line 1268.
 
 
 
-t line 1277.
+t line 1279.
 
 
 
@@ -91229,7 +91263,7 @@ t line 1277.
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -91891,7 +91925,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1268.
+t line 1270.
 
 
 
@@ -91911,7 +91945,7 @@ t line 1268.
 
 
 
-t line 1277.
+t line 1279.
 
 
 
@@ -91932,7 +91966,7 @@ t line 1277.
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -93077,6 +93111,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
+[3]
 
 
 
@@ -93102,7 +93137,6 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-[3]
 
 
 
@@ -93113,7 +93147,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./testdoc.out.pyg) (./testdoc.out.pyg)
 
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=238, 64.24pt x 64.24pt>
+(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=239, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
 
@@ -93123,15 +93157,15 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=278, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=279, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=295, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=296, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=296, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=297, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -93226,7 +93260,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1219.
+t line 1221.
 
 
 
@@ -93246,7 +93280,7 @@ t line 1219.
 
 
 
-t line 1228.
+t line 1230.
 
 
 
@@ -93266,7 +93300,7 @@ t line 1228.
 
 
 
-t line 1232.
+t line 1234.
 
 
 
@@ -94005,9 +94039,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:388: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:390: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:427: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:427: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found

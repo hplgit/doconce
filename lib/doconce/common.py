@@ -808,7 +808,8 @@ QUIZ = {}
 
 
 # regular expressions for inline tags:
-inline_tag_begin = r"""(?P<begin>(^|[(\s~>]|^__))"""
+#inline_tag_begin = r"""(?P<begin>(^|[(\s~>]|^__))"""
+inline_tag_begin = r"""(?P<begin>(^|[(\s~>-]|^__))"""
 # ' is included as apostrophe in end tag
 inline_tag_end = r"""(?P<end>($|[.,?!;:)<}'\s~\[<-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
