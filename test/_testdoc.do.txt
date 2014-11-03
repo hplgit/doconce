@@ -62,7 +62,9 @@ __Here is a list with paragraph heading.__
 
 !bquote
 Here are two lines that make up
-a block quote.
+a block quote for testing *emphasized words* and _boldface words_,
+also with hypens:
+*pre*-fix, post-*fix*, _pre_-fix, post-_fix_.
 !equote
 
 Here are two references. Equation~(ref{my:eq1}) is fine. Eq.~(ref{my:eq1}) too.
