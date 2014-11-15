@@ -5839,12 +5839,15 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     text = f.read()
     f.close()
 
+    # Standardize newlines
+    text = re.sub(r'(\r\n|\r|\n)', '\n', text)
+
     # Remove inline quotes before inline verbatim
     pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
     text = re.sub(pattern, r'\g<1>', text)
     # Remove inline verbatim and !bc and !bt blocks
     text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
-    code = re.compile(r'^!bc(.*?)\n(.*?)^!ec *\n', re.DOTALL|re.MULTILINE)
+    code = re.compile(r'^!bc(.*?)\n(.*?)^!ec', re.DOTALL|re.MULTILINE)
     text = code.sub('', text)
     tex = re.compile(r'^!bt\n(.*?)^!et *\n', re.DOTALL|re.MULTILINE)
     text = tex.sub('', text)
