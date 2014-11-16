@@ -3182,7 +3182,7 @@ def doconce2format(filestr, format):
     # Next step: standardize newlines
     filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
 
-        # Next step: first reformatting of quizzes
+    # Next step: first reformatting of quizzes
     filestr, num_quizzes = typeset_quizzes1(
         filestr, insert_missing_quiz_header=False)
     if num_quizzes:
@@ -3554,6 +3554,9 @@ def preprocess(filename, format, preprocessor_options=[]):
         print '*** error: empty file', filename
         _abort()
 
+    # Standardize newlines
+    filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
+
     preprocessor = None
 
     # First guess if preprocess or mako is used
@@ -3660,8 +3663,11 @@ preprocess package (sudo apt-get install preprocess).
                 _abort()
             # Make filestr the result of preprocess in case mako shall be run
             f = open(resultfile, 'r'); filestr = f.read(); f.close()
+            # Standardize newlines
+            filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
             filestr_without_code, code_blocks, code_block_types, tex_blocks = \
                                   remove_code_and_tex(filestr)
+
 
 
     mako_commands = r'^ *<?%[^%]'
