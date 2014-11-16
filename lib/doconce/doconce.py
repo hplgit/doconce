@@ -3744,6 +3744,8 @@ away from the beginning of the line.
 *** error: potential problem with the math formula
            $%s$
     since ${ can confuse Mako - rewrite %s""" % (formula, suggestion)
+                if formula.startswith('${\cal'):
+                    print r'Here: use \mathcal{...} instead of {\cal ...}'
                 _abort()
 
         if preprocessor is not None:  # already found preprocess commands?
