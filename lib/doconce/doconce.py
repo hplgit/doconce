@@ -3128,21 +3128,37 @@ def doconce2format4docstrings(filestr, format):
 
     return filestr
 
+global _t0, _t1
+
 def doconce2format(filestr, format):
-    t0 = time.time()
+    global _t0, _t1
+    _t0 = _t1 = time.time()
+    verbose = int(option('verbose=', 0))
+    if verbose == 0:
+        report_cpu_time = 15
+    elif verbose == 1:
+        report_cpu_time = 5
+    elif verbose == 2:
+        report_cpu_time = 0
+    else:
+        report_cpu_time = 15
 
     def report_progress(msg):
-        """Write a message about the progress if CPU time > 15 s"""
-        cpu = time.time() - t0
-        if cpu > 15:
-            print '\n...doconce translation: handled', msg, '%.1f s' % cpu
+        """Write a message about the progress if CPU time of a task takes time."""
+        cpu_accumulated = time.time() - _t0
+        cpu_last_task = time.time() - _t1
+        global _t1
+        _t1 = time.time()
+        if cpu_last_task > report_cpu_time:
+            print '\n...doconce translation:', msg, '%.1f s' % cpu_last_task, '(accumulated time: %.1f)' % cpu_accumulated
+            time.sleep(1)
 
     report_progress('finished preprocessors')
 
-    filestr = fix(filestr, format, verbose=1)
-    syntax_check(filestr, format)
-
-    report_progress('handled syntax checks')
+    if option('syntax_check=', 'on') == 'on':
+        filestr = fix(filestr, format, verbose=1)
+        syntax_check(filestr, format)
+        report_progress('handled syntax checks')
 
     global FILENAME_EXTENSION, BLANKLINE, INLINE_TAGS_SUBST, CODE, \
            LIST, ARGLIST,TABLE, EXERCISE, FIGURE_EXT, CROSS_REFS, INDEX_BIB, \
@@ -3521,7 +3537,7 @@ def doconce2format(filestr, format):
 
     debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
 
-    cpu = time.time() - t0
+    cpu = time.time() - _t0
     if cpu > 15:
         print '\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n'))
         time.sleep(1)

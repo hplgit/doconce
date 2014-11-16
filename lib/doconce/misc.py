@@ -12,6 +12,14 @@ _registered_command_line_options = [
 of intermediate results"""),
     ('--no_abort',
      'Do not abort the execution if syntax errors are found.'),
+    ('--verbose=',
+     """Write progress of intermediate steps if they take longer than X seconds.
+0: X=15
+1: X=5
+2: 0.5"""),
+    ('--syntax_check=',
+     """Values: on/off. Turns on/off fix of illegal constructions and the syntax check
+(may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
     ('--encoding=',
