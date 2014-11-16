@@ -12,6 +12,14 @@ _registered_command_line_options = [
 of intermediate results"""),
     ('--no_abort',
      'Do not abort the execution if syntax errors are found.'),
+    ('--verbose=',
+     """Write progress of intermediate steps if they take longer than X seconds.
+0: X=15
+1: X=5
+2: 0.5"""),
+    ('--syntax_check=',
+     """Values: on/off. Turns on/off fix of illegal constructions and the syntax check
+(may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
     ('--encoding=',
@@ -5865,12 +5873,15 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     text = f.read()
     f.close()
 
+    # Standardize newlines
+    text = re.sub(r'(\r\n|\r|\n)', '\n', text)
+
     # Remove inline quotes before inline verbatim
     pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
     text = re.sub(pattern, r'\g<1>', text)
     # Remove inline verbatim and !bc and !bt blocks
     text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
-    code = re.compile(r'^!bc(.*?)\n(.*?)^!ec *\n', re.DOTALL|re.MULTILINE)
+    code = re.compile(r'^!bc(.*?)\n(.*?)^!ec', re.DOTALL|re.MULTILINE)
     text = code.sub('', text)
     tex = re.compile(r'^!bt\n(.*?)^!et *\n', re.DOTALL|re.MULTILINE)
     text = tex.sub('', text)
