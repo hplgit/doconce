@@ -78,7 +78,9 @@ __Here is a list with paragraph heading.__
 
 !bquote
 Here are two lines that make up
-a block quote.
+a block quote for testing *emphasized words* and _boldface words_,
+also with hypens:
+*pre*-fix, post-*fix*, _pre_-fix, post-_fix_.
 !equote
 
 Here are two references. Equation~(ref{my:eq1}) is fine. Eq.~(ref{my:eq1}) too.
@@ -2243,7 +2245,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -4421,7 +4425,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -6689,7 +6695,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -8495,7 +8503,9 @@ Here is a list with subsubsection heading
 ..
 
     Here are two lines that make up
-    a block quote.
+    a block quote for testing *emphasized words* and **boldface words**,
+    also with hypens:
+    *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -10163,7 +10173,9 @@ Here is a list with subsubsection heading
 ..
 
     Here are two lines that make up
-    a block quote.
+    a block quote for testing *emphasized words* and **boldface words**,
+    also with hypens:
+    *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -13444,7 +13456,9 @@ Here is a nested list:
 
 {{quote box
 | quote = Here are two lines that make up
-a block quote.
+a block quote for testing ''emphasized words'' and '''boldface words''',
+also with hypens:
+''pre''-fix, post-''fix'', '''pre'''-fix, post-'''fix'''.
 | textstyle = font-size: 90%;
 }}
 
@@ -19233,7 +19247,9 @@ Here is a list with subsubsection heading
   * item2
 
         Here are two lines that make up
-        a block quote.
+        a block quote for testing *emphasized words* and _boldface words_,
+        also with hypens:
+        *pre*-fix, post-*fix*, _pre_-fix, post-_fix_.
 
 
 Here are two references. Equation (ref{my:eq1}) is fine. Eq. (ref{my:eq1}) too.
@@ -20635,7 +20651,9 @@ Here is a nested list:
   * item2
 
 > Here are two lines that make up
-> a block quote.
+> a block quote for testing *emphasized words* and **boldface words**,
+> also with hypens:
+> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -22296,7 +22314,9 @@ is at the end with only one newline.
       "  * item2\n",
       "\n",
       "> Here are two lines that make up\n",
-      "> a block quote.\n",
+      "> a block quote for testing *emphasized words* and **boldface words**,\n",
+      "> also with hypens:\n",
+      "> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.\n",
       "\n",
       "\n",
       "\n",
@@ -22520,6 +22540,8 @@ is at the end with only one newline.
      "cell_type": "code",
      "collapsed": false,
      "input": [
+      "%matplotlib inline\n",
+      "\n",
       "a = 2\n",
       "b = 3\n",
       "print 'a+b:', a + b\n",
@@ -24754,7 +24776,9 @@ Here is a nested list:
   * item2
 
 > Here are two lines that make up
-> a block quote.
+> a block quote for testing *emphasized words* and **boldface words**,
+> also with hypens:
+> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -28814,7 +28838,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -31409,7 +31435,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -33435,7 +33463,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -35616,7 +35646,9 @@ Here is a nested list:
 
 \begin{quote}
 Here are two lines that make up
-a block quote.
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
 \end{quote}
 
 
@@ -40422,7 +40454,9 @@ Here is a nested list:
 
 <blockquote>
     Here are two lines that make up
-    a block quote.
+    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
+    also with hypens:
+    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
@@ -42436,7 +42470,9 @@ Here is a list with subsubsection heading
 ..
 
     Here are two lines that make up
-    a block quote.
+    a block quote for testing *emphasized words* and **boldface words**,
+    also with hypens:
+    *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
 
 
 
@@ -58758,15 +58794,13 @@ title (Warning) since no title is specified.
     bookmarksdepth=3
     }
 \setlength{\parskip}{7pt}  % {1em}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
-
-
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
+
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
 %-------------------- end beamer-specific preamble ----------------------
 
@@ -58820,15 +58854,16 @@ University of Oslo\inst{2}}
 
 \begin{columns}
 \column{0.6\textwidth}
+\pause
 \begin{block}{Title with comma, and brackets: $[a,b]$ }
 \footnotesize
 
 \begin{itemize}
-  \item<2-> Here is a \emph{wave signal} $f(x-ct)$
+  \item Here is a \emph{wave signal} $f(x-ct)$
 
-  \item<3-> It moves with velocity $c$
+  \item It moves with velocity $c$
 
-  \item<4-> But here it is just a figure
+  \item But here it is just a figure
 \end{itemize}
 
 \noindent
@@ -58852,13 +58887,9 @@ University of Oslo\inst{2}}
 
 \shortinlinecomment{hpl 1}{ Comments are typeset as usual in DocOnce. }{ Comments are typeset as }
 
-
 \pause
-\begin{block}{}
 Here we have a paragraph to pop up in red.\\
 And a line more
-\end{block}
-
 
 \note{
 One can also have ordinary notes.
@@ -58870,8 +58901,7 @@ Over multiple lines.
 \frametitle{A {\LaTeX} document}
 
 \pause
-\begin{block}{}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{latex}
 \documentclass[11pt]{article}
 \usepackage{fancyvrb}
 \begin{document}
@@ -58882,31 +58912,24 @@ Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
 \date{\today}
 \maketitle
 \end{minted}
-\end{block}
-
-
 
 \pause
 \begin{block}{Notice}
 {\LaTeX} has a lot of backslashes.
 \end{block}
 
-
-
 \pause
-\begin{block}{}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{latex}
 \section{Heading}
 bla-bla
 \end{document}
 \end{minted}
-\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
 \frametitle{An HTML document}
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{html}
 <html><head></head><body bgcolor="red">
 <title>Here goes the title...<title>
 <h1>Section heading</h1>
@@ -58944,7 +58967,7 @@ bla-bla
 First, inline \Verb@$? != 0@, then comments with dollar variables (and minted
 style):
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{bash}
 var=10
 # $1, $2, ... are command-line args
 if [ $? -eq 0 ]; then   # $? reflects success or not
@@ -58959,7 +58982,6 @@ fi
 
 Can use admons to simulate blocks:
 
-
 \pause
 \begin{block}{Key PDE (with large title and math font): }
 \large
@@ -58967,15 +58989,11 @@ Can use admons to simulate blocks:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 \end{block}
 
-
-
 \pause
 \begin{block}{}
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 \end{block}
-
-
 
 \pause
 \begin{block}{Warning}
@@ -59078,15 +59096,13 @@ title (Warning) since no title is specified.
     bookmarksdepth=3
     }
 \setlength{\parskip}{7pt}  % {1em}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
-
-
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
+
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
 %-------------------- end beamer-specific preamble ----------------------
 
@@ -59140,15 +59156,16 @@ University of Oslo\inst{2}}
 
 \begin{columns}
 \column{0.6\textwidth}
+\pause
 \begin{block}{Title with comma, and brackets: $[a,b]$ }
 \footnotesize
 
 \begin{itemize}
-  \item<2-> Here is a \emph{wave signal} $f(x-ct)$
+  \item Here is a \emph{wave signal} $f(x-ct)$
 
-  \item<3-> It moves with velocity $c$
+  \item It moves with velocity $c$
 
-  \item<4-> But here it is just a figure
+  \item But here it is just a figure
 \end{itemize}
 
 \noindent
@@ -59172,13 +59189,9 @@ University of Oslo\inst{2}}
 
 \shortinlinecomment{hpl 1}{ Comments are typeset as usual in DocOnce. }{ Comments are typeset as }
 
-
 \pause
-\begin{block}{}
 Here we have a paragraph to pop up in red.\\
 And a line more
-\end{block}
-
 
 \note{
 One can also have ordinary notes.
@@ -59190,8 +59203,7 @@ Over multiple lines.
 \frametitle{A {\LaTeX} document}
 
 \pause
-\begin{block}{}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{latex}
 \documentclass[11pt]{article}
 \usepackage{fancyvrb}
 \begin{document}
@@ -59202,31 +59214,24 @@ Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
 \date{\today}
 \maketitle
 \end{minted}
-\end{block}
-
-
 
 \pause
 \begin{block}{Notice}
 {\LaTeX} has a lot of backslashes.
 \end{block}
 
-
-
 \pause
-\begin{block}{}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{latex}
 \section{Heading}
 bla-bla
 \end{document}
 \end{minted}
-\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
 \frametitle{An HTML document}
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{html}
 <html><head></head><body bgcolor="red">
 <title>Here goes the title...<title>
 <h1>Section heading</h1>
@@ -59264,7 +59269,7 @@ bla-bla
 First, inline \Verb@$? != 0@, then comments with dollar variables (and minted
 style):
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{bash}
 var=10
 # $1, $2, ... are command-line args
 if [ $? -eq 0 ]; then   # $? reflects success or not
@@ -59279,7 +59284,6 @@ fi
 
 Can use admons to simulate blocks:
 
-
 \pause
 \begin{block}{Key PDE (with large title and math font): }
 \large
@@ -59287,15 +59291,11 @@ Can use admons to simulate blocks:
 \[ \frac{\partial u}{\partial t} = \nabla^2 u \]
 \end{block}
 
-
-
 \pause
 \begin{block}{}
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 \end{block}
-
-
 
 \pause
 \begin{block}{Warning}
@@ -62258,15 +62258,13 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
     bookmarksdepth=3
     }
 \setlength{\parskip}{7pt}  % {1em}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
-
-
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
+
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
 %-------------------- end beamer-specific preamble ----------------------
 
@@ -62376,15 +62374,20 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 % * (Journal papers typeset by journals are out of scope)
 
 \begin{itemize}
-  \item<2-> Scope: documents with \textcolor{red}{much} \emph{math} and \emph{computer code}
+\pause
+  \item Scope: documents with \textcolor{red}{much} \emph{math} and \emph{computer code}
 
-  \item<3-> Key question: What tools should I use for writing?
+\pause
+  \item Key question: What tools should I use for writing?
 
-  \item<4-> Default answer: {\LaTeX}
+\pause
+  \item Default answer: {\LaTeX}
 
-  \item<5-> Alternative: MS Word w/math
+\pause
+  \item Alternative: MS Word w/math
 
-  \item<6-> Recent popular alternative tools: HTML w/MathJax,
+\pause
+  \item Recent popular alternative tools: HTML w/MathJax,
     Sphinx, Markdown, MediaWiki, IPython notebook
 \end{itemize}
 
@@ -62487,11 +62490,8 @@ When I write some scientific material,
 and later want to collect the pieces into a larger document, maybe
 some book, or one big web document, is that at all feasible?
 
-
 \pause
-\begin{block}{}
 Probably not, but I have a solution :-)
-\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -62524,44 +62524,49 @@ Probably not, but I have a solution :-)
 \begin{frame}[plain,fragile]
 \frametitle{{\LaTeX} is very rich; other tools support only some elements}
 
-\pause
-\begin{block}{}
 \begin{itemize}
+\pause
  \item Figures: all
 
+\pause
  \item Subfigures: {\LaTeX} (\Verb!subfigure!)
 
+\pause
  \item Movies: {\LaTeX} (can run separately), just raw embedded HTML in others
 
+\pause
  \item Floating computer code: {\LaTeX}
 
+\pause
  \item Fixed computer code: all
 
+\pause
  \item Floating tables: {\LaTeX}; inline tables: all
 
+\pause
  \item Algorithms: {\LaTeX}
 
+\pause
  \item Margin notes: {\LaTeX}
 
+\pause
  \item Page references: {\LaTeX}
 
+\pause
  \item Footnotes: {\LaTeX}, Sphinx, reStructuredText, MediaWiki
 
+\pause
  \item Bibliography: {\LaTeX}, Sphinx, reStructuredText, MediaWiki
 
+\pause
  \item Hyperlinks: all (but not on paper!)
 \end{itemize}
 
 \noindent
-\end{block}
-
-
 
 \pause
-\begin{block}{}
 Conclusion: Highly non-trivial to translate a {\LaTeX} document into something
 based on HTML and vice versa.
-\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -62790,7 +62795,7 @@ def solver(I, a, T, dt, theta):
 \end{Verbatim}
 This gets rendered as
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
 def solver(I, a, T, dt, theta):
     """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
     dt = float(dt)           # avoid integer division
@@ -62822,7 +62827,7 @@ With \Verb?!bc pyoptpro? or a file \Verb!*.pyopt!, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
 def solver(I, a, T, dt, theta):
     dt = float(dt)
     N = int(round(T/dt))
@@ -63446,7 +63451,7 @@ The numerical method is implemented in a Python function:
 
 <!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T]; step: dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(dt)           <span style="color: #008800; font-style: italic"># avoid integer division</span>
     N <span style="color: #666666">=</span> <span style="color: #AA22FF">int</span>(<span style="color: #AA22FF">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #008800; font-style: italic"># no of time intervals</span>
     T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #008800; font-style: italic"># adjust T to fit time step dt</span>
@@ -64195,7 +64200,7 @@ The numerical method is implemented in a Python function:
 
 \bpycod
 def solver(I, a, T, dt, theta):
-    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    """Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt."""
     dt = float(dt)           # avoid integer division
     N = int(round(T/dt))     # no of time intervals
     T = N*dt                 # adjust T to fit time step dt
@@ -64354,15 +64359,13 @@ qualitatively correct results.
     bookmarksdepth=3
     }
 \setlength{\parskip}{7pt}  % {1em}
+
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
-\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
-
-
-\newenvironment{doconce:exercise}{}{}
-\newcounter{doconce:exercise:counter}
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
+
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
 
 %-------------------- end beamer-specific preamble ----------------------
 
@@ -64470,29 +64473,25 @@ u(0)  &= I,
 \begin{frame}[plain,fragile]
 \frametitle{Numerical solution method}
 
-\pause
-\begin{block}{}
 \begin{itemize}
+\pause
  \item Mesh in time: $0= t_0< t_1 \cdots < t_N=T$
 
+\pause
  \item Assume constant $\Delta t = t_{n}-t_{n-1}$
 
+\pause
  \item $u^n$: numerical approx to the exact solution at $t_n$
 \end{itemize}
 
 \noindent
-\end{block}
-
-
 
 \pause
-\begin{block}{}
 Numerical scheme:
    \[
    u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
    \quad n=0,1,\ldots,N-1
    \]
-\end{block}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -64500,9 +64499,9 @@ Numerical scheme:
 
 The numerical method is implemented in a Python function:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
 def solver(I, a, T, dt, theta):
-    """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
+    """Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt."""
     dt = float(dt)           # avoid integer division
     N = int(round(T/dt))     # no of time intervals
     T = N*dt                 # adjust T to fit time step dt
@@ -64529,32 +64528,28 @@ def solver(I, a, T, dt, theta):
 \frametitle{The artifacts can be explained by some theory}
 
 \pause
-\begin{block}{}
 Exact solution of the scheme:
 
 \[ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .\]
-\end{block}
 
-
-
-\pause
-\begin{block}{}
 \begin{itemize}
+\pause
  \item Stability: $|A| < 1$
 
+\pause
  \item No oscillations: $A>0$
 
+\pause
  \item Always for Backward Euler ($\theta=1$)
 
+\pause
  \item $\Delta t < 1/a$ for Forward Euler ($\theta=0$)
 
+\pause
  \item $\Delta t < 2/a$ for Crank-Nicolson ($\theta=1/2$)
 \end{itemize}
 
 \noindent
-\end{block}
-
-
 
 \pause
 \begin{block}{Concluding remarks: }
@@ -69304,7 +69299,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fdd612317d0>
+verbatim is to be replaced using <function html_verbatim at 0x7f8cff7488c0>
 
 
 First occurence: " `mako`."
@@ -73261,7 +73256,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Oct 16 00:31:30 2014.
+# sphinx-quickstart on Mon Nov  3 10:25:56 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -73456,6 +73451,7 @@ html_theme = 'agni'
 #html_theme = 'nature'
 #html_theme = 'pylons'
 #html_theme = 'pyramid'
+#html_theme = 'read_the_docs'
 #html_theme = 'redcloud'
 #html_theme = 'scipy_lectures'
 #html_theme = 'scrolls'
@@ -74856,6 +74852,13 @@ And finally a description list:
  - keyword3: and its description may fit on one line
 
 
+!bwarning No indentation - except in lists!
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+!ewarning
+
+
 ===== Comment lines =====
 
 Lines starting with `#` are treated as comments in the document and
@@ -75253,6 +75256,7 @@ Note that
 
  * Each line begins and ends with a vertical bar (pipe symbol).
  * Column data are separated by a vertical bar (pipe symbol).
+ * There must be a blank line before and after the table.
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -75270,6 +75274,15 @@ The command-line option `--tables2csv` (to `doconce format`)
 makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+!bc sys
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+!ec
+Now we can do `# #include "mydata_table.do.txt"` in the DocOnce
+source file or simply copy the table in `mydata_table.do.txt`
+into the DocOnce file.
 
 ===== Labels and References =====
 
@@ -76064,6 +76077,15 @@ And finally a description list:
    and its description may fit on one line
 </dl>
 
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>No indentation - except in lists!</b>
+<p>
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+</div>
+
+
 <h2>Comment lines  <a name="___sec6"></a></h2>
 
 <p>
@@ -76539,6 +76561,7 @@ Note that
 <ul>
  <li> Each line begins and ends with a vertical bar (pipe symbol).</li>
  <li> Column data are separated by a vertical bar (pipe symbol).</li>
+ <li> There must be a blank line before and after the table.</li>
  <li> There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -76557,6 +76580,18 @@ The command-line option <code>--tables2csv</code> (to <code>doconce format</code
 makes DocOnce dump each table to CSV format in a file <code>table_X.csv</code>,
 where <code>X</code> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+<p>
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce csv2table mydata.csv &gt; mydata_table.do.txt
+</code></pre>
+<!-- end verbatim block -->
+Now we can do <code># #include &quot;mydata_table.do.txt&quot;</code> in the DocOnce
+source file or simply copy the table in <code>mydata_table.do.txt</code>
+into the DocOnce file.
 
 <h2>Labels and References  <a name="___sec13"></a></h2>
 
@@ -77704,6 +77739,16 @@ And finally a description list:
 \end{description}
 
 \noindent
+
+\begin{warning_mdfboxadmon}[No indentation - except in lists!]
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+\end{warning_mdfboxadmon}
+
+
+
+
 \subsection{Comment lines}
 
 Lines starting with \code{#} are treated as comments in the document and
@@ -78128,6 +78173,8 @@ Note that
 
  \item Column data are separated by a vertical bar (pipe symbol).
 
+ \item There must be a blank line before and after the table.
+
  \item There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -78149,6 +78196,15 @@ The command-line option \code{--tables2csv} (to \code{doconce format})
 makes DocOnce dump each table to CSV format in a file \code{table_X.csv},
 where \code{X} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+\bsys
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+\esys
+Now we can do \code{# #include "mydata_table.do.txt"} in the DocOnce
+source file or simply copy the table in \code{mydata_table.do.txt}
+into the DocOnce file.
 
 \subsection{Labels and References}
 
@@ -78936,6 +78992,16 @@ And finally a description list:
  keyword3: 
    and its description may fit on one line
 
+
+.. admonition:: No indentation - except in lists
+
+   DocOnce syntax is sensitive to whitespace.
+   No lines should be indented, only lines belonging to lists.
+   Indented lines may give strange output in some formats.
+
+
+
+
 Comment lines
 -------------
 
@@ -79339,6 +79405,8 @@ Note that
 
  * Column data are separated by a vertical bar (pipe symbol).
 
+ * There must be a blank line before and after the table.
+
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -79358,6 +79426,14 @@ The command-line option ``--tables2csv`` (to ``doconce format``)
 makes DocOnce dump each table to CSV format in a file ``table_X.csv``,
 where ``X`` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files::
+
+        Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+
+Now we can do ``# #include "mydata_table.do.txt"`` in the DocOnce
+source file or simply copy the table in ``mydata_table.do.txt``
+into the DocOnce file.
 
 Labels and References
 ---------------------
@@ -80142,6 +80218,16 @@ And finally a description list:
  keyword3: 
    and its description may fit on one line
 
+
+.. admonition:: No indentation - except in lists
+
+   DocOnce syntax is sensitive to whitespace.
+   No lines should be indented, only lines belonging to lists.
+   Indented lines may give strange output in some formats.
+
+
+
+
 Comment lines
 -------------
 
@@ -80586,6 +80672,8 @@ Note that
 
  * Column data are separated by a vertical bar (pipe symbol).
 
+ * There must be a blank line before and after the table.
+
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -80605,6 +80693,16 @@ The command-line option ``--tables2csv`` (to ``doconce format``)
 makes DocOnce dump each table to CSV format in a file ``table_X.csv``,
 where ``X`` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+.. code-block:: text
+
+        Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+
+Now we can do ``# #include "mydata_table.do.txt"`` in the DocOnce
+source file or simply copy the table in ``mydata_table.do.txt``
+into the DocOnce file.
 
 Labels and References
 ---------------------
@@ -81373,6 +81471,14 @@ And finally a description list:
  * keyword3:  
    and its description may fit on one line
 
+*No indentation - except in lists!* 
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+
+
+
+
 ==== Comment lines ====
 
 Lines starting with `#` are treated as comments in the document and
@@ -81758,6 +81864,7 @@ Note that
 
  * Each line begins and ends with a vertical bar (pipe symbol).
  * Column data are separated by a vertical bar (pipe symbol).
+ * There must be a blank line before and after the table.
  * There may be horizontal rules, i.e., lines with dashes for   indicating the heading and the end of the table, and these may   contain characters 'c', 'l', or 'r' for how to align headings or   columns. The first horizontal rule may indicate how to align   headings (center, left, right), and the horizontal rule after the   heading line may indicate how to align the data in the columns   (center, left, right).
  * If the horizontal rules are without alignment information there should   be no vertical bar (pipe symbol) between the columns. Otherwise, such   a bar indicates a vertical bar between columns in LaTeX.
  * Many output formats are so primitive that heading and column alignment   have no effect.
@@ -81766,6 +81873,15 @@ The command-line option `--tables2csv` (to `doconce format`)
 makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+{{{
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+}}}
+Now we can do `# #include "mydata_table.do.txt"` in the DocOnce
+source file or simply copy the table in `mydata_table.do.txt`
+into the DocOnce file.
 
 ==== Labels and References ====
 
@@ -82517,6 +82633,18 @@ And finally a description list:
    and its description may fit on one line
 </dl>
 
+
+{{mbox
+| type = warning
+| textstyle = font-size: 90%;
+| text = '''No indentation - except in lists!''' DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+}}
+
+
+
+
 ==== Comment lines ====
 
 Lines starting with <code>#</code> are treated as comments in the document and
@@ -82935,6 +83063,7 @@ Note that
 <ul>
  <li> Each line begins and ends with a vertical bar (pipe symbol).
  <li> Column data are separated by a vertical bar (pipe symbol).
+ <li> There must be a blank line before and after the table.
  <li> There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -82953,6 +83082,15 @@ The command-line option <code>--tables2csv</code> (to <code>doconce format</code
 makes DocOnce dump each table to CSV format in a file <code>table_X.csv</code>,
 where <code>X</code> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+<syntaxhighlight lang="bash">
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+</syntaxhighlight>
+Now we can do <code># #include "mydata_table.do.txt"</code> in the DocOnce
+source file or simply copy the table in <code>mydata_table.do.txt</code>
+into the DocOnce file.
 
 ==== Labels and References ====
 
@@ -83694,6 +83832,14 @@ And finally a description list:
  * keyword3:  
    and its description may fit on one line
 
+//No indentation - except in lists!// 
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+
+
+
+
 == Comment lines ==
 
 Lines starting with {{{#}}} are treated as comments in the document and
@@ -84079,6 +84225,7 @@ Note that
 
  * Each line begins and ends with a vertical bar (pipe symbol).
  * Column data are separated by a vertical bar (pipe symbol).
+ * There must be a blank line before and after the table.
  * There may be horizontal rules, i.e., lines with dashes for   indicating the heading and the end of the table, and these may   contain characters 'c', 'l', or 'r' for how to align headings or   columns. The first horizontal rule may indicate how to align   headings (center, left, right), and the horizontal rule after the   heading line may indicate how to align the data in the columns   (center, left, right).
  * If the horizontal rules are without alignment information there should   be no vertical bar (pipe symbol) between the columns. Otherwise, such   a bar indicates a vertical bar between columns in LaTeX.
  * Many output formats are so primitive that heading and column alignment   have no effect.
@@ -84087,6 +84234,15 @@ The command-line option {{{--tables2csv}}} (to {{{doconce format}}})
 makes DocOnce dump each table to CSV format in a file {{{table_X.csv}}},
 where {{{X}}} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+{{{
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+}}}
+Now we can do {{{# #include "mydata_table.do.txt"}}} in the DocOnce
+source file or simply copy the table in {{{mydata_table.do.txt}}}
+into the DocOnce file.
 
 == Labels and References ==
 
@@ -84797,6 +84953,13 @@ And finally a description list:
  keyword3: --  
    and its description may fit on one line
 
+*No indentation - except in lists!* 
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+
+
+
 Comment lines
 
 Lines starting with '#' are treated as comments in the document and
@@ -85162,6 +85325,7 @@ Note that
 
  - Each line begins and ends with a vertical bar (pipe symbol).
  - Column data are separated by a vertical bar (pipe symbol).
+ - There must be a blank line before and after the table.
  - There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -85179,6 +85343,14 @@ The command-line option '--tables2csv' (to 'doconce format')
 makes DocOnce dump each table to CSV format in a file 'table_X.csv',
 where 'X' is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files::
+
+        Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+
+Now we can do '# #include "mydata_table.do.txt"' in the DocOnce
+source file or simply copy the table in 'mydata_table.do.txt'
+into the DocOnce file.
 
 Labels and References
 
@@ -85882,6 +86054,13 @@ And finally a description list:
  - keyword3: 
    and its description may fit on one line
 
+I{No indentation - except in lists!} 
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+
+
+
 Comment lines
 -------------
 
@@ -86249,6 +86428,7 @@ Note that
 
  - Each line begins and ends with a vertical bar (pipe symbol).
  - Column data are separated by a vertical bar (pipe symbol).
+ - There must be a blank line before and after the table.
  - There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -86266,6 +86446,14 @@ The command-line option C{--tables2csv} (to C{doconce format})
 makes DocOnce dump each table to CSV format in a file C{table_X.csv},
 where C{X} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files::
+
+        Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+
+Now we can do C{# #include "mydata_table.do.txt"} in the DocOnce
+source file or simply copy the table in C{mydata_table.do.txt}
+into the DocOnce file.
 
 Labels and References
 ---------------------
@@ -87008,6 +87196,15 @@ And finally a description list:
  keyword3: 
    and its description may fit on one line
 
+
+No indentation - except in lists! ----------------------------|
+|                                                             |
+| DocOnce syntax is sensitive to whitespace.                  |
+| No lines should be indented, only lines belonging to lists. |
+| Indented lines may give strange output in some formats.     |
+|-------------------------------------------------------------|
+
+
 Comment lines
 -------------
 
@@ -87394,6 +87591,8 @@ Note that
 
  * Column data are separated by a vertical bar (pipe symbol).
 
+ * There must be a blank line before and after the table.
+
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -87413,6 +87612,14 @@ The command-line option --tables2csv (to doconce format)
 makes DocOnce dump each table to CSV format in a file table_X.csv,
 where X is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files::
+
+        Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+
+Now we can do # #include "mydata_table.do.txt" in the DocOnce
+source file or simply copy the table in mydata_table.do.txt
+into the DocOnce file.
 
 Labels and References
 ---------------------
@@ -88176,6 +88383,14 @@ And finally a description list:
   :    
    and its description may fit on one line
 
+*No indentation - except in lists!* 
+DocOnce syntax is sensitive to whitespace.
+No lines should be indented, only lines belonging to lists.
+Indented lines may give strange output in some formats.
+
+
+
+
 ### Comment lines
 
 Lines starting with `#` are treated as comments in the document and
@@ -88609,6 +88824,7 @@ Note that
 
  * Each line begins and ends with a vertical bar (pipe symbol).
  * Column data are separated by a vertical bar (pipe symbol).
+ * There must be a blank line before and after the table.
  * There may be horizontal rules, i.e., lines with dashes for
    indicating the heading and the end of the table, and these may
    contain characters 'c', 'l', or 'r' for how to align headings or
@@ -88626,6 +88842,17 @@ The command-line option `--tables2csv` (to `doconce format`)
 makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
+
+DocOnce tables can be efficiently made directly from data in CSV files.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now we can do `# #include "mydata_table.do.txt"` in the DocOnce
+source file or simply copy the table in `mydata_table.do.txt`
+into the DocOnce file.
 
 ### Labels and References
 
@@ -90076,6 +90303,7 @@ dmap/pdftex.map}] [2]
 
 
 
+[3]
 
 
 
@@ -90101,7 +90329,6 @@ dmap/pdftex.map}] [2]
 
 
 
-[3]
 
 
 
@@ -90111,7 +90338,7 @@ dmap/pdftex.map}] [2]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [4])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=67, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] [7]
 
@@ -90122,15 +90349,15 @@ dmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=111, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=112, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=123, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=124, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=124, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=125, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -90209,7 +90436,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1268.
+t line 1270.
 
 
 
@@ -90229,7 +90456,7 @@ t line 1268.
 
 
 
-t line 1277.
+t line 1279.
 
 
 
@@ -90250,7 +90477,7 @@ t line 1277.
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -90995,7 +91222,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1268.
+t line 1270.
 
 
 
@@ -91015,7 +91242,7 @@ t line 1268.
 
 
 
-t line 1277.
+t line 1279.
 
 
 
@@ -91036,7 +91263,7 @@ t line 1277.
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -91698,7 +91925,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1268.
+t line 1270.
 
 
 
@@ -91718,7 +91945,7 @@ t line 1268.
 
 
 
-t line 1277.
+t line 1279.
 
 
 
@@ -91739,7 +91966,7 @@ t line 1277.
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -92884,6 +93111,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
+[3]
 
 
 
@@ -92909,7 +93137,6 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-[3]
 
 
 
@@ -92920,7 +93147,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./testdoc.out.pyg) (./testdoc.out.pyg)
 
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=238, 64.24pt x 64.24pt>
+(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=239, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
 
@@ -92930,15 +93157,15 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=278, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=279, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=295, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=296, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=296, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=297, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -93033,7 +93260,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1219.
+t line 1221.
 
 
 
@@ -93053,7 +93280,7 @@ t line 1219.
 
 
 
-t line 1228.
+t line 1230.
 
 
 
@@ -93073,7 +93300,7 @@ t line 1228.
 
 
 
-t line 1232.
+t line 1234.
 
 
 
@@ -93788,7 +94015,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 title: Just a test
 author: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, read_the_docs, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -93812,9 +94039,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:388: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:390: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:427: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:427: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found
@@ -94915,19 +95142,17 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 (./slides1.vrb 
  [1{/var/lib/texmf/f
 onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
-<../doc/src/manual/fig/wave1D.png, id=60, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=61, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [3 <../doc/src/manual/fig/wave1D.png>]
-(./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [4] (./slides1.vrb
-<use ../doc/src/manual/fig/wave1D.png>) [5] (./slides1.vrb
-<use ../doc/src/manual/fig/wave1D.png>) [6] (./slides1.vrb) [7] (./slides1.vrb)
- [8] (./slides1.vrb (./slides1.out.pyg
+(./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [4] (./slides1.vrb)
+[5] (./slides1.vrb) [6] (./slides1.vrb (./slides1.out.pyg
 
-[9] (./slides1.vrb (./slides1.out.pyg) (./slides1.out.pyg)) [10] (./slides1.vrb
-(./slides1.out.pyg) (./slides1.out.pyg)) [11] (./slides1.vrb (./slides1.out.pyg
-) (./slides1.out.pyg)) [12] (./slides1.vrb (./slides1.out.pyg)) [13]
-(./slides1.toc) [14] (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>)
-[15] (./slides1.vrb (./slides1.out.pyg)) [16] (./slides1.vrb) [17]
-(./slides1.vrb) [18] (./slides1.vrb) [19] (./slides1.vrb) [20] (./slides1.aux) 
+[7] (./slides1.vrb (./slides1.out.pyg) (./slides1.out.pyg)) [8] (./slides1.vrb
+(./slides1.out.pyg) (./slides1.out.pyg)) [9] (./slides1.vrb (./slides1.out.pyg)
+(./slides1.out.pyg)) [10] (./slides1.vrb (./slides1.out.pyg)) [11]
+(./slides1.toc) [12] (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>)
+[13] (./slides1.vrb (./slides1.out.pyg)) [14] (./slides1.vrb) [15]
+(./slides1.vrb) [16] (./slides1.vrb) [17] (./slides1.vrb) [18] (./slides1.aux) 
 ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl/
 .texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
@@ -94948,7 +95173,7 @@ c/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on slides1.pdf (20 pages, ).
+Output written on slides1.pdf (18 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
 + system doconce format html slides2 --pygments_html_style=emacs
@@ -95511,7 +95736,7 @@ Using author(s) "HPL" from math_test
 title: How various formats can deal with LaTeX math
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, read_the_docs, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -95939,14 +96164,14 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** error: character "," is not legal in notice admon title:
-    Note, eventually!
+   "Note, eventually!"
     for --latex_admon=mdfbox
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
 avoided abortion because of --no-abort
 *** made directory latex_figs for admon figures
 *** error: character "," is not legal in summary admon title:
-    Concluding remarks, for the novice
+   "Concluding remarks, for the novice"
     for --latex_admon=mdfbox
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
@@ -96861,7 +97086,7 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** error: character "," is not legal in notice admon title:
-    Note, eventually!
+   "Note, eventually!"
     for --latex_admon=graybox2
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
@@ -98285,14 +98510,14 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** error: character "," is not legal in notice admon title:
-    Note, eventually!
+   "Note, eventually!"
     for --latex_admon=mdfbox
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
 avoided abortion because of --no-abort
 *** made directory latex_figs for admon figures
 *** error: character "," is not legal in summary admon title:
-    Concluding remarks, for the novice
+   "Concluding remarks, for the novice"
     for --latex_admon=mdfbox
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
@@ -98488,7 +98713,7 @@ Using author(s) "hpl" from admon
 title: Testing admons
 author: hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, read_the_docs, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -103285,13 +103510,18 @@ Overfull \hbox (18.62192pt too wide)
 Overfull \hbox (3.86172pt too wide) 
 []\T1/phv/m/n/10 Emojis, as de-fined in [][][][][][], can be in-serted
 [4] [5]
+
+
+...rest of part of LaTeX line number...
+
+
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-
+[6]
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[6] [7] [8] [9]
+[7] [8] [9]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
@@ -103302,24 +103532,29 @@ Overfull \hbox (8.97565pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[10] [11]
+[10]
 
 
 ...rest of part of LaTeX line number...
 
-[12]
+[11]
+
+
+...rest of part of LaTeX line number...
+
+[12] [13]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[13]
+[14]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14] [15] [16] [17] [18] [19]
+[15] [16] [17] [18] [19]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -103673,11 +103908,11 @@ ust place []
 
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[7] [8] [9]
+[7] [8] [9] [10]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
 . 
-[10]
+
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
 [11] [12] [13]
@@ -103927,7 +104162,7 @@ Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, agogo, basic, basicstrap, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, flask, haiku, impressjs, jal, nature, pylons, pyramid, read_the_docs, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -104161,11 +104396,11 @@ lit_rst
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
-
+[8]
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-[8]
+
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -104173,17 +104408,17 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-
+[9]
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-[9]
+
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
-
+[10]
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
-[10]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
@@ -104248,6 +104483,9 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
+
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
 [12]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
@@ -104314,7 +104552,7 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
-
+[14]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
 
@@ -104323,7 +104561,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-[14]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -104356,10 +104594,10 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-
+[15]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
-[15]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
@@ -104436,11 +104674,11 @@ Overfull \hbox (53.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
-
+[17]
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
-[17]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
 
@@ -104757,11 +104995,14 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
 
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
+[13]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
-[13]
+
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub

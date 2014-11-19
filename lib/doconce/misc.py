@@ -12,6 +12,14 @@ _registered_command_line_options = [
 of intermediate results"""),
     ('--no_abort',
      'Do not abort the execution if syntax errors are found.'),
+    ('--verbose=',
+     """Write progress of intermediate steps if they take longer than X seconds.
+0: X=15
+1: X=5
+2: 0.5"""),
+    ('--syntax_check=',
+     """Values: on/off. Turns on/off fix of illegal constructions and the syntax check
+(may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
     ('--encoding=',
@@ -4612,7 +4620,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print """Usage: doconce slides_beamer mydoc.html --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout]
+    print """Usage: doconce slides_beamer mydoc --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout]
 
 themename can be
 red_plain, blue_plain, red_shadow, blue_shadow, dark, dark_gradient, vintage
@@ -4886,10 +4894,33 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
                 arg = m.group(1).strip()
                 body = m.group(2)
 
+                startswith_block = startswith_list = has_list = False
+                pattern_block = r'(\\begin\{block|\\begin\{mdbox|\\summarybox\{|\\begin\{[A-Za-z0-9_]+admon\})'
+                pattern_list = r'\\begin\{(enumerate|itemize|description)\}'
+                if re.match(pattern_block, body.lstrip()):
+                    startswith_block = True
+                if re.match(pattern_list, body.lstrip()):
+                    startswith_list = True
+                if r'\item' in body:
+                    has_list = True
+
+                if startswith_block:
+                    # Pop up the whole block at once
+                    body = '\\pause\n' + body
+                elif startswith_list:
+                    # Pop up each list item
+                    body = re.sub(r'^( *\\item)', r'\pause\n\g<1>', body,
+                                  flags=re.MULTILINE)
+                else:
+                    # Just pause before what's coming
+                    body = '\\pause\n' + body
+
+                '''
+                # OLD:
                 # Individual pop up of list items if there is only
                 # one pop block on this slide, otherwise pause the
                 # whole list (in else branch)
-                if r'\item' in body and num_pops == 1:
+                if r'\item' in body: # and num_pops == 1:
                     marker = '[[[[['
                     body = body.replace('\item ', r'\item%s ' % marker)
                     n = body.count('item%s' % marker)
@@ -4907,12 +4938,15 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 %s
 """ % body
                     else:
+                        # wrap body in a block (does not work well if
+                        # bpop-epop is already within another block
                         body = r"""
 \pause
 \begin{block}{}
 %s
 \end{block}
 """ % body
+                '''
                 return body
 
             part = cpattern.sub(subst, part)
