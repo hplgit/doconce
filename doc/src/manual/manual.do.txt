@@ -2124,10 +2124,27 @@ simple `\[` and `\]` or `equation` and `align` or `align*` environments,
 and avoid referring to equations in MediaWikis.
 !ewarning
 
-Going from DocOnce to MS Word is most easily done by outputting in
-the `latex` format and then using the Pandoc program to translate
-from LaTeX to MS Word (note that only a subset of LaTeX will be
-translated correctly).
+idx{MS Word}
+idx{Word (Microsoft)}
+
+Going from DocOnce to MS Word is most easily done by outputting in the
+`latex` format and then using the "Pandoc":
+"http://johnmacfarlane.net/pandoc/" or "latex2rtf":
+"http://latex2rtf.sourceforge.net/" programs to translate from LaTeX
+to MS Word. Note that only a subset of LaTeX will be translated
+correctly, and mathematics is notoriously difficult and unpredicatble.
+
+Conversion to ePub format can go via HTML and the "Calibre":
+"http://calibre-ebook.com/" tools. Also Pandoc can generate ePub.
+The ePub3 format support mathematics via MathML.
+Some dicussions of this topic appear on
+"tex.stachexchange": "http://tex.stackexchange.com/questions/1551/use-latex-to-produce-epub".
+
+A converter to iBooks would be nice, but it is not feasible before
+iBooks documents get better support for LaTeX mathematics.
+The `.iba` files of iBooks documents can be renamed to `.zip`,
+the file can be unzipped, and the XML code of iBooks documents
+are then available (see some "ideas": "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html").
 
 === Dealing with Mathematics in Formats without LaTeX Math Support ===
 
