@@ -1,26 +1,34 @@
 <!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The DocOnce Way -->
 <!-- TITLE: Scientific Writing Anno 2013: The DocOnce Way -->
-% Scientific Writing and Publishing Anno 2014
+<!-- TITLE: Scientific Writing and Publishing for the Future: How Can We Handle the eLearning Revolution? -->
+% Scientific Writing and Publishing for the Future
 % **Hans Petter Langtangen**
-% Oct 20, 2014
+% Nov 19, 2014
 
 ![](fig/doconce1b.png)
 
 <!-- !split -->
 ## Challenges with tools for scientific writing
 
+<!-- !bslidecell 00 -->
+![](fig/writing1.jpg)
+<!-- !eslidecell -->
+
+<!-- !bslidecell 01 -->
+![](fig/direction14.jpg)
+<!-- !eslidecell -->
+
+<!-- FIGURE: [fig/writing_is_hard_stone, width=500 frac=0.5] -->
+
 <!-- !split -->
 ### Scientific writing = LaTeX
 
- * Pre 1980: Handwriting + publisher (paper or book)
+ * Pre 1980: handwriting + publisher
  * Post 1985: scientists write LaTeX
- * Post 1995: publish LaTeX on the web and in journals and books
+ * Post 2010: a few scientists explore new digital formats
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\providecommand{\shadedskip}{}
-\definecolor{shadecolor}{rgb}{0.87843, 0.95686, 1.0}
-\renewenvironment{shadedskip}{
 \def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
 \MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
 \providecommand{\shadedquoteBlue}{}
@@ -36,13 +44,10 @@ print 'Hello, World!'
 \end{Verbatim}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Big late 1990s question:* 
-Will MS Word replace LaTeX? It never did!
-
-
+**Big late 1990s question**: Will MS Word replace LaTeX? It never did!
 
 <!-- !split -->
-### Scientific publishing needs to address new media
+### LaTeX PDF is mostly suboptimal for the new devices
 
 <!-- !bslidecell 00 0.4 -->
 ![](fig/ipad.png)
@@ -58,12 +63,12 @@ Will MS Word replace LaTeX? It never did!
 <!-- !eslidecell -->
 
 <!-- !split -->
-### The book will probably survive
+### The book will survive (LaTeX is ideal)
 
 ![](fig/oldbooks.jpg)
 
 <!-- !split -->
-### The classical report will survive
+### The classical report/paper will survive (LaTeX is ideal)
 
 <!-- !bslidecell 00 -->
 ![](fig/latex_thesis.jpg)
@@ -73,18 +78,50 @@ Will MS Word replace LaTeX? It never did!
 ![](fig/latex_paper1.png)
 <!-- !eslidecell -->
 
-<!-- !split -->
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
 
-### Scope of this presentation
+<!-- !split -->
+### But there is an explosion of new platforms for digital learning systems!
 
-  * Focus: documents with <font color="red">much</font> *math* and *computer code*
-  * Key question: What tools should I use for scientific writing?
+[MOOCs](https://www.youtube.com/watch?v=eW3gMGqcZQc#t=127),
+[Kahn Academy](https://www.khanacademy.org/),
+[ndla](http://ndla.no/),
+[H5P](http://h5p.org),
+[Haiku Learning](http://www.haikulearning.com/),
+[Opigno](https://www.opigno.org/en), ...
 
-The default answer is LaTeX, but there are many
+<!-- !bslidecell 00 -->
+![](fig/digital_learning_words.jpg)
+<!-- !eslidecell -->
+
+<!-- !bslidecell 01 -->
+![](fig/digital_learning_iPad.jpg)
+<!-- !eslidecell -->
+
+<!-- !split -->
+### My headache: How to write scientific material that can be easily published through old and new media?
+
+
+![](fig/headache4.jpg)
+
+*LaTeX-for-paper* and *HTML-for-screen* are two very different
+writing styles and technology platforms.
+
+
+
+<!-- !split -->
+### Scope: documents with *much* math and computer code
+
+*Key question:* 
+What tools should I use for scientific writing?
+
+
+
+The default answer was LaTeX, but there are many
 recent popular alternative tools: HTML w/MathJax,
-Sphinx, Markdown, MediaWiki, IPython notebook.
+Sphinx, Markdown, MediaWiki, IPython notebook, ...
+Apple's iBooks, ...
 
 
 
@@ -115,7 +152,7 @@ Sphinx, Markdown, MediaWiki, IPython notebook.
 
 
 <!-- !split -->
-### Does your scientific writing today need to address new media (in the future)?
+### There is a jungle of outlets your scientific writings should address
 
 <!-- Insert links here to reports -->
 
@@ -136,31 +173,30 @@ Sphinx, Markdown, MediaWiki, IPython notebook.
 <!-- !eslidecell -->
 
 <!-- !split -->
+### Can I assemble lots of different writings to a new future document (book)?
 
-### Can we factor pieces from a heterogeneous world to one coherent piece in the future?
+Suppose I write various types ofscientific material,
 
-When I write some scientific material,
-
- * a LaTeX document,
- * a blog post (HTML),
- * some web pages (HTML),
- * a Sphinx document,
- * an IPython notebook,
- * some Markdown files,
+ * LaTeX document,
+ * blog posts (HTML),
+ * web pages (HTML),
+ * Sphinx documents,
+ * IPython notebooks,
+ * wikis,
+ * Markdown files, ...
 
 and later want to collect the pieces into a larger document, maybe
-some book, or one big web document, or a set of slides,
-is that at all feasible?
+some book - is that at all feasible?
 
 <!-- !bpop highlight-red -->
-Probably not, but I have a solution :-)
+Probably not, but I have a solution :smile:
 <!-- !epop -->
 
 <!-- !split -->
 ## Pros and cons of various tools
 
 <!-- !split -->
-### Popular tools anno 2013 and their math support
+### Popular tools anno 2014 and their math support
 
 <!-- !bpop -->
  * **LaTeX**: de facto standard for math-instensive documents
@@ -177,12 +213,11 @@ Probably not, but I have a solution :-)
  * **IPython notebooks**: Markdown code/math,
    combines Python code, interactivity, and
    visualization, but requires all code snippets to sync together
+ * **Confluence**: Markdown-like input, with limited LaTeX math support, but converted to XML
  * **MediaWiki**: quite good LaTeX math support (cf. Wikipedia/Wikibooks)
  * Other **wiki** formats: no math support, great for collaborative editing
- * **Wordpress**: supports LaTeX *formulas* only, but good blog post support
+ * **Wordpress**: supports full HTML with LaTeX *formulas* only
  * **Google blogger**: supports full HTML with MathJax
- * **Epydoc**: old tool for Python code documentation
- * **Plain text for email**: no math, just raw LaTeX, and no tagging
 
 <!-- !epop -->
 
@@ -190,8 +225,9 @@ Probably not, but I have a solution :-)
 
 ### LaTeX is very rich; other tools support much less
 
- * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
- * LaTeX equation math:
+ * LaTeX has lots of fancy layouts, but few translates to other formats
+ * LaTeX *inline* math: works with all math-enabled formats (LaTeX, MathJax, Sphinx, Markdown, MediaWiki, Confluence, ...)
+ * LaTeX *equation* math:
     * **LaTeX**: `equation*`, `equation`, `align*`, `align` +
       `eqnarray`, `split`, `alignat`, ... (numerous!)
     * **MathJax**: `equation*`, `equation`, `align*`, `align`
@@ -205,27 +241,56 @@ Probably not, but I have a solution :-)
 
 <!-- !bpop -->
  * Figures: all
+ * Movies: raw HTML or YouTube/Vimeo, (LaTeX)
  * Subfigures: LaTeX (`subfigure`)
- * Movies: LaTeX, raw HTML
  * Floating computer code: LaTeX; fixed computer code: all
- * Interactive programs: Sphinx, IPython notebook, raw HTML
  * Floating tables: LaTeX; fixed tables: all
  * Algorithms: LaTeX
- * Margin notes: LaTeX, HTML with tailored css code
  * Page references: LaTeX
+ * Cross references: LaTeX (also to external doc.)
+ * Equation references: LaTeX, HTML, Sphinx
+
+<!-- !epop -->
+
+<!-- !split -->
+### LaTeX is very rich; other tools support much less
+
+<!-- !bpop -->
+ * Margin notes: LaTeX, HTML with tailored css code
  * Footnotes: LaTeX, Sphinx, reStructuredText, MediaWiki
  * Bibliography: LaTeX, Sphinx, reStructuredText, MediaWiki
+ * Index: LaTeX, Sphinx
  * Hyperlinks: all (but not on paper!)
+ * Interactive programs: Sphinx, IPython notebook, raw HTML
+ * Searching in multi-page doc.: Sphinx, MediaWiki, LaTeX PDF
 
 <!-- !epop -->
 
 <!-- !bpop -->
-Conclusion: Highly non-trivial to translate a LaTeX document into something
-based on HTML and vice versa.
+Highly non-trivial to translate from/to LaTeX!
 <!-- !epop -->
 
 <!-- !split -->
-### Typesetting concerns I
+### My colleagues face fundamental problem with going from LaTeX to IPython notebook (=Markdown)
+
+*Plan.* 
+I am used to write LaTeX paper/book-style with lots of
+cross-references and *floating* figures, code snippets,
+tables, algorithms, but now I *want to convert to
+IPython notebooks*.
+
+
+
+*Problem.* 
+Must have fixed figures, code snippets, tables. No algorithm environment,
+cross-referencing, equation referencing. All code needed for a snippet
+to run must be included. *It's a different writing style, but lots
+of new opportunities*.
+
+
+
+<!-- !split -->
+### Examples on typesetting concerns (1)
 
 <!-- !bpop -->
  * Sphinx refers to figures by the caption (has to be short!) and
@@ -245,7 +310,7 @@ based on HTML and vice versa.
 <!-- !epop -->
 
 <!-- !split -->
-### Typesetting concerns II
+### Examples on typesetting concerns (2)
 
 <!-- !bpop -->
  * Footnotes must appear as part of the running text (e.g., sentences
@@ -266,7 +331,7 @@ based on HTML and vice versa.
 <!-- "bibitems" a la BibTeX must look sensible and consistent. -->
 
 <!-- !split -->
-### Typesetting concerns III
+### Examples on typesetting concerns (3)
 
 <!-- !bpop -->
  * Index words can appear anywhere in LaTeX, but should be outside
@@ -304,13 +369,16 @@ especially for scientific writing with *much math and code*.
  * Made for large science books *and* small notes
  * Targets paper and screen
  * Many special features (code snippets from files, embedded movies,
-   admonitions, modern LaTeX layouts, ...)
+   admonitions, modern LaTeX layouts, extended math support for Sphinx/Markdown, ...)
  * Very effective for generating slides from ordinary text
  * Applies Mako: DocOnce text is a program (!)
  * Much like Markdown, less tagged than LaTeX, HTML, Sphinx
 
 <!-- !split -->
-## DocOnce
+## DocOnce: Write once, include anywhere
+
+![](fig/doconce1b.png)
+
 
 <!-- !split -->
 ### DocOnce demos
@@ -318,7 +386,7 @@ especially for scientific writing with *much math and code*.
 <http://hplgit.github.com/teamods/writing_reports/>
 
  * LaTeX-based PDF [for screen](http://hplgit.github.com/teamods/writing_reports/_static/report.pdf), [for printing](http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf), [for phone](http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf)
- * [Plain HTML](http://hplgit.github.com/teamods/writing_reports/_static/report_do.html) or with a [template](http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html) or [another template](http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html) or [solarized](http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html)
+ * [Plain HTML](http://hplgit.github.com/teamods/writing_reports/_static/report_bloodish.html) or [Bootstrap](http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_wtoc.html) or [Bootswatch](http://hplgit.github.com/teamods/writing_reports/_static/report_bootswatch_journal.html) or with a [template](http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html) or [another template](http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html) or [solarized](http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html)
  * Sphinx: [agni](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html), [pyramid](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html), [classy](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html), [fenics](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html), [redcloud](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html)
  * HTML for [Google](http://doconce-report-demo.blogspot.no/) or [Wordpress](http://doconcereportdemo.wordpress.com/) for blog posts
  * [MediaWiki](http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page) (Wikipedia, Wikibooks, etc)
@@ -338,52 +406,17 @@ formats, such as LaTeX or Sphinx. The generated code is clean.
 
 
 <!-- !split -->
-### DocOnce experience: code generation is a great thing
+### DocOnce experience
 
 
-Regardless of what format you write in, introduce a step where
-you can generate (parts of) the syntax.
-
- * Use a preprocessor a la Mako
- * Write your own read-and-generate code
- * or both (like DocOnce)
-
-Advantages:
-
- * Less writing
- * Repository of syntax for nice constructions
- * Implements structure/rules across documents
- * Easier to change layout/structure
+ * Code generation is a great thing
+ * Preprocessors a la Mako is a great thing
+ * Less tagging than LaTeX/HTML is a great thing
+ * Code generation software becomes a repository of
+   advanced and nice constructs for layout
 
 
 
-<!-- !split -->
-### Example: generate reveal.js or deck.js slides from HTML
-
- * Write the content of each slide in plain HTML(5)
- * Use e.g. `#slide` as delimiter between slides
- * Read file, splitting wrt `#slide` yields a list of
-   slides (HTML code)
- * For a specific format (reveal.js, deck.js, csss, ...):
-    * write header
-    * for slide in slides:
-      * embed slide in correct HTML code
-
-    * write footer
-
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.HTML}
-<h2>Scope of this presentation</h2>
-<ul>
-  <li>Focus: documents with much <em>math</em> and
-      <em>computer code</em>
-  <li>Key question: What tools should I use for scientific writing?
-</ul>
-<p><div class="alert">
-The default answer is LaTeX.
-</div>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
 ## A tour of DocOnce
@@ -945,6 +978,28 @@ Conclusion:
 
 
 <!-- !split -->
+### Generalized references
+
+ * Chapters can be stand-alone documents or parts of a book
+ * In a book you frequently refer to other chapters
+ * When a chapter is a stand-alone document, it must refer to
+   another stand-alone chapter document
+ * This requires *generalized cross-referencing*
+ * LaTeX has a solution: `xr`
+ * DocOnce has a solution also for HTML, Sphinx, Markdown, ...
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ref[internal][latex cite][external]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+...as shown in ref[Section ref{sec:eqs}][ in cite{math_eqs_2020}][
+the document "Mathematical Equations":
+"http://some.net/doc/matheqs.html" cite{math_eqs_2020}].
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!-- !split -->
 ### Slides
 
 Very effective way to generate slides from running text:
@@ -1244,7 +1299,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 
 <!-- !split -->
-### Writing tips for LaTeX writers who want to convert to DocOnce
+### Writing tips for LaTeX writers who want to convert to DocOnce *and generate other formats*
 
  * `doconce latex2doconce` helps the translation
  * Use `\[ \]`, `equation`, `equation*`, `align`, `align*` and nothing more for
@@ -1252,7 +1307,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Figures: avoid subfigures (combine image files instead), use `\includegraphics`, have captions after graphics, use short figure captions, position exactly where needed
  * Tables: have them inline (not floating), with no caption
  * Computer codes: have them inline (not floating)
- * Avoid footnotes, `pageref`
+ * Rewrite all `pageref` commands
  * Do not use *algorithm* environments, use simple list formatting instead
  * Avoid math in section headings
  * Use `pdflatex` or `xetex`

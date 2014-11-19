@@ -127,8 +127,8 @@ doconce format html sw_index.do.txt --html_style=bootstrap_bloodish --html_links
 cp sw_index.html $dest/index.html
 
 #drop demo part
-#echo 'STOPPED HERE AND SKIPPED COMPILING DEMO TALK!'
-#exit
+echo 'STOPPED HERE AND SKIPPED COMPILING DEMO TALK!'
+exit
 
 # --------- short demo talk ------------
 
