@@ -226,7 +226,20 @@ def pandoc_table(table):
 def pandoc_figure(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
-    text = '![%s](%s)' % (caption, filename)
+    opts = m.group('options').strip()
+
+    if opts:
+        info = [s.split('=') for s in opts.split()]
+        opts = ' '.join(['%s=%s' % (opt, value)
+                         for opt, value in info if opt not in ['frac']])
+
+    # Save raw html with width etc in a comment so we have that info
+    if caption:
+        caption = '<p><em>%s</em></p>' % caption
+    text = '<!-- <img src="%s" %s>%s -->\n' % (filename, opts, caption)
+    text += '![%s](%s)' % (caption, filename)
+    # regex for turning the figure spec into raw html:
+    # re.sub(r'^<!-- (<img.+?>.*) -->\n!\[.+$', r'\g<1>', text, flags=re.MULTILINE)
     #print 'pandoc_figure:', text
     return text
 

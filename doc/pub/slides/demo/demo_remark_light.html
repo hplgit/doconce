@@ -48,9 +48,9 @@ class: center, middle
 ###**Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 
 
-### Nov 22, 2014
+### Nov 23, 2014
 
-.center[<img src="fig/CN_logo.png" width=80%/>]
+.center[<img src="fig/CN_logo.png" width=300>]
 
 
 <!-- Each slide starts with !split and a title inside 5 = on each side -->
@@ -82,7 +82,7 @@ demonstrated.
 # Problem setting and methods
 <!-- Short title: Problem -->
 
-.center[<img src="fig/method.png" width=80%/>]
+.center[<img src="fig/method.png" width=600>]
 
 
 ---
@@ -98,12 +98,11 @@ u'(t) = -au(t)
 $$
 
 $$
-\begin{equation}
+\begin{equation}  
 u(0)  = I
 \label{initial:value}
 \end{equation}
 $$
-
 
 Here,
 
@@ -112,7 +111,7 @@ Here,
  * \\( u(t) \\) is the unknown function
  * The ODE \eqref{ode} has the initial condition \eqref{initial:value}
 
-.center[<img src="fig/teacher2.jpg" width=80%/>]
+.center[<img src="fig/teacher2.jpg" width=250>]
 ---
 
 ## The ODE problem is solved by a finite difference scheme
@@ -150,7 +149,7 @@ schemes.
 
 ## Implementation
 
-*Implementation in a Python function:*
+*Implementation in a Python function:* 
 
 
 ```Python
@@ -175,14 +174,14 @@ def solver(I, a, T, dt, theta):
 
 # Results
 
-.center[<img src="fig/results.jpg" width=80%/>]
+.center[<img src="fig/results.jpg" width=600>]
 
 ---
 
 ## The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone
 
 
-.center[<img src="fig/CN.png" width=80%/>]
+.center[<img src="fig/CN.png" width=600>]
 
 ---
 
@@ -191,8 +190,9 @@ def solver(I, a, T, dt, theta):
 Exact solution of the scheme:
 
 $$
- u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .
+u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .
 $$
+
 Key results:
 
 * Stability: \\( |A| < 1 \\)
@@ -200,7 +200,7 @@ Key results:
  * \\( \Delta t < 1/a \\) for Forward Euler (\\( \theta=0 \\))
  * \\( \Delta t < 2/a \\) for Crank-Nicolson (\\( \theta=1/2 \\))
 
-*Concluding remarks:*
+*Concluding remarks:* 
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 

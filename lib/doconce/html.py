@@ -1094,13 +1094,13 @@ def html_figure(m):
     filename = m.group('filename').strip()
     opts = m.group('options').strip()
 
-    if not filename.startswith('http'):
-        add_to_file_collection(filename)
-
     if opts:
         info = [s.split('=') for s in opts.split()]
-        opts = ' ' .join(['%s=%s' % (opt, value)
-                          for opt, value in info if opt not in ['frac']])
+        opts = ' '.join(['%s=%s' % (opt, value)
+                         for opt, value in info if opt not in ['frac']])
+
+    if not filename.startswith('http'):
+        add_to_file_collection(filename)
 
     if caption:
        # Caption above figure and a horizontalrule (fine for anchoring):
