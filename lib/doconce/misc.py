@@ -4791,9 +4791,13 @@ code {
     # MathJax?
     mathjax = ''
     if '$' in filestr:
+        # Fix inline math $...$ to \\( ... \\)
         filestr = re.sub(r'([^$])\$([^$]+)\$([^$])',
                          r'\g<1>\\\\( \g<2> \\\\)\g<3>', filestr,
                          flags=re.DOTALL)
+        # Remove newlines after $$
+        filestr = re.sub(r'^\$\$\n+', '$$\n', filestr, flags=re.MULTILINE)
+        # Insert MathJax script and newcommands
         from html import mathjax_header
         mathjax = mathjax_header(filestr)
 
