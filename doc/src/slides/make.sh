@@ -127,8 +127,8 @@ doconce format html sw_index.do.txt --html_style=bootstrap_bloodish --html_links
 cp sw_index.html $dest/index.html
 
 #drop demo part
-echo 'STOPPED HERE AND SKIPPED COMPILING DEMO TALK!'
-exit
+#echo 'STOPPED HERE AND SKIPPED COMPILING DEMO TALK!'
+#exit
 
 # --------- short demo talk ------------
 
@@ -175,6 +175,14 @@ cp demo.html demo_${slide_tp}_uio_simula.html
 system doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
 system doconce slides_html demo reveal --html_slide_theme=solarized
 cp demo.html demo_reveal_solarized_plainpre.html
+
+# Remark slides
+system doconce format pandoc demo --github_md SLIDE_TYPE=remark SLIDE_THEME=light
+system doconce slides_markdown demo remark --slide_theme=light
+cp demo.html demo_remark_light.html
+system doconce format pandoc demo --github_md SLIDE_TYPE=remark SLIDE_THEME=dark
+system doconce slides_markdown demo remark --slide_theme=dark
+cp demo.html demo_remark_dark.html
 
 # LaTeX Beamer slides
 themes="blue_plain blue_shadow red_plain red_shadow dark_gradient vintage cbc simula"
