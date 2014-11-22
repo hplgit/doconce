@@ -353,6 +353,7 @@ document): `doconce format pandoc` and then translating using `doconce
 md2latex` (which runs `pandoc`), or `doconce format latex`, and then
 going from LaTeX to the desired format using `pandoc`.
 Here is an example on the latter strategy:
+
 !bc sys
 Terminal> doconce format latex mydoc
 Terminal> doconce ptex2tex mydoc

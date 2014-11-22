@@ -28,6 +28,7 @@ from doconce.misc import (
     slides_html,
     split_html,
     slides_beamer,
+    slides_markdown,
     html_colorbullets,
     md2html,
     md2latex,
@@ -898,6 +899,7 @@ split_rst
 split_html
 slides_html
 slides_beamer
+slides_markdown
 latin2html
 grep
 latex_header
@@ -992,6 +994,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...

@@ -2135,10 +2135,14 @@ to MS Word. Note that only a subset of LaTeX will be translated
 correctly, and mathematics is notoriously difficult and unpredicatble.
 
 Conversion to ePub format can go via HTML and the "Calibre":
-"http://calibre-ebook.com/" tools. Also Pandoc can generate ePub.
-The ePub3 format support mathematics via MathML.
-Some dicussions of this topic appear on
-"tex.stachexchange": "http://tex.stackexchange.com/questions/1551/use-latex-to-produce-epub".
+"http://calibre-ebook.com/" tools. Also Pandoc can generate ePub.  The
+ePub3 format support mathematics via MathML.  Some dicussions of this
+topic appear on "tex.stachexchange":
+"http://tex.stackexchange.com/questions/1551/use-latex-to-produce-epub". The
+"LaTeXML": "http://dlmf.nist.gov/LaTeXML/" program can convert LaTeX
+to XML and XHTML and can be a good starting point for further
+conversionto ePub, but the plain `latexml` fails miserably on LaTeX
+documents generated from DocOnce (the present manual to be precise).
 
 A converter to iBooks would be nice, but it is not feasible before
 iBooks documents get better support for LaTeX mathematics.

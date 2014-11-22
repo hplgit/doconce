@@ -315,6 +315,21 @@ doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=sola
 doconce slides_html demo doconce --nav_button=text
 !ec
 
+===== Markdown "Remark": "http://remarkjs.com/" =====
+
+"Remark light/white style": "demo_remark_light.html" (default style)
+
+!bc sys
+doconce format pandoc demo --github_md SLIDE_TYPE=remark SLIDE_THEME=light
+doconce slides_markdown demo remark --slide_theme=light
+!ec
+
+"Remark dark/brown style": "demo_remark_dark.html"
+
+!bc sys
+doconce format pandoc demo --github_md SLIDE_TYPE=remark SLIDE_THEME=dark
+doconce slides_markdown demo remark --slide_theme=dark
+!ec
 
 ===== LaTeX Beamer PDF =====
 
