@@ -4795,8 +4795,14 @@ code {
         filestr = re.sub(r'([^$])\$([^$]+)\$([^$])',
                          r'\g<1>\\\\( \g<2> \\\\)\g<3>', filestr,
                          flags=re.DOTALL)
-        # Remove newlines after $$
-        filestr = re.sub(r'^\$\$\n+', '$$\n', filestr, flags=re.MULTILINE)
+        # Remove newlines before and after equations inside $$--$$
+        def subst(m):
+            eq = m.group(1).strip()
+            print 'XXX [%s]' % eq
+            return '$$\n%s\n$$\n\n' % eq
+
+        filestr = re.sub(r'^\$\$\n+(.+?)\$\$\n+', subst,
+                         filestr, flags=re.MULTILINE|re.DOTALL)
         # Insert MathJax script and newcommands
         from html import mathjax_header
         mathjax = mathjax_header(filestr)
@@ -4804,6 +4810,12 @@ code {
     # Fixes
     filestr = re.sub(r'^## ', '# ', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^### ', '## ', filestr, flags=re.MULTILINE)
+    # Turn figures to HTML
+    filestr = re.sub(r'^<!-- (<img.+?>.*) -->\n!\[.+$', r'.center[\g<1>]',
+                     filestr, flags=re.MULTILINE)
+    #filestr = re.sub(r'^!\[(.*?)\]\((.+?)\)',
+    #                 '.center[<img src="\g<2>" width=80%/>]',
+    #                 filestr, flags=re.MULTILINE)
 
     lines = filestr.splitlines()
     # Find title, author and date
@@ -4840,10 +4852,6 @@ code {
         filestr = filestr.replace('<!-- !split -->', '---\nclass: inverse\n')
     else:
         filestr = filestr.replace('<!-- !split -->', '---\n')
-    # Figures
-    filestr = re.sub(r'^!\[(.*?)\]\((.+?)\)',
-                     '.center[<img src="\g<2>" width=80%/>]',
-                     filestr, flags=re.MULTILINE)
     main = filestr
     template = template % vars()
     filename = filename.replace('.md', '.html')
