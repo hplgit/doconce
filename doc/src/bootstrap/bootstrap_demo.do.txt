@@ -1,35 +1,55 @@
-TITLE: DocOnce Demo of the Bootstrap style
+TITLE: Demo of the Bootstrap style
 
-DocOnce supports a variety of Bootstrap styles in a simple
-way:
+DocOnce supports a variety of Bootstrap styles for HTML
+documents. To get the `journal` Bootswatch style, run
+
 
 !bc sys
-Terminal> doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
+Terminal> doconce format html mydoc --html_style=bootswatch_journal
 !ec
 
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap, resulting in large fonts on gray background.
-If a `!split` command is used before the first
-section heading, a button with `Read...` and a link to the next page
-is inserted if the document is split using `doconce split_html`.  This
+from Bootstrap, resulting in large fonts on gray background.  If a
+`!split` command is used before the first section heading or `TOC: on`
+instruction, a button with `Read...` and a link to the next page is
+inserted if the document is split using `doconce split_html`.  This
 construction results in a short Bootstrap main page that has become
-very popular on web the last couple of years. The `--html_bootstrap_jumbotron=value` option can be used to adjust the jumbotron: `value` can be `on`, `off`,
-or `h2`. In the latter case a smaller `h2` heading is used rather than
-`h1` (which results in a quite large font).
-
-A multiple-page document is created by inserting `!split` at desired
-places. `doconce split_html` splits the document and inserts
-navigation button (previous and next page) at the bottom of each
-page. The option `--pagination` can be added as option to the `doconce
-split_html` command to get a different navigation bar at the bottom
-where also the page number si seen.
+very popular on web the last couple of years.  The
+`--html_bootstrap_jumbotron=value` option can be used to adjust the
+jumbotron: `value` can be `on` (default), `off` (to turn the gray
+background and large fonts off), or `h2` (to replace the large font in
+the document title by a smaller font).
 
 # A split before the first section will enable a button in the jumbotron
 # for going to the first real page
 
 !split
 ========= More details on writing DocOnce documents with Bootstrap layout =========
+
+======= Navigation =======
+
+A multiple-page document is as usual created by inserting `!split` at
+desired places, usually before selected sections.  `doconce
+split_html` splits the document and inserts navigation button
+(previous and next page) at the bottom of each page. The option
+`--pagination` can be specified as part of the `doconce split_html`
+command to get a different navigation bar at the bottom where also the
+page number is seen.
+
+!bc sys
+Terminal> doconce format html mydoc --html_style=bootstrap_bluegray
+Terminal> doconce split_html mydoc --pagination
+!ec
+
+The top navigation bar has two links. The title to the left brings you back to
+the first page of the document. The *Content* link to the right has
+a table of contents pull down menu. For large documents, the table of
+contents can be very long, and in those cases, subsections are dropped
+to make the pull down menu shorter than the page height. The
+navigation bar on top can be turned off by the option
+`--html_bootstrap_navbar=off` to the `doconce format` command.
+
 
 ======= Themes =======
 

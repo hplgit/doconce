@@ -417,7 +417,7 @@ def define(FILENAME_EXTENSION,
     # with Bootstrap themes?
     if option('strapdown'):
         # Themes
-        boostrap_bootwatch_theme = option('bootwatch_theme=', 'spacelab')
+        boostrap_bootwatch_theme = option('bootswatch_theme=', 'spacelab')
         # Grab title
         title = ''
         if 'TITLE:' in filestr:
