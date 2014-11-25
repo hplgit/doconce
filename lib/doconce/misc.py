@@ -66,7 +66,7 @@ bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
 bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
                 (dark:) amelia, cyborg, darkly, slate, spruce,
-                superhero (demo: bootswatch.com"""),
+                superhero (demos at bootswatch.com)"""),
     ('--html_code_style=',
      """on, off, inherit, transparent: enable normal inline verbatim font
 where foreground and background color is inherited from the
@@ -352,8 +352,9 @@ Any filename can be specified: --md2do_output=myfile.do.txt"""),
      """Wrap Markdown output in HTML header/footer such that the
 output file (renamed as .html) can automatically be rendered as
 an HTML via strapdownjs.com technology. Combine with --github_md
-for richer output. Styles are set with --bootwatch_theme=cyborg
+for richer output. Styles are set with --bootswatch_theme=cyborg
 (for instance)."""),
+    ('--bootswatch_theme=', 'Bootswatch theme for use with --strapdown option.'),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ('--quiz_question_prefix=', """\
@@ -6252,7 +6253,8 @@ tmp_stripped_file1.do.txt: the original files are stripped off for
 various constructs that cause trouble in spelling and the stripped
 text is found in files with a filename prefix tmp_stripped_ (this file
 can be checked for spelling and grammar mistakes in MS Word, for
-instance).
+instance, but a better method might be to translate the entire
+DocOnce document to HTML and import that HTML code into Word.)
 
 Usage
 -----
@@ -8836,8 +8838,8 @@ def fix_bibtex4publish():
         f.writelines(lines)
         f.close()
 
-def _usage_cvs2table():
-    print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;]'
+def _usage_csv2table():
+    print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;] > outfile'
 
 def csv2table():
     """Convert a csv file to a DocOnce table."""
