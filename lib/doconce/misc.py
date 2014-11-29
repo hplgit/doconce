@@ -2400,7 +2400,7 @@ def _usage_slides_html():
     print """
 Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name
 
-slide_types: reveal deck csss dzslides'
+slide_type: reveal deck csss dzslides
 note: reveal and deck slide styles are doconce variants, different from the
 original styles
 

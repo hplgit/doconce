@@ -3931,6 +3931,10 @@ def format_driver():
         print 'Other -Dvar or -Dvar=value options can be added'
         sys.exit(1)
 
+    # Treat some synonyms of format
+    if format == 'markdown':
+        format = 'pandoc'
+
     names = supported_format_names()
     if format not in names:
         print '%s is not among the supported formats:\n%s' % (format, names)
