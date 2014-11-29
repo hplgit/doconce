@@ -21057,10 +21057,12 @@ of course remain a tilde in those contexts.)
 Test of figures. In particular we refer to [Figure](#fig:impact) in which
 there is a flow.
 
-![Visualization of a wave. <a name="fig:impact"/>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <a name="fig:impact"/></em></p> -->
+![<p><em>Visualization of a wave. <a name="fig:impact"/></em></p>](../doc/src/manual/fig/wave1D.png)
 
 Figures without captions are allowed and will be inlined.
 
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200> -->
 ![](../doc/src/manual/fig/wave1D.png)
 
 
@@ -21070,12 +21072,14 @@ Figures without captions are allowed and will be inlined.
 Here is [figure](#myfig) with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p> -->
+![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p>](../doc/src/manual/fig/wave1D.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
 Test URL as figure name:
 
+<!-- <img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" width=500,> -->
 ![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
 
 
@@ -25182,10 +25186,12 @@ of course remain a tilde in those contexts.)
 Test of figures. In particular we refer to [Figure](#fig:impact) in which
 there is a flow.
 
-![Visualization of a wave. <a name="fig:impact"/>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <a name="fig:impact"/></em></p> -->
+![<p><em>Visualization of a wave. <a name="fig:impact"/></em></p>](../doc/src/manual/fig/wave1D.png)
 
 Figures without captions are allowed and will be inlined.
 
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200> -->
 ![](../doc/src/manual/fig/wave1D.png)
 
 
@@ -25195,12 +25201,14 @@ Figures without captions are allowed and will be inlined.
 Here is [figure](#myfig) with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-![A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p> -->
+![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p>](../doc/src/manual/fig/wave1D.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
 Test URL as figure name:
 
+<!-- <img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" width=500,> -->
 ![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
 
 
@@ -37855,6 +37863,10 @@ system doconce slides_html slides1 deck --html_slide_theme=web-2.0
 
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
+
+system doconce format markdown slides1 --github_md --pygments_html_style=emacs
+system doconce slides_markdown slides1 remark --slide_theme=light
+cp slides1.html slides1_remark.html
 
 # The toughest test of slides1 is with minted code envir
 rm -f *.aux
@@ -56992,6 +57004,14 @@ doconce format html slides1 --pygments_html_style=fruity --keep_pygments_html_bg
 doconce slides_html slides1 reveal --html_slide_theme=night
 cp slides1.html slides1_reveal_night.html
 
+doconce format html slides1 --pygments_html_style=native --keep_pygments_html_bg SLIDE_TYPE=remark SLIDE_THEME=dark
+doconce slides_html slides1 remark --html_slide_theme=dark
+cp slides1.html slides1_remark_dark.html
+
+doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=remark SLIDE_THEME=light
+doconce slides_html slides1 remark --html_slide_theme=light
+cp slides1.html slides1_remark_light.html
+
 doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=deck SLIDE_THEME=cbc
 doconce slides_html slides1 deck --html_slide_theme=cbc
 cp slides1.html slides1_deck_cbc.html
@@ -58257,6 +58277,197 @@ horizontal-slide.css
 horizontal-slide.scss
 vertical-slide.css
 vertical-slide.scss
+
+************** File: slides1_remark.html *****************
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<style type="text/css">
+   @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+   @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+   @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+body { font-family: 'Droid Serif'; }
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+}
+.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+</style>
+</head>
+
+<body>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<textarea id="source">
+
+class: center, middle
+
+# Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides
+
+
+###**Hans Petter Langtangen** at Simula Research Laboratory and University of Oslo
+
+
+### Jan 32, 2100
+
+---
+
+# This is the first section
+<!-- Short title: First -->
+
+---
+
+## Figure and bullet list
+
+*Title with comma, and brackets: \\( [a,b] \\)* 
+  * Here is a *wave signal* \\( f(x-ct) \\)
+  * It moves with velocity \\( c \\)
+  * But here it is just a figure
+
+
+.center[<img src="../doc/src/manual/fig/wave1D.png" width=300>]
+
+
+---
+
+## Slide with pop-ups in red and notes
+
+[hpl 1: Comments are typeset as usual in DocOnce.]
+
+<!-- !bpop highlight-red -->
+Here we have a paragraph to pop up in red.\n
+And a line more
+<!-- !bnotes -->
+One can also have ordinary notes.
+Over multiple lines.
+<!-- !enotes -->
+
+---
+
+## A LaTeX document
+
+
+```
+\documentclass[11pt]{article}
+\usepackage{fancyvrb}
+\begin{document}
+
+\title{Here goes the title...}
+\author{John Doe \and
+Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
+\date{\today}
+\maketitle
+```
+
+*Notice.* 
+LaTeX has a lot of backslashes.
+
+
+```
+\section{Heading}
+bla-bla
+\end{document}
+```
+
+---
+
+## An HTML document
+
+
+```html
+<html><head></head><body bgcolor="red">
+<title>Here goes the title...<title>
+<h1>Section heading</h1>
+</body>
+</html>
+```
+
+---
+
+# Second section
+
+.center[<img src="../doc/src/manual/fig/wave1D.png" width=600>]
+
+
+
+---
+
+## Some math and computer code
+
+
+*A simple, mathematical formula where \\( t\in [0,\pi] \\):* 
+$$
+f(x,y,t) = e^{-xt}\sin\pi y
+$$
+
+*Bash demanded more of DocOnce than Python, so let's do Bash:* 
+First, inline `\\( ? != 0`, then comments with dollar variables (and minted
+style):
+
+
+```shell
+var=10
+#  \\)1, \\( 2, ... are command-line args
+if [  \\)? -eq 0 ]; then   # $? reflects success or not
+  echo "Great!"
+fi
+```
+
+
+
+---
+
+## Various admon blocks
+
+Can use admons to simulate blocks:
+
+*Key PDE (with large title and math font):* 
+$$
+\frac{\partial u}{\partial t} = \nabla^2 u
+$$
+
+*None* 
+Just some block with text and a conclusion that something is important.
+This one pops up after the rest of the slide.
+
+
+Can use, e.g., a warning admon to have my own notes, preferably
+inside preprocess/mako if statements to turn notes on and off.
+This one is typeset in a small font and with the default
+title (Warning) since no title is specified.
+
+
+
+
+</textarea>
+<script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  var slideshow = remark.create();
+</script>
+</body>
+</html>
 
 ************** File: slides1.p.tex *****************
 %%
@@ -64627,7 +64838,7 @@ i,h_i,\bar T_i,L_i
 > There is a problem with the `f(x)` function
 > 
 > 
-> ```Python
+> ```python
 > def f(x):
 >     return 1 + x
 > ```
@@ -64639,7 +64850,7 @@ i,h_i,\bar T_i,L_i
 OK, this is fixed:
 
 
-```Python
+```python
 def f(x, a=1, b=1, c=1):
     return a*x**2 + b*x + c
 ```
@@ -69299,7 +69510,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f8cff7488c0>
+verbatim is to be replaced using <function html_verbatim at 0x7f1565133938>
 
 
 First occurence: " `mako`."
@@ -73256,7 +73467,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Nov  3 10:25:56 2014.
+# sphinx-quickstart on Sat Nov 29 08:42:00 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76710,7 +76921,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -76775,6 +76986,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
@@ -78309,7 +78523,7 @@ list of capabilities:
 
 \bshpro
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -78374,6 +78588,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
@@ -79540,7 +79757,7 @@ transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -79605,6 +79822,9 @@ list of capabilities::
         
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
+        
+        # create Remark slides from Markdown
+        doconce slides_markdown complete_file.md remark --slide_style=light
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
@@ -80823,7 +81043,7 @@ list of capabilities:
 .. code-block:: bash
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -80888,6 +81108,9 @@ list of capabilities:
         
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
+        
+        # create Remark slides from Markdown
+        doconce slides_markdown complete_file.md remark --slide_style=light
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
@@ -81986,7 +82209,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -82051,6 +82274,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
@@ -83195,7 +83421,7 @@ list of capabilities:
 
 <syntaxhighlight lang="bash">
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -83260,6 +83486,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
@@ -84347,7 +84576,7 @@ list of capabilities:
 
 {{{
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -84412,6 +84641,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
@@ -85452,7 +85684,7 @@ transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -85517,6 +85749,9 @@ list of capabilities::
         
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
+        
+        # create Remark slides from Markdown
+        doconce slides_markdown complete_file.md remark --slide_style=light
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
@@ -86560,7 +86795,7 @@ transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -86625,6 +86860,9 @@ list of capabilities::
         
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
+        
+        # create Remark slides from Markdown
+        doconce slides_markdown complete_file.md remark --slide_style=light
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
@@ -87726,7 +87964,7 @@ transforming a .do.txt file to some format. Here is the
 list of capabilities::
 
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
         
         # transform doconce file to another format
@@ -87791,6 +88029,9 @@ list of capabilities::
         
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
+        
+        # create Remark slides from Markdown
+        doconce slides_markdown complete_file.md remark --slide_style=light
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
@@ -88967,9 +89208,9 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Shell}
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -89034,6 +89275,9 @@ doconce slides_html slide_type complete_file.html
 
 # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
 doconce slides_beamer complete_file.tex
+
+# create Remark slides from Markdown
+doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
@@ -94560,6 +94804,18 @@ slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_deck.html
 + /bin/ls -R deck.js
++ system doconce format markdown slides1 --github_md --pygments_html_style=emacs
++ doconce format markdown slides1 --github_md --pygments_html_style=emacs
+translating doconce text in slides1.do.txt to pandoc
+output in slides1.md
++ '[' 0 -ne 0 ']'
++ system doconce slides_markdown slides1 remark --slide_theme=light
++ doconce slides_markdown slides1 remark --slide_theme=light
+XXX [f(x,y,t) = e^{-xt}\sin\pi y]
+XXX [\frac{\partial u}{\partial t} = \nabla^2 u]
+remark slides in slides1.html
++ '[' 0 -ne 0 ']'
++ cp slides1.html slides1_remark.html
 + rm -f testdoc.aux
 + system doconce format pdflatex slides1 --latex_title_layout=beamer
 + doconce format pdflatex slides1 --latex_title_layout=beamer
@@ -104504,16 +104760,16 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [13]
-Overfull \hbox (3623.00006pt too wide) 
+Overfull \hbox (3719.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
 e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
-it_html slides_html slides_beamer latin2html grep latex_header latex_footer lat
-ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
-_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
-t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
-f gitdiff fix_bibtex4publish csv2table  
+it_html slides_html slides_beamer slides_markdown latin2html grep latex_header 
+latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels 
+teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocs
+tr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygment
+ize makefile diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -104584,6 +104840,10 @@ Overfull \hbox (95.00006pt too wide)
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
 
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
+light  
+
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
@@ -104647,7 +104907,7 @@ various formats
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-
+[16]
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -104655,7 +104915,7 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-[16]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
@@ -104670,11 +104930,11 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-
+[17]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
-[17]
+
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
@@ -105015,16 +105275,16 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [14]
-Overfull \hbox (3623.00006pt too wide) 
+Overfull \hbox (3719.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
 e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
-it_html slides_html slides_beamer latin2html grep latex_header latex_footer lat
-ex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix
-_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_forma
-t linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile dif
-f gitdiff fix_bibtex4publish csv2table  
+it_html slides_html slides_beamer slides_markdown latin2html grep latex_header 
+latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels 
+teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocs
+tr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygment
+ize makefile diff gitdiff fix_bibtex4publish csv2table  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -105095,6 +105355,10 @@ Overfull \hbox (95.00006pt too wide)
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
 
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
+light  
+
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
@@ -105115,10 +105379,10 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []        \T1/pcr/m/n/10 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{q
 uote}  
-
+[16]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-[16]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -105169,10 +105433,10 @@ l files
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
-
+[17]
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
-[17]
+
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 

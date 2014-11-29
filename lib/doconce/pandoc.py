@@ -100,13 +100,16 @@ def pandoc_code(filestr, code_blocks, code_block_types,
 
     if not option('strict_markdown_output'):
         # Mapping of envirs to correct Pandoc verbatim environment
-        defs = dict(cod='Python', pycod='Python',
-                    cppcod='Cpp', fcod='Fortran', ccod='C',
-                    pro='Python', pypro='Python',
-                    cpppro='Cpp', fpro='Fortran', cpro='C',
+        defs = dict(cod='Python', pro='Python',
+                    pycod='Python', pypro='Python',
+                    ccod='C', cpro='C',
+                    cppcod='Cpp', cpppro='Cpp',
+                    fcod='Fortran', fpro='Fortran',
                     rbcod='Ruby', rbpro='Ruby',
                     plcod='Perl', plpro='Perl',
-                    htmlcod='HTML', htmlpro='HTML',
+                    shcod='Shell', shpro='Shell',
+                    jscod='JavaScript', jspro='JavaScript',
+                    htmlcod='HTML', htmlpro='HTML', html='HTML',
                     # sys, dat, csv, txt: no support for pure text,
                     # just use a plain text block
                     #sys='Bash',
@@ -114,6 +117,9 @@ def pandoc_code(filestr, code_blocks, code_block_types,
                     ipy='Python', pyshell='Python')
             # (the "Python" typesetting is neutral if the text
             # does not parse as python)
+        if github_md:
+            for key in defs:
+                defs[key] = defs[key].lower()
 
         # Code blocks apply the ~~~~~ delimiter, with blank lines before
         # and after
