@@ -30,10 +30,10 @@ def debugpr(heading='', text=''):
 from common import *
 from common import _abort  # needs explicit import because of leading _
 from misc import option, which
-import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb
+import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml
 
 def supported_format_names():
-    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb'
+    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'xml'
 
 def doconce_envirs():                     # begin-end environments
     return ['c', 't',                     # verbatim and tex blocks
@@ -3145,9 +3145,9 @@ def doconce2format(filestr, format):
 
     def report_progress(msg):
         """Write a message about the progress if CPU time of a task takes time."""
+        global _t1
         cpu_accumulated = time.time() - _t0
         cpu_last_task = time.time() - _t1
-        global _t1
         _t1 = time.time()
         if cpu_last_task > report_cpu_time:
             print '\n...doconce translation:', msg, '%.1f s' % cpu_last_task, '(accumulated time: %.1f)' % cpu_accumulated
@@ -3164,7 +3164,7 @@ def doconce2format(filestr, format):
            LIST, ARGLIST,TABLE, EXERCISE, FIGURE_EXT, CROSS_REFS, INDEX_BIB, \
            TOC, ENVIRS, INTRO, OUTRO
 
-    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb:
+    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml:
         #print 'calling define function in', module.__name__
         module.define(
             FILENAME_EXTENSION,
