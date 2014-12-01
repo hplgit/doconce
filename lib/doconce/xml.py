@@ -514,7 +514,7 @@ def define(FILENAME_EXTENSION,
     keywords = ','.join(keywords).replace('!', ' ')
 
     if keywords:
-        meta_tags += '<meta name="keywords" content="%s">\n' % keywords
+        meta_tags = '<meta name="keywords" content="%s">\n' % keywords
         INTRO['xml'] += """\
 <keywords>%s</keywords>
 """ % (meta_tags)
