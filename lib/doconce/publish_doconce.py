@@ -555,3 +555,226 @@ rst_format = {
     "talks"         : rst_format_talks,
     "posters"       : rst_format_posters,
     "misc"          : rst_format_misc}
+
+
+#------------------------------------------------------------------------------
+# XML formatting
+#------------------------------------------------------------------------------
+
+def xml_format_articles(paper):
+    "Return string for article in XML format"
+    values = []
+
+    # Key
+    values.append(_xml('key', paper))
+
+    # Author
+    values.append(_xml_get_authors_string(paper["author"]))
+
+    # Title
+    values.append(_xml_format_title(paper))
+
+    # Journal
+    values.append('<journal>%s</journal>' %
+                  _format_venue(paper["journal"], paper["journal"], paper))
+
+    for tag in ['volume', 'number', 'pages', 'doi', 'arxiv', 'year', 'url']:
+        if tag in paper:
+            values.append(_xml(tag, paper))
+
+    return _xml_join(values)
+
+def xml_format_books(paper):
+    "Return string for book in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    values.append(_xml("publisher", paper))
+    values.append(_xml("year", paper))
+    if "doi" in paper: values.append(_xml('doi', paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_edited(paper):
+    "Return string for edited book in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    values.append(paper["publisher"])
+    values.append(paper["year"])
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_chapters(paper):
+    "Return string for chapter in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    values.append(_xml("booktitle", paper))
+    values.append(_xml_format_editors(paper))
+    values.append(_xml("publisher", paper))
+    if "chapter" in paper: values.append(_xml("chapter", paper))
+    if "pages" in paper: values.append(_xml_format_pages(paper["pages"]))
+    values.append(_xml('year', paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_proceedings(paper):
+    "Return string for proceeding in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    values.append(_xml_format_booktitle(paper))
+    if "editor" in paper: values.append(_xml_format_editors(paper))
+    if "publisher" in paper: values.append(_xml("publisher", paper))
+    values.append(_xml("year", paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_reports(paper):
+    "Return string for report in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    if "institution" in paper: values.append(_xml_format_institution(paper))
+    if "number" in paper: values.append(_xml("number", paper))
+    values.append(_xml("year", paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_manuals(paper):
+    "Return string for manual in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    if "year" in paper: values.append(_xml("year", paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_theses(paper):
+    "Return string for thesis in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    values.append(thesistype_strings[paper["thesistype"]])
+    if "school" in paper: values.append(_xml("school", paper))
+    values.append(_xml("year", paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_courses(paper):
+    "Return string for course in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    if "institution" in paper: values.append(_xml('institution', paper))
+    if "year" in paper: values.append(_xml('year', paper))
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_talks(paper):
+    "Return string for talk in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    if "meeting" in paper: values.append(paper["meeting"])
+    values.append(paper["year"])
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def xml_format_posters(paper):
+    "Return string for poster in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    if "meeting" in paper: values.append(paper["meeting"])
+    values.append(paper["year"])
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+
+def xml_format_misc(paper):
+    "Return string for misc in XML format"
+    values = []
+    values.append(_xml('key', paper))
+    if "author" in paper:
+        values.append(_xml_get_authors_string(paper["author"]))
+    values.append(_xml_format_title(paper))
+    if "howpublished" in paper:
+        howpublished = paper["howpublished"]
+        values.append(howpublished)
+    if "booktitle" in paper: values.append("in *%s*" % paper["booktitle"])
+    if "meeting" in paper: values.append(paper["meeting"])
+    if "thesistype" in paper: values.append(thesistype_strings[paper["thesistype"]])
+    if "school" in paper: values.append(paper["school"])
+    if "chapter" in paper: values.append("Chapter %s" % paper["chapter"])
+    if "volume" in paper: values.append("vol. %s" % paper["volume"])
+    if "pages" in paper: values.append("pp. %s" % _xml_format_pages(paper["pages"]))
+    if "year" in paper: values.append(paper["year"])
+    if "url" in paper: values.append(_xml('url', paper))
+    return _xml_join(values)
+
+def _xml(key, paper):
+    return '<%s>%s</%s>' % (key, paper[key], key)
+
+def _xml_format_title(paper):
+    "Format title for XML, with or without link to PDF file"
+    if paper["category"] == "courses":
+        title = "<title>%s (%s)</title>" % (paper["title"], paper["code"])
+    else:
+        title = '<title>%s</title>' % paper["title"]
+    return title
+
+def _xml_format_booktitle(paper):
+    return '*%s*' % paper["booktitle"]
+
+def _xml_format_editors(paper):
+    "Convert editor tuple to author string"
+    return "edited by %s" % _xml_get_authors_string(paper["editor"])
+
+def _xml_get_authors_string(authors):
+    "Convert author tuple to author string"
+    authors = [_xml_mark_author(author, short_author(author).strip())
+               for author in authors]
+    return '\n'.join(authors)
+
+def _xml_mark_author(author, text):
+  "Mark the text with bold face if author is in the list of marked authors"
+  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
+    return '<author marked="True">%s</author>' % text
+  else:
+    return '<author marked="False">%s</author>' % text
+
+def _xml_format_pages(pages):
+    if "--" in pages:
+        pages = pages.replace("--", "-")
+    return '<pages>%s</pages>' % pages
+
+def _xml_join(values):
+    return '\n' + '\n'.join(values) + '\n'
+
+xml_format = {
+    "articles"      : xml_format_articles,
+    "books"         : xml_format_books,
+    "edited"        : xml_format_edited,
+    "chapters"      : xml_format_chapters,
+    "proceedings"   : xml_format_proceedings,
+    "refproceedings": xml_format_proceedings,
+    "reports"       : xml_format_reports,
+    "manuals"       : xml_format_manuals,
+    "theses"        : xml_format_theses,
+    "courses"       : xml_format_courses,
+    "talks"         : xml_format_talks,
+    "posters"       : xml_format_posters,
+    "misc"          : xml_format_misc}
+
