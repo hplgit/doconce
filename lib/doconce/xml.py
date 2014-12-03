@@ -785,24 +785,10 @@ def define(FILENAME_EXTENSION,
     keywords = ','.join(keywords).replace('!', ' ')
 
     if keywords:
-        meta_tags += '<meta name="keywords" content="%s">\n' % keywords
-
-
-    INTRO['xml'] = """\
-<!DOCTYPE html>
-<!--
-Automatically generated HTML file from DocOnce source
-(https://github.com/hplgit/doconce/)
--->
-<html>
-<head>
-%s
-
-%s
-</head>
-<body>
-
-    """ % (meta_tags, style)
+        meta_tags = '<meta name="keywords" content="%s">\n' % keywords
+        INTRO['xml'] += """\
+<keywords>%s</keywords>
+""" % (meta_tags)
 
     # document ending:
     OUTRO['xml'] = """

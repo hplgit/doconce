@@ -10,7 +10,11 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
+<<<<<<< HEAD
 :Date: Nov 3, 2014
+=======
+:Date: Dec 1, 2014
+>>>>>>> a9fa917dc77e7261d828cb87eaebf26655a03d9e
 
 **WARNING: This quick reference is very incomplete!**
 

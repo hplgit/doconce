@@ -2143,6 +2143,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 """
+    if 'FIGURE' in filestr:
+        INTRO['latex'] += r"""
+\usepackage{graphicx}
+"""
+
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
        re.search(r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<correction>.*? -> .*?)\]''', filestr, flags=re.DOTALL|re.MULTILINE):
@@ -2198,10 +2203,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             INTRO['latex'] += r'\usepackage{movie15}' + '\n'
         if animated_files:
             if xelatex:
-                INTRO['latex'] += r"""\usepackage[xetex]{animate}
-\usepackage{graphicx}"""
+                INTRO['latex'] += r'\usepackage[xetex]{animate}'
             else:
-                INTRO['latex'] += r'\usepackage{animate,graphicx}'
+                INTRO['latex'] += r'\usepackage{animate}'
+            if 'graphicx' not in INTRO['latex']:
+                INTRO['latex'] += '\n' + r'\usepackage{graphicx}'
+
             INTRO['latex'] += '\n\n'
 
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)

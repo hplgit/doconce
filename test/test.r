@@ -1887,6 +1887,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 % Tools for marking corrections
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
@@ -2991,8 +2993,8 @@ c = a & b
 \paragraph{Quotes.}
 Let us also add a test of quotes such as ``double quotes, with numbers
 like 3.14 and newline/comma and hyphen (as in double-quote)''; written
-in the standard {\LaTeX}-style that gives correct {\LaTeX} formatting and
-ordinary double quotes for all non-{\LaTeX} formats.  Here is another
+in the standard LaTeX-style that gives correct {\LaTeX} formatting and
+ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \code{.txt}.
@@ -3973,9 +3975,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[a4paper]{geometry}
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 % Tools for marking corrections
 \usepackage{soul}
@@ -5216,8 +5220,8 @@ c = a & b
 \paragraph{Quotes.}
 Let us also add a test of quotes such as ``double quotes, with numbers
 like 3.14 and newline/comma and hyphen (as in double--quote)''; written
-in the standard {\LaTeX}-style that gives correct {\LaTeX} formatting and
-ordinary double quotes for all non-{\LaTeX} formats.  Here is another
+in the standard LaTeX--style that gives correct {\LaTeX} formatting and
+ordinary double quotes for all non--LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \texttt{.txt}.
@@ -6243,9 +6247,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[a4paper]{geometry}
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 % Tools for marking corrections
 \usepackage{soul}
@@ -7437,8 +7443,8 @@ c = a & b
 \paragraph{Quotes.}
 Let us also add a test of quotes such as ``double quotes, with numbers
 like 3.14 and newline/comma and hyphen (as in double--quote)''; written
-in the standard {\LaTeX}-style that gives correct {\LaTeX} formatting and
-ordinary double quotes for all non-{\LaTeX} formats.  Here is another
+in the standard LaTeX--style that gives correct {\LaTeX} formatting and
+ordinary double quotes for all non--LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \Verb!.txt!.
@@ -35253,6 +35259,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 % Tools for marking corrections
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
@@ -36386,8 +36394,8 @@ c = a & b
 \paragraph{Quotes.}
 Let us also add a test of quotes such as ``double quotes, with numbers
 like 3.14 and newline/comma and hyphen (as in double-quote)''; written
-in the standard {\LaTeX}-style that gives correct {\LaTeX} formatting and
-ordinary double quotes for all non-{\LaTeX} formats.  Here is another
+in the standard LaTeX-style that gives correct {\LaTeX} formatting and
+ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \code{.txt}.
@@ -39045,7 +39053,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -44226,9 +44234,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -44873,9 +44883,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -45465,9 +45477,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -46064,9 +46078,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -46706,9 +46722,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -47264,9 +47282,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -47868,9 +47888,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -48382,9 +48404,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -48986,9 +49010,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
@@ -58510,9 +58536,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{ptex2tex}
 
@@ -61450,9 +61478,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{ptex2tex}
 
@@ -61986,7 +62016,7 @@ based on HTML and vice versa.
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
 \begin{itemize}
- \item {\LaTeX}-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
+ \item LaTeX-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
 
  \item \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_do.html}}{Plain HTML} or with a \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html}}{template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html}}{another template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html}}{solarized}
 
@@ -62786,7 +62816,7 @@ based on HTML and vice versa.
 \href{{http://hplgit.github.com/teamods/writing_reports/}}{\nolinkurl{http://hplgit.github.com/teamods/writing_reports/}}
 
 \begin{itemize}
- \item {\LaTeX}-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
+ \item LaTeX-based PDF \href{{http://hplgit.github.com/teamods/writing_reports/_static/report.pdf}}{for screen}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf}}{for printing}, \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf}}{for phone}
 
  \item \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_do.html}}{Plain HTML} or with a \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html}}{template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html}}{another template} or \href{{http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html}}{solarized}
 
@@ -64077,9 +64107,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{ptex2tex}
 
@@ -66469,7 +66501,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -66482,7 +66514,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-\usepackage{animate,graphicx}
+\usepackage{animate}
+\usepackage{graphicx}
 
 
 % #ifdef MINTED
@@ -66876,7 +66909,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -66889,7 +66922,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-\usepackage{animate,graphicx}
+\usepackage{animate}
+\usepackage{graphicx}
 
 
 
@@ -67276,7 +67310,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -67290,7 +67324,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconce:movie:counter}
 \usepackage{media9}
 \usepackage{movie15}
-\usepackage{animate,graphicx}
+\usepackage{animate}
+\usepackage{graphicx}
 
 
 
@@ -69510,7 +69545,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f1565133938>
+verbatim is to be replaced using <function html_verbatim at 0x7effb1195938>
 
 
 First occurence: " `mako`."
@@ -70519,7 +70554,7 @@ BIBFILE: papers.pub
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -71467,7 +71502,7 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -73467,7 +73502,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Nov 29 08:42:00 2014.
+# sphinx-quickstart on Mon Dec  1 21:55:57 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -77329,6 +77364,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 % Tools for marking corrections
 \usepackage{soul}
@@ -90332,16 +90369,11 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -90359,12 +90391,17 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
@@ -90521,8 +90558,8 @@ No file testdoc.aux.
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -90680,7 +90717,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1270.
+t line 1272.
 
 
 
@@ -90700,7 +90737,7 @@ t line 1270.
 
 
 
-t line 1279.
+t line 1281.
 
 
 
@@ -90721,7 +90758,7 @@ t line 1279.
 
 
 
-t line 1283.
+t line 1285.
 
 
 
@@ -90920,17 +90957,12 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -90946,11 +90978,16 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
@@ -91064,11 +91101,11 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -91169,16 +91206,11 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -91196,12 +91228,17 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
@@ -91357,8 +91394,8 @@ Writing index file testdoc.idx
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -91466,7 +91503,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1270.
+t line 1272.
 
 
 
@@ -91486,7 +91523,7 @@ t line 1270.
 
 
 
-t line 1279.
+t line 1281.
 
 
 
@@ -91507,7 +91544,7 @@ t line 1279.
 
 
 
-t line 1283.
+t line 1285.
 
 
 
@@ -91608,17 +91645,12 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -91634,11 +91666,16 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
@@ -91752,11 +91789,11 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -91872,16 +91909,11 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -91899,12 +91931,17 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
@@ -92060,8 +92097,8 @@ Writing index file testdoc.idx
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -92169,7 +92206,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1270.
+t line 1272.
 
 
 
@@ -92189,7 +92226,7 @@ t line 1270.
 
 
 
-t line 1279.
+t line 1281.
 
 
 
@@ -92210,7 +92247,7 @@ t line 1279.
 
 
 
-t line 1283.
+t line 1285.
 
 
 
@@ -92311,17 +92348,12 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -92337,11 +92369,16 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
@@ -92455,11 +92492,11 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -92559,16 +92596,11 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -92586,12 +92618,17 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
@@ -92747,8 +92784,8 @@ Writing index file testdoc.idx
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -92884,17 +92921,12 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -92910,11 +92942,16 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
@@ -93028,11 +93065,11 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -93134,16 +93171,11 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -93159,6 +93191,10 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 
@@ -93318,8 +93354,8 @@ No file testdoc.aux.
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -93504,7 +93540,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1221.
+t line 1223.
 
 
 
@@ -93524,7 +93560,7 @@ t line 1221.
 
 
 
-t line 1230.
+t line 1232.
 
 
 
@@ -93544,7 +93580,7 @@ t line 1230.
 
 
 
-t line 1234.
+t line 1236.
 
 
 
@@ -93747,17 +93783,12 @@ geometry.sty    2010/09/12 v5.6 Page Geometry
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -93773,6 +93804,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
@@ -93887,11 +93922,11 @@ titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
      thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -95695,17 +95730,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -95721,6 +95750,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -95752,10 +95782,7 @@ No file math_test.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
-
-
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
@@ -95792,18 +95819,12 @@ No file math_test.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -95817,6 +95838,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
@@ -95861,9 +95883,6 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
-epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
-  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
-epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
@@ -96099,17 +96118,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -96125,6 +96138,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -96172,8 +96190,8 @@ No file admon_colors1.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -96247,18 +96265,12 @@ No file admon_colors1.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -96272,8 +96284,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -96327,11 +96344,11 @@ placeins.sty    2005/04/18  v 2.2
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -96455,17 +96472,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -96481,6 +96492,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -96618,8 +96634,8 @@ No file admon_mdfbox.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -96716,18 +96732,12 @@ No file admon_mdfbox.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -96741,8 +96751,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -96844,11 +96859,11 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -96949,17 +96964,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -96975,6 +96984,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -97112,8 +97126,8 @@ No file admon_paragraph.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -97141,18 +97155,12 @@ No file admon_paragraph.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -97166,8 +97174,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -97269,11 +97282,11 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -97370,17 +97383,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -97396,6 +97403,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -97534,8 +97546,8 @@ No file admon_graybox2.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -97628,18 +97640,12 @@ No file admon_graybox2.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -97653,8 +97659,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -97757,11 +97768,11 @@ pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -97858,17 +97869,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -97884,6 +97889,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -97932,8 +97942,8 @@ No file admon_yellowicon.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -97979,18 +97989,12 @@ No file admon_yellowicon.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -98004,8 +98008,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -98060,11 +98069,11 @@ placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -98173,17 +98182,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -98199,6 +98202,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -98247,8 +98255,8 @@ No file admon_grayicon.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -98292,18 +98300,12 @@ No file admon_grayicon.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -98317,8 +98319,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -98373,11 +98380,11 @@ placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -98486,17 +98493,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -98512,6 +98513,11 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -98560,8 +98566,8 @@ No file admon_colors2.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -98602,18 +98608,12 @@ No file admon_colors2.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -98627,8 +98627,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
@@ -98683,11 +98688,11 @@ placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -99139,17 +99144,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -99165,6 +99164,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -99214,6 +99214,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -99299,11 +99303,11 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 Writing index file movies.idx
 No file movies.aux.
 
+
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
-
-ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
@@ -99319,7 +99323,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 161 has zero
+* Media annotation on line 162 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -99330,7 +99334,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 188 has zero
+* Media annotation on line 189 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -99513,18 +99517,12 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -99538,6 +99536,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
@@ -99584,6 +99583,10 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
  pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
   pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
   pgfsys.code.tex
 pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
@@ -99641,11 +99644,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -99743,17 +99746,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -99769,6 +99766,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -99818,6 +99816,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -99902,11 +99904,11 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file movies.idx
 (./movies.aux) 
+
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
-
-ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
@@ -99922,7 +99924,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 161 has zero
+* Media annotation on line 162 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -99933,7 +99935,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 188 has zero
+* Media annotation on line 189 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -100108,18 +100110,12 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -100133,6 +100129,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
@@ -100179,6 +100176,10 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
  pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
   pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
   pgfsys.code.tex
 pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
@@ -100236,11 +100237,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
@@ -100346,17 +100347,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -100372,6 +100367,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
@@ -100421,6 +100417,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -100505,11 +100505,11 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 Writing index file movies.idx
 (./movies.aux) 
+
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
-
-ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
@@ -100525,7 +100525,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 161 has zero
+* Media annotation on line 162 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -100536,7 +100536,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero size"
 * 
-* Media annotation on line 188 has zero
+* Media annotation on line 189 has zero
 * size in at least one dimension.
 * 
 * Provide a poster text with non-zero width and
@@ -100706,18 +100706,12 @@ No file movies.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -100731,6 +100725,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
@@ -100777,6 +100772,10 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
  pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
   pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
   pgfsys.code.tex
 pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
@@ -100834,11 +100833,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
@@ -100945,17 +100944,11 @@ Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -100973,6 +100966,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -100987,7 +100981,11 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -101012,8 +101010,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 Writing index file movies.idx
 No file movies.aux.
 
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -101192,18 +101190,12 @@ No file movies.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -101217,6 +101209,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
@@ -101229,6 +101222,10 @@ ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 inputenc.sty    2008/03/30 v1.1d Input encoding file
@@ -101267,11 +101264,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
@@ -101521,7 +101518,6 @@ See the caption package documentation for explanation.
 
 
 
-
 (/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 
 
@@ -101534,6 +101530,7 @@ See the caption package documentation for explanation.
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
@@ -101837,7 +101834,6 @@ textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
 setspace.sty    2011/12/19 v6.7a set line spacing
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
@@ -101851,6 +101847,7 @@ ptex2tex.sty
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
 listings.sty    2013/08/26 1.5b (Carsten Heinz)
@@ -102092,7 +102089,6 @@ See the caption package documentation for explanation.
 
 
 
-
 (/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 
 
@@ -102105,6 +102101,7 @@ See the caption package documentation for explanation.
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
@@ -102398,7 +102395,6 @@ textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
 setspace.sty    2011/12/19 v6.7a set line spacing
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
@@ -102412,6 +102408,7 @@ ptex2tex.sty
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
 listings.sty    2013/08/26 1.5b (Carsten Heinz)
@@ -102641,7 +102638,6 @@ See the caption package documentation for explanation.
 
 
 
-
 (/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 
 
@@ -102654,6 +102650,7 @@ See the caption package documentation for explanation.
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
@@ -102926,7 +102923,6 @@ textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
 setspace.sty    2011/12/19 v6.7a set line spacing
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
@@ -102940,6 +102936,7 @@ ptex2tex.sty
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
 listings.sty    2013/08/26 1.5b (Carsten Heinz)

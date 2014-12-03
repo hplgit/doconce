@@ -3,7 +3,11 @@ Testing admons
 
 hpl
 
+<<<<<<< HEAD
 Date: Nov 3, 2014
+=======
+Date: Dec 1, 2014
+>>>>>>> a9fa917dc77e7261d828cb87eaebf26655a03d9e
 
 # !split
 Introduction
