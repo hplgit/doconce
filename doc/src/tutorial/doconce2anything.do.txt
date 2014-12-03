@@ -2,8 +2,6 @@
 ======= From DocOnce to Other Formats =======
 label{doconce2formats}
 
-idx{`doconce format` command}
-
 Transformation of a DocOnce document `mydoc.do.txt` to various other
 formats is done with the script `doconce format`:
 
@@ -41,10 +39,6 @@ and if something goes wrong, the script aborts.
 
 
 ===== Preprocessing =====
-
-idx{preprocessing}
-idx{`mako` preprocessor}
-idx{`preprocess` preprocessor}
 
 The `preprocess` and `mako` programs are used to preprocess the
 file. The DocOnce program detects whether `preprocess` and/or `mako`
@@ -94,8 +88,6 @@ what the preprocessors have done.
 
 ===== Removal of inline comments =====
 
-idx{inline comments}
-
 The command-line arguments `--no_preprocess` and `--no_mako` turn off
 running `preprocess` and `mako`, respectively.
 
@@ -113,8 +105,6 @@ and comments by different authors should be removed.
 
 ===== Notes =====
 
-idx{notes (visible/invisible)}
-
 DocOnce does not have a tag for longer notes, because implementation
 of a "notes feature" is so easy using the `preprocess` or `mako`
 programs. Just introduce some variable, say `NOTES`, that you define
@@ -128,17 +118,12 @@ future revisions.
 
 ===== Demo of different formats =====
 
-idx{demos}
-
 A simple scientific report is available in "a lot of different formats":
 "http://hplgit.github.com/teamods/writing_reports/doconce_commands.html".
 How to create the different formats is explained in more depth
 in the coming sections.
 
 ===== HTML =====
-
-idx{HTML output}
-idx{output format!HTML}
 
 === Basics ===
 
@@ -148,8 +133,6 @@ is performed by
 Terminal> doconce format html mydoc
 !ec
 The resulting file `mydoc.html` can be loaded into any web browser for viewing.
-
-idx{HTML syntax highlighting}
 
 === Typesetting of Code ===
 
@@ -163,9 +146,6 @@ Pygments style is set by `--pygments_html_style=style`, where `style`
 can be `default`, `emacs`, `perldoc`, and other valid names for
 Pygments styles.
 
-idx{HTML movies}
-idx{movies in HTML}
-
 === Handling of Movies ===
 
 MP4, WebM, and Ogg movies are typeset with the HTML5 `video` tag
@@ -175,8 +155,6 @@ If just the specified file is to be loaded, use the
 `--no_mp4_webm_ogg_alternatives` command-line option.
 Other movie formats, e.g., `.flv`, `.mpeg` and `.avi`, are embedded via
 the older `embed` tag.
-
-idx{HTML layouts}
 
 === HTML Styles ===
 
@@ -202,8 +180,6 @@ Using `--css=filename` where `filename` is a non-existing file makes
 DocOnce write the built-in style to that file. Otherwise the HTML
 links to the CSS stylesheet in `filename`. Several stylesheets can
 be specified: `--ccs=file1.css,file2.css,file3.css`.
-
-idx{HTML templates}
 
 === HTML templates ===
 
@@ -234,8 +210,6 @@ Terminal> doconce format html mydoc --html_template=mytemplate.html
 !ec
 The template in `style_vagrant` also needs an extra option
 `--html_style=vagrant`.
-
-idx{HTML file collection}
 
 === The HTML File Collection ===
 
@@ -269,10 +243,6 @@ Terminal> doconce split_html mydoc_vagrant.html
 !ec
 
 ===== Blog Posts =====
-
-idx{blog posts}
-idx{Wordpress blog}
-idx{Google blogger}
 
 DocOnce can be used for writing blog posts provided the blog site accepts
 raw HTML code. Google's Blogger service (`blogger.com` or
@@ -345,22 +315,11 @@ for mathematics in the text, though.
 
 ===== Pandoc and Markdown =====
 
-idx{output format!Markdown}
-idx{output format!Pandoc}
-idx{Markdown output}
-idx{Pandoc output}
-
 Output in Pandoc's extended Markdown format results from
 
 !bc sys
 Terminal> doconce format pandoc mydoc
 !ec
-or (equivalent)
-
-!bc sys
-Terminal> doconce format markdown mydoc
-!ec
-
 The name of the output file is `mydoc.md`.
 From this format one can go to numerous other formats:
 
@@ -386,15 +345,37 @@ Terminal> doconce m2html mydoc
 !ec
 The result `mydoc.html` can be viewed in a browser.
 
-idx{output format!strict Markdown}
+=== Using Pandoc to go from LaTeX to MS Word or HTML ===
+
+Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
+Word.  There are two ways (experiment to find the best one for your
+document): `doconce format pandoc` and then translating using `doconce
+md2latex` (which runs `pandoc`), or `doconce format latex`, and then
+going from LaTeX to the desired format using `pandoc`.
+Here is an example on the latter strategy:
+
+!bc sys
+Terminal> doconce format latex mydoc
+Terminal> doconce ptex2tex mydoc
+Terminal> doconce replace '\Verb!' '\verb!' mydoc.tex
+Terminal> pandoc -f latex -t docx -o mydoc.docx mydoc.tex
+!ec
+When we go through `pandoc`, only single equations, `align`, or `align*`
+environments are well understood for output to HTML.
+
+Note that DocOnce applies the `Verb` macro from the `fancyvrb` package
+while `pandoc` only supports the standard `verb` construction for
+inline verbatim text.  Moreover, quite some additional `doconce
+replace` and `doconce subst` edits might be needed on the `.mkd` or
+`.tex` files to successfully have mathematics that is well translated
+to MS Word.  Also when going to reStructuredText using Pandoc, it can
+be advantageous to go via LaTeX.
 
 === Strict Markdown ===
 
 The option `--strict_markdown_output` generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
 syntax.
-
-idx{output format!GitHub-flavored Markdown}
 
 === GitHub-flavored Markdown ===
 
@@ -460,7 +441,6 @@ The option `--multimarkdown_output` generates the MultiMarkdown
 version of Markdown (as opposed to Pandoc-extended Markdown (default),
 strict Markdown, or GitHub-flavored Markdown).
 
-idx{output format!strapdown Markdown}
 
 === Strapdown rendering of Markdown text ===
 
@@ -479,36 +459,7 @@ The `--bootstrap_bootwatch_theme=theme` option is used to choose
 a "Bootswatch": "http://bootswatch.com/" theme whose names are
 found on the "Strapdown page": "http://strapdownjs.com".
 
-=== Using Pandoc to go from LaTeX to MS Word or HTML ===
-
-Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
-Word.  There are two ways (experiment to find the best one for your
-document): `doconce format pandoc` and then translating using `doconce
-md2latex` (which runs `pandoc`), or `doconce format latex`, and then
-going from LaTeX to the desired format using `pandoc`.
-Here is an example on the latter strategy:
-
-!bc sys
-Terminal> doconce format latex mydoc
-Terminal> doconce ptex2tex mydoc
-Terminal> doconce replace '\Verb!' '\verb!' mydoc.tex
-Terminal> pandoc -f latex -t docx -o mydoc.docx mydoc.tex
-!ec
-When we go through `pandoc`, only single equations, `align`, or `align*`
-environments are well understood for output to HTML.
-
-Note that DocOnce applies the `Verb` macro from the `fancyvrb` package
-while `pandoc` only supports the standard `verb` construction for
-inline verbatim text.  Moreover, quite some additional `doconce
-replace` and `doconce subst` edits might be needed on the `.mkd` or
-`.tex` files to successfully have mathematics that is well translated
-to MS Word.  Also when going to reStructuredText using Pandoc, it can
-be advantageous to go via LaTeX.
-
 ===== LaTeX =====
-
-idx{LaTeX output}
-idx{output format!LaTeX}
 
 !bnotice
 XeLaTeX and pdfLaTeX are used very much in the same way as standard
@@ -563,9 +514,6 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.
 # formats - the text may be messed up. A better choice is a paragraph
 # environment, as used here.
 
-idx{`ptex2tex` program}
-idx{`ptex2tex` doconce version}
-
 __Step 1.__ Filter the doconce text to the `ptex2tex` "pre-LaTeX form"
 `mydoc.p.tex`:
 !bc sys
@@ -586,8 +534,6 @@ as URL: "http://goo.gl/", URL: "http://tinyurl.com/", and
 URL: "https://bitly.com/".)
 The default, `--device=screen`, creates a PDF file for reading
 on a screen where links are just clickable.
-
-idx{LaTeX style options}
 
 There are many additional options (run `doconce format --help` and
 look for options starting with `--latex` to get a more verbose description):
@@ -612,8 +558,6 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_movie_controls=on`
  * `--latex_external_movie_viewer` (for `movie15` package)
  * `--xelatex`
-
-idx{LaTeX syntax highlighting}
 
 __Step 2.__ Run `ptex2tex` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -743,9 +687,6 @@ Terminal> dvipdf mydoc
 
 ===== PDFLaTeX =====
 
-idx{output format!pdfLaTeX}
-idx{pdfLaTeX output}
-
 Running `pdflatex` instead of `latex` follows almost the same steps,
 but the start is
 !bc sys
@@ -761,9 +702,6 @@ Terminal> pdflatex -shell-escape mydoc
 
 ===== XeLaTeX =====
 
-idx{output format!XeLaTeX}
-idx{XeLaTeX output}
-
 XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the `--xelatex` flag to `doconce format`:
 
@@ -775,9 +713,6 @@ Terminal> xelatex mydoc
 
 ===== From PDF to e-book formats =====
 
-idx{ePub output}
-idx{output format!ePub}
-
 PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The "Calibre": "http://calibre-ebook.com/"
@@ -785,10 +720,6 @@ program can produce epub, mobi, and other e-book formats from PDF,
 see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html".
 
 ===== Microsoft Word or LibreOffice =====
-
-idx{output format!MS Word}
-idx{output format!LibreOffice}
-idx{output format!OpenOffice}
 
 Transforming DocOnce files to Word format is best done with the aid
 of `pandoc`. A standard way is to first generate the Markdown format
@@ -804,11 +735,6 @@ does not work.
 
 ===== Plain ASCII Text =====
 
-idx{output format!ASCII}
-idx{output format!plain untagged text}
-idx{ASCII output}
-idx{plain untagged text output}
-
 We can go from DocOnce "back to" plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:
@@ -817,9 +743,6 @@ Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
 !ec
 
 ===== reStructuredText =====
-
-idx{output format!reStructuredText}
-idx{reStructuredText output}
 
 Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
@@ -867,9 +790,6 @@ Some links for going from LaTeX to Word are listed below.
 
 
 ===== Sphinx =====
-
-idx{output format!Sphinx}
-idx{Sphinx output}
 
 Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the `doconce sphinx_dir` command:
@@ -945,8 +865,6 @@ However, I recommend instead that you manually copy
 files to `_static` when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.
 
-idx{Sphinx styles}
-
 __Themes.__
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
@@ -966,8 +884,6 @@ Additional themes include
 `scipy_lectures`,
 `slim-agogo`, and
 `vlinux-theme`.
-
-idx{`conf.py` (Sphinx configuration)}
 
 All the themes are packed out in the Sphinx directory, and the
 `doconce sphinx_dir` insert lots of extra code in the `conf.py`
@@ -1038,8 +954,6 @@ and reuse it the next time `doconce sphinx_dir` is run
 doconce sphinx_dir theme=scipy_lectures \
                    conf.py=../some/path/conf.py mydoc
 !ec
-
-idx{Sphinx directory}
 
 === The manual Sphinx procedure ===
 
@@ -1134,14 +1048,6 @@ all such arguments can be customized both for Sphinx and LaTeX output.
 
 ===== Wiki Formats =====
 
-idx{output format!MediaWiki}
-idx{output format!Creole wiki}
-idx{output format!Google wiki}
-idx{MediaWiki output}
-idx{Google wiki output}
-idx{Creole wiki output}
-idx{wiki output}
-
 There are many different wiki formats, but DocOnce only supports three:
 "Googlecode wiki": "http://code.google.com/p/support/wiki/WikiSyntax",
 "MediaWiki": "http://www.mediawiki.org/wiki/Help:Formatting", and
@@ -1187,8 +1093,6 @@ one performs this substitution automatically (see next section).
 
 ===== Google Docs =====
 
-idx{Google docs output}
-
 Google Docs are normally made online in the interactive editor. However,
 you may upload a DocOnce document to Google Docs. This requires transforming
 the DocOnce document to one of the accepted formats for Google Docs:
@@ -1216,9 +1120,6 @@ Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the "googledoc2latex": "http://code.google.com/p/googledoc2latex" script can convert a Google document to LaTeX.
 
 ===== Tweaking the DocOnce Output =====
-
-idx{tweaking output}
-idx{automatic editing}
 
 Occasionally, one would like to tweak the output in a certain format
 from DocOnce. One example is figure filenames when transforming

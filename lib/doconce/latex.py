@@ -1222,24 +1222,18 @@ def latex_ref_and_label(section_label2title, format, filestr):
     #                 r'\g<1>{\LaTeX}\g<2>', filestr)
     #filestr = re.sub(r'''([^"'`*/-])\bLaTeX\b([^"'`*/-])''',
     #                 r'\g<1>{\LaTeX}\g<2>', filestr)
-    # This one is not good enough for verbatim `LaTeX`:
-    #filestr = re.sub(r'\bLaTeX\b', r'{\LaTeX}', filestr)
-    non_chars = '''"'`*/_-'''
-    filestr = re.sub(r'''([^%s])\bLaTeX\b([^%s])''' % (non_chars, non_chars),
+    filestr = re.sub(r'''([^"'`*/])\bLaTeX\b([^"'`*/])''',
                      r'\g<1>{\LaTeX}\g<2>', filestr)
-    filestr = re.sub(r'''([^%s])\bpdfLaTeX\b([^%s])''' % (non_chars, non_chars),
+    filestr = re.sub(r'''([^"'`*-])\bpdfLaTeX\b([^"'`*-])''',
                      fix_latex_command_regex(
                      r'\g<1>\textsc{pdf}{\LaTeX}\g<2>',
                      application='replacement'), filestr)
-    filestr = re.sub(r'''([^%s])\bBibTeX\b([^%s])'''% (non_chars, non_chars),
+    filestr = re.sub(r'''([^"'`*-])\bBibTeX\b([^"'`*-])''',
                      fix_latex_command_regex(
                      r'\g<1>\textsc{Bib}\negthinspace{\TeX}\g<2>',
                      application='replacement'), filestr)
-    # Fix \idx{{\LaTeX}...} to \idx{LaTeX...} (otherwise all the
-    # LaTeX index keywords appear at the beginning because of {)
-    filestr = re.sub(r'idx\{\{\\LaTeX\}', r'idx{LaTeX', filestr)
-    filestr = re.sub(r'idx\{\\textsc{pdf}\{\\LaTeX\}', r'idx{pdfLaTeX', filestr)
-    filestr = re.sub(r'idx\{\\textsc\{Bib\}\\negthinspace\{\\TeX\}', r'idx{BibTeX', filestr)
+    # This one is not good enough for verbatim `LaTeX`:
+    #filestr = re.sub(r'\bLaTeX\b', r'{\LaTeX}', filestr)
 
     # handle & (Texas A&M -> Texas A{\&}M):
     # (NOTE: destroys URLs with & - and potentially align math envirs)

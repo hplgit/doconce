@@ -72,10 +72,10 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body"><p class="first">Hans Petter Langtangen</p>
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">Hans Petter Langtangen</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Nov 29, 2014</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">Jul 20, 2014</p>
 <ul class="last simple">
 <li>When writing a note, report, manual, etc., do you find it difficult
 to choose the typesetting format? That is, to choose between plain
@@ -99,15 +99,17 @@ include it anywhere?</li>
 </tbody>
 </table>
 <p>If any of these questions are of interest, you should keep on reading.</p>
+</div>
 <div class="section" id="some-doconce-features">
-<h2>Some DocOnce Features<a class="headerlink" href="#some-doconce-features" title="Permalink to this headline">¶</a></h2>
+<h1>Some DocOnce Features<a class="headerlink" href="#some-doconce-features" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><ul>
-<li><p class="first">Strong support for texts with much math and code.</p>
-</li>
-<li><p class="first">Same source can produce a variety of output formats.
-The following support LaTeX math and (pygmentized) code:</p>
-<ul class="simple">
+<div><ul class="simple">
+<li>Strong support for texts with much math and code.</li>
+<li>Same source can produce a variety of output formats.
+The following support LaTeX math and (pygmentized) code:</li>
+</ul>
+<blockquote>
+<div><ol class="arabic simple">
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf">traditional LaTeX B/W documents for printing</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report.pdf">color LaTeX PDF documents</a></li>
 <li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf">color LaTeX PDF documents for viewing on small phones</a></li>
@@ -117,35 +119,30 @@ The following support LaTeX math and (pygmentized) code:</p>
 <li><a class="reference external" href="http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
 <li>Markdown</li>
 <li>IPython notebook</li>
-</ul>
-<p>Other formats include plain untagged text (for email),
+</ol>
+<blockquote>
+<div>Other formats include plain untagged text (for email),
 Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
-reStructuredText, and Epytext.</p>
-</li>
-<li><p class="first">Integration with Mako enables use of variables, functions, if-tests,
+reStructuredText, and Epytext.</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li>Integration with Mako enables use of variables, functions, if-tests,
 and loops to parameterize the text and generate various versions of
-the text for different purposes.</p>
-</li>
-<li><p class="first">Computer code can be copied directly from parts of source code files.</p>
-</li>
-<li><p class="first">Running text can quickly be edited to slide formats (reveal.js and deck.js,
-based on HTML5+CSS3).</p>
-</li>
-<li><p class="first">Special exercise environments with support for hints, answers,
-subexercises, etc.</p>
-</li>
-<li><p class="first">Automatic inline embedding of YouTube and Vimeo movies.</p>
-</li>
-<li><p class="first">Good support for admonitions in various LaTeX and HTML styles
-for warnings, questions, hints, remarks, summaries, etc.</p>
-</li>
+the text for different purposes.</li>
+<li>Computer code can be copied directly from parts of source code files.</li>
+<li>Running text can quickly be edited to slide formats (reveal.js and deck.js,
+based on HTML5+CSS3).</li>
+<li>Special exercise environments with support for hints, answers,
+subexercises, etc.</li>
+<li>Automatic inline embedding of YouTube and Vimeo movies.</li>
+<li>Good support for admonitions in various LaTeX and HTML styles
+for warnings, questions, hints, remarks, summaries, etc.</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="what-does-doconce-look-like">
-<h2>What Does DocOnce Look Like?<a class="headerlink" href="#what-does-doconce-look-like" title="Permalink to this headline">¶</a></h2>
-<p>DocOnce text looks like ordinary text (much like Markdown <a class="footnote-reference" href="#markdown-input" id="id1">[1]</a>),
-but there
+<h1>What Does DocOnce Look Like?<a class="headerlink" href="#what-does-doconce-look-like" title="Permalink to this headline">¶</a></h1>
+<p>DocOnce text looks like ordinary text (much like Markdown), but there
 are some almost invisible text constructions that allow you to control
 the formating. Here are some examples.</p>
 <blockquote>
@@ -184,17 +181,8 @@ included. With Mako a single text can output its program examples
 in two or more languages.</li>
 </ul>
 </div></blockquote>
-<table class="docutils footnote" frame="void" id="markdown-input" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>In fact, DocOnce allows basic
-<a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GitHub/extended Markdown syntax</a> as input. This is attractive for newcomers from Markdown or
-writers who also write Markdown documents (or uses Markdown frequently at
-GitHub).</td></tr>
-</tbody>
-</table>
 <div class="section" id="what-can-doconce-be-used-for">
-<h3>What Can DocOnce Be Used For?<a class="headerlink" href="#what-can-doconce-be-used-for" title="Permalink to this headline">¶</a></h3>
+<h2>What Can DocOnce Be Used For?<a class="headerlink" href="#what-can-doconce-be-used-for" title="Permalink to this headline">¶</a></h2>
 <p>LaTeX is ideal for articles, thesis, and books, but not so suited
 for web documents. Nice environments for web documents, such as
 Sphinx, Markdown, or plain HTML, are not particularly well
@@ -211,7 +199,7 @@ has many extra features for supporting documents with much code and
 mathematics, not found in any of the mentioned formats.</p>
 </div>
 <div class="section" id="basic-syntax">
-<h3>Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h3>
+<h2>Basic Syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h2>
 <p>Here is an example of some simple text written in the DocOnce format:</p>
 <div class="highlight-text"><div class="highlight"><pre>======= First a Section Heading =======
 
@@ -222,25 +210,17 @@ heading, and 3 a subsubsection heading.
 ===== A Subsection with Sample Text =====
 label{my:first:sec}
 
-Ordinary text looks like ordinary text, but must always start at the
-beginning of lines. Tags used for _boldface_ words, *emphasized*
-words, and `computer` words look natural in plain text.  Quotations
-appear inside double backticks and double single quotes, as in ``this
-example&#39;&#39;.
-
-Below the section title we have a *label*, which can be used to
-refer to Section ref{my:first:sec}.
-References to equations, such as (ref{myeq1}), work in the same
-LaTeX-inspired way.
+Ordinary text looks like ordinary text, and the tags used for
+_boldface_ words, *emphasized* words, and `computer` words look
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in ``this example&#39;&#39;.
 
 Lists are typeset as you would do in email,
 
   * item 1
-  * item 2,
-    perhaps with a 2nd line
+  * item 2
   * item 3
 
-Note the consistent use of indentation (as in Python programming!).
 Lists can also have automatically numbered items instead of bullets,
 
   o item 1
@@ -255,6 +235,11 @@ and screen output. In traditional paper output, in PDF generated from LaTeX
 generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
+
+References to sections may use logical names as labels (e.g., a
+&quot;label&quot; command right after the section title), as in the reference to
+Section ref{my:first:sec}. References to equations such as
+(ref{myeq1}) work in the same way.
 
 __Inline comments.__
 DocOnce also allows inline comments of the form [name: comment] (with
@@ -285,31 +270,24 @@ Tables are also written in the plain text way, e.g.,
 </div>
 </div>
 <div class="section" id="first-a-section-heading">
-<h2>First a Section Heading<a class="headerlink" href="#first-a-section-heading" title="Permalink to this headline">¶</a></h2>
+<h1>First a Section Heading<a class="headerlink" href="#first-a-section-heading" title="Permalink to this headline">¶</a></h1>
 <p>Section headings have 7 equality characters before and after the heading.
 With 9 characters we have a chapter heading, 5 gives a subsection
 heading, and 3 a subsubsection heading.</p>
 <div class="section" id="a-subsection-with-sample-text">
-<span id="my-first-sec"></span><h3>A Subsection with Sample Text<a class="headerlink" href="#a-subsection-with-sample-text" title="Permalink to this headline">¶</a></h3>
-<p>Ordinary text looks like ordinary text, but must always start at the
-beginning of lines. Tags used for <strong>boldface</strong> words, <em>emphasized</em>
-words, and <tt class="docutils literal"><span class="pre">computer</span></tt> words look natural in plain text.  Quotations
-appear inside double backticks and double single quotes, as in &#8220;this
-example&#8221;.</p>
-<p>Below the section title we have a <em>label</em>, which can be used to
-refer to the section <a class="reference internal" href="#my-first-sec"><em>A Subsection with Sample Text</em></a>.
-References to equations, such as <a href="#equation-myeq1">(1)</a>, work in the same
-LaTeX-inspired way.</p>
+<span id="my-first-sec"></span><h2>A Subsection with Sample Text<a class="headerlink" href="#a-subsection-with-sample-text" title="Permalink to this headline">¶</a></h2>
+<p>Ordinary text looks like ordinary text, and the tags used for
+<strong>boldface</strong> words, <em>emphasized</em> words, and <tt class="docutils literal"><span class="pre">computer</span></tt> words look
+natural in plain text.  Quotations appear inside double backticks
+and double single quotes, as in &#8220;this example&#8221;.</p>
 <p>Lists are typeset as you would do in an email,</p>
 <blockquote>
 <div><ul class="simple">
 <li>item 1</li>
-<li>item 2,
-perhaps with a 2nd line</li>
+<li>item 2</li>
 <li>item 3</li>
 </ul>
 </div></blockquote>
-<p>Note the consistent use of indentation (as in Python programming!).</p>
 <p>Lists can also have numbered items instead of bullets, just use an <tt class="docutils literal"><span class="pre">o</span></tt>
 (for ordered) instead of the asterisk:</p>
 <blockquote>
@@ -328,27 +306,33 @@ and screen output. In traditional paper output, in PDF generated from LaTeX
 generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.</p>
+<p><strong>Cross-references.</strong>
+References to sections may use logical names as labels (e.g., a
+&#8220;label&#8221; command right after the section title), as in the reference to
+the section <a class="reference internal" href="#my-first-sec"><em>A Subsection with Sample Text</em></a>. References to equations such as
+<a href="#equation-myeq1">(1)</a> work in the same way.</p>
 <p><strong>Inline comments.</strong>
-DocOnce also allows inline comments such as [<strong>hpl 1</strong>: here I will make some remarks to the text] for allowing authors to make notes. Inline
+DocOnce also allows inline comments such as &lt;font color=&#8221;red&#8221;&gt;[&lt;b&gt;hpl 1&lt;/b&gt;: &lt;em&gt;here I will make
+some remarks to the text&lt;/em&gt;]&lt;/font&gt; for allowing authors to make notes. Inline
 comments can be removed from the output by a command-line argument
 (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an example). Ordinary comment
 lines start with <tt class="docutils literal"><span class="pre">#</span></tt> and are copied to comment lines in the
 output format.</p>
 <p><strong>Footnotes.</strong>
-Adding a footnote <a class="footnote-reference" href="#footnote" id="id2">[2]</a> is also possible.</p>
+Adding a footnote <a class="footnote-reference" href="#footnote" id="id1">[1]</a> is also possible.</p>
 <table class="docutils footnote" frame="void" id="footnote" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>The syntax for footnotes is borrowed from Extended Markdown.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The syntax for footnotes is borrowed from Extended Markdown.</td></tr>
 </tbody>
 </table>
 <p><strong>Tables.</strong>
 Tables are also written in the plain text way, e.g.,</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
 <col width="33%" />
-<col width="50%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">time</th>
@@ -373,7 +357,7 @@ Tables are also written in the plain text way, e.g.,</p>
 </table>
 </div>
 <div class="section" id="mathematics-and-computer-code">
-<h3>Mathematics and Computer Code<a class="headerlink" href="#mathematics-and-computer-code" title="Permalink to this headline">¶</a></h3>
+<h2>Mathematics and Computer Code<a class="headerlink" href="#mathematics-and-computer-code" title="Permalink to this headline">¶</a></h2>
 <p>Inline mathematics, such as <span class="math">\(\nu = \sin(x)\)</span>,
 allows the formula to be specified both as LaTeX and as plain text.
 This results in a professional LaTeX typesetting, but in formats
@@ -480,7 +464,7 @@ trailing <tt class="docutils literal"><span class="pre">.txt</span></tt> denotes
 plain text editing capabilities.</p>
 </div>
 <div class="section" id="macros-newcommands-cross-references-index-and-bibliography">
-<span id="newcommands"></span><h3>Macros (Newcommands), Cross-References, Index, and Bibliography<a class="headerlink" href="#macros-newcommands-cross-references-index-and-bibliography" title="Permalink to this headline">¶</a></h3>
+<span id="newcommands"></span><h2>Macros (Newcommands), Cross-References, Index, and Bibliography<a class="headerlink" href="#macros-newcommands-cross-references-index-and-bibliography" title="Permalink to this headline">¶</a></h2>
 <p>DocOnce supports a type of macros via a LaTeX-style <em>newcommand</em>
 construction.  The newcommands are defined in files with names
 <tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>, using standard LaTeX syntax. Only newcommands
@@ -528,8 +512,8 @@ in the DocOnce source and a <a class="reference external" href="http://hplgit.gi
 </div>
 </div>
 <div class="section" id="from-doconce-to-other-formats">
-<span id="doconce2formats"></span><h2>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
-<p id="index-0">Transformation of a DocOnce document <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> to various other
+<span id="doconce2formats"></span><h1>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h1>
+<p>Transformation of a DocOnce document <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> to various other
 formats is done with the script <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format formatname mydoc.do.txt
 </pre></div>
@@ -539,7 +523,7 @@ formats is done with the script <tt class="docutils literal"><span class="pre">d
 </pre></div>
 </div>
 <div class="section" id="generating-a-makefile">
-<h3>Generating a makefile<a class="headerlink" href="#generating-a-makefile" title="Permalink to this headline">¶</a></h3>
+<h2>Generating a makefile<a class="headerlink" href="#generating-a-makefile" title="Permalink to this headline">¶</a></h2>
 <p>Producing HTML, Sphinx, and in particular LaTeX documents from
 DocOnce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
@@ -560,8 +544,8 @@ inserts checks for successful runs of the many <tt class="docutils literal"><spa
 and if something goes wrong, the script aborts.</p>
 </div>
 <div class="section" id="preprocessing">
-<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-1"></span><span class="target" id="index-2"></span><p id="index-3">The <tt class="docutils literal"><span class="pre">preprocess</span></tt> and <tt class="docutils literal"><span class="pre">mako</span></tt> programs are used to preprocess the
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">preprocess</span></tt> and <tt class="docutils literal"><span class="pre">mako</span></tt> programs are used to preprocess the
 file. The DocOnce program detects whether <tt class="docutils literal"><span class="pre">preprocess</span></tt> and/or <tt class="docutils literal"><span class="pre">mako</span></tt>
 statements are present and runs the corresponding programs, first
 <tt class="docutils literal"><span class="pre">preprocess</span></tt> and then <tt class="docutils literal"><span class="pre">mako</span></tt>.</p>
@@ -605,8 +589,8 @@ the result of running <tt class="docutils literal"><span class="pre">mako</span>
 what the preprocessors have done.</p>
 </div>
 <div class="section" id="removal-of-inline-comments">
-<h3>Removal of inline comments<a class="headerlink" href="#removal-of-inline-comments" title="Permalink to this headline">¶</a></h3>
-<p id="index-4">The command-line arguments <tt class="docutils literal"><span class="pre">--no_preprocess</span></tt> and <tt class="docutils literal"><span class="pre">--no_mako</span></tt> turn off
+<h2>Removal of inline comments<a class="headerlink" href="#removal-of-inline-comments" title="Permalink to this headline">¶</a></h2>
+<p>The command-line arguments <tt class="docutils literal"><span class="pre">--no_preprocess</span></tt> and <tt class="docutils literal"><span class="pre">--no_mako</span></tt> turn off
 running <tt class="docutils literal"><span class="pre">preprocess</span></tt> and <tt class="docutils literal"><span class="pre">mako</span></tt>, respectively.</p>
 <p>Inline comments in the text are removed from the output by</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --skip_inline_comments
@@ -621,8 +605,8 @@ file by running:</p>
 and comments by different authors should be removed.</p>
 </div>
 <div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
-<p id="index-5">DocOnce does not have a tag for longer notes, because implementation
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce does not have a tag for longer notes, because implementation
 of a &#8220;notes feature&#8221; is so easy using the <tt class="docutils literal"><span class="pre">preprocess</span></tt> or <tt class="docutils literal"><span class="pre">mako</span></tt>
 programs. Just introduce some variable, say <tt class="docutils literal"><span class="pre">NOTES</span></tt>, that you define
 through <tt class="docutils literal"><span class="pre">-DNOTES</span></tt> (or not) when running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">...</span></tt>. Inside
@@ -634,15 +618,15 @@ for readers but still nice to archive as part of the document for
 future revisions.</p>
 </div>
 <div class="section" id="demo-of-different-formats">
-<h3>Demo of different formats<a class="headerlink" href="#demo-of-different-formats" title="Permalink to this headline">¶</a></h3>
-<p id="index-6">A simple scientific report is available in <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/doconce_commands.html">a lot of different formats</a>.
+<h2>Demo of different formats<a class="headerlink" href="#demo-of-different-formats" title="Permalink to this headline">¶</a></h2>
+<p>A simple scientific report is available in <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/doconce_commands.html">a lot of different formats</a>.
 How to create the different formats is explained in more depth
 in the coming sections.</p>
 </div>
-<div class="section" id="html">
-<h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-7"></span><div class="section" id="basics">
-<span id="index-8"></span><h4>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h2>HTML<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basics">
+<h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
 <p>Making an HTML version of a DocOnce file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>
 is performed by</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc
@@ -651,7 +635,7 @@ is performed by</p>
 <p>The resulting file <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> can be loaded into any web browser for viewing.</p>
 </div>
 <div class="section" id="typesetting-of-code">
-<span id="index-9"></span><h4>Typesetting of Code<a class="headerlink" href="#typesetting-of-code" title="Permalink to this headline">¶</a></h4>
+<h3>Typesetting of Code<a class="headerlink" href="#typesetting-of-code" title="Permalink to this headline">¶</a></h3>
 <p>If the Pygments package (including the <tt class="docutils literal"><span class="pre">pygmentize</span></tt> program)
 is installed, code blocks are typeset with
 aid of this package. The command-line argument <tt class="docutils literal"><span class="pre">--no_pygments_html</span></tt>
@@ -661,9 +645,9 @@ on line numbers in Pygments-formatted code blocks. A specific
 Pygments style is set by <tt class="docutils literal"><span class="pre">--pygments_html_style=style</span></tt>, where <tt class="docutils literal"><span class="pre">style</span></tt>
 can be <tt class="docutils literal"><span class="pre">default</span></tt>, <tt class="docutils literal"><span class="pre">emacs</span></tt>, <tt class="docutils literal"><span class="pre">perldoc</span></tt>, and other valid names for
 Pygments styles.</p>
-<span class="target" id="index-10"></span></div>
+</div>
 <div class="section" id="handling-of-movies">
-<span id="index-11"></span><h4>Handling of Movies<a class="headerlink" href="#handling-of-movies" title="Permalink to this headline">¶</a></h4>
+<h3>Handling of Movies<a class="headerlink" href="#handling-of-movies" title="Permalink to this headline">¶</a></h3>
 <p>MP4, WebM, and Ogg movies are typeset with the HTML5 <tt class="docutils literal"><span class="pre">video</span></tt> tag
 and the HTML code tries to load as many versions among MP4, WebM,
 and Ogg as exist (and the files are loaded in the mentioned order).
@@ -673,7 +657,7 @@ Other movie formats, e.g., <tt class="docutils literal"><span class="pre">.flv</
 the older <tt class="docutils literal"><span class="pre">embed</span></tt> tag.</p>
 </div>
 <div class="section" id="html-styles">
-<span id="index-12"></span><h4>HTML Styles<a class="headerlink" href="#html-styles" title="Permalink to this headline">¶</a></h4>
+<h3>HTML Styles<a class="headerlink" href="#html-styles" title="Permalink to this headline">¶</a></h3>
 <p>The HTML style can be defined either in the header of the HTML file,
 using a named built-in style;
 in an external CSS file; or in a template file.</p>
@@ -686,19 +670,16 @@ specified as <tt class="docutils literal"><span class="pre">--html_style=name</s
 style (yellowish),</li>
 <li><tt class="docutils literal"><span class="pre">blueish</span></tt>: a simple style with blue headings (default),</li>
 <li><tt class="docutils literal"><span class="pre">blueish2</span></tt>: a variant of <em>bluish</em>,</li>
-<li><tt class="docutils literal"><span class="pre">bloodish</span></tt>: as <tt class="docutils literal"><span class="pre">bluish</span></tt>, but dark read as color,</li>
-<li><tt class="docutils literal"><span class="pre">bootstrap*</span></tt> or <tt class="docutils literal"><span class="pre">bootswatch*</span></tt> in a lot of variants, see
-<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> for a list of all styles.</li>
+<li><tt class="docutils literal"><span class="pre">bloodish</span></tt>: as <tt class="docutils literal"><span class="pre">bluish</span></tt>, but dark read as color.</li>
 </ul>
 </div></blockquote>
-<p>There is a <a class="reference external" href="http://hplgit.github.io/teamods/writing_reports/index.html">comprehensive demonstration</a> of almost all available styles!</p>
 <p>Using <tt class="docutils literal"><span class="pre">--css=filename</span></tt> where <tt class="docutils literal"><span class="pre">filename</span></tt> is a non-existing file makes
 DocOnce write the built-in style to that file. Otherwise the HTML
 links to the CSS stylesheet in <tt class="docutils literal"><span class="pre">filename</span></tt>. Several stylesheets can
 be specified: <tt class="docutils literal"><span class="pre">--ccs=file1.css,file2.css,file3.css</span></tt>.</p>
 </div>
 <div class="section" id="html-templates">
-<span id="index-13"></span><h4>HTML templates<a class="headerlink" href="#html-templates" title="Permalink to this headline">¶</a></h4>
+<h3>HTML templates<a class="headerlink" href="#html-templates" title="Permalink to this headline">¶</a></h3>
 <p>Templates are HTML files with &#8220;slots&#8221; <tt class="docutils literal"><span class="pre">%(main)s</span></tt> for the main body
 of text, <tt class="docutils literal"><span class="pre">%(title)s</span></tt> for the title, and <tt class="docutils literal"><span class="pre">%(date)s</span></tt> for the date.
 DocOnce comes with a few templates. The usage of templates is
@@ -723,17 +704,19 @@ to how you store the template files), and run</p>
 </pre></div>
 </div>
 <p>The template in <tt class="docutils literal"><span class="pre">style_vagrant</span></tt> also needs an extra option
-<tt class="docutils literal"><span class="pre">--html_style=vagrant</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">--html_style=vagrant</span></tt>. With this style, one has nice navigation buttons
+that are used if the document contains <tt class="docutils literal"><span class="pre">!split</span></tt> commands for splitting
+it into many pages.</p>
 </div>
 <div class="section" id="the-html-file-collection">
-<span id="index-14"></span><h4>The HTML File Collection<a class="headerlink" href="#the-html-file-collection" title="Permalink to this headline">¶</a></h4>
+<h3>The HTML File Collection<a class="headerlink" href="#the-html-file-collection" title="Permalink to this headline">¶</a></h3>
 <p>There are usually a range of files needed for an HTML document arising
 from a DocOnce source. The needed files are listed in
 <tt class="docutils literal"><span class="pre">.basename_html_file_collection</span></tt>, where <tt class="docutils literal"><span class="pre">basename</span></tt> is the filestem of
 the DocOnce file (i.e., the DocOnce source is in <tt class="docutils literal"><span class="pre">basename.do.txt</span></tt>).</p>
 </div>
 <div class="section" id="filenames">
-<h4>Filenames<a class="headerlink" href="#filenames" title="Permalink to this headline">¶</a></h4>
+<h3>Filenames<a class="headerlink" href="#filenames" title="Permalink to this headline">¶</a></h3>
 <p>An HTML version of a DocOnce document is often made in different styles,
 calling for a need to rename the HTML output file. This is conveniently
 done by the <tt class="docutils literal"><span class="pre">--html_output=basename</span></tt> option, where <tt class="docutils literal"><span class="pre">basename</span></tt> is the
@@ -757,8 +740,8 @@ Terminal&gt; doconce split_html mydoc_vagrant.html
 </div>
 </div>
 <div class="section" id="blog-posts">
-<h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-15"></span><span class="target" id="index-16"></span><p id="index-17">DocOnce can be used for writing blog posts provided the blog site accepts
+<h2>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce can be used for writing blog posts provided the blog site accepts
 raw HTML code. Google&#8217;s Blogger service (<tt class="docutils literal"><span class="pre">blogger.com</span></tt> or
 <tt class="docutils literal"><span class="pre">blogname.blogspot.com</span></tt>) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.</p>
@@ -818,13 +801,9 @@ instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.</p>
 </div>
 <div class="section" id="pandoc-and-markdown">
-<h3>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-18"></span><span class="target" id="index-19"></span><span class="target" id="index-20"></span><p id="index-21">Output in Pandoc&#8217;s extended Markdown format results from</p>
+<h2>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h2>
+<p>Output in Pandoc&#8217;s extended Markdown format results from</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc
-</pre></div>
-</div>
-<p>or (equivalent)</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format markdown mydoc
 </pre></div>
 </div>
 <p>The name of the output file is <tt class="docutils literal"><span class="pre">mydoc.md</span></tt>.
@@ -839,7 +818,7 @@ while the <tt class="docutils literal"><span class="pre">--toc</span></tt> optio
 See the <a class="reference external" href="http://johnmacfarlane.net/pandoc/README.html">Pandoc documentation</a>
 for the many features of the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program.</p>
 <div class="section" id="markdown-to-html-conversion">
-<h4>Markdown to HTML conversion<a class="headerlink" href="#markdown-to-html-conversion" title="Permalink to this headline">¶</a></h4>
+<h3>Markdown to HTML conversion<a class="headerlink" href="#markdown-to-html-conversion" title="Permalink to this headline">¶</a></h3>
 <p>The HTML output from
 <tt class="docutils literal"><span class="pre">pandoc</span></tt> needs adjustments to provide full support for MathJax LaTeX
 mathematics, and for this purpose one should use <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">md2html</span></tt>:</p>
@@ -849,16 +828,40 @@ Terminal&gt; doconce m2html mydoc
 </div>
 <p>The result <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> can be viewed in a browser.</p>
 </div>
+<div class="section" id="using-pandoc-to-go-from-latex-to-ms-word-or-html">
+<h3>Using Pandoc to go from LaTeX to MS Word or HTML<a class="headerlink" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html" title="Permalink to this headline">¶</a></h3>
+<p>Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
+Word.  There are two ways (experiment to find the best one for your
+document): <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then translating using <tt class="docutils literal"><span class="pre">doconce</span>
+<span class="pre">md2latex</span></tt> (which runs <tt class="docutils literal"><span class="pre">pandoc</span></tt>), or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">latex</span></tt>, and then
+going from LaTeX to the desired format using <tt class="docutils literal"><span class="pre">pandoc</span></tt>.
+Here is an example on the latter strategy:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
+Terminal&gt; doconce ptex2tex mydoc
+Terminal&gt; doconce replace &#39;\Verb!&#39; &#39;\verb!&#39; mydoc.tex
+Terminal&gt; pandoc -f latex -t docx -o mydoc.docx mydoc.tex
+</pre></div>
+</div>
+<p>When we go through <tt class="docutils literal"><span class="pre">pandoc</span></tt>, only single equations, <tt class="docutils literal"><span class="pre">align</span></tt>, or <tt class="docutils literal"><span class="pre">align*</span></tt>
+environments are well understood for output to HTML.</p>
+<p>Note that DocOnce applies the <tt class="docutils literal"><span class="pre">Verb</span></tt> macro from the <tt class="docutils literal"><span class="pre">fancyvrb</span></tt> package
+while <tt class="docutils literal"><span class="pre">pandoc</span></tt> only supports the standard <tt class="docutils literal"><span class="pre">verb</span></tt> construction for
+inline verbatim text.  Moreover, quite some additional <tt class="docutils literal"><span class="pre">doconce</span>
+<span class="pre">replace</span></tt> and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> edits might be needed on the <tt class="docutils literal"><span class="pre">.mkd</span></tt> or
+<tt class="docutils literal"><span class="pre">.tex</span></tt> files to successfully have mathematics that is well translated
+to MS Word.  Also when going to reStructuredText using Pandoc, it can
+be advantageous to go via LaTeX.</p>
+</div>
 <div class="section" id="strict-markdown">
-<span id="index-22"></span><h4>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h4>
+<h3>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h3>
 <p>The option <tt class="docutils literal"><span class="pre">--strict_markdown_output</span></tt> generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
 syntax.</p>
 </div>
 <div class="section" id="github-flavored-markdown">
-<span id="index-23"></span><h4>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h4>
-<p>Adding the command-line option <tt class="docutils literal"><span class="pre">github-md</span></tt> turns on the
-<a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GutHub-flavored Markdown dialect</a>, which is used for the issue tracker on <a class="reference external" href="http://github.com">GitHub</a>. A special feature is the support of task lists:
+<h3>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h3>
+<p>Adding the command-line option <tt class="docutils literal"><span class="pre">github-md</span></tt> turns on the GutHub-flavored
+Markdown dialect, which is used for the issue tracker on <a class="reference external" href="http://github.com">GitHub</a>. A special feature is the support of task lists:
 unnumbered lists with <tt class="docutils literal"><span class="pre">[x]</span></tt> (task done) or <tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt> (task not done).
 (Tables get typeset directly as HTML and the syntax for code highlighting
 is different from Pandoc extended Markdown.) Below is a typical
@@ -911,13 +914,13 @@ the quote, compute code, inline verbatim, headings, the task list, and
 the table.</p>
 </div>
 <div class="section" id="multimarkdown">
-<h4>MultiMarkdown<a class="headerlink" href="#multimarkdown" title="Permalink to this headline">¶</a></h4>
+<h3>MultiMarkdown<a class="headerlink" href="#multimarkdown" title="Permalink to this headline">¶</a></h3>
 <p>The option <tt class="docutils literal"><span class="pre">--multimarkdown_output</span></tt> generates the MultiMarkdown
 version of Markdown (as opposed to Pandoc-extended Markdown (default),
 strict Markdown, or GitHub-flavored Markdown).</p>
 </div>
 <div class="section" id="strapdown-rendering-of-markdown-text">
-<span id="index-24"></span><h4>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h4>
+<h3>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://strapdownjs.com">Strapdown</a> is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
 footer in the Markdown file and load the file into a browser.
@@ -932,34 +935,10 @@ Terminal&gt; mv mydoc.md mydoc.html
 a <a class="reference external" href="http://bootswatch.com/">Bootswatch</a> theme whose names are
 found on the <a class="reference external" href="http://strapdownjs.com">Strapdown page</a>.</p>
 </div>
-<div class="section" id="using-pandoc-to-go-from-latex-to-ms-word-or-html">
-<h4>Using Pandoc to go from LaTeX to MS Word or HTML<a class="headerlink" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html" title="Permalink to this headline">¶</a></h4>
-<p>Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
-Word.  There are two ways (experiment to find the best one for your
-document): <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt> and then translating using <tt class="docutils literal"><span class="pre">doconce</span>
-<span class="pre">md2latex</span></tt> (which runs <tt class="docutils literal"><span class="pre">pandoc</span></tt>), or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">latex</span></tt>, and then
-going from LaTeX to the desired format using <tt class="docutils literal"><span class="pre">pandoc</span></tt>.
-Here is an example on the latter strategy:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
-Terminal&gt; doconce ptex2tex mydoc
-Terminal&gt; doconce replace &#39;\Verb!&#39; &#39;\verb!&#39; mydoc.tex
-Terminal&gt; pandoc -f latex -t docx -o mydoc.docx mydoc.tex
-</pre></div>
 </div>
-<p>When we go through <tt class="docutils literal"><span class="pre">pandoc</span></tt>, only single equations, <tt class="docutils literal"><span class="pre">align</span></tt>, or <tt class="docutils literal"><span class="pre">align*</span></tt>
-environments are well understood for output to HTML.</p>
-<p>Note that DocOnce applies the <tt class="docutils literal"><span class="pre">Verb</span></tt> macro from the <tt class="docutils literal"><span class="pre">fancyvrb</span></tt> package
-while <tt class="docutils literal"><span class="pre">pandoc</span></tt> only supports the standard <tt class="docutils literal"><span class="pre">verb</span></tt> construction for
-inline verbatim text.  Moreover, quite some additional <tt class="docutils literal"><span class="pre">doconce</span>
-<span class="pre">replace</span></tt> and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> edits might be needed on the <tt class="docutils literal"><span class="pre">.mkd</span></tt> or
-<tt class="docutils literal"><span class="pre">.tex</span></tt> files to successfully have mathematics that is well translated
-to MS Word.  Also when going to reStructuredText using Pandoc, it can
-be advantageous to go via LaTeX.</p>
-</div>
-</div>
-<div class="section" id="latex">
-<h3>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-25"></span><div class="admonition note" id="index-26">
+<div class="section" id="id5">
+<h2>LaTeX<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
@@ -1004,7 +983,7 @@ code, typeset with backticks in DocOnce, and translate this to</p>
 command, the latter is used instead since then LaTeX can insert
 linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 </div>
-<span class="target" id="index-27"></span><p id="index-28"><strong>Step 1.</strong>
+<p><strong>Step 1.</strong>
 Filter the doconce text to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> &#8220;pre-LaTeX form&#8221;
 <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
@@ -1023,7 +1002,7 @@ as <a class="reference external" href="http://goo.gl/">http://goo.gl/</a>, <a cl
 <a class="reference external" href="https://bitly.com/">https://bitly.com/</a>.)
 The default, <tt class="docutils literal"><span class="pre">--device=screen</span></tt>, creates a PDF file for reading
 on a screen where links are just clickable.</p>
-<p id="index-29">There are many additional options (run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> and
+<p>There are many additional options (run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> and
 look for options starting with <tt class="docutils literal"><span class="pre">--latex</span></tt> to get a more verbose description):</p>
 <blockquote>
 <div><ul class="simple">
@@ -1049,7 +1028,7 @@ look for options starting with <tt class="docutils literal"><span class="pre">--
 <li><tt class="docutils literal"><span class="pre">--xelatex</span></tt></li>
 </ul>
 </div></blockquote>
-<p id="index-30"><strong>Step 2.</strong>
+<p><strong>Step 2.</strong>
 Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex mydoc
@@ -1170,8 +1149,8 @@ Terminal&gt; dvipdf mydoc
 </div>
 </div>
 <div class="section" id="pdflatex">
-<h3>PDFLaTeX<a class="headerlink" href="#pdflatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-31"></span><p id="index-32">Running <tt class="docutils literal"><span class="pre">pdflatex</span></tt> instead of <tt class="docutils literal"><span class="pre">latex</span></tt> follows almost the same steps,
+<h2>PDFLaTeX<a class="headerlink" href="#pdflatex" title="Permalink to this headline">¶</a></h2>
+<p>Running <tt class="docutils literal"><span class="pre">pdflatex</span></tt> instead of <tt class="docutils literal"><span class="pre">latex</span></tt> follows almost the same steps,
 but the start is</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
 </pre></div>
@@ -1185,8 +1164,8 @@ Terminal&gt; pdflatex -shell-escape mydoc
 </div>
 </div>
 <div class="section" id="xelatex">
-<h3>XeLaTeX<a class="headerlink" href="#xelatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-33"></span><p id="index-34">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
+<h2>XeLaTeX<a class="headerlink" href="#xelatex" title="Permalink to this headline">¶</a></h2>
+<p>XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the <tt class="docutils literal"><span class="pre">--xelatex</span></tt> flag to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --xelatex
 Terminal&gt; doconce ptex2tex mydoc
@@ -1195,38 +1174,25 @@ Terminal&gt; xelatex mydoc
 </div>
 </div>
 <div class="section" id="from-pdf-to-e-book-formats">
-<h3>From PDF to e-book formats<a class="headerlink" href="#from-pdf-to-e-book-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-35"></span><p id="index-36">PDF (as generated from LaTeX above) can be read on most devices today.
+<h2>From PDF to e-book formats<a class="headerlink" href="#from-pdf-to-e-book-formats" title="Permalink to this headline">¶</a></h2>
+<p>PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The <a class="reference external" href="http://calibre-ebook.com/">Calibre</a>
 program can produce epub, mobi, and other e-book formats from PDF,
 see a <a class="reference external" href="http://www.dedoimedo.com/computers/latex-lyx-e-books.html">description</a>.</p>
 </div>
-<div class="section" id="microsoft-word-or-libreoffice">
-<h3>Microsoft Word or LibreOffice<a class="headerlink" href="#microsoft-word-or-libreoffice" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-37"></span><span class="target" id="index-38"></span><p id="index-39">Transforming DocOnce files to Word format is best done with the aid
-of <tt class="docutils literal"><span class="pre">pandoc</span></tt>. A standard way is to first generate the Markdown format
-(<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt>) and then use <tt class="docutils literal"><span class="pre">pandoc</span></tt> to generate a <tt class="docutils literal"><span class="pre">.docx</span></tt>
-file:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc
-Terminal&gt; pandoc -t docx -o mydoc.docx mydoc.md
-</pre></div>
-</div>
-<p>The transformation works well for simple text files, but LaTeX mathematics
-does not work.</p>
-</div>
 <div class="section" id="plain-ascii-text">
-<h3>Plain ASCII Text<a class="headerlink" href="#plain-ascii-text" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-40"></span><span class="target" id="index-41"></span><span class="target" id="index-42"></span><p id="index-43">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
+<h2>Plain ASCII Text<a class="headerlink" href="#plain-ascii-text" title="Permalink to this headline">¶</a></h2>
+<p>We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
 </pre></div>
 </div>
 </div>
-<div class="section" id="restructuredtext">
-<h3>reStructuredText<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-44"></span><p id="index-45">Going from DocOnce to reStructuredText gives a lot of possibilities to
+<div class="section" id="id6">
+<h2>reStructuredText<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
 reStructuredText file <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format rst mydoc.do.txt
@@ -1270,9 +1236,9 @@ Some links for going from LaTeX to Word are listed below.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="sphinx">
-<h3>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-46"></span><p id="index-47">Sphinx documents demand quite some steps in their creation. We have automated
+<div class="section" id="id7">
+<h2>Sphinx<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> command:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
           title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
@@ -1336,7 +1302,7 @@ to <tt class="docutils literal"><span class="pre">_static/myfile.txt</span></tt>
 However, I recommend instead that you manually copy
 files to <tt class="docutils literal"><span class="pre">_static</span></tt> when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.</p>
-<p id="index-48"><strong>Themes.</strong>
+<p><strong>Themes.</strong>
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
@@ -1355,7 +1321,7 @@ Additional themes include
 <tt class="docutils literal"><span class="pre">scipy_lectures</span></tt>,
 <tt class="docutils literal"><span class="pre">slim-agogo</span></tt>, and
 <tt class="docutils literal"><span class="pre">vlinux-theme</span></tt>.</p>
-<p id="index-49">All the themes are packed out in the Sphinx directory, and the
+<p>All the themes are packed out in the Sphinx directory, and the
 <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> insert lots of extra code in the <tt class="docutils literal"><span class="pre">conf.py</span></tt>
 file to enable easy specification and customization of themes.
 For example, modules are loaded for the additional themes that
@@ -1421,7 +1387,7 @@ and reuse it the next time <tt class="docutils literal"><span class="pre">doconc
 </pre></div>
 </div>
 <div class="section" id="the-manual-sphinx-procedure">
-<span id="index-50"></span><h4>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h4>
+<h3>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h3>
 <p>If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>.</p>
@@ -1509,8 +1475,8 @@ all such arguments can be customized both for Sphinx and LaTeX output.</p>
 </div>
 </div>
 <div class="section" id="wiki-formats">
-<h3>Wiki Formats<a class="headerlink" href="#wiki-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-51"></span><span class="target" id="index-52"></span><span class="target" id="index-53"></span><span class="target" id="index-54"></span><span class="target" id="index-55"></span><span class="target" id="index-56"></span><p id="index-57">There are many different wiki formats, but DocOnce only supports three:
+<h2>Wiki Formats<a class="headerlink" href="#wiki-formats" title="Permalink to this headline">¶</a></h2>
+<p>There are many different wiki formats, but DocOnce only supports three:
 <a class="reference external" href="http://code.google.com/p/support/wiki/WikiSyntax">Googlecode wiki</a>,
 <a class="reference external" href="http://www.mediawiki.org/wiki/Help:Formatting">MediaWiki</a>, and
 <a class="reference external" href="http://www.wikicreole.org/wiki/Creole1.0">Creole Wiki</a>.
@@ -1546,8 +1512,8 @@ available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).</p>
 </div>
 <div class="section" id="google-docs">
-<h3>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h3>
-<p id="index-58">Google Docs are normally made online in the interactive editor. However,
+<h2>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h2>
+<p>Google Docs are normally made online in the interactive editor. However,
 you may upload a DocOnce document to Google Docs. This requires transforming
 the DocOnce document to one of the accepted formats for Google Docs:</p>
 <blockquote>
@@ -1576,8 +1542,8 @@ Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the <a class="reference external" href="http://code.google.com/p/googledoc2latex">googledoc2latex</a> script can convert a Google document to LaTeX.</p>
 </div>
 <div class="section" id="tweaking-the-doconce-output">
-<h3>Tweaking the DocOnce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-59"></span><p id="index-60">Occasionally, one would like to tweak the output in a certain format
+<h2>Tweaking the DocOnce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h2>
+<p>Occasionally, one would like to tweak the output in a certain format
 from DocOnce. One example is figure filenames when transforming
 DocOnce to reStructuredText. Since DocOnce does not know if the
 <tt class="docutils literal"><span class="pre">.rst</span></tt> file is going to be filtered to LaTeX or HTML, it cannot know
@@ -1589,736 +1555,8 @@ from a script to automate all steps in going from DocOnce to the final
 format(s). The <tt class="docutils literal"><span class="pre">make.sh</span></tt> files in <tt class="docutils literal"><span class="pre">docs/manual</span></tt> and <tt class="docutils literal"><span class="pre">docs/tutorial</span></tt>
 constitute comprehensive examples on how such scripts can be made.</p>
 </div>
-</div>
-<div class="section" id="options-for-the-doconce-commands">
-<h2>Options for the <tt class="docutils literal"><span class="pre">doconce</span></tt> commands<a class="headerlink" href="#options-for-the-doconce-commands" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="doconce-format-command-line-options">
-<h3><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command-line options<a class="headerlink" href="#doconce-format-command-line-options" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-61"></span><p id="index-62">The transformation of a DocOnce source to various format is done with
-the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command, which has <em>a lot</em> of command-line options.
-These are printed out by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt>. The output is listed
-here for convenience.</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format --help
-
-doconce format X doconcefile
-
-where X can be any of the formats
-html, latex, pdflatex, rst, sphinx, plain, gwiki, mwiki, cwiki,
-pandoc, epytext.
-
-
---help
-
-Print all options to the doconce program.
-
-
---debug
-
-Write a debugging file _doconce_debugging.log with lots
-of intermediate results
-
-
---no_abort
-
-Do not abort the execution if syntax errors are found.
-
-
---verbose=...
-
-Write progress of intermediate steps if they take longer than X seconds.
-0: X=15
-1: X=5
-2: 0.5
-
-
---syntax_check=...
-
-Values: on/off. Turns on/off fix of illegal constructions and the syntax check
-(may be time consuming for large books).
-
-
---skip_inline_comments
-
-Remove all inline comments of the form [ID: comment].
-
-
---encoding=...
-
-Specify encoding (e.g., latin1 or utf-8).
-
-
---no_mako
-
-Do not run the Mako preprocessor program.
-
-
---no_preprocess
-
-Do not run the Preprocess preprocessor program.
-
-
---mako_strict_undefined
-
-Make Mako report on undefined variables.
-
-
---no_header_footer
-
-Do not include header and footer in (LaTeX and HTML) documents.
-
-
---no_emoji
-
-Remove all emojis.
-
-
---runestone
-
-Make a RunestoneInteractive version of a Sphinx document.
-
-
---max_bc_linelength=...
-
-Strip lines in !bc environments that are longer than specified
-(to prevent too long lines). Default: None (no length restriction).
-
-
---keep_pygments_html_bg
-
-Do not allow change of background in code blocks in HTML.
-
-
---minted_latex_style=...
-
-Specify the minted style to be used for typesetting code in LaTeX.
-
-
---pygments_html_style=...
-
-Specify the minted/pygments style to be used for typesetting code
-in HTML.
-Default: default (other values: monokai, manni, rrt, perldoc,
-borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
-vim, pastie, friendly, native).
-none, no, off: turn off pygments to typeset computer code in HTML,
-use plain &lt;pre&gt; tags.
-highlight.js: use highlight.js syntax highlighting, not pygments.
-
-
---pygments_html_linenos
-
-Turn on line numbers in pygmentized computer code in HTML.
-(In LaTeX line numbers can be added via doconce subst or
-doconce replace such that the verbatim environments get
-the linenos=true parameter.)
-
-
---html_output=...
-
-Alternative basename of files associated with the HTML format.
-
-
---html_style=...
-
-Name of theme for HTML style:
-plain, blueish, blueish2, bloodish,
-solarized, solarized2_light, solarized2_dark,
-bootstrap, bootswatch,
-bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
-bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
-                simplex, spacelab, united, yeti
-                (dark:) amelia, cyborg, darkly, slate, spruce,
-                superhero (demos at bootswatch.com)
-
-
---html_code_style=...
-
-on, off, inherit, transparent: enable normal inline verbatim font
-where foreground and background color is inherited from the
-surroundnings (e.g., to avoid the red Boostrap color).
-Default: on.
-
-
---html_pre_style=...
-
-on, off, inherit, transparent: let code blocks inside &lt;pre&gt; tags have
-foreground and background color inherited from the surroundnings.
-Default: on.
-
-
---html_template=...
-
-Specify an HTML template with header/footer in which the doconce
-document is embedded. (Often preferred to run with --no_title)
-
-
---no_title
-
-Comment out TITLE, AUTHOR, DATE.
-Often used with HTML templates.
-
-
---html_toc_depth=...
-
-No of levels in the table of contents in HTML output for
-Bootstrap-based styles. Default: 2.
-
-
---html_toc_indent=...
-
-No of spaces for indentation of subsections in the table of
-contents in HTML output. Default: 3 (0 gives toc as nested list
-in Bootstrap-based styles).
-
-
---html_body_font=...
-
-Specify HTML font for text body. =? lists available fonts.
-
-
---html_heading_font=...
-
-Specify HTML font for headings. =? lists available fonts.
-
-
---html_video_autoplay=...
-
-True for autoplay when HTML is loaded, otherwise False (default).
-
-
---html_admon=...
-
-Type of admonition and color:
-colors, gray, yellow, apricot, lyx, paragraph.
-For html_style=bootstrap*,bootswatch*,
-the two legal values are boostrap_panel, bootstrap_alert.
-
-
---html_admon_shadow
-
-Add a shadow effect to HTML admon boxes (gray, yellow, apricot).
-
-
---html_admon_bg_color=...
-
-Background color of admon in HTML.
-
-
---html_admon_bd_color=...
-
-Boundary color of admon in HTML.
-
-
---css=...
-
-Specify a .css style file for HTML output.
-If the file does not exist, the default or specified style
-(--html_style=) is written to it.
-
-
---html_box_shadow
-
-Add a shadow effect in HTML box environments.
-
-
---html_exercise_icon=...
-
-Specify a question icon in bundled/html_images for being
-inserted to the right in exercises - &quot;default&quot; and &quot;none&quot; are allowed
-(&quot;none&quot; if no option).
-
-
---html_exercise_icon_width=...
-
-Width of the icon image specified as --html_exercise_icon.
-
-
---html_links_in_new_window
-
-Open HTML links in a new window.
-
-
---html_quiz_button_text=...
-
-Text on buttons for collapsing/expanding answers and
-explanations
-in quizzes (with bootstrap styles).
-Default: Empty (just pencil glyphion).
-
-
---html_bootstrap_navbar=...
-
-Turns the Bootstrap navigation bar on/off. Default: on.
-
-
---html_bootstrap_jumbotron=...
-
-Turns the Bootstrap jumbotron intro on/off and governs the
-size of the heading. Default: on. Other values: h2, off
-(h2 gives h2 heading instead of h1, off gives no jumbotron).
-
-
---device=...
-
-Set device to paper, screen, or other (paper impacts LaTeX output).
-
-
---latex_style=...
-
-LaTeX style package used for the document.
-std: standard LaTeX article or book style,
-Springer_lncse: Springer&#39;s Lecture Notes in Computational Science and
-   Engineering (LNCSE) style,
-Springer_llncs: Springer&#39;s Lecture Notes in Computer Science style,
-Springer_T2: Springer&#39;s T2 book style,
-Springer_collection: Springer&#39;s style for chapters in LNCSE proceedings,
-Korma_Script: Korma Script style,
-siamltex: SIAM&#39;s standard LaTeX style for papers,
-siamltexmm: SIAM&#39;s extended (blue) multimedia style for papers.
-
-
---latex_font=...
-
-LaTeX font choice: helvetica, palatino, std (Computer Modern, default).
-
-
---latex_bibstyle=...
-
-LaTeX bibliography style. Default: plain.
-
-
---section_numbering=...
-
-Turn section numbering on/off. Default: off for all formats except latex and pdflatex (on for those).
-
-
---latex_table_format=...
-
-Default: quote. Other values: left, center, footnotesize, tiny.
-
-
---latex_title_layout=...
-
-Layout of the title, authors, and date:
-std: traditional LaTeX layout,
-titlepage: separate page,
-doconce_heading (default): authors with &quot;footnotes&quot; for institutions,
-beamer: layout for beamer slides.
-
-
---latex_papersize=...
-
-Geometry of page size: a6, a4, std (default).
-
-
---latex_list_of_exercises=...
-
-LaTeX typesetting of list of exercises:
-loe: special, separate list of exercises,
-toc: exercises included as part of the table of contents,
-none (default): no list of exercises.
-
-
---latex_movie=...
-
-Specify package for handling movie/video content.
-Default: href (hyperlink to movie file).
-Other options: media9, movie15, multimedia (Beamer&#39;s \movie command).
-
-
---latex_movie_controls=...
-
-Specify control panel for movies. Default: on. Other options: off.
-
-
---latex_external_movie_viewer
-
-Allow external movie viewer for movie15 package.
-
-
---latex_fancy_header
-
-Typesetting of headers on each page:
-If article: section name to the left and page number to the right
-on even page numbers, the other way around on odd page numners.
-If book: section name to the left and page numner to the right
-on even page numbers, chapter name to the right and page number to
-the left on odd page numbers.
-
-
---latex_section_headings=...
-
-Typesetting of title/section/subsection headings:
-std (default): standard LaTeX,
-blue: gray blue color,
-strongblue: stronger blue color,
-gray: white text on gray background, fit to heading width,
-gray-wide: white text on gray background, wide as the textwidth.
-
-
---latex_colored_table_rows=...
-
-Colors on every two line in tables: no (default), gray, blue.
-
-
---latex_line_numbers
-
-Include line numbers for the running text (only active if there
-are inline comments.
-
-
---latex_todonotes
-
-Use the todonotes package to typeset inline comments.
-Gives colored bubbles in the margin for small inline comments and
-in the text for larger comments.
-
-
---latex_double_spacing
-
-Sets the LaTeX linespacing to 1.5 (only active if there are
-inline comments).
-
-
---latex_labels_in_margin
-
-Print equation, section and other LaTeX labels in the margin.
-
-
---latex_index_in_margin
-
-Place entries in the index also in the margin.
-
-
---latex_preamble=...
-
-User-provided LaTeX preamble file, either complete or additions
-to the doconce-generated preamble.
-
-
---latex_no_program_footnotelink
-
-If --device=paper, this option removes footnotes with links to
-computer programs.
-
-
---latex_admon=...
-
-Type of admonition in LaTeX:
-colors1:
-(inspired by the NumPy User Guide) applies different colors
-for the different admons with an embedded icon,
-
-colors2:
-like `colors1` but the text is wrapped around the icon,
-
-mdfbox:
-rounded boxes with a optional title and no icon (default),
-
-graybox2:
-box with square corners, gray background, and narrower
-than mdfbox, if code it reduces to something like mdfbox
-(mdframed based); the summary admon is in case of A4 format
-only half of the text width with text wrapped around
-(effective for proposals and articles),
-
-grayicon:
-box with gray icons and a default light gray background,
-
-yellowicon:
-box yellow icons and a default light yellow background,
-
-paragraph:  plain paragraph with boldface heading.
-
-Note: the colors in mdfbox and other boxes can customized.
-
-
-
---latex_admon_color=...
-
-The color to be used as background in admonitions.
-Either rgb tuple or saturated color a la yellow!5:
-  --latex_admon_color=0.1,0.1,0.4
- &#39;--latex_admon_color=yellow!5&#39;
-Note the quotes, needed for bash, in the latter example.
-
-If --latex_admon=mdfbox, the background of the title and
-the color of the border of box can also be customized by
-direct editing. For example, a dark blue border and light
-blue title background is obtained by editing the .tex file as
-
-doconce replace &#39;linecolor=black,&#39; &#39;linecolor=darkblue,&#39; mydoc.tex
-doconce subst &#39;frametitlebackgroundcolor=.*?,&#39; &#39;frametitlebackgroundcolor=blue!5,&#39; mydoc.tex
-
-
-
---latex_admon_title_no_period
-
-By default, a period is added to title admons that do not have a period, question mark, or similar. This option prevents adding a period such that the title acts like a heading.
-
-
---latex_admon_envir_map=...
-
-Mapping of code envirs to new envir names inside admons, e.g.,
-to get a different code typesetting inside admons. This is useful
-if admons have a special color and the color background of code
-blocks does not fit will with the color background inside admons.
-Then it is natural to use a different verbatim code style inside
-admons.
-If specifying a number, say 2, as in --latex_admon_envir_map=2,
-an envir like pycod gets the number appended: pycod2. One can
-then in doconce ptex2tex (or ptex2tex) specify the typesetting
-of pycod2 environments.
-Otherwise the specification must be a mapping for each envir
-that should be changed inside the admons:
---latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
-(from-to,from-to,... syntax).
-
-
---latex_exercise_numbering=...
-
-absolute: exercises numbered as 1, 2, ...
-chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-         with a chapter prefix.
-
-
---latex_subex_header_postfix=...
-
-Default: ).
-Gives headers a), b), etc. Can be set to period, colon, etc.
-
-
---xelatex
-
-Use xelatex instead of latex/pdflatex.
-
-
---latex_double_hyphen
-
-Replace single dash - by double dash -- in LaTeX output.
-Somewhat intelligent, but may give unwanted edits. Use with great care!
-
-
---ipynb_admon=...
-
-Typesetting of admonitions and quotes.
-quote: as Markdown quote (default) with gray line on the left.
-paragraph: just the content with the title as paragraph heading.
-
-
---ipynb_figure=...
-
-How to typeset figures in ipynb:
-md (plain Markdown syntax),
-imgtag (&lt;img src=&quot;...&quot; width=...&gt; tag, default)
-Image (python cell with Image object).
-
-
---ipynb_movie=...
-
-How to typeset movies in ipynb:
-md (plain Markdown syntax, default)
-HTML (python cell with HTML object containing the code that is used
-in the HTML format)
-HTML-YouTubeVideo: If YouTube video, use YouTubeVideo object, otherwise
-use the HTML object with appropriat HTML code.
-local: local video files with encoding.
-
-
---verbose
-
-Write out all OS commands run by doconce.
-
-
---examples_as_exercises
-
-Treat examples of the form &quot;==== Example: ...&quot;
-as in exercise environments.
-
-
---without_solutions
-
-Leave out solution environments from exercises.
-
-
---without_answers
-
-Leave out answer environments from exercises.
-
-
---without_hints
-
-Leave out hints from exercises.
-
-
---wordpress
-
-Make HTML output for wordpress.com pages.
-
-
---tables2csv
-
-Write each table to a CSV file table_X.csv,
-where X is the table number (autonumbered in according to
-appearance in the DocOnce source file).
-
-
---sections_up
-
-Upgrade all sections: sections to chapters, subsections
-to sections, etc.
-
-
---sections_down
-
-Downgrade all sections: chapters to sections, sections
-to subsections, etc.
-
-
---os_prompt=...
-
-Terminal prompt in output from running OS commands (the
-@@@OSCMD instruction). None or empty: no prompt, just the command;
-nocmd: no command, just the output. Default is &quot;Terminal&gt;&quot;.
-
-
---code_prefix=...
-
-Prefix all @@@CODE imports with some path.
-
-
---figure_prefix=...
-
-Prefix all figure filenames with, e.g., an URL.
-
-
---movie_prefix=...
-
-Prefix all movie filenames with, e.g., an URL.
-
-
---no_mp4_webm_ogg_alternatives
-
-Use just the specified (.mp4, .webm, .ogg) movie file;
-do not allow alternatives in HTML5 video tag.
-Used if the just the specified movie format should be played.
-
-
---handout
-
-Makes slides output suited for printing.
-
-
---urlcheck
-
-Check that all URLs referred to in the document are valid.
-
-
---short_title=...
-
-Short version of the document&#39;s title.
-
-
---markdown
-
-Allow Markdown (and some Extended Markdown) syntax as input.
-
-
---md2do_output=...
-
-Dump to file the DocOnce code arising from converting from
-Markdown. Default value is None (no dump).
-Any filename can be specified: --md2do_output=myfile.do.txt
-
-
---github_md
-
-Turn on github-flavored-markdown dialect of the pandoc translator
-
-
---strapdown
-
-Wrap Markdown output in HTML header/footer such that the
-output file (renamed as .html) can automatically be rendered as
-an HTML via strapdownjs.com technology. Combine with --github_md
-for richer output. Styles are set with --bootswatch_theme=cyborg
-(for instance).
-
-
---bootswatch_theme=...
-
-Bootswatch theme for use with --strapdown option.
-
-
---strict_markdown_output
-
-Ensure strict/basic Markdown as output.
-
-
---multimarkdown_output
-
-Allow MultiMarkdown as output.
-
-
---quiz_question_prefix=...
-
-Prefix/title before question in quizzes. Default: &quot;Question:&quot;.
-Can also be set in square brackets for each individual question.
-(&quot;Q: [] What is 1+1?&quot;
-results in no prefix/title before the &quot;What is 1+1?&quot;.
-
-
---quiz_choice_prefix=...
-
-Prefix/title before choices in quizzes.
-Default for HTML: &quot;Choice&quot;, resulting in numbered choices
-&quot;Choice 1:&quot;, &quot;Choice 2:&quot;, etc.
-A value with colon, period, or question mark (e.g., &quot;Answer:&quot;)
-leaves out the numbering.
-Default for latex/pdflatex: letter or letter+checkbox.
-Other values: number, number+checkbox, number+circle, letter+circle,
-letter.
-The checkbox or circle is always omitted if answers or solutions are
-included (i.e., if none of the --without_answers and
---without_solutions is set).
-The choice prefix can also be set in square brackets for each
-individual choice.
-(&quot;Cr: [] Two&quot;
-results in no prefix/title before the the answer &quot;Two&quot;.
-
-
-
---quiz_horizontal_rule=...
-
-on (default): &lt;hr&gt; before and after quiz in HTML. off: no &lt;hr&gt;.
-
-
---rst_uio
-
-Univ. of Oslo version of rst files for their Vortex system.
-
-
---rst_mathjax
-
-Use raw HTML with MathJax for LaTeX mathematics in rst files.
-
-
---sphinx_keep_splits
-
-Respect user&#39;s !split commands. Default: Override user&#39;s !split
-and insert new !split before all topmost sections. This is what
-makes sense in a Sphinx Table of Contents if one wants to split
-the document into multiple parts.
-
-
---oneline_paragraphs
-
-Combine paragraphs to one line (does not work well).
-</pre></div>
-</div>
-</div>
 <div class="section" id="demos">
-<h3>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h3>
+<h2>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
 <p>The current text is generated from a DocOnce format stored in the file</p>
 <div class="highlight-text"><div class="highlight"><pre>doc/tutorial/tutorial.do.txt
 </pre></div>
@@ -2335,15 +1573,14 @@ various formats. The <tt class="docutils literal"><span class="pre">make.sh</spa
 </div>
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
-<span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
-<p id="index-63">Below, we explain the manual installation of all software that may be
+<span id="install-doconce"></span><h1>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h1>
+<p>Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the
-<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh">install_doconce.sh</a> (or
-<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py">install_doconce.py</a>) script.</p>
+The impatient way to install what is needed is to run the
+<a class="reference external" href="install_doconce.sh">install_doconce.sh</a> (or
+<a class="reference external" href="install_doconce.py">install_doconce.py</a>) script.</p>
 <div class="section" id="doconce">
-<h3>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h3>
+<h2>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h2>
 <p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.
 Installation can be done via</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
@@ -2368,7 +1605,7 @@ sudo python setup.py install
 </div>
 </div>
 <div class="section" id="dependencies">
-<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Producing HTML documents, plain text, pandoc-extended Markdown,
 and wikis can be done without installing any other
 software. However, if you want other formats as output
@@ -2378,7 +1615,7 @@ and so on, the software below must be installed.</p>
 <p>To install all needed packages on a GNU/Linux Debian system, such as
 Ubuntu, you can jump to the script in the section <a class="reference internal" href="#install-debian-script"><em>Quick Debian/Ubuntu Install</em></a>.</p>
 <div class="section" id="preprocessors">
-<h4>Preprocessors<a class="headerlink" href="#preprocessors" title="Permalink to this headline">¶</a></h4>
+<h3>Preprocessors<a class="headerlink" href="#preprocessors" title="Permalink to this headline">¶</a></h3>
 <p>If you make use of the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a>
 preprocessor, this program must be installed:</p>
 <div class="highlight-text"><div class="highlight"><pre>svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
@@ -2406,7 +1643,7 @@ tarball, pack it out, go to the directory and run
 the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
 <div class="section" id="image-file-handling">
-<h4>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h4>
+<h3>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h3>
 <p>Different output formats require different formats of image files.
 For example, PostScript or Encapuslated PostScript is required for
 <tt class="docutils literal"><span class="pre">latex</span></tt> output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
@@ -2431,7 +1668,7 @@ can be installed by</p>
 </div>
 </div>
 <div class="section" id="spellcheck">
-<h4>Spellcheck<a class="headerlink" href="#spellcheck" title="Permalink to this headline">¶</a></h4>
+<h3>Spellcheck<a class="headerlink" href="#spellcheck" title="Permalink to this headline">¶</a></h3>
 <p>The utility <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> applies the <tt class="docutils literal"><span class="pre">ispell</span></tt> program for
 spellcheck. On Debian (including Ubuntu) it is installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install ispell
@@ -2439,7 +1676,7 @@ spellcheck. On Debian (including Ubuntu) it is installed by</p>
 </div>
 </div>
 <div class="section" id="bibliography">
-<h4>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h4>
+<h3>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h3>
 <p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
 in your document. On the website, click on <em>Clone</em>, copy the
 command and run it:</p>
@@ -2454,7 +1691,7 @@ sudo python setup.py
 </div>
 </div>
 <div class="section" id="ptex2tex-for-latex-output">
-<h4>Ptex2tex for LaTeX Output<a class="headerlink" href="#ptex2tex-for-latex-output" title="Permalink to this headline">¶</a></h4>
+<h3>Ptex2tex for LaTeX Output<a class="headerlink" href="#ptex2tex-for-latex-output" title="Permalink to this headline">¶</a></h3>
 <p>To make LaTeX documents with very flexible choice of typesetting of
 verbatim code blocks you need <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a>,
 which is installed by</p>
@@ -2513,7 +1750,7 @@ several other packages: <tt class="docutils literal"><span class="pre">xcolor</s
 installing all this are listed below.</p>
 </div>
 <div class="section" id="latex-packages">
-<h4>LaTeX packages<a class="headerlink" href="#latex-packages" title="Permalink to this headline">¶</a></h4>
+<h3>LaTeX packages<a class="headerlink" href="#latex-packages" title="Permalink to this headline">¶</a></h3>
 <p>Many LaTeX packages are potentially needed (depending on various
 preprocessor variables given to <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>.  The
 standard packages always included are <tt class="docutils literal"><span class="pre">relsize</span></tt>, <tt class="docutils literal"><span class="pre">epsfig</span></tt>, <tt class="docutils literal"><span class="pre">makeidx</span></tt>,
@@ -2552,7 +1789,7 @@ the <a class="reference external" href="https://code.google.com/p/ptex2tex/sourc
 by the <tt class="docutils literal"><span class="pre">cp2texmf.sh</span></tt> script executed above.</p>
 </div>
 <div class="section" id="restructuredtext-rest-output">
-<h4>reStructuredText (reST) Output<a class="headerlink" href="#restructuredtext-rest-output" title="Permalink to this headline">¶</a></h4>
+<h3>reStructuredText (reST) Output<a class="headerlink" href="#restructuredtext-rest-output" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">rst</span></tt> output from DocOnce allows further transformation to LaTeX,
 HTML, XML, OpenOffice, and so on, through the <a class="reference external" href="http://docutils.sourceforge.net">docutils</a> package.  The installation of the
 most recent version can be done by</p>
@@ -2579,7 +1816,7 @@ or clone the svn repository, go to the <tt class="docutils literal"><span class=
 run the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
 <div class="section" id="sphinx-output">
-<h4>Sphinx Output<a class="headerlink" href="#sphinx-output" title="Permalink to this headline">¶</a></h4>
+<h3>Sphinx Output<a class="headerlink" href="#sphinx-output" title="Permalink to this headline">¶</a></h3>
 <p>Output to <tt class="docutils literal"><span class="pre">sphinx</span></tt> requires of course the
 <a class="reference external" href="http://sphinx.pocoo.org">Sphinx software</a>,
 installed by</p>
@@ -2609,7 +1846,7 @@ additional Python/Sphinx modules to be installed:</p>
 above.</p>
 </div>
 <div class="section" id="markdown-and-pandoc-output">
-<h4>Markdown and Pandoc Output<a class="headerlink" href="#markdown-and-pandoc-output" title="Permalink to this headline">¶</a></h4>
+<h3>Markdown and Pandoc Output<a class="headerlink" href="#markdown-and-pandoc-output" title="Permalink to this headline">¶</a></h3>
 <p>The DocOnce format <tt class="docutils literal"><span class="pre">pandoc</span></tt> outputs the document in the Pandoc
 extended Markdown format, which via the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program can be
 translated to a range of other formats. Installation of <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, written in Haskell, is most
@@ -2620,7 +1857,7 @@ easily done by</p>
 <p>on Debian (Ubuntu) systems.</p>
 </div>
 <div class="section" id="epydoc-output">
-<h4>Epydoc Output<a class="headerlink" href="#epydoc-output" title="Permalink to this headline">¶</a></h4>
+<h3>Epydoc Output<a class="headerlink" href="#epydoc-output" title="Permalink to this headline">¶</a></h3>
 <p>When the output format is <tt class="docutils literal"><span class="pre">epydoc</span></tt> one needs that program too, installed
 by</p>
 <div class="highlight-text"><div class="highlight"><pre>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
@@ -2640,7 +1877,7 @@ Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>) direct
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">pull;</span> <span class="pre">hg</span> <span class="pre">update</span></tt>, and then <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
 <div class="section" id="analyzing-file-differences">
-<h4>Analyzing file differences<a class="headerlink" href="#analyzing-file-differences" title="Permalink to this headline">¶</a></h4>
+<h3>Analyzing file differences<a class="headerlink" href="#analyzing-file-differences" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span> <span class="pre">file1</span> <span class="pre">file</span> <span class="pre">prog</span></tt> command for illustrating differences between
 two files <tt class="docutils literal"><span class="pre">file1</span></tt> and <tt class="docutils literal"><span class="pre">file2</span></tt> using the program <tt class="docutils literal"><span class="pre">prog</span></tt> requires <tt class="docutils literal"><span class="pre">prog</span></tt>
 to be installed. By default, <tt class="docutils literal"><span class="pre">prog</span></tt> is <tt class="docutils literal"><span class="pre">difflib</span></tt> which comes with Python
@@ -2650,9 +1887,9 @@ URL, and their <tt class="docutils literal"><span class="pre">sudo</span> <span 
 appear in the table below.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="49%" />
-<col width="44%" />
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Program</th>
@@ -2694,7 +1931,7 @@ appear in the table below.</p>
 </div>
 </div>
 <div class="section" id="quick-debian-ubuntu-install">
-<span id="install-debian-script"></span><h3>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h3>
+<span id="install-debian-script"></span><h2>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h2>
 <p>On Debian (including Ubuntu) systems, it is straightforward to install the
 long series of DocOnce dependencies:</p>
 <div class="highlight-text"><div class="highlight"><pre># Version control systems
@@ -2748,7 +1985,6 @@ cd ../../..
 </div>
 </div>
 </div>
-</div>
 
 
           </div>
@@ -2758,7 +1994,7 @@ cd ../../..
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">DocOnce: Document Once, Include Anywhere</a><ul>
+<li><a class="reference internal" href="#">DocOnce: Document Once, Include Anywhere</a></li>
 <li><a class="reference internal" href="#some-doconce-features">Some DocOnce Features</a></li>
 <li><a class="reference internal" href="#what-does-doconce-look-like">What Does DocOnce Look Like?</a><ul>
 <li><a class="reference internal" href="#what-can-doconce-be-used-for">What Can DocOnce Be Used For?</a></li>
@@ -2777,7 +2013,7 @@ cd ../../..
 <li><a class="reference internal" href="#removal-of-inline-comments">Removal of inline comments</a></li>
 <li><a class="reference internal" href="#notes">Notes</a></li>
 <li><a class="reference internal" href="#demo-of-different-formats">Demo of different formats</a></li>
-<li><a class="reference internal" href="#html">HTML</a><ul>
+<li><a class="reference internal" href="#id2">HTML</a><ul>
 <li><a class="reference internal" href="#basics">Basics</a></li>
 <li><a class="reference internal" href="#typesetting-of-code">Typesetting of Code</a></li>
 <li><a class="reference internal" href="#handling-of-movies">Handling of Movies</a></li>
@@ -2790,31 +2026,26 @@ cd ../../..
 <li><a class="reference internal" href="#blog-posts">Blog Posts</a></li>
 <li><a class="reference internal" href="#pandoc-and-markdown">Pandoc and Markdown</a><ul>
 <li><a class="reference internal" href="#markdown-to-html-conversion">Markdown to HTML conversion</a></li>
+<li><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
 <li><a class="reference internal" href="#strict-markdown">Strict Markdown</a></li>
 <li><a class="reference internal" href="#github-flavored-markdown">GitHub-flavored Markdown</a></li>
 <li><a class="reference internal" href="#multimarkdown">MultiMarkdown</a></li>
 <li><a class="reference internal" href="#strapdown-rendering-of-markdown-text">Strapdown rendering of Markdown text</a></li>
-<li><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#latex">LaTeX</a></li>
+<li><a class="reference internal" href="#id5">LaTeX</a></li>
 <li><a class="reference internal" href="#pdflatex">PDFLaTeX</a></li>
 <li><a class="reference internal" href="#xelatex">XeLaTeX</a></li>
 <li><a class="reference internal" href="#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
-<li><a class="reference internal" href="#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>
 <li><a class="reference internal" href="#plain-ascii-text">Plain ASCII Text</a></li>
-<li><a class="reference internal" href="#restructuredtext">reStructuredText</a></li>
-<li><a class="reference internal" href="#sphinx">Sphinx</a><ul>
+<li><a class="reference internal" href="#id6">reStructuredText</a></li>
+<li><a class="reference internal" href="#id7">Sphinx</a><ul>
 <li><a class="reference internal" href="#the-manual-sphinx-procedure">The manual Sphinx procedure</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#wiki-formats">Wiki Formats</a></li>
 <li><a class="reference internal" href="#google-docs">Google Docs</a></li>
 <li><a class="reference internal" href="#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#options-for-the-doconce-commands">Options for the <tt class="docutils literal"><span class="pre">doconce</span></tt> commands</a><ul>
-<li><a class="reference internal" href="#doconce-format-command-line-options"><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command-line options</a></li>
 <li><a class="reference internal" href="#demos">Demos</a></li>
 </ul>
 </li>
@@ -2835,8 +2066,6 @@ cd ../../..
 </ul>
 </li>
 <li><a class="reference internal" href="#quick-debian-ubuntu-install">Quick Debian/Ubuntu Install</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

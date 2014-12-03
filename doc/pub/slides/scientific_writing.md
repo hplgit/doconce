@@ -3,21 +3,18 @@
 <!-- TITLE: Scientific Writing and Publishing for the Future: How Can We Handle the eLearning Revolution? -->
 % Scientific Writing and Publishing for the Future
 % **Hans Petter Langtangen**
-% Nov 23, 2014
+% Nov 19, 2014
 
-<!-- <img src="fig/doconce1b.png" width=400> -->
 ![](fig/doconce1b.png)
 
 <!-- !split -->
 ## Challenges with tools for scientific writing
 
 <!-- !bslidecell 00 -->
-<!-- <img src="fig/writing1.jpg" width=400> -->
 ![](fig/writing1.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-<!-- <img src="fig/direction14.jpg" width=510> -->
 ![](fig/direction14.jpg)
 <!-- !eslidecell -->
 
@@ -53,10 +50,8 @@ print 'Hello, World!'
 ### LaTeX PDF is mostly suboptimal for the new devices
 
 <!-- !bslidecell 00 0.4 -->
-<!-- <img src="fig/ipad.png" width=400> -->
 ![](fig/ipad.png)
 
-<!-- <img src="fig/iphones.jpg" width=100> -->
 ![](fig/iphones.jpg)
 
 <!-- FIGURE: [fig/mbair, width=400] -->
@@ -64,26 +59,22 @@ print 'Hello, World!'
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 0.6 -->
-<!-- <img src="fig/imac.png" width=350> -->
 ![](fig/imac.png)
 <!-- !eslidecell -->
 
 <!-- !split -->
 ### The book will survive (LaTeX is ideal)
 
-<!-- <img src="fig/oldbooks.jpg" width=800> -->
 ![](fig/oldbooks.jpg)
 
 <!-- !split -->
 ### The classical report/paper will survive (LaTeX is ideal)
 
 <!-- !bslidecell 00 -->
-<!-- <img src="fig/latex_thesis.jpg" width=400> -->
 ![](fig/latex_thesis.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-<!-- <img src="fig/latex_paper1.png" width=400> -->
 ![](fig/latex_paper1.png)
 <!-- !eslidecell -->
 
@@ -101,12 +92,10 @@ print 'Hello, World!'
 [Opigno](https://www.opigno.org/en), ...
 
 <!-- !bslidecell 00 -->
-<!-- <img src="fig/digital_learning_words.jpg" width=400> -->
 ![](fig/digital_learning_words.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-<!-- <img src="fig/digital_learning_iPad.jpg" width=400> -->
 ![](fig/digital_learning_iPad.jpg)
 <!-- !eslidecell -->
 
@@ -114,7 +103,6 @@ print 'Hello, World!'
 ### My headache: How to write scientific material that can be easily published through old and new media?
 
 
-<!-- <img src="fig/headache4.jpg" width=300> -->
 ![](fig/headache4.jpg)
 
 *LaTeX-for-paper* and *HTML-for-screen* are two very different
@@ -139,32 +127,26 @@ Apple's iBooks, ...
 
 
 <!-- !bslidecell 00 0.25 -->
-<!-- <img src="fig/LaTeX_logo.jpg" width=120> -->
 ![](fig/LaTeX_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 0.25 -->
-<!-- <img src="fig/MS_Word_logo.jpg" width=80> -->
 ![](fig/MS_Word_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 02 0.5 -->
-<!-- <img src="fig/sphinx_logo.png" width=200> -->
 ![](fig/sphinx_logo.png)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 10 0.25 -->
-<!-- <img src="fig/markdown_logo.jpg" width=80> -->
 ![](fig/markdown_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 11 0.25 -->
-<!-- <img src="fig/MediaWiki_logo.jpg" width=80> -->
 ![](fig/MediaWiki_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 12 0.5 -->
-<!-- <img src="fig/IPython_logo.png" width=300> -->
 ![](fig/IPython_logo.png)
 <!-- !eslidecell -->
 
@@ -187,7 +169,6 @@ Apple's iBooks, ...
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 0.6 -->
-<!-- <img src="fig/jungle_with_mess.jpg" width=500> -->
 ![](fig/jungle_with_mess.jpg)
 <!-- !eslidecell -->
 
@@ -396,7 +377,6 @@ especially for scientific writing with *much math and code*.
 <!-- !split -->
 ## DocOnce: Write once, include anywhere
 
-<!-- <img src="fig/doconce1b.png" width=600> -->
 ![](fig/doconce1b.png)
 
 
@@ -1075,7 +1055,6 @@ Last page gets rendered to
  * Key point 1
  * Key point 2
 
-<!-- <img src="fig/teacher1.gif" width=100,> -->
 ![](fig/teacher1.gif)
 
 Key equation:
@@ -1147,7 +1126,6 @@ $$
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-<!-- <img src="fig/broken_pen_and_paper.jpg" width=400> -->
 ![](fig/broken_pen_and_paper.jpg)
 <!-- !eslidecell -->
 

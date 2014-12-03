@@ -6,16 +6,15 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Demo of the Bootstrap style">
+<meta name="description" content="DocOnce Demo of the Bootstrap style">
 
-<title>Demo of the Bootstrap style</title>
+<title>DocOnce Demo of the Bootstrap style</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
-
 
 </head>
 
@@ -66,7 +65,7 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="bootstrap_plain.html">Demo of the Bootstrap style</a>
+    <a class="navbar-brand" href="bootstrap_plain.html">DocOnce Demo of the Bootstrap style</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -98,39 +97,36 @@ MathJax.Hub.Config({
 
 
 <div class="jumbotron">
-<center><h1>Demo of the Bootstrap style</h1></center>  <!-- document title -->
+<center><h1>DocOnce Demo of the Bootstrap style</h1></center>  <!-- document title -->
 
 <p>
-DocOnce supports a variety of Bootstrap styles for HTML
-documents. To get the <code>journal</code> Bootswatch style, run
+DocOnce supports a variety of Bootstrap styles in a simple
+way:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 </pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap, resulting in large fonts on gray background.  If a
-<code>!split</code> command is used before the first section heading or <code>TOC: on</code>
-instruction, a button with <code>Read...</code> and a link to the next page is
-inserted if the document is split using <code>doconce split_html</code>.  This
+from Bootstrap, resulting in large fonts on gray background.
+If a <code>!split</code> command is used before the first
+section heading, a button with <code>Read...</code> and a link to the next page
+is inserted if the document is split using <code>doconce split_html</code>.  This
 construction results in a short Bootstrap main page that has become
-very popular on web the last couple of years.  The
-<code>--html_bootstrap_jumbotron=value</code> option can be used to adjust the
-jumbotron: <code>value</code> can be <code>on</code> (default), <code>off</code> (to turn the gray
-background and large fonts off), or <code>h2</code> (to replace the large font in
-the document title by a smaller font).
+very popular on web the last couple of years. The <code>--html_bootstrap_jumbotron=value</code> option can be used to adjust the jumbotron: <code>value</code> can be <code>on</code>, <code>off</code>,
+or <code>h2</code>. In the latter case a smaller <code>h2</code> heading is used rather than
+<code>h1</code> (which results in a quite large font).
 
 <p>
-A multiple-page document is as usual created by inserting <code>!split</code> at desired
-places, usually before selected sections.
-<code>doconce split_html</code> splits the document and inserts
+A multiple-page document is created by inserting <code>!split</code> at desired
+places. <code>doconce split_html</code> splits the document and inserts
 navigation button (previous and next page) at the bottom of each
-page. The option <code>--pagination</code> can be specified as part of the
-<code>doconce split_html</code> command to get a different navigation bar at the bottom
-where also the page number is seen.
+page. The option <code>--pagination</code> can be added as option to the <code>doconce
+split_html</code> command to get a different navigation bar at the bottom
+where also the page number si seen.
 
 <p>
 <!-- A split before the first section will enable a button in the jumbotron -->
