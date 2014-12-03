@@ -66,7 +66,7 @@ If any of these questions are of interest, you should keep on reading.
 
 ======= What Does DocOnce Look Like? =======
 
-DocOnce text looks like ordinary text (much like Markdown [^markdown-input]),
+DocOnce text looks like ordinary text (much like Markdown[^markdown-input]),
 but there
 are some almost invisible text constructions that allow you to control
 the formating. Here are some examples.
