@@ -277,7 +277,9 @@ idx{`MOVIE` keyword}
 Movies/videos are inserted using the `MOVIE:` keyword. This
 feature works well for the `latex`, `html`, `rst`, and `sphinx` formats.
 Other formats try to generate some HTML file and link to that file
-for showing the movie.
+for showing the movie. If such a link is not appropriate and one wants
+a figure instead of the movie, use the preprocessor as explained
+in the box *Recommendations* below.
 
 === The Basic Command ===
 
@@ -441,9 +443,10 @@ To have really robust code, use filename generators and not movie files.
 MOVIE: [../experiments/frame_*.png]
 !ec
 
-One can, of course, write flexible DocOnce code and decide at run time
+One can write flexible DocOnce code and decide at run time
 if HTML output should have movie files or filename generators.
-A relevant snippet using Mako is
+A relevant snippet using Mako and a user-defined variable
+`HTMLMOVIE` is
 
 !bc do
 % FORMAT in ("latex", "pdflatex") or HTMLMOVIE == "files":
@@ -477,6 +480,37 @@ in a script:
 doconce subst ',loop]{2}( .+: f000)' ',loop{12}\g<1>' mydoc.do.txt
 !ec
 
+Sometimes it is desired to use true movies in web formats and a figure
+in LaTeX, e.g., a figure with four snapshots from the movie combined
+into a single figure file with `doconce combine_images`. A preprocessor
+test is appropriate for this:
+
+!bc do
+% if FORMAT in ("latex", "pdflatex"):
+FIGURE: [myfig, frac=1] caption
+% else:
+MOVIE: [mymov] caption
+% endif
+
+If you encounter a large number of such if-else statements, it is
+advantageous to write a Mako function in Python:
+
+!bc do
+<%
+def figmov(figfile, movfile, caption):
+    if FORMAT in ("latex", "pdflatex"):
+        return "FIGURE: [%s, frac=1] %s" % (figfile, caption)
+% else:
+        return "MOVIE: [%s] %s" % (movfile, caption)
+% endif
+%>
+!ec
+The one can avoid if-else tests in the running code and instead write just
+
+!bc do
+#{figmov('myfig', 'mymov', 'caption')}
+!ec
+to insert a movie or figure file, depending on the output format.
 !enotice
 
 !split
