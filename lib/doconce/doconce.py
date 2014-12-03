@@ -1207,7 +1207,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
     for line_no in range(len(lines)):
         line = lines[line_no].lstrip()
-        #print 'LINE %d:' % i, line
+        #print 'LINE %d:' % line_no, line
         #pprint.pprint(exer)
 
         m_heading = re.search(exer_heading_pattern, line)
@@ -1215,6 +1215,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             inside_exer = True
 
             exer = {}  # data in the exercise
+            subex = {} # data in a subexercise
             exer['title'] = m_heading.group('title')
             exer['heading'] = m_heading.group(1)   # heading type
 
@@ -1273,7 +1274,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             elif line.startswith(subex_pattern_begin):
                 inside_subex = True
                 subex = dict(text=[], hints=[], answer=[],
-                             solution=[], file=None)
+                             solution=[], file=None, aftertext=[])
             elif line.startswith(subex_pattern_end):
                 inside_subex = False
                 subex['text'] = '\n'.join(subex['text']).strip()
@@ -1332,7 +1333,11 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     exer['closing_remarks'].append(lines[line_no])
                 else:
                     # ordinary text line
-                    exer['text'].append(lines[line_no])
+                    if subex:
+                        #if lines[line_no].strip() != '':
+                        subex['aftertext'].append(lines[line_no])
+                    else:
+                        exer['text'].append(lines[line_no])
 
         else:  # outside exercise
             newlines.append(lines[line_no])
@@ -1355,6 +1360,11 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             exer['closing_remarks'] = '\n'.join(exer['closing_remarks']).strip()
             for i_ in range(len(exer['hints'])):
                 exer['hints'][i_] = '\n'.join(exer['hints'][i_]).strip()
+            for k_ in range(len(exer['subex'])):
+                if 'aftertext' in exer['subex'][k_]:
+                    exer['subex'][k_]['aftertext'] = '\n'.join(exer['subex'][k_]['aftertext'])
+                    if exer['subex'][k_]['aftertext'] == '':
+                        del exer['subex'][k_]['aftertext']
 
             debugpr('Data structure from interpreting exercises:',
                     pprint.pformat(exer))

@@ -687,6 +687,9 @@ def doconce_exercise_output(exer,
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
+            if 'aftertext' in subex:
+                s += subex['aftertext']
+
     if exer['file']:
         if exer['subex']:
             # Place Filename: ... as a list paragraph if subexercises,

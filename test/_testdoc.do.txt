@@ -963,8 +963,9 @@ keywords = random numbers; Monte Carlo simulation
 file=myfile_should_be_a_part_of_the_text
 solutions = mysol.txt, mysol_flip_coin.py, yet_another.file
 
+!bsubex
 Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
+Print out ``tail'' or ``head'' for each flip and
 let the program count the number of heads.
 
 !bhint
@@ -993,11 +994,35 @@ for i in range(N):
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 !ec
 !esol
+!esubex
 
-=== Remarks ===
+!bsubex
+Vectorize the code in a) using boolean indexing.
+!esubex
 
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+!bsubex
+Vectorize the code in a) using `numpy.sum`.
+
+
+!bans
+`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
+!eans
+!esubex
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+!bremarks
+These are the exercise remarks, appearing at the very end.
+!eremarks
+
+=== My remarks ===
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
 
  o Mark 1.
  o Mark 2.
@@ -1006,6 +1031,13 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 Should be possible to stick a normal section in the middle of many
 exercises.
+
+===== Exercise: Test of plain text exercise =====
+label{my:exer1}
+file=myexer1.py
+
+Very short exerise. What is the capital
+of Norway?
 
 ===== Project: Compute a Probability =====
 
