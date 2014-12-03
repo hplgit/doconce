@@ -1036,7 +1036,7 @@ exercises.
 label{my:exer1}
 file=myexer1.py
 
-Very short exerise. What is the capital
+Very short exercise. What is the capital
 of Norway?
 
 ===== Project: Compute a Probability =====
