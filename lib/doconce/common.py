@@ -731,8 +731,6 @@ def bibliography(pubdata, citations, format='doconce'):
         formatter = publish_doconce.doconce_format
     elif format in ('rst', 'sphinx'):
         formatter = publish_doconce.rst_format
-    elif format == 'xml':
-        formatter = publish_doconce.xml_format
 
     citation_keys = list(citations.keys())
     # Reduce the database to the minimum
