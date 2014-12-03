@@ -1,0 +1,174 @@
+TITLE: How to Write Books (with Much Math and Code) for the Future
+AUTHOR: Hans Petter Langtangen
+DATE: Today
+
+FIGURE: [fig/oldbooks, width=400 frac=0.5]
+
+!split
+======= Problem setting =======
+
+FIGURE: [fig/writing1, width=400 frac=1]
+
+!split
+===== How to write books for the past =====
+
+One excellent and dominating tool: LaTeX
+
+!bc latexcod
+\def\FrameCommand{\colorbox{shadecolor}}\FrameRule0.6pt
+\MakeFramed {\FrameRestore}\vskip3mm}{\vskip0mm\endMakeFramed}
+\providecommand{\shadedquoteBlue}{}
+\renewenvironment{shadedquoteBlue}[1][]{
+\bgroup\rmfamily\fboxsep=0mm\relax
+\begin{shadedskip}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\relax}{\endlist\end{shadedskip}\egroup}\begin{shadedquoteBlue}
+\fontsize{9pt}{9pt}
+\begin{Verbatim}
+print 'Hello, World!'
+\end{Verbatim}
+!ec
+
+!split
+===== But the future books must address new devices =====
+
+FIGURE: [fig/ipad, width=400 frac=0.3]
+
+!bblock
+LaTeX PDF is suboptimal for screen viewing. Readers expect modern HTML style
+and interactive pages.
+!eblock
+
+!block
+===== I want to write *one book manuscript*  =====
+
+No good ``LaTeX2HTML''...and it is probably impossible...
+
+FIGURE: [fig/oldbooks, width=400 frac=0.3]
+
+FIGURE: [fig/ipad, width=400 frac=0.3]
+
+!split
+===== LaTeX is too rich =====
+
+ * People tend to use a lot of packages with LaTeX
+ * Only a subset of the constructs can be mapped to HTML
+ * HTML platforms will need additional information
+ * Translating a LaTeX book to an HTML platform is usually not feasible
+
+!split
+===== So what are the platforms for HTML publishing =====
+
+ * HTML5 + CSS raw code
+ * Sphinx
+ * Markdown
+ * IPython notebook
+ * Wikibooks/MediaWiki
+
+Good news: Sphinx, Markdown, IPython notebooks can generate LaTeX!
+
+!split
+===== Bad news: much manual work to create a traditional LaTeX book =====
+
+ * Traditional books have a lot of cross referencing
+ * LaTeX has floating elements, web pages have not
+ * Markdown and IPython notebooks have very little support for cross referencing
+ * Even with Sphinx, which supports cross referencing, a lot of manual work or hacks are required to produce a thesis or a book
+ * What about an index?
+ * What about boxes (admonitions)?
+
+Sphinx has admonitions and index, but not Markdown...
+
+!split
+===== Adopt a new writing style! =====
+
+ * The classical science book writer will miss a lot in Sphinx, Markdown, IPython notebooks and needs to adopt a new writing style
+ * It remains to see if such a style is successful as a (classial) book
+
+
+!split
+===== And there is an explosion of new platforms for digital learning systems! =====
+
+Different platforms have different input format (or just interactive input):
+"MOOCs": "https://www.youtube.com/watch?v=eW3gMGqcZQc#t=127",
+"Kahn Academy": "https://www.khanacademy.org/",
+"ndla": "http://ndla.no/",
+"H5P": "http://h5p.org",
+"Haiku Learning": "http://www.haikulearning.com/",
+"Opigno": "https://www.opigno.org/en", ...
+
+FIGURE: [fig/digital_learning_iPad, width=400 frac=1]
+
+
+!split
+===== My headache: How to write scientific material that can be easily published through old and new media? =====
+
+FIGURE: [fig/headache4, width=300 frac=0.4]
+
+!bblock
+*LaTeX-for-paper* and *HTML-for-screen* are two very different
+writing styles and technology platforms.
+!eblock
+
+
+!split
+======= Some experience from Univ. of Oslo =======
+
+FIGURE: [fig/direction14, width=510 frac=0.5]
+
+
+!split
+===== Going from LaTeX to IPython notebooks =====
+
+ * Several professors have LaTeX books and want to make them interactive
+ * Not feasible to do a direct (manual) translation, because a major
+   rewrite and change of style is necessary
+ * Slides and simple study guides (with hardly no cross referencing)
+   have been successfully translated
+   directly to IPython notebooks via scripts
+
+!split
+===== An experimental one-size-fits-all solution =====
+
+"DocOnce": "http://hplgit.github.io/doconce/doc/web/index.html"
+is a kind of extended Markdown that can produce
+
+   * classical LaTeX books
+   * Sphinx
+   * raw HTML
+   * Markdown
+   * IPython notebooks
+   * MediaWiki
+   * ...and much more
+
+!split
+===== DocOnce is basically a multi-stage preprocessor =====
+
+ * Start: Markdown-style moderately tagged ascii text
+ * Stages:
+   o Preprocess (C-like preprocessor)
+   o Mako (rich Python-like template language)
+   o Translation to LaTeX, Sphinx, Markdown, IPython notebook, ...
+
+!split
+===== Some demos =====
+
+URL: "http://hplgit.github.com/teamods/writing_reports/"
+
+ * LaTeX-based PDF "for screen": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf", "for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf", "for phone": "http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf"
+ * "Plain HTML": "http://hplgit.github.com/teamods/writing_reports/_static/report_bloodish.html" or "Bootstrap": "http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_wtoc.html" or "Bootswatch": "http://hplgit.github.com/teamods/writing_reports/_static/report_bootswatch_journal.html" or with a "template": "http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html" or "another template": "http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html" or "solarized": "http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html"
+ * Sphinx: "agni": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html", "pyramid": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html", "classy": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html", "fenics": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html", "redcloud": "http://hplgit.github.com/teamods/writing_reports/_static/sphinx-redcloud/report.html"
+ * HTML for "Google": "http://doconce-report-demo.blogspot.no/" or "Wordpress": "http://doconcereportdemo.wordpress.com/" for blog posts
+ * "MediaWiki": "http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" (Wikipedia, Wikibooks, etc)
+ * DocOnce "source code": "http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" and "tutorial": "http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html"
+
+
+!split
+===== DocOnce is just an example, not a universal solution =====
+
+ * The universal solution should be an object model (like DocBook)
+ * There must be strong support for math and all sorts of
+   computer code (snippets, programs, hidden code, interactive, shells, ...)
+ * Users must be able to plug in new objects with renders
+ * There must be some minimally tagged input

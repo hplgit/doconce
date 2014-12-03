@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>On Schemes for Exponential Decay</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<style type="text/css">
+   @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+   @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+   @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+body { font-family: 'Droid Serif'; }
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+}
+.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+
+/* Style taken from the official remark demo */
+body { font-family: 'Droid Serif'; }
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 2em; }
+.remark-slide-content h3 { font-size: 1.6em; }
+.footnote { position: absolute; bottom: 3em; }
+li p { line-height: 1.25em; }
+.red { color: #fa0000; }
+.large { font-size: 2em; }
+a, a > code { color: rgb(249, 38, 114); text-decoration: none; }
+code {
+  -moz-border-radius: 5px;
+  -web-border-radius: 5px;
+  background: #e7e8e2;
+  border-radius: 5px;
+}
+.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+.remark-code-line-highlighted { background-color: #373832; }
+.pull-left { float: left; width: 47%; }
+.pull-right { float: right; width: 47%; }
+.pull-right ~ p { clear: both; }
+#slideshow .slide .content code { font-size: 0.8em; }
+#slideshow .slide .content pre code { font-size: 0.9em; padding: 15px; }
+.inverse { background: #272822; color: #777872; text-shadow: 0 0 20px #333; }
+.inverse h1, .inverse h2 {color: #f3f3f3; line-height: 0.8em; }
+
+</style>
+</head>
+
+<body>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<textarea id="source">
+
+class: center, middle, inverse
+
+# On Schemes for Exponential Decay
+
+
+###**Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+
+
+### Nov 23, 2014
+
+.center[<img src="fig/CN_logo.png" width=300>]
+
+
+<!-- Each slide starts with !split and a title inside 5 = on each side -->
+<!-- (i.e., DocOnce subsections are used to specify slide titles, -->
+<!-- sections are used for parts/sections of the talk to appear in a -->
+<!-- table of contents) -->
+
+---
+class: inverse
+
+## Goal
+
+The primary goal of this demo talk is to demonstrate how to write
+talks with [DocOnce](https://github.com/hplgit/doconce)
+and get them rendered in numerous HTML formats.
+
+
+
+
+<!-- !bnotes -->
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \\( u'=-au \\) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+<!-- !enotes -->
+
+
+---
+class: inverse
+
+# Problem setting and methods
+<!-- Short title: Problem -->
+
+.center[<img src="fig/method.png" width=600>]
+
+
+---
+class: inverse
+
+## We aim to solve the (almost) simplest possible differential equation problem
+
+
+$$
+\begin{equation}
+u'(t) = -au(t)
+\label{ode}
+\end{equation}
+$$
+
+$$
+\begin{equation}  
+u(0)  = I
+\label{initial:value}
+\end{equation}
+$$
+
+Here,
+
+ * \\( t\in (0,T] \\)
+ * \\( a \\), \\( I \\), and \\( T \\) are prescribed parameters
+ * \\( u(t) \\) is the unknown function
+ * The ODE \eqref{ode} has the initial condition \eqref{initial:value}
+
+.center[<img src="fig/teacher2.jpg" width=250>]
+---
+class: inverse
+
+## The ODE problem is solved by a finite difference scheme
+
+
+* Mesh in time: \\( 0= t_0< t_1 \cdots < t_N=T \\)
+ * Assume constant \\( \Delta t = t_{n}-t_{n-1} \\)
+ * \\( u^n \\): numerical approx to the exact solution at \\( t_n \\)
+
+The \\( \theta \\) rule,
+
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+\quad n=0,1,\ldots,N-1
+$$
+
+contains the [Forward Euler](http://en.wikipedia.org/wiki/Forward_Euler_method) (\\( \theta=0 \\)),
+the [Backward Euler](http://en.wikipedia.org/wiki/Backward_Euler_method) (\\( \theta=1 \\)),
+and the [Crank-Nicolson](http://en.wikipedia.org/wiki/Crank-Nicolson) (\\( \theta=0.5 \\))
+schemes.
+---
+class: inverse
+
+
+## The Forward Euler scheme explained
+
+
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+---
+class: inverse
+
+
+## Implementation
+
+*Implementation in a Python function:* 
+
+
+```Python
+def solver(I, a, T, dt, theta):
+    """Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt."""
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+```
+
+
+
+---
+class: inverse
+
+
+# Results
+
+.center[<img src="fig/results.jpg" width=600>]
+
+---
+class: inverse
+
+## The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone
+
+
+.center[<img src="fig/CN.png" width=600>]
+
+---
+class: inverse
+
+## The artifacts can be explained by some theory
+
+Exact solution of the scheme:
+
+$$
+u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .
+$$
+
+Key results:
+
+* Stability: \\( |A| < 1 \\)
+ * No oscillations: \\( A>0 \\)
+ * \\( \Delta t < 1/a \\) for Forward Euler (\\( \theta=0 \\))
+ * \\( \Delta t < 2/a \\) for Crank-Nicolson (\\( \theta=1/2 \\))
+
+*Concluding remarks:* 
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+
+
+
+
+</textarea>
+<script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  var slideshow = remark.create();
+</script>
+</body>
+</html>
