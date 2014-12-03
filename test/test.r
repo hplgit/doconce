@@ -979,8 +979,9 @@ keywords = random numbers; Monte Carlo simulation
 file=myfile_should_be_a_part_of_the_text
 solutions = mysol.txt, mysol_flip_coin.py, yet_another.file
 
+!bsubex
 Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
+Print out ``tail'' or ``head'' for each flip and
 let the program count the number of heads.
 
 !bhint
@@ -1009,11 +1010,35 @@ for i in range(N):
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 !ec
 !esol
+!esubex
 
-=== Remarks ===
+!bsubex
+Vectorize the code in a) using boolean indexing.
+!esubex
 
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+!bsubex
+Vectorize the code in a) using `numpy.sum`.
+
+
+!bans
+`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
+!eans
+!esubex
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+!bremarks
+These are the exercise remarks, appearing at the very end.
+!eremarks
+
+=== My remarks ===
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
 
  o Mark 1.
  o Mark 2.
@@ -1022,6 +1047,13 @@ the beginning of a new exercise and cause trouble. Maybe a list
 
 Should be possible to stick a normal section in the middle of many
 exercises.
+
+===== Exercise: Test of plain text exercise =====
+label{my:exer1}
+file=myexer1.py
+
+Very short exercise. What is the capital
+of Norway?
 
 ===== Project: Compute a Probability =====
 
@@ -1638,46 +1670,51 @@ div { text-align: justify; text-justify: inter-word; }
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -1686,12 +1723,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 <body>
@@ -1801,30 +1838,32 @@ MathJax.Hub.Config({
 <a href="._testdoc002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> My remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Example 8: Just an example </a><br>
-<a href="._testdoc002.html#___sec41"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec42"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec45"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec39"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec42"> Example 9: Just an example </a><br>
+<a href="._testdoc002.html#___sec43"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 11: References in a headings do not work well in html </a><br>
+<a href="._testdoc002.html#___sec47"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec47"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec49"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec49"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec51"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec52"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec53"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec55"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -3063,6 +3102,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -3215,25 +3255,12 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 % Torture tests
 
+
+\subex{a)}
 Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
+Print out ``tail'' or ``head'' for each flip and
 let the program count the number of heads.
 
-
-
-
-
-\paragraph{Remarks.}
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-\begin{enumerate}
-\item Mark 1.
-
-\item Mark 2.
-\end{enumerate}
-
-\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
@@ -3272,7 +3299,45 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \epycod
 
 % --- end solution of exercise ---
+
+\subex{b)}
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+\subex{c)}
+Vectorize the code in a) using \code{numpy.sum}.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+\code{np.sum(np.where(r <= 0.5, 1, 0))} or \code{np.sum(r <= 0.5)}.
+
+% --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+\paragraph{My remarks.}
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+\begin{enumerate}
+\item Mark 1.
+
+\item Mark 2.
+\end{enumerate}
+
+\noindent
 \noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+
+% Closing remarks for this Problem
+
+\paragraph{Remarks.}
+These are the exercise remarks, appearing at the very end.
+
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -3283,6 +3348,24 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 Should be possible to stick a normal section in the middle of many
 exercises.
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+
+\label{my:exer1}
+
+Very short exercise. What is the capital
+of Norway?
+\noindent Filename: \code{myexer1.py}.
+
+\end{doconceexercise}
+% --- end exercise ---
+
 
 
 
@@ -3398,6 +3481,7 @@ Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
+
 \noindent Filename: \code{circles.pdf}.
 
 % Closing remarks for this Project
@@ -3424,22 +3508,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-
-
-
-% No meaning in this weired test example:
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-\begin{enumerate}
-\item item1
-
-\item item2
-\end{enumerate}
-
-\noindent
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution of the whole exercise.
@@ -3521,8 +3589,22 @@ Here goes the solution of this subexercise.
 
 % --- end solution of exercise ---
 
-% Closing remarks for this Exercise
 
+
+% No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+% Closing remarks for this Exercise
+\end{enumerate}
+
+\noindent
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -5291,6 +5373,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -5444,25 +5527,12 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 % Torture tests
 
+
+\subex{a)}
 Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
+Print out ``tail'' or ``head'' for each flip and
 let the program count the number of heads.
 
-
-
-
-
-\paragraph{Remarks.}
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-\begin{enumerate}
-\item Mark 1.
-
-\item Mark 2.
-\end{enumerate}
-
-\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
@@ -5502,7 +5572,45 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \noindent
 
 % --- end solution of exercise ---
+
+\subex{b)}
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+\subex{c)}
+Vectorize the code in a) using \texttt{numpy.sum}.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+\texttt{np.sum(np.where(r <= 0.5, 1, 0))} or \texttt{np.sum(r <= 0.5)}.
+
+% --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+\paragraph{My remarks.}
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+\begin{enumerate}
+\item Mark 1.
+
+\item Mark 2.
+\end{enumerate}
+
+\noindent
 \noindent Filenames: {\Verb!flip_coin.py!}, {\Verb!flip_coin.pdf!}.
+
+% Closing remarks for this Problem
+
+\paragraph{Remarks.}
+These are the exercise remarks, appearing at the very end.
+
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -5513,6 +5621,25 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 Should be possible to stick a normal section in the middle of many
 exercises.
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+
+\label{my:exer1}
+
+Very short exercise. What is the capital
+of Norway?
+\noindent Filename: \texttt{myexer1.py}.
+
+\end{doconceexercise}
+% --- end exercise ---
+
 
 
 
@@ -5631,6 +5758,7 @@ Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
+
 \noindent Filename: \texttt{circles.pdf}.
 
 % Closing remarks for this Project
@@ -5658,22 +5786,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-
-
-
-% No meaning in this weired test example:
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-\begin{enumerate}
-\item item1
-
-\item item2
-\end{enumerate}
-
-\noindent
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution of the whole exercise.
@@ -5759,8 +5871,22 @@ Here goes the solution of this subexercise.
 
 % --- end solution of exercise ---
 
-% Closing remarks for this Exercise
 
+
+% No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+% Closing remarks for this Exercise
+\end{enumerate}
+
+\noindent
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -7514,6 +7640,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -7667,25 +7794,12 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 % Torture tests
 
+
+\subex{a)}
 Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
+Print out ``tail'' or ``head'' for each flip and
 let the program count the number of heads.
 
-
-
-
-
-\paragraph{Remarks.}
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-\begin{enumerate}
-\item Mark 1.
-
-\item Mark 2.
-\end{enumerate}
-
-\noindent
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
@@ -7724,7 +7838,45 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \end{minted}
 
 % --- end solution of exercise ---
+
+\subex{b)}
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+\subex{c)}
+Vectorize the code in a) using \Verb!numpy.sum!.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
+
+% --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+\paragraph{My remarks.}
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+\begin{enumerate}
+\item Mark 1.
+
+\item Mark 2.
+\end{enumerate}
+
+\noindent
 \noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
+
+% Closing remarks for this Problem
+
+\paragraph{Remarks.}
+These are the exercise remarks, appearing at the very end.
+
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
@@ -7735,6 +7887,25 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 Should be possible to stick a normal section in the middle of many
 exercises.
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+\addcontentsline{loe}{doconceexercise}{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+
+\label{my:exer1}
+
+Very short exercise. What is the capital
+of Norway?
+\noindent Filename: \Verb!myexer1.py!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
 
 
 
@@ -7852,6 +8023,7 @@ Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
+
 \noindent Filename: \Verb!circles.pdf!.
 
 % Closing remarks for this Project
@@ -7879,22 +8051,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-
-
-
-% No meaning in this weired test example:
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-\begin{enumerate}
-\item item1
-
-\item item2
-\end{enumerate}
-
-\noindent
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 Here goes a full solution of the whole exercise.
@@ -7976,8 +8132,22 @@ Here goes the solution of this subexercise.
 
 % --- end solution of exercise ---
 
-% Closing remarks for this Exercise
 
+
+% No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+% Closing remarks for this Exercise
+\end{enumerate}
+
+\noindent
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -8530,7 +8700,7 @@ Subsection 1
 More text, with a reference back to
 the section `Section 1`_ and `Subsection 1`_, and further to the
 the sections `Subsection 1`_ and `URLs`_, which
-encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 9: Make references to projects and problems`_.
+encourages you to do the tasks in `Problem 2: Flip a Coin`_ and `Exercise 10: Make references to projects and problems`_.
 Appendices     `Appendix: Just for testing; part I`_ and `Appendix: Just for testing; part II`_ are also nice elements.
 
 Test Section reference at beginning of line and after a sentence
@@ -9322,9 +9492,9 @@ Here is a system without equation numbers, using the align-asterisk environment
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have `Problem 2: Flip a Coin`_ and `Project 3: Compute a Probability`_,
-as well as `Project 4: Explore Distributions of Random Circles`_ and `Project 10: References in a headings do not work well in rst`_, and in
-between there we have `Exercise 9: Make references to projects and problems`_.
+Below, we have `Problem 2: Flip a Coin`_ and `Project 4: Compute a Probability`_,
+as well as `Project 5: Explore Distributions of Random Circles`_ and `Project 11: References in a headings do not work well in rst`_, and in
+between there we have `Exercise 10: Make references to projects and problems`_.
 
 Exercises
 =========
@@ -9340,19 +9510,10 @@ Problem 2: Flip a Coin
 
 .. Torture tests
 
+**a)**
 Make a program that simulates flipping a coin \\( N \\) times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-Remarks  (1)
-~~~~~~~~~~~~
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-
-2. Mark 2.
 
 .. --- begin hint in exercise ---
 
@@ -9392,7 +9553,43 @@ head, otherwise tail. Repeat this \\( N \\) number of times.
 
 .. --- end solution of exercise ---
 
+**b)**
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+**c)**
+Vectorize the code in a) using ``numpy.sum``.
+
+.. --- begin answer of exercise ---
+
+**Answer.**
+``np.sum(np.where(r <= 0.5, 1, 0))`` or ``np.sum(r <= 0.5)``.
+
+.. --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+My remarks
+~~~~~~~~~~
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+
+2. Mark 2.
+
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
+
+.. Closing remarks for this Problem
+
+Remarks  (1)
+~~~~~~~~~~~~
+
+These are the exercise remarks, appearing at the very end.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
@@ -9406,9 +9603,22 @@ exercises.
 
 .. --- begin exercise ---
 
+.. _my:exer1:
+
+Exercise 3: Test of plain text exercise
+---------------------------------------
+
+Very short exercise. What is the capital
+of Norway?
+Filename: ``myexer1.py``.
+
+.. --- end exercise ---
+
+.. --- begin exercise ---
+
 .. _demo:ex:2:
 
-Project 3: Compute a Probability
+Project 4: Compute a Probability
 --------------------------------
 
 .. Minimalistic exercise
@@ -9439,7 +9649,7 @@ compute the probability as \\( M/N \\).
 
 .. _proj:circle1:
 
-Project 4: Explore Distributions of Random Circles
+Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by
@@ -9524,21 +9734,10 @@ and give some perspectives.
 
 .. _exer:dist:
 
-Exercise 5: Determine some Distance
+Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-.. No meaning in this weired test example:
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-
-2. item2
 
 .. --- begin solution of exercise ---
 
@@ -9626,6 +9825,17 @@ Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
 
+.. No meaning in this weired test example:
+
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+
+2. item2
+
 .. Closing remarks for this Exercise
 
 Remarks  (3)
@@ -9665,7 +9875,7 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
 
 .. _sec:this:exer:de:
 
-Exercise 7: Solution of differential equation
+Exercise 8: Solution of differential equation
 ---------------------------------------------
 
 .. raw:: html
@@ -9711,7 +9921,7 @@ Exercise 7: Solution of differential equation
 
 .. --- begin exercise ---
 
-Example 8: Just an example
+Example 9: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -9738,12 +9948,12 @@ More Exercises
 
 .. _exer:some:formula:
 
-Exercise 9: Make references to projects and problems
-----------------------------------------------------
+Exercise 10: Make references to projects and problems
+-----------------------------------------------------
 
 .. Test comments not at the end only
 
-Pick a statement from `Project 4: Explore Distributions of Random Circles`_ or `Problem 2: Flip a Coin`_
+Pick a statement from `Project 5: Explore Distributions of Random Circles`_ or `Problem 2: Flip a Coin`_
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -9761,12 +9971,12 @@ Filename: ``verify_formula.py``.
 
 .. _exer:you:
 
-Project 10: References in a headings do not work well in rst
+Project 11: References in a headings do not work well in rst
 ------------------------------------------------------------
 
-Refer to the previous exercise as `Exercise 9: Make references to projects and problems`_,
-the two before that as `Project 3: Compute a Probability`_ and `Project 4: Explore Distributions of Random Circles`_,
-and this one as `Project 10: References in a headings do not work well in rst`_.
+Refer to the previous exercise as `Exercise 10: Make references to projects and problems`_,
+the two before that as `Project 4: Compute a Probability`_ and `Project 5: Explore Distributions of Random Circles`_,
+and this one as `Project 11: References in a headings do not work well in rst`_.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
@@ -11099,19 +11309,10 @@ Problem 2: Flip a Coin
 
 .. Torture tests
 
+**a)**
 Make a program that simulates flipping a coin :math:`N` times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-Remarks  (1)
-~~~~~~~~~~~~
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-
-2. Mark 2.
 
 .. --- begin hint in exercise ---
 
@@ -11153,7 +11354,43 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end solution of exercise ---
 
+**b)**
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+**c)**
+Vectorize the code in a) using ``numpy.sum``.
+
+.. --- begin answer of exercise ---
+
+**Answer.**
+``np.sum(np.where(r <= 0.5, 1, 0))`` or ``np.sum(r <= 0.5)``.
+
+.. --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+My remarks
+~~~~~~~~~~
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+
+2. Mark 2.
+
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
+
+.. Closing remarks for this Problem
+
+Remarks  (1)
+~~~~~~~~~~~~
+
+These are the exercise remarks, appearing at the very end.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
@@ -11167,9 +11404,22 @@ exercises.
 
 .. --- begin exercise ---
 
+.. _my:exer1:
+
+Exercise 3: Test of plain text exercise
+---------------------------------------
+
+Very short exercise. What is the capital
+of Norway?
+Filename: ``myexer1.py``.
+
+.. --- end exercise ---
+
+.. --- begin exercise ---
+
 .. _demo:ex:2:
 
-Project 3: Compute a Probability
+Project 4: Compute a Probability
 --------------------------------
 
 .. Minimalistic exercise
@@ -11200,7 +11450,7 @@ compute the probability as :math:`M/N`.
 
 .. _proj:circle1:
 
-Project 4: Explore Distributions of Random Circles
+Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by
@@ -11288,21 +11538,10 @@ and give some perspectives.
 
 .. _exer:dist:
 
-Exercise 5: Determine some Distance
+Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-.. No meaning in this weired test example:
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-
-2. item2
 
 .. --- begin solution of exercise ---
 
@@ -11391,6 +11630,17 @@ Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
 
+.. No meaning in this weired test example:
+
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+
+2. item2
+
 .. Closing remarks for this Exercise
 
 Remarks  (3)
@@ -11431,7 +11681,7 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 .. _sec:this:exer:de:
 
-Exercise 7: Solution of differential equation
+Exercise 8: Solution of differential equation
 ---------------------------------------------
 
 .. raw:: html
@@ -11476,7 +11726,7 @@ Exercise 7: Solution of differential equation
 
 .. --- begin exercise ---
 
-Example 8: Just an example
+Example 9: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -11503,8 +11753,8 @@ More Exercises
 
 .. _exer:some:formula:
 
-Exercise 9: Make references to projects and problems
-----------------------------------------------------
+Exercise 10: Make references to projects and problems
+-----------------------------------------------------
 
 .. Test comments not at the end only
 
@@ -11526,7 +11776,7 @@ Filename: ``verify_formula.py``.
 
 .. _exer:you:
 
-Project 10: References in a headings do not work well in sphinx
+Project 11: References in a headings do not work well in sphinx
 ---------------------------------------------------------------
 
 Refer to the previous exercise as :ref:`exer:some:formula`,
@@ -11943,7 +12193,7 @@ Even Equation (my:eq1) without the tilde.
 More text, with a reference back to
 the section [#Section_1] and [#Subsection_1], and further to the
 the sections [#Subsection_1] and [#URLs], which
-encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_10:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
 ==== Test Section reference at beginning of line and after a sentence ====
@@ -12707,6 +12957,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -12784,9 +13035,9 @@ b &= \nabla^2 u + \nabla^4 v
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
-as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki], and in
-between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
+Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_4:_Compute_a_Probability],
+as well as [#Project_5:_Explore_Distributions_of_Random_Circles] and [#Project_11:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki], and in
+between there we have [#Exercise_10:_Make_references_to_projects_and_problems].
 
 
 == Exercises ==
@@ -12801,22 +13052,11 @@ between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
 
 <wiki:comment> Torture tests </wiki:comment>
 
+
+*a)*
 Make a program that simulates flipping a coin `N` times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
-
-==== Remarks ====
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-
-# Mark 1.
-# Mark 2.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
@@ -12856,7 +13096,44 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 }}}
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
+
+*b)*
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+*c)*
+Vectorize the code in a) using `numpy.sum`.
+
+
+<wiki:comment> --- begin answer of exercise --- </wiki:comment>
+*Answer.*
+`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
+
+<wiki:comment> --- end answer of exercise --- </wiki:comment>
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+==== My remarks ====
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+
+# Mark 1.
+# Mark 2.
+
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
+
+<wiki:comment> Closing remarks for this Problem </wiki:comment>
+
+==== Remarks ====
+
+These are the exercise remarks, appearing at the very end.
+
 <wiki:comment> solution files: mysol.txt, mysol_flip_coin.py, yet_another.file </wiki:comment>
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -12871,7 +13148,20 @@ exercises.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Project 3: Compute a Probability ====
+==== Exercise 3: Test of plain text exercise ====
+
+Very short exercise. What is the capital
+of Norway?
+Filename: `myexer1.py`.
+
+<wiki:comment> --- end exercise --- </wiki:comment>
+
+
+
+
+<wiki:comment> --- begin exercise --- </wiki:comment>
+
+==== Project 4: Compute a Probability ====
 
 <wiki:comment> Minimalistic exercise </wiki:comment>
 
@@ -12904,7 +13194,7 @@ compute the probability as `M/N`.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Project 4: Explore Distributions of Random Circles ====
+==== Project 5: Explore Distributions of Random Circles ====
 
 The formula for a circle is given by
 
@@ -12971,6 +13261,7 @@ Filename: `norm.py`.
 *c)*
 Let `R` and `(x_0,y_0)` be normally distributed.
 
+
 Filename: `circles.pdf`.
 
 <wiki:comment> Closing remarks for this Project </wiki:comment>
@@ -12988,23 +13279,10 @@ and give some perspectives.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Exercise 5: Determine some Distance ====
+==== Exercise 6: Determine some Distance ====
 
 Intro to this exercise. Questions are in subexercises below.
 
-
-
-
-
-<wiki:comment> No meaning in this weired test example: </wiki:comment>
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-
-# item1
-# item2
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 *Solution.*
@@ -13090,7 +13368,18 @@ Here goes the solution of this subexercise.
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
-<wiki:comment> Closing remarks for this Exercise </wiki:comment>
+
+
+<wiki:comment> No meaning in this weired test example: </wiki:comment>
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+
+# item1
+# item2<wiki:comment> Closing remarks for this Exercise </wiki:comment>
+
 
 ==== Remarks ====
 
@@ -13133,7 +13422,7 @@ lambda x: x+2
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Exercise 7: Solution of differential equation ====
+==== Exercise 8: Solution of differential equation ====
 
 Cannot typeset quiz: "Given
 
@@ -13149,7 +13438,7 @@ What is the solution of this equation?"
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Example 8: Just an example ====
+==== Example 9: Just an example ====
 
 <wiki:comment> This example needs the --examples_as_exercises option, otherwise </wiki:comment>
 <wiki:comment> it is just typeset as it is written. </wiki:comment>
@@ -13174,10 +13463,10 @@ With some text, before we continue with exercises.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Exercise 9: Make references to projects and problems ====
+==== Exercise 10: Make references to projects and problems ====
 
 <wiki:comment> Test comments not at the end only </wiki:comment>
-Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
+Pick a statement from [#Project_5:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -13196,11 +13485,11 @@ Filename: `verify_formula.py`.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-==== Project 10: References to [#Project_3:_Compute_a_Probability] in a heading works for gwiki ====
+==== Project 11: References to [#Project_4:_Compute_a_Probability] in a heading works for gwiki ====
 
-Refer to the previous exercise as [#Exercise_9:_Make_references_to_projects_and_problems],
-the two before that as [#Project_3:_Compute_a_Probability] and [#Project_4:_Explore_Distributions_of_Random_Circles],
-and this one as [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki].
+Refer to the previous exercise as [#Exercise_10:_Make_references_to_projects_and_problems],
+the two before that as [#Project_4:_Compute_a_Probability] and [#Project_5:_Explore_Distributions_of_Random_Circles],
+and this one as [#Project_11:_References_to_Project_demo:ex:2_in_a_heading_works_for_gwiki].
 Filename: `selc_composed.pdf`.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -13482,7 +13771,7 @@ Even Equation (my:eq1) without the tilde.
 More text, with a reference back to
 the section [#Section_1] and [#Subsection_1], and further to the
 the sections [#Subsection_1] and [#URLs], which
-encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_10:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
 ==== Test Section reference at beginning of line and after a sentence ====
@@ -14236,6 +14525,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 <!-- --- end exercise --- -->
 
 
@@ -14310,9 +14600,9 @@ b &= \nabla^2 u + \nabla^4 v
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
-as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki], and in
-between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
+Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_4:_Compute_a_Probability],
+as well as [#Project_5:_Explore_Distributions_of_Random_Circles] and [#Project_11:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki], and in
+between there we have [#Exercise_10:_Make_references_to_projects_and_problems].
 
 
 == Exercises ==
@@ -14327,24 +14617,11 @@ between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
 
 <!-- Torture tests -->
 
+
+''a)''
 Make a program that simulates flipping a coin <math>N</math> times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
-
-==== Remarks ====
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-
-<ol>
-<li> Mark 1.
-<li> Mark 2.
-</ol>
 
 <!-- --- begin hint in exercise --- -->
 
@@ -14384,7 +14661,46 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 </syntaxhighlight>
 
 <!-- --- end solution of exercise --- -->
+
+''b)''
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+''c)''
+Vectorize the code in a) using <code>numpy.sum</code>.
+
+
+<!-- --- begin answer of exercise --- -->
+''Answer.''
+<code>np.sum(np.where(r <= 0.5, 1, 0))</code> or <code>np.sum(r <= 0.5)</code>.
+
+<!-- --- end answer of exercise --- -->
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+==== My remarks ====
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+
+<ol>
+<li> Mark 1.
+<li> Mark 2.
+</ol>
+
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
+
+<!-- Closing remarks for this Problem -->
+
+==== Remarks ====
+
+These are the exercise remarks, appearing at the very end.
+
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
 
 <!-- --- end exercise --- -->
@@ -14399,7 +14715,20 @@ exercises.
 
 <!-- --- begin exercise --- -->
 
-==== Project 3: Compute a Probability ====
+==== Exercise 3: Test of plain text exercise ====
+
+Very short exercise. What is the capital
+of Norway?
+Filename: <code>myexer1.py</code>.
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+==== Project 4: Compute a Probability ====
 
 <!-- Minimalistic exercise -->
 
@@ -14434,7 +14763,7 @@ compute the probability as <math>M/N</math>.
 
 <!-- --- begin exercise --- -->
 
-==== Project 4: Explore Distributions of Random Circles ====
+==== Project 5: Explore Distributions of Random Circles ====
 
 The formula for a circle is given by
 
@@ -14501,6 +14830,7 @@ Filename: <code>norm.py</code>.
 ''c)''
 Let <math>R</math> and <math>(x_0,y_0)</math> be normally distributed.
 
+
 Filename: <code>circles.pdf</code>.
 
 <!-- Closing remarks for this Project -->
@@ -14518,25 +14848,10 @@ and give some perspectives.
 
 <!-- --- begin exercise --- -->
 
-==== Exercise 5: Determine some Distance ====
+==== Exercise 6: Determine some Distance ====
 
 Intro to this exercise. Questions are in subexercises below.
 
-
-
-
-
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-
-<ol>
-<li> item1
-<li> item2
-</ol>
 
 <!-- --- begin solution of exercise --- -->
 ''Solution.''
@@ -14624,7 +14939,20 @@ Here goes the solution of this subexercise.
 
 <!-- --- end solution of exercise --- -->
 
+
+
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+
+<ol>
+<li> item1
+<li> item2
 <!-- Closing remarks for this Exercise -->
+</ol>
 
 ==== Remarks ====
 
@@ -14667,7 +14995,7 @@ lambda x: x+2
 
 <!-- --- begin exercise --- -->
 
-==== Exercise 7: Solution of differential equation ====
+==== Exercise 8: Solution of differential equation ====
 
 Cannot typeset quiz: "Given
 
@@ -14683,7 +15011,7 @@ What is the solution of this equation?"
 
 <!-- --- begin exercise --- -->
 
-==== Example 8: Just an example ====
+==== Example 9: Just an example ====
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -14708,10 +15036,10 @@ With some text, before we continue with exercises.
 
 <!-- --- begin exercise --- -->
 
-==== Exercise 9: Make references to projects and problems ====
+==== Exercise 10: Make references to projects and problems ====
 
 <!-- Test comments not at the end only -->
-Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
+Pick a statement from [#Project_5:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -14732,11 +15060,11 @@ Filename: <code>verify_formula.py</code>.
 
 <!-- --- begin exercise --- -->
 
-==== Project 10: References to [#Project_3:_Compute_a_Probability] in a heading works for mwiki ====
+==== Project 11: References to [#Project_4:_Compute_a_Probability] in a heading works for mwiki ====
 
-Refer to the previous exercise as [#Exercise_9:_Make_references_to_projects_and_problems],
-the two before that as [#Project_3:_Compute_a_Probability] and [#Project_4:_Explore_Distributions_of_Random_Circles],
-and this one as [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki].
+Refer to the previous exercise as [#Exercise_10:_Make_references_to_projects_and_problems],
+the two before that as [#Project_4:_Compute_a_Probability] and [#Project_5:_Explore_Distributions_of_Random_Circles],
+and this one as [#Project_11:_References_to_Project_demo:ex:2_in_a_heading_works_for_mwiki].
 Filename: <code>selc_composed.pdf</code>.
 
 <!-- --- end exercise --- -->
@@ -15107,7 +15435,7 @@ Even Equation (my:eq1) without the tilde.
 More text, with a reference back to
 the section [#Section_1] and [#Subsection_1], and further to the
 the sections [#Subsection_1] and [#URLs], which
-encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_9:_Make_references_to_projects_and_problems].
+encourages you to do the tasks in [#Problem_2:_Flip_a_Coin] and [#Exercise_10:_Make_references_to_projects_and_problems].
 Appendices     [#Appendix:_Just_for_testing;_part_I] and [#Appendix:_Just_for_testing;_part_II] are also nice elements.
 
 === Test Section reference at beginning of line and after a sentence ===
@@ -15818,6 +16146,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -15896,9 +16225,9 @@ b &= \nabla^2 u + \nabla^4 v
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_3:_Compute_a_Probability],
-as well as [#Project_4:_Explore_Distributions_of_Random_Circles] and [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki], and in
-between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
+Below, we have [#Problem_2:_Flip_a_Coin] and [#Project_4:_Compute_a_Probability],
+as well as [#Project_5:_Explore_Distributions_of_Random_Circles] and [#Project_11:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki], and in
+between there we have [#Exercise_10:_Make_references_to_projects_and_problems].
 
 
 = Exercises =
@@ -15913,22 +16242,11 @@ between there we have [#Exercise_9:_Make_references_to_projects_and_problems].
 
 <wiki:comment> Torture tests </wiki:comment>
 
+
+//a)//
 Make a program that simulates flipping a coin {{{N}}} times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
-
-=== Remarks ===
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-
-# Mark 1.
-# Mark 2.
 
 <wiki:comment> --- begin hint in exercise --- </wiki:comment>
 
@@ -15968,7 +16286,44 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 }}}
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
+
+//b)//
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+//c)//
+Vectorize the code in a) using {{{numpy.sum}}}.
+
+
+<wiki:comment> --- begin answer of exercise --- </wiki:comment>
+//Answer.//
+{{{np.sum(np.where(r <= 0.5, 1, 0))}}} or {{{np.sum(r <= 0.5)}}}.
+
+<wiki:comment> --- end answer of exercise --- </wiki:comment>
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+=== My remarks ===
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+
+# Mark 1.
+# Mark 2.
+
 Filenames: {{{flip_coin.py}}}, {{{flip_coin.pdf}}}.
+
+<wiki:comment> Closing remarks for this Problem </wiki:comment>
+
+=== Remarks ===
+
+These are the exercise remarks, appearing at the very end.
+
 <wiki:comment> solution files: mysol.txt, mysol_flip_coin.py, yet_another.file </wiki:comment>
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -15983,7 +16338,21 @@ exercises.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Project 3: Compute a Probability ==
+== Exercise 3: Test of plain text exercise ==
+
+
+Very short exercise. What is the capital
+of Norway?
+Filename: {{{myexer1.py}}}.
+
+<wiki:comment> --- end exercise --- </wiki:comment>
+
+
+
+
+<wiki:comment> --- begin exercise --- </wiki:comment>
+
+== Project 4: Compute a Probability ==
 
 
 <wiki:comment> Minimalistic exercise </wiki:comment>
@@ -16017,7 +16386,7 @@ compute the probability as {{{M/N}}}.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Project 4: Explore Distributions of Random Circles ==
+== Project 5: Explore Distributions of Random Circles ==
 
 
 The formula for a circle is given by
@@ -16085,6 +16454,7 @@ Filename: {{{norm.py}}}.
 //c)//
 Let {{{R}}} and {{{(x_0,y_0)}}} be normally distributed.
 
+
 Filename: {{{circles.pdf}}}.
 
 <wiki:comment> Closing remarks for this Project </wiki:comment>
@@ -16102,24 +16472,11 @@ and give some perspectives.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Exercise 5: Determine some Distance ==
+== Exercise 6: Determine some Distance ==
 
 
 Intro to this exercise. Questions are in subexercises below.
 
-
-
-
-
-<wiki:comment> No meaning in this weired test example: </wiki:comment>
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-
-# item1
-# item2
 
 <wiki:comment> --- begin solution of exercise --- </wiki:comment>
 //Solution.//
@@ -16205,7 +16562,18 @@ Here goes the solution of this subexercise.
 
 <wiki:comment> --- end solution of exercise --- </wiki:comment>
 
-<wiki:comment> Closing remarks for this Exercise </wiki:comment>
+
+
+<wiki:comment> No meaning in this weired test example: </wiki:comment>
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+
+# item1
+# item2<wiki:comment> Closing remarks for this Exercise </wiki:comment>
+
 
 === Remarks ===
 
@@ -16248,7 +16616,7 @@ lambda x: x+2
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Exercise 7: Solution of differential equation ==
+== Exercise 8: Solution of differential equation ==
 
 
 **Cannot typeset quiz**: "Given
@@ -16265,7 +16633,7 @@ What is the solution of this equation?"
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Example 8: Just an example ==
+== Example 9: Just an example ==
 
 <wiki:comment> This example needs the --examples_as_exercises option, otherwise </wiki:comment>
 <wiki:comment> it is just typeset as it is written. </wiki:comment>
@@ -16290,11 +16658,11 @@ With some text, before we continue with exercises.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Exercise 9: Make references to projects and problems ==
+== Exercise 10: Make references to projects and problems ==
 
 
 <wiki:comment> Test comments not at the end only </wiki:comment>
-Pick a statement from [#Project_4:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
+Pick a statement from [#Project_5:_Explore_Distributions_of_Random_Circles] or [#Problem_2:_Flip_a_Coin]
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -16313,12 +16681,12 @@ Filename: {{{verify_formula.py}}}.
 
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
-== Project 10: References to [#Project_3:_Compute_a_Probability] in a heading works for cwiki ==
+== Project 11: References to [#Project_4:_Compute_a_Probability] in a heading works for cwiki ==
 
 
-Refer to the previous exercise as [#Exercise_9:_Make_references_to_projects_and_problems],
-the two before that as [#Project_3:_Compute_a_Probability] and [#Project_4:_Explore_Distributions_of_Random_Circles],
-and this one as [#Project_10:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki].
+Refer to the previous exercise as [#Exercise_10:_Make_references_to_projects_and_problems],
+the two before that as [#Project_4:_Compute_a_Probability] and [#Project_5:_Explore_Distributions_of_Random_Circles],
+and this one as [#Project_11:_References_to_Project_demo:ex:2_in_a_heading_works_for_cwiki].
 Filename: {{{selc_composed.pdf}}}.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
@@ -16567,7 +16935,7 @@ Subsection 1
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
-encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 10: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
 Test Section reference at beginning of line and after a sentence
@@ -17224,9 +17592,9 @@ Here is a system without equation numbers, using the align-asterisk environment:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
-as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for st", and in
-between there we have  "Exercise 9: Make references to projects and problems".
+Below, we have  "Problem 2: Flip a Coin" and  "Project 4: Compute a Probability",
+as well as  "Project 5: Explore Distributions of Random Circles" and "Project 11: References to Project ref{demo:ex:2} in a heading works for st", and in
+between there we have  "Exercise 10: Make references to projects and problems".
 
 Exercises
 
@@ -17234,17 +17602,10 @@ Exercises
 
 Problem 2: Flip a Coin
 
+*a)*
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-Remarks
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-2. Mark 2.
 
 # --- begin hint in exercise ---
 
@@ -17281,7 +17642,38 @@ head, otherwise tail. Repeat this N number of times.
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 # --- end solution of exercise ---
+
+*b)*
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+*c)*
+Vectorize the code in a) using 'numpy.sum'.
+
+# --- begin answer of exercise ---
+*Answer.*
+'np.sum(np.where(r <= 0.5, 1, 0))' or 'np.sum(r <= 0.5)'.
+
+# --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+My remarks
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+2. Mark 2.
+
 Filenames: 'flip_coin.py', 'flip_coin.pdf'.
+
+Remarks
+
+These are the exercise remarks, appearing at the very end.
 
 # --- end exercise ---
 
@@ -17292,7 +17684,17 @@ exercises.
 
 # --- begin exercise ---
 
-Project 3: Compute a Probability
+Exercise 3: Test of plain text exercise
+
+Very short exercise. What is the capital
+of Norway?
+Filename: 'myexer1.py'.
+
+# --- end exercise ---
+
+# --- begin exercise ---
+
+Project 4: Compute a Probability
 
 What is the probability of getting a number between 0.5 and 0.6 when
 drawing uniformly distributed random numbers from the interval [0,1)?
@@ -17317,7 +17719,7 @@ compute the probability as M/N.
 
 # --- begin exercise ---
 
-Project 4: Explore Distributions of Random Circles
+Project 5: Explore Distributions of Random Circles
 
 The formula for a circle is given by::
 
@@ -17386,17 +17788,9 @@ and give some perspectives.
 
 # --- begin exercise ---
 
-Exercise 5: Determine some Distance
+Exercise 6: Determine some Distance
 
 Intro to this exercise. Questions are in subexercises below.
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-2. item2
 
 # --- begin solution of exercise ---
 *Solution.*
@@ -17472,6 +17866,14 @@ Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
 
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+2. item2
+
 Remarks
 
 Some final closing remarks, e.g., summarizing the main findings
@@ -17497,7 +17899,7 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
 
 # --- begin exercise ---
 
-Exercise 7: Solution of differential equation
+Exercise 8: Solution of differential equation
 
 Here goes a quiz "Given::
 
@@ -17510,7 +17912,7 @@ But typesetting of quiz is not yet implemented in this format.
 
 # --- begin exercise ---
 
-Example 8: Just an example
+Example 9: Just an example
 
 *a)*
 What is the capital of Norway?
@@ -17528,9 +17930,9 @@ More Exercises
 
 # --- begin exercise ---
 
-Exercise 9: Make references to projects and problems
+Exercise 10: Make references to projects and problems
 
-Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
+Pick a statement from  "Project 5: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -17545,11 +17947,11 @@ Filename: 'verify_formula.py'.
 
 # --- begin exercise ---
 
-Project 10: References to  "Project 3: Compute a Probability" in a heading works for st
+Project 11: References to  "Project 4: Compute a Probability" in a heading works for st
 
-Refer to the previous exercise as  "Exercise 9: Make references to projects and problems",
-the two before that as  "Project 3: Compute a Probability" and "Project 4: Explore Distributions of Random Circles",
-and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading works for st".
+Refer to the previous exercise as  "Exercise 10: Make references to projects and problems",
+the two before that as  "Project 4: Compute a Probability" and "Project 5: Explore Distributions of Random Circles",
+and this one as  "Project 11: References to Project ref{demo:ex:2} in a heading works for st".
 Filename: 'selc_composed.pdf'.
 
 # --- end exercise ---
@@ -17869,7 +18271,7 @@ Subsection 1
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
-encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 10: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
 Test Section reference at beginning of line and after a sentence
@@ -18512,9 +18914,9 @@ Here is a system without equation numbers, using the align-asterisk environment:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
-as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for epytext", and in
-between there we have  "Exercise 9: Make references to projects and problems".
+Below, we have  "Problem 2: Flip a Coin" and  "Project 4: Compute a Probability",
+as well as  "Project 5: Explore Distributions of Random Circles" and "Project 11: References to Project ref{demo:ex:2} in a heading works for epytext", and in
+between there we have  "Exercise 10: Make references to projects and problems".
 
 Exercises
 =========
@@ -18524,18 +18926,10 @@ Exercises
 Problem 2: Flip a Coin
 ----------------------
 
+I{a)}
 Make a program that simulates flipping a coin M{N} times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-Remarks
-~~~~~~~
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-2. Mark 2.
 
 # --- begin hint in exercise ---
 
@@ -18572,7 +18966,40 @@ I{Solution.}::
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 # --- end solution of exercise ---
+
+I{b)}
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+I{c)}
+Vectorize the code in a) using C{numpy.sum}.
+
+# --- begin answer of exercise ---
+I{Answer.}
+C{np.sum(np.where(r <= 0.5, 1, 0))} or C{np.sum(r <= 0.5)}.
+
+# --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+My remarks
+~~~~~~~~~~
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+2. Mark 2.
+
 Filenames: C{flip_coin.py}, C{flip_coin.pdf}.
+
+Remarks
+~~~~~~~
+
+These are the exercise remarks, appearing at the very end.
 
 # --- end exercise ---
 
@@ -18584,7 +19011,18 @@ exercises.
 
 # --- begin exercise ---
 
-Project 3: Compute a Probability
+Exercise 3: Test of plain text exercise
+---------------------------------------
+
+Very short exercise. What is the capital
+of Norway?
+Filename: C{myexer1.py}.
+
+# --- end exercise ---
+
+# --- begin exercise ---
+
+Project 4: Compute a Probability
 --------------------------------
 
 What is the probability of getting a number between 0.5 and 0.6 when
@@ -18610,7 +19048,7 @@ compute the probability as M{M/N}.
 
 # --- begin exercise ---
 
-Project 4: Explore Distributions of Random Circles
+Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by::
@@ -18681,18 +19119,10 @@ and give some perspectives.
 
 # --- begin exercise ---
 
-Exercise 5: Determine some Distance
+Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-2. item2
 
 # --- begin solution of exercise ---
 I{Solution.}
@@ -18768,6 +19198,14 @@ Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
 
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+2. item2
+
 Remarks
 ~~~~~~~
 
@@ -18795,7 +19233,7 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
 
 # --- begin exercise ---
 
-Exercise 7: Solution of differential equation
+Exercise 8: Solution of differential equation
 ---------------------------------------------
 
 Here goes a quiz "Given::
@@ -18809,7 +19247,7 @@ But typesetting of quiz is not yet implemented in this format.
 
 # --- begin exercise ---
 
-Example 8: Just an example
+Example 9: Just an example
 --------------------------
 
 I{a)}
@@ -18830,10 +19268,10 @@ More Exercises
 
 # --- begin exercise ---
 
-Exercise 9: Make references to projects and problems
-----------------------------------------------------
+Exercise 10: Make references to projects and problems
+-----------------------------------------------------
 
-Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
+Pick a statement from  "Project 5: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -18848,12 +19286,12 @@ Filename: C{verify_formula.py}.
 
 # --- begin exercise ---
 
-Project 10: References to  "Project 3: Compute a Probability" in a heading works for epytext
+Project 11: References to  "Project 4: Compute a Probability" in a heading works for epytext
 --------------------------------------------------------------------------------------------
 
-Refer to the previous exercise as  "Exercise 9: Make references to projects and problems",
-the two before that as  "Project 3: Compute a Probability" and "Project 4: Explore Distributions of Random Circles",
-and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading works for epytext".
+Refer to the previous exercise as  "Exercise 10: Make references to projects and problems",
+the two before that as  "Project 4: Compute a Probability" and "Project 5: Explore Distributions of Random Circles",
+and this one as  "Project 11: References to Project ref{demo:ex:2} in a heading works for epytext".
 Filename: C{selc_composed.pdf}.
 
 # --- end exercise ---
@@ -19177,20 +19615,22 @@ Table of contents:
  LaTeX Mathematics 
  Exercises 
    Problem 2: Flip a Coin 
+     My remarks 
      Remarks 
    Not an exercise 
-   Project 3: Compute a Probability 
-   Project 4: Explore Distributions of Random Circles 
+   Exercise 3: Test of plain text exercise 
+   Project 4: Compute a Probability 
+   Project 5: Explore Distributions of Random Circles 
      Remarks 
-   Exercise 5: Determine some Distance 
+   Exercise 6: Determine some Distance 
      Remarks 
    Some exercise without the "Exercise:" prefix 
-   Exercise 7: Solution of differential equation 
-   Example 8: Just an example 
+   Exercise 8: Solution of differential equation 
+   Example 9: Just an example 
  Here goes another section 
  More Exercises 
-   Exercise 9: Make references to projects and problems 
-   Project 10: References to  "Project 3: Compute a Probability" in a heading works for plain 
+   Exercise 10: Make references to projects and problems 
+   Project 11: References to  "Project 4: Compute a Probability" in a heading works for plain 
  References 
  Appendix: Just for testing; part I 
    A subsection within an appendix 
@@ -19267,7 +19707,7 @@ Subsection 1
 More text, with a reference back to
 the section "Section 1" and "Subsection 1", and further to the
 the sections "Subsection 1" and "URLs", which
-encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 9: Make references to projects and problems".
+encourages you to do the tasks in  "Problem 2: Flip a Coin" and "Exercise 10: Make references to projects and problems".
 Appendices     "Appendix: Just for testing; part I" and "Appendix: Just for testing; part II" are also nice elements.
 
 Test Section reference at beginning of line and after a sentence
@@ -19958,9 +20398,9 @@ Here is a system without equation numbers, using the align-asterisk environment:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have  "Problem 2: Flip a Coin" and  "Project 3: Compute a Probability",
-as well as  "Project 4: Explore Distributions of Random Circles" and "Project 10: References to Project ref{demo:ex:2} in a heading works for plain", and in
-between there we have  "Exercise 9: Make references to projects and problems".
+Below, we have  "Problem 2: Flip a Coin" and  "Project 4: Compute a Probability",
+as well as  "Project 5: Explore Distributions of Random Circles" and "Project 11: References to Project ref{demo:ex:2} in a heading works for plain", and in
+between there we have  "Exercise 10: Make references to projects and problems".
 
 Exercises
 =========
@@ -19970,19 +20410,10 @@ Exercises
 Problem 2: Flip a Coin
 ----------------------
 
+*a)*
 Make a program that simulates flipping a coin N times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-Remarks
-~~~~~~~
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-
-2. Mark 2.
 
 # --- begin hint in exercise ---
 
@@ -20019,7 +20450,41 @@ head, otherwise tail. Repeat this N number of times.
         print 'Flipping a coin %d times gave %d heads' % (N, heads)
 
 # --- end solution of exercise ---
+
+*b)*
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+*c)*
+Vectorize the code in a) using numpy.sum.
+
+# --- begin answer of exercise ---
+*Answer.*
+np.sum(np.where(r <= 0.5, 1, 0)) or np.sum(r <= 0.5).
+
+# --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+My remarks
+~~~~~~~~~~
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+
+2. Mark 2.
+
 Filenames: flip_coin.py, flip_coin.pdf.
+
+Remarks
+~~~~~~~
+
+These are the exercise remarks, appearing at the very end.
 
 # --- end exercise ---
 
@@ -20031,7 +20496,18 @@ exercises.
 
 # --- begin exercise ---
 
-Project 3: Compute a Probability
+Exercise 3: Test of plain text exercise
+---------------------------------------
+
+Very short exercise. What is the capital
+of Norway?
+Filename: myexer1.py.
+
+# --- end exercise ---
+
+# --- begin exercise ---
+
+Project 4: Compute a Probability
 --------------------------------
 
 What is the probability of getting a number between 0.5 and 0.6 when
@@ -20058,7 +20534,7 @@ compute the probability as M/N.
 
 # --- begin exercise ---
 
-Project 4: Explore Distributions of Random Circles
+Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by::
@@ -20129,19 +20605,10 @@ and give some perspectives.
 
 # --- begin exercise ---
 
-Exercise 5: Determine some Distance
+Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-
-2. item2
 
 # --- begin solution of exercise ---
 *Solution.*
@@ -20218,6 +20685,15 @@ Here goes the solution of this subexercise.
 
 # --- end solution of exercise ---
 
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+
+2. item2
+
 Remarks
 ~~~~~~~
 
@@ -20245,7 +20721,7 @@ And a test that the code lambda x: x+2 is correctly placed here::
 
 # --- begin exercise ---
 
-Exercise 7: Solution of differential equation
+Exercise 8: Solution of differential equation
 ---------------------------------------------
 
 Here goes a quiz "Given::
@@ -20259,7 +20735,7 @@ But typesetting of quiz is not yet implemented in this format.
 
 # --- begin exercise ---
 
-Example 8: Just an example
+Example 9: Just an example
 --------------------------
 
 *a)*
@@ -20280,10 +20756,10 @@ More Exercises
 
 # --- begin exercise ---
 
-Exercise 9: Make references to projects and problems
-----------------------------------------------------
+Exercise 10: Make references to projects and problems
+-----------------------------------------------------
 
-Pick a statement from  "Project 4: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
+Pick a statement from  "Project 5: Explore Distributions of Random Circles" or  "Problem 2: Flip a Coin"
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -20299,12 +20775,12 @@ Filename: verify_formula.py.
 
 # --- begin exercise ---
 
-Project 10: References to  "Project 3: Compute a Probability" in a heading works for plain
+Project 11: References to  "Project 4: Compute a Probability" in a heading works for plain
 ------------------------------------------------------------------------------------------
 
-Refer to the previous exercise as  "Exercise 9: Make references to projects and problems",
-the two before that as  "Project 3: Compute a Probability" and "Project 4: Explore Distributions of Random Circles",
-and this one as  "Project 10: References to Project ref{demo:ex:2} in a heading works for plain".
+Refer to the previous exercise as  "Exercise 10: Make references to projects and problems",
+the two before that as  "Project 4: Compute a Probability" and "Project 5: Explore Distributions of Random Circles",
+and this one as  "Project 11: References to Project ref{demo:ex:2} in a heading works for plain".
 Filename: selc_composed.pdf.
 
 # --- end exercise ---
@@ -20677,7 +21153,7 @@ Even Equation \eqref{my:eq1} without the tilde.
 More text, with a reference back to
 the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the
 the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
-encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).
+encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 10: Make references to projects and problems](#exer:some:formula).
 Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
 
 #### Test Section reference at beginning of line and after a sentence
@@ -21445,6 +21921,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 <!-- --- end exercise --- -->
 
 
@@ -21544,9 +22021,9 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 3: Compute a Probability](#demo:ex:2),
-as well as  [Project 4: Explore Distributions of Random Circles](#proj:circle1) and [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
-between there we have  [Exercise 9: Make references to projects and problems](#exer:some:formula).
+Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 4: Compute a Probability](#demo:ex:2),
+as well as  [Project 5: Explore Distributions of Random Circles](#proj:circle1) and [Project 11: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
+between there we have  [Exercise 10: Make references to projects and problems](#exer:some:formula).
 
 
 ## Exercises
@@ -21561,21 +22038,11 @@ between there we have  [Exercise 9: Make references to projects and problems](#e
 
 <!-- Torture tests -->
 
+
+*a)*
 Make a program that simulates flipping a coin $N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
-
-#### Remarks
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-2. Mark 2.
 
 <!-- --- begin hint in exercise --- -->
 
@@ -21616,7 +22083,43 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- --- end solution of exercise --- -->
+
+*b)*
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+*c)*
+Vectorize the code in a) using `numpy.sum`.
+
+
+<!-- --- begin answer of exercise --- -->
+*Answer.*
+`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
+
+<!-- --- end answer of exercise --- -->
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+#### My remarks
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+2. Mark 2.
+
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
+
+<!-- Closing remarks for this Problem -->
+
+#### Remarks
+
+These are the exercise remarks, appearing at the very end.
+
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
 
 <!-- --- end exercise --- -->
@@ -21631,7 +22134,21 @@ exercises.
 
 <!-- --- begin exercise --- -->
 
-### Project 3: Compute a Probability
+### Exercise 3: Test of plain text exercise
+<a name="my:exer1"/>
+
+Very short exercise. What is the capital
+of Norway?
+Filename: `myexer1.py`.
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Project 4: Compute a Probability
 <a name="demo:ex:2"/>
 
 <!-- Minimalistic exercise -->
@@ -21664,7 +22181,7 @@ compute the probability as $M/N$.
 
 <!-- --- begin exercise --- -->
 
-### Project 4: Explore Distributions of Random Circles
+### Project 5: Explore Distributions of Random Circles
 <a name="proj:circle1"/>
 
 The formula for a circle is given by
@@ -21738,6 +22255,7 @@ Filename: `norm.py`.
 *c)*
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
+
 Filename: `circles.pdf`.
 
 <!-- Closing remarks for this Project -->
@@ -21755,23 +22273,11 @@ and give some perspectives.
 
 <!-- --- begin exercise --- -->
 
-### Exercise 5: Determine some Distance
+### Exercise 6: Determine some Distance
 <a name="exer:dist"/>
 
 Intro to this exercise. Questions are in subexercises below.
 
-
-
-
-
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-2. item2
 
 <!-- --- begin solution of exercise --- -->
 *Solution.*
@@ -21859,6 +22365,16 @@ Here goes the solution of this subexercise.
 
 <!-- --- end solution of exercise --- -->
 
+
+
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+2. item2
 <!-- Closing remarks for this Exercise -->
 
 #### Remarks
@@ -21903,7 +22419,7 @@ lambda x: x+2
 
 <!-- --- begin exercise --- -->
 
-### Exercise 7: Solution of differential equation
+### Exercise 8: Solution of differential equation
 <a name="sec:this:exer:de"/>
 
 *Cannot typeset quiz*: "Given
@@ -21920,7 +22436,7 @@ What is the solution of this equation?"
 
 <!-- --- begin exercise --- -->
 
-### Example 8: Just an example
+### Example 9: Just an example
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -21945,11 +22461,11 @@ With some text, before we continue with exercises.
 
 <!-- --- begin exercise --- -->
 
-### Exercise 9: Make references to projects and problems
+### Exercise 10: Make references to projects and problems
 <a name="exer:some:formula"/>
 
 <!-- Test comments not at the end only -->
-Pick a statement from  [Project 4: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
+Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -21967,12 +22483,12 @@ Filename: `verify_formula.py`.
 
 <!-- --- begin exercise --- -->
 
-### Project 10: References to  [Project 3: Compute a Probability](#demo:ex:2) in a heading works for pandoc
+### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for pandoc
 <a name="exer:you"/>
 
-Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#exer:some:formula),
-the two before that as  [Project 3: Compute a Probability](#demo:ex:2) and [Project 4: Explore Distributions of Random Circles](#proj:circle1),
-and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
+Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),
+the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),
+and this one as  [Project 11: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
 Filename: `selc_composed.pdf`.
 
 <!-- --- end exercise --- -->
@@ -22346,7 +22862,7 @@ is at the end with only one newline.
       "More text, with a reference back to\n",
       "the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the\n",
       "the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which\n",
-      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).\n",
+      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 10: Make references to projects and problems](#exer:some:formula).\n",
       "Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.\n",
       "\n",
       "#### Test Section reference at beginning of line and after a sentence\n",
@@ -23391,6 +23907,7 @@ is at the end with only one newline.
       "The answer to this other subproblem goes here,\n",
       "maybe over multiple doconce input lines.\n",
       "\n",
+      "\n",
       "<!-- --- end exercise --- -->\n",
       "\n",
       "\n",
@@ -23511,9 +24028,9 @@ is at the end with only one newline.
      "source": [
       "More mathematical typesetting is demonstrated in the coming exercises.\n",
       "\n",
-      "Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 3: Compute a Probability](#demo:ex:2),\n",
-      "as well as  [Project 4: Explore Distributions of Random Circles](#proj:circle1) and [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you), and in\n",
-      "between there we have  [Exercise 9: Make references to projects and problems](#exer:some:formula).\n",
+      "Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 4: Compute a Probability](#demo:ex:2),\n",
+      "as well as  [Project 5: Explore Distributions of Random Circles](#proj:circle1) and [Project 11: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you), and in\n",
+      "between there we have  [Exercise 10: Make references to projects and problems](#exer:some:formula).\n",
       "\n",
       "\n",
       "## Exercises\n",
@@ -23528,22 +24045,11 @@ is at the end with only one newline.
       "\n",
       "<!-- Torture tests -->\n",
       "\n",
+      "\n",
+      "**a)**\n",
       "Make a program that simulates flipping a coin $N$ times.\n",
       "Print out \"tail\" or \"head\" for each flip and\n",
       "let the program count the number of heads.\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "#### Remarks\n",
-      "\n",
-      "Remarks with such a subsubsection heading would previously mark\n",
-      "the beginning of a new exercise and cause trouble. Maybe a list\n",
-      "\n",
-      "1. Mark 1.\n",
-      "\n",
-      "2. Mark 2.\n",
       "\n",
       "<!-- --- begin hint in exercise --- -->\n",
       "\n",
@@ -23596,7 +24102,44 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "<!-- --- end solution of exercise --- -->\n",
+      "\n",
+      "**b)**\n",
+      "Vectorize the code in a) using boolean indexing.\n",
+      "\n",
+      "Vectorized code can be written in many ways.\n",
+      "Sometimes the code is less intuitive, sometimes not.\n",
+      "\n",
+      "**c)**\n",
+      "Vectorize the code in a) using `numpy.sum`.\n",
+      "\n",
+      "\n",
+      "<!-- --- begin answer of exercise --- -->\n",
+      "**Answer.**\n",
+      "`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.\n",
+      "\n",
+      "<!-- --- end answer of exercise --- -->\n",
+      "\n",
+      "In this latter subexercise, we have an\n",
+      "example where the code is easy to read.\n",
+      "\n",
+      "\n",
+      "#### My remarks\n",
+      "\n",
+      "Remarks with such a subsubsection is treated as more text\n",
+      "after the last subexercise. Test a list too:\n",
+      "\n",
+      "1. Mark 1.\n",
+      "\n",
+      "2. Mark 2.\n",
+      "\n",
       "Filenames: `flip_coin.py`, `flip_coin.pdf`.\n",
+      "\n",
+      "<!-- Closing remarks for this Problem -->\n",
+      "\n",
+      "#### Remarks\n",
+      "\n",
+      "These are the exercise remarks, appearing at the very end.\n",
+      "\n",
       "<!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -23611,7 +24154,21 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Project 3: Compute a Probability\n",
+      "### Exercise 3: Test of plain text exercise\n",
+      "<a name=\"my:exer1\"/>\n",
+      "\n",
+      "Very short exercise. What is the capital\n",
+      "of Norway?\n",
+      "Filename: `myexer1.py`.\n",
+      "\n",
+      "<!-- --- end exercise --- -->\n",
+      "\n",
+      "\n",
+      "\n",
+      "\n",
+      "<!-- --- begin exercise --- -->\n",
+      "\n",
+      "### Project 4: Compute a Probability\n",
       "<a name=\"demo:ex:2\"/>\n",
       "\n",
       "<!-- Minimalistic exercise -->\n",
@@ -23645,7 +24202,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Project 4: Explore Distributions of Random Circles\n",
+      "### Project 5: Explore Distributions of Random Circles\n",
       "<a name=\"proj:circle1\"/>\n",
       "\n",
       "The formula for a circle is given by"
@@ -23746,6 +24303,7 @@ is at the end with only one newline.
       "**c)**\n",
       "Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
       "\n",
+      "\n",
       "Filename: `circles.pdf`.\n",
       "\n",
       "<!-- Closing remarks for this Project -->\n",
@@ -23763,24 +24321,11 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Exercise 5: Determine some Distance\n",
+      "### Exercise 6: Determine some Distance\n",
       "<a name=\"exer:dist\"/>\n",
       "\n",
       "Intro to this exercise. Questions are in subexercises below.\n",
       "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- No meaning in this weired test example: -->\n",
-      "The text here belongs to the main (intro) part of the exercise. Need\n",
-      "closing remarks to have text after subexercises.\n",
-      "\n",
-      "Test list in exercise:\n",
-      "\n",
-      "1. item1\n",
-      "\n",
-      "2. item2\n",
       "\n",
       "<!-- --- begin solution of exercise --- -->\n",
       "**Solution.**\n",
@@ -23917,6 +24462,17 @@ is at the end with only one newline.
       "\n",
       "<!-- --- end solution of exercise --- -->\n",
       "\n",
+      "\n",
+      "\n",
+      "<!-- No meaning in this weired test example: -->\n",
+      "The text here belongs to the main (intro) part of the exercise. Need\n",
+      "closing remarks to have text after subexercises.\n",
+      "\n",
+      "Test list in exercise:\n",
+      "\n",
+      "1. item1\n",
+      "\n",
+      "2. item2\n",
       "<!-- Closing remarks for this Exercise -->\n",
       "\n",
       "#### Remarks\n",
@@ -23978,7 +24534,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Exercise 7: Solution of differential equation\n",
+      "### Exercise 8: Solution of differential equation\n",
       "<a name=\"sec:this:exer:de\"/>\n",
       "\n",
       "<!-- --- begin quiz --- -->\n",
@@ -24093,7 +24649,7 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Example 8: Just an example\n",
+      "### Example 9: Just an example\n",
       "\n",
       "<!-- This example needs the --examples_as_exercises option, otherwise -->\n",
       "<!-- it is just typeset as it is written. -->\n",
@@ -24118,11 +24674,11 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Exercise 9: Make references to projects and problems\n",
+      "### Exercise 10: Make references to projects and problems\n",
       "<a name=\"exer:some:formula\"/>\n",
       "\n",
       "<!-- Test comments not at the end only -->\n",
-      "Pick a statement from  [Project 4: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)\n",
+      "Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)\n",
       "and verify it.\n",
       "\n",
       "Test list at the end of an exercise without other elements (like subexercise,\n",
@@ -24141,12 +24697,12 @@ is at the end with only one newline.
       "\n",
       "<!-- --- begin exercise --- -->\n",
       "\n",
-      "### Project 10: References to  [Project 3: Compute a Probability](#demo:ex:2) in a heading works for ipynb\n",
+      "### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for ipynb\n",
       "<a name=\"exer:you\"/>\n",
       "\n",
-      "Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#exer:some:formula),\n",
-      "the two before that as  [Project 3: Compute a Probability](#demo:ex:2) and [Project 4: Explore Distributions of Random Circles](#proj:circle1),\n",
-      "and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you).\n",
+      "Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),\n",
+      "the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),\n",
+      "and this one as  [Project 11: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you).\n",
       "Filename: `selc_composed.pdf`.\n",
       "\n",
       "<!-- --- end exercise --- -->\n",
@@ -24547,7 +25103,8 @@ Could not find match for from regex "\*\s+\$.+normally"
              'hints': [],
              'solution': 'The answer to this subproblem can be written here.',
              'text': 'State some problem.'},
-            {'answer': '',
+            {'aftertext': '\n',
+             'answer': '',
              'file': None,
              'hints': ['A hint can be given.', 'Maybe even another hint?'],
              'solution': 'The answer to this other subproblem goes here,\nmaybe over multiple doconce input lines.',
@@ -24556,21 +25113,52 @@ Could not find match for from regex "\*\s+\$.+normally"
   'title': 'Examples can be typeset as exercises',
   'type': 'Example',
   'type_visible': True},
- {'answer': 'If the `random.random()` function returns a number $<1/2$, let it be\nhead, otherwise tail. Repeat this $N$ number of times.',
-  'closing_remarks': '',
+ {'answer': '',
+  'closing_remarks': 'These are the exercise remarks, appearing at the very end.',
   'file': ['flip_coin.py', 'flip_coin.pdf'],
   'heading': '=====',
-  'hints': ['Use `r = random.random()` and define head as `r <= 0.5`.',
-            'Draw an integer among $\\{1,2\\}$ with\n`r = random.randint(1,2)` and define head when `r` is 1.'],
+  'hints': [],
   'keywords': ['random numbers', 'Monte Carlo simulation'],
   'label': 'demo:ex:1',
   'no': 2,
-  'solution': "!bc pycod\nimport sys, random\nN = int(sys.argv[1])\nheads = 0\nfor i in range(N):\n    r = random.random()\n    if r <= 0.5:\n        heads += 1\nprint 'Flipping a coin %d times gave %d heads' % (N, heads)\n\n!ec",
+  'solution': '',
   'solution_file': ['mysol.txt', 'mysol_flip_coin.py', 'yet_another.file'],
-  'subex': [],
-  'text': '# Torture tests\n\nMake a program that simulates flipping a coin $N$ times.\nPrint out "tail" or "head" for each flip and\nlet the program count the number of heads.\n\n\n\n\n\n=== Remarks ===\n\nRemarks with such a subsubsection heading would previously mark\nthe beginning of a new exercise and cause trouble. Maybe a list\n\n o Mark 1.\n o Mark 2.',
+  'subex': [{'answer': 'If the `random.random()` function returns a number $<1/2$, let it be\nhead, otherwise tail. Repeat this $N$ number of times.',
+             'file': None,
+             'hints': ['Use `r = random.random()` and define head as `r <= 0.5`.',
+                       'Draw an integer among $\\{1,2\\}$ with\n`r = random.randint(1,2)` and define head when `r` is 1.'],
+             'solution': "!bc pycod\nimport sys, random\nN = int(sys.argv[1])\nheads = 0\nfor i in range(N):\n    r = random.random()\n    if r <= 0.5:\n        heads += 1\nprint 'Flipping a coin %d times gave %d heads' % (N, heads)\n\n!ec",
+             'text': "Make a program that simulates flipping a coin $N$ times.\nPrint out ``tail'' or ``head'' for each flip and\nlet the program count the number of heads."},
+            {'aftertext': '\nVectorized code can be written in many ways.\nSometimes the code is less intuitive, sometimes not.\n',
+             'answer': '',
+             'file': None,
+             'hints': [],
+             'solution': '',
+             'text': 'Vectorize the code in a) using boolean indexing.'},
+            {'aftertext': '\nIn this latter subexercise, we have an\nexample where the code is easy to read.\n\n\n=== My remarks ===\n\nRemarks with such a subsubsection is treated as more text\nafter the last subexercise. Test a list too:\n\n o Mark 1.\n o Mark 2.\n',
+             'answer': '`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.',
+             'file': None,
+             'hints': [],
+             'solution': '',
+             'text': 'Vectorize the code in a) using `numpy.sum`.'}],
+  'text': '# Torture tests',
   'title': 'Flip a Coin',
   'type': 'Problem',
+  'type_visible': True},
+ {'answer': '',
+  'closing_remarks': '',
+  'file': ['myexer1.py'],
+  'heading': '=====',
+  'hints': [],
+  'keywords': None,
+  'label': 'my:exer1',
+  'no': 3,
+  'solution': '',
+  'solution_file': None,
+  'subex': [],
+  'text': 'Very short exercise. What is the capital\nof Norway?',
+  'title': 'Test of plain text exercise',
+  'type': 'Exercise',
   'type_visible': True},
  {'answer': '',
   'closing_remarks': '',
@@ -24579,7 +25167,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': ["To answer this question empirically, let a program\ndraw $N$ such random numbers using Python's standard `random` module,\ncount how many of them, $M$, that fall in the interval $(0.5,0.6)$, and\ncompute the probability as $M/N$."],
   'keywords': None,
   'label': 'demo:ex:2',
-  'no': 3,
+  'no': 4,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -24594,7 +25182,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'proj:circle1',
-  'no': 4,
+  'no': 5,
   'solution': '',
   'solution_file': None,
   'subex': [{'answer': 'Here goes the short answer to part a).',
@@ -24607,7 +25195,8 @@ Could not find match for from regex "\*\s+\$.+normally"
              'hints': [],
              'solution': '',
              'text': 'Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.'},
-            {'answer': '',
+            {'aftertext': '\n',
+             'answer': '',
              'file': None,
              'hints': [],
              'solution': '',
@@ -24623,7 +25212,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'exer:dist',
-  'no': 5,
+  'no': 6,
   'solution': 'Here goes a full solution of the whole exercise.\nWith some math $a=b$ in this solution:\n!bt\n\\[ \\hbox{math in solution: } a = b \\]\n\n!et\nAnd code `a=b` in this solution:\n!bc\na = b  # code in solution\n\n!ec \nEnd of solution is here.',
   'solution_file': None,
   'subex': [{'answer': 'Short answer to subexercise a).\nWith math in answer: $a=b$.',
@@ -24632,12 +25221,13 @@ Could not find match for from regex "\*\s+\$.+normally"
                        'Second hint to subexercise a).\n\nTest list in hint:\n\n o item1\n o item2'],
              'solution': '',
              'text': 'Subexercises are numbered a), b), etc.'},
-            {'answer': '',
+            {'aftertext': '\n\n\n#  No meaning in this weired test example:\nThe text here belongs to the main (intro) part of the exercise. Need\nclosing remarks to have text after subexercises.\n\nTest list in exercise:\n\n o item1\n o item2\n\n',
+             'answer': '',
              'file': ['subexer_b.pdf'],
              'hints': ['A hint for this subexercise.'],
              'solution': 'Here goes the solution of this subexercise.',
              'text': 'Here goes the text for subexercise b).\n\n\nSome math $\\cos^2 x + \\sin^2 x = 1$ written one a single line:\n\n!bt\n\\[ \\cos^2 x + \\sin^2 x = 1 \\thinspace .\\]\n\n!et'}],
-  'text': 'Intro to this exercise. Questions are in subexercises below.\n\n\n\n\n\n#  No meaning in this weired test example:\nThe text here belongs to the main (intro) part of the exercise. Need\nclosing remarks to have text after subexercises.\n\nTest list in exercise:\n\n o item1\n o item2',
+  'text': 'Intro to this exercise. Questions are in subexercises below.',
   'title': 'Determine some Distance',
   'type': 'Exercise',
   'type_visible': True},
@@ -24648,7 +25238,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': None,
-  'no': 6,
+  'no': 7,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -24663,7 +25253,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'sec:this:exer:de',
-  'no': 7,
+  'no': 8,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -24678,7 +25268,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': None,
-  'no': 8,
+  'no': 9,
   'solution': '',
   'solution_file': None,
   'subex': [{'answer': 'Oslo.',
@@ -24697,7 +25287,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'exer:some:formula',
-  'no': 9,
+  'no': 10,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -24712,7 +25302,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'hints': [],
   'keywords': None,
   'label': 'exer:you',
-  'no': 10,
+  'no': 11,
   'solution': '',
   'solution_file': None,
   'subex': [],
@@ -24806,7 +25396,7 @@ Even Equation \eqref{my:eq1} without the tilde.
 More text, with a reference back to
 the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the
 the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
-encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 9: Make references to projects and problems](#exer:some:formula).
+encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 10: Make references to projects and problems](#exer:some:formula).
 Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
 
 #### Test Section reference at beginning of line and after a sentence
@@ -25574,6 +26164,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 <!-- --- end exercise --- -->
 
 
@@ -25673,9 +26264,9 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 3: Compute a Probability](#demo:ex:2),
-as well as  [Project 4: Explore Distributions of Random Circles](#proj:circle1) and [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
-between there we have  [Exercise 9: Make references to projects and problems](#exer:some:formula).
+Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 4: Compute a Probability](#demo:ex:2),
+as well as  [Project 5: Explore Distributions of Random Circles](#proj:circle1) and [Project 11: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
+between there we have  [Exercise 10: Make references to projects and problems](#exer:some:formula).
 
 
 ## Exercises
@@ -25690,21 +26281,11 @@ between there we have  [Exercise 9: Make references to projects and problems](#e
 
 <!-- Torture tests -->
 
+
+*a)*
 Make a program that simulates flipping a coin $N$ times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-
-
-
-
-#### Remarks
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-2. Mark 2.
 
 <!-- --- begin hint in exercise --- -->
 
@@ -25745,7 +26326,43 @@ print 'Flipping a coin %d times gave %d heads' % (N, heads)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- --- end solution of exercise --- -->
+
+*b)*
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+*c)*
+Vectorize the code in a) using `numpy.sum`.
+
+
+<!-- --- begin answer of exercise --- -->
+*Answer.*
+`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
+
+<!-- --- end answer of exercise --- -->
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+#### My remarks
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+2. Mark 2.
+
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
+
+<!-- Closing remarks for this Problem -->
+
+#### Remarks
+
+These are the exercise remarks, appearing at the very end.
+
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
 
 <!-- --- end exercise --- -->
@@ -25760,7 +26377,21 @@ exercises.
 
 <!-- --- begin exercise --- -->
 
-### Project 3: Compute a Probability
+### Exercise 3: Test of plain text exercise
+<a name="my:exer1"/>
+
+Very short exercise. What is the capital
+of Norway?
+Filename: `myexer1.py`.
+
+<!-- --- end exercise --- -->
+
+
+
+
+<!-- --- begin exercise --- -->
+
+### Project 4: Compute a Probability
 <a name="demo:ex:2"/>
 
 <!-- Minimalistic exercise -->
@@ -25793,7 +26424,7 @@ compute the probability as $M/N$.
 
 <!-- --- begin exercise --- -->
 
-### Project 4: Explore Distributions of Random Circles
+### Project 5: Explore Distributions of Random Circles
 <a name="proj:circle1"/>
 
 The formula for a circle is given by
@@ -25867,6 +26498,7 @@ Filename: `norm.py`.
 *c)*
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
+
 Filename: `circles.pdf`.
 
 <!-- Closing remarks for this Project -->
@@ -25884,23 +26516,11 @@ and give some perspectives.
 
 <!-- --- begin exercise --- -->
 
-### Exercise 5: Determine some Distance
+### Exercise 6: Determine some Distance
 <a name="exer:dist"/>
 
 Intro to this exercise. Questions are in subexercises below.
 
-
-
-
-
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-2. item2
 
 <!-- --- begin solution of exercise --- -->
 *Solution.*
@@ -25988,6 +26608,16 @@ Here goes the solution of this subexercise.
 
 <!-- --- end solution of exercise --- -->
 
+
+
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+2. item2
 <!-- Closing remarks for this Exercise -->
 
 #### Remarks
@@ -26032,7 +26662,7 @@ lambda x: x+2
 
 <!-- --- begin exercise --- -->
 
-### Exercise 7: Solution of differential equation
+### Exercise 8: Solution of differential equation
 <a name="sec:this:exer:de"/>
 
 *Cannot typeset quiz*: "Given
@@ -26049,7 +26679,7 @@ What is the solution of this equation?"
 
 <!-- --- begin exercise --- -->
 
-### Example 8: Just an example
+### Example 9: Just an example
 
 <!-- This example needs the --examples_as_exercises option, otherwise -->
 <!-- it is just typeset as it is written. -->
@@ -26074,11 +26704,11 @@ With some text, before we continue with exercises.
 
 <!-- --- begin exercise --- -->
 
-### Exercise 9: Make references to projects and problems
+### Exercise 10: Make references to projects and problems
 <a name="exer:some:formula"/>
 
 <!-- Test comments not at the end only -->
-Pick a statement from  [Project 4: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
+Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -26096,12 +26726,12 @@ Filename: `verify_formula.py`.
 
 <!-- --- begin exercise --- -->
 
-### Project 10: References to  [Project 3: Compute a Probability](#demo:ex:2) in a heading works for pandoc
+### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for pandoc
 <a name="exer:you"/>
 
-Refer to the previous exercise as  [Exercise 9: Make references to projects and problems](#exer:some:formula),
-the two before that as  [Project 3: Compute a Probability](#demo:ex:2) and [Project 4: Explore Distributions of Random Circles](#proj:circle1),
-and this one as  [Project 10: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
+Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),
+the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),
+and this one as  [Project 11: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
 Filename: `selc_composed.pdf`.
 
 <!-- --- end exercise --- -->
@@ -28363,46 +28993,51 @@ div { text-align: justify; text-justify: inter-word; }
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -28411,12 +29046,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 <body>
@@ -28526,30 +29161,32 @@ MathJax.Hub.Config({
 <a href="._testdoc002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec35"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> My remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Example 8: Just an example </a><br>
-<a href="._testdoc002.html#___sec41"> Here goes another section </a><br>
-<a href="._testdoc002.html#___sec42"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc002.html#___sec45"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec39"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec42"> Example 9: Just an example </a><br>
+<a href="._testdoc002.html#___sec43"> Here goes another section </a><br>
+<a href="._testdoc002.html#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:you"> Project 11: References in a headings do not work well in html </a><br>
+<a href="._testdoc002.html#___sec47"> References </a><br>
 <a href="._testdoc002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec47"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec49"> A subsection within an appendix </a><br>
 <a href="._testdoc002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec49"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec51"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec52"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec53"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec55"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc003.html#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <p>
@@ -28695,46 +29332,51 @@ div { text-align: justify; text-justify: inter-word; }
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -28743,12 +29385,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 <body>
@@ -28873,7 +29515,7 @@ This equation appears in another part if this document is split.
 More text, with a reference back to
 the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
 the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="._testdoc002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc002.html#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
  <a href="._testdoc002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
@@ -30049,46 +30691,51 @@ div { text-align: justify; text-justify: inter-word; }
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -30097,12 +30744,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 <body>
@@ -30180,9 +30827,9 @@ Also test \( a_{i-j} \) as well as \( kx-wt \).
 More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
-Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 4: Compute a Probability</a>,
+as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec29"></a></h1>
 
@@ -30196,21 +30843,12 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 <!-- Torture tests -->
 
 <p>
+<b>a)</b>
 Make a program that simulates flipping a coin \( N \) times.
-Print out "tail" or "head" for each flip and
+Print out &quot;tail&quot; or &quot;head&quot; for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec31"></a></h3>
-
 <p>
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-<ol>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 1.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 2.</li>
-</ol>
-
 <!-- --- begin hint in exercise --- -->
 
 <p>
@@ -30241,13 +30879,59 @@ head, otherwise tail. Repeat this \( N \) number of times.
 <!-- --- end answer of exercise --- -->
 
 <p>
+
+<p>
+<b>b)</b>
+Vectorize the code in a) using boolean indexing.
+
+<p>
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+<p>
+<b>c)</b>
+Vectorize the code in a) using <code>numpy.sum</code>.
+
+<p>
+<!-- --- begin answer of exercise --- -->
+<b>Answer.</b>
+<code>np.sum(np.where(r &lt;= 0.5, 1, 0))</code> or <code>np.sum(r &lt;= 0.5)</code>.
+
+<p>
+<!-- --- end answer of exercise --- -->
+
+<p>
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+<h3>My remarks  <a name="___sec31"></a></h3>
+
+<p>
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+<ol>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 1.</li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> Mark 2.</li>
+</ol>
+
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
+
+<p>
+<!-- Closing remarks for this Problem -->
+
+<h3>Remarks  <a name="___sec32"></a></h3>
+
+<p>
+These are the exercise remarks, appearing at the very end.
+
+<p>
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
 
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec32"></a></h2>
+<h2>Not an exercise  <a name="___sec33"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -30256,7 +30940,20 @@ exercises.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
+<h2>Exercise 3: Test of plain text exercise <a name="my:exer1"></a></h2>
+
+<p>
+Very short exercise. What is the capital
+of Norway?
+Filename: <code>myexer1.py</code>.
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Project 4: Compute a Probability <a name="demo:ex:2"></a></h2>
 
 <p>
 <!-- Minimalistic exercise -->
@@ -30292,7 +30989,7 @@ compute the probability as \( M/N \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
+<h2>Project 5: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
 <p>
 The formula for a circle is given by
@@ -30379,7 +31076,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec35"></a></h3>
+<h3>Remarks  <a name="___sec37"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -30391,24 +31088,12 @@ and give some perspectives.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
+<h2>Exercise 6: Determine some Distance <a name="exer:dist"></a></h2>
 
 <p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-<p>
-Test list in exercise:
-
-<ol>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
-</ol>
-
 
 <p>
 <b>a)</b>
@@ -30487,9 +31172,20 @@ Filename: <code>subexer_b.pdf</code>.
 <p>
 
 <p>
-<!-- Closing remarks for this Exercise -->
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
 
-<h3>Remarks  <a name="___sec37"></a></h3>
+<p>
+Test list in exercise:
+
+<ol>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2
+<!-- Closing remarks for this Exercise --></li>
+</ol>
+
+<h3>Remarks  <a name="___sec39"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -30502,7 +31198,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec38"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec40"></a></h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -30532,7 +31228,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+<h2>Exercise 8: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
 <p>
 <!-- begin quiz -->
@@ -30580,7 +31276,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec40"></a></h2>
+<h2>Example 9: Just an example  <a name="___sec42"></a></h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -30597,21 +31293,21 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec41"></a></h1>
+<h1>Here goes another section  <a name="___sec43"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec42"></a></h1>
+<h1>More Exercises  <a name="___sec44"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 10: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 <p>
 <!-- Test comments not at the end only -->
-Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
+Pick a statement from <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
 <p>
@@ -30631,18 +31327,18 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 11: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
 <p>
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
-the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>,
+the two before that as <a href="#demo:ex:2">Project 4: Compute a Probability</a> and <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a>,
+and this one as <a href="#exer:you">Project 11: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec45"></a></h1>
+<h1>References  <a name="___sec47"></a></h1>
 
 <p>
 <!-- begin bibliography -->
@@ -30761,7 +31457,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec47"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec49"></a></h2>
 
 <p>
 Some text.
@@ -30771,7 +31467,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec49"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
 
 <p>
 Without label.
@@ -30931,46 +31627,51 @@ div { text-align: justify; text-justify: inter-word; }
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -30979,12 +31680,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 <body>
@@ -31044,7 +31745,7 @@ Bergen
 <!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec52"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec54"></a></h2>
 
 <p>
 Without label.
@@ -31138,7 +31839,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec53"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec55"></a></h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -31177,7 +31878,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec54"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec56"></a></h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -31368,30 +32069,32 @@ div { text-align: justify; text-justify: inter-word; }
 <a href="#___sec28"> LaTeX Mathematics </a><br>
 <a href="#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec35"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> My remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 4: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Example 8: Just an example </a><br>
-<a href="#___sec41"> Here goes another section </a><br>
-<a href="#___sec42"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="#___sec45"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec39"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Example 9: Just an example </a><br>
+<a href="#___sec43"> Here goes another section </a><br>
+<a href="#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 11: References in a headings do not work well in html </a><br>
+<a href="#___sec47"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec47"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec55"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 The format of this document is
@@ -31466,7 +32169,7 @@ This equation appears in another part if this document is split.
 More text, with a reference back to
 the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
 the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
  <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
@@ -32369,9 +33072,9 @@ Also test $latex a_{i-j}$ as well as $latex kx-wt$.
 More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
-Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 4: Compute a Probability</a>,
+as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec29"></a></h1>
 
@@ -32379,22 +33082,10 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 
 
 <p>
+<b>a)</b>
 Make a program that simulates flipping a coin $latex N$ times.
-Print out "tail" or "head" for each flip and
+Print out &quot;tail&quot; or &quot;head&quot; for each flip and
 let the program count the number of heads.
-
-<h3>Remarks  <a name="___sec31"></a></h3>
-
-<p>
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-<ol>
-<li> Mark 1.</li>
-<li> Mark 2.</li>
-</ol>
-
-
 
 <p>
 <b>Hint 1.</b>
@@ -32427,16 +33118,58 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Flipping a coin </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> times gave </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> heads&#39;</span> <span style="color: #666666">%</span> (N, heads)
 </pre></div>
 <p>
+<b>b)</b>
+Vectorize the code in a) using boolean indexing.
+
+<p>
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+<p>
+<b>c)</b>
+Vectorize the code in a) using <code>numpy.sum</code>.
+
+<p>
+
+<b>Answer.</b>
+<code>np.sum(np.where(r &lt;= 0.5, 1, 0))</code> or <code>np.sum(r &lt;= 0.5)</code>.
+
+<p>
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+<h3>My remarks  <a name="___sec31"></a></h3>
+
+<p>
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+<ol>
+<li> Mark 1.</li>
+<li> Mark 2.</li>
+</ol>
 
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
-<h2>Not an exercise  <a name="___sec32"></a></h2>
+<h3>Remarks  <a name="___sec32"></a></h3>
+
+<p>
+These are the exercise remarks, appearing at the very end.
+
+<h2>Not an exercise  <a name="___sec33"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
 exercises.
 
-<h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
+<h2>Exercise 3: Test of plain text exercise <a name="my:exer1"></a></h2>
+
+<p>
+Very short exercise. What is the capital
+of Norway?
+Filename: <code>myexer1.py</code>.
+
+<h2>Project 4: Compute a Probability <a name="demo:ex:2"></a></h2>
 
 <p>
 What is the probability of getting a number between 0.5 and 0.6 when
@@ -32460,7 +33193,7 @@ draw $latex N$ such random numbers using Python's standard <code>random</code> m
 count how many of them, $latex M$, that fall in the interval $latex (0.5,0.6)$, and
 compute the probability as $latex M/N$.
 
-<h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
+<h2>Project 5: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
 <p>
 The formula for a circle is given by
@@ -32529,30 +33262,18 @@ Let $latex R$ and $latex (x_0,y_0)$ be normally distributed.
 <p>
 Filename: <code>circles.pdf</code>.
 
-<h3>Remarks  <a name="___sec35"></a></h3>
+<h3>Remarks  <a name="___sec37"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
 and give some perspectives.
 
-<h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
+<h2>Exercise 6: Determine some Distance <a name="exer:dist"></a></h2>
 
 <p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-<p>
-Test list in exercise:
-
-<ol>
-<li> item1</li>
-<li> item2</li>
-</ol>
-
 
 <b>Solution.</b>
 Here goes a full solution of the whole exercise.
@@ -32639,14 +33360,28 @@ Filename: <code>subexer_b.pdf</code>.
 <b>Solution.</b>
 Here goes the solution of this subexercise.
 
-<h3>Remarks  <a name="___sec37"></a></h3>
+<p>
+
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+<p>
+Test list in exercise:
+
+<ol>
+<li> item1</li>
+<li> item2
+</li>
+</ol>
+
+<h3>Remarks  <a name="___sec39"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
 remarks will appear at the end of the typeset exercise.
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec38"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec40"></a></h2>
 
 <p>
 Just some text. And some math saying that $latex e^0=1$ on a single line,
@@ -32667,7 +33402,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 
-<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+<h2>Exercise 8: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
 <p>
 
@@ -32742,7 +33477,7 @@ Equations where the unknown is a function, as $latex y(x)$
 here, are called <em>differential equations</em>, and are solved by
 special techniques.
 
-<h2>Example 8: Just an example  <a name="___sec40"></a></h2>
+<h2>Example 9: Just an example  <a name="___sec42"></a></h2>
 
 <p>
 <b>a)</b>
@@ -32752,18 +33487,18 @@ What is the capital of Norway?
 <b>Answer.</b>
 Oslo.
 
-<h1>Here goes another section  <a name="___sec41"></a></h1>
+<h1>Here goes another section  <a name="___sec43"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec42"></a></h1>
+<h1>More Exercises  <a name="___sec44"></a></h1>
 
-<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 10: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 <p>
 
-Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
+Pick a statement from <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
 <p>
@@ -32777,15 +33512,15 @@ hint, etc.):
 
 Filename: <code>verify_formula.py</code>.
 
-<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 11: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
 <p>
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
-the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>,
+the two before that as <a href="#demo:ex:2">Project 4: Compute a Probability</a> and <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a>,
+and this one as <a href="#exer:you">Project 11: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
-<h1>References  <a name="___sec45"></a></h1>
+<h1>References  <a name="___sec47"></a></h1>
 
 <ol>
  <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -32899,7 +33634,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec47"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec49"></a></h2>
 
 <p>
 Some text.
@@ -32909,7 +33644,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec49"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
 
 <p>
 Without label.
@@ -32958,7 +33693,7 @@ Bergen
 
 Those from Bergen would claim so, but nobody else.
 
-<h2>Appendix: Testing identical titles  <a name="___sec52"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec54"></a></h2>
 
 <p>
 Without label.
@@ -33052,7 +33787,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec53"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec55"></a></h2>
 
 <p>
 Projects that you want to share among several computers or project
@@ -33082,7 +33817,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$.  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 $latex Q>0$, because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec54"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec56"></a></h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -33234,46 +33969,51 @@ div { text-align: justify; text-justify: inter-word; }
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -33282,12 +34022,12 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 <body>
@@ -33386,30 +34126,32 @@ MathJax.Hub.Config({
 <a href="#___sec28"> LaTeX Mathematics </a><br>
 <a href="#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec35"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> My remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 4: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Example 8: Just an example </a><br>
-<a href="#___sec41"> Here goes another section </a><br>
-<a href="#___sec42"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="#___sec45"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec39"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Example 9: Just an example </a><br>
+<a href="#___sec43"> Here goes another section </a><br>
+<a href="#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 11: References in a headings do not work well in html </a><br>
+<a href="#___sec47"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec47"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec55"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -33498,7 +34240,7 @@ This equation appears in another part if this document is split.
 More text, with a reference back to
 the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
 the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
  <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
@@ -34433,9 +35175,9 @@ Also test \( a_{i-j} \) as well as \( kx-wt \).
 More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
-Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 4: Compute a Probability</a>,
+as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
 <h1>Exercises  <a name="___sec29"></a></h1>
 
@@ -34449,21 +35191,12 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 <!-- Torture tests -->
 
 <p>
+<b>a)</b>
 Make a program that simulates flipping a coin \( N \) times.
-Print out "tail" or "head" for each flip and
+Print out &quot;tail&quot; or &quot;head&quot; for each flip and
 let the program count the number of heads.
 
-<h3>Remarks  <a name="___sec31"></a></h3>
-
 <p>
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-<ol>
-<li> Mark 1.</li>
-<li> Mark 2.</li>
-</ol>
-
 <!-- --- begin hint in exercise --- -->
 
 <p>
@@ -34491,13 +35224,55 @@ Draw an integer among \( \{1,2\} \) with
 <p>
 <!-- removed !bsol ... !esol environment
  --><!-- (because of the command-line option --without_solutions)
- -->Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
+ -->
+<p>
+<b>b)</b>
+Vectorize the code in a) using boolean indexing.
+
+<p>
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+<p>
+<b>c)</b>
+Vectorize the code in a) using <code>numpy.sum</code>.
+
+<p>
+<!-- removed !bans ... !eans environment
+ --><!-- (because of the command-line option --without_answers)
+ -->
+<p>
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+<h3>My remarks  <a name="___sec31"></a></h3>
+
+<p>
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+<ol>
+<li> Mark 1.</li>
+<li> Mark 2.</li>
+</ol>
+
+Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
+
+<p>
+<!-- Closing remarks for this Problem -->
+
+<h3>Remarks  <a name="___sec32"></a></h3>
+
+<p>
+These are the exercise remarks, appearing at the very end.
+
+<p>
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
 
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec32"></a></h2>
+<h2>Not an exercise  <a name="___sec33"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -34506,7 +35281,20 @@ exercises.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 3: Compute a Probability <a name="demo:ex:2"></a></h2>
+<h2>Exercise 3: Test of plain text exercise <a name="my:exer1"></a></h2>
+
+<p>
+Very short exercise. What is the capital
+of Norway?
+Filename: <code>myexer1.py</code>.
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Project 4: Compute a Probability <a name="demo:ex:2"></a></h2>
 
 <p>
 <!-- Minimalistic exercise -->
@@ -34542,7 +35330,7 @@ compute the probability as \( M/N \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 4: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
+<h2>Project 5: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
 
 <p>
 The formula for a circle is given by
@@ -34619,7 +35407,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec35"></a></h3>
+<h3>Remarks  <a name="___sec37"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -34631,24 +35419,12 @@ and give some perspectives.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 5: Determine some Distance <a name="exer:dist"></a></h2>
+<h2>Exercise 6: Determine some Distance <a name="exer:dist"></a></h2>
 
 <p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-<p>
-Test list in exercise:
-
-<ol>
-<li> item1</li>
-<li> item2</li>
-</ol>
-
 <!-- removed !bsol ... !esol environment
  --><!-- (because of the command-line option --without_solutions)
  -->
@@ -34725,9 +35501,20 @@ Filename: <code>subexer_b.pdf</code>.
  --><!-- (because of the command-line option --without_solutions)
  -->
 <p>
-<!-- Closing remarks for this Exercise -->
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
 
-<h3>Remarks  <a name="___sec37"></a></h3>
+<p>
+Test list in exercise:
+
+<ol>
+<li> item1</li>
+<li> item2
+<!-- Closing remarks for this Exercise --></li>
+</ol>
+
+<h3>Remarks  <a name="___sec39"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -34740,7 +35527,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec38"></a></h2>
+<h2>Some exercise without the "Exercise:" prefix  <a name="___sec40"></a></h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -34770,7 +35557,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 7: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+<h2>Exercise 8: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
 
 <p>
 <!-- begin quiz -->
@@ -34816,7 +35603,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 8: Just an example  <a name="___sec40"></a></h2>
+<h2>Example 9: Just an example  <a name="___sec42"></a></h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -34833,21 +35620,21 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec41"></a></h1>
+<h1>Here goes another section  <a name="___sec43"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec42"></a></h1>
+<h1>More Exercises  <a name="___sec44"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 9: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2>Exercise 10: Make references to projects and problems <a name="exer:some:formula"></a></h2>
 
 <p>
 <!-- Test comments not at the end only -->
-Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
+Pick a statement from <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
 <p>
@@ -34867,18 +35654,18 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 10: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2>Project 11: References in a headings do not work well in html <a name="exer:you"></a></h2>
 
 <p>
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
-the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>,
+the two before that as <a href="#demo:ex:2">Project 4: Compute a Probability</a> and <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a>,
+and this one as <a href="#exer:you">Project 11: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec45"></a></h1>
+<h1>References  <a name="___sec47"></a></h1>
 
 <p>
 <!-- begin bibliography -->
@@ -34997,7 +35784,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec47"></a></h2>
+<h2>A subsection within an appendix  <a name="___sec49"></a></h2>
 
 <p>
 Some text.
@@ -35007,7 +35794,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec49"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
 
 <p>
 Without label.
@@ -35050,7 +35837,7 @@ Bergen
 <!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec52"></a></h2>
+<h2>Appendix: Testing identical titles  <a name="___sec54"></a></h2>
 
 <p>
 Without label.
@@ -35144,7 +35931,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec53"></a></h2>
+<h2>Appendix: Testing inline comments  <a name="___sec55"></a></h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -35183,7 +35970,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec54"></a></h2>
+<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec56"></a></h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -36463,6 +37250,7 @@ Maybe even another hint?
 The answer to this other subproblem goes here,
 maybe over multiple doconce input lines.
 
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -36614,8 +37402,10 @@ between there we have Exercise~\ref{exer:some:formula}.
 
 % Torture tests
 
+
+\subex{a)}
 Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
+Print out ``tail'' or ``head'' for each flip and
 let the program count the number of heads.
 
 % --- begin hint in exercise ---
@@ -36640,16 +37430,40 @@ Draw an integer among $\{1,2\}$ with
 
 % removed !bsol ... !esol environment
 % (because of the command-line option --without_solutions)
+
+\subex{b)}
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+\subex{c)}
+Vectorize the code in a) using \code{numpy.sum}.
+
+
+% removed !bans ... !eans environment
+% (because of the command-line option --without_answers)
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
 \noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+
+% Closing remarks for this Problem
+
+\paragraph{Remarks.}
+These are the exercise remarks, appearing at the very end.
+
 % solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
 \end{doconceexercise}
 % --- end exercise ---
 
 
-\paragraph{Remarks.}
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
+\paragraph{My remarks.}
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
 
 \begin{enumerate}
 \item Mark 1.
@@ -36661,6 +37475,24 @@ the beginning of a new exercise and cause trouble. Maybe a list
 \paragraph{Not an exercise.}
 Should be possible to stick a normal section in the middle of many
 exercises.
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+
+\label{my:exer1}
+
+Very short exercise. What is the capital
+of Norway?
+\noindent Filename: \code{myexer1.py}.
+
+\end{doconceexercise}
+% --- end exercise ---
+
 
 
 
@@ -36770,6 +37602,7 @@ Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
+
 \noindent Filename: \code{circles.pdf}.
 
 % Closing remarks for this Project
@@ -36796,22 +37629,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-
-
-
-% No meaning in this weired test example:
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-\begin{enumerate}
-\item item1
-
-\item item2
-\end{enumerate}
-
-\noindent
 % removed !bsol ... !esol environment
 % (because of the command-line option --without_solutions)
 
@@ -36876,8 +37693,22 @@ A hint for this subexercise.
 % removed !bsol ... !esol environment
 % (because of the command-line option --without_solutions)
 
-% Closing remarks for this Exercise
 
+
+% No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+% Closing remarks for this Exercise
+\end{enumerate}
+
+\noindent
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -39586,9 +40417,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec42" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec45" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec43" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec47" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -39649,46 +40480,51 @@ h1, h2, h3, h4, h5, h6 {
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -39697,12 +40533,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 
@@ -39801,30 +40637,32 @@ abla \)?) </a><br>
 <a href="._testdoc_vagrant002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc_vagrant002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> My remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Example 8: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec41"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec42"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec45"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec39"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec42"> Example 9: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec43"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 11: References in a headings do not work well in html </a><br>
+<a href="._testdoc_vagrant002.html#___sec47"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec47"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec49"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec49"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec51"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec52"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec55"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 
@@ -39930,9 +40768,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec42" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec45" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec43" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec47" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -39993,46 +40831,51 @@ h1, h2, h3, h4, h5, h6 {
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -40041,12 +40884,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 
@@ -40145,30 +40988,32 @@ abla \)?) </a><br>
 <a href="._testdoc_vagrant002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc_vagrant002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Not an exercise </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 3: Compute a Probability </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 4: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec35"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 5: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> My remarks </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Remarks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec38"> Some exercise without the "Exercise:" prefix </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 7: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Example 8: Just an example </a><br>
-<a href="._testdoc_vagrant002.html#___sec41"> Here goes another section </a><br>
-<a href="._testdoc_vagrant002.html#___sec42"> More Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 9: Make references to projects and problems </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 10: References in a headings do not work well in html </a><br>
-<a href="._testdoc_vagrant002.html#___sec45"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec39"> Remarks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec42"> Example 9: Just an example </a><br>
+<a href="._testdoc_vagrant002.html#___sec43"> Here goes another section </a><br>
+<a href="._testdoc_vagrant002.html#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:you"> Project 11: References in a headings do not work well in html </a><br>
+<a href="._testdoc_vagrant002.html#___sec47"> References </a><br>
 <a href="._testdoc_vagrant002.html#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec47"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec49"> A subsection within an appendix </a><br>
 <a href="._testdoc_vagrant002.html#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec49"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec51"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec52"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec53"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec54"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec55"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant003.html#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 
@@ -40274,9 +41119,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="#sec1" style="font-size: 80%;">Section 1</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec29" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec41" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec42" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec45" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec43" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec44" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#___sec47" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant002.html#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -40337,46 +41182,51 @@ h1, h2, h3, h4, h5, h6 {
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -40385,12 +41235,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 
@@ -40495,7 +41345,7 @@ This equation appears in another part if this document is split.
 More text, with a reference back to
 the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
 the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+encourages you to do the tasks in <a href="._testdoc_vagrant002.html#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="._testdoc_vagrant002.html#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
  <a href="._testdoc_vagrant002.html#app1">Appendix: Just for testing; part I</a> and <a href="._testdoc_vagrant002.html#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3 id="___sec3">Test Section reference at beginning of line and after a sentence <a name="___sec3"></a></h3>
@@ -41513,9 +42363,9 @@ h1, h2, h3, h4, h5, h6 {
      <!-- navigation toc: --> <li><a href="._testdoc_vagrant001.html#sec1" style="font-size: 80%;">Section 1</a></li>
      <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">LaTeX Mathematics</a></li>
      <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">Here goes another section</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec42" style="font-size: 80%;">More Exercises</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec45" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec43" style="font-size: 80%;">Here goes another section</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;">More Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec47" style="font-size: 80%;">References</a></li>
      <!-- navigation toc: --> <li><a href="#app1" style="font-size: 80%;">Appendix: Just for testing; part I</a></li>
      <!-- navigation toc: --> <li><a href="#app2" style="font-size: 80%;">Appendix: Just for testing; part II</a></li>
 
@@ -41576,46 +42426,51 @@ h1, h2, h3, h4, h5, h6 {
               (' LaTeX Mathematics ', 1, None, '___sec28'),
               (' Exercises ', 1, None, '___sec29'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' Remarks ', 3, None, '___sec31'),
-              (' Not an exercise ', 2, None, '___sec32'),
-              (' Project 3: Compute a Probability ',
+              (' My remarks ', 3, None, '___sec31'),
+              (' Remarks ', 3, None, '___sec32'),
+              (' Not an exercise ', 2, None, '___sec33'),
+              (' Exercise 3: Test of plain text exercise ',
+               2,
+               'my:exer1',
+               'my:exer1'),
+              (' Project 4: Compute a Probability ',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 4: Explore Distributions of Random Circles ',
+              (' Project 5: Explore Distributions of Random Circles ',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Exercise 5: Determine some Distance ',
+              (' Remarks ', 3, None, '___sec37'),
+              (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec39'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec38'),
-              (' Exercise 7: Solution of differential equation ',
+               '___sec40'),
+              (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 8: Just an example ', 2, None, '___sec40'),
-              (' Here goes another section ', 1, None, '___sec41'),
-              (' More Exercises ', 1, None, '___sec42'),
-              (' Exercise 9: Make references to projects and problems ',
+              (' Example 9: Just an example ', 2, None, '___sec42'),
+              (' Here goes another section ', 1, None, '___sec43'),
+              (' More Exercises ', 1, None, '___sec44'),
+              (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 10: References in a headings do not work well in html ',
+              (' Project 11: References in a headings do not work well in html ',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec45'),
+              (' References ', 1, None, '___sec47'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec47'),
+              (' A subsection within an appendix ', 2, None, '___sec49'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec49'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -41624,12 +42479,12 @@ h1, h2, h3, h4, h5, h6 {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec52'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec53'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec54')]}
+               '___sec56')]}
 end of tocinfo -->
 
 
@@ -41695,9 +42550,9 @@ Also test \( a_{i-j} \) as well as \( kx-wt \).
 More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
-Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 3: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 10: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>.
+Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 4: Compute a Probability</a>,
+as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
+between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
 <h1 id="___sec29">Exercises <a name="___sec29"></a></h1>
 
@@ -41711,21 +42566,12 @@ between there we have <a href="#exer:some:formula">Exercise 9: Make references t
 <!-- Torture tests -->
 
 <p>
+<b>a)</b>
 Make a program that simulates flipping a coin \( N \) times.
-Print out "tail" or "head" for each flip and
+Print out &quot;tail&quot; or &quot;head&quot; for each flip and
 let the program count the number of heads.
 
-<h3 id="___sec31">Remarks <a name="___sec31"></a></h3>
-
 <p>
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-<ol>
-<li> Mark 1.</li>
-<li> Mark 2.</li>
-</ol>
-
 <!-- --- begin hint in exercise --- -->
 
 <p>
@@ -41772,13 +42618,59 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 </pre></div>
 <p>
 <!-- --- end solution of exercise --- -->
+
+<p>
+<b>b)</b>
+Vectorize the code in a) using boolean indexing.
+
+<p>
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+<p>
+<b>c)</b>
+Vectorize the code in a) using <code>numpy.sum</code>.
+
+<p>
+<!-- --- begin answer of exercise --- -->
+<b>Answer.</b>
+<code>np.sum(np.where(r &lt;= 0.5, 1, 0))</code> or <code>np.sum(r &lt;= 0.5)</code>.
+
+<p>
+<!-- --- end answer of exercise --- -->
+
+<p>
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+<h3 id="___sec31">My remarks <a name="___sec31"></a></h3>
+
+<p>
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+<ol>
+<li> Mark 1.</li>
+<li> Mark 2.</li>
+</ol>
+
 Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
+
+<p>
+<!-- Closing remarks for this Problem -->
+
+<h3 id="___sec32">Remarks <a name="___sec32"></a></h3>
+
+<p>
+These are the exercise remarks, appearing at the very end.
+
+<p>
 <!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
 
 <p>
 <!-- --- end exercise --- -->
 
-<h2 id="___sec32">Not an exercise <a name="___sec32"></a></h2>
+<h2 id="___sec33">Not an exercise <a name="___sec33"></a></h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -41787,7 +42679,20 @@ exercises.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="demo:ex:2">Project 3: Compute a Probability<a name="demo:ex:2"></a></h2>
+<h2 id="my:exer1">Exercise 3: Test of plain text exercise<a name="my:exer1"></a></h2>
+
+<p>
+Very short exercise. What is the capital
+of Norway?
+Filename: <code>myexer1.py</code>.
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="demo:ex:2">Project 4: Compute a Probability<a name="demo:ex:2"></a></h2>
 
 <p>
 <!-- Minimalistic exercise -->
@@ -41823,7 +42728,7 @@ compute the probability as \( M/N \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="proj:circle1">Project 4: Explore Distributions of Random Circles<a name="proj:circle1"></a></h2>
+<h2 id="proj:circle1">Project 5: Explore Distributions of Random Circles<a name="proj:circle1"></a></h2>
 
 <p>
 The formula for a circle is given by
@@ -41908,7 +42813,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3 id="___sec35">Remarks <a name="___sec35"></a></h3>
+<h3 id="___sec37">Remarks <a name="___sec37"></a></h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -41920,24 +42825,12 @@ and give some perspectives.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="exer:dist">Exercise 5: Determine some Distance<a name="exer:dist"></a></h2>
+<h2 id="exer:dist">Exercise 6: Determine some Distance<a name="exer:dist"></a></h2>
 
 <p>
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-<p>
-Test list in exercise:
-
-<ol>
-<li> item1</li>
-<li> item2</li>
-</ol>
-
 <!-- --- begin solution of exercise --- -->
 <b>Solution.</b>
 Here goes a full solution of the whole exercise.
@@ -42038,9 +42931,20 @@ Here goes the solution of this subexercise.
 <!-- --- end solution of exercise --- -->
 
 <p>
-<!-- Closing remarks for this Exercise -->
+<!-- No meaning in this weired test example: -->
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
 
-<h3 id="___sec37">Remarks <a name="___sec37"></a></h3>
+<p>
+Test list in exercise:
+
+<ol>
+<li> item1</li>
+<li> item2
+<!-- Closing remarks for this Exercise --></li>
+</ol>
+
+<h3 id="___sec39">Remarks <a name="___sec39"></a></h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -42053,7 +42957,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec38">Some exercise without the "Exercise:" prefix <a name="___sec38"></a></h2>
+<h2 id="___sec40">Some exercise without the "Exercise:" prefix <a name="___sec40"></a></h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -42083,7 +42987,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="sec:this:exer:de">Exercise 7: Solution of differential equation<a name="sec:this:exer:de"></a></h2>
+<h2 id="sec:this:exer:de">Exercise 8: Solution of differential equation<a name="sec:this:exer:de"></a></h2>
 
 <p>
 <!-- begin quiz -->
@@ -42180,7 +43084,7 @@ Wrong!
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec40">Example 8: Just an example <a name="___sec40"></a></h2>
+<h2 id="___sec42">Example 9: Just an example <a name="___sec42"></a></h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -42197,21 +43101,21 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec41">Here goes another section <a name="___sec41"></a></h1>
+<h1 id="___sec43">Here goes another section <a name="___sec43"></a></h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1 id="___sec42">More Exercises <a name="___sec42"></a></h1>
+<h1 id="___sec44">More Exercises <a name="___sec44"></a></h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="exer:some:formula">Exercise 9: Make references to projects and problems<a name="exer:some:formula"></a></h2>
+<h2 id="exer:some:formula">Exercise 10: Make references to projects and problems<a name="exer:some:formula"></a></h2>
 
 <p>
 <!-- Test comments not at the end only -->
-Pick a statement from <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
+Pick a statement from <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> or <a href="#demo:ex:1">Problem 2: Flip a Coin</a>
 and verify it.
 
 <p>
@@ -42231,18 +43135,18 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="exer:you">Project 10: References in a headings do not work well in html<a name="exer:you"></a></h2>
+<h2 id="exer:you">Project 11: References in a headings do not work well in html<a name="exer:you"></a></h2>
 
 <p>
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 9: Make references to projects and problems</a>,
-the two before that as <a href="#demo:ex:2">Project 3: Compute a Probability</a> and <a href="#proj:circle1">Project 4: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 10: References in a headings do not work well in html</a>.
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>,
+the two before that as <a href="#demo:ex:2">Project 4: Compute a Probability</a> and <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a>,
+and this one as <a href="#exer:you">Project 11: References in a headings do not work well in html</a>.
 Filename: <code>selc_composed.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec45">References <a name="___sec45"></a></h1>
+<h1 id="___sec47">References <a name="___sec47"></a></h1>
 
 <p>
 <!-- begin bibliography -->
@@ -42361,7 +43265,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2 id="___sec47">A subsection within an appendix <a name="___sec47"></a></h2>
+<h2 id="___sec49">A subsection within an appendix <a name="___sec49"></a></h2>
 
 <p>
 Some text.
@@ -42371,7 +43275,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2 id="___sec49">Appendix: Testing identical titles <a name="___sec49"></a></h2>
+<h2 id="___sec51">Appendix: Testing identical titles <a name="___sec51"></a></h2>
 
 <p>
 Without label.
@@ -43427,19 +44331,10 @@ Problem 2: Flip a Coin
 
 .. Torture tests
 
+**a)**
 Make a program that simulates flipping a coin :math:`N` times.
 Print out "tail" or "head" for each flip and
 let the program count the number of heads.
-
-Remarks  (1)
-~~~~~~~~~~~~
-
-Remarks with such a subsubsection heading would previously mark
-the beginning of a new exercise and cause trouble. Maybe a list
-
-1. Mark 1.
-
-2. Mark 2.
 
 .. --- begin hint in exercise ---
 
@@ -43481,7 +44376,43 @@ head, otherwise tail. Repeat this :math:`N` number of times.
 
 .. --- end solution of exercise ---
 
+**b)**
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+**c)**
+Vectorize the code in a) using ``numpy.sum``.
+
+.. --- begin answer of exercise ---
+
+**Answer.**
+``np.sum(np.where(r <= 0.5, 1, 0))`` or ``np.sum(r <= 0.5)``.
+
+.. --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+My remarks
+~~~~~~~~~~
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+1. Mark 1.
+
+2. Mark 2.
+
 Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
+
+.. Closing remarks for this Problem
+
+Remarks  (1)
+~~~~~~~~~~~~
+
+These are the exercise remarks, appearing at the very end.
 
 .. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
 
@@ -43495,9 +44426,22 @@ exercises.
 
 .. --- begin exercise ---
 
+.. _my:exer1:
+
+Exercise 3: Test of plain text exercise
+---------------------------------------
+
+Very short exercise. What is the capital
+of Norway?
+Filename: ``myexer1.py``.
+
+.. --- end exercise ---
+
+.. --- begin exercise ---
+
 .. _demo:ex:2:
 
-Project 3: Compute a Probability
+Project 4: Compute a Probability
 --------------------------------
 
 .. Minimalistic exercise
@@ -43528,7 +44472,7 @@ compute the probability as :math:`M/N`.
 
 .. _proj:circle1:
 
-Project 4: Explore Distributions of Random Circles
+Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
 
 The formula for a circle is given by
@@ -43616,21 +44560,10 @@ and give some perspectives.
 
 .. _exer:dist:
 
-Exercise 5: Determine some Distance
+Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-.. No meaning in this weired test example:
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-
-2. item2
 
 .. --- begin solution of exercise ---
 
@@ -43719,6 +44652,17 @@ Here goes the solution of this subexercise.
 
 .. --- end solution of exercise ---
 
+.. No meaning in this weired test example:
+
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+1. item1
+
+2. item2
+
 .. Closing remarks for this Exercise
 
 Remarks  (3)
@@ -43759,7 +44703,7 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
 .. _sec:this:exer:de:
 
-Exercise 7: Solution of differential equation
+Exercise 8: Solution of differential equation
 ---------------------------------------------
 
 .. raw:: html
@@ -43804,7 +44748,7 @@ Exercise 7: Solution of differential equation
 
 .. --- begin exercise ---
 
-Example 8: Just an example
+Example 9: Just an example
 --------------------------
 
 .. This example needs the --examples_as_exercises option, otherwise
@@ -43831,8 +44775,8 @@ More Exercises
 
 .. _exer:some:formula:
 
-Exercise 9: Make references to projects and problems
-----------------------------------------------------
+Exercise 10: Make references to projects and problems
+-----------------------------------------------------
 
 .. Test comments not at the end only
 
@@ -43854,7 +44798,7 @@ Filename: ``verify_formula.py``.
 
 .. _exer:you:
 
-Project 10: References in a headings do not work well in sphinx
+Project 11: References in a headings do not work well in sphinx
 ---------------------------------------------------------------
 
 Refer to the previous exercise as :ref:`exer:some:formula`,
@@ -69545,7 +70489,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7effb1195938>
+verbatim is to be replaced using <function html_verbatim at 0x7f75b97a7938>
 
 
 First occurence: " `mako`."
@@ -73502,7 +74446,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Dec  1 21:55:57 2014.
+# sphinx-quickstart on Wed Dec  3 20:16:28 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -89914,7 +90858,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
     found!
 figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D:
@@ -89960,7 +90904,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90033,7 +90977,7 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 transforming sections: subsection to subsubsection...
 transforming sections: section to subsection...
 transforming sections: chapter to section...
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90078,7 +91022,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90133,7 +91077,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90189,7 +91133,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90255,7 +91199,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90318,7 +91262,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -90901,8 +91845,8 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21] (./testdoc.out.pyg)
-[22]
+[18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21] (./testdoc.out.pyg
+[22])
 Underfull \hbox (badness 10000) 
 
 
@@ -90912,10 +91856,10 @@ Underfull \hbox (badness 10000)
 
 
 
-
-
-
 [23]
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -91416,15 +92360,15 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=297, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=299, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=341, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=355, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=357, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=356, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=358, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91464,17 +92408,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=385, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=386, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=387, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=386, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91624,7 +92568,7 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
-(./testdoc.out.pyg) [23]
+(./testdoc.out.pyg [23])
 Underfull \hbox (badness 10000) 
 
 [24]
@@ -92119,15 +93063,15 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=297, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=299, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=341, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=355, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=357, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=356, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=358, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92167,17 +93111,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=385, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=386, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=387, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=386, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92327,7 +93271,7 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
-(./testdoc.out.pyg) [23]
+(./testdoc.out.pyg [23])
 Underfull \hbox (badness 10000) 
 
 [24] (./testdoc.bbl [25]) [26]
@@ -92806,15 +93750,15 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=297, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=299, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=341, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=355, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=357, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=356, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=358, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92854,17 +93798,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=383, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=382, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=384, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=385, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=386, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=387, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=386, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=388, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92900,7 +93844,7 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                 on .
 
 [18] [19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22]
-(./testdoc.out.pyg) [23]
+(./testdoc.out.pyg [23])
 Underfull \hbox (badness 10000) 
 
 [24] (./testdoc.bbl [25]) [26]
@@ -93726,6 +94670,7 @@ Package amsmath Warning: Foreign command \over;
 [18] (./testdoc.out.pyg) [19] [20] [21] [22] (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
+[23]
 
 
 .
@@ -93733,7 +94678,6 @@ Underfull \hbox (badness 10000)
 
 
 
-[23]
 
 
 
@@ -93754,10 +94698,6 @@ Underfull \hbox (badness 10000)
 (./testdoc.bbl [24]) [25]
 Underfull \hbox (badness 10000) 
 
-
-
-...rest of part of LaTeX line number...
-
 [26]
 
 
@@ -93765,14 +94705,19 @@ Underfull \hbox (badness 10000)
 
 [27]
 
+
+...rest of part of LaTeX line number...
+
+[28]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [28]
+(./testdoc.ind [29]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[29]) (./testdoc.aux)
+[30]) (./testdoc.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -94014,7 +94959,7 @@ hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
 mbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a
 .pfb>
-Output written on testdoc.pdf (29 pages, ).
+Output written on testdoc.pdf (30 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + system doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
@@ -94048,7 +94993,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 *** warning: table headline with entries
     | S | command |
    has 2 columns while further down there are 3 columns
@@ -94086,7 +95031,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 *** warning: footnotes are not supported for format st
     footnotes will be left in the doconce syntax
 *** warning: table headline with entries
@@ -94148,7 +95093,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94216,7 +95161,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94382,7 +95327,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94419,7 +95364,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 *** warning: footnotes are not supported for format epytext
     footnotes will be left in the doconce syntax
 output in testdoc.epytext
@@ -94455,7 +95400,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94494,7 +95439,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94552,7 +95497,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94599,7 +95544,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94640,7 +95585,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94725,7 +95670,7 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
@@ -94805,7 +95750,7 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
-found info about 10 exercises
+found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
 figure file ../doc/src/manual/fig/wave1D:
