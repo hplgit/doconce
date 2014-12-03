@@ -30,10 +30,10 @@ def debugpr(heading='', text=''):
 from common import *
 from common import _abort  # needs explicit import because of leading _
 from misc import option, which
-import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml
+import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb
 
 def supported_format_names():
-    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'xml'
+    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb'
 
 def doconce_envirs():                     # begin-end environments
     return ['c', 't',                     # verbatim and tex blocks
@@ -2273,7 +2273,7 @@ def handle_index_and_bib(filestr, format):
     #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
     # Footnote pattern has a word prior to the footnote [^name]
     # or math, inline code, link
-    pattern_footnote = r'(?<=(\w|[$`")]))(?P<footnote> *\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
+    pattern_footnote = r'(?<=(\w|[$`")]))(?P<footnote> *\[\^(?P<name>.+?)\])(?=[.,:;?\s])'
     # (Note: cannot have footnote at beginning of line, because look behind
     # does not tolerate ^ in (\w|[$`")]|^)
     # Keep footnotes for pandoc, plain text
@@ -3145,9 +3145,9 @@ def doconce2format(filestr, format):
 
     def report_progress(msg):
         """Write a message about the progress if CPU time of a task takes time."""
-        global _t1
         cpu_accumulated = time.time() - _t0
         cpu_last_task = time.time() - _t1
+        global _t1
         _t1 = time.time()
         if cpu_last_task > report_cpu_time:
             print '\n...doconce translation:', msg, '%.1f s' % cpu_last_task, '(accumulated time: %.1f)' % cpu_accumulated
@@ -3164,7 +3164,7 @@ def doconce2format(filestr, format):
            LIST, ARGLIST,TABLE, EXERCISE, FIGURE_EXT, CROSS_REFS, INDEX_BIB, \
            TOC, ENVIRS, INTRO, OUTRO
 
-    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml:
+    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb:
         #print 'calling define function in', module.__name__
         module.define(
             FILENAME_EXTENSION,
@@ -3930,10 +3930,6 @@ def format_driver():
         print '\n-DFORMAT=format is always defined when running preprocess'
         print 'Other -Dvar or -Dvar=value options can be added'
         sys.exit(1)
-
-    # Treat some synonyms of format
-    if format == 'markdown':
-        format = 'pandoc'
 
     names = supported_format_names()
     if format not in names:
