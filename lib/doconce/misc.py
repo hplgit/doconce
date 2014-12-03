@@ -66,7 +66,7 @@ bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
 bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
                 (dark:) amelia, cyborg, darkly, slate, spruce,
-                superhero (demos at bootswatch.com)"""),
+                superhero (demo: bootswatch.com"""),
     ('--html_code_style=',
      """on, off, inherit, transparent: enable normal inline verbatim font
 where foreground and background color is inherited from the
@@ -352,9 +352,8 @@ Any filename can be specified: --md2do_output=myfile.do.txt"""),
      """Wrap Markdown output in HTML header/footer such that the
 output file (renamed as .html) can automatically be rendered as
 an HTML via strapdownjs.com technology. Combine with --github_md
-for richer output. Styles are set with --bootswatch_theme=cyborg
+for richer output. Styles are set with --bootwatch_theme=cyborg
 (for instance)."""),
-    ('--bootswatch_theme=', 'Bootswatch theme for use with --strapdown option.'),
     ('--strict_markdown_output', 'Ensure strict/basic Markdown as output.'),
     ('--multimarkdown_output', 'Allow MultiMarkdown as output.'),
     ('--quiz_question_prefix=', """\
@@ -2400,7 +2399,7 @@ def _usage_slides_html():
     print """
 Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name
 
-slide_type: reveal deck csss dzslides
+slide_types: reveal deck csss dzslides'
 note: reveal and deck slide styles are doconce variants, different from the
 original styles
 
@@ -4792,31 +4791,15 @@ code {
     # MathJax?
     mathjax = ''
     if '$' in filestr:
-        # Fix inline math $...$ to \\( ... \\)
         filestr = re.sub(r'([^$])\$([^$]+)\$([^$])',
                          r'\g<1>\\\\( \g<2> \\\\)\g<3>', filestr,
                          flags=re.DOTALL)
-        # Remove newlines before and after equations inside $$--$$
-        def subst(m):
-            eq = m.group(1).strip()
-            print 'XXX [%s]' % eq
-            return '$$\n%s\n$$\n\n' % eq
-
-        filestr = re.sub(r'^\$\$\n+(.+?)\$\$\n+', subst,
-                         filestr, flags=re.MULTILINE|re.DOTALL)
-        # Insert MathJax script and newcommands
         from html import mathjax_header
         mathjax = mathjax_header(filestr)
 
     # Fixes
     filestr = re.sub(r'^## ', '# ', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^### ', '## ', filestr, flags=re.MULTILINE)
-    # Turn figures to HTML
-    filestr = re.sub(r'^<!-- (<img.+?>.*) -->\n!\[.+$', r'.center[\g<1>]',
-                     filestr, flags=re.MULTILINE)
-    #filestr = re.sub(r'^!\[(.*?)\]\((.+?)\)',
-    #                 '.center[<img src="\g<2>" width=80%/>]',
-    #                 filestr, flags=re.MULTILINE)
 
     lines = filestr.splitlines()
     # Find title, author and date
@@ -4853,6 +4836,10 @@ code {
         filestr = filestr.replace('<!-- !split -->', '---\nclass: inverse\n')
     else:
         filestr = filestr.replace('<!-- !split -->', '---\n')
+    # Figures
+    filestr = re.sub(r'^!\[(.*?)\]\((.+?)\)',
+                     '.center[<img src="\g<2>" width=80%/>]',
+                     filestr, flags=re.MULTILINE)
     main = filestr
     template = template % vars()
     filename = filename.replace('.md', '.html')
@@ -6253,8 +6240,7 @@ tmp_stripped_file1.do.txt: the original files are stripped off for
 various constructs that cause trouble in spelling and the stripped
 text is found in files with a filename prefix tmp_stripped_ (this file
 can be checked for spelling and grammar mistakes in MS Word, for
-instance, but a better method might be to translate the entire
-DocOnce document to HTML and import that HTML code into Word.)
+instance).
 
 Usage
 -----
@@ -8838,8 +8824,8 @@ def fix_bibtex4publish():
         f.writelines(lines)
         f.close()
 
-def _usage_csv2table():
-    print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;] > outfile'
+def _usage_cvs2table():
+    print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;]'
 
 def csv2table():
     """Convert a csv file to a DocOnce table."""

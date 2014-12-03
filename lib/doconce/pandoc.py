@@ -100,16 +100,13 @@ def pandoc_code(filestr, code_blocks, code_block_types,
 
     if not option('strict_markdown_output'):
         # Mapping of envirs to correct Pandoc verbatim environment
-        defs = dict(cod='Python', pro='Python',
-                    pycod='Python', pypro='Python',
-                    ccod='C', cpro='C',
-                    cppcod='Cpp', cpppro='Cpp',
-                    fcod='Fortran', fpro='Fortran',
+        defs = dict(cod='Python', pycod='Python',
+                    cppcod='Cpp', fcod='Fortran', ccod='C',
+                    pro='Python', pypro='Python',
+                    cpppro='Cpp', fpro='Fortran', cpro='C',
                     rbcod='Ruby', rbpro='Ruby',
                     plcod='Perl', plpro='Perl',
-                    shcod='Shell', shpro='Shell',
-                    jscod='JavaScript', jspro='JavaScript',
-                    htmlcod='HTML', htmlpro='HTML', html='HTML',
+                    htmlcod='HTML', htmlpro='HTML',
                     # sys, dat, csv, txt: no support for pure text,
                     # just use a plain text block
                     #sys='Bash',
@@ -117,9 +114,6 @@ def pandoc_code(filestr, code_blocks, code_block_types,
                     ipy='Python', pyshell='Python')
             # (the "Python" typesetting is neutral if the text
             # does not parse as python)
-        if github_md:
-            for key in defs:
-                defs[key] = defs[key].lower()
 
         # Code blocks apply the ~~~~~ delimiter, with blank lines before
         # and after
@@ -232,20 +226,7 @@ def pandoc_table(table):
 def pandoc_figure(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
-    opts = m.group('options').strip()
-
-    if opts:
-        info = [s.split('=') for s in opts.split()]
-        opts = ' '.join(['%s=%s' % (opt, value)
-                         for opt, value in info if opt not in ['frac']])
-
-    # Save raw html with width etc in a comment so we have that info
-    if caption:
-        caption = '<p><em>%s</em></p>' % caption
-    text = '<!-- <img src="%s" %s>%s -->\n' % (filename, opts, caption)
-    text += '![%s](%s)' % (caption, filename)
-    # regex for turning the figure spec into raw html:
-    # re.sub(r'^<!-- (<img.+?>.*) -->\n!\[.+$', r'\g<1>', text, flags=re.MULTILINE)
+    text = '![%s](%s)' % (caption, filename)
     #print 'pandoc_figure:', text
     return text
 
@@ -423,7 +404,7 @@ def define(FILENAME_EXTENSION,
     # with Bootstrap themes?
     if option('strapdown'):
         # Themes
-        boostrap_bootwatch_theme = option('bootswatch_theme=', 'spacelab')
+        boostrap_bootwatch_theme = option('bootwatch_theme=', 'spacelab')
         # Grab title
         title = ''
         if 'TITLE:' in filestr:

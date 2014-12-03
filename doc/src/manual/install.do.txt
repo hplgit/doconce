@@ -3,8 +3,6 @@
 ======= Installation of DocOnce and its Dependencies =======
 label{install:doconce}
 
-idx{installation}
-
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install what is needed on a Debian-based Linux

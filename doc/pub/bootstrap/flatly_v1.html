@@ -6,9 +6,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Demo of the Bootstrap style">
+<meta name="description" content="DocOnce Demo of the Bootstrap style">
 
-<title>Demo of the Bootstrap style</title>
+<title>DocOnce Demo of the Bootstrap style</title>
 
 <!-- Bootstrap style: bootswatch_flatly -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,6 @@ code { color: inherit; background-color: transparent; }
 /* Let pre tags for code blocks have the same color as the surroundings */
 pre { color: inherit; background-color: transparent; }
 </style>
-
 
 </head>
 
@@ -73,7 +72,7 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="flatly_v1.html">Demo of the Bootstrap style</a>
+    <a class="navbar-brand" href="flatly_v1.html">DocOnce Demo of the Bootstrap style</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -104,39 +103,36 @@ MathJax.Hub.Config({
 
 
 <div class="jumbotron">
-<center><h1>Demo of the Bootstrap style</h1></center>  <!-- document title -->
+<center><h1>DocOnce Demo of the Bootstrap style</h1></center>  <!-- document title -->
 
 <p>
-DocOnce supports a variety of Bootstrap styles for HTML
-documents. To get the <code>journal</code> Bootswatch style, run
+DocOnce supports a variety of Bootstrap styles in a simple
+way:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootswatch --html_admon=bootstrap_panel
 </pre></div>
 <p>
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap, resulting in large fonts on gray background.  If a
-<code>!split</code> command is used before the first section heading or <code>TOC: on</code>
-instruction, a button with <code>Read...</code> and a link to the next page is
-inserted if the document is split using <code>doconce split_html</code>.  This
+from Bootstrap, resulting in large fonts on gray background.
+If a <code>!split</code> command is used before the first
+section heading, a button with <code>Read...</code> and a link to the next page
+is inserted if the document is split using <code>doconce split_html</code>.  This
 construction results in a short Bootstrap main page that has become
-very popular on web the last couple of years.  The
-<code>--html_bootstrap_jumbotron=value</code> option can be used to adjust the
-jumbotron: <code>value</code> can be <code>on</code> (default), <code>off</code> (to turn the gray
-background and large fonts off), or <code>h2</code> (to replace the large font in
-the document title by a smaller font).
+very popular on web the last couple of years. The <code>--html_bootstrap_jumbotron=value</code> option can be used to adjust the jumbotron: <code>value</code> can be <code>on</code>, <code>off</code>,
+or <code>h2</code>. In the latter case a smaller <code>h2</code> heading is used rather than
+<code>h1</code> (which results in a quite large font).
 
 <p>
-A multiple-page document is as usual created by inserting <code>!split</code> at desired
-places, usually before selected sections.
-<code>doconce split_html</code> splits the document and inserts
+A multiple-page document is created by inserting <code>!split</code> at desired
+places. <code>doconce split_html</code> splits the document and inserts
 navigation button (previous and next page) at the bottom of each
-page. The option <code>--pagination</code> can be specified as part of the
-<code>doconce split_html</code> command to get a different navigation bar at the bottom
-where also the page number is seen.
+page. The option <code>--pagination</code> can be added as option to the <code>doconce
+split_html</code> command to get a different navigation bar at the bottom
+where also the page number si seen.
 
 <p>
 <!-- A split before the first section will enable a button in the jumbotron -->
@@ -152,7 +148,6 @@ where also the page number is seen.
 
 <h1 id="___sec1">Themes <a name="___sec1"></a></h1>
 
-<p>
 DocOnce supports the following themes from the Bootstrap family:
 
 <ul>
@@ -239,7 +234,6 @@ without any icon, but with an optional title.
 
 <h1 id="___sec2">Demonstrations of admons <a name="___sec2"></a></h1>
 
-<p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
 
 <ul>
@@ -322,16 +316,16 @@ Tables often get a fancy typesetting:
   <div class="col-xs-5">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="left">\( i \)</td> <td align="right">\( h_i \)</td> <td align="right">\( \bar T_i \)</td> <td align="right"><code>L_i</code></td> </tr>
+<tr><td align="left">    \( i \)     </td> <td align="right">   \( h_i \)    </td> <td align="right"> \( \bar T_i \) </td> <td align="right"><code>L_i</code></td> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   0          </td> <td align="right">   0            </td> <td align="right">   288               </td> <td align="right">   -0.0065             </td> </tr>
-<tr><td align="left">   1          </td> <td align="right">   11,000       </td> <td align="right">   216               </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   2          </td> <td align="right">   20,000       </td> <td align="right">   216               </td> <td align="right">   0.001               </td> </tr>
-<tr><td align="left">   3          </td> <td align="right">   32,000       </td> <td align="right">   228               </td> <td align="right">   0.0028              </td> </tr>
-<tr><td align="left">   4          </td> <td align="right">   47,000       </td> <td align="right">   270               </td> <td align="right">   0.0                 </td> </tr>
-<tr><td align="left">   5          </td> <td align="right">   51,000       </td> <td align="right">   270               </td> <td align="right">   -0.0028             </td> </tr>
-<tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
+<tr><td align="left">   0                   </td> <td align="right">   0                   </td> <td align="right">   288                 </td> <td align="right">   -0.0065             </td> </tr>
+<tr><td align="left">   1                   </td> <td align="right">   11,000              </td> <td align="right">   216                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   2                   </td> <td align="right">   20,000              </td> <td align="right">   216                 </td> <td align="right">   0.001               </td> </tr>
+<tr><td align="left">   3                   </td> <td align="right">   32,000              </td> <td align="right">   228                 </td> <td align="right">   0.0028              </td> </tr>
+<tr><td align="left">   4                   </td> <td align="right">   47,000              </td> <td align="right">   270                 </td> <td align="right">   0.0                 </td> </tr>
+<tr><td align="left">   5                   </td> <td align="right">   51,000              </td> <td align="right">   270                 </td> <td align="right">   -0.0028             </td> </tr>
+<tr><td align="left">   6                   </td> <td align="right">   71,000              </td> <td align="right">   214                 </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
     </table>
   </div>
@@ -343,7 +337,6 @@ Tables often get a fancy typesetting:
 
 <h2 id="___sec4">Principles of grid structures <a name="___sec4"></a></h2>
 
-<p>
 The HTML page can feature a grid structure of cells, defined by
 the following syntax in case of a 1x3 grid:
 
@@ -422,7 +415,6 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 
 <h2 id="___sec5">Example on a 1x3 grid structure <a name="___sec5"></a></h2>
 
-<p>
 <div class="row"> <!-- begin cell row -->
   <div class="col-sm-4">
 <b>Mathematics.</b>
@@ -478,7 +470,6 @@ we can run the program:
 
 <h2 id="___sec6">Variation of the previous grid structure using admons <a name="___sec6"></a></h2>
 
-<p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->
 
 <p>

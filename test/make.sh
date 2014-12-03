@@ -168,10 +168,6 @@ system doconce slides_html slides1 deck --html_slide_theme=web-2.0
 cp slides1.html slides1_deck.html
 /bin/ls -R deck.js >> slides1_deck.html
 
-system doconce format markdown slides1 --github_md --pygments_html_style=emacs
-system doconce slides_markdown slides1 remark --slide_theme=light
-cp slides1.html slides1_remark.html
-
 # The toughest test of slides1 is with minted code envir
 rm -f *.aux
 system doconce format pdflatex slides1 --latex_title_layout=beamer

@@ -103,7 +103,6 @@ markdown = False
 #md2do_output = 
 github_md = False
 strapdown = False
-#bootswatch_theme = 
 strict_markdown_output = False
 multimarkdown_output = False
 #quiz_question_prefix = 
