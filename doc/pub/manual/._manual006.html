@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
-<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,footnotes,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
+<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
 
 <title>DocOnce Description</title>
 
@@ -342,7 +342,9 @@ MathJax.Hub.Config({
 Movies/videos are inserted using the <code>MOVIE:</code> keyword. This
 feature works well for the <code>latex</code>, <code>html</code>, <code>rst</code>, and <code>sphinx</code> formats.
 Other formats try to generate some HTML file and link to that file
-for showing the movie.
+for showing the movie. If such a link is not appropriate and one wants
+a figure instead of the movie, use the preprocessor as explained
+in the box <em>Recommendations</em> below.
 
 <h3 id="___sec8">The Basic Command <a name="___sec8"></a></h3>
 
@@ -1913,9 +1915,10 @@ To have really robust code, use filename generators and not movie files.
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000">MOVIE: [../experiments/frame_*.png]</span>
 </pre></div>
 <p>
-One can, of course, write flexible DocOnce code and decide at run time
+One can write flexible DocOnce code and decide at run time
 if HTML output should have movie files or filename generators.
-A relevant snippet using Mako is
+A relevant snippet using Mako and a user-defined variable
+<code>HTMLMOVIE</code> is
 
 <p>
 
@@ -1958,6 +1961,50 @@ in a script:
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">doconce subst &#39;,loop]{2}( .+: f000)&#39; &#39;,loop{12}\g&lt;1&gt;&#39; mydoc.do.txt
 </pre></div>
 <p>
+Sometimes it is desired to use true movies in web formats and a figure
+in LaTeX, e.g., a figure with four snapshots from the movie combined
+into a single figure file with <code>doconce combine_images</code>. A preprocessor
+test is appropriate for this:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">% if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;):
+
+<span style="color: #008000">FIGURE: [myfig, frac=1] caption</span>
+
+% else:
+
+<span style="color: #008000">MOVIE: [mymov] caption</span>
+
+% endif
+</pre></div>
+<p>
+If you encounter a large number of such if-else statements, it is
+advantageous to write a Mako function in Python:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">&lt;%
+def figmov(figfile, movfile, caption):
+    if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;):
+        return &quot;FIGURE: [%s, frac=1] %s&quot; % (figfile, caption)
+% else:
+        return &quot;MOVIE: [%s] %s&quot; % (movfile, caption)
+% endif
+%&gt;
+</pre></div>
+<p>
+The one can avoid if-else tests in the running code and instead write just
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">${figmov(&#39;myfig&#39;, &#39;mymov&#39;, &#39;caption&#39;)}
+</pre></div>
+<p>
+to insert a movie or figure file, depending on the output format.
 </div>
 
 

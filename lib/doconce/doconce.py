@@ -2904,6 +2904,7 @@ def inline_tag_subst(filestr, format):
         #'figure',  # done separately
         'inlinecomment',
         'abstract',  # must become before sections since it tests on ===
+        'keywords',  # must become after abstract since abstract tests on KEYWORdS
         'emphasize', 'math2', 'math',
         'bold',
         'ampersand2',  # must come before ampersand1 (otherwise ampersand1 recognizes ampersand2 regex)

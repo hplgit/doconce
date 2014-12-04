@@ -2367,6 +2367,11 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
     # idx with verbatim is usually too specialized - remove them
     keywords = [keyword for keyword in keywords
                 if not '`' in keyword]
+    # Keywords paragraph
+    import common
+    m = re.search(common.INLINE_TAGS['keywords'], filestr, flags=re.MULTILINE)
+    if m:
+        keywords += re.split(r', *', m.group(1))
     # keyword!subkeyword -> keyword subkeyword
     keywords = ','.join(keywords).replace('!', ' ')
 

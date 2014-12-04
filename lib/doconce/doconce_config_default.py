@@ -79,6 +79,7 @@ latex_admon_title_no_period = False
 #latex_subex_header_postfix = 
 xelatex = False
 latex_double_hyphen = False
+#latex_elsevier_journal = 
 #ipynb_admon = 
 #ipynb_figure = 
 #ipynb_movie = 

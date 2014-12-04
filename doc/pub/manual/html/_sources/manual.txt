@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Nov 29, 2014
+:Date: Dec 4, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -424,7 +424,9 @@ Movies
 Movies/videos are inserted using the ``MOVIE:`` keyword. This
 feature works well for the ``latex``, ``html``, ``rst``, and ``sphinx`` formats.
 Other formats try to generate some HTML file and link to that file
-for showing the movie.
+for showing the movie. If such a link is not appropriate and one wants
+a figure instead of the movie, use the preprocessor as explained
+in the box *Recommendations* below.
 
 The Basic Command
 ~~~~~~~~~~~~~~~~~
@@ -1974,9 +1976,10 @@ Here is an example:
    
            MOVIE: [../experiments/frame_*.png]
    
-   One can, of course, write flexible DocOnce code and decide at run time
+   One can write flexible DocOnce code and decide at run time
    if HTML output should have movie files or filename generators.
-   A relevant snippet using Mako is
+   A relevant snippet using Mako and a user-defined variable
+   ``HTMLMOVIE`` is
    
    .. code-block:: doconce
    
@@ -2011,6 +2014,45 @@ Here is an example:
    .. code-block:: text
    
            doconce subst ',loop]{2}( .+: f000)' ',loop{12}\g<1>' mydoc.do.txt
+   
+   Sometimes it is desired to use true movies in web formats and a figure
+   in LaTeX, e.g., a figure with four snapshots from the movie combined
+   into a single figure file with ``doconce combine_images``. A preprocessor
+   test is appropriate for this:
+   
+   .. code-block:: doconce
+   
+           % if FORMAT in ("latex", "pdflatex"):
+           
+           FIGURE: [myfig, frac=1] caption
+           
+           % else:
+           
+           MOVIE: [mymov] caption
+           
+           % endif
+   
+   If you encounter a large number of such if-else statements, it is
+   advantageous to write a Mako function in Python:
+   
+   .. code-block:: doconce
+   
+           <%
+           def figmov(figfile, movfile, caption):
+               if FORMAT in ("latex", "pdflatex"):
+                   return "FIGURE: [%s, frac=1] %s" % (figfile, caption)
+           % else:
+                   return "MOVIE: [%s] %s" % (movfile, caption)
+           % endif
+           %>
+   
+   The one can avoid if-else tests in the running code and instead write just
+   
+   .. code-block:: doconce
+   
+           ${figmov('myfig', 'mymov', 'caption')}
+   
+   to insert a movie or figure file, depending on the output format.
 
 
 
@@ -2667,8 +2709,6 @@ This is rendered as
     works between characters, numbers, and the math dollar sign.)
 
 
-
-.. index:: footnotes
 
 Horizontal rule
 ---------------
@@ -6727,9 +6767,9 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_bibstyle=plain``
 
- * ``--latex_title_layout=titlepage,std,beamer,doconce_heading``
+ * ``--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection``
 
- * ``--latex_style=std,Springer_lncse,Springer_llncs,Springer_T2,...``
+ * ``--latex_style=std, Springer_lncse, Springer_llncs, Springer_T2, siamltex, siamltexmm, elsevier``
 
  * ``--latex_list_of_exercises=loe,toc,none``
 
@@ -6760,6 +6800,11 @@ look for options starting with ``--latex`` to get a more verbose description):
  * ``--latex_external_movie_viewer`` (for ``movie15`` package)
 
  * ``--xelatex``
+
+The LaTeX style is much governed by ``--latex_title_layout`` and ``--latex_style``.
+For the former, ``titlepage`` gives a separate title page; ``std`` is just standard
+LaTeX handling of title, author, and date; ``doconce_heading`` is a more modern heading, ``Springer_collection`` is used with ``--latex_style=Springer_lncse`` for an edited book; ``beamer`` is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For ``--latex_style``,
+``std`` gives standard LaTeX behavior; ``Springer_lncse`` is for Springer's LNCSE book series style (to be used with ``--latex_title_layout=Springer_collection`` if the book is an edited book); ``Springer_llncs`` is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres ``--latex_title_layout=Springer_collection``); ``Springer_T2`` for Springer's T2 book layout, ``siamltex``, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles ``siamltex.cls`` and ``siam10.clo``), ``siamltexmm`` for the new multimedia SIAM journal style (requires ``siamltex.cls`` and ``siam10.clo``), ``elsevier`` for the style of papers to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can be used to set the journal name, and the style requires ``elsarticle.cls`` and ``elsarticle-num.bst``).
 
 .. index:: LaTeX syntax highlighting
 
@@ -7991,6 +8036,12 @@ here for convenience.
         
         Replace single dash - by double dash -- in LaTeX output.
         Somewhat intelligent, but may give unwanted edits. Use with great care!
+        
+        
+        --latex_elsevier_journal=...
+        
+        Sets the journal name for the --latex_style=elsevier style.
+        Default: none (no journal name).
         
         
         --ipynb_admon=...

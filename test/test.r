@@ -12,7 +12,6 @@ TOC: on
 
 # #include "_testdoc.do.txt"
 
-
 ************** File: _testdoc.do.txt *****************
 
 !split
@@ -2228,8 +2227,6 @@ is part of the abstract.
 % is mutually exclusive in {\LaTeX}
 \end{abstract}
 
-
-
 \section{Section 1}
 \label{sec1}
 
@@ -4413,10 +4410,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % ----------------- end author(s) -------------------------
 
+% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{Jan 32, 2100}}
 
 \end{center}
+% --- end date ---
 \vfill
 \clearpage
 
@@ -4452,8 +4451,6 @@ is part of the abstract.
 % Cannot demonstrate chapter headings since abstract and chapter
 % is mutually exclusive in {\LaTeX}
 \end{abstract}
-
-
 
 \section{Section 1}
 \label{sec1}
@@ -6729,10 +6726,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 {\large\textsf{${}^7$Fourth Inst} \\ [1.5mm]}
 % ----------------- end author(s) -------------------------
 
+% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{Jan 32, 2100}}
 
 \end{center}
+% --- end date ---
 \vfill
 \clearpage
 
@@ -6768,8 +6767,6 @@ is part of the abstract.
 % Cannot demonstrate chapter headings since abstract and chapter
 % is mutually exclusive in {\LaTeX}
 \end{abstract}
-
-
 
 \section{Section 1}
 \label{sec1}
@@ -28347,10 +28344,10 @@ Test of one author at one institution
 % List of all institutions:
 \centerline{{\small Cyberspace Inc.}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -28864,6 +28861,283 @@ Inline math, a=b, is the only math in this document.
     *Simula Research Laboratory*,
     2013,
     http://doconce.googlecode.com/hg/test/demotestdoc.html.
+
+************** File: author2_siamltex.tex *****************
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+%-------------------- begin preamble ----------------------
+
+% Style: SIAM LaTeX2e
+\documentclass[final,leqno]{siamltex}
+
+\listfiles               % print all files needed to compile this document
+
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\title{Yet Another Scientific Paper}
+
+% ----------------- author(s) -------------------------
+
+\author{Hans Petter Langtangen\thanks{Email: \texttt{hpl@simula.no}. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.}
+\and Kaare Dump\thanks{Segfault, Cyberspace.}
+\and A. Dummy Author
+\and I. S. Overworked and Outburned\thanks{Inst1; Inst2, Somewhere; Third Inst, Elsewhere; and Fourth Inst.}
+\and J. Doe\thanks{Email: \texttt{j\_doe@cyberspace.com}.}}
+
+% ----------------- end author(s) -------------------------
+
+
+
+\vspace{1cm}
+
+\begin{abstract}
+Here goes
+a very short
+abstract.
+\end{abstract}
+
+
+\begin{keywords}
+test, doconce, paper, multiple authors.
+\end{keywords}
+
+%\tableofcontents  % not legal in SIAM latex style
+
+
+\vspace{1cm} % after toc
+
+
+
+
+\section{Introduction}
+
+This is a test of a typical paper.
+
+\section{Concluding remarks}
+
+We need to test bibliography too, and for this purpose we need
+a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
+
+
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+% ------------------- end of main content ---------------
+
+
+\printindex
+
+\end{document}
+
+
+************** File: author2_elsevier.tex *****************
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+
+%-------------------- begin preamble ----------------------
+
+% Style: Elsvier LaTeX style
+\documentclass{elsarticle}
+
+% Drop "Submitted to ..." line at the bottom of the first page
+\makeatletter
+\def\ps@pprintTitle{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@empty
+  \def\@oddfoot{\reset@font\hfil\thepage\hfil}
+  \let\@evenfoot\@oddfoot
+}
+\makeatother
+
+\listfiles               % print all files needed to compile this document
+
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage[%
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+            ]{hyperref}
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\begin{frontmatter}
+
+\title{Yet Another Scientific Paper}
+
+% ----------------- author(s) -------------------------
+
+\author[inst1,inst2]{Hans Petter Langtangen}
+\author[inst3]{Kaare Dump}
+\author[]{A. Dummy Author}
+\author[inst4,inst5,inst6,inst7]{I. S. Overworked and Outburned}
+\author[]{J. Doe}\address[inst1]{Center for Biomedical Computing, Simula Research Laboratory}
+\address[inst2]{Department of Informatics, University of Oslo}
+\address[inst3]{Segfault, Cyberspace}
+\address[inst4]{Inst1}
+\address[inst5]{Inst2, Somewhere}
+\address[inst6]{Third Inst, Elsewhere}
+\address[inst7]{Fourth Inst}
+
+% ----------------- end author(s) -------------------------
+
+
+
+\vspace{1cm}
+
+\begin{abstract}
+Here goes
+a very short
+abstract.
+\end{abstract}
+
+
+\begin{keyword}
+test \sep doconce \sep paper \sep multiple authors
+\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+
+
+%\tableofcontents
+
+
+\vspace{1cm} % after toc
+
+
+
+
+\section{Introduction}
+
+This is a test of a typical paper.
+
+\section{Concluding remarks}
+
+We need to test bibliography too, and for this purpose we need
+a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
+
+
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+% ------------------- end of main content ---------------
+
+
+\printindex
+
+\end{document}
+
 
 ************** File: ._testdoc000.html *****************
 <!--
@@ -36350,10 +36624,10 @@ A Document for Testing DocOnce
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
 \centerline{{\small ${}^7$Fourth Inst}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -36390,8 +36664,6 @@ is part of the abstract.
 % Cannot demonstrate chapter headings since abstract and chapter
 % is mutually exclusive in {\LaTeX}
 \end{abstract}
-
-
 
 \subsection{Section 1}
 \label{sec1}
@@ -38764,6 +39036,14 @@ system doconce format latex author1
 system doconce format sphinx author1
 system doconce format plain author1
 
+# Test journal styles
+system doconce format pdflatex author2 --latex_style=siamltex
+system doconce ptex2tex author2
+cp author2.tex author2_siamltex.tex
+system doconce format pdflatex author2 --latex_style=elsevier
+system doconce ptex2tex author2
+cp author2.tex author2_elsevier.tex
+
 # Test math
 rm -f *.aux
 name=math_test
@@ -39964,10 +40244,10 @@ How various formats can deal with {\LaTeX} math
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -45423,10 +45703,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -46019,10 +46299,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -46620,10 +46900,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -47264,10 +47544,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -47801,10 +48081,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -48430,10 +48710,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -48934,10 +49214,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -49552,10 +49832,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -50196,10 +50476,10 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -67536,10 +67816,10 @@ This is a demo of movies in DocOnce
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -67939,10 +68219,10 @@ This is a demo of movies in DocOnce
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -68341,10 +68621,10 @@ This is a demo of movies in DocOnce
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -69500,6 +69780,10 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 
+*************** Working with tag "keywords"
+
+
+
 *************** Working with tag "emphasize"
 
 
@@ -69904,6 +70188,10 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 *************** Working with tag "abstract"
+
+
+
+*************** Working with tag "keywords"
 
 
 
@@ -70421,6 +70709,10 @@ $b = 1$ is a value suggested by Åsmund Ødegård.
 
 
 
+*************** Working with tag "keywords"
+
+
+
 *************** Working with tag "emphasize"
 
 
@@ -70489,7 +70781,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f75b97a7938>
+verbatim is to be replaced using <function html_verbatim at 0x7f0674c44938>
 
 
 First occurence: " `mako`."
@@ -71735,10 +72027,12 @@ BIBFILE: papers.pub
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
 % ----------------- end author(s) -------------------------
 
+% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{Jan 32, 2100}}
 
 \end{center}
+% --- end date ---
 \vfill
 \clearpage
 
@@ -72678,10 +72972,12 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 {\large\textsf{${}^2$Department of Informatics, University of Oslo} \\ [1.5mm]}
 % ----------------- end author(s) -------------------------
 
+% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{Jan 32, 2100}}
 
 \end{center}
+% --- end date ---
 \vfill
 \clearpage
 
@@ -74446,7 +74742,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Dec  3 20:16:28 2014.
+# sphinx-quickstart on Thu Dec  4 18:30:40 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78581,10 +78877,10 @@ DocOnce Quick Reference
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
-\begin{center}
+\begin{center} % date
 Jan 32, 2100
 \end{center}
 
@@ -96653,6 +96949,74 @@ running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to plain
 output in author1.txt
 + '[' 0 -ne 0 ']'
++ system doconce format pdflatex author2 --latex_style=siamltex
++ doconce format pdflatex author2 --latex_style=siamltex
+
+Summary of papers
+-----------------
+
+Articles in International Journals: 8
+Books:                              3
+Edited Books:                       0
+Chapters in Books:                  1
+Refereed Proceedings:               0
+Conference Proceedings:             2
+Technical Reports:                  4
+Manuals:                            0
+Theses:                             2
+Courses:                            0
+Talks:                              0
+Posters:                            0
+Public Outreach:                    0
+Preprints:                          0
+Other Publications:                 1
+Total:                              21
+
+Exported 21 paper(s) to papers.bib.
+translating doconce text in author2.do.txt to pdflatex
+
+exporting publish database papers.pub to papers.bib:
+output in author2.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex author2
++ doconce ptex2tex author2
+output in author2.tex
++ '[' 0 -ne 0 ']'
++ cp author2.tex author2_siamltex.tex
++ system doconce format pdflatex author2 --latex_style=elsevier
++ doconce format pdflatex author2 --latex_style=elsevier
+
+Summary of papers
+-----------------
+
+Articles in International Journals: 8
+Books:                              3
+Edited Books:                       0
+Chapters in Books:                  1
+Refereed Proceedings:               0
+Conference Proceedings:             2
+Technical Reports:                  4
+Manuals:                            0
+Theses:                             2
+Courses:                            0
+Talks:                              0
+Posters:                            0
+Public Outreach:                    0
+Preprints:                          0
+Other Publications:                 1
+Total:                              21
+
+Exported 21 paper(s) to papers.bib.
+translating doconce text in author2.do.txt to pdflatex
+
+exporting publish database papers.pub to papers.bib:
+output in author2.p.tex
++ '[' 0 -ne 0 ']'
++ system doconce ptex2tex author2
++ doconce ptex2tex author2
+output in author2.tex
++ '[' 0 -ne 0 ']'
++ cp author2.tex author2_elsevier.tex
 + rm -f '*.aux'
 + name=math_test
 + doconce format pdflatex math_test

@@ -229,6 +229,14 @@ system doconce format latex author1
 system doconce format sphinx author1
 system doconce format plain author1
 
+# Test journal styles
+system doconce format pdflatex author2 --latex_style=siamltex
+system doconce ptex2tex author2
+cp author2.tex author2_siamltex.tex
+system doconce format pdflatex author2 --latex_style=elsevier
+system doconce ptex2tex author2
+cp author2.tex author2_elsevier.tex
+
 # Test math
 rm -f *.aux
 name=math_test
