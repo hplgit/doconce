@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
-<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,footnotes,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
+<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
 
 <title>DocOnce Description</title>
 
@@ -992,8 +992,8 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_font=helvetica,palatino</code></li>
  <li> <code>--latex_papersize=a4,a6</code></li>
  <li> <code>--latex_bibstyle=plain</code></li>
- <li> <code>--latex_title_layout=titlepage,std,beamer,doconce_heading</code></li>
- <li> <code>--latex_style=std,Springer_lncse,Springer_llncs,Springer_T2,...</code></li>
+ <li> <code>--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection</code></li>
+ <li> <code>--latex_style=std, Springer_lncse, Springer_llncs, Springer_T2, siamltex, siamltexmm, elsevier</code></li>
  <li> <code>--latex_list_of_exercises=loe,toc,none</code></li>
  <li> <code>--latex_fancy_header</code></li>
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code></li>
@@ -1011,6 +1011,12 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--xelatex</code></li>
 </ul>
 
+The LaTeX style is much governed by <code>--latex_title_layout</code> and <code>--latex_style</code>.
+For the former, <code>titlepage</code> gives a separate title page; <code>std</code> is just standard
+LaTeX handling of title, author, and date; <code>doconce_heading</code> is a more modern heading, <code>Springer_collection</code> is used with <code>--latex_style=Springer_lncse</code> for an edited book; <code>beamer</code> is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For <code>--latex_style</code>,
+<code>std</code> gives standard LaTeX behavior; <code>Springer_lncse</code> is for Springer's LNCSE book series style (to be used with <code>--latex_title_layout=Springer_collection</code> if the book is an edited book); <code>Springer_llncs</code> is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres <code>--latex_title_layout=Springer_collection</code>); <code>Springer_T2</code> for Springer's T2 book layout, <code>siamltex</code>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>siamltexmm</code> for the new multimedia SIAM journal style (requires <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>elsevier</code> for the style of papers to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can be used to set the journal name, and the style requires <code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
+
+<p>
 <b>Step 2.</b>
 Run <code>ptex2tex</code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -2224,6 +2230,12 @@ Use xelatex instead of latex/pdflatex.
 
 Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!
+
+
+--latex_elsevier_journal=...
+
+Sets the journal name for the --latex_style=elsevier style.
+Default: none (no journal name).
 
 
 --ipynb_admon=...

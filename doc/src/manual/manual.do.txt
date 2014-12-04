@@ -487,11 +487,15 @@ test is appropriate for this:
 
 !bc do
 % if FORMAT in ("latex", "pdflatex"):
-FIGURE: [myfig, frac=1] caption
-% else:
-MOVIE: [mymov] caption
-% endif
 
+FIGURE: [myfig, frac=1] caption
+
+% else:
+
+MOVIE: [mymov] caption
+
+% endif
+!ec
 If you encounter a large number of such if-else statements, it is
 advantageous to write a Mako function in Python:
 
@@ -508,7 +512,7 @@ def figmov(figfile, movfile, caption):
 The one can avoid if-else tests in the running code and instead write just
 
 !bc do
-#{figmov('myfig', 'mymov', 'caption')}
+${figmov('myfig', 'mymov', 'caption')}
 !ec
 to insert a movie or figure file, depending on the output format.
 !enotice

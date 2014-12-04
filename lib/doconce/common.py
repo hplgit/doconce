@@ -893,11 +893,14 @@ INLINE_TAGS = {
 
     # __Abstract.__ Any text up to a headline === or toc-like keywords
     # (TOC is already processed)
+    # 'abstract' is in doconce.py processed before chapter, section, etc
     'abstract':  # needs re.DOTALL | re.MULTILINE
-    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|\s*={3,9})""",
+    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|__[A-Z].+[.?:]__|^={3,9})""",
+
+    'keywords':
+    r'^__Keywords.__\s+(?P<subst>.+)\s*$',
 
     # ======= Seven Equality Signs for Headline =======
-    # (the old underscores instead of = are still allowed)
     'section':
     r'^={7}\s*(?P<subst>[^ =-].+?)\s*={7} *$',
 

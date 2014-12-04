@@ -279,6 +279,9 @@ Gives headers a), b), etc. Can be set to period, colon, etc."""),
     ('--latex_double_hyphen',
      """Replace single dash - by double dash -- in LaTeX output.
 Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
+    ('--latex_elsevier_journal=',
+     """Sets the journal name for the --latex_style=elsevier style.
+Default: none (no journal name)."""),
     ('--ipynb_admon=',
      """\
 Typesetting of admonitions and quotes.

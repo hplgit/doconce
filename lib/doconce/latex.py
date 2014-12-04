@@ -435,6 +435,37 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = filestr.replace(line, new_line)
     # paragraphadmon also needs \protect\Verb
 
+    latex_style = option('latex_style=', 'std')
+    if latex_style == 'elsevier':
+        filestr = filestr.replace(r'\title{', r"""\begin{frontmatter}
+
+\title{""", 1)
+        if r'\end{keyword}' in filestr:
+            filestr = filestr.replace(r'\end{keyword}', r"""\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+""", 1)
+        elif r'\end{abstract}' in filestr:
+            filestr = filestr.replace(r'\end{abstract}', r"""\end{abstract}
+
+\end{frontmatter}
+
+%\linenumbers
+""", 1)
+        filestr = re.sub(r'^\bibliographystyle{.+?}', r'\bibliographystyle{elsarticle-num}', filestr, flags=re.MULTILINE)
+        # Remove date
+        filestr = re.sub(r'\\begin\{center\} % date.+?\\end\{center\}', '',
+                         filestr, flags=re.DOTALL)
+        filestr = filestr.replace(r'\tableofcontents', r'%\tableofcontents')
+    elif latex_style.startswith('siam'):
+        filestr = re.sub(r'^\bibliographystyle{.+?}', r'\bibliographystyle{siam}', filestr, flags=re.MULTILINE)
+        filestr = filestr.replace(r'\tableofcontents', r'%\tableofcontents  % not legal in SIAM latex style')
+        # Remove date
+        filestr = re.sub(r'\\begin\{center\} % date.+?\\end\{center\}', '',
+                         filestr, flags=re.DOTALL)
+
 
     if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
@@ -914,7 +945,8 @@ def latex_title(m):
 
 % ----------------- title -------------------------
 """
-    if title_layout == "std":
+    if title_layout == "std" or \
+           latex_style in ('siamltex', 'siamltexmm', 'elsevier'):
         if section_headings in ("blue", "strongblue"):
             text += r"""
 \title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
@@ -1013,16 +1045,19 @@ def latex_author(authors_and_institutions, auth2index,
 % ----------------- author(s) -------------------------
 """
     title_layout = option('latex_title_layout=', 'doconce_heading')
-    if title_layout == 'std':
+    latex_style = option('latex_style=', 'std')
+
+    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm'):
         # Traditional latex heading
         text += r"""
 \author{"""
+        footnote = 'thanks' if latex_style.startswith('siam') else 'footnote'
         author_command = []
         for a, i, e in authors_and_institutions:
             a_text = a
             e_text = email(a, prefix='Email:', parenthesis=False)
             if i is not None:
-                a_text += r'\footnote{'
+                a_text += r'\%s{' % footnote
                 if len(i) == 1:
                     i_text = i[0]
                 elif len(i) == 2:
@@ -1039,7 +1074,7 @@ def latex_author(authors_and_institutions, auth2index,
                 a_text += '}'
             else: # Just email
                 if e_text:
-                    a_text += r'\footnote{%s.}' % e_text
+                    a_text += r'\%s{%s.}' % (footnote, e_text)
             author_command.append(a_text)
         author_command = '\n\\and '.join(author_command)
 
@@ -1105,11 +1140,16 @@ def latex_author(authors_and_institutions, auth2index,
         text += r'\institute{' + '\n\\and\n'.join(
             [inst + r'\inst{%d}' % (i+1)
              for i, inst in enumerate(institutions)]) + '}'
-    else: # doconce special heading
+    elif title_layout == 'doconce_heading' or latex_style == 'elsevier':
         if one_author_at_one_institution:
             author = list(auth2index.keys())[0]
             email_text = email(author)
-            text += r"""
+            if latex_style == 'elsevier':
+                text += r"""
+\author[inst]{%s}
+""" % author
+            else:
+                text += r"""
 \begin{center}
 {\bf %s%s}
 \end{center}
@@ -1118,24 +1158,43 @@ def latex_author(authors_and_institutions, auth2index,
         else:
             for author in auth2index: # correct order of authors
                 email_text = email(author)
-                text += r"""
+                if latex_style == 'elsevier':
+                    institutions = ','.join(['inst'+str(i) for i in auth2index[author]])
+                    text += r"""
+\author[%s]{%s}""" % (institutions, author)
+                else:
+                    text += r"""
 \begin{center}
 {\bf %s${}^{%s}$%s} \\ [0mm]
 \end{center}
 
     """ % (author, str(auth2index[author])[1:-1], email_text)
 
-        text += r'\begin{center}' + '\n' + '% List of all institutions:\n'
-        if one_author_at_one_institution:
-            text += r"""\centerline{{\small %s}}""" % \
-                    (index2inst[1]) + '\n'
+        # Institutions
+        if latex_style == 'elsevier':
+            if one_author_at_one_institution:
+                text += r"""\address[inst]{%s}""" % index2inst[1] + '\n'
+            else:
+                for index in index2inst:
+                    text += r"""\address[inst%d]{%s}""" % \
+                            (index, index2inst[index]) + '\n'
         else:
-            for index in index2inst:
-                text += r"""\centerline{{\small ${}^%d$%s}}""" % \
-                        (index, index2inst[index]) + '\n'
+            text += r'\begin{center}' + '\n' + '% List of all institutions:\n'
+            if one_author_at_one_institution:
+                text += r"""\centerline{{\small %s}}""" % \
+                        (index2inst[1]) + '\n'
+            else:
+                for index in index2inst:
+                    text += r"""\centerline{{\small ${}^%d$%s}}""" % \
+                            (index, index2inst[index]) + '\n'
 
-        text += r"""\end{center}
-"""
+            text += r"""\end{center}
+    """
+    else:
+        print '*** error: cannot create author field when'
+        print '    --latex_title_layout=%s --latex_style=%s' % (title_layout, latex_style)
+        _abort()
+
     text += """
 % ----------------- end author(s) -------------------------
 
@@ -1159,16 +1218,18 @@ def latex_date(m):
 """ % vars()
     elif title_layout == 'titlepage':
         text += r"""
+%% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{%(date)s}}
 
 \end{center}
+%% --- end date ---
 \vfill
 \clearpage
 """ % vars()
     else:  # doconce special heading
         text += r"""
-\begin{center}
+\begin{center} %% date
 %(date)s
 \end{center}
 
@@ -1178,7 +1239,7 @@ def latex_date(m):
     return text
 
 def latex_abstract(m):
-    text = m.group('text')
+    text = m.group('text').strip()
     rest = m.group('rest')
     title_layout = option('latex_title_layout=', 'doconce_heading')
     abstract = ''
@@ -1973,6 +2034,11 @@ def define(FILENAME_EXTENSION,
     latex_style = option('latex_style=', 'std')
     title_layout = option('latex_title_layout=', 'doconce_heading')
 
+    if latex_style not in ('std', 'Springer_T2', 'siamltex', 'siamltexmm',
+                           'elsevier'):
+        print '*** error: --latex_style=%s not registered' % latex_style
+        _abort()
+
     toc_part = ''
     if title_layout != 'beamer':
         toc_part += r"""
@@ -1994,13 +2060,11 @@ def define(FILENAME_EXTENSION,
 \vspace{1cm} % after toc
 """
     if latex_style == 'Springer_T2':
+        # Use special mainmatter from t2do.sty
         toc_part += r"""
 \mymainmatter
 """
-    elif latex_style == 'Springer_T2':
-        toc_part += r"""
-\mainmatter
-"""
+
     TOC['latex'] = lambda s: toc_part
     QUIZ['latex'] = latex_quiz
 
@@ -2017,6 +2081,20 @@ def define(FILENAME_EXTENSION,
     latex_papersize = option('latex_papersize=', 'std')
     latex_font = option('latex_font=', 'std')
     section_headings = option('latex_section_headings=', 'std')
+
+    if latex_style.startswith('siam'):
+        INLINE_TAGS_SUBST['latex']['keywords'] = r"""
+\\begin{keywords}
+\g<subst>
+\end{keywords}
+"""
+    elif latex_style == 'elsevier':
+        INLINE_TAGS_SUBST['latex']['keywords'] = lambda m: r"""
+\begin{keyword}
+%s
+\end{keyword}
+""" % ' \\sep '.join(re.split(r', *', m.group('subst').replace('.', '')))
+    # (remove final . if present in keywords list)
 
     INTRO['latex'] = r"""%%
 %% Automatically generated file from DocOnce source
@@ -2118,12 +2196,34 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     elif latex_style == 'siamltex':
         INTRO['latex'] += r"""
 % Style: SIAM LaTeX2e
-\documentclass[leqno]{siamltex}
+\documentclass[final,leqno]{siamltex}
 """
     elif latex_style == 'siamltexmm':
         INTRO['latex'] += r"""
 % Style: SIAM LaTeX2e multimedia
 \documentclass[leqno]{siamltexmm}
+"""
+    elif latex_style == 'elsevier':
+        INTRO['latex'] += r"""
+% Style: Elsvier LaTeX style
+\documentclass{elsarticle}
+"""
+        journal_name = option('latex_elsevier_journal=', 'none')
+        if journal_name != 'none':
+            INTRO['latex'] += r"""
+%\journal{%s}
+""" % journal_name
+        else:
+            INTRO['latex'] += r"""
+% Drop "Submitted to ..." line at the bottom of the first page
+\makeatletter
+\def\ps@pprintTitle{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@empty
+  \def\@oddfoot{\reset@font\hfil\thepage\hfil}
+  \let\@evenfoot\@oddfoot
+}
+\makeatother
 """
     INTRO['latex'] += r"""
 \listfiles               % print all files needed to compile this document
