@@ -40894,8 +40894,7 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( 	heta \) parameter (not \( 
-abla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
@@ -41245,8 +41244,7 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Running OS commands </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( 	heta \) parameter (not \( 
-abla \)?) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Custom Environments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:table"> Tables </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec12"> A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </a><br>
@@ -61044,7 +61042,7 @@ This gets rendered as
 !split
 ===== DocOnce: labels, references, index items =====
 
-!bc
+!bc do
 # Insert index items in the source
 idx{key word1} idx{key word2}
 
@@ -62032,26 +62030,26 @@ This gets rendered as
 
 <p>
 
-<!-- code=text typeset with pygments style "emacs" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"># Insert index items in the source
-idx{key word1} idx{key word2}
+<!-- code=doconce (!bc do) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008800; font-style: italic"># Insert index items in the source</span>
+<span style="color: #AA22FF">idx{key word1}</span> idx{key word2}
 
-# Label
-===== Some section =====
-label{this:section}
+<span style="color: #008800; font-style: italic"># Label</span>
+<span style="color: #000080; font-weight: bold">===== Some section =====</span>
+<span style="color: #AA22FF">label{this:section}</span>
 
-# Make reference
+<span style="color: #008800; font-style: italic"># Make reference</span>
 As we saw in Section ref{this:section}, references, index
 items and labels follow a syntax similar to LaTeX
 but without backslashes.
 
-# Make reference to equations
+<span style="color: #008800; font-style: italic"># Make reference to equations</span>
 See \eqref{eq1}-\eqref{myeq}.
 
-# Make hyperlink
-&quot;some link text&quot;: &quot;https://github.com/hplgit/doconce&quot;
+<span style="color: #008800; font-style: italic"># Make hyperlink</span>
+<span style="color: #BB4444">&quot;some link text&quot;</span>: &quot;https://github.com/hplgit/doconce&quot;
 
-# Hyperlink with complete URL as link text
+<span style="color: #008800; font-style: italic"># Hyperlink with complete URL as link text</span>
 URL: &quot;https://github.com/hplgit/doconce&quot;
 </pre></div>
 <p>
@@ -63349,7 +63347,7 @@ This gets rendered as
 % !split
 \subsection{DocOnce: labels, references, index items}
 
-\bccq
+\bdo
 # Insert index items in the source
 idx{key word1} idx{key word2}
 
@@ -63370,7 +63368,7 @@ See (ref{eq1})-(ref{myeq}).
 
 # Hyperlink with complete URL as link text
 URL: "https://github.com/hplgit/doconce"
-\eccq
+\edo
 
 % !split
 \subsection{DocOnce: figures and movies}
@@ -64149,7 +64147,7 @@ This gets rendered as
 \begin{frame}[plain,fragile]
 \frametitle{DocOnce: labels, references, index items}
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{doconce}
 # Insert index items in the source
 idx{key word1} idx{key word2}
 
@@ -64170,7 +64168,7 @@ See (ref{eq1})-(ref{myeq}).
 
 # Hyperlink with complete URL as link text
 URL: "https://github.com/hplgit/doconce"
-\end{Verbatim}
+\end{minted}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -70781,7 +70779,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f0674c44938>
+verbatim is to be replaced using <function html_verbatim at 0x7f571a57d938>
 
 
 First occurence: " `mako`."
@@ -74742,7 +74740,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Dec  4 18:30:40 2014.
+# sphinx-quickstart on Thu Dec 11 21:30:46 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -96785,6 +96783,8 @@ output in slides2.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce ptex2tex slides2 envir=minted
 + doconce ptex2tex slides2 envir=minted
+\bdo (!bc do) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{doconce}
+
 \bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
 \bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}

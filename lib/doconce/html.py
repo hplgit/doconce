@@ -437,6 +437,67 @@ footer a:hover {
 
 # too small margin bottom: h1 { font-size: 1.8em; color: #1e36ce; margin-bottom: 3px; }
 
+css_rossant = """
+/* Style from http://cyrille.rossant.net/theme/css/styles.css */
+
+html, button, input, select, textarea {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #000;
+}
+
+a { color: #0088cc; text-decoration: none; }
+
+a:hover { color: #005580; }
+
+code {
+    /*font-size: .9em;*/
+    font-family: 'Ubuntu Mono';
+    padding: 0 .1em;
+}
+
+.highlight pre {
+    font-family: 'Ubuntu Mono';
+    font-size: .9em;
+    padding: .5em;
+    word-wrap: normal;
+    overflow: auto;
+    white-space: pre;
+}
+
+blockquote {
+    color: #777;
+    border-left: .5em solid #eee;
+    padding: 0 0 0 .75em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 2.25em;
+    margin: 0 0 .1em -.025em;
+    padding: 0 0 .25em 0;
+    border-bottom: 1px solid #aaa;
+}
+
+
+h2 {
+    color: #555;
+    font-size: 1.75em;
+    margin: 1.75em 0 .5em 0;
+    padding: 0 0 .25em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    margin: 1.25em 0 .75em 0;
+    font-size: 1.35em;
+    color: #777;
+}
+"""
 
 def toc2html(font_size=80, bootstrap=True):
     global tocinfo  # computed elsewhere
@@ -557,6 +618,30 @@ def html_verbatim(m):
 def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
+
+    # Do one fix before verbatim blocks are inserted
+    # (where ref{} and label{} constructions are to be as is)
+    find_remaining_references = True
+    if find_remaining_references:
+        # Find remaining ref{...} that is not referring to labels in the
+        # document (everything should have been substituted, except eq.refs)
+        # leave out eq.ref, verbatim (<code>ref... etc)
+        remaining = re.findall('[^(>](ref\{.+?\})[^)<]', filestr)
+        if remaining:
+            print '*** error: references to labels not defined in this document'
+            #print '\n', '\n'.join(remaining)
+            index = 0
+            for r in remaining:
+                print r + ':'
+                index = filestr.find(r, index)  # search since last occurence
+                print '  ', filestr[index-35:index+35], '\n---------------'
+                index += len(r)
+            print '\nCauses of missing labels:'
+            print '1: defined in another file'
+            print '2: preprocessor if-else has left it out'
+            print '3: forgotten to define it'
+            _abort()
+
     html_style = option('html_style=', '')
     pygm_style = option('pygments_html_style=', default=None)
 
@@ -1007,7 +1092,11 @@ def html_code(filestr, code_blocks, code_block_types,
                          if '!split' in m.group(2) else ''
                 text = '<div class="jumbotron">\n' + core + \
                        button + '\n</div> <!-- end jumbotron -->\n\n' + rest
-                filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+                # re.sub might be problematic for large amounts of text as
+                # group symbols in text, like $1,\ 2,\ 3$ may fool the regex
+                # subst. Since we have m.group() we can use str.replace
+                #filestr = re.sub(pattern, text, filestr, flags=re.DOTALL|re.MULTILINE)
+                filestr = filestr.replace(m.group(), text)
                 # Last line may give trouble if there is no !split
                 # before first section and the document is long...
 
@@ -1486,7 +1575,7 @@ def html_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(pattern, '\g<1>&mdash;\g<2>', filestr)
 
     # extract the labels in the text (filestr is now without
-    # mathematics and those labels)
+    # mathematics and associated labels)
     running_text_labels = re.findall(r'label\{(.+?)\}', filestr)
 
     # make special anchors for all the section titles with labels:
@@ -2101,6 +2190,8 @@ def define(FILENAME_EXTENSION,
                 h1_color = h2_color = 'color: #303030;'
 
         css = css_tactile % (h1_color, h2_color)
+    elif html_style == 'rossant':
+        css = css_rossant
     elif html_style == 'plain':
         css = ''
     else:
