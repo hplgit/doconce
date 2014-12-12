@@ -268,7 +268,7 @@ This gets rendered as
 !split
 ===== DocOnce: labels, references, index items =====
 
-!bc
+!bc do
 # Insert index items in the source
 idx{key word1} idx{key word2}
 

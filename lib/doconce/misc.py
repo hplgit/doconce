@@ -59,7 +59,7 @@ the linenos=true parameter.)"""),
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=', """Name of theme for HTML style:
-plain, blueish, blueish2, bloodish,
+plain, blueish, blueish2, bloodish, tactile-black, tactile-red, rossant
 solarized, solarized2_light, solarized2_dark,
 bootstrap, bootswatch,
 bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
