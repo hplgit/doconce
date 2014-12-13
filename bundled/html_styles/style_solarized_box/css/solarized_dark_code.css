@@ -2,17 +2,16 @@
 
 Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
 
+code and pre modified by H. P. Langtangen <hpl@simula.no>
 */
 
 
-code {
-  background: #073642; color: #839496;
-  box-shadow: 2.5px 2.5px 2.5px 0px #002731;
-}
+code { background: inherit; }
 
 pre code {
   display: block; padding: 0.5em;
   background: #073642; color: #839496;
+  box-shadow: 2.5px 2.5px 2.5px 0px #002731;
 }
 
 pre .comment,
