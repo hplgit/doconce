@@ -187,8 +187,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     if newcommands:
         filestr = newcommands + filestr
     """
-    # Fix pandoc citations to normal links: <a href="key">[key]</a>
-    filestr = re.sub(r'\[@(.+?)\]', r'<a href="#\g<1>">[\g<1>]</a>', filestr)
+    # Fix pandoc citations to normal internal links: [[key]](#key)
+    filestr = re.sub(r'\[@(.+?)\]', r'[[\g<1>]](#\g<1>)', filestr)
 
     # filestr becomes json list after this function so we must typeset
     # envirs here. All envirs are typeset as pandoc_quote.
@@ -496,8 +496,9 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\\eqref{\g<1>}', filestr)
     # Now we use explicit references to tags
     def subst(m):
+        label = m.group(1)
         try:
-            return r'[(%s)](#%s)' % (label2tag[m.group(1)], label)
+            return r'[(%s)](#%s)' % (label2tag[label], label)
         except KeyError as e:
             print '*** error: label "%s" is not defined' % str(e)
 

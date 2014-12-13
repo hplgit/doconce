@@ -21101,7 +21101,7 @@ is part of the abstract.
 
 
 ## Section 1
-<a name="sec1"/>
+<a name="sec1"></a>
 
 Here is a nested list:
 
@@ -21141,7 +21141,7 @@ Even Equation \eqref{my:eq1} without the tilde.
 
 
 ### Subsection 1
-<a name="subsec1"/>
+<a name="subsec1"></a>
 
 
 <!-- Refer to section/appendix etc. at the beginning of the line -->
@@ -21531,13 +21531,13 @@ of course remain a tilde in those contexts.)
 
 
 ### Subsection 2: Testing figures
-<a name="subsec:ex"/>
+<a name="subsec:ex"></a>
 
 Test of figures. In particular we refer to [Figure](#fig:impact) in which
 there is a flow.
 
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <a name="fig:impact"/></em></p> -->
-![<p><em>Visualization of a wave. <a name="fig:impact"/></em></p>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <a name="fig:impact"></a></em></p> -->
+![<p><em>Visualization of a wave. <a name="fig:impact"></a></em></p>](../doc/src/manual/fig/wave1D.png)
 
 Figures without captions are allowed and will be inlined.
 
@@ -21551,8 +21551,8 @@ Figures without captions are allowed and will be inlined.
 Here is [figure](#myfig) with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p> -->
-![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"></a></em></p> -->
+![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"></a></em></p>](../doc/src/manual/fig/wave1D.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
@@ -21572,7 +21572,7 @@ Movies are tested in separate file `movies.do.txt`.
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ### The $\theta$ parameter (not $\nabla$?)
-<a name="decay:sec:theta"/>
+<a name="decay:sec:theta"></a>
 
 Functions do not always need to be advanced, here is one
 involving $\theta$:
@@ -21640,7 +21640,7 @@ Should look nice in most formats!
 
 
 <!-- begin theorem -->
-<a name="theorem:fundamental1"/>
+<a name="theorem:fundamental1"></a>
 
 
 *Theorem 5.*
@@ -21658,7 +21658,7 @@ achievement.
 
 
 ### Tables
-<a name="subsec:table"/>
+<a name="subsec:table"></a>
 
 
 <!-- index with comma could fool sphinx -->
@@ -21860,30 +21860,30 @@ period, like `.txt`.
 
 ### Bibliography test
 
-Here is an example: @Langtangen_Pedersen_2002 discussed propagation of
-large destructive water waves, @Langtangen_et_al_2002 gave
+Here is an example: [@Langtangen_Pedersen_2002] discussed propagation of
+large destructive water waves, [@Langtangen_et_al_2002] gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in @Langtangen_1994a.
-The book chapter @Mardal_et_al_2003a contains information on
+random vibrations was investigated in [@Langtangen_1994a].
+The book chapter [@Mardal_et_al_2003a] contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is @Langtangen_1988d about a big FORTRAN package.
+reference is [@Langtangen_1988d] about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-@Langtangen_Pedersen_2002;@Mardal_et_al_2003a.
+[@Langtangen_Pedersen_2002;@Mardal_et_al_2003a].
 
 We need to cite more than 10 papers to reproduce an old formatting
 problem with blanks in the keys in reST format:
-@Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002
+[@Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002]
 and
-@Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95
+[@Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95]
 and all the work of
-@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004 as well as
-old work @Langtangen_1988d and @Langtangen_1989e, and the
-talk @Langtangen_talk_2007a.
-Langtangen also had two thesis @Langtangen:85;@Langtangen_1989e.
+[@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004] as well as
+old work [@Langtangen_1988d] and [@Langtangen_1989e], and the
+talk [@Langtangen_talk_2007a].
+Langtangen also had two thesis [@Langtangen:85;@Langtangen_1989e].
 More retro citations are
-the old ME-IN323 book @Langtangen:91 and the
-@Langtangen:94b OONSKI '94 paper.
+the old ME-IN323 book [@Langtangen:91] and the
+[@Langtangen:94b] OONSKI '94 paper.
 
 
 
@@ -21891,7 +21891,7 @@ the old ME-IN323 book @Langtangen:91 and the
 <!-- --- begin exercise --- -->
 
 ### Example 1: Examples can be typeset as exercises
-<a name="Example"/>
+<a name="Example"></a>
 
 Examples can start with a subsection heading starting with `Example:`
 and then, with the command-line option `--examples_as_exercises` be
@@ -21923,7 +21923,7 @@ maybe over multiple doconce input lines.
 
 
 ### URLs
-<a name="subsubsec:ex"/>
+<a name="subsubsec:ex"></a>
 
 Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or
 the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a
@@ -22030,7 +22030,7 @@ between there we have  [Exercise 10: Make references to projects and problems](#
 <!-- --- begin exercise --- -->
 
 ### Problem 2: Flip a Coin
-<a name="demo:ex:1"/>
+<a name="demo:ex:1"></a>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <!-- Torture tests -->
@@ -22132,7 +22132,7 @@ exercises.
 <!-- --- begin exercise --- -->
 
 ### Exercise 3: Test of plain text exercise
-<a name="my:exer1"/>
+<a name="my:exer1"></a>
 
 Very short exercise. What is the capital
 of Norway?
@@ -22146,7 +22146,7 @@ Filename: `myexer1.py`.
 <!-- --- begin exercise --- -->
 
 ### Project 4: Compute a Probability
-<a name="demo:ex:2"/>
+<a name="demo:ex:2"></a>
 
 <!-- Minimalistic exercise -->
 
@@ -22179,7 +22179,7 @@ compute the probability as $M/N$.
 <!-- --- begin exercise --- -->
 
 ### Project 5: Explore Distributions of Random Circles
-<a name="proj:circle1"/>
+<a name="proj:circle1"></a>
 
 The formula for a circle is given by
 
@@ -22271,7 +22271,7 @@ and give some perspectives.
 <!-- --- begin exercise --- -->
 
 ### Exercise 6: Determine some Distance
-<a name="exer:dist"/>
+<a name="exer:dist"></a>
 
 Intro to this exercise. Questions are in subexercises below.
 
@@ -22417,7 +22417,7 @@ lambda x: x+2
 <!-- --- begin exercise --- -->
 
 ### Exercise 8: Solution of differential equation
-<a name="sec:this:exer:de"/>
+<a name="sec:this:exer:de"></a>
 
 *Cannot typeset quiz*: "Given
 
@@ -22459,7 +22459,7 @@ With some text, before we continue with exercises.
 <!-- --- begin exercise --- -->
 
 ### Exercise 10: Make references to projects and problems
-<a name="exer:some:formula"/>
+<a name="exer:some:formula"></a>
 
 <!-- Test comments not at the end only -->
 Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
@@ -22481,7 +22481,7 @@ Filename: `verify_formula.py`.
 <!-- --- begin exercise --- -->
 
 ### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for pandoc
-<a name="exer:you"/>
+<a name="exer:you"></a>
 
 Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),
 the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),
@@ -22493,72 +22493,72 @@ Filename: `selc_composed.pdf`.
 
 ## References
 
- 1. \label{Langtangen_Pedersen_2002} **H. P. Langtangen and G. Pedersen**. 
+ 1. <a name="Langtangen_Pedersen_2002"></a> **H. P. Langtangen and G. Pedersen**. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
- 2. \label{Langtangen_et_al_2002} **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
+ 2. <a name="Langtangen_et_al_2002"></a> **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
- 3. \label{Langtangen_1994a} **H. P. Langtangen**. 
+ 3. <a name="Langtangen_1994a"></a> **H. P. Langtangen**. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
- 4. \label{Mardal_et_al_2003a} **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
+ 4. <a name="Mardal_et_al_2003a"></a> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by **H. P. Langtangen and A. Tveito**,
     Springer,
     2003.
- 5. \label{Langtangen_1988d} **H. P. Langtangen**. 
+ 5. <a name="Langtangen_1988d"></a> **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     1989.
- 6. \label{Langtangen_1992c} **H. P. Langtangen**. 
+ 6. <a name="Langtangen_1992c"></a> **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
- 7. \label{Mortensen_et_al_2011} **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
+ 7. <a name="Mortensen_et_al_2011"></a> **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
- 8. \label{Glimsdal_et_al_20006} **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
+ 8. <a name="Glimsdal_et_al_20006"></a> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
     Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
- 9. \label{Rahman_et_al_2006b} **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
+ 9. <a name="Rahman_et_al_2006b"></a> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-10. \label{Haga_et_al_2011a} **J. B. Haga, H. Osnes and H. P. Langtangen**. 
+10. <a name="Haga_et_al_2011a"></a> **J. B. Haga, H. Osnes and H. P. Langtangen**. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
     2011,
     <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
-11. \label{Langtangen_2003a} **H. P. Langtangen**. 
+11. <a name="Langtangen_2003a"></a> **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     Springer,
     2003.
-12. \label{Langtangen_2008a} **H. P. Langtangen**. 
+12. <a name="Langtangen_2008a"></a> **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
     Springer,
     2008.
-13. \label{Langtangen:95} **H. P. Langtangen and G. Pedersen**. 
+13. <a name="Langtangen:95"></a> **H. P. Langtangen and G. Pedersen**. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by **J. Grue, B. Gjevik and J. E. Weber**,
@@ -22566,40 +22566,40 @@ Filename: `selc_composed.pdf`.
     pp. pp. 117-126,
     1995,
     <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
-14. \label{Langtangen_2012} **H. P. Langtangen**. 
+14. <a name="Langtangen_2012"></a> **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     Springer,
     2012.
-15. \label{Jeberg_et_al_2004} **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
+15. <a name="Jeberg_et_al_2004"></a> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     2004.
-16. \label{Langtangen_1989e} **H. P. Langtangen**. 
+16. <a name="Langtangen_1989e"></a> **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. \label{Langtangen_talk_2007a} **H. P. Langtangen**. 
+17. <a name="Langtangen_talk_2007a"></a> **H. P. Langtangen**. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. \label{Langtangen:85} **H. P. Langtangen**. 
+18. <a name="Langtangen:85"></a> **H. P. Langtangen**. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. \label{Langtangen:91} **H. P. Langtangen and A. Tveito**. 
+19. <a name="Langtangen:91"></a> **H. P. Langtangen and A. Tveito**. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-20. \label{Langtangen:94b} **H. P. Langtangen**. 
+20. <a name="Langtangen:94b"></a> **H. P. Langtangen**. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
     edited by **A. Vermeulen**,
     1994.
 
 ## Appendix: Just for testing; part I
-<a name="app1"/>
+<a name="app1"></a>
 
 This is the first appendix.
 
@@ -22608,7 +22608,7 @@ This is the first appendix.
 Some text.
 
 ## Appendix: Just for testing; part II
-<a name="app2"/>
+<a name="app2"></a>
 
 This is more stuff for an appendix.
 
@@ -22618,12 +22618,12 @@ Without label.
 
 
 ### Appendix: Testing identical titles
-<a name="test:title:id1"/>
+<a name="test:title:id1"></a>
 
 With label.
 
 ### Appendix: Testing identical titles
-<a name="test:title:id2"/>
+<a name="test:title:id2"></a>
 
 What about inserting a quiz?
 
@@ -22798,7 +22798,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "## Section 1\n",
-      "<a name=\"sec1\"/>\n",
+      "<a name=\"sec1\"></a>\n",
       "\n",
       "Here is a nested list:\n",
       "\n",
@@ -22850,7 +22850,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Subsection 1\n",
-      "<a name=\"subsec1\"/>\n",
+      "<a name=\"subsec1\"></a>\n",
       "\n",
       "\n",
       "<!-- Refer to section/appendix etc. at the beginning of the line -->\n",
@@ -23436,12 +23436,12 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Subsection 2: Testing figures\n",
-      "<a name=\"subsec:ex\"/>\n",
+      "<a name=\"subsec:ex\"></a>\n",
       "\n",
       "Test of figures. In particular we refer to [Figure](#fig:impact) in which\n",
       "there is a flow.\n",
       "\n",
-      "<a name=\"fig:impact\"/>\n",
+      "<a name=\"fig:impact\"></a>\n",
       "<p>Visualization of a wave.</p>\n",
       "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
       "\n",
@@ -23462,7 +23462,7 @@ is at the end with only one newline.
       "Here is [figure](#myfig) with a long multi-line caption\n",
       "and an extra space before the FIGURE keyword.\n",
       "\n",
-      "<a name=\"myfig\"/>\n",
+      "<a name=\"myfig\"></a>\n",
       "<p>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$.</p>\n",
       "<img src=\"../doc/src/manual/fig/wave1D.png\" width=500>\n",
       "\n",
@@ -23489,7 +23489,7 @@ is at the end with only one newline.
       "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
       "\n",
       "### The $\\theta$ parameter (not $\\nabla$?)\n",
-      "<a name=\"decay:sec:theta\"/>\n",
+      "<a name=\"decay:sec:theta\"></a>\n",
       "\n",
       "Functions do not always need to be advanced, here is one\n",
       "involving $\\theta$:"
@@ -23553,7 +23553,7 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "<!-- Equation labels as ordinary links -->\n",
-      "<a name=\"aligneq1\"/>\n",
+      "<a name=\"aligneq1\"></a>\n",
       "\n",
       "$$\n",
       "\\begin{equation}\n",
@@ -23579,7 +23579,7 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "<!-- Equation labels as ordinary links -->\n",
-      "<a name=\"aligneq2\"/>\n",
+      "<a name=\"aligneq2\"></a>\n",
       "\n",
       "$$\n",
       "\\begin{equation}  \n",
@@ -23603,7 +23603,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "<!-- begin theorem -->\n",
-      "<a name=\"theorem:fundamental1\"/>\n",
+      "<a name=\"theorem:fundamental1\"></a>\n",
       "\n",
       "\n",
       "**Theorem 5.**\n",
@@ -23621,7 +23621,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Tables\n",
-      "<a name=\"subsec:table\"/>\n",
+      "<a name=\"subsec:table\"></a>\n",
       "\n",
       "\n",
       "<!-- index with comma could fool sphinx -->\n",
@@ -23846,30 +23846,30 @@ is at the end with only one newline.
       "\n",
       "### Bibliography test\n",
       "\n",
-      "Here is an example: [Langtangen_Pedersen_2002] discussed propagation of\n",
-      "large destructive water waves, [Langtangen_et_al_2002] gave\n",
+      "Here is an example: [[Langtangen_Pedersen_2002]](#Langtangen_Pedersen_2002) discussed propagation of\n",
+      "large destructive water waves, [[Langtangen_et_al_2002]](#Langtangen_et_al_2002) gave\n",
       "an overview of numerical methods for solving the Navier-Stokes equations,\n",
       "while the use of Backward Kolmogorov equations for analyzing\n",
-      "random vibrations was investigated in [Langtangen_1994a].\n",
-      "The book chapter [Mardal_et_al_2003a] contains information on\n",
+      "random vibrations was investigated in [[Langtangen_1994a]](#Langtangen_1994a).\n",
+      "The book chapter [[Mardal_et_al_2003a]](#Mardal_et_al_2003a) contains information on\n",
       "C++ software tools for programming multigrid methods. A real retro\n",
-      "reference is [Langtangen_1988d] about a big FORTRAN package.\n",
+      "reference is [[Langtangen_1988d]](#Langtangen_1988d) about a big FORTRAN package.\n",
       "Multiple references are also possible, e.g., see\n",
-      "[Langtangen_Pedersen_2002] [Mardal_et_al_2003a].\n",
+      "[[Langtangen_Pedersen_2002;@Mardal_et_al_2003a]](#Langtangen_Pedersen_2002;@Mardal_et_al_2003a).\n",
       "\n",
       "We need to cite more than 10 papers to reproduce an old formatting\n",
       "problem with blanks in the keys in reST format:\n",
-      "[Langtangen_1992c] [Langtangen_1994a] [Mortensen_et_al_2011] [Langtangen_Pedersen_2002]\n",
+      "[[Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002]](#Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002)\n",
       "and\n",
-      "[Langtangen_et_al_2002] [Glimsdal_et_al_20006] [Rahman_et_al_2006b] [Haga_et_al_2011a] [Langtangen_2003a] [Langtangen_2008a] [Langtangen:95]\n",
+      "[[Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95]](#Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95)\n",
       "and all the work of\n",
-      "[Langtangen_2012] [Mardal_et_al_2003a] [Jeberg_et_al_2004] as well as\n",
-      "old work [Langtangen_1988d] and [Langtangen_1989e], and the\n",
-      "talk [Langtangen_talk_2007a].\n",
-      "Langtangen also had two thesis [Langtangen:85] [Langtangen_1989e].\n",
+      "[[Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004]](#Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004) as well as\n",
+      "old work [[Langtangen_1988d]](#Langtangen_1988d) and [[Langtangen_1989e]](#Langtangen_1989e), and the\n",
+      "talk [[Langtangen_talk_2007a]](#Langtangen_talk_2007a).\n",
+      "Langtangen also had two thesis [[Langtangen:85;@Langtangen_1989e]](#Langtangen:85;@Langtangen_1989e).\n",
       "More retro citations are\n",
-      "the old ME-IN323 book [Langtangen:91] and the\n",
-      "[Langtangen:94b] OONSKI '94 paper.\n",
+      "the old ME-IN323 book [[Langtangen:91]](#Langtangen:91) and the\n",
+      "[[Langtangen:94b]](#Langtangen:94b) OONSKI '94 paper.\n",
       "\n",
       "\n",
       "\n",
@@ -23877,7 +23877,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Example 1: Examples can be typeset as exercises\n",
-      "<a name=\"Example\"/>\n",
+      "<a name=\"Example\"></a>\n",
       "\n",
       "Examples can start with a subsection heading starting with `Example:`\n",
       "and then, with the command-line option `--examples_as_exercises` be\n",
@@ -23909,7 +23909,7 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### URLs\n",
-      "<a name=\"subsubsec:ex\"/>\n",
+      "<a name=\"subsubsec:ex\"></a>\n",
       "\n",
       "Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or\n",
       "the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a\n",
@@ -23983,7 +23983,7 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "<!-- Equation labels as ordinary links -->\n",
-      "<a name=\"my:eq1\"/>\n",
+      "<a name=\"my:eq1\"></a>\n",
       "\n",
       "$$\n",
       "\\begin{equation}\n",
@@ -24037,7 +24037,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Problem 2: Flip a Coin\n",
-      "<a name=\"demo:ex:1\"/>\n",
+      "<a name=\"demo:ex:1\"></a>\n",
       "<!-- keywords = random numbers; Monte Carlo simulation -->\n",
       "\n",
       "<!-- Torture tests -->\n",
@@ -24152,7 +24152,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 3: Test of plain text exercise\n",
-      "<a name=\"my:exer1\"/>\n",
+      "<a name=\"my:exer1\"></a>\n",
       "\n",
       "Very short exercise. What is the capital\n",
       "of Norway?\n",
@@ -24166,7 +24166,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Project 4: Compute a Probability\n",
-      "<a name=\"demo:ex:2\"/>\n",
+      "<a name=\"demo:ex:2\"></a>\n",
       "\n",
       "<!-- Minimalistic exercise -->\n",
       "\n",
@@ -24200,7 +24200,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Project 5: Explore Distributions of Random Circles\n",
-      "<a name=\"proj:circle1\"/>\n",
+      "<a name=\"proj:circle1\"></a>\n",
       "\n",
       "The formula for a circle is given by"
      ]
@@ -24319,7 +24319,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 6: Determine some Distance\n",
-      "<a name=\"exer:dist\"/>\n",
+      "<a name=\"exer:dist\"></a>\n",
       "\n",
       "Intro to this exercise. Questions are in subexercises below.\n",
       "\n",
@@ -24532,7 +24532,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 8: Solution of differential equation\n",
-      "<a name=\"sec:this:exer:de\"/>\n",
+      "<a name=\"sec:this:exer:de\"></a>\n",
       "\n",
       "<!-- --- begin quiz --- -->\n",
       "<!-- --- quiz heading: SOlution of differential equation -->\n",
@@ -24672,7 +24672,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Exercise 10: Make references to projects and problems\n",
-      "<a name=\"exer:some:formula\"/>\n",
+      "<a name=\"exer:some:formula\"></a>\n",
       "\n",
       "<!-- Test comments not at the end only -->\n",
       "Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)\n",
@@ -24695,7 +24695,7 @@ is at the end with only one newline.
       "<!-- --- begin exercise --- -->\n",
       "\n",
       "### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for ipynb\n",
-      "<a name=\"exer:you\"/>\n",
+      "<a name=\"exer:you\"></a>\n",
       "\n",
       "Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),\n",
       "the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),\n",
@@ -24707,84 +24707,84 @@ is at the end with only one newline.
       "\n",
       "## References\n",
       "\n",
-      " 1. \\label{Langtangen_Pedersen_2002} **H. P. Langtangen and G. Pedersen**. \n",
+      " 1. <a name=\"Langtangen_Pedersen_2002\"></a> **H. P. Langtangen and G. Pedersen**. \n",
       "    Propagation of Large Destructive Waves,\n",
       "    *International Journal of Applied Mechanics and Engineering*,\n",
       "    7(1),\n",
       "    pp. 187-204,\n",
       "    2002.\n",
       "\n",
-      " 2. \\label{Langtangen_et_al_2002} **H. P. Langtangen, K.-A. Mardal and R. Winther**. \n",
+      " 2. <a name=\"Langtangen_et_al_2002\"></a> **H. P. Langtangen, K.-A. Mardal and R. Winther**. \n",
       "    Numerical Methods for Incompressible Viscous Flow,\n",
       "    *Advances in Water Resources*,\n",
       "    25,\n",
       "    pp. 1125-1146,\n",
       "    2002.\n",
       "\n",
-      " 3. \\label{Langtangen_1994a} **H. P. Langtangen**. \n",
+      " 3. <a name=\"Langtangen_1994a\"></a> **H. P. Langtangen**. \n",
       "    Numerical Solution of First Passage Problems in Random Vibrations,\n",
       "    *SIAM Journal of Scientific and Statistical Computing*,\n",
       "    15,\n",
       "    pp. 997-996,\n",
       "    1994.\n",
       "\n",
-      " 4. \\label{Mardal_et_al_2003a} **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. \n",
+      " 4. <a name=\"Mardal_et_al_2003a\"></a> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. \n",
       "    Software Tools for Multigrid Methods,\n",
       "    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,\n",
       "    edited by **H. P. Langtangen and A. Tveito**,\n",
       "    Springer,\n",
       "    2003.\n",
       "\n",
-      " 5. \\label{Langtangen_1988d} **H. P. Langtangen**. \n",
+      " 5. <a name=\"Langtangen_1988d\"></a> **H. P. Langtangen**. \n",
       "    The FEMDEQS Program System,\n",
       "    *Department of Mathematics, University of Oslo*,\n",
       "    1989.\n",
       "\n",
-      " 6. \\label{Langtangen_1992c} **H. P. Langtangen**. \n",
+      " 6. <a name=\"Langtangen_1992c\"></a> **H. P. Langtangen**. \n",
       "    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,\n",
       "    *SIAM Journal on Scientific Computing*,\n",
       "    13,\n",
       "    pp. 1394-1417,\n",
       "    1992.\n",
       "\n",
-      " 7. \\label{Mortensen_et_al_2011} **M. Mortensen, H. P. Langtangen and G. N. Wells**. \n",
+      " 7. <a name=\"Mortensen_et_al_2011\"></a> **M. Mortensen, H. P. Langtangen and G. N. Wells**. \n",
       "    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,\n",
       "    *Advances in Water Resources*,\n",
       "    34(9),\n",
       "    [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),\n",
       "    2011.\n",
       "\n",
-      " 8. \\label{Glimsdal_et_al_20006} **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt**. \n",
+      " 8. <a name=\"Glimsdal_et_al_20006\"></a> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt**. \n",
       "    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,\n",
       "    *International Journal of Fluid Mechanics Research*,\n",
       "    33(1),\n",
       "    pp. 15-43,\n",
       "    2006.\n",
       "\n",
-      " 9. \\label{Rahman_et_al_2006b} **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. \n",
+      " 9. <a name=\"Rahman_et_al_2006b\"></a> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. \n",
       "    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,\n",
       "    *Physical Review B: Condensed Matter and Materials Physics*,\n",
       "    74,\n",
       "    2006.\n",
       "\n",
-      "10. \\label{Haga_et_al_2011a} **J. B. Haga, H. Osnes and H. P. Langtangen**. \n",
+      "10. <a name=\"Haga_et_al_2011a\"></a> **J. B. Haga, H. Osnes and H. P. Langtangen**. \n",
       "    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,\n",
       "    *International Journal of Analytical and Numerical Methods in Geomechanics*,\n",
       "    [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),\n",
       "    2011,\n",
       "    <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.\n",
       "\n",
-      "11. \\label{Langtangen_2003a} **H. P. Langtangen**. \n",
+      "11. <a name=\"Langtangen_2003a\"></a> **H. P. Langtangen**. \n",
       "    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,\n",
       "    Springer,\n",
       "    2003.\n",
       "\n",
-      "12. \\label{Langtangen_2008a} **H. P. Langtangen**. \n",
+      "12. <a name=\"Langtangen_2008a\"></a> **H. P. Langtangen**. \n",
       "    *Python Scripting for Computational Science*,\n",
       "    Springer,\n",
       "    2008.\n",
       "\n",
-      "13. \\label{Langtangen:95} **H. P. Langtangen and G. Pedersen**. \n",
+      "13. <a name=\"Langtangen:95\"></a> **H. P. Langtangen and G. Pedersen**. \n",
       "    Finite Elements for the Boussinesq Wave Equations,\n",
       "    Waves and Non-linear Processes in Hydrodynamics,\n",
       "    edited by **J. Grue, B. Gjevik and J. E. Weber**,\n",
@@ -24793,46 +24793,46 @@ is at the end with only one newline.
       "    1995,\n",
       "    <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.\n",
       "\n",
-      "14. \\label{Langtangen_2012} **H. P. Langtangen**. \n",
+      "14. <a name=\"Langtangen_2012\"></a> **H. P. Langtangen**. \n",
       "    *A Primer on Scientific Programming With Python*,\n",
       "    Springer,\n",
       "    2012.\n",
       "\n",
-      "15. \\label{Jeberg_et_al_2004} **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. \n",
+      "15. <a name=\"Jeberg_et_al_2004\"></a> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. \n",
       "    Optimization With Diffpack: Practical Example From Welding,\n",
       "    *Simula Research Laboratory*,\n",
       "    2004.\n",
       "\n",
-      "16. \\label{Langtangen_1989e} **H. P. Langtangen**. \n",
+      "16. <a name=\"Langtangen_1989e\"></a> **H. P. Langtangen**. \n",
       "    Computational Methods for Two-Phase Flow in Oil Reservoirs,\n",
       "    Ph.D. Thesis,\n",
       "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
       "    1989.\n",
       "\n",
-      "17. \\label{Langtangen_talk_2007a} **H. P. Langtangen**. \n",
+      "17. <a name=\"Langtangen_talk_2007a\"></a> **H. P. Langtangen**. \n",
       "    Computational Modeling of Huge Tsunamis From Asteroid Impacts,\n",
       "    Invited keynote lecture at the \\emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,\n",
       "    2007.\n",
       "\n",
-      "18. \\label{Langtangen:85} **H. P. Langtangen**. \n",
+      "18. <a name=\"Langtangen:85\"></a> **H. P. Langtangen**. \n",
       "    Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,\n",
       "    M.Sc. Thesis,\n",
       "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
       "    1985.\n",
       "\n",
-      "19. \\label{Langtangen:91} **H. P. Langtangen and A. Tveito**. \n",
+      "19. <a name=\"Langtangen:91\"></a> **H. P. Langtangen and A. Tveito**. \n",
       "    Numerical Methods in Continuum Mechanics,\n",
       "    *Center for Industrial Research*,\n",
       "    1991.\n",
       "\n",
-      "20. \\label{Langtangen:94b} **H. P. Langtangen**. \n",
+      "20. <a name=\"Langtangen:94b\"></a> **H. P. Langtangen**. \n",
       "    Diffpack: Software for Partial Differential Equations,\n",
       "    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,\n",
       "    edited by **A. Vermeulen**,\n",
       "    1994.\n",
       "\n",
       "## Appendix: Just for testing; part I\n",
-      "<a name=\"app1\"/>\n",
+      "<a name=\"app1\"></a>\n",
       "\n",
       "This is the first appendix.\n",
       "\n",
@@ -24841,7 +24841,7 @@ is at the end with only one newline.
       "Some text.\n",
       "\n",
       "## Appendix: Just for testing; part II\n",
-      "<a name=\"app2\"/>\n",
+      "<a name=\"app2\"></a>\n",
       "\n",
       "This is more stuff for an appendix.\n",
       "\n",
@@ -24851,12 +24851,12 @@ is at the end with only one newline.
       "\n",
       "\n",
       "### Appendix: Testing identical titles\n",
-      "<a name=\"test:title:id1\"/>\n",
+      "<a name=\"test:title:id1\"></a>\n",
       "\n",
       "With label.\n",
       "\n",
       "### Appendix: Testing identical titles\n",
-      "<a name=\"test:title:id2\"/>\n",
+      "<a name=\"test:title:id2\"></a>\n",
       "\n",
       "What about inserting a quiz?\n",
       "\n",
@@ -25344,7 +25344,7 @@ is part of the abstract.
 
 
 ## Section 1
-<a name="sec1"/>
+<a name="sec1"></a>
 
 Here is a nested list:
 
@@ -25384,7 +25384,7 @@ Even Equation \eqref{my:eq1} without the tilde.
 
 
 ### Subsection 1
-<a name="subsec1"/>
+<a name="subsec1"></a>
 
 
 <!-- Refer to section/appendix etc. at the beginning of the line -->
@@ -25774,13 +25774,13 @@ of course remain a tilde in those contexts.)
 
 
 ### Subsection 2: Testing figures
-<a name="subsec:ex"/>
+<a name="subsec:ex"></a>
 
 Test of figures. In particular we refer to [Figure](#fig:impact) in which
 there is a flow.
 
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <a name="fig:impact"/></em></p> -->
-![<p><em>Visualization of a wave. <a name="fig:impact"/></em></p>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <a name="fig:impact"></a></em></p> -->
+![<p><em>Visualization of a wave. <a name="fig:impact"></a></em></p>](../doc/src/manual/fig/wave1D.png)
 
 Figures without captions are allowed and will be inlined.
 
@@ -25794,8 +25794,8 @@ Figures without captions are allowed and will be inlined.
 Here is [figure](#myfig) with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p> -->
-![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"/></em></p>](../doc/src/manual/fig/wave1D.png)
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"></a></em></p> -->
+![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <a name="myfig"></a></em></p>](../doc/src/manual/fig/wave1D.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
 
@@ -25815,7 +25815,7 @@ Movies are tested in separate file `movies.do.txt`.
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
 ### The $\theta$ parameter (not $\nabla$?)
-<a name="decay:sec:theta"/>
+<a name="decay:sec:theta"></a>
 
 Functions do not always need to be advanced, here is one
 involving $\theta$:
@@ -25883,7 +25883,7 @@ Should look nice in most formats!
 
 
 <!-- begin theorem -->
-<a name="theorem:fundamental1"/>
+<a name="theorem:fundamental1"></a>
 
 
 *Theorem 5.*
@@ -25901,7 +25901,7 @@ achievement.
 
 
 ### Tables
-<a name="subsec:table"/>
+<a name="subsec:table"></a>
 
 
 <!-- index with comma could fool sphinx -->
@@ -26103,30 +26103,30 @@ period, like `.txt`.
 
 ### Bibliography test
 
-Here is an example: @Langtangen_Pedersen_2002 discussed propagation of
-large destructive water waves, @Langtangen_et_al_2002 gave
+Here is an example: [@Langtangen_Pedersen_2002] discussed propagation of
+large destructive water waves, [@Langtangen_et_al_2002] gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in @Langtangen_1994a.
-The book chapter @Mardal_et_al_2003a contains information on
+random vibrations was investigated in [@Langtangen_1994a].
+The book chapter [@Mardal_et_al_2003a] contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is @Langtangen_1988d about a big FORTRAN package.
+reference is [@Langtangen_1988d] about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-@Langtangen_Pedersen_2002;@Mardal_et_al_2003a.
+[@Langtangen_Pedersen_2002;@Mardal_et_al_2003a].
 
 We need to cite more than 10 papers to reproduce an old formatting
 problem with blanks in the keys in reST format:
-@Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002
+[@Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002]
 and
-@Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95
+[@Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95]
 and all the work of
-@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004 as well as
-old work @Langtangen_1988d and @Langtangen_1989e, and the
-talk @Langtangen_talk_2007a.
-Langtangen also had two thesis @Langtangen:85;@Langtangen_1989e.
+[@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004] as well as
+old work [@Langtangen_1988d] and [@Langtangen_1989e], and the
+talk [@Langtangen_talk_2007a].
+Langtangen also had two thesis [@Langtangen:85;@Langtangen_1989e].
 More retro citations are
-the old ME-IN323 book @Langtangen:91 and the
-@Langtangen:94b OONSKI '94 paper.
+the old ME-IN323 book [@Langtangen:91] and the
+[@Langtangen:94b] OONSKI '94 paper.
 
 
 
@@ -26134,7 +26134,7 @@ the old ME-IN323 book @Langtangen:91 and the
 <!-- --- begin exercise --- -->
 
 ### Example 1: Examples can be typeset as exercises
-<a name="Example"/>
+<a name="Example"></a>
 
 Examples can start with a subsection heading starting with `Example:`
 and then, with the command-line option `--examples_as_exercises` be
@@ -26166,7 +26166,7 @@ maybe over multiple doconce input lines.
 
 
 ### URLs
-<a name="subsubsec:ex"/>
+<a name="subsubsec:ex"></a>
 
 Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or
 the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a
@@ -26273,7 +26273,7 @@ between there we have  [Exercise 10: Make references to projects and problems](#
 <!-- --- begin exercise --- -->
 
 ### Problem 2: Flip a Coin
-<a name="demo:ex:1"/>
+<a name="demo:ex:1"></a>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <!-- Torture tests -->
@@ -26375,7 +26375,7 @@ exercises.
 <!-- --- begin exercise --- -->
 
 ### Exercise 3: Test of plain text exercise
-<a name="my:exer1"/>
+<a name="my:exer1"></a>
 
 Very short exercise. What is the capital
 of Norway?
@@ -26389,7 +26389,7 @@ Filename: `myexer1.py`.
 <!-- --- begin exercise --- -->
 
 ### Project 4: Compute a Probability
-<a name="demo:ex:2"/>
+<a name="demo:ex:2"></a>
 
 <!-- Minimalistic exercise -->
 
@@ -26422,7 +26422,7 @@ compute the probability as $M/N$.
 <!-- --- begin exercise --- -->
 
 ### Project 5: Explore Distributions of Random Circles
-<a name="proj:circle1"/>
+<a name="proj:circle1"></a>
 
 The formula for a circle is given by
 
@@ -26514,7 +26514,7 @@ and give some perspectives.
 <!-- --- begin exercise --- -->
 
 ### Exercise 6: Determine some Distance
-<a name="exer:dist"/>
+<a name="exer:dist"></a>
 
 Intro to this exercise. Questions are in subexercises below.
 
@@ -26660,7 +26660,7 @@ lambda x: x+2
 <!-- --- begin exercise --- -->
 
 ### Exercise 8: Solution of differential equation
-<a name="sec:this:exer:de"/>
+<a name="sec:this:exer:de"></a>
 
 *Cannot typeset quiz*: "Given
 
@@ -26702,7 +26702,7 @@ With some text, before we continue with exercises.
 <!-- --- begin exercise --- -->
 
 ### Exercise 10: Make references to projects and problems
-<a name="exer:some:formula"/>
+<a name="exer:some:formula"></a>
 
 <!-- Test comments not at the end only -->
 Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
@@ -26724,7 +26724,7 @@ Filename: `verify_formula.py`.
 <!-- --- begin exercise --- -->
 
 ### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for pandoc
-<a name="exer:you"/>
+<a name="exer:you"></a>
 
 Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),
 the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),
@@ -26736,72 +26736,72 @@ Filename: `selc_composed.pdf`.
 
 ## References
 
- 1. \label{Langtangen_Pedersen_2002} **H. P. Langtangen and G. Pedersen**. 
+ 1. <a name="Langtangen_Pedersen_2002"></a> **H. P. Langtangen and G. Pedersen**. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
- 2. \label{Langtangen_et_al_2002} **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
+ 2. <a name="Langtangen_et_al_2002"></a> **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
- 3. \label{Langtangen_1994a} **H. P. Langtangen**. 
+ 3. <a name="Langtangen_1994a"></a> **H. P. Langtangen**. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
- 4. \label{Mardal_et_al_2003a} **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
+ 4. <a name="Mardal_et_al_2003a"></a> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by **H. P. Langtangen and A. Tveito**,
     Springer,
     2003.
- 5. \label{Langtangen_1988d} **H. P. Langtangen**. 
+ 5. <a name="Langtangen_1988d"></a> **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     1989.
- 6. \label{Langtangen_1992c} **H. P. Langtangen**. 
+ 6. <a name="Langtangen_1992c"></a> **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
- 7. \label{Mortensen_et_al_2011} **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
+ 7. <a name="Mortensen_et_al_2011"></a> **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
- 8. \label{Glimsdal_et_al_20006} **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
+ 8. <a name="Glimsdal_et_al_20006"></a> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
     Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
- 9. \label{Rahman_et_al_2006b} **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
+ 9. <a name="Rahman_et_al_2006b"></a> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-10. \label{Haga_et_al_2011a} **J. B. Haga, H. Osnes and H. P. Langtangen**. 
+10. <a name="Haga_et_al_2011a"></a> **J. B. Haga, H. Osnes and H. P. Langtangen**. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
     2011,
     <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
-11. \label{Langtangen_2003a} **H. P. Langtangen**. 
+11. <a name="Langtangen_2003a"></a> **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     Springer,
     2003.
-12. \label{Langtangen_2008a} **H. P. Langtangen**. 
+12. <a name="Langtangen_2008a"></a> **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
     Springer,
     2008.
-13. \label{Langtangen:95} **H. P. Langtangen and G. Pedersen**. 
+13. <a name="Langtangen:95"></a> **H. P. Langtangen and G. Pedersen**. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by **J. Grue, B. Gjevik and J. E. Weber**,
@@ -26809,40 +26809,40 @@ Filename: `selc_composed.pdf`.
     pp. pp. 117-126,
     1995,
     <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
-14. \label{Langtangen_2012} **H. P. Langtangen**. 
+14. <a name="Langtangen_2012"></a> **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     Springer,
     2012.
-15. \label{Jeberg_et_al_2004} **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
+15. <a name="Jeberg_et_al_2004"></a> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     2004.
-16. \label{Langtangen_1989e} **H. P. Langtangen**. 
+16. <a name="Langtangen_1989e"></a> **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. \label{Langtangen_talk_2007a} **H. P. Langtangen**. 
+17. <a name="Langtangen_talk_2007a"></a> **H. P. Langtangen**. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. \label{Langtangen:85} **H. P. Langtangen**. 
+18. <a name="Langtangen:85"></a> **H. P. Langtangen**. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. \label{Langtangen:91} **H. P. Langtangen and A. Tveito**. 
+19. <a name="Langtangen:91"></a> **H. P. Langtangen and A. Tveito**. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-20. \label{Langtangen:94b} **H. P. Langtangen**. 
+20. <a name="Langtangen:94b"></a> **H. P. Langtangen**. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
     edited by **A. Vermeulen**,
     1994.
 
 ## Appendix: Just for testing; part I
-<a name="app1"/>
+<a name="app1"></a>
 
 This is the first appendix.
 
@@ -26851,7 +26851,7 @@ This is the first appendix.
 Some text.
 
 ## Appendix: Just for testing; part II
-<a name="app2"/>
+<a name="app2"></a>
 
 This is more stuff for an appendix.
 
@@ -26861,12 +26861,12 @@ Without label.
 
 
 ### Appendix: Testing identical titles
-<a name="test:title:id1"/>
+<a name="test:title:id1"></a>
 
 With label.
 
 ### Appendix: Testing identical titles
-<a name="test:title:id2"/>
+<a name="test:title:id2"></a>
 
 What about inserting a quiz?
 
@@ -65168,6 +65168,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -70779,7 +70784,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f571a57d938>
+verbatim is to be replaced using <function html_verbatim at 0x7f4a5024d938>
 
 
 First occurence: " `mako`."
@@ -74740,7 +74745,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Dec 11 21:30:46 2014.
+# sphinx-quickstart on Sat Dec 13 12:49:48 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -89701,7 +89706,7 @@ The table of contents is removed by writing `TOC: off`.
 
 
 ### Section Types
-<a name="quick:sections"/>
+<a name="quick:sections"></a>
 
 
  Section type                     Syntax                    
