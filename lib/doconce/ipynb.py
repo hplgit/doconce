@@ -61,13 +61,13 @@ def ipynb_figure(m):
         # (no control of size, then one must use HTML syntax)
         text = ''
         if label is not None:
-            text += '<a name="%s"/>\n' % label
+            text += '<a name="%s"></a>\n' % label
         text += '![%s](%s)' % (caption, filename)
     elif display_method == 'imgtag':
         # Plain <img tag, allows specifying the image size
         text = ''
         if label is not None:
-            text += '<a name="%s"/>' % label
+            text += '<a name="%s"></a>' % label
         text += """
 <p>%s</p>
 <img src="%s" %s>
@@ -187,6 +187,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     if newcommands:
         filestr = newcommands + filestr
     """
+    # Fix pandoc citations to normal internal links: [[key]](#key)
+    filestr = re.sub(r'\[@(.+?)\]', r'[[\g<1>]](#\g<1>)', filestr)
 
     # filestr becomes json list after this function so we must typeset
     # envirs here. All envirs are typeset as pandoc_quote.
@@ -433,11 +435,11 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         elif eq_type == 'heading':
             tex_blocks[i] = '### $ ' + '  '.join(tex_blocks[i].splitlines()) + ' $'
 
-        # Add standard labels <a name=""/> for the eqs above the block
+        # Add standard labels <a name=""></a> for the eqs above the block
         # (for reference)
         if labels:
             tex_blocks[i] = '<!-- Equation labels as ordinary links -->\n' + \
-                            ' '.join(['<a name="%s"/>' % label
+                            ' '.join(['<a name="%s"></a>' % label
                                       for label in labels]) + '\n\n' + \
                                       tex_blocks[i]
 
@@ -494,8 +496,9 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     #filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\\eqref{\g<1>}', filestr)
     # Now we use explicit references to tags
     def subst(m):
+        label = m.group(1)
         try:
-            return r'[(%s)](#%s)' % (label2tag[m.group(1)], label)
+            return r'[(%s)](#%s)' % (label2tag[label], label)
         except KeyError as e:
             print '*** error: label "%s" is not defined' % str(e)
 
