@@ -184,11 +184,21 @@ css_link_solarized_thomasf_light = '<link href="http://thomasf.github.io/solariz
 css_link_solarized_thomasf_dark = '<link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet">'
 css_solarized_thomasf_gray = """\
 h1, h2, h3, h4 { color:#839496; font-weight: bold; } /* gray */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 """
 css_solarized_thomasf_green = """\
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 """  # h2, h3 are green
 
 
