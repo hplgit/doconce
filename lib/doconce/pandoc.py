@@ -270,11 +270,6 @@ def pandoc_ref_and_label(section_label2title, format, filestr):
     replacement = r' ref{'
     filestr = re.sub(pattern, replacement, filestr)
 
-    # Use HTML anchors for labels and [link text](#label) for references
-    # outside mathematics.
-    #filestr = re.sub(r' *label\{.+?\}', '', filestr)
-    filestr = re.sub(r'label\{(.+?)\}', '<a name="\g<1>"/>', filestr)
-
     # Replace all references to sections. Pandoc needs a coding of
     # the section header as link. (Not using this anymore.)
     def title2pandoc(title):
@@ -324,6 +319,13 @@ def pandoc_index_bib(filestr, index, citations, pubfile, pubdata):
     # in special comments to keep the information)
 
     filestr = re.sub(r'idx\{.+?\}' + '\n?', '', filestr)
+
+    # Use HTML anchors for labels and [link text](#label) for references
+    # outside mathematics.
+    #filestr = re.sub(r' *label\{.+?\}', '', filestr)
+    filestr = re.sub(r'label\{(.+?)\}', '<a name="\g<1>"></a>', filestr)
+    # Note: HTML5 should have <sometag id="..."></sometag> instead
+
     return filestr
 
 def pandoc_quote(block, format, text_size='normal'):

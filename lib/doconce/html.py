@@ -694,10 +694,15 @@ def html_code(filestr, code_blocks, code_block_types,
             # Set sensible default values
             if option('html_style=', '').startswith('solarized'):
                 pygm_style = 'none'
+                # 2nd best: perldoc (light), see below
+            elif option('html_style=', '').startswith('tactile'):
+                pygm_style = 'trac'
+            elif option('html_style=', '') == 'rossant':
+                pygm_style = 'monokai'
             else:
                 pygm_style = 'default'
         else:
-            # Fix style for solarized
+            # Fix style for solarized and rossant
             if option('html_style=') == 'solarized':
                 if pygm_style != 'perldoc':
                     print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized' % pygm_style
@@ -707,7 +712,7 @@ def html_code(filestr, code_blocks, code_block_types,
                 if pygm_style != 'friendly':
                     print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized_dark' % pygm_style
                     print '    automatically changed to --html_style=friendly'
-                    print '    (even better not to specify --pygm_style for solarized_dark)'
+                    print '    (it is recommended not to specify --pygm_style for solarized_dark)'
                     pygm_style = 'friendly'
 
         legal_lexers = get_legal_pygments_lexers()
