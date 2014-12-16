@@ -2458,19 +2458,19 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}"""
             INTRO['latex'] += r"""
 """
-        if option('latex_line_numbers'):
-            INTRO['latex'] += r"""
+    if option('latex_line_numbers'):
+        INTRO['latex'] += r"""
 \usepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 """
-        if option('latex_labels_in_margin'):
-            INTRO['latex'] += r"""
+    if option('latex_labels_in_margin'):
+        INTRO['latex'] += r"""
 % Display labels for sections, equations, and citations in the margin
 \usepackage{showlabels}
 \showlabels{cite}
 """
-        if option('latex_double_spacing'):
-            INTRO['latex'] += r"""
+    if option('latex_double_spacing'):
+        INTRO['latex'] += r"""
 \onehalfspacing    % from setspace package
 %\doublespacing
 """

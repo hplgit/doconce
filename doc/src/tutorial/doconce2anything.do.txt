@@ -594,16 +594,18 @@ look for options starting with `--latex` to get a more verbose description):
 
  * `--latex_font=helvetica,palatino`
  * `--latex_papersize=a4,a6`
- * `--latex_bibstyle=plain`
+ * `--latex_bibstyle=plain` (name of BibTeX style)
  * `--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection`
  * `--latex_style=std, Springer_lncse, Springer_llncs, Springer_T2, siamltex, siamltexmm, elsevier`
- * `--latex_list_of_exercises=loe,toc,none`
- * `--latex_fancy_header`
- * `--latex_section_headings=std,blue,strongblue,gray,gray-wide`
- * `--latex_colored_table_rows=blue,gray,no`
- * `--latex_todonotes`
+ * `--latex_list_of_exercises=loe,toc,none` (LaTeX list of exercises, integrated into the table of contents, or no list)
+ * `--latex_fancy_header` (chapter/section headings at top of pages, style depends on value of `--latex_section_headings`)
+ * `--latex_section_headings=std,blue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
+ * `--latex_colored_table_rows=blue,gray,no` (color of every two lines in tables)
+ * `--latex_todonotes` (inline comments typeset as ``bubbles'')
  * `--latex_double_spacing`
- * `--latex_preamble=filename`
+ * `--latex_line_numbers`
+ * `--latex_labels_in_margin` (name of section, equation, citation labels in the margin)
+ * `--latex_preamble=filename` (user-specific preamble)
  * `--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2`
  * `--latex_admon_color=0.34,0.02,0.8`
  * `--latex_admon_envir_map=2`
@@ -611,12 +613,17 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_movie=media9,href,multimedia,movie15`
  * `--latex_movie_controls=on`
  * `--latex_external_movie_viewer` (for `movie15` package)
- * `--xelatex`
+ * `--xelatex` (prepare for XeLaTeX)
 
 The LaTeX style is much governed by `--latex_title_layout` and `--latex_style`.
 For the former, `titlepage` gives a separate title page; `std` is just standard
 LaTeX handling of title, author, and date; `doconce_heading` is a more modern heading, `Springer_collection` is used with `--latex_style=Springer_lncse` for an edited book; `beamer` is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For `--latex_style`,
 `std` gives standard LaTeX behavior; `Springer_lncse` is for Springer's LNCSE book series style (to be used with `--latex_title_layout=Springer_collection` if the book is an edited book); `Springer_llncs` is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres `--latex_title_layout=Springer_collection`); `Springer_T2` for Springer's T2 book layout, `siamltex`, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles `siamltex.cls` and `siam10.clo`), `siamltexmm` for the new multimedia SIAM journal style (requires `siamltex.cls` and `siam10.clo`), `elsevier` for the style of papers to be submitted to Elsevier journals (`--latex_elsevier_journal=` can be used to set the journal name, and the style requires `elsarticle.cls` and `elsarticle-num.bst`).
+
+During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
+This is enabled by the options `--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin`. One may also (automatically) edit the
+`final` argument in the `documentclass` heading to `draft` as this will
+mark overful lines (hboxes).
 
 idx{LaTeX syntax highlighting}
 
