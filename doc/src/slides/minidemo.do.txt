@@ -1,0 +1,47 @@
+TITLE: Ultraquick Demo
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+!split
+===== Starting point: basic math =====
+
+!bblock Why Python?
+Python is better than Matlab and C++ are for those with too much
+spare time.
+!eblock
+
+Let's add!
+
+!bt
+\[ a + b = c \]
+!et
+
+!bc pypro
+a = 2
+b = 3
+c = a + b
+print c
+!ec
+
+!split
+===== Moving on: breathtaking graphics =====
+
+Let's plot!
+
+!bt
+\[ f(x) = e^{-x^2} \]
+!et
+
+!bc pypro
+from numpy import linspace, exp
+from matplotlib.pyplot import plot, show
+x = linspace(-4, 4, 101)
+y = exp(-x**2)
+plot(x, y)
+show()
+!ec
+
+% if FORMAT != 'ipynb':
+## Include figure if not notebook
+FIGURE: [minidemo_fig, width=500 frac=0.5]
+% endif
