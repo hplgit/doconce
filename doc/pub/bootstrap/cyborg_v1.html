@@ -32,18 +32,19 @@ pre { color: inherit; background-color: transparent; }
                0,
                None,
                '___sec0'),
-              (' Themes ', 1, None, '___sec1'),
-              (' Demonstrations of admons ', 1, None, '___sec2'),
+              (' Navigation ', 1, None, '___sec1'),
+              (' Themes ', 1, None, '___sec2'),
+              (' Demonstrations of admons ', 1, None, '___sec3'),
               (' Horizontal alignment of document elements ',
                1,
                'sec:examples',
                'sec:examples'),
-              (' Principles of grid structures ', 2, None, '___sec4'),
-              (' Example on a 1x3 grid structure ', 2, None, '___sec5'),
+              (' Principles of grid structures ', 2, None, '___sec5'),
+              (' Example on a 1x3 grid structure ', 2, None, '___sec6'),
               (' Variation of the previous grid structure using admons ',
                2,
                None,
-               '___sec6')]}
+               '___sec7')]}
 end of tocinfo -->
 
 <body>
@@ -81,12 +82,13 @@ MathJax.Hub.Config({
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>More details on writing DocOnce documents with Bootstrap layout</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Navigation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Themes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrations of admons</a></li>
      <!-- navigation toc: --> <li><a href="#sec:examples" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Horizontal alignment of document elements</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principles of grid structures</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a 1x3 grid structure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variation of the previous grid structure using admons</a></li>
 
         </ul>
       </li>
@@ -130,15 +132,6 @@ background and large fonts off), or <code>h2</code> (to replace the large font i
 the document title by a smaller font).
 
 <p>
-A multiple-page document is as usual created by inserting <code>!split</code> at desired
-places, usually before selected sections.
-<code>doconce split_html</code> splits the document and inserts
-navigation button (previous and next page) at the bottom of each
-page. The option <code>--pagination</code> can be specified as part of the
-<code>doconce split_html</code> command to get a different navigation bar at the bottom
-where also the page number is seen.
-
-<p>
 <!-- A split before the first section will enable a button in the jumbotron -->
 <!-- for going to the first real page -->
 
@@ -150,7 +143,33 @@ where also the page number is seen.
 
 <h1 class="page-header" id="___sec0">More details on writing DocOnce documents with Bootstrap layout <a name="___sec0"></a></h1>
 
-<h1 id="___sec1">Themes <a name="___sec1"></a></h1>
+<h1 id="___sec1">Navigation <a name="___sec1"></a></h1>
+
+<p>
+A multiple-page document is as usual created by inserting <code>!split</code> at
+desired places, usually before selected sections.  <code>doconce
+split_html</code> splits the document and inserts navigation button
+(previous and next page) at the bottom of each page. The option
+<code>--pagination</code> can be specified as part of the <code>doconce split_html</code>
+command to get a different navigation bar at the bottom where also the
+page number is seen.
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_style=bootstrap_bluegray
+Terminal&gt; doconce split_html mydoc --pagination
+</pre></div>
+<p>
+The top navigation bar has two links. The title to the left brings you back to
+the first page of the document. The <em>Content</em> link to the right has
+a table of contents pull down menu. For large documents, the table of
+contents can be very long, and in those cases, subsections are dropped
+to make the pull down menu shorter than the page height. The
+navigation bar on top can be turned off by the option
+<code>--html_bootstrap_navbar=off</code> to the <code>doconce format</code> command.
+
+<h1 id="___sec2">Themes <a name="___sec2"></a></h1>
 
 <p>
 DocOnce supports the following themes from the Bootstrap family:
@@ -237,7 +256,7 @@ can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
 without any icon, but with an optional title.
 
-<h1 id="___sec2">Demonstrations of admons <a name="___sec2"></a></h1>
+<h1 id="___sec3">Demonstrations of admons <a name="___sec3"></a></h1>
 
 <p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
@@ -341,7 +360,7 @@ Tables often get a fancy typesetting:
 
 <h1 id="sec:examples">Horizontal alignment of document elements<a name="sec:examples"></a></h1>
 
-<h2 id="___sec4">Principles of grid structures <a name="___sec4"></a></h2>
+<h2 id="___sec5">Principles of grid structures <a name="___sec5"></a></h2>
 
 <p>
 The HTML page can feature a grid structure of cells, defined by
@@ -420,7 +439,7 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 </div>
 
 
-<h2 id="___sec5">Example on a 1x3 grid structure <a name="___sec5"></a></h2>
+<h2 id="___sec6">Example on a 1x3 grid structure <a name="___sec6"></a></h2>
 
 <p>
 <div class="row"> <!-- begin cell row -->
@@ -476,7 +495,7 @@ we can run the program:
   </div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2 id="___sec6">Variation of the previous grid structure using admons <a name="___sec6"></a></h2>
+<h2 id="___sec7">Variation of the previous grid structure using admons <a name="___sec7"></a></h2>
 
 <p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->

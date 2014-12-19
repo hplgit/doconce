@@ -3523,6 +3523,23 @@ def doconce2format(filestr, format):
         debugpr('The file after second reformatting of quizzes:', filestr)
         report_progress('handled second reformatting of quizzes')
 
+    if format == 'html':
+        # Set value for URL to raw github (doconce) files
+        # (must be done at this late stage)
+        rawgit = option('html_raw_github_url=', 'safe')
+        if rawgit in ('safe', 'cdn.rawgit'):
+            raw_github_url = 'https:://cdn.rawgit.com'
+        elif rawgit in ('test', 'rawgit'):
+            raw_github_url = 'https://rawgit.com'
+        elif rawgit in ('github', 'raw.github'):
+            raw_github_url = 'https://raw.github.com'
+        elif rawgit in ('githubusercontent', 'raw.githubusercontent'):
+            raw_github_url = 'https://raw.githubusercontent.com'
+        filestr = filestr.replace('RAW_GITHUB_URL', raw_github_url)
+        if option('html_DOCTYPE'):
+            filestr = '<!DOCTYPE HTML>\n' + filestr
+
+
     # Next step: remove exercise solution/answers, notes, etc
     # (Note: must be done after code and tex blocks are inserted!
     # Otherwise there is a mismatch between all original blocks
