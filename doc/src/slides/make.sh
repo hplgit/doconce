@@ -29,42 +29,44 @@ doconce replace '\eqref{myeq}' '(ref{myeq})' $1
 doconce replace '\eqref{mysec:eq:Dudt}' '(ref{mysec:eq:Dudt})' $1
 }
 
+rawgit="--html_raw_github_url=raw.github"
+
 html=${name}-reveal
-system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
 system doconce slides_html $html reveal --html_slide_theme=darkgray
 editfix $html.html
 # Crank up the font:
 #doconce replace 'pre style="' 'pre style="font-size: 120%; ' $html.html
 
 html=${name}-reveal-beige
-system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
 system doconce slides_html $html reveal --html_slide_theme=beige
 editfix $html.html
 
 html=${name}-reveal-white
-system doconce format html $name --pygments_html_style=default --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=default --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
 system doconce slides_html $html reveal --html_slide_theme=simple
 editfix $html.html
 
 html=${name}-deck
-system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
 system doconce slides_html $html deck --html_slide_theme=sandstone.default
 editfix $html.html
 
 # Plain HTML documents
 html=${name}-solarized
-system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $rawgit
 editfix $html.html
 system doconce split_html $html.html
 
 html=${name}-plain
-system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html
+system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html $rawgit
 editfix $html.html
 system doconce split_html $html.html
 
 # One big HTML file with space between the slides
 html=${name}-1
-system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html
+system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html $rawgit
 editfix $html.html
 # Add space between splits
 system doconce split_html $html --method=space8
@@ -123,7 +125,7 @@ dest=../../pub/slides
 
 cp -r ${name}*.pdf ._${name}*.html *.md *.gwiki ${name}*.html deck.js reveal.js fig $dest/
 
-doconce format html sw_index.do.txt --html_style=bootstrap_bloodish --html_links_in_new_window
+doconce format html sw_index.do.txt --html_style=bootstrap_bloodish --html_links_in_new_window $rawgit
 cp sw_index.html $dest/index.html
 
 #drop demo part
@@ -132,7 +134,7 @@ cp sw_index.html $dest/index.html
 
 # --------- short demo talk ------------
 
-system doconce format html demo SLIDE_TYPE=dummy SLIDE_THEME=dummy # test
+system doconce format html demo SLIDE_TYPE=dummy SLIDE_THEME=dummy  $rawgit # test
 
 # Make all the styles for the short demo talk
 system doconce slides_html demo all  # generates tmp_slides_html_all.sh
@@ -146,7 +148,7 @@ footer_types="footer symbol"
 for slide_tp in $slide_types; do
 for footer_tp in $footer_types; do
 # CBC
-system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=cbc
+system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=cbc $rawgit
 system doconce slides_html demo ${slide_tp} --html_slide_theme=cbc --html_footer_logo=cbc_${footer_tp}
 doconce replace 'controls: true,' 'controls: false,' demo.html  # turn off nav.
 cp demo.html demo_${slide_tp}_cbc_${footer_tp}.html
@@ -157,22 +159,22 @@ done
 slide_tp=reveal
 
 # Simula
-system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=simula
+system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=simula $rawgit
 system doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=simula_symbol
 cp demo.html demo_${slide_tp}_simula.html
 
 # UiO
-system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=uio
+system doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=${slide_tp} SLIDE_THEME=uio $rawgit
 system doconce slides_html demo ${slide_tp} --html_slide_theme=simple --html_footer_logo=uio_symbol
 cp demo.html demo_${slide_tp}_uio.html
 
 # Combined UiO and Simula footer
-system doconce format html demo --pygments_html_style=none SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula"
+system doconce format html demo --pygments_html_style=none SLIDE_TYPE=${slide_tp} SLIDE_THEME="uio+simula" $rawgit
 system doconce slides_html demo ${slide_tp} --html_slide_theme=simula --html_footer_logo=uio_simula_symbol
 cp demo.html demo_${slide_tp}_uio_simula.html
 
 # Solarized without pygments
-system doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized
+system doconce format html demo --pygments_html_style=none SLIDE_TYPE=reveal SLIDE_THEME=solarized $rawgit
 system doconce slides_html demo reveal --html_slide_theme=solarized
 cp demo.html demo_reveal_solarized_plainpre.html
 
@@ -231,5 +233,5 @@ pygmentize -l json -o demo.ipynb.html demo.ipynb
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb demo.ipynb.html $dest/demo/
 
 # index.html toc file
-system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window
+system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window $rawgit
 cp index.html $dest/demo/index.html

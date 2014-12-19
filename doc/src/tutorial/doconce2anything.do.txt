@@ -233,7 +233,7 @@ to how you store the template files), and run
 Terminal> doconce format html mydoc --html_template=mytemplate.html
 !ec
 The template in `style_vagrant` also needs an extra option
-`--html_style=vagrant`.
+`--html_style=bootstrap`.
 
 idx{HTML file collection}
 
@@ -267,6 +267,21 @@ Terminal> doconce format html mydoc --html_style=vagrant \
           --html_template=templates/my_adapted_vagrant_template.html
 Terminal> doconce split_html mydoc_vagrant.html
 !ec
+
+=== URL to files hosted on GitHub ===
+
+The generated HTML code will have URLs to files in the DocOnce repo.
+The type of URL is set with the `--html_raw_github_url=...` option:
+
+ * `--html_raw_github_url=safe` or `--html_raw_github_url=cdn.rawgit`:
+   safe URL for high traffic production sites (default)
+ * `--html_raw_github_url=test` or `--html_raw_github_url=rawgit`:
+   recommended URL for low traffic development sites - use this when
+   developing HTML pages and the DocOnce GitHub links in the HTML files
+   are also developed and subject to changes
+ * `--html_raw_github_url=github` or `--html_raw_github_url=raw.github`:
+   URL directly to the raw GitHub file (`https://raw.github.com/hplgit/doconce/...`) that may fail to load properly in (e.g.) Internet explorer
+ * `--html_raw_github_url=githubusercontent` or `--html_raw_github_url=raw.githubusercontent`: as the one above, but using `https://raw.githubusercontent.com` instead
 
 ===== Blog Posts =====
 

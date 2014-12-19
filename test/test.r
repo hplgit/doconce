@@ -1556,8 +1556,8 @@ Automatically generated HTML file from DocOnce source
 <title>A Document for Testing DocOnce</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -1750,16 +1750,6 @@ MathJax.Hub.Config({
 
     
 <a name="part0000"></a>
-<p>
-<!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-</td><td>
-<div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
-<!-- end top navigation -->
-</p>
-
-<p>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -29154,8 +29144,8 @@ Automatically generated HTML file from DocOnce source
 <title>A Document for Testing DocOnce</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -29348,16 +29338,6 @@ MathJax.Hub.Config({
 
     
 <a name="part0000"></a>
-<p>
-<!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-</td><td>
-<div style="text-align: right;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
-<!-- end top navigation -->
-</p>
-
-<p>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -29493,8 +29473,8 @@ Automatically generated HTML file from DocOnce source
 <title>A Document for Testing DocOnce</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -29687,17 +29667,6 @@ MathJax.Hub.Config({
 
     
 <a name="part0001"></a>
-<p>
-<!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._testdoc000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-<div style="text-align: right;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
-<!-- end top navigation -->
-</p>
-
-<p>
 <!-- !split -->
 
 <p>
@@ -30852,8 +30821,8 @@ Automatically generated HTML file from DocOnce source
 <title>A Document for Testing DocOnce</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -31046,17 +31015,6 @@ MathJax.Hub.Config({
 
     
 <a name="part0002"></a>
-<p>
-<!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._testdoc001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-<div style="text-align: right;"><a href="._testdoc003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next2.png" border=0 alt="Next &raquo;"></a></div>
-</td></tr></table>
-<!-- end top navigation -->
-</p>
-
-<p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
 <h1>LaTeX Mathematics  <a name="___sec28"></a></h1>
@@ -31788,8 +31746,8 @@ Automatically generated HTML file from DocOnce source
 <title>A Document for Testing DocOnce</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -31982,16 +31940,6 @@ MathJax.Hub.Config({
 
     
 <a name="part0003"></a>
-<p>
-<!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._testdoc002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev2.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-</td></tr></table>
-<!-- end top navigation -->
-</p>
-
-<p>
 <!-- !split -->
 <h2>Test of quizzes</h2>
 
@@ -38847,12 +38795,13 @@ system doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
 
 ex="--examples_as_exercises"
 #ex=
+rawgit="--html_raw_github_url=raw.github"
 
-system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window
+system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window $rawgit
 
 cp testdoc.html testdoc_wordpress.html
 
-system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
+system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default $rawgit
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
@@ -38860,19 +38809,19 @@ system doconce format latex testdoc --without_answers --without_solutions $ex -D
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
-system doconce format html testdoc.do.txt $ex --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
+system doconce format html testdoc.do.txt $ex --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0 $rawgit
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html --method=split
 
 system doconce apply_inline_edits testdoc.do.txt
-system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
+system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg $rawgit
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html --nav_button=gray2
+system doconce split_html testdoc.html --nav_button=gray2,bottom
 
-system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
+system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -38961,7 +38910,7 @@ system doconce format pandoc testdoc.do.txt $ex
 # slides2: much of scientific_writing.do.txt
 # slides3: equal to slides/demo.do.txt
 
-system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
+system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg $rawgit
 cp slides1.html slides1_1st.html  # before running slides_html
 
 system doconce slides_html slides1 reveal --html_slide_themee=simple
@@ -38969,7 +38918,7 @@ system doconce slides_html slides1 reveal --html_slide_themee=simple
 cp slides1.html slides1_reveal.html
 /bin/ls -R reveal.js >> slides1_reveal.html
 
-system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
+system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg $rawgit
 system doconce slides_html slides1 deck --html_slide_theme=web-2.0
 
 cp slides1.html slides1_deck.html
@@ -38994,7 +38943,7 @@ system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
 system pdflatex -shell-escape slides1
 
-system doconce format html slides2 --pygments_html_style=emacs
+system doconce format html slides2 --pygments_html_style=emacs $rawgit
 system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 cp slides2.html slides2_reveal.html
 
@@ -39003,11 +38952,11 @@ system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 
-system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
+system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall $rawgit
 system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
-system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
+system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3 $rawgit
 system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
 
 rm -f *.aux
@@ -39016,7 +38965,7 @@ system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --la
 system doconce ptex2tex slides3 envir=minted
 system doconce slides_beamer slides3 --beamer_slide_theme=$theme
 
-system doconce format html slides1 --pygments_html_style=emacs
+system doconce format html slides1 --pygments_html_style=emacs $rawgit
 system doconce slides_html slides1 all
 
 # Test grab
@@ -39025,13 +38974,13 @@ doconce grab --from 'Compute a Probability' --to- 'drawing uniformly' _testdoc.d
 doconce grab --from- '\*\s+\$.+normally' _testdoc.do.txt >> testdoc.tmp
 
 # Test html templates
-system doconce format html html_template --html_template=template1.html --pygments_html_style=none
+system doconce format html html_template --html_template=template1.html --pygments_html_style=none $rawgit
 cp html_template.html html_template1.html
 
-system doconce format html html_template --html_template=template_inf1100.html  --pygments_html_style=emacs
+system doconce format html html_template --html_template=template_inf1100.html  --pygments_html_style=emacs $rawgit
 
 # Test author special case and generalized references
-system doconce format html author1
+system doconce format html author1 $rawgit
 system doconce format latex author1
 system doconce format sphinx author1
 system doconce format plain author1
@@ -39050,7 +38999,7 @@ name=math_test
 doconce format pdflatex $name
 doconce ptex2tex $name
 pdflatex $name
-system doconce format html $name
+system doconce format html $name $rawgit
 cp $name.html ${name}_html.html
 doconce format sphinx $name
 doconce sphinx_dir dirname=sphinx-rootdir-math $name
@@ -39099,32 +39048,32 @@ cp admon.tex admon_double_envirs.tex
 rm -rf latex_figs
 
 # Test HTML admon styles
-system doconce format html admon --html_admon=lyx --html_style=blueish2
+system doconce format html admon --html_admon=lyx --html_style=blueish2 $rawgit
 cp admon.html admon_lyx.html
 
-system doconce format html admon --html_admon=paragraph --html_style=blueish2
+system doconce format html admon --html_admon=paragraph --html_style=blueish2 $rawgit
 cp admon.html admon_paragraph.html
 
-system doconce format html admon --html_admon=colors
+system doconce format html admon --html_admon=colors $rawgit
 cp admon.html admon_colors.html
 
-system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
+system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow $rawgit
 cp admon.html admon_gray.html
 
-system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
+system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow $rawgit
 cp admon.html admon_yellow.html
 
-system doconce format html admon --html_admon=apricot --html_style=solarized
+system doconce format html admon --html_admon=apricot --html_style=solarized $rawgit
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html $rawgit
 cp admon.html admon_vagrant.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert $rawgit
 cp admon.html admon_bootstrap_alert.html
-doconce split_html admon_bootstrap_alert.html --pagination
+doconce split_html admon_bootstrap_alert.html --pagination --nav_button=top+bottom
 
-system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel $rawgit
 cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
@@ -39153,20 +39102,20 @@ if [ -d latex_figs ]; then
 fi
 
 # Test Bootstrap HTML styles
-system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit $rawgit
 doconce split_html test_boots.html
 
 # Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
 
 # Test Markdown input
-doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
+doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt $rawgit
 
 # Test movie handling
 name=movies
-system doconce format html $name --html_output=movies_3choices
+system doconce format html $name --html_output=movies_3choices $rawgit
 cp movies_3choices.html movie_demo
-system doconce format html $name --no_mp4_webm_ogg_alternatives
+system doconce format html $name --no_mp4_webm_ogg_alternatives $rawgit
 cp movies.html movie_demo
 
 rm -f $name.aux
@@ -39201,7 +39150,7 @@ cd ..
 # in latex, media9 is unreliable
 
 # Test encoding: guess and change
-doconce format html encoding1   --no_header_footer
+doconce format html encoding1   --no_header_footer $rawgit
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -39218,16 +39167,16 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 doconce format latex encoding3 --debug --no_header_footer
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer
+doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer $rawgit
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
 # Plain ASCII with verbatim blocks with Norwegian chars
 doconce format latex encoding3 -DPREPROCESS --no_header_footer  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
-doconce format html encoding3 -DPREPROCESS --no_header_footer  # html fails with utf-8 in !bc
+doconce format html encoding3 -DPREPROCESS --no_header_footer  $rawgit # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug --no_header_footer # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug --no_header_footer $rawgit # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
@@ -39235,17 +39184,17 @@ doconce format latex encoding3 -DMAKO --no_header_footer  # mako fails due to No
 # Unicode with Norwegian chars in plain text and verbatim blocks
 doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer
+doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer $rawgit
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --pygments_html_style=off  --no_header_footer  # mako variable only, no % lines
-system doconce format html mako_test2 --pygments_html_style=off  --no_header_footer  # % lines inside code, but need for mako
-system doconce format html mako_test3 --pygments_html_style=off  --no_header_footer  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  --no_header_footer $rawgit  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  --no_header_footer $rawgit  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  --no_header_footer $rawgit  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --pygments_html_style=none  --no_header_footer # no problem message
-system doconce format html mako_test4 --pygments_html_style=no  --no_header_footer  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none  --no_header_footer $rawgit # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  --no_header_footer $rawgit   # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
@@ -39277,11 +39226,11 @@ doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
 doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
 doconce replace 'two_media99' 'two_media' tmp2.do.txt
-doconce format html tmp2
+doconce format html tmp2 $rawgit
 doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
-doconce format html tmp2
+doconce format html tmp2 $rawgit
 doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
-doconce format html tmp2
+doconce format html tmp2 $rawgit
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt
@@ -53961,8 +53910,8 @@ Automatically generated HTML file from DocOnce source
 <title>Testing admons</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -55093,6 +55042,12 @@ MathJax.Hub.Config({
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <a name="part0000"></a>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+  <li class="active"><a href="._admon_bootstrap_alert000.html">1</a></li>
+  <li><a href="._admon_bootstrap_alert001.html">2</a></li>
+  <li><a href="._admon_bootstrap_alert001.html">&raquo;</a></li>
+</ul>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -55796,6 +55751,12 @@ MathJax.Hub.Config({
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <a name="part0001"></a>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._admon_bootstrap_alert000.html">&laquo;</a></li>
+  <li><a href="._admon_bootstrap_alert000.html">1</a></li>
+  <li class="active"><a href="._admon_bootstrap_alert001.html">2</a></li>
+</ul>
 <!-- !split -->
 
 <h1 id="___sec0">Introduction <a name="___sec0"></a></h1>
@@ -65159,8 +65120,8 @@ Automatically generated HTML file from DocOnce source
 <title>On Schemes for Exponential Decay</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -70784,7 +70745,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f4a5024d938>
+verbatim is to be replaced using <function html_verbatim at 0x7f324ab81848>
 
 
 First occurence: " `mako`."
@@ -74745,7 +74706,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Dec 13 12:49:48 2014.
+# sphinx-quickstart on Fri Dec 19 06:48:29 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -77114,10 +77075,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -91126,8 +91087,9 @@ Saving database to file "papers.pub"
 + doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
 + '[' 0 -ne 0 ']'
 + ex=--examples_as_exercises
-+ system doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window
-+ doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window
++ rawgit=--html_raw_github_url=raw.github
++ system doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window --html_raw_github_url=raw.github
++ doconce format html testdoc --wordpress --examples_as_exercises --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix=https://raw.github.com/hplgit/doconce/master/test/ --movie_prefix=https://raw.github.com/hplgit/doconce/master/test/ --html_links_in_new_window --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -91171,8 +91133,8 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
-+ system doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default
-+ doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default
++ system doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --html_raw_github_url=raw.github
++ doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen -DSOMEVAR testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'html'}
@@ -91290,8 +91252,8 @@ output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.p.tex testdoc_no_solutions.p.tex
 + cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
-+ system doconce format html testdoc.do.txt --examples_as_exercises --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
-+ doconce format html testdoc.do.txt --examples_as_exercises --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
++ system doconce format html testdoc.do.txt --examples_as_exercises --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0 --html_raw_github_url=raw.github
++ doconce format html testdoc.do.txt --examples_as_exercises --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0 --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -91345,8 +91307,8 @@ testdoc_vagrant.html now links to the generated files
 + doconce apply_inline_edits testdoc.do.txt
 inline comments removed in testdoc.do.txt
 + '[' 0 -ne 0 ']'
-+ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
-+ doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg
++ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg --html_raw_github_url=raw.github
++ doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_exercise_icon=exercise1.svg --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -91396,13 +91358,13 @@ no answers/solutions to exercises found in testdoc.html
 + system doconce html_colorbullets testdoc.html
 + doconce html_colorbullets testdoc.html
 + '[' 0 -ne 0 ']'
-+ system doconce split_html testdoc.html --nav_button=gray2
-+ doconce split_html testdoc.html --nav_button=gray2
++ system doconce split_html testdoc.html --nav_button=gray2,bottom
++ doconce split_html testdoc.html --nav_button=gray2,bottom
 testdoc.html now links to the generated files
 ._testdoc000.html, ._testdoc001.html, ._testdoc002.html, ._testdoc003.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc
-+ doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc
++ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc --html_raw_github_url=raw.github
++ doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs --examples_as_exercises --html_output=demo_testdoc --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 translating doconce text in tmp_mako__testdoc.do.txt to html
@@ -96058,8 +96020,8 @@ figure file ../doc/src/manual/fig/wave1D:
     footnotes will be left in the doconce syntax
 output in testdoc.md
 + '[' 0 -ne 0 ']'
-+ system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
-+ doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
++ system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg --html_raw_github_url=raw.github
++ doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg --html_raw_github_url=raw.github
 translating doconce text in slides1.do.txt to html
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96071,8 +96033,8 @@ slides written to slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_reveal.html
 + /bin/ls -R reveal.js
-+ system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
-+ doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
++ system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg --html_raw_github_url=raw.github
++ doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg --html_raw_github_url=raw.github
 translating doconce text in slides1.do.txt to html
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96090,8 +96052,6 @@ output in slides1.md
 + '[' 0 -ne 0 ']'
 + system doconce slides_markdown slides1 remark --slide_theme=light
 + doconce slides_markdown slides1 remark --slide_theme=light
-XXX [f(x,y,t) = e^{-xt}\sin\pi y]
-XXX [\frac{\partial u}{\partial t} = \nabla^2 u]
 remark slides in slides1.html
 + '[' 0 -ne 0 ']'
 + cp slides1.html slides1_remark.html
@@ -96711,8 +96671,8 @@ onts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 Output written on slides1.pdf (18 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
-+ system doconce format html slides2 --pygments_html_style=emacs
-+ doconce format html slides2 --pygments_html_style=emacs
++ system doconce format html slides2 --pygments_html_style=emacs --html_raw_github_url=raw.github
++ doconce format html slides2 --pygments_html_style=emacs --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  slides2.do.txt > tmp_preprocess__slides2.do.txt
 translating doconce text in tmp_preprocess__slides2.do.txt to html
 copy complete file ../doc/src/slides/src/solver.pyopt  (format: pyoptpro)
@@ -96802,8 +96762,8 @@ output in slides2.tex
 + doconce slides_beamer slides2
 slides written to slides2.tex
 + '[' 0 -ne 0 ']'
-+ system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
-+ doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
++ system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall --html_raw_github_url=raw.github
++ doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="reveal" -DSLIDE_THEME="beigesmall" slides3.do.txt > tmp_preprocess__slides3.do.txt
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'reveal', 'SLIDE_THEME': 'beigesmall', 'FORMAT': 'html'}
@@ -96827,8 +96787,8 @@ recommended styles are "perldoc"
 slides written to slides3.html
 + '[' 0 -ne 0 ']'
 + cp slides3.html slides3_reveal.html
-+ system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
-+ doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
++ system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3 --html_raw_github_url=raw.github
++ doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3 --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen -DSLIDE_TYPE="doconce" -DSLIDE_THEME="solarized3" slides3.do.txt > tmp_preprocess__slides3.do.txt
 running mako on tmp_preprocess__slides3.do.txt to make tmp_mako__slides3.do.txt
 mako variables: {'DEVICE': 'screen', 'SLIDE_TYPE': 'doconce', 'SLIDE_THEME': 'solarized3', 'FORMAT': 'html'}
@@ -96879,8 +96839,8 @@ output in slides3.tex
 could not extract beamerthemered3.sty (from latex_styles.zip in the doconce installation)
 slides written to slides3.tex
 + '[' 0 -ne 0 ']'
-+ system doconce format html slides1 --pygments_html_style=emacs
-+ doconce format html slides1 --pygments_html_style=emacs
++ system doconce format html slides1 --pygments_html_style=emacs --html_raw_github_url=raw.github
++ doconce format html slides1 --pygments_html_style=emacs --html_raw_github_url=raw.github
 translating doconce text in slides1.do.txt to html
 output in slides1.html
 + '[' 0 -ne 0 ']'
@@ -96895,19 +96855,19 @@ to generate the slides
 + '[' 0 -ne 0 ']'
 + doconce grab --from 'Compute a Probability' --to- 'drawing uniformly' _testdoc.do.txt
 + doconce grab --from- '\*\s+\$.+normally' _testdoc.do.txt
-+ system doconce format html html_template --html_template=template1.html --pygments_html_style=none
-+ doconce format html html_template --html_template=template1.html --pygments_html_style=none
++ system doconce format html html_template --html_template=template1.html --pygments_html_style=none --html_raw_github_url=raw.github
++ doconce format html html_template --html_template=template1.html --pygments_html_style=none --html_raw_github_url=raw.github
 translating doconce text in html_template.do.txt to html
 output in html_template.html
 + '[' 0 -ne 0 ']'
 + cp html_template.html html_template1.html
-+ system doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs
-+ doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs
++ system doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs --html_raw_github_url=raw.github
++ doconce format html html_template --html_template=template_inf1100.html --pygments_html_style=emacs --html_raw_github_url=raw.github
 translating doconce text in html_template.do.txt to html
 output in html_template.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html author1
-+ doconce format html author1
++ system doconce format html author1 --html_raw_github_url=raw.github
++ doconce format html author1 --html_raw_github_url=raw.github
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to html
 output in author1.html
@@ -97237,8 +97197,8 @@ hare/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
 Output written on math_test.pdf (3 pages, ).
 Transcript written on math_test.log.
-+ system doconce format html math_test
-+ doconce format html math_test
++ system doconce format html math_test --html_raw_github_url=raw.github
++ doconce format html math_test --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  math_test.do.txt > tmp_preprocess__math_test.do.txt
 running mako on tmp_preprocess__math_test.do.txt to make tmp_mako__math_test.do.txt
 translating doconce text in tmp_mako__math_test.do.txt to html
@@ -100110,8 +100070,8 @@ output in admon.p.tex
 output in admon.tex
 + cp admon.tex admon_double_envirs.tex
 + rm -rf latex_figs
-+ system doconce format html admon --html_admon=lyx --html_style=blueish2
-+ doconce format html admon --html_admon=lyx --html_style=blueish2
++ system doconce format html admon --html_admon=lyx --html_style=blueish2 --html_raw_github_url=raw.github
++ doconce format html admon --html_admon=lyx --html_style=blueish2 --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100122,8 +100082,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_lyx.html
-+ system doconce format html admon --html_admon=paragraph --html_style=blueish2
-+ doconce format html admon --html_admon=paragraph --html_style=blueish2
++ system doconce format html admon --html_admon=paragraph --html_style=blueish2 --html_raw_github_url=raw.github
++ doconce format html admon --html_admon=paragraph --html_style=blueish2 --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100134,8 +100094,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_paragraph.html
-+ system doconce format html admon --html_admon=colors
-+ doconce format html admon --html_admon=colors
++ system doconce format html admon --html_admon=colors --html_raw_github_url=raw.github
++ doconce format html admon --html_admon=colors --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100146,8 +100106,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_colors.html
-+ system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
-+ doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
++ system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow --html_raw_github_url=raw.github
++ doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100158,8 +100118,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_gray.html
-+ system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
-+ doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
++ system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow --html_raw_github_url=raw.github
++ doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100170,8 +100130,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_yellow.html
-+ system doconce format html admon --html_admon=apricot --html_style=solarized
-+ doconce format html admon --html_admon=apricot --html_style=solarized
++ system doconce format html admon --html_admon=apricot --html_style=solarized --html_raw_github_url=raw.github
++ doconce format html admon --html_admon=apricot --html_style=solarized --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100182,8 +100142,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_apricot.html
-+ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
-+ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
++ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html --html_raw_github_url=raw.github
++ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100199,8 +100159,8 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_vagrant.html
-+ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
-+ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
++ system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert --html_raw_github_url=raw.github
++ doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100211,11 +100171,11 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.html
 + '[' 0 -ne 0 ']'
 + cp admon.html admon_bootstrap_alert.html
-+ doconce split_html admon_bootstrap_alert.html --pagination
++ doconce split_html admon_bootstrap_alert.html --pagination --nav_button=top+bottom
 admon_bootstrap_alert.html now links to the generated files
 ._admon_bootstrap_alert000.html, ._admon_bootstrap_alert001.html
-+ system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
-+ doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
++ system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel --html_raw_github_url=raw.github
++ doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to html
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
@@ -100387,8 +100347,8 @@ replacing ../doc/src/manual/fig/wave1D by ../../doc/src/manual/fig/wave1D in ._a
 + rm -rf admon_apricot.html.old~~ admon_bootswatch_panel.html.old~~ admon_colors.html.old~~ admon_gray.html.old~~ admon_lyx.html.old~~ admon_paragraph.html.old~~ admon_vagrant.html.old~~ admon_yellow.html.old~~
 + cd ..
 + '[' -d latex_figs ']'
-+ system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
-+ doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
++ system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit --html_raw_github_url=raw.github
++ doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit --html_raw_github_url=raw.github
 translating doconce text in test_boots.do.txt to html
 output in test_boots.html
 + '[' 0 -ne 0 ']'
@@ -100400,12 +100360,12 @@ test_boots.html now links to the generated files
 translating doconce text in github_md.do.txt to pandoc
 output in github_md.md
 + '[' 0 -ne 0 ']'
-+ doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
++ doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt --html_raw_github_url=raw.github
 translating doconce text in markdown_input.do.txt to html
 output in markdown_input.html
 + name=movies
-+ system doconce format html movies --html_output=movies_3choices
-+ doconce format html movies --html_output=movies_3choices
++ system doconce format html movies --html_output=movies_3choices --html_raw_github_url=raw.github
++ doconce format html movies --html_output=movies_3choices --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
@@ -100417,8 +100377,8 @@ translating doconce text in tmp_preprocess__movies.do.txt to html
 output in movies_3choices.html
 + '[' 0 -ne 0 ']'
 + cp movies_3choices.html movie_demo
-+ system doconce format html movies --no_mp4_webm_ogg_alternatives
-+ doconce format html movies --no_mp4_webm_ogg_alternatives
++ system doconce format html movies --no_mp4_webm_ogg_alternatives --html_raw_github_url=raw.github
++ doconce format html movies --no_mp4_webm_ogg_alternatives --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to html
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
@@ -104397,7 +104357,7 @@ Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + cd ..
-+ doconce format html encoding1 --no_header_footer
++ doconce format html encoding1 --no_header_footer --html_raw_github_url=raw.github
 translating doconce text in encoding1.do.txt to html
 output in encoding1.html
 + system doconce guess_encoding encoding1.do.txt
@@ -104430,7 +104390,7 @@ running preprocess -DFORMAT=latex -DDEVICE=screen  encoding3.do.txt > tmp_prepro
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii
-+ doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer
++ doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer --html_raw_github_url=raw.github
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen  encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
@@ -104442,7 +104402,7 @@ running preprocess -DFORMAT=latex -DDEVICE=screen -DPREPROCESS encoding3.do.txt 
 translating doconce text in tmp_preprocess__encoding3.do.txt to latex
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-ascii-verb
-+ doconce format html encoding3 -DPREPROCESS --no_header_footer
++ doconce format html encoding3 -DPREPROCESS --no_header_footer --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
 *** error: problem with character when writing to file:
@@ -104452,7 +104412,7 @@ u'ight: 125%">a = 1  # Value suggested by \xc5smund \xd8deg\xe5rd.\n</pre></div>
                                           ^
     remedies: fix character or try --encoding=utf-8
 Abort! (add --no_abort on the command line to avoid this abortion)
-+ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --pygments_html_style=none --debug --no_header_footer
++ doconce format html encoding3 -DPREPROCESS --encoding=utf-8 --pygments_html_style=none --debug --no_header_footer --html_raw_github_url=raw.github
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DPREPROCESS encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 translating doconce text in tmp_preprocess__encoding3.do.txt to html
@@ -104477,7 +104437,7 @@ translating doconce text in tmp_mako__encoding3.do.txt to latex
 open file with encoding utf-8
 output in encoding3.p.tex
 + cp encoding3.p.tex encoding3.p.tex-utf8
-+ doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer
++ doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer --html_raw_github_url=raw.github
 *** debug output in _doconce_debugging.log
 running preprocess -DFORMAT=html -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
 running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.txt
@@ -104487,32 +104447,32 @@ open file with encoding utf-8
 output in encoding3.html
 + cp encoding3.html encoding3.html-utf8
 + cat _doconce_debugging.log
-+ system doconce format html mako_test1 --pygments_html_style=off --no_header_footer
-+ doconce format html mako_test1 --pygments_html_style=off --no_header_footer
++ system doconce format html mako_test1 --pygments_html_style=off --no_header_footer --html_raw_github_url=raw.github
++ doconce format html mako_test1 --pygments_html_style=off --no_header_footer --html_raw_github_url=raw.github
 running mako on mako_test1.do.txt to make tmp_mako__mako_test1.do.txt
 translating doconce text in tmp_mako__mako_test1.do.txt to html
 output in mako_test1.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test2 --pygments_html_style=off --no_header_footer
-+ doconce format html mako_test2 --pygments_html_style=off --no_header_footer
++ system doconce format html mako_test2 --pygments_html_style=off --no_header_footer --html_raw_github_url=raw.github
++ doconce format html mako_test2 --pygments_html_style=off --no_header_footer --html_raw_github_url=raw.github
 translating doconce text in mako_test2.do.txt to html
 output in mako_test2.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test3 --pygments_html_style=off --no_header_footer
-+ doconce format html mako_test3 --pygments_html_style=off --no_header_footer
++ system doconce format html mako_test3 --pygments_html_style=off --no_header_footer --html_raw_github_url=raw.github
++ doconce format html mako_test3 --pygments_html_style=off --no_header_footer --html_raw_github_url=raw.github
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
 + cp mako_test3.html mako_test3b.html
-+ system doconce format html mako_test3 --pygments_html_style=none --no_header_footer
-+ doconce format html mako_test3 --pygments_html_style=none --no_header_footer
++ system doconce format html mako_test3 --pygments_html_style=none --no_header_footer --html_raw_github_url=raw.github
++ doconce format html mako_test3 --pygments_html_style=none --no_header_footer --html_raw_github_url=raw.github
 running mako on mako_test3.do.txt to make tmp_mako__mako_test3.do.txt
 translating doconce text in tmp_mako__mako_test3.do.txt to html
 output in mako_test3.html
 + '[' 0 -ne 0 ']'
-+ system doconce format html mako_test4 --pygments_html_style=no --no_header_footer
-+ doconce format html mako_test4 --pygments_html_style=no --no_header_footer
++ system doconce format html mako_test4 --pygments_html_style=no --no_header_footer --html_raw_github_url=raw.github
++ doconce format html mako_test4 --pygments_html_style=no --no_header_footer --html_raw_github_url=raw.github
 running mako on mako_test4.do.txt to make tmp_mako__mako_test4.do.txt
 translating doconce text in tmp_mako__mako_test4.do.txt to html
 output in mako_test4.html
@@ -104691,7 +104651,7 @@ Abort! (add --no_abort on the command line to avoid this abortion)
 replacing ../lib/doconce/doconce.py by _static/doconce.py in tmp2.do.txt
 + doconce replace two_media99 two_media tmp2.do.txt
 replacing two_media99 by two_media in tmp2.do.txt
-+ doconce format html tmp2
++ doconce format html tmp2 --html_raw_github_url=raw.github
 translating doconce text in tmp2.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -104712,7 +104672,7 @@ mybook
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
 replacing |--l---|---l---| by |--l-------l---| in tmp2.do.txt
-+ doconce format html tmp2
++ doconce format html tmp2 --html_raw_github_url=raw.github
 translating doconce text in tmp2.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
@@ -104733,7 +104693,7 @@ mybook
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce replace 99x9.ogg .ogg tmp2.do.txt
 replacing 99x9.ogg by .ogg in tmp2.do.txt
-+ doconce format html tmp2
++ doconce format html tmp2 --html_raw_github_url=raw.github
 translating doconce text in tmp2.do.txt to html
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html

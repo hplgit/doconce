@@ -40,12 +40,13 @@ system doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
 
 ex="--examples_as_exercises"
 #ex=
+rawgit="--html_raw_github_url=raw.github"
 
-system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window
+system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window $rawgit
 
 cp testdoc.html testdoc_wordpress.html
 
-system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default
+system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default $rawgit
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
@@ -53,19 +54,19 @@ system doconce format latex testdoc --without_answers --without_solutions $ex -D
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
-system doconce format html testdoc.do.txt $ex --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0
+system doconce format html testdoc.do.txt $ex --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0 $rawgit
 cp testdoc.html testdoc_vagrant.html
 # Test that a split of testdoc_vagrant.html becomes correct
 doconce split_html testdoc_vagrant.html --method=split
 
 system doconce apply_inline_edits testdoc.do.txt
-system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg
+system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_exercise_icon=exercise1.svg $rawgit
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html --nav_button=gray2
+system doconce split_html testdoc.html --nav_button=gray2,bottom
 
-system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc
+system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -154,7 +155,7 @@ system doconce format pandoc testdoc.do.txt $ex
 # slides2: much of scientific_writing.do.txt
 # slides3: equal to slides/demo.do.txt
 
-system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg
+system doconce format html slides1 --pygments_html_style=perldoc --keep_pygments_html_bg $rawgit
 cp slides1.html slides1_1st.html  # before running slides_html
 
 system doconce slides_html slides1 reveal --html_slide_themee=simple
@@ -162,7 +163,7 @@ system doconce slides_html slides1 reveal --html_slide_themee=simple
 cp slides1.html slides1_reveal.html
 /bin/ls -R reveal.js >> slides1_reveal.html
 
-system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg
+system doconce format html slides1 --pygments_html_style=emacs --keep_pygments_html_bg $rawgit
 system doconce slides_html slides1 deck --html_slide_theme=web-2.0
 
 cp slides1.html slides1_deck.html
@@ -187,7 +188,7 @@ system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
 system pdflatex -shell-escape slides1
 
-system doconce format html slides2 --pygments_html_style=emacs
+system doconce format html slides2 --pygments_html_style=emacs $rawgit
 system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 cp slides2.html slides2_reveal.html
 
@@ -196,11 +197,11 @@ system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 
-system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall
+system doconce format html slides3 --pygments_html_style=emacs SLIDE_TYPE=reveal SLIDE_THEME=beigesmall $rawgit
 system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
-system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3
+system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3 $rawgit
 system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
 
 rm -f *.aux
@@ -209,7 +210,7 @@ system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --la
 system doconce ptex2tex slides3 envir=minted
 system doconce slides_beamer slides3 --beamer_slide_theme=$theme
 
-system doconce format html slides1 --pygments_html_style=emacs
+system doconce format html slides1 --pygments_html_style=emacs $rawgit
 system doconce slides_html slides1 all
 
 # Test grab
@@ -218,13 +219,13 @@ doconce grab --from 'Compute a Probability' --to- 'drawing uniformly' _testdoc.d
 doconce grab --from- '\*\s+\$.+normally' _testdoc.do.txt >> testdoc.tmp
 
 # Test html templates
-system doconce format html html_template --html_template=template1.html --pygments_html_style=none
+system doconce format html html_template --html_template=template1.html --pygments_html_style=none $rawgit
 cp html_template.html html_template1.html
 
-system doconce format html html_template --html_template=template_inf1100.html  --pygments_html_style=emacs
+system doconce format html html_template --html_template=template_inf1100.html  --pygments_html_style=emacs $rawgit
 
 # Test author special case and generalized references
-system doconce format html author1
+system doconce format html author1 $rawgit
 system doconce format latex author1
 system doconce format sphinx author1
 system doconce format plain author1
@@ -243,7 +244,7 @@ name=math_test
 doconce format pdflatex $name
 doconce ptex2tex $name
 pdflatex $name
-system doconce format html $name
+system doconce format html $name $rawgit
 cp $name.html ${name}_html.html
 doconce format sphinx $name
 doconce sphinx_dir dirname=sphinx-rootdir-math $name
@@ -292,32 +293,32 @@ cp admon.tex admon_double_envirs.tex
 rm -rf latex_figs
 
 # Test HTML admon styles
-system doconce format html admon --html_admon=lyx --html_style=blueish2
+system doconce format html admon --html_admon=lyx --html_style=blueish2 $rawgit
 cp admon.html admon_lyx.html
 
-system doconce format html admon --html_admon=paragraph --html_style=blueish2
+system doconce format html admon --html_admon=paragraph --html_style=blueish2 $rawgit
 cp admon.html admon_paragraph.html
 
-system doconce format html admon --html_admon=colors
+system doconce format html admon --html_admon=colors $rawgit
 cp admon.html admon_colors.html
 
-system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow
+system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow $rawgit
 cp admon.html admon_gray.html
 
-system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow
+system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow $rawgit
 cp admon.html admon_yellow.html
 
-system doconce format html admon --html_admon=apricot --html_style=solarized
+system doconce format html admon --html_admon=apricot --html_style=solarized $rawgit
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html $rawgit
 cp admon.html admon_vagrant.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert $rawgit
 cp admon.html admon_bootstrap_alert.html
-doconce split_html admon_bootstrap_alert.html --pagination
+doconce split_html admon_bootstrap_alert.html --pagination --nav_button=top+bottom
 
-system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel $rawgit
 cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
@@ -346,20 +347,20 @@ if [ -d latex_figs ]; then
 fi
 
 # Test Bootstrap HTML styles
-system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit
+system doconce format html test_boots --html_style=bootswatch_journal --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit $rawgit
 doconce split_html test_boots.html
 
 # Test GitHub-extended Markdown
 system doconce format pandoc github_md.do.txt --github_md
 
 # Test Markdown input
-doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt
+doconce format html markdown_input.do.txt --markdown --md2do_output=mdinput2do.do.txt $rawgit
 
 # Test movie handling
 name=movies
-system doconce format html $name --html_output=movies_3choices
+system doconce format html $name --html_output=movies_3choices $rawgit
 cp movies_3choices.html movie_demo
-system doconce format html $name --no_mp4_webm_ogg_alternatives
+system doconce format html $name --no_mp4_webm_ogg_alternatives $rawgit
 cp movies.html movie_demo
 
 rm -f $name.aux
@@ -394,7 +395,7 @@ cd ..
 # in latex, media9 is unreliable
 
 # Test encoding: guess and change
-doconce format html encoding1   --no_header_footer
+doconce format html encoding1   --no_header_footer $rawgit
 system doconce guess_encoding encoding1.do.txt > tmp_encodings.txt
 cp encoding1.do.txt tmp1.do.txt
 system doconce change_encoding utf-8 latin1 tmp1.do.txt
@@ -411,16 +412,16 @@ doconce guess_encoding tmp2.do.txt >> tmp_encodings.txt
 doconce format latex encoding3 --debug --no_header_footer
 cp encoding3.p.tex encoding3.p.tex-ascii
 # Plain ASCII text with Norwegian chars coded as &#...;
-doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer
+doconce format html encoding3 --pygments_html_style=off --debug --no_header_footer $rawgit
 cp encoding3.html encoding3.html-ascii
 cat _doconce_debugging.log >> encoding3.html-ascii
 
 # Plain ASCII with verbatim blocks with Norwegian chars
 doconce format latex encoding3 -DPREPROCESS --no_header_footer  # preprocess handles utf-8
 cp encoding3.p.tex encoding3.p.tex-ascii-verb
-doconce format html encoding3 -DPREPROCESS --no_header_footer  # html fails with utf-8 in !bc
+doconce format html encoding3 -DPREPROCESS --no_header_footer  $rawgit # html fails with utf-8 in !bc
 # Unicode with Norwegian chars in plain text and verbatim blocks
-doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug --no_header_footer # Keeps Norwegian chars since output is in utf-8
+doconce format html encoding3 -DPREPROCESS  --encoding=utf-8  --pygments_html_style=none --debug --no_header_footer $rawgit # Keeps Norwegian chars since output is in utf-8
 cp encoding3.html encoding3.html-ascii-verb
 cat _doconce_debugging.log >> encoding3.html-ascii-verb
 
@@ -428,17 +429,17 @@ doconce format latex encoding3 -DMAKO --no_header_footer  # mako fails due to No
 # Unicode with Norwegian chars in plain text and verbatim blocks
 doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer  # utf-8 and unicode
 cp encoding3.p.tex encoding3.p.tex-utf8
-doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer
+doconce format html encoding3 -DMAKO --encoding=utf-8 --pygments_html_style=off --debug --no_header_footer $rawgit
 cp encoding3.html encoding3.html-utf8
 cat _doconce_debugging.log >> encoding3.html-utf8
 
 # Test mako problems
-system doconce format html mako_test1 --pygments_html_style=off  --no_header_footer  # mako variable only, no % lines
-system doconce format html mako_test2 --pygments_html_style=off  --no_header_footer  # % lines inside code, but need for mako
-system doconce format html mako_test3 --pygments_html_style=off  --no_header_footer  # % lines inside code
+system doconce format html mako_test1 --pygments_html_style=off  --no_header_footer $rawgit  # mako variable only, no % lines
+system doconce format html mako_test2 --pygments_html_style=off  --no_header_footer $rawgit  # % lines inside code, but need for mako
+system doconce format html mako_test3 --pygments_html_style=off  --no_header_footer $rawgit  # % lines inside code
 cp mako_test3.html mako_test3b.html
-system doconce format html mako_test3 --pygments_html_style=none  --no_header_footer # no problem message
-system doconce format html mako_test4 --pygments_html_style=no  --no_header_footer  # works fine, lines start with %%
+system doconce format html mako_test3 --pygments_html_style=none  --no_header_footer $rawgit # no problem message
+system doconce format html mako_test4 --pygments_html_style=no  --no_header_footer $rawgit   # works fine, lines start with %%
 
 system doconce csv2table testtable.csv > testtable.do.txt
 
@@ -470,11 +471,11 @@ doconce replace 'doc/manual' 'doc/src/manual' tmp2.do.txt
 doconce format sphinx tmp2
 doconce replace '../lib/doconce/doconce.py' '_static/doconce.py' tmp2.do.txt
 doconce replace 'two_media99' 'two_media' tmp2.do.txt
-doconce format html tmp2
+doconce format html tmp2 $rawgit
 doconce replace '|--l---|---l---|' '|--l-------l---|' tmp2.do.txt
-doconce format html tmp2
+doconce format html tmp2 $rawgit
 doconce replace '99x9.ogg' '.ogg' tmp2.do.txt
-doconce format html tmp2
+doconce format html tmp2 $rawgit
 doconce subst -s -m '^!bsol.+?!esol' ''  tmp2.do.txt
 doconce format sphinx tmp2
 doconce subst -s -m '^!bhint.+?!ehint' ''  tmp2.do.txt

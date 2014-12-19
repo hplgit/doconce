@@ -13,6 +13,7 @@ from misc import option
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
 
+
 global _file_collection_filename
 
 # From http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/colors.htm:
@@ -95,13 +96,13 @@ admon_styles1 = admon_styles_text + """\
   background-repeat: no-repeat; background-position: 10px center;
 }
 .notice   { color: #00529B; background-color: %(background_notice)s;
-            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+            background-image: url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
 .summary  { color: #4F8A10; background-color: %(background_summary)s;
-            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+            background-image:url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
 .warning  { color: #9F6000; background-color: %(background_warning)s;
-            background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+            background-image: url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
 .question { color: #4F8A10; background-color: %(background_question)s;
-            background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
+            background-image:url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
 .block    { color: #00529B; background-color: %(background_notice)s; }
 """
 
@@ -125,10 +126,10 @@ admon_styles2 = admon_styles_text + """\
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
+.alert-notice { background-image: url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_notice)s); }
+.alert-summary  { background-image:url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_summary)s); }
+.alert-warning { background-image: url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_warning)s); }
+.alert-question {background-image:url(RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%(icon_question)s); }
 """
 # alt: background-image: url(data:image/png;base64,iVBORw0KGgoAAAAN...);
 
@@ -175,8 +176,8 @@ a:hover { color: #2aa198; }
 
 def css_link_solarized_highlight(style='light'):
     return """
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_%(style)s_code.css" rel="stylesheet" type="text/css" title="%(style)s"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_%(style)s_code.css" rel="stylesheet" type="text/css" title="%(style)s"/>
+<script src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 """ % vars()
 
@@ -325,7 +326,7 @@ table {	border-collapse: collapse; border-spacing: 0; }
 body {
   font-size: 1em;
   line-height: 1.5;
-  background: #e7e7e7 url(https://raw.githubusercontent.com/hplgit/num-methods-for-PDEs/master/doc/web/images/body-bg.png) 0 0 repeat;
+  background: #e7e7e7 url(RAW_GITHUB_URL/hplgit/num-methods-for-PDEs/master/doc/web/images/body-bg.png) 0 0 repeat;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   color: #6d6d6d;
@@ -1140,7 +1141,7 @@ def html_code(filestr, code_blocks, code_block_types,
                 icon = 'question_blue_on_white2.png'
             else:
                 icon = 'exercise1.svg'
-        icon_path = 'https://raw.github.com/hplgit/doconce/master/bundled/html_images/' + icon
+        icon_path = 'RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/' + icon
         pattern = r'(<h3>(Exercise|Project|Problem) \d+:.+</h3>)'
         filestr = re.sub(pattern, '\g<1>\n\n<img src="%s" width=%s align="right">\n' % (icon_path, icon_width), filestr)
 
@@ -1846,7 +1847,7 @@ def html_quiz(quiz):
 %s
 <div class="collapse-group">
 <p><div class="collapse" id="%s">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
+<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%s.gif">
 %s
 </div></p>
 <a class="btn btn-default btn-xs showdetails" data-toggle="collapse"
@@ -1864,7 +1865,7 @@ def html_quiz(quiz):
 %s
 <div class="collapse-group">
 <p><div class="collapse" id="%s">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">
+<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%s.gif">
 %s
 </div></p>
 </div>
@@ -1872,7 +1873,7 @@ def html_quiz(quiz):
 """ % (id, button_text, choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
             '''
             visible_text = '&nbsp;<b>%s</b>\n%s' % (choice_prefix, choice[1])
-            collapsed_text = '<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/%s.gif">\n%s' % ('correct' if choice[0] == 'right' else 'incorrect', expl)
+            collapsed_text = '<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%s.gif">\n%s' % ('correct' if choice[0] == 'right' else 'incorrect', expl)
             text += bootstrap_collapse(
                visible_text, collapsed_text,
                id, button_text, icon='pencil')
@@ -2008,7 +2009,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 <table width="95%%%%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/lyx_%(_admon)s.png" hspace="5" alt="%(_admon)s"></td>
+<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/lyx_%(_admon)s.png" hspace="5" alt="%(_admon)s"></td>
 <th align="left" valign="middle"><b>%%s</b></th>
 </tr>
 <tr><td>&nbsp;</td> <td align="left" valign="top"><p>
@@ -2357,12 +2358,12 @@ div { text-align: justify; text-justify: inter-word; }
         elif html_style == 'bootstrap_bootflat':
             boots_style = 'bootflat'
             urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
-                    'https://raw.githubusercontent.com/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
+                    'RAW_GITHUB_URL/bootflat/bootflat.github.io/master/bootflat/css/bootflat.css']
         elif html_style.startswith('bootstrap_'):
             # Local DocOnce stored or modified bootstrap themes
             boots_style = html_style.split('_')[1]
             urls = ['http://netdna.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css' % boots_version,
-                    'https://raw.github.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
+                    'RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/%s.css' % html_style]
         elif html_style.startswith('bootswatch'):
             default = 'cosmo'
             boots_style = default if 'bootswatch_' not in html_style else \
@@ -2488,7 +2489,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
     if option('pygments_html_style=', 'default') == 'highlight.js':
         scripts += """
 <!-- use highlight.js and styles for code -->
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 """
     # Had to take DOCTYPE out from 1st line to load css files from github...

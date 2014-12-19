@@ -1,4 +1,4 @@
-TITLE: Ultraquick Demo
+TITLE: Ultraquick Slide Demo
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -45,3 +45,45 @@ show()
 ## Include figure if not notebook
 FIGURE: [minidemo_fig, width=500 frac=0.5]
 % endif
+
+!split
+===== Lists are often used in slides =====
+
+!bblock
+ * Point 1
+ * Point 2
+  * Nested point
+ * Point 3
+!eblock
+
+!bblock
+ o Item 1
+ o Item 2
+  o Nested item
+ o Item 3
+!eblock
+
+!split
+===== Slide elements can also be organized in MxN cells =====
+
+!bslidecell 00 0.3
+$e^{-x^2}$
+!eslidecell
+
+!bslidecell 01 0.7
+FIGURE: [minidemo_fig, width=500 frac=1]
+!eslidecell
+
+!bslidecell 10
+ * Point 1
+ * Point 2
+  * Nested point
+ * Point 3
+!eslidecell
+
+!bslidecell 11
+ o Item 1
+ o Item 2
+  o Nested item
+ o Item 3
+!eslidecell

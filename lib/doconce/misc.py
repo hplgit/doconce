@@ -117,6 +117,29 @@ inserted to the right in exercises - "default" and "none" are allowed
 ("none" if no option)."""),
     ('--html_exercise_icon_width=',
      """Width of the icon image specified as --html_exercise_icon."""),
+    ('--html_raw_github_url=', """URLs to files hosted on the doconce github account.
+Internet Explorer (and perhaps other browsers) will not show raw.github.com
+files. Instead on should use rawgit.com. For development of HTML sites
+in Safari and Chrome and can use rawgit.com.
+
+Values of --html_raw_github_url=:
+safe or cdn.rawgit: use this for ready-made sites with potentially some traffic.
+The URL becomes https:://cdn.rawgit.com/hplgit/doconce/...
+
+test or rawgit: use this for test purposes and development with low traffic.
+The URL becomes https:://rawgit.com/hplgit/doconce/...
+
+github or raw.github: the URL becomes https://raw.github.com and may fail to
+load properly.
+
+githubusercontent or raw.githubusercontent: The URL becomes
+https://raw.githubusercontent.com and may fail to load properly.
+"""),
+    ('--html_DOCTYPE', """Insert <!DOCTYPE HTML> in the top of the HTML file.
+This is required for Internet Explorer and Mozilla.
+However, some of the CSS files used by DocOnce may not load properly if
+they are not well formed. That is why no doctype is default in the
+generated HTML files."""),
     ('--html_links_in_new_window',
      """Open HTML links in a new window."""),
     ('--html_quiz_button_text=',
@@ -2326,8 +2349,12 @@ instead of <hr> rule. Default is split.
 text, gray1 (default), gray2, bigblue, blue, green.
 See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
 for examples on these types (from left to right).
---nav_button is ignored if the "doconce format html" command used
-bootstrap styles: --html_style=bootstrap*|bootswatch*.
+A value like gray2,top gives buttons only at the top of the page,
+gray2,top+bottom gives buttons at the top and bottom (default), while
+gray2,bottom gives buttons only at the bottom.
+If the "doconce format html" command used bootstrap styles (with
+--html_style=bootstrap*|bootswatch*), set just --nav_button=top or
+bottom (default) or top+bottom.
 
 --pagination means that one can click on pages at the button
 if a bootstrap theme is used in the document.
@@ -2430,11 +2457,15 @@ uio_footer, uio_symbol (for which the full path is automatically created)
 text, gray1 (default), gray2, bigblue, blue, green.
 See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
 for examples on these types (from left to right).
---nav_button is ignored if the "doconce format html" command used
-bootstrap styles: --html_style=bootstrap*|bootswatch*.
+A value like gray2,top gives buttons only at the top of the page,
+gray2,top+bottom gives buttons at the top and bottom (default), while
+gray2,bottom gives buttons only at the bottom.
+If the "doconce format html" command used bootstrap styles (with
+--html_style=bootstrap*|bootswatch*), set just --nav_button=top or
+bottom (default) or top+bottom.
 
---pagination means that one can click on pages at the button
-if a bootstrap theme is used in the document.
+--pagination means that one can click on page numbers if a bootstrap
+theme is used in the document.
 
 Note: if slide_tp is doconce, the doconce split_html command is
 more versatile since it allows the --method argument (can split,
@@ -2759,6 +2790,16 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         if arg.startswith('--nav_button='):
             nav_button = arg.split('=')[1]
             break
+    if bootstrap:
+        nav_button_pos = 'bottom'
+        if nav_button in ('top', 'top+bottom'):
+            nav_button_pos = nav_button
+    else:
+        nav_button_pos = 'top+bottom'
+        if ',' in nav_button:
+            nav_button, nav_button_pos = nav_button.split(',')
+        # Values after comma: top, bottom, top+bottom
+
     # Map nav_button name to actual image file in bundled/html_images
     prev_button = next_button = ''
     if nav_button == 'gray1':
@@ -2776,11 +2817,12 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
     elif nav_button == 'green':
         prev_button = 'Knob_Left'
         next_button = 'Knob_Forward'
-    elif nav_button == 'text':
+    elif nav_button in ('text', 'top', 'bottom', 'top+bottom'):
         pass
     else:
-        print '*** warning: --nav_button=%s is illegal value, text is used' % nav_button
+        print '*** warning: --nav_button=%s is illegal value, text,top+bottom is used' % nav_button
         nav_button == 'text'
+        nav_button_pos = 'top+bottom'
 
     header_part_line = ''  # 'colorline'
     if local_navigation_pics:
@@ -2976,6 +3018,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         if bootstrap:
             # Make navigation arrows
             prev_ = next_ = ''
+            buttons = bootstrap_navigation(pn, prev_part_filename, next_part_filename)
             # Add jumbotron button reference on first page
             if pn == 0:
                 for i in range(len(part)):
@@ -2984,12 +3027,12 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                               '<!-- potential-jumbotron-button -->',
                               '\n\n<p><a href="%s" class="btn btn-primary btn-lg">Read &raquo;</a></p>\n\n' % next_part_filename)
                         break
+            if 'top' in nav_button_pos:
+                lines += buttons.splitlines(True)
 
-
-            buttons = bootstrap_navigation(pn, prev_part_filename, next_part_filename)
-        else:
+        elif 'top' in nav_button_pos:
             # Simple navigation buttons at the top and bottom of the page
-            # (only at bottom if slides is True)
+            # (only at bottom if the function argument slides is True)
             if not slides:
                 lines.append('<p>\n<!-- begin top navigation -->\n') # for easy removal
                 # Need a table for navigation pics, otherwise they cannot
@@ -3019,15 +3062,16 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 lines.append('<p>\n')
 
 
-
         # Main body of text
         lines += part
 
         # Navigation in the bottom of the page
         lines.append('<p>\n')
         if bootstrap:
-            lines += buttons.splitlines(True) + footer
-        else:
+            if 'bottom' in nav_button_pos:
+                lines += buttons.splitlines(True)
+            lines += footer
+        elif 'bottom' in nav_button_pos:
             lines.append('<!-- begin bottom navigation -->\n')
             lines.append('<table style="width: 100%"><tr><td>\n')
             if pn > 0:
@@ -4802,7 +4846,6 @@ code {
         # Remove newlines before and after equations inside $$--$$
         def subst(m):
             eq = m.group(1).strip()
-            print 'XXX [%s]' % eq
             return '$$\n%s\n$$\n\n' % eq
 
         filestr = re.sub(r'^\$\$\n+(.+?)\$\$\n+', subst,
