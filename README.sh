@@ -9,4 +9,4 @@ doconce format html README
 doconce replace '<li>' '<p><li>' README.html
 cp README.html tmp.html
 rm -f README.html .*_html_file_collection
-# Copy the source manually from tmp.html into index.html
+echo Copy the source manually from tmp.html into index.html
