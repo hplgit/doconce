@@ -70,8 +70,9 @@ based on Bootstrap styles.  A "demo":
 "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html"
 illustrates the many possibilities for colors and layouts.
 
+##"http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"
+
 A "complete book": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_1?s=books&ie=UTF8&qid=1419162166&sr=1-1&keywords=langtangen"
-#"http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"
 (900 pages) has been written entirely in DocOnce. The primary format
 is a publisher-specific LaTeX style, but HTML or Sphinx formats can
 easily be generated, such as this chapter in the popular "Bootstrap
