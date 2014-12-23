@@ -2751,16 +2751,28 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
 
         def bootstrap_navigation(pn, prev_part_filename, next_part_filename):
             text = '<!-- navigation buttons at the bottom of the page -->'
-            if '--pagination' in sys.argv and len(parts) < 19:
+            if '--pagination' in sys.argv:
                 # Use Bootstrap pagination
                 text += '\n<ul class="pagination">\n'
                 if pn > 0:
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
-                for i in range(len(parts)):
-                    if i == pn:
-                       text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
-                    else:
-                       text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                max_pagination_pages = 18
+                if len(parts) <= max_pagination_pages:
+                    # Show all pages
+                    for i in range(len(parts)):
+                        if i == pn:
+                           text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                        else:
+                           text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                else:
+                    # Show first, last, and pages around the current one
+                    text += '  <li>...</li>\n'
+                    for i in range(pn-max_pagination_pages/2, pn+max_pagination_pages/2 +1):
+                        if i == pn:
+                           text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                        else:
+                           text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+
                 if pn < len(parts)-1:
                     text += '  <li><a href="%s">&raquo;</a></li>\n' % next_part_filename
                 text += '</ul>\n'
