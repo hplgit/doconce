@@ -2757,9 +2757,13 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 if pn > 0:
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
                 max_pagination_pages = 16
+                max_pagination_pages = 5
                 if len(parts) <= max_pagination_pages/2:
                     # Show all pages
                     for i in range(len(parts)):
+                        if i == 1:
+                            # Special case, add page 1
+                           text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, 1) + '.html', 1+1)
                         if i == pn:
                            text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         else:
