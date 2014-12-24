@@ -2756,8 +2756,8 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 text += '\n<ul class="pagination">\n'
                 if pn > 0:
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
-                max_pagination_pages = 18
-                if len(parts) <= max_pagination_pages:
+                max_pagination_pages = 16
+                if len(parts) <= max_pagination_pages/2:
                     # Show all pages
                     for i in range(len(parts)):
                         if i == pn:
@@ -2766,17 +2766,20 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                            text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                 else:
                     # Show first, last, and pages around the current one
-                    i = 0
-                    text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
-                    text += '  <li>...</li>\n'
-                    for i in range(pn-max_pagination_pages/2, pn+max_pagination_pages/2 +1):
+                    if pn >= max_pagination_pages/2 + 2:
+                        i = 0
+                        text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                        text += '  <li><a href="">...</a></li>\n'
+                    for i in range(max(0, pn-(max_pagination_pages/2)),
+                                   min(len(parts), pn+max_pagination_pages/2+2)):
                         if i == pn:
                            text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         else:
                            text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
-                    text += '  <li>...</li>\n'
-                    i = len(parts)-1
-                    text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
+                    if pn <= (len(parts) - (max_pagination_pages/2 + 3)):
+                        text += '  <li><a href="">...</a></li>\n'
+                        i = len(parts)-1
+                        text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
 
                 if pn < len(parts)-1:
                     text += '  <li><a href="%s">&raquo;</a></li>\n' % next_part_filename
