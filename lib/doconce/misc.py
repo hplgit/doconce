@@ -2757,13 +2757,10 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 if pn > 0:
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
                 max_pagination_pages = 16
-                max_pagination_pages = 5
+                #max_pagination_pages = 4 # for debugging
                 if len(parts) <= max_pagination_pages/2:
                     # Show all pages
                     for i in range(len(parts)):
-                        if i == 1:
-                            # Special case, add page 1
-                           text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, 1) + '.html', 1+1)
                         if i == pn:
                            text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         else:
@@ -2774,8 +2771,12 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                         i = 0
                         text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         text += '  <li><a href="">...</a></li>\n'
-                    for i in range(max(0, pn-(max_pagination_pages/2)),
-                                   min(len(parts), pn+max_pagination_pages/2+2)):
+                    start = max(0, pn-(max_pagination_pages/2))
+                    stop = min(len(parts), pn+max_pagination_pages/2+2)
+                    if start == 1:
+                        # Special case, add page 1
+                        text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, 0) + '.html', 0+1)
+                    for i in range(start, stop):
                         if i == pn:
                            text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         else:
