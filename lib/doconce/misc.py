@@ -152,6 +152,11 @@ Default: Empty (just pencil glyphion)."""),
      """Turns the Bootstrap jumbotron intro on/off and governs the
 size of the heading. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron)."""),
+    ('--html_figure_hrule=', """Set horizontal rule(s) above and/or below a figure.
+none, off: no rules
+top: rule at top (default)
+bottom: rule at bottom
+top+bottom: rule at top and bottom"""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',

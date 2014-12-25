@@ -51,6 +51,7 @@ html_links_in_new_window = False
 #html_quiz_button_text = 
 #html_bootstrap_navbar = 
 #html_bootstrap_jumbotron = 
+#html_figure_hrule = 
 #device = 
 #latex_style = 
 #latex_font = 
