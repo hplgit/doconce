@@ -235,6 +235,24 @@ Terminal> doconce format html mydoc --html_template=mytemplate.html
 The template in `style_vagrant` also needs an extra option
 `--html_style=bootstrap`.
 
+idx{splitting documents}
+idx{multi-page documents}
+
+=== Splitting HTML documents ===
+
+The `!split` instruction (on separate lines) signifies a pagebreak.
+A command `doconce split_html` is needed after `doconce format` to
+actually perform the split. The `doconce split_html` command has
+several options for setting the type of splitting, type of navigation
+buttons, etc. Just type `doconce split_html` to see the options.
+Here is an example with separate links for each page (pagination)
+at the top and bottom of each page:
+
+!bc sys
+Terminal> doconce format html mydoc --html_style=bootswatch_journal
+Terminal> doconce split_html mydoc --nav_buttontop+bottom --pagination
+!ec
+
 idx{HTML file collection}
 
 === The HTML File Collection ===
@@ -270,7 +288,7 @@ Terminal> doconce split_html mydoc_vagrant.html
 
 === URL to files hosted on GitHub ===
 
-The generated HTML code will have URLs to files in the DocOnce repo.
+The generated HTML code will have URLs to files in the DocOnce repo at GitHub.
 The type of URL is set with the `--html_raw_github_url=...` option:
 
  * `--html_raw_github_url=safe` or `--html_raw_github_url=cdn.rawgit`:
@@ -282,6 +300,71 @@ The type of URL is set with the `--html_raw_github_url=...` option:
  * `--html_raw_github_url=github` or `--html_raw_github_url=raw.github`:
    URL directly to the raw GitHub file (`https://raw.github.com/hplgit/doconce/...`) that may fail to load properly in (e.g.) Internet explorer
  * `--html_raw_github_url=githubusercontent` or `--html_raw_github_url=raw.githubusercontent`: as the one above, but using `https://raw.githubusercontent.com` instead
+
+=== Other HTML options ===
+
+Options for Bootstrap styles:
+
+ * `--html_code_style=on,off,inherit,transparent`: control the style of
+   inline verbatim code `code` tags. With `off`, `inherit`, or `transparent`
+   the verbatim text inherits foreground and background color from its
+   surroundings, while `on` (default) means that the typesetting is
+   css-specified. This option is most relevant for Bootstrap styles to
+   avoid the redish typesetting of inline verbatim text.
+ * `--html_pre_style=on,off,inherit,transparent`: control the style of
+   code blocks in `pre` tags. With `off`, `inherit`, or `transparent`
+   the code blocks inherit foreground and background color from their
+   surroundings, while `on` (default) means that code block colors are
+   css-specified. This option is most relevant for Bootstrap styles to
+   avoid white background in code blocks inside colorful admons.
+ * `--html_bootstrap_navbar=on,off`: turn the Bootstrap navigation
+   bar on or off.
+ * `--html_bootstrap_jumbotron=on,off,h2`: turn the jumbotron intro on or off,
+   and govern the size of the document title. Default is `on`, while
+   `h2` means a jumbotron with `h2` (section) size of the title
+   (normally the jumbotron has huge heading fonts so some jumbotrons
+    look better with `h2` typesetting of the document title).
+ * `--html_quiz_button_text=X`: set a text on the answer button for
+   Bootstrap-style quizzes. Without this option a small icon is used.
+
+Other options:
+
+ * `--html_toc_depth=X`: controls the depth of the table of contents
+   in documents. Default value of `X` is 3, meaning chapters,
+   sections, and subsections. `X` as 0 gives the table of contents as a
+   nested list in Bootstrap styles.
+ * `--html_toc_indent=X`: indent sections/subsections `X` spaces in the table
+   of contents.
+ * `--html_body_font=`: specify font for text body. The value `?` lists
+   available fonts.
+ * `--html_heading_font=`: specify font for headings. The value `?` lists
+   available fonts.
+ * `--html_video_autoplay=True,False`: let videos play automatically
+   (`True`, default) or not (`False`) when the HTML page is loaded.
+ * `--html_admon=X`: specify typesetting of admonitions. Values of `X`
+   are `colors`, `gray`, `yellow`, `apricot`, `lyx`, `paragraph`.
+   For Bootstrap styles only to other values are legal:
+   `botstrap_panel` or `bootstrap_alert`. See demos for how these look
+   like.
+ * `--html_admon_bg_color=X`: set the background color in admonitions.
+ * `--html_admon_bd_color=X`: set the boundary color in admonitions.
+ * `--html_admon_shadow`: add a shadow effect in admonitions.
+ * `--html_box_shadow`: add a shadow effect in box environments (`!bbox`).
+ * `--html_exercise_icon=X`: specify an icon to more easily notify exercises.
+   `X` can be any filename `question_*.png` in the `bundled/html_images`
+   directory in the DocOnce repo. With `X` as `default`, a default icon
+   choice is made, based on the current style.
+ * `--html_exercise_icon_width=X: set the width of the exercise icon
+   image to `X` pixels.
+ * `--html_DOCTYPE`: insert `<!DOCTYPE HTML>` at the top of the HTML
+   output file. This is normally recommended, but malformed CSS files
+   will then not be loaded (so by default, the doctype is not specified).
+   This option is necessary for correct rendering of Bootstrap styles
+   in Internet Explorer.
+ * `--html_links_in_new_window`: open all links as new tabs.
+ * `--html_figure_hrule=X`: control the use of horizontal rules in
+   figures. `X` is `top` by default; other values are `none` (no rules),
+   `bottom` and `top+bottom`.
 
 ===== Blog Posts =====
 
