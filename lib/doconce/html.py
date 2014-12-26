@@ -632,7 +632,7 @@ def html_code(filestr, code_blocks, code_block_types,
         # Find remaining ref{...} that is not referring to labels in the
         # document (everything should have been substituted, except eq.refs)
         # leave out eq.ref, verbatim (<code>ref... etc)
-        remaining = re.findall('[^(>](ref\{.+?\})[^)<]', filestr)
+        remaining = re.findall('[^(>A-Za-z](ref\{.+?\})[^)<]', filestr)
         if remaining:
             print '*** error: references to labels not defined in this document'
             #print '\n', '\n'.join(remaining)

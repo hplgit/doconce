@@ -354,7 +354,7 @@ Other options:
    `X` can be any filename `question_*.png` in the `bundled/html_images`
    directory in the DocOnce repo. With `X` as `default`, a default icon
    choice is made, based on the current style.
- * `--html_exercise_icon_width=X: set the width of the exercise icon
+ * `--html_exercise_icon_width=X`: set the width of the exercise icon
    image to `X` pixels.
  * `--html_DOCTYPE`: insert `<!DOCTYPE HTML>` at the top of the HTML
    output file. This is normally recommended, but malformed CSS files
