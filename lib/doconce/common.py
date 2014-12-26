@@ -567,6 +567,22 @@ def doconce_exercise_output(exer,
         s += ':'
     s += ' ' + exer['title'] + ' ' + exer['heading'] + '\n'
 
+    # Store solutions in a separate string
+    has_solutions = False
+    if exer['solution']:
+        has_solutions = True
+    if exer['answer']:
+        has_solutions = True
+    for subex in exer['subex']:
+        if subex['solution']:
+            has_solutions = True
+        if subex['answer']:
+            has_solutions = True
+    if has_solutions:
+        sol = s  # Include headline since solution/answer is coming
+    else:
+        sol = ''
+
     if exer['label']:
         s += 'label{%s}' % exer['label'] + '\n'
 
@@ -617,6 +633,7 @@ def doconce_exercise_output(exer,
         s += answer_header + '\n' + exer['answer'] + '\n'
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
+        sol += '\n' + exer['answer'] + '\n'
 
 
     if exer['solution']:
@@ -631,16 +648,20 @@ def doconce_exercise_output(exer,
            re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
             print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
             s += 'Code:\n'
+            sol += '\nCode:\n'
         s += exer['solution'] + '\n'
+        sol += '\n'+ exer['solution'] + '\n'
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
     if exer['subex']:
         s += '\n'
+        sol += '\n'
         import string
         for i, subex in enumerate(exer['subex']):
             letter = string.ascii_lowercase[i]
             s += '\n__%s)__\n' % letter
+            sol += '\n__%s)__\n' % letter
 
             if subex['text']:
                 s += subex['text'] + '\n'
@@ -671,6 +692,7 @@ def doconce_exercise_output(exer,
                     s += answer_header + '\n' + subex['answer'] + '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
+                    sol += '\n' + subex['answer'] + '\n'
 
                 if subex['solution']:
                     s += '\n'
@@ -683,7 +705,9 @@ def doconce_exercise_output(exer,
                                  subex['solution'].lstrip()):
                         print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
                         s += 'Code:\n'
+                        sol += '\nCode:\n'
                     s += subex['solution'] + '\n'
+                    sol += '\n' + subex['solution'] + '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
@@ -717,7 +741,7 @@ def doconce_exercise_output(exer,
         s += '\n' + comments
 
     s += '\n# ' + envir_delimiter_lines['exercise'][1] + '\n\n'
-    return s
+    return s, sol
 
 def plain_exercise(exer):
     return doconce_exercise_output(exer)

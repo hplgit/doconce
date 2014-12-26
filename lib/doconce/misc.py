@@ -67,19 +67,21 @@ bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
                 (dark:) amelia, cyborg, darkly, slate, spruce,
                 superhero (demos at bootswatch.com)"""),
-    ('--html_code_style=',
-     """on, off, inherit, transparent: enable normal inline verbatim font
-where foreground and background color is inherited from the
-surroundnings (e.g., to avoid the red Boostrap color).
-Default: on."""),
-    ('--html_pre_style=',
-     """on, off, inherit, transparent: let code blocks inside <pre> tags have
-foreground and background color inherited from the surroundnings.
-Default: on."""),
     ('--html_template=',
      """Specify an HTML template with header/footer in which the doconce
 document is embedded. (Often preferred to run with --no_title)"""),
     ('--no_title', 'Comment out TITLE, AUTHOR, DATE.\nOften used with HTML templates.'),
+    ('--html_code_style=',
+     """off, inherit, or transparent: enable normal inline verbatim font
+where foreground and background color is inherited from the
+surroundnings (e.g., to avoid the red Boostrap color).
+Default: on (use the css-specified typesetting of <pre> tags)."""),
+    ('--html_pre_style=',
+     """off, inherit, or transparent: let code blocks inside <pre> tags have
+foreground and background color inherited from the surroundnings.
+Default: on (use the css-specified typesetting of <pre> tags).
+This option is most relevant for Bootstrap styles to
+avoid white background in code blocks inside colorful admons."""),
     ('--html_toc_depth=',
      """No of levels in the table of contents in HTML output for
 Bootstrap-based styles. Default: 2."""),
@@ -112,11 +114,12 @@ If the file does not exist, the default or specified style
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
     ('--html_exercise_icon=',
-     """Specify a question icon in bundled/html_images for being
-inserted to the right in exercises - "default" and "none" are allowed
-("none" if no option)."""),
+     """Specify a question icon (as a filename in the bundled/html_images
+directory in the doconce repo) for being inserted to the right in exercises.
+default: turn on predefined question icons according to the chosen style.
+none: no icons (this is the default value)."""),
     ('--html_exercise_icon_width=',
-     """Width of the icon image specified as --html_exercise_icon."""),
+     """Width of the icon image in pixels (must be used with --html_exercise_icon)."""),
     ('--html_raw_github_url=', """URLs to files hosted on the doconce github account.
 Internet Explorer (and perhaps other browsers) will not show raw.github.com
 files. Instead on should use rawgit.com. For development of HTML sites
@@ -141,17 +144,22 @@ However, some of the CSS files used by DocOnce may not load properly if
 they are not well formed. That is why no doctype is default in the
 generated HTML files."""),
     ('--html_links_in_new_window',
-     """Open HTML links in a new window."""),
+     """Open HTML links in a new window/tab."""),
     ('--html_quiz_button_text=',
-     """Text on buttons for collapsing/expanding answers and
-explanations\nin quizzes (with bootstrap styles).
+     """Text on buttons for collapsing/expanding answers and explanations
+in quizzes (with bootstrap styles).
 Default: Empty (just pencil glyphion)."""),
     ('--html_bootstrap_navbar=',
      'Turns the Bootstrap navigation bar on/off. Default: on.'),
     ('--html_bootstrap_jumbotron=',
      """Turns the Bootstrap jumbotron intro on/off and governs the
-size of the heading. Default: on. Other values: h2, off
+size of the document title. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron)."""),
+    ('--html_figure_hrule=', """Set horizontal rule(s) above and/or below a figure.
+none, off: no rules
+top: rule at top (default)
+bottom: rule at bottom
+top+bottom: rule at top and bottom"""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--latex_style=',
@@ -2340,7 +2348,7 @@ def html_colorbullets():
 def _usage_split_html():
     print """\
 Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination'
---method=split|space8|hrule|colorline specifies physical
+--method=split|space8|hrule|colorline specifies physical pagebreak
 split (split) or just N blank lines (spaceN) or a horizontal
 rule (hrule) with blank lines above and below, or a colored rule
 instead of <hr> rule. Default is split.
@@ -2757,6 +2765,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 if pn > 0:
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
                 max_pagination_pages = 16
+                #max_pagination_pages = 4 # for debugging
                 if len(parts) <= max_pagination_pages/2:
                     # Show all pages
                     for i in range(len(parts)):
@@ -2770,8 +2779,12 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                         i = 0
                         text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         text += '  <li><a href="">...</a></li>\n'
-                    for i in range(max(0, pn-(max_pagination_pages/2)),
-                                   min(len(parts), pn+max_pagination_pages/2+2)):
+                    start = max(0, pn-(max_pagination_pages/2))
+                    stop = min(len(parts), pn+max_pagination_pages/2+2)
+                    if start == 1:
+                        # Special case, add page 1
+                        text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, 0) + '.html', 0+1)
+                    for i in range(start, stop):
                         if i == pn:
                            text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         else:

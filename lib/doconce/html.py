@@ -5,11 +5,6 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url
 from misc import option
 
-# fold/unfold: use !bblock Title unfold
-# to indicate and use bootstrap choice unfolding for quiz as technique
-# Can with bootstrap typeset all answers and solutions in exercises
-# using folding
-
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
 
@@ -154,10 +149,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 """
 
 css_solarized_dark = """\
@@ -637,7 +632,7 @@ def html_code(filestr, code_blocks, code_block_types,
         # Find remaining ref{...} that is not referring to labels in the
         # document (everything should have been substituted, except eq.refs)
         # leave out eq.ref, verbatim (<code>ref... etc)
-        remaining = re.findall('[^(>](ref\{.+?\})[^)<]', filestr)
+        remaining = re.findall('[^(>A-Za-z](ref\{.+?\})[^)<]', filestr)
         if remaining:
             print '*** error: references to labels not defined in this document'
             #print '\n', '\n'.join(remaining)
@@ -1208,14 +1203,21 @@ def html_figure(m):
         add_to_file_collection(filename)
 
     if caption:
-       # Caption above figure and a horizontalrule (fine for anchoring):
-       return """
-<center> <!-- figure -->
-<hr class="figure">
+       # Caption above figure and an optional horizontal rules:
+       hrules = option('html_figure_hrule=', 'top')
+       top_hr = bottom_hr = ''
+       if 'top' in hrules:
+           top_hr = '\n<hr class="figure">'
+       if 'bottom' in hrules:
+           bottom_hr = '\n<hr class="figure">'
+
+       s = """
+<center> <!-- figure -->%s
 <center><p class="caption"> %s </p></center>
-<p><img src="%s" align="bottom" %s></p>
+<p><img src="%s" align="bottom" %s></p>%s
 </center>
-""" % (caption, filename, opts)
+""" % (top_hr, caption, filename, opts, bottom_hr)
+       return s
     else:
        # Just insert image file
        return '<center><p><img src="%s" align="bottom" %s></p></center>' % \

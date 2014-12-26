@@ -1431,12 +1431,6 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 
 
 def latex_exercise(exer):
-    # if include_numbering_of_exercises, we could generate a toc for
-    # the exercises, based in the exer list of dicts, and store this
-    # in a file for later use in latex_code, for instance.
-    # This can also be done by a doconce latex_exercise_toc feature
-    # that reads the .filename.exerinfo file.
-
     return doconce_exercise_output(
            exer,
            include_numbering=include_numbering_of_exercises,

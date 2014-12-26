@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Dec 4, 2014
+:Date: Dec 26, 2014
 
 .. lines beginning with # are doconce comment lines
 
@@ -6351,7 +6351,27 @@ to how you store the template files), and run
         Terminal> doconce format html mydoc --html_template=mytemplate.html
 
 The template in ``style_vagrant`` also needs an extra option
-``--html_style=vagrant``.
+``--html_style=bootstrap``.
+
+.. index:: splitting documents
+
+.. index:: multi-page documents
+
+Splitting HTML documents
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``!split`` instruction (on separate lines) signifies a pagebreak.
+A command ``doconce split_html`` is needed after ``doconce format`` to
+actually perform the split. The ``doconce split_html`` command has
+several options for setting the type of splitting, type of navigation
+buttons, etc. Just type ``doconce split_html`` to see the options.
+Here is an example with separate links for each page (pagination)
+at the top and bottom of each page:
+
+.. code-block:: text
+
+        Terminal> doconce format html mydoc --html_style=bootswatch_journal
+        Terminal> doconce split_html mydoc --nav_buttontop+bottom --pagination
 
 .. index:: HTML file collection
 
@@ -6387,6 +6407,109 @@ the HTML document: ``mydoc_bloodish.html``, ``mydoc_solarized``, and
                   --html_output=mydoc_vagrant --pygments_html_style=default \
                   --html_template=templates/my_adapted_vagrant_template.html
         Terminal> doconce split_html mydoc_vagrant.html
+
+URL to files hosted on GitHub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The generated HTML code will have URLs to files in the DocOnce repo at GitHub.
+The type of URL is set with the ``--html_raw_github_url=...`` option:
+
+ * ``--html_raw_github_url=safe`` or ``--html_raw_github_url=cdn.rawgit``:
+   safe URL for high traffic production sites (default)
+
+ * ``--html_raw_github_url=test`` or ``--html_raw_github_url=rawgit``:
+   recommended URL for low traffic development sites - use this when
+   developing HTML pages and the DocOnce GitHub links in the HTML files
+   are also developed and subject to changes
+
+ * ``--html_raw_github_url=github`` or ``--html_raw_github_url=raw.github``:
+   URL directly to the raw GitHub file (``https://raw.github.com/hplgit/doconce/...``) that may fail to load properly in (e.g.) Internet explorer
+
+ * ``--html_raw_github_url=githubusercontent`` or ``--html_raw_github_url=raw.githubusercontent``: as the one above, but using ``https://raw.githubusercontent.com`` instead
+
+Other HTML options
+~~~~~~~~~~~~~~~~~~
+
+Options for Bootstrap styles:
+
+ * ``--html_code_style=on,off,inherit,transparent``: control the style of
+   inline verbatim code ``code`` tags. With ``off``, ``inherit``, or ``transparent``
+   the verbatim text inherits foreground and background color from its
+   surroundings, while ``on`` (default) means that the typesetting is
+   css-specified. This option is most relevant for Bootstrap styles to
+   avoid the redish typesetting of inline verbatim text.
+
+ * ``--html_pre_style=on,off,inherit,transparent``: control the style of
+   code blocks in ``pre`` tags. With ``off``, ``inherit``, or ``transparent``
+   the code blocks inherit foreground and background color from their
+   surroundings, while ``on`` (default) means that code block colors are
+   css-specified. This option is most relevant for Bootstrap styles to
+   avoid white background in code blocks inside colorful admons.
+
+ * ``--html_bootstrap_navbar=on,off``: turn the Bootstrap navigation
+   bar on or off.
+
+ * ``--html_bootstrap_jumbotron=on,off,h2``: turn the jumbotron intro on or off,
+   and govern the size of the document title. Default is ``on``, while
+   ``h2`` means a jumbotron with ``h2`` (section) size of the title
+   (normally the jumbotron has huge heading fonts so some jumbotrons
+    look better with ``h2`` typesetting of the document title).
+
+ * ``--html_quiz_button_text=X``: set a text on the answer button for
+   Bootstrap-style quizzes. Without this option a small icon is used.
+
+Other options:
+
+ * ``--html_toc_depth=X``: controls the depth of the table of contents
+   in documents. Default value of ``X`` is 3, meaning chapters,
+   sections, and subsections. ``X`` as 0 gives the table of contents as a
+   nested list in Bootstrap styles.
+
+ * ``--html_toc_indent=X``: indent sections/subsections ``X`` spaces in the table
+   of contents.
+
+ * ``--html_body_font=``: specify font for text body. The value ``?`` lists
+   available fonts.
+
+ * ``--html_heading_font=``: specify font for headings. The value ``?`` lists
+   available fonts.
+
+ * ``--html_video_autoplay=True,False``: let videos play automatically
+   (``True``, default) or not (``False``) when the HTML page is loaded.
+
+ * ``--html_admon=X``: specify typesetting of admonitions. Values of ``X``
+   are ``colors``, ``gray``, ``yellow``, ``apricot``, ``lyx``, ``paragraph``.
+   For Bootstrap styles only to other values are legal:
+   ``botstrap_panel`` or ``bootstrap_alert``. See demos for how these look
+   like.
+
+ * ``--html_admon_bg_color=X``: set the background color in admonitions.
+
+ * ``--html_admon_bd_color=X``: set the boundary color in admonitions.
+
+ * ``--html_admon_shadow``: add a shadow effect in admonitions.
+
+ * ``--html_box_shadow``: add a shadow effect in box environments (``!bbox``).
+
+ * ``--html_exercise_icon=X``: specify an icon to more easily notify exercises.
+   ``X`` can be any filename ``question_*.png`` in the ``bundled/html_images``
+   directory in the DocOnce repo. With ``X`` as ``default``, a default icon
+   choice is made, based on the current style.
+
+ * ``--html_exercise_icon_width=X``: set the width of the exercise icon
+   image to ``X`` pixels.
+
+ * ``--html_DOCTYPE``: insert ``<!DOCTYPE HTML>`` at the top of the HTML
+   output file. This is normally recommended, but malformed CSS files
+   will then not be loaded (so by default, the doctype is not specified).
+   This option is necessary for correct rendering of Bootstrap styles
+   in Internet Explorer.
+
+ * ``--html_links_in_new_window``: open all links as new tabs.
+
+ * ``--html_figure_hrule=X``: control the use of horizontal rules in
+   figures. ``X`` is ``top`` by default; other values are ``none`` (no rules),
+   ``bottom`` and ``top+bottom``.
 
 Blog Posts
 ----------
@@ -6765,25 +6888,29 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_papersize=a4,a6``
 
- * ``--latex_bibstyle=plain``
+ * ``--latex_bibstyle=plain`` (name of BibTeX style)
 
  * ``--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection``
 
  * ``--latex_style=std, Springer_lncse, Springer_llncs, Springer_T2, siamltex, siamltexmm, elsevier``
 
- * ``--latex_list_of_exercises=loe,toc,none``
+ * ``--latex_list_of_exercises=loe,toc,none`` (LaTeX list of exercises, integrated into the table of contents, or no list)
 
- * ``--latex_fancy_header``
+ * ``--latex_fancy_header`` (chapter/section headings at top of pages, style depends on value of ``--latex_section_headings``)
 
- * ``--latex_section_headings=std,blue,strongblue,gray,gray-wide``
+ * ``--latex_section_headings=std,blue,strongblue,gray,gray-wide`` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
 
- * ``--latex_colored_table_rows=blue,gray,no``
+ * ``--latex_colored_table_rows=blue,gray,no`` (color of every two lines in tables)
 
- * ``--latex_todonotes``
+ * ``--latex_todonotes`` (inline comments typeset as "bubbles")
 
  * ``--latex_double_spacing``
 
- * ``--latex_preamble=filename``
+ * ``--latex_line_numbers``
+
+ * ``--latex_labels_in_margin`` (name of section, equation, citation labels in the margin)
+
+ * ``--latex_preamble=filename`` (user-specific preamble)
 
  * ``--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2``
 
@@ -6799,12 +6926,17 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_external_movie_viewer`` (for ``movie15`` package)
 
- * ``--xelatex``
+ * ``--xelatex`` (prepare for XeLaTeX)
 
 The LaTeX style is much governed by ``--latex_title_layout`` and ``--latex_style``.
 For the former, ``titlepage`` gives a separate title page; ``std`` is just standard
 LaTeX handling of title, author, and date; ``doconce_heading`` is a more modern heading, ``Springer_collection`` is used with ``--latex_style=Springer_lncse`` for an edited book; ``beamer`` is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For ``--latex_style``,
 ``std`` gives standard LaTeX behavior; ``Springer_lncse`` is for Springer's LNCSE book series style (to be used with ``--latex_title_layout=Springer_collection`` if the book is an edited book); ``Springer_llncs`` is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres ``--latex_title_layout=Springer_collection``); ``Springer_T2`` for Springer's T2 book layout, ``siamltex``, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles ``siamltex.cls`` and ``siam10.clo``), ``siamltexmm`` for the new multimedia SIAM journal style (requires ``siamltex.cls`` and ``siam10.clo``), ``elsevier`` for the style of papers to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can be used to set the journal name, and the style requires ``elsarticle.cls`` and ``elsarticle-num.bst``).
+
+During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
+This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
+``final`` argument in the ``documentclass`` heading to ``draft`` as this will
+mark overful lines (hboxes).
 
 .. index:: LaTeX syntax highlighting
 
@@ -7660,7 +7792,7 @@ here for convenience.
         --html_style=...
         
         Name of theme for HTML style:
-        plain, blueish, blueish2, bloodish,
+        plain, blueish, blueish2, bloodish, tactile-black, tactile-red, rossant
         solarized, solarized2_light, solarized2_dark,
         bootstrap, bootswatch,
         bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
@@ -7668,21 +7800,6 @@ here for convenience.
                         simplex, spacelab, united, yeti
                         (dark:) amelia, cyborg, darkly, slate, spruce,
                         superhero (demos at bootswatch.com)
-        
-        
-        --html_code_style=...
-        
-        on, off, inherit, transparent: enable normal inline verbatim font
-        where foreground and background color is inherited from the
-        surroundnings (e.g., to avoid the red Boostrap color).
-        Default: on.
-        
-        
-        --html_pre_style=...
-        
-        on, off, inherit, transparent: let code blocks inside <pre> tags have
-        foreground and background color inherited from the surroundnings.
-        Default: on.
         
         
         --html_template=...
@@ -7695,6 +7812,23 @@ here for convenience.
         
         Comment out TITLE, AUTHOR, DATE.
         Often used with HTML templates.
+        
+        
+        --html_code_style=...
+        
+        off, inherit, or transparent: enable normal inline verbatim font
+        where foreground and background color is inherited from the
+        surroundnings (e.g., to avoid the red Boostrap color).
+        Default: on (use the css-specified typesetting of <pre> tags).
+        
+        
+        --html_pre_style=...
+        
+        off, inherit, or transparent: let code blocks inside <pre> tags have
+        foreground and background color inherited from the surroundnings.
+        Default: on (use the css-specified typesetting of <pre> tags).
+        This option is most relevant for Bootstrap styles to
+        avoid white background in code blocks inside colorful admons.
         
         
         --html_toc_depth=...
@@ -7762,25 +7896,56 @@ here for convenience.
         
         --html_exercise_icon=...
         
-        Specify a question icon in bundled/html_images for being
-        inserted to the right in exercises - "default" and "none" are allowed
-        ("none" if no option).
+        Specify a question icon (as a filename in the bundled/html_images
+        directory in the doconce repo) for being inserted to the right in exercises.
+        default: turn on predefined question icons according to the chosen style.
+        none: no icons (this is the default value).
         
         
         --html_exercise_icon_width=...
         
-        Width of the icon image specified as --html_exercise_icon.
+        Width of the icon image in pixels (must be used with --html_exercise_icon).
+        
+        
+        --html_raw_github_url=...
+        
+        URLs to files hosted on the doconce github account.
+        Internet Explorer (and perhaps other browsers) will not show raw.github.com
+        files. Instead on should use rawgit.com. For development of HTML sites
+        in Safari and Chrome and can use rawgit.com.
+        
+        Values of --html_raw_github_url=:
+        safe or cdn.rawgit: use this for ready-made sites with potentially some traffic.
+        The URL becomes https:://cdn.rawgit.com/hplgit/doconce/...
+        
+        test or rawgit: use this for test purposes and development with low traffic.
+        The URL becomes https:://rawgit.com/hplgit/doconce/...
+        
+        github or raw.github: the URL becomes https://raw.github.com and may fail to
+        load properly.
+        
+        githubusercontent or raw.githubusercontent: The URL becomes
+        https://raw.githubusercontent.com and may fail to load properly.
+        
+        
+        
+        --html_DOCTYPE
+        
+        Insert <!DOCTYPE HTML> in the top of the HTML file.
+        This is required for Internet Explorer and Mozilla.
+        However, some of the CSS files used by DocOnce may not load properly if
+        they are not well formed. That is why no doctype is default in the
+        generated HTML files.
         
         
         --html_links_in_new_window
         
-        Open HTML links in a new window.
+        Open HTML links in a new window/tab.
         
         
         --html_quiz_button_text=...
         
-        Text on buttons for collapsing/expanding answers and
-        explanations
+        Text on buttons for collapsing/expanding answers and explanations
         in quizzes (with bootstrap styles).
         Default: Empty (just pencil glyphion).
         
@@ -7793,8 +7958,17 @@ here for convenience.
         --html_bootstrap_jumbotron=...
         
         Turns the Bootstrap jumbotron intro on/off and governs the
-        size of the heading. Default: on. Other values: h2, off
+        size of the document title. Default: on. Other values: h2, off
         (h2 gives h2 heading instead of h1, off gives no jumbotron).
+        
+        
+        --html_figure_hrule=...
+        
+        Set horizontal rule(s) above and/or below a figure.
+        none, off: no rules
+        top: rule at top (default)
+        bottom: rule at bottom
+        top+bottom: rule at top and bottom
         
         
         --device=...

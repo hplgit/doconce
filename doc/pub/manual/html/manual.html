@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 4, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 26, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -5378,10 +5378,24 @@ to how you store the template files), and run</p>
 </pre></div>
 </div>
 <p>The template in <tt class="docutils literal"><span class="pre">style_vagrant</span></tt> also needs an extra option
-<tt class="docutils literal"><span class="pre">--html_style=vagrant</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">--html_style=bootstrap</span></tt>.</p>
+<span class="target" id="index-132"></span></div>
+<div class="section" id="splitting-html-documents">
+<span id="index-133"></span><h4>Splitting HTML documents<a class="headerlink" href="#splitting-html-documents" title="Permalink to this headline">¶</a></h4>
+<p>The <tt class="docutils literal"><span class="pre">!split</span></tt> instruction (on separate lines) signifies a pagebreak.
+A command <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></tt> is needed after <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> to
+actually perform the split. The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></tt> command has
+several options for setting the type of splitting, type of navigation
+buttons, etc. Just type <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></tt> to see the options.
+Here is an example with separate links for each page (pagination)
+at the top and bottom of each page:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
+Terminal&gt; doconce split_html mydoc --nav_buttontop+bottom --pagination
+</pre></div>
+</div>
 </div>
 <div class="section" id="the-html-file-collection">
-<span id="index-132"></span><h4>The HTML File Collection<a class="headerlink" href="#the-html-file-collection" title="Permalink to this headline">¶</a></h4>
+<span id="index-134"></span><h4>The HTML File Collection<a class="headerlink" href="#the-html-file-collection" title="Permalink to this headline">¶</a></h4>
 <p>There are usually a range of files needed for an HTML document arising
 from a DocOnce source. The needed files are listed in
 <tt class="docutils literal"><span class="pre">.basename_html_file_collection</span></tt>, where <tt class="docutils literal"><span class="pre">basename</span></tt> is the filestem of
@@ -5410,10 +5424,105 @@ Terminal&gt; doconce split_html mydoc_vagrant.html
 </pre></div>
 </div>
 </div>
+<div class="section" id="url-to-files-hosted-on-github">
+<h4>URL to files hosted on GitHub<a class="headerlink" href="#url-to-files-hosted-on-github" title="Permalink to this headline">¶</a></h4>
+<p>The generated HTML code will have URLs to files in the DocOnce repo at GitHub.
+The type of URL is set with the <tt class="docutils literal"><span class="pre">--html_raw_github_url=...</span></tt> option:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">--html_raw_github_url=safe</span></tt> or <tt class="docutils literal"><span class="pre">--html_raw_github_url=cdn.rawgit</span></tt>:
+safe URL for high traffic production sites (default)</li>
+<li><tt class="docutils literal"><span class="pre">--html_raw_github_url=test</span></tt> or <tt class="docutils literal"><span class="pre">--html_raw_github_url=rawgit</span></tt>:
+recommended URL for low traffic development sites - use this when
+developing HTML pages and the DocOnce GitHub links in the HTML files
+are also developed and subject to changes</li>
+<li><tt class="docutils literal"><span class="pre">--html_raw_github_url=github</span></tt> or <tt class="docutils literal"><span class="pre">--html_raw_github_url=raw.github</span></tt>:
+URL directly to the raw GitHub file (<tt class="docutils literal"><span class="pre">https://raw.github.com/hplgit/doconce/...</span></tt>) that may fail to load properly in (e.g.) Internet explorer</li>
+<li><tt class="docutils literal"><span class="pre">--html_raw_github_url=githubusercontent</span></tt> or <tt class="docutils literal"><span class="pre">--html_raw_github_url=raw.githubusercontent</span></tt>: as the one above, but using <tt class="docutils literal"><span class="pre">https://raw.githubusercontent.com</span></tt> instead</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="other-html-options">
+<h4>Other HTML options<a class="headerlink" href="#other-html-options" title="Permalink to this headline">¶</a></h4>
+<p>Options for Bootstrap styles:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">--html_code_style=on,off,inherit,transparent</span></tt>: control the style of
+inline verbatim code <tt class="docutils literal"><span class="pre">code</span></tt> tags. With <tt class="docutils literal"><span class="pre">off</span></tt>, <tt class="docutils literal"><span class="pre">inherit</span></tt>, or <tt class="docutils literal"><span class="pre">transparent</span></tt>
+the verbatim text inherits foreground and background color from its
+surroundings, while <tt class="docutils literal"><span class="pre">on</span></tt> (default) means that the typesetting is
+css-specified. This option is most relevant for Bootstrap styles to
+avoid the redish typesetting of inline verbatim text.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">--html_pre_style=on,off,inherit,transparent</span></tt>: control the style of
+code blocks in <tt class="docutils literal"><span class="pre">pre</span></tt> tags. With <tt class="docutils literal"><span class="pre">off</span></tt>, <tt class="docutils literal"><span class="pre">inherit</span></tt>, or <tt class="docutils literal"><span class="pre">transparent</span></tt>
+the code blocks inherit foreground and background color from their
+surroundings, while <tt class="docutils literal"><span class="pre">on</span></tt> (default) means that code block colors are
+css-specified. This option is most relevant for Bootstrap styles to
+avoid white background in code blocks inside colorful admons.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">--html_bootstrap_navbar=on,off</span></tt>: turn the Bootstrap navigation
+bar on or off.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">--html_bootstrap_jumbotron=on,off,h2</span></tt>: turn the jumbotron intro on or off,
+and govern the size of the document title. Default is <tt class="docutils literal"><span class="pre">on</span></tt>, while
+<tt class="docutils literal"><span class="pre">h2</span></tt> means a jumbotron with <tt class="docutils literal"><span class="pre">h2</span></tt> (section) size of the title
+(normally the jumbotron has huge heading fonts so some jumbotrons</p>
+<blockquote>
+<div><p>look better with <tt class="docutils literal"><span class="pre">h2</span></tt> typesetting of the document title).</p>
+</div></blockquote>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">--html_quiz_button_text=X</span></tt>: set a text on the answer button for
+Bootstrap-style quizzes. Without this option a small icon is used.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Other options:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">--html_toc_depth=X</span></tt>: controls the depth of the table of contents
+in documents. Default value of <tt class="docutils literal"><span class="pre">X</span></tt> is 3, meaning chapters,
+sections, and subsections. <tt class="docutils literal"><span class="pre">X</span></tt> as 0 gives the table of contents as a
+nested list in Bootstrap styles.</li>
+<li><tt class="docutils literal"><span class="pre">--html_toc_indent=X</span></tt>: indent sections/subsections <tt class="docutils literal"><span class="pre">X</span></tt> spaces in the table
+of contents.</li>
+<li><tt class="docutils literal"><span class="pre">--html_body_font=</span></tt>: specify font for text body. The value <tt class="docutils literal"><span class="pre">?</span></tt> lists
+available fonts.</li>
+<li><tt class="docutils literal"><span class="pre">--html_heading_font=</span></tt>: specify font for headings. The value <tt class="docutils literal"><span class="pre">?</span></tt> lists
+available fonts.</li>
+<li><tt class="docutils literal"><span class="pre">--html_video_autoplay=True,False</span></tt>: let videos play automatically
+(<tt class="docutils literal"><span class="pre">True</span></tt>, default) or not (<tt class="docutils literal"><span class="pre">False</span></tt>) when the HTML page is loaded.</li>
+<li><tt class="docutils literal"><span class="pre">--html_admon=X</span></tt>: specify typesetting of admonitions. Values of <tt class="docutils literal"><span class="pre">X</span></tt>
+are <tt class="docutils literal"><span class="pre">colors</span></tt>, <tt class="docutils literal"><span class="pre">gray</span></tt>, <tt class="docutils literal"><span class="pre">yellow</span></tt>, <tt class="docutils literal"><span class="pre">apricot</span></tt>, <tt class="docutils literal"><span class="pre">lyx</span></tt>, <tt class="docutils literal"><span class="pre">paragraph</span></tt>.
+For Bootstrap styles only to other values are legal:
+<tt class="docutils literal"><span class="pre">botstrap_panel</span></tt> or <tt class="docutils literal"><span class="pre">bootstrap_alert</span></tt>. See demos for how these look
+like.</li>
+<li><tt class="docutils literal"><span class="pre">--html_admon_bg_color=X</span></tt>: set the background color in admonitions.</li>
+<li><tt class="docutils literal"><span class="pre">--html_admon_bd_color=X</span></tt>: set the boundary color in admonitions.</li>
+<li><tt class="docutils literal"><span class="pre">--html_admon_shadow</span></tt>: add a shadow effect in admonitions.</li>
+<li><tt class="docutils literal"><span class="pre">--html_box_shadow</span></tt>: add a shadow effect in box environments (<tt class="docutils literal"><span class="pre">!bbox</span></tt>).</li>
+<li><tt class="docutils literal"><span class="pre">--html_exercise_icon=X</span></tt>: specify an icon to more easily notify exercises.
+<tt class="docutils literal"><span class="pre">X</span></tt> can be any filename <tt class="docutils literal"><span class="pre">question_*.png</span></tt> in the <tt class="docutils literal"><span class="pre">bundled/html_images</span></tt>
+directory in the DocOnce repo. With <tt class="docutils literal"><span class="pre">X</span></tt> as <tt class="docutils literal"><span class="pre">default</span></tt>, a default icon
+choice is made, based on the current style.</li>
+<li><tt class="docutils literal"><span class="pre">--html_exercise_icon_width=X</span></tt>: set the width of the exercise icon
+image to <tt class="docutils literal"><span class="pre">X</span></tt> pixels.</li>
+<li><tt class="docutils literal"><span class="pre">--html_DOCTYPE</span></tt>: insert <tt class="docutils literal"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">HTML&gt;</span></tt> at the top of the HTML
+output file. This is normally recommended, but malformed CSS files
+will then not be loaded (so by default, the doctype is not specified).
+This option is necessary for correct rendering of Bootstrap styles
+in Internet Explorer.</li>
+<li><tt class="docutils literal"><span class="pre">--html_links_in_new_window</span></tt>: open all links as new tabs.</li>
+<li><tt class="docutils literal"><span class="pre">--html_figure_hrule=X</span></tt>: control the use of horizontal rules in
+figures. <tt class="docutils literal"><span class="pre">X</span></tt> is <tt class="docutils literal"><span class="pre">top</span></tt> by default; other values are <tt class="docutils literal"><span class="pre">none</span></tt> (no rules),
+<tt class="docutils literal"><span class="pre">bottom</span></tt> and <tt class="docutils literal"><span class="pre">top+bottom</span></tt>.</li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 <div class="section" id="blog-posts">
 <h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-133"></span><span class="target" id="index-134"></span><p id="index-135">DocOnce can be used for writing blog posts provided the blog site accepts
+<span class="target" id="index-135"></span><span class="target" id="index-136"></span><p id="index-137">DocOnce can be used for writing blog posts provided the blog site accepts
 raw HTML code. Google&#8217;s Blogger service (<tt class="docutils literal"><span class="pre">blogger.com</span></tt> or
 <tt class="docutils literal"><span class="pre">blogname.blogspot.com</span></tt>) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.</p>
@@ -5474,7 +5583,7 @@ for mathematics in the text, though.</p>
 </div>
 <div class="section" id="pandoc-and-markdown">
 <h3>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-136"></span><span class="target" id="index-137"></span><span class="target" id="index-138"></span><p id="index-139">Output in Pandoc&#8217;s extended Markdown format results from</p>
+<span class="target" id="index-138"></span><span class="target" id="index-139"></span><span class="target" id="index-140"></span><p id="index-141">Output in Pandoc&#8217;s extended Markdown format results from</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc
 </pre></div>
 </div>
@@ -5505,13 +5614,13 @@ Terminal&gt; doconce m2html mydoc
 <p>The result <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> can be viewed in a browser.</p>
 </div>
 <div class="section" id="strict-markdown">
-<span id="index-140"></span><h4>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h4>
+<span id="index-142"></span><h4>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h4>
 <p>The option <tt class="docutils literal"><span class="pre">--strict_markdown_output</span></tt> generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
 syntax.</p>
 </div>
 <div class="section" id="github-flavored-markdown">
-<span id="index-141"></span><h4>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h4>
+<span id="index-143"></span><h4>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h4>
 <p>Adding the command-line option <tt class="docutils literal"><span class="pre">github-md</span></tt> turns on the
 <a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GutHub-flavored Markdown dialect</a>, which is used for the issue tracker on <a class="reference external" href="http://github.com">GitHub</a>. A special feature is the support of task lists:
 unnumbered lists with <tt class="docutils literal"><span class="pre">[x]</span></tt> (task done) or <tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt> (task not done).
@@ -5572,7 +5681,7 @@ version of Markdown (as opposed to Pandoc-extended Markdown (default),
 strict Markdown, or GitHub-flavored Markdown).</p>
 </div>
 <div class="section" id="strapdown-rendering-of-markdown-text">
-<span id="index-142"></span><h4>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h4>
+<span id="index-144"></span><h4>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="http://strapdownjs.com">Strapdown</a> is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
 footer in the Markdown file and load the file into a browser.
@@ -5614,7 +5723,7 @@ be advantageous to go via LaTeX.</p>
 </div>
 <div class="section" id="latex">
 <h3>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-143"></span><div class="admonition note" id="index-144">
+<span class="target" id="index-145"></span><div class="admonition note" id="index-146">
 <p class="first admonition-title">Note</p>
 <p class="last">XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
@@ -5659,7 +5768,7 @@ code, typeset with backticks in DocOnce, and translate this to</p>
 command, the latter is used instead since then LaTeX can insert
 linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 </div>
-<span class="target" id="index-145"></span><p id="index-146"><strong>Step 1.</strong>
+<span class="target" id="index-147"></span><p id="index-148"><strong>Step 1.</strong>
 Filter the doconce text to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> &#8220;pre-LaTeX form&#8221;
 <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
@@ -5678,22 +5787,24 @@ as <a class="reference external" href="http://goo.gl/">http://goo.gl/</a>, <a cl
 <a class="reference external" href="https://bitly.com/">https://bitly.com/</a>.)
 The default, <tt class="docutils literal"><span class="pre">--device=screen</span></tt>, creates a PDF file for reading
 on a screen where links are just clickable.</p>
-<p id="index-147">There are many additional options (run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> and
+<p id="index-149">There are many additional options (run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> and
 look for options starting with <tt class="docutils literal"><span class="pre">--latex</span></tt> to get a more verbose description):</p>
 <blockquote>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">--latex_font=helvetica,palatino</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_papersize=a4,a6</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></tt> (name of BibTeX style)</li>
 <li><tt class="docutils literal"><span class="pre">--latex_title_layout=titlepage,</span> <span class="pre">std,</span> <span class="pre">beamer,</span> <span class="pre">doconce_heading,</span> <span class="pre">Springer_collection</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_T2,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_fancy_header</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_colored_table_rows=blue,gray,no</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></tt> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
+<li><tt class="docutils literal"><span class="pre">--latex_fancy_header</span></tt> (chapter/section headings at top of pages, style depends on value of <tt class="docutils literal"><span class="pre">--latex_section_headings</span></tt>)</li>
+<li><tt class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></tt> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
+<li><tt class="docutils literal"><span class="pre">--latex_colored_table_rows=blue,gray,no</span></tt> (color of every two lines in tables)</li>
+<li><tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> (inline comments typeset as &#8220;bubbles&#8221;)</li>
 <li><tt class="docutils literal"><span class="pre">--latex_double_spacing</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_preamble=filename</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_line_numbers</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_labels_in_margin</span></tt> (name of section, equation, citation labels in the margin)</li>
+<li><tt class="docutils literal"><span class="pre">--latex_preamble=filename</span></tt> (user-specific preamble)</li>
 <li><tt class="docutils literal"><span class="pre">--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_admon_color=0.34,0.02,0.8</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_admon_envir_map=2</span></tt></li>
@@ -5701,14 +5812,18 @@ look for options starting with <tt class="docutils literal"><span class="pre">--
 <li><tt class="docutils literal"><span class="pre">--latex_movie=media9,href,multimedia,movie15</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_movie_controls=on</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_external_movie_viewer</span></tt> (for <tt class="docutils literal"><span class="pre">movie15</span></tt> package)</li>
-<li><tt class="docutils literal"><span class="pre">--xelatex</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--xelatex</span></tt> (prepare for XeLaTeX)</li>
 </ul>
 </div></blockquote>
 <p>The LaTeX style is much governed by <tt class="docutils literal"><span class="pre">--latex_title_layout</span></tt> and <tt class="docutils literal"><span class="pre">--latex_style</span></tt>.
 For the former, <tt class="docutils literal"><span class="pre">titlepage</span></tt> gives a separate title page; <tt class="docutils literal"><span class="pre">std</span></tt> is just standard
 LaTeX handling of title, author, and date; <tt class="docutils literal"><span class="pre">doconce_heading</span></tt> is a more modern heading, <tt class="docutils literal"><span class="pre">Springer_collection</span></tt> is used with <tt class="docutils literal"><span class="pre">--latex_style=Springer_lncse</span></tt> for an edited book; <tt class="docutils literal"><span class="pre">beamer</span></tt> is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For <tt class="docutils literal"><span class="pre">--latex_style</span></tt>,
 <tt class="docutils literal"><span class="pre">std</span></tt> gives standard LaTeX behavior; <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt> is for Springer&#8217;s LNCSE book series style (to be used with <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt> if the book is an edited book); <tt class="docutils literal"><span class="pre">Springer_llncs</span></tt> is for Springer&#8217;s Lecture Notes in Computer Science series (normally an edited book that also requres <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt>); <tt class="docutils literal"><span class="pre">Springer_T2</span></tt> for Springer&#8217;s T2 book layout, <tt class="docutils literal"><span class="pre">siamltex</span></tt>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">siamltexmm</span></tt> for the new multimedia SIAM journal style (requires <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">elsevier</span></tt> for the style of papers to be submitted to Elsevier journals (<tt class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></tt> can be used to set the journal name, and the style requires <tt class="docutils literal"><span class="pre">elsarticle.cls</span></tt> and <tt class="docutils literal"><span class="pre">elsarticle-num.bst</span></tt>).</p>
-<p id="index-148"><strong>Step 2.</strong>
+<p>During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
+This is enabled by the options <tt class="docutils literal"><span class="pre">--latex_line_numbers</span> <span class="pre">--latex_double_spacing</span> <span class="pre">--latex_todonotes</span> <span class="pre">--latex_labels_in_margin</span></tt>. One may also (automatically) edit the
+<tt class="docutils literal"><span class="pre">final</span></tt> argument in the <tt class="docutils literal"><span class="pre">documentclass</span></tt> heading to <tt class="docutils literal"><span class="pre">draft</span></tt> as this will
+mark overful lines (hboxes).</p>
+<p id="index-150"><strong>Step 2.</strong>
 Run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex mydoc
@@ -5830,7 +5945,7 @@ Terminal&gt; dvipdf mydoc
 </div>
 <div class="section" id="pdflatex">
 <h3>PDFLaTeX<a class="headerlink" href="#pdflatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-149"></span><p id="index-150">Running <tt class="docutils literal"><span class="pre">pdflatex</span></tt> instead of <tt class="docutils literal"><span class="pre">latex</span></tt> follows almost the same steps,
+<span class="target" id="index-151"></span><p id="index-152">Running <tt class="docutils literal"><span class="pre">pdflatex</span></tt> instead of <tt class="docutils literal"><span class="pre">latex</span></tt> follows almost the same steps,
 but the start is</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
 </pre></div>
@@ -5845,7 +5960,7 @@ Terminal&gt; pdflatex -shell-escape mydoc
 </div>
 <div class="section" id="xelatex">
 <h3>XeLaTeX<a class="headerlink" href="#xelatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-151"></span><p id="index-152">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
+<span class="target" id="index-153"></span><p id="index-154">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the <tt class="docutils literal"><span class="pre">--xelatex</span></tt> flag to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --xelatex
 Terminal&gt; doconce ptex2tex mydoc
@@ -5855,7 +5970,7 @@ Terminal&gt; xelatex mydoc
 </div>
 <div class="section" id="from-pdf-to-e-book-formats">
 <h3>From PDF to e-book formats<a class="headerlink" href="#from-pdf-to-e-book-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-153"></span><p id="index-154">PDF (as generated from LaTeX above) can be read on most devices today.
+<span class="target" id="index-155"></span><p id="index-156">PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The <a class="reference external" href="http://calibre-ebook.com/">Calibre</a>
 program can produce epub, mobi, and other e-book formats from PDF,
@@ -5863,7 +5978,7 @@ see a <a class="reference external" href="http://www.dedoimedo.com/computers/lat
 </div>
 <div class="section" id="microsoft-word-or-libreoffice">
 <h3>Microsoft Word or LibreOffice<a class="headerlink" href="#microsoft-word-or-libreoffice" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-155"></span><span class="target" id="index-156"></span><p id="index-157">Transforming DocOnce files to Word format is best done with the aid
+<span class="target" id="index-157"></span><span class="target" id="index-158"></span><p id="index-159">Transforming DocOnce files to Word format is best done with the aid
 of <tt class="docutils literal"><span class="pre">pandoc</span></tt>. A standard way is to first generate the Markdown format
 (<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></tt>) and then use <tt class="docutils literal"><span class="pre">pandoc</span></tt> to generate a <tt class="docutils literal"><span class="pre">.docx</span></tt>
 file:</p>
@@ -5876,7 +5991,7 @@ does not work.</p>
 </div>
 <div class="section" id="plain-ascii-text">
 <h3>Plain ASCII Text<a class="headerlink" href="#plain-ascii-text" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-158"></span><span class="target" id="index-159"></span><span class="target" id="index-160"></span><p id="index-161">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
+<span class="target" id="index-160"></span><span class="target" id="index-161"></span><span class="target" id="index-162"></span><p id="index-163">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
@@ -5885,7 +6000,7 @@ computer source code:</p>
 </div>
 <div class="section" id="restructuredtext">
 <h3>reStructuredText<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-162"></span><p id="index-163">Going from DocOnce to reStructuredText gives a lot of possibilities to
+<span class="target" id="index-164"></span><p id="index-165">Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
 reStructuredText file <tt class="docutils literal"><span class="pre">mydoc.rst</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format rst mydoc.do.txt
@@ -5931,7 +6046,7 @@ Some links for going from LaTeX to Word are listed below.</p>
 </div>
 <div class="section" id="sphinx">
 <h3>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-164"></span><p id="index-165">Sphinx documents demand quite some steps in their creation. We have automated
+<span class="target" id="index-166"></span><p id="index-167">Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> command:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
           title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
@@ -5995,7 +6110,7 @@ to <tt class="docutils literal"><span class="pre">_static/myfile.txt</span></tt>
 However, I recommend instead that you manually copy
 files to <tt class="docutils literal"><span class="pre">_static</span></tt> when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.</p>
-<p id="index-166"><strong>Themes.</strong>
+<p id="index-168"><strong>Themes.</strong>
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
@@ -6014,7 +6129,7 @@ Additional themes include
 <tt class="docutils literal"><span class="pre">scipy_lectures</span></tt>,
 <tt class="docutils literal"><span class="pre">slim-agogo</span></tt>, and
 <tt class="docutils literal"><span class="pre">vlinux-theme</span></tt>.</p>
-<p id="index-167">All the themes are packed out in the Sphinx directory, and the
+<p id="index-169">All the themes are packed out in the Sphinx directory, and the
 <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></tt> insert lots of extra code in the <tt class="docutils literal"><span class="pre">conf.py</span></tt>
 file to enable easy specification and customization of themes.
 For example, modules are loaded for the additional themes that
@@ -6080,7 +6195,7 @@ and reuse it the next time <tt class="docutils literal"><span class="pre">doconc
 </pre></div>
 </div>
 <div class="section" id="the-manual-sphinx-procedure">
-<span id="index-168"></span><h4>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h4>
+<span id="index-170"></span><h4>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h4>
 <p>If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>.</p>
@@ -6169,7 +6284,7 @@ all such arguments can be customized both for Sphinx and LaTeX output.</p>
 </div>
 <div class="section" id="wiki-formats">
 <h3>Wiki Formats<a class="headerlink" href="#wiki-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-169"></span><span class="target" id="index-170"></span><span class="target" id="index-171"></span><span class="target" id="index-172"></span><span class="target" id="index-173"></span><span class="target" id="index-174"></span><p id="index-175">There are many different wiki formats, but DocOnce only supports three:
+<span class="target" id="index-171"></span><span class="target" id="index-172"></span><span class="target" id="index-173"></span><span class="target" id="index-174"></span><span class="target" id="index-175"></span><span class="target" id="index-176"></span><p id="index-177">There are many different wiki formats, but DocOnce only supports three:
 <a class="reference external" href="http://code.google.com/p/support/wiki/WikiSyntax">Googlecode wiki</a>,
 <a class="reference external" href="http://www.mediawiki.org/wiki/Help:Formatting">MediaWiki</a>, and
 <a class="reference external" href="http://www.wikicreole.org/wiki/Creole1.0">Creole Wiki</a>.
@@ -6206,7 +6321,7 @@ one performs this substitution automatically (see next section).</p>
 </div>
 <div class="section" id="google-docs">
 <h3>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h3>
-<p id="index-176">Google Docs are normally made online in the interactive editor. However,
+<p id="index-178">Google Docs are normally made online in the interactive editor. However,
 you may upload a DocOnce document to Google Docs. This requires transforming
 the DocOnce document to one of the accepted formats for Google Docs:</p>
 <blockquote>
@@ -6236,7 +6351,7 @@ in Google Docs and the <a class="reference external" href="http://code.google.co
 </div>
 <div class="section" id="tweaking-the-doconce-output">
 <h3>Tweaking the DocOnce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-177"></span><p id="index-178">Occasionally, one would like to tweak the output in a certain format
+<span class="target" id="index-179"></span><p id="index-180">Occasionally, one would like to tweak the output in a certain format
 from DocOnce. One example is figure filenames when transforming
 DocOnce to reStructuredText. Since DocOnce does not know if the
 <tt class="docutils literal"><span class="pre">.rst</span></tt> file is going to be filtered to LaTeX or HTML, it cannot know
@@ -6253,7 +6368,7 @@ constitute comprehensive examples on how such scripts can be made.</p>
 <h2>Options for the <tt class="docutils literal"><span class="pre">doconce</span></tt> commands<a class="headerlink" href="#options-for-the-doconce-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="doconce-format-command-line-options">
 <h3><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command-line options<a class="headerlink" href="#doconce-format-command-line-options" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-179"></span><p id="index-180">The transformation of a DocOnce source to various format is done with
+<span class="target" id="index-181"></span><p id="index-182">The transformation of a DocOnce source to various format is done with
 the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command, which has <em>a lot</em> of command-line options.
 These are printed out by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt>. The output is listed
 here for convenience.</p>
@@ -6380,7 +6495,7 @@ Alternative basename of files associated with the HTML format.
 --html_style=...
 
 Name of theme for HTML style:
-plain, blueish, blueish2, bloodish,
+plain, blueish, blueish2, bloodish, tactile-black, tactile-red, rossant
 solarized, solarized2_light, solarized2_dark,
 bootstrap, bootswatch,
 bootstrap_X,  X=bloodish, blue, bluegray, brown, cbc, FlatUI, red,
@@ -6388,21 +6503,6 @@ bootswatch_X, X=cerulean, cosmo, flatly, journal, lumen, readable,
                 simplex, spacelab, united, yeti
                 (dark:) amelia, cyborg, darkly, slate, spruce,
                 superhero (demos at bootswatch.com)
-
-
---html_code_style=...
-
-on, off, inherit, transparent: enable normal inline verbatim font
-where foreground and background color is inherited from the
-surroundnings (e.g., to avoid the red Boostrap color).
-Default: on.
-
-
---html_pre_style=...
-
-on, off, inherit, transparent: let code blocks inside &lt;pre&gt; tags have
-foreground and background color inherited from the surroundnings.
-Default: on.
 
 
 --html_template=...
@@ -6415,6 +6515,23 @@ document is embedded. (Often preferred to run with --no_title)
 
 Comment out TITLE, AUTHOR, DATE.
 Often used with HTML templates.
+
+
+--html_code_style=...
+
+off, inherit, or transparent: enable normal inline verbatim font
+where foreground and background color is inherited from the
+surroundnings (e.g., to avoid the red Boostrap color).
+Default: on (use the css-specified typesetting of &lt;pre&gt; tags).
+
+
+--html_pre_style=...
+
+off, inherit, or transparent: let code blocks inside &lt;pre&gt; tags have
+foreground and background color inherited from the surroundnings.
+Default: on (use the css-specified typesetting of &lt;pre&gt; tags).
+This option is most relevant for Bootstrap styles to
+avoid white background in code blocks inside colorful admons.
 
 
 --html_toc_depth=...
@@ -6482,25 +6599,56 @@ Add a shadow effect in HTML box environments.
 
 --html_exercise_icon=...
 
-Specify a question icon in bundled/html_images for being
-inserted to the right in exercises - &quot;default&quot; and &quot;none&quot; are allowed
-(&quot;none&quot; if no option).
+Specify a question icon (as a filename in the bundled/html_images
+directory in the doconce repo) for being inserted to the right in exercises.
+default: turn on predefined question icons according to the chosen style.
+none: no icons (this is the default value).
 
 
 --html_exercise_icon_width=...
 
-Width of the icon image specified as --html_exercise_icon.
+Width of the icon image in pixels (must be used with --html_exercise_icon).
+
+
+--html_raw_github_url=...
+
+URLs to files hosted on the doconce github account.
+Internet Explorer (and perhaps other browsers) will not show raw.github.com
+files. Instead on should use rawgit.com. For development of HTML sites
+in Safari and Chrome and can use rawgit.com.
+
+Values of --html_raw_github_url=:
+safe or cdn.rawgit: use this for ready-made sites with potentially some traffic.
+The URL becomes https:://cdn.rawgit.com/hplgit/doconce/...
+
+test or rawgit: use this for test purposes and development with low traffic.
+The URL becomes https:://rawgit.com/hplgit/doconce/...
+
+github or raw.github: the URL becomes https://raw.github.com and may fail to
+load properly.
+
+githubusercontent or raw.githubusercontent: The URL becomes
+https://raw.githubusercontent.com and may fail to load properly.
+
+
+
+--html_DOCTYPE
+
+Insert &lt;!DOCTYPE HTML&gt; in the top of the HTML file.
+This is required for Internet Explorer and Mozilla.
+However, some of the CSS files used by DocOnce may not load properly if
+they are not well formed. That is why no doctype is default in the
+generated HTML files.
 
 
 --html_links_in_new_window
 
-Open HTML links in a new window.
+Open HTML links in a new window/tab.
 
 
 --html_quiz_button_text=...
 
-Text on buttons for collapsing/expanding answers and
-explanations
+Text on buttons for collapsing/expanding answers and explanations
 in quizzes (with bootstrap styles).
 Default: Empty (just pencil glyphion).
 
@@ -6513,8 +6661,17 @@ Turns the Bootstrap navigation bar on/off. Default: on.
 --html_bootstrap_jumbotron=...
 
 Turns the Bootstrap jumbotron intro on/off and governs the
-size of the heading. Default: on. Other values: h2, off
+size of the document title. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron).
+
+
+--html_figure_hrule=...
+
+Set horizontal rule(s) above and/or below a figure.
+none, off: no rules
+top: rule at top (default)
+bottom: rule at bottom
+top+bottom: rule at top and bottom
 
 
 --device=...
@@ -6985,7 +7142,7 @@ Combine paragraphs to one line (does not work well).
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
 <span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
-<p id="index-181">Below, we explain the manual installation of all software that may be
+<p id="index-183">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install what is needed on a Debian-based Linux
 computer (running, e.g., Ubuntu) is to run the
@@ -7749,8 +7906,11 @@ Springer,
 <li><a class="reference internal" href="#handling-of-movies">Handling of Movies</a></li>
 <li><a class="reference internal" href="#html-styles">HTML Styles</a></li>
 <li><a class="reference internal" href="#html-templates">HTML templates</a></li>
+<li><a class="reference internal" href="#splitting-html-documents">Splitting HTML documents</a></li>
 <li><a class="reference internal" href="#the-html-file-collection">The HTML File Collection</a></li>
 <li><a class="reference internal" href="#filenames">Filenames</a></li>
+<li><a class="reference internal" href="#url-to-files-hosted-on-github">URL to files hosted on GitHub</a></li>
+<li><a class="reference internal" href="#other-html-options">Other HTML options</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#blog-posts">Blog Posts</a></li>

@@ -1203,6 +1203,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
     lines = filestr.splitlines()
     newlines = []  # lines in resulting file
+    solutions = []  # lines in an optional solution part
     # m_* variables: various match objects from regex searches
 
     for line_no in range(len(lines)):
@@ -1368,14 +1369,21 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
             debugpr('Data structure from interpreting exercises:',
                     pprint.pformat(exer))
-            formatted_exercise = EXERCISE[format](exer)
+            formatted_exercise, formatted_solution = EXERCISE[format](exer)
             newlines.append(formatted_exercise)
+            solutions.append(formatted_solution)
             all_exer.append(exer)
             inside_exer = False
             exer_end = False
             exer = {}
 
     filestr = '\n'.join(newlines)
+    solutions = '\n'.join(solutions)
+    # Temporary:
+    f = open('.tmp_exersol.do.txt', 'w')
+    f.write(solutions)
+    f.close()
+
     if all_exer:
         # Replace code and math blocks by actual code.
         # This must be done in the all_exer data structure,
