@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 27, 2014
+:Date: Dec 29, 2014
 
 
 .. admonition:: Disclaimer
@@ -27,6 +27,47 @@ DocOnce Troubleshooting
 
 General Problems
 ================
+
+A newline in equations (double backslash) becomes single backslash and eats up spaces
+-------------------------------------------------------------------------------------
+
+This is a problem with the Mako preprocessor and files that have beed
+edited on Windows.  The remedy is to change the newline character on
+Windows to that in Unix:
+
+.. code-block:: text
+
+        Terminal> doconce subst '\r\n' '\n' mydoc.do.txt
+
+If you work on Windows, you probably have to avoid using the Mako preprocessor
+(it is not used unless you use Mako functions, variables, or control
+statements).
+
+When I set a large portion of text in color, only a part of it becomes colored
+------------------------------------------------------------------------------
+
+Although DocOnce features a color inline tag (``color``),
+this tag will most likely fail for large portions
+of text. The reason is that this tag, like most other DocOnce
+constructions, relies on a regular expression for being detected.
+The regular expression searches for opening and closing braces after
+the ``color{red}`` specification. The closing brace is the first brace
+encountered. Therefore, if you have any text containing a right brace
+inside the text to be colored, the first right brace will define the
+end of the coloring. Here is an example:
+
+.. code-block:: doconce
+
+        color{blue}{Here is some text
+        to be typeset in blue.
+        
+        ===== Here is a new subsection =====
+        label{sec:subsec}
+        
+        More text to be typeset in blue, but the right brace in the label
+        will end the coloring. There is no way out of this except for
+        moving constructions with braces (`label`, `cite`) out of the
+        text to be colored.
 
 How can I control the vertical spacing in slides?
 -------------------------------------------------
@@ -586,7 +627,8 @@ running text right before ``!bt`` and ``!bc`` environments.
 Verbatim code blocks inside lists look ugly
 -------------------------------------------
 
-Read the the section :ref:`sec:verbatim:blocks` above.  Start the
+Read the Section *Blocks of Verbatim Computer Code* in
+the DocOnce manual.  Start the
 ``!bc`` and ``!ec`` tags in column 1 of the file, and be careful with
 indenting the surrounding plain text of the list item correctly. If
 you cannot resolve the problem this way, get rid of the list and use
@@ -611,15 +653,21 @@ reST does not like jumps in the levels of headings. For example, you cannot
 have a ``===`` (paragraph) heading after a ``=======`` (section) heading without
 a ``====`` (subsection) heading in between.
 
-Subsection headings appear at the level sections in the table of contents
--------------------------------------------------------------------------
+Subsection headings appear at the level of sections in the table of contents
+----------------------------------------------------------------------------
 
 This is a problem that arises if you split a Sphinx document at the
 subsection level. Then the subsection is the highest level in that part,
 and it will then move up to the section level in the table of contents
 (this is done by Sphinx, and DocOnce has no influence on the process).
-The only way at present to avoid this wrong table of contents,
-is to only split Sphinx documents at the section level.
+
+After Oct 2014, DocOnce ignores by default the ``!split`` commands that the
+user has inserted and performs a split at the highest section level,
+which means that chapters constitute the parts of the
+document, if chapters are present, otherwise the sections represent the
+different parts. If this behavior is not desired and the user's ``!split``
+commands are to be respected, provide the command-line argument
+``--sphinx_keep_splits`` in the ``doconce format`` command.
 
 Lists do not appear in .rst files
 ---------------------------------
@@ -771,7 +819,8 @@ and wrapping all ``\includegraphics`` in a shadow box:
 How can I use my fancy LaTeX environments?
 ------------------------------------------
 
-See the section :ref:`manual:theorem:envir` for how to make a custom
+See the section *Example: Defining a Theorem Environment* in
+the DocOnce manual for how to make a custom
 theorem environment also in DocOnce, without using implementations
 restricted to LaTeX.
 
