@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 27, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 29, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -100,6 +100,42 @@ can go wrong.</p>
 </div>
 <div class="section" id="general-problems">
 <h2>General Problems<a class="headerlink" href="#general-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">
+<h3>A newline in equations (double backslash) becomes single backslash and eats up spaces<a class="headerlink" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces" title="Permalink to this headline">¶</a></h3>
+<p>This is a problem with the Mako preprocessor and files that have beed
+edited on Windows.  The remedy is to change the newline character on
+Windows to that in Unix:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce subst &#39;\r\n&#39; &#39;\n&#39; mydoc.do.txt
+</pre></div>
+</div>
+<p>If you work on Windows, you probably have to avoid using the Mako preprocessor
+(it is not used unless you use Mako functions, variables, or control
+statements).</p>
+</div>
+<div class="section" id="when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">
+<h3>When I set a large portion of text in color, only a part of it becomes colored<a class="headerlink" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored" title="Permalink to this headline">¶</a></h3>
+<p>Although DocOnce features a color inline tag (<tt class="docutils literal"><span class="pre">color</span></tt>),
+this tag will most likely fail for large portions
+of text. The reason is that this tag, like most other DocOnce
+constructions, relies on a regular expression for being detected.
+The regular expression searches for opening and closing braces after
+the <tt class="docutils literal"><span class="pre">color{red}</span></tt> specification. The closing brace is the first brace
+encountered. Therefore, if you have any text containing a right brace
+inside the text to be colored, the first right brace will define the
+end of the coloring. Here is an example:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>color{blue}{Here is some text
+to be typeset in blue.
+
+<span class="gh">===== Here is a new subsection =====</span>
+<span class="nb">label{sec:subsec}</span>
+
+More text to be typeset in blue, but the right brace in the label
+will end the coloring. There is no way out of this except for
+moving constructions with braces (`label`, `cite`) out of the
+text to be colored.
+</pre></div>
+</div>
+</div>
 <div class="section" id="how-can-i-control-the-vertical-spacing-in-slides">
 <h3>How can I control the vertical spacing in slides?<a class="headerlink" href="#how-can-i-control-the-vertical-spacing-in-slides" title="Permalink to this headline">¶</a></h3>
 <p>HTML5 and LaTeX slides control the spacings for you. However, sometimes
@@ -571,7 +607,8 @@ running text right before <tt class="docutils literal"><span class="pre">!bt</sp
 </div>
 <div class="section" id="verbatim-code-blocks-inside-lists-look-ugly">
 <h3>Verbatim code blocks inside lists look ugly<a class="headerlink" href="#verbatim-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h3>
-<p>Read the the section <em class="xref std std-ref">sec:verbatim:blocks</em> above.  Start the
+<p>Read the Section <em>Blocks of Verbatim Computer Code</em> in
+the DocOnce manual.  Start the
 <tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> tags in column 1 of the file, and be careful with
 indenting the surrounding plain text of the list item correctly. If
 you cannot resolve the problem this way, get rid of the list and use
@@ -594,14 +631,19 @@ Using paragraphs instead of list items is a good idea also here.</p>
 have a <tt class="docutils literal"><span class="pre">===</span></tt> (paragraph) heading after a <tt class="docutils literal"><span class="pre">=======</span></tt> (section) heading without
 a <tt class="docutils literal"><span class="pre">====</span></tt> (subsection) heading in between.</p>
 </div>
-<div class="section" id="subsection-headings-appear-at-the-level-sections-in-the-table-of-contents">
-<h3>Subsection headings appear at the level sections in the table of contents<a class="headerlink" href="#subsection-headings-appear-at-the-level-sections-in-the-table-of-contents" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents">
+<h3>Subsection headings appear at the level of sections in the table of contents<a class="headerlink" href="#subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents" title="Permalink to this headline">¶</a></h3>
 <p>This is a problem that arises if you split a Sphinx document at the
 subsection level. Then the subsection is the highest level in that part,
 and it will then move up to the section level in the table of contents
-(this is done by Sphinx, and DocOnce has no influence on the process).
-The only way at present to avoid this wrong table of contents,
-is to only split Sphinx documents at the section level.</p>
+(this is done by Sphinx, and DocOnce has no influence on the process).</p>
+<p>After Oct 2014, DocOnce ignores by default the <tt class="docutils literal"><span class="pre">!split</span></tt> commands that the
+user has inserted and performs a split at the highest section level,
+which means that chapters constitute the parts of the
+document, if chapters are present, otherwise the sections represent the
+different parts. If this behavior is not desired and the user&#8217;s <tt class="docutils literal"><span class="pre">!split</span></tt>
+commands are to be respected, provide the command-line argument
+<tt class="docutils literal"><span class="pre">--sphinx_keep_splits</span></tt> in the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command.</p>
 </div>
 <div class="section" id="lists-do-not-appear-in-rst-files">
 <h3>Lists do not appear in .rst files<a class="headerlink" href="#lists-do-not-appear-in-rst-files" title="Permalink to this headline">¶</a></h3>
@@ -727,7 +769,8 @@ Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \
 </div>
 <div class="section" id="how-can-i-use-my-fancy-latex-environments">
 <h3>How can I use my fancy LaTeX environments?<a class="headerlink" href="#how-can-i-use-my-fancy-latex-environments" title="Permalink to this headline">¶</a></h3>
-<p>See the section <em class="xref std std-ref">manual:theorem:envir</em> for how to make a custom
+<p>See the section <em>Example: Defining a Theorem Environment</em> in
+the DocOnce manual for how to make a custom
 theorem environment also in DocOnce, without using implementations
 restricted to LaTeX.</p>
 </div>
@@ -936,6 +979,8 @@ clickable.</p>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting</a><ul>
 <li><a class="reference internal" href="#general-problems">General Problems</a><ul>
+<li><a class="reference internal" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
+<li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li><a class="reference internal" href="#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
@@ -986,7 +1031,7 @@ clickable.</p>
 </li>
 <li><a class="reference internal" href="#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
 <li><a class="reference internal" href="#title-level-inconsistent">Title level inconsistent</a></li>
-<li><a class="reference internal" href="#subsection-headings-appear-at-the-level-sections-in-the-table-of-contents">Subsection headings appear at the level sections in the table of contents</a></li>
+<li><a class="reference internal" href="#subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents">Subsection headings appear at the level of sections in the table of contents</a></li>
 <li><a class="reference internal" href="#lists-do-not-appear-in-rst-files">Lists do not appear in .rst files</a></li>
 <li><a class="reference internal" href="#error-message-undefined-substitution-from-rest">Error message &#8220;Undefined substitution...&#8221; from reST</a></li>
 <li><a class="reference internal" href="#warning-about-duplicate-link-names">Warning about duplicate link names</a></li>

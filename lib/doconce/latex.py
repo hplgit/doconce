@@ -1460,6 +1460,11 @@ def latex_exercise_old(exer):
     return s
 
 def latex_box(block, format, text_size='normal'):
+    if 'begin{figure}' in block:
+        print '*** error: a !bbox-!ebox environment cannot contain a figure with caption.'
+        print '    Remove the figure, remove the caption, or remove the box.'
+        print '\nBox text:\n', block
+        _abort()
     return r"""
 \begin{center}
 \begin{Sbox}

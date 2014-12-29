@@ -1581,10 +1581,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -29169,10 +29169,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -29498,10 +29498,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -30846,10 +30846,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -31771,10 +31771,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -53935,10 +53935,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -70745,7 +70745,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f324ab81848>
+verbatim is to be replaced using <function html_verbatim at 0x7f3fa58ec8c0>
 
 
 First occurence: " `mako`."
@@ -74706,7 +74706,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Dec 19 06:48:29 2014.
+# sphinx-quickstart on Mon Dec 29 13:13:48 2014.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

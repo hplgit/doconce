@@ -17,10 +17,24 @@ can go wrong.
 
 ======= General Problems =======
 
+===== A newline in equations (double backslash) becomes single backslash and eats up spaces =====
+
+This is a problem with the Mako preprocessor and files that have beed
+edited on Windows.  The remedy is to change the newline character on
+Windows to that in Unix:
+
+!bc sys
+Terminal> doconce subst '\r\n' '\n' mydoc.do.txt
+!ec
+
+If you work on Windows, you probably have to avoid using the Mako preprocessor
+(it is not used unless you use Mako functions, variables, or control
+statements).
+
 ===== When I set a large portion of text in color, only a part of it becomes colored =====
 
-Although DocOnce features a color inline tag, `color{red}{some
-text in red}`, this tag will most likely fail for large portions
+Although DocOnce features a color inline tag (`color`),
+this tag will most likely fail for large portions
 of text. The reason is that this tag, like most other DocOnce
 constructions, relies on a regular expression for being detected.
 The regular expression searches for opening and closing braces after
@@ -525,7 +539,8 @@ running text right before `!bt` and `!bc` environments.
 
 ===== Verbatim code blocks inside lists look ugly =====
 
-Read the Section ref{sec:verbatim:blocks} above.  Start the
+Read the Section *Blocks of Verbatim Computer Code* in
+the DocOnce manual.  Start the
 `!bc` and `!ec` tags in column 1 of the file, and be careful with
 indenting the surrounding plain text of the list item correctly. If
 you cannot resolve the problem this way, get rid of the list and use
@@ -693,7 +708,8 @@ Terminal> doconce subst '(\\includegraphics\[.+\}\})' \
 
 ===== How can I use my fancy LaTeX environments? =====
 
-See Section ref{manual:theorem:envir} for how to make a custom
+See the section *Example: Defining a Theorem Environment* in
+the DocOnce manual for how to make a custom
 theorem environment also in DocOnce, without using implementations
 restricted to LaTeX.
 
