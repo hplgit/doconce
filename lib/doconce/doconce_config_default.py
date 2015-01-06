@@ -53,6 +53,7 @@ html_links_in_new_window = False
 #html_bootstrap_jumbotron = 
 #html_figure_hrule = 
 #device = 
+number_all_equations = False
 #latex_style = 
 #latex_font = 
 #latex_bibstyle = 

@@ -6,7 +6,8 @@ Here called gwiki to make the dialect clear (g for google).
 
 
 import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex, _abort
+from common import default_movie, plain_exercise, insert_code_and_tex
+from misc import _abort
 
 def gwiki_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):

@@ -4,8 +4,7 @@
 from rst import *
 from common import align2equations, online_python_tutor, bibliography, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
-from misc import option
-from doconce import _abort
+from misc import option, _abort
 
 video_counter = 0
 activecode_counter = 0

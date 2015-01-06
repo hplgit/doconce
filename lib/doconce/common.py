@@ -5,6 +5,7 @@ translation modules (latex.py, html.py, etc.) are also included in
 here.
 """
 import re, sys, urllib, os
+from misc import option, _abort
 
 # Identifiers in the text used to identify code and math blocks
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
@@ -45,13 +46,6 @@ envir_delimiter_lines = {
 }
 
 _counter_for_html_movie_player = 0
-
-def _abort():
-    if '--no_abort' in sys.argv:
-        print 'avoided abortion because of --no-abort'
-    else:
-        print 'Abort! (add --no_abort on the command line to avoid this abortion)'
-        sys.exit(1)
 
 def internet_access():
     """Return True if internet is on, else False."""
@@ -441,7 +435,31 @@ def remove_code_and_tex(filestr):
             math_block_counter += 1
     filestr = safe_join(lines, '\n')
 
-    # Give error if blocks contain !bt (not impl)
+    # Number all equations?
+    if option('number_all_equations'):
+        subst = [('\\begin{equation*}', '\\begin{equation}'),
+                 ('\\end{equation*}', '\\end{equation}'),
+                 ('\\[', '\\begin{equation} '),
+                 ('\\]', '\\end{equation} '),
+                 ('\\begin{align*}', '\\begin{align}'),
+                 ('\\end{align*}', '\\end{align}'),
+                 ]
+        for i in range(len(tex_blocks)):
+            found = False
+            for construction, dummy in subst:
+                if construction in tex_blocks[i]:
+                    found = True
+                    break
+            if found:
+                for from_, to_ in subst:
+                    tex_blocks[i] = tex_blocks[i].replace(from_, to_)
+
+    # Give error if blocks contain !bt
+    for i in range(len(tex_blocks)):
+        if '!bt' in tex_blocks[i] or '!et' in tex_blocks[i]:
+            print '*** error: double !bt or !et in latex block:'
+            print tex_blocks[i]
+            _abort()
 
     # Check that math blocks do not contain edit markup or comments
     for block in tex_blocks:

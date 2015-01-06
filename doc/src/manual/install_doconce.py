@@ -64,6 +64,7 @@ system(cmd)
 system('sudo apt-get -y install python-pip')
 system('sudo apt-get -y install idle')
 system('sudo apt-get -y install ipython')
+system('sudo apt-get -y install python-dev')
 system('sudo apt-get -y install python-pdftools')
 
 # Preprocessors
