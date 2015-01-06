@@ -1,5 +1,4 @@
 import os, sys, shutil, re, glob, sets, time, commands
-from common import _abort
 
 _part_filename = '._%s%03d'
 _part_filename_wildcard = '._*[0-9][0-9][0-9]'
@@ -162,6 +161,8 @@ bottom: rule at bottom
 top+bottom: rule at top and bottom"""),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
+    ('--number_all_equations',
+     """Switch latex environments such that all equations get a number."""),
     ('--latex_style=',
      """LaTeX style package used for the document.
 std: standard LaTeX article or book style,
@@ -540,6 +541,13 @@ def misc_option(name, default=None):
     elif option_name in sys.argv:
         value = True
     return value
+
+def _abort():
+    if '--no_abort' in sys.argv:
+        print 'avoided abortion because of --no-abort'
+    else:
+        print 'Abort! (add --no_abort on the command line to avoid this abortion)'
+        sys.exit(1)
 
 def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):
     """

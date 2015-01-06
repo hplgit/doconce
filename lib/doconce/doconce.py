@@ -9,7 +9,6 @@ except ImportError:
     # citations is then lost)
     OrderedDict = dict
 
-
 def debugpr(heading='', text=''):
     """Add `heading` and `text` to the log/debug file."""
     if option('debug'):
@@ -28,8 +27,7 @@ def debugpr(heading='', text=''):
 
 
 from common import *
-from common import _abort  # needs explicit import because of leading _
-from misc import option, which
+from misc import option, which, _abort
 import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml
 
 def supported_format_names():

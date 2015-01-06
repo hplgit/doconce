@@ -37123,12 +37123,12 @@ Newcommands must also be tested in this \report:
 $\half$, $\halfi$, $\x$, $\Ddt{u}$,
 both inline and in block:
 
-\begin{align*}
+\begin{align}
 \Ddt{u} &= 0
 \\ 
 \half &= \halfi\\ 
 \half\x &= \normalvec
-\end{align*}
+\end{align}
 
 Or with align with label and numbers:
 
@@ -37540,7 +37540,7 @@ Percentage must be fixed: 7\%,  87.65\% and
 \subsection{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash-bracket environment:
-\[ a = b + c \]
+\begin{equation}  a = b + c \end{equation} 
 or with number and label, as in (\ref{my:eq1}), using the equation environment:
 \begin{equation}
 {\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
@@ -37548,10 +37548,10 @@ or with number and label, as in (\ref{my:eq1}), using the equation environment:
 We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align-asterisk environment:
-\begin{align*}
+\begin{align}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
-\end{align*}
+\end{align}
 
 
 And here is a system of equations with labels in an align environment:
@@ -37862,7 +37862,7 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math $a=b$ in hint:
 
-\[ a=b. \]
+\begin{equation}  a=b. \end{equation} 
 And with code (in plain verbatim) returning $x+1$ in hint:
 
 \bccq
@@ -37899,7 +37899,7 @@ Here goes the text for subexercise b).
 
 Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 
-\[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
+\begin{equation}  \cos^2 x + \sin^2 x = 1 \thinspace .\end{equation} 
 
 % --- begin hint in exercise ---
 
@@ -37951,7 +37951,7 @@ remarks will appear at the end of the typeset exercise.
 Just some text. And some math saying that $e^0=1$ on a single line,
 to test that math block insertion is correct:
 
-\[ \exp{(0)} = 1 \]
+\begin{equation}  \exp{(0)} = 1 \end{equation} 
 
 And a test that the code \code{lambda x: x+2} is correctly placed here:
 
@@ -37987,7 +37987,7 @@ lambda x: x+2
 \noindent
 Given
 
-\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+\begin{equation}  \frac{dy}{dx} = -y(x),\quad y(0)=1 \end{equation} 
 What is the solution of this equation?
 
 \vspace{2mm}
@@ -38805,7 +38805,7 @@ system doconce format html testdoc --without_answers --without_solutions $ex -DS
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
@@ -52784,7 +52784,7 @@ exercises (and problems and projects too).</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, hpl.
+        &copy; Copyright 2015, hpl.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
     </div>
   </body>
@@ -70745,7 +70745,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f3fa58ec8c0>
+verbatim is to be replaced using <function html_verbatim at 0x7f8a1844f8c0>
 
 
 First occurence: " `mako`."
@@ -74706,7 +74706,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Dec 29 13:13:48 2014.
+# sphinx-quickstart on Tue Jan  6 14:08:19 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -74824,7 +74824,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Just a test'
-copyright = u'2014, HPL'
+copyright = u'2015, HPL'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -77075,10 +77075,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https:://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -91180,8 +91180,8 @@ output in testdoc.html
 + doconce split_html testdoc.html --method=space10
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
-+ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
-+ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle
++ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
++ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 
 Summary of papers
 -----------------
@@ -104543,7 +104543,25 @@ failure\}\n\n!bc replaced by failure}\n\nHello\n!bc in tmp2.do.txt
 translating doconce text in tmp2.do.txt to sphinx
 ERROR: 1 !bsubex do not match 0 !esubex directives
 Missing !esubex after final !bsubex
-Abort! (add --no_abort on the command line to avoid this abortion)
+Traceback (most recent call last):
+  File "/usr/local/bin/doconce", line 1129, in <module>
+    main()
+  File "/usr/local/bin/doconce", line 1119, in main
+    eval(command + '()')
+  File "<string>", line 1, in <module>
+  File "/usr/local/bin/doconce", line 90, in format
+    doconce.doconce.format_driver()
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 4036, in format_driver
+    out_filename = file2file(filename_preprocessed, format, basename)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3062, in file2file
+    filestr = doconce2format(filestr, format)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 3177, in doconce2format
+    syntax_check(filestr, format)
+  File "/usr/local/lib/python2.7/dist-packages/doconce/doconce.py", line 480, in syntax_check
+    begin_end_consistency_checks(filestr, doconce_envirs())
+  File "/usr/local/lib/python2.7/dist-packages/doconce/common.py", line 389, in begin_end_consistency_checks
+    _abort()
+NameError: global name '_abort' is not defined
 + doconce replace '!bsubex' '' tmp2.do.txt
 replacing !bsubex by  in tmp2.do.txt
 + doconce format sphinx tmp2.do.txt

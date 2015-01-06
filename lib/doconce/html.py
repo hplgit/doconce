@@ -1,9 +1,9 @@
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
-     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url, \
+     cite_with_multiple_args2multiple_cites, is_file_or_url, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url
-from misc import option
+from misc import option, _abort
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'

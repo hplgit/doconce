@@ -28,8 +28,8 @@ let paragraphs be running text inside the parent element.
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
-     cite_with_multiple_args2multiple_cites, _abort, is_file_or_url
-from misc import option
+     cite_with_multiple_args2multiple_cites, is_file_or_url
+from misc import option, _abort
 
 
 def xml_code(filestr, code_blocks, code_block_types,

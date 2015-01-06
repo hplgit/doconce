@@ -1,10 +1,10 @@
 import re, os, sys
 from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
-    cite_with_multiple_args2multiple_cites, _abort
+    cite_with_multiple_args2multiple_cites
 from html import html_movie, html_quiz
 from doconce import _abort
-from misc import option
+from misc import option, _abort
 
 def rst_abstract(m):
     # r'\n*\g<type>.* \g<text>\n\g<rest>'

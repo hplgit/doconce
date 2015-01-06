@@ -1,9 +1,9 @@
 import re, sys, shutil, os
 from common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, indent_lines, _abort
+     insert_code_and_tex, indent_lines
 from html import html_movie, html_table
 from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote
-from misc import option
+from misc import option, _abort
 
 # Global variables
 figure_encountered = False

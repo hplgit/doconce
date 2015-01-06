@@ -4,8 +4,8 @@ import os, commands, re, sys, glob, shutil
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
-     insert_code_and_tex, _abort, is_file_or_url, chapter_pattern
-from misc import option
+     insert_code_and_tex, is_file_or_url, chapter_pattern
+from misc import option, _abort
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True

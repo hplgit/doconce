@@ -24,6 +24,7 @@ $ if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 # --- Python-based packages and tools ---
 python-pip
 idle ipython
+python-dev
 python-pdftools
 
 # Preprocessors

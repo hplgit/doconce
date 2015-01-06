@@ -55,6 +55,7 @@ if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 apt_install python-pip
 apt_install idle
 apt_install ipython
+apt_install python-dev
 apt_install python-pdftools
 
 # Preprocessors
