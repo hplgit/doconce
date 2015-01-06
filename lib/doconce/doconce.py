@@ -3536,7 +3536,7 @@ def doconce2format(filestr, format):
         # (must be done at this late stage)
         rawgit = option('html_raw_github_url=', 'safe')
         if rawgit in ('safe', 'cdn.rawgit'):
-            raw_github_url = 'https:://cdn.rawgit.com'
+            raw_github_url = 'https://cdn.rawgit.com'
         elif rawgit in ('test', 'rawgit'):
             raw_github_url = 'https://rawgit.com'
         elif rawgit in ('github', 'raw.github'):
