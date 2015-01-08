@@ -17,6 +17,24 @@ can go wrong.
 
 ======= General Problems =======
 
+===== GitHub gh-pages will not display files starting with a dot or underscore =====
+
+This is a typical problem related to publishing either splitted HTML documents
+or Sphinx versions of documents on GitHub, using a gh-pages branch.
+Filenames starting with a dot (as in `._mydoc001.html`) or located in
+a directory whose name starts with an underscore (as in `spninx/_static`)
+will not be properly shown in HTML if not the root directory of the
+gh-pages branch contains a file `.nojekyll`. This file can be empty.
+A typical fix is
+
+!bc sys
+Terminal> git checkout gh-pages
+Terminal> touch .nojekyll
+Terminal> git add .nojekyll
+Terminal> git commit -am updates
+Terminal> git push origin gh-pages
+!ec
+
 ===== A newline in equations (double backslash) becomes single backslash and eats up spaces =====
 
 This is a problem with the Mako preprocessor and files that have beed

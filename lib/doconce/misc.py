@@ -2204,68 +2204,6 @@ def change_encoding():
         #_change_encoding_python(filename, from_encoding, to_encoding)
 
 
-def _usage_bbl2rst():
-    print 'Usage: doconce bbl2rst file.bbl'
-
-def bbl2rst():
-    """
-    Very simple function for helping to covert a .bbl latex
-    file to reST bibliography syntax.
-    A much more complete solution converting bibtex to reST
-    is found in the bib2rst.py script in doconce/bin.
-    """
-    if len(sys.argv) <= 1:
-        _usage_bbl2rst()
-        sys.exit(0)
-
-    bblfile = sys.argv[1]
-    text = open(bblfile, 'r').read()
-    pattern = r'\\bibitem\{(.+)\}' + '\n'
-    text = re.sub(pattern, r'.. [\g<1>] ', text)
-    text = text.replace(r'\newblock ', '')
-    text = text.replace('~', ' ')
-    pattern = r'\{\\em (.+?)\}'
-    text = re.sub(pattern, r'*\g<1>*', text)
-    text = text.replace('\\', '')
-    text = re.sub(r'(\d)--(\d)', r'\1-\2', text)
-    lines = []
-    for line in text.splitlines():
-        line = line.strip()
-        if 'thebibliography' in line:
-            continue
-        elif line[:2] == '..':
-            lines.append(line + '\n')
-        else:
-            lines.append('   ' + line  + '\n')
-
-    outfile = bblfile[:-4] + '_bib.rst'
-    f = open(outfile, 'w')
-    f.writelines(lines)
-    f.close()
-    print 'reStructuredText bibliography in', outfile
-
-    # Could continue with the .py file
-    outfile = bblfile[:-4] + '_bib.py'
-    f = open(outfile, 'w')
-    f.write('{')
-    first_entry = True
-    label_pattern = r'\.\. \[(.*?)\] ([A-Za-z].+$)'
-    for line in lines:
-        m = re.search(label_pattern, line)
-        if m:
-            label = m.group(1).strip()
-            restline = m.group(2).strip()
-            if not first_entry:
-                f.write('""",\n\n')
-            f.write(''''%s': """\n%s\n''' % (label, restline))
-            first_entry = False
-        else:
-            f.write(line.lstrip())
-    f.write('""",\n}\n')
-    f.close()
-    print 'Python bibliography in', outfile
-
-
 html_images = 'html_images.zip'
 reveal_files = 'reveal.js.zip'
 csss_files = 'csss.zip'
