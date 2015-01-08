@@ -1,1 +1,0 @@
-find ~/vc/ \( -name '*.sh' -o -name '*.py' -o -name '*.do.txt' \) -exec grep 'http://code.google.com/p/doconce' {} \; -print -exec doconce replace http://code.google.com/p/doconce https://github.com/hplgit/doconce {} \;
