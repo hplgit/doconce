@@ -32,7 +32,6 @@ from doconce.misc import (
     html_colorbullets,
     md2html,
     md2latex,
-    bbl2rst,
     change_encoding,
     guess_encoding,
     clean,
@@ -906,7 +905,6 @@ latex_header
 latex_footer
 latex_problems
 ref_external
-bbl2rst
 html_colorbullets
 list_labels
 teamod
@@ -976,9 +974,6 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
-
-# transform a .bbl file to a .rst file with reST bibliography format
-doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
