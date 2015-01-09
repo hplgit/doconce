@@ -7874,7 +7874,7 @@ def html2doconce():
     Apply transformations to an html file to help translate the
     document into DocOnce format.
     """
-    print '# #ifdef LATEX2DOCONCE'
+    print '# #ifdef HTML2DOCONCE'
     print 'This is the result of the doconce htmldoconce program.'
     print 'The translation from HTML is just a helper. The text must'
     print 'be carefully examined! (Be prepared that some text might also'
@@ -7990,7 +7990,6 @@ def latex_dislikes():
                 ('section', 'chapter', 'appendix',
                  'sec.', 'chap.', 'app.')]
     dislikes += [
-        (r'\\footnote\{([^}]+?\}', 'Avoid footnotes - write them into the text with (e.g.) parenthesis.'),
         (r'\\subfigure', 'Avoid \\subfigure, combine images to a single new image.'),
         (r'\\pageref', 'Avoid \\pageref entirely (page numbers do not make sense in most electronic formats).'),
         #(r'\\psfig\{', 'Avoid \\psfig, use \\includegraphics.'),
