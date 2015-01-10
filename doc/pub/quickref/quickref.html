@@ -134,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 6, 2015</h4></center> <!-- date -->
+<center><h4>Jan 10, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -175,7 +175,7 @@ include Google's <code>blogger.com</code>, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
-<h2>Supported Formats  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Supported Formats </h2>
 
 <p>
 DocOnce currently translates files to the following formats:
@@ -200,7 +200,7 @@ formats are <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and 
 less extent <code>mwiki</code> and <code>pandoc</code>. The HTML format supports blog posts on
 Google and Wordpress.
 
-<h2>Emacs syntax support  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Emacs syntax support </h2>
 
 <p>
 The file <a href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el" target="_self">.doconce-mode.el</a>
@@ -237,7 +237,7 @@ provides a lot of shortcuts for setting up many elements in a document:
 </tbody>
 </table>
 
-<h2>Title, Authors, and Date  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Title, Authors, and Date </h2>
 
 <p>
 A typical example of giving a title, a set of authors, a date,
@@ -276,7 +276,7 @@ current date is wanted, e.g., <code>Feb 22, 2016</code>.
 <p>
 The table of contents is removed by writing <code>TOC: off</code>.
 
-<h2>Section Types <a name="quick:sections"></a></h2>
+<h2 id="quick:sections">Section Types</h2>
 
 <p>
 <table border="1">
@@ -307,7 +307,7 @@ A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
 
-<h2>Inline Formatting  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Inline Formatting </h2>
 
 <p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
@@ -410,7 +410,7 @@ emoji specifications to images, while all other formats leaves the
 textual specification in the document. The command-line option
 <code>--no_emoji</code> removes all emojis from the output document.
 
-<h2>Lists  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Lists </h2>
 
 <p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
@@ -516,7 +516,7 @@ Indented lines may give strange output in some formats.
 </div>
 
 
-<h2>Comment lines  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Comment lines </h2>
 
 <p>
 Lines starting with <code>#</code> are treated as comments in the document and
@@ -540,7 +540,7 @@ When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.
 
-<h2>Inline comments  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Inline comments </h2>
 
 <p>
 Inline comments meant as messages or notes, to authors during development
@@ -657,7 +657,7 @@ To implement these edits, run
 </code></pre>
 <!-- end verbatim block -->
 
-<h2>Verbatim/Computer Code  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Verbatim/Computer Code </h2>
 
 <p>
 Inline verbatim code is typeset within back-ticks, as in
@@ -753,7 +753,7 @@ Important warnings:
    paragraphs with headings.</li>
 </ul>
 
-<h2>LaTeX Mathematics  <a name="___sec9"></a></h2>
+<h2 id="___sec9">LaTeX Mathematics </h2>
 
 <p>
 DocOnce supports inline mathematics and blocks of mathematics, using
@@ -878,7 +878,7 @@ rendered nicely anyway. If you desire <code>newcommand</code> outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
-<h2>Hyperlinks  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Hyperlinks </h2>
 
 <p>
 Links use either a link text or the raw URL:
@@ -898,7 +898,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 </code></pre>
 <!-- end verbatim block -->
 
-<h2>Figures and Movies  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Figures and Movies </h2>
 
 <p>
 Figures and movies have almost equal syntax:
@@ -965,7 +965,7 @@ The latter results in
 
 <em>Vimeo movie.</em>
 
-<h2>Tables  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Tables </h2>
 
 <p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
@@ -1023,7 +1023,7 @@ Now we can do <code># #include &quot;mydata_table.do.txt&quot;</code> in the Doc
 source file or simply copy the table in <code>mydata_table.do.txt</code>
 into the DocOnce file.
 
-<h2>Labels and References  <a name="___sec13"></a></h2>
+<h2 id="___sec13">Labels and References </h2>
 
 <p>
 The notion of labels and references (as well as bibliography and index)
@@ -1053,7 +1053,7 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-<h2>Citations and Bibliography  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Citations and Bibliography </h2>
 
 <p>
 Single citations are written as
@@ -1081,7 +1081,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-<h2>Generalized Citations  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Generalized Citations </h2>
 
 <p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
@@ -1113,7 +1113,7 @@ LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.
 
-<h2>Index of Keywords  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Index of Keywords </h2>
 
 <p>
 DocOnce supports creating an index of keywords. A certain keyword
@@ -1130,7 +1130,7 @@ gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the <code>latex</code>,
 <code>pdflatex</code>, <code>rst</code>, and <code>sphinx</code> formats.
 
-<h2>Capabilities of The Program <code>doconce</code>  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Capabilities of The Program <code>doconce</code> </h2>
 
 <p>
 The <code>doconce</code> program can be used for a number of purposes besides
@@ -1140,7 +1140,7 @@ list of capabilities:
 <p>
 <!-- begin verbatim block  shpro-->
 <pre><code>Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external bbl2rst html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -1187,9 +1187,6 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
-
-# transform a .bbl file to a .rst file with reST bibliography format
-doconce bbl2rst file.bbl
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
@@ -1298,7 +1295,7 @@ doconce latex_exercise_toc myfile
 </code></pre>
 <!-- end verbatim block -->
 
-<h2>Exercises  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Exercises </h2>
 
 <p>
 DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
@@ -1414,7 +1411,7 @@ The command-line arguments <code>--without_answers</code> and <code>--without_so
 turn off output of answers and solutions, respectively, except for
 examples.
 
-<h2>Environments  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Environments </h2>
 
 <p>
 DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
@@ -1435,7 +1432,7 @@ the environments:
    slide</li>
 </ul>
 
-<h2>Preprocessing  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Preprocessing </h2>
 
 <p>
 DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
@@ -1489,7 +1486,7 @@ An <a href="http://hplgit.github.com/bioinf-py/" target="_self">example document
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
 examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
-<h2>Resources  <a name="___sec21"></a></h2>
+<h2 id="___sec21">Resources </h2>
 
 <ul>
  <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"</li>

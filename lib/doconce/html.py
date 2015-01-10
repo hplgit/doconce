@@ -884,6 +884,14 @@ def html_code(filestr, code_blocks, code_block_types,
         # (note: this affects also (ref{...}) syntax in verbatim blocks...)
         filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
 
+        # Check that all eqrefs have labels
+        labels = re.findall(r'\\label\{(.+?)\}', filestr)
+        eqrefs = re.findall(r'\\eqref\{(.+?)\}', filestr)
+        for eqref in eqrefs:
+            if not eqref in labels:
+                print '*** error: equation ref. (ref{%s}) has no corresponding\n    label{%s} in equations' % (eqref, eqref)
+                _abort()
+
     elif MATH_TYPESETTING == 'WordPress':
         filestr = re.sub(r'!bt *\n', '\n', filestr)
         filestr = re.sub(r'!et *\n', '\n', filestr)
@@ -897,6 +905,13 @@ def html_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(r'!et *\n', r'</pre></blockquote>\n', filestr)
 
     # --- Final fixes for html format ---
+
+    # Replace old-fashion <a name=""></a> anchors with id=""
+    filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>',
+                     r'<h\g<1>\g<2> id="\g<4>">\g<3>', filestr)
+    filestr = re.sub(r'<a name="(.+?)"></a>',
+                     r'<div id="\g<1>"></div>', filestr)
+
 
     # Add MathJax script if math is present (math is defined right above)
     if math and MATH_TYPESETTING == 'MathJax':
@@ -989,7 +1004,6 @@ def html_code(filestr, code_blocks, code_block_types,
 
         # Extract title
         if title == '':
-            # No real title found above.
             # The first section heading or a #TITLE: ... line becomes the title
             pattern = r'<!--\s+TITLE:\s*(.+?) -->'
             m = re.search(pattern, filestr)
@@ -998,7 +1012,7 @@ def html_code(filestr, code_blocks, code_block_types,
                 filestr = re.sub(pattern, '\n<h1>%s</h1>\n' % title, filestr)
             else:
                 # Use the first ordinary heading as title
-                m = re.search(r'<h\d>(.+?)<a name=', filestr)
+                m = re.search(r'<h\d id=.+?">(.+?)<', filestr)
                 if m:
                     title = m.group(1).strip()
 
@@ -1074,9 +1088,6 @@ def html_code(filestr, code_blocks, code_block_types,
         # Change chapter headings to page
         filestr = re.sub(r'<h1>(.+?)</h1> <!-- chapter heading -->',
                          '<h1 class="page-header">\g<1></h1>', filestr)
-        # Some fancy functionality (e.g., in the bootstrap_wtoc template)
-        # requires use of id tag in headings rather than the primitve <a name..
-        filestr = re.sub(r'<h(\d)(.*?)>(.+?) <a name="(.+?)"></a>', r'<h\g<1>\g<2> id="\g<4>">\g<3><a name="\g<4>"></a>', filestr) # for highlighted toc in , but did not work,
     else:
         filestr = filestr.replace(' <!-- chapter heading -->', ' <hr>')
     if html_style.startswith('boots'):
@@ -1086,7 +1097,7 @@ def html_code(filestr, code_blocks, code_block_types,
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
-            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123][^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">)'
+            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123] id="|^<div class="page-header">)'
             # Exclude lists (not a good idea if they are part of the intro...)
             #pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
             m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
@@ -1143,7 +1154,7 @@ def html_code(filestr, code_blocks, code_block_types,
     # Reduce redunant newlines and <p> (easy with lookahead pattern)
     # Eliminate any <p> that goes with blanks up to <p> or a section
     # heading
-    pattern = r'<p>\s+(?=<p>|<[hH]\d[^>]*>)'
+    pattern = r'<p>\s+(?=<p>|<p id=|<[hH]\d[^>]*>)'
     filestr = re.sub(pattern, '', filestr)
     # Extra blank before section heading
     pattern = r'\s+(?=^<[hH]\d[^>]*>)'
@@ -1238,7 +1249,8 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
         # Make a table for the definition
         name = m.group('name').strip()
         text = m.group('text').strip()
-        html = '\n<p><a name="def_footnote_%s"></a><a href="#link_footnote_%s"><b>%s:</b></a> %s\n' % (name2index[name], name2index[name], name2index[name], text)
+        html = '\n<p id="def_footnote_%s"><a href="#link_footnote_%s"><b>%s:</b></a> %s</p>\n' % (name2index[name], name2index[name], name2index[name], text)
+        # (<a name=""></a> is later replaced by a div tag)
         return html
 
     filestr = re.sub(pattern_def, subst_def, filestr,
@@ -1272,15 +1284,18 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                     print text
                 text = newtext
             if '"' in text:
-                newtext, n = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
-                if n > 0:
+                newtext, n1 = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
+                newtext, n2 = re.subn(r'URL ?:\s*"(.+?)"', r'\g<1>', newtext)
+                if n1 > 0 or n2 > 0:
                     print '*** warning: found link tag "...": "..." in footnote, which was removed'
                     print '    from tooltip (since it does not work with bootstrap tooltips)'
                     print text
                 text = newtext
-            html = ' <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="%s"><a name="link_footnote_%s"><a><a href="#def_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
+            html = ' <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="%s"><a href="#def_footnote_%s" id="link_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
+            # (<a name=""></a> is later replaced by a div tag)
         else:
-            html = r' [<a name="link_footnote_%s"><a><a href="#def_footnote_%s">%s</a>]' % (i, i, i)
+            html = r' [<a id="link_footnote_%s" href="#def_footnote_%s">%s</a>]' % (i, i, i)
+            # (<a name=""></a> is later replaced by a div tag)
         return html
 
     filestr = re.sub(pattern_footnote, subst_footnote, filestr)
@@ -1602,6 +1617,7 @@ def html_ref_and_label(section_label2title, format, filestr):
         title = section_label2title[label]
         title_pattern = r'(_{3,9}|={3,9})\s*%s\s*(_{3,9}|={3,9})\s*label\{%s\}' % (re.escape(title), label)
         title_new = '\g<1> %s <a name="%s"></a> \g<2>' % (title.replace('\\', '\\\\'), label)
+        # (Note: the <a name=""> anchor is replaced by id="" in html_code)
         filestr, n = re.subn(title_pattern, title_new, filestr)
         # (a little odd with mix of doconce title syntax and html NAME tag...)
         if n == 0:
@@ -1610,6 +1626,7 @@ def html_ref_and_label(section_label2title, format, filestr):
 
     # turn label{myname} to anchors <a name="myname"></a>
     filestr = re.sub(r'label\{(.+?)\}', r'<a name="\g<1>"></a>', filestr)
+    # (<a name=""></a> is later replaced by a div tag)
 
     # replace all references to sections by section titles:
     for label in section_label2title:
@@ -1629,6 +1646,7 @@ def html_ref_and_label(section_label2title, format, filestr):
     caption_start = '<p class="caption">'
     caption_pattern = r'%s(.+?)</p>' % caption_start
     label_pattern = r'%s.+?<a name="(.+?)">' % caption_start
+    # Should have <h\d id=""> type of labels too
     lines = filestr.splitlines()
     label2no = {}
     fig_no = 0
@@ -1666,6 +1684,7 @@ def html_ref_and_label(section_label2title, format, filestr):
         heading1, title, heading2 = m[i]
         if not '<a name="' in title:
             newtitle = title + ' <a name="___sec%d"></a>' % i
+            # (Note: the <a name=""> anchor is replaced by id="" in html_code)
             filestr = filestr.replace(heading1 + title + heading2,
                                       heading1 + newtitle + heading2,
                                       1) # count=1: only the first!
@@ -1686,6 +1705,7 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
             try:
                 bibtext = bibtext.replace('label{%s}' % label,
                                           '<a name="%s"></a>' % label)
+                # (<a name=""></a> is later replaced by a div tag)
             except UnicodeDecodeError, e:
                 print e
                 print '*** error: problems in %s' % pubfile
