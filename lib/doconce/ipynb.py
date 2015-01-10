@@ -61,13 +61,15 @@ def ipynb_figure(m):
         # (no control of size, then one must use HTML syntax)
         text = ''
         if label is not None:
-            text += '<a name="%s"></a>\n' % label
+            #text += '<a name="%s"></a>\n' % label
+            text += '<div id="%s"></div>\n' % label
         text += '![%s](%s)' % (caption, filename)
     elif display_method == 'imgtag':
         # Plain <img tag, allows specifying the image size
         text = ''
         if label is not None:
-            text += '<a name="%s"></a>' % label
+            #text += '<a name="%s"></a>' % label
+            text += '<div id="%s"></div>\n' % label
         text += """
 <p>%s</p>
 <img src="%s" %s>
@@ -435,11 +437,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         elif eq_type == 'heading':
             tex_blocks[i] = '### $ ' + '  '.join(tex_blocks[i].splitlines()) + ' $'
 
-        # Add standard labels <a name=""></a> for the eqs above the block
-        # (for reference)
+        # Add labels for the eqs above the block (for reference)
         if labels:
+            #label_tp = '<a name="%s"></a>'
+            label_tp = '<div id="%s"></div>'
             tex_blocks[i] = '<!-- Equation labels as ordinary links -->\n' + \
-                            ' '.join(['<a name="%s"></a>' % label
+                            ' '.join([label_tp % label
                                       for label in labels]) + '\n\n' + \
                                       tex_blocks[i]
 

@@ -188,7 +188,7 @@ system doconce ptex2tex slides1 envir=minted
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
 system pdflatex -shell-escape slides1
 
-system doconce format html slides2 --pygments_html_style=emacs $rawgit
+doconce format html slides2 --pygments_html_style=emacs $rawgit --no_abort
 system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 cp slides2.html slides2_reveal.html
 

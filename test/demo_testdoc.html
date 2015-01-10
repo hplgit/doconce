@@ -246,7 +246,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jan 6, 2015</h4></center> <!-- date -->
+<center><h4>Jan 10, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -329,7 +329,7 @@ is part of the abstract.
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
 <!-- is mutually exclusive in LaTeX -->
 
-<h1>Section 1 <a name="sec1"></a></h1>
+<h1 id="sec1">Section 1</h1>
 
 <p>
 Here is a nested list:
@@ -363,7 +363,7 @@ Here is a nested list:
   <li> item2</li>
 </ul>
 
-<h3>Here is a list with subsubsection heading  <a name="___sec1"></a></h3>
+<h3 id="___sec1">Here is a list with subsubsection heading </h3>
 
 <ul>
   <li> item1</li>
@@ -383,7 +383,7 @@ Here are two references. Equation&nbsp;\eqref{my:eq1} is fine. Eq.&nbsp;\eqref{m
 Even Equation \eqref{my:eq1} without the tilde.
 This equation appears in another part if this document is split.
 
-<h2>Subsection 1 <a name="subsec1"></a></h2>
+<h2 id="subsec1">Subsection 1</h2>
 
 <p>
 <!-- Refer to section/appendix etc. at the beginning of the line -->
@@ -396,7 +396,7 @@ the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URL
 encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
  <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
-<h3>Test Section reference at beginning of line and after a sentence  <a name="___sec3"></a></h3>
+<h3 id="___sec3">Test Section reference at beginning of line and after a sentence </h3>
 
 <p>
 The section <a href="#subsec1">Subsection 1</a> is fine.
@@ -405,7 +405,7 @@ The section <a href="#subsubsec:ex">URLs</a> too.
 <p>
 <!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
 
-<h3>Computer code  <a name="___sec4"></a></h3>
+<h3 id="___sec4">Computer code </h3>
 
 <p>
 Let's do some copying from files too. First from subroutine up to the very end,
@@ -534,7 +534,7 @@ Test paragraph and subsubsection headings before code.
 2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(y):
     <span style="color: #8B008B; font-weight: bold">return</span> y+<span style="color: #B452CD">1</span>
 </pre></div>
-</td></tr></table><h3>Subsubsection heading before code  <a name="___sec5"></a></h3>
+</td></tr></table><h3 id="___sec5">Subsubsection heading before code </h3>
 
 <p>
 
@@ -859,7 +859,7 @@ is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
-<h3>Running OS commands  <a name="___sec6"></a></h3>
+<h3 id="___sec6">Running OS commands </h3>
 
 <p>
 
@@ -874,36 +874,36 @@ output
 from
 Python.
 </pre></div>
-</td></tr></table><h3>Footnotes  <a name="___sec7"></a></h3>
+</td></tr></table><h3 id="___sec7">Footnotes </h3>
 
 <p>
-Here is a test of footnotes [<a name="link_footnote_1"><a><a href="#def_footnote_1">1</a>], which are handy in text.
+Here is a test of footnotes [<a id="link_footnote_1" href="#def_footnote_1">1</a>], which are handy in text.
 They are used in different flavors, now in
 
 <ul>
  <li> list items</li>
- <li> even with math \( \nabla^2u \) [<a name="link_footnote_2"><a><a href="#def_footnote_2">2</a>]</li>
- <li> and code <code>h[i] += 1</code> [<a name="link_footnote_3"><a><a href="#def_footnote_3">3</a>],</li>
- <li> and <a href="http://google.com" target="_self">links</a> [<a name="link_footnote_4"><a><a href="#def_footnote_4">4</a>]</li>
+ <li> even with math \( \nabla^2u \) [<a id="link_footnote_2" href="#def_footnote_2">2</a>]</li>
+ <li> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>],</li>
+ <li> and <a href="http://google.com" target="_self">links</a> [<a id="link_footnote_4" href="#def_footnote_4">4</a>]</li>
 </ul>
 
 which gives flexibility in writing.
-This is the third [<a name="link_footnote_5"><a><a href="#def_footnote_5">5</a>] example.
+This is the third [<a id="link_footnote_5" href="#def_footnote_5">5</a>] example.
 
-<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.
+syntax, just displayed properly in HTML.</p>
 
-<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
-interferes with an exponent.
+<p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
+interferes with an exponent.</p>
 
-<p><a name="def_footnote_3"></a><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.
+<p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.</p>
 
-<p><a name="def_footnote_4"></a><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous
-web site today.
+<p id="def_footnote_4"><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous
+web site today.</p>
 
 <p>
 Here is some more text before a new definition of a footnote that was
@@ -923,7 +923,7 @@ of course remain a tilde in those contexts.)
 </div>
 
 
-<h2>Subsection 2: Testing figures <a name="subsec:ex"></a></h2>
+<h2 id="subsec:ex">Subsection 2: Testing figures</h2>
 
 <p>
 Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
@@ -932,7 +932,7 @@ there is a flow.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Visualization of a wave. <a name="fig:impact"></a> </p></center>
+<center><p class="caption">Figure 1:  Visualization of a wave. <div id="fig:impact"></div> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
 </center>
 
@@ -952,7 +952,7 @@ and an extra space before the FIGURE keyword.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <a name="myfig"></a> </p></center>
+<center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <div id="myfig"></div> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
 </center>
 
@@ -981,7 +981,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 <p>
 <!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
 
-<h2>The \( \theta \) parameter (not \( \nabla \)?) <a name="decay:sec:theta"></a></h2>
+<h2 id="decay:sec:theta">The \( \theta \) parameter (not \( \nabla \)?)</h2>
 
 <p>
 Functions do not always need to be advanced, here is one
@@ -1025,7 +1025,7 @@ $$
 \end{align}
 $$
 
-<h2>Custom Environments  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Custom Environments </h2>
 
 <p>
 Here is an attempt to create a theorem environment via Mako
@@ -1035,7 +1035,7 @@ Should look nice in most formats!
 
 <p>
 <!-- begin theorem -->
-<a name="theorem:fundamental1"></a>
+<div id="theorem:fundamental1"></div>
 
 <p>
 <b>Theorem 5.</b>
@@ -1053,7 +1053,7 @@ Since \( c=a+b \), the result follows from straightforward addition.
 As we see, the proof of Theorem 5 is a modest
 achievement.
 
-<h2>Tables <a name="subsec:table"></a></h2>
+<h2 id="subsec:table">Tables</h2>
 
 <p>
 <!-- index with comma could fool sphinx -->
@@ -1178,7 +1178,7 @@ and URLs.
 </tbody>
 </table>
 
-<h2>A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code>  <a name="___sec12"></a></h2>
+<h2 id="___sec12">A test of verbatim words in heading with subscript \( a_i \): <code>my_file_v1</code> and <code>my_file_v2</code> </h2>
 
 <p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math \( a_{i-1} \).</b>
@@ -1188,62 +1188,62 @@ some plain text on a new line.
 <p>
 <!-- Test various types of headlines -->
 
-<h2><b>Just bold</b>  <a name="___sec13"></a></h2>
+<h2 id="___sec13"><b>Just bold</b> </h2>
 
 <p>
 Some text.
 
-<h2><em>Just emphasize</em>  <a name="___sec14"></a></h2>
+<h2 id="___sec14"><em>Just emphasize</em> </h2>
 
 <p>
 Some text.
 
-<h2><code>Just verbatim</code>  <a name="___sec15"></a></h2>
+<h2 id="___sec15"><code>Just verbatim</code> </h2>
 
 <p>
 Some text.
 
-<h2><b>Bold</b> beginning  <a name="___sec16"></a></h2>
+<h2 id="___sec16"><b>Bold</b> beginning </h2>
 
 <p>
 Some text.
 
-<h2><em>Emphasize</em> beginning  <a name="___sec17"></a></h2>
+<h2 id="___sec17"><em>Emphasize</em> beginning </h2>
 
 <p>
 Some text.
 
-<h2><code>Verbatim</code> beginning  <a name="___sec18"></a></h2>
+<h2 id="___sec18"><code>Verbatim</code> beginning </h2>
 
 <p>
 Some text.
 
-<h2>Maybe <b>bold end</b>  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Maybe <b>bold end</b> </h2>
 
 <p>
 Some text.
 
-<h2>Maybe <em>emphasize end</em>  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Maybe <em>emphasize end</em> </h2>
 
 <p>
 Some text.
 
-<h2>Maybe <code>verbatim end</code>  <a name="___sec21"></a></h2>
+<h2 id="___sec21">Maybe <code>verbatim end</code> </h2>
 
 <p>
 Some text.
 
-<h2>The middle has <b>bold</b> word  <a name="___sec22"></a></h2>
+<h2 id="___sec22">The middle has <b>bold</b> word </h2>
 
 <p>
 Some text.
 
-<h2>The middle has <em>emphasize</em> word  <a name="___sec23"></a></h2>
+<h2 id="___sec23">The middle has <em>emphasize</em> word </h2>
 
 <p>
 Some text.
 
-<h2>The middle has <code>verbatim</code> word  <a name="___sec24"></a></h2>
+<h2 id="___sec24">The middle has <code>verbatim</code> word </h2>
 
 <p>
 Some text.
@@ -1304,7 +1304,7 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
-<h2>Bibliography test  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Bibliography test </h2>
 
 <p>
 Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
@@ -1336,7 +1336,7 @@ the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 1: Examples can be typeset as exercises <a name="Example"></a></h2>
+<h2 id="Example">Example 1: Examples can be typeset as exercises</h2>
 
 <p>
 Examples can start with a subsection heading starting with <code>Example:</code>
@@ -1372,7 +1372,7 @@ maybe over multiple doconce input lines.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>URLs <a name="subsubsec:ex"></a></h2>
+<h2 id="subsubsec:ex">URLs</h2>
 
 <p>
 Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_self">hpl</a>, or
@@ -1425,7 +1425,7 @@ footnotes.
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1>LaTeX Mathematics  <a name="___sec28"></a></h1>
+<h1 id="___sec28">LaTeX Mathematics </h1>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -1471,12 +1471,12 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
-<h1>Exercises  <a name="___sec29"></a></h1>
+<h1 id="___sec29">Exercises </h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Problem 2: Flip a Coin <a name="demo:ex:1"></a></h2>
+<h2 id="demo:ex:1">Problem 2: Flip a Coin</h2>
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
 <p>
@@ -1567,7 +1567,7 @@ Vectorize the code in a) using <code>numpy.sum</code>.
 In this latter subexercise, we have an
 example where the code is easy to read.
 
-<h3>My remarks  <a name="___sec31"></a></h3>
+<h3 id="___sec31">My remarks </h3>
 
 <p>
 Remarks with such a subsubsection is treated as more text
@@ -1583,7 +1583,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- Closing remarks for this Problem -->
 
-<h3>Remarks  <a name="___sec32"></a></h3>
+<h3 id="___sec32">Remarks </h3>
 
 <p>
 These are the exercise remarks, appearing at the very end.
@@ -1594,7 +1594,7 @@ These are the exercise remarks, appearing at the very end.
 <p>
 <!-- --- end exercise --- -->
 
-<h2>Not an exercise  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Not an exercise </h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -1603,7 +1603,7 @@ exercises.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 3: Test of plain text exercise <a name="my:exer1"></a></h2>
+<h2 id="my:exer1">Exercise 3: Test of plain text exercise</h2>
 
 <p>
 Very short exercise. What is the capital
@@ -1616,7 +1616,7 @@ Filename: <code>myexer1.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 4: Compute a Probability <a name="demo:ex:2"></a></h2>
+<h2 id="demo:ex:2">Project 4: Compute a Probability</h2>
 
 <p>
 <!-- Minimalistic exercise -->
@@ -1652,7 +1652,7 @@ compute the probability as \( M/N \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 5: Explore Distributions of Random Circles <a name="proj:circle1"></a></h2>
+<h2 id="proj:circle1">Project 5: Explore Distributions of Random Circles</h2>
 
 <p>
 The formula for a circle is given by
@@ -1745,7 +1745,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3>Remarks  <a name="___sec37"></a></h3>
+<h3 id="___sec37">Remarks </h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -1757,7 +1757,7 @@ and give some perspectives.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 6: Determine some Distance <a name="exer:dist"></a></h2>
+<h2 id="exer:dist">Exercise 6: Determine some Distance</h2>
 
 <p>
 Intro to this exercise. Questions are in subexercises below.
@@ -1877,7 +1877,7 @@ Test list in exercise:
 <!-- Closing remarks for this Exercise --></li>
 </ol>
 
-<h3>Remarks  <a name="___sec39"></a></h3>
+<h3 id="___sec39">Remarks </h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -1890,7 +1890,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Some exercise without the "Exercise:" prefix  <a name="___sec40"></a></h2>
+<h2 id="___sec40">Some exercise without the "Exercise:" prefix </h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -1920,7 +1920,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 8: Solution of differential equation <a name="sec:this:exer:de"></a></h2>
+<h2 id="sec:this:exer:de">Exercise 8: Solution of differential equation</h2>
 
 <p>
 <!-- begin quiz -->
@@ -1968,7 +1968,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Example 9: Just an example  <a name="___sec42"></a></h2>
+<h2 id="___sec42">Example 9: Just an example </h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -1985,17 +1985,17 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>Here goes another section  <a name="___sec43"></a></h1>
+<h1 id="___sec43">Here goes another section </h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1>More Exercises  <a name="___sec44"></a></h1>
+<h1 id="___sec44">More Exercises </h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 10: Make references to projects and problems <a name="exer:some:formula"></a></h2>
+<h2 id="exer:some:formula">Exercise 10: Make references to projects and problems</h2>
 
 <p>
 <!-- Test comments not at the end only -->
@@ -2019,7 +2019,7 @@ Filename: <code>verify_formula.py</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Project 11: References in a headings do not work well in html <a name="exer:you"></a></h2>
+<h2 id="exer:you">Project 11: References in a headings do not work well in html</h2>
 
 <p>
 Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>,
@@ -2030,78 +2030,78 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1>References  <a name="___sec47"></a></h1>
+<h1 id="___sec47">References </h1>
 
 <p>
 <!-- begin bibliography -->
 
 <ol>
- <li> <a name="Langtangen_Pedersen_2002"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
+ <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
     <em>International Journal of Applied Mechanics and Engineering</em>,
     7(1),
     pp. 187-204,
     2002.</li>
- <li> <a name="Langtangen_et_al_2002"></a> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
+ <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
     Numerical Methods for Incompressible Viscous Flow,
     <em>Advances in Water Resources</em>,
     25,
     pp. 1125-1146,
     2002.</li>
- <li> <a name="Langtangen_1994a"></a> <b>H. P. Langtangen</b>. 
+ <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     <em>SIAM Journal of Scientific and Statistical Computing</em>,
     15,
     pp. 997-996,
     1994.</li>
- <li> <a name="Mardal_et_al_2003a"></a> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
+ <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
     Software Tools for Multigrid Methods,
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
     2003.</li>
- <li> <a name="Langtangen_1988d"></a> <b>H. P. Langtangen</b>. 
+ <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
     1989.</li>
- <li> <a name="Langtangen_1992c"></a> <b>H. P. Langtangen</b>. 
+ <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     <em>SIAM Journal on Scientific Computing</em>,
     13,
     pp. 1394-1417,
     1992.</li>
- <li> <a name="Mortensen_et_al_2011"></a> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
+ <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
- <li> <a name="Glimsdal_et_al_20006"></a> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
+ <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
     2006.</li>
- <li> <a name="Rahman_et_al_2006b"></a> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
+ <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     <em>Physical Review B: Condensed Matter and Materials Physics</em>,
     74,
     2006.</li>
-<li> <a name="Haga_et_al_2011a"></a> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
+<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
     <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
-<li> <a name="Langtangen_2003a"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     Springer,
     2003.</li>
-<li> <a name="Langtangen_2008a"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
     Springer,
     2008.</li>
-<li> <a name="Langtangen:95"></a> <b>H. P. Langtangen and G. Pedersen</b>. 
+<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
@@ -2109,33 +2109,33 @@ Filename: <code>selc_composed.pdf</code>.
     pp. pp. 117-126,
     1995,
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
-<li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
     2012.</li>
-<li> <a name="Jeberg_et_al_2004"></a> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
+<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
     2004.</li>
-<li> <a name="Langtangen_1989e"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.</li>
-<li> <a name="Langtangen_talk_2007a"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.</li>
-<li> <a name="Langtangen:85"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.</li>
-<li> <a name="Langtangen:91"></a> <b>H. P. Langtangen and A. Tveito</b>. 
+<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
     Numerical Methods in Continuum Mechanics,
     <em>Center for Industrial Research</em>,
     1991.</li>
-<li> <a name="Langtangen:94b"></a> <b>H. P. Langtangen</b>. 
+<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
     Diffpack: Software for Partial Differential Equations,
     <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,
     edited by <b>A. Vermeulen</b>,
@@ -2144,32 +2144,32 @@ Filename: <code>selc_composed.pdf</code>.
 
 <!-- end bibliography -->
 
-<h1>Appendix: Just for testing; part I <a name="app1"></a></h1>
+<h1 id="app1">Appendix: Just for testing; part I</h1>
 
 <p>
 This is the first appendix.
 
-<h2>A subsection within an appendix  <a name="___sec49"></a></h2>
+<h2 id="___sec49">A subsection within an appendix </h2>
 
 <p>
 Some text.
 
-<h1>Appendix: Just for testing; part II <a name="app2"></a></h1>
+<h1 id="app2">Appendix: Just for testing; part II</h1>
 
 <p>
 This is more stuff for an appendix.
 
-<h2>Appendix: Testing identical titles  <a name="___sec51"></a></h2>
+<h2 id="___sec51">Appendix: Testing identical titles </h2>
 
 <p>
 Without label.
 
-<h2>Appendix: Testing identical titles <a name="test:title:id1"></a></h2>
+<h2 id="test:title:id1">Appendix: Testing identical titles</h2>
 
 <p>
 With label.
 
-<h2>Appendix: Testing identical titles <a name="test:title:id2"></a></h2>
+<h2 id="test:title:id2">Appendix: Testing identical titles</h2>
 
 <p>
 What about inserting a quiz?
@@ -2202,7 +2202,7 @@ Bergen
 <!-- end quiz -->
 
 
-<h2>Appendix: Testing identical titles  <a name="___sec54"></a></h2>
+<h2 id="___sec54">Appendix: Testing identical titles </h2>
 
 <p>
 Without label.
@@ -2296,7 +2296,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2>Appendix: Testing inline comments  <a name="___sec55"></a></h2>
+<h2 id="___sec55">Appendix: Testing inline comments </h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -2335,7 +2335,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2>Appendix: Testing headings ending with <code>verbatim inline</code>  <a name="___sec56"></a></h2>
+<h2 id="___sec56">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -2356,8 +2356,8 @@ or in quotes:
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: <code>admon.do.txt</code>.
 
-<p><a name="def_footnote_5"></a><a href="#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote
-is at the end with only one newline.
+<p id="def_footnote_5"><a href="#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote
+is at the end with only one newline.</p>
 
 <!-- ------------------- end of main content --------------- -->
 

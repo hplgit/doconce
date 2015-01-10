@@ -322,9 +322,9 @@ def pandoc_index_bib(filestr, index, citations, pubfile, pubdata):
 
     # Use HTML anchors for labels and [link text](#label) for references
     # outside mathematics.
-    #filestr = re.sub(r' *label\{.+?\}', '', filestr)
-    filestr = re.sub(r'label\{(.+?)\}', '<a name="\g<1>"></a>', filestr)
+    #filestr = re.sub(r'label\{(.+?)\}', '<a name="\g<1>"></a>', filestr)
     # Note: HTML5 should have <sometag id="..."></sometag> instead
+    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
 
     return filestr
 

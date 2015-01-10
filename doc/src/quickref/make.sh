@@ -15,7 +15,7 @@ sh ./clean.sh
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-system doconce format html quickref --pygments_html_style=none --no_preprocess
+doconce format html quickref --pygments_html_style=none --no_preprocess --no_abort
 
 # latex (shpro because of @@@CODE copy, need minted style)
 system doconce format latex quickref --no_preprocess --latex_font=helvetica

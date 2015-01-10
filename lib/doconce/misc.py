@@ -2818,11 +2818,11 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
 
 
     # Fix internal links to point to the right splitted file
-    name_pattern = r'<a name="([^"]+?)"'
-    href_pattern = r'<a href="#([^"]+?)"'
+    name_pattern = r' id="([^"]+?)">'
     parts_name = [re.findall(name_pattern, ''.join(part)) for part in parts]
     parts_name.append(re.findall(name_pattern, ''.join(header)))
     parts_name.append(re.findall(name_pattern, ''.join(footer)))
+    href_pattern = r'<a href="#([^"]+?)"'
     parts_href = [re.findall(href_pattern, ''.join(part)) for part in parts]
     parts_href.append(re.findall(href_pattern, ''.join(header)))
     parts_href.append(re.findall(href_pattern, ''.join(footer)))
