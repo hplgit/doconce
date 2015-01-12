@@ -133,7 +133,7 @@ def f(x):
 !ec
 which gets rendered as
 
-!bc pycod
+!bc pycod-t
 def f(x):
     return x+1
 !ec
@@ -143,14 +143,14 @@ Test paragraph and subsubsection headings before code.
 
 __Paragraph heading before code.__
 
-!bc pycod
+!bc pycod-t
 def g(y):
     return y+1
 !ec
 
 === Subsubsection heading before code ===
 
-!bc pycod
+!bc pycod-t
 def h(z):
     return z+1
 !ec
@@ -203,7 +203,7 @@ show()
 ## Should also test that one can read .pyopt and .pysc programs
 
 Then Cython:
-!bc cycod
+!bc cycod-t
 cpdef f(double x):
     return x + 1
 !ec
@@ -231,7 +231,7 @@ Value: 0.932039085967
 
 # This one tests a + sign before a code environment
 C++:
-!bc cpppro
+!bc cpppro-t
 #include <iostream>
 
 int main()
@@ -256,7 +256,7 @@ And a little bit of Fortran: :dizzy_face:
 !ec
 which then is typeset as
 
-!bc cod
+!bc cod-t
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -281,7 +281,7 @@ quoted).
 
 And here is a system call:
 
-!bc sys
+!bc sys-t
 Terminal> mkdir test
 Terminal> cd test
 Terminal> myprog -f
@@ -21282,7 +21282,7 @@ show()
 
 Then Cython:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
 cpdef f(double x):
     return x + 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22960,16 +22960,15 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "def f(x):\n",
-      "    return x+1\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "```Python\n",
+      "        def f(x):\n",
+      "            return x+1\n",
+      "\n",
+      "```"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -22981,16 +22980,15 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "def g(y):\n",
-      "    return y+1\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "```Python\n",
+      "        def g(y):\n",
+      "            return y+1\n",
+      "\n",
+      "```"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -23000,16 +22998,15 @@ is at the end with only one newline.
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "def h(z):\n",
-      "    return z+1\n"
-     ],
-     "language": "python",
+     "cell_type": "markdown",
      "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
+     "source": [
+      "```Python\n",
+      "        def h(z):\n",
+      "            return z+1\n",
+      "\n",
+      "```"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -23084,8 +23081,11 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "```Python\n",
       "        cpdef f(double x):\n",
-      "            return x + 1\n"
+      "            return x + 1\n",
+      "\n",
+      "```"
      ]
     },
     {
@@ -23140,13 +23140,16 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "```Cpp\n",
       "        #include <iostream>\n",
       "        \n",
       "        int main()\n",
       "        {\n",
       "           std::cout << \"Sample output\" << std::endl;\n",
       "           return 0\n",
-      "        }\n"
+      "        }\n",
+      "\n",
+      "```"
      ]
     },
     {
@@ -23183,12 +23186,15 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "```Python\n",
       "              subroutine midpt(x, length, a, b)\n",
       "              real*8 a, b, x\n",
       "              x = (a + b)/2\n",
       "              length = b - a\n",
       "              return\n",
-      "              end\n"
+      "              end\n",
+      "\n",
+      "```"
      ]
     },
     {
@@ -23224,11 +23230,14 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "```\n",
       "        Terminal> mkdir test\n",
       "        Terminal> cd test\n",
       "        Terminal> myprog -f\n",
       "        output1\n",
-      "        output2\n"
+      "        output2\n",
+      "\n",
+      "```"
      ]
     },
     {
@@ -23326,7 +23335,7 @@ is at the end with only one newline.
       "        \n",
       "        !bt\n",
       "        \\begin{align*}\n",
-      "        \\nabla\\cdot\\boldsymbol{u} &= 0,\\\\ \n",
+      "        \\nabla\\cdot\\boldsymbol{u} &= 0,\\\\\n",
       "        \\boldsymbol{u} &= \\nabla\\phi .\n",
       "        \\end{align*}\n",
       "        !et\n",
@@ -25527,7 +25536,7 @@ show()
 
 Then Cython:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
 cpdef f(double x):
     return x + 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41925,18 +41934,18 @@ Python.
 <h3 id="___sec7">Footnotes </h3>
 
 <p>
-Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML." id="link_footnote_1"><a href="#def_footnote_1" style="color: white">1</a></button>, which are handy in text.
+Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>, which are handy in text.
 They are used in different flavors, now in
 
 <ul>
  <li> list items</li>
- <li> even with math \( \nabla^2u \) <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Math footnotes can be dangerous since it interferes with an exponent." id="link_footnote_2"><a href="#def_footnote_2" style="color: white">2</a></button></li>
- <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="One-line footnote." id="link_footnote_3"><a href="#def_footnote_3" style="color: white">3</a></button>,</li>
- <li> and <a href="http://google.com" target="_self">links</a> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="<a href="google.com" target="_self"><tt>google.com</tt></a> is perhaps the most famous web site today." id="link_footnote_4"><a href="#def_footnote_4" style="color: white">4</a></button></li>
+ <li> even with math \( \nabla^2u \) <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Math footnotes can be dangerous since it interferes with an exponent."><a href="#def_footnote_2" id="link_footnote_2" style="color: white">2</a></button></li>
+ <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="One-line footnote."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>,</li>
+ <li> and <a href="http://google.com" target="_self">links</a> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="google.com is perhaps the most famous web site today."><a href="#def_footnote_4" id="link_footnote_4" style="color: white">4</a></button></li>
 </ul>
 
 which gives flexibility in writing.
-This is the third <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline." id="link_footnote_5"><a href="._testdoc_vagrant003.html#def_footnote_5" style="color: white">5</a></button> example.
+This is the third <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Not much to add here, but the footnote is at the end with only one newline."><a href="._testdoc_vagrant003.html#def_footnote_5" id="link_footnote_5" style="color: white">5</a></button> example.
 
 <p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
@@ -70745,7 +70754,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f2329953848>
+verbatim is to be replaced using <function html_verbatim at 0x7fa681b79848>
 
 
 First occurence: " `mako`."
@@ -74706,7 +74715,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Jan 10 04:34:22 2015.
+# sphinx-quickstart on Mon Jan 12 18:08:59 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -91257,6 +91266,9 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: found link tag "...": "..." in footnote, which was removed
+    from tooltip (since it does not work with bootstrap tooltips)
+URL: "google.com" is perhaps the most famous web site today.
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
 *** warning: TITLE may look strange with a template -

@@ -1,0 +1,141 @@
+TITLE: Example on interactive live documents versus traditional static documents
+AUTHOR: hpl
+DATE: today
+
+===== Mathematics =====
+
+A differential equation for linear vibrations,
+
+!bt
+\[ mu'' + bu' + s(u) = F(t),\quad u(0)=I,\ u'(0)=V,\]
+!et
+can be solved numerically by a scheme
+
+!bt
+\begin{equation}
+u^{n+1} = \left(2mu^n + (\frac{b}{2}\Delta t - m)u^{n-1} +
+\Delta t^2(F^n - s(u^n))
+\right)(m + \frac{b}{2}\Delta t)^{-1},
+label{bumpy:u:scheme:lin}
+\end{equation}
+!et
+for $n=0,1,\ldots$, but with a special formula for $n=0$:
+
+!bt
+\begin{equation}
+u^1 = u^0 + \Delta t\, V
++ \frac{\Delta t^2}{2m}(-bV - s(u^0) + F^0)
+\thinspace .
+label{bumpy:u:scheme0:lin}
+\end{equation}
+!et
+
+===== Implementation =====
+
+# Note: Plain Markdown cannot refer to equations with numbers.
+# This is a DocOnce extension.
+
+The formulas (ref{bumpy:u:scheme:lin}) and (ref{bumpy:u:scheme0:lin})
+can be implemented as follows in a Python function:
+
+# Next code (hidden code):
+# Not strictly needed since zeros inside the next function
+# is not called before the main program has imported zeros...
+# But in general one may need special imports for the next
+# code segments to execute properly.
+
+!bc pyhid
+from numpy import zeros
+!ec
+
+!bc pycod
+def solver_linear_damping(I, V, m, b, s, F, t):
+    N = t.size - 1              # No of time intervals
+    dt = t[1] - t[0]            # Time step
+    u = zeros(N+1)              # Result array
+    u[0] = I
+    u[1] = u[0] + dt*V + dt**2/(2*m)*(-b*V - s(u[0]) + F[0])
+
+    for n in range(1,N):
+        u[n+1] = 1./(m + b*dt/2)*(2*m*u[n] + \
+                 (b*dt/2 - m)*u[n-1] + dt**2*(F[n] - s(u[n])))
+    return u
+!ec
+
+===== Dissection =====
+
+# Code here is not meant to be executed, just shown for discussion.
+
+The array `t` holds all the time points where we want a solution.
+The total number of intervals, $N$, is then computed as
+
+!bc pycod-t
+N = t.size - 1   # or len(t) - 1
+!ec
+Creating an array of length $N+1$ where we can store the solution
+is done by
+
+!bc pycod-t
+u = zeros(N+1)
+!ec
+% if FORMAT != 'ipynb':
+For such a statement to work, we must have done a
+
+!bc pycod
+from numpy import zeros
+!ec
+% endif
+
+For loops over array indices are coded as
+
+!bc pycod-t
+for n in range(1, N):
+    ...
+!ec
+which generates a sequence of integers from 1 up to `N`, *but not
+including* `N`.
+
+===== Usage =====
+
+The function `solve_linear_damping` resides in a file `solver.py`.
+
+# Need to tell where solver.py is for the notebook to execute properly.
+# For this we use a hidden python code (pyhid). It will be hidden
+# in all formats, except in the notebook.
+
+!bc pyhid
+# The solver module is in src/solver.py; tell Python about that
+import sys
+sys.path.insert(0, 'src')
+!ec
+
+# For matplotlib we need to insert %matplotlib inline in the notebook.
+# (Automatically done by DocOnce.)
+
+!bc pycod
+from solver import solver_linear_damping
+from numpy import linspace, zeros, pi
+
+def s(u):
+    return 2*u
+
+T = 10*pi      # simulate for t in [0,T]
+dt = 0.2
+N = int(round(T/dt))
+t = linspace(0, T, N+1)
+F = zeros(t.size)
+I = 1; V = 0
+m = 2; b = 0.2
+u = solver_linear_damping(I, V, m, b, s, F, t)
+
+from matplotlib.pyplot import *
+plot(t, u)
+show()
+!ec
+
+% if FORMAT != 'ipynb':
+The result is the figure below.
+
+FIGURE: [fig/plot, width=500 frac=0.8]
+
+% endif

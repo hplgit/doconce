@@ -580,7 +580,7 @@ def syntax_check(filestr, format):
     """
     # Remove tex and code blocks
     filestr, code_blocks, code_block_types, tex_blocks = \
-             remove_code_and_tex(filestr)
+             remove_code_and_tex(filestr, format)
 
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
@@ -3279,7 +3279,7 @@ def doconce2format(filestr, format):
     # Next step: remove all verbatim and math blocks
 
     filestr, code_blocks, code_block_types, tex_blocks = \
-             remove_code_and_tex(filestr)
+             remove_code_and_tex(filestr, format)
 
     debugpr('The file after removal of code/tex blocks:', filestr)
     debugpr('The code blocks:', pprint.pformat(code_blocks))
@@ -3667,7 +3667,7 @@ def preprocess(filename, format, preprocessor_options=[]):
     resultfile2 = 'tmp_mako__' + filename
 
     filestr_without_code, code_blocks, code_block_types, tex_blocks = \
-                          remove_code_and_tex(filestr)
+                          remove_code_and_tex(filestr, format)
 
     preprocess_commands = r'^#\s*#(if|define|include)'
     if re.search(preprocess_commands, filestr_without_code, re.MULTILINE):
@@ -3716,7 +3716,7 @@ preprocess package (sudo apt-get install preprocess).
             # Standardize newlines
             filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
             filestr_without_code, code_blocks, code_block_types, tex_blocks = \
-                                  remove_code_and_tex(filestr)
+                                  remove_code_and_tex(filestr, format)
 
 
 

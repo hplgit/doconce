@@ -1,5 +1,5 @@
 import re, os, sys
-from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
+from common import insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites
 from html import html_movie, html_quiz

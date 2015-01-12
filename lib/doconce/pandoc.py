@@ -14,6 +14,27 @@ from common import default_movie, plain_exercise, table_analysis, \
 from html import html_movie, html_table
 from misc import option
 
+# Mapping of envirs to correct Pandoc verbatim environment
+language2pandoc = dict(
+    cod='Python', pro='Python',
+    pycod='Python', pypro='Python',
+    cycod='Python', cypro='Python',
+    ccod='C', cpro='C',
+    cppcod='Cpp', cpppro='Cpp',
+    fcod='Fortran', fpro='Fortran',
+    rbcod='Ruby', rbpro='Ruby',
+    plcod='Perl', plpro='Perl',
+    shcod='Shell', shpro='Shell',
+    jscod='JavaScript', jspro='JavaScript',
+    htmlcod='HTML', htmlpro='HTML', html='HTML',
+    # sys, dat, csv, txt: no support for pure text,
+    # just use a plain text block
+    #sys='Bash',
+    pyoptpro='Python', pyscpro='Python',
+    ipy='Python', pyshell='Python')
+    # (the "Python" typesetting is neutral if the text
+    # does not parse as python)
+
 def pandoc_title(m):
     title = m.group('subst')
     if option('strapdown'):
@@ -99,38 +120,21 @@ def pandoc_code(filestr, code_blocks, code_block_types,
     github_md = option('github_md')
 
     if not option('strict_markdown_output'):
-        # Mapping of envirs to correct Pandoc verbatim environment
-        defs = dict(cod='Python', pro='Python',
-                    pycod='Python', pypro='Python',
-                    ccod='C', cpro='C',
-                    cppcod='Cpp', cpppro='Cpp',
-                    fcod='Fortran', fpro='Fortran',
-                    rbcod='Ruby', rbpro='Ruby',
-                    plcod='Perl', plpro='Perl',
-                    shcod='Shell', shpro='Shell',
-                    jscod='JavaScript', jspro='JavaScript',
-                    htmlcod='HTML', htmlpro='HTML', html='HTML',
-                    # sys, dat, csv, txt: no support for pure text,
-                    # just use a plain text block
-                    #sys='Bash',
-                    pyoptpro='Python', pyscpro='Python',
-                    ipy='Python', pyshell='Python')
-            # (the "Python" typesetting is neutral if the text
-            # does not parse as python)
+        pass
         if github_md:
-            for key in defs:
-                defs[key] = defs[key].lower()
+            for key in language2pandoc:
+                language2pandoc[key] = language2pandoc[key].lower()
 
         # Code blocks apply the ~~~~~ delimiter, with blank lines before
         # and after
-        for key in defs:
-            language = defs[key]
+        for key in language2pandoc:
+            language = language2pandoc[key]
             if github_md:
-                replacement = '\n```%s\n' % defs[key]
+                replacement = '\n```%s\n' % language2pandoc[key]
             else:
                 # pandoc-extended Markdown
-                replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s}\n' % defs[key]
-                #replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s ,numberLines}\n' % defs[key]  # enable line numbering
+                replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s}\n' % language2pandoc[key]
+                #replacement = '\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.%s ,numberLines}\n' % language2pandoc[key]  # enable line numbering
             filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                              replacement, filestr, flags=re.MULTILINE)
 
