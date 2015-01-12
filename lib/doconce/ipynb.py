@@ -2,7 +2,8 @@ import re, sys, shutil, os
 from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, indent_lines
 from html import html_movie, html_table
-from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote
+from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
+     language2pandoc
 from misc import option, _abort
 
 # Global variables
@@ -29,7 +30,7 @@ def ipynb_author(authors_and_institutions, auth2index,
 def ipynb_table(table):
     text = html_table(table)
     # Fix the problem that `verbatim` inside the table is not
-    # typeset as verbatim (according to the ipynb translator rules)[[[
+    # typeset as verbatim (according to the ipynb translator rules)
     # in the GitHub Issue Tracker
     text = re.sub(r'`([^`]+?)`', '<code>\g<1></code>', text)
     return text
@@ -275,6 +276,11 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     ipynb_code_tp = [None]*len(code_blocks)
     for i in range(len(code_blocks)):
+        # Check if continuation lines are in the code block, because
+        # doconce.py inserts a blank after the backslash
+        if '\\ \n' in code_blocks[i]:
+            code_blocks[i] = code_blocks[i].replace('\\ \n', '\\\n')
+
         if not mpl_inline and (
             re.search(r'import +matplotlib', code_blocks[i]) or \
             re.search(r'from +matplotlib', code_blocks[i]) or \
@@ -284,7 +290,16 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             mpl_inline = True
 
         tp = code_block_types[i]
-        if tp in ('pyshell', 'ipy'):
+        if tp.endswith('-t'):
+            # Standard Markdown code with pandoc/github extension
+            language = tp[:-2]
+            language_spec = language2pandoc.get(language, '')
+            #code_blocks[i] = '\n' + indent_lines(code_blocks[i], format) + '\n'
+            code_blocks[i] = "```%s\n" % language_spec + \
+                             indent_lines(code_blocks[i], format) + \
+                             "\n```"
+            ipynb_code_tp[i] = 'markdown'
+        elif tp.startswith('pyshell') or tp.startswith('ipy'):
             # Remove prompt and output lines; leave code executable in cell
             lines = code_blocks[i].splitlines()
             for j in range(len(lines)):
@@ -300,7 +315,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 lines.remove('')
             code_blocks[i] = '\n'.join(lines)
             ipynb_code_tp[i] = 'cell'
-        elif tp == 'sys':
+        elif tp.startswith('sys'):
             # Do we find execution of python file? If so, copy the file
             # to separate subdir and make a run file command in a cell.
             # Otherwise, it is just a plain verbatim Markdown block.
@@ -334,6 +349,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             # Should support other languages as well, but not for now
             code_blocks[i] = indent_lines(code_blocks[i], format)
             ipynb_code_tp[i] = 'markdown'
+
     # figure_files and movie_files are global variables and contain
     # all figures and movies referred to
     src_paths = list(src_paths)

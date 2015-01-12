@@ -636,7 +636,7 @@ def sphinx_code_orig(filestr, format):
 
     # first indent all code/tex blocks by 1) extracting all blocks,
     # 2) intending each block, and 3) inserting the blocks:
-    filestr, code_blocks, tex_blocks = remove_code_and_tex(filestr)
+    filestr, code_blocks, tex_blocks = remove_code_and_tex(filestr, format)
     for i in range(len(code_blocks)):
         code_blocks[i] = indent_lines(code_blocks[i], format)
     for i in range(len(tex_blocks)):
@@ -757,7 +757,7 @@ def sphinx_code_newmathlabels(filestr, format):
     # 2) intending each block, and 3) inserting the blocks.
     # In between, handle the math blocks.
 
-    filestr, code_blocks, tex_blocks = remove_code_and_tex(filestr)
+    filestr, code_blocks, tex_blocks = remove_code_and_tex(filestr, format)
     for i in range(len(code_blocks)):
         code_blocks[i] = indent_lines(code_blocks[i], format)
 

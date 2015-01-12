@@ -118,7 +118,7 @@ def f(x):
 !ec
 which gets rendered as
 
-!bc pycod
+!bc pycod-t
 def f(x):
     return x+1
 !ec
@@ -128,14 +128,14 @@ Test paragraph and subsubsection headings before code.
 
 __Paragraph heading before code.__
 
-!bc pycod
+!bc pycod-t
 def g(y):
     return y+1
 !ec
 
 === Subsubsection heading before code ===
 
-!bc pycod
+!bc pycod-t
 def h(z):
     return z+1
 !ec
@@ -188,7 +188,7 @@ show()
 ## Should also test that one can read .pyopt and .pysc programs
 
 Then Cython:
-!bc cycod
+!bc cycod-t
 cpdef f(double x):
     return x + 1
 !ec
@@ -216,7 +216,7 @@ Value: 0.932039085967
 
 # This one tests a + sign before a code environment
 C++:
-!bc cpppro
+!bc cpppro-t
 #include <iostream>
 
 int main()
@@ -241,7 +241,7 @@ And a little bit of Fortran: :dizzy_face:
 !ec
 which then is typeset as
 
-!bc cod
+!bc cod-t
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -266,7 +266,7 @@ quoted).
 
 And here is a system call:
 
-!bc sys
+!bc sys-t
 Terminal> mkdir test
 Terminal> cd test
 Terminal> myprog -f

@@ -1,32 +1,6 @@
 import re
-from common import remove_code_and_tex, insert_code_and_tex, indent_lines, \
-     default_movie, plain_exercise
+from common import indent_lines, default_movie, plain_exercise
 
-def old_epytext_code(filestr):
-    # In rst syntax, code blocks are typeset with :: (verbatim)
-    # followed by intended blocks. This function indents everything
-    # inside code (or TeX) blocks. The code here is similar to
-    # rst.rst_code, but a special epytext version was
-    # necessary since epytext is fooled by \n in code/tex blocks.
-
-    # first indent all code/tex blocks:
-    filestr, code_blocks, tex_blocks = remove_code_and_tex(filestr)
-    for i in range(len(code_blocks)):
-        code_blocks[i] = indent_lines(code_blocks[i], True)
-    for i in range(len(tex_blocks)):
-        tex_blocks[i] = indent_lines(tex_blocks[i], True)
-    filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
-
-    # substitute !bc and !ec appropriately:
-    # (see rst.rst_code for comments if problems)
-    from rst import bc_regex_pattern, bt_regex_pattern
-    c = re.compile(bc_regex_pattern, re.DOTALL)
-    filestr = c.sub(r'\g<1>::\n\n', filestr)
-    filestr = re.sub(r'!ec\n', '\n\n', filestr)
-    c = re.compile(bt_regex_pattern, re.DOTALL)
-    filestr = c.sub(r'\g<1>::\n\n', filestr)
-    filestr = re.sub(r'!et\n', '\n\n', filestr)
-    return filestr
 
 def epytext_author(authors_and_institutions, auth2index,
                    inst2index, index2inst, auth2email):

@@ -389,7 +389,7 @@ def begin_end_consistency_checks(filestr, envirs):
                 _abort()
 
 
-def remove_code_and_tex(filestr):
+def remove_code_and_tex(filestr, format):
     """
     Remove verbatim and latex (math) code blocks from the file and
     store separately in lists (code_blocks and tex_blocks).
@@ -401,6 +401,13 @@ def remove_code_and_tex(filestr):
     # !bc must be copied after _CODE_BLOCK).
     # later we replace _CODE_BLOCK by !bc and !ec and the code block again
     # (similarly for the tex/math block).
+
+    # ipynb (and future interactive executable documents) needs to
+    # see if a code is to be executed or just displayed as text.
+    # !bc *cod-t and !bc *pro-t is used to indicate pure text.
+    if format not in ('ipynb',):
+        filestr = re.sub(r'^!bc +([a-z0-9]+)-t', r'!bc \g<1>',
+                         filestr, flags=re.MULTILINE)
 
     # (recall that !bc can be followed by extra information that we must keep:)
     code = re.compile(r'^!bc(.*?)\n(.*?)^!ec *\n', re.DOTALL|re.MULTILINE)

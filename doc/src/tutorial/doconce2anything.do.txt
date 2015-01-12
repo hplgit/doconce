@@ -17,6 +17,7 @@ Terminal> doconce format formatname mydoc
 !ec
 
 ===== Generating a makefile =====
+label{do2any:make}
 
 Producing HTML, Sphinx, and in particular LaTeX documents from
 DocOnce sources requires a few commands. Often you want to
@@ -41,6 +42,7 @@ and if something goes wrong, the script aborts.
 
 
 ===== Preprocessing =====
+label{do2any:pre}
 
 idx{preprocessing}
 idx{`mako` preprocessor}
@@ -93,6 +95,7 @@ the result of running `mako` is available in
 what the preprocessors have done.
 
 ===== Removal of inline comments =====
+label{do2any:inlinecomments}
 
 idx{inline comments}
 
@@ -112,6 +115,7 @@ This action is convenient when a DocOnce document reaches its final form
 and comments by different authors should be removed.
 
 ===== Notes =====
+label{do2any:notes}
 
 idx{notes (visible/invisible)}
 
@@ -136,6 +140,7 @@ How to create the different formats is explained in more depth
 in the coming sections.
 
 ===== HTML =====
+label{do2any:html}
 
 idx{HTML output}
 idx{output format!HTML}
@@ -367,6 +372,7 @@ Other options:
    `bottom` and `top+bottom`.
 
 ===== Blog Posts =====
+label{do2any:blog}
 
 idx{blog posts}
 idx{Wordpress blog}
@@ -442,6 +448,7 @@ instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.
 
 ===== Pandoc and Markdown =====
+label{do2any:pandoc}
 
 idx{output format!Markdown}
 idx{output format!Pandoc}
@@ -604,6 +611,7 @@ to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
 ===== LaTeX =====
+label{do2any:latex}
 
 idx{LaTeX output}
 idx{output format!LaTeX}
@@ -852,6 +860,7 @@ Terminal> dvipdf mydoc
 !ec
 
 ===== PDFLaTeX =====
+label{do2any:pdflatex}
 
 idx{output format!pdfLaTeX}
 idx{pdfLaTeX output}
@@ -870,6 +879,7 @@ Terminal> pdflatex -shell-escape mydoc
 !ec
 
 ===== XeLaTeX =====
+label{do2any:xelatex}
 
 idx{output format!XeLaTeX}
 idx{XeLaTeX output}
@@ -884,6 +894,7 @@ Terminal> xelatex mydoc
 !ec
 
 ===== From PDF to e-book formats =====
+label{do2any:epub}
 
 idx{ePub output}
 idx{output format!ePub}
@@ -895,6 +906,7 @@ program can produce epub, mobi, and other e-book formats from PDF,
 see a "description": "http://www.dedoimedo.com/computers/latex-lyx-e-books.html".
 
 ===== Microsoft Word or LibreOffice =====
+label{do2any:MS:ooffice}
 
 idx{output format!MS Word}
 idx{output format!LibreOffice}
@@ -912,7 +924,71 @@ Terminal> pandoc -t docx -o mydoc.docx mydoc.md
 The transformation works well for simple text files, but LaTeX mathematics
 does not work.
 
+===== IPython Notebooks =====
+label{do2any:ipynb}
+
+idx{output format!notebook}
+idx{IPython notebook}
+idx{notebook}
+
+DocOnce can generate json files for IPython notebook (Jupyter):
+
+!bc sys
+Terminal> doconce format ipynb mydoc  # results in mydoc.ipynb
+!ec
+
+It is no guarantee that the notebook can be executed. For example,
+having the code
+
+!bc pycod
+print sys.version
+!ec
+will not execute unless `sys` is imported. While a book may show such
+code and skip (potentially tedious) initializing statements, they must
+be present in the notebook. To this end, use the `!bc *hid` environment
+for hidden code. In the present example, we use `!bc pyhid` to specify
+Python code that needs to be executed, but that should normally be
+hidden (other formats, with the exception of certain interactive Sphinx
+documents, will hide such code).
+
+!bc
+|bc pyhid
+import sys
+|ec
+!ec
+The notebook will feature the `import sys` statement in a cell prior to the
+`print sys.version` cell, and the latter will work.
+
+Similarly, if you import from your own modules, say `from mymod import hello`,
+the `mymod.py` must be accessible for the notebook. Suppose this file
+is in `src-test/mymod.py`. Then you need to add `src-test` to `sys.path`
+for the import statement to work:
+
+!bc
+|bc pyhid
+sys.path.append('src-test')
+|ec
+!ec
+
+Some code blocks may just be there for explanation and are not
+meant to be executed. These can be marked by `!bc pycod-t` (or
+`!bc Xcod-t` for any supported programming language `X`):
+
+!bc
+|bc pycod-t
+if isinstance(myvar, float):
+    raise TypeError('myvar must be array, not %s' % type(myvar))
+|ec
+!ec
+The code segment above will then be typeset as verbatim text and not
+an executable cell, and there is no need to worry about a missing
+definition of `myvar` (which would cause problems in an executable cell).
+
+As with HTML files, you need to ensure that the notebook has access to
+figures and source code as requested.
+
 ===== Plain ASCII Text =====
+label{do2any:ascii}
 
 idx{output format!ASCII}
 idx{output format!plain untagged text}
@@ -927,6 +1003,7 @@ Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
 !ec
 
 ===== reStructuredText =====
+label{do2any:rst}
 
 idx{output format!reStructuredText}
 idx{reStructuredText output}
@@ -977,6 +1054,7 @@ Some links for going from LaTeX to Word are listed below.
 
 
 ===== Sphinx =====
+label{do2any:sphinx}
 
 idx{output format!Sphinx}
 idx{Sphinx output}
@@ -1243,6 +1321,7 @@ all such arguments can be customized both for Sphinx and LaTeX output.
 
 
 ===== Wiki Formats =====
+label{do2any:wiki}
 
 idx{output format!MediaWiki}
 idx{output format!Creole wiki}
@@ -1296,6 +1375,7 @@ available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
 
 ===== Google Docs =====
+label{do2any:google:docs}
 
 idx{Google docs output}
 
@@ -1326,6 +1406,7 @@ Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the "googledoc2latex": "http://code.google.com/p/googledoc2latex" script can convert a Google document to LaTeX.
 
 ===== Tweaking the DocOnce Output =====
+label{do2any:tweaking}
 
 idx{tweaking output}
 idx{automatic editing}
