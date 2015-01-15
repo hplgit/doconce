@@ -422,7 +422,7 @@ def remove_code_and_tex(filestr, format):
     code_blocks = [c for opt, c in result]
     code_block_types = [opt.strip() for opt, c in result]
 
-    tex = re.compile(r'^!bt\n(.*?)^!et *\n', re.DOTALL|re.MULTILINE)
+    tex = re.compile(r'^!bt *\n(.*?)^!et *\n', re.DOTALL|re.MULTILINE)
     tex_blocks = tex.findall(filestr)
 
     # Remove blocks and substitute by a one-line sign
