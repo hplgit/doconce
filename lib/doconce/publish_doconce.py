@@ -735,6 +735,9 @@ def _xml_format_title(paper):
         title = '<title>%s</title>' % paper["title"]
     return title
 
+def _xml_format_institution(paper):
+    return '*%s*' % paper["institution"]
+
 def _xml_format_booktitle(paper):
     return '*%s*' % paper["booktitle"]
 
@@ -777,4 +780,3 @@ xml_format = {
     "talks"         : xml_format_talks,
     "posters"       : xml_format_posters,
     "misc"          : xml_format_misc}
-

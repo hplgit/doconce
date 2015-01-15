@@ -321,6 +321,7 @@ def xml_ref_and_label(section_label2title, format, filestr):
             label = m.group(1)
             filestr = re.sub(pattern,
                              r'<caption no="%s">\g<1></caption>' % fig_no,
+                             filestr,
                              flags=re.DOTALL)
             fig_no += 1
 
@@ -359,7 +360,7 @@ def xml_index_bib(filestr, index, citations, pubfile, pubdata):
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
 
-    filestr = re.sub(r'idx\{.+?\}\n?', r'<index>\g<1></index>', filestr)
+    filestr = re.sub(r'idx\{(.+?)\}\n?', r'<index>\g<1></index>', filestr)
 
     return filestr
 
