@@ -911,7 +911,13 @@ doconce replace '<hr class="figure">' \
  '<hr style="width: 50%">' mydoc.html
 !ec
 
+
 ======= Problems with reveal/deck HTML5 slides =======
+
+===== Python Online Tutor code does not work in reveal =====
+
+Use the Chrome browser (the code does not work in Firefox in combination
+with reveal HTML5, but it works in plain HTML).
 
 ===== Reveal slides are stacked on top of each other =====
 
