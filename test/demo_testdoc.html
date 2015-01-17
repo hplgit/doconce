@@ -246,7 +246,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jan 12, 2015</h4></center> <!-- date -->
+<center><h4>Jan 17, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -425,18 +425,18 @@ Let's do some copying from files too. First from subroutine up to the very end,
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
-      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
-      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
-      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
-      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
-         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span>i
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> r
+      r = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span>i = <span style="color: #B452CD">1</span>, i
+         r = r + i
       <span style="color: #8B008B; font-weight: bold">end do</span>
 <span style="color: #8B008B; font-weight: bold">      return</span>
-<span style="color: #00688B">C</span>     <span style="color: #00688B">END1</span>
+C     END1
 
-      <span style="color: #8B008B; font-weight: bold">program </span><span style="color: #00688B">testme</span>
-      <span style="color: #8B008B; font-weight: bold">call </span><span style="color: #00688B">test</span>()
+      <span style="color: #8B008B; font-weight: bold">program </span>testme
+      <span style="color: #8B008B; font-weight: bold">call </span>test()
       <span style="color: #8B008B; font-weight: bold">return</span>
 </pre></div>
 </td></tr></table><p>
@@ -451,12 +451,12 @@ and then just the subroutine,
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
-      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
-      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
-      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
-      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
-         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span>i
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> r
+      r = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span>i = <span style="color: #B452CD">1</span>, i
+         r = r + i
       <span style="color: #8B008B; font-weight: bold">end do</span>
 <span style="color: #8B008B; font-weight: bold">      return</span>
 </pre></div>

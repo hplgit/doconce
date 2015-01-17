@@ -1,0 +1,28 @@
+TITLE: Yet Another Scientific Paper
+AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Kaare Dump at Segfault, Cyberspace
+AUTHOR: A. Dummy Author
+AUTHOR: I. S. Overworked and Outburned at Inst1 & Inst2, Somewhere & Third Inst, Elsewhere & Fourth Inst
+AUTHOR: J. Doe mail: j_doe@cyberspace.com
+DATE: today
+
+__Abstract.__
+Here goes
+a very short
+abstract.
+
+__Keywords.__
+test, doconce, paper, multiple authors.
+
+TOC: on
+
+======= Introduction =======
+
+This is a test of a typical paper.
+
+======= Concluding remarks =======
+
+We need to test bibliography too, and for this purpose we need
+a citation like cite{Langtangen_1992c,Langtangen_1994a}.
+
+BIBFILE: papers.pub

@@ -799,9 +799,14 @@ def syntax_check(filestr, format):
             if not (link.startswith('http') or link.startswith('file:/') or \
                     link.startswith('_static')):
                 links2local.append(link)
+        ok = True
         for link in links2local:
-            print '*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, os.path.basename(link))
-        if links2local:
+            if link.startswith('mov') and os.path.isdir(os.path.dirname(link)):
+                pass  # automake_sphinx.py will move mov* dirs to static
+            else:
+                print '*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, link)
+                ok = False
+        if not ok:
             print '    move linked file to _static and change URLs unless'
             print '    you really know that the links will be correct when the'
             print '    sphinx build directory is moved to its final destination'
