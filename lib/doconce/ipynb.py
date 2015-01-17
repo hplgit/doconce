@@ -415,7 +415,6 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     label2tag = {}
     tag_counter = 1
     for i in range(len(tex_blocks)):
-
         # Extract labels and add tags
         labels = re.findall(r'label\{(.+?)\}', tex_blocks[i])
         for label in labels:
